@@ -28,7 +28,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/03
+# 更新（Last update）：     2026/03/06
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -194,12 +194,12 @@ def sort_champion_frequency_table(champion_frequency_dict: dict[int, int]): #将
     champion_frequency_df = pandas.concat([pandas.DataFrame([champion_frequency_header])[champion_frequency_df.columns], champion_frequency_df], ignore_index = True)
     return champion_frequency_df
 
-def GetCandidateChampions(candidate_championIds: Optional[int | list[int]] = None, enable_bravery: bool = True) -> list[int]: #从用户输入读取候选英雄序号列表（Read candidate championId list from user input）
+def GetCandidateChampions(candidate_championIds: Optional[list[int]] = None, enable_bravery: bool = True) -> list[int]: #从用户输入读取候选英雄序号列表（Read candidate championId list from user input）
     '''
     提取将用户传入的英雄序号列表中所有合法的英雄序号并返回。<br>Extract all legal championIds from the championId list input by the user and return them.
     
     :param candidate_championIds: 待处理的英雄序号列表，或者是一个英雄序号。未指定时，将在函数内要求用户输入一个英雄序号列表。<br>A list of championIds to process, or a single championId. When it's not specified, the function itself will ask the user to submit a championId list.
-    :type candidate_championIds: int | list[int]
+    :type candidate_championIds: list[int]
     :param enable_bravery: 允许传入勇敢举动的英雄序号。默认为真。<br>Whether to allow the championId of Bravery passed. True by default.
     :type enable_bravery: bool
     :return: 处理后的合法的英雄序号列表。<br>A list of valid championIds after processing.
@@ -218,21 +218,21 @@ def GetCandidateChampions(candidate_championIds: Optional[int | list[int]] = Non
                 break
             else:
                 try:
-                    candidate_championIds_tmp = eval(candidate_championIds_str)
+                    tmp = eval(candidate_championIds_str)
                 except:
                     logPrint("语法错误！请重新输入。\nSyntax ERROR! Please try again.")
                 else:
-                    if isinstance(candidate_championIds_tmp, int):
-                        if candidate_championIds_tmp in LoLChampions or candidate_championIds_tmp == -3:
-                            candidate_championIds = [candidate_championIds_tmp]
+                    if isinstance(tmp, int):
+                        if tmp in LoLChampions or tmp == -3:
+                            candidate_championIds = [tmp]
                             break
                         else:
                             logPrint("您输入的英雄序号有误！请重新输入。\nInvalid championId! Please try again.")
-                    elif isinstance(candidate_championIds_tmp, list):
-                        if len(candidate_championIds_tmp) == 0:
+                    elif isinstance(tmp, list):
+                        if len(tmp) == 0:
                             logPrint("请至少选择一个英雄！\nPlease choose at least one champion!")
-                        elif all(map(lambda x: isinstance(x, int), candidate_championIds_tmp)):
-                            candidate_championIds = candidate_championIds_tmp
+                        elif all(map(lambda x: isinstance(x, int), tmp)):
+                            candidate_championIds = tmp
                             break
                         else:
                             logPrint("您输入的英雄序号列表有误！请输入由正整数组成的列表。\nInvalid championId list! Please submit a list of positive integers.")
@@ -269,21 +269,21 @@ def GetCandidateChampionChoices(candidate_championId_options: Optional[list[list
                 break
             else:
                 try:
-                    candidate_championIds_tmp = eval(candidate_championIds_str)
+                    tmp = eval(candidate_championIds_str)
                 except:
                     logPrint("语法错误！请重新输入。\nSyntax ERROR! Please try again.")
                 else:
-                    if isinstance(candidate_championIds_tmp, int):
-                        if candidate_championIds_tmp in LoLChampions:
-                            option: list[int] = [candidate_championIds_tmp]
+                    if isinstance(tmp, int):
+                        if tmp in LoLChampions:
+                            option: list[int] = [tmp]
                             candidate_championId_options.append(option)
                         else:
                             logPrint("您输入的英雄序号有误！请重新输入。\nInvalid championId! Please try again.")
-                    elif isinstance(candidate_championIds_tmp, list):
-                        if len(candidate_championIds_tmp) == 0:
+                    elif isinstance(tmp, list):
+                        if len(tmp) == 0:
                             logPrint("请至少输入一个英雄！\nPlease input at least one champion!")
-                        elif all(map(lambda x: isinstance(x, int) and x in LoLChampions, candidate_championIds_tmp)): #这一部分相比单选模式较为严格（This part is more serious then the single mode）
-                            option = candidate_championIds_tmp
+                        elif all(map(lambda x: isinstance(x, int) and x in LoLChampions, tmp)): #这一部分相比单选模式较为严格（This part is more serious then the single mode）
+                            option = tmp
                             candidate_championId_options.append(option)
                         else:
                             logPrint("您输入的英雄序号列表有误！请输入由正整数组成的列表。\nInvalid championId list! Please submit a list of positive integers.")

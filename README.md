@@ -89,6 +89,7 @@ This program set mainly achieves **LoL Summoner information export** and **Leagu
                 <ul>
                     <li>Obfuscated puuid resolve (I haven't implemented it)</li>
                     <li>Spectate service support</li>
+                    <li>Match history count expansion and data slice merge</li>
                 </ul>
             </td>
         </tr>

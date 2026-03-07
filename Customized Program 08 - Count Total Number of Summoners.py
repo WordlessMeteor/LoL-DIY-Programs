@@ -7,7 +7,7 @@ from src.utils.summoner import get_summoner_data, get_info
 from src.utils.logger import LogManager
 from src.utils.webRequest import SGPSession
 from src.core.config.headers import info_header
-from src.core.dataframes.matchHistory import get_matchHistory_sgp
+from src.core.dataframes.matchHistory import get_matchSummary_sgp
 
 #=============================================================================
 # * 声明（Declaration）
@@ -15,7 +15,7 @@ from src.core.dataframes.matchHistory import get_matchHistory_sgp
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/02
+# 更新（Last update）：     2026/03/04
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -150,7 +150,7 @@ async def interaction_traverse_summoner(connection: Connection, export: bool = T
         # if not info_got:
         #     logPrint(f"获取玩家{player_puuid}信息的过程出现了一个异常。\nAn error occurred when the program was trying to get the information of the summoner with puuid {player_puuid}.")
         searched_puuids.add(player_puuid) #即使没有正确获取到其召唤师信息，在程序的下游也不再获取了（Even if the summoner information isn't fetched as expected, it won't be fetched subsequently）
-        LoLHistory_get, product, LoLHistory = await get_matchHistory_sgp(connection, sgpSession, player_puuid, product = "lol", log = log)
+        LoLHistory_get, LoLHistory = await get_matchSummary_sgp(connection, sgpSession, player_puuid, product = "LoL", log = log)
         if LoLHistory_get:
             for game in LoLHistory["games"]:
                 match_id: str = game["metadata"]["match_id"]
@@ -175,7 +175,7 @@ async def interaction_traverse_summoner(connection: Connection, export: bool = T
                         logPrint("×\t%s\tlol\t%d" %(queue[-1], len(queue))) #批量入队时，打印最后一个入队的玩家通用唯一识别码（When batch enqueue is performed, print the puuid that enters the queue in the end）
         else:
             logPrint(LoLHistory)
-        TFTHistory_get, product, TFTHistory = await get_matchHistory_sgp(connection, sgpSession, player_puuid, product = "tft", log = log)
+        TFTHistory_get, TFTHistory = await get_matchSummary_sgp(connection, sgpSession, player_puuid, product = "TFT", log = log)
         if TFTHistory_get:
             for game in TFTHistory["games"]:
                 match_id: str = game["metadata"]["match_id"]

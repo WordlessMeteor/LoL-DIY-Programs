@@ -16,7 +16,7 @@ from src.core.dataframes.champions import sort_inventory_champions
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/03
+# 更新（Last update）：     2026/03/06
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -687,12 +687,13 @@ async def configure_perks(connection: Connection) -> None:
                                             break
                                         else:
                                             try:
-                                                uiPerksIds: list[int] = eval(uiPerksStr)
+                                                tmp = eval(uiPerksStr)
                                             except:
                                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                             else:
                                                 #下面对uiPerksIds展开重重检验，确保生成的是有效的符文页（The following code perform continuous tests on `uiPerksIds` to ensure that a valid perk page will be generated）
-                                                if isinstance(uiPerksIds, list) and all(map(lambda x: isinstance(x, int) and x in perks.keys(), uiPerksIds)):
+                                                if isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x in perks.keys(), tmp)):
+                                                    uiPerksIds: list[int] = tmp
                                                     if len(uiPerksIds) >= 9:
                                                         uiPerksIds = uiPerksIds[:9] #正确的请求主体中，符文序号列表长度为9。因此如果用户输入长度超过9的列表，将被自动截断（In a correct request body, the length of the perkId list is 9. Therefore, if the user submits a list with length over 9, this list will be taken a slice automatically）
                                                         perkIds_valid: bool = True #在保证用户的输入的列表元素都是整数的情况下，对于符文序号列表的逻辑展开检验（Perform tests on the perkId list's logic, if each element of this list is of integer type）
@@ -1008,13 +1009,14 @@ async def configure_perks(connection: Connection) -> None:
                                 break
                             else:
                                 try:
-                                    page_order: list[int] = eval(page_order_str)
+                                    tmp = eval(page_order_str)
                                 except:
                                     traceback_info = traceback.format_exc()
                                     logPrint(traceback_info)
                                     logPrint("您的输入格式有误！请重新输入。\nERROR format of input! Please try again.")
                                 else:
-                                    if isinstance(page_order, list) and all(map(lambda x: isinstance(x, int) and x in pageIds, page_order)) and len(page_order) == len(set(page_order)): #这里需要严格控制输入格式：①输入的是一个列表；②列表的元素全是整型，且都是分组序号；③列表元素无重复（Here the input format are strictly controlled: ①the input is a list; ②each element in the list is of integer type and represents a group id; ③the elements are unique）
+                                    if isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x in pageIds, tmp)) and len(tmp) == len(set(tmp)): #这里需要严格控制输入格式：①输入的是一个列表；②列表的元素全是整型，且都是分组序号；③列表元素无重复（Here the input format are strictly controlled: ①the input is a list; ②each element in the list is of integer type and represents a group id; ③the elements are unique）
+                                        page_order: list[int] = tmp
                                         for pageId in page_order:
                                             pageIds.remove(pageId)
                                         page_order += pageIds #虽然用户可能只是想把个别符文页移到前面，但是后面的操作涉及到调整位次，所以还是需要对所有符文页都进行操作。这样，如果用户输入的是一个空列表，那么表面上看起来程序没有作任何操作，而实际上程序调整了所有位次的数值（Although the user may only want to move several pages to the front, the subsequent operations involve all page orders' value adjustment. In that means, if the user submits an empty list, then it seems that the program doesn't do anything, but actually adjusts all orders' values）
@@ -1074,22 +1076,22 @@ async def configure_perks(connection: Connection) -> None:
                                 delete_indices = list(range(1, len(perkPage_df)))
                             else:
                                 try:
-                                    delete_indices = eval(delete_str)
+                                    tmp = eval(delete_str)
                                 except:
                                     traceback_info = traceback.format_exc()
                                     logPrint(traceback_info)
                                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                 else:
-                                    if isinstance(delete_indices, int):
-                                        delete_indices = [delete_indices]
-                                    elif not isinstance(delete_indices, list):
+                                    if isinstance(tmp, int):
+                                        delete_indices = [tmp]
+                                        index_got = True
+                                        break
+                                    elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x > 0 and x < len(perkPage_df), tmp)) and len(tmp) == len(set(tmp)):
+                                        delete_indices = tmp
+                                        index_got = True
+                                        break
+                                    else:
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                        continue
-                            if all(map(lambda x: isinstance(x, int) and x > 0 and x < len(perkPage_df), delete_indices)) and len(delete_indices) == len(set(delete_indices)):
-                                index_got = True
-                                break
-                            else:
-                                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                         if index_got:
                             logPrint("您选择删除以下%d个符文页。\nYou selected the following %d perk page(s)." %(len(delete_indices), len(delete_indices)))
                             print(format_df(perkPage_df.loc[delete_indices, perkPage_df_fields_to_print], print_index = True, reserve_index = True)[0])

@@ -20,7 +20,7 @@ from src.core.dataframes.champions import sort_champion_summary
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/02
+# 更新（Last update）：     2026/03/06
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1919,11 +1919,12 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                 break
             else:
                 try:
-                    versions_sort = eval(version)
+                    tmp = eval(version)
                 except:
                     logPrint("您的输入有误，请重新输入！\nERROR input! Please try again.")
                 else:
-                    if isinstance(versions_sort, list) and all(map(lambda x: x in versions, versions_sort)):
+                    if isinstance(tmp, list) and all(map(lambda x: x in versions, tmp)):
+                        versions_sort = tmp
                         break
                     else:
                         logPrint("您的输入有误，请重新输入！\nERROR input! Please try again.")
@@ -2158,11 +2159,12 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                 break
             else:
                 try:
-                    versions_sort = eval(version)
+                    tmp = eval(version)
                 except:
                     logPrint("您的输入有误，请重新输入！\nERROR input! Please try again.")
                 else:
-                    if isinstance(versions_sort, list) and all(map(lambda x: x in patches_cdragon, versions_sort)):
+                    if isinstance(tmp, list) and all(map(lambda x: x in patches_cdragon, tmp)):
+                        versions_sort = tmp
                         break
                     else:
                         logPrint("您的输入有误，请重新输入！\nERROR input! Please try again.")

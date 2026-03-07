@@ -13,7 +13,7 @@ from src.core.config.localization import availabilities, challengeCrystalLevels,
 from src.core.config.headers import friend_hovercard_header, friend_group_header, conversation_header, message_header, friend_request_header, party_header, invid_header, champSelect_mutedPlayer_header, captureDevice_header, voiceSettings_header, participant_record_header, spectate_nonfriend_header, blockList_header, TFTGame_info_header
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.config.const import BOT_UUID
-from src.core.dataframes.matchHistory import get_LoLHistory, sort_LoLGame_stats, sort_LoLGame_stats_sgp, get_TFTHistory, generate_TFTGameInfo_records, sort_TFTGame_stats
+from src.core.dataframes.matchHistory import get_LoLHistory, get_matchSummary_sgp, sort_LoLGame_stats, sort_LoLGame_stats_sgp, generate_TFTGameInfo_records, sort_TFTGame_stats
 from src.core.dataframes.gameflow import sort_ChampSelect_players
 
 #=============================================================================
@@ -22,7 +22,7 @@ from src.core.dataframes.gameflow import sort_ChampSelect_players
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/03
+# 更新（Last update）：     2026/03/06
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -480,7 +480,13 @@ async def get_recent_players(connection: Connection, search_mode: int = 2, lol_s
         logPrint("开始整理英雄联盟对局数据……\nStart organizing LoL match data ...")
         unmapped_keys1: dict[str, set[int]] = {"queue": set(), "summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "CherryAugment": set()}
         if lol_sgp:
-            recent_LoLPlayer_df: pandas.DataFrame = await sort_LoLGame_stats_sgp(connection, sgpSession, LoLMatchIDs, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, puuid = current_puuid, save_self = False, save_other = True, save_bot = False, useAllVersions = False, unmapped_keys = unmapped_keys1, log = log)
+            LoLGame_info_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
+            LoLHistory_get, LoLHistory = await get_matchSummary_sgp(connection, sgpSession, current_puuid, "LoL", begin = 0, count = 1000, log = log)
+            for game in LoLHistory["games"]:
+                matchId: int = int(game["metadata"]["match_id"].split("_")[1])
+                if not matchId in LoLGame_info_cache_fromSummary_sgp:
+                    LoLGame_info_cache_fromSummary_sgp[matchId] = game
+            recent_LoLPlayer_df: pandas.DataFrame = await sort_LoLGame_stats_sgp(connection, sgpSession, LoLMatchIDs, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, puuid = current_puuid, save_self = False, save_other = True, save_bot = False, useAllVersions = False, unmapped_keys = unmapped_keys1, LoLGame_info_cache = LoLGame_info_cache_fromSummary_sgp, log = log)
         else:
             recent_LoLPlayer_df = await sort_LoLGame_stats(connection, LoLMatchIDs, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, puuid = current_puuid, save_self = False, save_other = True, save_bot = False, useAllVersions = False, unmapped_keys = unmapped_keys1, log = log)
     else:
@@ -489,7 +495,7 @@ async def get_recent_players(connection: Connection, search_mode: int = 2, lol_s
     TFTHistory: dict[str, Any] = {}
     if search_TFT:
         logPrint("开始获取云顶之弈对局记录。\nStart getting TFT match history.")
-        TFTHistory_get, TFTHistory = await get_TFTHistory(connection, current_info["puuid"], log = log)
+        TFTHistory_get, TFTHistory = await get_matchSummary_sgp(connection, sgpSession, current_info["puuid"], "TFT", begin = 0, count = 1000, log = log)
         if TFTHistory_get:
             logPrint("开始整理云顶之弈对局数据……\nStart organizing TFT match data ...")
             # TFTMatchIDs = list(map(lambda x: int(x["metadata"]["match_id"].split("_")[-1]), TFTHistory["games"]))
@@ -498,7 +504,7 @@ async def get_recent_players(connection: Connection, search_mode: int = 2, lol_s
             TFTGame_stat_data: dict[str, list[Any]] = {key: [] for key in TFTGame_info_header_keys}
             for i in range(len(TFTHistory["games"])):
                 game: dict[str, Any] = TFTHistory["games"][i]
-                if bool(game["json"]):
+                if game.get("json"):
                     for j in range(len(game["json"]["participants"])):
                         participant: dict[str, Any] = game["json"]["participants"][j]
                         if not participant["puuid"] in {current_puuid, BOT_UUID}:
@@ -852,13 +858,14 @@ async def manage_friend_group(connection: Connection) -> None:
                     break
                 else:
                     try:
-                        group_order: list[str] = eval(group_order_str)
+                        tmp = eval(group_order_str)
                     except:
                         traceback_info = traceback.format_exc()
                         logPrint(traceback_info)
                         logPrint("您的输入格式有误！请重新输入。\nERROR format of input! Please try again.")
                     else:
-                        if isinstance(group_order, list) and all(map(lambda x: isinstance(x, int) and x in friend_groupIds, group_order)) and len(group_order) == len(set(group_order)): #这里需要严格控制输入格式：①输入的是一个列表；②列表的元素全是整型，且都是分组序号；③列表元素无重复（Here the input format are strictly controlled: ①the input is a list; ②each element in the list is of integer type and represents a group id; ③the elements are unique）
+                        if isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x in friend_groupIds, tmp)) and len(tmp) == len(set(tmp)): #这里需要严格控制输入格式：①输入的是一个列表；②列表的元素全是整型，且都是分组序号；③列表元素无重复（Here the input format are strictly controlled: ①the input is a list; ②each element in the list is of integer type and represents a group id; ③the elements are unique）
+                            group_order: list[int] = tmp
                             priority: int = max(100, max(map(lambda x: x["priority"], friend_groups))) + len(group_order) #后者是为了防止优先级递减而小于原分组优先级的最大值（The addend is designed to prevent `priority` from being less than the maximum of the original group priority）
                             error_occurred_groupArrange: bool = False
                             for groupId in group_order:
@@ -1173,19 +1180,18 @@ async def send_message(connection: Connection) -> None:
                         break
                     else:
                         try:
-                            friend_index: int = eval(friend_index_str)
+                            tmp = eval(friend_index_str)
                         except:
                             traceback_info = traceback.format_exc()
                             logPrint(traceback_info)
                             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                            continue
                         else:
-                            if isinstance(friend_index, int) and friend_index in range(1, len(friend_hovercard_df)):
+                            if isinstance(tmp, int) and tmp in range(1, len(friend_hovercard_df)):
+                                friend_index: int = tmp
                                 chatId: str = friend_hovercard_df["pid"][friend_index]
                                 await chat(connection, chatId)
                             else:
                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                continue
                     logPrint("请选择一位好友：\nPlease select a friend:")
                     friend_hovercard_df = await output_friend_hovercard(connection, print_index = True, start_index = 1)
                     logPrint("变量提示（Variable hints）：\nfriend_hovercard_df = await sort_friend_hovercard(connection)")
@@ -1357,23 +1363,22 @@ async def manage_friend_request(connection: Connection) -> None:
                             break
                         else:
                             try:
-                                handle_indices = eval(handle_str)
+                                tmp = eval(handle_str)
                             except:
                                 traceback_info = traceback.format_exc()
                                 logPrint(traceback_info)
                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                continue
                             else:
-                                if isinstance(handle_indices, int):
-                                    handle_indices = [handle_indices]
-                                elif not isinstance(handle_indices, list):
+                                if isinstance(tmp, int) and tmp > 0 and tmp < len(friend_request_df):
+                                    handle_indices = [tmp]
+                                    index_got = True
+                                    break
+                                elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x > 0 and x < len(friend_request_df), tmp)) and len(tmp) == len(set(tmp)):
+                                    handle_indices = tmp
+                                    index_got = True
+                                    break
+                                else:
                                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                    continue
-                        if all(map(lambda x: isinstance(x, int) and x > 0 and x < len(friend_request_df), handle_indices)) and len(handle_indices) == len(set(handle_indices)):
-                            index_got = True
-                            break
-                        else:
-                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                 elif mode == "3":
                     handle_indices = list(range(1, len(friend_request_df)))
                     index_got = True
@@ -1516,7 +1521,7 @@ async def move_group(connection: Connection) -> None:
                                 elif draft_option[0] == "0":
                                     break
                                 elif draft_option[0] == "1":
-                                    scope = {"format_df": format_df, "df": friend_hovercard_df.copy(deep = True), "fields": friend_hovercard_fields_to_print}
+                                    scope: dict[str, Any] = {"format_df": format_df, "df": friend_hovercard_df.copy(deep = True), "fields": friend_hovercard_fields_to_print}
                                     logPrint('示例（Examples）：\nprint(dir())\nprint(format_df(df[(df["gameName"] == "WordlessMeteor") & (df["gameTag"] == "5071")].loc[1:, fields])[0])\n输入“-1”以退出取子集。\nSubmit "-1" to quit taking subsets.')
                                     subscope(scope, log = log)
                                 else:
@@ -1537,24 +1542,22 @@ async def move_group(connection: Connection) -> None:
                                 break
                             else:
                                 try:
-                                    move_indices = eval(move_str)
+                                    tmp = eval(move_str)
                                 except:
                                     traceback_info = traceback.format_exc()
                                     logPrint(traceback_info)
                                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                    continue
                                 else:
-                                    if isinstance(move_indices, int):
-                                        move_indices = [move_indices]
-                                    elif not isinstance(move_indices, list):
+                                    if isinstance(tmp, int) and tmp > 0 and tmp < len(friend_hovercard_df):
+                                        move_indices = [tmp]
+                                        index_got = True
+                                        break
+                                    elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x > 0 and x < len(friend_hovercard_df), tmp)) and len(tmp) == len(set(tmp)):
+                                        move_indices = list(map(lambda x: x - 1, tmp))
+                                        index_got = True
+                                        break
+                                    else:
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                        continue
-                            if all(map(lambda x: isinstance(x, int) and x > 0 and x < len(friend_hovercard_df), move_indices)) and len(move_indices) == len(set(move_indices)):
-                                move_indices = list(map(lambda x: x - 1, move_indices))
-                                index_got = True
-                                break
-                            else:
-                                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     elif method[0] == "2":
                         logPrint('''请输入要移动的好友的召唤师名。每个好友的召唤师名格式为{玩家名称}#{名称编号}。输入“-1”以结束输入。\nPlease submit the names of the friends to be moved. Each friend's name should accord to the format {gameName}#{gameTag}. Submit "-1" to end the input.\n变量提示（Variable hints）：\nfriends = await (await connection.request("GET", "/lol-chat/v1/friends")).json()\nfriend_hovercard_df = await sort_friend_hovercard_simple(connection)''')
                         move_indices = []
@@ -1569,26 +1572,26 @@ async def move_group(connection: Connection) -> None:
                                 break
                             else:
                                 try:
-                                    friend_summonerName_list: list[str] = eval(friend_summonerName)
+                                    tmp = eval(friend_summonerName)
                                 except:
-                                    friend_summonerName_list = [friend_summonerName]
+                                    friend_summonerName_list: list[Any] = [friend_summonerName]
                                 else:
-                                    if isinstance(friend_summonerName_list, list) and all(map(lambda x: isinstance(x, (str, int)), friend_summonerName_list)):
-                                        pass
+                                    if isinstance(tmp, list) and all(map(lambda x: isinstance(x, (str, int)), tmp)):
+                                        friend_summonerName_list = tmp
                                     else:    
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                         continue
-                                for friend_summonerName in friend_summonerName_list:
-                                    if friend_summonerName in friend_summonerNames:
-                                        friend_index = friend_summonerNames.index(friend_summonerName)
-                                    elif friend_summonerName in friend_summonerIds:
-                                        friend_index = friend_summonerIds.index(friend_summonerName)
-                                    elif friend_summonerName in set(map(str, friend_summonerIds)):
-                                        friend_index = friend_summonerIds.index(int(friend_summonerName))
-                                    elif friend_summonerName in friend_puuids:
-                                        friend_index = friend_puuids.index(friend_summonerName)
+                                for friend_summonerName_iter in friend_summonerName_list:
+                                    if friend_summonerName_iter in friend_summonerNames:
+                                        friend_index = friend_summonerNames.index(friend_summonerName_iter)
+                                    elif friend_summonerName_iter in friend_summonerIds:
+                                        friend_index = friend_summonerIds.index(friend_summonerName_iter)
+                                    elif friend_summonerName_iter in set(map(str, friend_summonerIds)):
+                                        friend_index = friend_summonerIds.index(int(friend_summonerName_iter))
+                                    elif friend_summonerName_iter in friend_puuids:
+                                        friend_index = friend_puuids.index(friend_summonerName_iter)
                                     else:
-                                        logPrint("%s不是一个合法的召唤师名、召唤师序号或者玩家通用唯一识别码。\n%s isn't a legal summoner name, summonerId or puuid." %(friend_summonerName, friend_summonerName))
+                                        logPrint("%s不是一个合法的召唤师名、召唤师序号或者玩家通用唯一识别码。\n%s isn't a legal summoner name, summonerId or puuid." %(friend_summonerName_iter, friend_summonerName_iter))
                                         continue
                                     if not friend_index in move_indices:
                                         move_indices.append(friend_index)
@@ -1802,24 +1805,22 @@ async def remove_friend(connection: Connection) -> None:
                                 break
                             else:
                                 try:
-                                    unfriend_indices = eval(remove_str)
+                                    tmp = eval(remove_str)
                                 except:
                                     traceback_info = traceback.format_exc()
                                     logPrint(traceback_info)
                                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                    continue
                                 else:
-                                    if isinstance(unfriend_indices, int):
-                                        unfriend_indices = [unfriend_indices]
-                                    elif not isinstance(unfriend_indices, list):
+                                    if isinstance(tmp, int) and tmp > 0 and tmp < len(friend_hovercard_df):
+                                        unfriend_indices = [tmp]
+                                        index_got = True
+                                        break
+                                    elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x > 0 and x < len(friend_hovercard_df), tmp)) and len(tmp) == len(set(tmp)):
+                                        unfriend_indices = tmp
+                                        index_got = True
+                                        break
+                                    else:
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                        continue
-                            if all(map(lambda x: isinstance(x, int) and x > 0 and x < len(friend_hovercard_df), unfriend_indices)) and len(unfriend_indices) == len(set(unfriend_indices)):
-                                unfriend_indices = list(map(lambda x: x - 1, unfriend_indices))
-                                index_got = True
-                                break
-                            else:
-                                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     elif method[0] == "2":
                         logPrint('''请输入要删除的好友的召唤师名。每个好友的召唤师名格式为{玩家名称}#{名称编号}。输入“-1”以结束输入。\nPlease submit the names of the friends to be unfriended. Each friend's name should accord to the format {gameName}#{gameTag}. Submit "-1" to end the input.\n变量提示（Variable hints）：\nfriends = await (await connection.request("GET", "/lol-chat/v1/friends")).json()\nfriend_hovercard_df = await sort_friend_hovercard_simple(connection)''')
                         unfriend_indices = []
@@ -1834,26 +1835,26 @@ async def remove_friend(connection: Connection) -> None:
                                 break
                             else:
                                 try:
-                                    friend_summonerName_list = eval(friend_summonerName)
+                                    tmp = eval(friend_summonerName)
                                 except:
-                                    friend_summonerName_list = [friend_summonerName]
+                                    friend_summonerName_list: list[Any] = [friend_summonerName]
                                 else:
-                                    if isinstance(friend_summonerName_list, list) and all(map(lambda x: isinstance(x, (str, int)), friend_summonerName_list)):
-                                        pass
+                                    if isinstance(tmp, list) and all(map(lambda x: isinstance(x, (str, int)), tmp)):
+                                        friend_summonerName_list = tmp
                                     else:    
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                         continue
-                                for friend_summonerName in friend_summonerName_list:
-                                    if friend_summonerName in friend_summonerNames:
-                                        friend_index = friend_summonerNames.index(friend_summonerName)
-                                    elif friend_summonerName in friend_summonerIds:
-                                        friend_index = friend_summonerIds.index(friend_summonerName)
-                                    elif friend_summonerName in set(map(str, friend_summonerIds)):
-                                        friend_index = friend_summonerIds.index(int(friend_summonerName))
-                                    elif friend_summonerName in friend_puuids:
-                                        friend_index = friend_puuids.index(friend_summonerName)
+                                for friend_summonerName_iter in friend_summonerName_list:
+                                    if friend_summonerName_iter in friend_summonerNames:
+                                        friend_index = friend_summonerNames.index(friend_summonerName_iter)
+                                    elif friend_summonerName_iter in friend_summonerIds:
+                                        friend_index = friend_summonerIds.index(friend_summonerName_iter)
+                                    elif friend_summonerName_iter in set(map(str, friend_summonerIds)):
+                                        friend_index = friend_summonerIds.index(int(friend_summonerName_iter))
+                                    elif friend_summonerName_iter in friend_puuids:
+                                        friend_index = friend_puuids.index(friend_summonerName_iter)
                                     else:
-                                        logPrint("%s不是一个合法的召唤师名、召唤师序号或者玩家通用唯一识别码。\n%s isn't a legal summoner name, summonerId or puuid." %(friend_summonerName, friend_summonerName))
+                                        logPrint("%s不是一个合法的召唤师名、召唤师序号或者玩家通用唯一识别码。\n%s isn't a legal summoner name, summonerId or puuid." %(friend_summonerName_iter, friend_summonerName_iter))
                                         continue
                                     if not friend_index in unfriend_indices:
                                         unfriend_indices.append(friend_index)
@@ -1991,24 +1992,22 @@ async def block_friend(connection: Connection) -> None:
                                 break
                             else:
                                 try:
-                                    block_indices = eval(block_str)
+                                    tmp = eval(block_str)
                                 except:
                                     traceback_info = traceback.format_exc()
                                     logPrint(traceback_info)
                                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                    continue
                                 else:
-                                    if isinstance(block_indices, int):
-                                        block_indices = [block_indices]
-                                    elif not isinstance(block_indices, list):
+                                    if isinstance(tmp, int) and tmp > 0 and tmp < len(friend_hovercard_df):
+                                        block_indices = [tmp]
+                                        index_got = True
+                                        break
+                                    elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x > 0 and x < len(friend_hovercard_df), tmp)) and len(tmp) == len(set(tmp)):
+                                        block_indices = list(map(lambda x: x - 1, block_indices))
+                                        index_got = True
+                                        break
+                                    else:
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                        continue
-                            if all(map(lambda x: isinstance(x, int) and x > 0 and x < len(friend_hovercard_df), block_indices)) and len(block_indices) == len(set(block_indices)):
-                                block_indices = list(map(lambda x: x - 1, block_indices))
-                                index_got = True
-                                break
-                            else:
-                                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     elif method[0] == "2":
                         logPrint('''请输入要拉黑的好友的召唤师名。每个好友的召唤师名格式为{玩家名称}#{名称编号}。输入“-1”以结束输入。\nPlease submit the names of the friends to be blocked. Each friend's name should accord to the format {gameName}#{gameTag}. Submit "-1" to end the input.\n变量提示（Variable hints）：\nfriends = await (await connection.request("GET", "/lol-chat/v1/friends")).json()\nfriend_hovercard_df = await sort_friend_hovercard_simple(connection)''')
                         block_indices = []
@@ -2023,26 +2022,26 @@ async def block_friend(connection: Connection) -> None:
                                 break
                             else:
                                 try:
-                                    friend_summonerName_list = eval(friend_summonerName)
+                                    tmp = eval(friend_summonerName)
                                 except:
-                                    friend_summonerName_list = [friend_summonerName]
+                                    friend_summonerName_list: list[Any] = [friend_summonerName]
                                 else:
-                                    if isinstance(friend_summonerName_list, list) and all(map(lambda x: isinstance(x, (str, int)), friend_summonerName_list)):
-                                        pass
+                                    if isinstance(tmp, list) and all(map(lambda x: isinstance(x, (str, int)), tmp)):
+                                        friend_summonerName_list = tmp
                                     else:    
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                         continue
-                                for friend_summonerName in friend_summonerName_list:
-                                    if friend_summonerName in friend_summonerNames:
-                                        friend_index = friend_summonerNames.index(friend_summonerName)
-                                    elif friend_summonerName in friend_summonerIds:
-                                        friend_index = friend_summonerIds.index(friend_summonerName)
-                                    elif friend_summonerName in set(map(str, friend_summonerIds)):
-                                        friend_index = friend_summonerIds.index(int(friend_summonerName))
-                                    elif friend_summonerName in friend_puuids:
-                                        friend_index = friend_puuids.index(friend_summonerName)
+                                for friend_summonerName_iter in friend_summonerName_list:
+                                    if friend_summonerName_iter in friend_summonerNames:
+                                        friend_index = friend_summonerNames.index(friend_summonerName_iter)
+                                    elif friend_summonerName_iter in friend_summonerIds:
+                                        friend_index = friend_summonerIds.index(friend_summonerName_iter)
+                                    elif friend_summonerName_iter in set(map(str, friend_summonerIds)):
+                                        friend_index = friend_summonerIds.index(int(friend_summonerName_iter))
+                                    elif friend_summonerName_iter in friend_puuids:
+                                        friend_index = friend_puuids.index(friend_summonerName_iter)
                                     else:
-                                        logPrint("%s不是一个合法的召唤师名、召唤师序号或者玩家通用唯一识别码。\n%s isn't a legal summoner name, summonerId or puuid." %(friend_summonerName, friend_summonerName))
+                                        logPrint("%s不是一个合法的召唤师名、召唤师序号或者玩家通用唯一识别码。\n%s isn't a legal summoner name, summonerId or puuid." %(friend_summonerName_iter, friend_summonerName_iter))
                                         continue
                                     if not friend_index in block_indices:
                                         block_indices.append(friend_index)
@@ -2153,8 +2152,8 @@ async def invite(connection: Connection) -> None:
                                 if invitee_info["selfInfo"]:
                                     logPrint("您已经在房间内了。\nYou're already in the lobby.")
                                 else:
-                                    invitee_obtained = True
                                     invitee_summonerIds: list[int] = [invitee_info["body"]["summonerId"]]
+                                    invitee_obtained = True
                                     logPrint(invitee_info["body"])
                                     break
                             else:
@@ -2165,8 +2164,8 @@ async def invite(connection: Connection) -> None:
                             elif not friend_index in range(len(friends)):
                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                             else:
-                                invitee_obtained = True
                                 invitee_summonerIds = [friends[friend_index]["summonerId"]]
+                                invitee_obtained = True
                                 break
             elif mode == "2":
                 invitee_summonerIds = []
@@ -2210,34 +2209,31 @@ async def invite(connection: Connection) -> None:
                                 elif invite_str[0] == "0":
                                     break
                                 elif invite_str == "all":
-                                    invitee_obtained = True
                                     invitee_summonerIds = list(map(lambda x: x["summonerId"], friends))
+                                    invitee_obtained = True
                                     break
                                 else:
                                     try:
-                                        friend_indices = eval(invite_str)
+                                        tmp = eval(invite_str)
                                     except:
                                         traceback_info = traceback.format_exc()
                                         logPrint(traceback_info)
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                        continue
                                     else:
-                                        if isinstance(friend_indices, int):
-                                            friend_indices = [friend_indices]
-                                        elif not isinstance(friend_indices, list):
+                                        if isinstance(tmp, int) and tmp > 0 and tmp < len(friend_hovercard_df):
+                                            invitee_summonerIds = friend[tmp - 1]["summonerId"]
+                                            invitee_obtained = True
+                                            break
+                                        elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x > 0 and x < len(friend_hovercard_df), tmp)) and len(tmp) == len(set(tmp)):
+                                            invitee_summonerIds = list(map(lambda x: friends[x - 1]["summonerId"], tmp))
+                                            invitee_obtained = True
+                                            break
+                                        else:
                                             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                            continue
-                                if all(map(lambda x: isinstance(x, int) and x > 0 and x < len(friend_hovercard_df), friend_indices)) and len(friend_indices) == len(set(friend_indices)):
-                                    friend_indices = list(map(lambda x: x - 1, friend_indices))
-                                    invitee_obtained = True
-                                    invitee_summonerIds = list(map(lambda x: friends[x]["summonerId"], friend_indices))
-                                    break
-                                else:
-                                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     elif method[0] == "2":
                         logPrint("您想要获取简略信息还是详细信息？（输入任意非空字符串以获取详细信息，否则获取简略信息。）\nDo you want to get brief or detailed information? (Submit any non-empty string to get detailed information, or null to get brief information.)")
                         lol_sgp_str: str = logInput()
-                        lol_sgp: bool = not bool(lol_sgp_str)
+                        lol_sgp: bool = bool(lol_sgp_str)
                         recent_player_dfs: dict[str, pandas.DataFrame] = await get_recent_players(connection, search_mode = 1, lol_sgp = lol_sgp)
                         recent_LoLPlayer_df: pandas.DataFrame = recent_player_dfs["LoL"]
                         recent_TFTPlayer_df: pandas.DataFrame = recent_player_dfs["TFT"]
@@ -2245,7 +2241,10 @@ async def invite(connection: Connection) -> None:
                         recent_TFTPlayer_df = recent_TFTPlayer_df[(recent_TFTPlayer_df["puuid"] != current_info["puuid"]) & (recent_TFTPlayer_df["puuid"] != BOT_UUID)]
                         recent_LoLPlayer_df.reset_index(drop = True, inplace = True)
                         recent_TFTPlayer_df.reset_index(drop = True, inplace = True)
-                        recent_LoLPlayer_fields_to_print: list[str] = ["gameName", "tagLine", "gameModeName", "queueId", "champion_name", "champion_alias", "K/D/A", "isAlly"]
+                        if lol_sgp:
+                            recent_LoLPlayer_fields_to_print: list[str] = ["riotIdGameName", "riotIdTagline", "gameModeName", "queueId", "champion_name", "championName", "K/D/A", "isAlly"]
+                        else:
+                            recent_LoLPlayer_fields_to_print: list[str] = ["gameName", "tagLine", "gameModeName", "queueId", "champion_name", "champion_alias", "K/D/A", "isAlly"]
                         recent_TFTPlayer_fields_to_print: list[str] = ["riotIdGameName", "riotIdTagline", "gameModeName", "queue_id", "last_round_format", "time_eliminated_norm", "placement"]
                         logPrint("是否需要对近期一起玩过的玩家取子集？（输入任意键以开始打草稿，否则直接开始输入好友索引。）\nDo you want to get a subset of the current recently played summoner data? (Submit any non-empty string to make a draft, or null to input the recently played summoner index directly.)")
                         draft_str = logInput()
@@ -2289,29 +2288,27 @@ async def invite(connection: Connection) -> None:
                                                 logPrint("请选择您要邀请的近期一起玩过的玩家类型：\nPlease select a type of players:\n0\t返回上一层（Return to the last step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）\n3\t英雄联盟和云顶之弈（LoL and TFT）")
                                             break
                                         elif invite_str == "all":
-                                            invitee_obtained = True
                                             invitee_summonerIds += list(recent_LoLPlayer_df["summonerId"][1:])
+                                            invitee_obtained = True
                                             break
                                         else:
                                             try:
-                                                player_indices: list[int] = eval(invite_str)
+                                                tmp = eval(invite_str)
                                             except:
                                                 traceback_info = traceback.format_exc()
                                                 logPrint(traceback_info)
                                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                continue
                                             else:
-                                                if isinstance(player_indices, int):
-                                                    player_indices = [player_indices]
-                                                elif not isinstance(player_indices, list):
+                                                if isinstance(tmp, int) and tmp > 0 and tmp < len(recent_LoLPlayer_df):
+                                                    invitee_summonerIds += [recent_LoLPlayer_df["summonerId"][tmp]]
+                                                    invitee_obtained = True
+                                                    break
+                                                elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x > 0 and x < len(recent_LoLPlayer_df), tmp)) and len(tmp) == len(set(tmp)):
+                                                    invitee_summonerIds += list(recent_LoLPlayer_df["summonerId"][tmp])
+                                                    invitee_obtained = True
+                                                    break
+                                                else:
                                                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                    continue
-                                        if all(map(lambda x: isinstance(x, int) and x > 0 and x < len(recent_LoLPlayer_df), player_indices)) and len(player_indices) == len(set(player_indices)):
-                                            invitee_obtained = True
-                                            invitee_summonerIds += list(recent_LoLPlayer_df["summonerId"][player_indices])
-                                            break
-                                        else:
-                                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                 if product_option[0] == "2" or product_option[0] == "3":
                                     logPrint('请输入要邀请的云顶之弈玩家的索引（见下面近期一起玩过的玩家信息表的索引列）。一些允许的输入格式：\nPlease submit the indices of recently played TFT summoners to invite (you may refer to the index column of the recently played summoner table below). Allowed input formats look like these:\n1\n[1, 2, 3]\nall\n[i + 1 for i in range(len(recent_LoLPlayer_df)) if recent_LoLPlayer_df.loc[i, "gameName"] == "WordlessMeteor"]')
                                     print(format_df(recent_TFTPlayer_df.loc[1:20, recent_TFTPlayer_fields_to_print], print_index = True, start_index = 1)[0])
@@ -2327,29 +2324,28 @@ async def invite(connection: Connection) -> None:
                                             logPrint("请选择您要邀请的近期一起玩过的玩家类型：\nPlease select a type of players:\n0\t返回上一层（Return to the last step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）\n3\t英雄联盟和云顶之弈（LoL and TFT）")
                                             break
                                         elif invite_str == "all":
-                                            invitee_obtained = True
                                             invitee_puuids += list(recent_TFTPlayer_df["puuid"][1:])
+                                            invitee_obtained = True
                                             break
                                         else:
                                             try:
-                                                player_indices = eval(invite_str)
+                                                tmp = eval(invite_str)
                                             except:
                                                 traceback_info = traceback.format_exc()
                                                 logPrint(traceback_info)
                                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                                 continue
                                             else:
-                                                if isinstance(player_indices, int):
-                                                    player_indices = [player_indices]
-                                                elif not isinstance(player_indices, list):
+                                                if isinstance(tmp, int) and tmp > 0 and tmp < len(recent_TFTPlayer_df):
+                                                    invitee_puuids += [recent_TFTPlayer_df["puuid"][tmp]]
+                                                    invitee_obtained = True
+                                                    break
+                                                elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x > 0 and x < len(recent_TFTPlayer_df), player_indices)) and len(player_indices) == len(set(player_indices)):
+                                                    invitee_puuids += list(recent_TFTPlayer_df["puuid"][tmp])
+                                                    invitee_obtained = True
+                                                    break
+                                                else:
                                                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                    continue
-                                        if all(map(lambda x: isinstance(x, int) and x > 0 and x < len(recent_TFTPlayer_df), player_indices)) and len(player_indices) == len(set(player_indices)):
-                                            invitee_obtained = True
-                                            invitee_puuids += list(recent_TFTPlayer_df["puuid"][player_indices])
-                                            break
-                                        else:
-                                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                     for invitee_puuid in invitee_puuids:
                                         invitee_info = await get_info(connection, invitee_puuid)
                                         if invitee_info["info_got"]:
@@ -2406,30 +2402,27 @@ async def invite(connection: Connection) -> None:
                                 elif invite_str[0] == "0":
                                     break
                                 elif invite_str == "all":
-                                    invitee_obtained = True
                                     invitee_puuids = list(map(lambda x: x["puuid"], friend_requests)) #好友请求中的召唤师序号都是0（All summonerIds in the friend request list are 0s）
+                                    invitee_obtained = True
                                     break
                                 else:
                                     try:
-                                        player_indices = eval(invite_str)
+                                        tmp = eval(invite_str)
                                     except:
                                         traceback_info = traceback.format_exc()
                                         logPrint(traceback_info)
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                        continue
                                     else:
-                                        if isinstance(player_indices, int):
-                                            player_indices = [player_indices]
-                                        elif not isinstance(player_indices, list):
+                                        if isinstance(tmp, int) and tmp > 0 and tmp < len(friend_request_df):
+                                            invitee_puuids = [friend_requests[tmp - 1]["summonerId"]]
+                                            invitee_obtained = True
+                                            break
+                                        elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x > 0 and x < len(friend_request_df), tmp)) and len(tmp) == len(set(tmp)):
+                                            invitee_puuids = list(map(lambda x: friend_requests[x - 1]["summonerId"], tmp))
+                                            invitee_obtained = True
+                                            break
+                                        else:
                                             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                            continue
-                                if all(map(lambda x: isinstance(x, int) and x > 0 and x < len(friend_request_df), player_indices)) and len(player_indices) == len(set(player_indices)):
-                                    player_indices = list(map(lambda x: x - 1, player_indices))
-                                    invitee_obtained = True
-                                    invitee_puuids = list(map(lambda x: friend_requests[x]["summonerId"], player_indices))
-                                    break
-                                else:
-                                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                             if invitee_obtained:
                                 invitee_summonerIds = []
                                 for invitee_puuid in invitee_puuids:
@@ -2452,12 +2445,12 @@ async def invite(connection: Connection) -> None:
                                 break
                             else:
                                 try:
-                                    invitee_summonerName_list: list[str] = eval(invitee_summonerName)
+                                    tmp: list[str] = eval(invitee_summonerName)
                                 except:
-                                    invitee_summonerName_list = [invitee_summonerName]
+                                    invitee_summonerName_list: list[Any] = [invitee_summonerName]
                                 else:
-                                    if isinstance(invitee_summonerName_list, list) and all(map(lambda x: isinstance(x, (int, str)), invitee_summonerName_list)):
-                                        pass
+                                    if isinstance(tmp, list) and all(map(lambda x: isinstance(x, (int, str)), tmp)):
+                                        invitee_summonerName_list = tmp
                                     else:
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                         continue
@@ -2470,8 +2463,8 @@ async def invite(connection: Connection) -> None:
                                             if invitee_info["body"]["summonerId"] in invitee_summonerIds: #如果已经邀请过该玩家且该玩家拒绝邀请，或同意后退出房间，那么用户需要先返回上一层，再进入才能再次邀请该玩家（If the user has invited a summoner but he/she rejects it, or he/she accepts it but exit the lobby afterwards, then the user need to first return to the last step and then select this method to invite this summoner again）
                                                 logPrint("您已经邀请过该玩家了。\nYou've already invited this player.")
                                             else:
-                                                invitee_obtained = True
                                                 invitee_summonerIds.append(invitee_info["body"]["summonerId"])
+                                                invitee_obtained = True
                                                 logPrint(invitee_info["body"])
                                     else:
                                         logPrint("[%s]" %(invitee_summonerName), invitee_info["message"])
@@ -2484,8 +2477,8 @@ async def invite(connection: Connection) -> None:
                 if len(friends) == 0:
                     logPrint("看起来你现在还没有添加任何好友。邀请好友来聊天并一起玩游戏。\nLooks like you haven't added any friends yet. Invite friends to chat and play together.")
                 else:
-                    invitee_obtained = True
                     invitee_summonerIds = [friend["summonerId"] for friend in friends if not friend["availability"] in {"offline", "mobile", "dnd"}]
+                    invitee_obtained = True
             elif mode == "4":
                 if len(friends) == 0:
                     logPrint("看起来你现在还没有添加任何好友。邀请好友来聊天并一起玩游戏。\nLooks like you haven't added any friends yet. Invite friends to chat and play together.")
@@ -2504,29 +2497,27 @@ async def invite(connection: Connection) -> None:
                         elif invite_str[0] == "0":
                             break
                         elif invite_str == "all":
-                            invitee_obtained = True
                             invitee_summonerIds = list(map(lambda x: x["summonerId"], friends))
+                            invitee_obtained = True
                             break
                         else:
                             try:
-                                group_indices = eval(invite_str)
+                                tmp = eval(invite_str)
                             except:
                                 traceback_info = traceback.format_exc()
                                 logPrint(traceback_info)
                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                continue
                             else:
-                                if isinstance(group_indices, int):
-                                    group_indices = [group_indices]
-                                elif not isinstance(group_indices, list):
+                                if isinstance(tmp, int) and tmp > 0 and tmp < len(friend_group_df):
+                                    invitee_summonerIds = [friend["summonerId"] for friend in friends if friend["groupId"] == friend_group_df["id"][tmp] and not friend["availability"] in {"offline", "mobile", "dnd"}]
+                                    invitee_obtained = True
+                                    break
+                                elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x > 0 and x < len(friend_group_df), tmp)) and len(tmp) == len(set(tmp)):
+                                    invitee_summonerIds = [friend["summonerId"] for friend in friends if friend["groupId"] in set(friend_group_df["id"][tmp]) and not friend["availability"] in {"offline", "mobile", "dnd"}]
+                                    invitee_obtained = True
+                                    break
+                                else:
                                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                    continue
-                        if all(map(lambda x: isinstance(x, int) and x > 0 and x < len(friend_group_df), group_indices)) and len(group_indices) == len(set(group_indices)):
-                            invitee_obtained = True
-                            invitee_summonerIds = [friend["summonerId"] for friend in friends if friend["groupId"] in set(friend_group_df["id"][group_indices]) and not friend["availability"] in {"offline", "mobile", "dnd"}]
-                            break
-                        else:
-                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
             else:
                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                 continue
@@ -2806,23 +2797,22 @@ async def join_game(connection: Connection) -> None:
                                         break
                                     else:
                                         try:
-                                            decline_indices = eval(decline_str)
+                                            tmp = eval(decline_str)
                                         except:
                                             traceback_info = traceback.format_exc()
                                             logPrint(traceback_info)
                                             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                            continue
                                         else:
-                                            if isinstance(decline_indices, int):
-                                                decline_indices = [decline_indices]
-                                            elif not isinstance(decline_indices, list):
+                                            if isinstance(tmp, int) and tmp > 0 and tmp < len(invid_df):
+                                                decline_indices = [tmp]
+                                                index_got = True
+                                                break
+                                            elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x > 0 and x < len(invid_df), tmp)) and len(tmp) == len(set(tmp)):
+                                                decline_indices = tmp
+                                                index_got = True
+                                                break
+                                            else:
                                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                continue
-                                    if all(map(lambda x: isinstance(x, int) and x > 0 and x < len(invid_df), decline_indices)) and len(decline_indices) == len(set(decline_indices)):
-                                        index_got = True
-                                        break
-                                    else:
-                                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                             elif mode == "3":
                                 decline_indices = list(range(1, len(invid_df)))
                                 index_got = True
@@ -2982,14 +2972,15 @@ async def spectate_compat(connection: Connection) -> None: #带有旧接口兼�
                                     break
                                 else:
                                     try:
-                                        player_index: int = eval(spectate_str)
+                                        tmp: int = eval(spectate_str)
                                     except:
                                         traceback_info = traceback.format_exc()
                                         logPrint(traceback_info)
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                         continue
                                     else:
-                                        if isinstance(player_index, int) and player_index > 0 and player_index < len(spectate_nonfriend_df):
+                                        if isinstance(tmp, int) and tmp > 0 and tmp < len(spectate_nonfriend_df):
+                                            player_index: int = tmp
                                             index_got = True
                                             break
                                         else:
@@ -3038,12 +3029,13 @@ async def spectate_compat(connection: Connection) -> None: #带有旧接口兼�
                                 break
                             else:
                                 try:
-                                    friend_index = eval(spectate_str)
+                                    tmp = eval(spectate_str)
                                 except:
                                     use_pluginNA = True
                                     break
                                 else:
-                                    if isinstance(friend_index, int) and friend_index > 0 and friend_index < len(friend_hovercard_df_to_print):
+                                    if isinstance(tmp, int) and tmp > 0 and tmp < len(friend_hovercard_df_to_print):
+                                        friend_index: int = tmp
                                         index_got = True
                                         break
                                     else:
@@ -3193,13 +3185,14 @@ async def switch_capture_device(connection: Connection) -> None:
                 break
             else:
                 try:
-                    deviceIndex: int = eval(deviceIndex_str)
+                    tmp: int = eval(deviceIndex_str)
                 except ValueError:
                     traceback_info = traceback.format_exc()
                     logPrint(traceback_info)
                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                 else:
-                    if isinstance(deviceIndex, int):
+                    if isinstance(tmp, int):
+                        deviceIndex: int = tmp
                         if deviceIndex in range(1, len(captureDevice_df)):
                             if True or captureDevice_df["usable"][deviceIndex]: #有时用户的确有切换到不可用输入设备的需要（Sometimes the user does get the demand of switching to a capture device that isn't usable）
                                 deviceName: str = captureDevice_df["name"][deviceIndex]
@@ -3455,8 +3448,8 @@ async def manage_voice_outputSettings(connection: Connection) -> None:
                                     if player_index == selfIndex:
                                         logPrint("你不能静音你自己。\nYou can't mute yourself.")
                                     if player_index in range(1, len(participant_record_df)):
+                                        mute_indices: list[int] = [player_index]
                                         index_got = True
-                                        mute_indices = [player_index]
                                         break
                     elif mode[0] == "2":
                         logPrint("是否需要对小队玩家取子集？（输入任意键以开始打草稿，否则直接开始输入小队玩家索引。）\nDo you want to get a subset of the current participant data? (Submit any non-empty string to make a draft, or null to input the participant index directly.)")
@@ -3489,32 +3482,33 @@ async def manage_voice_outputSettings(connection: Connection) -> None:
                                 break
                             elif mute_str == "all":
                                 mute_indices = list(range(1, len(participant_record_df)))
-                                mute_indices.remove(selfIndex)
+                                if selfIndex != -1:
+                                    mute_indices.remove(selfIndex)
                                 index_got = True
                                 break
                             else:
                                 try:
-                                    mute_indices: list[int] = eval(mute_str)
+                                    tmp = eval(mute_str)
                                 except:
                                     traceback_info = traceback.format_exc()
                                     logPrint(traceback_info)
                                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                    continue
                                 else:
-                                    if isinstance(mute_indices, int):
-                                        mute_indices = [mute_indices]
-                                    elif not isinstance(mute_indices, list):
+                                    if isinstance(tmp, int) and tmp > 0 and tmp < len(participant_record_df) and tmp != selfIndex:
+                                        mute_indices = [tmp]
+                                        index_got = True
+                                        break
+                                    elif isinstance(mute_indices, list) and all(map(lambda x: isinstance(x, int) and x > 0 and x < len(participant_record_df) and x != selfIndex, mute_indices)) and len(mute_indices) == len(set(mute_indices)):
+                                        mute_indices = tmp
+                                        index_got = True
+                                        break
+                                    else:
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                        continue
-                            if all(map(lambda x: isinstance(x, int) and x > 0 and x < len(participant_record_df) and x != selfIndex, mute_indices)) and len(mute_indices) == len(set(mute_indices)):
-                                index_got = True
-                                break
-                            else:
-                                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     elif mode[0] == "3":
-                        index_got = True
                         mute_indices = list(range(1, len(participant_record_df)))
-                        mute_indices.remove(selfIndex)
+                        if selfIndex != -1:
+                            mute_indices.remove(selfIndex)
+                        index_got = True
                     else:
                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     if index_got:
@@ -3574,8 +3568,8 @@ async def manage_voice_outputSettings(connection: Connection) -> None:
                                     if player_index == selfIndex: #自己看自己的音量始终是50（When the user looks at his/her own volume, it's always 50）
                                         logPrint("你无法修改自己的音量。\nYou can't change the volume of yourself.")
                                     if player_index in range(1, len(participant_record_df)):
-                                        index_got = True
                                         volumeChange_indices = [player_index]
+                                        index_got = True
                                         break
                     elif mode[0] == "2":
                         logPrint("是否需要对小队玩家取子集？（输入任意键以开始打草稿，否则直接开始输入小队玩家索引。）\nDo you want to get a subset of the current participant data? (Submit any non-empty string to make a draft, or null to input the participant index directly.)")
@@ -3608,32 +3602,33 @@ async def manage_voice_outputSettings(connection: Connection) -> None:
                                 break
                             elif volumeChange_str == "all":
                                 volumeChange_indices = list(range(1, len(participant_record_df)))
-                                volumeChange_indices.remove(selfIndex)
+                                if selfIndex != -1:
+                                    volumeChange_indices.remove(selfIndex)
                                 index_got = True
                                 break
                             else:
                                 try:
-                                    volumeChange_indices = eval(volumeChange_str)
+                                    tmp = eval(volumeChange_str)
                                 except:
                                     traceback_info = traceback.format_exc()
                                     logPrint(traceback_info)
                                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                    continue
                                 else:
-                                    if isinstance(volumeChange_indices, int):
-                                        volumeChange_indices = [volumeChange_indices]
-                                    elif not isinstance(volumeChange_indices, list):
+                                    if isinstance(tmp, int) and tmp > 0 and tmp < len(participant_record_df) and tmp != selfIndex:
+                                        volumeChange_indices = [tmp]
+                                        index_got = True
+                                        break
+                                    elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x > 0 and x < len(participant_record_df) and x != selfIndex, tmp)) and len(tmp) == len(set(tmp)):
+                                        volumeChange_indices = tmp
+                                        index_got = True
+                                        break
+                                    else:
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                        continue
-                            if all(map(lambda x: isinstance(x, int) and x > 0 and x < len(participant_record_df) and x != selfIndex, volumeChange_indices)) and len(volumeChange_indices) == len(set(volumeChange_indices)):
-                                index_got = True
-                                break
-                            else:
-                                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     elif mode[0] == "3":
-                        index_got = True
                         volumeChange_indices = list(range(1, len(participant_record_df)))
-                        volumeChange_indices.remove(selfIndex)
+                        if selfIndex != -1:
+                            volumeChange_indices.remove(selfIndex)
+                        index_got = True
                     elif mode[0] == "4":
                         playerVolumes: dict[int, float] = {}
                         logPrint('请依次输入小队玩家的索引和要设置的音量值，以空格为分隔符。输入“-1”以结束输入。\nPlease input the index of the participant and the volume value to set one by one, split by space. Submit "-1" to end the input.')
@@ -3655,8 +3650,8 @@ async def manage_voice_outputSettings(connection: Connection) -> None:
                                     if player_index == selfIndex:
                                         logPrint("你无法修改自己的音量。\nYou can't change the volume of yourself.")
                                     if player_index in range(1, len(participant_record_df)):
-                                        index_got = True
                                         playerVolumes[player_index] = volume
+                                        index_got = True
                                         print(format_df(pandas.concat([participant_record_df.loc[playerVolumes.keys(), participant_record_fields_to_print], pandas.DataFrame(data = {"energy_to_change": playerVolumes.values()}, index = playerVolumes.keys())], axis = 1), print_index = True, reserve_index = True)[0])
                                         log.write(format_df(pandas.concat([participant_record_df.loc[playerVolumes.keys(), participant_record_fields_to_print], pandas.DataFrame(data = {"energy_to_change": playerVolumes.values()}, index = playerVolumes.keys())], axis = 1), width_exceed_ask = False, direct_print = False, print_index = True, reserve_index = True)[0] + "\n")
                                     else:
@@ -3813,8 +3808,8 @@ async def mute_champSelect_player(connection: Connection) -> None:
                                     if ally_index == myIndex:
                                         logPrint("你不能静音你自己。\nYou can't mute yourself.")
                                     if ally_index in range(1, len(champSelect_myTeam_df)):
-                                        index_got = True
                                         mute_indices: list[str] = [ally_index]
+                                        index_got = True
                                         break
                     elif action[0] == "2":
                         logPrint("是否需要对队友取子集？（输入任意键以开始打草稿，否则直接开始输入队友索引。）\nDo you want to get a subset of the current ally data? (Submit any non-empty string to make a draft, or null to input the ally index directly.)")
@@ -3852,26 +3847,25 @@ async def mute_champSelect_player(connection: Connection) -> None:
                                 break
                             else:
                                 try:
-                                    mute_indices = eval(mute_str)
+                                    tmp = eval(mute_str)
                                 except:
                                     traceback_info = traceback.format_exc()
                                     logPrint(traceback_info)
                                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                    continue
                                 else:
-                                    if isinstance(mute_indices, int):
-                                        mute_indices = [mute_indices]
-                                    elif not isinstance(mute_indices, list):
+                                    if isinstance(tmp, int) and tmp > 0 and tmp < len(champSelect_myTeam_df) and tmp != selfIndex:
+                                        mute_indices = [tmp]
+                                        index_got = True
+                                        break
+                                    elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x > 0 and x < len(champSelect_myTeam_df) and x != myIndex, mute_indices)) and len(mute_indices) == len(set(mute_indices)):
+                                        mute_indices = tmp
+                                        index_got = True
+                                        break
+                                    else:
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                        continue
-                            if all(map(lambda x: isinstance(x, int) and x > 0 and x < len(champSelect_myTeam_df) and x != myIndex, mute_indices)) and len(mute_indices) == len(set(mute_indices)):
-                                index_got = True
-                                break
-                            else:
-                                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     elif action[0] == "3":
-                        index_got = True
                         mute_indices = list(range(1, len(champSelect_myTeam_df)))
+                        index_got = True
                         mute_indices.remove(myIndex)
                     elif action[0] == "4":
                         index_got = False
@@ -4111,12 +4105,12 @@ async def block(connection: Connection) -> None:
                         break
                     else:
                         try:
-                            blockName_list: list[str] = eval(blockName)
+                            tmp = eval(blockName)
                         except:
-                            blockName_list = [blockName]
+                            blockName_list: list[Any] = [blockName]
                         else:
-                            if isinstance(blockName_list, list) and all(map(lambda x: isinstance(x, (str, int)), blockName_list)):
-                                pass
+                            if isinstance(tmp, list) and all(map(lambda x: isinstance(x, (str, int)), tmp)):
+                                blockName_list = tmp
                             else:    
                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                 continue
@@ -4166,13 +4160,14 @@ async def block(connection: Connection) -> None:
                         break
                     else:
                         try:
-                            blockNames = eval(block_str)
+                            tmp = eval(block_str)
                         except:
                             traceback_info = traceback.format_exc()
                             logPrint(traceback_info)
                             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                         else:
-                            if isinstance(blockNames, list) and all(map(lambda x: isinstance(x, (int, str)), blockNames)):
+                            if isinstance(tmp, list) and all(map(lambda x: isinstance(x, (int, str)), tmp)):
+                                blockNames = tmp
                                 for blockName in blockNames:
                                     block_info = await get_info(connection, blockName)
                                     if block_info["info_got"]:
@@ -4333,26 +4328,25 @@ async def detect_blockedPlayer_state(connection: Connection, blockList: list[dic
                                     break
                                 else:
                                     try:
-                                        kick_indices = eval(kick_str)
+                                        tmp = eval(kick_str)
                                     except:
                                         traceback_info = traceback.format_exc()
                                         logPrint(traceback_info)
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                        continue
                                     else:
-                                        if isinstance(kick_indices, int):
-                                            kick_indices = [kick_indices]
-                                        elif not isinstance(kick_indices, list):
+                                        if isinstance(tmp, int) and tmp > 0 and tmp < len(blockList_df_filtered_lobby):
+                                            kick_indices = [tmp]
+                                            index_got = True
+                                            break
+                                        elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x > 0 and x < len(blockList_df_filtered_lobby), tmp)) and len(tmp) == len(set(tmp)):
+                                            kick_indices = tmp
+                                            index_got = True
+                                            break
+                                        else:
                                             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                            continue
-                                if all(map(lambda x: isinstance(x, int) and x > 0 and x < len(blockList_df_filtered_lobby), kick_indices)) and len(kick_indices) == len(set(kick_indices)):
-                                    index_got = True
-                                    break
-                                else:
-                                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                         elif mode[0] == "3":
-                            index_got = True
                             kick_indices = list(range(1, len(blockList_df_filtered_lobby)))
+                            index_got = True
                         else:
                             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                         if index_got:
@@ -4528,24 +4522,22 @@ async def unblock(connection: Connection) -> None:
                                 break
                             else:
                                 try:
-                                    unblock_indices = eval(unblock_str)
+                                    tmp = eval(unblock_str)
                                 except:
                                     traceback_info = traceback.format_exc()
                                     logPrint(traceback_info)
                                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                    continue
                                 else:
-                                    if isinstance(unblock_indices, int):
-                                        unblock_indices = [unblock_indices]
-                                    elif not isinstance(unblock_indices, list):
+                                    if isinstance(tmp, int) and tmp > 0 and tmp < len(blockList_df):
+                                        unblock_indices = [tmp - 1]
+                                        index_got = True
+                                        break
+                                    elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x > 0 and x < len(blockList_df), tmp)) and len(tmp) == len(set(tmp)):
+                                        unblock_indices = list(map(lambda x: x - 1, unblock_indices))
+                                        index_got = True
+                                        break
+                                    else:
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                        continue
-                            if all(map(lambda x: isinstance(x, int) and x > 0 and x < len(blockList_df), unblock_indices)) and len(unblock_indices) == len(set(unblock_indices)):
-                                unblock_indices = list(map(lambda x: x - 1, unblock_indices))
-                                index_got = True
-                                break
-                            else:
-                                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     elif method[0] == "2":
                         logPrint('''请输入要移出聊天黑名单的玩家的召唤师名。每个玩家的召唤师名格式为{玩家名称}#{名称编号}。输入“-1”以结束输入。\nPlease submit the names of the blocked players to be unblocked. Each player's name should accord to the format {gameName}#{gameTag}. Submit "-1" to end the input.\n变量提示（Variable hints）：\nblockList = await (await connection.request("GET", "/lol-chat/v1/blocked-players")).json()\nblockList_df = await sort_blockList_data(connection)''')
                         unblock_indices = []
@@ -4560,22 +4552,22 @@ async def unblock(connection: Connection) -> None:
                                 break
                             else:
                                 try:
-                                    player_summonerName_list: list[str] = eval(player_summonerName)
+                                    tmp = eval(player_summonerName)
                                 except:
-                                    player_summonerName_list = [player_summonerName]
+                                    player_summonerName_list: list[Any] = [player_summonerName]
                                 else:
-                                    if isinstance(player_summonerName_list, list) and all(map(lambda x: isinstance(x, (str, int)), player_summonerName_list)):
-                                        pass
+                                    if isinstance(tmp, list) and all(map(lambda x: isinstance(x, (str, int)), tmp)):
+                                        player_summonerName_list = tmp
                                     else:
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                         continue
-                                for player_summonerName in player_summonerName_list:
-                                    if player_summonerName in player_summonerNames:
-                                        player_index = player_summonerNames.index(player_summonerName)
-                                    elif player_summonerName in set(map(str, player_summonerIds)):
-                                        player_index = player_summonerIds.index(int(player_summonerName))
-                                    elif player_summonerName in player_puuids:
-                                        player_index = player_puuids.index(player_summonerName)
+                                for player_summonerName_iter in player_summonerName_list:
+                                    if player_summonerName_iter in player_summonerNames:
+                                        player_index = player_summonerNames.index(player_summonerName_iter)
+                                    elif player_summonerName_iter in set(map(str, player_summonerIds)):
+                                        player_index = player_summonerIds.index(int(player_summonerName_iter))
+                                    elif player_summonerName_iter in player_puuids:
+                                        player_index = player_puuids.index(player_summonerName_iter)
                                     else:
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                         continue
@@ -4623,13 +4615,14 @@ async def unblock(connection: Connection) -> None:
                         break
                     else:
                         try:
-                            unblockNames = eval(unblock_str)
+                            tmp = eval(unblock_str)
                         except:
                             traceback_info = traceback.format_exc()
                             logPrint(traceback_info)
                             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                         else:
-                            if isinstance(unblockNames, list) and all(map(lambda x: isinstance(x, (int, str)), unblockNames)):
+                            if isinstance(tmp, list) and all(map(lambda x: isinstance(x, (int, str)), tmp)):
+                                unblockNames: list[Any] = tmp
                                 for unblockName in unblockNames:
                                     unblock_info = await get_info(connection, unblockName)
                                     if unblock_info["info_got"]:

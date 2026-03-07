@@ -16,7 +16,7 @@ from src.core.config.conditional_formatting import addFormat_inGame_allPlayer_wb
 from src.core.dataframes.gameflow import get_gameflow_phase, get_champ_select_session, get_champSelect_player, sort_ChampSelect_players, sort_inGame_players, sort_eog_playerstat_lol_data, sort_eog_stat_tft_data
 from src.core.dataframes.champions import test_bot, sort_inventory_champions
 from src.core.dataframes.gameMode import check_available_queue
-from src.core.dataframes.matchHistory import get_game_info_sgp, sort_LoLGame_info, sort_LoLGame_info_sgp, sort_TFTGame_info
+from src.core.dataframes.matchHistory import get_game_info_sgp, sort_LoLGame_info_sgp, sort_TFTGame_info
 
 urllib3.disable_warnings() #忽略访问游戏数据时产生的警告（Neglect warnings produced when the program is accessing the in-game data）
 parser = argparse.ArgumentParser()
@@ -29,7 +29,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/04
+# 更新（Last update）：     2026/03/06
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -677,8 +677,9 @@ async def manage_ux(connection: Connection) -> None:
                         response: Optional[dict[str, Any]] = await (await connection.request("GET", "/process-control/v1/process")).json()
                     logPrint(response)
                 elif suboption == "40":
-                    quit_str = logPrint(QUIT_UX_WARNING)
-                    quit = quit_str == "quit"
+                    logPrint(QUIT_UX_WARNING)
+                    quit_str: str = logInput()
+                    quit: bool = quit_str == "quit"
                     if quit:
                         response: Optional[dict[str, Any]] = await (await connection.request("POST", "/process-control/v1/process/quit")).json()
                         logPrint(response)
@@ -733,14 +734,18 @@ async def manage_ux(connection: Connection) -> None:
                                     break
                                 else:
                                     try:
-                                        update_zoomScale = eval(update_zoomScale_str)
+                                        tmp = eval(update_zoomScale_str)
                                     except:
                                         traceback_info = traceback.format_exc()
                                         logPrint(traceback_info)
                                         logPrint("您的输入格式有误！请重新输入。\nERROR format! Please try again.")
                                     else:
-                                        zoomScale_got = True
-                                        break
+                                        if isinstance(tmp, (int, float)):
+                                            update_zoomScale = tmp
+                                            zoomScale_got = True
+                                            break
+                                        else:
+                                            logPrint("请输入一个小数。\nPlease input a float.")
                             if zoomScale_got:
                                 break
                         else:
@@ -1453,7 +1458,7 @@ async def report_player_matchHistory(connection: Connection) -> None:
                 else:
                     logPrint("请输入一个正整数！\nPlease enter a positive integer.")
         if fetched_info:
-            if isTFT and bool(game_info["json"]):
+            if isTFT and game_info.get("json"):
                 TFTGame_info = game_info
                 humanPlayers: list[dict[str, Any]] = TFTGame_info["json"]["participants"] #同上，云顶之弈中无法判断一名玩家是否电脑玩家（Same as above, we can't tell whether a player is a bot here）
                 player_df: pandas.DataFrame = (await sort_TFTGame_info(connection, TFTGame_info, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = 1, current_puuid = current_info["puuid"], useAllVersions = False, sortStats = False, log = log))[0]
@@ -5780,7 +5785,7 @@ async def champ_select_simulation(connection: Connection) -> str:
                                             if response["message"] == "Unable to process action change: Received status Error: CHAMPION_ALREADY_BANNED instead of expected status of OK from request to teambuilder-draft:updateActionV1":
                                                 logPrint("该英雄已被禁用。请切换一个英雄后重试。\nThis champion is already banned. Please switch to another champion and try again.")
                                             elif response["message"] == "Unable to process action change: Received status Error: INVALID_CHAMP_SELECTION instead of expected status of OK from request to teambuilder-draft:updateActionV1":
-                                                logPrint("选用方式不合法。\nIllegal pick method.")
+                                                logPrint("选用方式不合法。请检查该英雄是否被平台禁用。\nIllegal pick method. Please check whether this champion is disabled by platform.")
                                             elif response["message"] == "Unable to process action change: Received status Error: INVALID_STATE instead of expected status of OK from request to teambuilder-draft:updateActionV1":
                                                 logPrint("选用状态不匹配。请核对当前阶段。\nInvalid champ select state. Please check the current stage.")
                                             elif response["message"] == "Error response for PATCH /lol-lobby-team-builder/champ-select/v1/session/actions/0: Unable to process action change: Received status Error: CHAMPION_ALREADY_PICKED instead of expected status of OK from request to teambuilder-draft:updateActionV1":
@@ -6361,21 +6366,20 @@ async def champ_select_simulation(connection: Connection) -> str:
                                     break
                                 else:
                                     try:
-                                        champion_indices = eval(champion_index_str)
+                                        tmp = eval(champion_index_str)
                                     except:
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                        continue
                                     else:
-                                        if isinstance(champion_indices, int):
-                                            champion_indices = [champion_indices]
-                                        elif not isinstance(champion_indices, list):
+                                        if isinstance(tmp, int) and tmp in grid_champion_df["id"][1:]:
+                                            champion_indices = [tmp]
+                                            index_got = True
+                                            break
+                                        elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x in grid_champion_df["id"][1:], tmp)) and len(tmp) == len(set(tmp)):
+                                            champion_indices = tmp
+                                            index_got = True
+                                            break
+                                        else:
                                             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                            continue
-                                    if all(map(lambda x: isinstance(x, int) and x in grid_champion_df["id"][1:], champion_indices)) and len(champion_indices) == len(set(champion_indices)):
-                                        index_got = True
-                                        break
-                                    else:
-                                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                             if index_got:
                                 logPrint("您选择了以下英雄：\nYou selected the following champions:")
                                 grid_champion_df_selected: pandas.DataFrame = pandas.concat([grid_champion_df.iloc[:1, :], grid_champion_df[grid_champion_df["id"].isin(champion_indices)]])

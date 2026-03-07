@@ -10,8 +10,8 @@ from src.utils.runtimeDebug import subscope
 from src.core.config.const import BOT_UUID
 from src.core.config.conditional_formatting import addFormat_LoLPlayer_summary_wb, addFormat_LoLGame_info_wb, addFormat_LoLGame_info_wb_transpose
 from src.core.config.headers import TFTGame_info_header as TFTGame_stat_header
-from src.core.dataframes.matchHistory import get_LoLHistory, get_LoLGame_info, get_game_info_sgp, sort_LoLGame_info, sort_LoLGame_info_sgp, get_TFTHistory, sort_TFTGame_info
-from src.core.dataframes.gameflow import sort_ChampSelect_players, sort_inGame_players, sort_postgame_players_lol, sort_eog_playerstat_lol_data, sort_eog_stat_tft_data
+from src.core.dataframes.matchHistory import get_LoLHistory, get_matchSummary_sgp, get_LoLGame_info, get_game_info_sgp, sort_LoLGame_info, sort_LoLGame_info_sgp, sort_TFTGame_info
+from src.core.dataframes.gameflow import sort_ChampSelect_players, sort_inGame_players, sort_eog_playerstat_lol_data, sort_eog_stat_tft_data
 from src.core.dataframes.gameMode import sort_queue_data
 from src.core.dataframes.ranked import sort_game_leaderboard
 
@@ -48,7 +48,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/02
+# 更新（Last update）：     2026/03/06
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -237,25 +237,39 @@ async def search_player_match_stats_lol(connection: Connection, puuid: str, begI
     LoLGame_stat_data: dict[str, list[Any]] = {key: [] for key in LoLGame_stat_header_keys}
     info: dict[str, Any] = await get_info(connection, puuid)
     if info["info_got"]:
-        LoLHistory_get, LoLHistory = await get_LoLHistory(connection, puuid, begIndex = begIndex, endIndex = endIndex, log = log)
+        LoLGame_info_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
+        if lol_sgp:
+            LoLHistory_get, LoLHistory = await get_matchSummary_sgp(connection, sgpSession, puuid, "LoL", begin = 0, count = 1000, log = log, verbose = verbose)
+            for game in LoLHistory["games"]:
+                matchId: int = int(game["metadata"]["match_id"].split("_")[1])
+                if not matchId in LoLGame_info_cache_fromSummary_sgp:
+                    LoLGame_info_cache_fromSummary_sgp[matchId] = game
+            games: list[dict[str, Any]] = LoLHistory["games"]
+        else:
+            LoLHistory_get, LoLHistory = await get_LoLHistory(connection, puuid, begIndex = begIndex, endIndex = endIndex, log = log, verbose = verbose)
+            games = LoLHistory["games"]["games"]
         if LoLHistory_get:
             unmapped_keys: dict[str, set[int]] = {"queue": set(), "summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "CherryAugment": set()}
-            for i in range(len(LoLHistory["games"]["games"])):
-                matchId: int = LoLHistory["games"]["games"][i]["gameId"]
+            for i in range(len(games)):
+                matchId: int = int(games[i]["metadata"]["match_id"].split("_")[1]) if lol_sgp else games[i]["gameId"]
                 match_id: str = f"{platformId}_{matchId}"
                 if lol_sgp:
-                    status, LoLGame_info = await get_game_info_sgp(connection, sgpSession, match_id, skipTFT = True, log = log)
+                    if matchId in LoLGame_info_cache_fromSummary_sgp:
+                        LoLGame_info: dict[str, Any] = LoLGame_info_cache_fromSummary_sgp[matchId]
+                        status: int = 200
+                    else:
+                        status, LoLGame_info = await get_game_info_sgp(connection, sgpSession, match_id, skipTFT = True, log = log, verbose = verbose)
                 else:
-                    status, LoLGame_info = await get_LoLGame_info(connection, matchId, log = log)
+                    status, LoLGame_info = await get_LoLGame_info(connection, matchId, log = log, verbose = verbose)
                 if status == 200:
                     #下一行语句的关键是sortStats和LoLGame_stats_data参数（The key point of the following statement is `sortStats` and `LoLGame_stats_data` parameters）
                     if lol_sgp:
                         LoLGame_info_df: pandas.DataFrame = sort_LoLGame_info_sgp(LoLGame_info, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = i + 1, current_puuid = puuid, useAllVersions = False, unmapped_keys = unmapped_keys, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, log = log, verbose = verbose)[0]
                     else:
                         LoLGame_info_df = sort_LoLGame_info(LoLGame_info, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = i + 1, current_puuid = puuid, useAllVersions = False, unmapped_keys = unmapped_keys, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, log = log, verbose = verbose)[0]
-                    logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d" %(i + 1, len(LoLHistory["games"]["games"]), matchId), verbose = verbose)
+                    logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d" %(i + 1, len(games), matchId), verbose = verbose)
                 else:
-                    logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d (Match not found)" %(i + 1, len(LoLHistory["games"]["games"]), matchId), verbose = verbose)
+                    logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d (Match not found)" %(i + 1, len(games), matchId), verbose = verbose)
     if lol_sgp:
         LoLGame_stat_statistics_output_order: list[int] = [0, 13, 25, 11, 26, 22, 14, 29, 20, 30, 19, 219, 210, 176, 53, 580, 581, 94, 130, 80, 147, 51, 50, 54, 215, 216, 178, 179, 180, 181, 182, 183, 184, 213, 192, 204, 193, 205, 194, 206, 195, 207, 196, 208, 197, 209, 93, 63, 45, 221, 222, 223, 226, 227, 96, 92, 97, 49, 71, 70, 73, 72, 65, 162, 126, 111, 169, 148, 159, 152, 113, 100, 164, 151, 112, 99, 163, 95, 60, 59, 57, 58, 156, 157, 161, 153, 154, 114, 101, 165, 61, 171, 174, 173, 132, 172, 64, 77, 224, 78, 225, 91, 56, 158, 103, 150, 155, 166, 167, 81, 82, 104, 106, 168, 83, 105, 66, 47, 107, 108, 98, 48, 55, 76, 127, 124, 109, 43, 44, 102, 68, 69, 170, 62, 46, 79, 149, 160, 133, 135, 137, 138, 220, 140, 141, 557, 571, 563, 559, 564, 560, 565, 561, 566, 562, 575, 573, 576, 574, 553, 551, 552, 145, 74, 75, 228, 115, 139, 627, 613, 598, 683, 629, 626, 630, 602, 615, 670, 647, 642, 676, 656, 667, 660, 644, 633, 672, 659, 643, 632, 671, 628, 610, 609, 607, 608, 664, 665, 669, 661, 662, 645, 634, 673, 611, 678, 681, 680, 649, 679, 614, 620, 621, 625, 606, 666, 636, 658, 663, 684, 674, 675, 623, 624, 637, 638, 616, 600, 639, 640, 631, 601, 605, 619, 648, 646, 641, 596, 597, 635, 617, 618, 677, 612, 599, 622, 657, 668, 650, 651, 652, 653, 682, 654, 655, 757, 705, 704, 728, 714, 699, 785, 786, 788, 730, 727, 731, 703, 716, 772, 748, 743, 778, 758, 769, 762, 745, 734, 774, 761, 744, 733, 773, 729, 711, 710, 708, 709, 766, 767, 771, 763, 764, 746, 735, 775, 712, 780, 783, 782, 750, 781, 715, 721, 722, 789, 726, 707, 768, 737, 765, 760, 787, 776, 777, 724, 725, 717, 701, 740, 741, 738, 739, 732, 702, 706, 720, 749, 747, 742, 697, 698, 736, 718, 719, 779, 713, 700, 723, 759, 770, 751, 752, 753, 754, 784, 755, 756, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 372, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 373, 274, 275, 276, 374, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 375, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 376, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521]
     else:
@@ -275,22 +289,22 @@ async def search_player_match_stats_tft(connection: Connection, puuid: str, begi
     TFTGame_stat_data: dict[str, list[Any]] = {key: [] for key in TFTGame_stat_header_keys}
     info: dict[str, Any] = await get_info(connection, puuid)
     if info["info_got"]:
-        TFTHistory_get, TFTHistory = await get_TFTHistory(connection, puuid, begin = begin, count = count, log = log)
+        TFTHistory_get, TFTHistory = await get_matchSummary_sgp(connection, sgpSession, puuid, "TFT", begin = begin, count = count, log = log, verbose = verbose)
         if TFTHistory_get:
             unmapped_keys: dict[str, set[Any]] = {"queue": set(), "TFTAugment": set(), "TFTChampion": set(), "TFTItem": set(), "TFTCompanion": set(), "TFTTrait": set()}
             for i in range(len(TFTHistory["games"])):
                 matchId: int = int(TFTHistory["games"][i]["metadata"]["match_id"].split("_")[-1])
                 TFTGame_info: dict[str, Any] = TFTHistory["games"][i]
-                if bool(TFTGame_info["json"]):
+                if TFTGame_info.get("json"):
                     #下一行语句的关键是sortStats和TFTGame_stats_data参数（The key point of the following statement is `sortStats` and `TFTGame_stats_data` parameters）
                     TFTGame_info_df: pandas.DataFrame = (await sort_TFTGame_info(connection, TFTGame_info, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, current_puuid = puuid, save_self = True, useAllVersions = False, unmapped_keys = unmapped_keys, useInfoDict = False, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, log = log, verbose = verbose))[0]
                     logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d" %(i + 1, len(TFTHistory["games"]), TFTGame_info["json"]["game_id"]), verbose = verbose)
                 else:
                     logPrint("对局加载进度（Match loading process）：%d/%d (Exceptional match neglected)" %(i + 1, len(TFTHistory["games"])), verbose = verbose)
                 # match_id: str = f"{platformId}_{matchId}"
-                # status, TFTGame_info = await get_game_info_sgp(connection, sgpSession, match_id, checkLoL = False, log = log)
+                # status, TFTGame_info = await get_game_info_sgp(connection, sgpSession, match_id, checkLoL = False, log = log, verbose = verbose)
                 # if status == 200:
-                #     if "json" in TFTGame_info and bool(TFTGame_info["json"]):
+                #     if TFTGame_info.get("json"):
                 #         TFTGame_info_df: pandas.DataFrame = (await sort_TFTGame_info(connection, TFTHistory["games"][i], queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, current_puuid = puuid, save_self = True, useAllVersions = False, unmapped_keys = unmapped_keys, useInfoDict = False, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, log = log, verbose = verbose))[0]
                 #         logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d" %(i + 1, len(TFTHistory["games"]), matchId), verbose = verbose)
                 #     else:
@@ -575,7 +589,7 @@ async def Clarke_revival(connection: Connection) -> None:
                         logPrint("请输入一个正整数！\nPlease enter a positive integer.")
         if pastCheck:
             #然后获取对局信息并生成对局信息数据框（Then, get game information and generate game information dataframe）
-            if isTFT and bool(game_info["json"]):
+            if isTFT and game_info.get("json"):
                 TFTGame_info = game_info
                 gameMode: str = "TFT"
                 gameModeName = gameQueues[TFTGame_info["json"]["queueId"]]["name"] if TFTGame_info["json"]["queueId"] in gameQueues else "TFT (%d)" %(TFTGame_info["json"]["queueId"])
@@ -583,7 +597,7 @@ async def Clarke_revival(connection: Connection) -> None:
                 current_timestamp_millis = TFTGame_info["json"]["gameCreation"]
             elif not isTFT:
                 LoLGame_info = game_info
-                if use_sgp and bool(LoLGame_info["json"]):
+                if use_sgp and LoLGame_info.get("json"):
                     gameMode = LoLGame_info["json"]["gameMode"]
                     gameModeName = gameQueues[LoLGame_info["json"]["queueId"]]["name"] if LoLGame_info["json"]["queueId"] in gameQueues else gameMode + " (%d)" %(LoLGame_info["json"]["queueId"])
                     players_metaDf = sort_LoLGame_info_sgp(LoLGame_info, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = 1, current_puuid = current_info["puuid"], useAllVersions = False, sortStats = False, log = log)[0]
@@ -732,7 +746,7 @@ async def Clarke_revival(connection: Connection) -> None:
         unmapped_keys: dict[str, set[Any]] = {"summonerIcon": set(), "regaliaBanner": set(), "LoLChampion": set()}
         player_info_df: pandas.DataFrame = await sort_summoner_info(connection, fetched_puuids, summonerIcons, LoLChampions, regaliaBanners, unmapped_keys = unmapped_keys, log = log, verbose = print_detail)
         game_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = fetched_puuids)
-        logPrint("请输入您想要查询的对局数量，默认为最近20场。最大200场。\nPlease enter the number of matches you want to search, 20 by default and 200 at maximum.")
+        logPrint("请输入您想要查询的对局数量，默认为最近20场。最大%d场。\nPlease enter the number of matches you want to search, 20 by default and %d at maximum." %(1000 if use_sgp else 200, 1000 if use_sgp else 200))
         while True:
             count_str: str = logInput()
             if count_str == "":
@@ -800,14 +814,15 @@ async def Clarke_revival(connection: Connection) -> None:
                     break
                 else:
                     try:
-                        queueIds: list[int] = eval(queueId_str)
+                        tmp = eval(queueId_str)
                     except:
                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     else:
-                        if isinstance(queueIds, int) and queueIds in list(queue_df["id"][:]):
-                            queueIds = [queueIds]
+                        if isinstance(tmp, int) and tmp in list(queue_df["id"][:]):
+                            queueIds = [tmp]
                             break
-                        elif isinstance(queueIds, list) and all(map(lambda x: isinstance(x, int) and (x in {-1, 0} or x in list(queue_df["id"][1:])), queueIds)): #自定义对局的对局序号是0（QueueId of a custom game is 0）
+                        elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and (x in {-1, 0} or x in list(queue_df["id"][1:])), tmp)): #自定义对局的对局序号是0（QueueId of a custom game is 0）
+                            queueIds = tmp
                             break
                         else:
                             logPrint("队列序号不合法！请重新输入一个队列序号列表。\nIllegal queueId list! Please try another queueId list.")
@@ -838,7 +853,7 @@ async def Clarke_revival(connection: Connection) -> None:
             player_summonerName: str = get_info_name(player)
             if search_LoL:
                 logPrint("[%d/%d]" %((search_LoL + search_TFT) * i + 1, (search_LoL + search_TFT) * len(fetched_players)), end = "")
-                logPrint(f"正在获取{player_summonerName}的最近{count}场英雄联盟对局记录……\nLoading the recent {count} LoL match(es) of {player_summonerName} ...")
+                logPrint(f"正在加载{player_summonerName}的最近{count}场英雄联盟对局记录……\nLoading the recent {count} LoL match(es) of {player_summonerName} ...")
                 LoLGame_stat_df: pandas.DataFrame = await search_player_match_stats_lol(connection, player["puuid"], begIndex = 0, endIndex = count - 1, lol_sgp = use_sgp, log = log, verbose = print_detail)
                 #logPrint(f"{player_summonerName}的最近{count}场英雄联盟对局记录获取完成。\nThe recent {count} LoL match(es) of {player_summonerName} have/has been loaded.")
                 if queue_select:
@@ -853,7 +868,7 @@ async def Clarke_revival(connection: Connection) -> None:
                 LoLPlayer_stat_summary_dfs.append(LoLPlayer_stat_summary_df.loc[1:, :])
             if search_TFT:
                 logPrint("[%d/%d]" %((search_LoL + search_TFT) * i + 1 + search_LoL, (search_LoL + search_TFT) * len(fetched_players)), end = "")
-                logPrint(f"正在获取{player_summonerName}的最近{count}场云顶之弈对局记录……\nLoading the recent {count} TFT match(es) of {player_summonerName} ...")
+                logPrint(f"正在加载{player_summonerName}的最近{count}场云顶之弈对局记录……\nLoading the recent {count} TFT match(es) of {player_summonerName} ...")
                 TFTGame_stat_df: pandas.DataFrame = await search_player_match_stats_tft(connection, player["puuid"], begin = 0, count = count - 1, log = log, verbose = print_detail)
                 #logPrint(f"{player_summonerName}的最近{count}场云顶之弈对局记录获取完成。\nThe recent {count} TFT match(es) of {player_summonerName} have/has been loaded.")
                 if queue_select:

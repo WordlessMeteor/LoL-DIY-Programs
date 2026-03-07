@@ -1,4 +1,7 @@
 from typing import Any
+ACCESSIBLE_MATCH_COUNT_SGP: int = 1000 #通过SGP API可获取的最大对局数量（The maximum number of matches accessible by SGP API）
+BATCH_MATCH_COUNT: int = 200 #单次调用接口可获取的最大对局数量（The maximum number of matches accessible by each call of SGP API）
+ACCESSIBLE_MATCH_COUNT_LOL: int = 200 #通过LCU API可获取的最大对局数量（The maximum number of matches accessible by LCU API）
 BOT_UUID: str = "00000000-0000-0000-0000-000000000000"
 ALL_GAMEFLOW_PHASES: list[str] = [
     "None",

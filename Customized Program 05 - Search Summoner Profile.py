@@ -14,7 +14,7 @@ from src.core.config.localization import language_cdragon, language_ddragon, tie
 from src.core.config.servers import valid_platformIds, set_platform_folder, set_summonerInfo_folder, save_platform_info
 from src.core.config.conditional_formatting import addFormat_LoLHistory_wb, addFormat_LoLGame_info_wb, addFormat_LoLGame_info_wb_transpose
 #from src.core.dataframes.ranked import sort_game_leaderboard
-from src.core.dataframes.matchHistory import get_LoLHistory, sort_LoLHistory, reconstruct_LoLHistory, reconstruct_LoLHistory_sgp, reconstruct_TFTHistory, get_LoLGame_info, get_game_info_sgp, get_LoLGame_timeline, get_game_timeline_sgp, sort_LoLGame_info, sort_LoLGame_info_sgp, sort_LoLGame_timeline, sort_LoLGame_timeline_sgp, get_TFTHistory, sort_TFTHistory, sort_TFTGame_info
+from src.core.dataframes.matchHistory import get_LoLHistory, get_matchSummary_sgp, get_matchDetails_sgp, sort_LoLHistory, sort_LoLHistory_sgp, reconstruct_LoLHistory, reconstruct_LoLHistory_sgp, reconstruct_TFTHistory, get_LoLGame_info, get_game_info_sgp, get_LoLGame_timeline, get_game_timeline_sgp, sort_LoLGame_info, sort_LoLGame_info_sgp, sort_LoLGame_timeline, sort_LoLGame_timeline_sgp, get_TFTHistory, sort_TFTHistory, sort_TFTGame_info
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-a", "--lol_api", help = "指定通过什么接口获取英雄联盟对局信息和时间轴（Specify the interface used to fetch LoL game information and timeline）", action = "store", type = str, choices = ["lcu", "sgp"], default = "sgp")
@@ -35,7 +35,7 @@ else:
 #=============================================================================
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
-# 鸣谢（Acknowledgement）： XHXIAIEIN
+# 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
 # 更新（Last update）：     2026/03/02
 #=============================================================================
 
@@ -1482,7 +1482,7 @@ async def search_profile(connection: Connection) -> None:
         #整理账号信息（Organize accounts）
         AllAccounts: list[dict[str, Any]] = [main_info_body] + smurfs
         current_puuid_list: list[str] = list(map(lambda x: x["puuid"], AllAccounts))
-        current_summonerName_list: list[str] = list(map(lambda x: "" if x["gameName"] == "" and x["tagLine"] == "" else x["gameName"] + "#" + x["tagLine"], AllAccounts))
+        current_summonerName_list: list[str] = list(map(get_info_name, AllAccounts))
                 
         #下面检测本地已保存的召唤师信息是否包含已改名的主召唤师（Detect whether the local summoner information contain the main summoner that has changed its name）
         folderNames: list[str] = os.listdir(platform_folder)
@@ -1679,7 +1679,9 @@ async def search_profile(connection: Connection) -> None:
         LoLGamePlayed: bool = False
         if search_LoL:
             LoLHistory_dfs: list[pandas.DataFrame] = []
-            for info_body in AllAccounts:
+            LoLGame_info_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {} #在从SGP API中获取对局概要时，顺便把整理出对局信息也一并获取了（While fetching match summary through SGP API, the program also sorts out match information）
+            LoLGame_timeline_cache_fromDetails_sgp: dict[int, dict[str, Any]] = {} #同上，通过一次性获取所有对局时间轴，来减少网络请求次数（Same as above, reduce the number of web requests through fetching all matches' timeline information at one time）
+            for i in range(len(AllAccounts)):
                 queues = queues_initial.copy()
                 spells = spells_initial.copy()
                 LoLChampions = LoLChampions_initial.copy()
@@ -1690,27 +1692,46 @@ async def search_profile(connection: Connection) -> None:
                 CherryAugments = CherryAugments_initial.copy()
                 current_versions["queue"] = current_versions["summonerIcon"] = current_versions["spell"] = current_versions["LoLChampion"] = current_versions["LoLItem"] = current_versions["perk"] = current_versions["perkstyle"] = current_versions["CherryAugment"] = URLPatch
                 unmapped_keys["queue"], unmapped_keys["summonerIcon"], unmapped_keys["spell"], unmapped_keys["LoLChampion"], unmapped_keys["LoLItem"], unmapped_keys["perk"], unmapped_keys["perkstyle"], unmapped_keys["CherryAugment"] = set(), set(), set(), set(), set(), set(), set(), set()
-                #logPrint("召唤师英雄联盟对局记录如下：\nMatch history (LoL) is as follows:")
-                LoLHistory_get, LoLHistory = await get_LoLHistory(connection, info_body["puuid"], log = log)
+                info_puuid: str = current_puuid_list[i]
+                info_summonerName: str = current_summonerName_list[i]
+                logPrint("[%d/%d]正在获取客户端内玩家%s的英雄联盟对局记录……\nGetting LoL match history of player %s in the client ..." %(i + 1, len(AllAccounts), info_summonerName, info_summonerName))
+                LoLHistory_get, LoLHistory = await get_LoLHistory(connection, info_puuid, log = log)
                 json08name: str = f"Match History (LoL) - {displayName}.json"
                 json08path: str = os.path.join(folder, json08name)
                 os.makedirs(folder, exist_ok = True)
-                try:
-                    with open(json08path, "w", encoding = "utf-8") as jsonfile08:
-                        jsonfile08.write(json.dumps(LoLHistory, indent = 4, ensure_ascii = False))
-                except UnicodeEncodeError:
-                    logPrint("召唤师英雄联盟对局记录文本文档生成失败！请检查召唤师名称和所选语言是否包含不常用字符！\nSummoner LoL match history text generation failure! Please check if the summoner name and the chosen language include any abnormal characters!\n")
+                if info_puuid == current_puuid: #只保存主召唤师的对局记录（Only save the main summoner's match history）
+                    try:
+                        with open(json08path, "w", encoding = "utf-8") as jsonfile08:
+                            jsonfile08.write(json.dumps(LoLHistory, indent = 4, ensure_ascii = False))
+                    except UnicodeEncodeError:
+                        logPrint("召唤师英雄联盟对局记录文本文档生成失败！请检查召唤师名称和所选语言是否包含不常用字符！\nSummoner LoL match history text generation failure! Please check if the summoner name and the chosen language include any abnormal characters!\n")
                 # currentTime: str = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
                 # pkl5name: str = f"Intermediate Object - LoLHistory - {displayName} ({currentTime}).pkl"
                 # with open(os.path.join(folder, pkl5name), "wb") as IntObj4:
                 #     pickle.dump(LoLHistory, IntObj4)
+                logPrint("[%d/%d]正在扩展玩家%s的英雄联盟对局记录和详细信息……\nExpanding LoL match history and details of player %s ..." %(i + 1, len(AllAccounts), info_summonerName, info_summonerName))
+                LoLHistory_get, LoLHistory = await get_matchSummary_sgp(connection, sgpSession, info_puuid, "LoL", begin = 0, count = 1000, log = log) #这里之所以把count参数写出来，是因为考虑到后续可能随时要调整这个参数。毕竟1000场数据是非常庞大的（Here the reason I write this `count` parameter is considering its value might be adjusted at some time later. After all, data of 1000 matches can be really big）
+                for game in LoLHistory["games"]:
+                    matchId: int = int(game["metadata"]["match_id"].split("_")[1])
+                    if not matchId in LoLGame_info_cache_fromSummary_sgp:
+                        LoLGame_info_cache_fromSummary_sgp[matchId] = game
+                if use_sgp: #没必要将从SGP API获取的对局概要数据导出到json文件中，因为它实际上就是从SGP API获取的各对局信息数据的加和。因此，为了保证每次读取对局记录时都会在本地形成一个对局记录json文件，LCU API是无论如何都会访问一次的（It's unnecessary to export the match summary data obtained through SGP API into a json file, because it's actually the sum of all matches' information obtained from SGP API. Therefore, in order to make sure a json file will be generated every time the program fetches the match history, LCU API is always accessed）
+                    LoLDetails_get, LoLDetails = await get_matchDetails_sgp(connection, sgpSession, info_puuid, "LoL", begin = 0, count = 1000, log = log)
+                    for game in LoLDetails["games"]:
+                        matchId: int = int(game["metadata"]["match_id"].split("_")[1])
+                        if not matchId in LoLGame_timeline_cache_fromDetails_sgp:
+                            LoLGame_timeline_cache_fromDetails_sgp[matchId] = game
                 if LoLHistory_get:
-                    LoLGamePlayed = (LoLGameCount := LoLHistory["games"]["gameCount"]) != 0 #标记该玩家是否进行过英雄联盟对局（Mark whether this summoner has played any LoL game）
+                    LoLGameCount: int = len(LoLHistory["games"]) if use_sgp else LoLHistory["games"]["gameCount"]
+                    LoLGamePlayed: bool = LoLGameCount != 0 #标记该玩家是否进行过英雄联盟对局（Mark whether this summoner has played any LoL game）
                     if LoLGamePlayed:
-                        logPrint("玩家%s共进行%d场英雄联盟对局。\nPlayer %s has played %d LoL matches.\n" %(get_info_name(info_body), LoLGameCount, get_info_name(info_body), LoLGameCount))
+                        logPrint(f"玩家{info_summonerName}共进行{LoLGameCount}场英雄联盟对局。\nPlayer {info_summonerName} has played {LoLGameCount} LoL matches.\n")
                     else:
-                        logPrint("玩家%s从5月1日起就没有进行过任何英雄联盟对局。\nPlayer %s hasn't played any LoL game yet since May 1st." %(get_info_name(info_body), get_info_name(info_body)))
-                    LoLHistory_df: pandas.DataFrame = (await sort_LoLHistory(connection, LoLHistory, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, log = log))[0]
+                        logPrint(f"玩家{info_summonerName}从5月1日起就没有进行过任何英雄联盟对局。\nPlayer {info_summonerName} hasn't played any LoL game yet since May 1st.")
+                    if use_sgp:
+                        LoLHistory_df: pandas.DataFrame = (sort_LoLHistory_sgp(LoLHistory, info_puuid, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, log = log))[0]
+                    else:
+                        LoLHistory_df = (sort_LoLHistory(LoLHistory, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, log = log))[0]
                     LoLHistory_dfs.append(LoLHistory_df)
                     if LoLGamePlayed:
                         logPrint(LoLHistory_df[:min(21, LoLGameCount + 1)], write_time = False)
@@ -1728,10 +1749,7 @@ async def search_profile(connection: Connection) -> None:
             LoLHistory_df_all = pandas.concat([LoLHistory_df_all.iloc[:1], LoLHistory_df_all.iloc[1:].sort_values(by = "gameCreationDate", ascending = False)], ignore_index = True) #这里弃用了根据对局序号排序（Here gameId isn't used to sort the values）
             
             logPrint('请输入要查询的英雄联盟对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出英雄联盟对局查询请输入“0”：\nPlease enter the LoL matchId to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to quit searching for LoL matches.')
-            LoLGameIDs: list[int] = [] #代表对局记录中的所有对局序号（Represents all matchIds in the match history）
-            for gameId in LoLHistory_df_all["gameId"][1:]:
-                if not gameId in LoLGameIDs:
-                    LoLGameIDs.append(gameId)
+            LoLGameIDs: list[int] = sorted(LoLGame_info_cache_fromSummary_sgp.keys(), reverse = True) #代表对局记录中的所有对局序号（Represents all matchIds in the match history）
             LoLMatchIDs: list[int] = [] #代表实际需要查询的对局序号（Represents the matchIds for query）
             LoLMatches_not_found: list[int] = [] #在扫描模式下，当从本地文件获取的对局从API重新获取出现异常时，处理策略是输出异常信息并跳过该对局，而不是将其直接从对局序号列表中去除，因为这样会使循环乱套。而后面的info_exist_error、timeline_exist_error、main_player_included和match_reserve_strategy只会在该对局正常获取时才会统计。所以一旦出现数据获取失败的对局，在最后导出数据时，“if match_reserve_strategy[i]:”语句会出现“IndexError: list index out of range”报错（Under scan mode, when an exception occurred during crawling matches with LoLMatchIDs obtained from local files from API, the strategy is to print the exception and skip this match, instead of directly removing them from the matchId list, for the removal will disturb the loop. However, the variables info_exist_error, timeline_exist_error, main_player_included and match_reserve_strategy only work when the matches are crawled from the database as expected. So once a match fails to be captured, during xlsx file export at the end of the program, an "IndexError: list index out of range" exception will emerge from the statement "if match_reserve_strategy[i]:"）
             error_LoLMatchIDs: list[int] = [] #记录实际存在但未如期获取的对局序号（Records the LoL matchIDs that really exist but fail to be fetched）
@@ -1751,7 +1769,7 @@ async def search_profile(connection: Connection) -> None:
                     if matchId_str == "3":
                         if old_LoLMatch_detected:
                             latest_LoLMatchID: int = max(saved_LoLMatchIDs) #需要注意，对局序号最大的对局未必是最近进行的对局。而这种情况并不会引起数据的丢失。相反，最近进行的对局会被重新保存一次，从数据完整性的角度上讲无关紧要（Note that the match with the greatest matchId doesn't mean it's the latest match. Nevertheless, when this situation happens, there won't be any data loss. Conversely, the latest match will be saved again, which doesn't matter in terms of data integrity）
-                            latest_LoLMatchID_index: int = LoLGameIDs.index(latest_LoLMatchID) if latest_LoLMatchID in LoLGameIDs else 500
+                            latest_LoLMatchID_index: int = LoLGameIDs.index(latest_LoLMatchID) if latest_LoLMatchID in LoLGameIDs else 2000
                             logPrint("检测到您以前曾经查询过该召唤师的英雄联盟对局记录。是否只保存该召唤师信息文件夹中不包含的英雄联盟对局？（输入空字符串以只保存未保存过文本文档的对局，否则自行指定对局索引上下限）\nThe program detected that you've searched for this summoner's LoL match history before. Do you want to only save the LoL matches not present in the current summoner folder? (Enter an empty string to saved only the matches whose json files haven't been saved, or any non-empty string to specify the begIndex and endIndex of the matches by yourself)\n即将使用的对局索引下界和上界（The match begIndex and endIndex to be used）：0 %d" %latest_LoLMatchID_index)
                             update_unsaved_only_str: str = logInput()
                             update_unsaved_only: bool = not bool(update_unsaved_only_str)
@@ -1759,7 +1777,7 @@ async def search_profile(connection: Connection) -> None:
                             LoLMatchIDs = LoLGameIDs[:]
                         else:
                             begIndex: int = 0
-                            endIndex: int = 10000
+                            endIndex: int = 0
                             logPrint("请设置需要查询的对局索引下界和上界，以空格为分隔符（输入空字符以默认查询近20场对局）：\nPlease set the begIndex and endIndex of the matches to be searched, split by space (Enter an empty string to search for the recent 20 matches):") #在13.13版本以前，腾讯代理的服务器只支持近20场对局查询（Before Patch 13.13, Tencent servers only provide search of the latest 20 matches）
                             while True:
                                 gameIndex: str = logInput()
@@ -1821,16 +1839,16 @@ async def search_profile(connection: Connection) -> None:
                                 break
                     else:
                         try:
-                            matchId = eval(matchId_str)
+                            tmp = eval(matchId_str)
                         except (SyntaxError, NameError):
                             logPrint("您的输入存在语法错误。请重新输入！\nSyntax ERROR detected in this input! Please try again!")
                             continue
                         else:
                             LoLMatchIDs = []
-                            if isinstance(matchId, int):
-                                LoLMatchIDs.append(matchId)
-                            elif isinstance(matchId, list) and all(map(lambda x: isinstance(x, int), matchId)):
-                                LoLMatchIDs += matchId
+                            if isinstance(tmp, int):
+                                LoLMatchIDs.append(tmp)
+                            elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int), tmp)):
+                                LoLMatchIDs += tmp
                             else:
                                 logPrint("数据类型不符。请重新输入！\nData type not matched! Please try again!")
                                 continue
@@ -1866,7 +1884,11 @@ async def search_profile(connection: Connection) -> None:
                     #获取数据（Get data）
                     ##信息/概要（Information / Summary） #即使不导出对局信息，对局信息也要用来制作玩家战绩表，因此仍然要获取对局信息。如果不需要加载多的对局，用户需要在前面指定对局上下限来控制LoLMatchIDs（Although the user doesn't want to export the match information, it's still needed for match stats table, so match information is always necessary. If the user doesn't want to load extra matches, he/she needs to control `LoLMatchIDs` by specifying the begIndex and the endIndex above）
                     if use_sgp:
-                        status, LoLGame_info = await get_game_info_sgp(connection, sgpSession, match_id, skipTFT = True, log = log)
+                        if matchId in LoLGame_info_cache_fromSummary_sgp:
+                            LoLGame_info: dict[str, Any] = LoLGame_info_cache_fromSummary_sgp[matchId]
+                            status: int = 200
+                        else:
+                            status, LoLGame_info = await get_game_info_sgp(connection, sgpSession, match_id, skipTFT = True, log = log)
                     else:
                         status, LoLGame_info = await get_LoLGame_info(connection, matchId, log = log)
                     if status == 200 and (not use_sgp or "json" in LoLGame_info and bool(LoLGame_info["json"])):
@@ -1915,7 +1937,11 @@ async def search_profile(connection: Connection) -> None:
                     ##时间轴/详细信息（Timeline / Details）
                     if LoLGame_timeline_export:
                         if use_sgp:
-                            status, LoLGame_timeline = await get_game_timeline_sgp(connection, sgpSession, match_id, checkTFT = False, log = log)
+                            if matchId in LoLGame_timeline_cache_fromDetails_sgp:
+                                LoLGame_timeline: dict[str, Any] = LoLGame_timeline_cache_fromDetails_sgp[matchId]
+                                status: int = 200
+                            else:
+                                status, LoLGame_timeline = await get_game_timeline_sgp(connection, sgpSession, match_id, checkTFT = False, log = log)
                         else:
                             status, LoLGame_timeline = await get_LoLGame_timeline(connection, matchId, log = log)
                         if "errorCode" in LoLGame_timeline:
@@ -1927,7 +1953,7 @@ async def search_profile(connection: Connection) -> None:
                         else: #在整理时间轴数据时，需要使用`LoLGame_info`中的一些数据（While organizing the timeline data, some data in `LoLGame_info` are needed）
                             timeline_exist_error[matchId] = False
                     else:
-                        LoLGame_timeline: dict[str, Any] = {}
+                        LoLGame_timeline = {}
                     
                     #提示（Prompt）
                     process_header: str = "保存进度（Saving process）" if save_all_json and save_one_json else "加载进度（Loading process）"
@@ -2037,7 +2063,8 @@ async def search_profile(connection: Connection) -> None:
         if search_TFT:
             TFTHistory_dfs: list[pandas.DataFrame] = []
             TFTHistory_dict: dict[int, dict[str, Any]] = {}
-            for info_body in AllAccounts:
+            TFTGame_info_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
+            for i in range(len(AllAccounts)):
                 queues = queues_initial.copy()
                 TFTAugments = TFTAugments_initial.copy()
                 TFTChampions = TFTChampions_initial.copy()
@@ -2046,8 +2073,11 @@ async def search_profile(connection: Connection) -> None:
                 TFTTraits = TFTTraits_initial.copy()
                 current_versions["queue"] = current_versions["TFTAugment"] = current_versions["TFTChampion"] = current_versions["TFTItem"] = current_versions["TFTCompanion"] = current_versions["TFTTrait"] = URLPatch
                 unmapped_keys["queue"], unmapped_keys["TFTAugment"], unmapped_keys["TFTChampion"], unmapped_keys["TFTItem"], unmapped_keys["TFTCompanion"], unmapped_keys["TFTTrait"] = set(), set(), set(), set(), set(), set()
-                #logPrint("召唤师云顶之弈对局记录如下：\nMatch history (TFT) is as follows:")
-                TFTHistory_get, TFTHistory = await get_TFTHistory(connection, info_body["puuid"], log = log)
+                info_body: dict[str, Any] = AllAccounts[i]
+                info_puuid: str = current_puuid_list[i]
+                info_summonerName: str = current_summonerName_list[i]
+                logPrint("[%d/%d]正在获取客户端内玩家%s的云顶之弈对局记录……\nGetting TFT match history of player %s in the client ..." %(i + 1, len(AllAccounts), info_summonerName, info_summonerName))
+                TFTHistory_get, TFTHistory = await get_TFTHistory(connection, info_puuid, log = log)
                 json09name: str = "Match History (TFT) - " + displayName + ".json"
                 json09path: str = os.path.join(folder, json09name)
                 os.makedirs(folder, exist_ok = True)
@@ -2060,23 +2090,25 @@ async def search_profile(connection: Connection) -> None:
                 # pkl6name: str = f"Intermediate Object - TFTHistory - {displayName} ({currentTime}).pkl"
                 # with open(os.path.join(folder, pkl6name), "wb") as IntObj5:
                 #     pickle.dump(TFTHistory, IntObj5)
+                logPrint("[%d/%d]正在扩展玩家%s的云顶之弈对局记录……\nExpanding TFT match history of player %s ..." %(i + 1, len(AllAccounts), info_summonerName, info_summonerName))
+                TFTHistory_get, TFTHistory = await get_matchSummary_sgp(connection, sgpSession, info_puuid, "TFT", begin = 0, count = 1000, log = log)
+                for game in TFTHistory["games"]:
+                    matchId: int = int(game["metadata"]["match_id"].split("_")[1])
+                    if not matchId in TFTGame_info_cache_fromSummary_sgp: #由于云顶之弈的对局记录包含所有玩家的信息，所以如果多个玩家的对局记录包含同一场对局，则这些对局的信息一定是相同的（Because TFT match history includes all players' information, if a match is included in multiple players' match histories, then information of the matches recorded in different players' match histories must be the same）
+                        TFTGame_info_cache_fromSummary_sgp[matchId] = game
                 if TFTHistory_get:
                     TFTGamePlayed: bool = (TFTGameCount := len(TFTHistory["games"])) > 0 #标记该玩家是否进行过云顶之弈对局（Mark whether this summoner has played any TFT game）
                     if TFTGamePlayed:
-                        logPrint("玩家%s共进行%d场云顶之弈对局。\nPlayer %s has played %d TFT matches.\n" %(get_info_name(info_body), TFTGameCount, get_info_name(info_body), TFTGameCount))
+                        logPrint(f"玩家{info_summonerName}共进行{TFTGameCount}场云顶之弈对局。\nPlayer {info_summonerName} has played {TFTGameCount} TFT matches.\n")
                     else:
-                        logPrint("玩家%s从5月1日起就没有进行过任何云顶之弈对局。\nPlayer %s hasn't played any TFT game yet since May 1st." %(get_info_name(info_body), get_info_name(info_body)))
-                    for game in TFTHistory["games"]:
-                        matchId: int = int(game["metadata"]["match_id"].split("_")[-1])
-                        if not matchId in TFTHistory_dict: #由于云顶之弈的对局记录包含所有玩家的信息，所以如果多个玩家的对局记录包含同一场对局，则这些对局的信息一定是相同的（Because TFT match history includes all players' information, if a match is included in multiple players' match histories, then information of the matches recorded in different players' match histories must be the same）
-                            TFTHistory_dict[matchId] = game
-                    TFTHistory_df: pandas.DataFrame = (await sort_TFTHistory(connection, TFTHistory, info_body["puuid"], queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, useInfoDict = True, infos = infos, log = log))[0]
+                        logPrint(f"玩家{info_summonerName}从5月1日起就没有进行过任何云顶之弈对局。\nPlayer {info_summonerName} hasn't played any TFT game yet since May 1st.")
+                    TFTHistory_df: pandas.DataFrame = (await sort_TFTHistory(connection, TFTHistory, info_puuid, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, useInfoDict = True, infos = infos, log = log))[0]
                     TFTHistory_dfs.append(TFTHistory_df)
                     if TFTGamePlayed:
                         logPrint(TFTHistory_df[:min(21, TFTGameCount + 1)], write_time = False)
             #由于云顶之弈的对局记录包含所有玩家的信息，所以这里考虑先整合所有账号的对局记录，再对总对局记录进行整理。如果先整理再整合，后续排序时玩家顺序的信息会丢失，因为在这种情形下根据对局序号排序，而数据框中不包含玩家序号键，无法按照玩家序号进行升序排列（Because TFT match history includes all players' information, here the program first merges all accounts' match history, and then sort out the aggregate match history. Otherwise, if the program first organize the match history respectively and then merge the result dataframe, the participantId order may be lost during the subsequent ordering, for gameId is taken to arrange the aggregate dataframe, but the key `participantId` isn't in the dataframe, and therefore the dataframe can't be arranged in the ascending order of participantId）
-            TFTGameIDs: list[int] = sorted(TFTHistory_dict.keys(), reverse = True)
-            TFTHistory_all: dict[str, str | list[dict[str, Any]]] = {"active_puuid": "", "games": list(map(lambda x: TFTHistory_dict[x], TFTGameIDs))}
+            TFTGameIDs: list[int] = sorted(TFTGame_info_cache_fromSummary_sgp.keys(), reverse = True)
+            # TFTHistory_all: dict[str, str | list[dict[str, Any]]] = {"active_puuid": "", "games": list(map(lambda x: TFTGame_info_cache_fromSummary_sgp[x], TFTGameIDs))}
             #构建云顶之弈对局记录数据框（Construct TFT match history dataframe）
             TFTHistory_df_all: pandas.DataFrame = pandas.concat([TFTHistory_dfs[0].iloc[:1]] + list(map(lambda x: x.iloc[1:], TFTHistory_dfs)), ignore_index = True) #需要注意数据框的中文表头占用了一行（Note that the Chinese header takes up a record）
             gameIds_occurred: set[str | int] = {TFTHistory_df_all["game_id"][0]}
@@ -2168,12 +2200,12 @@ async def search_profile(connection: Connection) -> None:
                                 break
                     else:
                         try:
-                            matchId = eval(matchId_str)
+                            tmp = eval(matchId_str)
                             TFTMatchIDs = []
-                            if isinstance(matchId, int):
-                                TFTMatchIDs.append(matchId)
-                            elif isinstance(matchId, list) and all(map(lambda x: isinstance(x, int), matchId)):
-                                TFTMatchIDs += matchId
+                            if isinstance(tmp, int):
+                                TFTMatchIDs.append(tmp)
+                            elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int), tmp)):
+                                TFTMatchIDs += tmp
                             else:
                                 logPrint("数据类型不符。请重新输入！\nData type not matched! Please try again!")
                                 continue
@@ -2205,7 +2237,11 @@ async def search_profile(connection: Connection) -> None:
                     
                     if TFTGame_info_export: #这里和英雄联盟对局信息的区别是，在整理英雄联盟对局信息的同时会梳理出英雄联盟战绩汇总表，而整理云顶之弈对局信息时没有其它操作。所以如果一个云顶之弈对局信息文本文档不需要保存和导出，那么直接不加载就可以了（Here the difference from the case of LoL match information is that the program summarizes the LoL match stats table while organizing LoL match information, while the program does nothing else while organizing TFT match information. Therefore, if a TFT match information json file isn't saved and exported, then it's better not load it）
                         #获取数据（Get data）
-                        status, TFTGame_info = await get_game_info_sgp(connection, sgpSession, match_id, checkLoL = False, checkTFT = True, log = log) #通过LCU API和SGP API获取到的云顶之弈对局记录和对局信息是相同的（TFT match history and TFT game information obtained through LCU API and SGP API are the same）
+                        if matchId in TFTGame_info_cache_fromSummary_sgp:
+                            TFTGame_info: dict[str, Any] = TFTGame_info_cache_fromSummary_sgp[matchId]
+                            status: int = 200
+                        else:
+                            status, TFTGame_info = await get_game_info_sgp(connection, sgpSession, match_id, checkLoL = False, checkTFT = True, log = log) #通过LCU API和SGP API获取到的云顶之弈对局记录和对局信息是相同的（TFT match history and TFT game information obtained through LCU API and SGP API are the same）
                         if status == 200 and "json" in TFTGame_info and bool(TFTGame_info["json"]):
                             isTFT[matchId] = True
                             info_exist_error[matchId] = False
