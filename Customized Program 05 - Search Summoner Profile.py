@@ -36,7 +36,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/03/07
+# 更新（Last update）：     2026/03/08
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1156,7 +1156,7 @@ async def sort_basic_info(connection: Connection, puuid: str, remove_empty: bool
                 value = ""
             else:
                 if i == 36 or i == 37: #整数字符串（Integer string）
-                    value = int(challenge[key.split()[1]])
+                    value = "" if challenge[key.split()[1]] == "" else int(challenge[key.split()[1]])
                 elif i == 39: #总成就等级（`challenge overallChallengeLevel`）
                     value = challengeCrystalLevels[challenge["overallChallengeLevel"]]
                 elif i == 44: #天梯更新时间（`challenge apexLadderUpdateDate`）
@@ -1168,7 +1168,10 @@ async def sort_basic_info(connection: Connection, puuid: str, remove_empty: bool
                     else:
                         if not bannerId in unmapped_keys["regaliaBanner"]:
                             unmapped_keys["regaliaBanner"].add(bannerId)
-                            logPrint("玩家%s的身份旗帜（%d）信息获取失败。\nInfo banner information (%d) of Player %s capture failed." %(displayName, bannerId, bannerId, displayName))
+                            if bannerId == "":
+                                logPrint("玩家%s未装备身份旗帜。\nPlayer %s doesn't equip any info banner." %(displayName, displayName))
+                            else:
+                                logPrint("玩家%s的身份旗帜（%s）信息获取失败。\nInfo banner information (%s) of Player %s capture failed." %(displayName, bannerId, bannerId, displayName))
                         value = ""
                 elif i == 47: #排位徽章名称（`challenge crestName`）
                     value = "" #目前尚不明确排位徽章的本地化内容（Localized content of crests haven't figured out yet）
