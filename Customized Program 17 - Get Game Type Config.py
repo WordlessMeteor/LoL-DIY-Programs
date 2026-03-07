@@ -2,7 +2,7 @@ from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import os, pandas, json
 from typing import Any
-from src.utils.summoner import get_summoner_data
+from src.utils.summoner import print_summoner_info
 from src.utils.format import optimize_bool_display, addDefaultStyle
 from src.core.config.localization import gameTypes_config
 from src.core.config.headers import gametype_config_header
@@ -13,7 +13,7 @@ from src.core.config.headers import gametype_config_header
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/02
+# 更新（Last update）：     2026/03/07
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -86,7 +86,7 @@ async def sort_gametype_config(connection: Connection) -> None:
 #-----------------------------------------------------------------------------
 @connector.ready
 async def connect(connection: Connection) -> None:
-    await get_summoner_data(connection)
+    await print_summoner_info(connection)
     await sort_gametype_config(connection)
 
 @connector.close

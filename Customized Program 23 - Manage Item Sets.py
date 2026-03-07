@@ -2,7 +2,7 @@ from lcu_driver.connection import Connection
 import copy, json, os, pandas, re, requests, time, traceback, uuid
 from openpyxl import load_workbook
 from typing import Any, Optional
-from src.utils.summoner import get_summoner_data
+from src.utils.summoner import print_summoner_info
 from src.utils.logger import LogManager
 from src.utils.repeatConnect import LCUConnect
 from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, format_runtime, verify_uuid, pyobj2json
@@ -20,7 +20,7 @@ from src.core.dataframes.champions import sort_champion_summary
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/06
+# 更新（Last update）：     2026/03/07
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1880,7 +1880,7 @@ async def manage_item_set(connection: Connection) -> None:
 # websocket
 #-----------------------------------------------------------------------------
 async def connect(connection: Connection) -> None:
-    await get_summoner_data(connection)
+    await print_summoner_info(connection)
     await prepare_data_resources(connection)
     await manage_item_set(connection)
 

@@ -4,7 +4,7 @@ import json, os, pandas, requests, time, traceback, uuid
 from urllib.parse import urljoin
 from typing import Any, Optional
 from src.utils.logger import LogManager, aInput
-from src.utils.summoner import get_summoner_data, get_info, get_info_name
+from src.utils.summoner import print_summoner_info, get_info, get_info_name
 from src.utils.format import getISOTime, optimize_bool_display, format_df, addDefaultStyle
 from src.utils.patch import Patch
 from src.utils.runtimeDebug import subscope
@@ -22,7 +22,7 @@ from src.core.dataframes.gameflow import sort_ChampSelect_players
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/06
+# 更新（Last update）：     2026/03/07
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -4858,7 +4858,7 @@ async def connect(connection: Connection) -> None:
     logInput = log.logInput
     logPrint = log.logPrint
     await sgpSession.init(connection)
-    await get_summoner_data(connection)
+    await print_summoner_info(connection)
     await save_platform_info(connection)
     await prepare_data_resources(connection)
     while True:

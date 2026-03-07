@@ -6,7 +6,7 @@ from typing_extensions import Literal
 from src.utils.logger import LogManager
 from src.utils.webRequest import SGPSession
 from src.utils.patch import Patch
-from src.utils.summoner import get_summoner_data, get_info, get_info_name
+from src.utils.summoner import print_summoner_info, get_info, get_info_name
 from src.core.config.const import TEST_GAME_INFO
 from src.core.config.servers import set_platform_folder
 from src.core.dataframes.matchHistory import get_matchSummary_sgp, get_matchDetails_sgp, get_game_info_sgp, get_game_timeline_sgp
@@ -22,7 +22,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/05
+# 更新（Last update）：     2026/03/07
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -809,7 +809,7 @@ async def binary_search_main(connection: Connection) -> None:
 #-----------------------------------------------------------------------------
 @connector.ready
 async def connect(connection: Connection) -> None:
-    await get_summoner_data(connection)
+    await print_summoner_info(connection)
     print("请选择一个选项：\nPlease select an option:\n0\t退出程序（Exit the program）\n1\t遍历对局序号（Traverse matchIds）\n2\t二分查找对局（Binary search for a match）")
     while True:
         option: str = input()

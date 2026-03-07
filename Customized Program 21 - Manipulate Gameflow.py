@@ -4,7 +4,7 @@ import argparse, copy, json, numpy, os, pandas, pickle, psutil, pyperclip, rando
 from urllib.parse import quote, unquote, urljoin
 from typing import Any, Optional
 from src.utils.logger import aInput, LogManager
-from src.utils.summoner import get_summoner_data, get_info, get_info_name
+from src.utils.summoner import print_summoner_info, get_info, get_info_name
 from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, lcuTime, getISOTime, verify_uuid, normalize_file_name
 from src.utils.runtimeDebug import send_commands
 from src.utils.webRequest import SGPSession, requestUrl
@@ -29,7 +29,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/06
+# 更新（Last update）：     2026/03/07
 #=============================================================================
 
 #-----------------------------------------------------------------------------

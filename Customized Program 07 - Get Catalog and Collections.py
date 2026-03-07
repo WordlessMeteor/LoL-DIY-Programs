@@ -3,7 +3,7 @@ from lcu_driver.connection import Connection
 import copy, os, json, time, pandas, re, requests
 from openpyxl import load_workbook
 from typing import Any
-from src.utils.summoner import get_summoner_data, get_info_name
+from src.utils.summoner import print_summoner_info, get_info_name
 from src.utils.format import getISOTime, addDefaultStyle, optimize_bool_display, pyobj2json
 from src.core.config.servers import set_platform_folder, set_summonerInfo_folder, save_platform_info
 from src.core.config.localization import inventoryType_dict, ownershipTypes, subInventoryTypes
@@ -14,7 +14,7 @@ from src.core.config.localization import inventoryType_dict, ownershipTypes, sub
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/02
+# 更新（Last update）：     2026/03/07
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -628,7 +628,7 @@ async def fetch_store(connection: Connection) -> None:
 #-----------------------------------------------------------------------------
 @connector.ready
 async def connect(connection: Connection) -> None:
-    await get_summoner_data(connection)
+    await print_summoner_info(connection)
     await save_platform_info(connection)
     await fetch_store(connection)
 

@@ -3,7 +3,7 @@ from lcu_driver.connection import Connection
 from openpyxl import load_workbook
 import json, os, pandas, time
 from typing import Any
-from src.utils.summoner import get_summoner_data, get_info, get_infos
+from src.utils.summoner import print_summoner_info, get_info, get_infos
 from src.utils.logger import LogManager
 from src.utils.format import optimize_bool_display, format_runtime
 from src.core.config.servers import platform_TENCENT, platform_RIOT, platform_GARENA
@@ -15,7 +15,7 @@ from src.core.config.headers import challenger_ladder_metadata_header, challenge
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/02
+# 更新（Last update）：     2026/03/07
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -418,7 +418,7 @@ async def connect(connection: Connection) -> None:
     log: LogManager = LogManager(path = os.path.join(log_folder, currentTime + ".log"), mode = "a+", encoding = "utf-8")
     logInput = log.logInput
     logPrint = log.logPrint
-    await get_summoner_data(connection)
+    await print_summoner_info(connection)
     await get_challenger_tier(connection)
     log.write("\n[Program terminated and returned status 0.]\n")
     log.close()

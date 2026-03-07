@@ -6,7 +6,7 @@ from src.core.config.const import GLOBAL_RESPONSE_LAG
 from src.core.dataframes.champions import sort_inventory_champions
 from src.core.dataframes.gameflow import get_champSelect_player, extract_champSelect_player, update_champ_select_session
 from src.core.dataframes.gameMode import check_available_queue
-from src.utils.summoner import get_summoner_data, get_info, get_info_name
+from src.utils.summoner import print_summoner_info, get_info, get_info_name
 from src.utils.logger import LogManager
 from src.utils.format import format_df
 
@@ -28,7 +28,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/06
+# 更新（Last update）：     2026/03/07
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1376,7 +1376,7 @@ async def connect(connection: Connection) -> None:
     log = LogManager(f"日志（Logs）/Customized Program 22 - ARAM Champ Select Probability Test/{currentTime}.log", "w", encoding = "utf-8")
     logInput = log.logInput
     logPrint = log.logPrint
-    await get_summoner_data(connection)
+    await print_summoner_info(connection)
     await prepare_data_resources(connection)
     await main(connection)
     # target_championId, champion_frequency_df = await StartBlindPickCustomAARAM(connection, preset_championIds = [13], premade = False, interval = 0.2, queueId = 3270) #以想玩的英雄启动海克斯大乱斗自定义游戏（Start a custom ARAM: Mayhem game with a wanted champion）

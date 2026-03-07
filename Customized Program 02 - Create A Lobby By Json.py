@@ -1,7 +1,7 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
 from typing import Any, Optional
-from src.utils.summoner import get_summoner_data
+from src.utils.summoner import print_summoner_info
 
 #=============================================================================
 # * 声明（Declaration）
@@ -9,7 +9,7 @@ from src.utils.summoner import get_summoner_data
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/02/09
+# 更新（Last update）：     2026/03/07
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -55,7 +55,7 @@ async def create_custom_lobby(connection: Connection) -> None:
 #-----------------------------------------------------------------------------
 @connector.ready
 async def connect(connection: Connection) -> None:
-    await get_summoner_data(connection)
+    await print_summoner_info(connection)
     await create_custom_lobby(connection)
 
 @connector.close

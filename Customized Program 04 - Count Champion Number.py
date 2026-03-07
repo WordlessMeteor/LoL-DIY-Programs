@@ -5,7 +5,7 @@ from typing import Any
 from src.utils.patch import get_cdragon_patchList
 from src.utils.webRequest import requestUrl
 from src.utils.format import format_df, addDefaultStyle
-from src.utils.summoner import get_summoner_data
+from src.utils.summoner import print_summoner_info
 from src.utils.repeatConnect import LCUConnect
 from src.core.config.localization import language_ddragon, language_cdragon
 from src.core.dataframes.champions import test_bot, sort_ddragon_champions, sort_inventory_champions, sort_plugin_champions
@@ -16,7 +16,7 @@ from src.core.dataframes.champions import test_bot, sort_ddragon_champions, sort
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/03
+# 更新（Last update）：     2026/03/07
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -344,7 +344,7 @@ async def count_champions(connection: Connection) -> None:
 # websocket
 #-----------------------------------------------------------------------------
 async def connect(connection: Connection) -> None: #注意到这里没有加装饰器（Note that here's not a decorator）
-    await get_summoner_data(connection)
+    await print_summoner_info(connection)
     await count_champions(connection)
 
 #-----------------------------------------------------------------------------

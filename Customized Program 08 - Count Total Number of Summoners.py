@@ -3,7 +3,7 @@ from lcu_driver.connection import Connection
 import json, keyboard, os, pandas, time
 from typing import Any
 from src.utils.format import addDefaultStyle, optimize_bool_display
-from src.utils.summoner import get_summoner_data, get_info
+from src.utils.summoner import print_summoner_info, get_info
 from src.utils.logger import LogManager
 from src.utils.webRequest import SGPSession
 from src.core.config.headers import info_header
@@ -15,7 +15,7 @@ from src.core.dataframes.matchHistory import get_matchSummary_sgp
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/04
+# 更新（Last update）：     2026/03/07
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -235,7 +235,7 @@ async def connect(connection: Connection):
     log = LogManager(os.path.join(log_folder, currentTime + ".log"), mode = "a+", encoding = "utf-8")
     logInput = log.logInput
     logPrint = log.logPrint
-    await get_summoner_data(connection)
+    await print_summoner_info(connection)
     await prepare_data_resources(connection)
     info_df, interactions = await interaction_traverse_summoner(connection)
 

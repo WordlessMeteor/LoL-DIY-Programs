@@ -4,7 +4,7 @@ import copy, json, numpy, os, pandas, platform, pyperclip, re, time, traceback
 from typing import Any, Optional
 from src.utils.format import getISOTime, optimize_bool_display, format_df, addDefaultStyle, pyobj2json
 from src.utils.logger import LogManager
-from src.utils.summoner import get_summoner_data, get_info_name
+from src.utils.summoner import print_summoner_info, get_info_name
 from src.core.config.localization import slotTypes, positions, recommendedAttributes
 from src.core.config.headers import perk_header, recommendedPage_header, perkPage_header
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
@@ -16,7 +16,7 @@ from src.core.dataframes.champions import sort_inventory_champions
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/06
+# 更新（Last update）：     2026/03/07
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1131,7 +1131,7 @@ async def connect(connection: Connection) -> None:
     log = LogManager(path = os.path.join(log_folder, currentTime + ".log"), mode = "a+", encoding = "utf-8")
     logInput = log.logInput
     logPrint = log.logPrint
-    await get_summoner_data(connection)
+    await print_summoner_info(connection)
     await prepare_data_resources(connection)
     await save_platform_info(connection)
     await configure_perks(connection)

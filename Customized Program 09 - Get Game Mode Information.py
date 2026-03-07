@@ -3,7 +3,7 @@ from lcu_driver.connection import Connection
 import os, pandas, time
 from typing import Any
 from src.utils.format import format_df, addDefaultStyle
-from src.utils.summoner import get_summoner_data
+from src.utils.summoner import print_summoner_info
 from src.core.config.localization import gamemaps
 from src.core.dataframes.gameMode import sort_queue_data, check_available_queue
 
@@ -13,7 +13,7 @@ from src.core.dataframes.gameMode import sort_queue_data, check_available_queue
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/04
+# 更新（Last update）：     2026/03/07
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -85,7 +85,7 @@ async def print_available_queue(connection: Connection) -> None:
 #-----------------------------------------------------------------------------
 @connector.ready
 async def connect(connection: Connection) -> None:
-    await get_summoner_data(connection)
+    await print_summoner_info(connection)
     print("是否导出游戏队列数据？（输入任意键不导出，否则导出）\nExport queue data? (Enter anything to refuse exporting, or null to export)")
     export: str = input()
     if export == "":

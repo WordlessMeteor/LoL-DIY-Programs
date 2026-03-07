@@ -2,7 +2,7 @@ from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import argparse, os, pandas, psutil, time, win32com.client
 from typing import Any
-from src.utils.summoner import get_summoner_data, get_info, get_info_name, sort_summoner_info
+from src.utils.summoner import print_summoner_info, get_info, get_info_name, sort_summoner_info
 from src.utils.logger import LogManager
 from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, normalize_file_name, verify_uuid
 from src.utils.webRequest import requestUrl, SGPSession
@@ -48,7 +48,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/06
+# 更新（Last update）：     2026/03/07
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -995,7 +995,7 @@ async def connect(connection: Connection) -> None:
     logInput = log.logInput
     logPrint = log.logPrint
     await sgpSession.init(connection)
-    await get_summoner_data(connection)
+    await print_summoner_info(connection)
     await prepare_data_resources(connection, verbose = not args.nonverbose)
     while True:
         logPrint('按回车键以继续，或者输入任意非空字符串以退出程序。\nPress Enter to continue, or submit any non-empty string to exit the program.')

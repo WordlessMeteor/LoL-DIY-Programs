@@ -12,14 +12,16 @@ from src.core.config.headers import profile_header
 from src.core.config.localization import tiers, challengeCategories, challengeCrystalLevels, titleAcquisitionTypes
 
 #-----------------------------------------------------------------------------
-# 获得召唤师数据（Get access to summoner data）
+# 输出召唤师信息（Output summoner information）
 #-----------------------------------------------------------------------------
-async def get_summoner_data(connection: Connection):
-    summoner: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
-    print("displayName:    %s" %(summoner["gameName"] + "#" + summoner["tagLine"]))
-    print("summonerId:     %s" %(summoner["summonerId"]))
-    print("puuid:          %s" %(summoner["puuid"]))
-    print("-")
+async def print_summoner_info(connection: Connection, name: str = "current-summoner") -> None:
+    info: dict[str, Any] = await get_info(connection, name)
+    if info["info_got"]:
+        info_body: dict[str, Any] = info["body"]
+        print("displayName:    %s" %(info_body["gameName"] + "#" + info_body["tagLine"]))
+        print("summonerId:     %s" %(info_body["summonerId"]))
+        print("puuid:          %s" %(info_body["puuid"]))
+        print("-")
 
 #-----------------------------------------------------------------------------
 #  lockfile

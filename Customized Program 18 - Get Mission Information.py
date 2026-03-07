@@ -3,7 +3,7 @@ from lcu_driver.connection import Connection
 import os, pandas, re, time
 from openpyxl import load_workbook
 from typing import Any
-from src.utils.summoner import get_summoner_data, get_info_name
+from src.utils.summoner import print_summoner_info, get_info_name
 from src.utils.format import getISOTime, optimize_bool_display, format_df, addDefaultStyle
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.config.headers import mission_header, objective_group_header, objective_category_header
@@ -15,7 +15,7 @@ from src.core.config.localization import celebrationTypes, clientNotifyLevels, d
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/02
+# 更新（Last update）：     2026/03/07
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -315,7 +315,7 @@ async def check_repeating_missions(connection: Connection) -> None:
 #-----------------------------------------------------------------------------
 @connector.ready
 async def connect(connection: Connection) -> None:
-    await get_summoner_data(connection)
+    await print_summoner_info(connection)
     await save_platform_info(connection)
     print("是否导出所有任务信息？（输入任意键不导出，否则导出。）\nDo you want to export all missions' information? (Submit any non-empty string to refuse exporting, or null to export.)")
     if not bool(input()):
