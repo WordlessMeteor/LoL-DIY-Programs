@@ -293,13 +293,15 @@ def GetCandidateChampionChoices(candidate_championId_options: Optional[list[list
         if not (isinstance(candidate_championId_options, list) and all(map(lambda x: isinstance(x, list) and all(map(lambda y: isinstance(y, int), x)), candidate_championId_options))):
             candidate_championId_options = [[]]
     valid_championId_options: list[list[int]] = []
+    valid_championId_optionSets: list[set[int]] = []
     for option in candidate_championId_options:
         option1: list[int] = []
         for championId in option:
             if championId in LoLChampions and not championId in option1: #这一步实现了候选英雄序号列表去重（This step achieves deduplication of the candidate championId list）
                 option1.append(championId)
-        if option1 != [] and not option1 in valid_championId_options: #这一步实现了候选英雄方案去重（This step achieves deduplication of the candidate championId schemes）
+        if option1 != [] and not set(option1) in valid_championId_optionSets: #这一步实现了候选英雄方案去重（This step achieves deduplication of the candidate championId schemes）
             valid_championId_options.append(option1)
+            valid_championId_optionSets.append(set(option1))
     if len(valid_championId_options) == 0:
         valid_championId_options.append([]) #保证该列表中至少有一个元素（Ensure there's at least one element in this list）
     return valid_championId_options
