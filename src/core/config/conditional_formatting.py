@@ -23,7 +23,7 @@ def addFormat_LoLHistory_wb(worksheet: openpyxl.workbook.child._WorkbookChild, L
 
 def addFormat_LoLGame_summary_wb(worksheet: openpyxl.workbook.child._WorkbookChild, LoLGame_summary_df: pandas.DataFrame, numColorScale_order: int = 5) -> None:
     #定义条件格式（Define the conditional formats）
-    twoDigitPercentage_columns_lol: list[str] = [column for column in LoLgame_summary_df.columns if column.endswith("_percent") or column == "GUE"] #百分比（Percentage）
+    twoDigitPercentage_columns_lol: list[str] = [column for column in LoLGame_summary_df.columns if column.endswith("_percent") or column == "GUE"] #百分比（Percentage）
     oneDigitFloat_columns_lol: list[str] = ["KDA"] #一位小数（One-digit float）
     threeDigitFloat_columns_lol: list[str] = ["CSPM", "D/G", "GPM"] #三位小数（Three-digit float）
     colorScale_columns_lol: list[str] = [column for column in LoLGame_summary_df.columns if column.endswith("_order")] #条件格式——渐变颜色（Conditional formatting - color scaling）

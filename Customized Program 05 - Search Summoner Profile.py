@@ -13,13 +13,14 @@ from src.core.config.headers import profile_header, mastery_header, ranked_heade
 from src.core.config.localization import language_cdragon, language_ddragon, tiers, tiers_all, ratedTiers, challengeCategories, challengeCrystalLevels, titleAcquisitionTypes, queueTypes
 from src.core.config.servers import valid_platformIds, set_platform_folder, set_summonerInfo_folder, save_platform_info
 from src.core.config.conditional_formatting import addFormat_LoLHistory_wb, addFormat_LoLGame_summary_wb, addFormat_LoLGame_summary_wb_transpose
-#from src.core.dataframes.ranked import sort_game_leaderboard
+from src.core.dataframes.ranked import sort_game_leaderboard
 from src.core.dataframes.matchHistory import get_LoLHistory, get_matchSummary_sgp, get_matchDetails_sgp, sort_LoLHistory, sort_LoLHistory_sgp, reconstruct_LoLHistory, reconstruct_LoLHistory_sgp, reconstruct_TFTHistory, get_LoLGame_summary, get_game_summary_sgp, get_LoLGame_timeline, get_game_timeline_sgp, sort_LoLGame_summary, sort_LoLGame_summary_sgp, sort_LoLGame_timeline, sort_LoLGame_timeline_sgp, get_TFTHistory, sort_TFTHistory, sort_TFTGame_summary
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-a", "--lol-api", help = "指定通过什么接口获取英雄联盟对局概要和时间轴（Specify the interface used to fetch LoL game summary and timeline）", action = "store", type = str, choices = ["lcu", "sgp"], default = "sgp")
 # parser.add_argument("-l", "--lol-api-legacy", help = "指定是否使用传统LCU API接口获取英雄联盟对局概要和时间轴（Specify whether to use the traditional LCU API to fetch LoL game summary and timeline）", action = "store_true") #这个变量和上面的作用相同（This argument works the same way as the above one）
 parser.add_argument("-ic", "--info-color", help = "为对局概要工作表施加条件格式（Add conditional formatting to match summary sheets）", action = "store_true") #这会对性能和工作簿大小有较大影响（This seriously affects the program's performance and the workbook size）
+parser.add_argument("-lb", "--export-leaderboard", help = "导出每场对局的社交排行榜工作表。时间开销大（Export the social leaderboard data of each match. Time consuming）", action = "store_true")
 parser.add_argument("-n", "--deny-empty-sheet-creation", help = "在创建工作簿的情况下不创建空白工作表（Deny creating empty sheets if a new workbook is created）", action = "store_true") #主要应用于从小工作簿移动工作表到大工作簿的情形（Mainly used in the case where sheets are moved from a small workbook into a bigger workbook）
 parser.add_argument("-r", "--reserve", help = "在对局不包含主玩家的情况下仍然加载该对局（Load a match even if it doesn't contain the main player）", action = "store_true")
 parser.add_argument("-rt", "--reserve-text", help = "在对局不包含主玩家的情况下仍然保存该对局（Save a match even if it doesn't contain the main player）", action = "store_true")
@@ -1664,7 +1665,7 @@ async def search_profile(connection: Connection) -> None:
         ladder_htmltable: str = ladder_df.to_html(escape = False)
         
         #初始化对局记录相关变量（Initialize match history related variables）
-        # game_leaderboard_dfs: dict[int, pandas.DataFrame] = {}
+        game_leaderboard_dfs: dict[int, pandas.DataFrame] = {}
         game_summary_dfs: dict[int, pandas.DataFrame] = {}
         game_timeline_dfs: dict[int, pandas.DataFrame] = {}
         game_event_dfs: dict[int, pandas.DataFrame] = {}
@@ -1878,7 +1879,7 @@ async def search_profile(connection: Connection) -> None:
                 for matchId in LoLMatchIDs:
                     match_id: str = f"{platformId}_{matchId}"
                     LoLGame_summary_export: bool = not (old_LoLMatch_detected and update_unsaved_only and matchId in saved_LoLMatchIDs) #标记是否导出对局详细信息。如果是在批量查询全部对局的情况下仅保存本地没有的对局，且该对局已在本地，则不保存本场对局（Marks whether to export the match information. If the user submits "3" to search matches in batch and selected to update the matches that don't exist locally, while the current match already exists, then the program won't export this match）
-                    #LoLGame_leaderboard_export: bool = False #标记是否导出对局排行榜。这一块目前待定，未来考虑设计识别成只有那些要保存的匹配对局才导出（Marks whether to export the match leaderboard. This is currently undicided, and in the future it should export matched games to be saved as planned）
+                    LoLGame_leaderboard_export: bool = args.export_leaderboard #标记是否导出对局排行榜。仅可通过命令行变量指定（Marks whether to export the match leaderboard. Can only be specified by the command line argument）
                     LoLGame_timeline_export: bool = LoLGame_summary_export #标记是否导出对局时间轴。时间轴的整理依赖于详细信息，因此目前认为这两者的值相同（Marks whether to export the match timeline. Timeline data organization is based on the match information, so its value is set the same as the above）
                     #LoLGame_event_export: bool = LoLGame_timeline_export #标记是否导出对局事件信息。由于事件信息源于时间轴，因此这两者的值在任何情形下是相同的（Marks whether to export the match events. Because events are extracted from the timeline, these two values should be the same under any circumstance）
                     info_text_saved = timeline_text_saved = False #标记对局概要和时间轴的文本文档是否保存（Marks whether the json files of match summary and timeline are saved）
@@ -1935,6 +1936,7 @@ async def search_profile(connection: Connection) -> None:
                             match_reserve_strategy[matchId] = match_reserve
                     else:
                         LoLGame_summary_export = False
+                        LoLGame_leaderboard_export = False
                         info_exist_error[matchId] = True
                         save_one_json: bool = False
                     ##时间轴/详细信息（Timeline / Details）
@@ -1960,7 +1962,15 @@ async def search_profile(connection: Connection) -> None:
                     
                     #提示（Prompt）
                     process_header: str = "保存进度（Saving process）" if save_all_json and save_one_json else "加载进度（Loading process）"
-                    timeline_note: str = "" if not (old_LoLMatch_detected and update_unsaved_only) or LoLGame_timeline_export and (not save_all_json or timeline_text_saved) else " (Match timeline skipped)" if not LoLGame_timeline_export else " (Exceptional timeline neglected)"
+                    if LoLGame_timeline_export:
+                        timeline_note: str = ""
+                    else:
+                        if old_LoLMatch_detected and update_unsaved_only:
+                            timeline_note = " (Match timeline skipped)"
+                        elif save_all_json:
+                            timeline_note = " (Exceptional match bypassed)"
+                        else:
+                            timeline_note = ""
                     logPrint("%s：%d/%d\t对局序号（MatchID）： %d%s" %(process_header, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, timeline_note), print_time = True)
                     
                     #导出数据（Export data）
@@ -1987,11 +1997,14 @@ async def search_profile(connection: Connection) -> None:
                             LoLGame_summary_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments = sort_LoLGame_summary(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = current_puuid_list, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, log = log)
                     
                         #社交排行榜（Social leaderboard）
-                        # if use_sgp:
-                        #     participant_puuid: list[str] = list(map(lambda x: x["puuid"], LoLGame_summary["json"]["participants"]))
-                        # else:
-                        #     participant_puuid: list[str] = list(map(lambda x: x["player"]["puuid"], LoLGame_summary["participantIdentities"]))
-                        # LoLGame_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = participant_puuid, log = log)
+                        if args.export_leaderboard:
+                            if use_sgp:
+                                participant_puuid: list[str] = list(map(lambda x: x["puuid"], LoLGame_summary["json"]["participants"]))
+                            else:
+                                participant_puuid: list[str] = list(map(lambda x: x["player"]["puuid"], LoLGame_summary["participantIdentities"]))
+                            LoLGame_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = participant_puuid, log = log)
+                        else:
+                            LoLGame_leaderboard_df = pandas.DataFrame()
                     else:
                         if status == 404: #由于时间轴的整理依赖于概要，仅根据对局概要的获取情况来判断对局是否存在即可（Because organizing timeline relies on the summary, the status of getting the match summary is enough for judging whether a match file exists）
                             LoLMatches_not_found.append(matchId)
@@ -1999,6 +2012,7 @@ async def search_profile(connection: Connection) -> None:
                             error_LoLMatchIDs.append(matchId)
                         LoLGame_summary_error: dict[str, list[str]] = {"项目": list(error_header.values()), "items": list(error_header.keys()), "值": [LoLGame_summary.get(key, "") for key in error_header_keys]}
                         LoLGame_summary_df: pandas.DataFrame = pandas.DataFrame(data = LoLGame_summary_error)
+                        LoLGame_leaderboard_df = pandas.DataFrame()
                     
                     ##时间轴/详细信息（Timeline / Details）
                     LoLGame_timeline_df: pandas.DataFrame = pandas.DataFrame()
@@ -2028,8 +2042,8 @@ async def search_profile(connection: Connection) -> None:
                             else:
                                 LoLGame_timeline_df, LoLGame_event_df, LoLItems = sort_LoLGame_timeline(LoLGame_timeline, LoLGame_summary, LoLChampions, LoLItems, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, log = log)
                     
-                    # if LoLGame_leaderboard_export:
-                    #     game_leaderboard_dfs[matchId] = LoLGame_leaderboard_df.copy(deep = True)
+                    if LoLGame_leaderboard_export:
+                        game_leaderboard_dfs[matchId] = LoLGame_leaderboard_df.copy(deep = True)
                     if LoLGame_summary_export:
                         game_summary_dfs[matchId] = LoLGame_summary_df.copy(deep = True) #这里添加的LoLGame_summary_df会在下一次循环中发生改变，这是数据框类型的特性。因此这里采用深复制，将原有内容克隆到另外一个地址，这样能保证每次添加的是不同的对局概要（The added LoLGame_summary_df will be modified next time in the loop, which belongs to the characteristics of DataFrame data type. Therefore a deep copy is used here to clone the original content to another address, so that each time the appended content is different）
                     if LoLGame_timeline_export: #即使这里显示是导出的，由于后面取对局序号时是按照对局概要来取的，所以如果对局概要获取异常而对局时间轴获取正常，最终对局时间轴也不会导出到Excel中（Although it seems that a timeline dataframe is to be exported, because the final matchIDs are obtained from `game_summary_dfs`, if the program fails to get match summary but succeeds to get match timeline, the timeline information won't be exported into Excel）
@@ -2234,7 +2248,7 @@ async def search_profile(connection: Connection) -> None:
                 for matchId in TFTMatchIDs:
                     match_id: str = f"{platformId}_{matchId}"
                     TFTGame_summary_export: bool = not (old_TFTMatch_detected and update_unsaved_only and matchId in saved_TFTMatchIDs)
-                    #TFTGame_leaderboard_export: bool = False
+                    TFTGame_leaderboard_export: bool = args.export_leaderboard
                     info_text_saved: bool = False
                     isTFT[matchId] = False #前面部分对局即使添加到此字典中，其值也是False（Even if some matches are added into this dictionary previously, their values are still False）
                     
@@ -2309,7 +2323,8 @@ async def search_profile(connection: Connection) -> None:
                                 match_reserve_strategy[matchId] = match_reserve
                         else:
                             TFTGame_summary_export: bool = False
-                            #TFTGame_leaderboard_export: bool = False
+                            TFTGame_leaderboard_export: bool = False
+                            participant_puuid = []
                             info_exist_error[matchId] = True
                             save_one_json = False
                         
@@ -2339,21 +2354,26 @@ async def search_profile(connection: Connection) -> None:
                             TFTGame_summary_df, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits = await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = TFTMatchIDs.index(matchId), current_puuid = current_puuid,useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, useInfoDict = True, infos = infos, sortStats = False, log = log)
                             
                             #社交排行榜（Social leaderboard）
-                            # TFTGame_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = participant_puuid, log = log)
+                            if args.export_leaderboard:
+                                TFTGame_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = participant_puuid, log = log)
+                            else:
+                                TFTGame_leaderboard_df = pandas.DataFrame()
                         else:
                             TFTMatches_not_found.append(matchId)
                             TFTGame_summary_error: dict[str, list[str]] = {"项目": list(error_header.values()), "items": list(error_header.keys()), "值": [TFTGame_summary.get(key, "") for key in error_header_keys]}
                             TFTGame_summary_df: pandas.DataFrame = pandas.DataFrame(data = TFTGame_summary_error)
+                            TFTGame_leaderboard_df = pandas.DataFrame()
                         #注意到对于对局出现异常的情况，英雄联盟对局概要数据框的构建方式和云顶之弈有所不同。这是因为当云顶之弈对局概要获取异常时，往往是其“json”键为空或者无“json”键，而没有详细报错信息（Note that when an error occurs to a match, the method of creating the LoL match summary dataframe is different from that of creating the TFT match summary dataframe. This is because when a TFT match summary fails to be loaded, either its "json" value is null, or its "json" key is missing, without a detailed error information）
                     else: #为了简化输出，跳过导出的对局概要不再输出提示（To simplify output, skipped match summary won't have prompts）
                         info_note: str = " (Match information skipped)"
                         TFTGame_summary_df: pandas.DataFrame = pandas.DataFrame()
+                        TFTGame_leaderboard_df = pandas.DataFrame()
                     
                     #云顶之弈无时间轴（TFT games don't have timeline）
                     timeline_exist_error[matchId] = True #云顶之弈对局中没有时间轴信息，因此每个云顶之弈对局的时间轴标记为异常获取（There's no timeline information in each TFT match, so each TFT match's timeline is labeled as "error" captured）
 
-                    # if TFTGame_leaderboard_export:
-                    #     game_leaderboard_dfs[matchId] = TFTGame_leaderboard_df.copy(deep = True)
+                    if TFTGame_leaderboard_export:
+                        game_leaderboard_dfs[matchId] = TFTGame_leaderboard_df.copy(deep = True)
                     if TFTGame_summary_export:
                         game_summary_dfs[matchId] = TFTGame_summary_df.copy(deep = True)
             
@@ -2521,8 +2541,9 @@ async def search_profile(connection: Connection) -> None:
                                     match_reserved += 1
                                     if not info_exist_error[matchIDs[i]]:
                                         game_summary_df = game_summary_dfs[matchIDs[i]]
-                                        # addDefaultStyle(game_leaderboard_dfs[matchIDs[i]]).to_excel(excel_writer = writer, sheet_name = "Match %d - Leaderboard" %(matchIDs[i]))
-                                        # logPrint("对局段位排行榜导出完成。\nMatch leaderboard exported.")
+                                        if args.export_leaderboard:
+                                            addDefaultStyle(game_leaderboard_dfs[matchIDs[i]]).to_excel(excel_writer = writer, sheet_name = "Match %d - Leaderboard" %(matchIDs[i]))
+                                            logPrint("对局段位排行榜导出完成。\nMatch leaderboard exported.")
                                         addDefaultStyle(game_summary_df.transpose()).to_excel(excel_writer = writer, sheet_name = "Match %d - Summary" %(matchIDs[i]))
                                         if isLoL.get(matchIDs[i], False) and args.info_color:
                                             worksheet = writer.sheets["Match %d - Summary" %(matchIDs[i])]
@@ -2607,15 +2628,15 @@ async def search_profile(connection: Connection) -> None:
                             if sheet_iter in sheetnames:
                                 sheetnames_sorted.append(sheet_iter)
                         for matchId in sorted(match_dict.keys()):
-                            if "L" in match_dict[matchId]:
+                            if "L" in match_dict[matchId]: #对局排行榜（Match leaderboard）
                                 sheetnames_sorted.append(match_dict[matchId]["L"])
-                            if "I" in match_dict[matchId]:
+                            if "I" in match_dict[matchId]: #对局信息（已弃用）【Match information (deprecated)】
                                 sheetnames_sorted.append(match_dict[matchId]["I"])
-                            if "S" in match_dict[matchId]:
+                            if "S" in match_dict[matchId]: #对局概要（Match summary）
                                 sheetnames_sorted.append(match_dict[matchId]["S"])
-                            if "T" in match_dict[matchId]:
+                            if "T" in match_dict[matchId]: #对局时间轴（Match timeline）
                                 sheetnames_sorted.append(match_dict[matchId]["T"])
-                            if "E" in match_dict[matchId]:
+                            if "E" in match_dict[matchId]: #对局事件（Match event）
                                 sheetnames_sorted.append(match_dict[matchId]["E"])
                         #下面排列所有工作表（The following code arrange all sheets）
                         logPrint("正在排序……\nOrdering ...")
