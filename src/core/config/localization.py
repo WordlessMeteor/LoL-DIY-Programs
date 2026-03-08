@@ -1337,6 +1337,7 @@ lootCategories: dict[str, str] = {
 }
 itemStatus_dict: dict[str, str] = {
     "NONE": "未拥有",
+    "FREE": "免费使用",
     "RENTAL": "租借中",
     "OWNED": "已拥有"
 }
@@ -2116,6 +2117,7 @@ honorType_tooltip_bodies: dict[str, str] = {
 # }
 # itemStatus_dict: dict[str, str] = {
 #     "NONE": "NONE",
+#     "FREE": "FREE",
 #     "RENTAL": "RENTAL",
 #     "OWNED": "OWNED"
 # }
