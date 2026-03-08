@@ -22,7 +22,7 @@ from src.core.dataframes.gameflow import sort_ChampSelect_players
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/07
+# 更新（Last update）：     2026/03/08
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -48,6 +48,7 @@ LoLItems: dict[int, dict[str, Any]] = {}
 perks: dict[int, dict[str, Any]] = {}
 perkstyles: dict[int, dict[str, Any]] = {}
 CherryAugments: dict[int, dict[str, Any]] = {}
+TFTBasic_got: bool = False
 TFTAugments: dict[str, dict[str, Any]] = {}
 TFTCompanions: dict[str, dict[str, Any]] = {}
 TFTCompanions_itemIdMap: dict[str, dict[str, Any]] = {}
@@ -71,7 +72,9 @@ connector = Connector()
 #-----------------------------------------------------------------------------
 async def prepare_data_resources(connection: Connection) -> None:
     logPrint("正在加载数据资源……\nLoading data resources ...")
-    global session, regaliaBanners, challenges, queues, gameQueues, summonerIcons, LoLChampions, titles, wardSkins, championSkins, spells, LoLItems, perks, perkstyles, CherryAugments, platformId, TFTAugments, TFTCompanions, TFTCompanions_itemIdMap, TFTTraits, TFTChampions, TFTItems, TFTDamageSkins, TFTMapSkins
+    global platformId, regaliaBanners, challenges, queues, gameQueues, summonerIcons, LoLChampions, titles, wardSkins, championSkins, spells, LoLItems, perks, perkstyles, CherryAugments, TFTCompanions, TFTCompanions_itemIdMap, TFTTraits, TFTChampions, TFTItems, TFTDamageSkins, TFTMapSkins
+    ##大区信息（Platform information）
+    platformId = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
     ##旗帜（Regalia banner）
     regaliaBanners = await (await connection.request("GET", "/lol-regalia/v3/inventory/REGALIA_BANNER")).json()
     ##成就（Challenge）
@@ -119,22 +122,6 @@ async def prepare_data_resources(connection: Connection) -> None:
     ##斗魂竞技场强化符文（Arena augment）
     CherryAugments_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/cherry-augments.json")).json()
     CherryAugments = {int(CherryAugment_iter["id"]): CherryAugment_iter for CherryAugment_iter in CherryAugments_source}
-    ##云顶之弈基础信息（TFT basic）
-    platformId = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
-    region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
-    locale: str = region_locale["locale"]
-    URLPatch = "pbe" if platformId == "PBE1" or platformId == "PBE" else "latest"
-    TFTBasic_url: str = "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(URLPatch, locale.lower())
-    response, status, session = requestUrl("GET", TFTBasic_url, session = session, log = log)
-    if status != 200:
-        if status == 404:
-            logPrint("云顶之弈基础信息获取失败！请检查以下链接的可用性。\nTFT basic information capture failure! Please check the URL availability. The program will skip this map.\n%s" %(TFTBasic_url))
-        else:
-            logPrint("云顶之弈基础信息获取失败！请检查系统网络状况和代理设置。\nTFT basic information capture failure! Please check the system network condition and proxy configuration.")
-        TFTBasic_source: dict[str, Any] = {"items": []}
-    else:
-        TFTBasic_source = response.json()
-    TFTAugments = {item["apiName"]: item for item in TFTBasic_source["items"]}
     ##云顶之弈小小英雄（TFT companion）
     TFTCompanions_source: dict[str, Any] = await (await connection.request("GET", "/lol-game-data/assets/v1/companions.json")).json()
     TFTCompanions = {companion_iter["contentId"]: companion_iter for companion_iter in TFTCompanions_source}
@@ -2118,6 +2105,7 @@ async def manage_friend(connection: Connection) -> None:
         logPrint("请选择好友管理行为：\nPlease select a friend management action:\n1\t添加好友（Add friends）\n2\t好友请求操作（Friend request operations）\n3\t移动好友至分组（Move to group）\n4\t修改好友备注（Add/Edit note）\n5\t解除好友关系（Unfriend）\n6\t拉入聊天黑名单（Block）")
 
 async def invite(connection: Connection) -> None:
+    global TFTBasic_got, session, TFTAugments
     gameflow_phase: str = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
     if gameflow_phase == "Lobby":
         friends = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
@@ -2231,6 +2219,25 @@ async def invite(connection: Connection) -> None:
                                         else:
                                             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     elif method[0] == "2":
+                        #仅在需要云顶之弈基础信息时才去获取，因为这个步骤是决速步骤（Only when TFT basic data are required will the program get it, because this step is rate-determining）
+                        if not TFTBasic_got:
+                            ##云顶之弈基础信息（TFT basic）
+                            logPrint("正在初始化云顶之弈强化符文信息……\nInitializing TFT augment data ...")
+                            region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
+                            locale: str = region_locale["locale"]
+                            URLPatch = "pbe" if platformId == "PBE1" or platformId == "PBE" else "latest"
+                            TFTBasic_url: str = "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(URLPatch, locale.lower())
+                            response, status, session = requestUrl("GET", TFTBasic_url, session = session, log = log)
+                            if status != 200:
+                                if status == 404:
+                                    logPrint("云顶之弈基础信息获取失败！请检查以下链接的可用性。\nTFT basic information capture failure! Please check the URL availability. The program will skip this map.\n%s" %(TFTBasic_url))
+                                else:
+                                    logPrint("云顶之弈基础信息获取失败！请检查系统网络状况和代理设置。\nTFT basic information capture failure! Please check the system network condition and proxy configuration.")
+                                TFTBasic_source: dict[str, Any] = {"items": []}
+                            else:
+                                TFTBasic_source = response.json()
+                            TFTAugments = {item["apiName"]: item for item in TFTBasic_source["items"]}
+                            TFTBasic_got = True
                         logPrint("您想要获取简略信息还是详细信息？（输入任意非空字符串以获取详细信息，否则获取简略信息。）\nDo you want to get brief or detailed information? (Submit any non-empty string to get detailed information, or null to get brief information.)")
                         lol_sgp_str: str = logInput()
                         lol_sgp: bool = bool(lol_sgp_str)
