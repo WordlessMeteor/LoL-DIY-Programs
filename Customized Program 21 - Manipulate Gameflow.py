@@ -20,7 +20,7 @@ from src.core.dataframes.matchHistory import get_game_summary_sgp, sort_LoLGame_
 
 urllib3.disable_warnings() #忽略访问游戏数据时产生的警告（Neglect warnings produced when the program is accessing the in-game data）
 parser = argparse.ArgumentParser()
-parser.add_argument("-cp", "--cert_path", help = "指定游戏客户端接口的证书路径（Specify the path of the root certificate for game client API access", action = "store", type = str, default = "")
+parser.add_argument("-cp", "--cert-path", help = "指定游戏客户端接口的证书路径（Specify the path of the root certificate for game client API access", action = "store", type = str, default = "")
 args = parser.parse_args()
 
 #=============================================================================

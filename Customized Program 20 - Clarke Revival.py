@@ -16,11 +16,11 @@ from src.core.dataframes.gameMode import sort_queue_data
 from src.core.dataframes.ranked import sort_game_leaderboard
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-a", "--lol_api", help = "指定通过什么接口获取英雄联盟对局概要和时间轴（Specify the interface used to fetch LoL game summary and timeline）", action = "store", type = str, choices = ["lcu", "sgp"], default = "lcu")
+parser.add_argument("-a", "--lol-api", help = "指定通过什么接口获取英雄联盟对局概要和时间轴（Specify the interface used to fetch LoL game summary and timeline）", action = "store", type = str, choices = ["lcu", "sgp"], default = "lcu")
 parser.add_argument("-c", "--count", help = "指定每个召唤师查询的默认对局数量（Specify the default number of matches to search for each summoner）", action = "store", type = int, default = 20)
-parser.add_argument("-e", "--save_early", help = "只导出早于查询对局的对局（Export only the matches whose creation is earlier than the current queried match）", action = "store_true")
-parser.add_argument("-l", "--locale", help = "选择非《英雄联盟》本地化内容的显示语言（Choose the display language that isn't part of League of Legends localization content）", action = "store")
-parser.add_argument("-os", "--open_after_save", help = "在成功保存文件后，跳过程序询问，直接打开该文件（Once the workbook is saved successfully, directly open this workbook without program asking）", action = "store_true")
+parser.add_argument("-e", "--save-early", help = "只导出早于查询对局的对局（Export only the matches whose creation is earlier than the current queried match）", action = "store_true")
+parser.add_argument("-l", "--locale", help = "选择非《英雄联盟》本地化内容的显示语言（Choose the display language that isn't part of League of Legends localization content）", action = "store", type = str, choices = ["zh_CN", "en_US"], default = "zh_CN")
+parser.add_argument("-os", "--open-after-save", help = "在成功保存文件后，跳过程序询问，直接打开该文件（Once the workbook is saved successfully, directly open this workbook without program asking）", action = "store_true")
 parser.add_argument("-q", "--queues", help = "通过队列序号指定要查询的游戏模式（Specify the game modes to query by queueIds）", action = "append", type = int, default = [])
 parser.add_argument("--verbose", help = "显示详细加载进度（Display detailed loading process）", action = "store_true")
 parser.add_argument("--nonverbose", help = "显示简略加载进度（Display simplified loading process）", action = "store_true")
@@ -48,7 +48,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/07
+# 更新（Last update）：     2026/03/08
 #=============================================================================
 
 #-----------------------------------------------------------------------------

@@ -16,9 +16,9 @@ from src.core.config.headers import LoLGame_summary_header, LoLGame_summary_sgp_
 from src.core.dataframes.matchHistory import get_LoLHistory, get_matchSummary_sgp, sort_LoLHistory, sort_LoLHistory_sgp, sort_LoLGame_stats, sort_LoLGame_stats_sgp, sort_TFTHistory, sort_TFTGame_stats, sort_LoLGame_summary, sort_LoLGame_summary_sgp, sort_TFTGame_summary, get_game_summary_sgp, get_LoLGame_summary
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-a", "--lol_api", help = "指定通过什么接口获取英雄联盟对局概要和时间轴（Specify the interface used to fetch LoL game summary and timeline）", action = "store", type = str, choices = ["lcu", "sgp"], default = "sgp")
+parser.add_argument("-a", "--lol-api", help = "指定通过什么接口获取英雄联盟对局概要和时间轴（Specify the interface used to fetch LoL game summary and timeline）", action = "store", type = str, choices = ["lcu", "sgp"], default = "sgp")
 parser.add_argument("-r", "--reserve", help = "在对局不包含主玩家的情况下仍然加载该对局（Load a match even if it doesn't contain the main player）", action = "store_true")
-parser.add_argument("-ss", "--save_self", help = "在对局包含主玩家的情况下仍然保存其数据（Save the main summoner's data even if they're contained in a match）", action = "store_true")
+parser.add_argument("-ss", "--save-self", help = "在对局包含主玩家的情况下仍然保存其数据（Save the main summoner's data even if they're contained in a match）", action = "store_true")
 args = parser.parse_args()
 use_sgp: bool = args.lol_api == "sgp"
 
