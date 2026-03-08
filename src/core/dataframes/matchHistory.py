@@ -774,7 +774,7 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
     LoLHistory_df = pandas.concat([pandas.DataFrame([LoLHistory_header])[LoLHistory_df.columns], LoLHistory_df], ignore_index = True)
     return (LoLHistory_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments)
 
-async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSession, LoLMatchIDs: list[int], puuid: str | list[str], queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]]]:
+async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSession, LoLMatchIDs: list[int], puuid: str | list[str], queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, LoLGame_summary_cache: Optional[dict[int, dict[str, Any]]] = None, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]]]:
     #参数预处理（Parameter pre-processing）
     if versionList == None:
         versionList = []
@@ -782,6 +782,8 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
         current_versions = {"queue": "", "summonerIcon": "", "spell": "", "LoLChampion": "", "LoLItem": "", "summonerIcon": "", "perk": "", "perkstyle": "", "CherryAugment": ""}
     if unmapped_keys == None:
         unmapped_keys = {"queue": set(), "summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "CherryAugment": set()}
+    if LoLGame_summary_cache == None or not (isinstance(LoLGame_summary_cache, dict) and all(map(lambda x: isinstance(x, int), LoLGame_summary_cache.keys())) and all(map(lambda x: isinstance(x, dict) and all(map(lambda y: y in {"metadata", "json"}, x.keys())), LoLGame_summary_cache.values()))):
+        LoLGame_summary_cache = {}
     if session == None:
         session = requests.Session()
     if log == None:
@@ -809,7 +811,11 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
         for i in range(len(LoLMatchIDs)): #对于对局记录而言，每场对局对应一条记录（For match history, each record represents a match）
             matchId: int = LoLMatchIDs[i]
             match_id: str = f"{platformId}_{matchId}"
-            status, LoLGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, skipTFT = True, log = log)
+            if matchId in LoLGame_summary_cache:
+                LoLGame_summary: dict[str, Any] = LoLGame_summary_cache[matchId]
+                status: int = 200
+            else:
+                status, LoLGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, skipTFT = True, log = log)
             if status != 200 or not LoLGame_summary.get("json"):
                 continue
             LoLGame_summary_json: dict[str, Any] = LoLGame_summary["json"]
@@ -1127,7 +1133,7 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
     LoLHistory_df = pandas.concat([pandas.DataFrame([LoLHistory_header])[LoLHistory_df.columns], LoLHistory_df], ignore_index = True)
     return (LoLHistory_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments)
 
-async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession, TFTMatchIDs: list[int], puuid: str | list[str], queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], useAllVersions: bool = False, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[Any]]] = None, session: Optional[requests.Session] = None, useInfoDict: bool = False, infos: dict[str, dict[str, Any]] = {}, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
+async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession, TFTMatchIDs: list[int], puuid: str | list[str], queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], useAllVersions: bool = False, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[Any]]] = None, TFTGame_summary_cache: Optional[dict[int, dict[str, Any]]] = None, session: Optional[requests.Session] = None, useInfoDict: bool = False, infos: dict[str, dict[str, Any]] = {}, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
     #参数预处理（Parameter pre-processing）
     if versionList == None:
         versionList = []
@@ -1135,6 +1141,8 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
         current_versions = {"queue": "", "TFTAugment": "", "TFTChampion": "", "TFTItem": "", "TFTCompanion": "", "TFTTrait": ""}
     if unmapped_keys == None:
         unmapped_keys = {"queue": set(), "TFTAugment": set(), "TFTChampion": set(), "TFTItem": set(), "TFTCompanion": set(), "TFTTrait": set()}
+    if TFTGame_summary_cache == None or not (isinstance(TFTGame_summary_cache, dict) and all(map(lambda x: isinstance(x, int), TFTGame_summary_cache.keys())) and all(map(lambda x: isinstance(x, dict) and all(map(lambda y: y in {"metadata", "json"}, x.keys())), TFTGame_summary_cache.values()))):
+        TFTGame_summary_cache = {}
     if session == None:
         session = requests.Session()
     if log == None:
@@ -1163,7 +1171,11 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
         for i in range(len(TFTMatchIDs)):
             matchId: int = TFTMatchIDs[i]
             match_id: str = f"{platformId}_{matchId}"
-            status, TFTGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, checkLoL = False, checkTFT = True, log = log, verbose = verbose)
+            if matchId in TFTGame_summary_cache:
+                TFTGame_summary: dict[str, Any] = TFTGame_summary_cache[matchId]
+                status: int = 200
+            else:
+                status, TFTGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, checkLoL = False, checkTFT = True, log = log, verbose = verbose)
             if status != 200 or not TFTGame_summary.get("json"): #在没有json数据的情况下，当然不可能找得到主召唤师（Without json data, the program certainly can't find the main summoner）
                 continue
             TFTGame_summary_json: dict[str, Any] = TFTGame_summary["json"]
@@ -1438,7 +1450,7 @@ def generate_LoLHistory_records(LoLHistory_data: dict[str, Any], LoLGame_summary
     timeline: dict[str, Any] = LoLGame_summary["participants"][participantIndex]["timeline"]
     LoLHistory_header_keys: list[str] = list(LoLHistory_header.keys())
     for i in range(len(LoLHistory_header_keys)):
-        key = LoLHistory_header_keys[i]
+        key: str = LoLHistory_header_keys[i]
         if i == 0:
             to_append: Any = gameIndex
         elif i <= 15:
@@ -3567,7 +3579,7 @@ def sort_LoLGame_summary(LoLGame_summary: dict[str, Any], queues: dict[int, dict
         generate_LoLGameInfo_records(LoLGame_summary_data, LoLGame_summary, i, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = gameIndex, current_puuid = puuidList, bans = bans, legacy_banData_appended = legacy_banData_appended, unmapped_keys = unmapped_keys, log = log, verbose = verbose)
         if sortStats and LoLGame_summary["participantIdentities"][i]["player"]["puuid"] in puuidList: #这个if语句块是适配查战绩脚本而做的修改（This if-block is a modification made to adapt to Customized Program 05）
             for j in range(len(LoLGame_summary_header_keys)):
-                key = LoLGame_summary_header_keys[j]
+                key: str = LoLGame_summary_header_keys[j]
                 LoLGame_stat_data[key].append(LoLGame_summary_data[key][-1]) #直接添加最近一次追加的数据，以简化代码（Directly append the recently appended data to simplify the code）
     #数据框列序整理（Dataframe column ordering）
     LoLGame_summary_statistics_output_order: list[int] = [42, 211, 16, 228, 26, 20, 27, 25, 24, 22, 19, 31, 35, 36, 223, 224, 226, 227, 45, 38, 39, 157, 158, 159, 160, 161, 162, 163, 212, 193, 205, 194, 206, 195, 207, 196, 208, 197, 209, 198, 210, 72, 50, 43, 215, 216, 219, 220, 46, 142, 143, 74, 71, 75, 54, 53, 58, 57, 56, 55, 51, 146, 131, 84, 151, 136, 144, 138, 112, 78, 148, 137, 111, 77, 147, 73, 48, 47, 140, 145, 139, 113, 79, 149, 49, 152, 155, 154, 133, 153, 61, 217, 62, 218, 141, 80, 82, 81, 150, 63, 76, 189, 191, 177, 171, 178, 172, 179, 173, 180, 174, 181, 175, 182, 176, 44, 52, 135, 59, 60, 221, 134, 240, 234, 229, 287, 230, 274, 242, 239, 243, 235, 277, 266, 252, 282, 268, 275, 270, 254, 246, 279, 269, 253, 245, 278, 241, 232, 231, 272, 276, 271, 255, 247, 280, 233, 283, 286, 285, 267, 284, 236, 237, 273, 248, 250, 249, 288, 281, 238, 244, 290, 301, 295, 289, 348, 349, 351, 291, 335, 303, 300, 304, 296, 338, 327, 313, 343, 329, 336, 331, 315, 307, 340, 330, 314, 306, 339, 302, 293, 292, 333, 337, 332, 316, 308, 341, 294, 344, 347, 346, 328, 345, 297, 298, 352, 334, 309, 310, 311, 350, 342, 299, 305]
@@ -3854,7 +3866,13 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
                         break
                 break
         ##斗魂竞技场强化符文（Cherry augments）
-        CherryAugmentIds_match_list: list[int] = sorted(set(augment for s in [set(map(lambda x: x["playerAugment" + str(i)], LoLGame_summary_json["participants"])) for i in range(1, 7)] for augment in s)) #该表达式等价于以下表达式（This expression is equivalent to the following expression）：CherryAugmentIds_match_list = sorted(list(set(map(lambda x: x["playerAugment1"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["playerAugment2"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["playerAugment3"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["playerAugment4"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["playerAugment5"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["playerAugment6"], LoLGame_summary_json["participants"]))))
+        CherryAugmentIds_match_set: set[int] = set()
+        for participant in LoLGame_summary_json["participants"]:
+            for i in range(1, 7):
+                key: str = f"playerAugment{i}"
+                if key in participant:
+                    CherryAugmentIds_match_set.add(participant[key])
+        CherryAugmentIds_match_list: list[int] = sorted(CherryAugmentIds_match_set)
         for i in CherryAugmentIds_match_list:
             if not i in CherryAugments and current_versions["CherryAugment"] != bigVersion and i != 0:
                 CherryAugmentPatch_adopted: str = bigVersion
@@ -3891,7 +3909,7 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
         generate_LoLGameInfo_records_sgp(LoLGame_summary_data, LoLGame_summary, i, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = gameIndex, current_puuid = puuidList, bans = bans, legacy_banData_appended = legacy_banData_appended, unmapped_keys = unmapped_keys, log = log, verbose = verbose)
         if sortStats and LoLGame_summary_json["participants"][i]["puuid"] in puuidList: #这个if语句块是适配查战绩脚本而做的修改（This if-block is a modification made to adapt to Customized Program 05）
             for j in range(len(LoLGame_summary_header_keys)):
-                key = LoLGame_summary_header_keys[j]
+                key: str = LoLGame_summary_header_keys[j]
                 LoLGame_stat_data[key].append(LoLGame_summary_data[key][-1]) #直接添加最近一次追加的数据，以简化代码（Directly append the recently appended data to simplify the code）
     #数据框列序整理（Dataframe column ordering）
     LoLGame_summary_statistics_output_order: list[int] = [219, 210, 110, 583, 144, 128, 129, 142, 125, 143, 67, 21, 176, 53, 580, 581, 94, 130, 80, 147, 51, 50, 54, 215, 216, 178, 179, 180, 181, 182, 183, 184, 213, 192, 204, 193, 205, 194, 206, 195, 207, 196, 208, 197, 209, 93, 63, 45, 222, 223, 226, 227, 96, 92, 97, 49, 71, 70, 73, 72, 65, 162, 126, 111, 169, 148, 159, 152, 113, 100, 164, 151, 112, 99, 163, 95, 60, 59, 57, 58, 156, 157, 161, 153, 154, 114, 101, 165, 61, 171, 174, 173, 132, 172, 64, 77, 224, 78, 225, 91, 56, 158, 103, 150, 155, 166, 167, 81, 82, 104, 106, 168, 83, 105, 66, 47, 107, 108, 98, 48, 55, 76, 127, 124, 109, 43, 44, 102, 68, 69, 170, 62, 46, 79, 149, 160, 133, 135, 137, 138, 220, 140, 141, 557, 571, 563, 559, 564, 560, 565, 561, 566, 562, 575, 573, 576, 574, 553, 551, 552, 145, 74, 75, 228, 115, 139, 627, 613, 598, 683, 629, 626, 630, 602, 615, 670, 647, 642, 676, 656, 667, 660, 644, 633, 672, 659, 643, 632, 671, 628, 610, 609, 607, 608, 664, 665, 669, 661, 662, 645, 634, 673, 611, 678, 681, 680, 649, 679, 614, 620, 621, 625, 606, 666, 636, 658, 663, 684, 674, 675, 623, 624, 637, 638, 616, 600, 639, 640, 631, 601, 605, 619, 648, 646, 641, 596, 597, 635, 617, 618, 677, 612, 599, 622, 657, 668, 650, 651, 652, 653, 682, 654, 655, 757, 705, 704, 728, 714, 699, 785, 786, 788, 730, 727, 731, 703, 716, 772, 748, 743, 778, 758, 769, 762, 745, 734, 774, 761, 744, 733, 773, 729, 711, 710, 708, 709, 766, 767, 771, 763, 764, 746, 735, 775, 712, 780, 783, 782, 750, 781, 715, 721, 722, 789, 726, 707, 768, 737, 765, 760, 787, 776, 777, 724, 725, 717, 701, 740, 741, 738, 739, 732, 702, 706, 720, 749, 747, 742, 697, 698, 736, 718, 719, 779, 713, 700, 723, 759, 770, 751, 752, 753, 754, 784, 755, 756, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521]
@@ -4757,7 +4775,7 @@ def sort_LoLGame_timeline(LoLGame_timeline: dict[str, Any], LoLGame_summary: dic
     for timestamp in sorted(events.keys()):
         event: dict[str, Any] = events[timestamp]
         for i in range(len(LoLGame_event_header)):
-            key = LoLGame_event_header_keys[i]
+            key: str = LoLGame_event_header_keys[i]
             if i <= 14:
                 if i == 1: #被摧毁的建筑物类型（`buildingTypes`）
                     to_append: Any = buildingTypes[event["buildingType"]]
@@ -5039,7 +5057,7 @@ def sort_LoLGame_timeline_sgp(LoLGame_timeline: dict[str, Any], LoLGame_summary:
     for timestamp in sorted(events.keys()):
         event: dict[str, Any] = events[timestamp]
         for i in range(len(LoLGame_event_header)):
-            key = LoLGame_event_header_keys[i]
+            key: str = LoLGame_event_header_keys[i]
             if i <= 37:
                 if key in event:
                     if i == 5: #被摧毁的建筑物类型（`buildingTypes`）
