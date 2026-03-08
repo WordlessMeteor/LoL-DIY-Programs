@@ -18,7 +18,7 @@ from src.utils.runtimeDebug import subscope
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/03/04
+# 更新（Last update）：     2026/03/08
 #=============================================================================
 
 #定义异质性检验函数（Define heterogeneity verification function）
@@ -350,7 +350,7 @@ class LoLDataExtractor:
         '''
         logPrint = self.log.logPrint
         game_version_url: str = f"https://raw.communitydragon.org/{self.version}/compat-version-metadata.json"
-        response, status, self.session = requestUrl("GET", game_version_url, session = self.session)
+        source, status, self.session = requestUrl("GET", game_version_url, session = self.session)
         if status != 200:
             if status == -1:
                 logPrint("游戏版本获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nGame version capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -359,7 +359,7 @@ class LoLDataExtractor:
             time.sleep(3)
             self.init_patch()
             return
-        game_version: dict[str, str] = response.json()
+        game_version: dict[str, str] = source.json()
         #数据框构建（Build the dataframe）
         self.patch = game_version["version"]
         self.patch_number = re.search(r"[\d\.]+", self.patch).group()
@@ -398,7 +398,7 @@ class LoLDataExtractor:
         '''
         logPrint = self.log.logPrint
         file_exported_url: str = f"https://raw.communitydragon.org/{self.version}/cdragon/files.exported.txt"
-        response, status, self.session = requestUrl("GET", file_exported_url, session = self.session)
+        source, status, self.session = requestUrl("GET", file_exported_url, session = self.session)
         if status != 200:
             if status == -1:
                 logPrint("文件导出列表获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nFile export list capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -407,7 +407,7 @@ class LoLDataExtractor:
             time.sleep(3)
             self.init_fileExportList_readiness()
             return
-        self.files_exported = response.text.splitlines()
+        self.files_exported = source.text.splitlines()
         self.fileExportList_ready = True
     
     def read_exported_files(self, path: str) -> None: ##离线读取——供开发者使用（Offline reading - For developer use）
@@ -434,7 +434,7 @@ class LoLDataExtractor:
         if shared_bin_url in self.__class__.data_cache["online"]:
             self.shared_bin = self.__class__.data_cache["online"][shared_bin_url]
         else:
-            response, status, self.session = requestUrl("GET", shared_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", shared_bin_url, session = self.session)
             if status != 200:
                 if status == -1:
                     logPrint("共享数据获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nShared data capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -443,7 +443,7 @@ class LoLDataExtractor:
                 time.sleep(3)
                 self.init_strtable_readiness()
                 return
-            self.shared_bin = response.json()
+            self.shared_bin = source.json()
             self.__class__.data_cache["online"][shared_bin_url] = self.shared_bin
         self.shared_ready = True
     
@@ -523,7 +523,7 @@ class LoLDataExtractor:
             if mainstringtable_target_url in self.__class__.data_cache["online"]:
                 self.mainstringtable_target = self.__class__.data_cache["online"][mainstringtable_target_url]
             else:
-                response, status, self.session = requestUrl("GET", mainstringtable_target_url, session = self.session)
+                source, status, self.session = requestUrl("GET", mainstringtable_target_url, session = self.session)
                 if status != 200:
                     if status == -1:
                         logPrint("目标语言的字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nStringtable in target language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -532,14 +532,14 @@ class LoLDataExtractor:
                     time.sleep(3)
                     self.init_strtable_readiness()
                     return
-                self.mainstringtable_target = response.json()
+                self.mainstringtable_target = source.json()
                 self.__class__.data_cache["online"][mainstringtable_target_url] = self.mainstringtable_target
             self.strtables_ready["target"] = True
             #默认语言的字符串常量池（Stringtable in default language）
             if mainstringtable_default_url in self.__class__.data_cache["online"]:
                 self.mainstringtable_default = self.__class__.data_cache["online"][mainstringtable_default_url]
             else:
-                response, status, self.session = requestUrl("GET", mainstringtable_default_url, session = self.session)
+                source, status, self.session = requestUrl("GET", mainstringtable_default_url, session = self.session)
                 if status != 200:
                     if status == -1:
                         logPrint("默认语言的字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nStringtable in default language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -548,7 +548,7 @@ class LoLDataExtractor:
                     time.sleep(3)
                     self.init_strtable_readiness()
                     return
-                self.mainstringtable_default = response.json()
+                self.mainstringtable_default = source.json()
                 self.__class__.data_cache["online"][mainstringtable_default_url] = self.mainstringtable_default
             self.strtables_ready["default"] = True
         else:
@@ -561,7 +561,7 @@ class LoLDataExtractor:
             if lolstringtable_target_url in self.__class__.data_cache["online"]:
                 self.lolstringtable_target = self.__class__.data_cache["online"][lolstringtable_target_url]
             else:
-                response, status, self.session = requestUrl("GET", lolstringtable_target_url, session = self.session)
+                source, status, self.session = requestUrl("GET", lolstringtable_target_url, session = self.session)
                 if status != 200:
                     if status == -1:
                         logPrint("目标语言的英雄联盟字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nLoL stringtable in target language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -570,14 +570,14 @@ class LoLDataExtractor:
                     time.sleep(3)
                     self.init_strtable_readiness()
                     return
-                self.lolstringtable_target = response.json()
+                self.lolstringtable_target = source.json()
                 self.__class__.data_cache["online"][lolstringtable_target_url] = self.lolstringtable_target
             self.strtables_ready["lol_target"] = True
             #默认语言的英雄联盟字符串常量池（LoL stringtable in default language）
             if lolstringtable_default_url in self.__class__.data_cache["online"]:
                 self.lolstringtable_default = self.__class__.data_cache["online"][lolstringtable_default_url]
             else:
-                response, status, self.session = requestUrl("GET", lolstringtable_default_url, session = self.session)
+                source, status, self.session = requestUrl("GET", lolstringtable_default_url, session = self.session)
                 if status != 200:
                     if status == -1:
                         logPrint("默认语言的英雄联盟字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nLoL stringtable in default language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -586,14 +586,14 @@ class LoLDataExtractor:
                     time.sleep(3)
                     self.init_strtable_readiness()
                     return
-                self.lolstringtable_default = response.json()
+                self.lolstringtable_default = source.json()
                 self.__class__.data_cache["online"][lolstringtable_default_url] = self.lolstringtable_default
             self.strtables_ready["lol_default"] = True
             #目标语言的云顶之弈字符串常量池（TFT stringtable in target language）
             if tftstringtable_target_url in self.__class__.data_cache["online"]:
                 self.tftstringtable_target = self.__class__.data_cache["online"][tftstringtable_target_url]
             else:
-                response, status, self.session = requestUrl("GET", tftstringtable_target_url, session = self.session)
+                source, status, self.session = requestUrl("GET", tftstringtable_target_url, session = self.session)
                 if status != 200:
                     if status == -1:
                         logPrint("目标语言的云顶之弈字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nTFT stringtable in target language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -602,14 +602,14 @@ class LoLDataExtractor:
                     time.sleep(3)
                     self.init_strtable_readiness()
                     return
-                self.tftstringtable_target = response.json()
+                self.tftstringtable_target = source.json()
                 self.__class__.data_cache["online"][tftstringtable_target_url] = self.tftstringtable_target
             self.strtables_ready["tft_target"] = True
             #默认语言的云顶之弈字符串常量池（TFT stringtable in default language）
             if tftstringtable_default_url in self.__class__.data_cache["online"]:
                 self.tftstringtable_default = self.__class__.data_cache["online"][tftstringtable_default_url]
             else:
-                response, status, self.session = requestUrl("GET", tftstringtable_default_url, session = self.session)
+                source, status, self.session = requestUrl("GET", tftstringtable_default_url, session = self.session)
                 if status != 200:
                     if status == -1:
                         logPrint("默认语言的云顶之弈字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nTFT stringtable in default language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -618,7 +618,7 @@ class LoLDataExtractor:
                     time.sleep(3)
                     self.init_strtable_readiness()
                     return
-                self.tftstringtable_default = response.json()
+                self.tftstringtable_default = source.json()
                 self.__class__.data_cache["online"][tftstringtable_default_url] = self.tftstringtable_default
             self.strtables_ready["tft_default"] = True
     
@@ -2197,7 +2197,7 @@ class MapExtractor(LoLDataExtractor):
         if map11_bin_url in self.__class__.data_cache["online"]:
             self.map11_bin = self.__class__.data_cache["online"][map11_bin_url]
         else:
-            response, status, self.session = requestUrl("GET", map11_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map11_bin_url, session = self.session)
             if status != 200:
                 if status == 404:
                     logPrint("召唤师峡谷地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nSummoner's Rift map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map11_bin_url))
@@ -2208,7 +2208,7 @@ class MapExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.map11_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+                self.map11_bin: dict[str, list[str] | dict[str, Any]] = source.json()
             self.__class__.data_cache["online"][map11_bin_url] = self.map11_bin #在对一个MapExtractor对象的data_cache进行修改时，由于字典的引用传递，其父LoLDataExtractor对象的data_cache会同步此更改（While modifying `data_cache` of a MapExtractor object, due to the pass-by-reference of a dictionary, the modification will be synchronized in `data_cache` of its parent `LoLDataExtractor` object）
         self.maps_ready[11] = True
         #嚎哭深渊（Howling Abyss）
@@ -2216,7 +2216,7 @@ class MapExtractor(LoLDataExtractor):
         if map12_bin_url in self.__class__.data_cache["online"]:
             self.map12_bin = self.__class__.data_cache["online"][map12_bin_url]
         else:
-            response, status, self.session = requestUrl("GET", map12_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map12_bin_url, session = self.session)
             if status != 200:
                 if status == 404:
                     logPrint("嚎哭深渊地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nHowling Abyss map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map12_bin_url))
@@ -2227,7 +2227,7 @@ class MapExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.map12_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+                self.map12_bin: dict[str, list[str] | dict[str, Any]] = source.json()
             self.__class__.data_cache["online"][map12_bin_url] = self.map12_bin
         self.maps_ready[12] = True
         #百合与莲花的神庙（Temple of Lily and Lotus）
@@ -2235,7 +2235,7 @@ class MapExtractor(LoLDataExtractor):
         if map21_bin_url in self.__class__.data_cache["online"]:
             self.map21_bin = self.__class__.data_cache["online"][map21_bin_url]
         else:
-            response, status, self.session = requestUrl("GET", map21_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map21_bin_url, session = self.session)
             if status != 200:
                 if status == 404:
                     logPrint("百合与莲花的神庙地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nTemple of Lily and Lotus map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map21_bin_url))
@@ -2246,7 +2246,7 @@ class MapExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.map21_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+                self.map21_bin: dict[str, list[str] | dict[str, Any]] = source.json()
             self.__class__.data_cache["online"][map21_bin_url] = self.map21_bin
         self.maps_ready[21] = True
         #聚点危机（Convergence）
@@ -2254,7 +2254,7 @@ class MapExtractor(LoLDataExtractor):
         if map22_bin_url in self.__class__.data_cache["online"]:
             self.map22_bin = self.__class__.data_cache["online"][map22_bin_url]
         else:
-            response, status, self.session = requestUrl("GET", map22_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session)
             if status != 200:
                 if status == 404:
                     logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nConvergence map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map22_bin_url))
@@ -2265,7 +2265,7 @@ class MapExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.map22_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+                self.map22_bin: dict[str, list[str] | dict[str, Any]] = source.json()
             self.__class__.data_cache["online"][map22_bin_url] = self.map22_bin
         self.maps_ready[22] = True
         #怒火角斗场（Rings of Wrath）
@@ -2273,7 +2273,7 @@ class MapExtractor(LoLDataExtractor):
         if map30_bin_url in self.__class__.data_cache["online"]:
             self.map30_bin = self.__class__.data_cache["online"][map30_bin_url]
         else:
-            response, status, self.session = requestUrl("GET", map30_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session)
             if status != 200:
                 if status == 404:
                     logPrint("怒火角斗场地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nRings of Wrath map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map30_bin_url))
@@ -2284,7 +2284,7 @@ class MapExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.map30_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+                self.map30_bin: dict[str, list[str] | dict[str, Any]] = source.json()
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.maps_ready[30] = True
         #最终都市（Final City）
@@ -2292,7 +2292,7 @@ class MapExtractor(LoLDataExtractor):
         if map33_bin_url in self.__class__.data_cache["online"]:
             self.map33_bin = self.__class__.data_cache["online"][map33_bin_url]
         else:
-            response, status, self.session = requestUrl("GET", map33_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map33_bin_url, session = self.session)
             if status != 200:
                 if status == 404:
                     logPrint("最终都市地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nFinal City map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map33_bin_url))
@@ -2303,7 +2303,7 @@ class MapExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.map33_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+                self.map33_bin: dict[str, list[str] | dict[str, Any]] = source.json()
             self.__class__.data_cache["online"][map33_bin_url] = self.map33_bin
         self.maps_ready[33] = True
         #班德尔之森（The Bandlewood）
@@ -2311,7 +2311,7 @@ class MapExtractor(LoLDataExtractor):
         if map35_bin_url in self.__class__.data_cache["online"]:
             self.map35_bin = self.__class__.data_cache["online"][map35_bin_url]
         else:
-            response, status, self.session = requestUrl("GET", map35_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map35_bin_url, session = self.session)
             if status != 200:
                 if status == 404:
                     logPrint("班德尔之森地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nThe Bandlewoods map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map35_bin_url))
@@ -2322,7 +2322,7 @@ class MapExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.map35_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+                self.map35_bin: dict[str, list[str] | dict[str, Any]] = source.json()
             self.__class__.data_cache["online"][map35_bin_url] = self.map35_bin
         self.maps_ready[35] = True
     
@@ -2683,7 +2683,7 @@ class CheatExtractor(LoLDataExtractor):
         if cheats_bin_url in self.__class__.data_cache["online"]:
             self.cheats_bin = self.__class__.data_cache["online"][cheats_bin_url]
         else:
-            response, status, self.session = requestUrl("GET", cheats_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", cheats_bin_url, session = self.session)
             if status != 200:
                 if status == -1:
                     logPrint('作弊指令信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCheat data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.')
@@ -2692,7 +2692,7 @@ class CheatExtractor(LoLDataExtractor):
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.cheats_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+            self.cheats_bin: dict[str, list[str] | dict[str, Any]] = source.json()
             self.__class__.data_cache["online"][cheats_bin_url] = self.cheats_bin
         self.cheats_ready = True
     
@@ -2873,7 +2873,7 @@ class PerkExtractor(LoLDataExtractor):
         if perks_bin_url in self.__class__.data_cache["online"]:
             self.perks_bin = self.__class__.data_cache["online"][perks_bin_url]
         else:
-            response, status, self.session = requestUrl("GET", perks_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", perks_bin_url, session = self.session)
             if status != 200:
                 if status == -1:
                     logPrint("符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nPerk data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -2882,7 +2882,7 @@ class PerkExtractor(LoLDataExtractor):
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.perks_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+            self.perks_bin: dict[str, list[str] | dict[str, Any]] = source.json()
             self.__class__.data_cache["online"][perks_bin_url] = self.perks_bin
         self.perk_ready = True
     
@@ -3208,7 +3208,7 @@ class ChampionExtractor(LoLDataExtractor):
                     if map22_bin_url in self.__class__.data_cache["online"]:
                         self.map22_bin = self.__class__.data_cache["online"][map22_bin_url]
                     else:
-                        response, status, self.session = requestUrl("GET", map22_bin_url, session = self.session)
+                        source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session)
                         if status != 200:
                             if status == 404:
                                 logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nConvergence map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map22_bin_url))
@@ -3219,7 +3219,7 @@ class ChampionExtractor(LoLDataExtractor):
                                 self.init_data_readiness()
                                 return
                         else:
-                            self.map22_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+                            self.map22_bin: dict[str, list[str] | dict[str, Any]] = source.json()
                         self.__class__.data_cache["online"][map22_bin_url] = self.map22_bin
                     self.characters_ready["map22"] = True
                     ##角色列表（Character list）
@@ -3246,7 +3246,7 @@ class ChampionExtractor(LoLDataExtractor):
                         if character_binary_url in self.__class__.data_cache["online"]:
                             character_binary = self.__class__.data_cache["online"][character_binary_url]
                         else:
-                            response, status, self.session = requestUrl("GET", character_binary_url, session = self.session)
+                            source, status, self.session = requestUrl("GET", character_binary_url, session = self.session)
                             if status != 200:
                                 if status == 404:
                                     logPrint(f"未找到角色{characterName}的信息。程序将跳过该角色。\nCharacter {characterName} data not found. The program will skip this character.")
@@ -3256,7 +3256,7 @@ class ChampionExtractor(LoLDataExtractor):
                                     time.sleep(3)
                                 self.init_data_readiness()
                                 return
-                            character_binary: dict[str, list[str] | dict[str, Any]] = response.json()
+                            character_binary: dict[str, list[str] | dict[str, Any]] = source.json()
                             self.__class__.data_cache["online"][character_binary_url] = character_binary
                         self.champions_bin_dict[characterName] = character_binary
                         logPrint("[%d/%d]已加载角色（Character loaded）：%s" %(i + 1, len(characterNames), characterName), print_time = True)
@@ -3270,7 +3270,7 @@ class ChampionExtractor(LoLDataExtractor):
                     if map22_bin_url in self.__class__.data_cache["online"]:
                         self.map22_bin = self.__class__.data_cache["online"][map22_bin_url]
                     else:
-                        response, status, self.session = requestUrl("GET", map22_bin_url, session = self.session)
+                        source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session)
                         if status != 200:
                             if status == 404:
                                 logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nConvergence map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map22_bin_url))
@@ -3281,7 +3281,7 @@ class ChampionExtractor(LoLDataExtractor):
                                 self.init_data_readiness()
                                 return
                         else:
-                            self.map22_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+                            self.map22_bin: dict[str, list[str] | dict[str, Any]] = source.json()
                         self.__class__.data_cache["online"][map22_bin_url] = self.map22_bin
                     self.characters_ready["map22"] = True
                     ##角色文件夹（Character folders）
@@ -3289,7 +3289,7 @@ class ChampionExtractor(LoLDataExtractor):
                     if characterList_url1 in self.__class__.data_cache["online"]:
                         characterList1 = self.__class__.data_cache["online"][characterList_url1]
                     else:
-                        response, status, self.session = requestUrl("GET", characterList_url1, session = self.session)
+                        source, status, self.session = requestUrl("GET", characterList_url1, session = self.session)
                         if status != 200:
                             if status == -1:
                                 logPrint("第一批角色列表获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCharacter List 1 capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -3298,14 +3298,14 @@ class ChampionExtractor(LoLDataExtractor):
                             time.sleep(3)
                             self.init_data_readiness()
                             return
-                        characterList1: list[dict[str, str]] = response.json()
+                        characterList1: list[dict[str, str]] = source.json()
                         self.__class__.data_cache["online"][characterList_url1] = characterList1
                     self.characters_ready["characterList1"] = True
                     characterList_url2: str = f"https://raw.communitydragon.org/json/{self.version}/game/characters/"
                     if characterList_url2 in self.__class__.data_cache["online"]:
                         characterList2 = self.__class__.data_cache["online"][characterList_url2]
                     else:
-                        response, status, self.session = requestUrl("GET", characterList_url2, session = self.session)
+                        source, status, self.session = requestUrl("GET", characterList_url2, session = self.session)
                         if status != 200:
                             if status == -1:
                                 logPrint("第二批角色列表获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCharacter List 2 capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -3314,7 +3314,7 @@ class ChampionExtractor(LoLDataExtractor):
                             time.sleep(3)
                             self.init_data_readiness()
                             return
-                        characterList2: list[dict[str, str | int]] = response.json()
+                        characterList2: list[dict[str, str | int]] = source.json()
                         self.__class__.data_cache["online"][characterList_url2] = characterList2
                     self.characters_ready["characterList2"] = True
                     character_binary_urls2: dict[str, list[str]] = {}
@@ -3342,7 +3342,7 @@ class ChampionExtractor(LoLDataExtractor):
                                 character_binary = self.__class__.data_cache["online"][character_binary_url]
                             else:
                                 logPrint("[%d/%d][%d/%d]正在加载链接（Fetching url）： %s" %(i + 1, len(characterNames), j + 1, len(character_bin_urls), character_binary_url), write_time = False)
-                                response, status, self.session = requestUrl("GET", character_binary_url, session = self.session)
+                                source, status, self.session = requestUrl("GET", character_binary_url, session = self.session)
                                 if status != 200:
                                     if status == 404:
                                         if len(character_bin_urls) > 1 and j < len(character_bin_urls) - 1:
@@ -3356,7 +3356,7 @@ class ChampionExtractor(LoLDataExtractor):
                                             time.sleep(3)
                                         self.init_data_readiness()
                                         return
-                                character_binary: dict[str, list[str] | dict[str, Any]] = response.json()
+                                character_binary: dict[str, list[str] | dict[str, Any]] = source.json()
                                 self.__class__.data_cache["online"][character_binary_url] = character_binary
                             self.champions_bin_dict[characterName] = character_binary
                             # logPrint("[%d/%d]已加载角色（Character loaded）：%s" %(i + 1, len(characterNames), characterName), print_time = True)
@@ -3374,7 +3374,7 @@ class ChampionExtractor(LoLDataExtractor):
                 if champion_summary_url in self.__class__.data_cache["online"]:
                     champion_summary = self.__class__.data_cache["online"][champion_summary_url]
                 else:
-                    response, status, self.session = requestUrl("GET", champion_summary_url, session = self.session)
+                    source, status, self.session = requestUrl("GET", champion_summary_url, session = self.session)
                     if status != 200:
                         if status == -1:
                             logPrint("英雄概要信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion summary data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -3383,7 +3383,7 @@ class ChampionExtractor(LoLDataExtractor):
                         time.sleep(3)
                         self.init_data_readiness()
                         return
-                    champion_summary: list[dict[str, int | str | list[str]]] = response.json()
+                    champion_summary: list[dict[str, int | str | list[str]]] = source.json()
                     self.__class__.data_cache["online"][champion_summary_url] = champion_summary
                 self.champions_ready["summary"] = True
                 #读取所有英雄的二进制描述数据（Load all champions' binary description data）
@@ -3398,7 +3398,7 @@ class ChampionExtractor(LoLDataExtractor):
                         if champion_binary_url in self.__class__.data_cache["online"]:
                             champion_binary = self.__class__.data_cache["online"][champion_binary_url]
                         else:
-                            response, status, self.session = requestUrl("GET", champion_binary_url, session = self.session)
+                            source, status, self.session = requestUrl("GET", champion_binary_url, session = self.session)
                             if status != 200:
                                 if status == -1:
                                     logPrint("英雄信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -3407,7 +3407,7 @@ class ChampionExtractor(LoLDataExtractor):
                                 time.sleep(3)
                                 self.init_data_readiness()
                                 break
-                            champion_binary: dict[str, list[str] | dict[str, Any]] = response.json()
+                            champion_binary: dict[str, list[str] | dict[str, Any]] = source.json()
                             self.__class__.data_cache["online"][champion_binary_url] = champion_binary
                         self.champions_bin_dict[champion["alias"]] = champion_binary
                         logPrint("[%d/%d]已加载英雄（Champion loaded）：%s" %(i + 1, len(champion_summary), champion["alias"]), print_time = True)
@@ -3986,7 +3986,7 @@ class ItemExtractor(LoLDataExtractor):
         if items_bin_url in self.__class__.data_cache["online"]:
             self.items_bin = self.__class__.data_cache["online"][items_bin_url]
         else:
-            response, status, self.session = requestUrl("GET", items_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", items_bin_url, session = self.session)
             if status != 200:
                 if status == -1:
                     logPrint("装备信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nItem data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -3995,7 +3995,7 @@ class ItemExtractor(LoLDataExtractor):
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.items_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+            self.items_bin: dict[str, list[str] | dict[str, Any]] = source.json()
             self.__class__.data_cache["online"][items_bin_url] = self.items_bin
         self.item_ready = True
     
@@ -4209,7 +4209,7 @@ class AugmentExtractor(LoLDataExtractor):
         if map30_bin_url in self.__class__.data_cache["online"]:
             self.map30_bin = self.__class__.data_cache["online"][map30_bin_url]
         else:
-            response, status, self.session = requestUrl("GET", map30_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session)
             if status != 200:
                 if status == -1:
                     logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -4218,7 +4218,7 @@ class AugmentExtractor(LoLDataExtractor):
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.map30_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = source.json()
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.augments_ready["map30"] = True
         #嚎哭深渊地图（Howling Abyss map）
@@ -4226,7 +4226,7 @@ class AugmentExtractor(LoLDataExtractor):
         if map12_bin_url in self.__class__.data_cache["online"]:
             self.map12_bin = self.__class__.data_cache["online"][map12_bin_url]
         else:
-            response, status, self.session = requestUrl("GET", map12_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map12_bin_url, session = self.session)
             if status != 200:
                 if status == -1:
                     logPrint("嚎哭深渊地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -4235,7 +4235,7 @@ class AugmentExtractor(LoLDataExtractor):
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.map12_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+            self.map12_bin: dict[str, list[str] | dict[str, Any]] = source.json()
             self.__class__.data_cache["online"][map12_bin_url] = self.map12_bin
         self.augments_ready["map12"] = True
         #海克斯大乱斗强化符文（ARAM: Mayhem augments）
@@ -4246,7 +4246,7 @@ class AugmentExtractor(LoLDataExtractor):
         if KiwiAugments_bin_url in self.__class__.data_cache["online"]:
             self.KiwiAugments_bin = self.__class__.data_cache["online"][KiwiAugments_bin_url]
         else:
-            response, status, self.session = requestUrl("GET", KiwiAugments_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", KiwiAugments_bin_url, session = self.session)
             if status != 200:
                 if status == 404:
                     logPrint("海克斯大乱斗强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nARAM: Mayhem augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(KiwiAugments_bin_url))
@@ -4257,7 +4257,7 @@ class AugmentExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.KiwiAugments_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+                self.KiwiAugments_bin: dict[str, list[str] | dict[str, Any]] = source.json()
             self.__class__.data_cache["online"][KiwiAugments_bin_url] = self.KiwiAugments_bin
         self.augments_ready["kiwi_augment"] = True
     
@@ -4628,7 +4628,7 @@ class AnvilExtractor(LoLDataExtractor):
         if map30_bin_url in self.__class__.data_cache["online"]:
             self.map30_bin = self.__class__.data_cache["online"][map30_bin_url]
         else:
-            response, status, self.session = requestUrl("GET", map30_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session)
             if status != 200:
                 if status == -1:
                     logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -4637,7 +4637,7 @@ class AnvilExtractor(LoLDataExtractor):
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.map30_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = source.json()
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.anvils_ready["map30"] = True
         if Patch(self.patch_number) >= Patch("16.2"):
@@ -4646,7 +4646,7 @@ class AnvilExtractor(LoLDataExtractor):
             if KiwiAugments_bin_url in self.__class__.data_cache["online"]:
                 self.KiwiAnvils_bin = self.__class__.data_cache["online"][KiwiAugments_bin_url]
             else:
-                response, status, self.session = requestUrl("GET", KiwiAugments_bin_url, session = self.session)
+                source, status, self.session = requestUrl("GET", KiwiAugments_bin_url, session = self.session)
                 if status != 200:
                     if status == 404:
                         logPrint("嚎哭深渊地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -4657,7 +4657,7 @@ class AnvilExtractor(LoLDataExtractor):
                         self.init_data_readiness()
                         return
                 else:
-                    self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+                    self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = source.json()
                 self.__class__.data_cache["online"][KiwiAugments_bin_url] = self.KiwiAnvils_bin
         else:
             #海克斯大乱斗强化符文（ARAM: Mayhem augments）
@@ -4665,7 +4665,7 @@ class AnvilExtractor(LoLDataExtractor):
             if map12_bin_url in self.__class__.data_cache["online"]:
                 self.KiwiAnvils_bin = self.__class__.data_cache["online"][map12_bin_url]
             else:
-                response, status, self.session = requestUrl("GET", map12_bin_url, session = self.session)
+                source, status, self.session = requestUrl("GET", map12_bin_url, session = self.session)
                 if status != 200:
                     if status == -1:
                         logPrint("海克斯大乱斗强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nARAM: Mayhem augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(KiwiAugments_bin_url))
@@ -4674,7 +4674,7 @@ class AnvilExtractor(LoLDataExtractor):
                     time.sleep(3)
                     self.init_data_readiness()
                     return
-                self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+                self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = source.json()
                 self.__class__.data_cache["online"][map12_bin_url] = self.KiwiAnvils_bin
         self.anvils_ready["kiwi_anvil"] = True
     
@@ -4934,7 +4934,7 @@ class TFTExtractor(LoLDataExtractor):
         if map22_bin_url in self.__class__.data_cache["online"]:
             self.map22_bin = self.__class__.data_cache["online"][map22_bin_url]
         else:
-            response, status, self.session = requestUrl("GET", map22_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session)
             if status != 200:
                 if status == -1:
                     logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -4943,7 +4943,7 @@ class TFTExtractor(LoLDataExtractor):
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.map22_bin: dict[str, list[str] | dict[str, Any]] = response.json()
+            self.map22_bin: dict[str, list[str] | dict[str, Any]] = source.json()
             self.__class__.data_cache["online"][map22_bin_url] = self.map22_bin
         self.map22_ready = True
 

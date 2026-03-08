@@ -2227,7 +2227,7 @@ async def invite(connection: Connection) -> None:
                             locale: str = region_locale["locale"]
                             URLPatch = "pbe" if platformId == "PBE1" or platformId == "PBE" else "latest"
                             TFTBasic_url: str = "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(URLPatch, locale.lower())
-                            response, status, session = requestUrl("GET", TFTBasic_url, session = session, log = log)
+                            source, status, session = requestUrl("GET", TFTBasic_url, session = session, log = log)
                             if status != 200:
                                 if status == 404:
                                     logPrint("云顶之弈基础信息获取失败！请检查以下链接的可用性。\nTFT basic information capture failure! Please check the URL availability. The program will skip this map.\n%s" %(TFTBasic_url))
@@ -2235,7 +2235,7 @@ async def invite(connection: Connection) -> None:
                                     logPrint("云顶之弈基础信息获取失败！请检查系统网络状况和代理设置。\nTFT basic information capture failure! Please check the system network condition and proxy configuration.")
                                 TFTBasic_source: dict[str, Any] = {"items": []}
                             else:
-                                TFTBasic_source = response.json()
+                                TFTBasic_source = source.json()
                             TFTAugments = {item["apiName"]: item for item in TFTBasic_source["items"]}
                             TFTBasic_got = True
                         logPrint("您想要获取简略信息还是详细信息？（输入任意非空字符串以获取详细信息，否则获取简略信息。）\nDo you want to get brief or detailed information? (Submit any non-empty string to get detailed information, or null to get brief information.)")

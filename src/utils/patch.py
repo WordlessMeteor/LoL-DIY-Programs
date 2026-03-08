@@ -149,10 +149,10 @@ def get_ddragon_versionList(session: Optional[requests.Session] = None, log: Opt
         log = LogManager()
     logPrint = log.logPrint
     version_url: str = "https://ddragon.leagueoflegends.com/api/versions.json"
-    response, status, session = requestUrl("GET", version_url, session = session)
+    source, status, session = requestUrl("GET", version_url, session = session)
     if status == 200:
         versionList_fetched: bool = True
-        versions: list[str] = response.json()
+        versions: list[str] = source.json()
     else:
         versionList_fetched = False
         if status == -1:
@@ -170,10 +170,10 @@ def get_cdragon_patchList(session: Optional[requests.Session] = None, log: Optio
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
-    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/json", session = session) #对应于DataDragon数据库的版本，下面从CommunityDragons数据库主页获取可用版本（Corresponding to getting patches DataDragon database, the following code get the available patches in CommunityDragon database through its homepage）
+    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/json", session = session) #对应于DataDragon数据库的版本，下面从CommunityDragons数据库主页获取可用版本（Corresponding to getting patches DataDragon database, the following code get the available patches in CommunityDragon database through its homepage）
     if status == 200:
         patchList_fetched: bool = True
-        cdragon_homepage_json: list[dict[str, Any]] = response.json()
+        cdragon_homepage_json: list[dict[str, Any]] = source.json()
         patch_re = re.compile(r"[0-9]+\.[0-9]+")
         patches_cdragon: list[Any] = []
         for record in cdragon_homepage_json:

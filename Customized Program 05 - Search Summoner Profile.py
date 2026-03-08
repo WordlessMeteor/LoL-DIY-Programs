@@ -116,8 +116,8 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
             switch_prepare_mode: bool = False
             #下面获取版本信息（The following code get the patch data）
             try:
-                response, status, session = requestUrl("GET", patches_url, session = session, log = log)
-                patches_initial = response.json()
+                source, status, session = requestUrl("GET", patches_url, session = session, log = log)
+                patches_initial = source.json()
             except requests.exceptions.RequestException:
                 logPrint('版本信息获取超时！正在尝试离线加载数据……\nPatch information capture timeout! Trying loading offline data ...\n请输入版本Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“2”以转为离线模式。输入“0”以退出程序。\nPlease enter the patch Json data file path. Enter an empty string to use the default relative path: "%s". Submit "2" to switch to offline mode. Submit "0" to exit.' %(patches_local_default, patches_local_default))
                 while True:
@@ -164,11 +164,11 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
             #下面获取游戏模式数据（The following code get game mode data）
             try:
                 logPrint("正在加载游戏模式信息……\nLoading game mode information from CommunityDragon...")
-                response, status, session = requestUrl("GET", queue_url, session = session, log = log)
-                if response.ok:
-                    queue_initial: list[dict[str, Any]] = response.json() #queue存储游戏模式信息（Variable `queue_initial` stores game mode information）
+                source, status, session = requestUrl("GET", queue_url, session = session, log = log)
+                if source.ok:
+                    queue_initial: list[dict[str, Any]] = source.json() #queue存储游戏模式信息（Variable `queue_initial` stores game mode information）
                 else:
-                    logPrint(response)
+                    logPrint(source)
                     logPrint("当前语言不可用！请切换语言或检查源代码中的链接。\nCurrent language isn't available! Please change another language or check the requests link in the source code.")
                     switch_language = True
                     break
@@ -204,11 +204,11 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
             #下面获取召唤师技能数据（The following code get summoner spell data）
             try:
                 logPrint("正在加载召唤师技能信息……\nLoading summoner spell information from CommunityDragon...")
-                response, status, session = requestUrl("GET", spell_url, session = session, log = log)
-                if response.ok:
-                    spell_initial: list[dict[str, Any]] = response.json() #spell存储召唤师技能信息（Variable `spell_initial` stores summoner spell information）
+                source, status, session = requestUrl("GET", spell_url, session = session, log = log)
+                if source.ok:
+                    spell_initial: list[dict[str, Any]] = source.json() #spell存储召唤师技能信息（Variable `spell_initial` stores summoner spell information）
                 else:
-                    logPrint(response)
+                    logPrint(source)
                     logPrint("当前语言不可用！请切换语言或检查源代码中的链接。\nCurrent language isn't available! Please change another language or check the requests link in the source code.")
                     switch_language = True
                     break
@@ -244,11 +244,11 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
             #下面获取英雄信息（The following code get LoL champion data）
             try:
                 logPrint("正在加载英雄信息……\nLoading LoL champion information from CommunityDragon...")
-                response, status, session = requestUrl("GET", LoLChampion_url, session = session, log = log)
-                if response.ok:
-                    LoLChampion_initial: list[dict[str, Any]] = response.json() #LoLItem存储英雄信息。（Variable `LoLChampion_initial` stores information of LoL champions）
+                source, status, session = requestUrl("GET", LoLChampion_url, session = session, log = log)
+                if source.ok:
+                    LoLChampion_initial: list[dict[str, Any]] = source.json() #LoLItem存储英雄信息。（Variable `LoLChampion_initial` stores information of LoL champions）
                 else:
-                    logPrint(response)
+                    logPrint(source)
                     logPrint("当前语言不可用！请切换语言或检查源代码中的链接。\nCurrent language isn't available! Please change another language or check the requests link in the source code.")
                     switch_language = True
                     break
@@ -284,11 +284,11 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
             #下面获取英雄联盟装备信息（The following code get LoL item data）
             try:
                 logPrint("正在加载英雄联盟装备信息……\nLoading LoL item information from CommunityDragon...")
-                response, status, session = requestUrl("GET", LoLItem_url, session = session, log = log)
-                if response.ok:
-                    LoLItem_initial: list[dict[str, Any]] = response.json() #LoLItem存储经典模式的装备信息。（Variable `LoLItem_initial` stores information of LoL items）
+                source, status, session = requestUrl("GET", LoLItem_url, session = session, log = log)
+                if source.ok:
+                    LoLItem_initial: list[dict[str, Any]] = source.json() #LoLItem存储经典模式的装备信息。（Variable `LoLItem_initial` stores information of LoL items）
                 else:
-                    logPrint(response)
+                    logPrint(source)
                     logPrint("当前语言不可用！请切换语言或检查源代码中的链接。\nCurrent language isn't available! Please change another language or check the requests link in the source code.")
                     switch_language = True
                     break
@@ -324,11 +324,11 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
             #下面获取召唤师图标信息（The following code get summoner icon data）
             try:
                 logPrint("正在加载召唤师图标信息……\nLoading summoner icon information from CommunityDragon...")
-                response, status, session = requestUrl("GET", summonerIcon_url, session = session, log = log)
-                if response.ok:
-                    summonerIcon_initial: list[dict[str, Any]] = response.json() #LoLItem存储召唤师图标信息。（Variable `summonerIcon_initial` stores information of summoner icons）
+                source, status, session = requestUrl("GET", summonerIcon_url, session = session, log = log)
+                if source.ok:
+                    summonerIcon_initial: list[dict[str, Any]] = source.json() #LoLItem存储召唤师图标信息。（Variable `summonerIcon_initial` stores information of summoner icons）
                 else:
-                    logPrint(response)
+                    logPrint(source)
                     logPrint("当前语言不可用！请切换语言或检查源代码中的链接。\nCurrent language isn't available! Please change another language or check the requests link in the source code.")
                     switch_language = True
                     break
@@ -364,11 +364,11 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
             #下面获取基石符文信息（The following code get perk data）
             try:
                 logPrint("正在加载基石符文信息……\nLoading perk information from CommunityDragon...")
-                response, status, session = requestUrl("GET", perk_url, session = session, log = log)
-                if response.ok:
-                    perk_initial: list[dict[str, Any]] = response.json() #perk存储基石符文信息。（Variable `perk_initial` stores information of perks）
+                source, status, session = requestUrl("GET", perk_url, session = session, log = log)
+                if source.ok:
+                    perk_initial: list[dict[str, Any]] = source.json() #perk存储基石符文信息。（Variable `perk_initial` stores information of perks）
                 else:
-                    logPrint(response)
+                    logPrint(source)
                     logPrint("当前语言不可用！请切换语言或检查源代码中的链接。\nCurrent language isn't available! Please change another language or check the requests link in the source code.")
                     switch_language = True
                     break
@@ -404,11 +404,11 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
             #下面获取符文系信息（The following code get perkstyle data）
             try:
                 logPrint("正在加载符文系信息……\nLoading perkstyle information from CommunityDragon...")
-                response, status, session = requestUrl("GET", perkstyle_url, session = session, log = log)
-                if response.ok:
-                    perkstyle_initial: dict[str, Any] = response.json() #perkstyle存储符文系信息。（Variable `perkstyle_initial` stores information of perkstyles）
+                source, status, session = requestUrl("GET", perkstyle_url, session = session, log = log)
+                if source.ok:
+                    perkstyle_initial: dict[str, Any] = source.json() #perkstyle存储符文系信息。（Variable `perkstyle_initial` stores information of perkstyles）
                 else:
-                    logPrint(response)
+                    logPrint(source)
                     logPrint("当前语言不可用！请切换语言或检查源代码中的链接。\nCurrent language isn't available! Please change another language or check the requests link in the source code.")
                     switch_language = True
                     break
@@ -444,11 +444,11 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
             #下面获取云顶之弈强化符文数据（The following code get TFT augment data）
             try:
                 logPrint("正在加载云顶之弈基础数据……\nLoading TFT basic data from CommunityDragon ...")
-                response, status, session = requestUrl("GET", TFTBasic_url, session = session, log = log)
-                if response.ok:
-                    TFTBasic_initial: dict[str, Any] = response.json() #TFT存储云顶之弈中至今为止所有的强化符文、英雄和羁绊信息和各赛季的英雄和羁绊信息（Variable `TFTBasic_initial` stores information of all augments, champions and traits so far and information of champions and traits with respect to season）
+                source, status, session = requestUrl("GET", TFTBasic_url, session = session, log = log)
+                if source.ok:
+                    TFTBasic_initial: dict[str, Any] = source.json() #TFT存储云顶之弈中至今为止所有的强化符文、英雄和羁绊信息和各赛季的英雄和羁绊信息（Variable `TFTBasic_initial` stores information of all augments, champions and traits so far and information of champions and traits with respect to season）
                 else:
-                    logPrint(response)
+                    logPrint(source)
                     logPrint("当前语言不可用！请切换语言或检查源代码中的链接。\nCurrent language isn't available! Please change another language or check the requests link in the source code.")
                     switch_language = True
                     break
@@ -484,11 +484,11 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
             #下面获取云顶之弈英雄数据（The following code get TFT champion data）
             try:
                 logPrint("正在加载云顶之弈棋子信息……\nLoading TFT champion information from CommunityDragon ...")
-                response, status, session = requestUrl("GET", TFTChampion_url, session = session, log = log)
-                if response.ok:
-                    TFTChampion_initial: list[dict[str, Any]] = response.json() #TFTChampion存储云顶之弈的棋子信息（Variable `TFTChampion_initial` stores information of TFT champions）
+                source, status, session = requestUrl("GET", TFTChampion_url, session = session, log = log)
+                if source.ok:
+                    TFTChampion_initial: list[dict[str, Any]] = source.json() #TFTChampion存储云顶之弈的棋子信息（Variable `TFTChampion_initial` stores information of TFT champions）
                 else:
-                    logPrint(response)
+                    logPrint(source)
                     logPrint("当前语言不可用！请切换语言或检查源代码中的链接。\nCurrent language isn't available! Please change another language or check the requests link in the source code.")
                     switch_language = True
                     break
@@ -524,11 +524,11 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
             #下面获取云顶之弈装备数据（The following code get TFT item information）
             try:
                 logPrint("正在加载云顶之弈装备信息……\nLoading TFT item information from CommunityDragon ...")
-                response, status, session = requestUrl("GET", TFTItem_url, session = session, log = log)
-                if response.ok:
-                    TFTItem_initial: list[dict[str, Any]] = response.json() #TFTItem存储云顶之弈的装备信息（Variable `TFTItem_initial` stores information of TFT items）
+                source, status, session = requestUrl("GET", TFTItem_url, session = session, log = log)
+                if source.ok:
+                    TFTItem_initial: list[dict[str, Any]] = source.json() #TFTItem存储云顶之弈的装备信息（Variable `TFTItem_initial` stores information of TFT items）
                 else:
-                    logPrint(response)
+                    logPrint(source)
                     logPrint("当前语言不可用！请切换语言或检查源代码中的链接。\nCurrent language isn't available! Please change another language or check the requests link in the source code.")
                     switch_language = True
                     break
@@ -564,11 +564,11 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
             #下面获取云顶之弈小小英雄数据（The following code get TFT companion data）
             try:
                 logPrint("正在加载云顶之弈小小英雄信息……\nLoading companion information from CommunityDragon ...")
-                response, status, session = requestUrl("GET", TFTCompanion_url, session = session, log = log)
-                if response.ok:
-                    TFTCompanion_initial: list[dict[str, Any]] = response.json() #TFTChampion存储云顶之弈的小小英雄信息（Variable `TFTChampion_initial` stores information of companions）
+                source, status, session = requestUrl("GET", TFTCompanion_url, session = session, log = log)
+                if source.ok:
+                    TFTCompanion_initial: list[dict[str, Any]] = source.json() #TFTChampion存储云顶之弈的小小英雄信息（Variable `TFTChampion_initial` stores information of companions）
                 else:
-                    logPrint(response)
+                    logPrint(source)
                     logPrint("当前语言不可用！请切换语言或检查源代码中的链接。\nCurrent language isn't available! Please change another language or check the requests link in the source code.")
                     switch_language = True
                     break
@@ -604,11 +604,11 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
             #下面获取云顶之弈羁绊数据（The following code get TFT trait data）
             try:
                 logPrint("正在加载云顶之弈羁绊信息……\nLoading TFT trait information from CommunityDragon ...")
-                response, status, session = requestUrl("GET", TFTTrait_url, session = session, log = log)
-                if response.ok:
-                    TFTTrait_initial: list[dict[str, Any]] = response.json() #TFTTrait存储云顶之弈的羁绊信息（Variable `TFTTrait_initial` stores information of TFT traits）
+                source, status, session = requestUrl("GET", TFTTrait_url, session = session, log = log)
+                if source.ok:
+                    TFTTrait_initial: list[dict[str, Any]] = source.json() #TFTTrait存储云顶之弈的羁绊信息（Variable `TFTTrait_initial` stores information of TFT traits）
                 else:
-                    logPrint(response)
+                    logPrint(source)
                     logPrint("当前语言不可用！请切换语言或检查源代码中的链接。\nCurrent language isn't available! Please change another language or check the requests link in the source code.")
                     switch_language = True
                     break
@@ -644,12 +644,12 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
             #下面获取斗魂竞技场强化符文数据（The following code get Arena augment data）
             try:
                 logPrint("正在加载斗魂竞技场强化符文信息……\nLoading Arena augment information from CommunityDragon ...")
-                response, status, session = requestUrl("GET", CherryAugment_url, session = session, log = log)
-                if response.ok:
-                    CherryAugment_initial: list[dict[str, Any]] = response.json() #Arena存储斗魂竞技场的强化符文信息（Variable `CherryAugment_initial` stores information of Arena augments）
+                source, status, session = requestUrl("GET", CherryAugment_url, session = session, log = log)
+                if source.ok:
+                    CherryAugment_initial: list[dict[str, Any]] = source.json() #Arena存储斗魂竞技场的强化符文信息（Variable `CherryAugment_initial` stores information of Arena augments）
                     break
                 else:
-                    logPrint(response)
+                    logPrint(source)
                     logPrint("当前语言不可用！请切换语言或检查源代码中的链接。\nCurrent language isn't available! Please change another language or check the requests link in the source code.")
                     switch_language = True
                     break

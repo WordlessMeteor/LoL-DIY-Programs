@@ -615,7 +615,7 @@ while True:
                 logPrint("[%d/%d][%d/%d]正在校对文件（Checking file）： %s" %(cnt1, len(cdragon_folders), cnt2, numFile_to_check, urljoin(url, name)), print_time = True)
                 update: bool = False
                 added: bool = False
-                response, status, session = requestUrl("GET", urljoin(url, name), session)
+                source, status, session = requestUrl("GET", urljoin(url, name), session)
                 if status != 200:
                     if status == -1:
                         logPrint("文件%s比对失败！请等待程序结束后手动比对。\nFile %s check failed! Please check manually after the program execution finishes." %(urljoin(url, name), urljoin(url, name)), write_time = False)
@@ -629,11 +629,11 @@ while True:
                     files_to_delete.remove(file_path)
                 if name.endswith(".json"):
                     try:
-                        src_json: Any = response.json()
+                        src_json: Any = source.json()
                     except json.decoder.JSONDecodeError as e:
                         if "Unexpected UTF-8 BOM (decode using utf-8-sig)" in str(e): #解决方案来自Stack Overflow（The solution comes from https://stackoverflow.com/questions/71025396/asyncio-and-get-unexpected-utf-8-bom）
                             logPrint("文件编码格式错误！正在尝试改用utf-8-sig编码……\nFile decode error! Trying decoding by utf-8-sig ...", write_time = False)
-                            src_json = json.loads(response.text.encode().decode("utf-8-sig"))
+                            src_json = json.loads(source.text.encode().decode("utf-8-sig"))
                             src: str = json.dumps(src_json, indent = 4, ensure_ascii = False)
                         else:
                             logPrint("文件内容解析失败！请等待程序结束后手动比对。\nFile content parsing failure! Please check manually after the program execution finishes.", write_time = False)
@@ -642,14 +642,14 @@ while True:
                     else:
                         src: str = json.dumps(src_json, indent = 4, ensure_ascii = False)
                 elif name.endswith(".js"):
-                    src = jsbeautifier.beautify(response.text)
+                    src = jsbeautifier.beautify(source.text)
                 elif name.endswith(".css"):
-                    src = cssbeautifier.beautify(response.text)
+                    src = cssbeautifier.beautify(source.text)
                 elif name.endswith(".html"):
-                    soup = BeautifulSoup(response.text, "html.parser")
+                    soup = BeautifulSoup(source.text, "html.parser")
                     src = soup.prettify()
                 else:
-                    src = response.text.replace("\r", "")
+                    src = source.text.replace("\r", "")
                 if not name in os.listdir(localdir):
                     update = added = True
                 else:
@@ -814,7 +814,7 @@ while True:
         version_url: str = "https://ddragon.leagueoflegends.com/api/versions.json"
         logPrint("[%d]正在校对文件（Checking file）： %s" %(cnt1, version_url), print_time = True)
         update = added = False
-        response, status, session = requestUrl("GET", version_url)
+        source, status, session = requestUrl("GET", version_url)
         if status != 200:
             if status == -1:
                 logPrint("文件%s比对失败！请等待程序结束后手动比对。\nFile %s check failed! Please check manually after the program execution finishes." %(version_url, version_url), write_time = False)
@@ -822,7 +822,7 @@ while True:
                 logPrint("文件%s不存在！请等待程序结束后手动比对。\nFile %s not found! Please check manually after the program execution finishes." %(version_url, version_url), write_time = False)
             error_files.append(version_url)
             continue
-        src_json: Any = response.json()
+        src_json: Any = source.json()
         src: str = json.dumps(src_json, indent = 4, ensure_ascii = False)
         if not "versions.json" in os.listdir("离线数据（Offline Data）"):
             update = added = True

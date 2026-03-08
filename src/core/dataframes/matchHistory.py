@@ -531,8 +531,8 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
                         logPrint("第%d/%d场对局（对局序号：%d）游戏模式信息（%d）获取失败！正在第%d次尝试改用%s版本的游戏模式信息……\nGame mode information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to game modes of Patch %s ... Times tried: %d." %(i + 1, len(LoLMatchIDs), matchId, j, queue_recapture, queuePatch_adopted, j, i + 1, len(LoLMatchIDs), matchId, queuePatch_adopted, queue_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                queue: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                queue: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 queuePatch_deserted: str = queuePatch_adopted
                                 queuePatch_adopted = FindPostPatch(Patch(queuePatch_adopted), versionList)
@@ -561,8 +561,8 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
                         logPrint("第%d/%d场对局（对局序号：%d）召唤师图标信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师图标信息……\nSummoner icon information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to summoner icons of Patch %s ... Times tried: %d." %(i + 1, len(LoLMatchIDs), matchId, j, summonerIcon_recapture, summonerIconPatch_adopted, j, i + 1, len(LoLMatchIDs), matchId, summonerIconPatch_adopted, summonerIcon_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                summonerIcon: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                summonerIcon: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 summonerIconPatch_deserted: str = summonerIconPatch_adopted
                                 summonerIconPatch_adopted = FindPostPatch(Patch(summonerIconPatch_adopted), versionList)
@@ -591,8 +591,8 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
                         logPrint("第%d/%d场对局（对局序号：%d）英雄信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄信息……\nLoL champion information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to LoL champions of Patch %s ... Times tried: %d." %(i + 1, len(LoLMatchIDs), matchId, j, LoLChampion_recapture, LoLChampionPatch_adopted, j, i + 1, len(LoLMatchIDs), matchId, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                LoLChampion: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                LoLChampion: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 LoLChampionPatch_deserted: str = LoLChampionPatch_adopted
                                 LoLChampionPatch_adopted = FindPostPatch(Patch(LoLChampionPatch_adopted), versionList)
@@ -621,8 +621,8 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
                         logPrint("第%d/%d场对局（对局序号：%d）召唤师技能信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师技能信息……\nSpell information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to spells of Patch %s ... Times tried: %d." %(i + 1, len(LoLMatchIDs), matchId, j, spell_recapture, spellPatch_adopted, j, i + 1, len(LoLMatchIDs), matchId, spellPatch_adopted, spell_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                spell: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                spell: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 spellPatch_deserted: str = spellPatch_adopted
                                 spellPatch_adopted = FindPostPatch(Patch(spellPatch_adopted), versionList)
@@ -651,8 +651,8 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
                         logPrint("第%d/%d场对局（对局序号：%d）英雄联盟装备信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nLoL item information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to LoL items of Patch %s ... Times tried: %d." %(i + 1, len(LoLMatchIDs), matchId, j, LoLItem_recapture, LoLItemPatch_adopted, j, i + 1, len(LoLMatchIDs), matchId, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                LoLItem: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                LoLItem: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 LoLItemPatch_deserted: str = LoLItemPatch_adopted
                                 LoLItemPatch_adopted = FindPostPatch(Patch(LoLItemPatch_adopted), versionList)
@@ -681,8 +681,8 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
                         logPrint("第%d/%d场对局（对局序号：%d）基石符文信息（%d）获取失败！正在第%d次尝试改用%s版本的基石符文信息……\nPerk information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to perks of Patch %s ... Times tried: %d." %(i + 1, len(LoLMatchIDs), matchId, j, perk_recapture, perkPatch_adopted, j, i + 1, len(LoLMatchIDs), matchId, perkPatch_adopted, perk_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                perk: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                perk: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 perkPatch_deserted: str = perkPatch_adopted
                                 perkPatch_adopted = FindPostPatch(Patch(perkPatch_adopted), versionList)
@@ -711,8 +711,8 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
                         logPrint("第%d/%d场对局（对局序号：%d）符文系信息（%d）获取失败！正在第%d次尝试改用%s版本的符文系信息……\nPerkstyle information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to perkstyles of Patch %s ... Times tried: %d." %(i + 1, len(LoLMatchIDs), matchId, j, perkstyle_recapture, perkstylePatch_adopted, j, i + 1, len(LoLMatchIDs), matchId, perkstylePatch_adopted, perkstyle_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                perkstyle: dict[str, Any] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                perkstyle: dict[str, Any] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 perkstylePatch_deserted: str = perkstylePatch_adopted
                                 perkstylePatch_adopted = FindPostPatch(Patch(perkstylePatch_adopted), versionList)
@@ -741,8 +741,8 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
                         logPrint("第%d/%d场对局（对局序号：%d）强化符文信息（%d）获取失败！正在第%d次尝试改用%s版本的斗魂竞技场强化符文信息……\nAugment information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to Cherry augments of Patch %s ... Times tried: %d." %(i + 1, len(LoLMatchIDs), matchId, j, CherryAugment_recapture, CherryAugmentPatch_adopted, j, i + 1, len(LoLMatchIDs), matchId, CherryAugmentPatch_adopted, CherryAugment_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                CherryAugment: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                CherryAugment: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 CherryAugmentPatch_deserted: str = CherryAugmentPatch_adopted
                                 CherryAugmentPatch_adopted = FindPostPatch(Patch(CherryAugmentPatch_adopted), versionList)
@@ -836,8 +836,8 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
                         logPrint("第%d/%d场对局（对局序号：%d）游戏模式信息（%d）获取失败！正在第%d次尝试改用%s版本的游戏模式信息……\nGame mode information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to game modes of Patch %s ... Times tried: %d." %(i + 1, len(LoLMatchIDs), matchId, j, queue_recapture, queuePatch_adopted, j, i + 1, len(LoLMatchIDs), matchId, queuePatch_adopted, queue_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                queue: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                queue: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 queuePatch_deserted: str = queuePatch_adopted
                                 queuePatch_adopted = FindPostPatch(Patch(queuePatch_adopted), versionList)
@@ -871,8 +871,8 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
                         logPrint("第%d/%d场对局（对局序号：%d）召唤师图标信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师图标信息……\nSummoner icon information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to summoner icons of Patch %s ... Times tried: %d." %(i + 1, len(LoLMatchIDs), matchId, j, summonerIcon_recapture, summonerIconPatch_adopted, j, i + 1, len(LoLMatchIDs), matchId, summonerIconPatch_adopted, summonerIcon_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                summonerIcon: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                summonerIcon: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 summonerIconPatch_deserted: str = summonerIconPatch_adopted
                                 summonerIconPatch_adopted = FindPostPatch(Patch(summonerIconPatch_adopted), versionList)
@@ -906,8 +906,8 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
                         logPrint("第%d/%d场对局（对局序号：%d）英雄信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄信息……\nLoL champion information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to LoL champions of Patch %s ... Times tried: %d." %(i + 1, len(LoLMatchIDs), matchId, j, LoLChampion_recapture, LoLChampionPatch_adopted, j, i + 1, len(LoLMatchIDs), matchId, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                LoLChampion: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                LoLChampion: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 LoLChampionPatch_deserted: str = LoLChampionPatch_adopted
                                 LoLChampionPatch_adopted = FindPostPatch(Patch(LoLChampionPatch_adopted), versionList)
@@ -942,8 +942,8 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
                         logPrint("第%d/%d场对局（对局序号：%d）召唤师技能信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师技能信息……\nSpell information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to spells of Patch %s ... Times tried: %d." %(i + 1, len(LoLMatchIDs), matchId, j, spell_recapture, spellPatch_adopted, j, i + 1, len(LoLMatchIDs), matchId, spellPatch_adopted, spell_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                spell: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                spell: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 spellPatch_deserted: str = spellPatch_adopted
                                 spellPatch_adopted = FindPostPatch(Patch(spellPatch_adopted), versionList)
@@ -978,8 +978,8 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
                         logPrint("第%d/%d场对局（对局序号：%d）英雄联盟装备信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nLoL item information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to LoL items of Patch %s ... Times tried: %d." %(i + 1, len(LoLMatchIDs), matchId, j, LoLItem_recapture, LoLItemPatch_adopted, j, i + 1, len(LoLMatchIDs), matchId, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                LoLItem: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                LoLItem: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 LoLItemPatch_deserted: str = LoLItemPatch_adopted
                                 LoLItemPatch_adopted = FindPostPatch(Patch(LoLItemPatch_adopted), versionList)
@@ -1020,8 +1020,8 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
                         logPrint("第%d/%d场对局（对局序号：%d）基石符文信息（%d）获取失败！正在第%d次尝试改用%s版本的基石符文信息……\nPerk information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to perks of Patch %s ... Times tried: %d." %(i + 1, len(LoLMatchIDs), matchId, j, perk_recapture, perkPatch_adopted, j, i + 1, len(LoLMatchIDs), matchId, perkPatch_adopted, perk_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                perk: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                perk: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 perkPatch_deserted: str = perkPatch_adopted
                                 perkPatch_adopted = FindPostPatch(Patch(perkPatch_adopted), versionList)
@@ -1057,8 +1057,8 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
                         logPrint("第%d/%d场对局（对局序号：%d）符文系信息（%d）获取失败！正在第%d次尝试改用%s版本的符文系信息……\nPerkstyle information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to perkstyles of Patch %s ... Times tried: %d." %(i + 1, len(LoLMatchIDs), matchId, j, perkstyle_recapture, perkstylePatch_adopted, j, i + 1, len(LoLMatchIDs), matchId, perkstylePatch_adopted, perkstyle_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                perkstyle: dict[str, Any] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                perkstyle: dict[str, Any] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 perkstylePatch_deserted: str = perkstylePatch_adopted
                                 perkstylePatch_adopted = FindPostPatch(Patch(perkstylePatch_adopted), versionList)
@@ -1094,8 +1094,8 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
                         logPrint("第%d/%d场对局（对局序号：%d）强化符文信息（%d）获取失败！正在第%d次尝试改用%s版本的斗魂竞技场强化符文信息……\nAugment information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to Cherry augments of Patch %s ... Times tried: %d." %(i + 1, len(LoLMatchIDs), matchId, j, CherryAugment_recapture, CherryAugmentPatch_adopted, j, i + 1, len(LoLMatchIDs), matchId, CherryAugmentPatch_adopted, CherryAugment_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                CherryAugment: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                CherryAugment: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 CherryAugmentPatch_deserted: str = CherryAugmentPatch_adopted
                                 CherryAugmentPatch_adopted = FindPostPatch(Patch(CherryAugmentPatch_adopted), versionList)
@@ -1191,8 +1191,8 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
                         logPrint("第%d/%d场对局（对局序号：%d）游戏模式信息（%d）获取失败！正在第%d次尝试改用%s版本的游戏模式信息……\nGame mode information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to game modes of Patch %s ... Times tried: %d." %(i + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], j, queue_recapture, queuePatch_adopted, j, i + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], queuePatch_adopted, queue_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                queue: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                queue: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 queuePatch_deserted: str = queuePatch_adopted
                                 queuePatch_adopted = FindPostPatch(Patch(queuePatch_adopted), versionList)
@@ -1221,8 +1221,8 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
                         logPrint("第%d/%d场对局（对局序号：%d）强化符文信息（%s）获取失败！正在第%d次尝试改用%s版本的云顶之弈强化符文信息……\nAugment information (%s) of Match %d / %d (matchId: %d) capture failed! Changing to TFT augments of Patch %s ... Times tried: %d." %(i + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], j, TFTAugment_recapture, TFTAugmentPatch_adopted, j, i + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], TFTAugmentPatch_adopted, TFTAugment_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                TFTBasic: dict[str, Any] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                TFTBasic: dict[str, Any] = source.json()
                             except requests.exceptions.JSONDecodeError: #存在版本合并更新的情况（Situation like merged update exists）
                                 TFTAugmentPatch_deserted: str = TFTAugmentPatch_adopted
                                 TFTAugmentPatch_adopted = FindPostPatch(Patch(TFTAugmentPatch_adopted), versionList)
@@ -1251,8 +1251,8 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
                         logPrint("第%d/%d场对局（对局序号：%d）小小英雄信息（%s）获取失败！正在第%d次尝试改用%s版本的小小英雄信息……\nTFT companion information (%s) of Match %d / %d (matchId: %d) capture failed! Changing to TFT companions of Patch %s ... Times tried: %d." %(i + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], j, TFTCompanion_recapture, TFTCompanionPatch_adopted, j, i + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], TFTCompanionPatch_adopted, TFTCompanion_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/companions.json" %(TFTCompanionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                TFTCompanion: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/companions.json" %(TFTCompanionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                TFTCompanion: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 TFTCompanionPatch_deserted: str = TFTCompanionPatch_adopted
                                 TFTCompanionPatch_adopted = FindPostPatch(Patch(TFTCompanionPatch_adopted), versionList)
@@ -1281,8 +1281,8 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
                         logPrint("第%d/%d场对局（对局序号：%d）羁绊信息（%s）获取失败！正在第%d次尝试改用%s版本的羁绊信息……\nTFT trait information (%s) of Match %d / %d (matchId: %d) capture failed! Changing to TFT traits of Patch %s ... Times tried: %d." %(i + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], j, TFTTrait_recapture, TFTTraitPatch_adopted, j, i + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], TFTTraitPatch_adopted, TFTTrait_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tfttraits.json" %(TFTTraitPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                TFTTrait: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tfttraits.json" %(TFTTraitPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                TFTTrait: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 TFTTraitPatch_deserted: str = TFTTraitPatch_adopted
                                 TFTTraitPatch_adopted = FindPostPatch(Patch(TFTTraitPatch_adopted), versionList)
@@ -1320,8 +1320,8 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
                         logPrint("第%d/%d场对局（对局序号：%d）英雄信息（%s）获取失败！正在第%d次尝试改用%s版本的棋子信息……\nTFT champion (%s) information of Match %d / %d (matchId: %d) capture failed! Changing to TFT champions of Patch %s ... Times tried: %d." %(i + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], j, TFTChampion_recapture, TFTChampionPatch_adopted, j, i + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], TFTChampionPatch_adopted, TFTChampion_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftchampions.json" %(TFTChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                TFTChampion: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftchampions.json" %(TFTChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                TFTChampion: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 TFTChampionPatch_deserted: str = TFTChampionPatch_adopted
                                 TFTChampionPatch_adopted = FindPostPatch(Patch(TFTChampionPatch_adopted), versionList)
@@ -1366,8 +1366,8 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
                             logPrint("第%d/%d场对局（对局序号：%d）装备信息（%s）获取失败！正在第%d次尝试改用%s版本的云顶之弈装备信息……\nTFT item information (%s) of Match %d / %d (matchId: %d) capture failed! Changing to TFT items of Patch %s ... Times tried: %d." %(i + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], j, TFTItem_recapture, TFTItemPatch_adopted, j, i + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], TFTItemPatch_adopted, TFTItem_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftitems.json" %(TFTItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    TFTItem: list[dict[str, Any]] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftitems.json" %(TFTItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    TFTItem: list[dict[str, Any]] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     TFTItemPatch_deserted: str = TFTItemPatch_adopted
                                     TFTItemPatch_adopted = FindPostPatch(Patch(TFTItemPatch_adopted), versionList)
@@ -1392,8 +1392,8 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
                             TFTAugment_recapture = 1
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    TFTBasic = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    TFTBasic = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     TFTAugmentPatch_deserted = TFTAugmentPatch_adopted
                                     TFTAugmentPatch_adopted = FindPostPatch(Patch(TFTAugmentPatch_adopted), versionList)
@@ -1898,8 +1898,8 @@ def sort_LoLHistory(LoLHistory: dict[str, Any], queues: dict[int, dict[str, Any]
                     logPrint("第%d/%d场对局（对局序号：%d）游戏模式信息（%d）获取失败！正在第%d次尝试改用%s版本的游戏模式信息……\nGame mode information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to game modes of Patch %s ... Times tried: %d." %(i + 1, len(games), game["gameId"], j, queue_recapture, queuePatch_adopted, j, i + 1, len(games), game["gameId"], queuePatch_adopted, queue_recapture), verbose = verbose)
                     while True:
                         try:
-                            response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                            queue: list[dict[str, Any]] = response.json()
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            queue: list[dict[str, Any]] = source.json()
                         except requests.exceptions.JSONDecodeError:
                             queuePatch_deserted: str = queuePatch_adopted
                             queuePatch_adopted = FindPostPatch(Patch(queuePatch_adopted), versionList)
@@ -1928,8 +1928,8 @@ def sort_LoLHistory(LoLHistory: dict[str, Any], queues: dict[int, dict[str, Any]
                     logPrint("第%d/%d场对局（对局序号：%d）召唤师图标信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师图标信息……\nSummoner icon information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to summoner icons of Patch %s ... Times tried: %d." %(i + 1, len(games), game["gameId"], j, summonerIcon_recapture, summonerIconPatch_adopted, j, i + 1, len(games), game["gameId"], summonerIconPatch_adopted, summonerIcon_recapture), verbose = verbose)
                     while True:
                         try:
-                            response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                            summonerIcon: list[dict[str, Any]] = response.json()
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            summonerIcon: list[dict[str, Any]] = source.json()
                         except requests.exceptions.JSONDecodeError:
                             summonerIconPatch_deserted: str = summonerIconPatch_adopted
                             summonerIconPatch_adopted = FindPostPatch(Patch(summonerIconPatch_adopted), versionList)
@@ -1958,8 +1958,8 @@ def sort_LoLHistory(LoLHistory: dict[str, Any], queues: dict[int, dict[str, Any]
                     logPrint("第%d/%d场对局（对局序号：%d）英雄信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄信息……\nLoL champion information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to LoL champions of Patch %s ... Times tried: %d." %(i + 1, len(games), game["gameId"], j, LoLChampion_recapture, LoLChampionPatch_adopted, j, i + 1, len(games), game["gameId"], LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
                     while True:
                         try:
-                            response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                            LoLChampion: list[dict[str, Any]] = response.json()
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            LoLChampion: list[dict[str, Any]] = source.json()
                         except requests.exceptions.JSONDecodeError:
                             LoLChampionPatch_deserted: str = LoLChampionPatch_adopted
                             LoLChampionPatch_adopted = FindPostPatch(Patch(LoLChampionPatch_adopted), versionList)
@@ -1988,8 +1988,8 @@ def sort_LoLHistory(LoLHistory: dict[str, Any], queues: dict[int, dict[str, Any]
                     logPrint("第%d/%d场对局（对局序号：%d）召唤师技能信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师技能信息……\nSpell information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to spells of Patch %s ... Times tried: %d." %(i + 1, len(games), game["gameId"], j, spell_recapture, spellPatch_adopted, j, i + 1, len(games), game["gameId"], spellPatch_adopted, spell_recapture), verbose = verbose)
                     while True:
                         try:
-                            response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                            spell: list[dict[str, Any]] = response.json()
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            spell: list[dict[str, Any]] = source.json()
                         except requests.exceptions.JSONDecodeError:
                             spellPatch_deserted: str = spellPatch_adopted
                             spellPatch_adopted = FindPostPatch(Patch(spellPatch_adopted), versionList)
@@ -2018,8 +2018,8 @@ def sort_LoLHistory(LoLHistory: dict[str, Any], queues: dict[int, dict[str, Any]
                     logPrint("第%d/%d场对局（对局序号：%d）英雄联盟装备信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nLoL item information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to LoL items of Patch %s ... Times tried: %d." %(i + 1, len(games), game["gameId"], j, LoLItem_recapture, LoLItemPatch_adopted, j, i + 1, len(games), game["gameId"], LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
                     while True:
                         try:
-                            response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                            LoLItem: list[dict[str, Any]] = response.json()
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            LoLItem: list[dict[str, Any]] = source.json()
                         except requests.exceptions.JSONDecodeError:
                             LoLItemPatch_deserted: str = LoLItemPatch_adopted
                             LoLItemPatch_adopted = FindPostPatch(Patch(LoLItemPatch_adopted), versionList)
@@ -2048,8 +2048,8 @@ def sort_LoLHistory(LoLHistory: dict[str, Any], queues: dict[int, dict[str, Any]
                     logPrint("第%d/%d场对局（对局序号：%d）基石符文信息（%d）获取失败！正在第%d次尝试改用%s版本的基石符文信息……\nPerk information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to perks of Patch %s ... Times tried: %d." %(i + 1, len(games), game["gameId"], j, perk_recapture, perkPatch_adopted, j, i + 1, len(games), game["gameId"], perkPatch_adopted, perk_recapture), verbose = verbose)
                     while True:
                         try:
-                            response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                            perk: list[dict[str, Any]] = response.json()
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            perk: list[dict[str, Any]] = source.json()
                         except requests.exceptions.JSONDecodeError:
                             perkPatch_deserted: str = perkPatch_adopted
                             perkPatch_adopted = FindPostPatch(Patch(perkPatch_adopted), versionList)
@@ -2078,8 +2078,8 @@ def sort_LoLHistory(LoLHistory: dict[str, Any], queues: dict[int, dict[str, Any]
                     logPrint("第%d/%d场对局（对局序号：%d）符文系信息（%d）获取失败！正在第%d次尝试改用%s版本的符文系信息……\nPerkstyle information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to perkstyles of Patch %s ... Times tried: %d." %(i + 1, len(games), game["gameId"], j, perkstyle_recapture, perkstylePatch_adopted, j, i + 1, len(games), game["gameId"], perkstylePatch_adopted, perkstyle_recapture), verbose = verbose)
                     while True:
                         try:
-                            response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                            perkstyle: dict[str, Any] = response.json()
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            perkstyle: dict[str, Any] = source.json()
                         except requests.exceptions.JSONDecodeError:
                             perkstylePatch_deserted: str = perkstylePatch_adopted
                             perkstylePatch_adopted = FindPostPatch(Patch(perkstylePatch_adopted), versionList)
@@ -2108,8 +2108,8 @@ def sort_LoLHistory(LoLHistory: dict[str, Any], queues: dict[int, dict[str, Any]
                     logPrint("第%d/%d场对局（对局序号：%d）强化符文信息（%d）获取失败！正在第%d次尝试改用%s版本的斗魂竞技场强化符文信息……\nAugment information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to Cherry augments of Patch %s ... Times tried: %d." %(i + 1, len(games), game["gameId"], j, CherryAugment_recapture, CherryAugmentPatch_adopted, j, i + 1, len(games), game["gameId"], CherryAugmentPatch_adopted, CherryAugment_recapture), verbose = verbose)
                     while True:
                         try:
-                            response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                            CherryAugment: list[dict[str, Any]] = response.json()
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            CherryAugment: list[dict[str, Any]] = source.json()
                         except requests.exceptions.JSONDecodeError:
                             CherryAugmentPatch_deserted: str = CherryAugmentPatch_adopted
                             CherryAugmentPatch_adopted = FindPostPatch(Patch(CherryAugmentPatch_adopted), versionList)
@@ -2200,8 +2200,8 @@ def sort_LoLHistory_sgp(LoLHistory: dict[str, Any], current_puuid: str | list[st
                         logPrint("第%d/%d场对局（对局序号：%d）游戏模式信息（%d）获取失败！正在第%d次尝试改用%s版本的游戏模式信息……\nGame mode information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to game modes of Patch %s ... Times tried: %d." %(i + 1, len(games), matchId, j, queue_recapture, queuePatch_adopted, j, i + 1, len(games), matchId, queuePatch_adopted, queue_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                queue: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                queue: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 queuePatch_deserted: str = queuePatch_adopted
                                 queuePatch_adopted = FindPostPatch(Patch(queuePatch_adopted), versionList)
@@ -2230,8 +2230,8 @@ def sort_LoLHistory_sgp(LoLHistory: dict[str, Any], current_puuid: str | list[st
                         logPrint("第%d/%d场对局（对局序号：%d）召唤师图标信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师图标信息……\nSummoner icon information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to summoner icons of Patch %s ... Times tried: %d." %(i + 1, len(games), matchId, j, summonerIcon_recapture, summonerIconPatch_adopted, j, i + 1, len(games), matchId, summonerIconPatch_adopted, summonerIcon_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                summonerIcon: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                summonerIcon: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 summonerIconPatch_deserted: str = summonerIconPatch_adopted
                                 summonerIconPatch_adopted = FindPostPatch(Patch(summonerIconPatch_adopted), versionList)
@@ -2260,8 +2260,8 @@ def sort_LoLHistory_sgp(LoLHistory: dict[str, Any], current_puuid: str | list[st
                         logPrint("第%d/%d场对局（对局序号：%d）英雄信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄信息……\nLoL champion information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to LoL champions of Patch %s ... Times tried: %d." %(i + 1, len(games), matchId, j, LoLChampion_recapture, LoLChampionPatch_adopted, j, i + 1, len(games), matchId, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                LoLChampion: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                LoLChampion: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 LoLChampionPatch_deserted: str = LoLChampionPatch_adopted
                                 LoLChampionPatch_adopted = FindPostPatch(Patch(LoLChampionPatch_adopted), versionList)
@@ -2290,8 +2290,8 @@ def sort_LoLHistory_sgp(LoLHistory: dict[str, Any], current_puuid: str | list[st
                         logPrint("第%d/%d场对局（对局序号：%d）召唤师技能信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师技能信息……\nSpell information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to spells of Patch %s ... Times tried: %d." %(i + 1, len(games), matchId, j, spell_recapture, spellPatch_adopted, j, i + 1, len(games), matchId, spellPatch_adopted, spell_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                spell: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                spell: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 spellPatch_deserted: str = spellPatch_adopted
                                 spellPatch_adopted = FindPostPatch(Patch(spellPatch_adopted), versionList)
@@ -2320,8 +2320,8 @@ def sort_LoLHistory_sgp(LoLHistory: dict[str, Any], current_puuid: str | list[st
                         logPrint("第%d/%d场对局（对局序号：%d）英雄联盟装备信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nLoL item information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to LoL items of Patch %s ... Times tried: %d." %(i + 1, len(games), matchId, j, LoLItem_recapture, LoLItemPatch_adopted, j, i + 1, len(games), matchId, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                LoLItem: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                LoLItem: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 LoLItemPatch_deserted: str = LoLItemPatch_adopted
                                 LoLItemPatch_adopted = FindPostPatch(Patch(LoLItemPatch_adopted), versionList)
@@ -2358,8 +2358,8 @@ def sort_LoLHistory_sgp(LoLHistory: dict[str, Any], current_puuid: str | list[st
                         logPrint("第%d/%d场对局（对局序号：%d）基石符文信息（%d）获取失败！正在第%d次尝试改用%s版本的基石符文信息……\nPerk information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to perks of Patch %s ... Times tried: %d." %(i + 1, len(games), matchId, j, perk_recapture, perkPatch_adopted, j, i + 1, len(games), matchId, perkPatch_adopted, perk_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                perk: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                perk: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 perkPatch_deserted: str = perkPatch_adopted
                                 perkPatch_adopted = FindPostPatch(Patch(perkPatch_adopted), versionList)
@@ -2391,8 +2391,8 @@ def sort_LoLHistory_sgp(LoLHistory: dict[str, Any], current_puuid: str | list[st
                         logPrint("第%d/%d场对局（对局序号：%d）符文系信息（%d）获取失败！正在第%d次尝试改用%s版本的符文系信息……\nPerkstyle information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to perkstyles of Patch %s ... Times tried: %d." %(i + 1, len(games), matchId, j, perkstyle_recapture, perkstylePatch_adopted, j, i + 1, len(games), matchId, perkstylePatch_adopted, perkstyle_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                perkstyle: dict[str, Any] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                perkstyle: dict[str, Any] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 perkstylePatch_deserted: str = perkstylePatch_adopted
                                 perkstylePatch_adopted = FindPostPatch(Patch(perkstylePatch_adopted), versionList)
@@ -2421,8 +2421,8 @@ def sort_LoLHistory_sgp(LoLHistory: dict[str, Any], current_puuid: str | list[st
                         logPrint("第%d/%d场对局（对局序号：%d）强化符文信息（%d）获取失败！正在第%d次尝试改用%s版本的斗魂竞技场强化符文信息……\nAugment information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to Cherry augments of Patch %s ... Times tried: %d." %(i + 1, len(games), matchId, j, CherryAugment_recapture, CherryAugmentPatch_adopted, j, i + 1, len(games), matchId, CherryAugmentPatch_adopted, CherryAugment_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                CherryAugment: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                CherryAugment: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 CherryAugmentPatch_deserted: str = CherryAugmentPatch_adopted
                                 CherryAugmentPatch_adopted = FindPostPatch(Patch(CherryAugmentPatch_adopted), versionList)
@@ -3328,8 +3328,8 @@ def sort_LoLGame_summary(LoLGame_summary: dict[str, Any], queues: dict[int, dict
                 logPrint("对局%d游戏模式信息（%d）获取失败！正在第%d次尝试改用%s版本的游戏模式信息……\nGame mode information (%d) of Match %d capture failed! Changing to game modes of Patch %s ... Times tried: %d." %(matchId, i, queue_recapture, queuePatch_adopted, i, matchId, queuePatch_adopted, queue_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        queue: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        queue: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         queuePatch_deserted: str = queuePatch_adopted
                         queuePatch_adopted = FindPostPatch(Patch(queuePatch_adopted), versionList)
@@ -3358,8 +3358,8 @@ def sort_LoLGame_summary(LoLGame_summary: dict[str, Any], queues: dict[int, dict
                 logPrint("对局%d召唤师图标信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师图标信息……\nSummoner icon information (%d) of Match %d capture failed! Changing to summoner icons of Patch %s ... Times tried: %d." %(matchId, i, summonerIcon_recapture, summonerIconPatch_adopted, i, matchId, summonerIconPatch_adopted, summonerIcon_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        summonerIcon: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        summonerIcon: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         summonerIconPatch_deserted: str = summonerIconPatch_adopted
                         summonerIconPatch_adopted = FindPostPatch(Patch(summonerIconPatch_adopted), versionList)
@@ -3388,8 +3388,8 @@ def sort_LoLGame_summary(LoLGame_summary: dict[str, Any], queues: dict[int, dict
                 logPrint("对局%d英雄信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄信息……\nLoL champion information (%d) of Match %d capture failed! Changing to LoL champions of Patch %s ... Times tried: %d." %(matchId, i, LoLChampion_recapture, LoLChampionPatch_adopted, i, matchId, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        LoLChampion: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        LoLChampion: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         LoLChampionPatch_deserted: str = LoLChampionPatch_adopted
                         LoLChampionPatch_adopted = FindPostPatch(Patch(LoLChampionPatch_adopted), versionList)
@@ -3418,8 +3418,8 @@ def sort_LoLGame_summary(LoLGame_summary: dict[str, Any], queues: dict[int, dict
                 logPrint("对局%d召唤师技能信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师技能信息……\nSpell information (%d) of Match %d capture failed! Changing to spells of Patch %s ... Times tried: %d." %(matchId, i, spell_recapture, spellPatch_adopted, i, matchId, spellPatch_adopted, spell_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        spell: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        spell: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         spellPatch_deserted: str = spellPatch_adopted
                         spellPatch_adopted = FindPostPatch(Patch(spellPatch_adopted), versionList)
@@ -3449,8 +3449,8 @@ def sort_LoLGame_summary(LoLGame_summary: dict[str, Any], queues: dict[int, dict
                 logPrint("对局%d英雄联盟装备信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nLoL item information (%d) of Match %d capture failed! Changing to LoL items of Patch %s ... Times tried: %d." %(matchId, i, LoLItem_recapture, LoLItemPatch_adopted, i, matchId, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        LoLItem: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        LoLItem: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         LoLItemPatch_deserted: str = LoLItemPatch_adopted
                         LoLItemPatch_adopted = FindPostPatch(Patch(LoLItemPatch_adopted), versionList)
@@ -3479,8 +3479,8 @@ def sort_LoLGame_summary(LoLGame_summary: dict[str, Any], queues: dict[int, dict
                 logPrint("对局%d基石符文信息（%d）获取失败！正在第%d次尝试改用%s版本的基石符文信息……\nPerk information (%d) of Match %d capture failed! Changing to perks of Patch %s ... Times tried: %d." %(matchId, i, perk_recapture, perkPatch_adopted, i, matchId, perkPatch_adopted, perk_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        perk: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        perk: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         perkPatch_deserted: str = perkPatch_adopted
                         perkPatch_adopted = FindPostPatch(Patch(perkPatch_adopted), versionList)
@@ -3509,8 +3509,8 @@ def sort_LoLGame_summary(LoLGame_summary: dict[str, Any], queues: dict[int, dict
                 logPrint("对局%d符文系信息（%d）获取失败！正在第%d次尝试改用%s版本的符文系信息……\nPerkstyle information (%d) of Match %d capture failed! Changing to perkstyles of Patch %s ... Times tried: %d." %(matchId, i, perkstyle_recapture, perkstylePatch_adopted, i, matchId, perkstylePatch_adopted, perkstyle_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        perkstyle: dict[str, Any] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        perkstyle: dict[str, Any] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         perkstylePatch_deserted: str = perkstylePatch_adopted
                         perkstylePatch_adopted = FindPostPatch(Patch(perkstylePatch_adopted), versionList)
@@ -3539,8 +3539,8 @@ def sort_LoLGame_summary(LoLGame_summary: dict[str, Any], queues: dict[int, dict
                 logPrint("对局%d强化符文信息（%d）获取失败！正在第%d次尝试改用%s版本的斗魂竞技场强化符文信息……\nAugment information (%d) of Match %d capture failed! Changing to Cherry augments of Patch %s ... Times tried: %d." %(matchId, i, CherryAugment_recapture, CherryAugmentPatch_adopted, i, matchId, CherryAugmentPatch_adopted, CherryAugment_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        CherryAugment: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        CherryAugment: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         CherryAugmentPatch_deserted: str = CherryAugmentPatch_adopted
                         CherryAugmentPatch_adopted = FindPostPatch(Patch(CherryAugmentPatch_adopted), versionList)
@@ -3638,8 +3638,8 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
                 logPrint("对局%d游戏模式信息（%d）获取失败！正在第%d次尝试改用%s版本的游戏模式信息……\nGame mode information (%d) of Match %d capture failed! Changing to game modes of Patch %s ... Times tried: %d." %(matchId, i, queue_recapture, queuePatch_adopted, i, matchId, queuePatch_adopted, queue_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        queue: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        queue: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         queuePatch_deserted: str = queuePatch_adopted
                         queuePatch_adopted = FindPostPatch(Patch(queuePatch_adopted), versionList)
@@ -3668,8 +3668,8 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
                 logPrint("对局%d召唤师图标信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师图标信息……\nSummoner icon information (%d) of Match %d capture failed! Changing to summoner icons of Patch %s ... Times tried: %d." %(matchId, i, summonerIcon_recapture, summonerIconPatch_adopted, i, matchId, summonerIconPatch_adopted, summonerIcon_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        summonerIcon: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        summonerIcon: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         summonerIconPatch_deserted: str = summonerIconPatch_adopted
                         summonerIconPatch_adopted = FindPostPatch(Patch(summonerIconPatch_adopted), versionList)
@@ -3698,8 +3698,8 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
                 logPrint("对局%d英雄信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄信息……\nLoL champion information (%d) of Match %d capture failed! Changing to LoL champions of Patch %s ... Times tried: %d." %(matchId, i, LoLChampion_recapture, LoLChampionPatch_adopted, i, matchId, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        LoLChampion: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        LoLChampion: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         LoLChampionPatch_deserted: str = LoLChampionPatch_adopted
                         LoLChampionPatch_adopted = FindPostPatch(Patch(LoLChampionPatch_adopted), versionList)
@@ -3728,8 +3728,8 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
                 logPrint("对局%d召唤师技能信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师技能信息……\nSpell information (%d) of Match %d capture failed! Changing to spells of Patch %s ... Times tried: %d." %(matchId, i, spell_recapture, spellPatch_adopted, i, matchId, spellPatch_adopted, spell_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        spell: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        spell: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         spellPatch_deserted: str = spellPatch_adopted
                         spellPatch_adopted = FindPostPatch(Patch(spellPatch_adopted), versionList)
@@ -3759,8 +3759,8 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
                 logPrint("对局%d英雄联盟装备信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nLoL item information (%d) of Match %d capture failed! Changing to LoL items of Patch %s ... Times tried: %d." %(matchId, i, LoLItem_recapture, LoLItemPatch_adopted, i, matchId, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        LoLItem: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        LoLItem: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         LoLItemPatch_deserted: str = LoLItemPatch_adopted
                         LoLItemPatch_adopted = FindPostPatch(Patch(LoLItemPatch_adopted), versionList)
@@ -3798,8 +3798,8 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
                 logPrint("对局%d基石符文信息（%d）获取失败！正在第%d次尝试改用%s版本的基石符文信息……\nPerk information (%d) of Match %d capture failed! Changing to perks of Patch %s ... Times tried: %d." %(matchId, i, perk_recapture, perkPatch_adopted, i, matchId, perkPatch_adopted, perk_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        perk: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        perk: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         perkPatch_deserted: str = perkPatch_adopted
                         perkPatch_adopted = FindPostPatch(Patch(perkPatch_adopted), versionList)
@@ -3832,8 +3832,8 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
                 logPrint("对局%d符文系信息（%d）获取失败！正在第%d次尝试改用%s版本的符文系信息……\nPerkstyle information (%d) of Match %d capture failed! Changing to perkstyles of Patch %s ... Times tried: %d." %(matchId, i, perkstyle_recapture, perkstylePatch_adopted, i, matchId, perkstylePatch_adopted, perkstyle_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        perkstyle: dict[str, Any] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        perkstyle: dict[str, Any] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         perkstylePatch_deserted: str = perkstylePatch_adopted
                         perkstylePatch_adopted = FindPostPatch(Patch(perkstylePatch_adopted), versionList)
@@ -3862,8 +3862,8 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
                 logPrint("对局%d强化符文信息（%d）获取失败！正在第%d次尝试改用%s版本的斗魂竞技场强化符文信息……\nAugment information (%d) of Match %d capture failed! Changing to Cherry augments of Patch %s ... Times tried: %d." %(matchId, i, CherryAugment_recapture, CherryAugmentPatch_adopted, i, matchId, CherryAugmentPatch_adopted, CherryAugment_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        CherryAugment: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        CherryAugment: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         CherryAugmentPatch_deserted: str = CherryAugmentPatch_adopted
                         CherryAugmentPatch_adopted = FindPostPatch(Patch(CherryAugmentPatch_adopted), versionList)
@@ -3971,8 +3971,8 @@ async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], que
                             logPrint("第%d/%d场对局（对局序号：%d）游戏模式信息（%d）获取失败！正在第%d次尝试改用%s版本的游戏模式信息……\nGame mode information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to game modes of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, i, queue_recapture, queuePatch_adopted, i, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, queuePatch_adopted, queue_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    queue: list[dict[str, Any]] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    queue: list[dict[str, Any]] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     queuePatch_deserted: str = queuePatch_adopted
                                     queuePatch_adopted = FindPostPatch(Patch(queuePatch_adopted), versionList)
@@ -4001,8 +4001,8 @@ async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], que
                             logPrint("第%d/%d场对局（对局序号：%d）召唤师图标信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师图标信息……\nSummoner icon information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to summoner icons of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, i, summonerIcon_recapture, summonerIconPatch_adopted, i, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, summonerIconPatch_adopted, summonerIcon_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    summonerIcon: list[dict[str, Any]] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    summonerIcon: list[dict[str, Any]] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     summonerIconPatch_deserted: str = summonerIconPatch_adopted
                                     summonerIconPatch_adopted = FindPostPatch(Patch(summonerIconPatch_adopted), versionList)
@@ -4031,8 +4031,8 @@ async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], que
                             logPrint("第%d/%d场对局（对局序号：%d）英雄信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄信息……\nLoL champion information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to LoL champions of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, i, LoLChampion_recapture, LoLChampionPatch_adopted, i, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    LoLChampion: list[dict[str, Any]] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    LoLChampion: list[dict[str, Any]] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     LoLChampionPatch_deserted: str = LoLChampionPatch_adopted
                                     LoLChampionPatch_adopted = FindPostPatch(Patch(LoLChampionPatch_adopted), versionList)
@@ -4061,8 +4061,8 @@ async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], que
                             logPrint("第%d/%d场对局（对局序号：%d）召唤师技能信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师技能信息……\nSpell information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to spells of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, i, spell_recapture, spellPatch_adopted, i, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, spellPatch_adopted, spell_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    spell: list[dict[str, Any]] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    spell: list[dict[str, Any]] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     spellPatch_deserted: str = spellPatch_adopted
                                     spellPatch_adopted = FindPostPatch(Patch(spellPatch_adopted), versionList)
@@ -4091,8 +4091,8 @@ async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], que
                             logPrint("第%d/%d场对局（对局序号：%d）英雄联盟装备信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nLoL item information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, i, LoLItem_recapture, LoLItemPatch_adopted, i, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    LoLItem: list[dict[str, Any]] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    LoLItem: list[dict[str, Any]] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     LoLItemPatch_deserted: str = LoLItemPatch_adopted
                                     LoLItemPatch_adopted = FindPostPatch(Patch(LoLItemPatch_adopted), versionList)
@@ -4121,8 +4121,8 @@ async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], que
                             logPrint("第%d/%d场对局（对局序号：%d）基石符文信息（%d）获取失败！正在第%d次尝试改用%s版本的基石符文信息……\nPerk information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to perks of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, i, perk_recapture, perkPatch_adopted, i, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, perkPatch_adopted, perk_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    perk: list[dict[str, Any]] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    perk: list[dict[str, Any]] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     perkPatch_deserted = perkPatch_adopted
                                     perkPatch_adopted = FindPostPatch(Patch(perkPatch_adopted), versionList)
@@ -4151,8 +4151,8 @@ async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], que
                             logPrint("第%d/%d场对局（对局序号：%d）符文系信息（%d）获取失败！正在第%d次尝试改用%s版本的符文系信息……\nPerkstyle information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to perkstyles of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, i, perkstyle_recapture, perkstylePatch_adopted, i, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, perkstylePatch_adopted, perkstyle_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    perkstyle: dict[str, Any] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    perkstyle: dict[str, Any] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     perkstylePatch_deserted = perkstylePatch_adopted
                                     perkstylePatch_adopted = FindPostPatch(Patch(perkstylePatch_adopted), versionList)
@@ -4181,8 +4181,8 @@ async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], que
                             logPrint("第%d/%d场对局（对局序号：%d）强化符文信息（%d）获取失败！正在第%d次尝试改用%s版本的斗魂竞技场强化符文信息……\nAugment information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to Cherry augments of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, i, CherryAugment_recapture, CherryAugmentPatch_adopted, i, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, CherryAugmentPatch_adopted, CherryAugment_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    CherryAugment: list[dict[str, Any]] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    CherryAugment: list[dict[str, Any]] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     CherryAugmentPatch_deserted: str = CherryAugmentPatch_adopted
                                     CherryAugmentPatch_adopted = FindPostPatch(Patch(CherryAugmentPatch_adopted), versionList)
@@ -4308,8 +4308,8 @@ async def sort_LoLGame_stats_sgp(connection: Connection, sgpSession: SGPSession,
                             logPrint("第%d/%d场对局（对局序号：%d）游戏模式信息（%d）获取失败！正在第%d次尝试改用%s版本的游戏模式信息……\nGame mode information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to game modes of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, i, queue_recapture, queuePatch_adopted, i, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, queuePatch_adopted, queue_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    queue: list[dict[str, Any]] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    queue: list[dict[str, Any]] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     queuePatch_deserted: str = queuePatch_adopted
                                     queuePatch_adopted = FindPostPatch(Patch(queuePatch_adopted), versionList)
@@ -4342,8 +4342,8 @@ async def sort_LoLGame_stats_sgp(connection: Connection, sgpSession: SGPSession,
                             logPrint("第%d/%d场对局（对局序号：%d）召唤师图标信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师图标信息……\nSummoner icon information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to summoner icons of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, i, summonerIcon_recapture, summonerIconPatch_adopted, i, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, summonerIconPatch_adopted, summonerIcon_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    summonerIcon: list[dict[str, Any]] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    summonerIcon: list[dict[str, Any]] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     summonerIconPatch_deserted: str = summonerIconPatch_adopted
                                     summonerIconPatch_adopted = FindPostPatch(Patch(summonerIconPatch_adopted), versionList)
@@ -4372,8 +4372,8 @@ async def sort_LoLGame_stats_sgp(connection: Connection, sgpSession: SGPSession,
                             logPrint("第%d/%d场对局（对局序号：%d）英雄信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄信息……\nLoL champion information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to LoL champions of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, i, LoLChampion_recapture, LoLChampionPatch_adopted, i, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    LoLChampion: list[dict[str, Any]] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    LoLChampion: list[dict[str, Any]] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     LoLChampionPatch_deserted: str = LoLChampionPatch_adopted
                                     LoLChampionPatch_adopted = FindPostPatch(Patch(LoLChampionPatch_adopted), versionList)
@@ -4407,8 +4407,8 @@ async def sort_LoLGame_stats_sgp(connection: Connection, sgpSession: SGPSession,
                             logPrint("第%d/%d场对局（对局序号：%d）召唤师技能信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师技能信息……\nSpell information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to spells of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, i, spell_recapture, spellPatch_adopted, i, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, spellPatch_adopted, spell_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    spell: list[dict[str, Any]] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    spell: list[dict[str, Any]] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     spellPatch_deserted: str = spellPatch_adopted
                                     spellPatch_adopted = FindPostPatch(Patch(spellPatch_adopted), versionList)
@@ -4442,8 +4442,8 @@ async def sort_LoLGame_stats_sgp(connection: Connection, sgpSession: SGPSession,
                             logPrint("第%d/%d场对局（对局序号：%d）英雄联盟装备信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nLoL item information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, i, LoLItem_recapture, LoLItemPatch_adopted, i, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    LoLItem: list[dict[str, Any]] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    LoLItem: list[dict[str, Any]] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     LoLItemPatch_deserted: str = LoLItemPatch_adopted
                                     LoLItemPatch_adopted = FindPostPatch(Patch(LoLItemPatch_adopted), versionList)
@@ -4483,8 +4483,8 @@ async def sort_LoLGame_stats_sgp(connection: Connection, sgpSession: SGPSession,
                             logPrint("第%d/%d场对局（对局序号：%d）基石符文信息（%d）获取失败！正在第%d次尝试改用%s版本的基石符文信息……\nPerk information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to perks of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, i, perk_recapture, perkPatch_adopted, i, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, perkPatch_adopted, perk_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    perk: list[dict[str, Any]] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    perk: list[dict[str, Any]] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     perkPatch_deserted = perkPatch_adopted
                                     perkPatch_adopted = FindPostPatch(Patch(perkPatch_adopted), versionList)
@@ -4519,8 +4519,8 @@ async def sort_LoLGame_stats_sgp(connection: Connection, sgpSession: SGPSession,
                             logPrint("第%d/%d场对局（对局序号：%d）符文系信息（%d）获取失败！正在第%d次尝试改用%s版本的符文系信息……\nPerkstyle information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to perkstyles of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, i, perkstyle_recapture, perkstylePatch_adopted, i, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, perkstylePatch_adopted, perkstyle_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    perkstyle: dict[str, Any] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    perkstyle: dict[str, Any] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     perkstylePatch_deserted = perkstylePatch_adopted
                                     perkstylePatch_adopted = FindPostPatch(Patch(perkstylePatch_adopted), versionList)
@@ -4555,8 +4555,8 @@ async def sort_LoLGame_stats_sgp(connection: Connection, sgpSession: SGPSession,
                             logPrint("第%d/%d场对局（对局序号：%d）强化符文信息（%d）获取失败！正在第%d次尝试改用%s版本的斗魂竞技场强化符文信息……\nAugment information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to Cherry augments of Patch %s ... Times tried: %d." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, i, CherryAugment_recapture, CherryAugmentPatch_adopted, i, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, CherryAugmentPatch_adopted, CherryAugment_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    CherryAugment: list[dict[str, Any]] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    CherryAugment: list[dict[str, Any]] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     CherryAugmentPatch_deserted: str = CherryAugmentPatch_adopted
                                     CherryAugmentPatch_adopted = FindPostPatch(Patch(CherryAugmentPatch_adopted), versionList)
@@ -4636,8 +4636,8 @@ def sort_LoLGame_timeline(LoLGame_timeline: dict[str, Any], LoLGame_summary: dic
                 logPrint("对局%d英雄信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄信息……\nLoL champion information (%d) of Match %d capture failed! Changing to LoL champions of Patch %s ... Times tried: %d." %(matchId, i, LoLChampion_recapture, LoLChampionPatch_adopted, i, matchId, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        LoLChampion: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        LoLChampion: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         LoLChampionPatch_deserted: str = LoLChampionPatch_adopted
                         LoLChampionPatch_adopted = FindPostPatch(Patch(LoLChampionPatch_adopted), versionList)
@@ -4732,8 +4732,8 @@ def sort_LoLGame_timeline(LoLGame_timeline: dict[str, Any], LoLGame_summary: dic
                 logPrint("对局%d英雄联盟装备信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nLoL item information (%d) of Match %d capture failed! Changing to LoL items of Patch %s ... Times tried: %d." %(matchId, i, LoLItem_recapture, LoLItemPatch_adopted, i, matchId, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        LoLItem: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        LoLItem: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         LoLItemPatch_deserted: str = LoLItemPatch_adopted
                         LoLItemPatch_adopted = FindPostPatch(Patch(LoLItemPatch_adopted), versionList)
@@ -4911,8 +4911,8 @@ def sort_LoLGame_timeline_sgp(LoLGame_timeline: dict[str, Any], LoLGame_summary:
                 logPrint("对局%d英雄信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄信息……\nLoL champion information (%d) of Match %d capture failed! Changing to LoL champions of Patch %s ... Times tried: %d." %(matchId, i, LoLChampion_recapture, LoLChampionPatch_adopted, i, matchId, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        LoLChampion: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        LoLChampion: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         LoLChampionPatch_deserted: str = LoLChampionPatch_adopted
                         LoLChampionPatch_adopted = FindPostPatch(Patch(LoLChampionPatch_adopted), versionList)
@@ -4949,8 +4949,8 @@ def sort_LoLGame_timeline_sgp(LoLGame_timeline: dict[str, Any], LoLGame_summary:
                 logPrint("对局%d英雄联盟装备信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nLoL item information (%d) of Match %d capture failed! Changing to LoL items of Patch %s ... Times tried: %d." %(matchId, i, LoLItem_recapture, LoLItemPatch_adopted, i, matchId, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
                 while True:
                     try:
-                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        LoLItem: list[dict[str, Any]] = response.json()
+                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                        LoLItem: list[dict[str, Any]] = source.json()
                     except requests.exceptions.JSONDecodeError:
                         LoLItemPatch_deserted: str = LoLItemPatch_adopted
                         LoLItemPatch_adopted = FindPostPatch(Patch(LoLItemPatch_adopted), versionList)
@@ -5507,8 +5507,8 @@ async def sort_TFTHistory(connection: Connection, TFTHistory: dict[str, Any], cu
                         logPrint("第%d/%d场对局（对局序号：%d）游戏模式信息（%d）获取失败！正在第%d次尝试改用%s版本的游戏模式信息……\nGame mode information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to game modes of Patch %s ... Times tried: %d." %(i + 1, len(TFTHistoryList), TFTGame_summary_json["game_id"], j, queue_recapture, queuePatch_adopted, j, i + 1, len(TFTHistoryList), TFTGame_summary_json["game_id"], queuePatch_adopted, queue_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                queue: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                queue: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 queuePatch_deserted: str = queuePatch_adopted
                                 queuePatch_adopted = FindPostPatch(Patch(queuePatch_adopted), versionList)
@@ -5537,8 +5537,8 @@ async def sort_TFTHistory(connection: Connection, TFTHistory: dict[str, Any], cu
                         logPrint("第%d/%d场对局（对局序号：%d）强化符文信息（%s）获取失败！正在第%d次尝试改用%s版本的云顶之弈强化符文信息……\nAugment information (%s) of Match %d / %d (matchId: %d) capture failed! Changing to TFT augments of Patch %s ... Times tried: %d." %(i + 1, len(TFTHistoryList), TFTGame_summary_json["game_id"], j, TFTAugment_recapture, TFTAugmentPatch_adopted, j, i + 1, len(TFTHistoryList), TFTGame_summary_json["game_id"], TFTAugmentPatch_adopted, TFTAugment_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                TFTBasic: dict[str, Any] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                TFTBasic: dict[str, Any] = source.json()
                             except requests.exceptions.JSONDecodeError: #存在版本合并更新的情况（Situation like merged update exists）
                                 TFTAugmentPatch_deserted: str = TFTAugmentPatch_adopted
                                 TFTAugmentPatch_adopted = FindPostPatch(Patch(TFTAugmentPatch_adopted), versionList)
@@ -5567,8 +5567,8 @@ async def sort_TFTHistory(connection: Connection, TFTHistory: dict[str, Any], cu
                         logPrint("第%d/%d场对局（对局序号：%d）小小英雄信息（%s）获取失败！正在第%d次尝试改用%s版本的小小英雄信息……\nTFT companion information (%s) of Match %d / %d (matchId: %d) capture failed! Changing to TFT companions of Patch %s ... Times tried: %d." %(i + 1, len(TFTHistoryList), TFTGame_summary_json["game_id"], j, TFTCompanion_recapture, TFTCompanionPatch_adopted, j, i + 1, len(TFTHistoryList), TFTGame_summary_json["game_id"], TFTCompanionPatch_adopted, TFTCompanion_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/companions.json" %(TFTCompanionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                TFTCompanion: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/companions.json" %(TFTCompanionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                TFTCompanion: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 TFTCompanionPatch_deserted: str = TFTCompanionPatch_adopted
                                 TFTCompanionPatch_adopted = FindPostPatch(Patch(TFTCompanionPatch_adopted), versionList)
@@ -5597,8 +5597,8 @@ async def sort_TFTHistory(connection: Connection, TFTHistory: dict[str, Any], cu
                         logPrint("第%d/%d场对局（对局序号：%d）羁绊信息（%s）获取失败！正在第%d次尝试改用%s版本的羁绊信息……\nTFT trait information (%s) of Match %d / %d (matchId: %d) capture failed! Changing to TFT traits of Patch %s ... Times tried: %d." %(i + 1, len(TFTHistoryList), TFTGame_summary_json["game_id"], j, TFTTrait_recapture, TFTTraitPatch_adopted, j, i + 1, len(TFTHistoryList), TFTGame_summary_json["game_id"], TFTTraitPatch_adopted, TFTTrait_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tfttraits.json" %(TFTTraitPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                TFTTrait: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tfttraits.json" %(TFTTraitPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                TFTTrait: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 TFTTraitPatch_deserted: str = TFTTraitPatch_adopted
                                 TFTTraitPatch_adopted = FindPostPatch(Patch(TFTTraitPatch_adopted), versionList)
@@ -5636,8 +5636,8 @@ async def sort_TFTHistory(connection: Connection, TFTHistory: dict[str, Any], cu
                         logPrint("第%d/%d场对局（对局序号：%d）英雄信息（%s）获取失败！正在第%d次尝试改用%s版本的棋子信息……\nTFT champion (%s) information of Match %d / %d (matchId: %d) capture failed! Changing to TFT champions of Patch %s ... Times tried: %d." %(i + 1, len(TFTHistoryList), TFTGame_summary_json["game_id"], j, TFTChampion_recapture, TFTChampionPatch_adopted, j, i + 1, len(TFTHistoryList), TFTGame_summary_json["game_id"], TFTChampionPatch_adopted, TFTChampion_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftchampions.json" %(TFTChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                TFTChampion: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftchampions.json" %(TFTChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                TFTChampion: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 TFTChampionPatch_deserted: str = TFTChampionPatch_adopted
                                 TFTChampionPatch_adopted = FindPostPatch(Patch(TFTChampionPatch_adopted), versionList)
@@ -5683,8 +5683,8 @@ async def sort_TFTHistory(connection: Connection, TFTHistory: dict[str, Any], cu
                             logPrint("第%d/%d场对局（对局序号：%d）装备信息（%s）获取失败！正在第%d次尝试改用%s版本的云顶之弈装备信息……\nTFT item information (%s) of Match %d / %d (matchId: %d) capture failed! Changing to TFT items of Patch %s ... Times tried: %d." %(i + 1, len(TFTHistoryList), TFTGame_summary_json["game_id"], j, TFTItem_recapture, TFTItemPatch_adopted, j, i + 1, len(TFTHistoryList), TFTGame_summary_json["game_id"], TFTItemPatch_adopted, TFTItem_recapture), verbose = verbose)
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftitems.json" %(TFTItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    TFTItem: list[dict[str, Any]] = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftitems.json" %(TFTItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    TFTItem: list[dict[str, Any]] = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     TFTItemPatch_deserted: str = TFTItemPatch_adopted
                                     TFTItemPatch_adopted = FindPostPatch(Patch(TFTItemPatch_adopted), versionList)
@@ -5709,8 +5709,8 @@ async def sort_TFTHistory(connection: Connection, TFTHistory: dict[str, Any], cu
                             TFTAugment_recapture = 1
                             while True:
                                 try:
-                                    response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                    TFTBasic = response.json()
+                                    source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                    TFTBasic = source.json()
                                 except requests.exceptions.JSONDecodeError:
                                     TFTAugmentPatch_deserted = TFTAugmentPatch_adopted
                                     TFTAugmentPatch_adopted = FindPostPatch(Patch(TFTAugmentPatch_adopted), versionList)
@@ -6024,8 +6024,8 @@ async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str
                     logPrint("对局%d游戏模式信息（%d）获取失败！正在第%d次尝试改用%s版本的游戏模式信息……\nGame mode information (%d) of Match %d capture failed! Changing to game modes of Patch %s ... Times tried: %d." %(TFTGame_summary_json["game_id"], i, queue_recapture, queuePatch_adopted, i, TFTGame_summary_json["game_id"], queuePatch_adopted, queue_recapture), verbose = verbose)
                     while True:
                         try:
-                            response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                            queue: list[dict[str, Any]] = response.json()
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            queue: list[dict[str, Any]] = source.json()
                         except requests.exceptions.JSONDecodeError:
                             queuePatch_deserted: str = queuePatch_adopted
                             queuePatch_adopted = FindPostPatch(Patch(queuePatch_adopted), versionList)
@@ -6054,8 +6054,8 @@ async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str
                     logPrint("对局%d强化符文信息（%s）获取失败！正在第%d次尝试改用%s版本的云顶之弈强化符文信息……\nAugment information (%s) of Match %d capture failed! Changing to TFT augments of Patch %s ... Times tried: %d." %(TFTGame_summary_json["game_id"], i, TFTAugment_recapture, TFTAugmentPatch_adopted, i, TFTGame_summary_json["game_id"], TFTAugmentPatch_adopted, TFTAugment_recapture), verbose = verbose)
                     while True:
                         try:
-                            response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                            TFTBasic: dict[str, Any] = response.json()
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            TFTBasic: dict[str, Any] = source.json()
                         except requests.exceptions.JSONDecodeError: #存在版本合并更新的情况（Situation like merged update exists）
                             TFTAugmentPatch_deserted: str = TFTAugmentPatch_adopted
                             TFTAugmentPatch_adopted = FindPostPatch(Patch(TFTAugmentPatch_adopted), versionList)
@@ -6084,8 +6084,8 @@ async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str
                     logPrint("对局%d小小英雄信息（%s）获取失败！正在第%d次尝试改用%s版本的小小英雄信息……\nTFT companion information (%s) of Match %d capture failed! Changing to TFT companions of Patch %s ... Times tried: %d." %(TFTGame_summary_json["game_id"], i, TFTCompanion_recapture, TFTCompanionPatch_adopted, i, TFTGame_summary_json["game_id"], TFTCompanionPatch_adopted, TFTCompanion_recapture), verbose = verbose)
                     while True:
                         try:
-                            response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/companions.json" %(TFTCompanionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                            TFTCompanion: list[dict[str, Any]] = response.json()
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/companions.json" %(TFTCompanionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            TFTCompanion: list[dict[str, Any]] = source.json()
                         except requests.exceptions.JSONDecodeError:
                             TFTCompanionPatch_deserted: str = TFTCompanionPatch_adopted
                             TFTCompanionPatch_adopted = FindPostPatch(Patch(TFTCompanionPatch_adopted), versionList)
@@ -6114,8 +6114,8 @@ async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str
                     logPrint("对局%d羁绊信息（%s）获取失败！正在第%d次尝试改用%s版本的羁绊信息……\nTFT trait information (%s) of Match %d capture failed! Changing to TFT traits of Patch %s ... Times tried: %d." %(TFTGame_summary_json["game_id"], i, TFTTrait_recapture, TFTTraitPatch_adopted, i, TFTGame_summary_json["game_id"], TFTTraitPatch_adopted, TFTTrait_recapture), verbose = verbose)
                     while True:
                         try:
-                            response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tfttraits.json" %(TFTTraitPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                            TFTTrait: list[dict[str, Any]] = response.json()
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tfttraits.json" %(TFTTraitPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            TFTTrait: list[dict[str, Any]] = source.json()
                         except requests.exceptions.JSONDecodeError:
                             TFTTraitPatch_deserted: str = TFTTraitPatch_adopted
                             TFTTraitPatch_adopted = FindPostPatch(Patch(TFTTraitPatch_adopted), versionList)
@@ -6153,8 +6153,8 @@ async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str
                     logPrint("对局%d英雄信息（%s）获取失败！正在第%d次尝试改用%s版本的棋子信息……\nTFT champion (%s) information of Match %d capture failed! Changing to TFT champions of Patch %s ... Times tried: %d." %(TFTGame_summary_json["game_id"], i, TFTChampion_recapture, TFTChampionPatch_adopted, i, TFTGame_summary_json["game_id"], TFTChampionPatch_adopted, TFTChampion_recapture), verbose = verbose)
                     while True:
                         try:
-                            response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftchampions.json" %(TFTChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                            TFTChampion: list[dict[str, Any]] = response.json()
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftchampions.json" %(TFTChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            TFTChampion: list[dict[str, Any]] = source.json()
                         except requests.exceptions.JSONDecodeError:
                             TFTChampionPatch_deserted = TFTChampionPatch_adopted
                             TFTChampionPatch_adopted = FindPostPatch(Patch(TFTChampionPatch_adopted), versionList)
@@ -6201,8 +6201,8 @@ async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str
                         logPrint("对局%d装备信息（%s）获取失败！正在第%d次尝试改用%s版本的云顶之弈装备信息……\nTFT item information (%s) of Match %d capture failed! Changing to TFT items of Patch %s ... Times tried: %d." %(TFTGame_summary_json["game_id"], i, TFTItem_recapture, TFTItemPatch_adopted, i, TFTGame_summary_json["game_id"], TFTItemPatch_adopted, TFTItem_recapture), verbose = verbose)
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftitems.json" %(TFTItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                TFTItem: list[dict[str, Any]] = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftitems.json" %(TFTItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                TFTItem: list[dict[str, Any]] = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 TFTItemPatch_deserted: str = TFTItemPatch_adopted
                                 TFTItemPatch_adopted = FindPostPatch(Patch(TFTItemPatch_adopted), versionList)
@@ -6227,8 +6227,8 @@ async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str
                         TFTAugment_recapture = 1
                         while True:
                             try:
-                                response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                TFTBasic = response.json()
+                                source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                TFTBasic = source.json()
                             except requests.exceptions.JSONDecodeError:
                                 TFTAugmentPatch_deserted = TFTAugmentPatch_adopted
                                 TFTAugmentPatch_adopted = FindPostPatch(Patch(TFTAugmentPatch_adopted), versionList)
@@ -6318,8 +6318,8 @@ async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFT
                                 logPrint("第%d/%d场对局（对局序号：%d）游戏模式信息（%d）获取失败！正在第%d次尝试改用%s版本的游戏模式信息……\nGame mode information (%d) of Match %d / %d (matchId: %d) capture failed! Changing to game modes of Patch %s ... Times tried: %d." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], j, queue_recapture, queuePatch_adopted, j, TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], queuePatch_adopted, queue_recapture), verbose = verbose)
                                 while True:
                                     try:
-                                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                        queue: list[dict[str, Any]] = response.json()
+                                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                        queue: list[dict[str, Any]] = source.json()
                                     except requests.exceptions.JSONDecodeError:
                                         queuePatch_deserted: str = queuePatch_adopted
                                         queuePatch_adopted = FindPostPatch(Patch(queuePatch_adopted), versionList)
@@ -6348,8 +6348,8 @@ async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFT
                                 logPrint("第%d/%d场对局（对局序号：%d）强化符文信息（%s）获取失败！正在第%d次尝试改用%s版本的云顶之弈强化符文信息……\nAugment information (%s) of Match %d / %d (matchId: %d) capture failed! Changing to TFT augments of Patch %s ... Times tried: %d." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], i, TFTAugment_recapture, TFTAugmentPatch_adopted, i, TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], TFTAugmentPatch_adopted, TFTAugment_recapture), verbose = verbose)
                                 while True:
                                     try:
-                                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                        TFTBasic: dict[str, Any] = response.json()
+                                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                        TFTBasic: dict[str, Any] = source.json()
                                     except requests.exceptions.JSONDecodeError: #存在版本合并更新的情况（Situation like merged update exists）
                                         TFTAugmentPatch_deserted: str = TFTAugmentPatch_adopted
                                         TFTAugmentPatch_adopted = FindPostPatch(Patch(TFTAugmentPatch_adopted), versionList)
@@ -6378,8 +6378,8 @@ async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFT
                                 logPrint("第%d/%d场对局（对局序号：%d）小小英雄信息（%s）获取失败！正在第%d次尝试改用%s版本的小小英雄信息……\nTFT companion information (%s) of Match %d / %d (matchId: %d) capture failed! Changing to TFT companions of Patch %s ... Times tried: %d." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], i, TFTCompanion_recapture, TFTCompanionPatch_adopted, i, TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], TFTCompanionPatch_adopted, TFTCompanion_recapture), verbose = verbose)
                                 while True:
                                     try:
-                                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/companions.json" %(TFTCompanionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                        TFTCompanion: list[dict[str, Any]] = response.json()
+                                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/companions.json" %(TFTCompanionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                        TFTCompanion: list[dict[str, Any]] = source.json()
                                     except requests.exceptions.JSONDecodeError:
                                         TFTCompanionPatch_deserted: str = TFTCompanionPatch_adopted
                                         TFTCompanionPatch_adopted = FindPostPatch(Patch(TFTCompanionPatch_adopted), versionList)
@@ -6408,8 +6408,8 @@ async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFT
                                 logPrint("第%d/%d场对局（对局序号：%d）羁绊信息（%s）获取失败！正在第%d次尝试改用%s版本的羁绊信息……\nTFT trait information (%s) of Match %d / %d (matchId: %d) capture failed! Changing to TFT traits of Patch %s ... Times tried: %d." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], i, TFTTrait_recapture, TFTTraitPatch_adopted, i, TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], TFTTraitPatch_adopted, TFTTrait_recapture), verbose = verbose)
                                 while True:
                                     try:
-                                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tfttraits.json" %(TFTTraitPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                        TFTTrait: list[dict[str, Any]] = response.json()
+                                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tfttraits.json" %(TFTTraitPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                        TFTTrait: list[dict[str, Any]] = source.json()
                                     except requests.exceptions.JSONDecodeError:
                                         TFTTraitPatch_deserted: str = TFTTraitPatch_adopted
                                         TFTTraitPatch_adopted = FindPostPatch(Patch(TFTTraitPatch_adopted), versionList)
@@ -6447,8 +6447,8 @@ async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFT
                                 logPrint("第%d/%d场对局（对局序号：%d）英雄信息（%s）获取失败！正在第%d次尝试改用%s版本的棋子信息……\nTFT champion (%s) information of Match %d / %d (matchId: %d) capture failed! Changing to TFT champions of Patch %s ... Times tried: %d." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], i, TFTChampion_recapture, TFTChampionPatch_adopted, i, TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], TFTChampionPatch_adopted, TFTChampion_recapture), verbose = verbose)
                                 while True:
                                     try:
-                                        response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftchampions.json" %(TFTChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                        TFTChampion: list[dict[str, Any]] = response.json()
+                                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftchampions.json" %(TFTChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                        TFTChampion: list[dict[str, Any]] = source.json()
                                     except requests.exceptions.JSONDecodeError:
                                         TFTChampionPatch_deserted: str = TFTChampionPatch_adopted
                                         TFTChampionPatch_adopted = FindPostPatch(Patch(TFTChampionPatch_adopted), versionList)
@@ -6495,8 +6495,8 @@ async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFT
                                     logPrint("第%d/%d场对局（对局序号：%d）装备信息（%s）获取失败！正在第%d次尝试改用%s版本的云顶之弈装备信息……\nTFT item information (%s) of Match %d / %d (matchId: %d) capture failed! Changing to TFT items of Patch %s ... Times tried: %d." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], i, TFTItem_recapture, TFTItemPatch_adopted, i, TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), TFTGame_summary_json["game_id"], TFTItemPatch_adopted, TFTItem_recapture), verbose = verbose)
                                     while True:
                                         try:
-                                            response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftitems.json" %(TFTItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                            TFTItem: list[dict[str, Any]] = response.json()
+                                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/tftitems.json" %(TFTItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                            TFTItem: list[dict[str, Any]] = source.json()
                                         except requests.exceptions.JSONDecodeError:
                                             TFTItemPatch_deserted = TFTItemPatch_adopted
                                             TFTItemPatch_adopted = FindPostPatch(Patch(TFTItemPatch_adopted), versionList)
@@ -6521,8 +6521,8 @@ async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFT
                                     TFTAugment_recapture = 1
                                     while True:
                                         try:
-                                            response, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                                            TFTBasic = response.json()
+                                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/cdragon/tft/%s.json" %(TFTAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                                            TFTBasic = source.json()
                                         except requests.exceptions.JSONDecodeError:
                                             TFTAugmentPatch_deserted = TFTAugmentPatch_adopted
                                             TFTAugmentPatch_adopted = FindPostPatch(Patch(TFTAugmentPatch_adopted), versionList)

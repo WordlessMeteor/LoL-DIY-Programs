@@ -16,7 +16,7 @@ from src.core.dataframes.champions import test_bot, sort_ddragon_champions, sort
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/07
+# 更新（Last update）：     2026/03/08
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -36,9 +36,9 @@ def get_ddragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, An
     patches_url: str = "https://ddragon.leagueoflegends.com/api/versions.json"
     patches_local_default: str = "离线数据（Offline Data）/versions.json"
     print("请输入您想要获取的版本。输入空字符串以获取最新版本英雄信息。\nPlease input the patch you want to search from. Submit an empty string to get the latest champion data.")
-    response, status, session = requestUrl("GET", patches_url, session = session)
+    source, status, session = requestUrl("GET", patches_url, session = session)
     if status == 200:
-        patches: list[str] = response.json()
+        patches: list[str] = source.json()
     else:
         if status == -1:
             print('版本信息获取超时！正在尝试离线加载数据……\nPatch information capture timeout! Trying loading offline data ...\n请输入版本Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“0”以返回上一层。\nPlease enter the patch Json data file path. Enter an empty string to use the default relative path: "%s". Submit "0" to return to the last step.' %(patches_local_default, patches_local_default))
@@ -88,9 +88,9 @@ def get_ddragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, An
         else:
             print("版本输入有误！请重新输入。\nERROR input of patch! Please try again!")
     champion_local_default = "离线数据（Offline Data）/ddragon/%s/champion.json" %locale
-    response, status, session = requestUrl("GET", champion_url, session = session)
+    source, status, session = requestUrl("GET", champion_url, session = session)
     if status == 200:
-        LoLChampion: dict[str, Any] = response.json()
+        LoLChampion: dict[str, Any] = source.json()
     else:
         if status == -1:
             print('英雄数据获取超时！正在尝试离线加载数据……\nChampion data capture timeout! Trying loading offline data ...\n请输入英雄Json数据文件路径。输入空字符以使用默认相对引用路径“%s”。输入“0”以返回上一层。\nPlease enter the champion Json data file path. Enter an empty string to use the default relative path: "%s". Submit "0" to return to the last steo.' %(champion_local_default, champion_local_default))
@@ -152,9 +152,9 @@ def get_cdragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, An
         time.sleep(3)
         return ({}, "")
     #下面获取版本信息（The following code obtain the patch information）
-    response, status, session = requestUrl("GET", patch_url, session = session)
+    source, status, session = requestUrl("GET", patch_url, session = session)
     if status == 200:
-        version_dict: dict[str, str] = response.json()
+        version_dict: dict[str, str] = source.json()
         version: str = version_dict["version"]
     else:
         if status == -1:
@@ -166,9 +166,9 @@ def get_cdragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, An
         time.sleep(3)
         return ({}, "")
     #下面获取每个英雄的数据资源链接（The following code obtain the data resource url of each champion）
-    response, status, session = requestUrl("GET", champion_folder_url, session = session)
+    source, status, session = requestUrl("GET", champion_folder_url, session = session)
     if status == 200:
-        champion_folder_json: list[dict[str, Any]] = response.json()
+        champion_folder_json: list[dict[str, Any]] = source.json()
         champion_urls: list[str] = []
         champion_files: dict[int, str] = {}
         for record in champion_folder_json:
@@ -195,11 +195,11 @@ def get_cdragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, An
             print("您已中断此过程。\nYou've interrupted this process.")
             return ({}, version)
         champion_url: str = champion_urls[i]
-        response, status, session = requestUrl("GET", champion_url, session = session)
+        source, status, session = requestUrl("GET", champion_url, session = session)
         if status != 200:
             print("英雄信息获取失败！请检查系统网络状况和代理设置。\nChampion information capture failure! Please check the system network condition and proxy configuration.")
             break
-        champion: dict[str, Any] = response.json()
+        champion: dict[str, Any] = source.json()
         LoLChampion.append(champion)
         print("[%s]" %(time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())), end = "")
         print("获取进度（Capturing process）：%d/%d" %(i + 1, len(champion_urls)))

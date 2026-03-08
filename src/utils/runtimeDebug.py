@@ -214,14 +214,14 @@ async def send_SGP_commands(connection: Connection, log: Optional[LogManager] = 
         else:
             break
         try:
-            response: requests.Response = await session.request(connection, method, endpoint, headers = headers, params = params, data = json.dumps(body, ensure_ascii = False).encode("utf-8"))
+            source: requests.Response = await session.request(connection, method, endpoint, headers = headers, params = params, data = json.dumps(body, ensure_ascii = False).encode("utf-8"))
         except TypeError:
             logPrint("请求主体格式错误！\nRequest body format error!")
         else:
             try:
-                response_body: Any = response.json()
+                response: Any = source.json()
             except requests.exceptions.JSONDecodeError: #webrequest模块中已经输出过相应的信息了，这里不需要再输出一次（Corresponding information has been output in webrequest module, so here it doesn't need to be output once more）
-                content: bytes = response.content
+                content: bytes = source.content
                 try:
                     text = content.decode()
                 except UnicodeDecodeError: #/match-history-query/v3/product/lol/matchId/{match_id}/infoType/replay
@@ -235,11 +235,11 @@ async def send_SGP_commands(connection: Connection, log: Optional[LogManager] = 
             except AttributeError: #AttributeError: 'NoneType' object has no attribute 'json'
                 logPrint("请求失败。\nRequest failed.")
             else:
-                logPrint(response_body)
+                logPrint(response)
                 with open("temporary data.json", "w", encoding = "utf-8") as fp:
-                    fp.write(json.dumps(response_body, indent = 4, ensure_ascii = False))
+                    fp.write(json.dumps(response, indent = 4, ensure_ascii = False))
                 with open("temporary data.pkl", "wb") as fp:
-                    pickle.dump(response_body, fp)
+                    pickle.dump(response, fp)
         logPrint("请依次输入方法、统一资源标识符、参数、请求主体和请求头（如有），以空格为分隔符：\nPlease enter the method, URI, parameters, request body and request header (if needed), split by space:")
 
 async def send_commands(connection: Connection, log: Optional[LogManager] = None) -> None:

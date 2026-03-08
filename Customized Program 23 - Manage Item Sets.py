@@ -20,7 +20,7 @@ from src.core.dataframes.champions import sort_champion_summary
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/07
+# 更新（Last update）：     2026/03/08
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -114,7 +114,7 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
     map33_bin_url: str = "https://raw.communitydragon.org/pbe/game/data/maps/shipping/map33/map33.bin.json"
     map35_bin_url: str = "https://raw.communitydragon.org/pbe/game/data/maps/shipping/map35/map35.bin.json"
     items_bin_url: str = "https://raw.communitydragon.org/pbe/game/items.cdtb.bin.json"
-    response, status, session = requestUrl("GET", map11_bin_url, session = session, log = log)
+    source, status, session = requestUrl("GET", map11_bin_url, session = session, log = log)
     if status != 200:
         if status == 404:
             logPrint("召唤师峡谷地图信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nSummoner's Rift map data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(map11_bin_url))
@@ -124,8 +124,8 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
             time.sleep(3)
         return ({}, False, "")
     else:
-        map11_bin = response.json()
-    response, status, session = requestUrl("GET", map12_bin_url, session = session, log = log)
+        map11_bin = source.json()
+    source, status, session = requestUrl("GET", map12_bin_url, session = session, log = log)
     if status != 200:
         if status == 404:
             logPrint("嚎哭深渊地图信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nHowling Abyss map data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(map12_bin_url))
@@ -135,8 +135,8 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
             time.sleep(3)
         return ({}, False, "")
     else:
-        map12_bin = response.json()
-    response, status, session = requestUrl("GET", map21_bin_url, session = session, log = log)
+        map12_bin = source.json()
+    source, status, session = requestUrl("GET", map21_bin_url, session = session, log = log)
     if status != 200:
         if status == 404:
             logPrint("百合与莲花的神庙地图信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nTemple of Lily and Lotus map data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(map21_bin_url))
@@ -146,8 +146,8 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
             time.sleep(3)
         return ({}, False, "")
     else:
-        map21_bin = response.json()
-    response, status, session = requestUrl("GET", map22_bin_url, session = session, log = log)
+        map21_bin = source.json()
+    source, status, session = requestUrl("GET", map22_bin_url, session = session, log = log)
     if status != 200:
         if status == 404:
             logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nConvergence map data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(map22_bin_url))
@@ -157,8 +157,8 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
             time.sleep(3)
         return ({}, False, "")
     else:
-        map22_bin = response.json()
-    response, status, session = requestUrl("GET", map30_bin_url, session = session, log = log)
+        map22_bin = source.json()
+    source, status, session = requestUrl("GET", map30_bin_url, session = session, log = log)
     if status != 200:
         if status == 404:
             logPrint("怒火角斗场地图信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nRings of Wrath map data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(map30_bin_url))
@@ -168,8 +168,8 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
             time.sleep(3)
         return ({}, False, "")
     else:
-        map30_bin = response.json()
-    response, status, session = requestUrl("GET", map33_bin_url, session = session, log = log)
+        map30_bin = source.json()
+    source, status, session = requestUrl("GET", map33_bin_url, session = session, log = log)
     if status != 200:
         if status == 404:
             logPrint("最终都市地图信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nFinal City map data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(map33_bin_url))
@@ -179,8 +179,8 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
             time.sleep(3)
         return ({}, False, "")
     else:
-        map33_bin = response.json()
-    response, status, session = requestUrl("GET", map35_bin_url, session = session, log = log)
+        map33_bin = source.json()
+    source, status, session = requestUrl("GET", map35_bin_url, session = session, log = log)
     if status != 200:
         if status == 404:
             logPrint("班德尔之森地图信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nThe Bandlewood map data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(map35_bin_url))
@@ -190,8 +190,8 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
             time.sleep(3)
         return ({}, False, "")
     else:
-        map35_bin = response.json()
-    response, status, session = requestUrl("GET", items_bin_url, session = session, log = log)
+        map35_bin = source.json()
+    source, status, session = requestUrl("GET", items_bin_url, session = session, log = log)
     if status != 200:
         if status == 404:
             logPrint("装备信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nItem data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(items_bin_url))
@@ -201,7 +201,7 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
             time.sleep(3)
         return ({}, False, "")
     else:
-        items_bin = response.json()
+        items_bin = source.json()
     ##离线读取（Offline reading）
     ###存储库（Repository）
     # cdragon_folder: str = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/"
@@ -1941,7 +1941,7 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
             LoLItems_default_url: str = "https://ddragon.leagueoflegends.com/cdn/%s/data/en_US/item.json" %version
             champions_locale_url: str = "https://ddragon.leagueoflegends.com/cdn/%s/data/%s/champion.json" %(version, locale)
             logPrint(f"正在获取{version}版本的目标语言装备信息……\nFetching LoL item information of version {version} in target language ...")
-            response, status, session = requestUrl("GET", LoLItems_locale_url, session = session)
+            source, status, session = requestUrl("GET", LoLItems_locale_url, session = session)
             if status != 200:
                 if status == -1:
                     logPrint("目标语言装备信息获取失败！\nLoL item information in target language capture failed!")
@@ -1949,9 +1949,9 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                     logPrint("目标语言装备信息文件不存在！\nLoL item file in target language not found!")
                 failed_count += 1
                 continue
-            LoLItems_locale: dict[str, Any] = response.json()
+            LoLItems_locale: dict[str, Any] = source.json()
             logPrint(f"正在获取{version}版本的英文装备信息……\nFetching LoL item information of version {version} in English ...")
-            response, status, session = requestUrl("GET", LoLItems_default_url, session = session)
+            source, status, session = requestUrl("GET", LoLItems_default_url, session = session)
             if status != 200:
                 if status == -1:
                     logPrint("英文装备信息获取失败！\nLoL item information in English capture failed!")
@@ -1959,9 +1959,9 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                     logPrint("英文装备信息文件不存在！\nLoL item file in English not found!")
                 failed_count += 1
                 continue
-            LoLItems_default: dict[str, Any] = response.json()
+            LoLItems_default: dict[str, Any] = source.json()
             logPrint(f"正在获取{version}版本的目标语言英雄信息……\nFetching champion information of version {version} in target language ...")
-            response, status, session = requestUrl("GET", champions_locale_url, session = session)
+            source, status, session = requestUrl("GET", champions_locale_url, session = session)
             if status != 200:
                 if status == -1:
                     logPrint("目标语言英雄信息获取失败！\nChampion information in target language capture failed!")
@@ -1969,7 +1969,7 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                     logPrint("目标语言英雄信息文件不存在！\nChampion file in target language not found!")
                 failed_count += 1
                 continue
-            champions_locale: dict[str, Any] = response.json()
+            champions_locale: dict[str, Any] = source.json()
 
             #下面设置装备表头的元数据部分（Set the metadata part of the item headers）
             item_base_header: dict[str, str] = {"id": "装备序号", "group": "分组", "description": "详细信息", "colloq": "检索关键字", "plaintext": "简述", "consumed": "消耗品", "stacks": "最大持有数量", "depth": "深度", "consumeOnFull": "满装备时自动消耗", "from": "合成材料序号", "into": "合成装备序号", "specialRecipe": "特殊合成材料", "inStore": "商店可见性", "hideFromAll": "不可见性", "requiredChampion": "装备持有者", "requiredAlly": "所需队友", "localizedName": "装备名称", "name": "英文名称", "fromName": "合成材料名称", "intoName": "合成装备名称", "requiredChampionName": "装备持有者名称", "requiredAllyName": "所需队友名称", "specialRecipeName": "特殊合成材料名称", "baseGold": "合成费用", "purchasable": "可以购买", "totalGold": "总费用", "sellGold": "售价"}
@@ -2187,7 +2187,7 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
             LoLItems_binary_url1: str = "https://raw.communitydragon.org/%s/game/global/items/items.bin.json" %(version)
             LoLItems_binary_url2: str = "https://raw.communitydragon.org/%s/game/items.cdtb.bin.json" %(version)
             logPrint(f"正在获取{version}版本的目标语言装备信息……\nFetching LoL item information of version {version} in target language ...")
-            response, status, session = requestUrl("GET", LoLItems_locale_url, session = session)
+            source, status, session = requestUrl("GET", LoLItems_locale_url, session = session)
             if status != 200:
                 if status == -1:
                     logPrint("目标语言装备信息获取失败！\nLoL item information in target language capture failed!")
@@ -2195,9 +2195,9 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                     logPrint("目标语言装备信息文件不存在！\nLoL item file in target language not found!")
                 failed_count += 1
                 continue
-            LoLItems_locale: list[dict[str, Any]] = response.json()
+            LoLItems_locale: list[dict[str, Any]] = source.json()
             logPrint(f"正在获取{version}版本的英文装备信息……\nFetching LoL item information of version {version} in English ...")
-            response, status, session = requestUrl("GET", LoLItems_default_url, session = session)
+            source, status, session = requestUrl("GET", LoLItems_default_url, session = session)
             if status != 200:
                 if status == -1:
                     logPrint("英文装备信息获取失败！\nLoL item information in English capture failed!")
@@ -2205,9 +2205,9 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                     logPrint("英文装备信息文件不存在！\nLoL item file in English not found!")
                 failed_count += 1
                 continue
-            LoLItems_default: list[dict[str, Any]] = response.json()
+            LoLItems_default: list[dict[str, Any]] = source.json()
             logPrint(f"正在获取{version}版本的目标语言英雄信息……\nFetching champion information of version {version} in target language ...")
-            response, status, session = requestUrl("GET", champions_locale_url, session = session)
+            source, status, session = requestUrl("GET", champions_locale_url, session = session)
             if status != 200:
                 if status == -1:
                     logPrint("目标语言英雄信息获取失败！\nChampion information in target language capture failed!")
@@ -2215,9 +2215,9 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                     logPrint("目标语言英雄信息文件不存在！\nChampion file in target language not found!")
                 failed_count += 1
                 continue
-            champions_locale: list[dict[str, Any]] = response.json()
+            champions_locale: list[dict[str, Any]] = source.json()
             logPrint(f"正在获取{version}版本的目标语言字符串常量池（英雄联盟）……\nFetching stringtable (LoL) of version {version} in target language ...")
-            response, status, session = requestUrl("GET", fontconfig_locale_url if Patch(version) < Patch("12.23") else strtable_locale_url1 if Patch(version) < Patch("14.4") else strtable_locale_url2 if Patch(version) < Patch("14.15") else strtable_locale_url3, session = session) #翻译数据在12.23、14.4和14.15版本发生了路径迁移（Path transfer occurred to the localization data in Patches 12.23, 14.4 and 14.15）
+            source, status, session = requestUrl("GET", fontconfig_locale_url if Patch(version) < Patch("12.23") else strtable_locale_url1 if Patch(version) < Patch("14.4") else strtable_locale_url2 if Patch(version) < Patch("14.15") else strtable_locale_url3, session = session) #翻译数据在12.23、14.4和14.15版本发生了路径迁移（Path transfer occurred to the localization data in Patches 12.23, 14.4 and 14.15）
             status_strtable_locale: int = status
             if status != 200:
                 if status == -1:
@@ -2225,14 +2225,14 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                 elif status == 404:
                     logPrint("目标语言字符串常量池（英雄联盟）文件不存在！\nStringtable (LoL) file in target language not found!")
             if status_strtable_locale == 200:
-                strtable_locale: dict[str, int | dict[str, str]] = response.json()
+                strtable_locale: dict[str, int | dict[str, str]] = source.json()
             elif status_strtable_locale == 404:
                 strtable_locale = {}
             else:
                 failed_count += 1
                 continue
             logPrint(f"正在获取{version}版本的二进制装备信息……\nFetching binary LoL item of version {version} ...")
-            response, status, session = requestUrl("GET", LoLItems_binary_url1 if Patch(version) < Patch("13.15") else LoLItems_binary_url2, session = session) #二进制装备信息在13.15版本发生了路径迁移（Path transfer occurred to the binary item information in Patch 13.15）
+            source, status, session = requestUrl("GET", LoLItems_binary_url1 if Patch(version) < Patch("13.15") else LoLItems_binary_url2, session = session) #二进制装备信息在13.15版本发生了路径迁移（Path transfer occurred to the binary item information in Patch 13.15）
             status_item_binary: int = status
             if status != 200:
                 if status == -1:
@@ -2240,7 +2240,7 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                 elif status == 404:
                     logPrint("目标语言二进制装备信息文件不存在！\nBinary LoL item file not found!")
             if status_item_binary == 200:
-                LoLItems_binary: dict[str, list[str] | dict[str, Any]] = response.json()
+                LoLItems_binary: dict[str, list[str] | dict[str, Any]] = source.json()
             elif status_item_binary == 404:
                 LoLItems_binary = {}
             else:

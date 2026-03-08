@@ -20,12 +20,12 @@ def requestUrl(method: str, url: str, retry: int = 5, session: Optional[requests
     while True:
         count += 1
         try:
-            response: requests.Response = session.request(method, url, verify = verify, **kwargs)
+            source: requests.Response = session.request(method, url, verify = verify, **kwargs)
         except Exception as e:
             session = requests.Session()
             if count > retry:
-                response = requests.Response() #这只是为了保持代码类型检查的一致性（This is meant to keep consistency for code type checking）
-                response.status_code = -1
+                source = requests.Response() #这只是为了保持代码类型检查的一致性（This is meant to keep consistency for code type checking）
+                source.status_code = -1
                 # session.trust_env = False
                 break
             if isinstance(e, requests.exceptions.SSLError):
@@ -52,10 +52,10 @@ def requestUrl(method: str, url: str, retry: int = 5, session: Optional[requests
                 logPrint(f"请求失败！正在尝试第{count}次重新获取数据！\nRequest failed! Trying to recapture the data with url: {url}. Time(s) tried: {count}", write_time = False, verbose = verbose)
         else:
             try:
-                source: Any = response.json() #检验响应内容是否可转换为json（Verify whether the response content can be transformed into json）
+                response: Any = source.json() #检验响应内容是否可转换为json（Verify whether the response content can be transformed into json）
             except:
                 try:
-                    response.raise_for_status()
+                    source.raise_for_status()
                 except Exception as e:
                     session = requests.Session()
                     # session.trust_env = False
@@ -64,14 +64,14 @@ def requestUrl(method: str, url: str, retry: int = 5, session: Optional[requests
                     logPrint(e, verbose = verbose)
                     if isinstance(e, requests.exceptions.HTTPError):
                         if e.response.status_code in {403, 404}: #DataDragon数据库的数据不存在的状态码是403（The Http status for files not found in DataDragon database is 403）
-                            return (response, e.response.status_code, session)
+                            return (source, e.response.status_code, session)
                     else:
                         logPrint(f"请求失败！正在尝试第{count}次重新获取数据！\nRequest failed! Trying to recapture the data with url: {url}. Time(s) tried: {count}", write_time = False, verbose = verbose)
                 else:
-                    return (response, response.status_code, session)
+                    return (source, source.status_code, session)
             else:
-                return (response, 200, session)
-    return (response, response.status_code, session)
+                return (source, 200, session)
+    return (source, source.status_code, session)
 
 class SGPSession:
     def __init__(self, token: Optional[str] = None, client_settings: Optional[dict[str, Any]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> None:
@@ -124,19 +124,19 @@ class SGPSession:
             url = urljoin(self.client_settings["lol.client_settings.league_edge.url"], endpoint)
         if headers == None:
             headers = {}
-        response, status, self.session = requestUrl(method, url, retry = retry, session = self.session, headers = self._headers | headers, log = self.log, verbose = verbose, **kwargs)
+        source, status, self.session = requestUrl(method, url, retry = retry, session = self.session, headers = self._headers | headers, log = self.log, verbose = verbose, **kwargs)
         try:
-            body: dict[str, Any] = response.json()
+            response: dict[str, Any] = source.json()
         except requests.exceptions.JSONDecodeError:
             self.log.logPrint("在转换为json对象时发生了错误。\nAn error occurred when converting the response body into a json object.", verbose = self.verbose)
         except AttributeError: #AttributeError: 'NoneType' object has no attribute 'json'
             pass
         else:
-            if body == {"httpStatus": 400, "message": "A newer more recent session has been processed for this player", "errorCode": "INVALID_PLAYER_SESSION"} or body == {"status": {"message": "Unauthorized", "status_code": 401}}:
+            if response == {"httpStatus": 400, "message": "A newer more recent session has been processed for this player", "errorCode": "INVALID_PLAYER_SESSION"} or response == {"status": {"message": "Unauthorized", "status_code": 401}}:
                 self.log.logPrint("令牌已过期。正在更新令牌……\nToken has expired. Updating the token ...", verbose = self.verbose)
                 await self.update_userInfo_token(connection)
-                response = self.session.request(method = method, url = url, headers = self._headers | headers, **kwargs)
-        return response
+                source = self.session.request(method = method, url = url, headers = self._headers | headers, **kwargs)
+        return source
 
 def sgpConnect(method: str, url: str, token: str, extra_headers: Optional[dict[str, str]] = None, session: Optional[requests.Session] = None, **kwargs: Any) -> tuple[dict[str, Any], requests.Session]: #一个单独用来调试SGP API的函数（A function specially designed to debug SGP API）
     if session == None:
@@ -147,11 +147,11 @@ def sgpConnect(method: str, url: str, token: str, extra_headers: Optional[dict[s
     result: dict[str, Any] = {"status_code": 0, "json": None, "error": None}
     headers = {"Authorization": f"Bearer {token}", "Content-type": "application/json"}
     try:
-        response = session.request(method, url, headers = headers | extra_headers, **kwargs)
+        source = session.request(method, url, headers = headers | extra_headers, **kwargs)
     except requests.exceptions.SSLError as ssl_error:
         result["status_code"] = -1
         result["error"] = str(ssl_error)
     else:
-        result["status_code"] = response.status_code
-        result["json"] = response.json()
+        result["status_code"] = source.status_code
+        result["json"] = source.json()
     return (result, session)
