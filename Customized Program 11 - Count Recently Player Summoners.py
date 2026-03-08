@@ -1084,6 +1084,7 @@ async def load_smurf(connection: Connection, selfDetect: bool, infos: Optional[d
 def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame, gameQueues: dict[int, dict[str, Any]], displayName: str, export_folder: str) -> int:
     recent_players_metadata: dict[str, dict[str, Any]] = {} #这里另外设置元数据是为了整理出用于可视化的数据（Here the metadata is designed to sort out data for visualization）
     if search_LoL:
+        #logPrint("用于可视化的元数据创建进度（Creating process of metadata for visualization）：")
         for i in range(1, len(recent_LoLPlayer_df)): #第0行是中文表头，所以要从第1行开始（The 0th line contains the Chinese headers, so the iteration should start from the first line）
             puuid_iter: str = recent_LoLPlayer_df["puuid"][i]
             if use_sgp:
@@ -1131,8 +1132,9 @@ def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: panda
                 recent_players_metadata[puuid_iter]["totalPvPTime"] += LoLGameDuration_iter * isPvP_iter
                 recent_players_metadata[puuid_iter]["totalPvETime"] += LoLGameDuration_iter * isPvE_iter
                 recent_players_metadata[puuid_iter]["totalCustomTime"] += LoLGameDuration_iter * isCustom_iter
-            #logPrint("用于可视化的元数据创建进度（Creating process of metadata for visualization）：%d/%d" %(i, len(recent_LoLPlayer_df) - 1), end = "\r")
+            #logPrint("[%d/%d]%d\t%s\t%s" %(i, len(recent_LoLPlayer_df) - 1, matchId_iter, puuid_iter, summonerName_iter), end = "\r")
     if search_TFT:
+        #logPrint("用于可视化的元数据创建进度（Creating process of metadata for visualization）：")
         for i in range(1, len(recent_TFTPlayer_df)):
             puuid_iter = recent_TFTPlayer_df["puuid"][i]
             summonerName_iter = recent_TFTPlayer_df["riotIdGameName"][i] + "#" + recent_TFTPlayer_df["riotIdTagline"][i]
@@ -1177,7 +1179,7 @@ def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: panda
                 recent_players_metadata[puuid_iter]["totalPvPTime"] += TFTGameDuration_iter * isPvP_iter
                 recent_players_metadata[puuid_iter]["totalPvETime"] += TFTGameDuration_iter * isPvE_iter
                 recent_players_metadata[puuid_iter]["totalCustomTime"] += TFTGameDuration_iter * isCustom_iter
-            #logPrint("用于可视化的元数据创建进度（Creating process of metadata for visualization）：%d/%d" %(i, len(recent_TFTPlayer_df) - 1), end = "\r")
+            #logPrint("[%d/%d]%d\t%s\t%s" %(i, len(recent_TFTPlayer_df) - 1, matchId_iter, puuid_iter, summonerName_iter), end = "\r")
     #进一步计算游玩热度——陪伴得分（Further calculate the company score）
     lambda_decay: float = 0.002 #时间衰减系数（Time decay coefficient）
     scale_factor: int = 100 #缩放因子（Scale factor）
@@ -2865,7 +2867,7 @@ async def search_recent_players(connection: Connection) -> None:
         if len(folderNames) > 0:
             logPrint("正在检查该召唤师是否改过名（Checking if this summoner has changed the name）：")
             for i in range(len(folderNames)):
-                logPrint("[%d/%d]" %(i + 1, len(folderNames)), end = "\r")
+                logPrint("[%d/%d]%s" %(i + 1, len(folderNames), folderNames[i]), end = "\r")
                 folderName: str = folderNames[i]
                 json01path: str = os.path.join(platform_folder, folderName, f"Summoner Profile - {folderName}.json")
                 if os.path.exists(json01path):

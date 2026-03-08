@@ -250,6 +250,7 @@ async def search_player_match_stats_lol(connection: Connection, puuid: str, begI
             games = LoLHistory["games"]["games"]
         if LoLHistory_get:
             unmapped_keys: dict[str, set[int]] = {"queue": set(), "summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "CherryAugment": set()}
+            logPrint("对局加载进度（Match loading process）：")
             for i in range(len(games)):
                 matchId: int = int(games[i]["metadata"]["match_id"].split("_")[1]) if lol_sgp else games[i]["gameId"]
                 match_id: str = f"{platformId}_{matchId}"
@@ -267,9 +268,9 @@ async def search_player_match_stats_lol(connection: Connection, puuid: str, begI
                         LoLGame_summary_df: pandas.DataFrame = sort_LoLGame_summary_sgp(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = i + 1, current_puuid = puuid, useAllVersions = False, unmapped_keys = unmapped_keys, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, log = log, verbose = verbose)[0]
                     else:
                         LoLGame_summary_df = sort_LoLGame_summary(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = i + 1, current_puuid = puuid, useAllVersions = False, unmapped_keys = unmapped_keys, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, log = log, verbose = verbose)[0]
-                    logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d" %(i + 1, len(games), matchId), verbose = verbose)
+                    logPrint("[%d/%d]%d" %(i + 1, len(games), matchId), verbose = verbose)
                 else:
-                    logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d (Match not found)" %(i + 1, len(games), matchId), verbose = verbose)
+                    logPrint("[%d/%d]%d (Match not found)" %(i + 1, len(games), matchId), verbose = verbose)
     if lol_sgp:
         LoLGame_stat_statistics_output_order: list[int] = [0, 13, 25, 11, 26, 22, 14, 29, 20, 30, 19, 219, 210, 176, 53, 580, 581, 94, 130, 80, 147, 51, 50, 54, 215, 216, 178, 179, 180, 181, 182, 183, 184, 213, 192, 204, 193, 205, 194, 206, 195, 207, 196, 208, 197, 209, 93, 63, 45, 221, 222, 223, 226, 227, 96, 92, 97, 49, 71, 70, 73, 72, 65, 162, 126, 111, 169, 148, 159, 152, 113, 100, 164, 151, 112, 99, 163, 95, 60, 59, 57, 58, 156, 157, 161, 153, 154, 114, 101, 165, 61, 171, 174, 173, 132, 172, 64, 77, 224, 78, 225, 91, 56, 158, 103, 150, 155, 166, 167, 81, 82, 104, 106, 168, 83, 105, 66, 47, 107, 108, 98, 48, 55, 76, 127, 124, 109, 43, 44, 102, 68, 69, 170, 62, 46, 79, 149, 160, 133, 135, 137, 138, 220, 140, 141, 557, 571, 563, 559, 564, 560, 565, 561, 566, 562, 575, 573, 576, 574, 553, 551, 552, 145, 74, 75, 228, 115, 139, 627, 613, 598, 683, 629, 626, 630, 602, 615, 670, 647, 642, 676, 656, 667, 660, 644, 633, 672, 659, 643, 632, 671, 628, 610, 609, 607, 608, 664, 665, 669, 661, 662, 645, 634, 673, 611, 678, 681, 680, 649, 679, 614, 620, 621, 625, 606, 666, 636, 658, 663, 684, 674, 675, 623, 624, 637, 638, 616, 600, 639, 640, 631, 601, 605, 619, 648, 646, 641, 596, 597, 635, 617, 618, 677, 612, 599, 622, 657, 668, 650, 651, 652, 653, 682, 654, 655, 757, 705, 704, 728, 714, 699, 785, 786, 788, 730, 727, 731, 703, 716, 772, 748, 743, 778, 758, 769, 762, 745, 734, 774, 761, 744, 733, 773, 729, 711, 710, 708, 709, 766, 767, 771, 763, 764, 746, 735, 775, 712, 780, 783, 782, 750, 781, 715, 721, 722, 789, 726, 707, 768, 737, 765, 760, 787, 776, 777, 724, 725, 717, 701, 740, 741, 738, 739, 732, 702, 706, 720, 749, 747, 742, 697, 698, 736, 718, 719, 779, 713, 700, 723, 759, 770, 751, 752, 753, 754, 784, 755, 756, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 372, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 373, 274, 275, 276, 374, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 375, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 376, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521]
     else:
@@ -292,25 +293,26 @@ async def search_player_match_stats_tft(connection: Connection, puuid: str, begi
         TFTHistory_get, TFTHistory = await get_matchSummary_sgp(connection, sgpSession, puuid, "TFT", begin = begin, count = count, log = log, verbose = verbose)
         if TFTHistory_get:
             unmapped_keys: dict[str, set[Any]] = {"queue": set(), "TFTAugment": set(), "TFTChampion": set(), "TFTItem": set(), "TFTCompanion": set(), "TFTTrait": set()}
+            logPrint("对局加载进度（Match loading process）：")
             for i in range(len(TFTHistory["games"])):
                 matchId: int = int(TFTHistory["games"][i]["metadata"]["match_id"].split("_")[-1])
                 TFTGame_summary: dict[str, Any] = TFTHistory["games"][i]
                 if TFTGame_summary.get("json"):
                     #下一行语句的关键是sortStats和TFTGame_stats_data参数（The key point of the following statement is `sortStats` and `TFTGame_stats_data` parameters）
                     TFTGame_summary_df: pandas.DataFrame = (await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, current_puuid = puuid, save_self = True, useAllVersions = False, unmapped_keys = unmapped_keys, useInfoDict = False, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, log = log, verbose = verbose))[0]
-                    logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d" %(i + 1, len(TFTHistory["games"]), TFTGame_summary["json"]["game_id"]), verbose = verbose)
+                    logPrint("[%d/%d]%d" %(i + 1, len(TFTHistory["games"]), matchId), verbose = verbose)
                 else:
-                    logPrint("对局加载进度（Match loading process）：%d/%d (Exceptional match neglected)" %(i + 1, len(TFTHistory["games"])), verbose = verbose)
+                    logPrint("[%d/%d]%d (Exceptional match neglected)" %(i + 1, len(TFTHistory["games"]), matchId), verbose = verbose)
                 # match_id: str = f"{platformId}_{matchId}"
                 # status, TFTGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, checkLoL = False, log = log, verbose = verbose)
                 # if status == 200:
                 #     if TFTGame_summary.get("json"):
                 #         TFTGame_summary_df: pandas.DataFrame = (await sort_TFTGame_summary(connection, TFTHistory["games"][i], queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, current_puuid = puuid, save_self = True, useAllVersions = False, unmapped_keys = unmapped_keys, useInfoDict = False, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, log = log, verbose = verbose))[0]
-                #         logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d" %(i + 1, len(TFTHistory["games"]), matchId), verbose = verbose)
+                #         logPrint("[%d/%d]%d" %(i + 1, len(TFTHistory["games"]), matchId), verbose = verbose)
                 #     else:
-                #         logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d (Exceptional match neglected)" %(i + 1, len(TFTHistory["games"]), matchId), verbose = verbose)
+                #         logPrint("[%d/%d]%d (Exceptional match neglected)" %(i + 1, len(TFTHistory["games"]), matchId), verbose = verbose)
                 # else:
-                #     logPrint("对局加载进度（Match loading process）：%d/%d\t对局序号（matchID）： %d (Match not found)" %(i + 1, len(TFTHistory["games"]), matchId), verbose = verbose)
+                #     logPrint("[%d/%d]%d (Match not found)" %(i + 1, len(TFTHistory["games"]), matchId), verbose = verbose)
     TFTGame_stat_statistics_output_order: list[int] = [0, 5, 14, 15, 16, 6, 10, 18, 11, 7, 13, 12, 40, 55, 33, 34, 35, 38, 52, 53, 49, 36, 50, 42, 54, 41, 39, 44, 45, 23, 24, 25, 150, 148, 149, 203, 206, 209, 155, 153, 154, 212, 215, 218, 160, 158, 159, 221, 224, 227, 165, 163, 164, 230, 233, 236, 170, 168, 169, 239, 242, 245, 175, 173, 174, 248, 251, 254, 180, 178, 179, 257, 260, 263, 185, 183, 184, 266, 269, 272, 190, 188, 189, 275, 278, 281, 195, 193, 194, 284, 287, 290, 200, 198, 199, 293, 296, 299, 61, 57, 58, 59, 60, 68, 64, 65, 66, 67, 75, 71, 72, 73, 74, 82, 78, 79, 80, 81, 89, 85, 86, 87, 88, 96, 92, 93, 94, 95, 103, 99, 100, 101, 102, 110, 106, 107, 108, 109, 117, 113, 114, 115, 116, 124, 120, 121, 122, 123, 131, 127, 128, 129, 130, 138, 134, 135, 136, 137, 145, 141, 142, 143, 144]
     TFTGame_stat_data_organized: dict[str, list[Any]] = {TFTGame_stat_header_keys[i]: TFTGame_stat_data[TFTGame_stat_header_keys[i]] for i in TFTGame_stat_statistics_output_order}
     TFTGame_stat_df: pandas.DataFrame = pandas.DataFrame(data = TFTGame_stat_data_organized)

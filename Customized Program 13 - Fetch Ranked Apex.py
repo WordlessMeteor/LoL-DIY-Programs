@@ -3,7 +3,7 @@ from lcu_driver.connection import Connection
 from openpyxl import load_workbook
 import json, os, pandas, time
 from typing import Any
-from src.utils.summoner import print_summoner_info, get_info, get_infos
+from src.utils.summoner import print_summoner_info, get_info, get_infos, get_info_name
 from src.utils.logger import LogManager
 from src.utils.format import optimize_bool_display, format_runtime
 from src.core.config.servers import platform_TENCENT, platform_RIOT, platform_GARENA
@@ -15,7 +15,7 @@ from src.core.config.headers import challenger_ladder_metadata_header, challenge
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/07
+# 更新（Last update）：     2026/03/08
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -84,7 +84,7 @@ async def get_challenger_tier(connection: Connection) -> None:
     #         else:
     #             to_append = split["victoriousSkinRewardGroup"]["splitPointsByHighestSeasonEndTier"][key[27:]] if key[27:] in split["victoriousSkinRewardGroup"]["splitPointsByHighestSeasonEndTier"] else 0
     #         player_loot_data[key].append(to_append)
-    #     logPrint("%d/%d" %(i + 1, len(splitsConfig["splits"])), end = "\r", print_time = True)
+    #     logPrint("[%d/%d]Season %s - Split %s" %(i + 1, len(splitsConfig["splits"]), split["seasonId"], split["splitId"]), end = "\r", print_time = True)
     # else:
     #     logPrint("已完成。 | Done.")
     # splits_info_statistics_output_order: list[int] = [1, 2, 3, 5, 0, 4, 6, 13, 7, 16, 11, 15, 10, 9, 14, 12, 8]
@@ -122,7 +122,7 @@ async def get_challenger_tier(connection: Connection) -> None:
     #                     else:
     #                         to_append = reward[key]
     #                 rewardTrack_data[key].append(to_append)
-    #             logPrint("[%d/%d][%d/%d][%d/%d]" %(i + 1, len(splitsConfig["splits"]), j + 1, len(split["rewardTrack"]), k + 1, len(rewards)), end = "\r", print_time = True)
+    #             logPrint("[%d/%d][%d/%d][%d/%d]%s\t%s" %(i + 1, len(splitsConfig["splits"]), j + 1, len(split["rewardTrack"]), k + 1, len(rewards), reward["id"], rewardNames.get(reward["id"], "")), end = "\r", print_time = True)
     # else:
     #     logPrint("已完成。 | Done.")
     # rewardTrack_statistics_output_order: list[int] = [0, 9, 1, 10, 4, 8, 2, 6, 3, 5, 7]
@@ -194,12 +194,12 @@ async def get_challenger_tier(connection: Connection) -> None:
                     while not standing_summoner["info_got"] and standing_summoner["body"]["httpStatus"] != 404 and standing_summoner_recapture < 3:
                         logPrint(standing_summoner["body"])
                         standing_summoner_recapture += 1
-                        logPrint("第%d/%d名顶级%s%s%s玩家（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\n[%d/%d] Information of Player (Puuid: %s) in the %s %s %s apex capture failed! Recapturing this player's information ... Times tried: %d" %(j + 1, len(division["standings"]), queueTypes_zh[queueType], tiers_zh[tier], division["division"], standing["puuid"], standing_summoner_recapture, j + 1, len(division["standings"]), standing["puuid"], queueTypes_zh[queueType], tiers_zh[tier], division["division"], standing_summoner_recapture))
+                        logPrint("第%d/%d名顶级%s%s%s玩家（玩家通用唯一识别码：%s）信息获取失败！正在第%d次尝试重新获取该玩家信息……\n[%d/%d] Information of Player (Puuid: %s) in the %s %s %s apex capture failed! Recapturing this player's information ... Times tried: %d" %(j + 1, len(division["standings"]), queueTypes_zh[queueType], tiers_zh[tier], division["division"], standing["puuid"], standing_summoner_recapture, j + 1, len(division["standings"]), standing["puuid"], queueTypes_zh[queueType], tiers_zh[tier], division["division"], standing_summoner_recapture))
                         standing_summoner = await get_info(connection, standing["puuid"])
                     info_got: bool = standing_summoner["info_got"]
                     if not info_got:
                         logPrint(standing_summoner["body"])
-                        logPrint("第%d/%d名顶级%s%s%s玩家（玩家通用唯一识别码：%s）获取失败！\n[%d/%d] Information of Player (Puuid: %s) in the %s %s %s apex capture failed!" %(j + 1, len(division["standings"]), queueTypes_zh[queueType], tiers_zh[tier], division["division"], standing["puuid"], j + 1, len(division["standings"]), standing["puuid"], queueTypes_zh[queueType], tiers_zh[tier], division["division"]))
+                        logPrint("第%d/%d名顶级%s%s%s玩家（玩家通用唯一识别码：%s）信息获取失败！\n[%d/%d] Information of Player (Puuid: %s) in the %s %s %s apex capture failed!" %(j + 1, len(division["standings"]), queueTypes_zh[queueType], tiers_zh[tier], division["division"], standing["puuid"], j + 1, len(division["standings"]), standing["puuid"], queueTypes_zh[queueType], tiers_zh[tier], division["division"]))
                     for k in range(len(challenger_ladder_header_keys)):
                         key: str = challenger_ladder_header_keys[k]
                         if k == 0 or k == 11:
@@ -211,7 +211,7 @@ async def get_challenger_tier(connection: Connection) -> None:
                         else:
                             to_append = standing_summoner["body"][key] if info_got else ""
                         queue_ladder_data[key].append(to_append)
-                    logPrint("[%d/%d][%d/%d]" %(i + 1, len(ladders["divisions"]), j + 1, len(division["standings"])), end = "\r", print_time = True)
+                    logPrint("[%d/%d][%d/%d]%s\t%s" %(i + 1, len(ladders["divisions"]), j + 1, len(division["standings"]), standing["puuid"], get_info_name(standing_summoner["body"]) if info_got else ""), end = "\r", print_time = True)
             else:
                 logPrint("已完成。 | Done.")
         challenger_ladder_statistics_output_order: list[int] = [8, 10, 9, 16, 14, 17, 20, 21, 18, 0, 3, 2, 13, 7, 6, 5, 19, 4, 12, 11, 1, 15]
@@ -257,12 +257,12 @@ async def get_challenger_tier(connection: Connection) -> None:
             while not standing_summoner["info_got"] and standing_summoner["body"]["httpStatus"] != 404 and standing_summoner_recapture < 3:
                 logPrint(standing_summoner["body"])
                 standing_summoner_recapture += 1
-                logPrint("第%d/%d名顶级%s玩家（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\n[%d/%d] Information of Player (Puuid: %s) in the %s apex capture failed! Recapturing this player's information ... Times tried: %d" %(i + 1, len(division["standings"]), queueTypes_zh[queueType], standing["puuid"], standing_summoner_recapture, i + 1, len(division["standings"]), standing["puuid"], queueTypes_zh[queueType], standing_summoner_recapture))
+                logPrint("第%d/%d名顶级%s玩家（玩家通用唯一识别码：%s）信息获取失败！正在第%d次尝试重新获取该玩家信息……\n[%d/%d] Information of Player (Puuid: %s) in the %s apex capture failed! Recapturing this player's information ... Times tried: %d" %(i + 1, len(division["standings"]), queueTypes_zh[queueType], standing["puuid"], standing_summoner_recapture, i + 1, len(division["standings"]), standing["puuid"], queueTypes_zh[queueType], standing_summoner_recapture))
                 standing_summoner = await get_info(connection, standing["puuid"])
             info_got: bool = standing_summoner["info_got"]
             if not info_got:
                 logPrint(standing_summoner["body"])
-                logPrint("第%d/%d名顶级%s玩家（玩家通用唯一识别码：%s）获取失败！\n[%d/%d] Information of Player (Puuid: %s) in the %s apex capture failed!" %(i + 1, len(division["standings"]), queueTypes_zh[queueType], standing["puuid"], i + 1, len(division["standings"]), standing["puuid"], queueTypes_zh[queueType]))
+                logPrint("第%d/%d名顶级%s玩家（玩家通用唯一识别码：%s）信息获取失败！\n[%d/%d] Information of Player (Puuid: %s) in the %s apex capture failed!" %(i + 1, len(division["standings"]), queueTypes_zh[queueType], standing["puuid"], i + 1, len(division["standings"]), standing["puuid"], queueTypes_zh[queueType]))
             for j in range(len(topRated_ladder_header_keys)):
                 key: str = topRated_ladder_header_keys[j]
                 if j <= 8:
@@ -273,7 +273,7 @@ async def get_challenger_tier(connection: Connection) -> None:
                 else:
                     to_append = standing_summoner["body"][key] if info_got else ""
                 queue_ladder_data[key].append(to_append)
-            logPrint("[%d/%d]" %(i + 1, len(ladders["standings"])), end = "\r", print_time = True)
+            logPrint("[%d/%d]%s\t%s" %(i + 1, len(ladders["standings"]), standing["puuid"], get_info_name(standing_summoner["body"]) if info_got else ""), end = "\r", print_time = True)
         else:
             logPrint("已完成。 | Done.")
         topRated_ladder_statistics_output_order: list[int] = [1, 3, 2, 6, 4, 7, 9, 10, 5, 0, 8]

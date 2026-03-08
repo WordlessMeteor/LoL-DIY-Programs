@@ -14,7 +14,7 @@ from src.core.config.localization import inventoryType_dict, ownershipTypes, sub
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/07
+# 更新（Last update）：     2026/03/08
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -256,6 +256,7 @@ def sort_catalog_items(catalogList: list[dict[str, Any]], hashtable_dicts: dict[
     catalog_data: dict[str, list[Any]] = {key: [] for key in catalog_header_keys}
     catalog_data_json: dict[str, list[Any]] = copy.deepcopy(catalog_data)
     #数据整理核心部分（Data organization - core part）
+    print("商品信息整理进度（Catalog data organization process）：")
     for item_index in range(len(catalogList)):
         item: dict[str, Any] = catalogList[item_index]
         priceDict: dict[str, int] = {}
@@ -317,10 +318,7 @@ def sort_catalog_items(catalogList: list[dict[str, Any]], hashtable_dicts: dict[
                     to_append = ""
             catalog_data[key].append(to_append)
             catalog_data_json[key].append(pyobj2json(to_append))
-        if item_index < len(catalogList) - 1:
-            print("商品信息整理进度（Catalog data organization process）：%d/%d" %(item_index + 1, len(catalogList)), end = "\r", flush = True)
-        else:
-            print("商品信息整理进度（Catalog data organization process）：%d/%d" %(item_index + 1, len(catalogList)))
+        print("[%d/%d](%s, %d)" %(item_index + 1, len(catalogList), item["inventoryType"], item["itemId"]), end = "\r")
     #数据框列序整理（Dataframe column ordering）
     catalog_statistics_output_order: list[int] = [8, 17, 1, 5, 0, 4, 16, 7, 6, 21, 19, 22, 23, 24, 25, 15, 26, 27, 29, 28, 30, 31, 33, 32, 10, 11, 20, 13, 9, 18, 2]
     catalog_data_organized: dict[str, list[Any]] = {catalog_header_keys[i]: catalog_data_json[catalog_header_keys[i]] for i in catalog_statistics_output_order}
@@ -350,6 +348,7 @@ def sort_store_items(store: list[dict[str, Any]], locale: str, collection_hashta
     store_data: dict[str, list[Any]] = {key: [] for key in store_header_keys}
     store_data_json: dict[str, list[Any]] = copy.deepcopy(store_data)
     #数据整理核心部分（Data organization - core part）
+    print("商店信息整理进度（Store data organization process）：")
     for item_index in range(len(store)):
         item: dict[str, Any] = store[item_index]
         priceDict: dict[str, dict[str, int]] = {} #应用于“i <= 19”的场景（Applies when "i <= 19"）
@@ -404,10 +403,7 @@ def sort_store_items(store: list[dict[str, Any]], locale: str, collection_hashta
                     to_append = ""
             store_data[key].append(to_append)
             store_data_json[key].append(pyobj2json(to_append))
-        if item_index < len(store) - 1:
-            print("商店信息整理进度（Store data organization process）：%d/%d" %(item_index + 1, len(store)), end = "\r", flush = True)
-        else:
-            print("商店信息整理进度（Store data organization process）：%d/%d" %(item_index + 1, len(store)))
+        print("[%d/%d](%s, %d)" %(item_index + 1, len(store), item["inventoryType"], item["itemId"]), end = "\r")
     #数据框列序整理（Dataframe column ordering）
     store_statistics_output_order: list[int] = [14, 15, 5, 0, 4, 12, 9, 1, 6, 11, 3, 16, 17, 18, 19, 8, 7, 10, 21, 20, 22, 23, 24, 25, 13, 2]
     store_data_organized: dict[str, list[Any]] = {store_header_keys[i]: store_data_json[store_header_keys[i]] for i in store_statistics_output_order}
@@ -435,6 +431,7 @@ def sort_collection_items(collection: list[dict[str, Any]], collection_hashtable
     collection_data: dict[str, list[Any]] = {key: [] for key in collection_header_keys}
     collection_data_json: dict[str, list[Any]] = copy.deepcopy(collection_data)
     #数据整理核心部分（Data organization - core part）
+    print("藏品信息整理进度（Collection data organization process）：")
     for item_index in range(len(collection)):
         item: dict[str, Any] = collection[item_index]
         for i in range(len(collection_header)):
@@ -476,10 +473,7 @@ def sort_collection_items(collection: list[dict[str, Any]], collection_hashtable
                 to_append = item[key]
             collection_data[key].append(to_append)
             collection_data_json[key].append(pyobj2json(to_append))
-        if item_index < len(collection) - 1:
-            print("藏品信息整理进度（Collection data organization process）：%d/%d" %(item_index + 1, len(collection)), end = "\r", flush = True)
-        else:
-            print("藏品信息整理进度（Collection data organization process）：%d/%d\n" %(item_index + 1, len(collection)))
+        print("[%d/%d](%s, %d)" %(item_index + 1, len(collection), item["inventoryType"], item["itemId"]), end = "\r")
     #数据框列序整理（Dataframe column ordering）
     collection_statistics_output_order: list[int] = [15, 9, 3, 2, 12, 6, 10, 1, 4, 5, 7, 8, 0, 14, 13, 11]
     collection_data_organized: dict[str, list[Any]] = {collection_header_keys[i]: collection_data_json[collection_header_keys[i]] for i in collection_statistics_output_order}

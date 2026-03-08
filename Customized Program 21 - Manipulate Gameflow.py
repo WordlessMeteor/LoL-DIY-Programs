@@ -2808,9 +2808,10 @@ async def get_collection(connection: Connection, verbose: bool = True) -> pandas
     collection_data: dict[str, list[Any]] = {key: [] for key in collection_header_keys}
     #数据整理核心部分（Data assignment - core part）
     logPrint("[get_collection]正在整理数据…… | Organizing data ...", print_time = True, verbose = verbose)
+    # logPrint("数据整理进度（Data organization process）："), verbose = verbose)
     for item_index in range(len(collection)):
         item: dict[str, Any] = collection[item_index]
-        # logPrint("数据整理进度（Data organization process）：%d/%d" %(item_index + 1, len(collection)), end = "\r", print_time = True, verbose = verbose)
+        # logPrint("[%d/%d](%s, %d)" %(item_index + 1, len(collection), item["inventoryType"], item["itemId"]), end = "\r", print_time = True, verbose = verbose)
         for i in range(len(collection_header_keys)):
             key: str = collection_header_keys[i]
             if i in {0, 8, 11}: #时间字符串相关键（Time string-related keys）
@@ -5208,9 +5209,10 @@ async def sort_skin_data(connection: Connection, verbose: bool = True) -> pandas
     skin_data: dict[str, list[Any]] = {key: [] for key in skin_header_keys}
     logPrint("[sort_skin_data]正在整理数据…… | Organizing data ...", print_time = True, verbose = verbose)
     skinIds: list[int] = sorted(set(championSkins.keys()) & set(skins_flat.keys())) #在2025年8月15日，美测服在`/lol-champions/v1/inventories/{summonerId}/champions`接口中删除了德邦总管 赵信及其所有皮肤信息，导致下面出现键错误。考虑到当天有玩家反馈无法选用赵信，所以这里取`championSkins`和`skins_flat`的键的交集（On Aug. 15th, 2025, Xin Zhao is removed from the response body of the endpoint `lol-champions/v1/inventories/{summonerId}/champions`. Considering some player reported that Xin Zhao can't be selected on that day, here we take the intersection of the keys of `championSkins` and `skins_flat`）
+    # logPrint("数据整理进度（Data organization process）："), verbose = verbose)
     for skin_index in range(len(skinIds)):
         skinId: int = skinIds[skin_index]
-        # logPrint("数据整理进度（Data organization process）：%d/%d" %(skin_index + 1, len(skinIds)), end = "\r", print_time = True, verbose = verbose)
+        # logPrint("[%d/%d]%d\t%s" %(skin_index + 1, len(skinIds), skin["id"], skin["name"]), end = "\r", print_time = True, verbose = verbose)
         skin: dict[str, Any] = championSkins[skinId]
         skin_flat: dict[str, Any] = skins_flat[skinId]
         for i in range(len(skin_header_keys)):

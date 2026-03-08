@@ -190,6 +190,7 @@ def get_cdragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, An
     champion_files_ready: bool = False
     LoLChampion: list[dict[str, Any]] = []
     #注释以下代码以直接离线加载数据资源（Comment out the following code to load offline data resources directly）
+    print("获取进度（Capturing process）：")
     for i in range(len(champion_urls)):
         if keyboard.is_pressed("esc"):
             print("您已中断此过程。\nYou've interrupted this process.")
@@ -202,7 +203,7 @@ def get_cdragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, An
         champion: dict[str, Any] = source.json()
         LoLChampion.append(champion)
         print("[%s]" %(time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())), end = "")
-        print("获取进度（Capturing process）：%d/%d" %(i + 1, len(champion_urls)))
+        print("[%d/%d]%s %s" %(i + 1, len(champion_urls), champion["name"], champion["title"]))
     else:
         champion_files_ready = True #任何一个文件获取失败都会导致程序进入离线加载模式（Any file that failed to be loaded will cause to program to load all data again offline）
     #注释以上代码以直接离线加载数据资源（Comment out the above code to load offline data resources directly）
@@ -244,12 +245,13 @@ async def get_plugin_champions(connection: Connection) -> list: #和整理静态
     champion_summary: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/champion-summary.json")).json()
     championIds: list[int] = list(map(lambda x: x["id"], champion_summary))
     LoLChampion: list[dict[str, Any]] = []
+    print("获取进度（Capturing process）：")
     for i in range(len(championIds)):
         championId: int = championIds[i]
         champion: dict[str, Any] = await (await connection.request("GET", f"/lol-game-data/assets/v1/champions/{championId}.json")).json() #插件从本地读取，因此一般不需要设置异常处理（Plugins are read locally, so exception handling isn't needed here）
         LoLChampion.append(champion)
         print("[%s]" %(time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())), end = "")
-        print("获取进度（Capturing process）：%d/%d" %(i + 1, len(championIds)))
+        print("[%d/%d]%s %s" %(i + 1, len(championIds), champion["name"], champion["title"]))
     return LoLChampion
 
 async def count_champions(connection: Connection) -> None:

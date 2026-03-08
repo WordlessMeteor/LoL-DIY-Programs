@@ -185,7 +185,7 @@ async def get_infos(connection: Connection, puuids: Optional[list[str]] = None, 
                 summoners[info_body["puuid"]] = info_body
     return summoners
 
-def get_info_name(info: Any, mode: int = 1) -> str:
+def get_info_name(info: Any, mode: int = 1, verbose: bool = True) -> str:
     if isinstance(info, dict):
         #初始化变量（Initialize variables）
         displayName_exist: bool = False
@@ -251,10 +251,12 @@ def get_info_name(info: Any, mode: int = 1) -> str:
         elif gameName_exist and tagLine_exist and bool(gameName) and bool(tagLine):
             name = gameName + "#" + tagLine
         else:
-            print("您的召唤师信息格式有误！\nERROR format of summoner information!")
+            if verbose:
+                print("您的召唤师信息格式有误！\nERROR format of summoner information!")
             name = ""
     else:
-        print("您的召唤师信息格式有误！\nERROR format of summoner information!")
+        if verbose:
+            print("您的召唤师信息格式有误！\nERROR format of summoner information!")
         name = ""
     return name
 
@@ -266,9 +268,10 @@ async def sort_summoner_info(connection: Connection, puuids: list[str], summoner
         unmapped_keys: dict[str, set[Any]] = {"summonerIcon": set(), "regaliaBanner": set(), "LoLChampion": set()}
     info_header_keys: list[str] = list(profile_header.keys())
     info_data: dict[str, Any] = {key: [] for key in info_header_keys}
+    logPrint("召唤师信息整理进度（Summoner information organization process）：")
     for i in range(len(puuids)):
         puuid: str = puuids[i]
-        logPrint("召唤师信息整理进度（Summoner information organization process）：%d/%d\t玩家通用唯一识别码（Puuid）： %s" %(i + 1, len(puuids), puuid))
+        logPrint("[%d/%d]%s" %(i + 1, len(puuids), puuid))
         info_recapture: int = 0
         info: dict[str, Any] = await get_info(connection, puuid)
         while not info["info_got"] and info["body"]["httpStatus"] != 404 and info_recapture < 3:
