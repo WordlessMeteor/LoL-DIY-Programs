@@ -459,15 +459,18 @@ def sort_collection_items(collection: list[dict[str, Any]], collection_hashtable
             elif i == 15: #名称（`name`）
                 if (item["inventoryType"], item["itemId"]) in collection_hashtable:
                     name: str = collection_hashtable[(item["inventoryType"], item["itemId"])]
-                elif item["inventoryType"] in hashtable_dicts: #商品中可能不包含藏品（A collection item may not be contained in the collection）
-                    if item["inventoryType"] in {"STRAWBERRY_BOON", "STRAWBERRY_LOADOUT_ITEM", "STRAWBERRY_MAP"} and item["uuid"] in hashtable_dicts[item["inventoryType"]]:
-                        name = hashtable_dicts[item["inventoryType"]][item["uuid"]]["name"]
-                    elif item["itemId"] in hashtable_dicts[item["inventoryType"]]:
-                        name = hashtable_dicts[item["inventoryType"]][item["itemId"]]["name"]
-                    else:
-                        name = ""
                 else:
                     name = ""
+                if name == "":
+                    if item["inventoryType"] in hashtable_dicts: #商品中可能不包含藏品（A collection item may not be contained in the collection）
+                        if item["inventoryType"] in {"STRAWBERRY_BOON", "STRAWBERRY_LOADOUT_ITEM", "STRAWBERRY_MAP"} and item["uuid"] in hashtable_dicts[item["inventoryType"]]:
+                            name = hashtable_dicts[item["inventoryType"]][item["uuid"]]["name"]
+                        elif item["itemId"] in hashtable_dicts[item["inventoryType"]]:
+                            name = hashtable_dicts[item["inventoryType"]][item["itemId"]]["name"]
+                        else:
+                            name = ""
+                    else:
+                        name = ""
                 to_append = name
             else:
                 to_append = item[key]
