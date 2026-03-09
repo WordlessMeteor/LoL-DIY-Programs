@@ -1,12 +1,12 @@
 from lcu_driver.connection import Connection
 import copy, os, pandas, time, sys, uuid
-from typing import Any, Optional
+from typing import Any, Callable, Optional
 wd: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")).replace("\\", "/")
 os.chdir(wd)
 if not wd in sys.path:
     sys.path.append(wd) #确保在“src”文件夹的父级目录运行此代码（Make sure this program is run under the parent folder of the "src" folder）
 from src.utils.logger import LogManager
-from src.utils.format import optimize_bool_display, pyobj2json
+from src.utils.format import format_df, optimize_bool_display, pyobj2json
 from src.core.config.localization import damageTypes, attackTypes
 from src.core.config.headers import LoLChampion_ddragon_header, LoLChampion_inventory_header, LoLChampion_plugin_header, champion_summary_header
 
@@ -290,3 +290,82 @@ def sort_champion_summary(LoLChampions: dict[int, dict[str, Any]]) -> pandas.Dat
     LoLChampion_df: pandas.DataFrame = pandas.DataFrame(data = LoLChampion_data_organized)
     LoLChampion_df = pandas.concat([pandas.DataFrame([LoLChampion_header])[LoLChampion_df.columns], LoLChampion_df], ignore_index = True)
     return LoLChampion_df
+
+def filter_champion(champion_queryStr: str, LoLChampion_df_query: pandas.DataFrame, LoLChampion_df_query_initial: pandas.DataFrame, log: Optional[LogManager] = None) -> tuple[bool, int, pandas.DataFrame]:
+    '''
+    通过检索关键字筛选英雄。<br>Filter champions by query keyword.
+    
+    :param champion_queryStr: 英雄检索关键字。<br>Keyword for champion query.
+    
+        基于检索关键字和英雄表的关系，有以下三种情况：<br>Based on the relationship between the query keyword and the champion dataframe, there're three cases:
+        1. 通过检索关键字筛选到多名英雄。此时返回筛选后的英雄表格。<br>Multiple champions are found by searching for this query keyword, when this function returns filtered champion dataframe.
+        2. 通过检索关键字筛选到一名英雄。此时返回筛选后的英雄表格，并认为找到单名英雄。<br>One champion is found by searching for this query keyword, when this function returns filtered champion dataframe and considers a single champion is found.
+        3. 通过检索关键字未筛选到英雄。此时返回重置的英雄表格。<br>No champion is found by searching for this query keyword, when this function returns the initial champion dataframe.
+    :type champion_queryStr: str
+    :param LoLChampion_df_query: 供每次检索使用的英雄表。可通过一个外部循环缩小该英雄表。<br>The champion dataframe for each query. This dataframe may be narrowed by an external loop.
+    :type LoLChampion_df_query: pandas.DataFrame
+    :param LoLChampion_df_query_initial: 初始英雄表。静态数据，一般包含所有英雄数据，用于重置时恢复到初始状态。<br>The initial champion dataframe. Static data, which always contain all champion data, so that the query dataframe can reset to the initial status.
+    :type LoLChampion_df_query_initial: pandas.DataFrame
+    :param log: 日志管理对象。如果不传入，则只使用传统的输入输出功能。<br>A LogManager object. If unspecified, the input and output works as how `input` and `output` functions work.
+    :type log: LogManager
+    :return: 一个三元组，包含以下内容：<br>A three-tuple that contains the following content:
+    
+        1. 单英雄是否找到的标记。可作为退出外部循环（如有）的旗标。<br>A symbol indicating whether a single champion is found. It may serve as the flag of whether to exit the external loop (if any).
+        2. 英雄序号。仅在找到单名英雄时有效，否则始终为0。<br>ChampionId. Only useful when a single champion is found, otherwise it's always 0.
+        3. 筛选后的英雄表格。可用于下一次筛选，同时也可作为一个返回值，并从中得到筛选得到的多名英雄。<br>Filtered champion dataframe. It may be used for the next filter, and at the same time, it serves as a returned value, so that users can get the filtered championIds from it.
+    :rtype: tuple[bool, int, pandas.DataFrame]
+    '''
+    #参数预处理（Parameter preprocess）
+    if log == None:
+        log = LogManager()
+    logPrint = log.logPrint
+    #定义自定义函数（Define custom functions）
+    to_lower: Callable[[Any], Any] = lambda x: x.lower() if isinstance(x, str) else x
+    isin_colloq: Callable[[list[Any]], bool] = lambda x: any(champion_queryStr.lower() in item for item in x)
+    #定义常量（Define a constant）
+    LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
+    #初始化返回值（Initialize values to return）
+    single_found: bool = False #退出循环的旗标（A flag that marks whether to exit a loop）
+    championId: int = 0 #英雄序号（ChampionId）
+    #处理输入（Handle input）
+    if champion_queryStr == "00":
+        resultRows = []
+    elif champion_queryStr.isdigit():
+        championId_query: int = int(champion_queryStr)
+        subset: pandas.Series[int] = LoLChampion_df_query["id"][1:]
+        if championId_query in subset.values:
+            resultRows: list[int] = list(subset[subset == championId_query].index)
+        else:
+            resultRows = []
+    else:
+        LoLChampion_df_query_lower: pandas.DataFrame = LoLChampion_df_query.map(to_lower) #查询时忽略大小写（Case insensitive during query）
+        #首先判断名称、标题和代号是否包含用户输入的字符串（First, judge whether the names, titles and aliases contain the user input string）
+        stacked_str: pandas.Series[str] = LoLChampion_df_query_lower.loc[:, ["name", "title", "alias"]].stack()
+        mask_str: pandas.Series[bool] = stacked_str.str.contains(champion_queryStr.lower())
+        query_positions: list[tuple[int, str]] = stacked_str[mask_str].index.to_list()
+        #其次判断检索关键字中是否包含用户输入的字符串（Then, judge whether the colloquialisms contain the user input string）
+        mask_colloq: pandas.Series[bool] = LoLChampion_df_query["colloq"][1:].apply(isin_colloq)
+        matched_rows_colloq: list[int] = LoLChampion_df_query.loc[1:, :][mask_colloq].index.to_list()
+        query_positions.extend(list(map(lambda x: (x, "colloq"), matched_rows_colloq)))
+        #最后基于查询位置进行综合处理（Finally, perform a comprehensive operation on query positions）
+        resultRows: list[int] = sorted(set(map(lambda x: x[0], query_positions)))
+    if len(resultRows) == 0:
+        if champion_queryStr == "00":
+            logPrint("已重置筛选。\nFilter conditions have been reset.")
+            LoLChampion_df_query = LoLChampion_df_query_initial
+        else:
+            logPrint("没有找到该英雄。请重新输入。\nChampion not found. Please try again.")
+    else:
+        LoLChampion_df_query = LoLChampion_df_query.loc[[0] + resultRows, :]
+        LoLChampion_df_query_to_print: pandas.DataFrame = LoLChampion_df_query.loc[:, LoLChampion_fields_to_print]
+        if len(resultRows) == 1:
+            championId = LoLChampion_df_query_initial["id"][resultRows[0]]
+            logPrint("您选择了以下英雄：\nYou selected the following champion:")
+            print(format_df(LoLChampion_df_query_to_print)[0])
+            log.write(format_df(LoLChampion_df_query_to_print, width_exceed_ask = False, direct_print = False)[0] + "\n")
+            single_found = True
+        else:
+            print(format_df(LoLChampion_df_query_to_print)[0])
+            log.write(format_df(LoLChampion_df_query_to_print, width_exceed_ask = False, direct_print = False)[0] + "\n")
+            logPrint("请继续选择英雄：\nPlease continue to select a champion:")
+    return (single_found, championId, LoLChampion_df_query)

@@ -14,7 +14,7 @@ from src.core.config.headers import LoLChampion_inventory_header as LoLChampion_
 from src.core.config.localization import gamemodes, gamemaps, ARAMmaps, gameTypes_config, spectatorPolicies, report_categories, tiers_all, team_colors_int, subteam_colors, rarities, krarities, augment_rarity, skinClassifications, damageTypes, conversationTypes, messageTypes, invidStates, invidTypes, slotTypes, availabilities, inventoryType_dict, ownershipTypes, botDifficulty_dict, roles, positions, eventTypes_liveclient, DragonTypes, team_colors_str, honorType_tooltip_headers, honorType_tooltip_bodies, zoom_scale_dict
 from src.core.config.conditional_formatting import addFormat_inGame_allPlayer_wb
 from src.core.dataframes.gameflow import get_gameflow_phase, get_champ_select_session, get_champSelect_player, sort_ChampSelect_players, sort_inGame_players, sort_eog_playerstat_lol_data, sort_eog_stat_tft_data
-from src.core.dataframes.champions import test_bot, sort_inventory_champions
+from src.core.dataframes.champions import test_bot, sort_inventory_champions, filter_champion
 from src.core.dataframes.gameMode import check_available_queue
 from src.core.dataframes.matchHistory import get_game_summary_sgp, sort_LoLGame_summary_sgp, sort_TFTGame_summary
 
@@ -29,7 +29,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/08
+# 更新（Last update）：     2026/03/09
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -75,6 +75,7 @@ TFTDamageSkins: dict[str, dict[str, Any]] = {}
 TFTMapSkins: dict[str, dict[str, Any]] = {}
 strawberryMaps: dict[int, dict[str, Any]] = {}
 wardSkins: dict[int, dict[str, Any]] = {}
+champion_colloq_dict: dict[int, list[str]] = {}
 collection_df: pandas.DataFrame = pandas.DataFrame()
 skin_df: pandas.DataFrame = pandas.DataFrame()
 log: LogManager = LogManager()
@@ -113,7 +114,7 @@ async def check_account_ready(connection: Connection) -> bool:
 
 async def prepare_data_resources(connection: Connection) -> None:
     #准备数据资源（Prepare data resources）
-    global platformId, current_info, queues, summonerIcons, LoLChampions, recommended_position_for_champion, skins_flat, championSkins, skinlines, spells, available_spell_dict, LoLItems, perks, perkstyles, CherryAugments, TFTCompanions, TFTTraits, TFTChampions, TFTItems, TFTDamageSkins, TFTMapSkins, strawberryMaps, wardSkins, collection_df_refresh, collection_df, skin_df_refresh, skin_df
+    global platformId, current_info, queues, summonerIcons, LoLChampions, recommended_position_for_champion, skins_flat, championSkins, skinlines, spells, available_spell_dict, LoLItems, perks, perkstyles, CherryAugments, TFTCompanions, TFTTraits, TFTChampions, TFTItems, TFTDamageSkins, TFTMapSkins, strawberryMaps, wardSkins, champion_colloq_dict, collection_df_refresh, collection_df, skin_df_refresh, skin_df
     ##大区信息（Platform information）
     logPrint("正在准备大区信息……\nPreparing platform information ...")
     platformId = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
@@ -228,6 +229,9 @@ async def prepare_data_resources(connection: Connection) -> None:
     logPrint("正在加载守卫（眼）皮肤信息……\nLoading ward skin information ...")
     wardSkins_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/ward-skins.json")).json()
     wardSkins = {wardSkin_iter["id"]: wardSkin_iter for wardSkin_iter in wardSkins_source}
+    ##英雄惯用语（Champion colloquialism）
+    champion_catalog: list[dict[str, Any]] = await (await connection.request("GET", "/lol-catalog/v1/items/CHAMPION")).json()
+    champion_colloq_dict = {item["itemId"]: item.get("tags", []) for item in champion_catalog}
     ##藏品数据框（Collection dataframe）
     os.makedirs("cache", exist_ok = True)
     logPrint("正在加载藏品信息……\nLoading collections ...")
@@ -3575,13 +3579,14 @@ async def lobby_simulation(connection: Connection) -> str:
                                                         elif step == 1:
                                                             logPrint("第一步：请选择一个英雄。\nStep 1: Please select a champion.")
                                                             LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)
+                                                            LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict.get(x, []), LoLChampion_df["id"][1:]))
                                                             LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
+                                                            LoLChampion_df_query_initial: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print + ["colloq"]] #代表初始值（Represent the initial value）
+                                                            LoLChampion_df_query: pandas.DataFrame = LoLChampion_df_query_initial #代表查询过程中的值（Represent the value during a query）
                                                             LoLChampion_df_selected: pandas.DataFrame = pandas.concat([LoLChampion_df.iloc[:1, :], LoLChampion_df[(LoLChampion_df["freeToPlay"] == "√") | (LoLChampion_df["ownership: owned"] == "√") | (LoLChampion_df["ownership: rental: rented"] == "√")]], ignore_index = True)
-                                                            LoLChampion_df_query: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print]
-                                                            LoLChampion_df_query["id"] = LoLChampion_df["id"].astype(str) #方便检索（For convenience of retrieval）
-                                                            LoLChampion_df_query = LoLChampion_df_query.map(lambda x: x.lower() if isinstance(x, str) else x)
-                                                            print(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print])[0]) #虽然输出的是筛选后的表格，但实际上用户仍然可以尝试选择不可用的英雄（Although the selected table is output, users can still try choosing unavailable champions）
+                                                            print(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print])[0]) #虽然这里输出的是筛选后的表格，但实际上用户仍然可以尝试选择不可用的英雄（Although the selected table is output here, users can still try choosing unavailable champions）
                                                             log.write(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
+                                                            logPrint('请输入英雄的序号或者名称。输入“00”以从头筛选。\nPlease input the id or name of a champion. Submit "00" to de novo filter champions.')
                                                             while True:
                                                                 champion_queryStr: str = logInput()
                                                                 if champion_queryStr == "":
@@ -3596,16 +3601,8 @@ async def lobby_simulation(connection: Connection) -> str:
                                                                     championId = -3
                                                                     break
                                                                 else:
-                                                                    query_positions = numpy.where(LoLChampion_df_query == champion_queryStr.lower()) #使用numpy.where检索的前提是数据框中每个单元格的值都不一样（The premise of query by `numpy.where` is that no two cells are the same）
-                                                                    if len(query_positions[0]) == 0:
-                                                                        logPrint("没有找到该英雄。请重新输入。\nChampion not found. Please try again.")
-                                                                    else:
-                                                                        resultRow = query_positions[0]
-                                                                        result_champion_df = LoLChampion_df.loc[resultRow, LoLChampion_fields_to_print].reset_index(drop = True)
-                                                                        championId = LoLChampion_df["id"][resultRow[0]]
-                                                                        logPrint("您选择了以下英雄：\nYou selected the following champion:")
-                                                                        print(format_df(result_champion_df)[0])
-                                                                        log.write(format_df(result_champion_df, width_exceed_ask = False, direct_print = False)[0] + "\n")
+                                                                    break_flag, championId, LoLChampion_df_query = filter_champion(champion_queryStr, LoLChampion_df_query, LoLChampion_df_query_initial)
+                                                                    if break_flag:
                                                                         break
                                                         elif step == 2:
                                                             logPrint("第二步：请选择一个分路。\nStep 2: Please select a position.\n1\t上路（Top）\n2\t打野（Jungle）\n3\t中路（Middle）\n4\t下路（Bottom）\n5\t辅助（Support）")
@@ -4290,7 +4287,6 @@ async def lobby_simulation(connection: Connection) -> str:
                                                     step -= 2
                                             elif step == 4:
                                                 candidatePositions: list[str] = ["TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"]
-                                                recommended_position_for_champion: dict[str, dict[str, Any]] = await (await connection.request("GET", "/lol-perks/v1/recommended-champion-positions")).json()
                                                 recommended_lanes: dict[str, bool] = {}
                                                 for position_iter in candidatePositions:
                                                     recommended_lanes[position_iter] = position_iter in recommended_position_for_champion[str(championId)]["recommendedPositions"]
@@ -5718,15 +5714,15 @@ async def champ_select_simulation(connection: Connection) -> str:
                                     selectable_champion_ids = await (await connection.request("GET", "/lol-champ-select/v1/pickable-champion-ids")).json()
                                 else:
                                     selectable_champion_ids = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/pickable-champion-ids")).json()
-                        logPrint("请输入英雄序号：\nPlease enter a champion id:") #这部分代码复制于符文脚本（This part of code is copied from Customized Program 19）
                         LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)
+                        LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict.get(x, []), LoLChampion_df["id"][1:]))
                         LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
+                        LoLChampion_df_query_initial: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print + ["colloq"]] #代表初始值（Represent the initial value）
+                        LoLChampion_df_query: pandas.DataFrame = LoLChampion_df_query_initial #代表查询过程中的值（Represent the value during a query）
                         LoLChampion_df_selected: pandas.DataFrame = pandas.concat([LoLChampion_df.iloc[:1, :], LoLChampion_df[LoLChampion_df["id"].isin(selectable_champion_ids)]], ignore_index = True)
-                        LoLChampion_df_query: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print]
-                        LoLChampion_df_query["id"] = LoLChampion_df["id"].astype(str) #方便检索（For convenience of retrieval）
-                        LoLChampion_df_query = LoLChampion_df_query.map(lambda x: x.lower() if isinstance(x, str) else x)
-                        print(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print])[0]) #虽然输出的是筛选后的表格，但实际上用户仍然可以尝试选择不可用的英雄（Although the selected table is output, users can still try choosing unavailable champions）
+                        print(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print])[0]) #虽然这里输出的是筛选后的表格，但实际上用户仍然可以尝试选择不可用的英雄（Although the selected table is output here, users can still try choosing unavailable champions）
                         log.write(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
+                        logPrint('请输入英雄的序号或者名称。输入“00”以从头筛选。\nPlease input the id or name of a champion. Submit "00" to de novo filter champions.')
                         back: bool = False
                         while True:
                             champion_queryStr: str = logInput()
@@ -5739,16 +5735,8 @@ async def champ_select_simulation(connection: Connection) -> str:
                                 pick_championId: int = -3
                                 break
                             else:
-                                query_positions = numpy.where(LoLChampion_df_query == champion_queryStr.lower()) #使用numpy.where检索的前提是数据框中每个单元格的值都不一样（The premise of query by `numpy.where` is that no two cells are the same）
-                                if len(query_positions[0]) == 0:
-                                    logPrint("没有找到该英雄。请重新输入。\nChampion not found. Please try again.")
-                                else:
-                                    resultRow = query_positions[0]
-                                    result_champion_df = LoLChampion_df.loc[resultRow, LoLChampion_fields_to_print].reset_index(drop = True)
-                                    pick_championId = LoLChampion_df["id"][resultRow[0]] #如果碰巧有多个单元格匹配用户的输入，取第一个。请向作者汇报该问题（If multiple cells happen to match the user input, the first cell is taken. Please report this issue to the author）
-                                    logPrint("您选择了以下英雄：\nYou selected the following champion:")
-                                    print(format_df(result_champion_df)[0])
-                                    log.write(format_df(result_champion_df, width_exceed_ask = False, direct_print = False)[0] + "\n")
+                                break_flag, pick_championId, LoLChampion_df_query = filter_champion(champion_queryStr, LoLChampion_df_query, LoLChampion_df_query_initial)
+                                if break_flag:
                                     break
                         if back:
                             logPrint("请选择行为类型：\nPlease select an action:\n1\t禁用（Ban）\n2\t选择（Pick）\n3\t重随（Reroll）\n4\t投票（Vote）")

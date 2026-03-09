@@ -8,7 +8,7 @@ from src.utils.summoner import print_summoner_info, get_info_name
 from src.core.config.localization import slotTypes, positions, recommendedAttributes
 from src.core.config.headers import perk_header, recommendedPage_header, perkPage_header
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
-from src.core.dataframes.champions import sort_inventory_champions
+from src.core.dataframes.champions import sort_inventory_champions, filter_champion
 
 #=============================================================================
 # * 声明（Declaration）
@@ -16,7 +16,7 @@ from src.core.dataframes.champions import sort_inventory_champions
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/07
+# 更新（Last update）：     2026/03/09
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -33,6 +33,7 @@ perkstyles_source: dict[str, Any] = {}
 perkstyles: dict[int, dict[str, Any]] = {}
 LoLChampions: dict[int, dict[str, Any]] = {}
 recommended_position_for_champions: dict[str, dict[str, Any]] = {}
+champion_colloq_dict: dict[int, list[str]] = {}
 log: LogManager = LogManager()
 
 connector: Connector = Connector()
@@ -47,7 +48,7 @@ def clear_screen() -> None:
         os.system("clear")
 
 async def prepare_data_resources(connection: Connection) -> None:
-    global spells, perks_source, perks, perkstyles_source, perkstyles, LoLChampions, recommended_position_for_champion
+    global spells, perks_source, perks, perkstyles_source, perkstyles, LoLChampions, recommended_position_for_champion, champion_colloq_dict
     #召唤师技能（Summoner spell）
     spells_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/summoner-spells.json")).json()
     spells = {spell["id"]: spell for spell in spells_source}
@@ -63,6 +64,9 @@ async def prepare_data_resources(connection: Connection) -> None:
     LoLChampions = {champion["id"]: champion for champion in LoLChampions_source}
     #推荐分路（Recommended positions）
     recommended_position_for_champion = await (await connection.request("GET", "/lol-perks/v1/recommended-champion-positions")).json()
+    ##英雄惯用语（Champion colloquialism）
+    champion_catalog: list[dict[str, Any]] = await (await connection.request("GET", "/lol-catalog/v1/items/CHAMPION")).json()
+    champion_colloq_dict = {item["itemId"]: item.get("tags", []) for item in champion_catalog}
 
 async def sort_perk_data(connection: Connection) -> pandas.DataFrame:
     #下面指定符文的排列顺序（The following code specify the perk ordering）
@@ -320,10 +324,10 @@ async def configure_perks(connection: Connection) -> None:
         elif option == "2":
             logPrint("请输入英雄序号：\nPlease enter a champion id:")
             LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion)
+            LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict.get(x, []), LoLChampion_df["id"][1:]))
             LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
-            LoLChampion_df_query: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print]
-            LoLChampion_df_query["id"] = LoLChampion_df["id"].astype(str) #方便检索（For convenience of retrieval）
-            LoLChampion_df_query = LoLChampion_df_query.map(lambda x: x.lower() if isinstance(x, str) else x)
+            LoLChampion_df_query_initial: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print + ["colloq"]] #代表初始值（Represent the initial value）
+            LoLChampion_df_query: pandas.DataFrame = LoLChampion_df_query_initial #代表查询过程中的值（Represent the value during a query）
             print(format_df(LoLChampion_df.loc[:, LoLChampion_fields_to_print])[0])
             log.write(format_df(LoLChampion_df.loc[:, LoLChampion_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
             back: bool = False
@@ -338,18 +342,8 @@ async def configure_perks(connection: Connection) -> None:
                     back = True
                     break
                 else:
-                    query_positions = numpy.where(LoLChampion_df_query == champion_queryStr.lower()) #使用numpy.where检索的前提是数据框中每个单元格的值都不一样（The premise of query by `numpy.where` is that no two cells are the same）
-                    if len(query_positions[0]) == 0:
-                        logPrint("没有找到该英雄。请重新输入。\nChampion not found. Please try again.")
-                    else:
-                        resultRow: int = query_positions[0]
-                        result_champion_df: pandas.DataFrame = LoLChampion_df.loc[resultRow, LoLChampion_fields_to_print].reset_index(drop = True)
-                        championId = LoLChampion_df["id"][resultRow[0]]
-                        championName = LoLChampion_df["name"][resultRow[0]]
-                        championAlias = LoLChampion_df["alias"][resultRow[0]]
-                        logPrint("您选择了以下英雄：\nYou selected the following champion:")
-                        print(format_df(result_champion_df)[0])
-                        log.write(format_df(result_champion_df, width_exceed_ask = False, direct_print = False)[0] + "\n")
+                    break_flag, championId, LoLChampion_df_query = filter_champion(champion_queryStr, LoLChampion_df_query, LoLChampion_df_query_initial)
+                    if break_flag:
                         break
             if back:
                 continue
