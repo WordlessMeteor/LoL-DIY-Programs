@@ -322,75 +322,85 @@ async def configure_perks(connection: Connection) -> None:
                 else:
                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
         elif option == "2":
-            logPrint("请输入英雄序号：\nPlease enter a champion id:")
-            LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion)
-            LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict.get(x, []), LoLChampion_df["id"][1:]))
-            LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
-            LoLChampion_df_query_initial: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print + ["colloq"]] #代表初始值（Represent the initial value）
-            LoLChampion_df_query: pandas.DataFrame = LoLChampion_df_query_initial #代表查询过程中的值（Represent the value during a query）
-            print(format_df(LoLChampion_df.loc[:, LoLChampion_fields_to_print])[0])
-            log.write(format_df(LoLChampion_df.loc[:, LoLChampion_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
-            back: bool = False
             championId: int = 0
-            championName: str = ""
-            championAlias: str = ""
+            championPosition: str = "TOP"
+            mapId: int = 11
+            step: int = 1
             while True:
-                champion_queryStr: str = logInput()
-                if champion_queryStr == "":
-                    continue
-                elif champion_queryStr == "0":
-                    back = True
+                if step == 0:
+                    break
+                elif step == 1:
+                    logPrint("第一步：请选择一个英雄：\nStep 1: Please select a champion:")
+                    LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion)
+                    LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict.get(x, []), LoLChampion_df["id"][1:]))
+                    LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
+                    LoLChampion_df_query_initial: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print + ["colloq"]] #代表初始值（Represent the initial value）
+                    LoLChampion_df_query: pandas.DataFrame = LoLChampion_df_query_initial #代表查询过程中的值（Represent the value during a query）
+                    print(format_df(LoLChampion_df.loc[:, LoLChampion_fields_to_print])[0])
+                    log.write(format_df(LoLChampion_df.loc[:, LoLChampion_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
+                    championId: int = 0
+                    championName: str = ""
+                    championAlias: str = ""
+                    while True:
+                        champion_queryStr: str = logInput()
+                        if champion_queryStr == "":
+                            continue
+                        elif champion_queryStr == "0":
+                            step -= 2
+                            break
+                        else:
+                            break_flag, championId, LoLChampion_df_query = filter_champion(champion_queryStr, LoLChampion_df_query, LoLChampion_df_query_initial)
+                            if break_flag:
+                                break
+                elif step == 2:
+                    positionDict: dict[str, str] = {"TOP": "上路", "JUNGLE": "打野", "MIDDLE": "中路", "BOTTOM": "下路", "UTILITY": "辅助"}
+                    recommended_champion_positions: dict[str, dict[str, list[str]]] = await (await connection.request("GET", "/lol-perks/v1/recommended-champion-positions")).json()
+                    recommendedPositions: list[str] = recommended_champion_positions[str(championId)]["recommendedPositions"] if str(championId) in recommended_champion_positions else ["TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"]
+                    logPrint("第二步：请选择一条推荐路线：\nStep 2: Please select a recommended position:")
+                    position_count: int = 0
+                    for position in recommendedPositions:
+                        position_count += 1
+                        logPrint("%d\t%s\t%s" %(position_count, position, positionDict[position]))
+                    while True:
+                        position_str: str = logInput()
+                        if position_str == "0":
+                            step -= 2
+                            break
+                        elif position_str.upper() in recommendedPositions:
+                            championPosition: str = position_str.upper()
+                            break
+                        elif position_str in list(map(str, range(1, len(recommendedPositions) + 1))):
+                            championPosition = recommendedPositions[int(position_str) - 1]
+                            break
+                        elif position_str.upper() in positionDict:
+                            logPrint("%s的推荐路线中没有%s。请重新输入。\n%s isn't a recommended position of %s. Please try again." %(result_champion_df["name"][0], position_str.upper(), position_str.upper(), result_champion_df["alias"][0]))
+                        else:
+                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                elif step == 3:
+                    logPrint("第三步：请输入地图序号：\nStep 3: Please enter the mapId:")
+                    gamemaps: dict[int, dict[str, str]] = {8: {"zh_CN": "水晶之痕", "en_US": "Crystal Scar"}, 10: {"zh_CN": "扭曲丛林", "en_US": "Twisted Treeline"}, 11: {"zh_CN": "召唤师峡谷", "en_US": "Summoner's Rift"}, 12: {"zh_CN": "随机地图", "en_US": "Random Map"}, 14: {"zh_CN": "屠夫之桥", "en_US": "Butcher's Bridge"}, 16: {"zh_CN": "星界废墟", "en_US": "Cosmic Ruins"}, 18: {"zh_CN": "瓦洛兰城市公园", "en_US": "Valoran City Park"}, 19: {"zh_CN": "第43区", "en_US": "Substructure 43"}, 20: {"zh_CN": "飞船坠落点", "en_US": "Crash Site"}, 21: {"zh_CN": "百合与莲花的神庙", "en_US": "Temple of Lily and Lotus"}, 22: {"zh_CN": "聚点危机", "en_US": "Convergence"}, 30: {"zh_CN": "怒火角斗场", "en_US": "Rings of Wrath"}, 33: {"zh_CN": "最终都市", "en_US": "Final City"}, 35: {"zh_CN": "班德尔之森", "en_US": "The Bandlewood"}}
+                    gamemap_df: pandas.DataFrame = pandas.DataFrame(data = {"mapId": list(gamemaps.keys()), "zh_CN": list(map(lambda x: x["zh_CN"], gamemaps.values())), "en_US": list(map(lambda x: x["en_US"], gamemaps.values()))})
+                    print(format_df(gamemap_df)[0])
+                    log.write(format_df(gamemap_df, width_exceed_ask = False, direct_print = False)[0])
+                    while True:
+                        mapStr: str = logInput()
+                        if mapStr == "0":
+                            step -= 2
+                            break
+                        elif mapStr == "":
+                            mapId: int = 11
+                            break
+                        elif mapStr in list(map(str, gamemaps.keys())):
+                            mapId = int(mapStr)
+                            break
+                        else:
+                            logPrint("您的输入有误！请重新输入。\nERROR input. Please try again.")
+                elif step == 4:
                     break
                 else:
-                    break_flag, championId, LoLChampion_df_query = filter_champion(champion_queryStr, LoLChampion_df_query, LoLChampion_df_query_initial)
-                    if break_flag:
-                        break
-            if back:
-                continue
-            positionDict: dict[str, str] = {"TOP": "上路", "JUNGLE": "打野", "MIDDLE": "中路", "BOTTOM": "下路", "UTILITY": "辅助"}
-            recommended_champion_positions: dict[str, dict[str, list[str]]] = await (await connection.request("GET", "/lol-perks/v1/recommended-champion-positions")).json()
-            recommendedPositions: list[str] = recommended_champion_positions[str(championId)]["recommendedPositions"] if str(championId) in recommended_champion_positions else ["TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"]
-            logPrint("请选择一条推荐路线：\nPlease select a recommended position:")
-            position_count: int = 0
-            for position in recommendedPositions:
-                position_count += 1
-                logPrint("%d\t%s\t%s" %(position_count, position, positionDict[position]))
-            while True:
-                position_str: str = logInput()
-                if position_str == "0":
-                    back = True
-                    break
-                elif position_str.upper() in recommendedPositions:
-                    championPosition: str = position_str.upper()
-                    break
-                elif position_str in list(map(str, range(1, len(recommendedPositions) + 1))):
-                    championPosition = recommendedPositions[int(position_str) - 1]
-                    break
-                elif position_str.upper() in positionDict:
-                    logPrint("%s的推荐路线中没有%s。请重新输入。\n%s isn't a recommended position of %s. Please try again." %(result_champion_df["name"][0], position_str.upper(), position_str.upper(), result_champion_df["alias"][0]))
-                else:
-                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-            if back:
-                continue
-            logPrint("请输入地图序号：\nPlease enter the mapId:")
-            gamemaps: dict[int, dict[str, str]] = {8: {"zh_CN": "水晶之痕", "en_US": "Crystal Scar"}, 10: {"zh_CN": "扭曲丛林", "en_US": "Twisted Treeline"}, 11: {"zh_CN": "召唤师峡谷", "en_US": "Summoner's Rift"}, 12: {"zh_CN": "随机地图", "en_US": "Random Map"}, 14: {"zh_CN": "屠夫之桥", "en_US": "Butcher's Bridge"}, 16: {"zh_CN": "星界废墟", "en_US": "Cosmic Ruins"}, 18: {"zh_CN": "瓦洛兰城市公园", "en_US": "Valoran City Park"}, 19: {"zh_CN": "第43区", "en_US": "Substructure 43"}, 20: {"zh_CN": "飞船坠落点", "en_US": "Crash Site"}, 21: {"zh_CN": "百合与莲花的神庙", "en_US": "Temple of Lily and Lotus"}, 22: {"zh_CN": "聚点危机", "en_US": "Convergence"}, 30: {"zh_CN": "怒火角斗场", "en_US": "Rings of Wrath"}, 33: {"zh_CN": "最终都市", "en_US": "Final City"}, 35: {"zh_CN": "班德尔之森", "en_US": "The Bandlewood"}}
-            gamemap_df: pandas.DataFrame = pandas.DataFrame(data = {"mapId": list(gamemaps.keys()), "zh_CN": list(map(lambda x: x["zh_CN"], gamemaps.values())), "en_US": list(map(lambda x: x["en_US"], gamemaps.values()))})
-            print(format_df(gamemap_df)[0])
-            log.write(format_df(gamemap_df, width_exceed_ask = False, direct_print = False)[0])
-            while True:
-                mapStr: str = logInput()
-                if mapStr == "0":
-                    back = True
-                    break
-                elif mapStr == "":
-                    mapId: int = 11
-                    break
-                elif mapStr in list(map(str, gamemaps.keys())):
-                    mapId = int(mapStr)
-                    break
-                else:
-                    logPrint("您的输入有误！请重新输入。\nERROR input. Please try again.")
-            if back:
+                    logPrint("步骤异常。请联系开发人员修复程序。\nStep error. Please contact the developer to fix the program.")
+                step += 1
+            if step == 0:
                 continue
             recommendedPage_df: pandas.DataFrame = await get_recommended_perk(connection, championId, championPosition, mapId)
             if len(recommendedPage_df) == 1: #一般情况下接口数据是正常获取的（The endpoint should work in normal cases）
