@@ -22,7 +22,7 @@ from src.core.dataframes.gameflow import sort_ChampSelect_players
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/08
+# 更新（Last update）：     2026/03/10
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -41,7 +41,7 @@ gameQueues: dict[int, dict[str, Any]] = {}
 summonerIcons: dict[int, dict[str, Any]] = {}
 LoLChampions: dict[int, dict[str, Any]] = {}
 titles: dict[str, Any] = {}
-wardSkins: dict[str, Any] = {}
+wardSkins: dict[int, dict[str, Any]] = {}
 championSkins: dict[int, dict[str, Any]] = {}
 spells: dict[int, dict[str, Any]] = {}
 LoLItems: dict[int, dict[str, Any]] = {}
@@ -3775,7 +3775,7 @@ async def mute_champSelect_player(connection: Connection) -> None:
                     print(format_df(muted_player_df.loc[1:, muted_player_fields_to_print])[0])
                     log.write(format_df(muted_player_df.loc[1:, muted_player_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
                 myTeamId: int = champ_select_session["myTeam"][0]["team"]
-                champSelect_player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log)
+                champSelect_player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log)
                 champSelect_myTeam_df: pandas.DataFrame = pandas.concat([champSelect_player_df.iloc[:1], champSelect_player_df[champSelect_player_df["team"] == myTeamId]], ignore_index = True)
                 for i in range(len(champSelect_myTeam_df)): #确定自己的编号，因为自己不应该被静音，虽然其实静音自己相当于不做任何操作（Determine the index of the user itself, for he/she shouldn't mute him/herself, although muting itself means nothing done）
                     if champSelect_myTeam_df["puuid"][i] == current_info["puuid"]:

@@ -16,6 +16,9 @@ from src.core.config.localization import team_colors_int, krarities, augment_rar
 from src.core.config.headers import TFTGame_summary_header, champSelect_player_header, inGame_player_header, eog_playerstat_data_lol_header, eog_stat_data_tft_header, LoLGame_summary_header, LoLGame_summary_sgp_header
 from src.core.dataframes.matchHistory import get_LoLGame_summary, get_game_summary_sgp, sort_LoLGame_summary, sort_LoLGame_summary_sgp, sort_TFTGame_summary
 
+def isChampSelectSession(session: Any) -> bool:
+    return isinstance(session, dict) and all(key in session for key in ["actions", "allowBattleBoost", "allowDuplicatePicks", "allowLockedEvents", "allowRerolling", "allowSkinSelection", "allowSubsetChampionPicks", "bans", "benchChampions", "benchEnabled", "boostableSkinCount", "chatDetails", "counter", "disallowBanningTeammateHoveredChampions", "gameId", "hasSimultaneousBans", "hasSimultaneousPicks", "id", "isCustomGame", "isLegacyChampSelect", "isSpectating", "localPlayerCellId", "lockedEventIndex", "myTeam", "pickOrderSwaps", "positionSwaps", "queueId", "rerollsRemaining", "showQuitButton", "skipChampionSelect", "theirTeam", "timer", "trades"]) and all(map(lambda key: isinstance(session[key], list), ["actions", "benchChampions", "myTeam", "pickOrderSwaps", "positionSwaps", "theirTeam", "trades"])) and all(map(lambda key: isinstance(session[key], bool), ["allowBattleBoost", "allowDuplicatePicks", "allowLockedEvents", "allowPlayerPickSameChampion", "allowRerolling", "allowSkinSelection", "allowSubsetChampionPicks", "benchEnabled", "disallowBanningTeammateHoveredChampions", "hasSimultaneousBans", "hasSimultaneousPicks", "isCustomGame", "isLegacyChampSelect", "isSpectating", "showQuitButton", "skipChampionSelect"])) and all(map(lambda key: isinstance(session[key], dict), ["chatDetails", "timer"])) and all(map(lambda key: isinstance(session[key], int), ["boostableSkinCount", "counter", "gameId", "localPlayerCellId", "lockedEventIndex", "queueId", "rerollsRemaining"])) and all(map(lambda key: isinstance(session[key], str), ["id"]))
+
 async def get_gameflow_phase(connection: Connection) -> str: #设计该函数的原因是通过“GET lol-gameflow/v1/gameflow-phase”获得的游戏状态不一定真实，特别是在调用“POST /lol-lobby/v1/lobby/custom/cancel-champ-select”之后（The reason why this function is designed is that the in-game status returned by the API "GET /lol-gameflow/v1/gameflow-phase" may be unreal, especially when "POST /lol-lobby/v1/lobby/custom/cancel-champ-select" is called）
     gameflow_phase: str = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
     if gameflow_phase in {"None", "Lobby", "Matchmaking"}:
@@ -127,92 +130,77 @@ def extract_champSelect_player(champ_select_session: dict[str, Any], cellId: Opt
     else:
         return {}
 
-async def sort_ChampSelect_players(connection: Connection, LoLChampions: dict[int, dict[str, Any]], championSkins: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], wardSkins: dict[int, dict[str, Any]], playerMode: int = 1, skipBot: bool = True, log: LogManager = LogManager(), verbose: bool = True) -> pandas.DataFrame: #以下代码来自聊天服务脚本（The following code come from Customized Program 16）
+async def sort_ChampSelect_players(connection: Connection, champ_select_session: dict[str, Any], LoLChampions: dict[int, dict[str, Any]], championSkins: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], wardSkins: dict[int, dict[str, Any]], playerMode: int = 1, skipBot: bool = True, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame: #以下代码来自聊天服务脚本（The following code come from Customized Program 16）
+    if log == None:
+        log = LogManager()
     logPrint = log.logPrint
     champSelect_player_header_keys: list[str] = list(champSelect_player_header.keys())
     champSelect_player_data: dict[str, list[Any]] = {key: [] for key in champSelect_player_header_keys}
-    #所需数据初始化（Initialization of needed data）
-    champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
-    if playerMode == 1:
-        players: list[dict[str, Any]] = champ_select_session["myTeam"] + champ_select_session["theirTeam"]
-    elif playerMode == 2:
-        players = champ_select_session["myTeam"]
-    elif playerMode == 3:
-        players = champ_select_session["theirTeam"]
-    else:
-        players = []
-    #数据整理核心部分（Data assignment - core part）
-    for player in players:
-        if player["isHumanoid"] and skipBot:
-            continue
-        player_info: dict[str, Any] = {}
-        if not player["isHumanoid"] and player["nameVisibilityType"] != "HIDDEN":
-            player_info_recapture: int = 0
-            player_info: dict[str, Any] = await get_info(connection, player["puuid"])
-            while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
-                logPrint(player_info["message"], verbose = verbose)
-                player_info_recapture += 1
-                logPrint("槽位序号为%d的玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of player (puuid: %s, cellId: %d) capture failed! Recapturing this player's information ... Times tried: %d" %(player["cellId"], player["puuid"], player_info_recapture, player["puuid"], player["cellId"], player_info_recapture), verbose = verbose)
-                player_info = await get_info(connection, player["puuid"])
-            if not player_info["info_got"]:
-                logPrint(player_info["message"], verbose = verbose)
-                logPrint("槽位序号为%d的玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of player (puuid: %s, cellId: %d) capture failed!" %(player["cellId"], player["puuid"], player["puuid"], player["cellId"]), verbose = verbose)
-        for i in range(len(champSelect_player_header_keys)):
-            key: str = champSelect_player_header_keys[i]
-            if i <= 22:
-                if i in {4, 5, 20}: #召唤师信息相关键（Summoner information-related keys）
-                    to_append: Any = player[key] if player["nameVisibilityType"] == "HIDDEN" or player["isHumanoid"] else player_info["body"][key] if player_info["info_got"] else ""
+    #格式校验（Format verification）
+    if isChampSelectSession(champ_select_session):
+        #所需数据初始化（Initialization of needed data）
+        if playerMode == 1:
+            players: list[dict[str, Any]] = champ_select_session["myTeam"] + champ_select_session["theirTeam"]
+        elif playerMode == 2:
+            players = champ_select_session["myTeam"]
+        elif playerMode == 3:
+            players = champ_select_session["theirTeam"]
+        else:
+            players = []
+        #数据整理核心部分（Data assignment - core part）
+        for player in players:
+            if player["isHumanoid"] and skipBot:
+                continue
+            player_info: dict[str, Any] = {}
+            if not player["isHumanoid"] and player["nameVisibilityType"] != "HIDDEN":
+                player_info_recapture: int = 0
+                player_info: dict[str, Any] = await get_info(connection, player["puuid"])
+                while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
+                    logPrint(player_info["message"], verbose = verbose)
+                    player_info_recapture += 1
+                    logPrint("槽位序号为%d的玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of player (puuid: %s, cellId: %d) capture failed! Recapturing this player's information ... Times tried: %d" %(player["cellId"], player["puuid"], player_info_recapture, player["puuid"], player["cellId"], player_info_recapture), verbose = verbose)
+                    player_info = await get_info(connection, player["puuid"])
+                if not player_info["info_got"]:
+                    logPrint(player_info["message"], verbose = verbose)
+                    logPrint("槽位序号为%d的玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of player (puuid: %s, cellId: %d) capture failed!" %(player["cellId"], player["puuid"], player["puuid"], player["cellId"]), verbose = verbose)
+            for i in range(len(champSelect_player_header_keys)):
+                key: str = champSelect_player_header_keys[i]
+                if i <= 22:
+                    if i in {4, 5, 20}: #召唤师信息相关键（Summoner information-related keys）
+                        to_append: Any = player[key] if player["nameVisibilityType"] == "HIDDEN" or player["isHumanoid"] else player_info["body"][key] if player_info["info_got"] else ""
+                    else:
+                        to_append = player[key]
                 else:
-                    to_append = player[key]
-            else:
-                if i == 23: #阵营名称（`team_color`）
-                    to_append = team_colors_int[player["team"]]
-                elif i <= 25: #选用英雄相关键（Champion-related keys）
-                    to_append = LoLChampions[player["championId"]][key.split()[1]] if player["championId"] in LoLChampions else ""
-                elif i <= 27: #声明英雄相关键（Champion pick intent-related keys）
-                    to_append = LoLChampions[player["championPickIntent"]][key.split()[1]] if player["championPickIntent"] in LoLChampions else ""
-                elif i <= 37: #选用皮肤相关键（selected skin-related keys）
-                    selectedSkinId = player["selectedSkinId"]
-                    if selectedSkinId in championSkins and key.split()[1] in championSkins[selectedSkinId]:
-                        if i == 28 or i == 29:
-                            to_append = championSkins[selectedSkinId][key.split()[1]]
-                        elif i == 35:
-                            to_append = krarities[championSkins[selectedSkinId][key.split()[1]]]
+                    if i == 23: #阵营名称（`team_color`）
+                        to_append = team_colors_int[player["team"]]
+                    elif i <= 25: #选用英雄相关键（Champion-related keys）
+                        to_append = LoLChampions[player["championId"]][key.split()[1]] if player["championId"] in LoLChampions else ""
+                    elif i <= 27: #声明英雄相关键（Champion pick intent-related keys）
+                        to_append = LoLChampions[player["championPickIntent"]][key.split()[1]] if player["championPickIntent"] in LoLChampions else ""
+                    elif i <= 37: #选用皮肤相关键（selected skin-related keys）
+                        selectedSkinId = player["selectedSkinId"]
+                        if selectedSkinId in championSkins and key.split()[1] in championSkins[selectedSkinId]:
+                            if i == 35:
+                                to_append = krarities[championSkins[selectedSkinId][key.split()[1]]]
+                            else:
+                                to_append = championSkins[selectedSkinId][key.split()[1]]
                         else:
-                            iconPath: str = championSkins[selectedSkinId][key.split()[1]]
-                            to_append = "" if iconPath == "" else urljoin(connection.address, iconPath)
-                    else:
-                        to_append = ""
-                elif i <= 39: #召唤师技能1相关键（Summoner spell 1-related keys）
-                    if player["spell1Id"] in spells:
-                        if i == 38:
-                            to_append = spells[player["spell1Id"]][key.split()[1]]
+                            to_append = ""
+                    elif i <= 39: #召唤师技能1相关键（Summoner spell 1-related keys）
+                        to_append = spells[player["spell1Id"]][key.split()[1]] if player["spell1Id"] in spells else ""
+                    elif i <= 41: #召唤师技能2相关键（Summoner spell 2-related keys）
+                        to_append = spells[player["spell2Id"]][key.split()[1]] if player["spell2Id"] in spells else ""
+                    else: #饰品相关键（Ward-related keys）
+                        if player["wardSkinId"] in wardSkins:
+                            if i == 47:
+                                to_append = wardSkins[player["wardSkinId"]]["rarities"][0]["rarity"]
+                            else:
+                                to_append = wardSkins[player["wardSkinId"]][key.split()[1]]
                         else:
-                            iconPath = spells[player["spell1Id"]][key.split()[1]]
-                            to_append = "" if iconPath == "" else urljoin(connection.address, iconPath)
-                    else:
-                        to_append = ""
-                elif i <= 41: #召唤师技能2相关键（Summoner spell 2-related keys）
-                    if player["spell2Id"] in spells:
-                        if i == 40:
-                            to_append = spells[player["spell2Id"]][key.split()[1]]
-                        else:
-                            iconPath = spells[player["spell2Id"]][key.split()[1]]
-                            to_append = "" if iconPath == "" else urljoin(connection.address, iconPath)
-                    else:
-                        to_append = ""
-                else: #饰品相关键（Ward-related keys）
-                    if player["wardSkinId"] in wardSkins:
-                        if i == 44 or i == 45:
-                            iconPath = wardSkins[player["wardSkinId"]][key.split()[1]]
-                            to_append = "" if iconPath == "" else urljoin(connection.address, iconPath)
-                        elif i == 47:
-                            to_append = wardSkins[player["wardSkinId"]]["rarities"][0]["rarity"]
-                        else:
-                            to_append = wardSkins[player["wardSkinId"]][key.split()[1]]
-                    else:
-                        to_append = ""
-            champSelect_player_data[key].append(to_append)
+                            to_append = ""
+                champSelect_player_data[key].append(to_append)
+    else:
+        logPrint("英雄选择会话格式有误！将生成空表。\nChamp select session format error! An empty dataframe will be returned instead.", verbose = verbose)
     #数据框列序整理（Dataframe column ordering）
     champSelect_player_statistics_output_order: list[int] = [21, 23, 1, 4, 20, 5, 13, 19, 15, 10, 9, 8, 7, 0, 6, 2, 24, 25, 3, 26, 27, 17, 38, 39, 18, 40, 41, 16, 28, 29, 35, 30, 31, 32, 33, 34, 36, 37, 22, 42, 43, 47, 46, 44, 45, 14, 11, 12]
     champSelect_player_data_organized: dict[str, list[Any]] = {champSelect_player_header_keys[i]: champSelect_player_data[champSelect_player_header_keys[i]] for i in champSelect_player_statistics_output_order}
@@ -221,7 +209,44 @@ async def sort_ChampSelect_players(connection: Connection, LoLChampions: dict[in
     champSelect_player_df = pandas.concat([pandas.DataFrame([champSelect_player_header])[champSelect_player_df.columns], champSelect_player_df], ignore_index = True)
     return champSelect_player_df
 
-async def sort_inGame_players(connection: Connection, LoLChampions: dict[int, dict[str, Any]], championSkins: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], skipBot: bool = False, log: LogManager = LogManager(), verbose: bool = True) -> pandas.DataFrame:
+async def sort_multiChampSelect_players(connection: Connection, sessions: list[dict[str, Any]], queues: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], championSkins: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], wardSkins: dict[int, dict[str, Any]], playerMode: int = 1, skipBot: bool = True, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
+    if log == None:
+        log = LogManager()
+    logPrint = log.logPrint
+    champSelect_player_statistics_output_order: list[int] = [21, 23, 1, 4, 20, 5, 13, 19, 15, 10, 9, 8, 7, 0, 6, 2, 24, 25, 3, 26, 27, 17, 38, 39, 18, 40, 41, 16, 28, 29, 35, 30, 31, 32, 33, 34, 36, 37, 22, 42, 43, 47, 46, 44, 45, 14, 11, 12]
+    error_count: int = 0
+    if isinstance(sessions, list):
+        champSelect_player_dfs: list[pandas.DataFrame] = []
+        for champ_select_session in sessions:
+            if isChampSelectSession(champ_select_session):
+                champSelect_player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = playerMode, skipBot = skipBot, log = log, verbose = verbose)
+                matchId: int = champ_select_session["gameId"]
+                queueId: int = champ_select_session["queueId"]
+                gameModeName: str = queues[queueId]["name"] if queueId in queues else ""
+                champSelect_metaDf: pandas.DataFrame = pandas.DataFrame(data = {"gameId": ["对局序号"] + (len(champSelect_player_df) - 1) * [matchId], "queueId": ["队列序号"] + (len(champSelect_player_df) - 1) * [queueId], "gameModeName": ["游戏模式名称"] + (len(champSelect_player_df) - 1) * [gameModeName]})
+                champSelect_player_df = pandas.concat([champSelect_metaDf, champSelect_player_df], axis = 1)
+                champSelect_player_dfs.append(champSelect_player_df)
+            else:
+                error_count += 1
+        if len(champSelect_player_dfs) > 0:
+            if error_count > 0:
+                logPrint(f"警告：检测到{error_count}个格式不正确的会话。\nWarning: {error_count} invalid sessions detected.")
+            multiChampSelect_player_df: pandas.DataFrame = pandas.concat([champSelect_player_dfs[0].iloc[:1, :]] + list(map(lambda df: df.iloc[1:, :], champSelect_player_dfs)), ignore_index = True)
+        else:
+            logPrint("未检测到有效会话。程序将返回空表。\nNo valid session detected. An empty table will be returned instead.")
+            multiChampSelect_player_df = pandas.DataFrame(champSelect_player_header, index = [0]).iloc[:, champSelect_player_statistics_output_order]
+            champSelect_metaDf = pandas.DataFrame(data = {"gameId": ["对局序号"], "queueId": ["队列序号"], "gameModeName": ["游戏模式名称"]})
+            multiChampSelect_player_df = pandas.concat([champSelect_metaDf, multiChampSelect_player_df], axis = 1)
+    else:
+        logPrint("会话列表格式错误。程序将返回空表。\nSession list format error. An empty table will be returned instead.")
+        multiChampSelect_player_df = pandas.DataFrame(champSelect_player_header, index = [0]).iloc[:, champSelect_player_statistics_output_order]
+        champSelect_metaDf = pandas.DataFrame(data = {"gameId": ["对局序号"], "queueId": ["队列序号"], "gameModeName": ["游戏模式名称"]})
+        multiChampSelect_player_df = pandas.concat([champSelect_metaDf, multiChampSelect_player_df], axis = 1)
+    return multiChampSelect_player_df
+
+async def sort_inGame_players(connection: Connection, LoLChampions: dict[int, dict[str, Any]], championSkins: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], skipBot: bool = False, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
+    if log == None:
+        log = LogManager()
     logPrint = log.logPrint
     inGame_player_header_keys: list[str] = list(inGame_player_header.keys())
     inGame_player_data: dict[str, list[Any]] = {key: [] for key in inGame_player_header_keys}

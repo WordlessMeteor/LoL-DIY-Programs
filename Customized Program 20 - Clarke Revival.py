@@ -48,7 +48,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/08
+# 更新（Last update）：     2026/03/10
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -410,7 +410,7 @@ async def Clarke_revival(connection: Connection) -> None:
                         logPrint(player_info["message"], verbose = print_detail)
                         logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an player (puuid: %s) capture failed! The program will ignore this player.")
             teamOneOnly: bool = gameflow_session["gameData"]["queue"]["mapId"] in {22, 30} #在斗魂竞技场和云顶之弈中，所有玩家都归入“teamOne”中。这样就无法判断其是否是队友（In an Arena or TFT match, all players are in "teamOne", so the program can't tell whether a player is an ally）
-            players_metaDf: pandas.DataFrame = await sort_ChampSelect_players(connection, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log, verbose = print_detail)
+            players_metaDf: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log, verbose = print_detail)
         elif gameflow_phase == "InProgress" or gameflow_phase == "Reconnect":
             gameflow_session = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
             gameData: dict[str, Any] = gameflow_session["gameData"]

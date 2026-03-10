@@ -14,6 +14,7 @@ from src.core.config.servers import valid_platformIds, set_platform_folder, set_
 from src.core.config.localization import language_cdragon, language_ddragon
 from src.core.config.headers import LoLGame_summary_header, LoLGame_summary_sgp_header, TFTHistory_header
 from src.core.dataframes.matchHistory import get_LoLHistory, get_matchSummary_sgp, sort_LoLHistory, sort_LoLHistory_sgp, sort_LoLGame_stats, sort_LoLGame_stats_sgp, sort_TFTHistory, sort_TFTGame_stats, sort_LoLGame_summary, sort_LoLGame_summary_sgp, sort_TFTGame_summary, get_game_summary_sgp, get_LoLGame_summary
+from src.core.dataframes.gameflow import sort_multiChampSelect_players
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-a", "--lol-api", help = "指定通过什么接口获取英雄联盟对局概要和时间轴（Specify the interface used to fetch LoL game summary and timeline）", action = "store", type = str, choices = ["lcu", "sgp"], default = "sgp")
@@ -28,7 +29,7 @@ use_sgp: bool = args.lol_api == "sgp"
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/03/08
+# 更新（Last update）：     2026/03/10
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -56,9 +57,12 @@ TFTItems_initial: dict[str, dict[str, Any]] = {}
 TFTCompanions_initial: dict[str, dict[str, Any]] = {}
 TFTTraits_initial: dict[str, dict[str, Any]] = {}
 CherryAugments_initial: dict[int, dict[str, Any]] = {}
+wardSkins: dict[int, dict[str, Any]] = {}
+championSkins: dict[int, dict[str, Any]] = {}
 log: LogManager = LogManager()
 platform: str = ""
 AllAccounts: list[dict[str, Any]] = []
+champ_select_session_cache: dict[int, dict[str, Any]] = {}
 
 error_header = {"errorCode": "异常代码", "httpStatus": "HTTP状态码", "implementationDetails": "细节", "message": "消息"}
 error_header_keys = list(error_header.keys())
@@ -962,6 +966,24 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
         CherryAugments_initial = {int(CherryAugment_iter["id"]): CherryAugment_iter for CherryAugment_iter in CherryAugment_initial}
     return switch_language
 
+async def prepare_lcu_plugins(connection: Connection) -> None:
+    global wardSkins, championSkins
+    ##饰品（Ward skin）
+    wardSkins_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/ward-skins.json")).json()
+    wardSkins = {wardSkin_iter["id"]: wardSkin_iter for wardSkin_iter in wardSkins_source}
+    ##皮肤（Champion skin）
+    championSkins_source: dict[str, dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/skins.json")).json()
+    championSkins = {}
+    for skin in championSkins_source.values():
+        championSkins[skin["id"]] = skin
+        if "chromas" in skin:
+            for chroma in skin["chromas"]:
+                championSkins[chroma["id"]] = chroma
+        if "questSkinInfo" in skin:
+            for tier in skin["questSkinInfo"]["tiers"]:
+                if not tier["id"] in championSkins: #圣堂皮肤和终极皮肤中的系列与主皮肤存在重复的序号（There're redundant ids between the tier and the parent ultimate skin）
+                    championSkins[tier["id"]] = tier
+
 async def load_smurf(connection: Connection, selfDetect: bool, infos: Optional[dict[str, dict[str, Any]]] = None) -> list[dict[str, Any]]:
     if infos == None:
         infos = {}
@@ -1211,10 +1233,11 @@ def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: panda
         recent_player["totalPvERecency"] = sumPvERecency
         recent_player["totalCustomRecency"] = sumCustomRecency
     #pyperclip.copy(json.dumps(recent_players_metadata, ensure_ascii = False))
-    jsonname: str = "Recently Played Summoners - %s.json" %displayName
+    json01name: str = "Recently Played Summoners - %s.json" %displayName
+    json01path: str = os.path.join(export_folder, json01name).replace("\\", "/")
     while True:
         try:
-            with open(os.path.join(export_folder, jsonname), "w", encoding = "utf-8") as jsonfile:
+            with open(json01path, "w", encoding = "utf-8") as jsonfile:
                 jsonfile.write(json.dumps(recent_players_metadata, indent = 4, ensure_ascii = False))
         except FileNotFoundError:
             os.makedirs(export_folder, exist_ok = True)
@@ -1232,7 +1255,7 @@ def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: panda
     recent_players_metaDf = pandas.concat([pandas.DataFrame([recent_players_metadata_header])[recent_players_metaDf.columns], recent_players_metaDf], ignore_index = True)
     #默认导出玩家对局数量统计表（Export recent played summoner count table by default）
     wb01Name: str = f"Recently Played Summoner Count - {displayName}.xlsx"
-    wb01Path: str = os.path.join(export_folder, wb01Name)
+    wb01Path: str = os.path.join(export_folder, wb01Name).replace("\\", "/")
     os.makedirs(export_folder, exist_ok = True)
     while True:
         try:
@@ -1361,10 +1384,10 @@ def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: panda
     export: bool = bool(export_str)
     if export:
         wb02Name: str = f"Summoner Profile - {displayName}.xlsx"
-        wb02Path: str = os.path.join(export_folder, wb02Name)
+        wb02Path: str = os.path.join(export_folder, wb02Name).replace("\\", "/")
         while True:
             try:
-                with (pandas.ExcelWriter(path = os.path.join(export_folder, wb02Name), engine = "openpyxl", mode = "a", if_sheet_exists = "replace") if os.path.exists(wb02Path) else pandas.ExcelWriter(path = os.path.join(export_folder, wb02Name), engine = "openpyxl")) as writer:
+                with (pandas.ExcelWriter(path = wb02Path, engine = "openpyxl", mode = "a", if_sheet_exists = "replace") if os.path.exists(wb02Path) else pandas.ExcelWriter(path = wb02Path, engine = "openpyxl")) as writer:
                     if search_LoL:
                         addDefaultStyle(recent_LoLPlayer_df).to_excel(excel_writer = writer, sheet_name = "Recently Played Summoners (LoL)")
                         worksheet = writer.sheets["Recently Played Summoners (LoL)"]
@@ -1413,7 +1436,7 @@ async def detect_mode(connection: Connection, search_LoL: bool, search_TFT: bool
             option1_highlight = True
         else:
             option2_highlight = True
-    logPrint("请选择检测场景：\nPlease select the situation to detect:\n%s1\t房间内/英雄选择阶段/游戏中（In-lobby/During champ select/In-game）\n%s2\t过往对局（Previous game）\n3\t好友列表（Friend list）\n4\t好友请求（Friend requests）\n5\t组队邀请（Party invitations）\n6\t聊天黑名单（Block list）\n7\t自定义召唤师名称列表（Custom summoner name list）" %("☆" if option1_highlight else "", "☆" if option2_highlight else ""))
+    logPrint("请选择检测场景：\nPlease select the scenario to detect:\n%s1\t房间内/英雄选择阶段/游戏中（In-lobby/During champ select/In-game）\n%s2\t过往对局（Previous game）\n3\t过往英雄选择阶段（仅英雄联盟）【Previous champ select (LoL only)】\n4\t好友列表（Friend list）\n5\t好友请求（Friend requests）\n6\t组队邀请（Party invitations）\n7\t聊天黑名单（Block list）\n8\t自定义召唤师名称列表（Custom summoner name list）" %("☆" if option1_highlight else "", "☆" if option2_highlight else ""))
     detect_scene: str = logInput()
     if detect_scene == "":
         detect_scene = "2" if option2_highlight else "1"
@@ -1428,14 +1451,16 @@ async def detect_mode(connection: Connection, search_LoL: bool, search_TFT: bool
     elif detect_scene == "2":
         await detect_postgame(connection, search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df, language_code, infos = infos)
     elif detect_scene == "3":
-        await detect_friend(connection, search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df)
+        await detect_dodged_champSelect(connection)
     elif detect_scene == "4":
-        await detect_friend_request(connection, search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df)
+        await detect_friend(connection, search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df)
     elif detect_scene == "5":
-        await detect_party_invitaion(connection, search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df, infos = infos)
+        await detect_friend_request(connection, search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df)
     elif detect_scene == "6":
-        await detect_blockList(connection, search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df)
+        await detect_party_invitaion(connection, search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df, infos = infos)
     elif detect_scene == "7":
+        await detect_blockList(connection, search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df)
+    elif detect_scene == "8":
         await detect_custom_list(connection, search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df, infos = infos)
     logPrint("是否更新数据？（输入任意键以返回上一层更新对局记录信息，否则在不更新对局信息的情况下再次查询近期一起玩过的玩家。）\nUpdate data? (Submit any non-empty string to update match history information, otherwise check the recently played summoners again without updating match history.)")
     update_str: str = logInput()
@@ -1448,12 +1473,8 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
     current_puuid_list: list[str] = list(map(lambda x: x["puuid"], AllAccounts))
     recent_LoLPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"] if use_sgp else ["gameName", "tagLine", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"]
     recent_TFTPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameDate", "gameModeName", "last_round_format"]
-    recent_LoLPlayer_dict_to_print: dict[str, list[Any]] = {}
-    recent_TFTPlayer_dict_to_print: dict[str, list[Any]] = {}
-    for key in recent_LoLPlayer_fields:
-        recent_LoLPlayer_dict_to_print[key] = []
-    for key in recent_TFTPlayer_fields:
-        recent_TFTPlayer_dict_to_print[key] = []
+    recent_LoLPlayer_dict_to_print: dict[str, list[Any]] = {key: [] for key in recent_LoLPlayer_fields}
+    recent_TFTPlayer_dict_to_print: dict[str, list[Any]] = {key: [] for key in recent_TFTPlayer_fields}
     member_count: int = 0
     ally_count: int = 0
     enemy_count: int = 0
@@ -1477,7 +1498,7 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
         detect: str = logInput()
         if detect != "" and detect[0] == "0":
             break
-        gameflow_phase: str = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
+        gameflow_phase = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
         if gameflow_phase == "None":
             logPrint("您尚未创建任何房间！请创建房间后再按回车键开始检测。\nYou haven't created any lobby yet! Please create a lobby and then press Enter to start detection.")
             continue
@@ -1494,7 +1515,7 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
             logPrint("您已完成对局！请使用生成模式以查看最近一局比赛中遇到的玩家信息，或者开启下一局以查看下一局遇到的队友是否曾经遇到过。\nYou've finished the match! Please use [Generate Mode] to check the information of players encountered in the latest match, or start another game and use [Detect Mode] to check whether an ally has been met before.")
             continue
     if detect != "" and detect[0] == "0":
-        return False
+        return
     if gameflow_phase in {"Lobby", "Matchmaking", "ReadyCheck"}:
         lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
         logPrint(lobby_information)
@@ -1739,6 +1760,8 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
             logPrint("以上玩家中，%s是您的好友。\nAmong the above players, %s are your friends." %("、".join(recent_friend_summonerNames), ", ".join(recent_friend_summonerNames)))
         if not (all(map(lambda x: x["nameVisibilityType"] == "VISIBLE", champ_select_session["theirTeam"])) or all(map(lambda x: x["nameVisibilityType"] == "HIDDEN", champ_select_session["theirTeam"])) or all(map(lambda x: x["nameVisibilityType"] == "", champ_select_session["theirTeam"])) or all(map(lambda x: x["nameVisibilityType"] == "", champ_select_session["theirTeam"]))):
             logPrint("检测到敌方信息可见性异常！请检查之前输出的英雄选择阶段信息。\nDetected enemies' visibility abnormal! Please check the champ select session information printed before.")
+        if not champ_select_session["isSpectating"]:
+            champ_select_session_cache[champ_select_session["gameId"]] = champ_select_session
     elif gameflow_phase == "InProgress" or gameflow_phase == "Reconnect":
         gameflow_session = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
         logPrint(gameflow_session)
@@ -1997,6 +2020,7 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
                 logPrint("以上玩家中，%s是您的好友。\nAmong the above players, %s is your friend." %(recent_friend_summonerNames[0], recent_friend_summonerNames[0]))
             elif len(recent_friend_summonerNames) > 1:
                 logPrint("以上玩家中，%s是您的好友。\nAmong the above players, %s are your friends." %("、".join(recent_friend_summonerNames), ", ".join(recent_friend_summonerNames)))
+        champ_select_session_cache.clear() #在进入游戏后，清理所有缓存的英雄选择会话（After the user enters a game, clear all champ select session cache）
 
 async def detect_postgame(connection: Connection, search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame, language_code: str, infos: Optional[dict[str, dict[str, Any]]] = None) -> None:
     #初始化数据资源（Initialize data resources）
@@ -2021,12 +2045,8 @@ async def detect_postgame(connection: Connection, search_LoL: bool, search_TFT: 
     TFTGame_summary: dict[str, Any] = {}
     recent_LoLPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"] if use_sgp else ["gameName", "tagLine", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"]
     recent_TFTPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameDate", "gameModeName", "last_round_format"]
-    recent_LoLPlayer_dict_to_print: dict[str, list[Any]] = {}
-    recent_TFTPlayer_dict_to_print: dict[str, list[Any]] = {}
-    for key in recent_LoLPlayer_fields:
-        recent_LoLPlayer_dict_to_print[key] = []
-    for key in recent_TFTPlayer_fields:
-        recent_TFTPlayer_dict_to_print[key] = []
+    recent_LoLPlayer_dict_to_print: dict[str, list[Any]] = {key: [] for key in recent_LoLPlayer_fields}
+    recent_TFTPlayer_dict_to_print: dict[str, list[Any]] = {key: [] for key in recent_TFTPlayer_fields}
     current_puuid_list: list[str] = list(map(lambda x: x["puuid"], AllAccounts))
     friends: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
     friend_puuids: list[str] = list(map(lambda x: x["puuid"], friends))
@@ -2171,22 +2191,191 @@ async def detect_postgame(connection: Connection, search_LoL: bool, search_TFT: 
                 logPrint("以上玩家中，%s是您的好友。\nAmong the above players, %s are your friends." %("、".join(recent_friend_summonerNames), ", ".join(recent_friend_summonerNames)))
             logPrint('请输入对局序号。输入“0”以返回上一层。\nPlease enter the gameId. Submit "0" to return to the last step.')
 
+async def detect_dodged_champSelect(connection: Connection, infos: Optional[dict[str, dict[str, Any]]] = None) -> None:
+    if infos == None:
+        infos = {}
+    #检测前先清理已经存在的对局记录的英雄选择会话缓存（Before detection, clear the champ select sessions whose corresponding matches are already in the history）
+    current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
+    recent_LoLMatch_ids: list[str] = await sgpSession.request(connection, "GET", f"/match-history-query/v1/products/lol/player/%s?startIndex=0&count=500" %(current_info["puuid"]))
+    if isinstance(recent_LoLMatch_ids, list):
+        recent_LoLMatchIds: list[int] = list(map(lambda x: int(x.split("_")[1], recent_LoLMatch_ids)))
+    else:
+        recent_LoLMatchIds = []
+    expired_session_matchIds: list[int] = []
+    for matchId in champ_select_session_cache:
+        if matchId in set(recent_LoLMatchIds):
+            expired_session_matchIds.append(matchId)
+    for matchId in expired_session_matchIds:
+        del champ_select_session_cache[matchId]
+    if len(champ_select_session_cache) == 0:
+        logPrint("您尚未缓存任何英雄选择会话。\nYou haven't cached any champ select session yet.")
+        return
+    #准备一些常量（Prepare some constants）
+    current_puuid_list: list[str] = list(map(lambda x: x["puuid"], AllAccounts))
+    ally_count: int = 0
+    enemy_count: int = 0
+    recent_friend_summonerNames: list[str] = []
+    recent_ChampSelect_player_fields: list[str] = ["gameId", "gameModeName", "team_color", "cellId", "gameName", "tagLine", "champion name"]
+    recent_ChampSelect_player_dict_to_print: dict[str, list[Any]] = {key: [] for key in recent_ChampSelect_player_fields}
+    LoLAlly_df_to_print: pandas.DataFrame = pandas.DataFrame(data = recent_ChampSelect_player_dict_to_print)
+    LoLEnemy_df_to_print: pandas.DataFrame = pandas.DataFrame(data = recent_ChampSelect_player_dict_to_print)
+    gameflow_phase: str = "None"
+    friends: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
+    friend_puuids: list[str] = list(map(lambda x: x["puuid"], friends))
+    #启动流程（Start process）
+    logPrint('''请确保您在英雄选择阶段中，以便本脚本检测过往英雄选择阶段的玩家。按回车键开始检测，或者按“0”以返回上一步。\nPlease confirm you're during champ select, so that this script can detect whether there's a player encountered before. Press Enter to start detection, or press "0" to return to the last step.''')
+    while True:
+        detect: str = logInput()
+        if detect != "" and detect[0] == "0":
+            return
+        gameflow_phase = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
+        if gameflow_phase == "ChampSelect":
+            break
+        else:
+            logPrint("您不在英雄选择阶段。\nYou're not in champ select.")
+    champ_select_session: dict[str, Any] = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
+    logPrint(champ_select_session)
+    if "errorCode" in champ_select_session:
+        if champ_select_session["message"] == "No active delegate":
+            logPrint("英雄选择会话已过期。\nChamp select session has expired.")
+        return
+    matchId: int = champ_select_session["gameId"]
+    if matchId in champ_select_session_cache:
+        del champ_select_session_cache[matchId] #查询近期遇到过的玩家不应包括当前对局（The current match should be included when the program searches for recently encountered summoners）
+    recent_champSelectPlayer_df: pandas.DataFrame = await sort_multiChampSelect_players(connection, list(champ_select_session_cache.values()), queues_initial, LoLChampions_initial, championSkins, spells_initial, wardSkins, playerMode = 1, log = log) #英雄皮肤和饰品皮肤的语言与客户端相同（The language of champion and ward skins follows the League Client）    
+    #比对数据（Compare data）
+    gameflow_session = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
+    gameModeName = gameflow_session["map"]["gameModeName"] + "(%d)" %(gameflow_session["gameData"]["queue"]["id"]) if gameflow_session["gameData"]["queue"]["name"] == "" else gameflow_session["gameData"]["queue"]["name"]
+    wb07Name: str = "Recent ChampSelect Summoners in Match %s-%s (%s).xlsx" %(platformId, matchId, gameModeName)
+    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+    skip_lobby_member: bool = False
+    lobby_member_puuids: list[str] = []
+    if not "errorCode" in lobby_information and len(lobby_information["members"]) > 1:
+        logPrint("检测时是否忽略小队成员？（输入任意键忽略，否则不忽略。）\nNeglect lobby members when detecting? (Submit any non-empty string to neglect, or null to refust neglecting.)")
+        skip_lobby_member_str: str = logInput()
+        skip_lobby_member = bool(skip_lobby_member_str)
+        lobby_member_puuids = list(map(lambda x: x["puuid"], lobby_information["members"]))
+    for ally in champ_select_session["myTeam"]:
+        if not ally["puuid"] in set(current_puuid_list) | {"", BOT_UUID} and (ally["nameVisibilityType"] == "VISIBLE" or ally["nameVisibilityType"] == ""):
+            ally_info_recapture: int = 0
+            if ally["puuid"] in infos:
+                ally_info_body: dict[str, Any] = infos[ally["puuid"]]
+            else:
+                ally_info: dict[str, Any] = await get_info(connection, ally["puuid"])
+                while not ally_info["info_got"] and ally_info["body"]["httpStatus"] != 404 and ally_info_recapture < 3:
+                    logPrint(ally_info["message"])
+                    ally_info_recapture += 1
+                    logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
+                    ally_info = await get_info(connection, ally["puuid"])
+                if ally_info["info_got"]:
+                    ally_info_body = ally_info["body"]
+                    infos[ally["puuid"]] = ally_info_body
+                else:
+                    logPrint(ally_info["message"])
+                    logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
+                    continue
+            LoLAlly_index: list[int] = [0] #第0行是中文表头，所以一开始要包含在内（The 0th line is Chinese header, so it should be contained in the beginning）
+            for i in range(len(recent_champSelectPlayer_df["puuid"])):
+                if recent_champSelectPlayer_df["puuid"][i] == ally["puuid"] and not (skip_lobby_member and recent_champSelectPlayer_df["puuid"][i] in lobby_member_puuids):
+                    LoLAlly_index.append(i)
+            if len(LoLAlly_index) > 1:
+                ally_count += 1
+                LoLAlly_df: pandas.DataFrame = recent_champSelectPlayer_df.loc[LoLAlly_index, :]
+                LoLAlly_df_to_print = pandas.concat([LoLAlly_df_to_print, LoLAlly_df.loc[1:, recent_ChampSelect_player_fields]], axis = 0)
+                if ally["puuid"] in friend_puuids:
+                    recent_friend_summonerNames.append(get_info_name(ally_info_body))
+                while True:
+                    try:
+                        with (pandas.ExcelWriter(path = wb07Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb07Name) else pandas.ExcelWriter(path = wb07Name)) as writer:
+                            if len(LoLAlly_index) > 1:
+                                addDefaultStyle(LoLAlly_df).to_excel(excel_writer = writer, sheet_name = get_info_name(ally_info_body) + " (LoL)")
+                            logPrint("队友%s曾经与您一同战斗过%d次。\nAlly %s has fought with you for %d time(s)." %(get_info_name(ally_info_body), len(LoLAlly_index) - 1, get_info_name(ally_info_body), len(LoLAlly_index) - 1))
+                    except PermissionError:
+                        logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
+                        logInput()
+                    else:
+                        break
+    if champ_select_session["theirTeam"]:
+        for enemy in champ_select_session["theirTeam"]:
+            if not enemy["puuid"] in set(current_puuid_list) | {"", BOT_UUID} and (enemy["nameVisibilityType"] == "VISIBLE" or enemy["nameVisibilityType"] == ""):
+                enemy_info_recapture: int = 0
+                if enemy["puuid"] in infos:
+                    enemy_info_body: dict[str, Any] = infos[enemy["puuid"]]
+                else:
+                    enemy_info: dict[str, Any] = await get_info(connection, enemy["puuid"])
+                    while not enemy_info["info_got"] and enemy_info["body"]["httpStatus"] != 404 and enemy_info_recapture < 3:
+                        logPrint(enemy_info["message"])
+                        enemy_info_recapture += 1
+                        logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an enemy (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(enemy["puuid"], enemy_info_recapture, enemy["puuid"], enemy_info_recapture))
+                        enemy_info = await get_info(connection, enemy["puuid"])
+                    if enemy_info["info_got"]:
+                        enemy_info_body = enemy_info["body"]
+                        infos[enemy["puuid"]] = enemy_info_body
+                    else:
+                        logPrint(enemy_info["message"])
+                        logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！将忽略该名对手。\nInformation of an enemy (puuid: %s) capture failed! The program will ignore this enemy.")
+                        continue
+                LoLEnemy_index: list[int] = [0]
+                for i in range(len(recent_champSelectPlayer_df["puuid"])):
+                    if recent_champSelectPlayer_df["puuid"][i] == enemy["puuid"] and not (skip_lobby_member and recent_champSelectPlayer_df["puuid"][i] in lobby_member_puuids):
+                        LoLEnemy_index.append(i)
+                if len(LoLEnemy_index) > 1:
+                    enemy_count += 1
+                    LoLEnemy_df: pandas.DataFrame = recent_champSelectPlayer_df.loc[LoLEnemy_index, :]
+                    LoLEnemy_df_to_print = pandas.concat([LoLEnemy_df_to_print, LoLEnemy_df.loc[1:, recent_ChampSelect_player_fields]], axis = 0)
+                    if enemy["puuid"] in friend_puuids:
+                        recent_friend_summonerNames.append(get_info_name(enemy_info_body))
+                    while True:
+                        try:
+                            with (pandas.ExcelWriter(path = wb07Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb07Name) else pandas.ExcelWriter(path = wb07Name)) as writer:
+                                if len(LoLEnemy_index) > 1:
+                                    addDefaultStyle(LoLEnemy_df).to_excel(excel_writer = writer, sheet_name = get_info_name(enemy_info_body) + " (LoL)")
+                                logPrint("对手%s曾经与您一同战斗过%d次。\nEnemy %s has fought with you for %d time(s)." %(get_info_name(enemy_info_body), len(LoLEnemy_index) - 1, get_info_name(enemy_info_body), len(LoLEnemy_index) - 1))
+                        except PermissionError:
+                            logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
+                            logInput()
+                        else:
+                            break
+    if ally_count == 0:
+        logPrint("您目前遇到的都是新的队友。尝试拓展人缘吧！\nThe allies you've met now are all new. Try extending your friendship!")
+    else:
+        logPrint()
+        print(format_df(LoLAlly_df_to_print, print_index = True, reserve_index = True)[0])
+        log.write(format_df(LoLAlly_df_to_print, width_exceed_ask = False, direct_print = False, print_index = True, reserve_index = True)[0] + "\n")
+        if ally_count == 1:
+            logPrint('''一名队友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's an ally present in your past matches. Please check the workbook "%s" in the main directory.''' %(wb07Name, wb07Name))
+        else:
+            logPrint('''%d名队友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d allies present in your past matches. Please check the workbook "%s" in the main directory.''' %(ally_count, wb07Name, ally_count, wb07Name))
+    if any(map(lambda x: x["nameVisibilityType"] == "VISIBLE" or x["nameVisibilityType"] == "", champ_select_session["theirTeam"])):
+        if enemy_count > 0:
+            logPrint()
+            print(format_df(LoLEnemy_df_to_print, print_index = True, reserve_index = True)[0])
+            log.write(format_df(LoLEnemy_df_to_print, width_exceed_ask = False, direct_print = False, print_index = True, reserve_index = True)[0] + "\n")
+            if enemy_count == 1:
+                logPrint('''一名对手曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's an enemy present in your past matches. Please check the workbook "%s" in the main directory.''' %(wb07Name, wb07Name))
+            else:
+                logPrint('''%d名对手曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d enemies present in your past matches. Please check the workbook "%s" in the main directory.''' %(enemy_count, wb07Name, enemy_count, wb07Name))
+    if len(recent_friend_summonerNames) == 1:
+        logPrint("以上玩家中，%s是您的好友。\nAmong the above players, %s is your friend." %(recent_friend_summonerNames[0], recent_friend_summonerNames[0]))
+    elif len(recent_friend_summonerNames) > 1:
+        logPrint("以上玩家中，%s是您的好友。\nAmong the above players, %s are your friends." %("、".join(recent_friend_summonerNames), ", ".join(recent_friend_summonerNames)))
+    if not (all(map(lambda x: x["nameVisibilityType"] == "VISIBLE", champ_select_session["theirTeam"])) or all(map(lambda x: x["nameVisibilityType"] == "HIDDEN", champ_select_session["theirTeam"])) or all(map(lambda x: x["nameVisibilityType"] == "", champ_select_session["theirTeam"])) or all(map(lambda x: x["nameVisibilityType"] == "", champ_select_session["theirTeam"]))):
+        logPrint("检测到敌方信息可见性异常！请检查之前输出的英雄选择阶段信息。\nDetected enemies' visibility abnormal! Please check the champ select session information printed before.")
+    if not champ_select_session["isSpectating"]:
+        champ_select_session_cache[matchId] = champ_select_session
+
 async def detect_friend(connection: Connection, search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame) -> None:
     recent_friend_count: int = 0
     recent_LoLPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"] if use_sgp else ["gameName", "tagLine", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"]
     recent_TFTPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameDate", "gameModeName", "last_round_format"]
-    recent_LoLPlayer_dict_to_print: dict[str, list[Any]] = {}
-    recent_TFTPlayer_dict_to_print: dict[str, list[Any]] = {}
-    for key in recent_LoLPlayer_fields:
-        recent_LoLPlayer_dict_to_print[key] = []
-    for key in recent_TFTPlayer_fields:
-        recent_TFTPlayer_dict_to_print[key] = []
+    recent_LoLPlayer_dict_to_print: dict[str, list[Any]] = {key: [] for key in recent_LoLPlayer_fields}
+    recent_TFTPlayer_dict_to_print: dict[str, list[Any]] = {key: [] for key in recent_TFTPlayer_fields}
     recent_LoLFriend_df_to_print: pandas.DataFrame = pandas.DataFrame(data = recent_LoLPlayer_dict_to_print)
     recent_TFTFriend_df_to_print: pandas.DataFrame = pandas.DataFrame(data = recent_TFTPlayer_dict_to_print)
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     current_summonerName: str = get_info_name(current_info)
     friends: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
-    wb07Name: str = f"Recently Played Summoners in Friend List of {current_summonerName} - {platformId}.xlsx"
+    wb08Name: str = f"Recently Played Summoners in Friend List of {current_summonerName} - {platformId}.xlsx"
     for friend in friends:
         friend_summonerName: str = get_info_name(friend)
         LoLFriend_index: list[int] = [0]
@@ -2211,7 +2400,7 @@ async def detect_friend(connection: Connection, search_LoL: bool, search_TFT: bo
             recent_TFTFriend_df_to_print = pandas.concat([recent_TFTFriend_df_to_print, recent_TFTFriend_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
             while True:
                 try:
-                    with (pandas.ExcelWriter(path = wb07Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb07Name) else pandas.ExcelWriter(path = wb07Name)) as writer:
+                    with (pandas.ExcelWriter(path = wb08Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb08Name) else pandas.ExcelWriter(path = wb08Name)) as writer:
                         if search_LoL and len(LoLFriend_index) > 1:
                             addDefaultStyle(recent_LoLFriend_df).to_excel(excel_writer = writer, sheet_name = friend_summonerName + " (LoL)")
                         if search_TFT and len(TFTFriend_index) > 1:
@@ -2237,20 +2426,16 @@ async def detect_friend(connection: Connection, search_LoL: bool, search_TFT: bo
             print(format_df(recent_TFTFriend_df_to_print, print_index = True, reserve_index = True)[0])
             log.write(format_df(recent_TFTFriend_df_to_print, width_exceed_ask = False, direct_print = False, print_index = True, reserve_index = True)[0] + "\n")
         if recent_friend_count == 1:
-            logPrint('''一名好友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's a friend present in your past matches. Please check the workbook "%s" in the main directory.''' %(wb07Name, wb07Name))
+            logPrint('''一名好友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's a friend present in your past matches. Please check the workbook "%s" in the main directory.''' %(wb08Name, wb08Name))
         else:
-            logPrint('''%d名好友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d friends present in your past matches. Please check the workbook "%s" in the main directory.''' %(recent_friend_count, wb07Name, recent_friend_count, wb07Name))
+            logPrint('''%d名好友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d friends present in your past matches. Please check the workbook "%s" in the main directory.''' %(recent_friend_count, wb08Name, recent_friend_count, wb08Name))
 
 async def detect_friend_request(connection: Connection, search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame) -> None:
     recent_prefriend_count: int = 0
     recent_LoLPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"] if use_sgp else ["gameName", "tagLine", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"]
     recent_TFTPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameDate", "gameModeName", "last_round_format"]
-    recent_LoLPlayer_dict_to_print: dict[str, list[Any]] = {}
-    recent_TFTPlayer_dict_to_print: dict[str, list[Any]] = {}
-    for key in recent_LoLPlayer_fields:
-        recent_LoLPlayer_dict_to_print[key] = []
-    for key in recent_TFTPlayer_fields:
-        recent_TFTPlayer_dict_to_print[key] = []
+    recent_LoLPlayer_dict_to_print: dict[str, list[Any]] = {key: [] for key in recent_LoLPlayer_fields}
+    recent_TFTPlayer_dict_to_print: dict[str, list[Any]] = {key: [] for key in recent_TFTPlayer_fields}
     recent_LoLFriend_df_to_print: pandas.DataFrame = pandas.DataFrame(data = recent_LoLPlayer_dict_to_print)
     recent_TFTFriend_df_to_print: pandas.DataFrame = pandas.DataFrame(data = recent_TFTPlayer_dict_to_print)
     recent_LoLPrefriend_df_to_print: pandas.DataFrame = pandas.DataFrame(data = recent_LoLPlayer_dict_to_print)
@@ -2258,7 +2443,7 @@ async def detect_friend_request(connection: Connection, search_LoL: bool, search
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     current_summonerName: str = get_info_name(current_info)
     friend_requests: list[dict[str, Any]] = await (await (connection.request("GET", "/lol-chat/v2/friend-requests"))).json()
-    wb08Name: str = f"Recently Played Summoners in Friend Requests of {current_summonerName} - {platformId}.xlsx"
+    wb09Name: str = f"Recently Played Summoners in Friend Requests of {current_summonerName} - {platformId}.xlsx"
     for prefriend in friend_requests:
         prefriend_summonerName: str = prefriend["name"] if prefriend["gameName"] == "" and prefriend["tagLine"] == "" else prefriend["gameName"] + "#" + prefriend["tagLine"]
         LoLPrefriend_index: list[int] = [0]
@@ -2279,7 +2464,7 @@ async def detect_friend_request(connection: Connection, search_LoL: bool, search
             recent_TFTPrefriend_df_to_print = pandas.concat([recent_TFTPrefriend_df_to_print, recent_TFTPrefriend_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
             while True:
                 try:
-                    with (pandas.ExcelWriter(path = wb08Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb08Name) else pandas.ExcelWriter(path = wb08Name)) as writer:
+                    with (pandas.ExcelWriter(path = wb09Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb09Name) else pandas.ExcelWriter(path = wb09Name)) as writer:
                         if search_LoL and len(LoLPrefriend_index) > 1:
                             addDefaultStyle(recent_LoLPrefriend_df).to_excel(excel_writer = writer, sheet_name = prefriend_summonerName + " (" + prefriend["direction"] + ") (LoL)")
                         if search_TFT and len(TFTPrefriend_index) > 1:
@@ -2305,9 +2490,9 @@ async def detect_friend_request(connection: Connection, search_LoL: bool, search
             print(format_df(recent_TFTPrefriend_df_to_print, print_index = True, reserve_index = True)[0])
             log.write(format_df(recent_TFTPrefriend_df_to_print, width_exceed_ask = False, direct_print = False, print_index = True, reserve_index = True)[0] + "\n")
         if recent_prefriend_count == 1:
-            logPrint('''好友请求列表中的一名玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's a friend in the request list that is present in your past matches. Please check the workbook "%s" in the main directory.''' %(wb08Name, wb08Name))
+            logPrint('''好友请求列表中的一名玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's a friend in the request list that is present in your past matches. Please check the workbook "%s" in the main directory.''' %(wb09Name, wb09Name))
         else:
-            logPrint('''好友请求列表中的%d名好友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d friends in the request that is present in your past matches. Please check the workbook "%s" in the main directory.''' %(recent_prefriend_count, wb08Name, recent_prefriend_count, wb08Name))
+            logPrint('''好友请求列表中的%d名好友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d friends in the request that is present in your past matches. Please check the workbook "%s" in the main directory.''' %(recent_prefriend_count, wb09Name, recent_prefriend_count, wb09Name))
 
 async def detect_party_invitaion(connection: Connection, search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame, infos: Optional[dict[str, dict[str, Any]]] = None) -> None:
     if infos == None:
@@ -2317,12 +2502,8 @@ async def detect_party_invitaion(connection: Connection, search_LoL: bool, searc
     recent_friend_summonerNames = []
     recent_LoLPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"] if use_sgp else ["gameName", "tagLine", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"]
     recent_TFTPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameDate", "gameModeName", "last_round_format"]
-    recent_LoLPlayer_dict_to_print: dict[str, list[Any]] = {}
-    recent_TFTPlayer_dict_to_print: dict[str, list[Any]] = {}
-    for key in recent_LoLPlayer_fields:
-        recent_LoLPlayer_dict_to_print[key] = []
-    for key in recent_TFTPlayer_fields:
-        recent_TFTPlayer_dict_to_print[key] = []
+    recent_LoLPlayer_dict_to_print: dict[str, list[Any]] = {key: [] for key in recent_LoLPlayer_fields}
+    recent_TFTPlayer_dict_to_print: dict[str, list[Any]] = {key: [] for key in recent_TFTPlayer_fields}
     LoLInvitee_df_to_print: pandas.DataFrame = pandas.DataFrame(data = recent_LoLPlayer_dict_to_print)
     TFTInvitee_df_to_print: pandas.DataFrame = pandas.DataFrame(data = recent_TFTPlayer_dict_to_print)
     LoLInviter_df_to_print: pandas.DataFrame = pandas.DataFrame(data = recent_LoLPlayer_dict_to_print)
@@ -2332,7 +2513,7 @@ async def detect_party_invitaion(connection: Connection, search_LoL: bool, searc
     current_summonerId: int = current_info["summonerId"]
     friends: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
     friend_puuids: list[str] = list(map(lambda x: x["puuid"], friends))
-    wb09Name: str = f"Recently Played Summoners in Invitations to and from {current_summonerName} - {platformId}.xlsx"
+    wb10Name: str = f"Recently Played Summoners in Invitations to and from {current_summonerName} - {platformId}.xlsx"
     lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
     lobbyInvitations: list[dict[str, Any]] = await (await connection.request("GET", "/lol-lobby/v2/lobby/invitations")).json()
     if not "errorCode" in lobbyInvitations:
@@ -2372,7 +2553,7 @@ async def detect_party_invitaion(connection: Connection, search_LoL: bool, searc
                         recent_friend_summonerNames.append(get_info_name(invitee_info_body))
                     while True:
                         try:
-                            with (pandas.ExcelWriter(path = wb09Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb09Name) else pandas.ExcelWriter(path = wb09Name)) as writer:
+                            with (pandas.ExcelWriter(path = wb10Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb10Name) else pandas.ExcelWriter(path = wb10Name)) as writer:
                                 if search_LoL and len(LoLInvitee_index) > 1:
                                     addDefaultStyle(LoLInvitee_df).to_excel(excel_writer = writer, sheet_name = get_info_name(invitee_info_body) + " (out) (LoL)")
                                 if search_TFT and len(TFTInvitee_index) > 1:
@@ -2419,7 +2600,7 @@ async def detect_party_invitaion(connection: Connection, search_LoL: bool, searc
                 recent_friend_summonerNames.append(get_info_name(inviter_info_body))
             while True:
                 try:
-                    with (pandas.ExcelWriter(path = wb09Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb09Name) else pandas.ExcelWriter(path = wb09Name)) as writer:
+                    with (pandas.ExcelWriter(path = wb10Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb10Name) else pandas.ExcelWriter(path = wb10Name)) as writer:
                         if search_LoL and len(LoLInviter_index) > 1:
                             addDefaultStyle(LoLInviter_df).to_excel(excel_writer = writer, sheet_name = get_info_name(inviter_info_body) + " (in) (LoL)")
                         if search_TFT and len(TFTInviter_index) > 1:
@@ -2459,14 +2640,14 @@ async def detect_party_invitaion(connection: Connection, search_LoL: bool, searc
                     log.write(format_df(TFTInvitee_df_to_print, width_exceed_ask = False, direct_print = False, print_index = True, reserve_index = True)[0] + "\n")
             if invitee_count > 0:
                 if invitee_count == 1:
-                    logPrint('''一名您邀请的玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's an invitee present in your past matches. Please check the workbook "%s" in the main directory.''' %(wb09Name, wb09Name))
+                    logPrint('''一名您邀请的玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's an invitee present in your past matches. Please check the workbook "%s" in the main directory.''' %(wb10Name, wb10Name))
                 else:
-                    logPrint('''%d名您邀请的玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d invitees present in your past matches. Please check the workbook "%s" in the main directory.''' %(invitee_count, wb09Name, invitee_count, wb09Name))
+                    logPrint('''%d名您邀请的玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d invitees present in your past matches. Please check the workbook "%s" in the main directory.''' %(invitee_count, wb10Name, invitee_count, wb10Name))
             if inviter_count > 0:
                 if inviter_count == 1:
-                    logPrint('''一名向您发起邀请的玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's an inviter present in your past matches. Please check the workbook "%s" in the main directory.''' %(wb09Name, wb09Name))
+                    logPrint('''一名向您发起邀请的玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's an inviter present in your past matches. Please check the workbook "%s" in the main directory.''' %(wb10Name, wb10Name))
                 else:
-                    logPrint('''%d名向您发起邀请的玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d inviters present in your past matches. Please check the workbook "%s" in the main directory.''' %(inviter_count, wb09Name, inviter_count, wb09Name))
+                    logPrint('''%d名向您发起邀请的玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d inviters present in your past matches. Please check the workbook "%s" in the main directory.''' %(inviter_count, wb10Name, inviter_count, wb10Name))
             if len(recent_friend_summonerNames) == 1:
                 logPrint("以上玩家中，%s是您的好友。\nAmong the above players, %s is your friend." %(recent_friend_summonerNames[0], recent_friend_summonerNames[0]))
             elif len(recent_friend_summonerNames) > 1:
@@ -2476,18 +2657,14 @@ async def detect_blockList(connection: Connection, search_LoL: bool, search_TFT:
     recent_blockedPlayer_count: int = 0
     recent_LoLPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"] if use_sgp else ["gameName", "tagLine", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"]
     recent_TFTPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameDate", "gameModeName", "last_round_format"]
-    recent_LoLPlayer_dict_to_print: dict[str, list[Any]] = {}
-    recent_TFTPlayer_dict_to_print: dict[str, list[Any]] = {}
-    for key in recent_LoLPlayer_fields:
-        recent_LoLPlayer_dict_to_print[key] = []
-    for key in recent_TFTPlayer_fields:
-        recent_TFTPlayer_dict_to_print[key] = []
+    recent_LoLPlayer_dict_to_print: dict[str, list[Any]] = {key: [] for key in recent_LoLPlayer_fields}
+    recent_TFTPlayer_dict_to_print: dict[str, list[Any]] = {key: [] for key in recent_TFTPlayer_fields}
     recent_LoLBlockedPlayer_df_to_print: pandas.DataFrame = pandas.DataFrame(data = recent_LoLPlayer_dict_to_print)
     recent_TFTBlockedPlayer_df_to_print: pandas.DataFrame = pandas.DataFrame(data = recent_TFTPlayer_dict_to_print)
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     current_summonerName: str = get_info_name(current_info)
     blockList: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/blocked-players")).json()
-    wb10Name: str = f"Recently Played Summoners in Block List of {current_summonerName} - {platformId}.xlsx"
+    wb11Name: str = f"Recently Played Summoners in Block List of {current_summonerName} - {platformId}.xlsx"
     for blockedPlayer in blockList:
         blockedPlayer_summonerName: str = get_info_name(blockedPlayer)
         LoLBlockedPlayer_index: list[int] = [0]
@@ -2508,7 +2685,7 @@ async def detect_blockList(connection: Connection, search_LoL: bool, search_TFT:
             recent_TFTBlockedPlayer_df_to_print = pandas.concat([recent_TFTBlockedPlayer_df_to_print, recent_TFTBlockedPlayer_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
             while True:
                 try:
-                    with (pandas.ExcelWriter(path = wb10Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb10Name) else pandas.ExcelWriter(path = wb10Name)) as writer:
+                    with (pandas.ExcelWriter(path = wb11Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb11Name) else pandas.ExcelWriter(path = wb11Name)) as writer:
                         if search_LoL and len(LoLBlockedPlayer_index) > 1:
                             addDefaultStyle(recent_LoLBlockedPlayer_df).to_excel(excel_writer = writer, sheet_name = blockedPlayer_summonerName + " (LoL)")
                         if search_TFT and len(TFTBlockedPlayer_index) > 1:
@@ -2534,9 +2711,9 @@ async def detect_blockList(connection: Connection, search_LoL: bool, search_TFT:
             print(format_df(recent_TFTBlockedPlayer_df_to_print, print_index = True, reserve_index = True)[0])
             log.write(format_df(recent_TFTBlockedPlayer_df_to_print, width_exceed_ask = False, direct_print = False, print_index = True, reserve_index = True)[0] + "\n")
         if recent_blockedPlayer_count == 1:
-            logPrint('''一名黑名单玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's a blocked player present in your past matches. Please check the workbook "%s" in the main directory.''' %(wb10Name, wb10Name))
+            logPrint('''一名黑名单玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's a blocked player present in your past matches. Please check the workbook "%s" in the main directory.''' %(wb11Name, wb11Name))
         else:
-            logPrint('''%d名黑名单玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d blocked players present in your past matches. Please check the workbook "%s" in the main directory.''' %(recent_blockedPlayer_count, wb10Name, recent_blockedPlayer_count, wb10Name))
+            logPrint('''%d名黑名单玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d blocked players present in your past matches. Please check the workbook "%s" in the main directory.''' %(recent_blockedPlayer_count, wb11Name, recent_blockedPlayer_count, wb11Name))
 
 async def detect_custom_list(connection: Connection, search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame, infos: Optional[dict[str, dict[str, Any]]] = None) -> None:
     if infos == None:
@@ -2570,15 +2747,11 @@ async def detect_custom_list(connection: Connection, search_LoL: bool, search_TF
     recent_players_count = 0
     recent_LoLPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"] if use_sgp else ["gameName", "tagLine", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"]
     recent_TFTPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameDate", "gameModeName", "last_round_format"]
-    recent_LoLPlayer_dict_to_print: dict[str, list[Any]] = {}
-    recent_TFTPlayer_dict_to_print: dict[str, list[Any]] = {}
-    for key in recent_LoLPlayer_fields:
-        recent_LoLPlayer_dict_to_print[key] = []
-    for key in recent_TFTPlayer_fields:
-        recent_TFTPlayer_dict_to_print[key] = []
+    recent_LoLPlayer_dict_to_print: dict[str, list[Any]] = {key: [] for key in recent_LoLPlayer_fields}
+    recent_TFTPlayer_dict_to_print: dict[str, list[Any]] = {key: [] for key in recent_TFTPlayer_fields}
     recent_LoLPlayer_df_to_print = pandas.DataFrame(data = recent_LoLPlayer_dict_to_print)
     recent_TFTPlayer_df_to_print = pandas.DataFrame(data = recent_TFTPlayer_dict_to_print)
-    wb11Name: str = f"Recently Played Summoners in Specified Player List - {platformId}.xlsx"
+    wb12Name: str = f"Recently Played Summoners in Specified Player List - {platformId}.xlsx"
     logPrint("是否呈现非法召唤师名称警告？（输入任意键呈现，否则不呈现。）\nDo you want to display illegal summoner name warning? (Input anything to display the warnings, or null to stop displaying.)")
     illegal_name_warning_str: str = logInput()
     illegal_name_warning: bool = bool(illegal_name_warning_str)
@@ -2608,7 +2781,7 @@ async def detect_custom_list(connection: Connection, search_LoL: bool, search_TF
                 recent_TFTPlayer_df_to_print = pandas.concat([recent_TFTPlayer_df_to_print, recent_TFTPlayer_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
                 while True:
                     try:
-                        with (pandas.ExcelWriter(path = wb11Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb11Name) else pandas.ExcelWriter(path = wb11Name)) as writer:
+                        with (pandas.ExcelWriter(path = wb12Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb12Name) else pandas.ExcelWriter(path = wb12Name)) as writer:
                             if search_LoL and len(LoLPlayer_index) > 1:
                                 addDefaultStyle(recent_LoLPlayer_df).to_excel(excel_writer = writer, sheet_name = detect_summonerName + " (LoL)")
                             if search_TFT and len(TFTPlayer_index) > 1:
@@ -2636,9 +2809,9 @@ async def detect_custom_list(connection: Connection, search_LoL: bool, search_TF
             print(format_df(recent_TFTPlayer_df_to_print, print_index = True, reserve_index = True)[0])
             log.write(format_df(recent_TFTPlayer_df_to_print, width_exceed_ask = False, direct_print = False, print_index = True, reserve_index = True)[0] + "\n")
         if recent_players_count == 1:
-            logPrint('''一名玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's a player present in your past matches. Please check the workbook "%s" in the main directory.''' %(wb11Name, wb11Name))
+            logPrint('''一名玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere's a player present in your past matches. Please check the workbook "%s" in the main directory.''' %(wb12Name, wb12Name))
         else:
-            logPrint('''%d名玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d players present in your past matches. Please check the workbook "%s" in the main directory.''' %(recent_players_count, wb11Name, recent_players_count, wb11Name))
+            logPrint('''%d名玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d players present in your past matches. Please check the workbook "%s" in the main directory.''' %(recent_players_count, wb12Name, recent_players_count, wb12Name))
 
 async def search_recent_players(connection: Connection) -> None:
     global session, platformId, AllAccounts
@@ -2652,7 +2825,7 @@ async def search_recent_players(connection: Connection) -> None:
             pass
     region: str = client_info["--region"]
     platform_folder: str = set_platform_folder(region, platformId)
-    match_folder: str = os.path.join(platform_folder, "1. MatchIDs")
+    match_folder: str = os.path.join(platform_folder, "1. MatchIDs").replace("\\", "/")
     logPrint("请选择召唤师技能和装备的输出语言【默认为中文（中国）】：\nPlease select a language to output the summoner spells and items (the default option is zh_CN):") #本来考虑把可用CDragon数据版本放在第三列，但是后来发现表头名字太长了，索性放在最后了（I had considered putting "Applicable CDragon Data Patches" at the third column, but then found the header was too long. So I put it at the last column）
     language_dict: dict[str, list[int | str]] = {"No.": list(language_ddragon.keys()), "CODE": list(map(lambda x: x["CODE"], language_ddragon.values())), "LANGUAGE": list(map(lambda x: x["LANGUAGE (EN)"], language_ddragon.values())), "语言": list(map(lambda x: x["LANGUAGE (ZH)"], language_ddragon.values())), "Applicable CDragon Data Patches": list(map(lambda x: x["Applicable CDragon Data Patches"], language_ddragon.values()))}
     language_df: pandas.DataFrame = pandas.DataFrame(language_dict)
@@ -2869,10 +3042,11 @@ async def search_recent_players(connection: Connection) -> None:
             for i in range(len(folderNames)):
                 logPrint("[%d/%d]%s" %(i + 1, len(folderNames), folderNames[i]), end = "\r")
                 folderName: str = folderNames[i]
-                json01path: str = os.path.join(platform_folder, folderName, f"Summoner Profile - {folderName}.json")
-                if os.path.exists(json01path):
+                json02name: str = f"Summoner Profile - {folderName}.json"
+                json02path: str = os.path.join(platform_folder, folderName, json02name).replace("\\", "/")
+                if os.path.exists(json02path):
                     try:
-                        with open(json01path, "r", encoding = "utf-8") as jsonfile01:
+                        with open(json02path, "r", encoding = "utf-8") as jsonfile01:
                             test_info_body: dict[str, Any] = json.load(jsonfile01)
                     except:
                         pass
@@ -2885,12 +3059,12 @@ async def search_recent_players(connection: Connection) -> None:
         #下面设置扫描模式的扫描目录（The following code determines the scanning directory for scan mode）
         folder: str = set_summonerInfo_folder(region, platformId, info_body)
         saved_LoLMatchIDs: list[int] = []
-        json02name: str = f"Matches Saved (LoL) - {displayName}.json"
-        json02path: str = os.path.join(folder, json02name)
+        json03name: str = f"Matches Saved (LoL) - {displayName}.json"
+        json03path: str = os.path.join(folder, json03name).replace("\\", "/")
         os.makedirs(folder, exist_ok = True)
-        if os.path.exists(json02path):
+        if os.path.exists(json03path):
             try:
-                with open(json02path, "r", encoding = "utf-8") as jsonfile02:
+                with open(json03path, "r", encoding = "utf-8") as jsonfile02:
                     saved_LoLMatchIDs = json.load(jsonfile02)
             except:
                 logPrint("已存储的英雄联盟对局数据格式错误！\nSaved LoL match data format error!")
@@ -2898,12 +3072,12 @@ async def search_recent_players(connection: Connection) -> None:
                 if not (isinstance(saved_LoLMatchIDs, list) and all(map(lambda x: isinstance(x, int), saved_LoLMatchIDs))):
                     logPrint("已存储的英雄联盟对局数据格式错误！\nSaved LoL match data format error!")
         saved_TFTMatchIDs: list[int] = []
-        json03name: str = f"Matches Saved (TFT) - {displayName}.json"
-        json03path: str = os.path.join(folder, json03name)
+        json04name: str = f"Matches Saved (TFT) - {displayName}.json"
+        json04path: str = os.path.join(folder, json04name).replace("\\", "/")
         os.makedirs(folder, exist_ok = True)
-        if os.path.exists(json03path):
+        if os.path.exists(json04path):
             try:
-                with open(json03path, "r", encoding = "utf-8") as jsonfile03:
+                with open(json04path, "r", encoding = "utf-8") as jsonfile03:
                     saved_TFTMatchIDs = json.load(jsonfile03)
             except:
                 logPrint("已存储的云顶之弈对局数据格式错误！\nSaved TFT match data format error!")
@@ -3247,6 +3421,7 @@ async def connect(connection: Connection) -> None:
     await sgpSession.init(connection)
     await print_summoner_info(connection)
     await save_platform_info(connection)
+    await prepare_lcu_plugins(connection)
     await search_recent_players(connection)
     log.write("\n[Program terminated and returned status 0.]\n")
     log.close()

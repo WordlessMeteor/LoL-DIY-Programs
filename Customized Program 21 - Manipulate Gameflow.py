@@ -29,7 +29,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/09
+# 更新（Last update）：     2026/03/10
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1122,7 +1122,7 @@ async def report_player_champSelect(connection: Connection) -> None:
             if len(humanPlayers) == 1: #只有自己的情况下（Only the user itself）
                 logPrint("本场英雄选择阶段无其他人类玩家。\nNo more human players are found during this champ select stage.")
             else:
-                player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log)
+                player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log)
                 player_df_fields_to_print: list[str] = ["cellId", "gameName", "tagLine", "playerAlias", "assignedPosition", "champion name", "champion alias"]
                 logPrint("已获取到玩家信息。\nParticipant information has been fetched successfully.")
                 while True:
@@ -5227,8 +5227,7 @@ async def sort_grid_champions(connection: Connection) -> pandas.DataFrame:
     grid_champion_df = pandas.concat([pandas.DataFrame([grid_champion_header])[grid_champion_df.columns], grid_champion_df], ignore_index = True)
     return grid_champion_df
 
-async def sort_swaps_info(connection: Connection, swap_typeId: int) -> pandas.DataFrame:
-    champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
+async def sort_swaps_info(connection: Connection, champ_select_session: dict[str, Any], swap_typeId: int) -> pandas.DataFrame:
     swap_types: dict[int, str] = {1: "pickOrderSwaps", 2: "positionSwaps", 3: "trades"}
     swaps: list[dict[str, Any]] = sorted(champ_select_session[swap_types[swap_typeId]], key = lambda x: x["cellId"])
     swap_header: dict[str, str] = {"cellId": "槽位序号", "id": "交换代码", "state": "可交换性"}
@@ -5244,7 +5243,7 @@ async def sort_swaps_info(connection: Connection, swap_typeId: int) -> pandas.Da
     swap_df: pandas.DataFrame = pandas.DataFrame(data = swap_data_organized)
     swap_df = pandas.concat([pandas.DataFrame([swap_header])[swap_df.columns], swap_df], ignore_index = True)
     #下面将玩家信息附加到数据框右侧（The following code appends player information to the right of the dataframe）
-    player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, LoLChampions, championSkins, spells, wardSkins, playerMode = 2, log = log) #默认交换动作只能发生在队友之间。这是因为在极地大乱斗中，双方的槽位序号竟然是相同的（By default, swaps should happen among teammates. Another thing worth mentioning is that in the champ select session of an ARAM game, both teams' cellIds are the same）
+    player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 2, log = log) #默认交换动作只能发生在队友之间。这是因为在极地大乱斗中，双方的槽位序号竟然是相同的（By default, swaps should happen among teammates. Another thing worth mentioning is that in the champ select session of an ARAM game, both teams' cellIds are the same）
     merged_df: pandas.DataFrame = pandas.merge(swap_df, player_df, how = "inner", on = "cellId")
     return merged_df
 
@@ -5432,7 +5431,7 @@ async def swap(connection: Connection) -> None:
                         champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
                         swaps: dict[str, Any] = champ_select_session[session_keys[obj[0]]]
                         swap_cellId_map: dict[int, dict[str, Any]] = {swap["cellId"]: swap for swap in swaps}
-                        player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log)
+                        player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log)
                         player_df_fields_to_print: list[str] = ["cellId", "gameName", "tagLine", "playerAlias", "assignedPosition", "champion name", "champion alias"]
                         target_cellId: int = -1
                         for swap in swaps:
@@ -5490,7 +5489,7 @@ async def swap(connection: Connection) -> None:
                         if len(swaps) == 0:
                             logPrint("%s交换不可用。请切换游戏模式后再试。\n%s swap isn't available. Please switch to another game mode and try again." %(tooltip1_zh[obj[0]], tooltip1_en_capitalize[obj[0]]))
                         elif any(map(lambda x: x["state"] == "AVAILABLE", swaps)):
-                            swap_df: pandas.DataFrame = await sort_swaps_info(connection, swap_typeId = int(obj[0]))
+                            swap_df: pandas.DataFrame = await sort_swaps_info(connection, champ_select_session, swap_typeId = int(obj[0]))
                             swap_df_fields_to_print: list[str] = ["id", "cellId", "gameName", "tagLine", "assignedPosition", "champion name", "champion alias"]
                             swap_df_selected: pandas.DataFrame = pandas.concat([swap_df.iloc[:1, :], swap_df[swap_df["state"] == "AVAILABLE"]], ignore_index = True)
                             logPrint("请选择一名玩家以交换%s：\nPlease select a player to swap %s:" %(tooltip1_zh[obj[0]], tooltip1_en_lowercase[obj[0]]))
@@ -6069,12 +6068,9 @@ async def mute_champSelect_player(connection: Connection) -> None:
             muted_players: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champ-select/v1/muted-players")).json()
             muted_player_puuids: list[str] = list(map(lambda x: x["puuid"], muted_players))
             muted_player_obfuscatedPuuids: list[str] = list(map(lambda x: x["obfuscatedPuuid"], muted_players))
-            player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log)
-            player_df["muted"] = ["已静音"] + (len(player_df) - 1) * [""]
-            for i in range(1, len(player_df)):
-                for muted_player in muted_players:
-                    if player_df["puuid"][i] == muted_player["puuid"] or player_df["obfuscatedPuuid"][i] == muted_player["obfuscatedPuuid"]:
-                        player_df.loc[i, "muted"] = "√"
+            champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
+            player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log)
+            player_df["muted"] = ["已静音"] + ["√" if player_df["puuid"][i] in muted_player_puuids or player_df["obfuscatedPuuid"][i] in muted_player_obfuscatedPuuids else "" for i in range(1, len(player_df))]
             player_df_selected: pandas.DataFrame = pandas.concat([player_df.iloc[:1, :], player_df[(player_df["isHumanoid"] == "") & ~((player_df["gameName"] == "") & (player_df["tagLine"] == "") & (player_df["playerAlias"] == ""))]], ignore_index = True)
             if len(player_df_selected) > 1:
                 logPrint("请选择一个要切换静音状态的玩家：\nPlease select a player to toggle mute/unmute status:")
