@@ -2423,6 +2423,104 @@ async def sort_received_invitations(connection: Connection) -> None:
     invid_df = pandas.concat([pandas.DataFrame([invid_header])[invid_df.columns], invid_df], ignore_index = True)
     return invid_df
 
+async def spectate(connection: Connection) -> None:
+    logPrint('请输入您想要观看的玩家召唤师名。输入“0”以返回上一层。\nPlease input the summonerName of the player to spectate. Submit "0" to return to the last step.')
+    spectatorKey: str = str(uuid.uuid4())
+    while True:
+        spectating_summonerName: str = logInput()
+        if spectating_summonerName == "":
+            continue
+        elif spectating_summonerName == "0":
+            break
+        else:
+            spectating_summoner_info: dict[str, Any] = await get_info(connection, spectating_summonerName)
+            if spectating_summoner_info["info_got"]:
+                if spectating_summoner_info["body"]["puuid"] == current_info["puuid"]:
+                    logPrint("你不能观战自己。战斗！爽！————\nYou can't spectate yourself. Battle... YES!!!!")
+                    continue
+                dropInSpectateGameId: int = 0
+                gameQueueType: str = ""
+                allowObserveMode: str = ""
+                spectate_puuid: str = spectating_summoner_info["body"]["puuid"]
+                spectating_summonerName: str = get_info_name(spectating_summoner_info["body"])
+                spectatorKey_got: bool = False
+                #首先，确定待观战的玩家是否是一名好友。如果是，从好友列表中查找观战密钥（First, determine whether the player to spectate is a friend. If it is, search for its spectatorKey from the friend list）
+                friends: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
+                friend_dict: dict[str, list[dict[str, Any]]] = {friend["puuid"]: friend for friend in friends}
+                if spectate_puuid in friend_dict and "lol" in friend_dict[spectate_puuid] and "spectatorKey" in friend_dict[spectate_puuid]["lol"]: #考虑到部分第三方软件可能伪装玩家状态，因此不用基于好友信息中是否存在“lol”键来进行分类讨论（Considering some third-party softwares may disguise the player's gameflow phase, we don't have to discuss whether "lol" key is in the friend data）
+                    spectatorKey: str = friend_dict[spectate_puuid]["lol"]["spectatorKey"]
+                    if spectatorKey != "":
+                        spectatorKey_got = True
+                else: #如果不是好友，则通过gsm接口查询玩家对战信息（If it's not, then search for this player's game information through gsm endpoint）
+                    # gsm_spectate_info: dict[str, Any] = (await sgpSession.request(connection, "GET", f"/gsm/v1/ledge/spectator/region/{platformId}/puuid/{spectate_puuid}")).json()
+                    gsm_spectate_info: dict[str, Any] = (await sgpSession.request(connection, "GET", f"/gsm/v1/ledge/region/{platformId}/puuid/{spectate_puuid}")).json()
+                    if "errorCode" in gsm_spectate_info:
+                        logPrint(gsm_spectate_info)
+                        if gsm_spectate_info["httpStatus"] == 401 and gsm_spectate_info["message"] == "Access denied for specified puuid.":
+                            logPrint("拒绝访问。\nAccess denied.")
+                        elif gsm_spectate_info["httpStatus"] == 404 and gsm_spectate_info["message"] == "Player was not found":
+                            logPrint("该玩家未在游戏中。\nThis player isn't in a game currently.")
+                        elif gsm_spectate_info["httpStatus"] == 400 and gsm_spectate_info["message"] == "Game is not able to be spectated":
+                            logPrint("现在还不能观战这个游戏类型，或者这个自定义对局未对观战者开放。\nThis game type cannot be spectated right now, or this custom game is not open to spectators.")
+                        elif gsm_spectate_info["httpStatus"] == 409 and gsm_spectate_info["message"] == "Spectator APIs are disabled in the GSM":
+                            logPrint("当前大区不支持通过玩家通用唯一识别码获取观战密钥。请在客户端内右键点击一名好友观战。\nThis server doesn't support obtaining spectator key from puuid. Please right click on a friend to spectate it in the League Client.")
+                        else:
+                            logPrint("确定该玩家观战信息时出现了一个错误。\nAn error occurred when the program was trying to determine this player's spectate information.")
+                    elif gsm_spectate_info == {"status": {"message": "Method Not Allowed", "status_code": 405}}:
+                        logPrint("当前大区不支持通过玩家通用唯一识别码获取观战密钥。请在客户端内右键点击一名好友观战。\nThis server doesn't support obtaining spectator key from puuid. Please right click on a friend to spectate it in the League Client.")
+                    else:
+                        dropInSpectateGameId = gsm_spectate_info["playerCredentials"]["gameId"]
+                        gameQueueType = gsm_spectate_info["playerCredentials"]["queueType"]
+                        allowObserveMode = "AllAllowed"
+                        spectatorKey: str = gsm_spectate_info["playerCredentials"]["spectatorKey"]
+                        spectatorKey_got = True
+                #如果gsm接口失效，则要求用户自行输入观战密钥（If the gsm endpoint doesn't work, as the user to provide the spectatorKey）
+                if not spectatorKey_got:
+                    logPrint('''如果您能够获取该玩家的观战密钥的话，您可以在下方输入观战密钥。不输入任何内容以放弃观战。\nIf you can access this player's spectatorKey, please input it below. Enter nothing to quit spectating.''')
+                    spectatorKey = logInput()
+                    if spectatorKey != "":
+                        spectatorKey_got = True
+                if spectatorKey_got:
+                    body: dict[str, Any] = {"dropInSpectateGameId": str(dropInSpectateGameId), "gameQueueType": gameQueueType, "allowObserveMode": allowObserveMode, "puuid": spectate_puuid, "spectatorKey": spectatorKey}
+                    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-spectator/v1/spectate/launch", data = body)).json()
+                    logPrint(response)
+                    if isinstance(response, dict) and "errorCode" in response:
+                        if response["httpStatus"] == 400 and response["message"] == "SpectatorPlugin_NOT_AVAILABLE":
+                            logPrint("您所在的服务器不支持玩家可观战性检测。请自行判断玩家是否可观战。\nThe server or platform you're currently on doesn't support this endpoint. Please judge by yourself whether a player is observable.")
+                        elif response["httpStatus"] == 400 and "Attempting to spectate player but not in game" in response["message"]:
+                            logPrint("该玩家未在游戏中，或者您输入的观战密钥不正确。\nThis player isn't in a game currently, or the spectatorKey isn't correct.")
+                        elif response["httpStatus"] == 500 and "Couldn't find service in service discovery using ServerLocationEndpointFilter" in response["message"]:
+                            logPrint("观战服务不可用。\nSpectator service unavailable.")
+                        else:
+                            if "Game is not able to be spectated" in response["message"]:
+                                logPrint("现在还不能观战这个游戏类型，或者这个自定义对局未对观战者开放。\nThis game type cannot be spectated right now, or this custom game is not open to spectators.")
+                            elif "Player was not found" in response["message"]:
+                                logPrint("该玩家未在游戏中。\nThis player isn't in a game currently.")
+                            elif "Game not found" in response["message"]:
+                                logPrint("游戏已结束。\nThe game has ended.")
+                            elif "Already in gameflow" in response["message"]:
+                                logPrint("您目前的状态不可观战。请等待游戏结束或者退出房间来进行观战。\nYou're not allowed to spectate for now. Please wait for the current game to end or exit the party or lobby to spectate any game.")
+                            elif "Game is private and not able to be spectated" in response["message"]:
+                                logPrint("该游戏未对观战者开放。\nThis game isn't open to spectators.")
+                            else:
+                                logPrint("观战失败。请通过客户端内右键点击一名好友，或者通过第三方工具来进行观战。\nSpectating failed. Please right click on a friend or use another third-party tool to spectate.")
+                    else:
+                        time.sleep(1) #发送指令后客户端不一定马上进入英雄选择或游戏中（The client won't immediately enter the champ select or in game stage after the program posts the spectating requests）
+                        gameflow_phase = await get_gameflow_phase(connection)
+                        if gameflow_phase in {"ChampSelect", "InProgress"}:
+                            gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
+                            gameModeName: str = gameflow_session["map"]["gameModeName"] + "(%d)" %(gameflow_session["gameData"]["queue"]["id"]) if gameflow_session["gameData"]["queue"]["name"] == "" else gameflow_session["gameData"]["queue"]["name"]
+                            logPrint("启动观战成功！您正在观看%s的对局。\nLaunched spectating successfully. You'll be spectating the game of %s soon.\n对局序号（MatchId）：\t%d\n队列序号（QueueId）：\t%d\n游戏模式名称（Game mode name）：\t%s" %(spectating_summonerName, spectating_summonerName, gameflow_session["gameData"]["gameId"], gameflow_session["gameData"]["queue"]["id"], gameModeName))
+                            logPrint("观战信息如下：\nSpectate information is as follows:")
+                            spectate_body: dict[str, str] = await (await connection.request("GET", "/lol-spectator/v1/spectate")).json() #退出观战不会更新该接口的返回结果，所以只在观战成功时使用此接口（Exit spectating won't update the result this endpoint returns, so this endpoint is only used here）
+                            logPrint(spectate_body)
+                            break
+                        else:
+                            logPrint("这场对局现在不可观战。它也许已经结束了。\nThe game isn't available for spectate now. It might have ended.")
+            else:
+                logPrint(spectating_summoner_info["message"])
+        logPrint('请输入您想要观看的玩家召唤师名。输入“0”以返回上一层。\nPlease input the summonerName of the player to spectate. Submit "0" to return to the last step.')
+
 async def gameflow_phase_transition(connection: Connection) -> str:
     while True:
         logPrint("请选择一个操作：\nPlease select an operation:\n1\t创建房间（Create a lobby）\n2\t处理邀请（Handle invitations）\n3\t加入小队或自定义房间（Join party/lobby）\n4\t观战（Spectate a game）\n5\t聊天（Chat）\n6\t举报一名玩家（Report a player）\n7\t其它（Others）\n8\t客户端任务管理（Manage the League Client task）")
@@ -2446,102 +2544,7 @@ async def gameflow_phase_transition(connection: Connection) -> str:
         elif option[0] == "4":
             gameflow_phase: str = await get_gameflow_phase(connection)
             if gameflow_phase == "None":
-                logPrint('请输入您想要观看的玩家召唤师名。输入“0”以返回上一层。\nPlease input the summonerName of the player to spectate. Submit "0" to return to the last step.')
-                spectatorKey: str = str(uuid.uuid4())
-                while True:
-                    spectating_summonerName: str = logInput()
-                    if spectating_summonerName == "":
-                        continue
-                    elif spectating_summonerName == "0":
-                        break
-                    else:
-                        spectating_summoner_info: dict[str, Any] = await get_info(connection, spectating_summonerName)
-                        if spectating_summoner_info["info_got"]:
-                            if spectating_summoner_info["body"]["puuid"] == current_info["puuid"]:
-                                logPrint("你不能观战自己。战斗！爽！————\nYou can't spectate yourself. Battle... YES!!!!")
-                                continue
-                            dropInSpectateGameId: int = 0
-                            gameQueueType: str = ""
-                            allowObserveMode: str = ""
-                            spectate_puuid: str = spectating_summoner_info["body"]["puuid"]
-                            spectating_summonerName: str = get_info_name(spectating_summoner_info["body"])
-                            spectatorKey_got: bool = False
-                            #首先，确定待观战的玩家是否是一名好友。如果是，从好友列表中查找观战密钥（First, determine whether the player to spectate is a friend. If it is, search for its spectatorKey from the friend list）
-                            friends: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
-                            friend_dict: dict[str, list[dict[str, Any]]] = {friend["puuid"]: friend for friend in friends}
-                            if spectate_puuid in friend_dict and "lol" in friend_dict[spectate_puuid] and "spectatorKey" in friend_dict[spectate_puuid]["lol"]: #考虑到部分第三方软件可能伪装玩家状态，因此不用基于好友信息中是否存在“lol”键来进行分类讨论（Considering some third-party softwares may disguise the player's gameflow phase, we don't have to discuss whether "lol" key is in the friend data）
-                                spectatorKey: str = friend_dict[spectate_puuid]["lol"]["spectatorKey"]
-                                if spectatorKey != "":
-                                    spectatorKey_got = True
-                            else: #如果不是好友，则通过gsm接口查询玩家对战信息（If it's not, then search for this player's game information through gsm endpoint）
-                                # gsm_spectate_info: dict[str, Any] = (await sgpSession.request(connection, "GET", f"/gsm/v1/ledge/spectator/region/{platformId}/puuid/{spectate_puuid}")).json()
-                                gsm_spectate_info: dict[str, Any] = (await sgpSession.request(connection, "GET", f"/gsm/v1/ledge/region/{platformId}/puuid/{spectate_puuid}")).json()
-                                if "errorCode" in gsm_spectate_info:
-                                    logPrint(gsm_spectate_info)
-                                    if gsm_spectate_info["httpStatus"] == 401 and gsm_spectate_info["message"] == "Access denied for specified puuid.":
-                                        logPrint("拒绝访问。\nAccess denied.")
-                                    elif gsm_spectate_info["httpStatus"] == 404 and gsm_spectate_info["message"] == "Player was not found":
-                                        logPrint("该玩家未在游戏中。\nThis player isn't in a game currently.")
-                                    elif gsm_spectate_info["httpStatus"] == 400 and gsm_spectate_info["message"] == "Game is not able to be spectated":
-                                        logPrint("现在还不能观战这个游戏类型，或者这个自定义对局未对观战者开放。\nThis game type cannot be spectated right now, or this custom game is not open to spectators.")
-                                    elif gsm_spectate_info["httpStatus"] == 409 and gsm_spectate_info["message"] == "Spectator APIs are disabled in the GSM":
-                                        logPrint("当前大区不支持通过玩家通用唯一识别码获取观战密钥。请在客户端内右键点击一名好友观战。\nThis server doesn't support obtaining spectator key from puuid. Please right click on a friend to spectate it in the League Client.")
-                                    else:
-                                        logPrint("确定该玩家观战信息时出现了一个错误。\nAn error occurred when the program was trying to determine this player's spectate information.")
-                                elif gsm_spectate_info == {"status": {"message": "Method Not Allowed", "status_code": 405}}:
-                                    logPrint("当前大区不支持通过玩家通用唯一识别码获取观战密钥。请在客户端内右键点击一名好友观战。\nThis server doesn't support obtaining spectator key from puuid. Please right click on a friend to spectate it in the League Client.")
-                                else:
-                                    dropInSpectateGameId = gsm_spectate_info["playerCredentials"]["gameId"]
-                                    gameQueueType = gsm_spectate_info["playerCredentials"]["queueType"]
-                                    allowObserveMode = "AllAllowed"
-                                    spectatorKey: str = gsm_spectate_info["playerCredentials"]["spectatorKey"]
-                                    spectatorKey_got = True
-                            #如果gsm接口失效，则要求用户自行输入观战密钥（If the gsm endpoint doesn't work, as the user to provide the spectatorKey）
-                            if not spectatorKey_got:
-                                logPrint('''如果您能够获取该玩家的观战密钥的话，您可以在下方输入观战密钥。不输入任何内容以放弃观战。\nIf you can access this player's spectatorKey, please input it below. Enter nothing to quit spectating.''')
-                                spectatorKey = logInput()
-                                if spectatorKey != "":
-                                    spectatorKey_got = True
-                            if spectatorKey_got:
-                                body: dict[str, Any] = {"dropInSpectateGameId": str(dropInSpectateGameId), "gameQueueType": gameQueueType, "allowObserveMode": allowObserveMode, "puuid": spectate_puuid, "spectatorKey": spectatorKey}
-                                response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-spectator/v1/spectate/launch", data = body)).json()
-                                logPrint(response)
-                                if isinstance(response, dict) and "errorCode" in response:
-                                    if response["httpStatus"] == 400 and response["message"] == "SpectatorPlugin_NOT_AVAILABLE":
-                                        logPrint("您所在的服务器不支持玩家可观战性检测。请自行判断玩家是否可观战。\nThe server or platform you're currently on doesn't support this endpoint. Please judge by yourself whether a player is observable.")
-                                    elif response["httpStatus"] == 400 and "Attempting to spectate player but not in game" in response["message"]:
-                                        logPrint("该玩家未在游戏中，或者您输入的观战密钥不正确。\nThis player isn't in a game currently, or the spectatorKey isn't correct.")
-                                    elif response["httpStatus"] == 500 and "Couldn't find service in service discovery using ServerLocationEndpointFilter" in response["message"]:
-                                        logPrint("观战服务不可用。\nSpectator service unavailable.")
-                                    else:
-                                        if "Game is not able to be spectated" in response["message"]:
-                                            logPrint("现在还不能观战这个游戏类型，或者这个自定义对局未对观战者开放。\nThis game type cannot be spectated right now, or this custom game is not open to spectators.")
-                                        elif "Player was not found" in response["message"]:
-                                            logPrint("该玩家未在游戏中。\nThis player isn't in a game currently.")
-                                        elif "Game not found" in response["message"]:
-                                            logPrint("游戏已结束。\nThe game has ended.")
-                                        elif "Already in gameflow" in response["message"]:
-                                            logPrint("您目前的状态不可观战。请等待游戏结束或者退出房间来进行观战。\nYou're not allowed to spectate for now. Please wait for the current game to end or exit the party or lobby to spectate any game.")
-                                        elif "Game is private and not able to be spectated" in response["message"]:
-                                            logPrint("该游戏未对观战者开放。\nThis game isn't open to spectators.")
-                                        else:
-                                            logPrint("观战失败。请通过客户端内右键点击一名好友，或者通过第三方工具来进行观战。\nSpectating failed. Please right click on a friend or use another third-party tool to spectate.")
-                                else:
-                                    time.sleep(1) #发送指令后客户端不一定马上进入英雄选择或游戏中（The client won't immediately enter the champ select or in game stage after the program posts the spectating requests）
-                                    gameflow_phase = await get_gameflow_phase(connection)
-                                    if gameflow_phase in {"ChampSelect", "InProgress"}:
-                                        gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
-                                        gameModeName: str = gameflow_session["map"]["gameModeName"] + "(%d)" %(gameflow_session["gameData"]["queue"]["id"]) if gameflow_session["gameData"]["queue"]["name"] == "" else gameflow_session["gameData"]["queue"]["name"]
-                                        logPrint("启动观战成功！您正在观看%s的对局。\nLaunched spectating successfully. You'll be spectating the game of %s soon.\n对局序号（MatchId）：\t%d\n队列序号（QueueId）：\t%d\n游戏模式名称（Game mode name）：\t%s" %(spectating_summonerName, spectating_summonerName, gameflow_session["gameData"]["gameId"], gameflow_session["gameData"]["queue"]["id"], gameModeName))
-                                        logPrint("观战信息如下：\nSpectate information is as follows:")
-                                        spectate_body: dict[str, str] = await (await connection.request("GET", "/lol-spectator/v1/spectate")).json() #退出观战不会更新该接口的返回结果，所以只在观战成功时使用此接口（Exit spectating won't update the result this endpoint returns, so this endpoint is only used here）
-                                        logPrint(spectate_body)
-                                        break
-                                    else:
-                                        logPrint("这场对局现在不可观战。它也许已经结束了。\nThe game isn't available for spectate now. It might have ended.")
-                        else:
-                            logPrint(spectating_summoner_info["message"])
-                    logPrint('请输入您想要观看的玩家召唤师名。输入“0”以返回上一层。\nPlease input the summonerName of the player to spectate. Submit "0" to return to the last step.')
+                await spectate(connection)
             else:
                 logPrint("您目前的状态不可观战。请等待游戏结束或者退出房间来进行观战。\nYou're not allowed to spectate for now. Please wait for the current game to end or exit the party or lobby to spectate any game.")
         elif option[0] == "5":
@@ -3031,6 +3034,1470 @@ async def print_search_error(connection: Connection, response: dict, lobbyInfo: 
     else:
         logPrint("未知错误。\nUnknown error.")
 
+async def select_party_position(connection: Connection) -> None:
+    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+    # if lobby_information["gameConfig"]["showPositionSelector"]: #在2026赛季的自定义房间中，需要选定位置，但是房间信息的“showPositionSelector”键的值为假。因此禁用此条件筛选（In the custom lobby in Season 2026, position is required, but the value of "showPositionSelector" key in lobby information is False. Therefore, this condition is currently disabled）
+    slotPositions: list[str] = ["TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY", "FILL"]
+    logPrint("请选择首选位置：\nPlease select your primary position:\n1\t上路（Top）\n2\t打野（Jungle）\n3\t中路（Middle）\n4\t下路/线上（Bottom/Lane）\n5\t辅助（Support）\n6\t补位（Fill）")
+    while True:
+        position_index: str = logInput()
+        if position_index[0] == "0":
+            return
+        elif position_index == "-1":
+            firstPreference: str = "UNSELECTED" #这里也可以是空字符串（An empty string also works here）
+            break
+        elif position_index[0] in list(map(str, range(1, 7))):
+            position_index = int(position_index[0])
+            firstPreference = slotPositions[position_index - 1] #这里也可以是`str(position_index - 1)`（`str(position_index - 1)` also works here）
+            break
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+    logPrint("请选择次选位置：\nPlease select your secondary position:\n1\t上路（Top）\n2\t打野（Jungle）\n3\t中路（Middle）\n4\t下路/线上（Bottom/Lane）\n5\t辅助（Support）\n6\t补位（Fill）")
+    while True:
+        position_index = logInput()
+        if position_index[0] == "0":
+            return
+        elif position_index == "-1":
+            secondPreference: str = "UNSELECTED"
+            break
+        elif position_index[0] in list(map(str, range(1, 7))):
+            position_index = int(position_index[0])
+            secondPreference = slotPositions[position_index - 1]
+            break
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+    body: dict[str, str] = {"firstPreference": firstPreference, "secondPreference": secondPreference}
+    response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-lobby/v2/lobby/members/localMember/position-preferences", data = body)).json()
+    logPrint(response)
+    if isinstance(response, dict) and "errorCode" in response:
+        if response["message"] == "BAD_JSON_FORMAT":
+            logPrint("格式错误！\nFormat error!")
+        else:
+            logPrint("未知错误。\nUnknown error.")
+    else:
+        time.sleep(GLOBAL_RESPONSE_LAG)
+        lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+        if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
+            logPrint(lobby_information)
+            if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
+                logPrint("您还未创建任何房间。请创建一个排位小队后再检查位置。\nYou're not in any lobby. Please first create a ranked party and then check the positions.")
+            else:
+                logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
+        else:
+            if lobby_information["localMember"]["firstPositionPreference"] == firstPreference and lobby_information["localMember"]["secondPositionPreference"] == secondPreference:
+                logPrint("位置设置成功。\nPosition configuration succeeded.")
+            else:
+                logPrint("位置设置失败。请检查小队是否支持位置选择器。\nPosition configuration failed. Please check if the current party supports position selector.")
+    # else:
+    #     logPrint("当前模式不支持位置选择。\nThe current mode doesn't support position selection.")
+
+async def configure_quickplay_slot(connection: Connection) -> None:
+    lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+    logPrint('请按照以下步骤完成英雄选择。在后续任何步骤，输入“0”以返回上一步。\nPlease follow the steps below to determine the quickplay slots. Submit "0" to return to the last step at any subsequent step.')
+    slotId: int = 1
+    body: dict[str, Any] = []
+    while slotId <= 2:
+        if slotId == 0:
+            break
+        elif slotId == 1:
+            logPrint("按回车键以设置第一个英雄。\nPress Enter to set Slot 1.")
+            tmp: str = logInput()
+            if tmp == "0":
+                slotId -= 1
+                continue
+        elif slotId == 2:
+            logPrint('按回车键以设置第二个英雄。输入“-1”以跳过该英雄。\nPress Enter to set Slot 2. Submit "-1" to omit this slot.')
+            tmp = logInput()
+            if tmp == "0":
+                slotId -= 1
+                continue
+            elif tmp == "-1":
+                break
+        else:
+            logPrint("发现异常槽位！请联系开发人员检查和调试代码。\nAn unexpected slot is found! Please contact the developer to check and debug the code.")
+            break
+        slot_got: bool = False
+        championId: int = 0
+        perkStr: str = ""
+        position: str = ""
+        selectedSkinId: int = 0
+        spell1Id: int = 0
+        spell2Id: int = 0
+        step: int = 1
+        while step <= 5:
+            if step == 0:
+                if slotId > 1:
+                    body.pop() #在第二步返回上一层，意味着要重新设置第一个英雄（To return to the last step of Step 2, the first slot should be reset）
+                slotId -= 2
+                break
+            elif step == 1:
+                logPrint("第一步：请选择一个英雄。\nStep 1: Please select a champion.")
+                LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)
+                LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict.get(x, []), LoLChampion_df["id"][1:]))
+                LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
+                LoLChampion_df_query_initial: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print + ["colloq"]] #代表初始值（Represent the initial value）
+                LoLChampion_df_query: pandas.DataFrame = LoLChampion_df_query_initial #代表查询过程中的值（Represent the value during a query）
+                LoLChampion_df_selected: pandas.DataFrame = pandas.concat([LoLChampion_df.iloc[:1, :], LoLChampion_df[(LoLChampion_df["freeToPlay"] == "√") | (LoLChampion_df["ownership: owned"] == "√") | (LoLChampion_df["ownership: rental: rented"] == "√")]], ignore_index = True)
+                print(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print])[0]) #虽然这里输出的是筛选后的表格，但实际上用户仍然可以尝试选择不可用的英雄（Although the selected table is output here, users can still try choosing unavailable champions）
+                log.write(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
+                logPrint('请输入英雄的序号或者名称。输入“00”以从头筛选。\nPlease input the id or name of a champion. Submit "00" to de novo filter champions.')
+                while True:
+                    champion_queryStr: str = logInput()
+                    if champion_queryStr == "":
+                        continue
+                    elif champion_queryStr == "-1":
+                        championId = -1
+                        break
+                    elif champion_queryStr == "0":
+                        step -= 2
+                        break
+                    elif champion_queryStr == "-3":
+                        championId = -3
+                        break
+                    else:
+                        break_flag, championId, LoLChampion_df_query = filter_champion(champion_queryStr, LoLChampion_df_query, LoLChampion_df_query_initial)
+                        if break_flag:
+                            break
+            elif step == 2:
+                logPrint("第二步：请选择一个分路。\nStep 2: Please select a position.\n1\t上路（Top）\n2\t打野（Jungle）\n3\t中路（Middle）\n4\t下路（Bottom）\n5\t辅助（Support）")
+                slotPositions = ["TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"]
+                while True:
+                    position_index = logInput()
+                    if position_index == "":
+                        continue
+                    elif position_index == "-1":
+                        position = "UNSELECTED"
+                        break
+                    elif position_index[0] == "0":
+                        step -= 2
+                        break
+                    elif position_index in list(map(str, range(1, 6))):
+                        position_index = int(position_index)
+                        position = slotPositions[position_index - 1]
+                        break
+                    else:
+                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            elif step == 3:
+                logPrint("第三步：请选择召唤师技能。\nStep 3: Please select the summoner spells.")
+                available_spells: list[int] = available_spell_dict[lobby_information["gameConfig"]["gameMode"]]
+                for spellId in sorted(available_spells):
+                    spell = spells[spellId]
+                    logPrint("%d\t%s" %(spellId, spell["name"]))
+                logPrint("请依次输入两个召唤师技能的序号，以空格为分隔符：\nPlease input the two spellIds, split by space:")
+                while True:
+                    spell_str: str = logInput()
+                    if spell_str == "":
+                        continue
+                    elif spell_str == "0":
+                        step -= 2
+                        break
+                    elif spell_str == "0 0":
+                        spell1Id: int = 0
+                        spell2Id: int = 0
+                        break
+                    else:
+                        selectedSpellIds: list[str] = spell_str.split()
+                        if len(selectedSpellIds) != 2:
+                            logPrint("请输入两个召唤师技能的序号！\nPlease submit two spellIds!")
+                        else:
+                            try:
+                                selectedSpellIds: list[int] = list(map(int, selectedSpellIds))
+                            except ValueError:
+                                logPrint("请输入整数！\nPlease input integers!")
+                            else:
+                                if len(set(selectedSpellIds)) == 1:
+                                    logPrint("请输入两个不同的召唤师技能序号！\nPlease input two different spellIds!")
+                                elif all(map(lambda x: x in available_spells, selectedSpellIds)):
+                                    spell1Id, spell2Id = selectedSpellIds
+                                    break
+                                else:
+                                    logPrint("您输入的召唤师技能序号不可用！请重新输入。\nThe selected summoner spells aren't available. Please try again.")
+            elif step == 4:
+                logPrint("第四步：请选择符文页。\nStep 4: Please select the perk page.")
+                perkPage_df: pandas.DataFrame = await get_perk_page(connection)
+                perkPage_df_fields_to_print: list[str] = ["id", "name", "isTemporary", "primaryStyleName", "secondaryStyleName", "pageKeystone name"]
+                if len(perkPage_df) == 1:
+                    logPrint("您还未创建任何符文页。\nYou've not created any page yet.")
+                else:
+                    logPrint("您的符文页如下：\nYou perk pages are listed below:")
+                    print(format_df(perkPage_df.loc[:, perkPage_df_fields_to_print], print_index = True)[0])
+                    log.write(format_df(perkPage_df.loc[:, perkPage_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+                wd: str = os.getcwd()
+                subscript_path: str = os.path.join(wd, "Customized Program 19 - Configure Perks.py")
+                logPrint("是否需要修改符文页？（输入任意键以修改，否则不修改。）\nDo you want to change any page? (Submit any non-empty string to change, or null to refuse changing.)\n请确保本程序同目录下存在符文脚本，否则无法配置相关符文。\nPlease ensure the perk program is under the same directory as this program, otherwise perk configuration can't be implemented through this program.\n文件名（File name）： Customized Program 19 - Configure Perks.py\n完整路径（Complete path）： %s" %(subscript_path))
+                change_page_str: str = logInput()
+                change_page: bool = bool(change_page_str)
+                if change_page:
+                    if os.path.exists(subscript_path):
+                        logPrint(f"正在打开（Opening）： {subscript_path}")
+                        subprocess.run(["python", subscript_path])
+                    else:
+                        logPrint('''在同目录下未发现符文脚本。取消该操作。请自行在客户端内修改。\n"Customized Program 19 - Configure Perks.py" isn't found under the same directory. This operation is cancelled. Please change inside the League Client.''')
+                logPrint("输入左侧的索引以选择一个符文页。\nSelect a page index.")
+                perkPage_df: pandas.DataFrame = await get_perk_page(connection)
+                print(format_df(perkPage_df.loc[:, perkPage_df_fields_to_print], print_index = True)[0])
+                log.write(format_df(perkPage_df.loc[:, perkPage_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+                while True:
+                    page_index: str = logInput()
+                    if page_index == "":
+                        continue
+                    elif page_index == "-1":
+                        perkStr: str = ""
+                        break
+                    elif page_index == "0":
+                        step -= 2
+                        break
+                    elif page_index in list(map(str, range(1, len(perkPage_df)))):
+                        page_index: int = int(page_index)
+                        isValid: bool = perkPage_df["isValid"][page_index] == "√"
+                        primaryPerkStyleName: str = perkPage_df["primaryStyleName"][page_index]
+                        primaryPerkStyleId: int = perkPage_df["primaryStyleId"][page_index]
+                        secondaryPerkStyleName: str = perkPage_df["secondaryStyleName"][page_index]
+                        secondaryPerkStyleId: int = perkPage_df["subStyleId"][page_index]
+                        keystoneId: int = perkPage_df["pageKeystone id"][page_index]
+                        keystoneName: str = perkPage_df["pageKeystone name"][page_index]
+                        perkIds: list[int] = perkPage_df["selectedPerkIds"][page_index]
+                        perkNames: list[str] = perkPage_df["uiPerksNames"][page_index]
+                        if isValid:
+                            logPrint("您选择了以下符文页：\nYou selected the following perk page:")
+                            logPrint("主系（Style）：%s (%d)\n副系（Substyle）：%s (%d)\n基石符文（Keystone）：%s (%d)\n符文序号列表（Perk id list）： %s\n符文名称列表（Perk name list）： %s\n" %(primaryPerkStyleName, primaryPerkStyleId, secondaryPerkStyleName, secondaryPerkStyleId, keystoneName, keystoneId, perkIds, perkNames))
+                            logPrint("输入任意非空字符串以确认选择，否则重新选择。\nSubmit any non-empty string to comfirm selection, or null to select another page.")
+                            page_confirm_str: str = logInput()
+                            page_confirm: int = bool(page_confirm_str)
+                            if page_confirm:
+                                perks_param: dict[str, list[int] | int] = {"perkIds": perkIds, "perkStyle": primaryPerkStyleId, "perkSubStyle": secondaryPerkStyleId}
+                                perkStr = json.dumps(perks_param).replace(" ", "")
+                                break
+                            else:
+                                logPrint("输入左侧的索引以选择一个符文页。\nSelect a page index.")
+                                perkPage_df = await get_perk_page(connection)
+                                print(format_df(perkPage_df.loc[:, perkPage_df_fields_to_print], print_index = True)[0])
+                                log.write(format_df(perkPage_df.loc[:, perkPage_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+                        else:
+                            logPrint("您选择了无效符文页。请重试。\nYou selected an invalid perk page. Please try again.")
+                    else:
+                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            elif step == 5:
+                logPrint("第五步：请设置个性化内容。\nStep 5: Please select cosmetics.")
+                skin_df_selected: pandas.DataFrame = pandas.concat([skin_df.iloc[:1, :], skin_df[(skin_df["disabled"] == "") & ((skin_df["ownership owned"] == "√") | (skin_df["ownership rental rented"] == "√")) & (skin_df["championId"] == championId)]], ignore_index = True)
+                if len(skin_df_selected) == 1:
+                    logPrint("无可用皮肤。将使用默认皮肤。\nThere's not any available skin. The default skin will be used.")
+                    selectedSkinId: int = 0 if championId == -1 else championId * 1000
+                    slot_got = True
+                else:
+                    logPrint("%s的可用皮肤如下：\nPickable skins of %s are as follows:" %(LoLChampions[championId]["title"], LoLChampions[championId]["alias"]))
+                    skin_df_fields_to_print: list[str] = ["id", "name"]
+                    print(format_df(skin_df_selected.loc[:, skin_df_fields_to_print], print_index = True)[0])
+                    log.write(format_df(skin_df_selected.loc[:, skin_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+                    logPrint("请选择一个皮肤：\nPlease select a skin:")
+                    while True:
+                        skin_index_str: str = logInput()
+                        if skin_index_str == "":
+                            continue
+                        elif skin_index_str == "-1":
+                            selectedSkinId = 0
+                            slot_got = True
+                            break
+                        elif skin_index_str == "0":
+                            step -= 2
+                            break
+                        elif skin_index_str in list(map(str, range(1, len(skin_df_selected)))):
+                            skin_index: int = int(skin_index_str)
+                            selectedSkinId = skin_df_selected["id"][skin_index]
+                            slot_got = True
+                            break
+                        else:
+                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            else:
+                logPrint("发现异常步骤！请联系开发人员检查和调试代码。\nAn unexpected step is found! Please contact the developer to check and debug the code.")
+                break
+            step += 1
+        if slot_got:
+            playerSlot: dict[str, str | int] = {"championId": championId, "perks": perkStr, "positionPreference": position, "skinId": selectedSkinId, "spell1": spell1Id, "spell2": spell2Id}
+            body.append(playerSlot)
+        slotId += 1
+    if len(body) > 0:
+        logPrint(body)
+        response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-lobby/v1/lobby/members/localMember/player-slots", data = body)).json()
+        logPrint(response)
+        if isinstance(response, dict) and "errorCode" in response:
+            if response["message"] == "Invalid request line":
+                logPrint("请求行无效！\nInvalid request line!")
+            elif response["message"] == "BAD_JSON_FORMAT":
+                logPrint("格式错误！\nFormat error!")
+            elif response["message"] == "INVALID_REQUEST":
+                logPrint("请求无效！\nInvalid request!")
+            else:
+                logPrint("请求失败。\nRequest failed.")
+        else:
+            logPrint("请求成功。\nRequest succeeded.")
+
+async def set_party_subteam(connection: Connection) -> None:
+    lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+    memberSlots: list[dict[str, Any]] = []
+    for member in lobby_information["members"]:
+        member_info_recapture: int = 0
+        member_info: dict[str, Any] = await get_info(connection, member["puuid"])
+        while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
+            logPrint(member_info["message"])
+            member_info_recapture += 1
+            logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of member (puuid: %s) capture failed! Recapturing this member's information ... Times tried: %d" %(member["puuid"], member_info_recapture, member["puuid"], member_info_recapture))
+            member_info = await get_info(connection, member["puuid"])
+        if not member_info["info_got"]:
+            logPrint(member_info["message"])
+            logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！\nInformation of member (puuid: %s) capture failed!" %(member["puuid"], member["puuid"]))
+        memberSlot: dict[str, Any] = {"slot": (member["subteamIndex"], member["intraSubteamPosition"]), "puuid": member["puuid"], "summonerName": get_info_name(member_info["body"]) if member_info["info_got"] else "", "selfTag": "☆" if member["puuid"] == current_info["puuid"] else ""}
+        memberSlots.append(memberSlot)
+    memberSlots = sorted(memberSlots, key = lambda x: x["slot"]) #将成员关于子阵营槽位排序（Sort the members according to the subteam slot order）
+    logPrint('请依次输入您的子阵营序号和位置，以空格为分隔符：（输入“0”以返回上一层。）\nPlease enter the subteamIndex and intraSubteamPosition one by one, split by space: (Submit "0" to return to the last step.)')
+    for memberSlot in memberSlots:
+        print("%s%s\t%s\t%s" %(memberSlot["selfTag"], memberSlot["slot"], memberSlot["puuid"], memberSlot["summonerName"]))
+    logPrint("例如，如果想要恢复您现在的位置，您可以输入：\nFor example, if you want to return to your current slot, you may input:\n%d %d" %(lobby_information["localMember"]["subteamIndex"], lobby_information["localMember"]["intraSubteamPosition"]))
+    while True:
+        slot_str: str = logInput()
+        if slot_str == "":
+            continue
+        elif slot_str == "0":
+            break
+        else:
+            try:
+                subteamIndex, intraSubteamPosition = list(map(int, slot_str.split()))
+            except Exception as e:
+                traceback_info = traceback.format_exc()
+                logPrint(traceback_info)
+                if isinstance(e, ValueError):
+                    logPrint("您输入的参数数量不符！请确保您只输入了两个参数。\nNumber of parameters mismatch! Please make sure only two parameters are submitted.")
+                elif isinstance(e, TypeError):
+                    logPrint("类型错误！请输入整数。\nType ERROR! Please submit integers.")
+                else:
+                    logPrint("未知错误。\nUnknown error.")
+                continue
+            else:
+                body: dict[str, int] = {"subteamIndex": subteamIndex, "intraSubteamPosition": intraSubteamPosition}
+                response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-lobby/v2/lobby/subteamData", data = body)).json()
+                logPrint(response)
+                if isinstance(response, dict) and "errorCode" in response:
+                    if response["httpStatus"] == 400 and response["message"] == "INVALID_REQUEST":
+                        logPrint("请求无效。请确保您的小队目前不在队列中。\nInvalid request. Please make sure your party isn't currently in queue.")
+                    elif response["httpStatus"] == 500 and response["message"] == "INVALID_LOBBY":
+                        logPrint("自定义房间不支持设置子阵营。\nSubteam configuration isn't supported in a custom lobby.")
+                    else:
+                        logPrint("未知错误。\nUnknown error.")
+                    break
+                else:
+                    time.sleep(GLOBAL_RESPONSE_LAG)
+                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                    if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
+                        logPrint(lobby_information)
+                        if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
+                            logPrint("您还未创建任何房间。请创建一个斗魂竞技场小队后再设置子阵营。\nYou're not in any lobby. Please first create a Arena party and then configure your subteam.")
+                        else:
+                            logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
+                    else:
+                        current_subteamIndex: int = lobby_information["localMember"]["subteamIndex"]
+                        current_intraSubteamPosition: int = lobby_information["localMember"]["intraSubteamPosition"]
+                        if current_subteamIndex == subteamIndex and current_intraSubteamPosition == intraSubteamPosition:
+                            logPrint("子阵营设置成功。\nSubteam configuration succeeded.")
+                        else:
+                            logPrint("子阵营设置失败。当前子阵营参数：(%d, %d)。\nSubteam configuration failed. Current subteam slot parameter: (%d, %d)." %(current_subteamIndex, current_intraSubteamPosition, current_subteamIndex, current_intraSubteamPosition))
+        #下面的代码是while循环前的一段的重复（The following code are copied from the piece in front of the while-loop） 
+        memberSlots = []
+        for member in lobby_information["members"]:
+            member_info_recapture = 0
+            member_info = await get_info(connection, member["puuid"])
+            while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
+                logPrint(member_info["message"])
+                member_info_recapture += 1
+                logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of member (puuid: %s) capture failed! Recapturing this member's information ... Times tried: %d" %(member["puuid"], member_info_recapture, member["puuid"], member_info_recapture))
+                member_info = await get_info(connection, member["puuid"])
+            if not member_info["info_got"]:
+                logPrint(member_info["message"])
+                logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！\nInformation of member (puuid: %s) capture failed!" %(member["puuid"], member["puuid"]))
+            memberSlot = {"slot": (member["subteamIndex"], member["intraSubteamPosition"]), "puuid": member["puuid"], "summonerName": get_info_name(member_info["body"]) if member_info["info_got"] else "", "selfTag": "☆" if member["puuid"] == current_info["puuid"] else ""}
+            memberSlots.append(memberSlot)
+        memberSlots = sorted(memberSlots, key = lambda x: x["slot"]) #将成员关于子阵营槽位排序（Sort the members according to the subteam slot order）
+        logPrint('请依次输入您的子阵营序号和位置，以空格为分隔符：（输入“0”以返回上一层。）\nPlease enter the subteamIndex and intraSubteamPosition one by one, split by space: (Submit "0" to return to the last step.)')
+        for memberSlot in memberSlots:
+            print("%s%s\t%s\t%s" %(memberSlot["selfTag"], memberSlot["slot"], memberSlot["puuid"], memberSlot["summonerName"]))
+        logPrint("例如，如果想要恢复您现在的位置，您可以输入：\nFor example, if you want to return to your current slot, you may input:\n%d %d" %(lobby_information["localMember"]["subteamIndex"], lobby_information["localMember"]["intraSubteamPosition"]))
+
+async def toggle_party_readiness(connection: Connection) -> None:
+    lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+    ready: bool = isinstance(lobby_information["localMember"]["memberData"], dict) and lobby_information["localMember"]["memberData"].get("isPlayerReady", "") == "true"
+    logPrint("请选择一个操作：\nPlease select an operation:\n%s1\t准备就绪（Toggle ready）\n%s2\t取消就绪（Toggle not ready）" %("☆" if not ready else "", "☆" if ready else ""))
+    while True:
+        operation: str = logInput()
+        if operation == "":
+            operation = "2" if ready else "1"
+        if operation[0] == "0":
+            break
+        elif operation[0] in {"1", "2"}:
+            body: dict[str, str] = {"isPlayerReady": "true" if operation[0] == "1" else ""}
+            response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-lobby/v2/lobby/memberData", data = body)).json()
+            logPrint(response)
+            if isinstance(response, dict) and "errorCode" in response:
+                if "Couldn't assign value to 'memberData'" in response["message"]:
+                    logPrint("请求主体格式错误！\nERROR format of the request body.")
+                else:
+                    logPrint("未知错误！\nUnknown error!")
+            else:
+                time.sleep(GLOBAL_RESPONSE_LAG)
+                lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
+                    logPrint(lobby_information)
+                    if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
+                        logPrint("您还未创建任何房间。请创建一个小队后再更改游戏模式。\nYou're not in any lobby. Please first create a party and then change the game mode.")
+                    else:
+                        logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
+                else:
+                    ready = isinstance(lobby_information["localMember"]["memberData"], dict) and lobby_information["localMember"]["memberData"].get("isPlayerReady", "") == "true"
+                    if operation[0] == "1" and ready:
+                        logPrint("您已准备就绪。\nYou're ready.")
+                        break
+                    elif operation[0] == "2" and not ready:
+                        logPrint("您已取消就绪。\nYou've toggled unready.")
+                        break
+                    else:
+                        logPrint("就绪状态切换失败。\nReadiness toggle failed.")
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+        logPrint("请选择一个操作：\nPlease select an operation:\n%s1\t准备就绪（Toggle ready）\n%s2\t取消就绪（Toggle not ready）" %("☆" if not ready else "", "☆" if ready else ""))
+
+async def configure_TFTParty_loadout(connection: Connection) -> None:
+    loadout_scope: dict[str, Any] = await (await connection.request("GET", "/lol-loadouts/v4/loadouts/scope/account")).json()
+    if isinstance(loadout_scope, dict) and "errorCode" in loadout_scope:
+        logPrint(loadout_scope)
+        logPrint("未知错误！\nUnknown error!")
+    else:
+        if len(loadout_scope) == 0:
+            logPrint("无可用赛前配置方案。请重启英雄联盟客户端后再运行本程序。\nNo available loadouts. Please restart the League Client and then run this program.")
+            loadoutId: str = str(uuid.uuid4())
+            loadoutName: str = "default"
+        else:
+            loadoutId = loadout_scope[0]["id"] #因为赛前配置在每次退出英雄联盟客户端后就没了，所以随便取一个赛前配置就行。这里取了第一个列表元素（Because loadouts aren't reserved as the user exits the League Client, any loadout is OK to use. Here the first element of the loadout scope list is used）
+            loadoutName = loadout_scope[0]["name"]
+        collection_df_fields_to_print: list[str] = ["inventoryType", "itemId", "name", "ownershipType"]
+        logPrint("请选择一项赛前配置：\nPlease select a loadout:\n1\t小小英雄（Tacticians）\n2\t进攻特效（Booms）\n3\t棋盘皮肤（Arena skins）\n4\t传送门（Portals）")
+        while True:
+            loadout_option: str = logInput()
+            if loadout_option == "":
+                continue
+            elif loadout_option[0] == "0":
+                break
+            elif loadout_option[0] in list(map(str, range(1, 5))):
+                inventoryTypes: dict[str, str] = {"1": "COMPANION", "2": "TFT_DAMAGE_SKIN", "3": "TFT_MAP_SKIN", "4": "TFT_ZOOM_SKIN"}
+                inventoryType: str = inventoryTypes[loadout_option[0]]
+                collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
+                if len(collection_df_selected) == 1:
+                    logPrint("您目前没有该类道具的使用权。\nYou don't have permissions to use any item of this inventoryType.")
+                else:
+                    logPrint('请选择您想要使用的道具：（输入-1以初始化当前选择。）\nPlease select an item to use: (Submit "-1" to initialize the current choice.)')
+                    print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
+                    log.write(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+                    while True:
+                        index_got = False
+                        item_index_str: str = logInput()
+                        if item_index_str == "":
+                            continue
+                        elif item_index_str == "0":
+                            index_got = False
+                            break
+                        elif item_index_str == "-1" or item_index_str in list(map(str, range(1, len(collection_df_selected)))):
+                            item_index: int = int(item_index_str)
+                            index_got = True
+                            break
+                        else:
+                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                    if index_got:
+                        contentId: str = "" if item_index == -1 else collection_df_selected["uuid"][item_index]
+                        itemId: int = 0 if item_index == -1 else collection_df_selected["itemId"][item_index]
+                        loadout_key: str = f"{inventoryType}_SLOT" #不是所有的配置键都符合道具类型后缀“_SLOT”的格式。比如表情（EMOTE）的配置键包括“EMOTE_WHEEL_PANEL”。但是这个格式适用于这里的四个道具类型（Not all loadout keys follows the pattern where an inventoryType is followed by "_SLOT". For example, the loadout key for EMOTE may be "EMOTE_WHEEL_PANEL". Nevertheless, this pattern applies to all of the four inventoryTypes here）
+                        body: dict[str, Any] = {"id": loadoutId, "name": loadoutName, "loadout": {loadout_key: {"inventoryType": inventoryType, "contentId": contentId, "itemId": itemId}}}
+                        response: Optional[dict[str, Any]] = await (await connection.request("PATCH", f"/lol-loadouts/v4/loadouts/{loadoutId}", data = body)).json()
+                        logPrint(response)
+                        if isinstance(response, dict) and "errorCode" in response:
+                            if response["message"] == "UpdateLoadout Failed - Loadout does not exist in cache.":
+                                logPrint("更新赛前配置失败。请检查代码为%s的赛前配置是否存在。如果不存在，请返回到选择赛前配置之前的步骤，再重试。\nLoadout update failed. Please check if the loadout of id %s still exists. If it doesn't exist, please return to the step before selecting to configure the TFT loadouts and then try again.")
+                            else:
+                                logPrint("未知错误！\nUnknown error!")
+                        else:
+                            time.sleep(GLOBAL_RESPONSE_LAG)
+                            loadout = await (await connection.request("GET", f"/lol-loadouts/v4/loadouts/{loadoutId}")).json()
+                            if loadout["loadout"][loadout_key] == body["loadout"][loadout_key]:
+                                logPrint("更新赛前配置成功。客户端内显示可能有延迟，请尝试关闭相应窗口再打开，观察配置是否更新。进入游戏即可正常使用。\nLoadout update succeeded. The League Client may not display the change properly due to a lag. Please try closing the corresponding window and then open it again to see if loadout is updated. As you enter the game, you should be using the updated loadouts.")
+                            else:
+                                logPrint("更新赛前配置失败。\nLoadout update failed.")
+            else:
+                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                continue
+            logPrint("请选择一项赛前配置：\nPlease select a loadout:\n1\t小小英雄（Tacticians）\n2\t进攻特效（Booms）\n3\t棋盘皮肤（Arena skins）\n4\t传送门（Portals）")
+
+async def check_party_leaderboard(connection: Connection, queueType: str) -> None:
+    if queueType in ["RANKED_TFT_DOUBLE_UP", "RANKED_TFT_PAIRS"]:
+        logPrint("查询该游戏模式的好友排行榜会导致英雄联盟崩溃。您确定要继续吗？（输入任意键以继续，否则拒绝。）\nFetching friends leaderboard of this mode will result in a crash of League of Legends. Do you really want to continue? (Submit any non-empty string to continue, or null to take a risk.)")
+        leaderboard_crash_continue_str: str = logInput()
+        check_confirm: bool = not bool(leaderboard_crash_continue_str)
+    else:
+        check_confirm = True
+    if check_confirm:
+        social_leaderboard_df = await sort_social_leaderboard(connection, queueType)
+        if len(social_leaderboard_df) > 1:
+            if len(social_leaderboard_df) < 4:
+                logPrint("警告：你需要有至少3名《英雄联盟》好友才能查看好友榜。\nWarning: You need at least 3 League friends to view the Friends Board.")
+            social_leaderboard_df_fields_to_print: list[str] = ["leaderboardPosition", "gameName", "tagLine", "tier", "division", "wins"]
+            print(format_df(social_leaderboard_df.loc[:, social_leaderboard_df_fields_to_print], print_index = True)[0])
+            log.write(format_df(social_leaderboard_df.loc[:, social_leaderboard_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+        else:
+            logPrint("无好友排行榜数据。\nNo rowData in Friends Leaderboard.")
+
+async def toggle_party_publicity(connection: Connection) -> None:
+    lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+    logPrint("请选择一个操作：\nPlease select a operation:\n%s1\t让小队仅能通过邀请来进入（Make party invite-only）\n%s2\t将小队公开给好友（Open party to friends）" %("☆" if lobby_information["partyType"] == "open" else "", "☆" if lobby_information["partyType"] == "closed" else ""))
+    while True:
+        operation: str = logInput()
+        if operation == "":
+            operation = "1" if lobby_information["partyType"] == "open" else "2"
+        if operation[0] == "0":
+            break
+        elif operation[0] in {"1", "2"}:
+            response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-lobby/v2/lobby/partyType", data = "closed" if operation[0] == "1" else "open")).json()
+            logPrint(response)
+            if isinstance(response, dict) and "errorCode" in response:
+                if response["message"] == "INVALID_REQUEST":
+                    logPrint("请求无效！请检查请求主体是否正确。\nInvalid request! Please check the correctness of the request body.")
+                elif response["message"] == "INVALID_LOBBY_TYPE":
+                    logPrint("请求失败！请确保您目前正处于小队而不是自定义房间中。\nRequest failed! Please make sure you're currently in a party instead of a custom lobby.")
+                elif response["message"] == "PARTY_LEADER_REQUIRED":
+                    logPrint("只有拥有者可以将小队设置为公开或私密。\nOnly the owner may open or close the party.")
+                else:
+                    logPrint("未知错误！\nUnknown error!")
+            else:
+                time.sleep(GLOBAL_RESPONSE_LAG)
+                lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
+                    logPrint(lobby_information)
+                    if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
+                        logPrint("您还未创建任何房间。请创建一个小队后再更改公开性。\nYou're not in any lobby. Please first create a party and then change its publicity.")
+                    else:
+                        logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
+                else:
+                    if operation[0] == "1" and lobby_information["partyType"] == "closed":
+                        logPrint("小队已转为私密。您的好友只能通过邀请来进入。\nYour party has become private. They can only join this party through an invitation.")
+                        break
+                    elif operation[0] == "2" and lobby_information["partyType"] == "open":
+                        logPrint("小队已向好友公开。您的好友将能够直接进入小队。\nYour party has been opened to friends. They can directly join this party now.")
+                        break
+                    else:
+                        logPrint("小队公开性切换失败。\nParty publicity toggle failed.")
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+        logPrint("请选择一个操作：\nPlease select a operation:\n%s1\t让小队仅能通过邀请来进入（Make party invite-only）\n%s2\t将小队公开给好友（Open party to friends）" %("☆" if lobby_information["partyType"] == "open" else "", "☆" if lobby_information["partyType"] == "closed" else ""))
+
+async def find_match(connection: Connection) -> None:
+    lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/lobby/matchmaking/search")).json()
+    logPrint(response)
+    if isinstance(response, dict) and "errorCode" in response:
+        await print_search_error(connection, response, lobby_information)
+    else:
+        time.sleep(GLOBAL_RESPONSE_LAG)
+        gameflow_phase = await get_gameflow_phase(connection)
+        if gameflow_phase in ["Matchmaking", "ReadyCheck"]:
+            logPrint("您已加入寻找对局的队列。\nYou joined the matchmaking queue.")
+        else:
+            logPrint("加入寻找对局队列失败。\nFailed to join the matchmaking queue.")
+
+async def manage_party(connection: Connection) -> None:
+    logPrint("请选择一个小队操作：\nPlease select a party operation:\n1\t入队准备（Prepare before in queue）\n2\t查看社交排行榜（Check friends leaderboard）\n3\t改变小队公开性（Toggle party open/closed）\n4\t更换模式（Change mode）\n5\t寻找对局（Find match）")
+    while True:
+        suboption: str = logInput()
+        if suboption == "":
+            continue
+        elif suboption[0] == "0":
+            break
+        elif suboption[0] == "1":
+            logPrint("请选择一项个人配置：\nPlease select a personal configuration to change:\n1\t选择位置（Select positions）\n2\t设置快速模式英雄选择（Configure quickplay slot）\n3\t设置子阵营（Configure subteam data）\n4\t切换就绪状态（Toggle ready）\n5\t云顶之弈赛前配置（TFT loadouts）")
+            while True:
+                config: str = logInput()
+                if config == "":
+                    continue
+                elif config[0] == "0":
+                    break
+                elif config[0] == "1":
+                    gameflow_phase: str = await get_gameflow_phase(connection)
+                    if gameflow_phase == "Lobby":
+                        await select_party_position(connection)
+                    else:
+                        logPrint("您目前不在房间内，或者正处于队列中或英雄选择阶段。\nYou're currently not in a party/lobby, in queue or during a champ select stage.")
+                elif config[0] == "2":
+                    gameflow_phase = await get_gameflow_phase(connection)
+                    if gameflow_phase == "Lobby":
+                        lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                        if lobby_information["gameConfig"]["showQuickPlaySlotSelection"]:
+                            await configure_quickplay_slot(connection)
+                        else:
+                            logPrint("当前模式不支持英雄预选。\nThis mode doesn't support slot selection.")
+                    else:
+                        logPrint("您目前不在房间内，或者正处于队列中或英雄选择阶段。\nYou're currently not in a party/lobby, in queue or during a champ select stage.")
+                elif config[0] == "3":
+                    gameflow_phase = await get_gameflow_phase(connection)
+                    if gameflow_phase == "Lobby":
+                        lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                        if lobby_information["gameConfig"]["gameMode"] == "CHERRY":
+                            await set_party_subteam(connection)
+                        else:
+                            logPrint("当前模式不支持子阵营选择。\nThis mode doesn't support subteam selection.")
+                    else:
+                        logPrint("您目前不在房间内，或者正处于队列中或英雄选择阶段。\nYou're currently not in a party/lobby, in queue or during a champ select stage.")
+                elif config[0] == "4":
+                    gameflow_phase = await get_gameflow_phase(connection)
+                    if gameflow_phase == "Lobby":
+                        await toggle_party_readiness(connection)
+                    else:
+                        logPrint("您目前不在房间内，或者正处于队列中或英雄选择阶段。\nYou're currently not in a party/lobby, in queue or during a champ select stage.")
+                elif config[0] == "5":
+                    gameflow_phase = await get_gameflow_phase(connection)
+                    if gameflow_phase == "Lobby":
+                        lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                        if lobby_information["gameConfig"]["gameMode"] == "TFT":
+                            await configure_TFTParty_loadout(connection)
+                        else:
+                            logPrint("当前游戏模式不是云顶之弈。请切换到云顶之弈模式并重试。\nThe current game mode isn't TFT. Please switch to a TFT party and try again.")
+                    else:
+                        logPrint("您目前不在房间内，或者正处于队列中或英雄选择阶段。\nYou're currently not in a party/lobby, in queue or during a champ select stage.")
+                else:
+                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                logPrint("请选择一项个人配置：\nPlease select a personal configuration to change:\n1\t选择位置（Select positions）\n2\t设置快速模式英雄选择（Configure quickplay slot）\n3\t设置子阵营（Configure subteam data）\n4\t切换就绪状态（Toggle ready）\n5\t云顶之弈赛前配置（TFT loadouts）")
+        elif suboption[0] == "2":
+            gameflow_phase = await get_gameflow_phase(connection)
+            if gameflow_phase in ["Lobby", "Matchmaking", "ReadyCheck"]:
+                lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                queueId: int = lobby_information["gameConfig"]["queueId"]
+                gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
+                gameQueues: dict[int, dict[str, Any]] = {queue["id"]: queue for queue in gameQueues_source}
+                if queueId in gameQueues and gameQueues[queueId]["isRanked"]:
+                    queueType: str = gameQueues[queueId]["type"]
+                    await check_party_leaderboard(connection, queueType)
+                else:
+                    logPrint("当前房间不支持查询好友排行榜。\nThis party doesn't support Friends Leaderboard.")
+            else:
+                logPrint("您目前不在房间内，或者正处于英雄选择阶段。\nYou're currently not in a party/lobby, or during a champ select stage.")
+        elif suboption[0] == "3":
+            gameflow_phase = await get_gameflow_phase(connection)
+            if gameflow_phase == "Lobby":
+                await toggle_party_publicity(connection)
+            else:
+                logPrint("您目前不在房间内，或者正处于队列中或英雄选择阶段。\nYou're currently not in a party/lobby, in queue or during a champ select stage.")
+        elif suboption[0] == "4":
+            gameflow_phase = await get_gameflow_phase(connection)
+            if gameflow_phase == "Lobby":
+                lobby_changed: bool = await create_lobby(connection)
+                if lobby_changed:
+                    return ""
+            else:
+                logPrint("您目前不在房间内，或者正处于队列中或英雄选择阶段。\nYou're currently not in a party/lobby, in queue or during a champ select stage.")
+        elif suboption[0] == "5":
+            gameflow_phase = await get_gameflow_phase(connection)
+            if gameflow_phase == "Lobby":
+                await find_match(connection)
+            else:
+                logPrint("您目前不在房间内，或者正处于队列中或英雄选择阶段。\nYou're currently not in a party/lobby, in queue or during a champ select stage.")
+        else:   
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+        logPrint("请选择一个小队操作：\nPlease select a party operation:\n1\t入队准备（Prepare before in queue）\n2\t查看社交排行榜（Check friends leaderboard）\n3\t改变小队公开性（Toggle party open/closed）\n4\t更换模式（Change mode）\n5\t寻找对局（Find match）")
+
+async def add_bot(connection: Connection) -> None:
+    logPrint('请按照以下步骤添加电脑玩家。在后续任何步骤，输入“0”以返回上一步。\nPlease follow the steps below to add a bot. Submit "0" to return to the last step at any subsequent step.')
+    championId: int = 0
+    botDifficulty: str = ""
+    teamId: int = 0
+    position: str = ""
+    botUuid: str = ""
+    ready: bool = False
+    step: int = 1
+    while True:
+        if step == 0:
+            break
+        elif step == 1:
+            logPrint("第一步：请选择一个英雄。\nStep 1: Please select a champion.")
+            logPrint("请选择可用电脑玩家范围：\n1\t当前房间可用电脑英雄（Available bot champions in this lobby）\n2\t所有电脑英雄（All bot champions）")
+            while True:
+                championId_got = False
+                strategy: str = logInput()
+                if strategy == "":
+                    continue
+                elif strategy[0] == "0":
+                    championId_got = False
+                    break
+                elif strategy[0] == "1":
+                    gameflow_phase = await get_gameflow_phase(connection)
+                    if gameflow_phase == "Lobby":
+                        availableBot_df: pandas.DataFrame = await sort_available_bots(connection)
+                        availableBot_df_fields_to_print: list[str] = ["id", "name", "title", "alias", "botDifficulties"]
+                        if len(availableBot_df) == 1:
+                            logPrint("当前房间无可用电脑玩家。\nThere's not any available bot player in this lobby.")
+                        else:
+                            print(format_df(availableBot_df.loc[:, availableBot_df_fields_to_print])[0])
+                            log.write(format_df(availableBot_df.loc[:, availableBot_df_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
+                            logPrint("请输入您想要添加的电脑玩家英雄序号：\nPlease select a championId of the bot player you want to add:")
+                            while True:
+                                championId_str: str = logInput()
+                                if championId_str == "":
+                                    continue
+                                elif championId_str == "0":
+                                    break
+                                elif championId_str in list(map(str, availableBot_df["id"][1:])):
+                                    championId: int = int(championId_str)
+                                    championId_got = True
+                                    break
+                                elif championId_str in list(map(str, LoLChampions.keys())):
+                                    #logPrint("您输入的英雄没有电脑模型。请重新选择一个英雄。\nThe champion you pick doesn't have a bot enabled. Please select another champion.")
+                                    championId = int(championId_str)
+                                    championId_got = True
+                                    break
+                                else:
+                                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                    else:
+                        logPrint("您目前不在房间内，或者正处于英雄选择阶段。\nYou're currently not in a lobby, or during a champ select stage.")
+                elif strategy[0] == "2":
+                    wd: str = os.getcwd()
+                    excel_path: str = os.path.join(wd, "available-bots.xlsx").replace("\\", "/")
+                    if os.path.exists(excel_path):
+                        try:
+                            availableBot_df = pandas.read_excel(excel_path, sheet_name = "Sheet2", index_col = 0, usecols = list(range(5)))
+                        except:
+                            traceback_info = traceback.format_exc()
+                            logPrint(traceback_info)
+                            logPrint("读取可用电脑玩家工作簿的过程出现了问题。\nAn error occurred when reading the available bot workbook.")
+                        else:
+                            if all(i in availableBot_df.columns for i in ["id", "name", "title", "alias"]) and all(map(lambda x: isinstance(x, int), availableBot_df["id"][1:])):
+                                print(format_df(availableBot_df)[0])
+                                log.write(format_df(availableBot_df, width_exceed_ask = False, direct_print = False)[0] + "\n")
+                                logPrint("请输入您想要添加的电脑玩家英雄序号：\nPlease select a championId of the bot player you want to add:")
+                                while True:
+                                    championId_str = logInput()
+                                    if championId_str == "":
+                                        continue
+                                    elif championId_str == "0":
+                                        break
+                                    elif championId_str in list(map(str, availableBot_df["id"][1:])):
+                                        championId = int(championId_str)
+                                        championId_got = True
+                                        break
+                                    elif championId_str in list(map(str, LoLChampions.keys())):
+                                        #logPrint("您输入的英雄没有电脑模型。请重新选择一个英雄。\nThe champion you pick doesn't have a bot enabled. Please select another champion.")
+                                        championId = int(championId_str)
+                                        championId_got = True
+                                        break
+                                    else:
+                                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                            else:
+                                logPrint('可用电脑玩家工作簿格式错误。请通过查英雄脚本重新导出。\nAvailable bot workbook format error. Please re-export this workbook through "Customized Program 04 - Count Champion Number.py".')
+                    else:
+                        logPrint('''在同目录下未发现可用电脑玩家工作簿。是否需要自行测试所有可用电脑玩家？注意，这样会导致您退出当前房间。此过程需要花费几分钟时间。（输入任意键以开始测试，否则不测试。）\n"available-bots.xlsx" isn't found under the same directory. Do you want to traverse all champions to find all bot-enabled champions? Note: This operation will cause you to leave the current lobby. This process may take several minutes. (Submit any non-empty string to start the test, or null to refuse testing.)''')
+                        botTest_str: str = logInput()
+                        botTest: bool = bool(botTest_str)
+                        if botTest:
+                            available_bot_championIds: list[int] = list((await test_bot(connection, LoLChampions))[0].keys())
+                            LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)
+                            if len(available_bot_championIds) == 0:
+                                logPrint("没有获取到可用的电脑玩家。\nNo available bot champions found.")
+                            else:
+                                availableBot_df = pandas.concat([LoLChampion_df.iloc[:1, :], LoLChampion_df[LoLChampion_df["id"].isin(available_bot_championIds)]], ignore_index = True)
+                                availableBot_df_fields_to_print = ["id", "name", "title", "alias"]
+                                print(format_df(availableBot_df.loc[:, availableBot_df_fields_to_print])[0])
+                                log.write(format_df(availableBot_df.loc[:, availableBot_df_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
+                                logPrint("请输入您想要添加的电脑玩家英雄序号：\nPlease select a championId of the bot player you want to add:")
+                                while True:
+                                    championId_str = logInput()
+                                    if championId_str == "":
+                                        continue
+                                    elif championId_str == "0":
+                                        break
+                                    elif championId_str in list(map(str, availableBot_df["id"][1:])):
+                                        championId = int(championId_str)
+                                        championId_got = True
+                                        break
+                                    elif championId_str in list(map(str, LoLChampions.keys())):
+                                        #logPrint("您输入的英雄没有电脑模型。请重新选择一个英雄。\nThe champion you pick doesn't have a bot enabled. Please select another champion.")
+                                        championId = int(championId_str)
+                                        championId_got = True
+                                        break
+                                    else:
+                                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                else:
+                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                    continue
+                break
+            if not championId_got:
+                step -= 2
+        elif step == 2:
+            logPrint("第二步：请选择电脑玩家难度。\nStep 2: Please select a bot difficulty.\n1\t新手（TUTORIAL）\n2\t入门（INTRO）\n3\t简单（EASY）\n4\t一般（MEDIUM）\n5\t困难（HARD）\n6\t末日（UBER）\n7\t温暖局入门级（RSWARMINTRO）\n8\t入门级（RSINTRO）\n9\t新手级（RSBEGINNER）\n10\t一般级（RSINTERMEDIATE）")
+            while True:
+                botDifficulty_index_str: str = logInput()
+                if botDifficulty_index_str == "":
+                    continue
+                elif botDifficulty_index_str == "-1":
+                    botDifficulty = "NONE"
+                    break
+                elif botDifficulty_index_str == "0":
+                    step -= 2
+                    break
+                elif botDifficulty_index_str in list(map(str, range(1, 11))):
+                    botDifficulty_index: int = int(botDifficulty_index_str)
+                    botDifficulty = BOT_DIFFICULTY_LIST[botDifficulty_index]
+                    break
+                else:
+                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+        elif step == 3:
+            logPrint("第三步：请选择电脑玩家阵营。\nStep 3: Please select a team for this bot player.\n1\t蓝方（Blue）\n2\t红方（Red）")
+            while True:
+                teamId_str: str = logInput()
+                if teamId_str == "":
+                    continue
+                elif teamId_str[0] == "0":
+                    step -= 2
+                    break
+                elif teamId_str in {"1", "2"}:
+                    teamId: str = f"{teamId_str}00"
+                    break
+                else:
+                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+        elif step == 4:
+            candidatePositions: list[str] = ["TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"]
+            recommended_lanes: dict[str, bool] = {}
+            for position_iter in candidatePositions:
+                recommended_lanes[position_iter] = position_iter in recommended_position_for_champion[str(championId)]["recommendedPositions"]
+            logPrint("第四步：请选择电脑玩家分路。\nStep 4: Please select a position for this bot player.\n%s1\t上路（Top）\n%s2\t打野（Jungle）\n%s3\t中路（Middle）\n%s4\t下路（Bottom）\n%s5\t辅助（Support）" %("☆" if recommended_lanes["TOP"] else "", "☆" if recommended_lanes["JUNGLE"] else "", "☆" if recommended_lanes["MIDDLE"] else "", "☆" if recommended_lanes["BOTTOM"] else "", "☆" if recommended_lanes["UTILITY"] else "", ))
+            while True:
+                position_index_str: str = logInput()
+                if position_index_str == "":
+                    continue
+                elif position_index_str[0] == "0":
+                    step -= 2
+                    break
+                elif position_index_str[0] in list(map(str, range(1, 6))):
+                    position_index: int = int(position_index_str[0])
+                    position: str = candidatePositions[position_index - 1]
+                    break
+                else:
+                    break
+        elif step == 5:
+            logPrint("第五步：指定电脑玩家通用唯一识别码。\nStep 5: Specify the bot uuid.")
+            logPrint('是否随机生成电脑玩家通用唯一识别码？（输入任意键以自行指定，否则随机生成。输入“0”以返回上一步。）\nDo you want a random bot uuid? (Submit any non-empty string to manually specify the bot uuid, or null to randomize it. Submit "0" to return to the last step.)')
+            botUuid_strategy: str = logInput()
+            if botUuid_strategy == "0":
+                step -= 2
+            else:
+                if bool(botUuid_strategy):
+                    logPrint("请输入电脑玩家通用唯一识别码：\nPlease specify this bot's uuid:")
+                    botUuid = logInput()
+                else:
+                    botUuid: str = str(uuid.uuid4())
+        elif step == 6:
+            ready = True
+            break
+        else:
+            logPrint("发现异常步骤！请联系开发人员检查和调试代码。\nAn unexpected step is found! Please contact the developer to check and debug the code.")
+            return
+        step += 1
+    if ready:
+        body: dict[str, int | str] = {"championId": championId, "botDifficulty": botDifficulty, "teamId": teamId, "position": position, "botUuid": botUuid}
+        logPrint(body)
+        response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/bots", data = body)).json()
+        logPrint(response)
+        if isinstance(response, dict) and "errorCode" in response:
+            if response["message"] == "CUSTOMS_IN_PARTIES_NOT_ENABLED":
+                logPrint("您目前不在自定义房间内。\nYou're currently not in a custom lobby.")
+            elif f"champ ChampionBase [{championId}] cannot be a bot as it is not enabled" in response["message"]:
+                logPrint("您输入的英雄没有电脑模型。\nThe champion you pick doesn't have a bot enabled.")
+            elif f"championId associated with selected bot could not be loaded. [championId={championId}]" in response["message"]:
+                logPrint("英雄序号无效。\nInvalid championId.")
+            elif response["message"] == "{botDifficulty} is not a valid LolLobbyLobbyBotDifficulty enumeration value for 'botDifficulty'":
+                logPrint("难度无效。\nInvalid botDifficulty.")
+            elif "Server.Processing, com.riotgames.platform.game.TeamFullException" in response["message"]:
+                logPrint("%s人数已满。\n%s team is already full." %("蓝方" if teamId == "100" else "红方", "Blue" if teamId == "100" else "Red"))
+            elif "com.riotgames.platform.messaging.UnexpectedServiceException : You must be the owner of the game to add a bot" in response["message"]:
+                logPrint("您不是小队拥有者，无法进行此操作。\nYou're not the lobby owner and thus can't perform this operation.")
+            else:
+                logPrint("未知错误。\nUnknown error.")
+        else:
+            time.sleep(GLOBAL_RESPONSE_LAG) #由于服务器响应速度原因，从添加电脑到房间信息更新，需要0.2秒的缓冲时间（0.2s buffer time is needed between adding a bot and updating the lobby information due to the server response speed）
+            lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json() #在成功发送请求的情况下，这个接口不会出现问题（If the bot adding request was posted successfully, this endpoint should have any problems）
+            if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
+                logPrint(lobby_information)
+                if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
+                    logPrint("您还未创建任何房间。请创建一个自定义房间后再添加电脑玩家。\nYou're not in any lobby. Please first create a custom lobby and then add a bot player.")
+                else:
+                    logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
+            else:
+                bot_added: bool = False
+                for member in lobby_information["gameConfig"]["customTeam100"] + lobby_information["gameConfig"]["customTeam200"]:
+                    if member["isBot"] and member["botChampionId"] == championId and member["botDifficulty"] == botDifficulty and member["botPosition"] == position and member["botUuid"] == botUuid:
+                        bot_added = True
+                        break
+                if bot_added:
+                    logPrint("电脑玩家添加成功。\nBot added successfully.")
+                else:
+                    logPrint("电脑玩家添加失败。\nBot failed to be added.")
+
+async def remove_bots(connection: Connection) -> None:
+    member_df: pandas.DataFrame = await sort_lobby_members(connection)
+    member_df_fields_to_print: list[str] = ["teamId", "botChampionId", "botChampion_name", "botChampion_alias", "botPosition", "botDifficulty", "botUuid"]
+    member_df_selected: pandas.DataFrame = pandas.concat([member_df.iloc[:1, :], member_df[member_df["isBot"] == "√"]], ignore_index = True)
+    if len(member_df_selected) == 1:
+        logPrint("房间内无任何电脑玩家。\nThere's not any bot player in this lobby.")
+    else:
+        logPrint("房间内的电脑玩家如下：\nBot players in the lobby are as follows:")
+        print(format_df(member_df_selected.loc[:, member_df_fields_to_print], print_index = True)[0])
+        log.write(format_df(member_df_selected.loc[:, member_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+        logPrint("请选择您想要删除的电脑玩家：\nPlease select the bot players you want to remove:")
+        while True:
+            index_got = False
+            bot_index_str: str = logInput()
+            bot_indices: list[int] = []
+            if bot_index_str == "":
+                continue
+            elif bot_index_str[0] == "0":
+                break
+            elif bot_index_str == "all":
+                bot_indices = list(range(1, len(member_df_selected)))
+                index_got = True
+                break
+            else:
+                try:
+                    tmp = eval(bot_index_str)
+                except:
+                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                else:
+                    if isinstance(tmp, int):
+                        if tmp >= 1 and tmp < len(member_df_selected):
+                            bot_indices = [tmp]
+                            index_got = True
+                            break
+                        else:
+                            logPrint("请输入一个小于%d的正整数。\nPlease input a positive integer less than %d." %(len(member_df_selected), len(member_df_selected)))
+                    elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int), tmp)):
+                        if all(map(lambda x: x >= 1 and x < len(member_df_selected), tmp)):
+                            bot_indices = sorted(set(tmp))
+                            index_got = True
+                            break
+                        else:
+                            logPrint("请输入小于%d的正整数。\nPlease input positive integers less than %d." %(len(member_df_selected), len(member_df_selected)))
+                    else:
+                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+        if index_got:
+            for bot_index in bot_indices:
+                summonerInternalName: str = member_df_selected["botId"][bot_index]
+                botUuidToDelete: str = member_df_selected["botUuid"][bot_index]
+                botTeamId: str = member_df_selected["teamId"][bot_index]
+                botChampion_name: str = member_df_selected["botChampion_name"][bot_index]
+                botChampion_alias: str = member_df_selected["botChampion_alias"][bot_index]
+                response: Optional[dict[str, Any]] = await (await connection.request("DELETE", f"/lol-lobby/v1/lobby/custom/bots/{summonerInternalName}/{botUuidToDelete}/{botTeamId}")).json()
+                logPrint(response)
+                if isinstance(response, dict) and "errorCode" in response:
+                    if response["message"] == "CUSTOMS_IN_PARTIES_NOT_ENABLED":
+                        logPrint("您目前不在自定义房间内。\nYou're currently not in a custom lobby.")
+                    elif response["message"] == f"Unable to delete custom bot, cannot find bot with summonerInternalName {summonerInternalName}":
+                        logPrint("未找到该电脑玩家。\nThis bot isn't found.")
+                    elif "com.riotgames.platform.messaging.UnexpectedServiceException : You must be the owner of the game to remove a bot" in response["message"]:
+                        logPrint("您不是小队拥有者，无法进行此操作。\nYou're not the lobby owner and thus can't perform this operation.")
+                    else:
+                        logPrint("未知错误。\nUnknown error.")
+                    break
+                else:
+                    time.sleep(GLOBAL_RESPONSE_LAG)
+                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                    if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
+                        logPrint(lobby_information)
+                        if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
+                            logPrint("您还未创建任何房间。请创建一个自定义房间后再尝试删除电脑玩家。\nYou're not in any lobby. Please first create a custom lobby and then try deleting bot players.")
+                        else:
+                            logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
+                        break
+                    else:
+                        current_botUuids = set(map(lambda x: x["botUuid"], lobby_information["gameConfig"]["customTeam100"] + lobby_information["gameConfig"]["customTeam200"] + lobby_information["members"]))
+                        if botUuidToDelete in current_botUuids:
+                            logPrint("删除%s失败。\nFailed to remove bot %s (%s)." %(botChampion_name, botChampion_alias, botUuidToDelete))
+                        else:
+                            logPrint("删除%s成功。\nSuccessfully removed bot %s (%s)."%(botChampion_name, botChampion_alias, botUuidToDelete))
+
+async def switch_team(connection: Connection) -> None:
+    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+    currentTeam: str = "SPECTATOR" if lobby_information["localMember"]["isSpectator"] else "TEAM1" if current_info["puuid"] in list(map(lambda x: x["puuid"], lobby_information["gameConfig"]["customTeam100"])) else "TEAM2" if current_info["puuid"] in list(map(lambda x: x["puuid"], lobby_information["gameConfig"]["customTeam200"])) else "UNKNOWN"
+    team1_highlight: bool = (currentTeam == "SPECTATOR" or currentTeam == "TEAM2") and len(lobby_information["gameConfig"]["customTeam100"]) < lobby_information["gameConfig"]["maxTeamSize"]
+    team2_highlight: bool = currentTeam == "TEAM1" and len(lobby_information["gameConfig"]["customTeam200"]) < lobby_information["gameConfig"]["maxTeamSize"]
+    logPrint("请选择您想要加入的队伍：\nPlease select a team to join:\n%s1\t队伍1（TEAM1）\n%s2\t队伍2（TEAM2）\n3\t观战者（SPECTATOR）" %("☆" if team1_highlight else "", "☆" if team2_highlight else ""))
+    while True:
+        switch_team: bool = False
+        team_option: str = logInput()
+        if team_option == "":
+            if team1_highlight:
+                targetTeam: str = "TEAM1"
+                switch_team = True
+                break
+            elif team2_highlight:
+                targetTeam = "TEAM2"
+                switch_team = True
+                break
+            else:
+                continue
+        elif team_option[0] == "0":
+            targetTeam = ""
+            break
+        elif team_option[0] in list(map(str, range(1, 4))):
+            targetTeam = "TEAM1" if team_option[0] == "1" else "TEAM2" if team_option[0] == "2" else "SPECTATOR"
+            switch_team = True
+            break
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+    if switch_team:
+        if lobby_information["gameConfig"]["isCustom"] and lobby_information["multiUserChatId"].endswith("-team-select"): #旧版本自定义房间接口的特征（A feature of the old custom lobby API）
+            if targetTeam == "SPECTATOR":
+                response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/switch-teams?team=spectator")).json()
+                logPrint(response)
+                if isinstance(response, dict) and "errorCode" in response:
+                    if response["httpStatus"] == 500:
+                        if response["message"] == "NOT_SUPPORTED":
+                            logPrint("当前游戏状态或者接口版本不支持此操作。\nYour current gameflow phase or API version don't support this operation.")
+                        elif response["message"] == "Failed to switch to observer: Error response for POST /lol-login/v1/session/invoke: LCDS invoke to gameService.switchPlayerToObserverV2 failed: Server.Processing, com.riotgames.platform.messaging.UnexpectedServiceException : Last player in game cannot switch to observer!":
+                            logPrint("在自定义游戏没有其他玩家的情况下你无法观战。\nYou cannot become a spectator if there are no other players in this custom game.")
+                        else:
+                            logPrint("未知错误。\nUnknown error.")
+                    elif response["httpStatus"] == 400 and response["message"] == "TEAM_SIZE_LIMIT":
+                        logPrint("观战人数已满。\nSpectator number has reached the limit.")
+                    else:
+                        logPrint("观战失败。\nSpectate failed.")
+                else:
+                    time.sleep(GLOBAL_RESPONSE_LAG)
+                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                    if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
+                        logPrint(lobby_information)
+                        if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
+                            logPrint("您还未创建任何房间。请创建一个自定义房间后再更换队伍。\nYou're not in any lobby. Please first create a custom lobby and then switch the team.")
+                        else:
+                            logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
+                    else:
+                        if current_info["puuid"] in set(map(lambda x: x["puuid"], lobby_information["gameConfig"]["customSpectators"])):
+                            logPrint("您已成为观战者。\nYou're now a spectator.")
+                        else:
+                            logPrint("观战失败。\nSpectate failed.")
+            else:
+                preTeamId: str = lobby_information["localMember"]["teamId"]
+                response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/switch-teams")).json()
+                logPrint(response)
+                if isinstance(response, dict) and "errorCode" in response:
+                    if response["httpStatus"] == 500:
+                        if response["message"] == "NOT_SUPPORTED":
+                            logPrint("当前游戏状态或者接口版本不支持此操作。\nYour current gameflow phase or API version don't support this operation.")
+                        elif response["message"] == "Failed to switch team: Error response for POST /lol-login/v1/session/invoke: LCDS invoke to gameService.switchTeamsV2 failed: Server.Processing, com.riotgames.platform.game.InvalidGameStateException : null":
+                            logPrint("您已在英雄选择阶段。\nYou're already during a champ select stage.")
+                        elif response["message"] == "Couldn't switch team, invalid team argument":
+                            logPrint("您目前正在观战。请尝试加入一个队伍再使用此操作。\nYou're now a spectator. Please join a team before using this operation.")
+                        else:
+                            logPrint("未知错误。\nUnknown error.")
+                    else:
+                        logPrint("未知错误。\nUnknown error.")
+                else:
+                    time.sleep(GLOBAL_RESPONSE_LAG)
+                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                    if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
+                        logPrint(lobby_information)
+                        if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
+                            logPrint("您还未创建任何房间。请创建一个自定义房间后再更换队伍。\nYou're not in any lobby. Please first create a custom lobby and then switch the team.")
+                        else:
+                            logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
+                    else:
+                        postTeamId: str = lobby_information["localMember"]["teamId"]
+                        if preTeamId == postTeamId:
+                            logPrint("更换队伍失败。请检查对方是否满员，或者等待一段时间再观察是否更换成功。\nTeam switch failed. Please check if the opponent team is full, or wait a moment to see if this switch will succeed.")
+                        else:
+                            if postTeamId == 0:
+                                logPrint("小队不支持此操作。\nA party doesn't support this operation.")
+                            elif postTeamId == 100:
+                                logPrint("您已加入蓝方。\nYou joined the blue team.")
+                            elif postTeamId == 200:
+                                logPrint("您已加入红方。\nYou joined the red team.")
+                            else:
+                                logPrint(f"您加入了一个未知阵营。\nYou joined an unknown team ({postTeamId}).")
+        else:
+            response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-lobby/v2/lobby/team/{targetTeam}")).json()
+            logPrint(response)
+            if isinstance(response, dict) and "errorCode" in response:
+                if response["httpStatus"] == 400:
+                    if response["message"] == "INVALID_REQUEST":
+                        logPrint("请求无效！请确保您目前正在自定义房间内。\nInvalid request! Please make sure you're in a custom lobby now.")
+                    elif response["message"] == "TEAM_SIZE_LIMIT":
+                        logPrint("更换队伍失败。请检查%s是否满员。\nTeam switch failed. Please check if %s is full." %("队伍1" if targetTeam == "TEAM1" else "队伍2" if targetTeam == "TEAM2" else "观战者队伍", "TEAM 1" if targetTeam == "TEAM1" else "TEAM 2" if targetTeam == "TEAM2" else "the SPECTATORS team"))
+                    else:
+                        logPrint("未知错误。\nUnknown error.")
+                elif response["httpStatus"] == 500:
+                    if response["message"] == "INVALID_LOBBY":
+                        logPrint("房间类型不正确。\nIncorrect lobby type.")
+                    else:
+                        logPrint("未知错误。\nUnknown error.")
+                else:
+                    logPrint("未知错误。\nUnknown error.")
+            else:
+                time.sleep(GLOBAL_RESPONSE_LAG)
+                lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
+                    logPrint(lobby_information)
+                    if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
+                        logPrint("您还未创建任何房间。请创建一个自定义房间后再更换队伍。\nYou're not in any lobby. Please first create a custom lobby and then switch the team.")
+                    else:
+                        logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
+                else:
+                    if targetTeam == "TEAM1" and current_info["puuid"] in set(map(lambda x: x["puuid"], lobby_information["gameConfig"]["customTeam100"])) or targetTeam == "TEAM2" and current_info["puuid"] in set(map(lambda x: x["puuid"], lobby_information["gameConfig"]["customTeam200"])) or targetTeam == "SPECTATOR" and current_info["puuid"] in set(map(lambda x: x["puuid"], lobby_information["gameConfig"]["customSpectators"])):
+                        logPrint("您已加入%s。\nYou joined %s." %("队伍1" if targetTeam == "TEAM1" else "队伍2" if targetTeam == "TEAM2" else "观战者队伍", "TEAM 1" if targetTeam == "TEAM1" else "TEAM 2" if targetTeam == "TEAM2" else "the SPECTATORS team"))
+                    else:
+                        logPrint("更换队伍失败。请检查%s是否满员，或者等待一段时间再观察是否更换成功。\nTeam switch failed. Please check if %s is full, or wait a moment to see if this switch will succeed." %("队伍1" if targetTeam == "TEAM1" else "队伍2" if targetTeam == "TEAM2" else "观战者队伍", "TEAM 1" if targetTeam == "TEAM1" else "TEAM 2" if targetTeam == "TEAM2" else "the SPECTATORS team"))
+
+async def start_custom_game(connection: Connection) -> None:
+    lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+    if lobby_information["gameConfig"]["isCustom"] and lobby_information["multiUserChatId"].endswith("-team-select"):
+        response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/start-champ-select")).json()
+        logPrint(response)
+        if isinstance(response, dict) and "errorCode" in response:
+            if response["message"] == "NOT_SUPPORTED":
+                logPrint("您目前不在自定义房间内。\nYou're currently not in a custonm lobby.")
+            elif response["message"] == "Custom lobby must be in team select to transition to StartChampSelect":
+                logPrint("该房间已进入英雄选择阶段。\nThis lobby has already entered the champ select stage.")
+            elif "com.riotgames.platform.messaging.UnexpectedServiceException : Only the owner of the game can move it into the Champion Selection state!" in response["message"]:
+                logPrint("你必须等待对局的拥有者开始这场对局。\nYou must wait for the game owner to start the game.")
+            elif "com.riotgames.platform.game.GameStartChampionSelectionException : Insufficient players in game." in response["message"]:
+                logPrint("没有足够的玩家来开始游戏。\nNot enough players to start game.")
+            else:
+                logPrint("未知错误。\nUnknown error.")
+        else:
+            time.sleep(GLOBAL_RESPONSE_LAG)
+            gameflow_phase = await get_gameflow_phase(connection)
+            if gameflow_phase == "ChampSelect":
+                logPrint("您已进入英雄选择阶段。\nYou've started champion select.")
+                return ""
+            else:
+                logPrint("游戏开始失败。\nGame failed to start.")
+    else:
+        response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/lobby/matchmaking/search")).json()
+        logPrint(response)
+        if isinstance(response, dict) and "errorCode" in response:
+            await print_search_error(connection, response, lobby_information)
+        else:
+            time.sleep(GLOBAL_RESPONSE_LAG)
+            gameflow_phase = await get_gameflow_phase(connection)
+            if gameflow_phase == "ChampSelect":
+                logPrint("您已进入英雄选择阶段。\nYou entered the champ select stage.")
+                return ""
+            else:
+                logPrint("进入英雄选择阶段失败。\nYou failed to enter the champ select stage.")
+
+async def manage_lobby(connection: Connection) -> None:
+    logPrint("请选择一个自定义房间操作：\nPlease select a lobby operation:\n1\t添加电脑玩家（Add a bot）\n2\t批量添加电脑玩家（Add bots）\n3\t移除电脑玩家（Remove bots）\n4\t交换队伍（Switch team）\n5\t更换模式（Change mode）\n6\t开始游戏（Start game）")
+    while True:
+        suboption: str = logInput()
+        if suboption == "":
+            continue
+        elif suboption[0] == "0":
+            break
+        elif suboption[0] == "1":
+            gameflow_phase: str = await get_gameflow_phase(connection) #每一个操作都需要保证房间信息是可用的（Each operation requires the lobby information to be available）
+            if gameflow_phase == "Lobby" or gameflow_phase == "ChampSelect":
+                lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                if lobby_information["localMember"]["isLeader"]:
+                    await add_bot(connection)
+                else:
+                    logPrint("您不是小队拥有者，无法进行此操作。\nYou're not the lobby owner and thus can't perform this operation.")
+            else:
+                logPrint("您目前不在房间内。\nYou're currently not in a lobby.")
+        elif suboption[0] == "2":
+            if gameflow_phase == "Lobby" or gameflow_phase == "ChampSelect":
+                lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                if lobby_information["localMember"]["isLeader"]:
+                    if os.path.exists("available-bots.xlsx"):
+                        await add_bots_team(connection, teamId = "100")
+                        await add_bots_team(connection, teamId = "200")
+                    else:
+                        logPrint("未在同目录下发现可用电脑玩家工作簿。请使用查英雄脚本生成该工作簿。\nAvailable bot workbook isn't found under the same directory. Please generate it through Customized Program 04.")
+                else:
+                    logPrint("您不是小队拥有者，无法进行此操作。\nYou're not the lobby owner and thus can't perform this operation.")
+            else:
+                logPrint("您目前不在房间内。\nYou're currently not in a lobby.")
+        elif suboption[0] == "3":
+            gameflow_phase = await get_gameflow_phase(connection)
+            if gameflow_phase == "Lobby" or gameflow_phase == "ChampSelect":
+                lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                if lobby_information["localMember"]["isLeader"]:
+                    await remove_bots(connection)
+                else:
+                    logPrint("您不是小队拥有者，无法进行此操作。\nYou're not the lobby owner and thus can't perform this operation.")
+            else:
+                logPrint("您目前不在房间内。\nYou're currently not in a lobby.")
+        elif suboption[0] == "4":
+            gameflow_phase = await get_gameflow_phase(connection)
+            if gameflow_phase == "Lobby":
+                await switch_team(connection)
+            else:
+                logPrint("您目前不在房间内，或者正处于英雄选择阶段。\nYou're currently not in a lobby, or during a champ select stage.")
+        elif suboption[0] == "5": #自定义房间内没有更换模式的按钮，一旦通过鼠标点击退出房间，后续再创建新房间时，房间内就只会有自己一个人。但是在不退出原房间的情况下，房主在通过接口创建一个新的自定义房间时，旧房间的玩家会收到邀请，可视为更换模式（In the custom lobby, there's not a button to change the mode, so once the user exits the lobby by clicking the button and then creates a lobby, there'll be only the user itself in the new lobby. However, without exiting the old lobby, if the party owner creates a new custom lobby through the lobby creating endpoint, each player in the old lobby will receive an invitation, and for that reason this part may resemble "Change Mode"）
+            gameflow_phase = await get_gameflow_phase(connection)
+            if gameflow_phase == "Lobby":
+                lobby_changed: bool = await create_lobby(connection)
+                if lobby_changed:
+                    return ""
+            else:
+                logPrint("您目前不在房间内，或者正处于英雄选择阶段。\nYou're currently not in a lobby, or during a champ select stage.")
+        elif suboption[0] == "6":
+            gameflow_phase = await get_gameflow_phase(connection)
+            if gameflow_phase == "Lobby":
+                lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                if lobby_information["localMember"]["isLeader"]:
+                    await start_custom_game(connection)
+                else:
+                    logPrint("你不是对局的拥有者，无法执行此操作。\nYou're not the party owner and thus can't perform this operation.")
+            else:
+                logPrint("您目前不在房间内，或者正处于英雄选择阶段。\nYou're currently not in a lobby, or during a champ select stage.")
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+        logPrint("请选择一个自定义房间操作：\nPlease select a lobby operation:\n1\t添加电脑玩家（Add a bot）\n2\t批量添加电脑玩家（Add bots）\n3\t移除电脑玩家（Remove bots）\n4\t交换队伍（Switch team）\n5\t更换模式（Change mode）\n6\t开始游戏（Start game）")
+
+async def invite(connection: Connection) -> None: #相比聊天脚本，这里设计的很简约。因为本脚本所要实现的目的是实现每个接口的用法，不追求在此基础上对输入输出做进一步的优化。换句话说，聊天脚本中的对应功能可视为此处的一个升级版（Compared with the similar function in Customized Program 16, the design here is fairly simple. This is because this program only aims at implementing each endpoint, but not optimize I/O further. In other words, the corresponding function in Customized Program 16 may be regarded as an upgraded version of here）
+    lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+    lobbyMember_summonerIds: list[int] = list(map(lambda x: x["summonerId"], lobby_information["members"]))
+    logPrint('请输入您想要邀请的玩家的召唤师名。输入“-1”以退出。\nPlease submit the summoner name of the player you want to invite. Submit "-1" to exit.')
+    while True:
+        invite_str: str = logInput()
+        if invite_str == "":
+            continue
+        elif invite_str == "-1":
+            break
+        else:
+            invitee_info: dict[str, Any] = await get_info(connection, invite_str)
+            if invitee_info["info_got"]:
+                if invitee_info["selfInfo"]:
+                    logPrint("你不能邀请你自己，亲～\nYou can't invite yourself, silly xD")
+                else:
+                    invitee_summonerName: str = get_info_name(invitee_info["body"])
+                    invitee_summonerId: int = invitee_info["body"]["summonerId"]
+                    if invitee_summonerId in lobbyMember_summonerIds:
+                        logPrint(f"{invitee_summonerName}已在房间内。\n{invitee_summonerName} is already in the lobby.")
+                    else:
+                        body: list[dict[str, int]] = [{"toSummonerId": invitee_summonerId}]
+                        response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/lobby/invitations", data = body)).json()
+                        logPrint(response)
+                        if isinstance(response, dict) and "errorCode" in response:
+                            logPrint("邀请失败。\nFailed to send the invitation.")
+                        else:
+                            time.sleep(GLOBAL_RESPONSE_LAG)
+                            lobby_invitations: dict[str, Any] | list[dict[str, Any]] = await (await connection.request("GET", "/lol-lobby/v2/lobby/invitations")).json()
+                            if isinstance(lobby_invitations, dict) and "errorCode" in lobby_invitations:
+                                if lobby_invitations["httpStatus"] == 404 and lobby_invitations["message"] == "LOBBY_NOT_FOUND":
+                                    logPrint("您已离开房间。\nYou've left the original lobby.")
+                                    break
+                            else:
+                                accepted_invitations: list[dict[str, Any]] = filter(lambda x: x["state"] == "Accepted", lobby_invitations)
+                                pending_invitations: list[dict[str, Any]] = filter(lambda x: x["state"] == "Pending", lobby_invitations)
+                                accepted_summonerIds: list[str] = list(map(lambda x: x["toSummonerId"], accepted_invitations))
+                                pending_summonerIds: list[str] = list(map(lambda x: x["toSummonerId"], pending_invitations))
+                                if invitee_summonerId in accepted_summonerIds:
+                                    logPrint(f"{invitee_summonerName}已在房间内。\n{invitee_summonerName} is already in the party/lobby.")
+                                elif invitee_summonerId in pending_summonerIds:
+                                    logPrint(f"{invitee_summonerName}已收到邀请。\n{invitee_summonerName} received your invitation.")
+                                else:
+                                    logPrint(f"{invitee_summonerName}未能收到邀请。这可能是因为您还没有邀请权限，您的房间已经满员，对方不在线，对方只接受好友游戏邀请，或者对方将您拉入了聊天黑名单。\n{invitee_summonerName} didn't receive your invitation. Maybe you don't have invite priviledges, your lobby is already full, they're offline, they allow game invites only from friends, or they blocked you.")
+            else:
+                logPrint(invitee_info["message"])
+
+async def manage_lobby_member(connection: Connection) -> None:
+    member_df: pandas.DataFrame = await sort_lobby_members(connection)
+    member_df_fields_to_print: list[str] = ["gameName", "tagLine", "summonerLevel", "summonerIcon_title"]
+    member_df_selected: pandas.DataFrame = pandas.concat([member_df.iloc[:1, :], member_df[member_df["isBot"] == ""]], ignore_index = True)
+    if len(member_df_selected) == 2:
+        logPrint("当前房间内无其它人类成员。\nThere's not any other human member in this party/lobby.")
+    else:
+        logPrint("当前房间内的人类玩家如下：\nHuman players in this lobby are as follows:")
+        print(format_df(member_df_selected.loc[:, member_df_fields_to_print], print_index = True)[0])
+        log.write(format_df(member_df_selected.loc[:, member_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+        logPrint("请选择一名成员：\nPlease select a member:")
+        while True:
+            index_got = False
+            member_index_str: str = logInput()
+            if member_index_str == "":
+                continue
+            elif member_index_str == "0":
+                index_got = False
+                break
+            elif member_index_str in list(map(str, range(1, len(member_df_selected)))):
+                member_index: int = int(member_index_str)
+                index_got = True
+            else:
+                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            if index_got:
+                member_summonerId: int = member_df_selected["summonerId"][member_index]
+                member_summonerName: str = member_df_selected["gameName"][member_index] + "#" + member_df_selected["tagLine"][member_index]
+                logPrint(f"您选择了{member_summonerName}.\nYou selected {member_summonerName}.")
+                logPrint("请选择一项操作：\nPlease select an operation:\n0\t返回上一层（Return to the last step）\n1\t晋升为小队拥有者（Promote to party owner）\n2\t将玩家移出小队（Kick player from party）\n3\t更改邀请权限（Change invite priviledge）")
+                while True:
+                    operation: str = logInput()
+                    if operation == "":
+                        continue
+                    elif operation[0] == "0":
+                        break
+                    elif operation[0] == "1":
+                        response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-lobby/v2/lobby/members/{member_summonerId}/promote")).json()
+                        if isinstance(response, dict) and "errorCode" in response:
+                            if response["message"] == "Cannot promote when not leader":
+                                logPrint("只有小队拥有者才可以将他人晋升为小队拥有者。\nOnly the party owner can promote another member to be the new party owner.")
+                            elif response["message"] == "SUMMONER_NOT_FOUND":
+                                logPrint("未找到该召唤师。或者您已经退出房间。\nSummoner not found. Or you've left the lobby.")
+                            else:
+                                logPrint("未知错误。\nUnknown error.")
+                        else:
+                            lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                            if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
+                                logPrint(lobby_information)
+                                if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
+                                    logPrint("您还未创建任何房间。请创建一个小队后再更改他人角色。\nYou're not in any lobby. Please first create a party and then change another member's role.")
+                                else:
+                                    logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
+                            else:
+                                for member in lobby_information["members"]:
+                                    if member["summonerId"] == member_summonerId:
+                                        break
+                                if member["isLeader"]:
+                                    logPrint(f"您已将{member_summonerName}晋升为新的小队拥有者。\nYou promoted {member_summonerName} as the new party owner.")
+                                else:
+                                    logPrint("晋升失败。\nPromotion failed.")
+                    elif operation[0] == "2":
+                        logPrint(f"你真的想移出{member_summonerName}吗？（输入任意非空字符串以移出，否则取消操作。）\nDo you really want to kick {member_summonerName}? (Submit any non-empty string to kick, or null to cancel.)")
+                        kick_confirm_str: str = logInput()
+                        kick_confirm: bool = bool(kick_confirm_str)
+                        if kick_confirm:
+                            response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-lobby/v2/lobby/members/{member_summonerId}/kick")).json()
+                            if isinstance(response, dict) and "errorCode" in response:
+                                if response["message"] == "INVALID_ROLE_TRANSITION":
+                                    logPrint("你不能遣离你自己。\nYou can't kick yourself.")
+                                elif response["message"] == "NOT_AUTHORIZED":
+                                    logPrint("只有小队拥有者才可以将他人移出小队。\nOnly the party owner can kick another member from the party/lobby.")
+                                elif response["message"] == "SUMMONER_NOT_FOUND":
+                                    logPrint("未找到该召唤师。或者您已经退出房间。\nSummoner not found. Or you've left the lobby.")
+                                else:
+                                    logPrint("未知错误。\nUnknown error.")
+                            else:
+                                lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                                if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
+                                    logPrint(lobby_information)
+                                    if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
+                                        logPrint("您还未创建任何房间。请创建一个小队后再尝试将他人移出小队。\nYou're not in any lobby. Please first create a party and then try kicking a member.")
+                                    else:
+                                        logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
+                                else:
+                                    if member_summonerId in list(map(lambda x: x["summonerId"], lobby_information["members"])):
+                                        logPrint("遣离失败。\nKick failed.")
+                                    else:
+                                        logPrint(f"您已将{member_summonerName}移出该小队/房间。\nYou kicked {member_summonerName} from the party/lobby.")
+                    elif operation[0] == "3":
+                        logPrint("您想要提供还是撤回邀请权限？\nDo you want to grant or revoke invites?\n1\t提供邀请权限（Grant invites）\n2\t撤回邀请权限（Revoke invites）")
+                        while True:
+                            suboperation: str = logInput()
+                            if suboperation == "":
+                                continue
+                            elif suboperation[0] == "0":
+                                break
+                            elif suboperation[0] == "1":
+                                response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-lobby/v2/lobby/members/{member_summonerId}/grant-invite")).json()
+                                if isinstance(response, dict) and "errorCode" in response:
+                                    if response["message"] == "INVALID_MEMBER":
+                                        logPrint("你不能更改你自己的邀请权限。\nYou can't change the invite priviledge of yourself.")
+                                    elif response["message"] == "PARTY_LEADER_REQUIRED":
+                                        logPrint("只有小队拥有者才可以为他人提供邀请权限。\nOnly the party owner can grant invites to other members.")
+                                    elif response["message"] == "SUMMONER_NOT_FOUND":
+                                        logPrint("未找到该召唤师。或者您已经退出房间。\nSummoner not found. Or you've left the lobby.")
+                                    else:
+                                        logPrint("未知错误。\nUnknown error.")
+                                else:
+                                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                                    if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
+                                        logPrint(lobby_information)
+                                        if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
+                                            logPrint("您还未创建任何房间。请创建一个小队后再尝试更改他人的邀请权限。\nYou're not in any lobby. Please first create a party and then try changing another member's invite priviledge.")
+                                        else:
+                                            logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
+                                    else:
+                                        for member in lobby_information["members"]:
+                                            if member["summonerId"] == member_summonerId:
+                                                break
+                                        if member["allowedInviteOthers"]:
+                                            logPrint(f"{member_summonerName}可以邀请玩家加入这局游戏。\n{member_summonerName} may invite players to this game.")
+                                        else:
+                                            logPrint("提供邀请权限失败。\nInvite priviledge grant failed.")
+                            elif suboperation[0] == "2":
+                                response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-lobby/v2/lobby/members/{member_summonerId}/grant-invite")).json()
+                                if isinstance(response, dict) and "errorCode" in response:
+                                    if response["message"] == "INVALID_MEMBER":
+                                        logPrint("你不能更改你自己的邀请权限。\nYou can't change the invite priviledge of yourself.")
+                                    elif response["message"] == "PARTY_LEADER_REQUIRED":
+                                        logPrint("只有小队拥有者才可以撤回他人的邀请权限。\nOnly the party owner can revoke invites from other members.")
+                                    elif response["message"] == "SUMMONER_NOT_FOUND":
+                                        logPrint("未找到该召唤师。或者您已经退出房间。\nSummoner not found. Or you've left the lobby.")
+                                    else:
+                                        logPrint("未知错误。\nUnknown error.")
+                                else:
+                                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                                    if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
+                                        logPrint(lobby_information)
+                                        if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
+                                            logPrint("您还未创建任何房间。请创建一个小队后再尝试更改他人的邀请权限。\nYou're not in any lobby. Please first create a party and then try changing another member's invite priviledge.")
+                                        else:
+                                            logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
+                                    else:
+                                        for member in lobby_information["members"]:
+                                            if member["summonerId"] == member_summonerId:
+                                                break
+                                        if member["allowedInviteOthers"]:
+                                            logPrint("撤回邀请权限失败。\nInvite priviledge revoke failed.")
+                                        else:
+                                            logPrint(f"{member_summonerName}不再能邀请玩家加入这局游戏。\n{member_summonerName} may no longer invite players to this game.")
+                            else:
+                                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                                continue
+                            break
+                    else:
+                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                        continue
+                    logPrint("请选择一项操作：\nPlease select an operation:\n0\t返回上一层（Return to the last step）\n1\t晋升为小队拥有者（Promote to party owner）\n2\t将玩家移出小队（Kick player from party）\n3\t更改邀请权限（Change invite priviledge）")
+                member_df = await sort_lobby_members(connection)
+                member_df_fields_to_print = ["gameName", "tagLine", "summonerLevel", "summonerIcon_title"]
+                member_df_selected = pandas.concat([member_df.iloc[:1, :], member_df[member_df["isBot"] == ""]], ignore_index = True)
+                logPrint("当前房间内的人类玩家如下：\nHuman players in this lobby are as follows:")
+                print(format_df(member_df_selected.loc[:, member_df_fields_to_print], print_index = True)[0])
+                log.write(format_df(member_df_selected.loc[:, member_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+                logPrint("请选择一名成员：\nPlease select a member:")
+
+async def exit_lobby(connection: Connection) -> bool:
+    return_home: bool = False
+    response: Optional[dict[str, Any]] = await (await connection.request("DELETE", "/lol-lobby/v2/lobby")).json()
+    logPrint(response)
+    if isinstance(response, dict) and "errorCode" in response:
+        logPrint("退出房间失败。\nExit failed.")
+    else:
+        time.sleep(GLOBAL_RESPONSE_LAG)
+        gameflow_phase = await get_gameflow_phase(connection)
+        if gameflow_phase == "None":
+            logPrint("您已成功退出房间。\nYou've exited the lobby successfully.")
+            return_home = True
+        elif gameflow_phase == "Lobby":
+            logPrint("退出房间失败。请稍后通过客户端确认游戏状态。\nExit failed. Please check your gameflow phase in the League Client later.")
+        else:
+            logPrint("您的游戏状态发生异常。\nAn error occurred to your gameflow phase.")
+    return return_home
+
+async def output_lobby_information(connection: Connection) -> None:
+    lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+    logPrint(lobby_information)
+    with open("lobby-information.json", "w", encoding = "utf-8") as fp:
+        json.dump(lobby_information, fp, indent = 4, ensure_ascii = False)
+    logPrint('房间信息已导出到同目录下的“lobby-information.json”。\nLobby information has been exported into "lobby-information.json" under the same directory.')
+
 async def lobby_simulation(connection: Connection) -> str:
     while True:
         logPrint("请选择一个操作：\nPlease select an operation:\n1\t管理小队（Manage a party）\n2\t管理自定义房间（Manage a custom lobby）\n3\t邀请玩家（Invite to game）\n4\t聊天（Chat）\n5\t成员管理（Manage members）\n6\t输出房间信息（Print lobby information）\n7\t处理邀请（Handle invitations）\n8\t加入小队或自定义房间（Join party/lobby）\n9\t退出房间（Exit the party/lobby）\n10\t举报一名玩家（Report a player）\n11\t其它（Others）\n12\t客户端任务管理（Manage the League Client task）")
@@ -3455,1440 +4922,23 @@ async def lobby_simulation(connection: Connection) -> str:
                     if lobby_information["gameConfig"]["queueId"] == -1:
                         logPrint("自定义房间不支持此选项。\nCustom lobby doesn't support this option.")
                     else:
-                        logPrint("请选择一个小队操作：\nPlease select a party operation:\n1\t入队准备（Prepare before in queue）\n2\t查看社交排行榜（Check friends leaderboard）\n3\t改变小队公开性（Toggle party open/closed）\n4\t更换模式（Change mode）\n5\t寻找对局（Find match）")
-                        while True:
-                            suboption: str = logInput()
-                            if suboption == "":
-                                continue
-                            elif suboption[0] == "0":
-                                break
-                            elif suboption[0] == "1":
-                                logPrint("请选择一项个人配置：\nPlease select a personal configuration to change:\n1\t选择位置（Select positions）\n2\t设置快速模式英雄选择（Configure quickplay slot）\n3\t设置子阵营（Configure subteam data）\n4\t切换就绪状态（Toggle ready）\n5\t云顶之弈赛前配置（TFT loadouts）")
-                                while True:
-                                    config: str = logInput()
-                                    if config == "":
-                                        continue
-                                    elif config[0] == "0":
-                                        break
-                                    elif config[0] == "1":
-                                        gameflow_phase = await get_gameflow_phase(connection)
-                                        if gameflow_phase == "Lobby":
-                                            lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                            # if lobby_information["gameConfig"]["showPositionSelector"]: #在2026赛季的自定义房间中，需要选定位置，但是房间信息的“showPositionSelector”键的值为假。因此禁用此条件筛选（In the custom lobby in Season 2026, position is required, but the value of "showPositionSelector" key in lobby information is False. Therefore, this condition is currently disabled）
-                                            slotPositions: list[str] = ["TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY", "FILL"]
-                                            logPrint("请选择首选位置：\nPlease select your primary position:\n1\t上路（Top）\n2\t打野（Jungle）\n3\t中路（Middle）\n4\t下路/线上（Bottom/Lane）\n5\t辅助（Support）\n6\t补位（Fill）")
-                                            back: bool = False
-                                            while True:
-                                                position_index: str = logInput()
-                                                if position_index[0] == "0":
-                                                    back = True
-                                                    break
-                                                elif position_index == "-1":
-                                                    firstPreference: str = "UNSELECTED" #这里也可以是空字符串（An empty string also works here）
-                                                    break
-                                                elif position_index[0] in list(map(str, range(1, 7))):
-                                                    position_index = int(position_index[0])
-                                                    firstPreference = slotPositions[position_index - 1] #这里也可以是`str(position_index - 1)`（`str(position_index - 1)` also works here）
-                                                    break
-                                                else:
-                                                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                            if back:
-                                                logPrint("请选择一项个人配置：\nPlease select a personal configuration to change:\n1\t选择位置（Select positions）\n2\t设置快速模式英雄选择（Configure quickplay slot）\n3\t设置子阵营（Configure subteam data）\n4\t切换就绪状态（Toggle ready）\n5\t云顶之弈赛前配置（TFT loadouts）")
-                                                continue
-                                            logPrint("请选择次选位置：\nPlease select your secondary position:\n1\t上路（Top）\n2\t打野（Jungle）\n3\t中路（Middle）\n4\t下路/线上（Bottom/Lane）\n5\t辅助（Support）\n6\t补位（Fill）")
-                                            while True:
-                                                position_index = logInput()
-                                                if position_index[0] == "0":
-                                                    back = True
-                                                    break
-                                                elif position_index == "-1":
-                                                    secondPreference = "UNSELECTED"
-                                                    break
-                                                elif position_index[0] in list(map(str, range(1, 7))):
-                                                    position_index = int(position_index[0])
-                                                    secondPreference = slotPositions[position_index - 1]
-                                                    break
-                                                else:
-                                                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                            if back:
-                                                logPrint("请选择一项个人配置：\nPlease select a personal configuration to change:\n1\t选择位置（Select positions）\n2\t设置快速模式英雄选择（Configure quickplay slot）\n3\t设置子阵营（Configure subteam data）\n4\t切换就绪状态（Toggle ready）\n5\t云顶之弈赛前配置（TFT loadouts）")
-                                                continue
-                                            body: dict[str, str] = {"firstPreference": firstPreference, "secondPreference": secondPreference}
-                                            response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-lobby/v2/lobby/members/localMember/position-preferences", data = body)).json()
-                                            logPrint(response)
-                                            if isinstance(response, dict) and "errorCode" in response:
-                                                if response["message"] == "BAD_JSON_FORMAT":
-                                                    logPrint("格式错误！\nFormat error!")
-                                                else:
-                                                    logPrint("未知错误。\nUnknown error.")
-                                            else:
-                                                time.sleep(GLOBAL_RESPONSE_LAG)
-                                                lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                                if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
-                                                    logPrint(lobby_information)
-                                                    if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
-                                                        logPrint("您还未创建任何房间。请创建一个排位小队后再检查位置。\nYou're not in any lobby. Please first create a ranked party and then check the positions.")
-                                                    else:
-                                                        logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
-                                                else:
-                                                    if lobby_information["localMember"]["firstPositionPreference"] == firstPreference and lobby_information["localMember"]["secondPositionPreference"] == secondPreference:
-                                                        logPrint("位置设置成功。\nPosition configuration succeeded.")
-                                                    else:
-                                                        logPrint("位置设置失败。请检查小队是否支持位置选择器。\nPosition configuration failed. Please check if the current party supports position selector.")
-                                            # else:
-                                            #     logPrint("当前模式不支持位置选择。\nThe current mode doesn't support position selection.")
-                                        else:
-                                            logPrint("您目前不在房间内，或者正处于队列中或英雄选择阶段。\nYou're currently not in a party/lobby, in queue or during a champ select stage.")
-                                    elif config[0] == "2":
-                                        gameflow_phase = await get_gameflow_phase(connection)
-                                        if gameflow_phase == "Lobby":
-                                            lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                            if lobby_information["gameConfig"]["showQuickPlaySlotSelection"]:
-                                                skin_df_fields_to_print: list[str] = ["id", "name"]
-                                                logPrint('请按照以下步骤完成英雄选择。在后续任何步骤，输入“0”以返回上一步。\nPlease follow the steps below to determine the quickplay slots. Submit "0" to return to the last step at any subsequent step.')
-                                                slotId: int = 1
-                                                body: dict[str, Any] = []
-                                                while slotId <= 2:
-                                                    if slotId == 0:
-                                                        break
-                                                    elif slotId == 1:
-                                                        logPrint("按回车键以设置第一个英雄。\nPress Enter to set Slot 1.")
-                                                        tmp: str = logInput()
-                                                        if tmp == "0":
-                                                            slotId -= 1
-                                                            continue
-                                                    elif slotId == 2:
-                                                        logPrint('按回车键以设置第二个英雄。输入“-1”以跳过该英雄。\nPress Enter to set Slot 2. Submit "-1" to omit this slot.')
-                                                        tmp = logInput()
-                                                        if tmp == "0":
-                                                            slotId -= 1
-                                                            continue
-                                                        elif tmp == "-1":
-                                                            break
-                                                    else:
-                                                        logPrint("发现异常槽位！请联系开发人员检查和调试代码。\nAn unexpected slot is found! Please contact the developer to check and debug the code.")
-                                                        break
-                                                    slot_got: bool = False
-                                                    step: int = 1
-                                                    while step <= 5:
-                                                        if step == 0:
-                                                            if slotId > 1:
-                                                                body.pop() #在第二步返回上一层，意味着要重新设置第一个英雄（To return to the last step of Step 2, the first slot should be reset）
-                                                            slotId -= 2
-                                                            break
-                                                        elif step == 1:
-                                                            logPrint("第一步：请选择一个英雄。\nStep 1: Please select a champion.")
-                                                            LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)
-                                                            LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict.get(x, []), LoLChampion_df["id"][1:]))
-                                                            LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
-                                                            LoLChampion_df_query_initial: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print + ["colloq"]] #代表初始值（Represent the initial value）
-                                                            LoLChampion_df_query: pandas.DataFrame = LoLChampion_df_query_initial #代表查询过程中的值（Represent the value during a query）
-                                                            LoLChampion_df_selected: pandas.DataFrame = pandas.concat([LoLChampion_df.iloc[:1, :], LoLChampion_df[(LoLChampion_df["freeToPlay"] == "√") | (LoLChampion_df["ownership: owned"] == "√") | (LoLChampion_df["ownership: rental: rented"] == "√")]], ignore_index = True)
-                                                            print(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print])[0]) #虽然这里输出的是筛选后的表格，但实际上用户仍然可以尝试选择不可用的英雄（Although the selected table is output here, users can still try choosing unavailable champions）
-                                                            log.write(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
-                                                            logPrint('请输入英雄的序号或者名称。输入“00”以从头筛选。\nPlease input the id or name of a champion. Submit "00" to de novo filter champions.')
-                                                            while True:
-                                                                champion_queryStr: str = logInput()
-                                                                if champion_queryStr == "":
-                                                                    continue
-                                                                elif champion_queryStr == "-1":
-                                                                    championId = -1
-                                                                    break
-                                                                elif champion_queryStr == "0":
-                                                                    step -= 2
-                                                                    break
-                                                                elif champion_queryStr == "-3":
-                                                                    championId = -3
-                                                                    break
-                                                                else:
-                                                                    break_flag, championId, LoLChampion_df_query = filter_champion(champion_queryStr, LoLChampion_df_query, LoLChampion_df_query_initial)
-                                                                    if break_flag:
-                                                                        break
-                                                        elif step == 2:
-                                                            logPrint("第二步：请选择一个分路。\nStep 2: Please select a position.\n1\t上路（Top）\n2\t打野（Jungle）\n3\t中路（Middle）\n4\t下路（Bottom）\n5\t辅助（Support）")
-                                                            slotPositions = ["TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"]
-                                                            while True:
-                                                                position_index = logInput()
-                                                                if position_index == "":
-                                                                    continue
-                                                                elif position_index == "-1":
-                                                                    position = "UNSELECTED"
-                                                                    break
-                                                                elif position_index[0] == "0":
-                                                                    step -= 2
-                                                                    break
-                                                                elif position_index in list(map(str, range(1, 6))):
-                                                                    position_index = int(position_index)
-                                                                    position = slotPositions[position_index - 1]
-                                                                    break
-                                                                else:
-                                                                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                        elif step == 3:
-                                                            logPrint("第三步：请选择召唤师技能。\nStep 3: Please select the summoner spells.")
-                                                            available_spells: list[int] = available_spell_dict[lobby_information["gameConfig"]["gameMode"]]
-                                                            for spellId in sorted(available_spells):
-                                                                spell = spells[spellId]
-                                                                logPrint("%d\t%s" %(spellId, spell["name"]))
-                                                            logPrint("请依次输入两个召唤师技能的序号，以空格为分隔符：\nPlease input the two spellIds, split by space:")
-                                                            while True:
-                                                                spell_str: str = logInput()
-                                                                if spell_str == "":
-                                                                    continue
-                                                                elif spell_str == "0":
-                                                                    step -= 2
-                                                                    break
-                                                                elif spell_str == "0 0":
-                                                                    spell1Id: int = 0
-                                                                    spell2Id: int = 0
-                                                                    break
-                                                                else:
-                                                                    selectedSpellIds: list[str] = spell_str.split()
-                                                                    if len(selectedSpellIds) != 2:
-                                                                        logPrint("请输入两个召唤师技能的序号！\nPlease submit two spellIds!")
-                                                                    else:
-                                                                        try:
-                                                                            selectedSpellIds: list[int] = list(map(int, selectedSpellIds))
-                                                                        except ValueError:
-                                                                            logPrint("请输入整数！\nPlease input integers!")
-                                                                        else:
-                                                                            if len(set(selectedSpellIds)) == 1:
-                                                                                logPrint("请输入两个不同的召唤师技能序号！\nPlease input two different spellIds!")
-                                                                            elif all(map(lambda x: x in available_spells, selectedSpellIds)):
-                                                                                spell1Id, spell2Id = selectedSpellIds
-                                                                                break
-                                                                            else:
-                                                                                logPrint("您输入的召唤师技能序号不可用！请重新输入。\nThe selected summoner spells aren't available. Please try again.")
-                                                        elif step == 4:
-                                                            logPrint("第四步：请选择符文页。\nStep 4: Please select the perk page.")
-                                                            perkPage_df: pandas.DataFrame = await get_perk_page(connection)
-                                                            perkPage_df_fields_to_print: list[str] = ["id", "name", "isTemporary", "primaryStyleName", "secondaryStyleName", "pageKeystone name"]
-                                                            if len(perkPage_df) == 1:
-                                                                logPrint("您还未创建任何符文页。\nYou've not created any page yet.")
-                                                            else:
-                                                                logPrint("您的符文页如下：\nYou perk pages are listed below:")
-                                                                print(format_df(perkPage_df.loc[:, perkPage_df_fields_to_print], print_index = True)[0])
-                                                                log.write(format_df(perkPage_df.loc[:, perkPage_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                                                            wd: str = os.getcwd()
-                                                            subscript_path: str = os.path.join(wd, "Customized Program 19 - Configure Perks.py")
-                                                            logPrint("是否需要修改符文页？（输入任意键以修改，否则不修改。）\nDo you want to change any page? (Submit any non-empty string to change, or null to refuse changing.)\n请确保本程序同目录下存在符文脚本，否则无法配置相关符文。\nPlease ensure the perk program is under the same directory as this program, otherwise perk configuration can't be implemented through this program.\n文件名（File name）： Customized Program 19 - Configure Perks.py\n完整路径（Complete path）： %s" %(subscript_path))
-                                                            change_page_str: str = logInput()
-                                                            change_page: bool = bool(change_page_str)
-                                                            if change_page:
-                                                                if os.path.exists(subscript_path):
-                                                                    logPrint(f"正在打开（Opening）： {subscript_path}")
-                                                                    subprocess.run(["python", subscript_path])
-                                                                else:
-                                                                    logPrint('''在同目录下未发现符文脚本。取消该操作。请自行在客户端内修改。\n"Customized Program 19 - Configure Perks.py" isn't found under the same directory. This operation is cancelled. Please change inside the League Client.''')
-                                                            logPrint("输入左侧的索引以选择一个符文页。\nSelect a page index.")
-                                                            perkPage_df: pandas.DataFrame = await get_perk_page(connection)
-                                                            print(format_df(perkPage_df.loc[:, perkPage_df_fields_to_print], print_index = True)[0])
-                                                            log.write(format_df(perkPage_df.loc[:, perkPage_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                                                            while True:
-                                                                page_index: str = logInput()
-                                                                if page_index == "":
-                                                                    continue
-                                                                elif page_index == "-1":
-                                                                    perkStr: str = ""
-                                                                    break
-                                                                elif page_index == "0":
-                                                                    step -= 2
-                                                                    break
-                                                                elif page_index in list(map(str, range(1, len(perkPage_df)))):
-                                                                    page_index: int = int(page_index)
-                                                                    isValid: bool = perkPage_df["isValid"][page_index] == "√"
-                                                                    primaryPerkStyleName: str = perkPage_df["primaryStyleName"][page_index]
-                                                                    primaryPerkStyleId: int = perkPage_df["primaryStyleId"][page_index]
-                                                                    secondaryPerkStyleName: str = perkPage_df["secondaryStyleName"][page_index]
-                                                                    secondaryPerkStyleId: int = perkPage_df["subStyleId"][page_index]
-                                                                    keystoneId: int = perkPage_df["pageKeystone id"][page_index]
-                                                                    keystoneName: str = perkPage_df["pageKeystone name"][page_index]
-                                                                    perkIds: list[int] = perkPage_df["selectedPerkIds"][page_index]
-                                                                    perkNames: list[str] = perkPage_df["uiPerksNames"][page_index]
-                                                                    if isValid:
-                                                                        logPrint("您选择了以下符文页：\nYou selected the following perk page:")
-                                                                        logPrint("主系（Style）：%s (%d)\n副系（Substyle）：%s (%d)\n基石符文（Keystone）：%s (%d)\n符文序号列表（Perk id list）： %s\n符文名称列表（Perk name list）： %s\n" %(primaryPerkStyleName, primaryPerkStyleId, secondaryPerkStyleName, secondaryPerkStyleId, keystoneName, keystoneId, perkIds, perkNames))
-                                                                        logPrint("输入任意非空字符串以确认选择，否则重新选择。\nSubmit any non-empty string to comfirm selection, or null to select another page.")
-                                                                        page_confirm_str: str = logInput()
-                                                                        page_confirm: int = bool(page_confirm_str)
-                                                                        if page_confirm:
-                                                                            perks_param: dict[str, list[int] | int] = {"perkIds": perkIds, "perkStyle": primaryPerkStyleId, "perkSubStyle": secondaryPerkStyleId}
-                                                                            perkStr = json.dumps(perks_param).replace(" ", "")
-                                                                            break
-                                                                        else:
-                                                                            logPrint("输入左侧的索引以选择一个符文页。\nSelect a page index.")
-                                                                            perkPage_df = await get_perk_page(connection)
-                                                                            print(format_df(perkPage_df.loc[:, perkPage_df_fields_to_print], print_index = True)[0])
-                                                                            log.write(format_df(perkPage_df.loc[:, perkPage_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                                                                    else:
-                                                                        logPrint("您选择了无效符文页。请重试。\nYou selected an invalid perk page. Please try again.")
-                                                                else:
-                                                                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                        elif step == 5:
-                                                            logPrint("第五步：请设置个性化内容。\nStep 5: Please select cosmetics.")
-                                                            skin_df_selected: pandas.DataFrame = pandas.concat([skin_df.iloc[:1, :], skin_df[(skin_df["disabled"] == "") & ((skin_df["ownership owned"] == "√") | (skin_df["ownership rental rented"] == "√")) & (skin_df["championId"] == championId)]], ignore_index = True)
-                                                            if len(skin_df_selected) == 1:
-                                                                logPrint("无可用皮肤。将使用默认皮肤。\nThere's not any available skin. The default skin will be used.")
-                                                                selectedSkinId: int = 0 if championId == -1 else championId * 1000
-                                                                slot_got = True
-                                                            else:
-                                                                logPrint("%s的可用皮肤如下：\nPickable skins of %s are as follows:" %(LoLChampions[championId]["title"], LoLChampions[championId]["alias"]))
-                                                                print(format_df(skin_df_selected.loc[:, skin_df_fields_to_print], print_index = True)[0])
-                                                                log.write(format_df(skin_df_selected.loc[:, skin_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                                                                logPrint("请选择一个皮肤：\nPlease select a skin:")
-                                                                while True:
-                                                                    skin_index_str: str = logInput()
-                                                                    if skin_index_str == "":
-                                                                        continue
-                                                                    elif skin_index_str == "-1":
-                                                                        selectedSkinId = 0
-                                                                        slot_got = True
-                                                                        break
-                                                                    elif skin_index_str == "0":
-                                                                        step -= 2
-                                                                        break
-                                                                    elif skin_index_str in list(map(str, range(1, len(skin_df_selected)))):
-                                                                        skin_index: int = int(skin_index_str)
-                                                                        selectedSkinId = skin_df_selected["id"][skin_index]
-                                                                        slot_got = True
-                                                                        break
-                                                                    else:
-                                                                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                        else:
-                                                            logPrint("发现异常步骤！请联系开发人员检查和调试代码。\nAn unexpected step is found! Please contact the developer to check and debug the code.")
-                                                            break
-                                                        step += 1
-                                                    if slot_got:
-                                                        playerSlot: dict[str, str | int] = {"championId": championId, "perks": perkStr, "positionPreference": position, "skinId": selectedSkinId, "spell1": spell1Id, "spell2": spell2Id}
-                                                        body.append(playerSlot)
-                                                    slotId += 1
-                                                if len(body) > 0:
-                                                    logPrint(body)
-                                                    response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-lobby/v1/lobby/members/localMember/player-slots", data = body)).json()
-                                                    logPrint(response)
-                                                    if isinstance(response, dict) and "errorCode" in response:
-                                                        if response["message"] == "Invalid request line":
-                                                            logPrint("请求行无效！\nInvalid request line!")
-                                                        elif response["message"] == "BAD_JSON_FORMAT":
-                                                            logPrint("格式错误！\nFormat error!")
-                                                        elif response["message"] == "INVALID_REQUEST":
-                                                            logPrint("请求无效！\nInvalid request!")
-                                                        else:
-                                                            logPrint("请求失败。\nRequest failed.")
-                                                    else:
-                                                        logPrint("请求成功。\nRequest succeeded.")
-                                            else:
-                                                logPrint("当前模式不支持英雄预选。\nThis mode doesn't support slot selection.")
-                                        else:
-                                            logPrint("您目前不在房间内，或者正处于队列中或英雄选择阶段。\nYou're currently not in a party/lobby, in queue or during a champ select stage.")
-                                    elif config[0] == "3":
-                                        gameflow_phase = await get_gameflow_phase(connection)
-                                        if gameflow_phase == "Lobby":
-                                            lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                            if lobby_information["gameConfig"]["gameMode"] == "CHERRY":
-                                                memberSlots: list[dict[str, Any]] = []
-                                                for member in lobby_information["members"]:
-                                                    member_info_recapture: int = 0
-                                                    member_info: dict[str, Any] = await get_info(connection, member["puuid"])
-                                                    while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
-                                                        logPrint(member_info["message"])
-                                                        member_info_recapture += 1
-                                                        logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of member (puuid: %s) capture failed! Recapturing this member's information ... Times tried: %d" %(member["puuid"], member_info_recapture, member["puuid"], member_info_recapture))
-                                                        member_info = await get_info(connection, member["puuid"])
-                                                    if not member_info["info_got"]:
-                                                        logPrint(member_info["message"])
-                                                        logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！\nInformation of member (puuid: %s) capture failed!" %(member["puuid"], member["puuid"]))
-                                                    memberSlot: dict[str, Any] = {"slot": (member["subteamIndex"], member["intraSubteamPosition"]), "puuid": member["puuid"], "summonerName": get_info_name(member_info["body"]) if member_info["info_got"] else "", "selfTag": "☆" if member["puuid"] == current_info["puuid"] else ""}
-                                                    memberSlots.append(memberSlot)
-                                                memberSlots = sorted(memberSlots, key = lambda x: x["slot"]) #将成员关于子阵营槽位排序（Sort the members according to the subteam slot order）
-                                                logPrint('请依次输入您的子阵营序号和位置，以空格为分隔符：（输入“0”以返回上一层。）\nPlease enter the subteamIndex and intraSubteamPosition one by one, split by space: (Submit "0" to return to the last step.)')
-                                                for memberSlot in memberSlots:
-                                                    print("%s%s\t%s\t%s" %(memberSlot["selfTag"], memberSlot["slot"], memberSlot["puuid"], memberSlot["summonerName"]))
-                                                logPrint("例如，如果想要恢复您现在的位置，您可以输入：\nFor example, if you want to return to your current slot, you may input:\n%d %d" %(lobby_information["localMember"]["subteamIndex"], lobby_information["localMember"]["intraSubteamPosition"]))
-                                                while True:
-                                                    slot_str: str = logInput()
-                                                    if slot_str == "":
-                                                        continue
-                                                    elif slot_str == "0":
-                                                        break
-                                                    else:
-                                                        try:
-                                                            subteamIndex, intraSubteamPosition = list(map(int, slot_str.split()))
-                                                        except Exception as e:
-                                                            traceback_info = traceback.format_exc()
-                                                            logPrint(traceback_info)
-                                                            if isinstance(e, ValueError):
-                                                                logPrint("您输入的参数数量不符！请确保您只输入了两个参数。\nNumber of parameters mismatch! Please make sure only two parameters are submitted.")
-                                                            elif isinstance(e, TypeError):
-                                                                logPrint("类型错误！请输入整数。\nType ERROR! Please submit integers.")
-                                                            else:
-                                                                logPrint("未知错误。\nUnknown error.")
-                                                            continue
-                                                        else:
-                                                            body: dict[str, int] = {"subteamIndex": subteamIndex, "intraSubteamPosition": intraSubteamPosition}
-                                                            response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-lobby/v2/lobby/subteamData", data = body)).json()
-                                                            logPrint(response)
-                                                            if isinstance(response, dict) and "errorCode" in response:
-                                                                if response["httpStatus"] == 400 and response["message"] == "INVALID_REQUEST":
-                                                                    logPrint("请求无效。请确保您的小队目前不在队列中。\nInvalid request. Please make sure your party isn't currently in queue.")
-                                                                elif response["httpStatus"] == 500 and response["message"] == "INVALID_LOBBY":
-                                                                    logPrint("自定义房间不支持设置子阵营。\nSubteam configuration isn't supported in a custom lobby.")
-                                                                else:
-                                                                    logPrint("未知错误。\nUnknown error.")
-                                                                break
-                                                            else:
-                                                                time.sleep(GLOBAL_RESPONSE_LAG)
-                                                                lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                                                if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
-                                                                    logPrint(lobby_information)
-                                                                    if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
-                                                                        logPrint("您还未创建任何房间。请创建一个斗魂竞技场小队后再设置子阵营。\nYou're not in any lobby. Please first create a Arena party and then configure your subteam.")
-                                                                    else:
-                                                                        logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
-                                                                else:
-                                                                    current_subteamIndex: int = lobby_information["localMember"]["subteamIndex"]
-                                                                    current_intraSubteamPosition: int = lobby_information["localMember"]["intraSubteamPosition"]
-                                                                    if current_subteamIndex == subteamIndex and current_intraSubteamPosition == intraSubteamPosition:
-                                                                        logPrint("子阵营设置成功。\nSubteam configuration succeeded.")
-                                                                    else:
-                                                                        logPrint("子阵营设置失败。当前子阵营参数：(%d, %d)。\nSubteam configuration failed. Current subteam slot parameter: (%d, %d)." %(current_subteamIndex, current_intraSubteamPosition, current_subteamIndex, current_intraSubteamPosition))
-                                                    #下面的代码是while循环前的一段的重复（The following code are copied from the piece in front of the while-loop） 
-                                                    memberSlots = []
-                                                    for member in lobby_information["members"]:
-                                                        member_info_recapture = 0
-                                                        member_info = await get_info(connection, member["puuid"])
-                                                        while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
-                                                            logPrint(member_info["message"])
-                                                            member_info_recapture += 1
-                                                            logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of member (puuid: %s) capture failed! Recapturing this member's information ... Times tried: %d" %(member["puuid"], member_info_recapture, member["puuid"], member_info_recapture))
-                                                            member_info = await get_info(connection, member["puuid"])
-                                                        if not member_info["info_got"]:
-                                                            logPrint(member_info["message"])
-                                                            logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！\nInformation of member (puuid: %s) capture failed!" %(member["puuid"], member["puuid"]))
-                                                        memberSlot = {"slot": (member["subteamIndex"], member["intraSubteamPosition"]), "puuid": member["puuid"], "summonerName": get_info_name(member_info["body"]) if member_info["info_got"] else "", "selfTag": "☆" if member["puuid"] == current_info["puuid"] else ""}
-                                                        memberSlots.append(memberSlot)
-                                                    memberSlots = sorted(memberSlots, key = lambda x: x["slot"]) #将成员关于子阵营槽位排序（Sort the members according to the subteam slot order）
-                                                    logPrint('请依次输入您的子阵营序号和位置，以空格为分隔符：（输入“0”以返回上一层。）\nPlease enter the subteamIndex and intraSubteamPosition one by one, split by space: (Submit "0" to return to the last step.)')
-                                                    for memberSlot in memberSlots:
-                                                        print("%s%s\t%s\t%s" %(memberSlot["selfTag"], memberSlot["slot"], memberSlot["puuid"], memberSlot["summonerName"]))
-                                                    logPrint("例如，如果想要恢复您现在的位置，您可以输入：\nFor example, if you want to return to your current slot, you may input:\n%d %d" %(lobby_information["localMember"]["subteamIndex"], lobby_information["localMember"]["intraSubteamPosition"]))
-                                            else:
-                                                logPrint("当前模式不支持子阵营选择。\nThis mode doesn't support subteam selection.")
-                                        else:
-                                            logPrint("您目前不在房间内，或者正处于队列中或英雄选择阶段。\nYou're currently not in a party/lobby, in queue or during a champ select stage.")
-                                    elif config[0] == "4":
-                                        gameflow_phase = await get_gameflow_phase(connection)
-                                        if gameflow_phase == "Lobby":
-                                            lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                            ready: bool = isinstance(lobby_information["localMember"]["memberData"], dict) and lobby_information["localMember"]["memberData"].get("isPlayerReady", "") == "true"
-                                            logPrint("请选择一个操作：\nPlease select an operation:\n%s1\t准备就绪（Toggle ready）\n%s2\t取消就绪（Toggle not ready）" %("☆" if not ready else "", "☆" if ready else ""))
-                                            while True:
-                                                operation: str = logInput()
-                                                if operation == "":
-                                                    operation = "2" if ready else "1"
-                                                if operation[0] == "0":
-                                                    break
-                                                elif operation[0] in {"1", "2"}:
-                                                    body: dict[str, str] = {"isPlayerReady": "true" if operation[0] == "1" else ""}
-                                                    response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-lobby/v2/lobby/memberData", data = body)).json()
-                                                    logPrint(response)
-                                                    if isinstance(response, dict) and "errorCode" in response:
-                                                        if "Couldn't assign value to 'memberData'" in response["message"]:
-                                                            logPrint("请求主体格式错误！\nERROR format of the request body.")
-                                                        else:
-                                                            logPrint("未知错误！\nUnknown error!")
-                                                    else:
-                                                        time.sleep(GLOBAL_RESPONSE_LAG)
-                                                        lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                                        if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
-                                                            logPrint(lobby_information)
-                                                            if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
-                                                                logPrint("您还未创建任何房间。请创建一个小队后再更改游戏模式。\nYou're not in any lobby. Please first create a party and then change the game mode.")
-                                                            else:
-                                                                logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
-                                                        else:
-                                                            ready = isinstance(lobby_information["localMember"]["memberData"], dict) and lobby_information["localMember"]["memberData"].get("isPlayerReady", "") == "true"
-                                                            if operation[0] == "1" and ready:
-                                                                logPrint("您已准备就绪。\nYou're ready.")
-                                                                break
-                                                            elif operation[0] == "2" and not ready:
-                                                                logPrint("您已取消就绪。\nYou've toggled unready.")
-                                                                break
-                                                            else:
-                                                                logPrint("就绪状态切换失败。\nReadiness toggle failed.")
-                                                else:
-                                                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                logPrint("请选择一个操作：\nPlease select an operation:\n%s1\t准备就绪（Toggle ready）\n%s2\t取消就绪（Toggle not ready）" %("☆" if not ready else "", "☆" if ready else ""))
-                                        else:
-                                            logPrint("您目前不在房间内，或者正处于队列中或英雄选择阶段。\nYou're currently not in a party/lobby, in queue or during a champ select stage.")
-                                    elif config[0] == "5":
-                                        gameflow_phase = await get_gameflow_phase(connection)
-                                        if gameflow_phase == "Lobby":
-                                            lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                            if lobby_information["gameConfig"]["gameMode"] == "TFT":
-                                                loadout_scope: dict[str, Any] = await (await connection.request("GET", "/lol-loadouts/v4/loadouts/scope/account")).json()
-                                                if isinstance(loadout_scope, dict) and "errorCode" in loadout_scope:
-                                                    logPrint(loadout_scope)
-                                                    logPrint("未知错误！\nUnknown error!")
-                                                else:
-                                                    if len(loadout_scope) == 0:
-                                                        logPrint("无可用赛前配置方案。请重启英雄联盟客户端后再运行本程序。\nNo available loadouts. Please restart the League Client and then run this program.")
-                                                    else:
-                                                        loadoutId: str = loadout_scope[0]["id"] #因为赛前配置在每次退出英雄联盟客户端后就没了，所以随便取一个赛前配置就行。这里取了第一个列表元素（Because loadouts aren't reserved as the user exits the League Client, any loadout is OK to use. Here the first element of the loadout scope list is used）
-                                                        loadoutName: str = loadout_scope[0]["name"]
-                                                    collection_df_fields_to_print: list[str] = ["inventoryType", "itemId", "name", "ownershipType"]
-                                                    logPrint("请选择一项赛前配置：\nPlease select a loadout:\n1\t小小英雄（Tacticians）\n2\t进攻特效（Booms）\n3\t棋盘皮肤（Arena skins）\n4\t传送门（Portals）")
-                                                    while True:
-                                                        loadout_option: str = logInput()
-                                                        if loadout_option == "":
-                                                            continue
-                                                        elif loadout_option[0] == "0":
-                                                            break
-                                                        elif loadout_option[0] in list(map(str, range(1, 5))):
-                                                            inventoryTypes: dict[str, str] = {"1": "COMPANION", "2": "TFT_DAMAGE_SKIN", "3": "TFT_MAP_SKIN", "4": "TFT_ZOOM_SKIN"}
-                                                            inventoryType: str = inventoryTypes[loadout_option[0]]
-                                                            collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
-                                                            if len(collection_df_selected) == 1:
-                                                                logPrint("您目前没有该类道具的使用权。\nYou don't have permissions to use any item of this inventoryType.")
-                                                            else:
-                                                                logPrint('请选择您想要使用的道具：（输入-1以初始化当前选择。）\nPlease select an item to use: (Submit "-1" to initialize the current choice.)')
-                                                                print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
-                                                                log.write(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                                                                while True:
-                                                                    index_got = False
-                                                                    item_index_str: str = logInput()
-                                                                    if item_index_str == "":
-                                                                        continue
-                                                                    elif item_index_str == "0":
-                                                                        index_got = False
-                                                                        break
-                                                                    elif item_index_str == "-1" or item_index_str in list(map(str, range(1, len(collection_df_selected)))):
-                                                                        item_index: int = int(item_index_str)
-                                                                        index_got = True
-                                                                        break
-                                                                    else:
-                                                                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                                if index_got:
-                                                                    contentId: str = "" if item_index == -1 else collection_df_selected["uuid"][item_index]
-                                                                    itemId: int = 0 if item_index == -1 else collection_df_selected["itemId"][item_index]
-                                                                    loadout_key: str = f"{inventoryType}_SLOT" #不是所有的配置键都符合道具类型后缀“_SLOT”的格式。比如表情（EMOTE）的配置键包括“EMOTE_WHEEL_PANEL”。但是这个格式适用于这里的四个道具类型（Not all loadout keys follows the pattern where an inventoryType is followed by "_SLOT". For example, the loadout key for EMOTE may be "EMOTE_WHEEL_PANEL". Nevertheless, this pattern applies to all of the four inventoryTypes here）
-                                                                    body: dict[str, Any] = {"id": loadoutId, "name": loadoutName, "loadout": {loadout_key: {"inventoryType": inventoryType, "contentId": contentId, "itemId": itemId}}}
-                                                                    response: Optional[dict[str, Any]] = await (await connection.request("PATCH", f"/lol-loadouts/v4/loadouts/{loadoutId}", data = body)).json()
-                                                                    logPrint(response)
-                                                                    if isinstance(response, dict) and "errorCode" in response:
-                                                                        if response["message"] == "UpdateLoadout Failed - Loadout does not exist in cache.":
-                                                                            logPrint("更新赛前配置失败。请检查代码为%s的赛前配置是否存在。如果不存在，请返回到选择赛前配置之前的步骤，再重试。\nLoadout update failed. Please check if the loadout of id %s still exists. If it doesn't exist, please return to the step before selecting to configure the TFT loadouts and then try again.")
-                                                                        else:
-                                                                            logPrint("未知错误！\nUnknown error!")
-                                                                    else:
-                                                                        time.sleep(GLOBAL_RESPONSE_LAG)
-                                                                        loadout = await (await connection.request("GET", f"/lol-loadouts/v4/loadouts/{loadoutId}")).json()
-                                                                        if loadout["loadout"][loadout_key] == body["loadout"][loadout_key]:
-                                                                            logPrint("更新赛前配置成功。客户端内显示可能有延迟，请尝试关闭相应窗口再打开，观察配置是否更新。进入游戏即可正常使用。\nLoadout update succeeded. The League Client may not display the change properly due to a lag. Please try closing the corresponding window and then open it again to see if loadout is updated. As you enter the game, you should be using the updated loadouts.")
-                                                                        else:
-                                                                            logPrint("更新赛前配置失败。\nLoadout update failed.")
-                                                        else:
-                                                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                            continue
-                                                        logPrint("请选择一项赛前配置：\nPlease select a loadout:\n1\t小小英雄（Tacticians）\n2\t进攻特效（Booms）\n3\t棋盘皮肤（Arena skins）\n4\t传送门（Portals）")
-                                            else:
-                                                logPrint("当前游戏模式不是云顶之弈。请切换到云顶之弈模式并重试。\nThe current game mode isn't TFT. Please switch to a TFT party and try again.")
-                                        else:
-                                            logPrint("您目前不在房间内，或者正处于队列中或英雄选择阶段。\nYou're currently not in a party/lobby, in queue or during a champ select stage.")
-                                    else:
-                                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                    logPrint("请选择一项个人配置：\nPlease select a personal configuration to change:\n1\t选择位置（Select positions）\n2\t设置快速模式英雄选择（Configure quickplay slot）\n3\t设置子阵营（Configure subteam data）\n4\t切换就绪状态（Toggle ready）\n5\t云顶之弈赛前配置（TFT loadouts）")
-                            elif suboption[0] == "2":
-                                gameflow_phase = await get_gameflow_phase(connection)
-                                if gameflow_phase in ["Lobby", "Matchmaking", "ReadyCheck"]:
-                                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                    queueId: int = lobby_information["gameConfig"]["queueId"]
-                                    gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
-                                    gameQueues: dict[int, dict[str, Any]] = {queue["id"]: queue for queue in gameQueues_source}
-                                    social_leaderboard_df_fields_to_print: list[str] = ["leaderboardPosition", "gameName", "tagLine", "tier", "division", "wins"]
-                                    if queueId in gameQueues and gameQueues[queueId]["isRanked"]:
-                                        queueType: str = gameQueues[queueId]["type"]
-                                        if queueType in ["RANKED_TFT_DOUBLE_UP", "RANKED_TFT_PAIRS"]:
-                                            logPrint("查询该游戏模式的好友排行榜会导致英雄联盟崩溃。您确定要继续吗？（输入任意键以继续，否则拒绝。）\nFetching friends leaderboard of this mode will result in a crash of League of Legends. Do you really want to continue? (Submit any non-empty string to continue, or null to take a risk.)")
-                                            leaderboard_crash_continue_str: str = logInput()
-                                            leaderboard_crash_continue: bool = bool(leaderboard_crash_continue_str)
-                                            if leaderboard_crash_continue:
-                                                social_leaderboard_df: pandas.DataFrame = await sort_social_leaderboard(connection, queueType)
-                                                if len(social_leaderboard_df) > 1:
-                                                    if len(social_leaderboard_df) < 4:
-                                                        logPrint("警告：你需要有至少3名《英雄联盟》好友才能查看好友榜。\nWarning: You need at least 3 League friends to view the Friends Board.")
-                                                    print(format_df(social_leaderboard_df.loc[:, social_leaderboard_df_fields_to_print], print_index = True)[0])
-                                                    log.write(format_df(social_leaderboard_df.loc[:, social_leaderboard_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                                                else:
-                                                    logPrint("无好友排行榜数据。\nNo rowData in Friends Leaderboard.")
-                                        else:
-                                            social_leaderboard_df = await sort_social_leaderboard(connection, queueType)
-                                            if len(social_leaderboard_df) > 1:
-                                                if len(social_leaderboard_df) < 4:
-                                                    logPrint("警告：你需要有至少3名《英雄联盟》好友才能查看好友榜。\nWarning: You need at least 3 League friends to view the Friends Board.")
-                                                print(format_df(social_leaderboard_df.loc[:, social_leaderboard_df_fields_to_print], print_index = True)[0])
-                                                log.write(format_df(social_leaderboard_df.loc[:, social_leaderboard_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                                            else:
-                                                logPrint("无好友排行榜数据。\nNo rowData in Friends Leaderboard.")
-                                    else:
-                                        logPrint("当前房间不支持查询好友排行榜。\nThis party doesn't support Friends Leaderboard.")
-                                else:
-                                    logPrint("您目前不在房间内，或者正处于英雄选择阶段。\nYou're currently not in a party/lobby, or during a champ select stage.")
-                            elif suboption[0] == "3":
-                                gameflow_phase = await get_gameflow_phase(connection)
-                                if gameflow_phase == "Lobby":
-                                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                    logPrint("请选择一个操作：\nPlease select a operation:\n%s1\t让小队仅能通过邀请来进入（Make party invite-only）\n%s2\t将小队公开给好友（Open party to friends）" %("☆" if lobby_information["partyType"] == "open" else "", "☆" if lobby_information["partyType"] == "closed" else ""))
-                                    while True:
-                                        operation: str = logInput()
-                                        if operation == "":
-                                            operation = "1" if lobby_information["partyType"] == "open" else "2"
-                                        if operation[0] == "0":
-                                            break
-                                        elif operation[0] in {"1", "2"}:
-                                            response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-lobby/v2/lobby/partyType", data = "closed" if operation[0] == "1" else "open")).json()
-                                            logPrint(response)
-                                            if isinstance(response, dict) and "errorCode" in response:
-                                                if response["message"] == "INVALID_REQUEST":
-                                                    logPrint("请求无效！请检查请求主体是否正确。\nInvalid request! Please check the correctness of the request body.")
-                                                elif response["message"] == "INVALID_LOBBY_TYPE":
-                                                    logPrint("请求失败！请确保您目前正处于小队而不是自定义房间中。\nRequest failed! Please make sure you're currently in a party instead of a custom lobby.")
-                                                elif response["message"] == "PARTY_LEADER_REQUIRED":
-                                                    logPrint("只有拥有者可以将小队设置为公开或私密。\nOnly the owner may open or close the party.")
-                                                else:
-                                                    logPrint("未知错误！\nUnknown error!")
-                                            else:
-                                                time.sleep(GLOBAL_RESPONSE_LAG)
-                                                lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                                if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
-                                                    logPrint(lobby_information)
-                                                    if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
-                                                        logPrint("您还未创建任何房间。请创建一个小队后再更改公开性。\nYou're not in any lobby. Please first create a party and then change its publicity.")
-                                                    else:
-                                                        logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
-                                                else:
-                                                    if operation[0] == "1" and lobby_information["partyType"] == "closed":
-                                                        logPrint("小队已转为私密。您的好友只能通过邀请来进入。\nYour party has become private. They can only join this party through an invitation.")
-                                                        break
-                                                    elif operation[0] == "2" and lobby_information["partyType"] == "open":
-                                                        logPrint("小队已向好友公开。您的好友将能够直接进入小队。\nYour party has been opened to friends. They can directly join this party now.")
-                                                        break
-                                                    else:
-                                                        logPrint("小队公开性切换失败。\nParty publicity toggle failed.")
-                                        else:
-                                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                        logPrint("请选择一个操作：\nPlease select a operation:\n%s1\t让小队仅能通过邀请来进入（Make party invite-only）\n%s2\t将小队公开给好友（Open party to friends）" %("☆" if lobby_information["partyType"] == "open" else "", "☆" if lobby_information["partyType"] == "closed" else ""))
-                                else:
-                                    logPrint("您目前不在房间内，或者正处于队列中或英雄选择阶段。\nYou're currently not in a party/lobby, in queue or during a champ select stage.")
-                            elif suboption[0] == "4":
-                                gameflow_phase = await get_gameflow_phase(connection)
-                                if gameflow_phase == "Lobby":
-                                    lobby_changed: bool = await create_lobby(connection)
-                                    if lobby_changed:
-                                        return ""
-                                else:
-                                    logPrint("您目前不在房间内，或者正处于队列中或英雄选择阶段。\nYou're currently not in a party/lobby, in queue or during a champ select stage.")
-                            elif suboption[0] == "5":
-                                gameflow_phase = await get_gameflow_phase(connection)
-                                if gameflow_phase == "Lobby":
-                                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/lobby/matchmaking/search")).json()
-                                    logPrint(response)
-                                    if isinstance(response, dict) and "errorCode" in response:
-                                        await print_search_error(connection, response, lobby_information)
-                                    else:
-                                        time.sleep(GLOBAL_RESPONSE_LAG)
-                                        gameflow_phase = await get_gameflow_phase(connection)
-                                        if gameflow_phase in ["Matchmaking", "ReadyCheck"]:
-                                            logPrint("您已加入寻找对局的队列。\nYou joined the matchmaking queue.")
-                                        else:
-                                            logPrint("加入寻找对局队列失败。\nFailed to join the matchmaking queue.")
-                                else:
-                                    logPrint("您目前不在房间内，或者正处于队列中或英雄选择阶段。\nYou're currently not in a party/lobby, in queue or during a champ select stage.")
-                            else:   
-                                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                            logPrint("请选择一个小队操作：\nPlease select a party operation:\n1\t入队准备（Prepare before in queue）\n2\t查看社交排行榜（Check friends leaderboard）\n3\t改变小队公开性（Toggle party open/closed）\n4\t更换模式（Change mode）\n5\t寻找对局（Find match）")
+                        await manage_party(connection)
                 elif option == "2":
                     if lobby_information["gameConfig"]["isCustom"]:
-                        logPrint("请选择一个自定义房间操作：\nPlease select a lobby operation:\n1\t添加电脑玩家（Add a bot）\n2\t批量添加电脑玩家（Add bots）\n3\t移除电脑玩家（Remove bots）\n4\t交换队伍（Switch team）\n5\t更换模式（Change mode）\n6\t开始游戏（Start game）")
-                        while True:
-                            suboption: str = logInput()
-                            if suboption == "":
-                                continue
-                            elif suboption[0] == "0":
-                                break
-                            elif suboption[0] == "1":
-                                gameflow_phase = await get_gameflow_phase(connection)
-                                if gameflow_phase == "Lobby" or gameflow_phase == "ChampSelect":
-                                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                    if lobby_information["localMember"]["isLeader"]:
-                                        logPrint('请按照以下步骤添加电脑玩家。在后续任何步骤，输入“0”以返回上一步。\nPlease follow the steps below to add a bot. Submit "0" to return to the last step at any subsequent step.')
-                                        championId_got: bool = False
-                                        botDifficulty_got: bool = False
-                                        teamId_got: bool = False
-                                        position_got: bool = False
-                                        botUuid_got: bool = False
-                                        step: int = 1
-                                        while step <= 5:
-                                            if step == 0:
-                                                break
-                                            elif step == 1:
-                                                logPrint("第一步：请选择一个英雄。\nStep 1: Please select a champion.")
-                                                logPrint("请选择可用电脑玩家范围：\n1\t当前房间可用电脑英雄（Available bot champions in this lobby）\n2\t所有电脑英雄（All bot champions）")
-                                                while True:
-                                                    championId_got = False
-                                                    strategy: str = logInput()
-                                                    if strategy == "":
-                                                        continue
-                                                    elif strategy[0] == "0":
-                                                        championId_got = False
-                                                        break
-                                                    elif strategy[0] == "1":
-                                                        gameflow_phase = await get_gameflow_phase(connection)
-                                                        if gameflow_phase == "Lobby":
-                                                            availableBot_df: pandas.DataFrame = await sort_available_bots(connection)
-                                                            availableBot_df_fields_to_print: list[str] = ["id", "name", "title", "alias", "botDifficulties"]
-                                                            if len(availableBot_df) == 1:
-                                                                logPrint("当前房间无可用电脑玩家。\nThere's not any available bot player in this lobby.")
-                                                            else:
-                                                                print(format_df(availableBot_df.loc[:, availableBot_df_fields_to_print])[0])
-                                                                log.write(format_df(availableBot_df.loc[:, availableBot_df_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
-                                                                logPrint("请输入您想要添加的电脑玩家英雄序号：\nPlease select a championId of the bot player you want to add:")
-                                                                while True:
-                                                                    championId_str: str = logInput()
-                                                                    if championId_str == "":
-                                                                        continue
-                                                                    elif championId_str == "0":
-                                                                        break
-                                                                    elif championId_str in list(map(str, availableBot_df["id"][1:])):
-                                                                        championId: int = int(championId_str)
-                                                                        championId_got = True
-                                                                        break
-                                                                    elif championId_str in list(map(str, LoLChampions.keys())):
-                                                                        #logPrint("您输入的英雄没有电脑模型。请重新选择一个英雄。\nThe champion you pick doesn't have a bot enabled. Please select another champion.")
-                                                                        championId = int(championId_str)
-                                                                        championId_got = True
-                                                                        break
-                                                                    else:
-                                                                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                        else:
-                                                            logPrint("您目前不在房间内，或者正处于英雄选择阶段。\nYou're currently not in a lobby, or during a champ select stage.")
-                                                    elif strategy[0] == "2":
-                                                        wd: str = os.getcwd()
-                                                        excel_path: str = os.path.join(wd, "available-bots.xlsx")
-                                                        if os.path.exists(excel_path):
-                                                            try:
-                                                                availableBot_df = pandas.read_excel(excel_path, sheet_name = "Sheet2", index_col = 0, usecols = list(range(5)))
-                                                            except:
-                                                                traceback_info = traceback.format_exc()
-                                                                logPrint(traceback_info)
-                                                                logPrint("读取可用电脑玩家工作簿的过程出现了问题。\nAn error occurred when reading the available bot workbook.")
-                                                            else:
-                                                                if all(i in availableBot_df.columns for i in ["id", "name", "title", "alias"]) and all(map(lambda x: isinstance(x, int), availableBot_df["id"][1:])):
-                                                                    print(format_df(availableBot_df)[0])
-                                                                    log.write(format_df(availableBot_df, width_exceed_ask = False, direct_print = False)[0] + "\n")
-                                                                    logPrint("请输入您想要添加的电脑玩家英雄序号：\nPlease select a championId of the bot player you want to add:")
-                                                                    while True:
-                                                                        championId_str = logInput()
-                                                                        if championId_str == "":
-                                                                            continue
-                                                                        elif championId_str == "0":
-                                                                            break
-                                                                        elif championId_str in list(map(str, availableBot_df["id"][1:])):
-                                                                            championId = int(championId_str)
-                                                                            championId_got = True
-                                                                            break
-                                                                        elif championId_str in list(map(str, LoLChampions.keys())):
-                                                                            #logPrint("您输入的英雄没有电脑模型。请重新选择一个英雄。\nThe champion you pick doesn't have a bot enabled. Please select another champion.")
-                                                                            championId = int(championId_str)
-                                                                            championId_got = True
-                                                                            break
-                                                                        else:
-                                                                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                                else:
-                                                                    logPrint('可用电脑玩家工作簿格式错误。请通过查英雄脚本重新导出。\nAvailable bot workbook format error. Please re-export this workbook through "Customized Program 04 - Count Champion Number.py".')
-                                                        else:
-                                                            logPrint('''在同目录下未发现可用电脑玩家工作簿。是否需要自行测试所有可用电脑玩家？注意，这样会导致您退出当前房间。此过程需要花费几分钟时间。（输入任意键以开始测试，否则不测试。）\n"available-bots.xlsx" isn't found under the same directory. Do you want to traverse all champions to find all bot-enabled champions? Note: This operation will cause you to leave the current lobby. This process may take several minutes. (Submit any non-empty string to start the test, or null to refuse testing.)''')
-                                                            botTest_str: str = logInput()
-                                                            botTest: bool = bool(botTest_str)
-                                                            if botTest:
-                                                                available_bot_championIds: list[int] = list((await test_bot(connection, LoLChampions))[0].keys())
-                                                                LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)
-                                                                if len(available_bot_championIds) == 0:
-                                                                    logPrint("没有获取到可用的电脑玩家。\nNo available bot champions found.")
-                                                                else:
-                                                                    availableBot_df = pandas.concat([LoLChampion_df.iloc[:1, :], LoLChampion_df[LoLChampion_df["id"].isin(available_bot_championIds)]], ignore_index = True)
-                                                                    availableBot_df_fields_to_print = ["id", "name", "title", "alias"]
-                                                                    print(format_df(availableBot_df.loc[:, availableBot_df_fields_to_print])[0])
-                                                                    log.write(format_df(availableBot_df.loc[:, availableBot_df_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
-                                                                    logPrint("请输入您想要添加的电脑玩家英雄序号：\nPlease select a championId of the bot player you want to add:")
-                                                                    while True:
-                                                                        championId_str = logInput()
-                                                                        if championId_str == "":
-                                                                            continue
-                                                                        elif championId_str == "0":
-                                                                            break
-                                                                        elif championId_str in list(map(str, availableBot_df["id"][1:])):
-                                                                            championId = int(championId_str)
-                                                                            championId_got = True
-                                                                            break
-                                                                        elif championId_str in list(map(str, LoLChampions.keys())):
-                                                                            #logPrint("您输入的英雄没有电脑模型。请重新选择一个英雄。\nThe champion you pick doesn't have a bot enabled. Please select another champion.")
-                                                                            championId = int(championId_str)
-                                                                            championId_got = True
-                                                                            break
-                                                                        else:
-                                                                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                    else:
-                                                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                        continue
-                                                    break
-                                                if not championId_got:
-                                                    step -= 2
-                                            elif step == 2:
-                                                logPrint("第二步：请选择电脑玩家难度。\nStep 2: Please select a bot difficulty.\n1\t新手（TUTORIAL）\n2\t入门（INTRO）\n3\t简单（EASY）\n4\t一般（MEDIUM）\n5\t困难（HARD）\n6\t末日（UBER）\n7\t温暖局入门级（RSWARMINTRO）\n8\t入门级（RSINTRO）\n9\t新手级（RSBEGINNER）\n10\t一般级（RSINTERMEDIATE）")
-                                                while True:
-                                                    botDifficulty_got = False
-                                                    botDifficulty_index_str: str = logInput()
-                                                    if botDifficulty_index_str == "":
-                                                        continue
-                                                    elif botDifficulty_index_str == "-1":
-                                                        botDifficulty = "NONE"
-                                                        botDifficulty_got = True
-                                                        break
-                                                    elif botDifficulty_index_str == "0":
-                                                        botDifficulty_got = False
-                                                        break
-                                                    elif botDifficulty_index_str in list(map(str, range(1, 11))):
-                                                        botDifficulty_index: int = int(botDifficulty_index_str)
-                                                        botDifficulty = BOT_DIFFICULTY_LIST[botDifficulty_index]
-                                                        botDifficulty_got = True
-                                                        break
-                                                    else:
-                                                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                if not botDifficulty_got:
-                                                    step -= 2
-                                            elif step == 3:
-                                                logPrint("第三步：请选择电脑玩家阵营。\nStep 3: Please select a team for this bot player.\n1\t蓝方（Blue）\n2\t红方（Red）")
-                                                while True:
-                                                    teamId_got = False
-                                                    teamId_str: str = logInput()
-                                                    if teamId_str == "":
-                                                        continue
-                                                    elif teamId_str[0] == "0":
-                                                        teamId_got = False
-                                                        break
-                                                    elif teamId_str in ["1", "2"]:
-                                                        teamId: str = f"{teamId_str}00"
-                                                        teamId_got = True
-                                                        break
-                                                    else:
-                                                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                if not teamId_got:
-                                                    step -= 2
-                                            elif step == 4:
-                                                candidatePositions: list[str] = ["TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"]
-                                                recommended_lanes: dict[str, bool] = {}
-                                                for position_iter in candidatePositions:
-                                                    recommended_lanes[position_iter] = position_iter in recommended_position_for_champion[str(championId)]["recommendedPositions"]
-                                                logPrint("第四步：请选择电脑玩家分路。\nStep 4: Please select a position for this bot player.\n%s1\t上路（Top）\n%s2\t打野（Jungle）\n%s3\t中路（Middle）\n%s4\t下路（Bottom）\n%s5\t辅助（Support）" %("☆" if recommended_lanes["TOP"] else "", "☆" if recommended_lanes["JUNGLE"] else "", "☆" if recommended_lanes["MIDDLE"] else "", "☆" if recommended_lanes["BOTTOM"] else "", "☆" if recommended_lanes["UTILITY"] else "", ))
-                                                while True:
-                                                    position_got = False
-                                                    position_index_str: str = logInput()
-                                                    if position_index_str == "":
-                                                        continue
-                                                    elif position_index_str[0] == "0":
-                                                        position_got = False
-                                                        break
-                                                    elif position_index_str[0] in list(map(str, range(1, 6))):
-                                                        position_index: int = int(position_index_str[0])
-                                                        position: str = candidatePositions[position_index - 1]
-                                                        position_got = True
-                                                        break
-                                                    else:
-                                                        break
-                                                if not position_got:
-                                                    step -= 2
-                                            elif step == 5:
-                                                logPrint("第五步：指定电脑玩家通用唯一识别码。\nStep 5: Specify the bot uuid.")
-                                                logPrint('是否随机生成电脑玩家通用唯一识别码？（输入任意键以自行指定，否则随机生成。输入“0”以返回上一步。）\nDo you want a random bot uuid? (Submit any non-empty string to manually specify the bot uuid, or null to randomize it. Submit "0" to return to the last step.)')
-                                                botUuid_strategy: str = logInput()
-                                                botUuid_got = botUuid_strategy != "0"
-                                                botUuid_randomize: bool = botUuid_got and not bool(botUuid_strategy)
-                                                if botUuid_got:
-                                                    if botUuid_randomize:
-                                                        botUuid: str = str(uuid.uuid4())
-                                                    else:
-                                                        logPrint("请输入电脑玩家通用唯一识别码：\nPlease specify this bot's uuid:")
-                                                        botUuid = logInput()
-                                                else:
-                                                    step -= 2
-                                            else:
-                                                logPrint("发现异常步骤！请联系开发人员检查和调试代码。\nAn unexpected step is found! Please contact the developer to check and debug the code.")
-                                                break
-                                            step += 1
-                                        if championId_got and botDifficulty_got and teamId_got and position_got and botUuid_got:
-                                            body: dict[str, int | str] = {"championId": championId, "botDifficulty": botDifficulty, "teamId": teamId, "position": position, "botUuid": botUuid}
-                                            logPrint(body)
-                                            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/bots", data = body)).json()
-                                            logPrint(response)
-                                            if isinstance(response, dict) and "errorCode" in response:
-                                                if response["message"] == "CUSTOMS_IN_PARTIES_NOT_ENABLED":
-                                                    logPrint("您目前不在自定义房间内。\nYou're currently not in a custom lobby.")
-                                                elif f"champ ChampionBase [{championId}] cannot be a bot as it is not enabled" in response["message"]:
-                                                    logPrint("您输入的英雄没有电脑模型。\nThe champion you pick doesn't have a bot enabled.")
-                                                elif f"championId associated with selected bot could not be loaded. [championId={championId}]" in response["message"]:
-                                                    logPrint("英雄序号无效。\nInvalid championId.")
-                                                elif response["message"] == "{botDifficulty} is not a valid LolLobbyLobbyBotDifficulty enumeration value for 'botDifficulty'":
-                                                    logPrint("难度无效。\nInvalid botDifficulty.")
-                                                elif "Server.Processing, com.riotgames.platform.game.TeamFullException" in response["message"]:
-                                                    logPrint("%s人数已满。\n%s team is already full." %("蓝方" if teamId == "100" else "红方", "Blue" if teamId == "100" else "Red"))
-                                                elif "com.riotgames.platform.messaging.UnexpectedServiceException : You must be the owner of the game to add a bot" in response["message"]:
-                                                    logPrint("您不是小队拥有者，无法进行此操作。\nYou're not the lobby owner and thus can't perform this operation.")
-                                                else:
-                                                    logPrint("未知错误。\nUnknown error.")
-                                            else:
-                                                time.sleep(GLOBAL_RESPONSE_LAG) #由于服务器响应速度原因，从添加电脑到房间信息更新，需要0.2秒的缓冲时间（0.2s buffer time is needed between adding a bot and updating the lobby information due to the server response speed）
-                                                lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json() #在成功发送请求的情况下，这个接口不会出现问题（If the bot adding request was posted successfully, this endpoint should have any problems）
-                                                if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
-                                                    logPrint(lobby_information)
-                                                    if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
-                                                        logPrint("您还未创建任何房间。请创建一个自定义房间后再添加电脑玩家。\nYou're not in any lobby. Please first create a custom lobby and then add a bot player.")
-                                                    else:
-                                                        logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
-                                                    break
-                                                else:
-                                                    bot_added: bool = False
-                                                    for member in lobby_information["gameConfig"]["customTeam100"] + lobby_information["gameConfig"]["customTeam200"]:
-                                                        if member["isBot"] and member["botChampionId"] == championId and member["botDifficulty"] == botDifficulty and member["botPosition"] == position and member["botUuid"] == botUuid:
-                                                            bot_added = True
-                                                            break
-                                                    if bot_added:
-                                                        logPrint("电脑玩家添加成功。\nBot added successfully.")
-                                                    else:
-                                                        logPrint("电脑玩家添加失败。\nBot failed to be added.")
-                                    else:
-                                        logPrint("您不是小队拥有者，无法进行此操作。\nYou're not the lobby owner and thus can't perform this operation.")
-                                else:
-                                    logPrint("您目前不在房间内。\nYou're currently not in a lobby.")
-                            elif suboption[0] == "2":
-                                if gameflow_phase == "Lobby" or gameflow_phase == "ChampSelect":
-                                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                    if lobby_information["localMember"]["isLeader"]:
-                                        if os.path.exists("available-bots.xlsx"):
-                                            await add_bots_team(connection, teamId = "100")
-                                            await add_bots_team(connection, teamId = "200")
-                                        else:
-                                            logPrint("未在同目录下发现可用电脑玩家工作簿。请使用查英雄脚本生成该工作簿。\nAvailable bot workbook isn't found under the same directory. Please generate it through Customized Program 04.")
-                                    else:
-                                        logPrint("您不是小队拥有者，无法进行此操作。\nYou're not the lobby owner and thus can't perform this operation.")
-                                else:
-                                    logPrint("您目前不在房间内。\nYou're currently not in a lobby.")
-                            elif suboption[0] == "3":
-                                gameflow_phase = await get_gameflow_phase(connection)
-                                if gameflow_phase == "Lobby" or gameflow_phase == "ChampSelect":
-                                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                    if lobby_information["localMember"]["isLeader"]:
-                                        member_df: pandas.DataFrame = await sort_lobby_members(connection)
-                                        member_df_fields_to_print: list[str] = ["teamId", "botChampionId", "botChampion_name", "botChampion_alias", "botPosition", "botDifficulty", "botUuid"]
-                                        member_df_selected: pandas.DataFrame = pandas.concat([member_df.iloc[:1, :], member_df[member_df["isBot"] == "√"]], ignore_index = True)
-                                        if len(member_df_selected) == 1:
-                                            logPrint("房间内无任何电脑玩家。\nThere's not any bot player in this lobby.")
-                                        else:
-                                            logPrint("房间内的电脑玩家如下：\nBot players in the lobby are as follows:")
-                                            print(format_df(member_df_selected.loc[:, member_df_fields_to_print], print_index = True)[0])
-                                            log.write(format_df(member_df_selected.loc[:, member_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                                            logPrint("请选择您想要删除的电脑玩家：\nPlease select the bot players you want to remove:")
-                                            while True:
-                                                index_got = False
-                                                bot_index_str: str = logInput()
-                                                bot_indices: list[int] = []
-                                                if bot_index_str == "":
-                                                    continue
-                                                elif bot_index_str[0] == "0":
-                                                    break
-                                                elif bot_index_str == "all":
-                                                    bot_indices = list(range(1, len(member_df_selected)))
-                                                    index_got = True
-                                                    break
-                                                else:
-                                                    try:
-                                                        tmp = eval(bot_index_str)
-                                                    except:
-                                                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                    else:
-                                                        if isinstance(tmp, int):
-                                                            if tmp >= 1 and tmp < len(member_df_selected):
-                                                                bot_indices = [tmp]
-                                                                index_got = True
-                                                                break
-                                                            else:
-                                                                logPrint("请输入一个小于%d的正整数。\nPlease input a positive integer less than %d." %(len(member_df_selected), len(member_df_selected)))
-                                                        elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int), tmp)):
-                                                            if all(map(lambda x: x >= 1 and x < len(member_df_selected), tmp)):
-                                                                bot_indices = sorted(set(tmp))
-                                                                index_got = True
-                                                                break
-                                                            else:
-                                                                logPrint("请输入小于%d的正整数。\nPlease input positive integers less than %d." %(len(member_df_selected), len(member_df_selected)))
-                                                        else:
-                                                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                            if index_got:
-                                                for bot_index in bot_indices:
-                                                    summonerInternalName: str = member_df_selected["botId"][bot_index]
-                                                    botUuidToDelete: str = member_df_selected["botUuid"][bot_index]
-                                                    botTeamId: str = member_df_selected["teamId"][bot_index]
-                                                    botChampion_name: str = member_df_selected["botChampion_name"][bot_index]
-                                                    botChampion_alias: str = member_df_selected["botChampion_alias"][bot_index]
-                                                    response: Optional[dict[str, Any]] = await (await connection.request("DELETE", f"/lol-lobby/v1/lobby/custom/bots/{summonerInternalName}/{botUuidToDelete}/{botTeamId}")).json()
-                                                    logPrint(response)
-                                                    if isinstance(response, dict) and "errorCode" in response:
-                                                        if response["message"] == "CUSTOMS_IN_PARTIES_NOT_ENABLED":
-                                                            logPrint("您目前不在自定义房间内。\nYou're currently not in a custom lobby.")
-                                                        elif response["message"] == f"Unable to delete custom bot, cannot find bot with summonerInternalName {summonerInternalName}":
-                                                            logPrint("未找到该电脑玩家。\nThis bot isn't found.")
-                                                        elif "com.riotgames.platform.messaging.UnexpectedServiceException : You must be the owner of the game to remove a bot" in response["message"]:
-                                                            logPrint("您不是小队拥有者，无法进行此操作。\nYou're not the lobby owner and thus can't perform this operation.")
-                                                        else:
-                                                            logPrint("未知错误。\nUnknown error.")
-                                                        break
-                                                    else:
-                                                        time.sleep(GLOBAL_RESPONSE_LAG)
-                                                        lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                                        if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
-                                                            logPrint(lobby_information)
-                                                            if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
-                                                                logPrint("您还未创建任何房间。请创建一个自定义房间后再尝试删除电脑玩家。\nYou're not in any lobby. Please first create a custom lobby and then try deleting bot players.")
-                                                            else:
-                                                                logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
-                                                            break
-                                                        else:
-                                                            current_botUuids = set(map(lambda x: x["botUuid"], lobby_information["gameConfig"]["customTeam100"] + lobby_information["gameConfig"]["customTeam200"] + lobby_information["members"]))
-                                                            if botUuidToDelete in current_botUuids:
-                                                                logPrint("删除%s失败。\nFailed to remove bot %s (%s)." %(botChampion_name, botChampion_alias, botUuidToDelete))
-                                                            else:
-                                                                logPrint("删除%s成功。\nSuccessfully removed bot %s (%s)."%(botChampion_name, botChampion_alias, botUuidToDelete))
-                                    else:
-                                        logPrint("您不是小队拥有者，无法进行此操作。\nYou're not the lobby owner and thus can't perform this operation.")
-                                else:
-                                    logPrint("您目前不在房间内。\nYou're currently not in a lobby.")
-                            elif suboption[0] == "4":
-                                gameflow_phase = await get_gameflow_phase(connection) #每一个操作都需要保证房间信息是可用的（Each operation requires the lobby information to be available）
-                                if gameflow_phase == "Lobby":
-                                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                    currentTeam: str = "SPECTATOR" if lobby_information["localMember"]["isSpectator"] else "TEAM1" if current_info["puuid"] in list(map(lambda x: x["puuid"], lobby_information["gameConfig"]["customTeam100"])) else "TEAM2" if current_info["puuid"] in list(map(lambda x: x["puuid"], lobby_information["gameConfig"]["customTeam200"])) else "UNKNOWN"
-                                    team1_highlight: bool = (currentTeam == "SPECTATOR" or currentTeam == "TEAM2") and len(lobby_information["gameConfig"]["customTeam100"]) < lobby_information["gameConfig"]["maxTeamSize"]
-                                    team2_highlight: bool = currentTeam == "TEAM1" and len(lobby_information["gameConfig"]["customTeam200"]) < lobby_information["gameConfig"]["maxTeamSize"]
-                                    logPrint("请选择您想要加入的队伍：\nPlease select a team to join:\n%s1\t队伍1（TEAM1）\n%s2\t队伍2（TEAM2）\n3\t观战者（SPECTATOR）" %("☆" if team1_highlight else "", "☆" if team2_highlight else ""))
-                                    while True:
-                                        switch_team: bool = False
-                                        team_option: str = logInput()
-                                        if team_option == "":
-                                            if team1_highlight:
-                                                targetTeam: str = "TEAM1"
-                                                switch_team = True
-                                                break
-                                            elif team2_highlight:
-                                                targetTeam = "TEAM2"
-                                                switch_team = True
-                                                break
-                                            else:
-                                                continue
-                                        elif team_option[0] == "0":
-                                            break
-                                        elif team_option[0] in list(map(str, range(1, 4))):
-                                            targetTeam = "TEAM1" if team_option[0] == "1" else "TEAM2" if team_option[0] == "2" else "SPECTATOR"
-                                            switch_team = True
-                                            break
-                                        else:
-                                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                    if switch_team:
-                                        if lobby_information["gameConfig"]["isCustom"] and lobby_information["multiUserChatId"].endswith("-team-select"): #旧版本自定义房间接口的特征（A feature of the old custom lobby API）
-                                            if targetTeam == "SPECTATOR":
-                                                response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/switch-teams?team=spectator")).json()
-                                                logPrint(response)
-                                                if isinstance(response, dict) and "errorCode" in response:
-                                                    if response["httpStatus"] == 500:
-                                                        if response["message"] == "NOT_SUPPORTED":
-                                                            logPrint("当前游戏状态或者接口版本不支持此操作。\nYour current gameflow phase or API version don't support this operation.")
-                                                        elif response["message"] == "Failed to switch to observer: Error response for POST /lol-login/v1/session/invoke: LCDS invoke to gameService.switchPlayerToObserverV2 failed: Server.Processing, com.riotgames.platform.messaging.UnexpectedServiceException : Last player in game cannot switch to observer!":
-                                                            logPrint("在自定义游戏没有其他玩家的情况下你无法观战。\nYou cannot become a spectator if there are no other players in this custom game.")
-                                                        else:
-                                                            logPrint("未知错误。\nUnknown error.")
-                                                    elif response["httpStatus"] == 400 and response["message"] == "TEAM_SIZE_LIMIT":
-                                                        logPrint("观战人数已满。\nSpectator number has reached the limit.")
-                                                    else:
-                                                        logPrint("观战失败。\nSpectate failed.")
-                                                else:
-                                                    time.sleep(GLOBAL_RESPONSE_LAG)
-                                                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                                    if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
-                                                        logPrint(lobby_information)
-                                                        if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
-                                                            logPrint("您还未创建任何房间。请创建一个自定义房间后再更换队伍。\nYou're not in any lobby. Please first create a custom lobby and then switch the team.")
-                                                        else:
-                                                            logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
-                                                    else:
-                                                        if current_info["puuid"] in set(map(lambda x: x["puuid"], lobby_information["gameConfig"]["customSpectators"])):
-                                                            logPrint("您已成为观战者。\nYou're now a spectator.")
-                                                        else:
-                                                            logPrint("观战失败。\nSpectate failed.")
-                                            else:
-                                                preTeamId: str = lobby_information["localMember"]["teamId"]
-                                                response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/switch-teams")).json()
-                                                logPrint(response)
-                                                if isinstance(response, dict) and "errorCode" in response:
-                                                    if response["httpStatus"] == 500:
-                                                        if response["message"] == "NOT_SUPPORTED":
-                                                            logPrint("当前游戏状态或者接口版本不支持此操作。\nYour current gameflow phase or API version don't support this operation.")
-                                                        elif response["message"] == "Failed to switch team: Error response for POST /lol-login/v1/session/invoke: LCDS invoke to gameService.switchTeamsV2 failed: Server.Processing, com.riotgames.platform.game.InvalidGameStateException : null":
-                                                            logPrint("您已在英雄选择阶段。\nYou're already during a champ select stage.")
-                                                        elif response["message"] == "Couldn't switch team, invalid team argument":
-                                                            logPrint("您目前正在观战。请尝试加入一个队伍再使用此操作。\nYou're now a spectator. Please join a team before using this operation.")
-                                                        else:
-                                                            logPrint("未知错误。\nUnknown error.")
-                                                    else:
-                                                        logPrint("未知错误。\nUnknown error.")
-                                                else:
-                                                    time.sleep(GLOBAL_RESPONSE_LAG)
-                                                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                                    if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
-                                                        logPrint(lobby_information)
-                                                        if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
-                                                            logPrint("您还未创建任何房间。请创建一个自定义房间后再更换队伍。\nYou're not in any lobby. Please first create a custom lobby and then switch the team.")
-                                                        else:
-                                                            logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
-                                                    else:
-                                                        postTeamId: str = lobby_information["localMember"]["teamId"]
-                                                        if preTeamId == postTeamId:
-                                                            logPrint("更换队伍失败。请检查对方是否满员，或者等待一段时间再观察是否更换成功。\nTeam switch failed. Please check if the opponent team is full, or wait a moment to see if this switch will succeed.")
-                                                        else:
-                                                            if postTeamId == 0:
-                                                                logPrint("小队不支持此操作。\nA party doesn't support this operation.")
-                                                            elif postTeamId == 100:
-                                                                logPrint("您已加入蓝方。\nYou joined the blue team.")
-                                                            elif postTeamId == 200:
-                                                                logPrint("您已加入红方。\nYou joined the red team.")
-                                                            else:
-                                                                logPrint(f"您加入了一个未知阵营。\nYou joined an unknown team ({postTeamId}).")
-                                        else:
-                                            response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-lobby/v2/lobby/team/{targetTeam}")).json()
-                                            logPrint(response)
-                                            if isinstance(response, dict) and "errorCode" in response:
-                                                if response["httpStatus"] == 400:
-                                                    if response["message"] == "INVALID_REQUEST":
-                                                        logPrint("请求无效！请确保您目前正在自定义房间内。\nInvalid request! Please make sure you're in a custom lobby now.")
-                                                    elif response["message"] == "TEAM_SIZE_LIMIT":
-                                                        logPrint("更换队伍失败。请检查%s是否满员。\nTeam switch failed. Please check if %s is full." %("队伍1" if targetTeam == "TEAM1" else "队伍2" if targetTeam == "TEAM2" else "观战者队伍", "TEAM 1" if targetTeam == "TEAM1" else "TEAM 2" if targetTeam == "TEAM2" else "the SPECTATORS team"))
-                                                    else:
-                                                        logPrint("未知错误。\nUnknown error.")
-                                                elif response["httpStatus"] == 500:
-                                                    if response["message"] == "INVALID_LOBBY":
-                                                        logPrint("房间类型不正确。\nIncorrect lobby type.")
-                                                    else:
-                                                        logPrint("未知错误。\nUnknown error.")
-                                                else:
-                                                    logPrint("未知错误。\nUnknown error.")
-                                            else:
-                                                time.sleep(GLOBAL_RESPONSE_LAG)
-                                                lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                                if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
-                                                    logPrint(lobby_information)
-                                                    if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
-                                                        logPrint("您还未创建任何房间。请创建一个自定义房间后再更换队伍。\nYou're not in any lobby. Please first create a custom lobby and then switch the team.")
-                                                    else:
-                                                        logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
-                                                else:
-                                                    if targetTeam == "TEAM1" and current_info["puuid"] in set(map(lambda x: x["puuid"], lobby_information["gameConfig"]["customTeam100"])) or targetTeam == "TEAM2" and current_info["puuid"] in set(map(lambda x: x["puuid"], lobby_information["gameConfig"]["customTeam200"])) or targetTeam == "SPECTATOR" and current_info["puuid"] in set(map(lambda x: x["puuid"], lobby_information["gameConfig"]["customSpectators"])):
-                                                        logPrint("您已加入%s。\nYou joined %s." %("队伍1" if targetTeam == "TEAM1" else "队伍2" if targetTeam == "TEAM2" else "观战者队伍", "TEAM 1" if targetTeam == "TEAM1" else "TEAM 2" if targetTeam == "TEAM2" else "the SPECTATORS team"))
-                                                    else:
-                                                        logPrint("更换队伍失败。请检查%s是否满员，或者等待一段时间再观察是否更换成功。\nTeam switch failed. Please check if %s is full, or wait a moment to see if this switch will succeed." %("队伍1" if targetTeam == "TEAM1" else "队伍2" if targetTeam == "TEAM2" else "观战者队伍", "TEAM 1" if targetTeam == "TEAM1" else "TEAM 2" if targetTeam == "TEAM2" else "the SPECTATORS team"))
-                                else:
-                                    logPrint("您目前不在房间内，或者正处于英雄选择阶段。\nYou're currently not in a lobby, or during a champ select stage.")
-                            elif suboption[0] == "5": #自定义房间内没有更换模式的按钮，一旦通过鼠标点击退出房间，后续再创建新房间时，房间内就只会有自己一个人。但是在不退出原房间的情况下，房主在通过接口创建一个新的自定义房间时，旧房间的玩家会收到邀请，可视为更换模式（In the custom lobby, there's not a button to change the mode, so once the user exits the lobby by clicking the button and then creates a lobby, there'll be only the user itself in the new lobby. However, without exiting the old lobby, if the party owner creates a new custom lobby through the lobby creating endpoint, each player in the old lobby will receive an invitation, and for that reason this part may resemble "Change Mode"）
-                                gameflow_phase = await get_gameflow_phase(connection)
-                                if gameflow_phase == "Lobby":
-                                    lobby_changed: bool = await create_lobby(connection)
-                                    if lobby_changed:
-                                        return ""
-                                else:
-                                    logPrint("您目前不在房间内，或者正处于英雄选择阶段。\nYou're currently not in a lobby, or during a champ select stage.")
-                            elif suboption[0] == "6":
-                                gameflow_phase = await get_gameflow_phase(connection)
-                                if gameflow_phase == "Lobby":
-                                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                    if lobby_information["localMember"]["isLeader"]:
-                                        if lobby_information["gameConfig"]["isCustom"] and lobby_information["multiUserChatId"].endswith("-team-select"):
-                                            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/start-champ-select")).json()
-                                            logPrint(response)
-                                            if isinstance(response, dict) and "errorCode" in response:
-                                                if response["message"] == "NOT_SUPPORTED":
-                                                    logPrint("您目前不在自定义房间内。\nYou're currently not in a custonm lobby.")
-                                                elif response["message"] == "Custom lobby must be in team select to transition to StartChampSelect":
-                                                    logPrint("该房间已进入英雄选择阶段。\nThis lobby has already entered the champ select stage.")
-                                                elif "com.riotgames.platform.messaging.UnexpectedServiceException : Only the owner of the game can move it into the Champion Selection state!" in response["message"]:
-                                                    logPrint("你必须等待对局的拥有者开始这场对局。\nYou must wait for the game owner to start the game.")
-                                                elif "com.riotgames.platform.game.GameStartChampionSelectionException : Insufficient players in game." in response["message"]:
-                                                    logPrint("没有足够的玩家来开始游戏。\nNot enough players to start game.")
-                                                else:
-                                                    logPrint("未知错误。\nUnknown error.")
-                                            else:
-                                                time.sleep(GLOBAL_RESPONSE_LAG)
-                                                gameflow_phase = await get_gameflow_phase(connection)
-                                                if gameflow_phase == "ChampSelect":
-                                                    logPrint("您已进入英雄选择阶段。\nYou've started champion select.")
-                                                    return ""
-                                                else:
-                                                    logPrint("游戏开始失败。\nGame failed to start.")
-                                        else:
-                                            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/lobby/matchmaking/search")).json()
-                                            logPrint(response)
-                                            if isinstance(response, dict) and "errorCode" in response:
-                                                await print_search_error(connection, response, lobby_information)
-                                            else:
-                                                time.sleep(GLOBAL_RESPONSE_LAG)
-                                                gameflow_phase = await get_gameflow_phase(connection)
-                                                if gameflow_phase == "ChampSelect":
-                                                    logPrint("您已进入英雄选择阶段。\nYou entered the champ select stage.")
-                                                    return ""
-                                                else:
-                                                    logPrint("进入英雄选择阶段失败。\nYou failed to enter the champ select stage.")
-                                    else:
-                                        logPrint("你不是对局的拥有者，无法执行此操作。\nYou're not the party owner and thus can't perform this operation.")
-                                else:
-                                    logPrint("您目前不在房间内，或者正处于英雄选择阶段。\nYou're currently not in a lobby, or during a champ select stage.")
-                            else:
-                                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                            logPrint("请选择一个自定义房间操作：\nPlease select a lobby operation:\n1\t添加电脑玩家（Add a bot）\n2\t批量添加电脑玩家（Add bots）\n3\t移除电脑玩家（Remove bots）\n4\t交换队伍（Switch team）\n5\t更换模式（Change mode）\n6\t开始游戏（Start game）")
+                        await manage_lobby(connection)
                     else:
                         logPrint("小队不支持此选项。\nParty doesn't support this option.")
-                elif option == "3": #相比聊天脚本，这里设计的很简约。因为本脚本所要实现的目的是实现每个接口的用法，不追求在此基础上对输入输出做进一步的优化。换句话说，聊天脚本中的对应功能可视为此处的一个升级版（Compared with the similar function in Customized Program 16, the design here is fairly simple. This is because this program only aims at implementing each endpoint, but not optimize I/O further. In other words, the corresponding function in Customized Program 16 may be regarded as an upgraded version of here）
-                    lobbyMember_summonerIds: list[int] = list(map(lambda x: x["summonerId"], lobby_information["members"]))
-                    logPrint('请输入您想要邀请的玩家的召唤师名。输入“-1”以退出。\nPlease submit the summoner name of the player you want to invite. Submit "-1" to exit.')
-                    while True:
-                        invite_str: str = logInput()
-                        if invite_str == "":
-                            continue
-                        elif invite_str == "-1":
-                            break
-                        else:
-                            invitee_info: dict[str, Any] = await get_info(connection, invite_str)
-                            if invitee_info["info_got"]:
-                                if invitee_info["selfInfo"]:
-                                    logPrint("你不能邀请你自己，亲～\nYou can't invite yourself, silly xD")
-                                else:
-                                    invitee_summonerName: str = get_info_name(invitee_info["body"])
-                                    invitee_summonerId: int = invitee_info["body"]["summonerId"]
-                                    if invitee_summonerId in lobbyMember_summonerIds:
-                                        logPrint(f"{invitee_summonerName}已在房间内。\n{invitee_summonerName} is already in the lobby.")
-                                    else:
-                                        body: list[dict[str, int]] = [{"toSummonerId": invitee_summonerId}]
-                                        response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/lobby/invitations", data = body)).json()
-                                        logPrint(response)
-                                        if isinstance(response, dict) and "errorCode" in response:
-                                            logPrint("邀请失败。\nFailed to send the invitation.")
-                                        else:
-                                            time.sleep(GLOBAL_RESPONSE_LAG)
-                                            lobby_invitations: dict[str, Any] | list[dict[str, Any]] = await (await connection.request("GET", "/lol-lobby/v2/lobby/invitations")).json()
-                                            if isinstance(lobby_invitations, dict) and "errorCode" in lobby_invitations:
-                                                if lobby_invitations["httpStatus"] == 404 and lobby_invitations["message"] == "LOBBY_NOT_FOUND":
-                                                    logPrint("您已离开房间。\nYou've left the original lobby.")
-                                                    break
-                                            else:
-                                                accepted_invitations: list[dict[str, Any]] = filter(lambda x: x["state"] == "Accepted", lobby_invitations)
-                                                pending_invitations: list[dict[str, Any]] = filter(lambda x: x["state"] == "Pending", lobby_invitations)
-                                                accepted_summonerIds: list[str] = list(map(lambda x: x["toSummonerId"], accepted_invitations))
-                                                pending_summonerIds: list[str] = list(map(lambda x: x["toSummonerId"], pending_invitations))
-                                                if invitee_summonerId in accepted_summonerIds:
-                                                    logPrint(f"{invitee_summonerName}已在房间内。\n{invitee_summonerName} is already in the party/lobby.")
-                                                elif invitee_summonerId in pending_summonerIds:
-                                                    logPrint(f"{invitee_summonerName}已收到邀请。\n{invitee_summonerName} received your invitation.")
-                                                else:
-                                                    logPrint(f"{invitee_summonerName}未能收到邀请。这可能是因为您还没有邀请权限，您的房间已经满员，对方不在线，对方只接受好友游戏邀请，或者对方将您拉入了聊天黑名单。\n{invitee_summonerName} didn't receive your invitation. Maybe you don't have invite priviledges, your lobby is already full, they're offline, they allow game invites only from friends, or they blocked you.")
-                            else:
-                                logPrint(invitee_info["message"])
+                elif option == "3":
+                    await invite(connection)
                 elif option == "5":
                     if lobby_information["localMember"]["isLeader"]:
-                        member_df: pandas.DataFrame = await sort_lobby_members(connection)
-                        member_df_fields_to_print: list[str] = ["gameName", "tagLine", "summonerLevel", "summonerIcon_title"]
-                        member_df_selected: pandas.DataFrame = pandas.concat([member_df.iloc[:1, :], member_df[member_df["isBot"] == ""]], ignore_index = True)
-                        if len(member_df_selected) == 2:
-                            logPrint("当前房间内无其它人类成员。\nThere's not any other human member in this party/lobby.")
-                        else:
-                            logPrint("当前房间内的人类玩家如下：\nHuman players in this lobby are as follows:")
-                            print(format_df(member_df_selected.loc[:, member_df_fields_to_print], print_index = True)[0])
-                            log.write(format_df(member_df_selected.loc[:, member_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                            logPrint("请选择一名成员：\nPlease select a member:")
-                            while True:
-                                index_got = False
-                                member_index_str: str = logInput()
-                                if member_index_str == "":
-                                    continue
-                                elif member_index_str == "0":
-                                    index_got = False
-                                    break
-                                elif member_index_str in list(map(str, range(1, len(member_df_selected)))):
-                                    member_index: int = int(member_index_str)
-                                    index_got = True
-                                else:
-                                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                if index_got:
-                                    member_summonerId: int = member_df_selected["summonerId"][member_index]
-                                    member_summonerName: str = member_df_selected["gameName"][member_index] + "#" + member_df_selected["tagLine"][member_index]
-                                    logPrint(f"您选择了{member_summonerName}.\nYou selected {member_summonerName}.")
-                                    logPrint("请选择一项操作：\nPlease select an operation:\n0\t返回上一层（Return to the last step）\n1\t晋升为小队拥有者（Promote to party owner）\n2\t将玩家移出小队（Kick player from party）\n3\t更改邀请权限（Change invite priviledge）")
-                                    while True:
-                                        operation: str = logInput()
-                                        if operation == "":
-                                            continue
-                                        elif operation[0] == "0":
-                                            break
-                                        elif operation[0] == "1":
-                                            response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-lobby/v2/lobby/members/{member_summonerId}/promote")).json()
-                                            if isinstance(response, dict) and "errorCode" in response:
-                                                if response["message"] == "Cannot promote when not leader":
-                                                    logPrint("只有小队拥有者才可以将他人晋升为小队拥有者。\nOnly the party owner can promote another member to be the new party owner.")
-                                                elif response["message"] == "SUMMONER_NOT_FOUND":
-                                                    logPrint("未找到该召唤师。或者您已经退出房间。\nSummoner not found. Or you've left the lobby.")
-                                                else:
-                                                    logPrint("未知错误。\nUnknown error.")
-                                            else:
-                                                lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                                if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
-                                                    logPrint(lobby_information)
-                                                    if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
-                                                        logPrint("您还未创建任何房间。请创建一个小队后再更改他人角色。\nYou're not in any lobby. Please first create a party and then change another member's role.")
-                                                    else:
-                                                        logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
-                                                else:
-                                                    for member in lobby_information["members"]:
-                                                        if member["summonerId"] == member_summonerId:
-                                                            break
-                                                    if member["isLeader"]:
-                                                        logPrint(f"您已将{member_summonerName}晋升为新的小队拥有者。\nYou promoted {member_summonerName} as the new party owner.")
-                                                    else:
-                                                        logPrint("晋升失败。\nPromotion failed.")
-                                        elif operation[0] == "2":
-                                            logPrint(f"你真的想移出{member_summonerName}吗？（输入任意非空字符串以移出，否则取消操作。）\nDo you really want to kick {member_summonerName}? (Submit any non-empty string to kick, or null to cancel.)")
-                                            kick_confirm_str: str = logInput()
-                                            kick_confirm: bool = bool(kick_confirm_str)
-                                            if kick_confirm:
-                                                response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-lobby/v2/lobby/members/{member_summonerId}/kick")).json()
-                                                if isinstance(response, dict) and "errorCode" in response:
-                                                    if response["message"] == "INVALID_ROLE_TRANSITION":
-                                                        logPrint("你不能遣离你自己。\nYou can't kick yourself.")
-                                                    elif response["message"] == "NOT_AUTHORIZED":
-                                                        logPrint("只有小队拥有者才可以将他人移出小队。\nOnly the party owner can kick another member from the party/lobby.")
-                                                    elif response["message"] == "SUMMONER_NOT_FOUND":
-                                                        logPrint("未找到该召唤师。或者您已经退出房间。\nSummoner not found. Or you've left the lobby.")
-                                                    else:
-                                                        logPrint("未知错误。\nUnknown error.")
-                                                else:
-                                                    lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                                    if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
-                                                        logPrint(lobby_information)
-                                                        if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
-                                                            logPrint("您还未创建任何房间。请创建一个小队后再尝试将他人移出小队。\nYou're not in any lobby. Please first create a party and then try kicking a member.")
-                                                        else:
-                                                            logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
-                                                    else:
-                                                        if member_summonerId in list(map(lambda x: x["summonerId"], lobby_information["members"])):
-                                                            logPrint("遣离失败。\nKick failed.")
-                                                        else:
-                                                            logPrint(f"您已将{member_summonerName}移出该小队/房间。\nYou kicked {member_summonerName} from the party/lobby.")
-                                        elif operation[0] == "3":
-                                            logPrint("您想要提供还是撤回邀请权限？\nDo you want to grant or revoke invites?\n1\t提供邀请权限（Grant invites）\n2\t撤回邀请权限（Revoke invites）")
-                                            while True:
-                                                suboperation: str = logInput()
-                                                if suboperation == "":
-                                                    continue
-                                                elif suboperation[0] == "0":
-                                                    break
-                                                elif suboperation[0] == "1":
-                                                    response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-lobby/v2/lobby/members/{member_summonerId}/grant-invite")).json()
-                                                    if isinstance(response, dict) and "errorCode" in response:
-                                                        if response["message"] == "INVALID_MEMBER":
-                                                            logPrint("你不能更改你自己的邀请权限。\nYou can't change the invite priviledge of yourself.")
-                                                        elif response["message"] == "PARTY_LEADER_REQUIRED":
-                                                            logPrint("只有小队拥有者才可以为他人提供邀请权限。\nOnly the party owner can grant invites to other members.")
-                                                        elif response["message"] == "SUMMONER_NOT_FOUND":
-                                                            logPrint("未找到该召唤师。或者您已经退出房间。\nSummoner not found. Or you've left the lobby.")
-                                                        else:
-                                                            logPrint("未知错误。\nUnknown error.")
-                                                    else:
-                                                        lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                                        if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
-                                                            logPrint(lobby_information)
-                                                            if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
-                                                                logPrint("您还未创建任何房间。请创建一个小队后再尝试更改他人的邀请权限。\nYou're not in any lobby. Please first create a party and then try changing another member's invite priviledge.")
-                                                            else:
-                                                                logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
-                                                        else:
-                                                            for member in lobby_information["members"]:
-                                                                if member["summonerId"] == member_summonerId:
-                                                                    break
-                                                            if member["allowedInviteOthers"]:
-                                                                logPrint(f"{member_summonerName}可以邀请玩家加入这局游戏。\n{member_summonerName} may invite players to this game.")
-                                                            else:
-                                                                logPrint("提供邀请权限失败。\nInvite priviledge grant failed.")
-                                                elif suboperation[0] == "2":
-                                                    response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-lobby/v2/lobby/members/{member_summonerId}/grant-invite")).json()
-                                                    if isinstance(response, dict) and "errorCode" in response:
-                                                        if response["message"] == "INVALID_MEMBER":
-                                                            logPrint("你不能更改你自己的邀请权限。\nYou can't change the invite priviledge of yourself.")
-                                                        elif response["message"] == "PARTY_LEADER_REQUIRED":
-                                                            logPrint("只有小队拥有者才可以撤回他人的邀请权限。\nOnly the party owner can revoke invites from other members.")
-                                                        elif response["message"] == "SUMMONER_NOT_FOUND":
-                                                            logPrint("未找到该召唤师。或者您已经退出房间。\nSummoner not found. Or you've left the lobby.")
-                                                        else:
-                                                            logPrint("未知错误。\nUnknown error.")
-                                                    else:
-                                                        lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                                        if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
-                                                            logPrint(lobby_information)
-                                                            if lobby_information["httpStatus"] == 404 and lobby_information["message"] == "LOBBY_NOT_FOUND":
-                                                                logPrint("您还未创建任何房间。请创建一个小队后再尝试更改他人的邀请权限。\nYou're not in any lobby. Please first create a party and then try changing another member's invite priviledge.")
-                                                            else:
-                                                                logPrint("您的房间状态出现未知异常。\nAn unknown error occurred to your lobby status.")
-                                                        else:
-                                                            for member in lobby_information["members"]:
-                                                                if member["summonerId"] == member_summonerId:
-                                                                    break
-                                                            if member["allowedInviteOthers"]:
-                                                                logPrint("撤回邀请权限失败。\nInvite priviledge revoke failed.")
-                                                            else:
-                                                                logPrint(f"{member_summonerName}不再能邀请玩家加入这局游戏。\n{member_summonerName} may no longer invite players to this game.")
-                                                else:
-                                                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                    continue
-                                                break
-                                        else:
-                                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                            continue
-                                        logPrint("请选择一项操作：\nPlease select an operation:\n0\t返回上一层（Return to the last step）\n1\t晋升为小队拥有者（Promote to party owner）\n2\t将玩家移出小队（Kick player from party）\n3\t更改邀请权限（Change invite priviledge）")
-                                    member_df = await sort_lobby_members(connection)
-                                    member_df_fields_to_print = ["gameName", "tagLine", "summonerLevel", "summonerIcon_title"]
-                                    member_df_selected = pandas.concat([member_df.iloc[:1, :], member_df[member_df["isBot"] == ""]], ignore_index = True)
-                                    logPrint("当前房间内的人类玩家如下：\nHuman players in this lobby are as follows:")
-                                    print(format_df(member_df_selected.loc[:, member_df_fields_to_print], print_index = True)[0])
-                                    log.write(format_df(member_df_selected.loc[:, member_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                                    logPrint("请选择一名成员：\nPlease select a member:")
+                        await manage_lobby_member(connection)
                     else:
                         logPrint("您不是小队拥有者，无法进行此操作。\nYou're not the party/lobby owner and thus can't perform this operation.")
                 elif option == "9":
-                    response: Optional[dict[str, Any]] = await (await connection.request("DELETE", "/lol-lobby/v2/lobby")).json()
-                    logPrint(response)
-                    if isinstance(response, dict) and "errorCode" in response:
-                        logPrint("退出房间失败。\nExit failed.")
-                    else:
-                        time.sleep(GLOBAL_RESPONSE_LAG)
-                        gameflow_phase = await get_gameflow_phase(connection)
-                        if gameflow_phase == "None":
-                            logPrint("您已成功退出房间。\nYou've exited the lobby successfully.")
-                            break
-                        elif gameflow_phase == "Lobby":
-                            logPrint("退出房间失败。请稍后通过客户端确认游戏状态。\nExit failed. Please check your gameflow phase in the League Client later.")
-                        else:
-                            logPrint("您的游戏状态发生异常。\nAn error occurred to your gameflow phase.")
+                    return_home: bool = await exit_lobby(connection)
+                    if return_home:
+                        break
                 else:
                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
             else:
@@ -4896,11 +4946,7 @@ async def lobby_simulation(connection: Connection) -> str:
         elif option == "4":
             await chat(connection)
         elif option == "6":
-            lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-            logPrint(lobby_information)
-            with open("lobby-information.json", "w", encoding = "utf-8") as fp:
-                json.dump(lobby_information, fp, indent = 4, ensure_ascii = False)
-            logPrint('房间信息已导出到同目录下的“lobby-information.json”。\nLobby information has been exported into "lobby-information.json" under the same directory.')
+            await output_lobby_information(connection)
         elif option == "7":
             await handle_invitations(connection)
         elif option == "8":
@@ -4950,6 +4996,29 @@ async def lobby_simulation(connection: Connection) -> str:
 #-----------------------------------------------------------------------------
 # 队列阶段模拟（In-queue stage simulation）
 #-----------------------------------------------------------------------------
+async def quit_queue(connection: Connection) -> None:
+    response: Optional[dict[str, Any]] = await (await connection.request("DELETE", "/lol-lobby/v2/lobby/matchmaking/search")).json()
+    logPrint(response)
+    if isinstance(response, dict) and "errorCode" in response:
+        if response["message"] == "INVALID_PARTY_STATE":
+            logPrint("当前小队状态不允许退出队列。\nCurrent party state doesn't allow the queue exit action.")
+        else:
+            logPrint("退出队列失败。请检查您的客户端运行状况。如果这个问题持续存在，请重启您的客户端。\nQueue exit failed. Please check your client's running status. If this problem persists, please restart your client.")
+    else:
+        time.sleep(GLOBAL_RESPONSE_LAG)
+        gameflow_phase = await get_gameflow_phase(connection)
+        if gameflow_phase == "Lobby":
+            logPrint("退出队列成功。您已返回房间。\nQueue exit succeeded. You returned to the lobby.")
+        else:
+            logPrint("服务器接收到了退出队列请求，但您的状态似乎还没有更新。\nThe server received your queue exit request, but it seems your gameflow phase hasn't been updated yet.")
+
+async def output_matchmaking_information(connection: Connection) -> None:
+    matchmaking_information: dict[str, Any] = await (await connection.request("GET", "/lol-matchmaking/v1/search")).json()
+    logPrint(matchmaking_information)
+    with open("matchmaking-search.json", "w", encoding = "utf-8") as fp:
+        json.dump(matchmaking_information, fp, indent = 4, ensure_ascii = False)
+    logPrint('寻找队列信息已导出到同目录下的“matchmaking-search.json”。\nMatchmaking information has been exported into "matchmaking-search.json" under the same directory.')
+
 async def inQueue_simulation(connection: Connection) -> str:
     while True:
         logPrint("请选择一个操作：\nPlease select an operation:\n1\t输出寻找对局信息（Print matchmaking information）\n2\t聊天（Chat）\n3\t处理邀请（Handle invitations）\n4\t加入小队或自定义房间（Join party/lobby）\n5\t退出队列（Quit the queue）\n6\t举报一名玩家（Report a player）\n7\t其它（Others）\n8\t客户端任务管理（Manage the League Client task）")
@@ -5005,11 +5074,7 @@ async def inQueue_simulation(connection: Connection) -> str:
         elif option[0] == "1":
             gameflow_phase: str = await get_gameflow_phase(connection)
             if gameflow_phase in ["Matchmaking", "ReadyCheck"]:
-                matchmaking_information: dict[str, Any] = await (await connection.request("GET", "/lol-matchmaking/v1/search")).json()
-                logPrint(matchmaking_information)
-                with open("matchmaking-search.json", "w", encoding = "utf-8") as fp:
-                    json.dump(matchmaking_information, fp, indent = 4, ensure_ascii = False)
-                logPrint('寻找队列信息已导出到同目录下的“matchmaking-search.json”。\nMatchmaking information has been exported into "matchmaking-search.json" under the same directory.')
+                await output_matchmaking_informaton(connection)
             else:
                 logPrint("您目前不在队列中。\nYou're currently not in a matchmaking queue.")
         elif option[0] == "2":
@@ -5023,20 +5088,7 @@ async def inQueue_simulation(connection: Connection) -> str:
         elif option[0] == "5":
             gameflow_phase: str = await get_gameflow_phase(connection)
             if gameflow_phase == "Matchmaking":
-                response: Optional[dict[str, Any]] = await (await connection.request("DELETE", "/lol-lobby/v2/lobby/matchmaking/search")).json()
-                logPrint(response)
-                if isinstance(response, dict) and "errorCode" in response:
-                    if response["message"] == "INVALID_PARTY_STATE":
-                        logPrint("当前小队状态不允许退出队列。\nCurrent party state doesn't allow the queue exit action.")
-                    else:
-                        logPrint("退出队列失败。请检查您的客户端运行状况。如果这个问题持续存在，请重启您的客户端。\nQueue exit failed. Please check your client's running status. If this problem persists, please restart your client.")
-                else:
-                    time.sleep(GLOBAL_RESPONSE_LAG)
-                    gameflow_phase = await get_gameflow_phase(connection)
-                    if gameflow_phase == "Lobby":
-                        logPrint("退出队列成功。您已返回房间。\nQueue exit succeeded. You returned to the lobby.")
-                    else:
-                        logPrint("服务器接收到了退出队列请求，但您的状态似乎还没有更新。\nThe server received your queue exit request, but it seems your gameflow phase hasn't been updated yet.")
+                await quit_queue(connection)
             else:
                 logPrint("您目前不在队列中，或者已经找到对局。\nYou're currently not in a matchmaking queue, or a match is found.")
         elif option[0] == "6":
@@ -5068,6 +5120,51 @@ async def inQueue_simulation(connection: Connection) -> str:
 #-----------------------------------------------------------------------------
 # 就位确认阶段模拟（Match accept stage simulation）
 #-----------------------------------------------------------------------------
+async def accept_readyCheck(connection: Connection) -> None:
+    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-matchmaking/v1/ready-check/accept")).json()
+    logPrint(response)
+    if isinstance(response, dict) and "errorCode" in response:
+        if response["httpStatus"] == 500 and "Failed to indicate team builder ready check readiness" in response["message"]:
+            logPrint("无法获取阵容匹配就绪状态。请检查服务器是否维护中。\nFailed to get team builder ready-check availability. Please check if the server is under mainteinance.")
+        else:
+            logPrint("接受对局失败。\nFailed to accept ready check.")
+    else:
+        time.sleep(GLOBAL_RESPONSE_LAG)
+        readyCheck_information = await (await connection.request("GET", "/lol-matchmaking/v1/ready-check")).json()
+        if isinstance(readyCheck_information, dict) and "errorCode" in readyCheck_information: #有时，在点“接受”后的一瞬间，就位确认窗口会立刻消失（Sometimes, as soon as the user clicked "Accept", the ready check window disappears）
+            logPrint("发送接受对局的请求过程出现了问题。\nAn error occurred when the program posted the request to accept the match.")
+        else:
+            if readyCheck_information["playerResponse"] == "Accepted":
+                logPrint("接受对局成功。\nMatch accepted successfully.")
+            else:
+                logPrint("接受对局失败。\nFailed to accept ready check.")
+
+async def reject_readyCheck(connection: Connection) -> None:
+    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-matchmaking/v1/ready-check/decline")).json()
+    logPrint(response)
+    if isinstance(response, dict) and "errorCode" in response:
+        if response["httpStatus"] == 500 and "Failed to indicate team builder ready check readiness" in response["message"]:
+            logPrint("无法获取阵容匹配就绪状态。请检查服务器是否维护中。\nFailed to get team builder ready-check availability. Please check if the server is under mainteinance.")
+        else:
+            logPrint("拒绝对局失败。\nFailed to decline ready check.")
+    else:
+        time.sleep(GLOBAL_RESPONSE_LAG)
+        readyCheck_information = await (await connection.request("GET", "/lol-matchmaking/v1/ready-check")).json()
+        if isinstance(readyCheck_information, dict) and "errorCode" in readyCheck_information:
+            logPrint("发送拒绝对局的请求过程出现了问题。\nAn error occurred when the program posted the request to decline the match.")
+        else:
+            if readyCheck_information["playerResponse"] == "Declined" or readyCheck_information["playerResponse"] == "None":
+                logPrint("拒绝对局成功。\nMatch declined successfully.")
+            else:
+                logPrint("拒绝对局失败。\nFailed to decline ready check.")
+
+async def output_readyCheck_information(connection: Connection) -> None:
+    readyCheck_information: dict[str, Any] = await (await connection.request("GET", "/lol-matchmaking/v1/ready-check")).json()
+    logPrint(readyCheck_information)
+    with open("readyCheck.json", "w", encoding = "utf-8") as fp:
+        json.dump(readyCheck_information, fp, indent = 4, ensure_ascii = False)
+    logPrint('就位确认信息已导出到同目录下的“readyCheck.json”。\nReady check information has been exported into "readyCheck.json" under the same directory.')
+
 async def readyCheck_simulation(connection: Connection) -> str:
     while True:
         logPrint("请选择一个操作：\nPlease select an operation:\n1\t接受（Accept）\n2\t拒绝（Decline）\n3\t输出就位确认阶段信息（Print the ready check information）\n4\t其它（Others）\n5\t客户端任务管理（Manage the League Client task）")
@@ -5080,47 +5177,11 @@ async def readyCheck_simulation(connection: Connection) -> str:
             gameflow_phase: str = await get_gameflow_phase(connection)
             if gameflow_phase == "ReadyCheck":
                 if option[0] == "1":
-                    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-matchmaking/v1/ready-check/accept")).json()
-                    logPrint(response)
-                    if isinstance(response, dict) and "errorCode" in response:
-                        if response["httpStatus"] == 500 and "Failed to indicate team builder ready check readiness" in response["message"]:
-                            logPrint("无法获取阵容匹配就绪状态。请检查服务器是否维护中。\nFailed to get team builder ready-check availability. Please check if the server is under mainteinance.")
-                        else:
-                            logPrint("接受对局失败。\nFailed to accept ready check.")
-                    else:
-                        time.sleep(GLOBAL_RESPONSE_LAG)
-                        readyCheck_information = await (await connection.request("GET", "/lol-matchmaking/v1/ready-check")).json()
-                        if isinstance(readyCheck_information, dict) and "errorCode" in readyCheck_information: #有时，在点“接受”后的一瞬间，就位确认窗口会立刻消失（Sometimes, as soon as the user clicked "Accept", the ready check window disappears）
-                            logPrint("发送接受对局的请求过程出现了问题。\nAn error occurred when the program posted the request to accept the match.")
-                        else:
-                            if readyCheck_information["playerResponse"] == "Accepted":
-                                logPrint("接受对局成功。\nMatch accepted successfully.")
-                            else:
-                                logPrint("接受对局失败。\nFailed to accept ready check.")
+                    await accept_readyCheck(connection)
                 elif option[0] == "2":
-                    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-matchmaking/v1/ready-check/decline")).json()
-                    logPrint(response)
-                    if isinstance(response, dict) and "errorCode" in response:
-                        if response["httpStatus"] == 500 and "Failed to indicate team builder ready check readiness" in response["message"]:
-                            logPrint("无法获取阵容匹配就绪状态。请检查服务器是否维护中。\nFailed to get team builder ready-check availability. Please check if the server is under mainteinance.")
-                        else:
-                            logPrint("拒绝对局失败。\nFailed to decline ready check.")
-                    else:
-                        time.sleep(GLOBAL_RESPONSE_LAG)
-                        readyCheck_information = await (await connection.request("GET", "/lol-matchmaking/v1/ready-check")).json()
-                        if isinstance(readyCheck_information, dict) and "errorCode" in readyCheck_information:
-                            logPrint("发送拒绝对局的请求过程出现了问题。\nAn error occurred when the program posted the request to decline the match.")
-                        else:
-                            if readyCheck_information["playerResponse"] == "Declined" or readyCheck_information["playerResponse"] == "None":
-                                logPrint("拒绝对局成功。\nMatch declined successfully.")
-                            else:
-                                logPrint("拒绝对局失败。\nFailed to decline ready check.")
+                    await reject_readyCheck(connection)
                 else:
-                    readyCheck_information: dict[str, Any] = await (await connection.request("GET", "/lol-matchmaking/v1/ready-check")).json()
-                    logPrint(readyCheck_information)
-                    with open("readyCheck.json", "w", encoding = "utf-8") as fp:
-                        json.dump(readyCheck_information, fp, indent = 4, ensure_ascii = False)
-                    logPrint('就位确认信息已导出到同目录下的“readyCheck.json”。\nReady check information has been exported into "readyCheck.json" under the same directory.')
+                    await output_readyCheck_information(connection)
             else:
                 logPrint("您目前不在就位确认阶段。\nYou're currently not at the ready check stage.")
         elif option[0] == "4":
@@ -5285,6 +5346,1045 @@ async def sort_mutedPlayers_chat(connection: Connection) -> pandas.DataFrame:
     muted_player_df: pandas.DataFrame = pandas.DataFrame(data = muted_player_data_organized)
     muted_player_df = pandas.concat([pandas.DataFrame([chat_mutedPlayer_header])[muted_player_df.columns], muted_player_df], ignore_index = True)
     return muted_player_df
+
+async def swap_bench(connection: Connection) -> None:
+    champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
+    benchedChampionIds: list[int] = list(map(lambda x: x["championId"], champ_select_session["benchChampions"]))
+    if len(benchedChampionIds) == 0:
+        logPrint("还没有人重随过。\nNobody has rerolled.")
+    else:
+        logPrint("可用英雄池如下：\nAvailable champion pool:")
+        LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)
+        LoLChampion_df_fields_to_print: list[str] = ["id", "name", "title", "alias", "freeToPlay", "ownership: owned", "ownership: rental: rented"]
+        LoLChampion_df_selected: pandas.DataFrame = pandas.concat([LoLChampion_df.iloc[:1, :], LoLChampion_df[LoLChampion_df["id"].isin(benchedChampionIds)]], ignore_index = True)
+        print(format_df(LoLChampion_df_selected.loc[:, LoLChampion_df_fields_to_print], print_index = True)[0])
+        log.write(format_df(LoLChampion_df_selected.loc[:, LoLChampion_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+        logPrint("请选择一个英雄：\nPlease select a champion:")
+        while True:
+            index_got: bool = False
+            swap_index_str = logInput()
+            if swap_index_str == "":
+                continue
+            elif swap_index_str[0] == "0":
+                index_got = False
+                break
+            elif swap_index_str in list(map(str, range(1, len(LoLChampion_df_selected)))):
+                swap_index: int = int(swap_index_str)
+                index_got = True
+                break
+            else:
+                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+        if index_got:
+            logPrint("您选择交换以下英雄：\nYou selected the following champion to swap:")
+            print(format_df(LoLChampion_df_selected.loc[[swap_index], LoLChampion_df_fields_to_print], print_index = True, reserve_index = True)[0])
+            log.write(format_df(LoLChampion_df_selected.loc[[swap_index], LoLChampion_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True, reserve_index = True)[0] + "\n")
+            swap_championId: int = LoLChampion_df_selected["id"][swap_index]
+            swap_championName: str = LoLChampion_df_selected["name"][swap_index]
+            if champ_select_session["isLegacyChampSelect"]:
+                response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-champ-select/v1/session/bench/swap/{swap_championId}")).json()
+            else:
+                response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-lobby-team-builder/champ-select/v1/session/bench/swap/{swap_championId}")).json()
+            logPrint(response)
+            if isinstance(response, dict) and "errorCode" in response:
+                if response["httpStatus"] == 500 and response["message"] == f"Unable to swap with ChampionBench champion {swap_championId}: Received status Error: INVALID_CHAMP_SELECTION instead of expected status of OK from request to teambuilder-draft:championBenchSwapV1":
+                    logPrint(f"您目前尚未持有{swap_championName}。\nYou don't own {swap_championName} for now.")
+                else:
+                    logPrint("交换失败。\nSwap failed.")
+            else:
+                time.sleep(GLOBAL_RESPONSE_LAG)
+                localPlayer = await get_champSelect_player(connection)
+                if localPlayer == {}:
+                    logPrint("游戏状态异常。\nAbnormal gameflow phase.")
+                else:
+                    if localPlayer["championId"] == swap_championId:
+                        logPrint("交换成功。\nSwap succeeded.")
+                    else:
+                        logPrint("交换失败。\nSwap failed.")
+
+async def swap(connection: Connection) -> None:
+    tooltip1_zh: dict[str, str] = {"1": "选用顺序", "2": "分路", "3": "英雄"}
+    tooltip1_en_lowercase: dict[str, str] = {"1": "pick order", "2": "position", "3": "champion"}
+    tooltip1_en_capitalize: dict[str, str] = {key: value.capitalize() for (key, value) in tooltip1_en_lowercase.items()}
+    session_keys: dict[str, str] = {"1": "pickOrderSwaps", "2": "positionSwaps", "3": "trades"}
+    endpoint1_dict1: dict[str, str] = {"1": "pick-order", "2": "position", "3": "champion"}
+    tooltip2_zh: dict[str, str] = {"1": "接受", "2": "拒绝", "3": "取消"}
+    tooltip2_en_noun_capitalize: dict[str, str] = {"1": "Acceptation", "2": "Decline", "3": "Cancellation"}
+    tooltip2_en_verb_perfect_capitalize: dict[str, str] = {"1": "Accepted", "2": "Declined", "3": "Cancelled"}
+    endpoint1_dict2: dict[str, str] = {"1": "accept", "2": "decline", "3": "cancel"}
+    logPrint("请选择交换对象：\nPlease select an object to swap:\n1\t选用顺序（Pick order）\n2\t分路（Position）\n3\t队友英雄（Ally champions）\n4\t可用英雄池（替补席）【Available champion pool (Bench)】")
+    while True:
+        obj: str = logInput()
+        if obj == "":
+            continue
+        elif obj[0] == "0":
+            break
+        elif obj[0] in {"1", "2", "3"}:
+            logPrint("请选择动作：\nPlease select an action:\n1\t查看（Check）\n2\t发送（Send）")
+            while True:
+                action: str = logInput()
+                if action == "":
+                    continue
+                elif action[0] == "0":
+                    break
+                elif action[0] == "1":
+                    gameflow_phase: str = await get_gameflow_phase(connection) #每一个操作都需要保证英雄选择会话是可用的（Each operation requires the champ select session to be available）
+                    if gameflow_phase == "ChampSelect":
+                        champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
+                        swaps: dict[str, Any] = champ_select_session[session_keys[obj[0]]]
+                        swap_cellId_map: dict[int, dict[str, Any]] = {swap["cellId"]: swap for swap in swaps}
+                        player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log)
+                        player_df_fields_to_print: list[str] = ["cellId", "gameName", "tagLine", "playerAlias", "assignedPosition", "champion name", "champion alias"]
+                        target_cellId: int = -1
+                        for swap in swaps:
+                            if swap["state"] == "SENT" or swap["state"] == "RECEIVED": #以前可以通过/lol-champ-select/v1/ongoing-%s-swap接口来查看正在进行的交换（Previously, one could check the on-going swap by the endpoint `/lol-champ-select/v1/ongoing-%s-swap`）
+                                target_cellId = swap["cellId"]
+                                break #一次只检查一个交换请求。并且一般情况下，最多只允许一个交换请求同时存在（One swap request to check at a time. And in normal cases, there's at most one swap request simultaneously）
+                        if target_cellId == -1:
+                            logPrint("在当前英雄选择会话中没有找到任何正在进行的%s交换请求。\nThere's not any on-going %s swap in the current champ select session." %(tooltip1_zh[obj[0]], tooltip1_en_lowercase[obj[0]]))
+                        else:
+                            ongoing_swap: dict[str, Any] = swap_cellId_map[target_cellId]
+                            swap_id: int = ongoing_swap["id"]
+                            player_df_selected: bool = player_df[player_df["cellId"] == target_cellId]
+                            print(format_df(player_df_selected.loc[:, player_df_fields_to_print], print_index = False)[0])
+                            log.write(format_df(player_df_selected.loc[:, player_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = False)[0] + "\n")
+                            if ongoing_swap["state"] == "SENT":
+                                logPrint("是否取消该交换请求？（输入任意键以取消，否则不取消。）\nDo you want to cancel this swap request? (Submit any non-empty string to cancel, or null to refuse cancelling.)")
+                                clear_str: str = logInput()
+                                clear: bool = bool(clear_str)
+                                if clear:
+                                    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/session/%s-swaps/%d/cancel" %(endpoint1_dict1[obj[0]], swap_id))).json()
+                                    logPrint(response)
+                                    if isinstance(response, dict) and "errorCode" in response: #本脚本中，大部分反馈都用了`isinstance(response, dict) and "errorCode" in response`作为请求成功与否的判断标准。这是因为如果要知道每个接口在请求成功时具体返回什么信息，必须在实战中测定。但是实际上不需要知道具体返回什么信息（In this program, the feedback parts use `isinstance(response, dict) and "errorCode" in response` as the criterion to judge whether a request is successfully post. This is because, one can only know what exactly a champ select endpoint returns in practical matches. But actually, that exact information isn't necessary）
+                                        logPrint("取消失败！\nCancellation failed!")
+                                    else:
+                                        logPrint("已取消%s交换请求。\nCancelled current %s swap." %(tooltip1_zh[obj[0]], tooltip1_en_lowercase[obj[0]]))
+                            else:
+                                logPrint("请选择处理方式：\nPlease select how you'd like to deal with this swap:\n0\t返回上一层（Return to the last step）\n1\t接受（Accept）\n2\t拒绝（Decline）\n3\t取消（Cancel）")
+                                while True:
+                                    strategy: str = logInput()
+                                    if strategy == "":
+                                        continue
+                                    elif strategy[0] == "0":
+                                        pass
+                                    elif strategy[0] in {"1", "2", "3"}:
+                                        if champ_select_session["isLegacyChampSelect"]:
+                                            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/session/%s-swaps/%d/%s" %(endpoint1_dict1[obj[0]], swap_id, endpoint1_dict2[strategy[0]]))).json()
+                                        else:
+                                            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby-team-builder/champ-select/v1/session/%s-swaps/%d/%s" %(endpoint1_dict1[obj[0]], swap_id, endpoint1_dict2[strategy[0]]))).json()
+                                        logPrint(response)
+                                        if isinstance(response, dict) and "errorCode" in response:
+                                            logPrint("%s失败！\n%s failed!" %(tooltip2_zh[strategy[0]], tooltip2_en_noun_capitalize[strategy[0]]))
+                                        else:
+                                            logPrint("已%s%s交换请求。\n%s current %s swap." %(tooltip2_zh[strategy[0]], tooltip1_zh[obj[0]], tooltip2_en_verb_perfect_capitalize[strategy[0]], tooltip1_en_lowercase[obj[0]]))
+                                    else:
+                                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                                        continue
+                                    break
+                    else:
+                        logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
+                elif action[0] == "2":
+                    gameflow_phase = await get_gameflow_phase(connection)
+                    if gameflow_phase == "ChampSelect":
+                        champ_select_session = await get_champ_select_session(connection)
+                        swaps: list[dict[str, Any]] = champ_select_session[session_keys[obj[0]]]
+                        if len(swaps) == 0:
+                            logPrint("%s交换不可用。请切换游戏模式后再试。\n%s swap isn't available. Please switch to another game mode and try again." %(tooltip1_zh[obj[0]], tooltip1_en_capitalize[obj[0]]))
+                        elif any(map(lambda x: x["state"] == "AVAILABLE", swaps)):
+                            swap_df: pandas.DataFrame = await sort_swaps_info(connection, swap_typeId = int(obj[0]))
+                            swap_df_fields_to_print: list[str] = ["id", "cellId", "gameName", "tagLine", "assignedPosition", "champion name", "champion alias"]
+                            swap_df_selected: pandas.DataFrame = pandas.concat([swap_df.iloc[:1, :], swap_df[swap_df["state"] == "AVAILABLE"]], ignore_index = True)
+                            logPrint("请选择一名玩家以交换%s：\nPlease select a player to swap %s:" %(tooltip1_zh[obj[0]], tooltip1_en_lowercase[obj[0]]))
+                            print(format_df(swap_df_selected.loc[:, swap_df_fields_to_print], print_index = True)[0])
+                            log.write(format_df(swap_df_selected.loc[:, swap_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0])
+                            while True:
+                                index_got: bool = False
+                                swap_index_str: str = logInput()
+                                if swap_index_str == "":
+                                    continue
+                                elif swap_index_str == "0":
+                                    break
+                                elif swap_index_str in list(map(str, range(1, len(swap_df_selected)))):
+                                    swap_index: int = int(swap_index_str)
+                                    index_got = True
+                                    break
+                                else:
+                                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                            if index_got:
+                                # logPrint("是否确认与以下玩家交换%s？（输入任意键确认，否则取消。）\nDo you want to swap %s with the following player? (Submit any non-empty string to confirm, or null to cancel.)" %(tooltip1_zh[obj[0]], tooltip1_en_lowercase[obj[0]]))
+                                # print(format_df(swap_df_selected.loc[[swap_index], swap_df_fields_to_print], print_index = True, reserve_index = True)[0])
+                                # log.write(format_df(swap_df_selected.loc[[swap_index], swap_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True, reserve_index = True)[0])
+                                # swap_confirm_str: str = logInput()
+                                # swap_confirm: bool = bool(swap_confirm_str)
+                                # if swap_confirm:
+                                swap_id: int = swap_df_selected["id"][swap_index]
+                                if champ_select_session["isLegacyChampSelect"]:
+                                    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/session/%s-swaps/%d/request" %(endpoint1_dict1[obj[0]], swap_id))).json()
+                                else:
+                                    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby-team-builder/champ-select/v1/session/%s-swaps/%d/request" %(endpoint1_dict1[obj[0]], swap_id))).json()
+                                logPrint(response)
+                                if isinstance(response, dict) and "errorCode" in response:
+                                    logPrint("交换%s的请求发送失败。\n%s swap request failed to be sent." %(tooltip1_zh[obj[0]], tooltip1_en_capitalize[obj[0]]))
+                                else:
+                                    logPrint("交换%s的请求发送成功。请等待对方回应。\n%s swap request is sent successfully. Please wait for response." %(tooltip1_zh[obj[0]], tooltip1_en_capitalize[obj[0]]))
+                                    time.sleep(GLOBAL_RESPONSE_LAG)
+                                    localPlayer: dict[str, Any] = await get_champSelect_player(connection)
+                                    if localPlayer != {}:
+                                        logPrint("当前槽位序号（Current cell id）：%d" %(localPlayer["cellId"]))
+                        else:
+                            if any(map(lambda x: x["state"] == "RECEIVED" or x["state"] == "SENT", swaps)):
+                                logPrint("您正在和一名玩家交换%s。请先完成该交换后再尝试发起下一次交换。\nYou're currently swapping %s with a player. Please finish this swap and then trying initiating another swap." %(tooltip1_zh[obj[0]], tooltip1_en_lowercase[obj[0]]))
+                            else:
+                                logPrint("%s交换不可用。请检查英雄选择计时阶段。\n%s swap isn't available. Please check the timer phase of the current champ select session.\n当前阶段（Current phase）：%s" %(tooltip1_zh[obj[0]], tooltip1_en_capitalize[obj[0]], champ_select_session["timer"]["phase"]))
+                    else:
+                        logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
+                else:
+                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                logPrint("请选择动作：\nPlease select an action:\n1\t查看（Check）\n2\t发送（Send）")
+        elif obj[0] == "4": #“可用英雄池”的叫法来自极地大乱斗的百度百科（"Available champion pool" comes from https://wiki.leagueoflegends.com/en-us/ARAM）
+            gameflow_phase = await get_gameflow_phase(connection)
+            if gameflow_phase == "ChampSelect":
+                champ_select_session = await get_champ_select_session(connection)
+                if champ_select_session["benchEnabled"]:
+                    await swap_bench(connection)
+                else:
+                    logPrint("当前游戏模式不支持可用英雄池。请切换游戏模式后再试。\nAvailable champion pool isn't supported in this game mode. Please switch to another game mode and try again.")
+            else:
+                logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            continue
+        logPrint("请选择交换对象：\nPlease select an object to swap:\n1\t选用顺序（Pick order）\n2\t分路（Position）\n3\t队友英雄（Ally champions）\n4\t可用英雄池（替补席）【Available champion pool (Bench)】")
+
+async def pick_champion(connection: Connection) -> None:
+    logPrint("请选择行为类型：\nPlease select an action:\n1\t禁用（Ban）\n2\t选择（Pick）\n3\t重随（Reroll）\n4\t投票（Vote）")
+    while True:
+        action: str = logInput()
+        if action == "":
+            continue
+        elif action[0] == "0":
+            break
+        elif action[0] in {"1", "2", "4"}:
+            gameflow_phase: str = await get_gameflow_phase(connection)
+            if gameflow_phase == "ChampSelect":
+                champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
+                action_type: str = "ban" if action[0] == "1" else "pick" if action[0] == "2" else "vote"
+                if action_type == "ban":
+                    if champ_select_session["isLegacyChampSelect"]:
+                        selectable_champion_ids: list[int] = await (await connection.request("GET", "/lol-champ-select/v1/bannable-champion-ids")).json()
+                    else:
+                        selectable_champion_ids = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/bannable-champion-ids")).json()
+                else:
+                    if champ_select_session["allowSubsetChampionPicks"]:
+                        selectable_champion_ids = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/subset-champion-list")).json()
+                    else:
+                        if champ_select_session["isLegacyChampSelect"]:
+                            selectable_champion_ids = await (await connection.request("GET", "/lol-champ-select/v1/pickable-champion-ids")).json()
+                        else:
+                            selectable_champion_ids = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/pickable-champion-ids")).json()
+                LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)
+                LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict.get(x, []), LoLChampion_df["id"][1:]))
+                LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
+                LoLChampion_df_query_initial: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print + ["colloq"]] #代表初始值（Represent the initial value）
+                LoLChampion_df_query: pandas.DataFrame = LoLChampion_df_query_initial #代表查询过程中的值（Represent the value during a query）
+                LoLChampion_df_selected: pandas.DataFrame = pandas.concat([LoLChampion_df.iloc[:1, :], LoLChampion_df[LoLChampion_df["id"].isin(selectable_champion_ids)]], ignore_index = True)
+                print(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print])[0]) #虽然这里输出的是筛选后的表格，但实际上用户仍然可以尝试选择不可用的英雄（Although the selected table is output here, users can still try choosing unavailable champions）
+                log.write(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
+                logPrint('请输入英雄的序号或者名称。输入“00”以从头筛选。\nPlease input the id or name of a champion. Submit "00" to de novo filter champions.')
+                back: bool = False
+                while True:
+                    champion_queryStr: str = logInput()
+                    if champion_queryStr == "":
+                        continue
+                    elif champion_queryStr == "0":
+                        back = True
+                        break
+                    elif champion_queryStr == "-3":
+                        pick_championId: int = -3
+                        break
+                    else:
+                        break_flag, pick_championId, LoLChampion_df_query = filter_champion(champion_queryStr, LoLChampion_df_query, LoLChampion_df_query_initial)
+                        if break_flag:
+                            break
+                if back:
+                    logPrint("请选择行为类型：\nPlease select an action:\n1\t禁用（Ban）\n2\t选择（Pick）\n3\t重随（Reroll）\n4\t投票（Vote）")
+                    continue
+                logPrint("是否直接锁定选择？（输入任意键直接锁定，否则不锁定。）\nDo you want to lock in? (Submit any non-empty string to lock in, or null to refuse locking in.)")
+                complete_str: str = logInput()
+                complete: bool = bool(complete_str)
+                gameflow_phase = await get_gameflow_phase(connection)
+                if gameflow_phase == "ChampSelect":
+                    champ_select_session = await get_champ_select_session(connection)
+                    if champ_select_session["isSpectating"]:
+                        logPrint("您正在观战。请自行开启一把对局。\nYou're spectating. Please start a game by yourself.")
+                    else:
+                        #首先获取用户的槽位序号（First, get the user's cellId）
+                        localPlayerCellId: int = champ_select_session["localPlayerCellId"]
+                        #下面获取用户选英雄时的行为序号（Get the user's actionId when he/she's picking a champion）
+                        selfKey_pick: str = str(localPlayerCellId) + " pick" #只选择类型为“选英雄”的行为（Only do operations on a pick action）
+                        selfKey_ban: str = str(localPlayerCellId) + " ban" #只选择类型为“禁英雄”的行为（Only do operations on a ban action）
+                        selfKey_vote: str = str(localPlayerCellId) + " vote" #只选择类型为“投票”的行为（Only do operations on a vote action）
+                        selfKey: str = selfKey_ban if action_type == "ban" else selfKey_pick if action_type == "pick" else selfKey_vote
+                        actions: dict[str, dict[str, Any]] = {}
+                        for stage in champ_select_session["actions"]:
+                            for action in stage:
+                                key: str = str(action["actorCellId"]) + " " + action["type"]
+                                # if key in actions and action["type"] != "ban": #在旧版征召模式中，由同一个人来禁英雄，因此在禁用期间，这个人的行为的槽位序号和行为类型是一样的。这样的键重复无关紧要，因为后面的禁用行为序号一定比前面的禁用行为序号大，所以程序总是能追踪到最新的禁用行为（In old draft mode, one player bans multiple champions, so during the ban phase, the actorCellIds and types are both the same among this player's actions. In this case, the key duplicate doesn't matter, for the id of the later ban action is always greater than that of the earlier ban action, which means the program will always track the latest ban action）
+                                #     logPrint("检测到重复键（%s）。请修改代码。\nDetected the same key (%s). Please fix the code." %(key, key))
+                                actions[key] = action
+                        if selfKey in actions:
+                            current_actionId: int = actions[selfKey]["id"]
+                            #下面通过LCU API选择英雄（Pick a champion through LCU API)
+                            body: dict[str, Any] = {"id": current_actionId, "actorCellId": localPlayerCellId, "championId": pick_championId, "type": action_type, "completed": complete, "isAllyAction": True, "isInProgress": True, "pickTurn": 0}
+                            logPrint(body)
+                            if champ_select_session["isLegacyChampSelect"]:
+                                response: Optional[dict[str, Any]] = await (await connection.request("PATCH", f"/lol-champ-select/v1/session/actions/{current_actionId}", data = body)).json()
+                            else:
+                                response: Optional[dict[str, Any]] = await (await connection.request("PATCH", f"/lol-lobby-team-builder/champ-select/v1/session/actions/{current_actionId}", data = body)).json()
+                            logPrint(response)
+                            if isinstance(response, dict) and "errorCode" in response:
+                                if response["httpStatus"] == 500:
+                                    if response["message"] == "Unable to process action change: Received status Error: CHAMPION_ALREADY_BANNED instead of expected status of OK from request to teambuilder-draft:updateActionV1":
+                                        logPrint("该英雄已被禁用。请切换一个英雄后重试。\nThis champion is already banned. Please switch to another champion and try again.")
+                                    elif response["message"] == "Unable to process action change: Received status Error: INVALID_CHAMP_SELECTION instead of expected status of OK from request to teambuilder-draft:updateActionV1":
+                                        logPrint("选用方式不合法。请检查该英雄是否被平台禁用。\nIllegal pick method. Please check whether this champion is disabled by platform.")
+                                    elif response["message"] == "Unable to process action change: Received status Error: INVALID_STATE instead of expected status of OK from request to teambuilder-draft:updateActionV1":
+                                        logPrint("选用状态不匹配。请核对当前阶段。\nInvalid champ select state. Please check the current stage.")
+                                    elif response["message"] == "Error response for PATCH /lol-lobby-team-builder/champ-select/v1/session/actions/0: Unable to process action change: Received status Error: CHAMPION_ALREADY_PICKED instead of expected status of OK from request to teambuilder-draft:updateActionV1":
+                                        logPrint("该英雄已被选用。\nThis champion is already picked.")
+                                    else:
+                                        logPrint("在选择英雄时出现了一个错误。\nThere was a problem selecting your champion.")
+                                else:
+                                    logPrint("选择失败！\nPick failed.")
+                            else:
+                                time.sleep(GLOBAL_RESPONSE_LAG)
+                                champ_select_session = await get_champ_select_session(connection)
+                                current_actions: dict[int, dict[str, Any]] = {}
+                                for stage in champ_select_session["actions"]:
+                                    for action in stage:
+                                        current_actions[action["id"]] = action
+                                if current_actionId in current_actions:
+                                    if current_actions[current_actionId]["championId"] == pick_championId:
+                                        logPrint("选择成功！\nPick succeeded.")
+                                    else:
+                                        logPrint("选择失败！\nPick failed.")
+                                else:
+                                    logPrint("没有找到匹配的行为。请稍后再试。\nNo matched action found. Please try again later.")
+                        else:
+                            logPrint("没有找到匹配的行为。请稍后再试。\nNo matched action found. Please try again later.")
+                else:
+                    logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
+                    break
+            else:
+                logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
+                break
+        elif action[0] == "3":
+            gameflow_phase = await get_gameflow_phase(connection)
+            if gameflow_phase == "ChampSelect":
+                champ_select_session = await get_champ_select_session(connection)
+                if champ_select_session["isSpectating"]:
+                    logPrint("您正在观战。请自行开启一把对局。\nYou're spectating. Please start a game by yourself.")
+                elif champ_select_session["allowRerolling"]:
+                    if champ_select_session["rerollsRemaining"] == 0:
+                        logPrint("您的重随次数不足。\nYou don't have any rerolls.")
+                    else:
+                        if champ_select_session["isLegacyChampSelect"]:
+                            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/session/my-selection/reroll")).json()
+                        else:
+                            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby-team-builder/champ-select/v1/session/my-selection/reroll")).json()
+                        logPrint(response)
+                        if isinstance(response, dict) and "errorCode" in response:
+                            if response["httpStatus"] == 404 and response["message"] == "No active delegate":
+                                logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
+                            elif response["httpStatus"] == 500 and (response["message"] == "Error response for POST /lol-lobby-team-builder/champ-select/v1/session/my-selection/reroll: Unable to reroll: Received status Error: NO_REROLLS_REMAINING instead of expected status of OK from request to teambuilder-draft:rerollV1" or response["message"] == "Unable to reroll: Received status Error: NO_REROLLS_REMAINING instead of expected status of OK from request to teambuilder-draft:rerollV1"):
+                                logPrint("您的重随次数不足。\nYou don't have any rerolls.")
+                            else:
+                                logPrint("重随失败。\nReroll failed.")
+                        else:
+                            logPrint("重随成功。\nReroll succeeded.")
+                else:
+                    logPrint("当前游戏模式不支持重随。\nThe current game mode doesn't support rerolling.")
+            else:
+                logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
+                break
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            continue
+        logPrint("请选择行为类型：\nPlease select an action:\n1\t禁用（Ban）\n2\t选择（Pick）\n3\t重随（Reroll）\n4\t投票（Vote）")
+
+async def change_champSelect_spell(connection: Connection) -> None:
+    champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
+    logPrint("该模式可用召唤师技能如下：\nAvailable summoner spells of this game mode are as follows:")
+    gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
+    gameQueues: dict[int, dict[str, Any]] = {queue["id"]: queue for queue in gameQueues_source}
+    if champ_select_session["queueId"] == 0: #对于传统的自定义房间，通过获取游戏会话来确定游戏模式（For a traditional custom lobby, determine the game mode by the gameflow session）
+        gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
+        available_spells: list[int] = available_spell_dict[gameflow_session["gameData"]["queue"]["gameMode"]]
+    else: #对于阵容匹配的英雄选择阶段，通过队列序号来确定游戏模式（For team builder managed champ select stage, determine the game mode by queueId）
+        available_spells = available_spell_dict[gameQueues[champ_select_session["queueId"]]["gameMode"]]
+    for spellId in sorted(available_spells):
+        spell: dict[str, Any] = spells[spellId]
+        logPrint("%d\t%s" %(spellId, spell["name"]))
+    selectedSpellIds: list[int] = []
+    logPrint("请依次输入两个召唤师技能的序号，以空格为分隔符：\nPlease input the two spellIds, split by space:")
+    while True:
+        index_got: bool = False
+        spell_str: str = logInput()
+        if spell_str == "":
+            continue
+        elif spell_str == "0":
+            index_got = False
+            break
+        else:
+            selectedSpellIds: list[str] = spell_str.split()
+            if len(selectedSpellIds) != 2:
+                logPrint("请输入两个召唤师技能的序号！\nPlease submit two spellIds!")
+            else:
+                try:
+                    selectedSpellIds = list(map(int, selectedSpellIds))
+                except ValueError:
+                    logPrint("请输入整数！\nPlease input integers!")
+                else:
+                    if len(set(selectedSpellIds)) == 1:
+                        logPrint("请输入两个不同的召唤师技能序号！\nPlease input two different spellIds!")
+                    elif all(map(lambda x: x in available_spells, selectedSpellIds)):
+                        index_got = True
+                        break
+                    else:
+                        logPrint("您输入的召唤师技能序号不可用！请重新输入。\nThe selected summoner spells aren't available. Please try again.")
+    if index_got:
+        body: dict[str, int] = {"spell1Id": selectedSpellIds[0], "spell2Id": selectedSpellIds[1]}
+        if champ_select_session["isLegacyChampSelect"]:
+            response: Optional[dict[str, Any]] = await (await connection.request("PATCH", "/lol-champ-select/v1/session/my-selection", data = body)).json()
+        else:
+            response: Optional[dict[str, Any]] = await (await connection.request("PATCH", "/lol-lobby-team-builder/champ-select/v1/session/my-selection", data = body)).json()
+        logPrint(response)
+        if isinstance(response, dict) and "errorCode" in response:
+            if response["httpStatus"] == 400 and response["message"] == "Not an active participant in a champ select session":
+                logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
+            else:
+                logPrint("召唤师技能更换失败！\nSummoner spell change failed!")
+        else:
+            time.sleep(GLOBAL_RESPONSE_LAG)
+            localPlayer: dict[str, Any] = await get_champSelect_player(connection)
+            if [localPlayer["spell1Id"], localPlayer["spell2Id"]] == selectedSpellIds:
+                logPrint("召唤师技能更换成功！\nSummoner spell change succeeded!")
+            else:
+                logPrint("召唤师技能更换失败！\nSummoner spell change failed!")
+
+async def change_champSelect_championSkin(connection: Connection) -> None:
+    champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
+    if champ_select_session["isLegacyChampSelect"]:
+        pickable_skin_ids: list[int] = await (await connection.request("GET", "/lol-champ-select/v1/pickable-skin-ids")).json()
+    else:
+        pickable_skin_ids = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/pickable-skin-ids")).json()
+    localPlayer = await get_champSelect_player(connection)
+    championId_pick_or_intent: int = localPlayer["championPickIntent"] or localPlayer["championId"]
+    skin_df_selected: pandas.DataFrame = pandas.concat([skin_df.iloc[:1, :], skin_df[(skin_df["id"].isin(pickable_skin_ids)) & (skin_df["championId"] == championId_pick_or_intent)]], ignore_index = True)
+    if len(skin_df_selected) == 1:
+        logPrint("无可用皮肤。\nThere's not any available skin.")
+    else:
+        logPrint("%s的可用皮肤如下：\nPickable skins of %s are as follows:" %(LoLChampions[championId_pick_or_intent]["title"], LoLChampions[championId_pick_or_intent]["alias"]))
+        skin_df_fields_to_print: list[str] = ["id", "name"]
+        print(format_df(skin_df_selected.loc[:, skin_df_fields_to_print], print_index = True)[0])
+        log.write(format_df(skin_df_selected.loc[:, skin_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+        logPrint("请选择一个皮肤：\nPlease select a skin:")
+        while True:
+            skin_index_str: str = logInput()
+            if skin_index_str == "" or skin_index_str == "0":
+                break
+            elif skin_index_str == "-1" or skin_index_str in list(map(str, range(1, len(skin_df_selected)))):
+                skin_index: int = int(skin_index_str)
+            else:
+                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                continue
+            selectedSkinId: int = championId_pick_or_intent * 1000 if skin_index == -1 else skin_df_selected["id"][skin_index]
+            body: dict[str, int] = {"selectedSkinId": selectedSkinId}
+            if champ_select_session["isLegacyChampSelect"]:
+                response: Optional[dict[str, Any]] = await (await connection.request("PATCH", "/lol-champ-select/v1/session/my-selection", data = body)).json()
+            else:
+                response: Optional[dict[str, Any]] = await (await connection.request("PATCH", "/lol-lobby-team-builder/champ-select/v1/session/my-selection", data = body)).json()
+            logPrint(response)
+            if isinstance(response, dict) and "errorCode" in response:
+                logPrint("皮肤更换失败！\nChampion skin change failed!")
+            else:
+                time.sleep(GLOBAL_RESPONSE_LAG)
+                localPlayer = await get_champSelect_player(connection)
+                if localPlayer == {}:
+                    logPrint("游戏状态异常。\nAbnormal gameflow phase.")
+                else:
+                    if localPlayer["selectedSkinId"] == selectedSkinId:
+                        logPrint("皮肤更换成功！\nChampion skin change succeeded!")
+                    else:
+                        logPrint("皮肤更换失败！请在锁定英雄后检查是否更换成功。\nChampion skin change failed! Please check if the skin is changed after locking in.")
+                break
+
+async def change_emote_wheel(connection: Connection, inventoryType: str, loadoutId: str, loadoutName: str) -> None:
+    logPrint("请选择方位：\nPlease select a direction:\n1\t中央（Center）\n2\t左（Left）\n3\t右（Right）\n4\t上（Upper）\n5\t下（Lower）\n6\t左上（Upper-Left）\n7\t右上（Upper-Right）\n8\t左下（Lower-Left）\n9\t右下（Lower-Right）")
+    directions: dict[str, str] = {"1": "CENTER", "2": "LEFT", "3": "RIGHT", "4": "UPPER", "5": "LOWER", "6": "UPPER_LEFT", "7": "UPPER_RIGHT", "8": "LOWER_LEFT", "9": "LOWER_RIGHT"}
+    while True:
+        direction_index_str: str = logInput()
+        if direction_index_str == "":
+            continue
+        elif direction_index_str[0] == "0":
+            break
+        elif direction_index_str[0] in list(map(str, range(1, 10))):
+            direction: str = directions[direction_index_str[0]]
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            continue
+        logPrint('请选择您想要使用的道具：（输入-1以初始化当前选择。）\nPlease select an item to use: (Submit "-1" to initialize the current choice.)')
+        collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
+        collection_df_fields_to_print: list[str] = ["inventoryType", "itemId", "name", "ownershipType"]
+        print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
+        log.write(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+        while True:
+            index_got: bool = False
+            item_index_str: str = logInput()
+            if item_index_str == "":
+                continue
+            elif item_index_str == "0":
+                index_got = False
+                break
+            elif item_index_str == "-1" or item_index_str in list(map(str, range(1, len(collection_df_selected)))):
+                item_index: int = int(item_index_str)
+                index_got = True
+                break
+            else:
+                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+        if index_got:
+            contentId: str = "" if item_index == -1 else collection_df_selected["uuid"][item_index]
+            itemId: int = 0 if item_index == -1 else collection_df_selected["itemId"][item_index]
+            loadout_key: str = f"{inventoryType}_WHEEL_{direction}" #不是所有的配置键都符合道具类型后缀“_SLOT”的格式。比如表情（EMOTE）的配置键包括“EMOTE_WHEEL_PANEL”。但是这个格式适用于这里的四个道具类型（Not all loadout keys follows the pattern where an inventoryType is followed by "_SLOT". For example, the loadout key for EMOTE may be "EMOTE_WHEEL_PANEL". Nevertheless, this pattern applies to all of the four inventoryTypes here）
+            body: dict[str, Any] = {"id": loadoutId, "name": loadoutName, "loadout": {loadout_key: {"inventoryType": inventoryType, "contentId": contentId, "itemId": itemId}}}
+            response: Optional[dict[str, Any]] = await (await connection.request("PATCH", f"/lol-loadouts/v4/loadouts/{loadoutId}", data = body)).json()
+            logPrint(response)
+            if isinstance(response, dict) and "errorCode" in response:
+                if response["message"] == "UpdateLoadout Failed - Loadout does not exist in cache.":
+                    logPrint("更新赛前配置失败。请检查代码为%s的赛前配置是否存在。如果不存在，请返回到选择赛前配置之前的步骤，再重试。\nLoadout update failed. Please check if the loadout of id %s still exists. If it doesn't exist, please return to the step before selecting to configure the TFT loadouts and then try again.")
+                else:
+                    logPrint("未知错误！\nUnknown error!")
+            else:
+                time.sleep(GLOBAL_RESPONSE_LAG)
+                loadout: dict[str, Any] = await (await connection.request("GET", f"/lol-loadouts/v4/loadouts/{loadoutId}")).json()
+                if not loadout_key in loadout["loadout"] or loadout["loadout"][loadout_key] == body["loadout"][loadout_key]:
+                    logPrint("更新赛前配置成功。客户端内显示可能有延迟，请尝试关闭相应窗口再打开，观察配置是否更新。进入游戏即可正常使用。\nLoadout update succeeded. The League Client may not display the change properly due to a lag. Please try closing the corresponding window and then open it again to see if loadout is updated. As you enter the game, you should be using the updated loadouts.")
+                else:
+                    logPrint("更新赛前配置失败。\nLoadout update failed.")
+        logPrint("请选择方位：\nPlease select a direction:\n1\t中央（Center）\n2\t左（Left）\n3\t右（Right）\n4\t上（Upper）\n5\t下（Lower）\n6\t左上（Upper-Left）\n7\t右上（Upper-Right）\n8\t左下（Lower-Left）\n9\t右下（Lower-Right）")
+
+async def change_emote_reaction(connection: Connectiom, inventoryType: str, loadoutId: str, loadoutName: str) -> None:
+    logPrint("请选择回应：\nPlease select a reaction:\n1\t开始（Start）\n2\t第一滴血（First blood）\n3\t团灭（Ace）\n4\t胜利（Victory）")
+    reactions = {"1": "START", "2": "FIRST_BLOOD", "3": "ACE", "4": "VICTORY"}
+    while True:
+        reaction_index_str: str = logInput()
+        if reaction_index_str == "":
+            continue
+        elif reaction_index_str[0] == "0":
+            break
+        elif reaction_index_str[0] in list(map(str, range(1, 5))):
+            reaction: str = reactions[reaction_index_str[0]]
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            continue
+        logPrint('请选择您想要使用的道具：（输入-1以初始化当前选择。）\nPlease select an item to use: (Submit "-1" to initialize the current choice.)')
+        collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
+        collection_df_fields_to_print: list[str] = ["inventoryType", "itemId", "name", "ownershipType"]
+        print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
+        log.write(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0])
+        while True:
+            index_got: bool = False
+            item_index_str: str = logInput()
+            if item_index_str == "":
+                continue
+            elif item_index_str == "0":
+                index_got = False
+                break
+            elif item_index_str == "-1" or item_index_str in list(map(str, range(1, len(collection_df_selected)))):
+                item_index: int = int(item_index_str)
+                index_got = True
+                break
+            else:
+                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                continue
+        if index_got:
+            contentId: str = "" if item_index == -1 else collection_df_selected["uuid"][item_index]
+            itemId: int = 0 if item_index == -1 else collection_df_selected["itemId"][item_index]
+            loadout_key: str = f"{inventoryType}_{reaction}" #不是所有的配置键都符合道具类型后缀“_SLOT”的格式。比如表情（EMOTE）的配置键包括“EMOTE_WHEEL_PANEL”。但是这个格式适用于这里的四个道具类型（Not all loadout keys follows the pattern where an inventoryType is followed by "_SLOT". For example, the loadout key for EMOTE may be "EMOTE_WHEEL_PANEL". Nevertheless, this pattern applies to all of the four inventoryTypes here）
+            body: dict[str, Any] = {"id": loadoutId, "name": loadoutName, "loadout": {loadout_key: {"inventoryType": inventoryType, "contentId": contentId, "itemId": itemId}}}
+            response: Optional[dict[str, Any]] = await (await connection.request("PATCH", f"/lol-loadouts/v4/loadouts/{loadoutId}", data = body)).json()
+            logPrint(response)
+            if isinstance(response, dict) and "errorCode" in response:
+                if response["message"] == "UpdateLoadout Failed - Loadout does not exist in cache.":
+                    logPrint("更新赛前配置失败。请检查代码为%s的赛前配置是否存在。如果不存在，请返回到选择赛前配置之前的步骤，再重试。\nLoadout update failed. Please check if the loadout of id %s still exists. If it doesn't exist, please return to the step before selecting to configure the TFT loadouts and then try again.")
+                else:
+                    logPrint("未知错误！\nUnknown error!")
+            else:
+                time.sleep(GLOBAL_RESPONSE_LAG)
+                loadout = await (await connection.request("GET", f"/lol-loadouts/v4/loadouts/{loadoutId}")).json()
+                if loadout["loadout"][loadout_key] == body["loadout"][loadout_key]:
+                    logPrint("更新赛前配置成功。客户端内显示可能有延迟，请尝试关闭相应窗口再打开，观察配置是否更新。进入游戏即可正常使用。\nLoadout update succeeded. The League Client may not display the change properly due to a lag. Please try closing the corresponding window and then open it again to see if loadout is updated. As you enter the game, you should be using the updated loadouts.")
+                else:
+                    logPrint("更新赛前配置失败。\nLoadout update failed.")
+        logPrint("请选择回应：\nPlease select a reaction:\n1\t开始（Start）\n2\t第一滴血（First blood）\n3\t团灭（Ace）\n4\t胜利（Victory）")
+
+async def change_champSelect_loadout(connection: Connection, inventoryType: str, loadoutId: str, loadoutName: str) -> None:
+    logPrint('请选择您想要使用的道具：（输入-1以初始化当前选择。）\nPlease select an item to use: (Submit "-1" to initialize the current choice.)')
+    collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
+    collection_df_fields_to_print: list[str] = ["inventoryType", "itemId", "name", "ownershipType"]
+    print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
+    log.write(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+    while True:
+        index_got: bool = False
+        item_index_str: str = logInput()
+        if item_index_str == "":
+            continue
+        elif item_index_str == "0":
+            index_got = False
+            break
+        elif item_index_str == "-1" or item_index_str in list(map(str, range(1, len(collection_df_selected)))):
+            item_index: int = int(item_index_str)
+            index_got = True
+            break
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+    if index_got:
+        contentId: str = "" if item_index == -1 else collection_df_selected["uuid"][item_index]
+        itemId: int = 0 if item_index == -1 else collection_df_selected["itemId"][item_index]
+        if inventoryType == "SUMMONER_ICON":
+            body: dict[str, int] = {"profileIconId": itemId}
+            response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-summoner/v1/current-summoner/icon", data = body)).json()
+            logPrint(response)
+            if isinstance(response, dict) and "errorCode" in response:
+                if response["httpStatus"] == 401 and "Requested summoner profile icon is not free or owned by the player" in response["message"]:
+                    logPrint("您尚未拥有该召唤师图标。\nYou don't own this summoner icon.")
+                elif response["httpStatus"] == 400 and "invalid profileIconId" in response["message"]:
+                    logPrint("您选择的召唤师图标不存在。\nThe selected summoner icon doesn't exist.")
+                else:
+                    logPrint("未知错误！\nUnknown error!")
+            else:
+                if response["profileIconId"] == itemId:
+                    logPrint("更新赛前配置成功。\nLoadout update succeeded.")
+                else:
+                    logPrint("更新赛前配置失败。\nLoadout update failed.")
+        else:
+            loadout_key: str = f"{inventoryType}_SLOT" #不是所有的配置键都符合道具类型后缀“_SLOT”的格式。比如表情（EMOTE）的配置键包括“EMOTE_WHEEL_PANEL”。但是这个格式适用于这里的四个道具类型（Not all loadout keys follows the pattern where an inventoryType is followed by "_SLOT". For example, the loadout key for EMOTE may be "EMOTE_WHEEL_PANEL". Nevertheless, this pattern applies to all of the four inventoryTypes here）
+            body: dict[str, Any] = {"id": loadoutId, "name": loadoutName, "loadout": {loadout_key: {"inventoryType": inventoryType, "contentId": contentId, "itemId": itemId}}}
+            response: Optional[dict[str, Any]] = await (await connection.request("PATCH", f"/lol-loadouts/v4/loadouts/{loadoutId}", data = body)).json()
+            logPrint(response)
+            if isinstance(response, dict) and "errorCode" in response:
+                if response["message"] == "UpdateLoadout Failed - Loadout does not exist in cache.":
+                    logPrint("更新赛前配置失败。请检查代码为%s的赛前配置是否存在。如果不存在，请返回到选择赛前配置之前的步骤，再重试。\nLoadout update failed. Please check if the loadout of id %s still exists. If it doesn't exist, please return to the step before selecting to configure the TFT loadouts and then try again.")
+                else:
+                    logPrint("未知错误！\nUnknown error!")
+            else:
+                time.sleep(GLOBAL_RESPONSE_LAG)
+                loadout = await (await connection.request("GET", f"/lol-loadouts/v4/loadouts/{loadoutId}")).json()
+                if loadout["loadout"][loadout_key] == body["loadout"][loadout_key]:
+                    logPrint("更新赛前配置成功。客户端内显示可能有延迟，请尝试关闭相应窗口再打开，观察配置是否更新。进入游戏即可正常使用。\nLoadout update succeeded. The League Client may not display the change properly due to a lag. Please try closing the corresponding window and then open it again to see if loadout is updated. As you enter the game, you should be using the updated loadouts.")
+                else:
+                    logPrint("更新赛前配置失败。\nLoadout update failed.")
+
+async def change_emote(connection: Connection, inventoryType: str, loadoutId: str, loadoutName: str) -> None:
+    logPrint("请选择您想要配置的表情种类：\nPlease select the category of emotes:\n1\t表情轮盘（Emote wheel）\n2\t回应（Reactions）")
+    while True:
+        category: str = logInput()
+        if category == "":
+            continue
+        elif category[0] == "0":
+            break
+        elif category[0] == "1":
+            await change_emote_wheel(connection, inventoryType, loadoutId, loadoutName)
+        elif category[0] == "2":
+            await change_emote_reaction(connection, inventoryType, loadoutId, loadoutName)
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            continue
+        logPrint("请选择您想要配置的表情种类：\nPlease select the category of emotes:\n1\t表情轮盘（Emote wheel）\n2\t回应（Reactions）")
+
+async def prepare_champSelect_loadout_general(connection: Connection, inventoryType: str) -> None:
+    loadoutId: str = ""
+    loadoutName: str = "default"
+    loadout_scope: dict[str, Any] = await (await connection.request("GET", "/lol-loadouts/v4/loadouts/scope/account")).json()
+    if isinstance(loadout_scope, dict) and "errorCode" in loadout_scope:
+        logPrint(loadout_scope)
+        logPrint("未知错误！\nUnknown error!")
+    else:
+        if len(loadout_scope) == 0:
+            logPrint("无可用赛前配置方案。请重启英雄联盟客户端后再运行本程序。\nNo available loadouts. Please restart the League Client and then run this program.")
+        else:
+            loadoutId = loadout_scope[0]["id"] #因为赛前配置在每次退出英雄联盟客户端后就没了，所以随便取一个赛前配置就行。这里取了第一个列表元素（Because loadouts aren't reserved as the user exits the League Client, any loadout is OK to use. Here the first element of the loadout scope list is used）
+            loadoutName = loadout_scope[0]["name"]
+    collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
+    if len(collection_df_selected) == 1:
+        logPrint("您目前没有该类道具的使用权。\nYou don't have permissions to use any item of this inventoryType.")
+    else:
+        if inventoryType == "EMOTE":
+            await change_emote(connection, inventoryType, loadoutId, loadoutName)
+        else:
+            await change_champSelect_loadout(connection, inventoryType, loadoutId, loadoutName)
+
+async def prepare_champSelect_loadout(connection: Connection) -> None:
+    logPrint("请选择要修改的赛前配置：\nPlease select a loadout:\n1\t符文（Perks）\n2\t召唤师技能（Summoner spells）\n3\t皮肤（Skin）\n4\t守卫（眼）皮肤（Ward skin）\n5\t表情（Emotes）\n6\t召唤师图标（Summoner icon）\n7\t水晶枢纽终结特效（Nexus finisher）\n8\t旗帜（Banner）\n9\t徽章（Crest）\n10\t冠军杯赛奖杯（Tournament trophy）")
+    while True:
+        loadout_option: str = logInput()
+        if loadout_option == "":
+            continue
+        elif loadout_option[0] == "0":
+            break
+        elif loadout_option == "1":
+            wd: str = os.getcwd()
+            subscript_path: str = os.path.join(wd, "Customized Program 19 - Configure Perks.py")
+            if os.path.exists(subscript_path):
+                logPrint(f"正在打开（Opening）： {subscript_path}")
+                subprocess.run(["python", subscript_path])
+            else:
+                logPrint('''在同目录下未发现符文脚本。取消该操作。请自行在客户端内修改。\n"Customized Program 19 - Configure Perks.py" isn't found under the same directory. This operation is cancelled. Please change inside the League Client.''')
+        elif loadout_option in {"2", "3"}:
+            gameflow_phase: str = await get_gameflow_phase(connection)
+            if gameflow_phase == "ChampSelect":
+                champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
+                if champ_select_session["isSpectating"]:
+                    logPrint("您正在观战。请自行开启一把对局。\nYou're spectating. Please start a game by yourself.")
+                else:
+                    if loadout_option == "2":
+                        await change_champSelect_spell(connection)
+                    else:
+                        await change_champSelect_championSkin(connection)
+            else:
+                logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
+        elif loadout_option in list(map(str, range(4, 11))):
+            inventoryTypes: dict[str, str] = {"4": "WARD_SKIN", "5": "EMOTE", "6": "SUMMONER_ICON", "7": "NEXUS_FINISHER", "8": "REGALIA_BANNER", "9": "REGALIA_CREST", "10": "TOURNAMENT_TROPHY"}
+            inventoryType: str = inventoryTypes[loadout_option]
+            await prepare_champSelect_loadout_general(connection, inventoryType)
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            continue
+        logPrint("请选择要修改的赛前配置：\nPlease select a loadout:\n1\t符文（Perks）\n2\t召唤师技能（Summoner spells）\n3\t皮肤（Skin）\n4\t守卫（眼）皮肤（Ward skin）\n5\t表情（Emotes）\n6\t召唤师图标（Summoner icon）\n7\t水晶枢纽终结特效（Nexus finisher）\n8\t旗帜（Banner）\n9\t徽章（Crest）\n10\t冠军杯赛奖杯（Tournament trophy）")
+
+async def mute_champSelect_player(connection: Connection) -> None:
+    while True:
+        back: bool = False
+        gameflow_phase: str = await get_gameflow_phase(connection)
+        if gameflow_phase == "ChampSelect":
+            muted_players: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champ-select/v1/muted-players")).json()
+            muted_player_puuids: list[str] = list(map(lambda x: x["puuid"], muted_players))
+            muted_player_obfuscatedPuuids: list[str] = list(map(lambda x: x["obfuscatedPuuid"], muted_players))
+            player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log)
+            player_df["muted"] = ["已静音"] + (len(player_df) - 1) * [""]
+            for i in range(1, len(player_df)):
+                for muted_player in muted_players:
+                    if player_df["puuid"][i] == muted_player["puuid"] or player_df["obfuscatedPuuid"][i] == muted_player["obfuscatedPuuid"]:
+                        player_df.loc[i, "muted"] = "√"
+            player_df_selected: pandas.DataFrame = pandas.concat([player_df.iloc[:1, :], player_df[(player_df["isHumanoid"] == "") & ~((player_df["gameName"] == "") & (player_df["tagLine"] == "") & (player_df["playerAlias"] == ""))]], ignore_index = True)
+            if len(player_df_selected) > 1:
+                logPrint("请选择一个要切换静音状态的玩家：\nPlease select a player to toggle mute/unmute status:")
+                player_df_fields_to_print: list[str] = ["cellId", "gameName", "tagLine", "playerAlias", "muted", "assignedPosition", "champion name", "champion alias"]
+                print(format_df(player_df_selected.loc[:, player_df_fields_to_print], print_index = True)[0])
+                log.write(format_df(player_df_selected.loc[:, player_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+                while True:
+                    index_got: bool = False
+                    mute_index_str: str = logInput()
+                    if mute_index_str == "":
+                        continue
+                    elif mute_index_str[0] == "0":
+                        index_got = False
+                        back = True
+                        break
+                    elif mute_index_str in list(map(str, range(1, len(player_df_selected)))):
+                        mute_index: int = int(mute_index_str)
+                        index_got = True
+                        break
+                    else:
+                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                if index_got:
+                    selected_player_puuid: str = player_df_selected["puuid"][mute_index]
+                    selected_player_obfuscatedPuuid: str = player_df_selected["obfuscatedPuuid"][mute_index]
+                    selected_player_name: str = player_df_selected["playerAlias"][mute_index] if player_df_selected["gameName"][mute_index] == "" and player_df_selected["tagLine"][mute_index] == "" else player_df_selected["gameName"][mute_index] + "#" + player_df_selected["tagLine"][mute_index]
+                    muted: bool = player_df_selected["muted"][mute_index] == "√"
+                    if muted:
+                        logPrint("您选择解除静音以下玩家：\nYou selected the following player to unmute:")
+                    else:
+                        logPrint("您选择静音以下玩家：\nYou selected the following player to mute:")
+                    print(format_df(player_df_selected.loc[[mute_index], player_df_fields_to_print])[0])
+                    log.write(format_df(player_df_selected.loc[[mute_index], player_df_fields_to_print], width_exceed_ask = False, direct_print = False)[0])
+                    body: dict[str, str] = {"puuid": selected_player_puuid, "obfuscatedPuuid": selected_player_obfuscatedPuuid}
+                    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/toggle-player-muted", data = body)).json()
+                    logPrint(response)
+                    if isinstance(response, dict) and "errorCode" in response:
+                        if muted:
+                            logPrint(f"解除静音{selected_player_name}失败。\nFailed to unmute {selected_player_name}.")
+                        else:
+                            logPrint(f"静音{selected_player_name}失败。\nFailed to mute {selected_player_name}.")
+                    else:
+                        time.sleep(GLOBAL_RESPONSE_LAG)
+                        muted_players = await (await connection.request("GET", "/lol-champ-select/v1/muted-players")).json()
+                        muted_player_puuids = list(map(lambda x: x["puuid"], muted_players))
+                        muted_player_obfuscatedPuuids = list(map(lambda x: x["obfuscatedPuuid"], muted_players))
+                        if muted:
+                            if selected_player_puuid in muted_player_puuids or selected_player_obfuscatedPuuid in muted_player_obfuscatedPuuids:
+                                logPrint(f"解除静音{selected_player_name}失败。\nFailed to unmute {selected_player_name}.")
+                            else:
+                                logPrint(f"解除静音{selected_player_name}成功。\nSuccessfully unmuted {selected_player_name}.")
+                        else:
+                            if selected_player_puuid in muted_player_puuids or selected_player_obfuscatedPuuid in muted_player_obfuscatedPuuids:
+                                logPrint(f"静音{selected_player_name}成功。\nSuccessfully muted {selected_player_name}.")
+                            else:
+                                logPrint(f"静音{selected_player_name}失败。\nFailed to mute {selected_player_name}.")
+            else:
+                logPrint("英雄选择阶段出现异常。\nAn error occurred to champ select.")
+                break
+        else:
+            muted_players: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champ-select/v1/muted-players")).json()
+            muted_player_puuids: list[str] = list(map(lambda x: x["puuid"], muted_players))
+            muted_player_obfuscatedPuuids: list[str] = list(map(lambda x: x["obfuscatedPuuid"], muted_players))
+            logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.\n请输入您想要切换静音状态的召唤师名。\nPlease enter the name of the summoner you want to toggle mute/unmute status.")
+            while True:
+                summonerName_to_mute: str = logInput()
+                if summonerName_to_mute == "":
+                    continue
+                elif summonerName_to_mute == "0":
+                    back = True
+                    break
+                else:
+                    player_info: dict[str, Any] = await get_info(connection, summonerName_to_mute)
+                    if player_info["info_got"]:
+                        player_puuid: str = player_info["body"]["puuid"]
+                        player_name: str = get_info_name(player_info["body"])
+                        muted: bool = player_puuid in muted_player_puuids
+                        body: dict[str, str] = {"puuid": player_puuid}
+                        response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/toggle-player-muted", data = body)).json()
+                        logPrint(response)
+                        if isinstance(response, dict) and "errorCode" in response:
+                            if muted:
+                                logPrint(f"解除静音{player_name}失败。\nFailed to unmute {player_name}.")
+                            else:
+                                logPrint(f"静音{player_name}失败。\nFailed to mute {player_name}.")
+                        else:
+                            time.sleep(GLOBAL_RESPONSE_LAG)
+                            muted_players = await (await connection.request("GET", "/lol-champ-select/v1/muted-players")).json()
+                            muted_player_puuids = list(map(lambda x: x["puuid"], muted_players))
+                            muted_player_obfuscatedPuuids = list(map(lambda x: x["obfuscatedPuuid"], muted_players))
+                            if muted:
+                                if player_puuid in muted_player_puuids:
+                                    logPrint(f"解除静音{player_name}失败。\nFailed to unmute {player_name}.")
+                                else:
+                                    logPrint(f"解除静音{player_name}成功。\nSuccessfully unmuted {player_name}.")
+                            else:
+                                if player_puuid in muted_player_puuids:
+                                    logPrint(f"静音{player_name}成功。\nSuccessfully muted {player_name}.")
+                                else:
+                                    logPrint(f"静音{player_name}失败。\nFailed to mute {player_name}.")
+                    else:
+                        logPrint(player_info["message"])
+                    break
+        if back:
+            break
+
+async def unlock_battle_boost(connection: Connection) -> None:
+    champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
+    if champ_select_session["isLegacyChampSelect"]:
+        response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/team-boost/purchase")).json()
+    else:
+        response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby-team-builder/champ-select/v1/team-boost/purchase")).json()
+    logPrint(response)
+    if isinstance(response, dict) and "errorCode" in response:
+        if response["httpStatus"] == 400:
+            if response["message"] == "Error response for POST /lol-champ-select-legacy/v1/team-boost/purchase: Invalid function":
+                logPrint("自定义模式不支持全员战斗加成。\nBattle boost isn't supported in a custom game.")
+            else:
+                logPrint("全员战斗加成解锁失败。\nBattle boost unlock failed.")
+        elif response["httpStatus"] == 500:
+            if response["message"] == "Unable to purchase team boost: Received status Error: BATTLE_BOOST_NOT_ENOUGH_RP instead of expected status of OK from request to teambuilder-draft:activateBattleBoostV1":
+                logPrint("你没有足够的点券来购买一次全员战斗加成。\nYou don't have enough RP to purchase a Battle Boost.")
+            elif response["message"] == "Unable to purchase team boost: Received status Error: BATTLE_BOOST_ALREADY_ACTIVATED instead of expected status of OK from request to teambuilder-draft:activateBattleBoostV1":
+                logPrint("您的队伍已经解锁了全员战斗加成。\nYour team has already unlocked the Battle Boost.")
+            elif response["message"] == "Unable to purchase team boost: Received status Error: INVALID_STATE instead of expected status of OK from request to teambuilder-draft:activateBattleBoostV1":
+                logPrint("在购买全员战斗加成时发生了一个错误。请检查您的英雄选择状态。\nThere was an error purchasing the Battle Boost. Please check your champion select status.")
+            else:
+                logPrint("全员战斗加成解锁失败。\nBattle boost unlock failed.")
+        else:
+            logPrint("全员战斗加成解锁失败。\nBattle boost unlock failed.")
+    else:
+        logPrint("全员战斗加成已解锁！\nBattle boost unlocked!")
+
+async def set_favorite_champion(connection: Connection) -> None:
+    grid_champions_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champ-select/v1/all-grid-champions")).json() #该接口在自定义对局中不会及时更新，因此在使用该功能时不能完全依赖于程序提示，需要结合客户端来进行判断（The result from this endpoint doesn't update in time, so when using this function, users shouldn't completely rely on the program prompts. Instead, it's highly suggested to judge with the help of League Client）
+    grid_champions: dict[int, dict[str, Any]] = {champion["id"]: champion for champion in grid_champions_source}
+    candidatePositions: list[str] = ["top", "jungle", "middle", "bottom", "support"]
+    positions_zh: list[str] = ["上路", "打野", "中路", "下路", "辅助"]
+    favoriteChampions: dict[str, list[int]] = {"top": [], "jungle": [], "middle": [], "bottom": [], "support": []}
+    for champion in grid_champions.values():
+        for position in champion["positionsFavorited"]:
+            favoriteChampions[position].append(champion["id"])
+    logPrint("请选择一条分路：\nPlease choose a position:\n1\t上路（Top）\n2\t打野（Jungle）\n3\t中路（Middle）\n4\t下路（Bottom）\n5\t辅助（Support）")
+    while True:
+        position_index_str: str = logInput()
+        if position_index_str == "":
+            continue
+        elif position_index_str[0] == "0":
+            break
+        elif position_index_str[0] in list(map(str, range(1, 6))):
+            position_index: int = int(position_index_str[0])
+            current_position: str = candidatePositions[position_index - 1]
+            current_position_zh: str = positions_zh[position_index - 1]
+            logPrint("全英雄选用偏好情况如下：\nChampion priority is as follows:")
+            grid_champion_df: pandas.DataFrame = await sort_grid_champions(connection)
+            grid_champion_df_fields_to_print: list[str] = ["id", "name", "favorite_top", "favorite_jungle", "favorite_middle", "favorite_bottom", "favorite_support"]
+            print(format_df(grid_champion_df.loc[:, grid_champion_df_fields_to_print])[0])
+            log.write(format_df(grid_champion_df.loc[:, grid_champion_df_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
+            logPrint("请输入您想要设为最爱或取消设为最爱的英雄序号：\nPlease enter the ids of champions you want to favorite or unfavorite:")
+            while True:
+                index_got: bool = False
+                champion_index_str: str = logInput()
+                if champion_index_str == "":
+                    continue
+                elif champion_index_str == "0":
+                    index_got = False
+                    break
+                elif champion_index_str == "all":
+                    champion_indices: list[int] = list(grid_champion_df["id"][1:])
+                    index_got = True
+                    break
+                else:
+                    try:
+                        tmp = eval(champion_index_str)
+                    except:
+                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                    else:
+                        if isinstance(tmp, int) and tmp in grid_champion_df["id"][1:]:
+                            champion_indices = [tmp]
+                            index_got = True
+                            break
+                        elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x in grid_champion_df["id"][1:], tmp)) and len(tmp) == len(set(tmp)):
+                            champion_indices = tmp
+                            index_got = True
+                            break
+                        else:
+                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            if index_got:
+                logPrint("您选择了以下英雄：\nYou selected the following champions:")
+                grid_champion_df_selected: pandas.DataFrame = pandas.concat([grid_champion_df.iloc[:1, :], grid_champion_df[grid_champion_df["id"].isin(champion_indices)]])
+                print(format_df(grid_champion_df_selected.loc[:, grid_champion_df_fields_to_print])[0])
+                log.write(format_df(grid_champion_df_selected.loc[:, grid_champion_df_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
+                logPrint("是否确认将以上英雄设为或取消设为您最爱的%s英雄？（输入任意键以确认，否则取消。）\nDo you want to favorite or unfavorite the above champions as %s? (Submit any non-empty string to confirm, or null to cancel.)" %(current_position_zh, current_position))
+                favor_confirm_str: str = logInput()
+                favor_confirm: bool = bool(favor_confirm_str)
+                if favor_confirm:
+                    for championId in champion_indices:
+                        current_championName: str = grid_champions[championId]["name"]
+                        positionFavorited: bool = current_position in grid_champions[championId]["positionsFavorited"]
+                        response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/toggle-favorite/%d/%s" %(championId, candidatePositions[position_index - 1]))).json()
+                        logPrint(response)
+                        if isinstance(response, dict) and "errorCode" in response:
+                            if positionFavorited:
+                                logPrint("将%s取消设为您最爱的%s英雄的过程出现了问题。\nAn error occurs when the program unfavorited %s as %s." %(current_championName, current_position_zh, current_championName, current_position))
+                            else:
+                                logPrint("将%s设为您最爱的%s英雄的过程出现了问题。\nAn error occurs when the program favorited %s as %s." %(current_championName, current_position_zh, current_championName, current_position))
+                        else:
+                            if positionFavorited:
+                                logPrint("%s已取消设为您最爱的%s英雄。\n%s is unfavorited as %s." %(current_championName, current_position_zh, current_championName, current_position))
+                            else:
+                                logPrint("%s已设为您最爱的%s英雄。\n%s is favorited as %s." %(current_championName, current_position_zh, current_championName, current_position))
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+        grid_champions = await (await connection.request("GET", "/lol-champ-select/v1/all-grid-champions")).json()
+        grid_champions = {champion["id"]: champion for champion in grid_champions}
+        candidatePositions = ["top", "jungle", "middle", "bottom", "support"]
+        positions_zh = ["上路", "打野", "中路", "下路", "辅助"]
+        favoriteChampions = {"top": [], "jungle": [], "middle": [], "bottom": [], "support": []}
+        for champion in grid_champions.values():
+            for position in champion["positionsFavorited"]:
+                favoriteChampions[position].append(champion["id"])
+        logPrint("请选择一条分路：\nPlease choose a position:\n1\t上路（Top）\n2\t打野（Jungle）\n3\t中路（Middle）\n4\t下路（Bottom）\n5\t辅助（Support）")
+
+async def clear_muted_players(connection: Connection) -> None:
+    muted_players: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champ-select/v1/muted-players")).json()
+    if len(muted_players) == 0:
+        logPrint("当前无静音玩家。\nThere's not any muted player.")
+    else:
+        logPrint("静音玩家如下：\nMuted players:")
+        muted_player_df: pandas.DataFrame = await sort_mutedPlayers_chat(connection)
+        print(format_df(muted_player_df, print_index = True)[0])
+        log.write(format_df(muted_player_df, width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+        for i in range(len(muted_players)):
+            player: dict[str, Any] = muted_players[i]
+            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/toggle-player-muted", data = player)).json()
+            logPrint(response)
+            if isinstance(response, dict) and "errorCode" in response:
+                logPrint("解除玩家%d静音失败。\nFailed to unmute Player %d." %(i + 1, i + 1))
+            else:
+                time.sleep(GLOBAL_RESPONSE_LAG)
+                muted_players_new: dict[str, Any] = await (await connection.request("GET", "/lol-champ-select/v1/muted-players")).json()
+                if player in muted_players_new:
+                    logPrint("解除玩家%d静音失败。\nFailed to unmute Player %d." %(i + 1, i + 1))
+                else:
+                    logPrint("解除玩家%d静音成功。\nSuccessfully unmuted Player %d." %(i + 1, i + 1))
+
+async def quit_champ_select(connection: Connection) -> None:
+    gameflow_phase: str = await get_gameflow_phase(connection)
+    if gameflow_phase == "ChampSelect":
+        champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
+        if champ_select_session["isCustomGame"]:
+            if champ_select_session["isLegacyChampSelect"]:
+                response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/cancel-champ-select")).json() #这个接口在任何情况下都返回None，并且用户会返回至主页大厅（This endpoint returns None in any case, and the user should return to the home hub after this request）
+            else:
+                response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby-team-builder/champ-select/v1/session/quit")).json()
+            logPrint(response)
+            if isinstance(response, dict) and "errorCode" in response:
+                if response["httpStatus"] == 400 and response["message"] == "Current champ select does not allow quitting":
+                    logPrint("当前英雄选择阶段不支持早退。\nCurrent champ select doesn't allow dodging.")
+                elif response["httpStatus"] == 404 and response["message"] == "No champ select session in progress.":
+                    logPrint("您不在英雄选择阶段，或者您正在进行传统的英雄选择。\nYou're not during the champ select stage, or you're in a legacy champ select.")
+                else:
+                    logPrint('退出英雄阶段的过程发生了异常。请尝试手动点击客户端右下角的“退出”按钮，或者重启客户端。\nAn error occurred when the program is trying to quit the champ select stage. Please try manually clicking the "Quit" button on the bottom-right corner of League Client, or restart the client.')
+            else:
+                time.sleep(GLOBAL_RESPONSE_LAG)
+                gameflow_phase = await get_gameflow_phase(connection)
+                if gameflow_phase == "None":
+                    logPrint("您已退出英雄选择阶段。\nYou've quited the champ select stage.")
+                    return ""
+                else:
+                    logPrint("退出失败。\nExit failed.")
+        else:
+            logPrint("当前游戏模式不支持早退。强行退出英雄选择阶段可能导致客户端界面异常，实际英雄选择阶段将继续进行且游戏将正常启动。您确定要继续吗？（输入任意非空字符串以继续退出英雄选择阶段，否则取消本次操作。）\nEarly exit isn't supported in this game mode. Force to cancel champ select may cause the client not to display correctly, whereas the champ select stage will be going on and the game will start as normal. Do you really want to continue? (Submit any non-empty string to continue to cancel champ select stage, or null to cancel this operation.)")
+            cancel_str: str = logInput()
+            cancel: bool = bool(cancel_str)
+            if cancel:
+                response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/cancel-champ-select")).json()
+                logPrint(response)
+                if isinstance(response, dict) and "errorCode" in response:
+                    logPrint('退出英雄阶段的过程发生了异常。\nAn error occurred when the program is trying to quit the champ select stage.')
+                else:
+                    time.sleep(GLOBAL_RESPONSE_LAG)
+                    gameflow_phase = await get_gameflow_phase(connection)
+                    if gameflow_phase == "None":
+                        logPrint("您已退出英雄选择阶段。\nYou've quited the champ select stage.")
+                        return ""
+                    else:
+                        logPrint("退出失败。\nExit failed.")
+    else:
+        logPrint("您目前不在英雄选择阶段，但是您可以通过此方法来返回主页大厅。这可能会带来一些问题。是否继续？（输入任意非空字符串以继续退出英雄选择阶段，否则取消本次操作。）\nYou're not during a champ select stage, but doing this will lead to the home hub. This may lead to some potential problems. Do you want to continue? (Submit any non-empty string to continue to cancel champ select stage, or null to cancel this operation.)")
+        cancel_str = logInput()
+        cancel = bool(cancel_str)
+        if cancel:
+            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/cancel-champ-select")).json()
+            logPrint(response)
+            if isinstance(response, dict) and "errorCode" in response:
+                logPrint('退出英雄阶段的过程发生了异常。\nAn error occurred when the program is trying to quit the champ select stage.')
+            else:
+                time.sleep(GLOBAL_RESPONSE_LAG)
+                gameflow_phase = await get_gameflow_phase(connection)
+                if gameflow_phase == "None":
+                    logPrint("您已返回大厅。\nYou've returned to the home hub.")
+                else:
+                    logPrint("退出失败。\nExit failed.")
+
+async def output_champSelect_session(connection: Connection) -> None:
+    champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
+    logPrint(champ_select_session)
+    with open("champ-select-session.json", "w", encoding = "utf-8") as fp:
+        json.dump(champ_select_session, fp, indent = 4, ensure_ascii = False)
+    logPrint('英雄选择会话已导出到同目录下的“champ-select-session.json”。\nChamp select session has been exported into "champ-select-session.json" under the same directory.')
 
 async def champ_select_simulation(connection: Connection) -> str:
     while True:
@@ -5486,795 +6586,21 @@ async def champ_select_simulation(connection: Connection) -> str:
         elif option[0] == "0": #退出函数（Exit the function）
             break
         elif option[0] == "1":
-            tooltip1_zh: dict[str, str] = {"1": "选用顺序", "2": "分路", "3": "英雄"}
-            tooltip1_en_lowercase: dict[str, str] = {"1": "pick order", "2": "position", "3": "champion"}
-            tooltip1_en_capitalize: dict[str, str] = {key: value.capitalize() for (key, value) in tooltip1_en_lowercase.items()}
-            session_keys: dict[str, str] = {"1": "pickOrderSwaps", "2": "positionSwaps", "3": "trades"}
-            endpoint1_dict1: dict[str, str] = {"1": "pick-order", "2": "position", "3": "champion"}
-            tooltip2_zh: dict[str, str] = {"1": "接受", "2": "拒绝", "3": "取消"}
-            tooltip2_en_noun_capitalize: dict[str, str] = {"1": "Acceptation", "2": "Decline", "3": "Cancellation"}
-            tooltip2_en_verb_perfect_capitalize: dict[str, str] = {"1": "Accepted", "2": "Declined", "3": "Cancelled"}
-            endpoint1_dict2: dict[str, str] = {"1": "accept", "2": "decline", "3": "cancel"}
-            logPrint("请选择交换对象：\nPlease select an object to swap:\n1\t选用顺序（Pick order）\n2\t分路（Position）\n3\t队友英雄（Ally champions）\n4\t可用英雄池（替补席）【Available champion pool (Bench)】")
-            while True:
-                obj: str = logInput()
-                if obj == "":
-                    continue
-                elif obj[0] == "0":
-                    break
-                elif obj[0] in {"1", "2", "3"}:
-                    logPrint("请选择动作：\nPlease select an action:\n1\t查看（Check）\n2\t发送（Send）")
-                    while True:
-                        action: str = logInput()
-                        if action == "":
-                            continue
-                        elif action[0] == "0":
-                            break
-                        elif action[0] == "1":
-                            gameflow_phase: str = await get_gameflow_phase(connection) #每一个操作都需要保证英雄选择会话是可用的（Each operation requires the champ select session to be available）
-                            if gameflow_phase == "ChampSelect":
-                                champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
-                                swaps: dict[str, Any] = champ_select_session[session_keys[obj[0]]]
-                                swap_cellId_map: dict[int, dict[str, Any]] = {swap["cellId"]: swap for swap in swaps}
-                                player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log)
-                                player_df_fields_to_print: list[str] = ["cellId", "gameName", "tagLine", "playerAlias", "assignedPosition", "champion name", "champion alias"]
-                                target_cellId: int = -1
-                                for swap in swaps:
-                                    if swap["state"] == "SENT" or swap["state"] == "RECEIVED": #以前可以通过/lol-champ-select/v1/ongoing-%s-swap接口来查看正在进行的交换（Previously, one could check the on-going swap by the endpoint `/lol-champ-select/v1/ongoing-%s-swap`）
-                                        target_cellId = swap["cellId"]
-                                        break #一次只检查一个交换请求。并且一般情况下，最多只允许一个交换请求同时存在（One swap request to check at a time. And in normal cases, there's at most one swap request simultaneously）
-                                if target_cellId == -1:
-                                    logPrint("在当前英雄选择会话中没有找到任何正在进行的%s交换请求。\nThere's not any on-going %s swap in the current champ select session." %(tooltip1_zh[obj[0]], tooltip1_en_lowercase[obj[0]]))
-                                else:
-                                    ongoing_swap: dict[str, Any] = swap_cellId_map[target_cellId]
-                                    swap_id: int = ongoing_swap["id"]
-                                    player_df_selected: bool = player_df[player_df["cellId"] == target_cellId]
-                                    print(format_df(player_df_selected.loc[:, player_df_fields_to_print], print_index = False)[0])
-                                    log.write(format_df(player_df_selected.loc[:, player_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = False)[0] + "\n")
-                                    if ongoing_swap["state"] == "SENT":
-                                        logPrint("是否取消该交换请求？（输入任意键以取消，否则不取消。）\nDo you want to cancel this swap request? (Submit any non-empty string to cancel, or null to refuse cancelling.)")
-                                        clear_str: str = logInput()
-                                        clear: bool = bool(clear_str)
-                                        if clear:
-                                            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/session/%s-swaps/%d/cancel" %(endpoint1_dict1[obj[0]], swap_id))).json()
-                                            logPrint(response)
-                                            if isinstance(response, dict) and "errorCode" in response: #本脚本中，大部分反馈都用了`isinstance(response, dict) and "errorCode" in response`作为请求成功与否的判断标准。这是因为如果要知道每个接口在请求成功时具体返回什么信息，必须在实战中测定。但是实际上不需要知道具体返回什么信息（In this program, the feedback parts use `isinstance(response, dict) and "errorCode" in response` as the criterion to judge whether a request is successfully post. This is because, one can only know what exactly a champ select endpoint returns in practical matches. But actually, that exact information isn't necessary）
-                                                logPrint("取消失败！\nCancellation failed!")
-                                            else:
-                                                logPrint("已取消%s交换请求。\nCancelled current %s swap." %(tooltip1_zh[obj[0]], tooltip1_en_lowercase[obj[0]]))
-                                    else:
-                                        logPrint("请选择处理方式：\nPlease select how you'd like to deal with this swap:\n0\t返回上一层（Return to the last step）\n1\t接受（Accept）\n2\t拒绝（Decline）\n3\t取消（Cancel）")
-                                        while True:
-                                            strategy: str = logInput()
-                                            if strategy == "":
-                                                continue
-                                            elif strategy[0] == "0":
-                                                pass
-                                            elif strategy[0] in {"1", "2", "3"}:
-                                                if champ_select_session["isLegacyChampSelect"]:
-                                                    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/session/%s-swaps/%d/%s" %(endpoint1_dict1[obj[0]], swap_id, endpoint1_dict2[strategy[0]]))).json()
-                                                else:
-                                                    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby-team-builder/champ-select/v1/session/%s-swaps/%d/%s" %(endpoint1_dict1[obj[0]], swap_id, endpoint1_dict2[strategy[0]]))).json()
-                                                logPrint(response)
-                                                if isinstance(response, dict) and "errorCode" in response:
-                                                    logPrint("%s失败！\n%s failed!" %(tooltip2_zh[strategy[0]], tooltip2_en_noun_capitalize[strategy[0]]))
-                                                else:
-                                                    logPrint("已%s%s交换请求。\n%s current %s swap." %(tooltip2_zh[strategy[0]], tooltip1_zh[obj[0]], tooltip2_en_verb_perfect_capitalize[strategy[0]], tooltip1_en_lowercase[obj[0]]))
-                                            else:
-                                                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                continue
-                                            break
-                            else:
-                                logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
-                        elif action[0] == "2":
-                            gameflow_phase = await get_gameflow_phase(connection)
-                            if gameflow_phase == "ChampSelect":
-                                champ_select_session = await get_champ_select_session(connection)
-                                swaps: list[dict[str, Any]] = champ_select_session[session_keys[obj[0]]]
-                                if len(swaps) == 0:
-                                    logPrint("%s交换不可用。请切换游戏模式后再试。\n%s swap isn't available. Please switch to another game mode and try again." %(tooltip1_zh[obj[0]], tooltip1_en_capitalize[obj[0]]))
-                                elif any(map(lambda x: x["state"] == "AVAILABLE", swaps)):
-                                    swap_df: pandas.DataFrame = await sort_swaps_info(connection, swap_typeId = int(obj[0]))
-                                    swap_df_fields_to_print: list[str] = ["id", "cellId", "gameName", "tagLine", "assignedPosition", "champion name", "champion alias"]
-                                    swap_df_selected: pandas.DataFrame = pandas.concat([swap_df.iloc[:1, :], swap_df[swap_df["state"] == "AVAILABLE"]], ignore_index = True)
-                                    logPrint("请选择一名玩家以交换%s：\nPlease select a player to swap %s:" %(tooltip1_zh[obj[0]], tooltip1_en_lowercase[obj[0]]))
-                                    print(format_df(swap_df_selected.loc[:, swap_df_fields_to_print], print_index = True)[0])
-                                    log.write(format_df(swap_df_selected.loc[:, swap_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0])
-                                    while True:
-                                        index_got: bool = False
-                                        swap_index_str: str = logInput()
-                                        if swap_index_str == "":
-                                            continue
-                                        elif swap_index_str == "0":
-                                            break
-                                        elif swap_index_str in list(map(str, range(1, len(swap_df_selected)))):
-                                            swap_index: int = int(swap_index_str)
-                                            index_got = True
-                                            break
-                                        else:
-                                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                    if index_got:
-                                        # logPrint("是否确认与以下玩家交换%s？（输入任意键确认，否则取消。）\nDo you want to swap %s with the following player? (Submit any non-empty string to confirm, or null to cancel.)" %(tooltip1_zh[obj[0]], tooltip1_en_lowercase[obj[0]]))
-                                        # print(format_df(swap_df_selected.loc[[swap_index], swap_df_fields_to_print], print_index = True, reserve_index = True)[0])
-                                        # log.write(format_df(swap_df_selected.loc[[swap_index], swap_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True, reserve_index = True)[0])
-                                        # swap_confirm_str: str = logInput()
-                                        # swap_confirm: bool = bool(swap_confirm_str)
-                                        # if swap_confirm:
-                                        swap_id: int = swap_df_selected["id"][swap_index]
-                                        if champ_select_session["isLegacyChampSelect"]:
-                                            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/session/%s-swaps/%d/request" %(endpoint1_dict1[obj[0]], swap_id))).json()
-                                        else:
-                                            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby-team-builder/champ-select/v1/session/%s-swaps/%d/request" %(endpoint1_dict1[obj[0]], swap_id))).json()
-                                        logPrint(response)
-                                        if isinstance(response, dict) and "errorCode" in response:
-                                            logPrint("交换%s的请求发送失败。\n%s swap request failed to be sent." %(tooltip1_zh[obj[0]], tooltip1_en_capitalize[obj[0]]))
-                                        else:
-                                            logPrint("交换%s的请求发送成功。请等待对方回应。\n%s swap request is sent successfully. Please wait for response." %(tooltip1_zh[obj[0]], tooltip1_en_capitalize[obj[0]]))
-                                            time.sleep(GLOBAL_RESPONSE_LAG)
-                                            localPlayer: dict[str, Any] = await get_champSelect_player(connection)
-                                            if localPlayer != {}:
-                                                logPrint("当前槽位序号（Current cell id）：%d" %(localPlayer["cellId"]))
-                                else:
-                                    if any(map(lambda x: x["state"] == "RECEIVED" or x["state"] == "SENT", swaps)):
-                                        logPrint("您正在和一名玩家交换%s。请先完成该交换后再尝试发起下一次交换。\nYou're currently swapping %s with a player. Please finish this swap and then trying initiating another swap." %(tooltip1_zh[obj[0]], tooltip1_en_lowercase[obj[0]]))
-                                    else:
-                                        logPrint("%s交换不可用。请检查英雄选择计时阶段。\n%s swap isn't available. Please check the timer phase of the current champ select session.\n当前阶段（Current phase）：%s" %(tooltip1_zh[obj[0]], tooltip1_en_capitalize[obj[0]], champ_select_session["timer"]["phase"]))
-                            else:
-                                logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
-                        else:
-                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                        logPrint("请选择动作：\nPlease select an action:\n1\t查看（Check）\n2\t发送（Send）")
-                elif obj[0] == "4": #“可用英雄池”的叫法来自极地大乱斗的百度百科（"Available champion pool" comes from https://wiki.leagueoflegends.com/en-us/ARAM）
-                    gameflow_phase = await get_gameflow_phase(connection)
-                    if gameflow_phase == "ChampSelect":
-                        champ_select_session = await get_champ_select_session(connection)
-                        if champ_select_session["benchEnabled"]:
-                            benchedChampionIds: list[int] = list(map(lambda x: x["championId"], champ_select_session["benchChampions"]))
-                            if len(benchedChampionIds) == 0:
-                                logPrint("还没有人重随过。\nNobody has rerolled.")
-                            else:
-                                logPrint("可用英雄池如下：\nAvailable champion pool:")
-                                LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)
-                                LoLChampion_df_fields_to_print: list[str] = ["id", "name", "title", "alias", "freeToPlay", "ownership: owned", "ownership: rental: rented"]
-                                LoLChampion_df_selected: pandas.DataFrame = pandas.concat([LoLChampion_df.iloc[:1, :], LoLChampion_df[LoLChampion_df["id"].isin(benchedChampionIds)]], ignore_index = True)
-                                print(format_df(LoLChampion_df_selected.loc[:, LoLChampion_df_fields_to_print], print_index = True)[0])
-                                log.write(format_df(LoLChampion_df_selected.loc[:, LoLChampion_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                                logPrint("请选择一个英雄：\nPlease select a champion:")
-                                while True:
-                                    index_got: bool = False
-                                    swap_index_str = logInput()
-                                    if swap_index_str == "":
-                                        continue
-                                    elif swap_index_str[0] == "0":
-                                        index_got = False
-                                        break
-                                    elif swap_index_str in list(map(str, range(1, len(LoLChampion_df_selected)))):
-                                        swap_index: int = int(swap_index_str)
-                                        index_got = True
-                                        break
-                                    else:
-                                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                if index_got:
-                                    logPrint("您选择交换以下英雄：\nYou selected the following champion to swap:")
-                                    print(format_df(LoLChampion_df_selected.loc[[swap_index], LoLChampion_df_fields_to_print], print_index = True, reserve_index = True)[0])
-                                    log.write(format_df(LoLChampion_df_selected.loc[[swap_index], LoLChampion_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True, reserve_index = True)[0] + "\n")
-                                    swap_championId: int = LoLChampion_df_selected["id"][swap_index]
-                                    swap_championName: str = LoLChampion_df_selected["name"][swap_index]
-                                    if champ_select_session["isLegacyChampSelect"]:
-                                        response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-champ-select/v1/session/bench/swap/{swap_championId}")).json()
-                                    else:
-                                        response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-lobby-team-builder/champ-select/v1/session/bench/swap/{swap_championId}")).json()
-                                    logPrint(response)
-                                    if isinstance(response, dict) and "errorCode" in response:
-                                        if response["httpStatus"] == 500 and response["message"] == f"Unable to swap with ChampionBench champion {swap_championId}: Received status Error: INVALID_CHAMP_SELECTION instead of expected status of OK from request to teambuilder-draft:championBenchSwapV1":
-                                            logPrint(f"您目前尚未持有{swap_championName}。\nYou don't own {swap_championName} for now.")
-                                        else:
-                                            logPrint("交换失败。\nSwap failed.")
-                                    else:
-                                        time.sleep(GLOBAL_RESPONSE_LAG)
-                                        localPlayer = await get_champSelect_player(connection)
-                                        if localPlayer == {}:
-                                            logPrint("游戏状态异常。\nAbnormal gameflow phase.")
-                                        else:
-                                            if localPlayer["championId"] == swap_championId:
-                                                logPrint("交换成功。\nSwap succeeded.")
-                                            else:
-                                                logPrint("交换失败。\nSwap failed.")
-                        else:
-                            logPrint("当前游戏模式不支持可用英雄池。请切换游戏模式后再试。\nAvailable champion pool isn't supported in this game mode. Please switch to another game mode and try again.")
-                    else:
-                        logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
-                else:
-                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                    continue
-                logPrint("请选择交换对象：\nPlease select an object to swap:\n1\t选用顺序（Pick order）\n2\t分路（Position）\n3\t队友英雄（Ally champions）\n4\t可用英雄池（替补席）【Available champion pool (Bench)】")
+            await swap(connection)
         elif option[0] == "2": #这部分代码来自克隆脚本（This part of code come from Customized Program 15）
-            logPrint("请选择行为类型：\nPlease select an action:\n1\t禁用（Ban）\n2\t选择（Pick）\n3\t重随（Reroll）\n4\t投票（Vote）")
-            while True:
-                action: str = logInput()
-                if action == "":
-                    continue
-                elif action[0] == "0":
-                    break
-                elif action[0] in {"1", "2", "4"}:
-                    gameflow_phase: str = await get_gameflow_phase(connection)
-                    if gameflow_phase == "ChampSelect":
-                        champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
-                        action_type: str = "ban" if action[0] == "1" else "pick" if action[0] == "2" else "vote"
-                        if action_type == "ban":
-                            if champ_select_session["isLegacyChampSelect"]:
-                                selectable_champion_ids: list[int] = await (await connection.request("GET", "/lol-champ-select/v1/bannable-champion-ids")).json()
-                            else:
-                                selectable_champion_ids = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/bannable-champion-ids")).json()
-                        else:
-                            if champ_select_session["allowSubsetChampionPicks"]:
-                                selectable_champion_ids = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/subset-champion-list")).json()
-                            else:
-                                if champ_select_session["isLegacyChampSelect"]:
-                                    selectable_champion_ids = await (await connection.request("GET", "/lol-champ-select/v1/pickable-champion-ids")).json()
-                                else:
-                                    selectable_champion_ids = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/pickable-champion-ids")).json()
-                        LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)
-                        LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict.get(x, []), LoLChampion_df["id"][1:]))
-                        LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
-                        LoLChampion_df_query_initial: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print + ["colloq"]] #代表初始值（Represent the initial value）
-                        LoLChampion_df_query: pandas.DataFrame = LoLChampion_df_query_initial #代表查询过程中的值（Represent the value during a query）
-                        LoLChampion_df_selected: pandas.DataFrame = pandas.concat([LoLChampion_df.iloc[:1, :], LoLChampion_df[LoLChampion_df["id"].isin(selectable_champion_ids)]], ignore_index = True)
-                        print(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print])[0]) #虽然这里输出的是筛选后的表格，但实际上用户仍然可以尝试选择不可用的英雄（Although the selected table is output here, users can still try choosing unavailable champions）
-                        log.write(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
-                        logPrint('请输入英雄的序号或者名称。输入“00”以从头筛选。\nPlease input the id or name of a champion. Submit "00" to de novo filter champions.')
-                        back: bool = False
-                        while True:
-                            champion_queryStr: str = logInput()
-                            if champion_queryStr == "":
-                                continue
-                            elif champion_queryStr == "0":
-                                back = True
-                                break
-                            elif champion_queryStr == "-3":
-                                pick_championId: int = -3
-                                break
-                            else:
-                                break_flag, pick_championId, LoLChampion_df_query = filter_champion(champion_queryStr, LoLChampion_df_query, LoLChampion_df_query_initial)
-                                if break_flag:
-                                    break
-                        if back:
-                            logPrint("请选择行为类型：\nPlease select an action:\n1\t禁用（Ban）\n2\t选择（Pick）\n3\t重随（Reroll）\n4\t投票（Vote）")
-                            continue
-                        logPrint("是否直接锁定选择？（输入任意键直接锁定，否则不锁定。）\nDo you want to lock in? (Submit any non-empty string to lock in, or null to refuse locking in.)")
-                        complete_str: str = logInput()
-                        complete: bool = bool(complete_str)
-                        gameflow_phase = await get_gameflow_phase(connection)
-                        if gameflow_phase == "ChampSelect":
-                            champ_select_session = await get_champ_select_session(connection)
-                            if champ_select_session["isSpectating"]:
-                                logPrint("您正在观战。请自行开启一把对局。\nYou're spectating. Please start a game by yourself.")
-                            else:
-                                #首先获取用户的槽位序号（First, get the user's cellId）
-                                localPlayerCellId: int = champ_select_session["localPlayerCellId"]
-                                #下面获取用户选英雄时的行为序号（Get the user's actionId when he/she's picking a champion）
-                                selfKey_pick: str = str(localPlayerCellId) + " pick" #只选择类型为“选英雄”的行为（Only do operations on a pick action）
-                                selfKey_ban: str = str(localPlayerCellId) + " ban" #只选择类型为“禁英雄”的行为（Only do operations on a ban action）
-                                selfKey_vote: str = str(localPlayerCellId) + " vote" #只选择类型为“投票”的行为（Only do operations on a vote action）
-                                selfKey: str = selfKey_ban if action_type == "ban" else selfKey_pick if action_type == "pick" else selfKey_vote
-                                actions: dict[str, dict[str, Any]] = {}
-                                for stage in champ_select_session["actions"]:
-                                    for action in stage:
-                                        key: str = str(action["actorCellId"]) + " " + action["type"]
-                                        # if key in actions and action["type"] != "ban": #在旧版征召模式中，由同一个人来禁英雄，因此在禁用期间，这个人的行为的槽位序号和行为类型是一样的。这样的键重复无关紧要，因为后面的禁用行为序号一定比前面的禁用行为序号大，所以程序总是能追踪到最新的禁用行为（In old draft mode, one player bans multiple champions, so during the ban phase, the actorCellIds and types are both the same among this player's actions. In this case, the key duplicate doesn't matter, for the id of the later ban action is always greater than that of the earlier ban action, which means the program will always track the latest ban action）
-                                        #     logPrint("检测到重复键（%s）。请修改代码。\nDetected the same key (%s). Please fix the code." %(key, key))
-                                        actions[key] = action
-                                if selfKey in actions:
-                                    current_actionId: int = actions[selfKey]["id"]
-                                    #下面通过LCU API选择英雄（Pick a champion through LCU API)
-                                    body: dict[str, Any] = {"id": current_actionId, "actorCellId": localPlayerCellId, "championId": pick_championId, "type": action_type, "completed": complete, "isAllyAction": True, "isInProgress": True, "pickTurn": 0}
-                                    logPrint(body)
-                                    if champ_select_session["isLegacyChampSelect"]:
-                                        response: Optional[dict[str, Any]] = await (await connection.request("PATCH", f"/lol-champ-select/v1/session/actions/{current_actionId}", data = body)).json()
-                                    else:
-                                        response: Optional[dict[str, Any]] = await (await connection.request("PATCH", f"/lol-lobby-team-builder/champ-select/v1/session/actions/{current_actionId}", data = body)).json()
-                                    logPrint(response)
-                                    if isinstance(response, dict) and "errorCode" in response:
-                                        if response["httpStatus"] == 500:
-                                            if response["message"] == "Unable to process action change: Received status Error: CHAMPION_ALREADY_BANNED instead of expected status of OK from request to teambuilder-draft:updateActionV1":
-                                                logPrint("该英雄已被禁用。请切换一个英雄后重试。\nThis champion is already banned. Please switch to another champion and try again.")
-                                            elif response["message"] == "Unable to process action change: Received status Error: INVALID_CHAMP_SELECTION instead of expected status of OK from request to teambuilder-draft:updateActionV1":
-                                                logPrint("选用方式不合法。请检查该英雄是否被平台禁用。\nIllegal pick method. Please check whether this champion is disabled by platform.")
-                                            elif response["message"] == "Unable to process action change: Received status Error: INVALID_STATE instead of expected status of OK from request to teambuilder-draft:updateActionV1":
-                                                logPrint("选用状态不匹配。请核对当前阶段。\nInvalid champ select state. Please check the current stage.")
-                                            elif response["message"] == "Error response for PATCH /lol-lobby-team-builder/champ-select/v1/session/actions/0: Unable to process action change: Received status Error: CHAMPION_ALREADY_PICKED instead of expected status of OK from request to teambuilder-draft:updateActionV1":
-                                                logPrint("该英雄已被选用。\nThis champion is already picked.")
-                                            else:
-                                                logPrint("在选择英雄时出现了一个错误。\nThere was a problem selecting your champion.")
-                                        else:
-                                            logPrint("选择失败！\nPick failed.")
-                                    else:
-                                        time.sleep(GLOBAL_RESPONSE_LAG)
-                                        champ_select_session = await get_champ_select_session(connection)
-                                        current_actions: dict[int, dict[str, Any]] = {}
-                                        for stage in champ_select_session["actions"]:
-                                            for action in stage:
-                                                current_actions[action["id"]] = action
-                                        if current_actionId in current_actions:
-                                            if current_actions[current_actionId]["championId"] == pick_championId:
-                                                logPrint("选择成功！\nPick succeeded.")
-                                            else:
-                                                logPrint("选择失败！\nPick failed.")
-                                        else:
-                                            logPrint("没有找到匹配的行为。请稍后再试。\nNo matched action found. Please try again later.")
-                                else:
-                                    logPrint("没有找到匹配的行为。请稍后再试。\nNo matched action found. Please try again later.")
-                        else:
-                            logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
-                            break
-                    else:
-                        logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
-                        break
-                elif action[0] == "3":
-                    gameflow_phase = await get_gameflow_phase(connection)
-                    if gameflow_phase == "ChampSelect":
-                        champ_select_session = await get_champ_select_session(connection)
-                        if champ_select_session["isSpectating"]:
-                            logPrint("您正在观战。请自行开启一把对局。\nYou're spectating. Please start a game by yourself.")
-                        elif champ_select_session["allowRerolling"]:
-                            if champ_select_session["rerollsRemaining"] == 0:
-                                logPrint("您的重随次数不足。\nYou don't have any rerolls.")
-                            else:
-                                if champ_select_session["isLegacyChampSelect"]:
-                                    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/session/my-selection/reroll")).json()
-                                else:
-                                    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby-team-builder/champ-select/v1/session/my-selection/reroll")).json()
-                                logPrint(response)
-                                if isinstance(response, dict) and "errorCode" in response:
-                                    if response["httpStatus"] == 404 and response["message"] == "No active delegate":
-                                        logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
-                                    elif response["httpStatus"] == 500 and (response["message"] == "Error response for POST /lol-lobby-team-builder/champ-select/v1/session/my-selection/reroll: Unable to reroll: Received status Error: NO_REROLLS_REMAINING instead of expected status of OK from request to teambuilder-draft:rerollV1" or response["message"] == "Unable to reroll: Received status Error: NO_REROLLS_REMAINING instead of expected status of OK from request to teambuilder-draft:rerollV1"):
-                                        logPrint("您的重随次数不足。\nYou don't have any rerolls.")
-                                    else:
-                                        logPrint("重随失败。\nReroll failed.")
-                                else:
-                                    logPrint("重随成功。\nReroll succeeded.")
-                        else:
-                            logPrint("当前游戏模式不支持重随。\nThe current game mode doesn't support rerolling.")
-                    else:
-                        logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
-                        break
+            gameflow_phase: str = await get_gameflow_phase(connection)
+            if gameflow_phase == "ChampSelect":
+                champ_select_session = await get_champ_select_session(connection)
+                if champ_select_session["isSpectating"]:
+                    logPrint("您正在观战。请自行开启一把对局。\nYou're spectating. Please start a game by yourself.")
                 else:
-                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                    continue
-                logPrint("请选择行为类型：\nPlease select an action:\n1\t禁用（Ban）\n2\t选择（Pick）\n3\t重随（Reroll）\n4\t投票（Vote）")
+                    await pick_champion(connection)
+            else:
+                logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
         elif option[0] == "3":
-            collection_df_fields_to_print: list[str] = ["inventoryType", "itemId", "name", "ownershipType"]
-            skin_df_fields_to_print: list[str] = ["id", "name"]
-            logPrint("请选择要修改的赛前配置：\nPlease select a loadout:\n1\t符文（Perks）\n2\t召唤师技能（Summoner spells）\n3\t皮肤（Skin）\n4\t守卫（眼）皮肤（Ward skin）\n5\t表情（Emotes）\n6\t召唤师图标（Summoner icon）\n7\t水晶枢纽终结特效（Nexus finisher）\n8\t旗帜（Banner）\n9\t徽章（Crest）\n10\t冠军杯赛奖杯（Tournament trophy）")
-            while True:
-                loadout_option: str = logInput()
-                if loadout_option == "":
-                    continue
-                elif loadout_option[0] == "0":
-                    break
-                elif loadout_option == "1":
-                    wd: str = os.getcwd()
-                    subscript_path: str = os.path.join(wd, "Customized Program 19 - Configure Perks.py")
-                    if os.path.exists(subscript_path):
-                        logPrint(f"正在打开（Opening）： {subscript_path}")
-                        subprocess.run(["python", subscript_path])
-                    else:
-                        logPrint('''在同目录下未发现符文脚本。取消该操作。请自行在客户端内修改。\n"Customized Program 19 - Configure Perks.py" isn't found under the same directory. This operation is cancelled. Please change inside the League Client.''')
-                elif loadout_option in {"2", "3"}:
-                    gameflow_phase: str = await get_gameflow_phase(connection)
-                    if gameflow_phase == "ChampSelect":
-                        champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
-                        if champ_select_session["isSpectating"]:
-                            logPrint("您正在观战。请自行开启一把对局。\nYou're spectating. Please start a game by yourself.")
-                        else:
-                            if loadout_option == "2":
-                                logPrint("该模式可用召唤师技能如下：\nAvailable summoner spells of this game mode are as follows:")
-                                gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
-                                gameQueues: dict[int, dict[str, Any]] = {queue["id"]: queue for queue in gameQueues_source}
-                                if champ_select_session["queueId"] == 0: #对于传统的自定义房间，通过获取游戏会话来确定游戏模式（For a traditional custom lobby, determine the game mode by the gameflow session）
-                                    gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
-                                    available_spells: list[int] = available_spell_dict[gameflow_session["gameData"]["queue"]["gameMode"]]
-                                else: #对于阵容匹配的英雄选择阶段，通过队列序号来确定游戏模式（For team builder managed champ select stage, determine the game mode by queueId）
-                                    available_spells = available_spell_dict[gameQueues[champ_select_session["queueId"]]["gameMode"]]
-                                for spellId in sorted(available_spells):
-                                    spell: dict[str, Any] = spells[spellId]
-                                    logPrint("%d\t%s" %(spellId, spell["name"]))
-                                logPrint("请依次输入两个召唤师技能的序号，以空格为分隔符：\nPlease input the two spellIds, split by space:")
-                                while True:
-                                    index_got: bool = False
-                                    spell_str: str = logInput()
-                                    if spell_str == "":
-                                        continue
-                                    elif spell_str == "0":
-                                        index_got = False
-                                        break
-                                    else:
-                                        selectedSpellIds: list[str] = spell_str.split()
-                                        if len(selectedSpellIds) != 2:
-                                            logPrint("请输入两个召唤师技能的序号！\nPlease submit two spellIds!")
-                                        else:
-                                            try:
-                                                selectedSpellIds: list[int] = list(map(int, selectedSpellIds))
-                                            except ValueError:
-                                                logPrint("请输入整数！\nPlease input integers!")
-                                            else:
-                                                if len(set(selectedSpellIds)) == 1:
-                                                    logPrint("请输入两个不同的召唤师技能序号！\nPlease input two different spellIds!")
-                                                elif all(map(lambda x: x in available_spells, selectedSpellIds)):
-                                                    index_got = True
-                                                    break
-                                                else:
-                                                    logPrint("您输入的召唤师技能序号不可用！请重新输入。\nThe selected summoner spells aren't available. Please try again.")
-                                if index_got:
-                                    body: dict[str, int] = {"spell1Id": selectedSpellIds[0], "spell2Id": selectedSpellIds[1]}
-                                    if champ_select_session["isLegacyChampSelect"]:
-                                        response: Optional[dict[str, Any]] = await (await connection.request("PATCH", "/lol-champ-select/v1/session/my-selection", data = body)).json()
-                                    else:
-                                        response: Optional[dict[str, Any]] = await (await connection.request("PATCH", "/lol-lobby-team-builder/champ-select/v1/session/my-selection", data = body)).json()
-                                    logPrint(response)
-                                    if isinstance(response, dict) and "errorCode" in response:
-                                        if response["httpStatus"] == 400 and response["message"] == "Not an active participant in a champ select session":
-                                            logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
-                                        else:
-                                            logPrint("召唤师技能更换失败！\nSummoner spell change failed!")
-                                    else:
-                                        time.sleep(GLOBAL_RESPONSE_LAG)
-                                        localPlayer: dict[str, Any] = await get_champSelect_player(connection)
-                                        if [localPlayer["spell1Id"], localPlayer["spell2Id"]] == selectedSpellIds:
-                                            logPrint("召唤师技能更换成功！\nSummoner spell change succeeded!")
-                                        else:
-                                            logPrint("召唤师技能更换失败！\nSummoner spell change failed!")
-                            else:
-                                if champ_select_session["isLegacyChampSelect"]:
-                                    pickable_skin_ids: list[int] = await (await connection.request("GET", "/lol-champ-select/v1/pickable-skin-ids")).json()
-                                else:
-                                    pickable_skin_ids = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/pickable-skin-ids")).json()
-                                localPlayer = await get_champSelect_player(connection)
-                                championId_pick_or_intent: int = localPlayer["championPickIntent"] or localPlayer["championId"]
-                                skin_df_selected: pandas.DataFrame = pandas.concat([skin_df.iloc[:1, :], skin_df[(skin_df["id"].isin(pickable_skin_ids)) & (skin_df["championId"] == championId_pick_or_intent)]], ignore_index = True)
-                                if len(skin_df_selected) == 1:
-                                    logPrint("无可用皮肤。\nThere's not any available skin.")
-                                else:
-                                    logPrint("%s的可用皮肤如下：\nPickable skins of %s are as follows:" %(LoLChampions[championId_pick_or_intent]["title"], LoLChampions[championId_pick_or_intent]["alias"]))
-                                    print(format_df(skin_df_selected.loc[:, skin_df_fields_to_print], print_index = True)[0])
-                                    log.write(format_df(skin_df_selected.loc[:, skin_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                                    logPrint("请选择一个皮肤：\nPlease select a skin:")
-                                    while True:
-                                        skin_index_str: str = logInput()
-                                        if skin_index_str == "" or skin_index_str == "0":
-                                            break
-                                        elif skin_index_str == "-1" or skin_index_str in list(map(str, range(1, len(skin_df_selected)))):
-                                            skin_index: int = int(skin_index_str)
-                                        else:
-                                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                            continue
-                                        selectedSkinId: int = championId_pick_or_intent * 1000 if skin_index == -1 else skin_df_selected["id"][skin_index]
-                                        body: dict[str, int] = {"selectedSkinId": selectedSkinId}
-                                        if champ_select_session["isLegacyChampSelect"]:
-                                            response: Optional[dict[str, Any]] = await (await connection.request("PATCH", "/lol-champ-select/v1/session/my-selection", data = body)).json()
-                                        else:
-                                            response: Optional[dict[str, Any]] = await (await connection.request("PATCH", "/lol-lobby-team-builder/champ-select/v1/session/my-selection", data = body)).json()
-                                        logPrint(response)
-                                        if isinstance(response, dict) and "errorCode" in response:
-                                            logPrint("皮肤更换失败！\nChampion skin change failed!")
-                                        else:
-                                            time.sleep(GLOBAL_RESPONSE_LAG)
-                                            localPlayer = await get_champSelect_player(connection)
-                                            if localPlayer == {}:
-                                                logPrint("游戏状态异常。\nAbnormal gameflow phase.")
-                                            else:
-                                                if localPlayer["selectedSkinId"] == selectedSkinId:
-                                                    logPrint("皮肤更换成功！\nChampion skin change succeeded!")
-                                                else:
-                                                    logPrint("皮肤更换失败！请在锁定英雄后检查是否更换成功。\nChampion skin change failed! Please check if the skin is changed after locking in.")
-                                            break
-                    else:
-                        logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
-                elif loadout_option in list(map(str, range(4, 11))):
-                    loadout_scope: dict[str, Any] = await (await connection.request("GET", "/lol-loadouts/v4/loadouts/scope/account")).json()
-                    if isinstance(loadout_scope, dict) and "errorCode" in loadout_scope:
-                        logPrint(loadout_scope)
-                        logPrint("未知错误！\nUnknown error!")
-                    else:
-                        if len(loadout_scope) == 0:
-                            logPrint("无可用赛前配置方案。请重启英雄联盟客户端后再运行本程序。\nNo available loadouts. Please restart the League Client and then run this program.")
-                        else:
-                            loadoutId = loadout_scope[0]["id"] #因为赛前配置在每次退出英雄联盟客户端后就没了，所以随便取一个赛前配置就行。这里取了第一个列表元素（Because loadouts aren't reserved as the user exits the League Client, any loadout is OK to use. Here the first element of the loadout scope list is used）
-                            loadoutName = loadout_scope[0]["name"]
-                    inventoryTypes: dict[str, str] = {"4": "WARD_SKIN", "5": "EMOTE", "6": "SUMMONER_ICON", "7": "NEXUS_FINISHER", "8": "REGALIA_BANNER", "9": "REGALIA_CREST", "10": "TOURNAMENT_TROPHY"}
-                    inventoryType: str = inventoryTypes[loadout_option]
-                    collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
-                    if len(collection_df_selected) == 1:
-                        logPrint("您目前没有该类道具的使用权。\nYou don't have permissions to use any item of this inventoryType.")
-                    else:
-                        if inventoryType == "EMOTE":
-                            logPrint("请选择您想要配置的表情种类：\nPlease select the category of emotes:\n1\t表情轮盘（Emote wheel）\n2\t回应（Reactions）")
-                            while True:
-                                category: str = logInput()
-                                if category == "":
-                                    continue
-                                elif category[0] == "0":
-                                    break
-                                elif category[0] == "1":
-                                    logPrint("请选择方位：\nPlease select a direction:\n1\t中央（Center）\n2\t左（Left）\n3\t右（Right）\n4\t上（Upper）\n5\t下（Lower）\n6\t左上（Upper-Left）\n7\t右上（Upper-Right）\n8\t左下（Lower-Left）\n9\t右下（Lower-Right）")
-                                    directions: dict[str, str] = {"1": "CENTER", "2": "LEFT", "3": "RIGHT", "4": "UPPER", "5": "LOWER", "6": "UPPER_LEFT", "7": "UPPER_RIGHT", "8": "LOWER_LEFT", "9": "LOWER_RIGHT"}
-                                    while True:
-                                        direction_index_str: str = logInput()
-                                        if direction_index_str == "":
-                                            continue
-                                        elif direction_index_str[0] == "0":
-                                            break
-                                        elif direction_index_str[0] in list(map(str, range(1, 10))):
-                                            direction: str = directions[direction_index_str[0]]
-                                            logPrint('请选择您想要使用的道具：（输入-1以初始化当前选择。）\nPlease select an item to use: (Submit "-1" to initialize the current choice.)')
-                                            print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
-                                            log.write(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                                            while True:
-                                                index_got: bool = False
-                                                item_index_str: str = logInput()
-                                                if item_index_str == "":
-                                                    continue
-                                                elif item_index_str == "0":
-                                                    index_got = False
-                                                    break
-                                                elif item_index_str == "-1" or item_index_str in list(map(str, range(1, len(collection_df_selected)))):
-                                                    item_index: int = int(item_index_str)
-                                                    index_got = True
-                                                    break
-                                                else:
-                                                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                            if index_got:
-                                                contentId: str = "" if item_index == -1 else collection_df_selected["uuid"][item_index]
-                                                itemId: int = 0 if item_index == -1 else collection_df_selected["itemId"][item_index]
-                                                loadout_key: str = f"{inventoryType}_WHEEL_{direction}" #不是所有的配置键都符合道具类型后缀“_SLOT”的格式。比如表情（EMOTE）的配置键包括“EMOTE_WHEEL_PANEL”。但是这个格式适用于这里的四个道具类型（Not all loadout keys follows the pattern where an inventoryType is followed by "_SLOT". For example, the loadout key for EMOTE may be "EMOTE_WHEEL_PANEL". Nevertheless, this pattern applies to all of the four inventoryTypes here）
-                                                body: dict[str, Any] = {"id": loadoutId, "name": loadoutName, "loadout": {loadout_key: {"inventoryType": inventoryType, "contentId": contentId, "itemId": itemId}}}
-                                                response: Optional[dict[str, Any]] = await (await connection.request("PATCH", f"/lol-loadouts/v4/loadouts/{loadoutId}", data = body)).json()
-                                                logPrint(response)
-                                                if isinstance(response, dict) and "errorCode" in response:
-                                                    if response["message"] == "UpdateLoadout Failed - Loadout does not exist in cache.":
-                                                        logPrint("更新赛前配置失败。请检查代码为%s的赛前配置是否存在。如果不存在，请返回到选择赛前配置之前的步骤，再重试。\nLoadout update failed. Please check if the loadout of id %s still exists. If it doesn't exist, please return to the step before selecting to configure the TFT loadouts and then try again.")
-                                                    else:
-                                                        logPrint("未知错误！\nUnknown error!")
-                                                else:
-                                                    time.sleep(GLOBAL_RESPONSE_LAG)
-                                                    loadout: dict[str, Any] = await (await connection.request("GET", f"/lol-loadouts/v4/loadouts/{loadoutId}")).json()
-                                                    if not loadout_key in loadout["loadout"] or loadout["loadout"][loadout_key] == body["loadout"][loadout_key]:
-                                                        logPrint("更新赛前配置成功。客户端内显示可能有延迟，请尝试关闭相应窗口再打开，观察配置是否更新。进入游戏即可正常使用。\nLoadout update succeeded. The League Client may not display the change properly due to a lag. Please try closing the corresponding window and then open it again to see if loadout is updated. As you enter the game, you should be using the updated loadouts.")
-                                                    else:
-                                                        logPrint("更新赛前配置失败。\nLoadout update failed.")
-                                        else:
-                                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                            continue
-                                        logPrint("请选择方位：\nPlease select a direction:\n1\t中央（Center）\n2\t左（Left）\n3\t右（Right）\n4\t上（Upper）\n5\t下（Lower）\n6\t左上（Upper-Left）\n7\t右上（Upper-Right）\n8\t左下（Lower-Left）\n9\t右下（Lower-Right）")
-                                elif category[0] == "2":
-                                    logPrint("请选择回应：\nPlease select a reaction:\n1\t开始（Start）\n2\t第一滴血（First blood）\n3\t团灭（Ace）\n4\t胜利（Victory）")
-                                    reactions = {"1": "START", "2": "FIRST_BLOOD", "3": "ACE", "4": "VICTORY"}
-                                    while True:
-                                        reaction_index_str: str = logInput()
-                                        if reaction_index_str == "":
-                                            continue
-                                        elif reaction_index_str[0] == "0":
-                                            break
-                                        elif reaction_index_str[0] in list(map(str, range(1, 5))):
-                                            reaction: str = reactions[reaction_index_str[0]]
-                                            logPrint('请选择您想要使用的道具：（输入-1以初始化当前选择。）\nPlease select an item to use: (Submit "-1" to initialize the current choice.)')
-                                            print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
-                                            log.write(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0])
-                                            while True:
-                                                index_got: bool = False
-                                                item_index_str: str = logInput()
-                                                if item_index_str == "":
-                                                    continue
-                                                elif item_index_str == "0":
-                                                    index_got = False
-                                                    break
-                                                elif item_index_str == "-1" or item_index_str in list(map(str, range(1, len(collection_df_selected)))):
-                                                    item_index: int = int(item_index_str)
-                                                    index_got = True
-                                                    break
-                                                else:
-                                                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                                    continue
-                                            if index_got:
-                                                contentId: str = "" if item_index == -1 else collection_df_selected["uuid"][item_index]
-                                                itemId: int = 0 if item_index == -1 else collection_df_selected["itemId"][item_index]
-                                                loadout_key: str = f"{inventoryType}_{reaction}" #不是所有的配置键都符合道具类型后缀“_SLOT”的格式。比如表情（EMOTE）的配置键包括“EMOTE_WHEEL_PANEL”。但是这个格式适用于这里的四个道具类型（Not all loadout keys follows the pattern where an inventoryType is followed by "_SLOT". For example, the loadout key for EMOTE may be "EMOTE_WHEEL_PANEL". Nevertheless, this pattern applies to all of the four inventoryTypes here）
-                                                body: dict[str, Any] = {"id": loadoutId, "name": loadoutName, "loadout": {loadout_key: {"inventoryType": inventoryType, "contentId": contentId, "itemId": itemId}}}
-                                                response: Optional[dict[str, Any]] = await (await connection.request("PATCH", f"/lol-loadouts/v4/loadouts/{loadoutId}", data = body)).json()
-                                                logPrint(response)
-                                                if isinstance(response, dict) and "errorCode" in response:
-                                                    if response["message"] == "UpdateLoadout Failed - Loadout does not exist in cache.":
-                                                        logPrint("更新赛前配置失败。请检查代码为%s的赛前配置是否存在。如果不存在，请返回到选择赛前配置之前的步骤，再重试。\nLoadout update failed. Please check if the loadout of id %s still exists. If it doesn't exist, please return to the step before selecting to configure the TFT loadouts and then try again.")
-                                                    else:
-                                                        logPrint("未知错误！\nUnknown error!")
-                                                else:
-                                                    time.sleep(GLOBAL_RESPONSE_LAG)
-                                                    loadout = await (await connection.request("GET", f"/lol-loadouts/v4/loadouts/{loadoutId}")).json()
-                                                    if loadout["loadout"][loadout_key] == body["loadout"][loadout_key]:
-                                                        logPrint("更新赛前配置成功。客户端内显示可能有延迟，请尝试关闭相应窗口再打开，观察配置是否更新。进入游戏即可正常使用。\nLoadout update succeeded. The League Client may not display the change properly due to a lag. Please try closing the corresponding window and then open it again to see if loadout is updated. As you enter the game, you should be using the updated loadouts.")
-                                                    else:
-                                                        logPrint("更新赛前配置失败。\nLoadout update failed.")
-                                        else:
-                                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                            continue
-                                        logPrint("请选择回应：\nPlease select a reaction:\n1\t开始（Start）\n2\t第一滴血（First blood）\n3\t团灭（Ace）\n4\t胜利（Victory）")
-                                else:
-                                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                    continue
-                                logPrint("请选择您想要配置的表情种类：\nPlease select the category of emotes:\n1\t表情轮盘（Emote wheel）\n2\t回应（Reactions）")
-                        else:
-                            logPrint('请选择您想要使用的道具：（输入-1以初始化当前选择。）\nPlease select an item to use: (Submit "-1" to initialize the current choice.)')
-                            print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
-                            log.write(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                            while True:
-                                index_got: bool = False
-                                item_index_str: str = logInput()
-                                if item_index_str == "":
-                                    continue
-                                elif item_index_str == "0":
-                                    index_got = False
-                                    break
-                                elif item_index_str == "-1" or item_index_str in list(map(str, range(1, len(collection_df_selected)))):
-                                    item_index: int = int(item_index_str)
-                                    index_got = True
-                                    break
-                                else:
-                                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                            if index_got:
-                                contentId: str = "" if item_index == -1 else collection_df_selected["uuid"][item_index]
-                                itemId: int = 0 if item_index == -1 else collection_df_selected["itemId"][item_index]
-                                if inventoryType == "SUMMONER_ICON":
-                                    body: dict[str, int] = {"profileIconId": itemId}
-                                    response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-summoner/v1/current-summoner/icon", data = body)).json()
-                                    logPrint(response)
-                                    if isinstance(response, dict) and "errorCode" in response:
-                                        if response["httpStatus"] == 401 and "Requested summoner profile icon is not free or owned by the player" in response["message"]:
-                                            logPrint("您尚未拥有该召唤师图标。\nYou don't own this summoner icon.")
-                                        elif response["httpStatus"] == 400 and "invalid profileIconId" in response["message"]:
-                                            logPrint("您选择的召唤师图标不存在。\nThe selected summoner icon doesn't exist.")
-                                        else:
-                                            logPrint("未知错误！\nUnknown error!")
-                                    else:
-                                        if response["profileIconId"] == itemId:
-                                            logPrint("更新赛前配置成功。\nLoadout update succeeded.")
-                                        else:
-                                            logPrint("更新赛前配置失败。\nLoadout update failed.")
-                                else:
-                                    loadout_key: str = f"{inventoryType}_SLOT" #不是所有的配置键都符合道具类型后缀“_SLOT”的格式。比如表情（EMOTE）的配置键包括“EMOTE_WHEEL_PANEL”。但是这个格式适用于这里的四个道具类型（Not all loadout keys follows the pattern where an inventoryType is followed by "_SLOT". For example, the loadout key for EMOTE may be "EMOTE_WHEEL_PANEL". Nevertheless, this pattern applies to all of the four inventoryTypes here）
-                                    body: dict[str, Any] = {"id": loadoutId, "name": loadoutName, "loadout": {loadout_key: {"inventoryType": inventoryType, "contentId": contentId, "itemId": itemId}}}
-                                    response: Optional[dict[str, Any]] = await (await connection.request("PATCH", f"/lol-loadouts/v4/loadouts/{loadoutId}", data = body)).json()
-                                    logPrint(response)
-                                    if isinstance(response, dict) and "errorCode" in response:
-                                        if response["message"] == "UpdateLoadout Failed - Loadout does not exist in cache.":
-                                            logPrint("更新赛前配置失败。请检查代码为%s的赛前配置是否存在。如果不存在，请返回到选择赛前配置之前的步骤，再重试。\nLoadout update failed. Please check if the loadout of id %s still exists. If it doesn't exist, please return to the step before selecting to configure the TFT loadouts and then try again.")
-                                        else:
-                                            logPrint("未知错误！\nUnknown error!")
-                                    else:
-                                        time.sleep(GLOBAL_RESPONSE_LAG)
-                                        loadout = await (await connection.request("GET", f"/lol-loadouts/v4/loadouts/{loadoutId}")).json()
-                                        if loadout["loadout"][loadout_key] == body["loadout"][loadout_key]:
-                                            logPrint("更新赛前配置成功。客户端内显示可能有延迟，请尝试关闭相应窗口再打开，观察配置是否更新。进入游戏即可正常使用。\nLoadout update succeeded. The League Client may not display the change properly due to a lag. Please try closing the corresponding window and then open it again to see if loadout is updated. As you enter the game, you should be using the updated loadouts.")
-                                        else:
-                                            logPrint("更新赛前配置失败。\nLoadout update failed.")
-                else:
-                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                    continue
-                logPrint("请选择要修改的赛前配置：\nPlease select a loadout:\n1\t符文（Perks）\n2\t召唤师技能（Summoner spells）\n3\t皮肤（Skin）\n4\t守卫（眼）皮肤（Ward skin）\n5\t表情（Emotes）\n6\t召唤师图标（Summoner icon）\n7\t水晶枢纽终结特效（Nexus finisher）\n8\t旗帜（Banner）\n9\t徽章（Crest）\n10\t冠军杯赛奖杯（Tournament trophy）")
+            await prepare_champSelect_loadout(connection)
         elif option[0] == "4":
-            while True:
-                back: bool = False
-                muted_players: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champ-select/v1/muted-players")).json()
-                muted_player_puuids: list[str] = list(map(lambda x: x["puuid"], muted_players))
-                muted_player_obfuscatedPuuids: list[str] = list(map(lambda x: x["obfuscatedPuuid"], muted_players))
-                gameflow_phase: str = await get_gameflow_phase(connection)
-                if gameflow_phase == "ChampSelect":
-                    player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log)
-                    player_df["muted"] = ["已静音"] + (len(player_df) - 1) * [""]
-                    for i in range(1, len(player_df)):
-                        for muted_player in muted_players:
-                            if player_df["puuid"][i] == muted_player["puuid"] or player_df["obfuscatedPuuid"][i] == muted_player["obfuscatedPuuid"]:
-                                player_df["muted"][i] = "√"
-                    player_df_fields_to_print: list[str] = ["cellId", "gameName", "tagLine", "playerAlias", "muted", "assignedPosition", "champion name", "champion alias"]
-                    player_df_selected: pandas.DataFrame = pandas.concat([player_df.iloc[:1, :], player_df[(player_df["isHumanoid"] == "") & ~((player_df["gameName"] == "") & (player_df["tagLine"] == "") & (player_df["playerAlias"] == ""))]], ignore_index = True)
-                    if len(player_df_selected) > 1:
-                        logPrint("请选择一个要切换静音状态的玩家：\nPlease select a player to toggle mute/unmute status:")
-                        print(format_df(player_df_selected.loc[:, player_df_fields_to_print], print_index = True)[0])
-                        log.write(format_df(player_df_selected.loc[:, player_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                        while True:
-                            index_got: bool = False
-                            mute_index_str: str = logInput()
-                            if mute_index_str == "":
-                                continue
-                            elif mute_index_str[0] == "0":
-                                index_got = False
-                                back = True
-                                break
-                            elif mute_index_str in list(map(str, range(1, len(player_df_selected)))):
-                                mute_index: int = int(mute_index_str)
-                                index_got = True
-                                break
-                            else:
-                                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                        if index_got:
-                            selected_player_puuid: str = player_df_selected["puuid"][mute_index]
-                            selected_player_obfuscatedPuuid: str = player_df_selected["obfuscatedPuuid"][mute_index]
-                            selected_player_name: str = player_df_selected["playerAlias"][mute_index] if player_df_selected["gameName"][mute_index] == "" and player_df_selected["tagLine"][mute_index] == "" else player_df_selected["gameName"][mute_index] + "#" + player_df_selected["tagLine"][mute_index]
-                            muted: bool = player_df_selected["muted"][mute_index] == "√"
-                            if muted:
-                                logPrint("您选择解除静音以下玩家：\nYou selected the following player to unmute:")
-                            else:
-                                logPrint("您选择静音以下玩家：\nYou selected the following player to mute:")
-                            print(format_df(player_df_selected.loc[[mute_index], player_df_fields_to_print])[0])
-                            log.write(format_df(player_df_selected.loc[[mute_index], player_df_fields_to_print], width_exceed_ask = False, direct_print = False)[0])
-                            body: dict[str, str] = {"puuid": selected_player_puuid, "obfuscatedPuuid": selected_player_obfuscatedPuuid}
-                            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/toggle-player-muted", data = body)).json()
-                            logPrint(response)
-                            if isinstance(response, dict) and "errorCode" in response:
-                                if muted:
-                                    logPrint(f"解除静音{selected_player_name}失败。\nFailed to unmute {selected_player_name}.")
-                                else:
-                                    logPrint(f"静音{selected_player_name}失败。\nFailed to mute {selected_player_name}.")
-                            else:
-                                time.sleep(GLOBAL_RESPONSE_LAG)
-                                muted_players = await (await connection.request("GET", "/lol-champ-select/v1/muted-players")).json()
-                                muted_player_puuids = list(map(lambda x: x["puuid"], muted_players))
-                                muted_player_obfuscatedPuuids = list(map(lambda x: x["obfuscatedPuuid"], muted_players))
-                                if muted:
-                                    if selected_player_puuid in muted_player_puuids or selected_player_obfuscatedPuuid in muted_player_obfuscatedPuuids:
-                                        logPrint(f"解除静音{selected_player_name}失败。\nFailed to unmute {selected_player_name}.")
-                                    else:
-                                        logPrint(f"解除静音{selected_player_name}成功。\nSuccessfully unmuted {selected_player_name}.")
-                                else:
-                                    if selected_player_puuid in muted_player_puuids or selected_player_obfuscatedPuuid in muted_player_obfuscatedPuuids:
-                                        logPrint(f"静音{selected_player_name}成功。\nSuccessfully muted {selected_player_name}.")
-                                    else:
-                                        logPrint(f"静音{selected_player_name}失败。\nFailed to mute {selected_player_name}.")
-                    else:
-                        break
-                else:
-                    logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.\n请输入您想要切换静音状态的召唤师名。\nPlease enter the name of the summoner you want to toggle mute/unmute status.")
-                    while True:
-                        summonerName_to_mute: str = logInput()
-                        if summonerName_to_mute == "":
-                            continue
-                        elif summonerName_to_mute == "0":
-                            back = True
-                            break
-                        else:
-                            player_info: dict[str, Any] = await get_info(connection, summonerName_to_mute)
-                            if player_info["info_got"]:
-                                player_puuid: str = player_info["body"]["puuid"]
-                                player_name: str = get_info_name(player_info["body"])
-                                muted: bool = player_puuid in muted_player_puuids
-                                body: dict[str, str] = {"puuid": player_puuid}
-                                response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/toggle-player-muted", data = body)).json()
-                                logPrint(response)
-                                if isinstance(response, dict) and "errorCode" in response:
-                                    if muted:
-                                        logPrint(f"解除静音{player_name}失败。\nFailed to unmute {player_name}.")
-                                    else:
-                                        logPrint(f"静音{player_name}失败。\nFailed to mute {player_name}.")
-                                else:
-                                    time.sleep(GLOBAL_RESPONSE_LAG)
-                                    muted_players = await (await connection.request("GET", "/lol-champ-select/v1/muted-players")).json()
-                                    muted_player_puuids = list(map(lambda x: x["puuid"], muted_players))
-                                    muted_player_obfuscatedPuuids = list(map(lambda x: x["obfuscatedPuuid"], muted_players))
-                                    if muted:
-                                        if player_puuid in muted_player_puuids:
-                                            logPrint(f"解除静音{player_name}失败。\nFailed to unmute {player_name}.")
-                                        else:
-                                            logPrint(f"解除静音{player_name}成功。\nSuccessfully unmuted {player_name}.")
-                                    else:
-                                        if player_puuid in muted_player_puuids:
-                                            logPrint(f"静音{player_name}成功。\nSuccessfully muted {player_name}.")
-                                        else:
-                                            logPrint(f"静音{player_name}失败。\nFailed to mute {player_name}.")
-                            else:
-                                logPrint(player_info["message"])
-                        logPrint("请输入您想要切换静音状态的召唤师名。\nPlease enter the name of the summoner you want to toggle mute/unmute status.")
-                if back:
-                    break
+            await mute_champSelect_player(connection)
         elif option[0] == "5":
             await chat(connection)
         elif option[0] == "6":
@@ -6292,203 +6618,17 @@ async def champ_select_simulation(connection: Connection) -> str:
                     if gameflow_phase == "ChampSelect":
                         champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
                         if champ_select_session["allowBattleBoost"]:
-                            if champ_select_session["isLegacyChampSelect"]:
-                                response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/team-boost/purchase")).json()
-                            else:
-                                response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby-team-builder/champ-select/v1/team-boost/purchase")).json()
-                            logPrint(response)
-                            if isinstance(response, dict) and "errorCode" in response:
-                                if response["httpStatus"] == 400:
-                                    if response["message"] == "Error response for POST /lol-champ-select-legacy/v1/team-boost/purchase: Invalid function":
-                                        logPrint("自定义模式不支持全员战斗加成。\nBattle boost isn't supported in a custom game.")
-                                    else:
-                                        logPrint("全员战斗加成解锁失败。\nBattle boost unlock failed.")
-                                elif response["httpStatus"] == 500:
-                                    if response["message"] == "Unable to purchase team boost: Received status Error: BATTLE_BOOST_NOT_ENOUGH_RP instead of expected status of OK from request to teambuilder-draft:activateBattleBoostV1":
-                                        logPrint("你没有足够的点券来购买一次全员战斗加成。\nYou don't have enough RP to purchase a Battle Boost.")
-                                    elif response["message"] == "Unable to purchase team boost: Received status Error: BATTLE_BOOST_ALREADY_ACTIVATED instead of expected status of OK from request to teambuilder-draft:activateBattleBoostV1":
-                                        logPrint("您的队伍已经解锁了全员战斗加成。\nYour team has already unlocked the Battle Boost.")
-                                    elif response["message"] == "Unable to purchase team boost: Received status Error: INVALID_STATE instead of expected status of OK from request to teambuilder-draft:activateBattleBoostV1":
-                                        logPrint("在购买全员战斗加成时发生了一个错误。请检查您的英雄选择状态。\nThere was an error purchasing the Battle Boost. Please check your champion select status.")
-                                    else:
-                                        logPrint("全员战斗加成解锁失败。\nBattle boost unlock failed.")
-                                else:
-                                    logPrint("全员战斗加成解锁失败。\nBattle boost unlock failed.")
-                            else:
-                                logPrint("全员战斗加成已解锁！\nBattle boost unlocked!")
+                            await unlock_battle_boost(connection)
                         else:
                             logPrint("当前游戏模式不支持全员战斗加成。请切换游戏模式或大区后再试。\nBattle boost isn't supported in this game mode. Please switch to another game mode or server and try again.")
                     else:
                         logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
                 elif suboption[0] == "2":
-                    grid_champions: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champ-select/v1/all-grid-champions")).json() #该接口在自定义对局中不会及时更新，因此在使用该功能时不能完全依赖于程序提示，需要结合客户端来进行判断（The result from this endpoint doesn't update in time, so when using this function, users shouldn't completely rely on the program prompts. Instead, it's highly suggested to judge with the help of League Client）
-                    grid_champions: dict[int, dict[str, Any]] = {champion["id"]: champion for champion in grid_champions}
-                    candidatePositions: list[str] = ["top", "jungle", "middle", "bottom", "support"]
-                    positions_zh: list[str] = ["上路", "打野", "中路", "下路", "辅助"]
-                    favoriteChampions: dict[str, list[int]] = {"top": [], "jungle": [], "middle": [], "bottom": [], "support": []}
-                    for champion in grid_champions.values():
-                        for position in champion["positionsFavorited"]:
-                            favoriteChampions[position].append(champion["id"])
-                    logPrint("请选择一条分路：\nPlease choose a position:\n1\t上路（Top）\n2\t打野（Jungle）\n3\t中路（Middle）\n4\t下路（Bottom）\n5\t辅助（Support）")
-                    while True:
-                        position_index_str: str = logInput()
-                        if position_index_str == "":
-                            continue
-                        elif position_index_str[0] == "0":
-                            break
-                        elif position_index_str[0] in list(map(str, range(1, 6))):
-                            position_index: int = int(position_index_str[0])
-                            current_position: str = candidatePositions[position_index - 1]
-                            current_position_zh: str = positions_zh[position_index - 1]
-                            logPrint("全英雄选用偏好情况如下：\nChampion priority is as follows:")
-                            grid_champion_df: pandas.DataFrame = await sort_grid_champions(connection)
-                            grid_champion_df_fields_to_print: list[str] = ["id", "name", "favorite_top", "favorite_jungle", "favorite_middle", "favorite_bottom", "favorite_support"]
-                            print(format_df(grid_champion_df.loc[:, grid_champion_df_fields_to_print])[0])
-                            log.write(format_df(grid_champion_df.loc[:, grid_champion_df_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
-                            logPrint("请输入您想要设为最爱或取消设为最爱的英雄序号：\nPlease enter the ids of champions you want to favorite or unfavorite:")
-                            while True:
-                                index_got: bool = False
-                                champion_index_str: str = logInput()
-                                if champion_index_str == "":
-                                    continue
-                                elif champion_index_str == "0":
-                                    index_got = False
-                                    break
-                                elif champion_index_str == "all":
-                                    champion_indices: list[int] = list(grid_champion_df["id"][1:])
-                                    index_got = True
-                                    break
-                                else:
-                                    try:
-                                        tmp = eval(champion_index_str)
-                                    except:
-                                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                                    else:
-                                        if isinstance(tmp, int) and tmp in grid_champion_df["id"][1:]:
-                                            champion_indices = [tmp]
-                                            index_got = True
-                                            break
-                                        elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x in grid_champion_df["id"][1:], tmp)) and len(tmp) == len(set(tmp)):
-                                            champion_indices = tmp
-                                            index_got = True
-                                            break
-                                        else:
-                                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                            if index_got:
-                                logPrint("您选择了以下英雄：\nYou selected the following champions:")
-                                grid_champion_df_selected: pandas.DataFrame = pandas.concat([grid_champion_df.iloc[:1, :], grid_champion_df[grid_champion_df["id"].isin(champion_indices)]])
-                                print(format_df(grid_champion_df_selected.loc[:, grid_champion_df_fields_to_print])[0])
-                                log.write(format_df(grid_champion_df_selected.loc[:, grid_champion_df_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
-                                logPrint("是否确认将以上英雄设为或取消设为您最爱的%s英雄？（输入任意键以确认，否则取消。）\nDo you want to favorite or unfavorite the above champions as %s? (Submit any non-empty string to confirm, or null to cancel.)" %(current_position_zh, current_position))
-                                favor_confirm_str: str = logInput()
-                                favor_confirm: bool = bool(favor_confirm_str)
-                                if favor_confirm:
-                                    for championId in champion_indices:
-                                        current_championName: str = grid_champions[championId]["name"]
-                                        positionFavorited: bool = current_position in grid_champions[championId]["positionsFavorited"]
-                                        response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/toggle-favorite/%d/%s" %(championId, candidatePositions[position_index - 1]))).json()
-                                        logPrint(response)
-                                        if isinstance(response, dict) and "errorCode" in response:
-                                            if positionFavorited:
-                                                logPrint("将%s取消设为您最爱的%s英雄的过程出现了问题。\nAn error occurs when the program unfavorited %s as %s." %(current_championName, current_position_zh, current_championName, current_position))
-                                            else:
-                                                logPrint("将%s设为您最爱的%s英雄的过程出现了问题。\nAn error occurs when the program favorited %s as %s." %(current_championName, current_position_zh, current_championName, current_position))
-                                        else:
-                                            if positionFavorited:
-                                                logPrint("%s已取消设为您最爱的%s英雄。\n%s is unfavorited as %s." %(current_championName, current_position_zh, current_championName, current_position))
-                                            else:
-                                                logPrint("%s已设为您最爱的%s英雄。\n%s is favorited as %s." %(current_championName, current_position_zh, current_championName, current_position))
-                        else:
-                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                        grid_champions = await (await connection.request("GET", "/lol-champ-select/v1/all-grid-champions")).json()
-                        grid_champions = {champion["id"]: champion for champion in grid_champions}
-                        candidatePositions = ["top", "jungle", "middle", "bottom", "support"]
-                        positions_zh = ["上路", "打野", "中路", "下路", "辅助"]
-                        favoriteChampions = {"top": [], "jungle": [], "middle": [], "bottom": [], "support": []}
-                        for champion in grid_champions.values():
-                            for position in champion["positionsFavorited"]:
-                                favoriteChampions[position].append(champion["id"])
-                        logPrint("请选择一条分路：\nPlease choose a position:\n1\t上路（Top）\n2\t打野（Jungle）\n3\t中路（Middle）\n4\t下路（Bottom）\n5\t辅助（Support）")
+                    await set_favorite_champion(connection)
                 elif suboption[0] == "3":
-                    muted_players: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champ-select/v1/muted-players")).json()
-                    if len(muted_players) == 0:
-                        logPrint("当前无静音玩家。\nThere's not any muted player.")
-                    else:
-                        logPrint("静音玩家如下：\nMuted players:")
-                        muted_player_df: pandas.DataFrame = await sort_mutedPlayers_chat(connection)
-                        print(format_df(muted_player_df, print_index = True)[0])
-                        log.write(format_df(muted_player_df, width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                        for i in range(len(muted_players)):
-                            player: dict[str, Any] = muted_players[i]
-                            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/toggle-player-muted", data = player)).json()
-                            logPrint(response)
-                            if isinstance(response, dict) and "errorCode" in response:
-                                logPrint("解除玩家%d静音失败。\nFailed to unmute Player %d." %(i + 1, i + 1))
-                            else:
-                                time.sleep(GLOBAL_RESPONSE_LAG)
-                                muted_players_new: dict[str, Any] = await (await connection.request("GET", "/lol-champ-select/v1/muted-players")).json()
-                                if player in muted_players_new:
-                                    logPrint("解除玩家%d静音失败。\nFailed to unmute Player %d." %(i + 1, i + 1))
-                                else:
-                                    logPrint("解除玩家%d静音成功。\nSuccessfully unmuted Player %d." %(i + 1, i + 1))
+                    await clear_muted_players(connection)
                 elif suboption[0] == "4":
-                    gameflow_phase: str = await get_gameflow_phase(connection)
-                    if gameflow_phase == "ChampSelect":
-                        champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
-                        if champ_select_session["isCustomGame"]:
-                            if champ_select_session["isLegacyChampSelect"]:
-                                response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/cancel-champ-select")).json() #这个接口在任何情况下都返回None，并且用户会返回至主页大厅（This endpoint returns None in any case, and the user should return to the home hub after this request）
-                            else:
-                                response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby-team-builder/champ-select/v1/session/quit")).json()
-                            logPrint(response)
-                            if isinstance(response, dict) and "errorCode" in response:
-                                if response["httpStatus"] == 400 and response["message"] == "Current champ select does not allow quitting":
-                                    logPrint("当前英雄选择阶段不支持早退。\nCurrent champ select doesn't allow dodging.")
-                                elif response["httpStatus"] == 404 and response["message"] == "No champ select session in progress.":
-                                    logPrint("您不在英雄选择阶段，或者您正在进行传统的英雄选择。\nYou're not during the champ select stage, or you're in a legacy champ select.")
-                                else:
-                                    logPrint('退出英雄阶段的过程发生了异常。请尝试手动点击客户端右下角的“退出”按钮，或者重启客户端。\nAn error occurred when the program is trying to quit the champ select stage. Please try manually clicking the "Quit" button on the bottom-right corner of League Client, or restart the client.')
-                            else:
-                                time.sleep(GLOBAL_RESPONSE_LAG)
-                                gameflow_phase = await get_gameflow_phase(connection)
-                                if gameflow_phase == "None":
-                                    logPrint("您已退出英雄选择阶段。\nYou've quited the champ select stage.")
-                                    return ""
-                                else:
-                                    logPrint("退出失败。\nExit failed.")
-                        else:
-                            logPrint("当前游戏模式不支持早退。强行退出英雄选择阶段可能导致客户端界面异常，实际英雄选择阶段将继续进行且游戏将正常启动。您确定要继续吗？（输入任意非空字符串以继续退出英雄选择阶段，否则取消本次操作。）\nEarly exit isn't supported in this game mode. Force to cancel champ select may cause the client not to display correctly, whereas the champ select stage will be going on and the game will start as normal. Do you really want to continue? (Submit any non-empty string to continue to cancel champ select stage, or null to cancel this operation.)")
-                            cancel_str: str = logInput()
-                            cancel: bool = bool(cancel_str)
-                            if cancel:
-                                response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/cancel-champ-select")).json()
-                                logPrint(response)
-                                if isinstance(response, dict) and "errorCode" in response:
-                                    logPrint('退出英雄阶段的过程发生了异常。\nAn error occurred when the program is trying to quit the champ select stage.')
-                                else:
-                                    time.sleep(GLOBAL_RESPONSE_LAG)
-                                    gameflow_phase = await get_gameflow_phase(connection)
-                                    if gameflow_phase == "None":
-                                        logPrint("您已退出英雄选择阶段。\nYou've quited the champ select stage.")
-                                        return ""
-                                    else:
-                                        logPrint("退出失败。\nExit failed.")
-                    else:
-                        logPrint("您目前不在英雄选择阶段，但是您可以通过此方法来返回主页大厅。这可能会带来一些问题。是否继续？（输入任意非空字符串以继续退出英雄选择阶段，否则取消本次操作。）\nYou're not during a champ select stage, but doing this will lead to the home hub. This may lead to some potential problems. Do you want to continue? (Submit any non-empty string to continue to cancel champ select stage, or null to cancel this operation.)")
-                        cancel_str = logInput()
-                        cancel = bool(cancel_str)
-                        if cancel:
-                            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/cancel-champ-select")).json()
-                            logPrint(response)
-                            if isinstance(response, dict) and "errorCode" in response:
-                                logPrint('退出英雄阶段的过程发生了异常。\nAn error occurred when the program is trying to quit the champ select stage.')
-                            else:
-                                time.sleep(GLOBAL_RESPONSE_LAG)
-                                gameflow_phase = await get_gameflow_phase(connection)
-                                if gameflow_phase == "None":
-                                    logPrint("您已返回大厅。\nYou've returned to the home hub.")
-                                else:
-                                    logPrint("退出失败。\nExit failed.")
+                    await quit_champ_select(connection)
                 elif suboption[0] == "5":
                     await display_current_info(connection)
                 elif suboption[0] == "6":
@@ -6498,11 +6638,7 @@ async def champ_select_simulation(connection: Connection) -> str:
                     continue
                 logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t解锁全员战斗加成（Unlock battle boost）\n2\t设置最爱的分路英雄（Toggle favorite champions on different positions）\n3\t清空静音玩家（Clear muted players）\n4\t退出英雄选择阶段（Exit the champ select stage）\n5\t显示当前召唤师信息（Display current summoner's information）\n6\t调试游戏状态（Debug a gameflow phase）''')
         elif option[0] == "8":
-            champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
-            logPrint(champ_select_session)
-            with open("champ-select-session.json", "w", encoding = "utf-8") as fp:
-                json.dump(champ_select_session, fp, indent = 4, ensure_ascii = False)
-            logPrint('英雄选择会话已导出到同目录下的“champ-select-session.json”。\nChamp select session has been exported into "champ-select-session.json" under the same directory.')
+            await output_champSelect_session(connection)
         elif option[0] == "9":
             await manage_ux(connection)
     return ""
@@ -6631,6 +6767,139 @@ def sort_inGame_metadata(allgamedata: dict[str, Any]) -> pandas.DataFrame:
     inGame_metaDf = pandas.DataFrame(data = inGame_metadata).iloc[inGame_metadata_statistics_output_order, :].reset_index(drop = True)
     return inGame_metaDf
 
+async def export_inGame_champions(connection: Connection) -> None:
+    gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
+    gameData: dict[str, Any] = gameflow_session["gameData"]
+    gameModeName: str = gameflow_session["map"]["gameModeName"] + "(%d)" %(gameData["queue"]["id"]) if gameData["queue"]["name"] == "" else gameData["queue"]["name"]
+    excel_name: str = "Player Stats in Match %s-%s (%s).xlsx" %(platformId, gameData["gameId"], normalize_file_name(gameModeName))
+    players_metaDf: pandas.DataFrame = await sort_inGame_players(connection, LoLChampions, championSkins, summonerIcons, spells, log = log)
+    print(format_df(players_metaDf)[0])
+    try:
+        with (pandas.ExcelWriter(path = excel_name, engine = "openpyxl", mode = "a", if_sheet_exists = "replace") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name, engine = "openpyxl")) as writer:
+            addDefaultStyle(players_metaDf).to_excel(excel_writer = writer, sheet_name = "MemberComposition (InProgress)")
+    except PermissionError:
+        logPrint(f"无写入权限！请确保{excel_name}未被打开且非只读状态！\nPermission denied! Please ensure {excel_name} isn't opened right now or read-only!")
+    else:
+        logPrint(f'游戏内的成员构成已导出到同目录下的“{excel_name}”。\nMember composition in the game has been exported into {excel_name} under the same directory.')
+
+def access_game_client() -> None:
+    allgamedata_fetched: bool = False
+    if args.cert_path == "":
+        if not gameClientApi_cert_not_specified_warning_printed:
+            logPrint("您未指定游戏客户端接口访问证书路径。程序将忽略警告。如果想要下载证书，请访问以下链接。\nYou didn't specify the path of the root certificate for game client API access. Warnings will be disabled. To download the certificate, please visit the following linl.\nhttps://static.developer.riotgames.com/docs/lol/riotgames.pem")
+            gameClientApi_cert_not_specified_warning_printed = True
+    if args.cert_path != "":
+        if os.path.exists(args.cert_path):
+            try:
+                allgamedata: dict[str, Any] = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = args.cert_path).json()
+            except requests.exceptions.SSLError:
+                logPrint("游戏客户端接口访问证书不正确。程序将跳过认证，并忽略警告。\nInvalid root certificate for game client API access. The program will skip the certificate identification and neglect warnings.")
+                args.cert_path = ""
+                gameClientApi_cert_not_specified_warning_printed = True
+            except requests.exceptions.ConnectionError:
+                logPrint("连接失败。请确保您目前仍在游戏中。\nConnection ERROR! Please make sure you're still in the game.")
+            else:
+                if "errorCode" in allgamedata:
+                    logPrint(allgamedata)
+                    if allgamedata["httpStatus"] == 404 and allgamedata["message"] == "Invalid URI format":
+                        logPrint("资源尚未加载完成。请等待全员进入游戏后再试一次。\nResources not loaded completely. Please wait until all players enter the game and try again afterwards.")
+                else:
+                    allgamedata_fetched = True
+        else:
+            logPrint("游戏客户端接口访问证书路径不正确。程序将跳过认证，并忽略警告。\nInvalid path of the root certificate for game client API access. The program will skip the certificate identification and neglect warnings.")
+            args.cert_path = ""
+            gameClientApi_cert_not_specified_warning_printed = True
+    if args.cert_path == "": #在通过命令行参数指定游戏客户端接口访问证书的情况下，只有请求出现问题才会将该命令行参数置为空字符串。如果请求正常，则不会再执行这一步（If the root certificate for game client API access is specified via the command line argument, then only when an error occurs to this request will this argument be set as an empty string. Otherwise, this if-statement block won't executed）
+        try:
+            allgamedata = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = False).json()
+        except requests.exceptions.ConnectionError:
+            logPrint("连接失败。请确保您目前仍在游戏中。\nConnection ERROR! Please make sure you're still in the game.")
+        else:
+            if "errorCode" in allgamedata:
+                logPrint(allgamedata)
+                if allgamedata["httpStatus"] == 404 and allgamedata["message"] == "Invalid URI format":
+                    logPrint("资源尚未加载完成。请等待全员进入游戏后再试一次。\nResources not loaded completely. Please wait until all players enter the game and try again afterwards.")
+            else:
+                allgamedata_fetched = True
+    if allgamedata_fetched:
+        logPrint("请选择要查看的内容：\nPlease select the content to check:\n0\t返回上一层（Return to the last step）\n1\t当前玩家信息（Current player's information）\n2\t所有玩家信息（All players' information）\n3\t事件（Events）\n4\t游戏模式（Game mode）\n5\t导出所有游戏信息（Export all game data）")
+        while True:
+            suboption: str = logInput()
+            if suboption == "":
+                continue
+            elif suboption[0] == "0":
+                break
+            elif suboption[0] == "1":
+                activePlayer = allgamedata["activePlayer"]
+                if "error" in activePlayer and activePlayer["error"] == "Spectator mode doesn't currently support this feature":
+                    logPrint("您不在该对局内。\nYou're not in this match.")
+                else:
+                    logPrint("召唤师名（summonerName）：%s" %(activePlayer["summonerName"]))
+                    logPrint("英雄等级（Champion level）：%d" %(activePlayer["level"]))
+                    logPrint("英雄技能（Champion abilities）：")
+                    inGame_playerAbility_df: pandas.DataFrame = sort_player_abilities(allgamedata)
+                    print(format_df(inGame_playerAbility_df)[0])
+                    log.write(format_df(inGame_playerAbility_df)[0] + "\n")
+                    logPrint("基础属性（Basic stats）：")
+                    inGame_championStat_df: pandas.DataFrame = sort_inGame_championStats(allgamedata)
+                    print(format_df(inGame_championStat_df, align = "^^>")[0])
+                    log.write(format_df(inGame_championStat_df, align = "^^>")[0] + "\n")
+                    logPrint("按回车键以继续……\nPress Enter to continue ...")
+                    logInput()
+                    logPrint("当前金币（Current gold）：%f" %(activePlayer["currentGold"]))
+                    logPrint("符文配置（Perk configuration）：")
+                    fullRunes: dict[str, Any] = activePlayer["fullRunes"]
+                    logPrint("主系（Primary perkstyle）：%s（%d）" %(fullRunes["primaryRuneTree"]["displayName"], fullRunes["primaryRuneTree"]["id"]))
+                    logPrint("副系（Secondary perkstyle）：%s（%d）" %(fullRunes["secondaryRuneTree"]["displayName"], fullRunes["secondaryRuneTree"]["id"]))
+                    logPrint("基石符文（Keystone）：%s（%d）" %(fullRunes["keystone"]["displayName"], fullRunes["keystone"]["id"]))
+                    logPrint("符文（Perks）：%s" %("、".join(list(map(lambda x: "%s（%d）" %(x["displayName"], x["id"]), fullRunes["generalRunes"])))))
+                    logPrint("符文属性（Rune stats）：%s" %("、".join(list(map(lambda x: "%s（%d）" %(perks[x["id"]]["name"], x["id"]), fullRunes["statRunes"])))))
+                    logPrint("启用队伍相关联颜色（Team relative color enabled）：%s" %("√" if activePlayer["teamRelativeColors"] else "×"))
+            elif suboption[0] == "2":
+                inGame_allPlayer_df: pandas.DataFrame = sort_inGame_allplayers(allgamedata)
+                excel_name: str = "inGame_data.xlsx"
+                try:
+                    with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name)) as writer:
+                        addDefaultStyle(inGame_allPlayer_df).to_excel(excel_writer = writer, sheet_name = "AllPlayers")
+                        worksheet = writer.sheets["AllPlayers"]
+                        worksheet.conditional_formatting.rules = [] #读取时清空原规则（Clear original rules when reading）
+                        addFormat_inGame_allPlayer_wb(worksheet, inGame_allPlayer_df)
+                except PermissionError:
+                    logPrint(f"无写入权限！请确保{excel_name}未被打开且非只读状态！\nPermission denied! Please ensure {excel_name} isn't opened right now or read-only!")
+                else:
+                    logPrint(f'所有玩家信息已导出到同目录下的“{excel_name}”。\nAll player information has been exported into {excel_name} under the same directory.')
+            elif suboption[0] == "3":
+                inGame_event_df: pandas.DataFrame = sort_inGame_events(allgamedata)
+                excel_name: str = "inGame_data.xlsx"
+                try:
+                    with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name)) as writer:
+                        addDefaultStyle(inGame_event_df).to_excel(excel_writer = writer, sheet_name = "Events")
+                except PermissionError:
+                    logPrint(f"无写入权限！请确保{excel_name}未被打开且非只读状态！\nPermission denied! Please ensure {excel_name} isn't opened right now or read-only!")
+                else:
+                    logPrint(f'所有事件已导出到同目录下的“{excel_name}”。\nAll events have been exported into {excel_name} under the same directory.')
+            elif suboption[0] == "4":
+                inGame_metaDf: pandas.DataFrame = sort_inGame_metadata(allgamedata)
+                logPrint("游戏元数据如下：\nGame metadata is as follows:")
+                print(format_df(inGame_metaDf)[0])
+                log.write(format_df(inGame_metaDf)[0] + "\n")
+            elif suboption[0] == "5":
+                logPrint(allgamedata)
+                with open("allgamedata.json", "w", encoding = "utf-8") as fp:
+                    json.dump(allgamedata, fp, indent = 4, ensure_ascii = False)
+                logPrint('游戏内数据已导出到同目录下的“allgamedata.json”。\nGame data has been exported into "allgamedata.json" under the same directory.')
+            else:
+                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                continue
+            logPrint("请选择要查看的内容：\nPlease select the content to check:\n0\t返回上一层（Return to the last step）\n1\t当前玩家信息（Current player's information）\n2\t所有玩家信息（All players' information）\n3\t事件（Events）\n4\t游戏模式（Game mode）\n5\t导出所有游戏信息（Export all game data）")
+
+async def output_gameflow_session(connection: Connection) -> None:
+    gameflow_session: str = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
+    logPrint(gameflow_session)
+    with open("gameflow-session.json", "w", encoding = "utf-8") as fp:
+        json.dump(gameflow_session, fp, indent = 4, ensure_ascii = False)
+    logPrint('游戏会话已导出到同目录下的“gameflow-session.json”。\nGameflow session has been exported into "gameflow-session.json" under the same directory.')
+
 async def inGame_simulation(connection: Connection) -> str:
     global gameClientApi_port_warning_printed, gameClientApi_cert_not_specified_warning_printed
     while True:
@@ -6643,19 +6912,7 @@ async def inGame_simulation(connection: Connection) -> str:
         elif option[0] == "1":
             gameflow_phase: str = await get_gameflow_phase(connection)
             if gameflow_phase in {"InProgress", "Reconnect"}:
-                gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
-                gameData: dict[str, Any] = gameflow_session["gameData"]
-                gameModeName: str = gameflow_session["map"]["gameModeName"] + "(%d)" %(gameData["queue"]["id"]) if gameData["queue"]["name"] == "" else gameData["queue"]["name"]
-                excel_name: str = "Player Stats in Match %s-%s (%s).xlsx" %(platformId, gameData["gameId"], normalize_file_name(gameModeName))
-                players_metaDf: pandas.DataFrame = await sort_inGame_players(connection, LoLChampions, championSkins, summonerIcons, spells, log = log)
-                print(format_df(players_metaDf)[0])
-                try:
-                    with (pandas.ExcelWriter(path = excel_name, engine = "openpyxl", mode = "a", if_sheet_exists = "replace") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name, engine = "openpyxl")) as writer:
-                        addDefaultStyle(players_metaDf).to_excel(excel_writer = writer, sheet_name = "MemberComposition (InProgress)")
-                except PermissionError:
-                    logPrint(f"无写入权限！请确保{excel_name}未被打开且非只读状态！\nPermission denied! Please ensure {excel_name} isn't opened right now or read-only!")
-                else:
-                    logPrint(f'游戏内的成员构成已导出到同目录下的“{excel_name}”。\nMember composition in the game has been exported into {excel_name} under the same directory.')
+                await export_inGame_champions(connection)
             else:
                 logPrint("您目前不在游戏内。\nYou're currently not in a game.")
         elif option[0] == "2": #此部分可离线运行（This part can run in an offline environment）
@@ -6663,128 +6920,16 @@ async def inGame_simulation(connection: Connection) -> str:
                 logPrint("英雄联盟游戏客户端默认使用2999端口。请确保没有其它应用程序占用该端口。\nLeague of Legends game client API uses Port 2999. Please make sure it's not occupied by other programs.")
                 gameClientApi_port_warning_printed = True
             gameClientFound: bool = False
-            allgamedata_fetched: bool = False
             for process in psutil.process_iter():
                 if process.name() == "League of Legends.exe":
                     gameClientFound = True
                     break
             if gameClientFound:
-                if args.cert_path == "":
-                    if not gameClientApi_cert_not_specified_warning_printed:
-                        logPrint("您未指定游戏客户端接口访问证书路径。程序将忽略警告。如果想要下载证书，请访问https://static.developer.riotgames.com/docs/lol/riotgames.pem链接。\nYou didn't specify the path of the root certificate for game client API access. Warnings will be disabled. To download the certificate, please visit https://static.developer.riotgames.com/docs/lol/riotgames.pem.")
-                        gameClientApi_cert_not_specified_warning_printed = True
-                if args.cert_path != "":
-                    if os.path.exists(args.cert_path):
-                        try:
-                            allgamedata: dict[str, Any] = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = args.cert_path).json()
-                        except requests.exceptions.SSLError:
-                            logPrint("游戏客户端接口访问证书不正确。程序将跳过认证，并忽略警告。\nInvalid root certificate for game client API access. The program will skip the certificate identification and neglect warnings.")
-                            args.cert_path = ""
-                            gameClientApi_cert_not_specified_warning_printed = True
-                        except requests.exceptions.ConnectionError:
-                            logPrint("连接失败。请确保您目前仍在游戏中。\nConnection ERROR! Please make sure you're still in the game.")
-                        else:
-                            if "errorCode" in allgamedata:
-                                logPrint(allgamedata)
-                                if allgamedata["httpStatus"] == 404 and allgamedata["message"] == "Invalid URI format":
-                                    logPrint("资源尚未加载完成。请等待全员进入游戏后再试一次。\nResources not loaded completely. Please wait until all players enter the game and try again afterwards.")
-                            else:
-                                allgamedata_fetched = True
-                    else:
-                        logPrint("游戏客户端接口访问证书路径不正确。程序将跳过认证，并忽略警告。\nInvalid path of the root certificate for game client API access. The program will skip the certificate identification and neglect warnings.")
-                        args.cert_path = ""
-                        gameClientApi_cert_not_specified_warning_printed = True
-                if args.cert_path == "": #在通过命令行参数指定游戏客户端接口访问证书的情况下，只有请求出现问题才会将该命令行参数置为空字符串。如果请求正常，则不会再执行这一步（If the root certificate for game client API access is specified via the command line argument, then only when an error occurs to this request will this argument be set as an empty string. Otherwise, this if-statement block won't executed）
-                    try:
-                        allgamedata = requests.get("https://127.0.0.1:2999/liveclientdata/allgamedata", verify = False).json()
-                    except requests.exceptions.ConnectionError:
-                        logPrint("连接失败。请确保您目前仍在游戏中。\nConnection ERROR! Please make sure you're still in the game.")
-                    else:
-                        if "errorCode" in allgamedata:
-                            logPrint(allgamedata)
-                            if allgamedata["httpStatus"] == 404 and allgamedata["message"] == "Invalid URI format":
-                                logPrint("资源尚未加载完成。请等待全员进入游戏后再试一次。\nResources not loaded completely. Please wait until all players enter the game and try again afterwards.")
-                        else:
-                            allgamedata_fetched = True
-                if allgamedata_fetched:
-                    logPrint("请选择要查看的内容：\nPlease select the content to check:\n0\t返回上一层（Return to the last step）\n1\t当前玩家信息（Current player's information）\n2\t所有玩家信息（All players' information）\n3\t事件（Events）\n4\t游戏模式（Game mode）\n5\t导出所有游戏信息（Export all game data）")
-                    while True:
-                        suboption: str = logInput()
-                        if suboption == "":
-                            continue
-                        elif suboption[0] == "0":
-                            break
-                        elif suboption[0] == "1":
-                            activePlayer = allgamedata["activePlayer"]
-                            if "error" in activePlayer and activePlayer["error"] == "Spectator mode doesn't currently support this feature":
-                                logPrint("您不在该对局内。\nYou're not in this match.")
-                            else:
-                                logPrint("召唤师名（summonerName）：%s" %(activePlayer["summonerName"]))
-                                logPrint("英雄等级（Champion level）：%d" %(activePlayer["level"]))
-                                logPrint("英雄技能（Champion abilities）：")
-                                inGame_playerAbility_df: pandas.DataFrame = sort_player_abilities(allgamedata)
-                                print(format_df(inGame_playerAbility_df)[0])
-                                log.write(format_df(inGame_playerAbility_df)[0] + "\n")
-                                logPrint("基础属性（Basic stats）：")
-                                inGame_championStat_df: pandas.DataFrame = sort_inGame_championStats(allgamedata)
-                                print(format_df(inGame_championStat_df, align = "^^>")[0])
-                                log.write(format_df(inGame_championStat_df, align = "^^>")[0] + "\n")
-                                logPrint("按回车键以继续……\nPress Enter to continue ...")
-                                logInput()
-                                logPrint("当前金币（Current gold）：%f" %(activePlayer["currentGold"]))
-                                logPrint("符文配置（Perk configuration）：")
-                                fullRunes: dict[str, Any] = activePlayer["fullRunes"]
-                                logPrint("主系（Primary perkstyle）：%s（%d）" %(fullRunes["primaryRuneTree"]["displayName"], fullRunes["primaryRuneTree"]["id"]))
-                                logPrint("副系（Secondary perkstyle）：%s（%d）" %(fullRunes["secondaryRuneTree"]["displayName"], fullRunes["secondaryRuneTree"]["id"]))
-                                logPrint("基石符文（Keystone）：%s（%d）" %(fullRunes["keystone"]["displayName"], fullRunes["keystone"]["id"]))
-                                logPrint("符文（Perks）：%s" %("、".join(list(map(lambda x: "%s（%d）" %(x["displayName"], x["id"]), fullRunes["generalRunes"])))))
-                                logPrint("符文属性（Rune stats）：%s" %("、".join(list(map(lambda x: "%s（%d）" %(perks[x["id"]]["name"], x["id"]), fullRunes["statRunes"])))))
-                                logPrint("启用队伍相关联颜色（Team relative color enabled）：%s" %("√" if activePlayer["teamRelativeColors"] else "×"))
-                        elif suboption[0] == "2":
-                            inGame_allPlayer_df: pandas.DataFrame = sort_inGame_allplayers(allgamedata)
-                            excel_name: str = "inGame_data.xlsx"
-                            try:
-                                with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name)) as writer:
-                                    addDefaultStyle(inGame_allPlayer_df).to_excel(excel_writer = writer, sheet_name = "AllPlayers")
-                                    worksheet = writer.sheets["AllPlayers"]
-                                    worksheet.conditional_formatting.rules = [] #读取时清空原规则（Clear original rules when reading）
-                                    addFormat_inGame_allPlayer_wb(worksheet, inGame_allPlayer_df)
-                            except PermissionError:
-                                logPrint(f"无写入权限！请确保{excel_name}未被打开且非只读状态！\nPermission denied! Please ensure {excel_name} isn't opened right now or read-only!")
-                            else:
-                                logPrint(f'所有玩家信息已导出到同目录下的“{excel_name}”。\nAll player information has been exported into {excel_name} under the same directory.')
-                        elif suboption[0] == "3":
-                            inGame_event_df: pandas.DataFrame = sort_inGame_events(allgamedata)
-                            excel_name: str = "inGame_data.xlsx"
-                            try:
-                                with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name)) as writer:
-                                    addDefaultStyle(inGame_event_df).to_excel(excel_writer = writer, sheet_name = "Events")
-                            except PermissionError:
-                                logPrint(f"无写入权限！请确保{excel_name}未被打开且非只读状态！\nPermission denied! Please ensure {excel_name} isn't opened right now or read-only!")
-                            else:
-                                logPrint(f'所有事件已导出到同目录下的“{excel_name}”。\nAll events have been exported into {excel_name} under the same directory.')
-                        elif suboption[0] == "4":
-                            inGame_metaDf: pandas.DataFrame = sort_inGame_metadata(allgamedata)
-                            logPrint("游戏元数据如下：\nGame metadata is as follows:")
-                            print(format_df(inGame_metaDf)[0])
-                            log.write(format_df(inGame_metaDf)[0] + "\n")
-                        elif suboption[0] == "5":
-                            logPrint(allgamedata)
-                            with open("allgamedata.json", "w", encoding = "utf-8") as fp:
-                                json.dump(allgamedata, fp, indent = 4, ensure_ascii = False)
-                            logPrint('游戏内数据已导出到同目录下的“allgamedata.json”。\nGame data has been exported into "allgamedata.json" under the same directory.')
-                        else:
-                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                            continue
-                        logPrint("请选择要查看的内容：\nPlease select the content to check:\n0\t返回上一层（Return to the last step）\n1\t当前玩家信息（Current player's information）\n2\t所有玩家信息（All players' information）\n3\t事件（Events）\n4\t游戏模式（Game mode）\n5\t导出所有游戏信息（Export all game data）")
+                access_game_client()
             else:
                 logPrint("未检测到运行中的游戏。\nNo running game detected.")
         elif option[0] == "3":
-            gameflow_session: str = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
-            logPrint(gameflow_session)
-            with open("gameflow-session.json", "w", encoding = "utf-8") as fp:
-                json.dump(gameflow_session, fp, indent = 4, ensure_ascii = False)
-            logPrint('游戏会话已导出到同目录下的“gameflow-session.json”。\nGameflow session has been exported into "gameflow-session.json" under the same directory.')
+            await output_gameflow_session(connection)
         elif option[0] == "4":
             await chat(connection)
         elif option[0] == "5":
@@ -6851,6 +6996,111 @@ async def sort_ballot_players(connection: Connection) -> pandas.DataFrame:
     ballot_player_df = pandas.concat([pandas.DataFrame([ballot_player_header])[ballot_player_df.columns], ballot_player_df], ignore_index = True)
     return ballot_player_df
 
+async def honor_player(connection: Connection) -> None:
+    honor_ballot: dict[str, Any] = await (await connection.request("GET", "/lol-honor-v2/v1/ballot")).json()
+    if honor_ballot["votePool"]["votes"] == 0:
+        logPrint("您已经没有赞誉票了。\nYou've run out of votes.")
+    else:
+        ballot_player_df: pandas.DataFrame = await sort_ballot_players(connection)
+        ballot_player_df_fields_to_print: list[str] = ["gameName", "tagLine", "ally?", "championName", "role", "botPlayer"]
+        if len(ballot_player_df) == 1:
+            logPrint("目前没有可以赞誉的玩家。\nThere's not any player to honor for now.")
+        else:
+            logPrint("赞誉那些做出了正面影响、表现了惊人韧性，或相处起来非常有趣的玩家。\nHonor players who made a positive impact, displayed great resilience, or were just fun to play with.")
+            print(format_df(ballot_player_df.loc[:, ballot_player_df_fields_to_print], print_index = True)[0])
+            log.write(format_df(ballot_player_df.loc[:, ballot_player_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+            logPrint("请选择一名玩家：\nPlease select a player:")
+            while True:
+                index_got: bool = False
+                player_index_str: str = logInput()
+                if player_index_str == "":
+                    continue
+                elif player_index_str == "0":
+                    index_got = False
+                    break
+                elif player_index_str in list(map(str, range(1, len(ballot_player_df)))):
+                    player_index: int = int(player_index_str)
+                    index_got = True
+                    break
+                else:
+                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            if index_got:
+                player_summonerId: int = ballot_player_df["summonerId"][player_index]
+                player_puuid: str = ballot_player_df["puuid"][player_index]
+                honorType: str = "HEART" #取值（Available values）：COOL、SHOTCALLER、HEART
+                gameId: int = honor_ballot["gameId"]
+                body: dict[str, str | int] = {"summonerId": player_summonerId, "puuid": player_puuid, "honorType": honorType, "gameId": gameId}
+                logPrint(body)
+                response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-honor-v2/v1/honor-player", data = body)).json()
+                logPrint(response)
+                if isinstance(response, dict) and "errorCode" in response:
+                    logPrint("赞誉失败。\nHonor failed.")
+                elif response == "failed_to_contact_honor_server":
+                    logPrint("无法连接到赞誉服务器。请在客户端内手动点击一名玩家以赞誉之。\nFailed to contact honor server. Please manually click on a player to honor it.")
+                else:
+                    time.sleep(GLOBAL_RESPONSE_LAG)
+                    honor_ballot = await (await connection.request("GET", "/lol-honor-v2/v1/ballot")).json()
+                    if player_puuid in list(map(lambda x: x["recipientPuuid"], honor_ballot["honoredPlayers"])):
+                        logPrint("赞誉成功。\nHonor succeeded.")
+                    else:
+                        logPrint("赞誉失败。\nHonor failed.")
+
+def output_honor_votes(honor_ballot: dict[str, Any]) -> str:
+    s = "你每局获取1张荣誉投票，并且至多总共储存4张。未使用的投票可用在下一局比赛。\n\n"
+    votes_total: int = honor_ballot["votePool"]["votes"]
+    votes_fromGamePlayed: int = honor_ballot["votePool"]["fromGamePlayed"]
+    votes_fromHighHonor: int = honor_ballot["votePool"]["fromHighHonor"]
+    votes_fromRecentHonors: int = honor_ballot["votePool"]["fromRecentHonors"]
+    votes_fromRollover: int = honor_ballot["votePool"]["fromRollover"]
+    s += f"总票数（Total votes）：{votes_total}\n"
+    if votes_total > 0:
+        s += "获取额外投票，来自：\n"
+        if votes_fromGamePlayed > 0:
+            s += f"- +{votes_fromGamePlayed} 进行一场对局\n"
+        if votes_fromHighHonor > 0:
+            s += f"- +{votes_fromHighHonor} 达到5级荣誉\n"
+        if votes_fromRecentHonors > 0:
+            s += f"- +{votes_fromRecentHonors} 上一局被赞誉\n"
+        if votes_fromRollover > 0:
+            s += f"- +{votes_fromRollover} 未使用的投票\n"
+        s += "Earn additional votes from:\n"
+        if votes_fromGamePlayed > 0:
+            s += f"- +{votes_fromGamePlayed} Played a game\n"
+        if votes_fromHighHonor > 0:
+            s += f"- +{votes_fromHighHonor} Being Honor Level 5\n"
+        if votes_fromRecentHonors > 0:
+            s += f"- +{votes_fromRecentHonors} Being honored last game\n"
+        if votes_fromRollover > 0:
+            s += f"- +{votes_fromRollover} Unused votes"
+    return s
+
+async def skip_honor_vote(connection: Connection) -> None:
+    response: Optional[dict[str, Any]] = await (await connection.request("DELETE", "/lol-honor-v2/v1/ballot")).json()
+    logPrint(response)
+    if isinstance(response, dict) and "errorCode" in response:
+        logPrint("跳过赞誉阶段失败。\nSkipping honor phase failed.")
+    else:
+        time.sleep(GLOBAL_RESPONSE_LAG)
+        gameflow_phase = await get_gameflow_phase(connection)
+        if gameflow_phase == "EndOfGame":
+            logPrint("您已跳过赞誉阶段。\nYou skipped the honor phase.")
+        else:
+            logPrint("跳过赞誉阶段失败。\nSkipping honor phase failed.")
+
+async def output_honor_ballot(connection: Connection) -> None:
+    honor_ballot: dict[str, Any] = await (await connection.request("GET", "/lol-honor-v2/v1/ballot")).json()
+    logPrint(honor_ballot)
+    with open("honor-ballot.json", "w", encoding = "utf-8") as fp:
+        json.dump(honor_ballot, fp, indent = 4, ensure_ascii = False)
+    logPrint('荣誉投票信息已导出到同目录下的“honor-ballot.json”。\nHonor ballot information has been exported into "honor-ballot.json" under the same directory.')
+
+async def output_current_sequence_event(connection: Connection) -> None:
+    currentSequenceEvent: str = await (await connection.request("GET", "/lol-pre-end-of-game/v1/currentSequenceEvent")).json()
+    logPrint(currentSequenceEvent)
+    with open("currentSequenceEvent.json", "w", encoding = "utf-8") as fp:
+        json.dump(currentSequenceEvent, fp, indent = 4, ensure_ascii = False)
+    logPrint('当前序列事件信息已导出到同目录下的“currentSequenceEvent.json”。\nCurrent sequence event has been exported into "currentSequenceEvent.json" under the same directory.')
+
 async def preEndOfGame_simulation(connection: Connection) -> str:
     while True:
         logPrint("请选择一个操作：\nPlease select an operation:\n!1\t赞誉其他玩家（Honor players）\n2\t查看票数（Check the number of votes）\n3\t这次不行（Not this time）\n4\t输出荣誉投票信息（Print honor ballot information）\n5\t输出当前事件（Print current sequence event）\n6\t聊天（Chat）\n7\t举报一名玩家（Report a player）\n8\t其它（Others）\n9\t客户端任务管理（Manage the League Client task）")
@@ -6896,53 +7146,7 @@ async def preEndOfGame_simulation(connection: Connection) -> str:
                 ballot_endpoint_notavailable_hint_printed = True
             gameflow_phase: str = await get_gameflow_phase(connection)
             if gameflow_phase == "PreEndOfGame":
-                honor_ballot: dict[str, Any] = await (await connection.request("GET", "/lol-honor-v2/v1/ballot")).json()
-                if honor_ballot["votePool"]["votes"] == 0:
-                    logPrint("您已经没有赞誉票了。\nYou've run out of votes.")
-                else:
-                    ballot_player_df: pandas.DataFrame = await sort_ballot_players(connection)
-                    ballot_player_df_fields_to_print: list[str] = ["gameName", "tagLine", "ally?", "championName", "role", "botPlayer"]
-                    if len(ballot_player_df) == 1:
-                        logPrint("目前没有可以赞誉的玩家。\nThere's not any player to honor for now.")
-                    else:
-                        logPrint("赞誉那些做出了正面影响、表现了惊人韧性，或相处起来非常有趣的玩家。\nHonor players who made a positive impact, displayed great resilience, or were just fun to play with.")
-                        print(format_df(ballot_player_df.loc[:, ballot_player_df_fields_to_print], print_index = True)[0])
-                        log.write(format_df(ballot_player_df.loc[:, ballot_player_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                        logPrint("请选择一名玩家：\nPlease select a player:")
-                        while True:
-                            index_got: bool = False
-                            player_index_str: str = logInput()
-                            if player_index_str == "":
-                                continue
-                            elif player_index_str == "0":
-                                index_got = False
-                                break
-                            elif player_index_str in list(map(str, range(1, len(ballot_player_df)))):
-                                player_index: int = int(player_index_str)
-                                index_got = True
-                                break
-                            else:
-                                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                        if index_got:
-                            player_summonerId: int = ballot_player_df["summonerId"][player_index]
-                            player_puuid: str = ballot_player_df["puuid"][player_index]
-                            honorType: str = "HEART" #取值（Available values）：COOL、SHOTCALLER、HEART
-                            gameId: int = honor_ballot["gameId"]
-                            body: dict[str, str | int] = {"summonerId": player_summonerId, "puuid": player_puuid, "honorType": honorType, "gameId": gameId}
-                            logPrint(body)
-                            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-honor-v2/v1/honor-player", data = body)).json()
-                            logPrint(response)
-                            if isinstance(response, dict) and "errorCode" in response:
-                                logPrint("赞誉失败。\nHonor failed.")
-                            elif response == "failed_to_contact_honor_server":
-                                logPrint("无法连接到赞誉服务器。请在客户端内手动点击一名玩家以赞誉之。\nFailed to contact honor server. Please manually click on a player to honor it.")
-                            else:
-                                time.sleep(GLOBAL_RESPONSE_LAG)
-                                honor_ballot = await (await connection.request("GET", "/lol-honor-v2/v1/ballot")).json()
-                                if player_puuid in list(map(lambda x: x["recipientPuuid"], honor_ballot["honoredPlayers"])):
-                                    logPrint("赞誉成功。\nHonor succeeded.")
-                                else:
-                                    logPrint("赞誉失败。\nHonor failed.")
+                await honor_player(connection)
             else:
                 logPrint("赞誉阶段已过。\nThe honor phase has passed.")
         elif option[0] == "2":
@@ -6950,60 +7154,18 @@ async def preEndOfGame_simulation(connection: Connection) -> str:
             if isinstance(honor_ballot, dict) and "errorCode" in honor_ballot:
                 logPrint("赞誉投票信息获取异常。\nHonor ballot information capture failed.")
             else:
-                logPrint("你每局获取1张荣誉投票，并且至多总共储存4张。未使用的投票可用在下一局比赛。\n")
-                votes_total: int = honor_ballot["votePool"]["votes"]
-                votes_fromGamePlayed: int = honor_ballot["votePool"]["fromGamePlayed"]
-                votes_fromHighHonor: int = honor_ballot["votePool"]["fromHighHonor"]
-                votes_fromRecentHonors: int = honor_ballot["votePool"]["fromRecentHonors"]
-                votes_fromRollover: int = honor_ballot["votePool"]["fromRollover"]
-                logPrint(f"总票数（Total votes）：{votes_total}")
-                if votes_total > 0:
-                    logPrint("获取额外投票，来自：")
-                    if votes_fromGamePlayed > 0:
-                        logPrint(f"- +{votes_fromGamePlayed} 进行一场对局")
-                    if votes_fromHighHonor > 0:
-                        logPrint(f"- +{votes_fromHighHonor} 达到5级荣誉")
-                    if votes_fromRecentHonors > 0:
-                        logPrint(f"- +{votes_fromRecentHonors} 上一局被赞誉")
-                    if votes_fromRollover > 0:
-                        logPrint(f"- +{votes_fromRollover} 未使用的投票")
-                    logPrint("Earn additional votes from:")
-                    if votes_fromGamePlayed > 0:
-                        logPrint(f"- +{votes_fromGamePlayed} Played a game")
-                    if votes_fromHighHonor > 0:
-                        logPrint(f"- +{votes_fromHighHonor} Being Honor Level 5")
-                    if votes_fromRecentHonors > 0:
-                        logPrint(f"- +{votes_fromRecentHonors} Being honored last game")
-                    if votes_fromRollover > 0:
-                        logPrint(f"- +{votes_fromRollover} Unused votes")
+                vote_str: str = output_honor_votes(honor_ballot)
+                logPrint(vote_str)
         elif option[0] == "3":
             gameflow_phase: str = await get_gameflow_phase(connection)
             if gameflow_phase == "PreEndOfGame":
-                response: Optional[dict[str, Any]] = await (await connection.request("DELETE", "/lol-honor-v2/v1/ballot")).json()
-                logPrint(response)
-                if isinstance(response, dict) and "errorCode" in response:
-                    logPrint("跳过赞誉阶段失败。\nSkipping honor phase failed.")
-                else:
-                    time.sleep(GLOBAL_RESPONSE_LAG)
-                    gameflow_phase = await get_gameflow_phase(connection)
-                    if gameflow_phase == "EndOfGame":
-                        logPrint("您已跳过赞誉阶段。\nYou skipped the honor phase.")
-                    else:
-                        logPrint("跳过赞誉阶段失败。\nSkipping honor phase failed.")
+                await skip_honor_vote(connection)
             else:
                 logPrint("赞誉阶段已过。\nThe honor phase has passed.")
         elif option[0] == "4":
-            honor_ballot: dict[str, Any] = await (await connection.request("GET", "/lol-honor-v2/v1/ballot")).json()
-            logPrint(honor_ballot)
-            with open("honor-ballot.json", "w", encoding = "utf-8") as fp:
-                json.dump(honor_ballot, fp, indent = 4, ensure_ascii = False)
-            logPrint('荣誉投票信息已导出到同目录下的“honor-ballot.json”。\nHonor ballot information has been exported into "honor-ballot.json" under the same directory.')
+            await output_honor_ballot(connection)
         elif option[0] == "5":
-            currentSequenceEvent: str = await (await connection.request("GET", "/lol-pre-end-of-game/v1/currentSequenceEvent")).json()
-            logPrint(currentSequenceEvent)
-            with open("currentSequenceEvent.json", "w", encoding = "utf-8") as fp:
-                json.dump(currentSequenceEvent, fp, indent = 4, ensure_ascii = False)
-            logPrint('当前序列事件信息已导出到同目录下的“currentSequenceEvent.json”。\nCurrent sequence event has been exported into "currentSequenceEvent.json" under the same directory.')
+            await output_current_sequence_event(connection)
         elif option[0] == "6":
             await report_player_endOfGame(connection)
         elif option[0] == "7":
@@ -7183,6 +7345,133 @@ async def sort_eog_stat_tft_metadata(connection: Connection) -> pandas.DataFrame
     eog_stat_metaDf_tft = pandas.DataFrame(data = eog_stat_metadata_tft_organized)
     return eog_stat_metaDf_tft
 
+async def check_stats_block(connection: Connection) -> None:
+    gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
+    if gameflow_session["map"]["mapStringId"] == "TFT":
+        tft_eog_stats: dict[str, Any] = await (await connection.request("GET", "/lol-end-of-game/v1/tft-eog-stats")).json()
+        if isinstance(tft_eog_stats, dict) and "errorCode" in tft_eog_stats:
+            logPrint(tft_eog_stats)
+            if tft_eog_stats["httpStatus"] == 404 and tft_eog_stats["message"] == "Game Client stats not found":
+                logPrint("当前游戏模式无法查看云顶之弈对局数据。\nThe current game mode doesn't provide TFT game stats.")
+            else:
+                logPrint("未知错误。\nUnknown error.")
+        else:
+            gameId: int = tft_eog_stats["gameId"]
+            eog_stat_metaDf_tft: panads.DataFrame = await sort_eog_stat_tft_metadata(connection)
+            eog_stat_df_tft: pandas.DataFrame = await sort_eog_stat_tft_data(connection, summonerIcons)
+            eog_stat_df_tft_fields_to_export: list[str] = ["isLocalPlayer", "summonerName", "riotIdGameName", "riotIdTagLine", "summonerId", "puuid", "icon title", "setCoreName", "isInteractable", "partnerGroupId", "companion speciesName", "companion colorName", "health", "rank", "playbook name", "customAugmentContainer description", "customAugmentContainer displayName", "augment1 name", "augment2 name", "augment3 name", "unit0 name", "unit0 price", "unit0 level", "unit0 traits", "unit0 item0 name", "unit0 item1 name", "unit0 item2 name", "unit1 name", "unit1 price", "unit1 level", "unit1 traits", "unit1 item0 name", "unit1 item1 name", "unit1 item2 name", "unit2 name", "unit2 price", "unit2 level", "unit2 traits", "unit2 item0 name", "unit2 item1 name", "unit2 item2 name", "unit3 name", "unit3 price", "unit3 level", "unit3 traits", "unit3 item0 name", "unit3 item1 name", "unit3 item2 name", "unit4 name", "unit4 price", "unit4 level", "unit4 traits", "unit4 item0 name", "unit4 item1 name", "unit4 item2 name", "unit5 name", "unit5 price", "unit5 level", "unit5 traits", "unit5 item0 name", "unit5 item1 name", "unit5 item2 name", "unit6 name", "unit6 price", "unit6 level", "unit6 traits", "unit6 item0 name", "unit6 item1 name", "unit6 item2 name", "unit7 name", "unit7 price", "unit7 level", "unit7 traits", "unit7 item0 name", "unit7 item1 name", "unit7 item2 name", "unit8 name", "unit8 price", "unit8 level", "unit8 traits", "unit8 item0 name", "unit8 item1 name", "unit8 item2 name", "unit9 name", "unit9 price", "unit9 level", "unit9 traits", "unit9 item0 name", "unit9 item1 name", "unit9 item2 name", "unit10 name", "unit10 price", "unit10 level", "unit10 traits", "unit10 item0 name", "unit10 item1 name", "unit10 item2 name"]
+            eog_stat_df_tft_export: pandas.DataFrame = eog_stat_df_tft.loc[:, eog_stat_df_tft_fields_to_export].transpose()
+            excel_name: str = "EndOfGame Stats of %s-%d.xlsx" %(platformId, gameId)
+            while True:
+                try:
+                    with pandas.ExcelWriter(path = excel_name) as writer:
+                        addDefaultStyle(eog_stat_metaDf_tft).to_excel(excel_writer = writer, sheet_name = "Metadata")
+                        addDefaultStyle(eog_stat_df_tft_export).to_excel(excel_writer = writer, sheet_name = "Player Stats")
+                except PermissionError:
+                    logPrint("无写入权限！请确保文件未被打开且非只读状态！按回车键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press Enter to try again.")
+                    logInput()
+                else:
+                    break
+            logPrint(f'本场对局结算数据已导出到同目录下的“{excel_name}”中。\nEnd-of-game stats of this match have been exported into {excel_name} under the same folder.')
+    else:
+        eog_stats_block: dict[str, Any] = await (await connection.request("GET", "/lol-end-of-game/v1/eog-stats-block")).json()
+        if isinstance(eog_stats_block, dict) and "errorCode" in eog_stats_block:
+            logPrint(eog_stats_block)
+            if eog_stats_block["httpStatus"] == 404 and eog_stats_block["message"] == "No end of game stats available.":
+                logPrint("当前游戏模式无法查看英雄联盟对局数据。\nThe current game mode doesn't provide LoL game stats.")
+            else:
+                logPrint("未知错误。\nUnknown error.")
+        else:
+            gameId: int = eog_stats_block["gameId"]
+            eog_stat_metaDf_lol: pandas.DataFrame = await sort_eog_stat_lol_metadata(connection)
+            eog_teamstat_df_lol: pandas.DataFrame = (await sort_eog_teamstat_lol_data(connection)).transpose()
+            eog_playerstat_df_lol: pandas.DataFrame = await sort_eog_playerstat_lol_data(connection, summonerIcons, spells, perks, perkstyles, CherryAugments)
+            eog_playerstat_df_lol_fields_to_export: list[str] = ["teamId", "team_color", "stats PLAYER_SUBTEAM", "stats playerSubteamColor", "isLocalPlayer", "summonerName", "riotIdGameName", "riotIdTagLine", "summonerId", "puuid", "profileIcon_title", "level", "botPlayer", "leaver", "leaves", "wins", "losses", "championName", "selectedPosition", "detectedTeamPosition", "stats LEVEL", "spell1_name", "spell2_name", "item0_name", "item1_name", "item2_name", "item3_name", "item4_name", "item5_name", "item6_name", "stats role_bound_item name", "stats KDA", "stats PLAYER_AUGMENT_1 nameTRA", "stats PLAYER_AUGMENT_1 rarity", "stats PLAYER_AUGMENT_2 nameTRA", "stats PLAYER_AUGMENT_2 rarity", "stats PLAYER_AUGMENT_3 nameTRA", "stats PLAYER_AUGMENT_3 rarity", "stats PLAYER_AUGMENT_4 nameTRA", "stats PLAYER_AUGMENT_4 rarity", "stats PLAYER_AUGMENT_5 nameTRA", "stats PLAYER_AUGMENT_5 rarity", "stats PLAYER_AUGMENT_6 nameTRA", "stats PLAYER_AUGMENT_6 rarity", "stats CHAMPIONS_KILLED", "stats NUM_DEATHS", "stats ASSISTS", "stats LARGEST_KILLING_SPREE", "stats LARGEST_MULTI_KILL", "stats TOTAL_TIME_CROWD_CONTROL_DEALT", "stats TIME_CCING_OTHERS", "stats TOTAL_DAMAGE_DEALT_TO_CHAMPIONS", "stats PHYSICAL_DAMAGE_DEALT_TO_CHAMPIONS", "stats MAGIC_DAMAGE_DEALT_TO_CHAMPIONS", "stats TRUE_DAMAGE_DEALT_TO_CHAMPIONS", "stats TOTAL_DAMAGE_DEALT", "stats PHYSICAL_DAMAGE_DEALT_PLAYER", "stats MAGIC_DAMAGE_DEALT_PLAYER", "stats TRUE_DAMAGE_DEALT_PLAYER", "stats LARGEST_CRITICAL_STRIKE", "stats TOTAL_DAMAGE_DEALT_TO_BUILDINGS", "stats TOTAL_DAMAGE_DEALT_TO_OBJECTIVES", "stats TOTAL_DAMAGE_DEALT_TO_TURRETS", "stats TOTAL_HEAL", "stats TOTAL_HEAL_ON_TEAMMATES", "stats TOTAL_DAMAGE_SHIELDED_ON_TEAMMATES", "stats TOTAL_DAMAGE_TAKEN", "stats PHYSICAL_DAMAGE_TAKEN", "stats MAGIC_DAMAGE_TAKEN", "stats TRUE_DAMAGE_TAKEN", "stats TOTAL_DAMAGE_SELF_MITIGATED", "stats VISION_SCORE", "stats WARD_PLACED", "stats WARD_KILLED", "stats SIGHT_WARDS_BOUGHT_IN_GAME", "stats VISION_WARDS_BOUGHT_IN_GAME", "stats GOLD_EARNED", "stats MINIONS_KILLED", "stats NEUTRAL_MINIONS_KILLED", "stats NEUTRAL_MINIONS_KILLED_YOUR_JUNGLE", "stats NEUTRAL_MINIONS_KILLED_ENEMY_JUNGLE", "stats TURRETS_KILLED", "stats BARRACKS_KILLED", "stats TEAM_OBJECTIVE", "stats NODE_CAPTURE", "stats NODE_CAPTURE_ASSIST", "stats NODE_NEUTRALIZE", "stats NODE_NEUTRALIZE_ASSIST", "stats TOTAL_TIME_SPENT_DEAD", "stats PERK_PRIMARY_STYLE name", "stats PERK_SUB_STYLE name", "stats PERK0 name", "stats PERK0 EndOfGameStatDescs", "stats PERK1 name", "stats PERK1 EndOfGameStatDescs", "stats PERK2 name", "stats PERK2 EndOfGameStatDescs", "stats PERK3 name", "stats PERK3 EndOfGameStatDescs", "stats PERK4 name", "stats PERK4 EndOfGameStatDescs", "stats PERK5 name", "stats PERK5 EndOfGameStatDescs", "stats SPELL1_CAST", "stats SPELL2_CAST", "stats WAS_AFK", "stats TEAM_EARLY_SURRENDERED", "stats GAME_ENDED_IN_EARLY_SURRENDER", "stats GAME_ENDED_IN_SURRENDER", "stats WIN", "stats LOSE", "stats PLAYER_SUBTEAM_PLACEMENT", "stats VICTORY_POINT_TOTAL"]
+            eog_playerstat_df_lol_export: pandas.DataFrame = eog_playerstat_df_lol.loc[:, eog_playerstat_df_lol_fields_to_export].transpose()
+            excel_name: str = "EndOfGame Stats of %s-%d.xlsx" %(platformId, gameId)
+            while True:
+                try:
+                    with pandas.ExcelWriter(path = excel_name) as writer:
+                        addDefaultStyle(eog_stat_metaDf_lol).to_excel(excel_writer = writer, sheet_name = "Metadata")
+                        addDefaultStyle(eog_teamstat_df_lol).to_excel(excel_writer = writer, sheet_name = "Team Stats")
+                        addDefaultStyle(eog_playerstat_df_lol_export).to_excel(excel_writer = writer, sheet_name = "Player Stats")
+                except PermissionError:
+                    logPrint("无写入权限！请确保文件未被打开且非只读状态！按回车键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press Enter to try again.")
+                    logInput()
+                else:
+                    break
+            logPrint(f'本场对局结算数据已导出到同目录下的“{excel_name}”中。\nEnd-of-game stats of this match have been exported into {excel_name} under the same folder.')
+
+async def play_again(connection: Connection) -> bool:
+    return_home: bool = False
+    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/play-again")).json()
+    logPrint(response)
+    if isinstance(response, dict) and "errorCode" in response:
+        if response["httpStatus"] == 400 and "Unable to create lobby: couldn't find controller for queue type" in response["message"]:
+            logPrint("当前模式不支持该选项。请切换游戏模式，并确保不是在观战。\nThe current game mode doesn't support this option. Please change another game mode and make sure you're not spectating.")
+        elif response["httpStatus"] == 400 and "Play-again is currently unavailable.":
+            logPrint("再来一局目前不可用。\nPlay-again is currently unavailable.")
+        else:
+            logPrint("未知错误。\nUnknown error.")
+    else:
+        time.sleep(GLOBAL_RESPONSE_LAG)
+        gameflow_phase = await get_gameflow_phase(connection)
+        if gameflow_phase in ["None", "Lobby"]:
+            logPrint("已成功发送请求。\nRequest success.")
+            return_home = True
+        else:
+            logPrint("服务器接收到了再来一局的请求，但您的状态似乎发生了异常。\nThe server received your play-again request, but it seems that an error has occurred to your gameflow phase.")
+    return return_home
+
+async def dismiss_endOfGame(connection: Connection) -> bool:
+    return_home: bool = False
+    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-end-of-game/v1/state/dismiss-stats")).json() #这个接口比下面注释起来的接口更有效一些（This endpoint is more effective than the following commented one）
+    # response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/play-again-decline")).json()
+    logPrint(response)
+    if isinstance(response, dict) and "errorCode" in response:
+        # if response["httpStatus"] == 400 and "Play-again is currently unavailable.":
+        #     logPrint("返回大厅目前不可用。\nPlay-again-decline is currently unavailable.")
+        logPrint("未知错误。\nUnknown error.")
+    else:
+        time.sleep(GLOBAL_RESPONSE_LAG)
+        gameflow_phase = await get_gameflow_phase(connection)
+        if gameflow_phase == "None":
+            logPrint("已成功发送请求。\nRequest success.")
+            return_home = True
+        else:
+            logPrint("服务器接收到了返回大厅的请求，但您的状态似乎发生了异常。\nThe server received your dismiss-stats request, but it seems that an error has occurred to your gameflow phase.")
+    return return_home
+
+async def recall_honor_vote(connection: Connection) -> None:
+    honor_ballot: dict[str, Any] = await (await connection.request("GET", "/lol-honor-v2/v1/ballot")).json()
+    if isinstance(honor_ballot, dict) and "errorCode" in honor_ballot:
+        logPrint(honor_ballot)
+        logPrint("荣誉投票信息获取异常。\nAn error occurred when getting the honor ballot information.")
+    else:
+        eligiblePlayers: list[dict[str, Any]] = honor_ballot["eligibleAllies"] + honor_ballot["eligibleOpponents"]
+        if len(eligiblePlayers) == 0:
+            logPrint("目前没有玩家可以赞誉，因此您无法唤起荣誉投票阶段。\nThere's not any player eligible to honor, so you can't recall the honor ballot vote phase.")
+        else:
+            player_summonerId: int = eligiblePlayers[0]["summonerId"]
+            player_puuid: str = eligiblePlayers[0]["puuid"]
+            honorType: str = "HEART" #取值（Available values）：COOL、SHOTCALLER、HEART
+            gameId: int = honor_ballot["gameId"]
+            body: dict[str, Any] = {"summonerId": player_summonerId, "puuid": player_puuid, "honorType": honorType, "gameId": gameId}
+            logPrint(body)
+            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-honor-v2/v1/honor-player", data = body)).json()
+            logPrint(response)
+            if isinstance(response, dict) and "errorCode" in response:
+                logPrint("赞誉失败。\nHonor failed.")
+            elif response == "failed_to_contact_honor_server":
+                logPrint("无法连接到赞誉服务器。请在客户端内手动点击一名玩家以赞誉之。\nFailed to contact honor server. Please manually click on a player to honor it.")
+            else:
+                time.sleep(GLOBAL_RESPONSE_LAG)
+                honor_ballot = await (await connection.request("GET", "/lol-honor-v2/v1/ballot")).json()
+                if player_puuid in list(map(lambda x: x["recipientPuuid"], honor_ballot["honoredPlayers"])):
+                    logPrint("赞誉成功。\nHonor succeeded.")
+                else:
+                    logPrint("赞誉失败。\nHonor failed.")
+
 async def endOfGame_simulation(connection: Connection) -> str:
     while True:
         logPrint("请选择一个操作：\nPlease select an operation:\n1\t查看英雄成就点数更新情况（Check champion mastery updates）\n2\t查看计分板数据（Check stats block）\n3\t聊天（Chat）\n4\t举报一名玩家（Report a player）\n5\t再来一局（Play again）\n6\t离开（Dismiss）\n!7\t唤起赞誉投票界面（Recall honor vote phase）\n8\t其它（Others）\n9\t客户端任务管理（Manage the League Client task）")
@@ -7246,61 +7535,7 @@ async def endOfGame_simulation(connection: Connection) -> str:
         elif option[0] == "2":
             gameflow_phase = await get_gameflow_phase(connection)
             if gameflow_phase in {"PreEndOfGame", "EndOfGame"}:
-                gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
-                if gameflow_session["map"]["mapStringId"] == "TFT":
-                    tft_eog_stats: dict[str, Any] = await (await connection.request("GET", "/lol-end-of-game/v1/tft-eog-stats")).json()
-                    if isinstance(tft_eog_stats, dict) and "errorCode" in tft_eog_stats:
-                        logPrint(tft_eog_stats)
-                        if tft_eog_stats["httpStatus"] == 404 and tft_eog_stats["message"] == "Game Client stats not found":
-                            logPrint("当前游戏模式无法查看云顶之弈对局数据。\nThe current game mode doesn't provide TFT game stats.")
-                        else:
-                            logPrint("未知错误。\nUnknown error.")
-                    else:
-                        gameId: int = tft_eog_stats["gameId"]
-                        eog_stat_metaDf_tft: panads.DataFrame = await sort_eog_stat_tft_metadata(connection)
-                        eog_stat_df_tft: pandas.DataFrame = await sort_eog_stat_tft_data(connection, summonerIcons)
-                        eog_stat_df_tft_fields_to_export: list[str] = ["isLocalPlayer", "summonerName", "riotIdGameName", "riotIdTagLine", "summonerId", "puuid", "icon title", "setCoreName", "isInteractable", "partnerGroupId", "companion speciesName", "companion colorName", "health", "rank", "playbook name", "customAugmentContainer description", "customAugmentContainer displayName", "augment1 name", "augment2 name", "augment3 name", "unit0 name", "unit0 price", "unit0 level", "unit0 traits", "unit0 item0 name", "unit0 item1 name", "unit0 item2 name", "unit1 name", "unit1 price", "unit1 level", "unit1 traits", "unit1 item0 name", "unit1 item1 name", "unit1 item2 name", "unit2 name", "unit2 price", "unit2 level", "unit2 traits", "unit2 item0 name", "unit2 item1 name", "unit2 item2 name", "unit3 name", "unit3 price", "unit3 level", "unit3 traits", "unit3 item0 name", "unit3 item1 name", "unit3 item2 name", "unit4 name", "unit4 price", "unit4 level", "unit4 traits", "unit4 item0 name", "unit4 item1 name", "unit4 item2 name", "unit5 name", "unit5 price", "unit5 level", "unit5 traits", "unit5 item0 name", "unit5 item1 name", "unit5 item2 name", "unit6 name", "unit6 price", "unit6 level", "unit6 traits", "unit6 item0 name", "unit6 item1 name", "unit6 item2 name", "unit7 name", "unit7 price", "unit7 level", "unit7 traits", "unit7 item0 name", "unit7 item1 name", "unit7 item2 name", "unit8 name", "unit8 price", "unit8 level", "unit8 traits", "unit8 item0 name", "unit8 item1 name", "unit8 item2 name", "unit9 name", "unit9 price", "unit9 level", "unit9 traits", "unit9 item0 name", "unit9 item1 name", "unit9 item2 name", "unit10 name", "unit10 price", "unit10 level", "unit10 traits", "unit10 item0 name", "unit10 item1 name", "unit10 item2 name"]
-                        eog_stat_df_tft_export: pandas.DataFrame = eog_stat_df_tft.loc[:, eog_stat_df_tft_fields_to_export].transpose()
-                        excel_name: str = "EndOfGame Stats of %s-%d.xlsx" %(platformId, gameId)
-                        while True:
-                            try:
-                                with pandas.ExcelWriter(path = excel_name) as writer:
-                                    addDefaultStyle(eog_stat_metaDf_tft).to_excel(excel_writer = writer, sheet_name = "Metadata")
-                                    addDefaultStyle(eog_stat_df_tft_export).to_excel(excel_writer = writer, sheet_name = "Player Stats")
-                            except PermissionError:
-                                logPrint("无写入权限！请确保文件未被打开且非只读状态！按回车键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press Enter to try again.")
-                                logInput()
-                            else:
-                                break
-                        logPrint(f'本场对局结算数据已导出到同目录下的“{excel_name}”中。\nEnd-of-game stats of this match have been exported into {excel_name} under the same folder.')
-                else:
-                    eog_stats_block: dict[str, Any] = await (await connection.request("GET", "/lol-end-of-game/v1/eog-stats-block")).json()
-                    if isinstance(eog_stats_block, dict) and "errorCode" in eog_stats_block:
-                        logPrint(eog_stats_block)
-                        if eog_stats_block["httpStatus"] == 404 and eog_stats_block["message"] == "No end of game stats available.":
-                            logPrint("当前游戏模式无法查看英雄联盟对局数据。\nThe current game mode doesn't provide LoL game stats.")
-                        else:
-                            logPrint("未知错误。\nUnknown error.")
-                    else:
-                        gameId: int = eog_stats_block["gameId"]
-                        eog_stat_metaDf_lol: pandas.DataFrame = await sort_eog_stat_lol_metadata(connection)
-                        eog_teamstat_df_lol: pandas.DataFrame = (await sort_eog_teamstat_lol_data(connection)).transpose()
-                        eog_playerstat_df_lol: pandas.DataFrame = await sort_eog_playerstat_lol_data(connection, summonerIcons, spells, perks, perkstyles, CherryAugments)
-                        eog_playerstat_df_lol_fields_to_export: list[str] = ["teamId", "team_color", "stats PLAYER_SUBTEAM", "stats playerSubteamColor", "isLocalPlayer", "summonerName", "riotIdGameName", "riotIdTagLine", "summonerId", "puuid", "profileIcon_title", "level", "botPlayer", "leaver", "leaves", "wins", "losses", "championName", "selectedPosition", "detectedTeamPosition", "stats LEVEL", "spell1_name", "spell2_name", "item0_name", "item1_name", "item2_name", "item3_name", "item4_name", "item5_name", "item6_name", "stats role_bound_item name", "stats KDA", "stats PLAYER_AUGMENT_1 nameTRA", "stats PLAYER_AUGMENT_1 rarity", "stats PLAYER_AUGMENT_2 nameTRA", "stats PLAYER_AUGMENT_2 rarity", "stats PLAYER_AUGMENT_3 nameTRA", "stats PLAYER_AUGMENT_3 rarity", "stats PLAYER_AUGMENT_4 nameTRA", "stats PLAYER_AUGMENT_4 rarity", "stats PLAYER_AUGMENT_5 nameTRA", "stats PLAYER_AUGMENT_5 rarity", "stats PLAYER_AUGMENT_6 nameTRA", "stats PLAYER_AUGMENT_6 rarity", "stats CHAMPIONS_KILLED", "stats NUM_DEATHS", "stats ASSISTS", "stats LARGEST_KILLING_SPREE", "stats LARGEST_MULTI_KILL", "stats TOTAL_TIME_CROWD_CONTROL_DEALT", "stats TIME_CCING_OTHERS", "stats TOTAL_DAMAGE_DEALT_TO_CHAMPIONS", "stats PHYSICAL_DAMAGE_DEALT_TO_CHAMPIONS", "stats MAGIC_DAMAGE_DEALT_TO_CHAMPIONS", "stats TRUE_DAMAGE_DEALT_TO_CHAMPIONS", "stats TOTAL_DAMAGE_DEALT", "stats PHYSICAL_DAMAGE_DEALT_PLAYER", "stats MAGIC_DAMAGE_DEALT_PLAYER", "stats TRUE_DAMAGE_DEALT_PLAYER", "stats LARGEST_CRITICAL_STRIKE", "stats TOTAL_DAMAGE_DEALT_TO_BUILDINGS", "stats TOTAL_DAMAGE_DEALT_TO_OBJECTIVES", "stats TOTAL_DAMAGE_DEALT_TO_TURRETS", "stats TOTAL_HEAL", "stats TOTAL_HEAL_ON_TEAMMATES", "stats TOTAL_DAMAGE_SHIELDED_ON_TEAMMATES", "stats TOTAL_DAMAGE_TAKEN", "stats PHYSICAL_DAMAGE_TAKEN", "stats MAGIC_DAMAGE_TAKEN", "stats TRUE_DAMAGE_TAKEN", "stats TOTAL_DAMAGE_SELF_MITIGATED", "stats VISION_SCORE", "stats WARD_PLACED", "stats WARD_KILLED", "stats SIGHT_WARDS_BOUGHT_IN_GAME", "stats VISION_WARDS_BOUGHT_IN_GAME", "stats GOLD_EARNED", "stats MINIONS_KILLED", "stats NEUTRAL_MINIONS_KILLED", "stats NEUTRAL_MINIONS_KILLED_YOUR_JUNGLE", "stats NEUTRAL_MINIONS_KILLED_ENEMY_JUNGLE", "stats TURRETS_KILLED", "stats BARRACKS_KILLED", "stats TEAM_OBJECTIVE", "stats NODE_CAPTURE", "stats NODE_CAPTURE_ASSIST", "stats NODE_NEUTRALIZE", "stats NODE_NEUTRALIZE_ASSIST", "stats TOTAL_TIME_SPENT_DEAD", "stats PERK_PRIMARY_STYLE name", "stats PERK_SUB_STYLE name", "stats PERK0 name", "stats PERK0 EndOfGameStatDescs", "stats PERK1 name", "stats PERK1 EndOfGameStatDescs", "stats PERK2 name", "stats PERK2 EndOfGameStatDescs", "stats PERK3 name", "stats PERK3 EndOfGameStatDescs", "stats PERK4 name", "stats PERK4 EndOfGameStatDescs", "stats PERK5 name", "stats PERK5 EndOfGameStatDescs", "stats SPELL1_CAST", "stats SPELL2_CAST", "stats WAS_AFK", "stats TEAM_EARLY_SURRENDERED", "stats GAME_ENDED_IN_EARLY_SURRENDER", "stats GAME_ENDED_IN_SURRENDER", "stats WIN", "stats LOSE", "stats PLAYER_SUBTEAM_PLACEMENT", "stats VICTORY_POINT_TOTAL"]
-                        eog_playerstat_df_lol_export: pandas.DataFrame = eog_playerstat_df_lol.loc[:, eog_playerstat_df_lol_fields_to_export].transpose()
-                        excel_name: str = "EndOfGame Stats of %s-%d.xlsx" %(platformId, gameId)
-                        while True:
-                            try:
-                                with pandas.ExcelWriter(path = excel_name) as writer:
-                                    addDefaultStyle(eog_stat_metaDf_lol).to_excel(excel_writer = writer, sheet_name = "Metadata")
-                                    addDefaultStyle(eog_teamstat_df_lol).to_excel(excel_writer = writer, sheet_name = "Team Stats")
-                                    addDefaultStyle(eog_playerstat_df_lol_export).to_excel(excel_writer = writer, sheet_name = "Player Stats")
-                            except PermissionError:
-                                logPrint("无写入权限！请确保文件未被打开且非只读状态！按回车键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press Enter to try again.")
-                                logInput()
-                            else:
-                                break
-                        logPrint(f'本场对局结算数据已导出到同目录下的“{excel_name}”中。\nEnd-of-game stats of this match have been exported into {excel_name} under the same folder.')
+                await check_stats_block(connection)
             else:
                 logPrint("您不在对局结算阶段。\nYou're not at the end of a game right now.")
         elif option[0] == "3":
@@ -7310,76 +7545,23 @@ async def endOfGame_simulation(connection: Connection) -> str:
         elif option[0] == "5":
             gameflow_phase = await get_gameflow_phase(connection)
             if gameflow_phase == "EndOfGame":
-                response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/play-again")).json()
-                logPrint(response)
-                if isinstance(response, dict) and "errorCode" in response:
-                    if response["httpStatus"] == 400 and "Unable to create lobby: couldn't find controller for queue type" in response["message"]:
-                        logPrint("当前模式不支持该选项。请切换游戏模式，并确保不是在观战。\nThe current game mode doesn't support this option. Please change another game mode and make sure you're not spectating.")
-                    elif response["httpStatus"] == 400 and "Play-again is currently unavailable.":
-                        logPrint("再来一局目前不可用。\nPlay-again is currently unavailable.")
-                    else:
-                        logPrint("未知错误。\nUnknown error.")
-                else:
-                    time.sleep(GLOBAL_RESPONSE_LAG)
-                    gameflow_phase = await get_gameflow_phase(connection)
-                    if gameflow_phase in ["None", "Lobby"]:
-                        logPrint("已成功发送请求。\nRequest success.")
-                        break
-                    else:
-                        logPrint("服务器接收到了再来一局的请求，但您的状态似乎发生了异常。\nThe server received your play-again request, but it seems that an error has occurred to your gameflow phase.")
+                return_home: bool = await play_again(connection)
+                if return_home:
+                    break
             else:
                 logPrint("您不在对局结算阶段。\nYou're not at the end of a game right now.")
         elif option[0] == "6":
             gameflow_phase = await get_gameflow_phase(connection)
             if gameflow_phase == "EndOfGame":
-                response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-end-of-game/v1/state/dismiss-stats")).json() #这个接口比下面注释起来的接口更有效一些（This endpoint is more effective than the following commented one）
-                # response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/play-again-decline")).json()
-                logPrint(response)
-                if isinstance(response, dict) and "errorCode" in response:
-                    # if response["httpStatus"] == 400 and "Play-again is currently unavailable.":
-                    #     logPrint("返回大厅目前不可用。\nPlay-again-decline is currently unavailable.")
-                    logPrint("未知错误。\nUnknown error.")
-                else:
-                    time.sleep(GLOBAL_RESPONSE_LAG)
-                    gameflow_phase = await get_gameflow_phase(connection)
-                    if gameflow_phase == "None":
-                        logPrint("已成功发送请求。\nRequest success.")
-                        return ""
-                    else:
-                        logPrint("服务器接收到了返回大厅的请求，但您的状态似乎发生了异常。\nThe server received your dismiss-stats request, but it seems that an error has occurred to your gameflow phase.")
+                return_home: bool = await dismiss_endOfGame(connection)
+                if return_home:
+                    break
             else:
                 logPrint("您不在对局结算阶段。\nYou're not at the end of a game right now.")
         elif option[0] == "7":
             gameflow_phase = await get_gameflow_phase(connection)
             if gameflow_phase == "EndOfGame":
-                honor_ballot: dict[str, Any] = await (await connection.request("GET", "/lol-honor-v2/v1/ballot")).json()
-                if isinstance(honor_ballot, dict) and "errorCode" in honor_ballot:
-                    logPrint(honor_ballot)
-                    logPrint("荣誉投票信息获取异常。\nAn error occurred when getting the honor ballot information.")
-                else:
-                    eligiblePlayers: list[dict[str, Any]] = honor_ballot["eligibleAllies"] + honor_ballot["eligibleOpponents"]
-                    if len(eligiblePlayers) == 0:
-                        logPrint("目前没有玩家可以赞誉，因此您无法唤起荣誉投票阶段。\nThere's not any player eligible to honor, so you can't recall the honor ballot vote phase.")
-                    else:
-                        player_summonerId: int = eligiblePlayers[0]["summonerId"]
-                        player_puuid: str = eligiblePlayers[0]["puuid"]
-                        honorType: str = "HEART" #取值（Available values）：COOL、SHOTCALLER、HEART
-                        gameId: int = honor_ballot["gameId"]
-                        body: dict[str, Any] = {"summonerId": player_summonerId, "puuid": player_puuid, "honorType": honorType, "gameId": gameId}
-                        logPrint(body)
-                        response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-honor-v2/v1/honor-player", data = body)).json()
-                        logPrint(response)
-                        if isinstance(response, dict) and "errorCode" in response:
-                            logPrint("赞誉失败。\nHonor failed.")
-                        elif response == "failed_to_contact_honor_server":
-                            logPrint("无法连接到赞誉服务器。请在客户端内手动点击一名玩家以赞誉之。\nFailed to contact honor server. Please manually click on a player to honor it.")
-                        else:
-                            time.sleep(GLOBAL_RESPONSE_LAG)
-                            honor_ballot = await (await connection.request("GET", "/lol-honor-v2/v1/ballot")).json()
-                            if player_puuid in list(map(lambda x: x["recipientPuuid"], honor_ballot["honoredPlayers"])):
-                                logPrint("赞誉成功。\nHonor succeeded.")
-                            else:
-                                logPrint("赞誉失败。\nHonor failed.")
+                await recall_honor_vote(connection)
             else:
                 logPrint("您不在对局结算阶段。\nYou're not at the end of a game right now.")
         elif option[0] == "8":
