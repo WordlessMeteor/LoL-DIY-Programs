@@ -419,51 +419,63 @@ async def join_game(connection: Connection) -> bool:
                         continue
                     elif lobby_index_str == "0":
                         break
-                    elif lobby_index_str in list(map(str, range(1, len(custom_lobby_df)))):
-                        lobby_index: int = int(lobby_index_str)
-                        lobbyId: int = custom_lobby_df["id"][lobby_index]
-                        partyId: str = custom_lobby_df["partyId"][lobby_index]
-                        lobbyOwnerName: str = custom_lobby_df["ownerDisplayName"][lobby_index]
-                        if custom_lobby_df["hasPassword"][lobby_index] == "√":
-                            logPrint("请输入密码。\nPlease input the password.")
-                            lobbyPassword: str = logInput()
-                        else:
-                            lobbyPassword = ""
-                        if lobbyId == 0 and verify_uuid(partyId): #新版自定义房间接口不支持直接观战。这里假设有朝一日能够同时通过新版和旧版接口加入小队（New custom lobby API doesn't support spectating directly. Suppose one can join a custom game through both new and old APIs one day）
-                            body: dict[str, Any] = {"lobbyPassword": lobbyPassword, "team": None} #从日志中查到team参数为空（Log trace shows that `team` is null）
-                            response, message = await join_party(connection, partyId, data = body)
-                            if isinstance(response, dict) and "errorCode" in response:
-                                logPrint(response)
-                                logPrint(message)
-                            else:
-                                lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                                if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
-                                    logPrint("加入失败。\nJoin failed.")
-                                else:
-                                    logPrint("您成功加入该房间！\nYou successfully joined this lobby.")
-                                    return True
-                        else: #旧版自定义房间接口（Old custom lobby API）
-                            logPrint("输入任意键以观战，否则不观战。\nSubmit any non-empty string to spectate, or null to refuse spectating.")
-                            asSpectator_str: str = logInput()
-                            asSpectator: bool = bool(asSpectator_str)
-                            body: dict[str, str | bool] = {"asSpectator": asSpectator} if lobbyPassword == "" else {"password": lobbyPassword, "asSpectator": asSpectator}
-                            response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-lobby/v1/custom-games/{lobbyId}/join", data = body)).json()
-                            logPrint(response)
-                            if isinstance(response, dict) and "errorCode" in response:
-                                if response["httpStatus"] == 500 and response["message"] == "Error response for POST /lol-login/v1/session/invoke: LCDS invoke to gameService.observeGameV4 failed: Server.Processing, com.riotgames.platform.game.GameObserverModeNotEnabledException : null":
-                                    logPrint("该自定义房间不允许观战。\nThis custom lobby doesn't allow spectating.")
-                                elif response["httpStatus"] == 403 and response["message"] == "Error response for POST /lol-login/v1/session/invoke: LCDS invoke to gameService.joinGameV4 failed: Server.Processing, com.riotgames.platform.game.IncorrectPasswordException : null":
-                                    logPrint("验证失败。如果该房间设置了密码，请检查密码是否有误。\nVerification failed. If this lobby has password, please check if the password is correct.")
-                                elif response["httpStatus"] == 404 and response["message"] == f"Error response for POST /lol-login/v1/session/invoke: LCDS invoke to gameService.observeGameV4 failed: Server.Processing, com.riotgames.platform.game.GameNotFoundException : Game {lobbyId} was not found to join.":
-                                    logPrint("没有激活的游戏。\nActive game was not found.")
-                                else:
-                                    logPrint(f"您未能加入{lobbyOwnerName}的自定义房间。\nYou failed to join {lobbyOwnerName}'s custom lobby.")
-                            else:
-                                logPrint("您加入了该房间。\nYou joined this lobby.")
-                                return True
                     else:
-                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                        continue
+                        if lobby_index_str in set(map(str, range(1, len(custom_lobby_df)))):
+                            lobby_index: int = int(lobby_index_str)
+                        else:
+                            info: dict[str, Any] = await get_info(connection, lobby_index_str)
+                            if info["info_got"]:
+                                info_name: str = info["body"]["gameName"] + " #" + info["body"]["tagLine"] #自定义房间列表中的房主名称在“#”前有一个空格（The lobby owner name in the custom lobby list has a space in front of "#"）
+                                if info_name in set(custom_lobby_df["ownerDisplayName"][1:]):
+                                    lobby_index = custom_lobby_df["ownerDisplayName"].to_list().index(info_name)
+                                else:
+                                    logPrint(f"未找到{info_name}的自定义房间。\nThe custom lobby of {info_name} isn't found.")
+                                    continue
+                            else:
+                                logPrint(info["message"])
+                                continue
+                    lobbyId: int = custom_lobby_df["id"][lobby_index]
+                    partyId: str = custom_lobby_df["partyId"][lobby_index]
+                    lobbyOwnerName: str = custom_lobby_df["ownerDisplayName"][lobby_index]
+                    if custom_lobby_df["hasPassword"][lobby_index] == "√":
+                        logPrint("请输入密码。\nPlease input the password.")
+                        lobbyPassword: str = logInput()
+                        if lobbyPassword == chr(4):
+                            break
+                    else:
+                        lobbyPassword = ""
+                    if lobbyId == 0 and verify_uuid(partyId): #新版自定义房间接口不支持直接观战。这里假设有朝一日能够同时通过新版和旧版接口加入小队（New custom lobby API doesn't support spectating directly. Suppose one can join a custom game through both new and old APIs one day）
+                        body: dict[str, Any] = {"lobbyPassword": lobbyPassword, "team": None} #从日志中查到team参数为空（Log trace shows that `team` is null）
+                        response, message = await join_party(connection, partyId, data = body)
+                        if isinstance(response, dict) and "errorCode" in response:
+                            logPrint(response)
+                            logPrint(message)
+                        else:
+                            lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                            if isinstance(lobby_information, dict) and "errorCode" in lobby_information:
+                                logPrint("加入失败。\nJoin failed.")
+                            else:
+                                logPrint("您成功加入该房间！\nYou successfully joined this lobby.")
+                                return True
+                    else: #旧版自定义房间接口（Old custom lobby API）
+                        logPrint("输入任意键以观战，否则不观战。\nSubmit any non-empty string to spectate, or null to refuse spectating.")
+                        asSpectator_str: str = logInput()
+                        asSpectator: bool = bool(asSpectator_str)
+                        body: dict[str, str | bool] = {"asSpectator": asSpectator} if lobbyPassword == "" else {"password": lobbyPassword, "asSpectator": asSpectator}
+                        response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-lobby/v1/custom-games/{lobbyId}/join", data = body)).json()
+                        logPrint(response)
+                        if isinstance(response, dict) and "errorCode" in response:
+                            if response["httpStatus"] == 500 and response["message"] == "Error response for POST /lol-login/v1/session/invoke: LCDS invoke to gameService.observeGameV4 failed: Server.Processing, com.riotgames.platform.game.GameObserverModeNotEnabledException : null":
+                                logPrint("该自定义房间不允许观战。\nThis custom lobby doesn't allow spectating.")
+                            elif response["httpStatus"] == 403 and response["message"] == "Error response for POST /lol-login/v1/session/invoke: LCDS invoke to gameService.joinGameV4 failed: Server.Processing, com.riotgames.platform.game.IncorrectPasswordException : null":
+                                logPrint("验证失败。如果该房间设置了密码，请检查密码是否有误。\nVerification failed. If this lobby has password, please check if the password is correct.")
+                            elif response["httpStatus"] == 404 and response["message"] == f"Error response for POST /lol-login/v1/session/invoke: LCDS invoke to gameService.observeGameV4 failed: Server.Processing, com.riotgames.platform.game.GameNotFoundException : Game {lobbyId} was not found to join.":
+                                logPrint("没有激活的游戏。\nActive game was not found.")
+                            else:
+                                logPrint(f"您未能加入{lobbyOwnerName}的自定义房间。\nYou failed to join {lobbyOwnerName}'s custom lobby.")
+                        else:
+                            logPrint("您加入了该房间。\nYou joined this lobby.")
+                            return True
                     custom_lobby_df = await sort_custom_lobbies(connection)
                     if len(custom_lobby_df) == 1:
                         logPrint("当前无自定义房间。\nThere's not any custom lobby for now.")
@@ -1615,8 +1627,6 @@ async def create_queue_lobby(connection: Connection, loop_test: bool = False) ->
             log.write(format_df(available_queue_df, width_exceed_ask = False, direct_print = False)[0] + "\n")
             logPrint("*****************************************************************************")
             logPrint("(%s\t%s\t%s)" %(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), platformId, game_version))
-            logPrint('请输入队列房间序号：（输入“0”以刷新可用队列信息。输入负数以退出创建。）\nPlease enter the queueId: (Enter "0" to refresh available queue information. Enter any negative number to exit creation.)')
-            continue
         else:
             try:
                 queueId = int(queueId_str)
@@ -1639,93 +1649,106 @@ async def create_queue_lobby(connection: Connection, loop_test: bool = False) ->
                 lobbyName: str = defaultLobbyName
                 lobbyPassword: str = ""
                 aramMapMutator: str = "NONE"
-                teamsize: int = 5
+                teamSize: int = 5
                 spectatorPolicy: str = "AllAllowed"
                 spectatorDelayEnabled: bool = False
                 hidePublicly: bool = False
                 if queueId in gameQueues and gameQueues[queueId]["isCustom"]:
-                    if gameQueues[queueId]["gameMode"] == "ARAM" or gameQueues[queueId]["gameMode"] == "KIWI":
-                        logPrint("请选择一个地图：\nPlease select a map:")
-                        for i in range(len(ARAMmaps.keys())):
-                            key: str = list(ARAMmaps.keys())[i]
-                            logPrint("%d\t%s（%s）" %(i + 1, ARAMmaps_zh[key], ARAMmaps_en[key]))
-                        while True:
-                            back: bool = False
-                            ARAMmapIndex: str = logInput()
-                            if ARAMmapIndex == "":
-                                continue
-                            elif ARAMmapIndex[0] == "0":
-                                if loop_test:
-                                    back = True
+                    isMap12: bool = gameQueues[queueId]["gameMode"] == "ARAM" or gameQueues[queueId]["gameMode"] == "KIWI"
+                    step: int = 1
+                    ready: bool = False
+                    while True:
+                        if step == 0:
+                            break
+                        elif step == 1:
+                            logPrint("第一步：请选择自定义房间的允许观战策略：\nStep 1: Please select a spectator policy:\n1\t只允许房间内玩家（Lobby Only）\n2\t只允许好友（Friends List Only）\n☆3\t所有人（All）\n4\t无（None）")
+                            while True:
+                                customSpectatorPolicyTypeNumber_str: str = logInput()
+                                if customSpectatorPolicyTypeNumber_str == "":
+                                    spectatorPolicy = "AllAllowed"
+                                    break
+                                elif customSpectatorPolicyTypeNumber_str[0] == "0":
+                                    step -= 2
+                                    break
+                                elif customSpectatorPolicyTypeNumber_str[0] in set(map(str, range(1, 5))):
+                                    spectatorPolicy = SPECTATOR_POLICY_LIST[int(customSpectatorPolicyTypeNumber_str[0])]
                                     break
                                 else:
-                                    return 2
-                            elif ARAMmapIndex in set(map(str, range(1, len(ARAMmaps) + 1))):
-                                aramMapMutator = list(ARAMmaps.keys())[int(ARAMmapIndex) - 1]
-                                break
+                                    logPrint("允许观战策略输入错误！请重新输入：\nError input of spectator policy! Please try again:")
+                        elif step == 2:
+                            if isMap12:
+                                logPrint("第二步：请选择一个地图：\nStep 1: Please select a map:")
+                                for i in range(len(ARAMmaps.keys())):
+                                    key: str = list(ARAMmaps.keys())[i]
+                                    mapMark: str = "☆" if key == "MapSkin_HA_Bilgewater" else ""
+                                    logPrint("%s%d\t%s（%s）" %(mapMark, i + 1, ARAMmaps_zh[key], ARAMmaps_en[key]))
+                                while True:
+                                    ARAMmapIndex: str = logInput()
+                                    if ARAMmapIndex == "":
+                                        aramMapMutator = "MapSkin_HA_Bilgewater"
+                                        break
+                                    elif ARAMmapIndex[0] == "0":
+                                        step -= 2
+                                        break
+                                    elif ARAMmapIndex in set(map(str, range(1, len(ARAMmaps) + 1))):
+                                        aramMapMutator = list(ARAMmaps.keys())[int(ARAMmapIndex) - 1]
+                                        break
+                                    else:
+                                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                             else:
-                                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                        if back:
-                            logPrint('请输入队列房间序号：（输入“0”以刷新可用队列信息。输入负数以退出创建。）\nPlease enter the queueID: (Enter "0" to refresh available queue information. Enter any negative number to exit creation.)')
-                            continue
-                    logPrint("请依次输入对局名、队伍规模、密码（可选）：\nPlease enter the lobby's name, team size and password (optional):")
-                    logPrint("对局名（Lobby Name）：", end = "")
-                    lobbyName: str = logInput()
-                    if lobbyName == "":
-                        lobbyName = defaultLobbyName
-                    logPrint("队伍规模（Team Size）：", end = "")
-                    while True:
-                        back: bool = False
-                        teamsize_str: str = logInput()
-                        if teamsize_str == "":
-                            teamsize = 5
-                            break
-                        elif teamsize_str == "0":
-                            if loop_test:
-                                back = True
-                                break
+                                aramMapMutator = "NONE"
+                        elif step == 3:
+                            logPrint("请依次输入对局名、队伍规模、密码（可选）：\nPlease enter the lobby's name, team size and password (optional):")
+                            logPrint("第三步：对局名：\nStep 3: Lobby Name:")
+                            lobbyName = logInput()
+                            if lobbyName == "":
+                                lobbyName = defaultLobbyName
+                            elif lobbyName == chr(4):
+                                step -= 2 if isMap12 else 3
+                        elif step == 4:
+                            logPrint("第四步：队伍规模：（默认为5。）\nStep 4: Team Size: (5 by default.)")
+                            while True:
+                                teamsize_str: str = logInput()
+                                if teamsize_str == "":
+                                    teamSize = 5
+                                    break
+                                elif teamsize_str == "0":
+                                    step -= 2
+                                    break
+                                elif teamsize_str in set(map(str, range(1, 6))):
+                                    teamSize = int(teamsize_str)
+                                    break
+                                else:
+                                    logPrint("队伍规模输入错误！请重新输入：\nError input of team size! Please try again:")
+                        elif step == 5:
+                            logPrint("第五步：密码：（默认为空。）\nStep 5: Password: (Empty by default.)")
+                            lobbyPassword = logInput()
+                            if lobbyPassword == chr(4):
+                                step -= 2
+                        elif step == 6:
+                            logPrint("第六步：是否添加观战延迟？（输入任意非空字符串以添加，否则不添加。）\nStep 6: Add spectating delay? (Submit any non-empty string to add delay, or null to refuse addition.)")
+                            spectatorDelayEnabled_str = logInput()
+                            if spectatorDelayEnabled_str == chr(4):
+                                step -= 2
                             else:
-                                return 2
-                        elif teamsize_str in list(map(str, range(1, 6))):
-                            teamsize = int(teamsize_str)
+                                spectatorDelayEnabled = bool(spectatorDelayEnabled_str)
+                        elif step == 7:
+                            logPrint("第七步：是否从公开的房间列表中隐藏此房间？（输入任意非空字符串以隐藏，否则不隐藏。）\nHide this lobby from public lobby list? (Submit any non-empty string to hide, or null to show.)")
+                            hidePublicly_str = logInput()
+                            if hidePublicly_str == chr(4):
+                                step -= 2
+                            else:
+                                hidePublicly = bool(hidePublicly_str)
+                        elif step == 8:
+                            ready = True
                             break
                         else:
-                            logPrint("队伍规模输入错误！请重新输入：\nError input of team size! Please try again:")
-                    if back:
-                        logPrint('请输入队列房间序号：（输入“0”以刷新可用队列信息。输入负数以退出创建。）\nPlease enter the queueID: (Enter "0" to refresh available queue information. Enter any negative number to exit creation.)')
+                            logPrint("步骤异常。请联系开发人员修复程序。\nStep error. Please contact the developer to fix the code.")
+                            break
+                        step += 1
+                    if not ready:
+                        logPrint('请输入队列房间序号：（输入“0”以刷新可用队列信息。输入负数以退出创建。）\nPlease enter the queueId: (Enter "0" to refresh available queue information. Enter any negative number to exit creation.)')
                         continue
-                    logPrint("密码（Password）：", end = "")
-                    lobbyPassword = logInput()
-                    logPrint("请选择自定义房间的允许观战策略：\nPlease select a spectator policy:\n1\t只允许房间内玩家（Lobby Only）\n2\t只允许好友（Friends List Only）\n☆3\t所有人（All）\n4\t无（None）")
-                    while True:
-                        customSpectatorPolicyTypeNumber_str: str = logInput()
-                        if customSpectatorPolicyTypeNumber_str == "":
-                            spectatorPolicy = "AllAllowed"
-                            break
-                        elif customSpectatorPolicyTypeNumber_str[0] == "0":
-                            if loop_test:
-                                back = True
-                                break
-                            else:
-                                return 2
-                        elif customSpectatorPolicyTypeNumber_str[0] in set(map(str, range(1, 5))):
-                            if customSpectatorPolicyTypeNumber_str[0] == "1":
-                                spectatorPolicy = "LobbyAllowed"
-                            elif customSpectatorPolicyTypeNumber_str[0] == "2":
-                                spectatorPolicy = "FriendsAllowed"
-                            elif customSpectatorPolicyTypeNumber_str[0] == "3":
-                                spectatorPolicy = "AllAllowed"
-                            else:
-                                spectatorPolicy = "NotAllowed"
-                            break
-                        else:
-                            logPrint("允许观战策略输入错误！请重新输入：\nError input of spectator policy! Please try again:")
-                    logPrint("是否添加观战延迟？（输入任意键以添加，否则不添加。）\nAdd spectating delay? (Submit any non-empty string to add delay, or null to refuse addition.)")
-                    spectatorDelayEnabled_str = logInput()
-                    spectatorDelayEnabled = bool(spectatorDelayEnabled_str)
-                    print("是否从公开的房间列表中隐藏此房间？（输入任意键以隐藏，否则不隐藏。）\nHide this lobby from public lobby list? (Submit any non-empty string to hide, or null to show.)")
-                    hidePublicly_str = logInput()
-                    hidePublicly = bool(hidePublicly_str)
                 queue: dict[str, Any] = {
                     "queueId": queueId,
                     "isCustom": False,
@@ -1740,7 +1763,7 @@ async def create_queue_lobby(connection: Connection, loop_test: bool = False) ->
                                 "id": 0
                             },
                             "spectatorPolicy": spectatorPolicy,
-                            "teamSize": teamsize,
+                            "teamSize": teamSize,
                             "maxPlayerCount": 0,
                             "gameServerRegion": "",
                             "spectatorDelayEnabled": spectatorDelayEnabled,
@@ -1782,15 +1805,15 @@ async def create_queue_lobby(connection: Connection, loop_test: bool = False) ->
                     elif response["message"] == "UNHANDLED_SERVER_SIDE_ERROR":
                         logPrint("服务器错误。请换一个队列序号并重试。\nUnhandled server side error. Please switch to another queueId and try again.")
                 status = 1
-                if not loop_test:
-                    break
             else:
                 status = 0
-                if not loop_test:
-                    break
+            if not loop_test:
+                break
+        logPrint('请输入队列房间序号：（输入“0”以刷新可用队列信息。输入负数以退出创建。）\nPlease enter the queueId: (Enter "0" to refresh available queue information. Enter any negative number to exit creation.)')
     return status
 
 async def create_custom_lobby(connection: Connection) -> int:
+    #定义常量（Define constants）
     practiceGameTypeConfigIds_source: list[float] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/ClientSystemStates/practiceGameTypeConfigIdList")).json()
     practiceGameTypeConfigIds: list[int] = sorted(map(int, practiceGameTypeConfigIds_source))
     gameTypeConfigs_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/gameTypeConfigs")).json()
@@ -1798,8 +1821,8 @@ async def create_custom_lobby(connection: Connection) -> int:
     enabledModes: list[str] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/Mutators/EnabledModes")).json()
     gamemodes_zh: dict[str, str] = {key: gamemodes[key]["zh_CN"] for key in gamemodes}
     gamemodes_en: dict[str, str] = {key: gamemodes[key]["en_US"] for key in gamemodes}
-    gamemaps_zh: dict[str, str] = {key: gamemaps[key]["zh_CN"] for key in gamemaps}
-    gamemaps_en: dict[str, str] = {key: gamemaps[key]["en_US"] for key in gamemaps}
+    gamemaps_zh: dict[int, str] = {key: gamemaps[key]["zh_CN"] for key in gamemaps}
+    gamemaps_en: dict[int, str] = {key: gamemaps[key]["en_US"] for key in gamemaps}
     ARAMmaps_zh: dict[str, str] = {key: ARAMmaps[key]["zh_CN"] for key in ARAMmaps}
     ARAMmaps_en: dict[str, str] = {key: ARAMmaps[key]["en_US"] for key in ARAMmaps}
     availableMapIds: dict[str, list[int]] = {"ARAM": [12], "ARAM_BOT": [12], "ARAM_UNRANKED_5x5": [12], "ARSR": [11], "ASCENSION": [8], "ASSASSINATE": [11], "BILGEWATER": [11], "BOT": [11], "BOT_3x3": [10], "BRAWL": [35], "CHERRY": [30], "CHERRY_UNRANKED": [30], "CHONCC_TREASURE_TFT": [22], "CLASH": [11], "CLASSIC": [11, 12, 21, 22], "COUNTER_PICK": [11], "DARKSTAR": [16], "DOOMBOTSTEEMO": [11], "FIRSTBLOOD": [4], "FIRSTBLOOD_1x1": [4], "FIRSTBLOOD_2x2": [4], "FIVE_YEAR_ANNIVERSARY_TFT": [22], "GAMEMODEX": [21, 11, 12, 22], "HEXAKILL": [10], "KINGPORO": [12], "KING_PORO": [12], "LNY23_TFT": [22], "LNY24_TFT": [22], "LNY25_TFT": [22], "NEXUSBLITZ": [21], "NIGHTMARE_BOT": [11], "NORMAL": [11], "NORMAL_3x3": [11], "NORMAL_TFT": [22], "ODIN": [8], "ODIN_UNRANKED": [8], "ODYSSEY": [20], "ONEFORALL": [11], "ONEFORALL_5x5": [11], "PRACTICETOOL": [11], "PROJECT": [19], "PVE_PUZZLE_TFT": [22], "RANKED_FLEX_SR": [11], "RANKED_FLEX_SR_5x5": [11], "RANKED_FLEX_TT": [11], "RANKED_PREMADE-3x3": [10], "RANKED_SOLO_5x5": [11], "RANKED_TEAM_3x3": [10], "RANKED_TEAM_5x5": [11], "RANKED_TFT": [22], "RANKED_TFT_DOUBLE_UP": [22], "RANKED_TFT_PAIRS": [22], "RANKED_TFT_TURBO": [22], "RIOTSCRIPT_BOT": [11], "SET_REVIVAL_5_5_TFT": [22], "SET_REVIVAL_TFT": [22], "SF_TFT": [22], "SIEGE": [11], "SNOWURF": [11], "SOLO_DUO_RANKED_5x5": [11], "SR_6x6": [11], "STARGUARDIAN": [18], "STRAWBERRY": [33], "SWIFTPLAY": [11], "TFT": [22], "TUTORIAL": [11, 12, 21, 22], "TUTORIAL_MODULE_1": [11], "TUTORIAL_MODULE_2": [11], "TUTORIAL_MODULE_3": [11], "ULTBOOK": [11], "URF": [11], "URF_BOT": [11]}
@@ -1808,163 +1831,219 @@ async def create_custom_lobby(connection: Connection) -> int:
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     custom_game_setup_name_default_dict: dict[str, str] = {"ar_AE": "مباراة {{summonerName}}", "cs_CZ": "Hra uživatele {{summonerName}}", "el_GR": "Παιχνίδι του {{summonerName}}", "pl_PL": "Rozgrywka gracza {{summonerName}}", "ro_RO": "Jocul lui {{summonerName}}", "hu_HU": "{{summonerName}} játéka", "en_GB": "{{summonerName}}'s Game", "de_DE": "Spiel von {{summonerName}}", "es_ES": "Partida de {{summonerName}}", "it_IT": "Partita di {{summonerName}}", "fr_FR": "Partie de {{summonerName}}", "ja_JP": "{{summonerName}}の試合", "ko_KR": "{{summonerName}} 님의 게임", "es_MX": "Partida de {{summonerName}}", "es_AR": "Partida de {{summonerName}}", "pt_BR": "Partida de {{summonerName}}", "en_US": "{{summonerName}}'s Game", "en_AU": "{{summonerName}}'s Game", "ru_RU": "Игра {{summonerName}}", "tr_TR": "{{summonerName}} oyunu", "en_PH": "{{summonerName}}'s Game", "en_SG": "{{summonerName}}'s Game", "th_TH": "เกมของ {{summonerName}}", "vi_VN": "Trận của {{summonerName}}", "id_ID": "Game {{summonerName}}", "zh_MY": "{{summonerName}} 的房间", "zh_CN": "{{summonerName}}的对局", "zh_TW": "{{summonerName}} 的房間"} #来自（From）：plugins/rcp-fe-lol-parties/global/{locale}/trans.json
     defaultLobbyName: str = custom_game_setup_name_default_dict.get(region_locale["locale"], "{{summonerName}}的对局").replace("{{summonerName}}", current_info["gameName"])
-    logPrint("请选择自定义房间的游戏模式：\nPlease select a game mode of the lobby:")
-    for i in range(len(enabledModes)):
-        logPrint("%d\t%s%s%s%s" %(i + 1, gamemodes_zh[enabledModes[i].upper()], "【" if "(" in gamemodes_en[enabledModes[i].upper()] else "（", gamemodes_en[enabledModes[i].upper()], "】" if "(" in gamemodes_en[enabledModes[i].upper()] else "）"), write_time = False)
+    #配置参数（Configure parameters）
+    gameMode: str = ""
+    mapId: int = 0
+    aramMapMutator: str = ""
+    mutatorId: int = 0
+    spectatorPolicy: str = ""
+    lobbyName: str = ""
+    teamSize: int = 0
+    lobbyPassword: str = ""
+    spectatorDelayEnabled: bool = False
+    hidePublicly: bool = False
+    step: int = 1
+    ready: bool = False
     while True:
-        gameModeTypeNumber: str = logInput()
-        if gameModeTypeNumber == "":
-            continue
-        elif gameModeTypeNumber == "0":
-            return 2
-        elif gameModeTypeNumber in list(map(str, range(1, len(enabledModes) + 1))):
-            selectedMode: str = enabledModes[int(gameModeTypeNumber) - 1].upper()
+        if step == 0:
             break
-        else:
-            logPrint("游戏模式输入错误！请重新输入：\nError input of game mode! Please try again:")
-    logPrint("请输入地图序号：\nPlease enter a mapID:")
-    for i in sorted(gamemaps_zh.keys()):
-        logPrint("%s%d\t%s%s%s%s" %("☆" if i in availableMapIds[selectedMode] else "", i, gamemaps_zh[i], "【" if "(" in gamemaps_en[i] else "（", gamemaps_en[i], "】" if "(" in gamemaps_en[i] else "）"), write_time = False)
-    while True:
-        mapId_str: str = logInput()
-        if mapId_str == "" and len(availableMapIds[selectedMode]) > 0:
-            mapId: int = availableMapIds[selectedMode][0]
-            break
-        elif mapId_str == "0":
-            return 2
-        elif mapId_str in list(map(str, gamemaps_zh.keys())):
-            mapId = int(mapId_str)
-            break
-        else:
-            logPrint("地图序号输入错误！请重新输入：\nError input of mapID! Please try again:")
-    if (selectedMode == "ARAM" or selectedMode == "KIWI") and mapId == 12:
-        logPrint("请选择一个极地大乱斗地图：\nPlease select an ARAM map:")
-        for i in range(len(ARAMmaps.keys())):
-            key: str = list(ARAMmaps.keys())[i]
-            logPrint("%d\t%s（%s）" %(i + 1, ARAMmaps_zh[key], ARAMmaps_en[key]))
-        while True:
-            ARAMmapIndex: str = logInput()
-            if ARAMmapIndex == "":
-                continue
-            elif ARAMmapIndex[0] == "0":
-                return 2
-            elif ARAMmapIndex in set(map(str, range(1, len(ARAMmaps) + 1))):
-                aramMapMutator: str = list(ARAMmaps.keys())[int(ARAMmapIndex) - 1]
-                break
+        elif step == 1:
+            logPrint("第一步：请选择自定义房间的游戏模式：\nStep 1: Please select a game mode of the lobby:")
+            for i in range(len(enabledModes)):
+                logPrint("%d\t%s%s%s%s" %(i + 1, gamemodes_zh[enabledModes[i].upper()], "【" if "(" in gamemodes_en[enabledModes[i].upper()] else "（", gamemodes_en[enabledModes[i].upper()], "】" if "(" in gamemodes_en[enabledModes[i].upper()] else "）"), write_time = False)
+            while True:
+                gameModeTypeNumber_str: str = logInput()
+                if gameModeTypeNumber_str == "":
+                    continue
+                elif gameModeTypeNumber_str == "0":
+                    step -= 2
+                    break
+                elif gameModeTypeNumber_str in set(map(str, range(1, len(enabledModes) + 1))):
+                    gameMode = enabledModes[int(gameModeTypeNumber_str) - 1].upper()
+                    break
+                else:
+                    logPrint("游戏模式输入错误！请重新输入：\nError input of game mode! Please try again:")
+        elif step == 2:
+            logPrint("第二步：请输入地图序号：\nStep 2: Please enter a mapID:")
+            for i in sorted(gamemaps_zh.keys()):
+                logPrint("%s%d\t%s%s%s%s" %("☆" if i in availableMapIds[gameMode] else "", i, gamemaps_zh[i], "【" if "(" in gamemaps_en[i] else "（", gamemaps_en[i], "】" if "(" in gamemaps_en[i] else "）"), write_time = False)
+            while True:
+                mapId_str: str = logInput()
+                if mapId_str == "" and len(availableMapIds[gameMode]) > 0:
+                    mapId: int = availableMapIds[gameMode][0]
+                    break
+                elif mapId_str == "0":
+                    step -= 2
+                    break
+                elif mapId_str in set(map(str, gamemaps_zh.keys())):
+                    mapId = int(mapId_str)
+                    break
+                else:
+                    logPrint("地图序号输入错误！请重新输入：\nError input of mapID! Please try again:")
+        elif step == 3:
+            if (gameMode == "ARAM" or gameMode == "KIWI") and mapId == 12:
+                logPrint("第三步：请选择一个极地大乱斗地图：\nStep 3: Please select an ARAM map:")
+                for i in range(len(ARAMmaps.keys())):
+                    key: str = list(ARAMmaps.keys())[i]
+                    mapMark: str = "☆" if key == "MapSkin_HA_Bilgewater" else ""
+                    logPrint("%s%d\t%s（%s）" %(mapMark, i + 1, ARAMmaps_zh[key], ARAMmaps_en[key]))
+                while True:
+                    ARAMmapIndex: str = logInput()
+                    if ARAMmapIndex == "":
+                        aramMapMutator = "MapSkin_HA_Bilgewater"
+                        break
+                    elif ARAMmapIndex[0] == "0":
+                        step -= 2
+                        break
+                    elif ARAMmapIndex in set(map(str, range(1, len(ARAMmaps) + 1))):
+                        aramMapMutator = list(ARAMmaps.keys())[int(ARAMmapIndex) - 1]
+                        break
+                    else:
+                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
             else:
-                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-    else:
-        aramMapMutator = "NONE"
-    print("请选择自定义房间的游戏类型：\nPlease select a game type of the lobby:")
-    for i in practiceGameTypeConfigIds:
-        config: str = gameTypeConfigs[i]
-        print("%d\t%s%s%s%s" %(i, gameTypes_zh[config["name"]], "【" if "(" in gameTypes_en[config["name"]] else "（", gameTypes_en[config["name"]], "】" if "(" in gameTypes_en[config["name"]] else "）"))
-    while True:
-        mutatorId_str: str = logInput()
-        if mutatorId_str == "":
-            continue
-        elif mutatorId_str == "0":
-            return 2
-        elif mutatorId_str in list(map(str, practiceGameTypeConfigIds)):
-            mutatorId: int = int(mutatorId_str)
+                aramMapMutator = "NONE"
+        elif step == 4:
+            logPrint("第四步：请选择自定义房间的游戏类型：\nStep 4: Please select a game type of the lobby:")
+            for i in practiceGameTypeConfigIds:
+                config: str = gameTypeConfigs[i]
+                logPrint("%d\t%s%s%s%s" %(i, gameTypes_zh[config["name"]], "【" if "(" in gameTypes_en[config["name"]] else "（", gameTypes_en[config["name"]], "】" if "(" in gameTypes_en[config["name"]] else "）"), write_time = False)
+            while True:
+                mutatorId_str: str = logInput()
+                if mutatorId_str == "":
+                    continue
+                elif mutatorId_str == "0":
+                    step -= 2 if mapId == 12 else 3
+                    break
+                elif mutatorId_str in set(map(str, practiceGameTypeConfigIds)):
+                    mutatorId = int(mutatorId_str)
+                    break
+                else:
+                    logPrint("游戏类型输入错误！请重新输入：\nError input of game type! Please try again:")
+        elif step == 5:
+            logPrint("第五步：请选择自定义房间的允许观战策略：\nStep 5: Please select a spectator policy:\n1\t只允许房间内玩家（Lobby Only）\n2\t只允许好友（Friends List Only）\n☆3\t所有人（All）\n4\t无（None）")
+            while True:
+                customSpectatorPolicyTypeNumber_str: str = logInput()
+                if customSpectatorPolicyTypeNumber_str == "":
+                    spectatorPolicy = "AllAllowed"
+                    break
+                elif customSpectatorPolicyTypeNumber_str[0] == "0":
+                    step -= 2
+                    break
+                elif customSpectatorPolicyTypeNumber_str[0] in set(map(str, range(1, 5))):
+                    spectatorPolicy = SPECTATOR_POLICY_LIST[int(customSpectatorPolicyTypeNumber_str[0])]
+                    break
+                else:
+                    logPrint("允许观战策略输入错误！请重新输入：\nError input of spectator policy! Please try again:")
+        elif step == 6:
+            logPrint("请依次输入对局名、队伍规模、密码（可选）：\nPlease enter the lobby's name, team size and password (optional):")
+            logPrint("第六步：对局名：\nStep 6: Lobby Name:")
+            lobbyName = logInput()
+            if lobbyName == "":
+                lobbyName = defaultLobbyName
+            elif lobbyName == chr(4):
+                step -= 2
+        elif step == 7:
+            logPrint("第七步：队伍规模：（默认为5。）\nStep 7: Team Size: (5 by default.)")
+            while True:
+                teamsize_str: str = logInput()
+                if teamsize_str == "":
+                    teamsize = 5
+                    break
+                elif teamsize_str == "0":
+                    step -= 2
+                    break
+                elif teamsize_str in set(map(str, range(1, 6))):
+                    teamsize = int(teamsize_str)
+                    break
+                else:
+                    logPrint("队伍规模输入错误！请重新输入：\nError input of team size! Please try again:")
+        elif step == 8:
+            logPrint("第八步：密码：（默认为空。）\nStep 8: Password: (Empty by default.)")
+            lobbyPassword: str = logInput()
+            if lobbyPassword == chr(4):
+                step -= 2
+        elif step == 9:
+            logPrint("第九步：是否添加观战延迟？（输入任意非空字符串以添加，否则不添加。）\nAdd spectating delay? (Submit any non-empty string to add delay, or null to refuse addition.)")
+            spectatorDelayEnabled_str: str = logInput()
+            if spectatorDelayEnabled_str == chr(4):
+                step -= 2
+            else:
+                spectatorDelayEnabled = bool(spectatorDelayEnabled_str)
+        elif step == 10:
+            logPrint("第十步：是否从公开的房间列表中隐藏此房间？（输入任意非空字符串以隐藏，否则不隐藏。）\nStep 10: Hide this lobby from public lobby list? (Submit any non-empty string to hide, or null to show.)")
+            hidePublicly_str: str = logInput()
+            if hidePublicly_str == chr(4):
+                step -= 2
+            else:
+                hidePublicly = bool(hidePublicly_str)
+        elif step == 11:
+            ready = True
             break
         else:
-            logPrint("游戏类型输入错误！请重新输入：\nError input of game type! Please try again:")
-    logPrint("请选择自定义房间的允许观战策略：\nPlease select a spectator policy:\n1\t只允许房间内玩家（Lobby Only）\n2\t只允许好友（Friends List Only）\n3\t所有人（All）\n4\t无（None）")
-    while True:
-        customSpectatorPolicyTypeNumber_str: str = logInput()
-        if customSpectatorPolicyTypeNumber_str == "":
-            continue
-        elif customSpectatorPolicyTypeNumber_str[0] == "0":
-            return 2
-        elif customSpectatorPolicyTypeNumber_str[0] in set(map(str, range(1, 5))):
-            customSpectatorPolicyTypeNumber: int = int(customSpectatorPolicyTypeNumber_str[0])
+            logPrint("步骤异常。请联系开发人员修复程序。\nStep error. Please contact the developer to fix the code.")
             break
-        else:
-            logPrint("允许观战策略输入错误！请重新输入：\nError input of spectator policy! Please try again:")
-    logPrint("请依次输入对局名、队伍规模、密码（可选）：\nPlease enter the lobby's name, team size and password (optional):")
-    logPrint("对局名（Lobby Name）：", end = "")
-    lobbyName: str = logInput()
-    if lobbyName == "":
-        lobbyName = defaultLobbyName
-    logPrint("队伍规模（Team Size）：", end = "")
-    while True:
-        teamsize_str: str = logInput()
-        if teamsize_str == "":
-            teamsize: int = 5
-            break
-        elif teamsize_str == "0":
-            return 2
-        elif teamsize_str in list(map(str, range(1, 6))):
-            teamsize = int(teamsize_str)
-            break
-        else:
-            logPrint("队伍规模输入错误！请重新输入：\nError input of team size! Please try again:")
-    logPrint("密码（Password）：", end = "")
-    lobbyPassword: str = logInput()
-    logPrint("是否添加观战延迟？（输入任意键以添加，否则不添加。）\nAdd spectating delay? (Submit any non-empty string to add delay, or null to refuse addition.)")
-    spectatorDelayEnabled_str: str = logInput()
-    spectatorDelayEnabled: bool = bool(spectatorDelayEnabled_str)
-    print("是否从公开的房间列表中隐藏此房间？（输入任意键以隐藏，否则不隐藏。）\nHide this lobby from public lobby list? (Submit any non-empty string to hide, or null to show.)")
-    hidePublicly_str: str = logInput()
-    hidePublicly: bool = bool(hidePublicly_str)
-    custom: dict[str, Any] = {
-        "queueId": 0,
-        "isCustom": True,
-        "customGameLobby": {
-            "lobbyName": lobbyName,
-            "lobbyPassword": lobbyPassword,
-            "configuration": {
-                "mapId": mapId,
-                "aramMapMutator": aramMapMutator,
-                "gameMode": selectedMode,
-                "gameTypeConfig": {
-                    "id": mutatorId
-                },
-                "spectatorPolicy": SPECTATOR_POLICY_LIST[customSpectatorPolicyTypeNumber - 1],
-                "teamSize": teamsize,
-                "maxPlayerCount": 0,
-                "gameServerRegion": "",
-                "spectatorDelayEnabled": spectatorDelayEnabled,
-                "hidePublicly": hidePublicly
+        step += 1
+    #发送请求（Post request）
+    if ready:
+        custom: dict[str, Any] = {
+            "queueId": 0,
+            "isCustom": True,
+            "customGameLobby": {
+                "lobbyName": lobbyName,
+                "lobbyPassword": lobbyPassword,
+                "configuration": {
+                    "mapId": mapId,
+                    "aramMapMutator": aramMapMutator,
+                    "gameMode": gameMode,
+                    "gameTypeConfig": {
+                        "id": mutatorId
+                    },
+                    "spectatorPolicy": spectatorPolicy,
+                    "teamSize": teamSize,
+                    "maxPlayerCount": 0,
+                    "gameServerRegion": "",
+                    "spectatorDelayEnabled": spectatorDelayEnabled,
+                    "hidePublicly": hidePublicly
+                }
             }
         }
-    }
-    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/lobby", data = custom)).json()
-    logPrint(response)
-    if isinstance(response, dict) and "errorCode" in response:
-        if response["httpStatus"] == 423 and response["message"] == "Gameflow prevented a lobby.":
-            logPrint("您当前的状态不可创建房间！\nYou're not allowed to create a party/lobby at the moment.")
-        elif response["httpStatus"] == 437 and response["message"] == "INVALID_LOBBY_NAME":
-            logPrint("您设置的房间名不合法！请换一个房间名后重试。\nThe lobby name you submitted is invalid. Please change the name.")
-        elif response["httpStatus"] == 500 and response["message"] == "INVALID_LOBBY":
-            logPrint("房间信息无效！\nInvalid lobby configuration!")
-        elif "GameModeNotSupportedException" in response["message"]:
-            logPrint("该模式目前不支持自定义。\nCustom game of this mode isn't supported currently.")
-        elif "GameMapNotFoundException" in response["message"]:
-            logPrint("未找到该地图！请切换一个地图。\nGame map not found! Please change a map.")
-        elif "NotEnoughPlayersException" in response["message"]:
-            logPrint("玩家数量不足！请修改队伍规模。\nNot enough players! Please change the team size.")
-        elif "TooManyPlayersException" in response["message"]:
-            logPrint("玩家数量过多！请修改队伍规模。\nToo many players! Please change the team size.")
-        elif "UnexpectedServiceException" in response["message"]:
-            if "Map not enabled" in response["message"]:
-                logPrint("该地图不支持当前模式！请更换地图或者游戏模式。\nThis map doesn't support this game mode currently. Please change a game mode or map.")
-            elif "Provided game name must not be null or empty" in response["message"]:
-                logPrint("房间名不能为空！\nLobby name can't be empty!")
+        response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/lobby", data = custom)).json()
+        logPrint(response)
+        if isinstance(response, dict) and "errorCode" in response:
+            if response["httpStatus"] == 423 and response["message"] == "Gameflow prevented a lobby.":
+                logPrint("您当前的状态不可创建房间！\nYou're not allowed to create a party/lobby at the moment.")
+            elif response["httpStatus"] == 437 and response["message"] == "INVALID_LOBBY_NAME":
+                logPrint("您设置的房间名不合法！请换一个房间名后重试。\nThe lobby name you submitted is invalid. Please change the name.")
+            elif response["httpStatus"] == 500 and response["message"] == "INVALID_LOBBY":
+                logPrint("房间信息无效！\nInvalid lobby configuration!")
+            elif "GameModeNotSupportedException" in response["message"]:
+                logPrint("该模式目前不支持自定义。\nCustom game of this mode isn't supported currently.")
+            elif "GameMapNotFoundException" in response["message"]:
+                logPrint("未找到该地图！请切换一个地图。\nGame map not found! Please change a map.")
+            elif "NotEnoughPlayersException" in response["message"]:
+                logPrint("玩家数量不足！请修改队伍规模。\nNot enough players! Please change the team size.")
+            elif "TooManyPlayersException" in response["message"]:
+                logPrint("玩家数量过多！请修改队伍规模。\nToo many players! Please change the team size.")
+            elif "UnexpectedServiceException" in response["message"]:
+                if "Map not enabled" in response["message"]:
+                    logPrint("该地图不支持当前模式！请更换地图或者游戏模式。\nThis map doesn't support this game mode currently. Please change a game mode or map.")
+                elif "Provided game name must not be null or empty" in response["message"]:
+                    logPrint("房间名不能为空！\nLobby name can't be empty!")
+                else:
+                    logPrint("参数错误！\nParameter error!")
+            elif "No game type config found with id" in response["message"]:
+                logPrint("游戏模式类型错误！请修改游戏类型。\nGame type error! Please change the game type.")
+            elif "out of range" in response["message"]:
+                logPrint("参数范围错误！\nParameter out of range!")
+            elif "invalid type unsigned" in response["message"]:
+                logPrint("参数类型错误！\nInvalid parameter type!")
             else:
-                logPrint("参数错误！\nParameter error!")
-        elif "No game type config found with id" in response["message"]:
-            logPrint("游戏模式类型错误！请修改游戏类型。\nGame type error! Please change the game type.")
-        elif "out of range" in response["message"]:
-            logPrint("参数范围错误！\nParameter out of range!")
-        elif "invalid type unsigned" in response["message"]:
-            logPrint("参数类型错误！\nInvalid parameter type!")
+                logPrint("未知错误！\nUnknown error!")
+            return 1
         else:
-            logPrint("未知错误！\nUnknown error!")
-        return 1
+            return 0
     else:
-        return 0
+        return 2
 
 async def sort_custom_lobbies(connection: Connection) -> pandas.DataFrame:
     response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/custom-games/refresh")).json()
