@@ -18,7 +18,7 @@ from src.utils.runtimeDebug import subscope
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/03/08
+# 更新（Last update）：     2026/03/11
 #=============================================================================
 
 #定义异质性检验函数（Define heterogeneity verification function）
@@ -4195,7 +4195,7 @@ class ItemExtractor(LoLDataExtractor):
 class AugmentExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
         self.__dict__.update(extractor.__dict__)
-        self.augments_ready: dict[str, bool] = {"map30": False, "map12": False, "kiwi_augment": False}
+        self.augments_ready: dict[str, bool] = {"map30": False, "map12": False, "cherry": False, "kiwi": False}
         self.CherryAugment_df: pandas.DataFrame = pandas.DataFrame()
         self.KiwiAugment_df: pandas.DataFrame = pandas.DataFrame()
         
@@ -4238,28 +4238,47 @@ class AugmentExtractor(LoLDataExtractor):
             self.map12_bin: dict[str, list[str] | dict[str, Any]] = source.json()
             self.__class__.data_cache["online"][map12_bin_url] = self.map12_bin
         self.augments_ready["map12"] = True
-        #海克斯大乱斗强化符文（ARAM: Mayhem augments）
-        if Patch(self.patch_number) >= Patch("16.2.7366411"):
-            KiwiAugments_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/kiwi.bin.json"
+        #斗魂竞技场模式（Arena mode）
+        cherry_bin_url = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/cherry.bin.json"
+        if cherry_bin_url in self.__class__.data_cache["online"]:
+            self.cherry_bin = self.__class__.data_cache["online"][cherry_bin_url]
         else:
-            KiwiAugments_bin_url = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/augments.bin.json"
-        if KiwiAugments_bin_url in self.__class__.data_cache["online"]:
-            self.KiwiAugments_bin = self.__class__.data_cache["online"][KiwiAugments_bin_url]
-        else:
-            source, status, self.session = requestUrl("GET", KiwiAugments_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", cherry_bin_url, session = self.session)
             if status != 200:
                 if status == 404:
-                    logPrint("海克斯大乱斗强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nARAM: Mayhem augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(KiwiAugments_bin_url))
-                    self.KiwiAugments_bin: dict[str, list[str] | dict[str, Any]] = {}
+                    logPrint("斗魂竞技场强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nArena augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(cherry_bin_url))
+                    self.cherry_bin: dict[str, list[str] | dict[str, Any]] = {}
+                else:
+                    logPrint('斗魂竞技场强化符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nArena augment data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.')
+                    time.sleep()
+                    self.init_data_readiness()
+                    return
+            else:
+                self.cherry_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+            self.__class__.data_cache["online"][cherry_bin_url] = self.cherry_bin
+        self.augments_ready["cherry"] = True
+        #海克斯大乱斗模式（ARAM: Mayhem mode）
+        if Patch(self.patch_number) >= Patch("16.2.7366411"):
+            kiwi_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/kiwi.bin.json"
+        else:
+            kiwi_bin_url = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/augments.bin.json"
+        if kiwi_bin_url in self.__class__.data_cache["online"]:
+            self.kiwi_bin = self.__class__.data_cache["online"][kiwi_bin_url]
+        else:
+            source, status, self.session = requestUrl("GET", kiwi_bin_url, session = self.session)
+            if status != 200:
+                if status == 404:
+                    logPrint("海克斯大乱斗强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nARAM: Mayhem augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(kiwi_bin_url))
+                    self.kiwi_bin: dict[str, list[str] | dict[str, Any]] = {}
                 else:
                     logPrint('海克斯大乱斗强化符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nARAM: Mayhem augment data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.')
                     time.sleep()
                     self.init_data_readiness()
                     return
             else:
-                self.KiwiAugments_bin: dict[str, list[str] | dict[str, Any]] = source.json()
-            self.__class__.data_cache["online"][KiwiAugments_bin_url] = self.KiwiAugments_bin
-        self.augments_ready["kiwi_augment"] = True
+                self.kiwi_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+            self.__class__.data_cache["online"][kiwi_bin_url] = self.kiwi_bin
+        self.augments_ready["kiwi"] = True
     
     def read_augment_data(self, paths: list[str]) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
         '''
@@ -4293,15 +4312,24 @@ class AugmentExtractor(LoLDataExtractor):
                 self.map12_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
             self.__class__.data_cache["local"][map12_bin_path] = self.map12_bin
         self.augments_ready["map12"] = True
-        #海克斯大乱斗强化符文（ARAM: Mayhem augments）
-        KiwiAugments_bin_path: str = paths[2]
-        if KiwiAugments_bin_path in self.__class__.data_cache["local"]:
-            self.KiwiAugments_bin = self.__class__.data_cache["local"][KiwiAugments_bin_path]
+        #斗魂竞技场模式（Arena mode）
+        cherry_bin_path: str = paths[2]
+        if cherry_bin_path in self.__class__.data_cache["local"]:
+            self.cherry_bin = self.__class__.data_cache["local"][cherry_bin_path]
         else:
-            with open(KiwiAugments_bin_path, "r", encoding = "utf-8") as fp:
-                self.KiwiAugments_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
-            self.__class__.data_cache["local"][KiwiAugments_bin_path] = self.KiwiAugments_bin
-        self.augments_ready["kiwi_augment"] = True
+            with open(cherry_bin_path, "r", encoding = "utf-8") as fp:
+                self.cherry_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+            self.__class__.data_cache["local"][cherry_bin_path] = self.cherry_bin
+        self.augments_ready["cherry"] = True
+        #海克斯大乱斗模式（ARAM: Mayhem mode）
+        kiwi_bin_path: str = paths[3]
+        if kiwi_bin_path in self.__class__.data_cache["local"]:
+            self.kiwi_bin = self.__class__.data_cache["local"][kiwi_bin_path]
+        else:
+            with open(kiwi_bin_path, "r", encoding = "utf-8") as fp:
+                self.kiwi_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+            self.__class__.data_cache["local"][kiwi_bin_path] = self.kiwi_bin
+        self.augments_ready["kiwi"] = True
     
     def build_augment_dataframe(self, debug: bool = False, paths: Optional[list[str]] = None) -> int:
         logPrint = self.log.logPrint
@@ -4320,7 +4348,8 @@ class AugmentExtractor(LoLDataExtractor):
                 logPrint("强化符文数据尚未准备就绪！\nAugment data not prepared!")
                 return 2
         #合并数据（Merge data）
-        map12_bin_whole: dict[str, list[str] | dict[str, Any]] = self.map12_bin | self.KiwiAugments_bin #合并海克斯大乱斗模式的强化符文数据（Merge the augment data in ARAM: Mayhem mode）
+        map12_bin_whole: dict[str, list[str] | dict[str, Any]] = self.map12_bin | self.kiwi_bin #合并海克斯大乱斗模式的强化符文数据（Merge the augment data in ARAM: Mayhem mode）
+        map30_bin_whole: dict[str, list[str] | dict[str, Any]] = self.map30_bin | self.cherry_bin #合并斗魂竞技场模式的强化符文数据（Merge the augment data in Arena mode）
         
         #定义数据结构（Define the data structure）
         logPrint("正在构建强化符文数据框……\nBuilding the augment dataframe ...", print_time = True)
@@ -4347,10 +4376,10 @@ class AugmentExtractor(LoLDataExtractor):
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
         ##斗魂竞技场强化符文（Arena augments）
         self.init_mSpells()
-        for (key, value) in self.map30_bin.items(): #提取指令字典（Extract spell dictionary）
+        for (key, value) in map30_bin_whole.items(): #提取指令字典（Extract spell dictionary）
             if key != "__linked" and value["__type"] == "SpellObject":
                 self.__class__.mSpells[value["mScriptName"]] = value
-        for (key1, value) in self.map30_bin.items():
+        for (key1, value) in map30_bin_whole.items():
             if key1 != "__linked" and value["__type"] == "AugmentData":
                 for i in range(len(CherryAugment_header_keys)):
                     key = CherryAugment_header_keys[i]
@@ -4371,8 +4400,8 @@ class AugmentExtractor(LoLDataExtractor):
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
                             spellKey: str = value["RootSpell"]
-                            if spellKey in self.map30_bin:
-                                mSpell: Optional[dict[str, Any]] = self.map30_bin[spellKey]["mSpell"]
+                            if spellKey in map30_bin_whole:
+                                mSpell: Optional[dict[str, Any]] = map30_bin_whole[spellKey]["mSpell"]
                             else:
                                 mSpell: Optional[dict[str, Any]] = None
                             if mSpell == None:
@@ -4388,7 +4417,7 @@ class AugmentExtractor(LoLDataExtractor):
                     elif i == 25: #位阶（`rarityValue`）
                         to_append = augment_rarities[value.get("rarity", 0)]
                     else: #根指令对象（`RootSpellObject`）
-                        to_append = self.map30_bin.get(value["RootSpell"], "")
+                        to_append = map30_bin_whole.get(value["RootSpell"], "")
                     CherryAugment_data[key].append(to_append)
                     CherryAugment_data_json[key].append(pyobj2json(to_append))
         CherryAugment_statistics_output_order: list[int] = [0, 1, 13, 2, 3, 14, 15, 12, 25, 11, 24, 7, 8, 4, 16, 17, 18, 19, 5, 20, 21, 22, 23, 6, 26, 9, 10]
@@ -4614,7 +4643,7 @@ class AugmentExtractor(LoLDataExtractor):
 class AnvilExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
         self.__dict__.update(extractor.__dict__)
-        self.anvils_ready: dict[str, bool] = {"map30": False, "kiwi_anvil": False}
+        self.anvils_ready: dict[str, bool] = {"map30": False, "kiwi": False}
         self.CherryAnvil_df: pandas.DataFrame = pandas.DataFrame()
         self.KiwiAnvil_df: pandas.DataFrame = pandas.DataFrame()
         
@@ -4642,11 +4671,11 @@ class AnvilExtractor(LoLDataExtractor):
         self.anvils_ready["map30"] = True
         if Patch(self.patch_number) >= Patch("16.2"):
             #嚎哭深渊地图（Howling Abyss map）
-            KiwiAugments_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map12/map12.bin.json"
-            if KiwiAugments_bin_url in self.__class__.data_cache["online"]:
-                self.KiwiAnvils_bin = self.__class__.data_cache["online"][KiwiAugments_bin_url]
+            map12_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map12/map12.bin.json"
+            if map12_bin_url in self.__class__.data_cache["online"]:
+                self.KiwiAnvils_bin = self.__class__.data_cache["online"][map12_bin_url]
             else:
-                source, status, self.session = requestUrl("GET", KiwiAugments_bin_url, session = self.session)
+                source, status, self.session = requestUrl("GET", map12_bin_url, session = self.session)
                 if status != 200:
                     if status == 404:
                         logPrint("嚎哭深渊地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -4658,25 +4687,25 @@ class AnvilExtractor(LoLDataExtractor):
                         return
                 else:
                     self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = source.json()
-                self.__class__.data_cache["online"][KiwiAugments_bin_url] = self.KiwiAnvils_bin
+                self.__class__.data_cache["online"][map12_bin_url] = self.KiwiAnvils_bin
         else:
-            #海克斯大乱斗强化符文（ARAM: Mayhem augments）
-            map12_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/augments.bin.json"
-            if map12_bin_url in self.__class__.data_cache["online"]:
-                self.KiwiAnvils_bin = self.__class__.data_cache["online"][map12_bin_url]
+            #海克斯大乱斗模式（ARAM: Mayhem mode）
+            kiwi_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/augments.bin.json"
+            if kiwi_bin_url in self.__class__.data_cache["online"]:
+                self.KiwiAnvils_bin = self.__class__.data_cache["online"][kiwi_bin_url]
             else:
-                source, status, self.session = requestUrl("GET", map12_bin_url, session = self.session)
+                source, status, self.session = requestUrl("GET", kiwi_bin_url, session = self.session)
                 if status != 200:
                     if status == -1:
-                        logPrint("海克斯大乱斗强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nARAM: Mayhem augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(KiwiAugments_bin_url))
+                        logPrint("海克斯大乱斗强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nARAM: Mayhem augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(kiwi_bin_url))
                     elif status == 404:
                         logPrint('海克斯大乱斗强化符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nARAM: Mayhem augment data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.')
                     time.sleep(3)
                     self.init_data_readiness()
                     return
                 self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = source.json()
-                self.__class__.data_cache["online"][map12_bin_url] = self.KiwiAnvils_bin
-        self.anvils_ready["kiwi_anvil"] = True
+                self.__class__.data_cache["online"][kiwi_bin_url] = self.KiwiAnvils_bin
+        self.anvils_ready["kiwi"] = True
     
     def read_anvil_data(self, paths: list[str]) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
         '''
@@ -4709,7 +4738,7 @@ class AnvilExtractor(LoLDataExtractor):
             with open(KiwiAnvils_bin_path, "r", encoding = "utf-8") as fp:
                 self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
             self.__class__.data_cache["local"][KiwiAnvils_bin_path] = self.KiwiAnvils_bin
-        self.anvils_ready["kiwi_anvil"] = True
+        self.anvils_ready["kiwi"] = True
     
     def build_anvil_dataframe(self, debug: bool = False, paths: Optional[list[str]] = None) -> int:
         logPrint = self.log.logPrint
@@ -6835,12 +6864,14 @@ if __name__ == "__main__":
                     augment_paths: list[str] = [
                         "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json",
                         "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map12/map12.bin.json",
+                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/cherry.bin.json"
                         "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/kiwi.bin.json"
                     ]
                 else:
                     augment_paths = [
                         "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json",
                         "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map12/map12.bin.json",
+                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json"
                         "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json"
                     ]
                 augmentExtractor.build_augment_dataframe(debug = True, paths = augment_paths)
@@ -6912,7 +6943,7 @@ if __name__ == "__main__":
         #     perks_bin = json.load(fp)
         ##强化符文（Augment）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
-        #     KiwiAugments_bin = json.load(fp)
+        #     kiwi_bin = json.load(fp)
         ##整合后的数据（Merged data）
         with open("C:/Users/19250/Documents/Workspace/JupyterLab/自定义脚本/英雄联盟自定义房间创建/champions_bin.json", "r", encoding = "utf-8") as fp:
             champions_bin = json.load(fp)
@@ -6955,7 +6986,7 @@ if __name__ == "__main__":
         #说明文本转换（Tooltip transformation）
         # tooltip_raw = "Kiwi_Augment_Set_Ambulance_TierTooltip_V2"
         # print("原始说明文本：\n" + tooltip_raw)
-        # binData = KiwiAugments_bin["{82eee788}"]["mSpell"]
+        # binData = kiwi_bin["{82eee788}"]["mSpell"]
         # print("----")
         # print("转换文本：")
         # print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
