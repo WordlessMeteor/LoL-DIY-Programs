@@ -1,5 +1,5 @@
 import os, pandas, sys
-from typing import Any, Callable, Optional
+from typing import Callable, Optional
 wd: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")).replace("\\", "/")
 os.chdir(wd)
 if not wd in sys.path:

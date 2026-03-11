@@ -28,7 +28,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/07
+# 更新（Last update）：     2026/03/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -56,7 +56,7 @@ async def prepare_data_resources(connection: Connection) -> None:
     LoLChampions = {champion["id"]: champion for champion in LoLChampions_source}
     recommended_position_for_champion: dict[str, dict[str, Any]] = await (await connection.request("GET", "/lol-perks/v1/recommended-champion-positions")).json()
     logPrint("正在整理英雄数据……\nOrganizing champion data ...")
-    LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion)
+    LoLChampion_df = sort_inventory_champions(LoLChampions, recommended_position_for_champion)[0]
     gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
     gameQueues = {queue["id"]: queue for queue in gameQueues_source}
 
@@ -726,7 +726,7 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                                                     pass
                                                 else: #表明对方和替补英雄池发生了交换（Indicates the target player swapped with the bench）
                                                     logPrint("交换已失效。正在重新搜索替补英雄池……\nThis trade is outdated. Repeating to search the bench ...", print_time = True)
-                                                    champ_select_session = await update_champ_select_session(champ_select_session)
+                                                    champ_select_session = await update_champ_select_session(connection, champ_select_session)
                                                     benchChampions: list[int] = list(map(lambda x: x["championId"], champ_select_session["benchChampions"]))
                                                     if championId_to_trade in benchChampions:
                                                         if champ_select_session["isLegacyChampSelect"]:

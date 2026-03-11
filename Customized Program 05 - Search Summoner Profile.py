@@ -2,7 +2,7 @@ from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import argparse, os, pandas, requests, time, json
 from urllib.parse import urljoin
-from openpyxl import load_workbook
+from openpyxl import load_workbook, Workbook
 from typing import Any, Optional
 from src.utils.summoner import print_summoner_info, get_info, get_infos, get_info_name
 from src.utils.logger import LogManager
@@ -37,7 +37,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/03/08
+# 更新（Last update）：     2026/03/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1418,7 +1418,7 @@ async def search_profile(connection: Connection) -> None:
             return
         else:
             logPrint("语言选项输入错误！请重新输入：\nERROR input of language option! Please try again:")
-    current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
+    # current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     #获取在线游戏模式数据（Get online game mode data）
     gameQueues_initial: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
     gameQueues: dict[int, dict[str, Any]] = {queue["id"]: queue for queue in gameQueues_initial}
@@ -1454,7 +1454,8 @@ async def search_profile(connection: Connection) -> None:
         current_versions = {"queue": URLPatch, "spell": URLPatch, "LoLChampion": URLPatch, "LoLItem": URLPatch, "summonerIcon": URLPatch, "perk": URLPatch, "perkstyle": URLPatch, "TFTAugment": URLPatch, "TFTChampion": URLPatch, "TFTItem": URLPatch, "TFTCompanion": URLPatch, "TFTTrait": URLPatch, "CherryAugment": URLPatch}
         unmapped_keys = {"queue": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "TFTAugment": set(), "TFTChampion": set(), "TFTItem": set(), "TFTCompanion": set(), "TFTTrait": set(), "CherryAugment": set()}
         infos: dict[str, dict[str, Any]] = {} #存储程序运行过程中遇到的玩家信息，防止后续程序反复获取已经获取过的玩家信息（Store the summoner information fetched during the program execution, in case the program would keep capturing the summoner information already fetched before）
-        match_notbelonging_warning_printed: bool = False
+        match_notbelonging_warning_printed: bool = False #标记在整理一名玩家的对局记录时是否已经打印过某场对局中不包含主召唤师的提示。在该变量为假时，通过用户的输入决定`match_reserve`的取值（Marks whether the hint that a match doesn't contain the main summoner has been printed when the program is organizing a player's match history. When this variable is False, the value of `match_reserve` is determined by user input）
+        match_reserve: bool = False #是否保留不包含主召唤师的对局。每次切换召唤师时初始化一次（Whether to reserve the matches that don't contain the main summoner. Initialized once every time the user switches the summoner）
         #处理主召唤师（Handle the main summoner）
         logPrint('''请输入要查询的主召唤师名称。输入“0”以退出程序。\nPlease input the main summoner's name to query. Submit "0" to exit.''')
         while True:
@@ -2597,59 +2598,57 @@ async def search_profile(connection: Connection) -> None:
                 sort_str: str = logInput()
                 sort: bool = bool(sort_str)
                 if sort: #所有工作表分为基础信息类和对局信息类，排列顺序为前者在前、后者在后。基础信息工作表类按顺序依次为人物简介、排位信息、英雄成就和对局记录。对局信息类工作表包括对局排行榜、对局概要和对局时间轴，按照对局序号排序（All sheets are divided into the basic data class and match information class, the former arranged in front of the latter. The basic data class includes profile, rank, champion mastery and match history in turn. The match information class includes match leaderboard, match summary and match timeline ordered by matchIDs）
-                    profile_loaded: bool = True
                     logPrint("正在读取刚刚创建的工作表……\nLoading the workbook just created ...")
+                    wb: Workbook = Workbook()
                     while True:
                         try:
                             wb = load_workbook(wbPath)
                         except FileNotFoundError:
-                            logPrint('召唤师生涯工作簿读取失败！请确保“%s”文件夹内含有名为“%s”的工作簿。如果需要重新生成该召唤师的工作簿，请输入“0”。\nERROR reading the summoner profile workbook! Please make sure the workbook "%s" is in the folder "%s". If you want to regenerate this summoner\'s workbook, please submit "0".' %(folder, wbName, wbName, folder))
-                            profile_reload: str = logInput()
-                            if profile_reload == "0":
-                                profile_loaded = False
+                            logPrint('召唤师生涯工作簿读取失败！请确保“%s”文件夹内含有名为“%s”的工作簿。输入“0”以重试。\nERROR reading the summoner profile workbook! Please make sure the workbook "%s" is in the folder "%s". Submit "0" to try again.' %(folder, wbName, wbName, folder))
+                            profile_reload_str: str = logInput()
+                            if profile_reload_str == "0":
                                 break
                         else:
+                            sheetnames: list[str] = wb.sheetnames #第一次获取原工作簿的工作表名称列表（The first time to get the sheet name list of the original workbook）
+                            #下面锁定基础信息类的工作表顺序（The following code lock the order of sheets in basic data class）
+                            logPrint("正在创建顺序工作表列表……\nCreating the ordered sheet list ...")
+                            basic_info_list: list[str] = ["Profile", "Rank", "Ladders", "Champion Mastery", "Recently Played Summoners (LoL)", "Recently Played Summoners (TFT)", "LoL Match History", "LoL Match History - Scan", "LoL Match History - Manual", "LoL Match Stats", "LoL Match Stats - Scan", "LoL Match Stats - Manual", "TFT Match History", "TFT Match History - Manual", "TFT Match History - Scan"]
+                            match_dict: dict[int, dict[str, str]] = {}
+                            for sheet_iter in sheetnames:
+                                if sheet_iter.startswith("Match "):
+                                    matchId: int = int(sheet_iter.split()[1]) #目前暂不需要考虑对局序号因工作表名长度限制而被截断的问题（Currently the issue that matchId may be cut off due to the sheet name length limit doesn't need to be considered）
+                                    key: str = sheet_iter.split()[3][0] #以工作表名的内容部分的首字母为排序依据（Sort the sheetnames by the initial letter of the content part of the sheet name）
+                                    if not matchId in match_dict:
+                                        match_dict[matchId] = {}
+                                    match_dict[matchId][key] = sheet_iter
+                            sheetnames_sorted: list[str] = [] #所有工作表的期望顺序存储在sheetnames_sorted变量中（The ordered result of all sheets is stored in the variable `sheetnames_sorted`）
+                            for sheet_iter in basic_info_list:
+                                if sheet_iter in sheetnames:
+                                    sheetnames_sorted.append(sheet_iter)
+                            for matchId in sorted(match_dict.keys()):
+                                if "L" in match_dict[matchId]: #对局排行榜（Match leaderboard）
+                                    sheetnames_sorted.append(match_dict[matchId]["L"])
+                                if "I" in match_dict[matchId]: #对局信息（已弃用）【Match information (deprecated)】
+                                    sheetnames_sorted.append(match_dict[matchId]["I"])
+                                if "S" in match_dict[matchId]: #对局概要（Match summary）
+                                    sheetnames_sorted.append(match_dict[matchId]["S"])
+                                if "T" in match_dict[matchId]: #对局时间轴（Match timeline）
+                                    sheetnames_sorted.append(match_dict[matchId]["T"])
+                                if "E" in match_dict[matchId]: #对局事件（Match event）
+                                    sheetnames_sorted.append(match_dict[matchId]["E"])
+                            #下面排列所有工作表（The following code arrange all sheets）
+                            logPrint("正在排序……\nOrdering ...")
+                            for i in range(len(sheetnames_sorted)): #排序的思路是每次将一个工作表根据其在原工作表列表中的索引和在顺序工作表列表中的索引的差值进行移动（The main idea of sheets' sorting is to move each sheet according to the difference of the indices between in the original sheet list and in the ordered sheet list）
+                                sheetnames = wb.sheetnames #因为一次移动可能导致很多其它工作表的位置发生变化，所以必须每次都重新获取工作表列表（Because a moving event may result in location change of many other sheets, the sheet list must be obtained each time）
+                                sheetname_iter: str = sheetnames_sorted[i] #这里以顺序工作表为迭代器进行遍历，因为顺序工作表是固定不变的（Here the ordered sheet list acts as the iterator to be traversed, for the ordered sheet list is fixed）
+                                if sheetnames[i] != sheetname_iter:
+                                    preIndex: int = sheetnames.index(sheetname_iter)
+                                    wb.move_sheet(sheetname_iter, i - preIndex) #注意移动距离数应当是排序后的索引减去排序前的索引（Note that the moving offset should be the index in the ordered list subtracted by that in the original list）
+                                #logPrint("排序进度（Ordering process）：%d/%d\t工作表名称（Sheet name）： %s" %(i + 1, len(sheetnames_sorted), sheetname_iter))
+                            logPrint('正在保存中……\nSaving the ordered workbook ...')
+                            wb.save(os.path.join(folder, wbName_sorted))
+                            logPrint('排序完成！排好序的工作簿已保存为“%s”。\nOrdering finished! The ordered workbook is saved as "%s".\n' %(wbName_sorted, wbName_sorted))
                             break
-                    if profile_loaded:
-                        sheetnames: list[str] = wb.sheetnames #第一次获取原工作簿的工作表名称列表（The first time to get the sheet name list of the original workbook）
-                        #下面锁定基础信息类的工作表顺序（The following code lock the order of sheets in basic data class）
-                        logPrint("正在创建顺序工作表列表……\nCreating the ordered sheet list ...")
-                        basic_info_list: list[str] = ["Profile", "Rank", "Ladders", "Champion Mastery", "Recently Played Summoners (LoL)", "Recently Played Summoners (TFT)", "LoL Match History", "LoL Match History - Scan", "LoL Match History - Manual", "LoL Match Stats", "LoL Match Stats - Scan", "LoL Match Stats - Manual", "TFT Match History", "TFT Match History - Manual", "TFT Match History - Scan"]
-                        match_dict: dict[int, dict[str, str]] = {}
-                        for sheet_iter in sheetnames:
-                            if sheet_iter.startswith("Match "):
-                                matchId: int = int(sheet_iter.split()[1]) #目前暂不需要考虑对局序号因工作表名长度限制而被截断的问题（Currently the issue that matchId may be cut off due to the sheet name length limit doesn't need to be considered）
-                                key: str = sheet_iter.split()[3][0] #以工作表名的内容部分的首字母为排序依据（Sort the sheetnames by the initial letter of the content part of the sheet name）
-                                if not matchId in match_dict:
-                                    match_dict[matchId] = {}
-                                match_dict[matchId][key] = sheet_iter
-                        sheetnames_sorted: list[str] = [] #所有工作表的期望顺序存储在sheetnames_sorted变量中（The ordered result of all sheets is stored in the variable `sheetnames_sorted`）
-                        for sheet_iter in basic_info_list:
-                            if sheet_iter in sheetnames:
-                                sheetnames_sorted.append(sheet_iter)
-                        for matchId in sorted(match_dict.keys()):
-                            if "L" in match_dict[matchId]: #对局排行榜（Match leaderboard）
-                                sheetnames_sorted.append(match_dict[matchId]["L"])
-                            if "I" in match_dict[matchId]: #对局信息（已弃用）【Match information (deprecated)】
-                                sheetnames_sorted.append(match_dict[matchId]["I"])
-                            if "S" in match_dict[matchId]: #对局概要（Match summary）
-                                sheetnames_sorted.append(match_dict[matchId]["S"])
-                            if "T" in match_dict[matchId]: #对局时间轴（Match timeline）
-                                sheetnames_sorted.append(match_dict[matchId]["T"])
-                            if "E" in match_dict[matchId]: #对局事件（Match event）
-                                sheetnames_sorted.append(match_dict[matchId]["E"])
-                        #下面排列所有工作表（The following code arrange all sheets）
-                        logPrint("正在排序……\nOrdering ...")
-                        for i in range(len(sheetnames_sorted)): #排序的思路是每次将一个工作表根据其在原工作表列表中的索引和在顺序工作表列表中的索引的差值进行移动（The main idea of sheets' sorting is to move each sheet according to the difference of the indices between in the original sheet list and in the ordered sheet list）
-                            sheetnames = wb.sheetnames #因为一次移动可能导致很多其它工作表的位置发生变化，所以必须每次都重新获取工作表列表（Because a moving event may result in location change of many other sheets, the sheet list must be obtained each time）
-                            sheetname_iter: str = sheetnames_sorted[i] #这里以顺序工作表为迭代器进行遍历，因为顺序工作表是固定不变的（Here the ordered sheet list acts as the iterator to be traversed, for the ordered sheet list is fixed）
-                            if sheetnames[i] != sheetname_iter:
-                                preIndex: int = sheetnames.index(sheetname_iter)
-                                wb.move_sheet(sheetname_iter, i - preIndex) #注意移动距离数应当是排序后的索引减去排序前的索引（Note that the moving offset should be the index in the ordered list subtracted by that in the original list）
-                            #logPrint("排序进度（Ordering process）：%d/%d\t工作表名称（Sheet name）： %s" %(i + 1, len(sheetnames_sorted), sheetname_iter))
-                        logPrint('正在保存中……\nSaving the ordered workbook ...')
-                        wb.save(os.path.join(folder, wbName_sorted))
-                        logPrint('排序完成！排好序的工作簿已保存为“%s”。\nOrdering finished! The ordered workbook is saved as "%s".\n' %(wbName_sorted, wbName_sorted))
 
 #-----------------------------------------------------------------------------
 # websocket

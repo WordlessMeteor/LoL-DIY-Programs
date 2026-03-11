@@ -1,6 +1,5 @@
 from lcu_driver.connection import Connection
 import os, pandas, sys
-from urllib.parse import urljoin
 from typing import Any, Optional
 wd: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")).replace("\\", "/")
 os.chdir(wd)
@@ -330,7 +329,7 @@ async def sort_inGame_players(connection: Connection, LoLChampions: dict[int, di
     inGame_player_df = pandas.concat([pandas.DataFrame([inGame_player_header])[inGame_player_df.columns], inGame_player_df], ignore_index = True)
     return inGame_player_df
 
-async def sort_eog_playerstat_lol_data(connection: Connection, summonerIcons: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], skipBot: bool = False) -> pandas.DataFrame:
+async def sort_eog_playerstat_lol_data(connection: Connection, summonerIcons: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], skipBot: bool = False) -> pandas.DataFrame:
     eog_playerstat_data_lol_header_keys: list[str] = list(eog_playerstat_data_lol_header.keys())
     eog_playerstat_data_lol: dict[str, list[Any]] = {key: [] for key in eog_playerstat_data_lol_header_keys}
     eog_stats_block: dict[str, Any] = await (await connection.request("GET", "/lol-end-of-game/v1/eog-stats-block")).json()
@@ -339,7 +338,7 @@ async def sort_eog_playerstat_lol_data(connection: Connection, summonerIcons: di
             for player in team["players"]:
                 if player["botPlayer"] and skipBot:
                     continue
-                stats = player["stats"]
+                stats: dict[str, Any] = player["stats"]
                 for i in range(len(eog_playerstat_data_lol_header_keys)):
                     key: str = eog_playerstat_data_lol_header_keys[i]
                     if i <= 46:
@@ -404,7 +403,7 @@ async def sort_eog_playerstat_lol_data(connection: Connection, summonerIcons: di
                         elif i == 188: #子阵营（`playerSubteamColor`）
                             to_append = subteam_colors[stats["PLAYER_SUBTEAM"]] if "PLAYER_SUBTEAM" in stats else ""
                         elif i == 189 or i == 190: #角色绑定装备相关键（`ROLE_BOUND_ITEM`-related keys）
-                            roleBoundItemId = stats.get("ROLE_BOUND_ITEM", 0)
+                            roleBoundItemId: int = stats.get("ROLE_BOUND_ITEM", 0)
                             to_append = "" if roleBoundItemId == 0 else LoLItems[roleBoundItemId][key.split(" ")[2]] if roleBoundItemId in LoLItems else roleBoundItemId if i <= 32 else ""
                         else:
                             to_append = stats.get(key.split()[1], "")

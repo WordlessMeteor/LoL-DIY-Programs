@@ -1,6 +1,6 @@
 from lcu_driver.connection import Connection
 import copy, json, os, pandas, re, requests, time, traceback, uuid
-from openpyxl import load_workbook
+from openpyxl import load_workbook, Workbook
 from typing import Any, Optional
 from src.utils.summoner import print_summoner_info
 from src.utils.logger import LogManager
@@ -20,7 +20,7 @@ from src.core.dataframes.champions import sort_champion_summary
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/08
+# 更新（Last update）：     2026/03/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2003,8 +2003,8 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
             #定义常量字典（Define the constant dictionaries）
             LoLItem_name_map: dict[str, str] = {key: value["name"] for (key, value) in LoLItems_locale["data"].items()}
             logPrint("开始整理数据……\nOrganizing data ...")
-            pStats = re.compile(r"<stats>.*</stats>")
-            pFormat = re.compile(r"<[/\sA-Za-z0-9=#\'_@]*>")
+            pStats: re.Pattern[str] = re.compile(r"<stats>.*</stats>")
+            pFormat: re.Pattern[str] = re.compile(r"<[/\sA-Za-z0-9=#\'_@]*>")
             champions: dict[str, str] = {}
             for champion in champions_locale["data"]:
                 champions[champion.lower()] = champions_locale["data"][champion]["name"] + " " + champions_locale["data"][champion]["title"] #装备数据中记录的英雄代号和英雄数据中的英雄代号有大小写上的差异（Case difference exists in the alias between item and champion data）
@@ -2020,7 +2020,7 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                         statStr = pStats.search(item_default["description"]).group().replace("<stats>", "").replace("</stats>", "").replace("<br>", "\n")
                         statList: list[str] = statStr.split("\n")
                     else: #在0.152.55版本以前，装备详细信息的数值部分没有被<stats>和</stats>标签包起来。其数值部分总是出现在第一行，并且不同的数值中间由空格分隔（无效信息），每个数值前都有加号【Before v0.152.22, the stat part of an item's description isn't enclosed by <stats> and </stats> tags. In the description, the stat part is always the first line, different stats are delimited by a space (useless information) and a plus sign is always in the front of the stat value】
-                        pNonStat = re.compile(r"[^\s\+A-Za-z0-9]")
+                        pNonStat: re.Pattern[str] = re.compile(r"[^\s\+A-Za-z0-9]")
                         statStr = item_default["description"].replace("<br>", "\n").split("\n")[0]
                         if pNonStat.search(statStr) != None: #部分描述不规范，直接将其它非数值文字放在与数值同一行的位置。这里的处理方式是将所有非数值字符都当成分隔符，然后取第一个元素（Some descriptions don't obey the standard, because the nonstat descriptions are put in the same line as the stats. Here the strategy is to regard any nonstat character as a delimiter, and then get the first element of the string split by the delimiter）
                             statStr = statStr.split(pNonStat.search(statStr).group(0))[0]
@@ -2035,13 +2035,13 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                             # figureType = pFormat.search(stat_iter).group().replace("<", "").replace(">", "")
                             # preFigure = "<" + figureType + ">"
                             # postFigure = "</" + figureType + ">"
-                            # pFigure = re.compile(preFigure + ".*" + postFigure)
+                            # pFigure: re.Pattern[str] = re.compile(preFigure + ".*" + postFigure)
                             # figure = pFigure.search(stat_iter).group().replace(preFigure, "").replace(postFigure, "")
                             # figure_attr = stat_iter.replace(pFigure.search(stat_iter).group(), "").strip() #英文中，数值和属性之间有空格（In English, there's a space between the stat and the attribute）
                             # statDict[figure_attr] = figure
                             while (matchObj := pFormat.search(stat_iter)):
                                 stat_iter = stat_iter.replace(matchObj.group(), "")
-                            pFigure = re.compile(r"(\+|\-)?[0-9]+%?")
+                            pFigure: re.Pattern[str] = re.compile(r"(\+|\-)?[0-9]+%?")
                             try:
                                 figure: str = pFigure.search(stat_iter).group()
                                 figure_attr: str = stat_iter.replace(figure, "").strip() #英文中，数值和属性之间有空格（In English, there's a space between the stat and the attribute）
@@ -2146,12 +2146,13 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
         while True:
             version: str = logInput()
             if version == "":
-                versions_sort = ["pbe"]
+                versions_sort: list[str] = ["pbe"]
                 break
             elif version == "all":
-                versions_sort: list[str] = patches_cdragon
+                versions_sort = patches_cdragon
                 break
             elif version[0] == "0":
+                versions_sort = []
                 back = True
                 break
             elif version in patches_cdragon:
@@ -2288,9 +2289,9 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                 if key != "__linked" and value["__type"] == "ItemData":
                     itemKey_itemId_map[value["itemID"]] = key
             logPrint("开始整理数据……\nOrganizing data ...")
-            pStats = re.compile(r"<stats>.*</stats>")
-            pFormat = re.compile(r"<[/\sA-Za-z0-9=#\'_@]*>")
-            pSection = re.compile(r"<section>.*?</section>") #在星号后添加问号以启用贪婪模式（Enable greedy match by adding a question mark after the asterisk）
+            pStats: re.Pattern[str] = re.compile(r"<stats>.*</stats>")
+            pFormat: re.Pattern[str] = re.compile(r"<[/\sA-Za-z0-9=#\'_@]*>")
+            pSection: re.Pattern[str] = re.compile(r"<section>.*?</section>") #在星号后添加问号以启用贪婪模式（Enable greedy match by adding a question mark after the asterisk）
             champions: dict[str, str] = {}
             for champion in champions_locale:
                 champions[champion["alias"]] = champion["name"] + " " + (champion["description"] if "description" in champion else champion["alias"]) #15.9版本以前，“champion-summary.json”中没有“description”键（Before Patch 15.9, "description" key isn't present in "champion-summary.json"）
@@ -2309,7 +2310,7 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                         if stat_iter != "": #有的装备没有基本属性，或者其字符串中存在几个连续的换行符（Some items don't have basic stats, or the string contains several continuous line feed characters）
                             while (matchObj := pFormat.search(stat_iter)):
                                 stat_iter: str = stat_iter.replace(matchObj.group(), "")
-                            pFigure = re.compile(r"(\+|\-)?[0-9]+%?")
+                            pFigure: re.Pattern[str] = re.compile(r"(\+|\-)?[0-9]+%?")
                             if (matchObj := pFigure.search(stat_iter)):
                                 figure: str = matchObj.group()
                                 figure_attr = stat_iter.replace(figure, "").strip() #英文中，数值和属性之间有空格（In English, there's a space between the stat and the attribute）
@@ -2495,53 +2496,50 @@ def export_item_data() -> None:
         logPrint("警告：由于该文件已存在，本次导出已追加新工作表到工作簿的末尾。这可能导致版本号顺序的错乱。是否需要对工作表进行排序？（输入任意键排序，否则不排序）\nWarning: Because the excel workbook has existed, new sheets are appended to the last of the original sheet list. This may result in the disarrangement of version order. Do you want to sort the sheets? (Input anything to sort the sheets, or null to skip sorting)")
         sort_str: str = logInput()
         if sort_str != "": #所有工作表按顺序依次分为固定版本号、cdragon版本号和ddragon版本号（All sheets are divided into the fixed version class, cdragon version class and ddragon version class）
-            items_loaded: bool = True
             logPrint("正在读取刚刚创建的工作表……\nLoading the workbook just created ...")
             while True:
                 try:
-                    wb = load_workbook(excel_name)
+                    wb: Workbook = load_workbook(excel_name)
                 except FileNotFoundError:
                     logPrint('装备工作簿读取失败！请确保当前文件夹内含有名为“%s”的工作簿。如果需要重新生成该召唤师的工作簿，请输入“0”。\nERROR reading the summoner profile workbook! Please make sure the workbook "%s" is in the current folder". If you want to regenerate this summoner\'s workbook, please submit "0".' %(excel_name, excel_name))
                     items_reload: str = logInput()
                     if items_reload == "0":
-                        items_loaded = False
                         break
                 else:
+                    sheetnames: list[str] = wb.sheetnames #第一次获取原工作簿的工作表名称列表（The first time to get the sheet name list of the original workbook）
+                    #下面锁定工作表顺序（The following code determine the sheet order）
+                    print("正在创建顺序工作表列表……\nCreating the ordered sheet list ...")
+                    fixed_version_list: list[str] = ["pbe", "latest"]
+                    cdragon_version_list: list[Patch] = []
+                    ddragon_version_list: list[Patch] = []
+                    for version in sheetnames:
+                        if version.endswith("(cdragon)"):
+                            cdragon_version_list.append(Patch(version))
+                        elif version.endswith("(ddragon)"):
+                            ddragon_version_list.append(Patch(version))
+                    sheetnames_sorted: list[str] = []
+                    for sheet_iter in fixed_version_list:
+                        if sheet_iter in sheetnames:
+                            sheetnames.remove(sheet_iter)
+                            sheetnames_sorted.append(sheet_iter)
+                    cdragon_version_sorted: list[str] = list(map(lambda x: str(x) + " (cdragon)", Patch.sort(cdragon_version_list)))
+                    cdragon_version_sorted.reverse()
+                    ddragon_version_sorted: list[str] = list(map(lambda x: str(x) + " (ddragon)", Patch.sort(ddragon_version_list)))
+                    ddragon_version_sorted.reverse()
+                    sheetnames_sorted += cdragon_version_sorted + ddragon_version_sorted #所有工作表的期望顺序存储在sheetnames_sorted变量中（The ordered result of all sheets is stored in the variable `sheetnames_sorted`）
+                    #下面排列所有工作表（The following code arrange all sheets）
+                    print("正在排序……\nOrdering ...")
+                    for i in range(len(sheetnames_sorted)): #排序的思路是每次将一个工作表根据其在原工作表列表中的索引和在顺序工作表列表中的索引的差值进行移动（The main idea of sheets' sorting is to move each sheet according to the difference of the indices between in the original sheet list and in the ordered sheet list）
+                        sheetnames = wb.sheetnames #因为一次移动可能导致很多其它工作表的位置发生变化，所以必须每次都重新获取工作表列表（Because a moving event may result in location change of many other sheets, the sheet list must be obtained each time）
+                        sheetname_iter = sheetnames_sorted[i] #这里以顺序工作表为迭代器进行遍历，因为顺序工作表是固定不变的（Here the ordered sheet list acts as the iterator to be traversed, for the ordered sheet list is fixed）
+                        if sheetnames[i] != sheetname_iter:
+                            preIndex: int = sheetnames.index(sheetname_iter)
+                            wb.move_sheet(sheetname_iter, i - preIndex) #注意移动距离数应当是排序后的索引减去排序前的索引（Note that the moving offset should be the index in the ordered list subtracted by that in the original list）
+                        #print("排序进度（Ordering process）：%d/%d\t工作表名称（Sheet name）： %s" %(i + 1, len(sheetnames_sorted), sheetname_iter))
+                    print('正在保存中……\nSaving the ordered workbook ...')
+                    wb.save(excel_name_sorted)
+                    print('排序完成！排好序的工作簿已保存为“%s”。\nOrdering finished! The ordered workbook is saved as "%s".\n' %(excel_name_sorted, excel_name_sorted))
                     break
-            if items_loaded:
-                sheetnames: list[str] = wb.sheetnames #第一次获取原工作簿的工作表名称列表（The first time to get the sheet name list of the original workbook）
-                #下面锁定工作表顺序（The following code determine the sheet order）
-                print("正在创建顺序工作表列表……\nCreating the ordered sheet list ...")
-                fixed_version_list: list[str] = ["pbe", "latest"]
-                cdragon_version_list: list[Patch] = []
-                ddragon_version_list: list[Patch] = []
-                for version in sheetnames:
-                    if version.endswith("(cdragon)"):
-                        cdragon_version_list.append(Patch(version))
-                    elif version.endswith("(ddragon)"):
-                        ddragon_version_list.append(Patch(version))
-                sheetnames_sorted: list[str] = []
-                for sheet_iter in fixed_version_list:
-                    if sheet_iter in sheetnames:
-                        sheetnames.remove(sheet_iter)
-                        sheetnames_sorted.append(sheet_iter)
-                cdragon_version_sorted: list[str] = list(map(lambda x: str(x) + " (cdragon)", Patch.sort(cdragon_version_list)))
-                cdragon_version_sorted.reverse()
-                ddragon_version_sorted: list[str] = list(map(lambda x: str(x) + " (ddragon)", Patch.sort(ddragon_version_list)))
-                ddragon_version_sorted.reverse()
-                sheetnames_sorted += cdragon_version_sorted + ddragon_version_sorted #所有工作表的期望顺序存储在sheetnames_sorted变量中（The ordered result of all sheets is stored in the variable `sheetnames_sorted`）
-                #下面排列所有工作表（The following code arrange all sheets）
-                print("正在排序……\nOrdering ...")
-                for i in range(len(sheetnames_sorted)): #排序的思路是每次将一个工作表根据其在原工作表列表中的索引和在顺序工作表列表中的索引的差值进行移动（The main idea of sheets' sorting is to move each sheet according to the difference of the indices between in the original sheet list and in the ordered sheet list）
-                    sheetnames = wb.sheetnames #因为一次移动可能导致很多其它工作表的位置发生变化，所以必须每次都重新获取工作表列表（Because a moving event may result in location change of many other sheets, the sheet list must be obtained each time）
-                    sheetname_iter = sheetnames_sorted[i] #这里以顺序工作表为迭代器进行遍历，因为顺序工作表是固定不变的（Here the ordered sheet list acts as the iterator to be traversed, for the ordered sheet list is fixed）
-                    if sheetnames[i] != sheetname_iter:
-                        preIndex: int = sheetnames.index(sheetname_iter)
-                        wb.move_sheet(sheetname_iter, i - preIndex) #注意移动距离数应当是排序后的索引减去排序前的索引（Note that the moving offset should be the index in the ordered list subtracted by that in the original list）
-                    #print("排序进度（Ordering process）：%d/%d\t工作表名称（Sheet name）： %s" %(i + 1, len(sheetnames_sorted), sheetname_iter))
-                print('正在保存中……\nSaving the ordered workbook ...')
-                wb.save(excel_name_sorted)
-                print('排序完成！排好序的工作簿已保存为“%s”。\nOrdering finished! The ordered workbook is saved as "%s".\n' %(excel_name_sorted, excel_name_sorted))
 
 #-----------------------------------------------------------------------------
 # Main

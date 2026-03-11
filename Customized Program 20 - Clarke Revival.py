@@ -48,7 +48,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/10
+# 更新（Last update）：     2026/03/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -181,7 +181,7 @@ async def prepare_data_resources(connection: Connection, verbose: bool = True) -
     URLPatch: str = "pbe" if platformId == "PBE1" or platformId == "PBE" else "latest"
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     locale: str = region_locale["locale"].lower()
-    source, status, session = requestUrl("GET", f"https://raw.communitydragon.org/{URLPatch}/cdragon/tft/{locale}.json")
+    source, status = requestUrl("GET", f"https://raw.communitydragon.org/{URLPatch}/cdragon/tft/{locale}.json")[:2]
     if status != 200:
         if status == -1:
             logPrint("云顶之弈基础数据获取失败！请检查系统网络状况和代理设置。程序即将退出。\nTFT basic data capture failure! Please check the system network condition and proxy configuration. The program will exit now.")
@@ -556,7 +556,7 @@ async def Clarke_revival(connection: Connection) -> None:
                         if not player["botPlayer"]:
                             fetched_players.append(player)
                             ally_bool_dict[player["puuid"]] = player["puuid"] in myTeam_puuids
-                players_metaDf = await sort_eog_playerstat_lol_data(connection, summonerIcons, spells, perks, perkstyles, CherryAugments)
+                players_metaDf = await sort_eog_playerstat_lol_data(connection, summonerIcons, spells, LoLItems, perks, perkstyles, CherryAugments)
         else: #这部分情形已被后续`len(fetched_players) == 0`部分得到处理（This case is handled by the following `len(fetched_players) == 0` part）
             logPrint("您目前不在英雄选择阶段或者游戏内。\nYou're currently not during a champ select stage or a game.")
             isSpectating = teamOneOnly = True

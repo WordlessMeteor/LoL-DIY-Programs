@@ -1,11 +1,11 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-from openpyxl import load_workbook
+from openpyxl import load_workbook, Workbook
 import json, os, pandas, time
 from typing import Any
 from src.utils.summoner import print_summoner_info, get_info, get_infos, get_info_name
 from src.utils.logger import LogManager
-from src.utils.format import optimize_bool_display, format_runtime
+from src.utils.format import optimize_bool_display, addDefaultStyle, format_runtime
 from src.core.config.servers import platform_TENCENT, platform_RIOT, platform_GARENA
 from src.core.config.headers import challenger_ladder_metadata_header, challenger_ladder_header, topRated_ladder_header
 
@@ -15,7 +15,7 @@ from src.core.config.headers import challenger_ladder_metadata_header, challenge
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/08
+# 更新（Last update）：     2026/03/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -289,69 +289,61 @@ async def get_challenger_tier(connection: Connection) -> None:
     export_str: str = logInput()
     export: bool = bool(export_str)
     if export:
-        workbook_regenerate: bool = True
-        while workbook_regenerate:
-            excel_name: str = f"Ranked Apex - {platformId} ({currentSeason}).xlsx"
-            excel_name_sorted: str = f"Ranked Apex - {platformId} ({currentSeason}) (sorted).xlsx"
-            wbPath: str = os.path.join(folder, excel_name)
-            os.makedirs(folder, exist_ok = True)
-            workbook_exist: bool = os.path.exists(wbPath)
-            while True:
-                try:
-                    with (pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = wbPath)) as writer:
-                        # addDefaultStyle(splits_info_df).to_excel(excel_writer = writer, sheet_name = f"Split Config - Season {currentSeason}")
-                        # logPrint("赛季信息导出完成！\nSplit config exported!\n")
-                        # addDefaultStyle(rewardTrack_df).to_excel(excel_writer = writer, sheet_name = f"Reward Track - Season {currentSeason}")
-                        # logPrint("奖励里程导出完成！\nReward milestones exported!\n")
-                        addDefaultStyle(challenger_ladder_metadata_df).to_excel(excel_writer = writer, sheet_name = f"Tier Apex Metadata - Season {currentSeason}")
-                        logPrint("胜点系列段位天梯元数据导出完成！\nLP apex metadata exported!\n")
-                        # addDefaultStyle(topRated_ladder_metadata_df).to_excel(excel_writer = writer, sheet_name = f"Rating Apex Metadata - Season {currentSeason}")
-                        # logPrint("排名分系列段位天梯元数据导出完成！\nRating apex metadata exported!\n")
-                        runTimes: list[float] = [] #记录保存每个队列的顶级玩家信息所花费的时间（Records the time spent in saving the top player information of each queue）
-                        total_used: int = 0
-                        ladders_reserved: int = 0
-                        for ladderType in ladder_dfs:
-                            for queueType in ladder_dfs[ladderType]:
-                                start: float = time.time()
-                                logPrint("正在导出顶级%s玩家信息……\nExporting top %s player information ..." %(queueTypes_zh[queueType], queueTypes_en[queueType]))
-                                addDefaultStyle(ladder_dfs[ladderType][queueType]).to_excel(excel_writer = writer, sheet_name = queueType + " " + (runTime_day if ladderType == "challenger_ladder" else runTime_hour))
-                                ladders_reserved += 1
-                                end: float = time.time()
-                                unit: float = end - start
-                                total_used += unit
-                                runTimes.append(unit)
-                                total_remaining: float = 0 if sum([i for i in runTimes[:ladders_reserved + 1]]) == 0 else sum([i for i in runTimes[:ladders_reserved + 1]]) / ladders_reserved * (len(ladder_dfs["challenger_ladder"]) + len(ladder_dfs["topRated_ladder"]) - ladders_reserved)
-                                logPrint("保存该段位排位天梯所花费的时间（Time spent in saving this match）： %s" %(format_runtime(unit)))
-                                logPrint("已花费的总时间（Total time used）                                ： %s" %(format_runtime(total_used)))
-                                logPrint("剩余时间（Time remaining）                                       ： %s" %(format_runtime(total_remaining)))
-                                logPrint("预计总时间（Expected total time）                                ： %s" %(format_runtime(total_used + total_remaining)), end = "\n\n")
-                except PermissionError:
-                    logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
-                    logInput()
-                else:
-                    logPrint("各队列顶级玩家信息导出完成！\nTop player information of all queues exported!\n")
-                    workbook_regenerate = False
-                    break
-            if workbook_exist:
-                logPrint("警告：由于该文件已存在，本次导出已追加新工作表到工作簿的末尾。这可能导致队列和时间顺序的错乱。是否需要对工作表进行排序？（输入任意键排序，否则不排序）\nWarning: Because the excel workbook has existed, new sheets are appended to the last of the original sheet list. This may result in the disarrangement of queue and time orders. Do you want to sort the sheets? (Input anything to sort the sheets, or null to skip sorting)")
-                sort_str: str = logInput()
-                sort: bool = bool(sort_str)
-                if sort:
-                    apex_loaded: bool = True
-                    logPrint("正在读取刚刚创建的工作表……\nLoading the workbook just created ...")
-                    while True:
-                        try:
-                            wb = load_workbook(wbPath)
-                        except FileNotFoundError:
-                            logPrint('排位天梯工作簿读取失败！请确保“%s”文件夹内含有名为“%s”的工作簿。如果需要重新生成该工作簿，请输入“0”。\nERROR reading the ranked apex workbook! Please make sure the workbook "%s" is in the folder "%s". If you want to regenerate this workbook, please submit "0".' %(folder, excel_name, excel_name, folder))
-                            apex_reload = logInput()
-                            if apex_reload == "0":
-                                apex_loaded = False
-                                workbook_regenerate = True
-                                break
-                        else:
+        excel_name: str = f"Ranked Apex - {platformId} ({currentSeason}).xlsx"
+        excel_name_sorted: str = f"Ranked Apex - {platformId} ({currentSeason}) (sorted).xlsx"
+        wbPath: str = os.path.join(folder, excel_name)
+        os.makedirs(folder, exist_ok = True)
+        workbook_exist: bool = os.path.exists(wbPath)
+        while True:
+            try:
+                with (pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = wbPath)) as writer:
+                    # addDefaultStyle(splits_info_df).to_excel(excel_writer = writer, sheet_name = f"Split Config - Season {currentSeason}")
+                    # logPrint("赛季信息导出完成！\nSplit config exported!\n")
+                    # addDefaultStyle(rewardTrack_df).to_excel(excel_writer = writer, sheet_name = f"Reward Track - Season {currentSeason}")
+                    # logPrint("奖励里程导出完成！\nReward milestones exported!\n")
+                    addDefaultStyle(challenger_ladder_metadata_df).to_excel(excel_writer = writer, sheet_name = f"Tier Apex Metadata - Season {currentSeason}")
+                    logPrint("胜点系列段位天梯元数据导出完成！\nLP apex metadata exported!\n")
+                    # addDefaultStyle(topRated_ladder_metadata_df).to_excel(excel_writer = writer, sheet_name = f"Rating Apex Metadata - Season {currentSeason}")
+                    # logPrint("排名分系列段位天梯元数据导出完成！\nRating apex metadata exported!\n")
+                    runTimes: list[float] = [] #记录保存每个队列的顶级玩家信息所花费的时间（Records the time spent in saving the top player information of each queue）
+                    total_used: float = 0
+                    ladders_reserved: int = 0
+                    for ladderType in ladder_dfs:
+                        for queueType in ladder_dfs[ladderType]:
+                            start: float = time.time()
+                            logPrint("正在导出顶级%s玩家信息……\nExporting top %s player information ..." %(queueTypes_zh[queueType], queueTypes_en[queueType]))
+                            addDefaultStyle(ladder_dfs[ladderType][queueType]).to_excel(excel_writer = writer, sheet_name = queueType + " " + (runTime_day if ladderType == "challenger_ladder" else runTime_hour))
+                            ladders_reserved += 1
+                            end: float = time.time()
+                            unit: float = end - start
+                            total_used += unit
+                            runTimes.append(unit)
+                            total_remaining: float = 0 if sum([i for i in runTimes[:ladders_reserved + 1]]) == 0 else sum([i for i in runTimes[:ladders_reserved + 1]]) / ladders_reserved * (len(ladder_dfs["challenger_ladder"]) + len(ladder_dfs["topRated_ladder"]) - ladders_reserved)
+                            logPrint("保存该段位排位天梯所花费的时间（Time spent in saving this match）： %s" %(format_runtime(unit)))
+                            logPrint("已花费的总时间（Total time used）                                ： %s" %(format_runtime(total_used)))
+                            logPrint("剩余时间（Time remaining）                                       ： %s" %(format_runtime(total_remaining)))
+                            logPrint("预计总时间（Expected total time）                                ： %s" %(format_runtime(total_used + total_remaining)), end = "\n\n")
+            except PermissionError:
+                logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
+                logInput()
+            else:
+                logPrint("各队列顶级玩家信息导出完成！\nTop player information of all queues exported!\n")
+                break
+        if workbook_exist:
+            logPrint("警告：由于该文件已存在，本次导出已追加新工作表到工作簿的末尾。这可能导致队列和时间顺序的错乱。是否需要对工作表进行排序？（输入任意键排序，否则不排序）\nWarning: Because the excel workbook has existed, new sheets are appended to the last of the original sheet list. This may result in the disarrangement of queue and time orders. Do you want to sort the sheets? (Input anything to sort the sheets, or null to skip sorting)")
+            sort_str: str = logInput()
+            sort: bool = bool(sort_str)
+            if sort:
+                logPrint("正在读取刚刚创建的工作表……\nLoading the workbook just created ...")
+                while True:
+                    try:
+                        wb: Workbook = load_workbook(wbPath)
+                    except FileNotFoundError:
+                        logPrint('排位天梯工作簿读取失败！请确保“%s”文件夹内含有名为“%s”的工作簿。如果需要退出程序，请输入“0”。\nERROR reading the ranked apex workbook! Please make sure the workbook "%s" is in the folder "%s". If you want to exit the program, please submit "0".' %(folder, excel_name, excel_name, folder))
+                        apex_reload = logInput()
+                        if apex_reload == "0":
                             break
-                    if apex_loaded:
+                    else:
                         sheetnames: list[str] = wb.sheetnames #第一次获取原工作簿的工作表名称列表（The first time to get the sheet name list of the original workbook）
                         #下面锁定工作表顺序（The following code determine the sheet order）
                         logPrint("正在创建顺序工作表列表……\nCreating the ordered sheet list ...")
@@ -404,7 +396,7 @@ async def get_challenger_tier(connection: Connection) -> None:
                         logPrint('正在保存中……\nSaving the ordered workbook ...')
                         wb.save(os.path.join(folder, excel_name_sorted))
                         logPrint('排序完成！排好序的工作簿已保存为“%s”。\nOrdering finished! The ordered workbook is saved as "%s".\n' %(excel_name_sorted, excel_name_sorted))
-                        workbook_regenerate = False
+                        break
 
 #-----------------------------------------------------------------------------
 # websocket

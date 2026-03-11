@@ -29,7 +29,7 @@ summonerIcons: dict[int, dict[str, Any]] = {}
 sgpSession: SGPSession = SGPSession()
 log: LogManager = LogManager()
 
-connector = Connector()
+connector: Connector = Connector()
 
 #-----------------------------------------------------------------------------
 # 统计当前服务器的玩家数量（Count the number of players in the current server）

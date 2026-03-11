@@ -174,7 +174,7 @@ def get_cdragon_patchList(session: Optional[requests.Session] = None, log: Optio
     if status == 200:
         patchList_fetched: bool = True
         cdragon_homepage_json: list[dict[str, Any]] = source.json()
-        patch_re = re.compile(r"[0-9]+\.[0-9]+")
+        patch_re: re.Pattern[str] = re.compile(r"[0-9]+\.[0-9]+")
         patches_cdragon: list[Any] = []
         for record in cdragon_homepage_json:
             if record["type"] == "directory":

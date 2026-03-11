@@ -9,7 +9,7 @@ from src.utils.format import getISOTime, optimize_bool_display, format_df, addDe
 from src.utils.patch import Patch
 from src.utils.runtimeDebug import subscope
 from src.utils.webRequest import requestUrl, SGPSession
-from src.core.config.localization import availabilities, challengeCrystalLevels, tiers, rarities, spectatorPolicies, titleAcquisitionTypes, krarities, conversationTypes, messageTypes
+from src.core.config.localization import availabilities, challengeCrystalLevels, tiers, rarities, spectatorPolicies, titleAcquisitionTypes, krarities, conversationTypes, messageTypes, system_messages
 from src.core.config.headers import friend_hovercard_header, friend_group_header, conversation_header, message_header, friend_request_header, party_header, invid_header, champSelect_mutedPlayer_header, captureDevice_header, voiceSettings_header, participant_record_header, spectate_nonfriend_header, blockList_header, TFTGame_summary_header
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.config.const import BOT_UUID
@@ -22,7 +22,7 @@ from src.core.dataframes.gameflow import sort_ChampSelect_players
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/10
+# 更新（Last update）：     2026/03/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -65,7 +65,7 @@ spectatorPluginNA_hint_printed: bool = False
 spectatorPluginLegacyDisabled_hint_printed: bool = False
 log: LogManager = LogManager()
 
-connector = Connector()
+connector: Connector = Connector()
 
 #-----------------------------------------------------------------------------
 # 好友管理（Friend management）
@@ -350,7 +350,6 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
     return friend_hovercard_df
 
 async def sort_friend_hovercard_simple(connection: Connection) -> pandas.DataFrame:
-    current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     friends: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
     #定义好友数据结构（Define the friend hovercard data structure）
     friend_hovercard_header_simple: dict[str, str] = {"availability": "可用性", "gameName": "玩家名称", "gameTag": "名称编号", "groupId": "分组序号", "groupName": "分组名称", "name": "显示名", "note": "备注", "pid": "社交代码", "puuid": "玩家通用唯一识别码", "summonerId": "召唤师序号"}
@@ -715,10 +714,214 @@ async def output_friend_group(connection: Connection) -> tuple[list[dict[str, An
     friend_groupIds: list[int] = list(map(lambda x: x["id"], friend_groups))
     logPrint("您一共设置了%d个分组：\nYou have %d group(s):\n" %(len(friend_groups), len(friend_groups)))
     friend_group_df: pandas.DataFrame = await sort_friend_group(connection)
-    friend_group_df_to_print: list[str] = friend_group_df.iloc[1:].sort_values(by = "id", ascending = True, ignore_index = True)
+    friend_group_df_to_print: pandas.DataFrame = friend_group_df.iloc[1:].sort_values(by = "id", ascending = True, ignore_index = True)
     print(format_df(friend_group_df_to_print)[0], end = "\n\n")
     log.write(format_df(friend_group_df_to_print, width_exceed_ask = False, direct_print = False)[0] + "\n\n")
     return (friend_groups, friend_groupIds, friend_group_df)
+
+async def add_friend_group(connection: Connection) -> None:
+    friend_group_df: pandas.DataFrame = await sort_friend_group(connection)
+    logPrint("请输入新分组名称：（输入默认分组名称以退出创建）\nPlease enter the new group name: (Submit the default folder name, namely **Default, to quit creating)")
+    while True:
+        newGroupName: str = logInput()
+        if newGroupName == "":
+            continue
+        elif newGroupName == "**Default":
+            break
+        elif newGroupName in set(friend_group_df["name"]):
+            logPrint("该分组已存在。请使用其它名称。\nThis folder already exists. Please use another name.")
+        else:
+            body: dict[str, str] = {"name": newGroupName}
+            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-chat/v1/friend-groups", data = body)).json()
+            logPrint(response)
+            if response == None:
+                logPrint("已创建新的分组：%s。\nCreated a new folder: %s" %(newGroupName, newGroupName))
+                friend_groups, friend_groupIds, friend_group_df = await output_friend_group(connection)
+                logPrint("请输入新分组名称：\nPlease enter the new group name:")
+            else:
+                logPrint("创建分组失败。\nThe program failed to create the new folder.")
+
+async def collapse_expand_friend_group(connection: Connection) -> None:
+    friend_groups: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friend-groups")).json()
+    friend_groupIds: list[int] = list(map(lambda x: x["id"], friend_groups))
+    logPrint("请选择折叠/展开选项：\nPlease select a collapse/expand option:\n0\t返回上一层（Return to the last step）\n1\t全部展开（Expand all）\n2\t全部折叠（Collaspe all）\n3\t展开/折叠指定分组（Expand/Collapse specific groups）")
+    while True:
+        strategy: str = logInput()
+        if strategy == "":
+            continue
+        elif strategy[0] == "0":
+            break
+        elif strategy[0] == "1" or strategy[0] == "2":
+            for group in friend_groups:
+                body: dict[str, Any] = {"collapsed": strategy[0] == "2", "name": group["name"], "priority": group["priority"]} #展开/折叠分组时，只要在链接中指定分组序号即可，即使这里没有name键（To expand / collapse a folder, specifiying the following folder id should be enough. It doesn't matter whether the key "name" exists here）
+                response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-chat/v1/friend-groups/%d" %(group["id"]), data = body)).json()
+                logPrint(response)
+                if response == None or "errorCode" in response and response["httpStatus"] == 500:
+                    if strategy[0] == "1":
+                        logPrint("已展开%s分组。\nFolder %s expanded." %(group["name"], group["name"]))
+                    else:
+                        logPrint("已折叠%s分组。\nFolder %s collapsed." %(group["name"], group["name"]))
+                elif "errorCode" in response and response["httpStatus"] == 404:
+                    logPrint("操作失败！请检查分组%s是否存在。\nAction failed! Please check if the folder %s is still there." %(group["name"], group["name"]))
+        elif strategy[0] == "3":
+            logPrint('请输入要更改展开/折叠状态的分组序号。输入“-1”以返回上一层。\nPlease input the group ids to switch the expansion/collapse state. Submit "-1" to return to the last step.')
+            while True:
+                groupId: str = logInput()
+                if groupId == "":
+                    continue
+                elif groupId.startswith("-1"):
+                    break
+                elif groupId in set(map(str, friend_groupIds)):
+                    group: dict[str, Any] = await (await connection.request("GET", f"/lol-chat/v1/friend-groups/{groupId}")).json()
+                    if "errorCode" in group and group["httpStatus"] == 404:
+                        logPrint("操作失败！请检查分组是否存在。\nAction failed! Please check if the folder is still there.")
+                    else:
+                        body: dict[str, Any] = {"collapsed": not(group["collapsed"]), "name": group["name"], "priority": group["priority"]}
+                        response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-chat/v1/friend-groups/%d" %(group["id"]), data = body)).json()
+                        logPrint(response)
+                        if response == None or "errorCode" in response and response["httpStatus"] == 500:
+                            if body["collapsed"]:
+                                logPrint("已折叠%s分组。\nFolder %s collapsed." %(group["name"], group["name"]))
+                            else:
+                                logPrint("已展开%s分组。\nFolder %s expanded." %(group["name"], group["name"]))
+                        elif "errorCode" in response and response["httpStatus"] == 404:
+                            logPrint("操作失败！请检查分组%s是否存在。\nAction failed! Please check if the folder %s is still there." %(group["name"], group["name"]))
+                else:
+                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            continue
+        friend_groups, friend_groupIds, friend_group_df = await output_friend_group(connection)
+        logPrint("请选择折叠/展开选项：\nPlease select a collapse/expand option:\n1\t全部展开（Expand all）\n2\t全部折叠（Collaspe all）\n3\t展开/折叠指定分组（Expand/Collapse specific folders）")
+
+async def rename_friend_group(connection: Connection) -> None:
+    friend_groups: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friend-groups")).json()
+    friend_groupIds: list[int] = list(map(lambda x: x["id"], friend_groups))
+    logPrint('请输入要重命名的分组序号。输入“-1”以返回上一层。\nPlease input the group ids to rename. Submit "-1" to return to the last step.')
+    while True:
+        groupId = logInput()
+        if groupId == "":
+            continue
+        elif groupId.startswith("-1"):
+            break
+        elif groupId in set(map(str, friend_groupIds)):
+            group: dict[str, Any] = await (await connection.request("GET", f"/lol-chat/v1/friend-groups/{groupId}")).json()
+            if groupId == "0":
+                logPrint("无法重命名默认分组。请换一个分组重试。\nCan't rename the default folder. Please change another folder and try again.") #重命名默认分组返回的状态值是403（The httpStatus returned by renaming the default folder is 403）
+            else:
+                logPrint("该分组的当前名称是%s。您想要将其修改为：\nThe current name for the selected folder is %s. You want to change it into:" %(group["name"], group["name"]))
+                name: str = logInput()
+                if name == "":
+                    logPrint("请输入要重命名的分组序号：\nPlease input the group ids to rename:")
+                    continue
+                else:
+                    body: dict[str, Any] = {"collapsed": group["collapsed"], "name": name, "priority": group["priority"]}
+                    response = await (await connection.request("PUT", "/lol-chat/v1/friend-groups/%d" %(group["id"]), data = body)).json()
+                    logPrint(response)
+                    if response == None:
+                        logPrint("已重命名分组。\nRenamed the group.\n原名称（Old name）：%s新名称（New name）：%s" %(group["name"], name))
+                    else:
+                        if response["httpStatus"] == 404:
+                            logPrint("新名称已存在。请换个名字再试一次。\nNew name already exists. Please change another name and try again.")
+                        else:
+                            logPrint("重命名%s分组失败。\nRenaming the group %s failed." %(group["name"], group["name"]))
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            continue
+        friend_groups, friend_groupIds, friend_group_df = await output_friend_group(connection)
+        logPrint("请输入要重命名的分组序号：\nPlease input the group ids to rename:")
+
+async def arrange_friend_group(connection: Connection) -> None:
+    friend_groups: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friend-groups")).json()
+    friend_groupIds: list[int] = list(map(lambda x: x["id"], friend_groups))
+    friend_group_df: pandas.DataFrame = await sort_friend_group(connection)
+    current_groupOrder_list: list[str] = list(friend_group_df.iloc[1:].sort_values(by = "priority", ascending = False)["id"])
+    logPrint("警告：修改好友分组排列顺序涉及较多的优先级运算，因此请不要频繁修改，否则可能导致预期之外的排列顺序。\nWarning: Rearranging friend group order involve involve a lot of priority calculations, so please don't change frequently, otherwise the folders may display in an unexpected order.\n")
+    logPrint('''请输入一个您期望的分组序号排列顺序列表，排在前面的代表显示在前，排在后面的代表显示在后。例如，如果想恢复您当前的排序，您可以输入“%s”。\nPlease input a groupId order list, where the group whose groupId index is small will be moved in the front of friend list, and vice versa. For example, if you'd like to recover the current friend group order, you may input "%s".''' %(current_groupOrder_list, current_groupOrder_list))
+    while True:
+        group_order_str: str = logInput()
+        if group_order_str == "":
+            continue
+        elif group_order_str[0] == "0":
+            break
+        else:
+            try:
+                tmp = eval(group_order_str)
+            except:
+                traceback_info = traceback.format_exc()
+                logPrint(traceback_info)
+                logPrint("您的输入格式有误！请重新输入。\nERROR format of input! Please try again.")
+            else:
+                if isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x in friend_groupIds, tmp)) and len(tmp) == len(set(tmp)): #这里需要严格控制输入格式：①输入的是一个列表；②列表的元素全是整型，且都是分组序号；③列表元素无重复（Here the input format are strictly controlled: ①the input is a list; ②each element in the list is of integer type and represents a group id; ③the elements are unique）
+                    group_order: list[int] = tmp
+                    priority: int = max(100, max(map(lambda x: x["priority"], friend_groups))) + len(group_order) #后者是为了防止优先级递减而小于原分组优先级的最大值（The addend is designed to prevent `priority` from being less than the maximum of the original group priority）
+                    error_occurred_groupArrange: bool = False
+                    for groupId in group_order:
+                        group: dict[str, Any] = await (await connection.request("GET", f"/lol-chat/v1/friend-groups/{groupId}")).json()
+                        body: dict[str, Any] = {"collapsed": group["collapsed"], "name": group["name"], "priority": priority} #请求主体中没有name键时，不仅请求速度降低，而且还会返回一个500异常信息（If the key "name" isn't in the request body, not only does the request speed slows, but the request also returns an error with a 500 httpStatus）
+                        response: Optional[dict[str, Any]] = await (await connection.request("PUT", f"/lol-chat/v1/friend-groups/{groupId}", data = body)).json()
+                        logPrint(response)
+                        if response == None:
+                            logPrint("已将%s分组的优先级设置为%d。\nSet the priority of Group %s as %d." %(group["name"], priority, group["name"], priority))
+                        else:
+                            if response["httpStatus"] != 500:
+                                error_occurred_groupArrange = True
+                        priority -= 1
+                    if error_occurred_groupArrange:
+                        logPrint("排序过程发生了异常。请等待客户端刷新分组顺序后，或者对好友列表进行适当操作后手动排序。\nAn error occurred during ordering. Please order manually after League client refreshes the group order or you do some operations on your friend list.")
+                    else:
+                        logPrint("排序完成。请等待客户端刷新分组顺序，或者对好友列表进行适当操作以立刻刷新分组顺序。\nOrder success. Please wait for the League client to refresh the group order, or make some operations on the friend list to refersh group order immediately.")
+                    break
+                else:
+                    logPrint("您的输入格式有误！请重新输入。\nERROR format of input! Please try again.")
+
+async def remove_friend_group(connection: Connection) -> None:
+    friend_groups: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friend-groups")).json()
+    friend_groupIds: list[int] = list(map(lambda x: x["id"], friend_groups))
+    logPrint('请输入您要删除的分组序号。输入“-1”以退出。\nPlease input the id of the group to remove. Submit "-1" to exit.')
+    while True:
+        groupId = logInput()
+        if groupId == "":
+            continue
+        elif groupId.startswith("-1"):
+            break
+        elif groupId in set(map(str, friend_groupIds)):
+            if groupId == "0":
+                logPrint("无法删除默认分组。\nYou can't remove the default folder.")
+            else:
+                group: dict[str, Any] = await (await connection.request("GET", f"/lol-chat/v1/friend-groups/{groupId}")).json()
+                logPrint("是否在删除该分组的同时删除所有好友？（输入任意非空字符串以删除，否则这些好友会移动至默认分组。）\nDo you want to delete all friends in this group? (Submit any non-empty string to delete them, or null to move them to the default group.)")
+                delete_friend_sync_str: str = logInput()
+                delete_friend_sync = bool(delete_friend_sync_str)
+                if delete_friend_sync:
+                    friends = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
+                    if isinstance(friends, dict) and "errorCode" in friends:
+                        logPrint("获取好友列表时出现了一个异常。\nAn error occurred when the program was trying to get the friend list.")
+                    else:
+                        for friend in friends:
+                            if friend["groupId"] == group["id"]:
+                                pid: str = friend["id"]
+                                unfriend_summonerName: str = get_info_name(friend)
+                                response = await (await connection.request("DELETE", f"/lol-chat/v1/friends/{pid}")).json()
+                                logPrint(response)
+                                if response == None:
+                                    logPrint("您已与%s解除好友关系。\nYou've unfriended %s successfully." %(unfriend_summonerName, unfriend_summonerName))
+                                else:
+                                    if response["httpStatus"] == 404:
+                                        logPrint("您未能成功与%s解除好友关系。可能你们已经不是好友了。\nYou failed to unfriend %s. Maybe you're not friends already." %(unfriend_summonerName, unfriend_summonerName))
+                                    else:
+                                        logPrint("您未能成功与%s解除好友关系。\nYou failed to unfriend %s." %(unfriend_summonerName, unfriend_summonerName))
+                response: Optional[dict[str, Any]] = await (await connection.request("DELETE", f"/lol-chat/v1/friend-groups/{groupId}")).json()
+                logPrint(response)
+                if response == None:
+                    logPrint("已删除分组%s。\nRemoved folder %s." %(group["name"], group["name"]))
+                else:
+                    logPrint("删除分组%s失败。也许它已经被删除了。\nRemoving folder %s failed. Maybe it's already been removed." %(group["name"], group["name"]))
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            continue
+        friend_groups, friend_groupIds, friend_group_df = await output_friend_group(connection)
+        logPrint('请输入您要删除的分组序号。输入“-1”以退出。\nPlease input the id of the group to remove. Submit "-1" to exit.')
 
 async def manage_friend_group(connection: Connection) -> None:
     friend_groups, friend_groupIds, friend_group_df = await output_friend_group(connection)
@@ -730,198 +933,19 @@ async def manage_friend_group(connection: Connection) -> None:
         if action[0] == "0":
             break
         elif action[0] == "1":
-            logPrint("请输入新分组名称：（输入默认分组名称以退出创建）\nPlease enter the new group name: (Submit the default folder name, namely **Default, to quit creating)")
-            while True:
-                newGroupName: str = logInput()
-                if newGroupName == "":
-                    continue
-                elif newGroupName == "**Default":
-                    break
-                elif newGroupName in set(friend_group_df["name"]):
-                    logPrint("该分组已存在。请使用其它名称。\nThis folder already exists. Please use another name.")
-                else:
-                    body: dict[str, str] = {"name": newGroupName}
-                    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-chat/v1/friend-groups", data = body)).json()
-                    logPrint(response)
-                    if response == None:
-                        logPrint("已创建新的分组：%s。\nCreated a new folder: %s" %(newGroupName, newGroupName))
-                        friend_groups, friend_groupIds, friend_group_df = await output_friend_group(connection)
-                        logPrint("请输入新分组名称：\nPlease enter the new group name:")
-                    else:
-                        logPrint("创建分组失败。\nThe program failed to create the new folder.")
+            await add_friend_group(connection)
         elif action[0] == "2":
-            logPrint("请选择折叠/展开选项：\nPlease select a collapse/expand option:\n0\t返回上一层（Return to the last step）\n1\t全部展开（Expand all）\n2\t全部折叠（Collaspe all）\n3\t展开/折叠指定分组（Expand/Collapse specific groups）")
-            while True:
-                strategy: str = logInput()
-                if strategy == "":
-                    continue
-                elif strategy[0] == "0":
-                    break
-                elif strategy[0] == "1" or strategy[0] == "2":
-                    for group in friend_groups:
-                        body: dict[str, Any] = {"collapsed": strategy[0] == "2", "name": group["name"], "priority": group["priority"]} #展开/折叠分组时，只要在链接中指定分组序号即可，即使这里没有name键（To expand / collapse a folder, specifiying the following folder id should be enough. It doesn't matter whether the key "name" exists here）
-                        response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-chat/v1/friend-groups/%d" %(group["id"]), data = body)).json()
-                        logPrint(response)
-                        if response == None or "errorCode" in response and response["httpStatus"] == 500:
-                            if strategy[0] == "1":
-                                logPrint("已展开%s分组。\nFolder %s expanded." %(group["name"], group["name"]))
-                            else:
-                                logPrint("已折叠%s分组。\nFolder %s collapsed." %(group["name"], group["name"]))
-                        elif "errorCode" in response and response["httpStatus"] == 404:
-                            logPrint("操作失败！请检查分组%s是否存在。\nAction failed! Please check if the folder %s is still there." %(group["name"], group["name"]))
-                elif strategy[0] == "3":
-                    logPrint('请输入要更改展开/折叠状态的分组序号。输入“-1”以返回上一层。\nPlease input the group ids to switch the expansion/collapse state. Submit "-1" to return to the last step.')
-                    while True:
-                        groupId: str = logInput()
-                        if groupId == "":
-                            continue
-                        elif groupId.startswith("-1"):
-                            break
-                        elif groupId in set(map(str, friend_groupIds)):
-                            group: dict[str, Any] = await (await connection.request("GET", f"/lol-chat/v1/friend-groups/{groupId}")).json()
-                            if "errorCode" in group and group["httpStatus"] == 404:
-                                logPrint("操作失败！请检查分组是否存在。\nAction failed! Please check if the folder is still there.")
-                            else:
-                                body: dict[str, Any] = {"collapsed": not(group["collapsed"]), "name": group["name"], "priority": group["priority"]}
-                                response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-chat/v1/friend-groups/%d" %(group["id"]), data = body)).json()
-                                logPrint(response)
-                                if response == None or "errorCode" in response and response["httpStatus"] == 500:
-                                    if body["collapsed"]:
-                                        logPrint("已折叠%s分组。\nFolder %s collapsed." %(group["name"], group["name"]))
-                                    else:
-                                        logPrint("已展开%s分组。\nFolder %s expanded." %(group["name"], group["name"]))
-                                elif "errorCode" in response and response["httpStatus"] == 404:
-                                    logPrint("操作失败！请检查分组%s是否存在。\nAction failed! Please check if the folder %s is still there." %(group["name"], group["name"]))
-                        else:
-                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                else:
-                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                    continue
-                friend_groups, friend_groupIds, friend_group_df = await output_friend_group(connection)
-                logPrint("请选择折叠/展开选项：\nPlease select a collapse/expand option:\n1\t全部展开（Expand all）\n2\t全部折叠（Collaspe all）\n3\t展开/折叠指定分组（Expand/Collapse specific folders）")
+            await collapse_expand_friend_group(connection)
         elif action[0] == "3":
-            logPrint('请输入要重命名的分组序号。输入“-1”以返回上一层。\nPlease input the group ids to rename. Submit "-1" to return to the last step.')
-            while True:
-                groupId = logInput()
-                if groupId == "":
-                    continue
-                elif groupId.startswith("-1"):
-                    break
-                elif groupId in set(map(str, friend_groupIds)):
-                    group = await (await connection.request("GET", f"/lol-chat/v1/friend-groups/{groupId}")).json()
-                    if groupId == "0":
-                        logPrint("无法重命名默认分组。请换一个分组重试。\nCan't rename the default folder. Please change another folder and try again.") #重命名默认分组返回的状态值是403（The httpStatus returned by renaming the default folder is 403）
-                    else:
-                        logPrint("该分组的当前名称是%s。您想要将其修改为：\nThe current name for the selected folder is %s. You want to change it into:" %(group["name"], group["name"]))
-                        name: str = logInput()
-                        if name == "":
-                            logPrint("请输入要重命名的分组序号：\nPlease input the group ids to rename:")
-                            continue
-                        else:
-                            body = {"collapsed": group["collapsed"], "name": name, "priority": group["priority"]}
-                            response = await (await connection.request("PUT", "/lol-chat/v1/friend-groups/%d" %(group["id"]), data = body)).json()
-                            logPrint(response)
-                            if response == None:
-                                logPrint("已重命名分组。\nRenamed the group.\n原名称（Old name）：%s新名称（New name）：%s" %(group["name"], name))
-                            else:
-                                if response["httpStatus"] == 404:
-                                    logPrint("新名称已存在。请换个名字再试一次。\nNew name already exists. Please change another name and try again.")
-                                else:
-                                    logPrint("重命名%s分组失败。\nRenaming the group %s failed." %(group["name"], group["name"]))
-                else:
-                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                    continue
-                friend_groups, friend_groupIds, friend_group_df = await output_friend_group(connection)
-                logPrint("请输入要重命名的分组序号：\nPlease input the group ids to rename:")
+            await rename_friend_group(connection)
         elif action[0] == "4":
-            current_groupOrder_list: list[str] = list(friend_group_df.iloc[1:].sort_values(by = "priority", ascending = False)["id"])
-            logPrint("警告：修改好友分组排列顺序涉及较多的优先级运算，因此请不要频繁修改，否则可能导致预期之外的排列顺序。\nWarning: Rearranging friend group order involve involve a lot of priority calculations, so please don't change frequently, otherwise the folders may display in an unexpected order.\n")
-            logPrint('''请输入一个您期望的分组序号排列顺序列表，排在前面的代表显示在前，排在后面的代表显示在后。例如，如果想恢复您当前的排序，您可以输入“%s”。\nPlease input a groupId order list, where the group whose groupId index is small will be moved in the front of friend list, and vice versa. For example, if you'd like to recover the current friend group order, you may input "%s".''' %(current_groupOrder_list, current_groupOrder_list))
-            while True:
-                group_order_str: str = logInput()
-                if group_order_str == "":
-                    continue
-                elif group_order_str[0] == "0":
-                    break
-                else:
-                    try:
-                        tmp = eval(group_order_str)
-                    except:
-                        traceback_info = traceback.format_exc()
-                        logPrint(traceback_info)
-                        logPrint("您的输入格式有误！请重新输入。\nERROR format of input! Please try again.")
-                    else:
-                        if isinstance(tmp, list) and all(map(lambda x: isinstance(x, int) and x in friend_groupIds, tmp)) and len(tmp) == len(set(tmp)): #这里需要严格控制输入格式：①输入的是一个列表；②列表的元素全是整型，且都是分组序号；③列表元素无重复（Here the input format are strictly controlled: ①the input is a list; ②each element in the list is of integer type and represents a group id; ③the elements are unique）
-                            group_order: list[int] = tmp
-                            priority: int = max(100, max(map(lambda x: x["priority"], friend_groups))) + len(group_order) #后者是为了防止优先级递减而小于原分组优先级的最大值（The addend is designed to prevent `priority` from being less than the maximum of the original group priority）
-                            error_occurred_groupArrange: bool = False
-                            for groupId in group_order:
-                                group = await (await connection.request("GET", f"/lol-chat/v1/friend-groups/{groupId}")).json()
-                                body: dict[str, Any] = {"collapsed": group["collapsed"], "name": group["name"], "priority": priority} #请求主体中没有name键时，不仅请求速度降低，而且还会返回一个500异常信息（If the key "name" isn't in the request body, not only does the request speed slows, but the request also returns an error with a 500 httpStatus）
-                                response: Optional[dict[str, Any]] = await (await connection.request("PUT", f"/lol-chat/v1/friend-groups/{groupId}", data = body)).json()
-                                logPrint(response)
-                                if response == None:
-                                    logPrint("已将%s分组的优先级设置为%d。\nSet the priority of Group %s as %d." %(group["name"], priority, group["name"], priority))
-                                else:
-                                    if response["httpStatus"] != 500:
-                                        error_occurred_groupArrange = True
-                                priority -= 1
-                            if error_occurred_groupArrange:
-                                logPrint("排序过程发生了异常。请等待客户端刷新分组顺序后，或者对好友列表进行适当操作后手动排序。\nAn error occurred during ordering. Please order manually after League client refreshes the group order or you do some operations on your friend list.")
-                            else:
-                                logPrint("排序完成。请等待客户端刷新分组顺序，或者对好友列表进行适当操作以立刻刷新分组顺序。\nOrder success. Please wait for the League client to refresh the group order, or make some operations on the friend list to refersh group order immediately.")
-                            break
-                        else:
-                            logPrint("您的输入格式有误！请重新输入。\nERROR format of input! Please try again.")
+            await arrange_friend_group(connection)
         elif action[0] == "5":
             logPrint("警告：删除分组将导致该分组好友全部移至默认分组。您确认要删除分组吗？（输入任意键以确认删除，否则取消删除。）\nWarning: Removing folders will cause the friends under these folders to be moved to the default group. Do you want to continue? (Input anything to confirm removal, or null to cancel.)")
             confirm_str: str = logInput()
             confirm: bool = bool(confirm_str)
             if confirm:
-                logPrint('请输入您要删除的分组序号。输入“-1”以退出。\nPlease input the id of the group to remove. Submit "-1" to exit.')
-                while True:
-                    groupId = logInput()
-                    if groupId == "":
-                        continue
-                    elif groupId.startswith("-1"):
-                        break
-                    elif groupId in set(map(str, friend_groupIds)):
-                        if groupId == "0":
-                            logPrint("无法删除默认分组。\nYou can't remove the default folder.")
-                        else:
-                            group = await (await connection.request("GET", f"/lol-chat/v1/friend-groups/{groupId}")).json()
-                            logPrint("是否在删除该分组的同时删除所有好友？（输入任意非空字符串以删除，否则这些好友会移动至默认分组。）\nDo you want to delete all friends in this group? (Submit any non-empty string to delete them, or null to move them to the default group.)")
-                            delete_friend_sync_str: str = logInput()
-                            delete_friend_sync = bool(delete_friend_sync_str)
-                            if delete_friend_sync:
-                                friends = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
-                                if isinstance(friends, dict) and "errorCode" in friends:
-                                    logPrint("获取好友列表时出现了一个异常。\nAn error occurred when the program was trying to get the friend list.")
-                                else:
-                                    for friend in friends:
-                                        if friend["groupId"] == group["id"]:
-                                            pid: str = friend["id"]
-                                            unfriend_summonerName: str = get_info_name(friend)
-                                            response = await (await connection.request("DELETE", f"/lol-chat/v1/friends/{pid}")).json()
-                                            logPrint(response)
-                                            if response == None:
-                                                logPrint("您已与%s解除好友关系。\nYou've unfriended %s successfully." %(unfriend_summonerName, unfriend_summonerName))
-                                            else:
-                                                if response["httpStatus"] == 404:
-                                                    logPrint("您未能成功与%s解除好友关系。可能你们已经不是好友了。\nYou failed to unfriend %s. Maybe you're not friends already." %(unfriend_summonerName, unfriend_summonerName))
-                                                else:
-                                                    logPrint("您未能成功与%s解除好友关系。\nYou failed to unfriend %s." %(unfriend_summonerName, unfriend_summonerName))
-                            response = await (await connection.request("DELETE", f"/lol-chat/v1/friend-groups/{groupId}")).json()
-                            logPrint(response)
-                            if response == None:
-                                logPrint("已删除分组%s。\nRemoved folder %s." %(group["name"], group["name"]))
-                            else:
-                                logPrint("删除分组%s失败。也许它已经被删除了。\nRemoving folder %s failed. Maybe it's already been removed." %(group["name"], group["name"]))
-                    else:
-                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                        continue
-                    friend_groups, friend_groupIds, friend_group_df = await output_friend_group(connection)
-                    logPrint('请输入您要删除的分组序号。输入“-1”以退出。\nPlease input the id of the group to remove. Submit "-1" to exit.')
+                await remove_friend_group(connection)
         friend_groups, friend_groupIds, friend_group_df = await output_friend_group(connection)
         logPrint("请选择好友分组操作：\nPlease select an operation on friend groups:\n0\t返回上一层（Return to the last step）\n1\t添加分组（Add folder）\n2\t折叠/展开分组（Collapse/Expand folder）\n3\t重命名分组（Rename folder）\n*4\t排列分组顺序（Arrange folder order）\n5\t删除分组（Delete folder）\n6\t刷新好友分组（Refresh folders）")
 
@@ -991,7 +1015,6 @@ async def export_conversation(connection: Connection) -> None:
                 continue
             if conversations_got:
                 #先保存json文件（Save json files）
-                exported: bool = False
                 for conversation in conversations_to_export:
                     chatId: str = conversation["id"]
                     messages: list[dict[str, Any]] | dict[str, Any] = await (await connection.request("GET", f"/lol-chat/v1/conversations/{chatId}/messages")).json()
@@ -1013,13 +1036,14 @@ async def export_conversation(connection: Connection) -> None:
                 with open(os.path.join(folder, json1name), "w", encoding = "utf-8") as fp:
                     json.dump(conversation_json, fp, indent = 4, ensure_ascii = False)
                 #然后导出数据框（Then, export dataframes）
+                excel_name: str = "Conversations - %s.xlsx" %(get_info_name(current_info))
+                wbPath: str = os.path.join(folder, excel_name)
+                exported: bool = False
                 for conversation in conversations_to_export:
                     chatId = conversation["id"] #有可能获取完对话元数据后，用户把对话关了，然后从对话获取消息就获取不到了（Chances are that the user closes the conversation after the program obtains the conversation metadata, so that the program can't get the messages）
                     if chatId in conversation_json:
                         message_df: pandas.DataFrame = await sort_message_data(connection, conversation_json[chatId])
                         message_df = pandas.concat([message_df.iloc[:1], message_df.iloc[1:].sort_values(by = "timestamp", ascending = True)], ignore_index = True)
-                        excel_name: str = "Conversations - %s.xlsx" %(get_info_name(current_info))
-                        wbPath: str = os.path.join(folder, excel_name)
                         os.makedirs(folder, exist_ok = True)
                         workbook_exist: bool = os.path.exists(wbPath)
                         sheet_name: str = conversation["gameName"] + "#" + conversation["gameTag"] if conversation["type"] == "chat" else conversation["id"].split("@")[0]
@@ -1093,8 +1117,7 @@ async def chat(connection: Connection, pid: str) -> None:
                     if message["type"] == "chat" or message["type"] == "groupchat":
                         logPrint("[%s]%s：\n%s\n" %(timestamp, from_summonerName, message["body"]))
                     elif message["type"] == "system":
-                        system_messages = {"connecting": "正在连接……", "disconnected": "您已从聊天服务器断开，正在尝试重新连接……", "dropped_message": "由于发言内容或账号环境存在异常，消息发送暂时被限制，请注意账号保护并24小时后再试。", "is_blocked": "{actor}正在你的聊天黑名单中。你将不会看到它们的聊天信息。".format(actor = from_summonerName), "joined_room": "{actor}加入了队伍聊天".format(actor = from_summonerName), "left_room": "{actor}离开了队伍聊天".format(actor = from_summonerName), "no_friends": "看起来你现在还没有添加任何好友。邀请好友来聊天并一起玩游戏。", "no_online_friends": "一个小伙伴都没在线。你知道吗，你是可以给离线的玩家发送信息的哟~", "rich_content_replaced": "请查看《英雄联盟》移动端APP里的消息", "TEXT_CHAT_MUTED": "由于为其他玩家带来了负面游戏体验，你的聊天功能已受到限制。", "TEXT_CHAT_RESTRICTION": "由于为其他玩家带来了负面游戏体验，你的聊天功能已受到限制。", "TEXT_CHAT_MUTED_LIFTED": "你的聊天功能限制已解除。记住，清晰且有礼貌的发言是一支队伍一起获胜的关键。", "TEXT_CHAT_RESTRICTION_LIFTED": "你的聊天功能限制已解除。记住，清晰且有礼貌的发言是一支队伍一起获胜的关键。"}
-                        logPrint("[%s]%s\n" %(timestamp, system_messages.get(message["body"], message["body"])))
+                        logPrint("[%s]%s\n" %(timestamp, system_messages.get(message["body"], message["body"]).format(actor = from_summonerName)))
                     else:
                         logPrint("[%s](%s)%s\n" %(timestamp, messageTypes.get(message["type"], message["type"]), message["body"]))
             logPrint("▶ ", end = "")
@@ -1105,8 +1128,8 @@ async def chat(connection: Connection, pid: str) -> None:
             elif text == "" or text.endswith(chr(4)):
                 break
             else:
-                body = {"type": messageType, "body": text}
-                response = await (await connection.request("POST", f"/lol-chat/v1/conversations/{pid}/messages", data = body)).json()
+                body: dict[str, str] = {"type": messageType, "body": text}
+                response: dict[str, Any] = await (await connection.request("POST", f"/lol-chat/v1/conversations/{pid}/messages", data = body)).json()
                 logPrint(response)
                 if "errorCode" in response:
                     if response["httpStatus"] == 404:
@@ -1130,7 +1153,7 @@ async def send_message(connection: Connection) -> None:
         elif situation[0] == "0":
             break
         elif situation[0] == "1":
-            friends = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
+            friends: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
             if len(friends) == 0:
                 logPrint("看起来你现在还没有添加任何好友。邀请好友来聊天并一起玩游戏。\nLooks like you haven't added any friends yet. Invite friends to chat and play together.")
             else:
@@ -1183,8 +1206,8 @@ async def send_message(connection: Connection) -> None:
                     friend_hovercard_df = await output_friend_hovercard(connection, print_index = True, start_index = 1)
                     logPrint("变量提示（Variable hints）：\nfriend_hovercard_df = await sort_friend_hovercard(connection)")
         elif situation[0] == "2":
-            conversations = await (await connection.request("GET", "/lol-chat/v1/conversations")).json()
-            conversation_df = await sort_conversation_metadata(connection)
+            conversations: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/conversations")).json()
+            conversation_df: pandas.DataFrame = await sort_conversation_metadata(connection)
             if len(conversation_df) == 1: #筛选后的数据框仍包含中文标题（The filtered dataframe still includes the Chinese header）
                 logPrint("未检测到激活的对话。\nNo active conversation detected.")
             else:
@@ -2545,10 +2568,8 @@ async def invite(connection: Connection) -> None:
                         logPrint("您已离开房间。\nYou've left the original lobby.")
                     break
                 else:
-                    accepted_invitations: dict[str, Any] = filter(lambda x: x["state"] == "Accepted", lobby_invitations)
-                    pending_invitations: dict[str, Any] = filter(lambda x: x["state"] == "Pending", lobby_invitations)
-                    accepted_summonerIds: list[int] = list(map(lambda x: x["toSummonerId"], accepted_invitations))
-                    pending_summonerIds: list[int] = list(map(lambda x: x["toSummonerId"], pending_invitations))
+                    accepted_summonerIds: list[int] = [invid["toSummonerId"] for invid in lobby_invitations if invid["state"] == "Accepted"]
+                    pending_summonerIds: list[int] = [invid["toSummonerId"] for invid in lobby_invitations if invid["state"] == "Pending"]
                     accepted_summonerNames: list[str] = []
                     pending_summonerNames: list[str] = []
                     uninvited_summonerNames: list[str] = []

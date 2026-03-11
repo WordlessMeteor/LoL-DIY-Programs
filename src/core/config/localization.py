@@ -1400,6 +1400,23 @@ messageTypes: dict[str, str] = {
     "information": "通知",
     "celebration": "庆祝"
 }
+system_messages: dict[str, str] = {
+    "starting_soon": "[系统通知] 你的对局即将开始。请等待我们加载你的对局。这个进程应该不会超过几分钟。",
+    "connecting": "正在连接……",
+    "disconnected": "您已从聊天服务器断开，正在尝试重新连接……",
+    "dropped_message": "由于发言内容或账号环境存在异常，消息发送暂时被限制，请注意账号保护并24小时后再试。",
+    "is_blocked": "{actor}正在你的聊天黑名单中。你将不会看到它们的聊天信息。",
+    "joined_room": "{actor}加入了队伍聊天",
+    "left_room": "{actor}离开了队伍聊天",
+    "no_friends": "看起来你现在还没有添加任何好友。邀请好友来聊天并一起玩游戏。",
+    "no_online_friends": "一个小伙伴都没在线。你知道吗，你是可以给离线的玩家发送信息的哟~",
+    "rich_content_replaced": "请查看《英雄联盟》移动端APP里的消息",
+    "TEXT_CHAT_MUTED": "由于为其他玩家带来了负面游戏体验，你的聊天功能已受到限制。",
+    "chat_restriction_muted": "由于为其他玩家带来了负面游戏体验，你的聊天功能已受到限制。",
+    "TEXT_CHAT_RESTRICTION": "由于为其他玩家带来了负面游戏体验，你的聊天功能已受到限制。",
+    "TEXT_CHAT_MUTED_LIFTED": "你的聊天功能限制已解除。记住，清晰且有礼貌的发言是一支队伍一起获胜的关键。",
+    "TEXT_CHAT_RESTRICTION_LIFTED": "你的聊天功能限制已解除。记住，清晰且有礼貌的发言是一支队伍一起获胜的关键。"
+}
 invidStates: dict[str, str] = {
     "Pending": "等待确定",
     "OnHold": "搁置"
@@ -2179,6 +2196,23 @@ honorType_tooltip_bodies: dict[str, str] = {
 #     "system": "System",
 #     "information": "Information",
 #     "celebration": "Celebration"
+# }
+# system_messages: dict[str, str] = {
+#     "starting_soon": "[System Notification] Your match will start soon. Please wait as we load up your game. This process should not take more than a few minutes.",
+#     "connecting": "Connecting...",
+#     "disconnected": "You've been disconnected from chat, attempting to reconnect…",
+#     "dropped_message": "The message is restricted and could not be sent.",
+#     "is_blocked": "{actor} is on your block list. You will not see their chat messages.",
+#     "joined_room": "{actor} joined the lobby",
+#     "left_room": "{actor} left the lobby",
+#     "no_friends": "Looks like you haven't added any friends yet.  Invite friends to chat and play together.",
+#     "no_online_friends": "Looks like no one is home. Did you know you can send messages to friends who are offline?~",
+#     "rich_content_replaced": "Please check the message in the League of Legends mobile app.",
+#     "TEXT_CHAT_MUTED": "You are chat restricted for creating a negative experience for other players.",
+#     "chat_restriction_muted": "You are chat restricted for creating a negative experience for other players.",
+#     "TEXT_CHAT_RESTRICTION": "You are chat restricted for creating a negative experience for other players.",
+#     "TEXT_CHAT_MUTED_LIFTED": "You are no longer chat restricted. Remember, clear and respectful communication is essential to be a team that wins together.",
+#     "TEXT_CHAT_RESTRICTION_LIFTED": "You are no longer chat restricted. Remember, clear and respectful communication is essential to be a team that wins together."
 # }
 # invidStates: dict[str, str] = {
 #     "Pending": "Pending",

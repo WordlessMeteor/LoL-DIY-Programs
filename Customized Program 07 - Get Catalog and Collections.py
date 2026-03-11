@@ -1,7 +1,7 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import copy, os, json, time, pandas, re, requests
-from openpyxl import load_workbook
+from openpyxl import load_workbook, Workbook
 from typing import Any
 from src.utils.summoner import print_summoner_info, get_info_name
 from src.utils.format import getISOTime, addDefaultStyle, optimize_bool_display, pyobj2json
@@ -14,7 +14,7 @@ from src.core.config.localization import inventoryType_dict, ownershipTypes, sub
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/08
+# 更新（Last update）：     2026/03/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -234,7 +234,7 @@ async def create_hashtable(connection: Connection) -> dict[str, dict[Any, dict[s
     regaliaBanners: dict[str, dict[str, Any]] = await (await connection.request("GET", "/lol-regalia/v3/inventory/REGALIA_BANNER")).json()
     regaliaBanners_hashtable: dict[int, dict[str, str]] = {int(regaliaBanners[bannerId]["items"][0]["id"]): {"name": regaliaBanners[bannerId]["items"][0]["localizedName"], "description": regaliaBanners[bannerId]["items"][0]["localizedDescription"]} for bannerId in regaliaBanners}
     #华冠（Regalia crest）
-    regaliaCrests: dict[str, Any] = await (await connection.request("GET", "/lol-regalia/v3/inventory/REGALIA_CREST")).json()
+    # regaliaCrests: dict[str, Any] = await (await connection.request("GET", "/lol-regalia/v3/inventory/REGALIA_CREST")).json()
     #汇总（Summary）
     hashtable_dicts: dict[str, dict[Any, dict[str, str]]] = {"CHAMPION_SKIN": championSkins_hashtable, "COMPANION": companions_hashtable, "NEXUS_FINISHER": nexusfinishers_hashtable, "STATSTONE": statstones_hashtable, "STRAWBERRY_BOON": strawberryBoons_hashtable, "STRAWBERRY_LOADOUT_ITEM": strawberryLoadoutItems_hashtable, "STRAWBERRY_MAP": strawberryMaps_hashtable, "EMOTE": summonerEmotes_hashtable, "SUMMONER_ICON": summonerIcons_hashtable, "TFT_DAMAGE_SKIN": tftdamageskins_hashtable, "TFT_MAP_SKIN": tftmapskins_hashtable, "TFT_PLAYBOOK": tftplaybooks_hashtable, "TFT_ZOOM_SKIN": tftzoomskins_hashtable, "WARD_SKIN": wardSkins_hashtable, "ACHIEVEMENT_TITLE": titles_hashtable, "REGALIA_BANNER": regaliaBanners_hashtable}
     return hashtable_dicts
@@ -259,10 +259,10 @@ def sort_catalog_items(catalogList: list[dict[str, Any]], hashtable_dicts: dict[
     print("商品信息整理进度（Catalog data organization process）：")
     for item_index in range(len(catalogList)):
         item: dict[str, Any] = catalogList[item_index]
-        priceDict: dict[str, int] = {}
+        priceDict: dict[str, dict[str, int]] = {}
         for price in item["prices"]:
             priceDict[price["currency"]] = price
-        sale_priceDict: dict[str, int] = {}
+        sale_priceDict: dict[str, dict[str, int]] = {}
         for price in item["prices"]:
             if price["sale"] != None:
                 sale_priceDict[price["currency"]] = price["sale"]
@@ -575,50 +575,47 @@ async def fetch_store(connection: Connection) -> None:
         print("警告：由于该文件已存在，本次导出已追加新工作表到工作簿的末尾。这可能导致工作表顺序的错乱。是否需要对工作表进行排序？（输入任意键排序，否则不排序）\nWarning: Because the excel workbook has existed, new sheets are appended to the last of the original sheet list. This may result in the disarrangement of worksheet order. Do you want to sort the sheets? (Input anything to sort the sheets, or null to skip sorting)")
         sort: bool = bool(input())
         if sort:
-            store_loaded: bool = True
             print("正在读取刚刚创建的工作表……\nLoading the workbook just created ...")
             while True:
                 try:
-                    wb = load_workbook(wb2Path)
+                    wb: Workbook = load_workbook(wb2Path)
                 except FileNotFoundError:
                     print('商品藏品信息工作簿读取失败！请确保“%s”文件夹内含有名为“%s”的工作簿。如果需要退出程序，请输入“0”。\nERROR reading the Catalog and Collections workbook! Please make sure the workbook "%s" is in the folder "%s". If you want to exit the program, please submit "0".' %(folder, excel_name, excel_name, folder))
                     store_reload: str = input()
                     if store_reload == "0":
-                        store_loaded = False
                         break
                 else:
+                    sheetnames: list[str] = wb.sheetnames #第一次获取原工作簿的工作表名称列表（The first time to get the sheet name list of the original workbook）
+                    print("请选择排序方式：\nPlease select an ordering pattern:\n1\t时间优先（默认）【Time in priority (by default)】\n2\t类别优先（Type in priority）")
+                    op: str = input()
+                    print("正在创建顺序工作表列表……\nCreating the ordered sheet list ...")
+                    date_re: re.Pattern[str] = re.compile(r"\d{4}-\d{2}-\d{2}") #设置正则表达式识别
+                    if op == "" or op[0] != "2": #按照时间优先的原则对工作表进行排序，时间相同则商品工作表在前，藏品工作表在后（Sort the sheets by time in priority. If the times are the same, then the store sheet is arranged in front of the collection sheet）
+                        sheetname_date_list: list[str] = list(map(lambda x: date_re.search(x).group(), sheetnames)) #从工作表名称提取日期信息形成列表（Extract the dates from the sheetnames to form a list）
+                        sheetname_type_list: list[str] = list(map(lambda x: x.split()[0], sheetnames)) #从工作表名称提取数据类型信息形成列表（Extract the data types from the sheetnames to form a list）
+                        sheetname_platform_list: list[str] = list(map(lambda x: x.split("_")[1], sheetnames)) #从工作表名称提取大区信息形成列表（Extract the platformId from the sheetnames to form a list）
+                        sheetname_tmpDf: pandas.DataFrame = pandas.DataFrame(data = [sheetnames, sheetname_date_list, sheetname_type_list, sheetname_platform_list]).transpose() #创建一个四列数据框，各列分别是完整工作表名、日期信息、数据类型信息和大区信息（Create a 4-column dataframe whose columns are the complete sheetname, date, data type and platformId）
+                        sheetnames_sorted: list[str] = sheetname_tmpDf.sort_values(by = [1, 2, 3], ascending = [True, False, True]).iloc[:, 0].tolist() #将工作表名按照第一关键字——日期信息正序排列，第二关键字——数据类型信息倒序排列（先商品后藏品），第三关键字——大区信息正序排列（Order the sheetnames according to the ascending order of the first keyword - date, the descending order of the second keyword - data type and the ascending order of the third keyword - platformId）
+                    else:
+                        sheets_Store: list[str] = [sheet_iter for sheet_iter in sheetnames if sheet_iter.startswith("Store") or sheet_iter.startswith("Catalog")] #提取商品类型的工作表名称（Extract the names of the sheets containing Store data）
+                        sheets_Collections: list[str] = [sheet_iter for sheet_iter in sheetnames if sheet_iter.startswith("Collections")] #提取藏品类型的工作表名称（Extract the names of the sheets containing Collection data）
+                        sheets_Store = sorted(sheets_Store, key = lambda x: date_re.search(x).group()) #按照日期正序排列商品类型的工作表名称（Order the Store sheetnames according to the ascending order of dates）
+                        sheets_Collections = sorted(sheets_Collections, key = lambda x: date_re.search(x).group()) #按照日期正序排列藏品类型的工作表名称（Order the Collection sheetnames according to the ascending order of dates）
+                        sheetnames_sorted: list[str] = sheets_Store + sheets_Collections #合并列表得到先按类别排列、再按日期排列的工作表名称（Combine the lists to get the sheetname list ordered firstly by data type and secondly by date）
+                    #下面排列所有工作表（The following code arrange all sheets）
+                    print("正在排序……\nOrdering ...")
+                    for i in range(len(sheetnames_sorted)): #排序的思路是每次将一个工作表根据其在原工作表列表中的索引和在顺序工作表列表中的索引的差值进行移动（The main idea of sheets' sorting is to move each sheet according to the difference of the indices between in the original sheet list and in the ordered sheet list）
+                        sheetnames = wb.sheetnames #因为一次移动可能导致很多其它工作表的位置发生变化，所以必须每次都重新获取工作表列表（Because a moving event may result in location change of many other sheets, the sheet list must be obtained each time）
+                        sheetname_iter: str = sheetnames_sorted[i] #这里以顺序工作表为迭代器进行遍历，因为顺序工作表是固定不变的（Here the ordered sheet list acts as the iterator to be traversed, for the ordered sheet list is fixed）
+                        if sheetnames[i] != sheetname_iter:
+                            preIndex: int = sheetnames.index(sheetname_iter)
+                            wb.move_sheet(sheetname_iter, i - preIndex) #注意移动距离数应当是排序后的索引减去排序前的索引（Note that the moving offset should be the index in the ordered list subtracted by that in the original list）
+                        #print("排序进度（Ordering process）：%d/%d\t工作表名称（Sheet name）： %s" %(i + 1, len(sheetnames_sorted), sheetname_iter))
+                    print('正在保存中……\nSaving the ordered workbook ...')
+                    wb.save(os.path.join(folder, excel_name_sorted))
+                    print('排序完成！排好序的工作簿已保存为“%s”。请按任意键退出。\nOrdering finished! The ordered workbook is saved as "%s". Press any key to exit ...\n' %(excel_name_sorted, excel_name_sorted))
+                    input()
                     break
-            if store_loaded:
-                sheetnames: list[str] = wb.sheetnames #第一次获取原工作簿的工作表名称列表（The first time to get the sheet name list of the original workbook）
-                print("请选择排序方式：\nPlease select an ordering pattern:\n1\t时间优先（默认）【Time in priority (by default)】\n2\t类别优先（Type in priority）")
-                op: str = input()
-                print("正在创建顺序工作表列表……\nCreating the ordered sheet list ...")
-                date_re = re.compile(r"\d{4}-\d{2}-\d{2}") #设置正则表达式识别
-                if op == "" or op[0] != "2": #按照时间优先的原则对工作表进行排序，时间相同则商品工作表在前，藏品工作表在后（Sort the sheets by time in priority. If the times are the same, then the store sheet is arranged in front of the collection sheet）
-                    sheetname_date_list: list[str] = list(map(lambda x: date_re.search(x).group(), sheetnames)) #从工作表名称提取日期信息形成列表（Extract the dates from the sheetnames to form a list）
-                    sheetname_type_list: list[str] = list(map(lambda x: x.split()[0], sheetnames)) #从工作表名称提取数据类型信息形成列表（Extract the data types from the sheetnames to form a list）
-                    sheetname_platform_list: list[str] = list(map(lambda x: x.split("_")[1], sheetnames)) #从工作表名称提取大区信息形成列表（Extract the platformId from the sheetnames to form a list）
-                    sheetname_tmpDf: pandas.DataFrame = pandas.DataFrame(data = [sheetnames, sheetname_date_list, sheetname_type_list, sheetname_platform_list]).transpose() #创建一个四列数据框，各列分别是完整工作表名、日期信息、数据类型信息和大区信息（Create a 4-column dataframe whose columns are the complete sheetname, date, data type and platformId）
-                    sheetnames_sorted: list[str] = sheetname_tmpDf.sort_values(by = [1, 2, 3], ascending = [True, False, True]).iloc[:, 0].tolist() #将工作表名按照第一关键字——日期信息正序排列，第二关键字——数据类型信息倒序排列（先商品后藏品），第三关键字——大区信息正序排列（Order the sheetnames according to the ascending order of the first keyword - date, the descending order of the second keyword - data type and the ascending order of the third keyword - platformId）
-                else:
-                    sheets_Store: list[str] = [sheet_iter for sheet_iter in sheetnames if sheet_iter.startswith("Store") or sheet_iter.startswith("Catalog")] #提取商品类型的工作表名称（Extract the names of the sheets containing Store data）
-                    sheets_Collections: list[str] = [sheet_iter for sheet_iter in sheetnames if sheet_iter.startswith("Collections")] #提取藏品类型的工作表名称（Extract the names of the sheets containing Collection data）
-                    sheets_Store = sorted(sheets_Store, key = lambda x: date_re.search(x).group()) #按照日期正序排列商品类型的工作表名称（Order the Store sheetnames according to the ascending order of dates）
-                    sheets_Collections = sorted(sheets_Collections, key = lambda x: date_re.search(x).group()) #按照日期正序排列藏品类型的工作表名称（Order the Collection sheetnames according to the ascending order of dates）
-                    sheetnames_sorted: list[str] = sheets_Store + sheets_Collections #合并列表得到先按类别排列、再按日期排列的工作表名称（Combine the lists to get the sheetname list ordered firstly by data type and secondly by date）
-                #下面排列所有工作表（The following code arrange all sheets）
-                print("正在排序……\nOrdering ...")
-                for i in range(len(sheetnames_sorted)): #排序的思路是每次将一个工作表根据其在原工作表列表中的索引和在顺序工作表列表中的索引的差值进行移动（The main idea of sheets' sorting is to move each sheet according to the difference of the indices between in the original sheet list and in the ordered sheet list）
-                    sheetnames = wb.sheetnames #因为一次移动可能导致很多其它工作表的位置发生变化，所以必须每次都重新获取工作表列表（Because a moving event may result in location change of many other sheets, the sheet list must be obtained each time）
-                    sheetname_iter: str = sheetnames_sorted[i] #这里以顺序工作表为迭代器进行遍历，因为顺序工作表是固定不变的（Here the ordered sheet list acts as the iterator to be traversed, for the ordered sheet list is fixed）
-                    if sheetnames[i] != sheetname_iter:
-                        preIndex: int = sheetnames.index(sheetname_iter)
-                        wb.move_sheet(sheetname_iter, i - preIndex) #注意移动距离数应当是排序后的索引减去排序前的索引（Note that the moving offset should be the index in the ordered list subtracted by that in the original list）
-                    #print("排序进度（Ordering process）：%d/%d\t工作表名称（Sheet name）： %s" %(i + 1, len(sheetnames_sorted), sheetname_iter))
-                print('正在保存中……\nSaving the ordered workbook ...')
-                wb.save(os.path.join(folder, excel_name_sorted))
-                print('排序完成！排好序的工作簿已保存为“%s”。请按任意键退出。\nOrdering finished! The ordered workbook is saved as "%s". Press any key to exit ...\n' %(excel_name_sorted, excel_name_sorted))
-                input()
 
 #-----------------------------------------------------------------------------
 # websocket

@@ -1,10 +1,8 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import os, pandas, time
-from typing import Any
 from src.utils.format import format_df, addDefaultStyle
 from src.utils.summoner import print_summoner_info
-from src.core.config.localization import gamemaps
 from src.core.dataframes.gameMode import sort_queue_data, check_available_queue
 
 #=============================================================================
@@ -23,7 +21,7 @@ from src.core.dataframes.gameMode import sort_queue_data, check_available_queue
 #    https://github.com/sousa-andre/lcu-driver
 #-----------------------------------------------------------------------------
 
-connector = Connector()
+connector: Connector = Connector()
 
 #-----------------------------------------------------------------------------
 # 获取游戏模式信息（Get game mode information）

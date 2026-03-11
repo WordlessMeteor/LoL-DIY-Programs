@@ -39,7 +39,7 @@ async def get_lockfile(connection: Connection) -> Optional[str]:
     path: str = os.path.join(connection.installation_path.encode("gb18030").decode("utf-8"), "lockfile")
     if os.path.isfile(path):
         file: IO[Any] = open(path, "r")
-        text: str = file.readline().split(":")
+        text: list[str] = file.readline().split(":")
         file.close()
         print(connection.address)
         print(f"riot    {text[3]}")
@@ -265,7 +265,7 @@ async def sort_summoner_info(connection: Connection, puuids: list[str], summoner
         log = LogManager()
     logPrint = log.logPrint
     if unmapped_keys == None:
-        unmapped_keys: dict[str, set[Any]] = {"summonerIcon": set(), "regaliaBanner": set(), "LoLChampion": set()}
+        unmapped_keys = {"summonerIcon": set(), "regaliaBanner": set(), "LoLChampion": set()}
     info_header_keys: list[str] = list(profile_header.keys())
     info_data: dict[str, Any] = {key: [] for key in info_header_keys}
     logPrint("召唤师信息整理进度（Summoner information organization process）：")

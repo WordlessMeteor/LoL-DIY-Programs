@@ -1,7 +1,7 @@
 import json, os, pandas, requests, shutil, time, unicodedata
 from wcwidth import wcswidth
 from urllib.parse import urljoin
-from typing import Any
+from typing import Any, Literal
 
 def requestUrl(method: str, url: str, session: requests.sessions.Session | None = None, **kwargs: Any) -> tuple[requests.models.Response, int, requests.sessions.Session]:
     if session == None:
@@ -165,7 +165,7 @@ for i in language_ddragon:
         language_cdragon[language_ddragon[i]["CODE"]] = "default" #在CommunityDragon数据库上，美服正式服的数据资源代码是default，而不是小写的en_US（The code for English (US) data resources on CommunityDragon database is "default" instead of the lowercase of "en_US"）
     else:
         language_cdragon[language_ddragon[i]["CODE"]] = language_ddragon[i]["CODE"].lower()
-language_dict: dict[str, list[str]] = {"No.": list(language_ddragon.keys()), "CODE": list(map(lambda x: x["CODE"], language_ddragon.values())), "LANGUAGE": list(map(lambda x: x["LANGUAGE (EN)"], language_ddragon.values())), "语言": list(map(lambda x: x["LANGUAGE (ZH)"], language_ddragon.values())), "Applicable CDragon Data Patches": list(map(lambda x: x["Applicable CDragon Data Patches"], language_ddragon.values()))}
+language_dict: dict[str, list[int | str]] = {"No.": list(language_ddragon.keys()), "CODE": list(map(lambda x: x["CODE"], language_ddragon.values())), "LANGUAGE": list(map(lambda x: x["LANGUAGE (EN)"], language_ddragon.values())), "语言": list(map(lambda x: x["LANGUAGE (ZH)"], language_ddragon.values())), "Applicable CDragon Data Patches": list(map(lambda x: x["Applicable CDragon Data Patches"], language_ddragon.values()))}
 language_df: pandas.DataFrame = pandas.DataFrame(language_dict)
 print(format_df(language_df)[0])
 while True:
@@ -173,11 +173,12 @@ while True:
     if language_option == "" or language_option in [str(i) for i in range(1, 31)]:
         if language_option == "":
             language_option = "29"
-        language_code = language_ddragon[int(language_option)]["CODE"]
+        language_code: str = language_ddragon[int(language_option)]["CODE"]
         break
     elif language_option[0] == "0":
         exit()
     elif language_option == "all":
+        language_code = ""
         break
     else:
         print("语言选项输入错误！请重新输入：\nERROR input of language option! Please try again:")
@@ -233,13 +234,12 @@ for i in range(len(language_codes)):
                     folder = local_prefix
                 elif folder == "0":
                     break
+                path: str = os.path.join(folder, file).replace("\\", "/")
+                print("[%s]" %(time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())), end = "")
+                print("[%d/%d]正在获取文件（Fetching file）： %s" %(cnt, len(trans_files), path))
                 try:
-                    path: str = os.path.join(folder, file).replace("\\", "/")
-                    print("[%s]" %(time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())), end = "")
-                    print("[%d/%d]正在获取文件（Fetching file）： %s" %(cnt, len(trans_files), path))
                     with open(path, "r", encoding = "utf-8") as fp:
                         src = json.load(fp)
-                    trans_data[language_code][file] = src
                 except FileNotFoundError:
                     print('未找到文件“%s”！请输入正确的翻译数据文件夹路径！\nFile "%s" NOT found! Please input a correct translation data folder!' %(path, path))
                     continue
@@ -250,6 +250,7 @@ for i in range(len(language_codes)):
                     print("数据格式错误！请选择一个符合CommunityDragon数据库中记录的翻译数据格式（%s）的数据文件！\nData format mismatched! Please select a data file that corresponds to the format of the translation data archived in CommunityDragon database (%s)!" %(urljoin(web_prefix, file), urljoin(web_prefix, file)))
                     continue
                 else:
+                    trans_data[language_code][file] = src
                     break
         if mode == "online":
             try:

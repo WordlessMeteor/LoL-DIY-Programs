@@ -14,7 +14,7 @@ from src.core.config.localization import essenceTypes, lootCategories, itemStatu
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/07
+# 更新（Last update）：     2026/03/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -24,7 +24,7 @@ from src.core.config.localization import essenceTypes, lootCategories, itemStatu
 #    https://github.com/sousa-andre/lcu-driver
 #-----------------------------------------------------------------------------
 
-connector = Connector()
+connector: Connector = Connector()
 
 #-----------------------------------------------------------------------------
 #  分析战利品（Analyze loots）

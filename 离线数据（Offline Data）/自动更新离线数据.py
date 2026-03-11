@@ -6,7 +6,7 @@ from humanize import naturalsize
 from cdtb.binfile import BinFile
 from cdtb.rstfile import RstFile, get_hashfile, key_to_hash
 from cdtb.export import AtlasInfoConverter
-from typing import Any, IO
+from typing import Any, IO, Literal
 
 cwd: str = os.getcwd()
 if cwd.endswith("离线数据（Offline Data）"): #允许用户直接双击脚本（Users are allowed to double click this program）

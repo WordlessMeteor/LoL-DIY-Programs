@@ -16,7 +16,7 @@ from src.core.dataframes.champions import test_bot, sort_ddragon_champions, sort
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/08
+# 更新（Last update）：     2026/03/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -97,7 +97,7 @@ def get_ddragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, An
             while True:
                 champion_local: str = input()
                 if champion_local == "":
-                    champion_local: str = champion_local_default
+                    champion_local = champion_local_default
                 elif champion_local[0] == "0":
                     print("英雄数据获取失败！请检查系统网络状况和代理设置。\nChampion data capture failure! Please check the system network condition and proxy configuration.")
                     time.sleep(3)
@@ -188,7 +188,7 @@ def get_cdragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, An
         return ({}, version)
     champion_local_default: str = "离线数据（Offline Data）/cdragon/pbe/plugins/rcp-be-lol-game-data/global/%s/v1/champions/" %language_cdragon[locale]
     champion_files_ready: bool = False
-    LoLChampion: list[dict[str, Any]] = []
+    LoLChampions_source: list[dict[str, Any]] = []
     #注释以下代码以直接离线加载数据资源（Comment out the following code to load offline data resources directly）
     print("获取进度（Capturing process）：")
     for i in range(len(champion_urls)):
@@ -201,17 +201,18 @@ def get_cdragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, An
             print("英雄信息获取失败！请检查系统网络状况和代理设置。\nChampion information capture failure! Please check the system network condition and proxy configuration.")
             break
         champion: dict[str, Any] = source.json()
-        LoLChampion.append(champion)
+        LoLChampions_source.append(champion)
         print("[%s]" %(time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())), end = "")
         print("[%d/%d]%s %s" %(i + 1, len(champion_urls), champion["name"], champion["title"]))
     else:
         champion_files_ready = True #任何一个文件获取失败都会导致程序进入离线加载模式（Any file that failed to be loaded will cause to program to load all data again offline）
+        champion_url: str = "" #占位变量，用于处理变量可能不存在的类型检查提示（A dummy variable to handle the "Variable is possibly unbound" type check hint）
     #注释以上代码以直接离线加载数据资源（Comment out the above code to load offline data resources directly）
     if not champion_files_ready:
-        print('英雄信息获取超时！正在尝试离线加载数据……\nChampion information capture timeout! Trying loading offline data ...\n请输入英雄Json数据文件夹路径。输入空字符以使用默认相对引用路径“%s”。输入“0”以返回上一层。\nPlease enter the champion Json data folder path. Enter an empty string to use the default relative path: "%s". Submit "0" to return to the last step.' %(champion_local_default, champion_local_default))
+        print('英雄信息获取失败！正在尝试离线加载数据……\nChampion information capture failure! Trying loading offline data ...\n请输入英雄Json数据文件夹路径。输入空字符以使用默认相对引用路径“%s”。输入“0”以返回上一层。\nPlease enter the champion Json data folder path. Enter an empty string to use the default relative path: "%s". Submit "0" to return to the last step.' %(champion_local_default, champion_local_default))
         while True:
-            LoLChampion = []
-            champion_local = input()
+            LoLChampions_source = []
+            champion_local: str = input()
             if champion_local == "":
                 champion_local = champion_local_default
             elif champion_local[0] == "0":
@@ -223,7 +224,7 @@ def get_cdragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, An
                     with open(os.path.join(champion_local, champion_files[championId]), "r", encoding = "utf-8") as fp:
                         champion = json.load(fp)
                     if isinstance(champion, dict) and all([i in champion for i in ["id", "name", "alias", "title", "shortBio", "tacticalInfo", "playstyleInfo", "squarePortraitPath", "stingerSfxPath", "chooseVoPath", "banVoPath", "roles", "recommendedItemDefaults", "skins", "passive", "spells"]]) and all(isinstance(i, dict) for i in [champion["tacticalInfo"], champion["playstyleInfo"], champion["passive"]]) and all(i in champion["tacticalInfo"] for i in ["style", "difficulty", "damageType"]) and all(i in champion["playstyleInfo"] for i in ["damage", "durability", "crowdControl", "mobility", "utility"]) and all(i in champion["passive"] for i in ["name", "abilityIconPath", "abilityVideoPath", "abilityVideoImagePath", "description"]) and all(isinstance(i, int) for i in [champion["id"], champion["tacticalInfo"]["style"], champion["tacticalInfo"]["difficulty"], champion["playstyleInfo"]["damage"], champion["playstyleInfo"]["durability"], champion["playstyleInfo"]["crowdControl"], champion["playstyleInfo"]["mobility"], champion["playstyleInfo"]["utility"]]) and all(isinstance(i, str) for i in [champion["name"], champion["alias"], champion["title"], champion["shortBio"], champion["squarePortraitPath"], champion["stingerSfxPath"], champion["chooseVoPath"], champion["banVoPath"], champion["tacticalInfo"]["damageType"], champion["passive"]["name"], champion["passive"]["abilityIconPath"], champion["passive"]["abilityVideoPath"], champion["passive"]["abilityVideoImagePath"], champion["passive"]["description"]]) and all(isinstance(i, list) for i in [champion["roles"], champion["recommendedItemDefaults"], champion["skins"], champion["spells"]]):
-                        LoLChampion.append(champion)
+                        LoLChampions_source.append(champion)
                     else:
                         print("数据格式错误！请选择一个符合CommunityDragon数据库中记录的英雄数据格式（%s）的数据文件！\nData format mismatched! Please select a data file that corresponds to the format of the champion data archived in CommunityDragon database (%s)!" %(champion_url, champion_url))
                         break
@@ -238,21 +239,21 @@ def get_cdragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, An
                 continue
             else:
                 break
-    LoLChampions: dict[int, dict[str, Any]] = {champion["id"]: champion for champion in LoLChampion}
+    LoLChampions: dict[int, dict[str, Any]] = {champion["id"]: champion for champion in LoLChampions_source}
     return (LoLChampions, version)
 
-async def get_plugin_champions(connection: Connection) -> list: #和整理静态英雄数据资源的函数不同，这里返回的是一个列表（What's different from the functions that organize static champion data resources is that this function returns a list）
+async def get_plugin_champions(connection: Connection) -> list[dict[str, Any]]: #和整理静态英雄数据资源的函数不同，这里返回的是一个列表（What's different from the functions that organize static champion data resources is that this function returns a list）
     champion_summary: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/champion-summary.json")).json()
     championIds: list[int] = list(map(lambda x: x["id"], champion_summary))
-    LoLChampion: list[dict[str, Any]] = []
+    LoLChampions_source: list[dict[str, Any]] = []
     print("获取进度（Capturing process）：")
     for i in range(len(championIds)):
         championId: int = championIds[i]
         champion: dict[str, Any] = await (await connection.request("GET", f"/lol-game-data/assets/v1/champions/{championId}.json")).json() #插件从本地读取，因此一般不需要设置异常处理（Plugins are read locally, so exception handling isn't needed here）
-        LoLChampion.append(champion)
+        LoLChampions_source.append(champion)
         print("[%s]" %(time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())), end = "")
         print("[%d/%d]%s %s" %(i + 1, len(championIds), champion["name"], champion["title"]))
-    return LoLChampion
+    return LoLChampions_source
 
 async def count_champions(connection: Connection) -> None:
     current_summoner: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
@@ -265,10 +266,10 @@ async def count_champions(connection: Connection) -> None:
         elif data_type[0] == "0":
             return
         elif data_type[0] == "1":
-            LoLChampion: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champions/v1/inventories/%s/champions" %current_summoner["summonerId"])).json()
+            LoLChampions_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champions/v1/inventories/%s/champions" %current_summoner["summonerId"])).json()
             break
         elif data_type[0] == "2":
-            LoLChampion = await get_plugin_champions(connection)
+            LoLChampions_source = await get_plugin_champions(connection)
             break
         else:
             print("您的输入有误！请重新输入。\nERROR input! Please try again.")
@@ -283,12 +284,12 @@ async def count_champions(connection: Connection) -> None:
             return
         elif mode[0] == "1":
             sheet_name: str = "Sheet3"
-            for champion in LoLChampion:
+            for champion in LoLChampions_source:
                 LoLChampions[champion["id"]] = champion
             champion_got = True
         elif mode[0] == "2":
             sheet_name = "Sheet2"
-            for champion in LoLChampion:
+            for champion in LoLChampions_source:
                 LoLChampions[champion["id"]] = champion
             LoLChampions, count = await test_bot(connection, LoLChampions, verbose = True)
             champion_got = True
@@ -304,7 +305,7 @@ async def count_champions(connection: Connection) -> None:
                 else:
                     available_bots: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby/custom/available-bots")).json()
                     available_botIds: list[int] = list(map(lambda x: x["id"], available_bots))
-                    for champion in LoLChampion:
+                    for champion in LoLChampions_source:
                         if champion["id"] in available_botIds:
                             LoLChampions[champion["id"]] = champion
                     champion_got = True

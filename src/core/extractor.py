@@ -790,7 +790,7 @@ class LoLDataExtractor:
         :return: 字符串常量池中的字符串值。<br>A string value in the stringtable.
         :rtype: str
         '''
-        pHash = re.compile(r"\{\w+\}")
+        pHash: re.Pattern[str] = re.compile(r"\{\w+\}")
         keys: list[str] = [key.lower()]
         if not pHash.fullmatch(key): #如果传入的key已经是hash值，则不用再求其hash（If `key` is already a hash value, then don't obtain its hash）
             keys.append(cls.compute_rsthash(key.lower(), strtable["version"]))
@@ -809,7 +809,7 @@ class LoLDataExtractor:
         :param binData: 待处理的二进制描述数据。<br>The binary description to process.
         :type binData: dict[str, Any]
         '''
-        pHash = re.compile(r"\{\w+\}")
+        pHash: re.Pattern[str] = re.compile(r"\{\w+\}")
         if isinstance(binData, dict):
             binData = copy.deepcopy(binData)
             if "DataValues" in binData:
@@ -952,7 +952,7 @@ class LoLDataExtractor:
         :return: 嵌套说明文本键在替换后的说明文本。<br>The tooltip after replacement of nested tooltip keys.
         :rtype: str
         '''
-        pCite = re.compile(r"{{[/\sA-Za-z0-9=#\'_@]*}}")
+        pCite: re.Pattern[str] = re.compile(r"{{[/\sA-Za-z0-9=#\'_@]*}}")
         start_index = 0 #如果没有在字符串常量池中找到花括号包起来的部分对应的条目，则跳过这个部分（If the entry corresponding to the citation enclosed in a pair of curly brackets isn't found in the stringtable, skip this citation）
         if binData != None:
             binData = copy.deepcopy(binData)
@@ -1003,7 +1003,7 @@ class LoLDataExtractor:
         :return: 表达式是否为连除式。<br>Whether the expression is a continuous division.
         :rtype: bool
         '''
-        pFigure = re.compile(r"-?\d+\.?\d*")
+        pFigure: re.Pattern[str] = re.compile(r"-?\d+\.?\d*")
         while (matchObj := pFigure.search(expr)):
             expr = expr[:matchObj.start()] + expr[matchObj.end():]
         return len(set(list(expr))) == 1 and "/" in expr
@@ -1067,7 +1067,7 @@ class LoLDataExtractor:
             formulaStr = "{" + formulaStr + "}"
         elif formulaPart_type == "AbilityResourceByCoefficientCalculationPart": #法力值收益率（Mana ratio）
             mCoefficient: float = formulaPart["mCoefficient"]
-            partCalc: int | float = cls.aRound(mCoefficient, 5)
+            partCalc: Any = cls.aRound(mCoefficient, 5)
             formulaStr = str(partCalc) + (" × 最大法力值" if isCHS else " × max Mana")
         elif formulaPart_type == "BuffCounterByCoefficientCalculationPart": #在装备中，仅用于飞升护符、榨血睥睨和先机鞋（In items, this only applies to Talisman Ascension, Leeching Leer and the upgraded boots granted by Feats of Strength）
             mCoefficient: float = formulaPart["mCoefficient"]
@@ -1284,8 +1284,8 @@ class LoLDataExtractor:
             return reservedVars[var]
         #首先处理默认数值（First, resolve the default value）
         var_hash: str = cls.compute_binhash(var) #准备变量名的8位hash值（Prepare the 8-digit hash value of `var`）
-        pOtherBinDataHeader = re.compile(r"\w*(\.\w*)*:")
-        pVarFloat = re.compile(r"\w*\.-?\d") #变量后带点和数字的表示固定小数位数，这里由于统一通过aRound来进行控制，因此直接忽略（Variables suffixed with a dot and a number means the numebr of digits. Since it's controlled by `aRound` in this program, here we ignore it）
+        pOtherBinDataHeader: re.Pattern[str] = re.compile(r"\w*(\.\w*)*:")
+        pVarFloat: re.Pattern[str] = re.compile(r"\w*\.-?\d") #变量后带点和数字的表示固定小数位数，这里由于统一通过aRound来进行控制，因此直接忽略（Variables suffixed with a dot and a number means the numebr of digits. Since it's controlled by `aRound` in this program, here we ignore it）
         skip: bool = False #如果出现无法处理的情形，则跳过值处理部分，直接返回空集字符（If the function can't handle some case, it'll skip the value processing part and return an null set character instead）
         normalValue: str = f"@{var}@" #值初始化（Value initialization）
         if var.startswith("Effect") and var.endswith("Amount"):
@@ -1731,8 +1731,8 @@ class LoLDataExtractor:
         :return: 变量代换后的说明文本。<br>Tooltip after variable substitution.
         :rtype: str
         '''
-        pStats = re.compile(r"@.*?@") #贪婪模式（Greedy pattern）
-        pVar = re.compile(r"[\w\.\-\:\{\}]+") #部分变量引用了其它指令数据（Some variables cite other spell data）
+        pStats: re.Pattern[str] = re.compile(r"@.*?@") #贪婪模式（Greedy pattern）
+        pVar: re.Pattern[str] = re.compile(r"[\w\.\-\:\{\}]+") #部分变量引用了其它指令数据（Some variables cite other spell data）
         #从此处开始，将逐渐推导出sResult_ValueAmongModes（From this step, we'll derivate and obtain `SResult_ValueAmongModes` as a result）
         sResult_SingleValue: str = r"(\{\w+\}|\d+\.\d+|\d+)" #单值（Single value）
         sResult_ValueOfSingleMode: str = f"{sResult_SingleValue}(/{sResult_SingleValue})*" #单值或连除式（Single value or continuous division）
@@ -1740,9 +1740,9 @@ class LoLDataExtractor:
         sResult_ValueMode: str = f"{sResult_ValueOfSingleMode}({sResult_SingleModePart})?" #特定模式下的单个数值或连除式（Single value or continuous division of a mode）
         sResult_ValueModeSeparator: str = r" \|\| " #不同模式的单个数值或连除式的分隔符（Separator of single value or continuous division among different modes）
         sResult_ValueAmongModes: str = f"{sResult_ValueMode}({sResult_ValueModeSeparator}{sResult_ValueMode})*" #不同模式下的单个数值或连除式（Single value or continuous division among different modes）
-        pResult_ModeBurn = re.compile(sResult_ValueAmongModes)
-        # pResult_ModeBurn = re.compile(r"(\{\w+\}|\d+\.\d+|\d+)(/(\{\w+\}|\d+\.\d+|\d+))*( \(mode: (\{\w+\}|\w+)\))?( \|\| (\{\w+\}|\d+\.\d+|\d+)(/(\{\w+\}|\d+\.\d+|\d+))*( \(mode: (\{\w+\}|\w+)\))?)*") #不同模式下的单个数值或连除式（Single value or continuous division among different modes）
-        pModePart = re.compile(sResult_SingleModePart) #识别变量计算结果中的游戏模式名称部分。需要注意，游戏模式名称可能为未解析的hash值。这里假设每个模式覆盖变量都是最基本的单项式。作出这个假设是为了保证在识别出“a || b”后，能够正确地进行公式计算，得到“eval(a + formula) || eval(b + formula)”（Identifies the gameModeName in the calculation result of `var`. Note that the gameModeName may be an unhashed value. Here we assume each mode overriden variable is the most basic monomial. This assumption is made to ensure that the subsequent formula calculation can correctly derivate from "a || b" to "eval(a + formula) || eval(b + formula)"）
+        pResult_ModeBurn: re.Pattern[str] = re.compile(sResult_ValueAmongModes)
+        # pResult_ModeBurn: re.Pattern[str] = re.compile(r"(\{\w+\}|\d+\.\d+|\d+)(/(\{\w+\}|\d+\.\d+|\d+))*( \(mode: (\{\w+\}|\w+)\))?( \|\| (\{\w+\}|\d+\.\d+|\d+)(/(\{\w+\}|\d+\.\d+|\d+))*( \(mode: (\{\w+\}|\w+)\))?)*") #不同模式下的单个数值或连除式（Single value or continuous division among different modes）
+        pModePart: re.Pattern[str] = re.compile(sResult_SingleModePart) #识别变量计算结果中的游戏模式名称部分。需要注意，游戏模式名称可能为未解析的hash值。这里假设每个模式覆盖变量都是最基本的单项式。作出这个假设是为了保证在识别出“a || b”后，能够正确地进行公式计算，得到“eval(a + formula) || eval(b + formula)”（Identifies the gameModeName in the calculation result of `var`. Note that the gameModeName may be an unhashed value. Here we assume each mode overriden variable is the most basic monomial. This assumption is made to ensure that the subsequent formula calculation can correctly derivate from "a || b" to "eval(a + formula) || eval(b + formula)"）
         #下面通过一次性识别某个说明文本中所有的匹配情况，执行按索引替换字符串，而不是通过传统的replace方法替换。这样适用于相同变量替换成不同值的场景（By identifying all matches of a tooltip string for once, we'll replace the string according to the index, instead of the traditional string's replace method. This applies to the case where the same variables need to be replaced with different values）
         matchStructs: list[dict[str, str | int]] = []
         for matchObj in pStats.finditer(tooltip):
@@ -1839,8 +1839,8 @@ class LoLDataExtractor:
         #下面对变量嵌套单变量的形态进行转换。这一步只有在执行variableSubstitute函数后才可以执行。例如只有在执行variableSubstitute函数后，“{{Spell_HeightenedLearning_Tooltip_@GameModeInteger@}}”才会转变为“{{Spell_HeightenedLearning_Tooltip_{1}}}”（In the following, transform the tooltips where a variable is nested under another variable. Only after `variableSubstitute` function is executed may this step be performed. For example, "{{Spell_HeightenedLearning_Tooltip_@GameModeInteger@}}" won't transform into "{{Spell_HeightenedLearning_Tooltip_{1}}}" until `variableSubstitute` function is executed）
         sTooltipNestedVarValue: str = r"\{[0-9]+\}"
         sTooltipNestedVar: str = r"\{\{\s*\w*" + sTooltipNestedVarValue + r"\w*\s*\}\}"
-        pTooltipNestedVar = re.compile(sTooltipNestedVar)
-        pTooltipNestedVarValue = re.compile(sTooltipNestedVarValue)
+        pTooltipNestedVar: re.Pattern[str] = re.compile(sTooltipNestedVar)
+        pTooltipNestedVarValue: re.Pattern[str] = re.compile(sTooltipNestedVarValue)
         while (matchObj := pTooltipNestedVar.search(result)):
             tooltipNestedVar: str = matchObj.group()
             tooltipNestedVar_result: str = pTooltipNestedVarValue.search(tooltipNestedVar).group() #无需判断是否能匹配到，因为pTooltipNestedVar本来就包含pTooltipNestedVarValue（Don't need to judge whether it can be matched, for `pTooltipNestedVar` already contains `pTooltipNestedVarValue`）
@@ -1853,10 +1853,10 @@ class LoLDataExtractor:
         sTooltipCondition2: str = r" \((ranged|with \{?\w*\}?)\)"
         sTooltipSplit: str = r"\{[0-9]+" + sTooltipCondition1 + r" \| [0-9]+" + sTooltipCondition2 + r"\}"
         sTooltipSplit_key: str = r"\{\{\s*\w*" + sTooltipSplit + r"\w*\s*\}\}"
-        pTooltipSplit = re.compile(sTooltipSplit)
-        pTooltipSplit_key = re.compile(sTooltipSplit_key)
-        pTooltipCondition1 = re.compile(sTooltipCondition1)
-        pTooltipCondition2 = re.compile(sTooltipCondition2)
+        pTooltipSplit: re.Pattern[str] = re.compile(sTooltipSplit)
+        pTooltipSplit_key: re.Pattern[str] = re.compile(sTooltipSplit_key)
+        pTooltipCondition1: re.Pattern[str] = re.compile(sTooltipCondition1)
+        pTooltipCondition2: re.Pattern[str] = re.compile(sTooltipCondition2)
         while (matchObj := pTooltipSplit_key.search(result)):
             tooltipSplit_key: str = matchObj.group()
             tooltipSplit_result: str = pTooltipSplit.search(tooltipSplit_key).group() #无需判断是否能匹配到，因为pTooltipSplit_key本来就包含pTooltipSplit（Don't need to judge whether it can be matched, for `pTooltipSplit_key` already contains `pTooltipSplit`）
@@ -1878,10 +1878,10 @@ class LoLDataExtractor:
         sTooltipValueAmongModes: str = f"{sTooltipValueMode}({sTooltipValueModeSeparator}{sTooltipValueMode})+" #不同模式下的单个数值（Single value among different modes）
         sTooltipModeSplit: str = r"\{" + sTooltipValueAmongModes + r"\}" #被一对花括号包围的不同模式的数值（Single value among different modes enclosed within a pair of curly brackets）
         sTooltipModeSplit_key: str = r"\{\{\s*\w*" + sTooltipModeSplit + r"\w*\s*\}\}"
-        pTooltipValueAmongModes = re.compile(sTooltipValueAmongModes)
-        pTooltipModeSplit_key = re.compile(sTooltipModeSplit_key)
-        pTooltipModeSplit = re.compile(sTooltipModeSplit)
-        pTooltipSingleModePart = re.compile(sTooltipSingleModePart)
+        pTooltipValueAmongModes: re.Pattern[str] = re.compile(sTooltipValueAmongModes)
+        pTooltipModeSplit_key: re.Pattern[str] = re.compile(sTooltipModeSplit_key)
+        pTooltipModeSplit: re.Pattern[str] = re.compile(sTooltipModeSplit)
+        pTooltipSingleModePart: re.Pattern[str] = re.compile(sTooltipSingleModePart)
         reservedVars_list: dict[str, list[str]] = {} #至于为什么类型声明不是dict[str, dict[str, str]]，是因为整个程序是基于字符串来处理变量代换，而后续想要识别特定模式时是基于每个字符串结尾的“(mode: xxx)”来识别的（As for why the type declaration isn't `dict[str, dict[str, str]]`, it's because the whole program performs variable substitution based on string operations, and subsequent identification of specific modes is based on the "(mode: xxx)" at the end of each string）
         while (matchObj := pTooltipModeSplit_key.search(result)):
             start, end = matchObj.span()
@@ -1915,8 +1915,8 @@ class LoLDataExtractor:
         #下面对变量嵌套动态变量进行转换。典型示例：影流之镰 凯隐的技能（In the following, transform the tooltips where a dynamic variable is nested under another variable. A typical example: Kayn's abilities）
         sStats: str = r"@f\d+@"
         sTooltipForm: str = r"\{\{\s*\w*@f\d+@\w*\s*\}\}"
-        pStats = re.compile(sStats)
-        pTooltipForm = re.compile(sTooltipForm)
+        pStats: re.Pattern[str] = re.compile(sStats)
+        pTooltipForm: re.Pattern[str] = re.compile(sTooltipForm)
         while (matchObj := pTooltipForm.search(result)):
             start, end = matchObj.span()
             tooltipForm_key: str = matchObj.group()
@@ -1925,7 +1925,7 @@ class LoLDataExtractor:
             strtable_key_static_part1: str = tooltipForm[:matchObj1.start()]
             strtable_key_static_part2: str = tooltipForm[matchObj1.end():]
             strtable_form_key: str = strtable_key_static_part1 + r"\d+" + strtable_key_static_part2
-            pStrtable_form_key = re.compile(strtable_form_key.lower()) #注意字符串常量池中的键都是小写（Note that keys in stringtable are all in lower form）
+            pStrtable_form_key: re.Pattern[str] = re.compile(strtable_form_key.lower()) #注意字符串常量池中的键都是小写（Note that keys in stringtable are all in lower form）
             tooltip_form_keys: list[str] = []
             for key in strtable_locale["entries"].keys():
                 if pStrtable_form_key.fullmatch(key):
@@ -1942,8 +1942,8 @@ class LoLDataExtractor:
         #下面对其它嵌套变量进行可能的转换。典型示例：海克斯大乱斗强化符文套装【掷骰狂人】（In the following, transform the tooltips with other nested variables. A typical example: ARAM: Mayhem augment set High Roller）
         sTooltipNestedVarOther_var: str = r"@\w+@"
         sTooltipNestedVarOther: str = r"\{\{\s*\w*" + sTooltipNestedVarOther_var + r"\w*\s*\}\}"
-        pTooltipNestedVarOther = re.compile(sTooltipNestedVarOther)
-        pTooltipNestedVarOther_var = re.compile(sTooltipNestedVarOther_var)
+        pTooltipNestedVarOther: re.Pattern[str] = re.compile(sTooltipNestedVarOther)
+        pTooltipNestedVarOther_var: re.Pattern[str] = re.compile(sTooltipNestedVarOther_var)
         start_pos: int = 0
         while (matchObj := pTooltipNestedVarOther.search(result, pos = start_pos)):
             levelStrs: list[str] = []
@@ -1975,8 +1975,8 @@ class LoLDataExtractor:
         :return: 预处理后的说明文本。<br>Tooltip after preprocessing.
         :rtype: str
         '''
-        pFormat = re.compile(r"</?[\s\w=#\'\"@\-\.]*>")
-        pDescriptor = re.compile(r" ?%[A-Za-z0-9:]+% ?")
+        pFormat: re.Pattern[str] = re.compile(r"</?[\s\w=#\'\"@\-\.]*>")
+        pDescriptor: re.Pattern[str] = re.compile(r" ?%[A-Za-z0-9:]+% ?")
         layertags: set[str] = {"titleLeft", "titleRight", "subtitleLeft", "subtitleRight", "mainText", "postScriptTitle"}
         result: str = tooltip.replace("<br>", "\n").replace("<li>", "\n-\n").replace("<rules>", "").replace("</rules>", "").replace("<attention>", "").replace("</attention>", "").replace("&nbsp;", " ")
         for layertag in layertags | {"section"}: #因为会优化分节的字符串，所以这里把分节部分的修饰符也去掉（Because section strings will be optimized subsequently, section tags are removed here）
@@ -2059,8 +2059,8 @@ class LoLDataExtractor:
         :return: 转换后的说明文本。<br>Transformed tooltip.
         :rtype: str
         '''
-        pFormat = re.compile(r"</?[\s\w=#\'\"@\-\.]*>")
-        pSection = re.compile(r"<section>.*?</section>") #在星号后添加问号以启用贪婪模式（Enable greedy match by adding a question mark after the asterisk）
+        pFormat: re.Pattern[str] = re.compile(r"</?[\s\w=#\'\"@\-\.]*>")
+        pSection: re.Pattern[str] = re.compile(r"<section>.*?</section>") #在星号后添加问号以启用贪婪模式（Enable greedy match by adding a question mark after the asterisk）
         layertags: set[str] = {"titleLeft", "titleRight", "subtitleLeft", "subtitleRight", "mainText", "postScriptTitle"}
         #预处理（Preparation）
         binData = cls.normalizeBinData(binData)
@@ -2069,9 +2069,9 @@ class LoLDataExtractor:
         tooltip_layers: list[tuple[str, str]] = [] #将详细信息按照第一层级分为几个部分。一般包括titleLeft、titleRight、subtitleLeft、subtitleRight、mainText和postScriptTitle等几个部分（Divide the details into several parts according to the first layer, basically including titleLeft, titleRight, subtitleLeft, subtitleRight, mainText, postScriptTitle, etc.）
         if any(i in tooltip_tmp for i in layertags):
             while len(tooltip_tmp) > 0:
-                if not pFormat.search(tooltip_tmp):
+                if not (matchObj := pFormat.search(tooltip_tmp)):
                     break
-                first_layer_tag_start: str = pFormat.search(tooltip_tmp).group()
+                first_layer_tag_start: str = matchObj.group()
                 first_layer_tag_end: str = first_layer_tag_start[0] + "/" + first_layer_tag_start[1:]
                 first_layer_tag_start_indices: list[int] = []
                 first_layer_tag_end_indices: list[int] = []
@@ -2080,6 +2080,7 @@ class LoLDataExtractor:
                 for match in re.finditer(first_layer_tag_end, tooltip_tmp):
                     first_layer_tag_end_indices.append(match.start())
                 tag_index_dict: dict[int, int] = {}
+                k: int = 0
                 for k in first_layer_tag_start_indices:
                     tag_index_dict[k] = 1 #1代表新一层级的开始（1 represents the start of a new layer）
                 for k in first_layer_tag_end_indices:
@@ -2125,6 +2126,7 @@ class LoLDataExtractor:
             tooltip_layers_text.append((tag, tooltip_layer_text))
         if len(tooltip_layers_text) > 1:
             tooltip_text: str = ""
+            i: int = 0
             for i in range(len(tooltip_layers_text) - 1):
                 tag: str = tooltip_layers_text[i][0]
                 tag_next: str = tooltip_layers_text[i + 1][0]
@@ -2471,7 +2473,7 @@ class MapExtractor(LoLDataExtractor):
         map_header_supplemental: list[str] = [] #每个附加说明表头由某个二次转化表头和字符串“string”组成，用于将一些在字符串常量池中出现的键映射为值（Each supplemental header is composed of a transformed header and the string "string", in order to map the keys that appear in the lolstringtable into values）
         bool_keys: set[str] = set() #这里假设相同的键在不同类型的数据对象中出现时，数据类型是相同的。这里只考虑单值为逻辑值的情形，不适用于逻辑值列表（Here suppose if a key exists in data objects of different type, then the type of this key's value must be identical. Only stores keys whose values are a single boolean value instead of a list of boolean values）
         ##生成动态表头（Generate dynamic headers）
-        map_header_basic = getBinaryKeys(maps_bin, "GameModeMapData")[0]["GameModeMapData"]
+        map_header_basic = getBinaryKeys(maps_bin, objectTypes = "GameModeMapData")[0]["GameModeMapData"]
         map_header_basic.remove("__type")
         dynamicKeys: dict[str, list[str]] = {}
         keys_to_insert: dict[str, list[str]] = {}
@@ -2753,7 +2755,7 @@ class CheatExtractor(LoLDataExtractor):
                             cheatset_map[cheat] = value["mName"]
 
         #数据整理核心部分（Data organization core part）
-        pStrConst = re.compile(r"_content_\w*")
+        pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
         for (key1, value) in self.cheats_bin.items():
@@ -2947,7 +2949,7 @@ class PerkExtractor(LoLDataExtractor):
         perk_data_json: dict[str, list[Any]] = copy.deepcopy(perk_data)
         
         #数据整理核心部分（Data organization core part）
-        pStrConst = re.compile(r"_content_\w*")
+        pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
         for (key1, value) in self.perks_bin.items():
@@ -2977,7 +2979,7 @@ class PerkExtractor(LoLDataExtractor):
                         isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = value[subkey1] #此处代码写法和其它地方有些不同。它不是引用列表上次追加的数据，而是直接从原始数据中获取。这是因为符文系数据相对比较平衡，很多键基本上都是常驻的（Here the code style somehow differs from other places. It doesn't use the data recently appended to the list; instead, it obtains the raw data. This is because perkstyle data are relatively balanced; many keys aren't flexible）
-                        to_append: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                     elif i == 27 or i == 28: #可用副系名称（中文）和可用副系名称（英文）（`mAllowedSubStyles mDisplayNameLocalizationKey_contents_zh` and `mAllowedSubStyles mDisplayNameLocalizationKey_contents_en`）
                         strtable_locale = strtable_lol_target if i == 27 else strtable_lol_default
                         mAllowedSubStyleNames: list[str] = []
@@ -3607,7 +3609,7 @@ class ChampionExtractor(LoLDataExtractor):
         # logPrint("已构建基本指令到技能的映射关系。\nFinished building the map from root spells to abilities.")
         
         #数据整理核心部分（Data organization core part）
-        pStrConst = re.compile(r"_content_\w*")
+        pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
         strtable_tft_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.tftstringtable_target
@@ -4051,7 +4053,7 @@ class ItemExtractor(LoLDataExtractor):
         item_data_json: dict[str, list[Any]] = copy.deepcopy(item_data)
         
         #数据整理核心部分（Data organization core part）
-        pStrConst = re.compile(r"_content_\w*")
+        pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
         item_rarities: dict[str, str] = {0: "无", 1: "初始", 2: "基础", 3: "工资装", 4: "史诗", 5: "传说", 6: "神话", 7: "升级", 8: "锻造器", 9: "棱彩"}
         # item_rarities: dict[str, str] = {0: "NONE", 1: "STARTER", 2: "BASIC", 3: "Gold Income", 4: "EPIC", 5: "LEGENDARY", 6: "Mythic", 7: "Level Up", 8: "ANVIL", 9: "PRISMATIC"}
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
@@ -4371,7 +4373,7 @@ class AugmentExtractor(LoLDataExtractor):
         #AugmentDisplayTags: dict[int, str] = {0: "Ally", 1: "Damage", 2: "General", 3: "Resilience", 4: "Speed", 5: "Utility", 6: "Stat Anvil", 7: "Economy"}
         augment_rarities: dict[int, str] = {0: "白银", 1: "黄金", 2: "棱彩"}
         #augment_rarities: dict[int, str] = {0: "Silver", 1: "Gold", 2: "Prismatic"}
-        pStrConst = re.compile(r"_content_\w*")
+        pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
         ##斗魂竞技场强化符文（Arena augments）
@@ -4772,7 +4774,7 @@ class AnvilExtractor(LoLDataExtractor):
         #AugmentDisplayTags: dict[int, str] = {0: "Ally", 1: "Damage", 2: "General", 3: "Resilience", 4: "Speed", 5: "Utility", 6: "Stat Anvil", 7: "Economy"}
         anvil_rarities: dict[int, str] = {0: "白银阶属性", 1: "传说级战士装备", 2: "传说级射手装备", 3: "传说级刺客装备", 4: "传说级法师装备", 5: "传说级坦克装备", 6: "传说级辅助装备", 7: "棱彩装备", 8: "黄金阶属性", 9: "棱彩阶属性"}
         # anvil_rarities: dict[int, str] = {0: "Silver Stat Anvil", 1: "Legendary Fighter Item", 2: "Legendary Marksman Item", 3: "Legendary Assassin Item", 4: "Legendary Mage Item", 5: "Legendary Tank Item", 6: "Legendary Support Item", 7: "Prismatic Item", 8: "Gold Stat Anvil", 9: "Prismatic Stat Anvil"}
-        pStrConst = re.compile(r"_content_\w*")
+        pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
         ##斗魂竞技场锻造器（Arena anvils）
@@ -5145,7 +5147,7 @@ class TFTExtractor(LoLDataExtractor):
         flexibleData["map22_bin"] = self.map22_bin
         
         #数据整理核心部分（Data organization core part）
-        pStrConst = re.compile(r"_content_\w*")
+        pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
         strtable_tft_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.tftstringtable_target
         strtable_tft_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.tftstringtable_default
         for (key1, value) in self.map22_bin.items():

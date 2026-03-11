@@ -29,7 +29,7 @@ use_sgp: bool = args.lol_api == "sgp"
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/03/10
+# 更新（Last update）：     2026/03/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -66,7 +66,7 @@ champ_select_session_cache: dict[int, dict[str, Any]] = {}
 
 error_header = {"errorCode": "异常代码", "httpStatus": "HTTP状态码", "implementationDetails": "细节", "message": "消息"}
 error_header_keys = list(error_header.keys())
-connector = Connector()
+connector: Connector = Connector()
 
 #-----------------------------------------------------------------------------
 # 查找最近一起并肩作战的召唤师并给出统计信息（Find recently played summoners and give statistics of it）
@@ -1517,9 +1517,9 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
     if detect != "" and detect[0] == "0":
         return
     if gameflow_phase in {"Lobby", "Matchmaking", "ReadyCheck"}:
-        lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+        lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
         logPrint(lobby_information)
-        gameflow_session = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
+        gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
         gameModeName: str = gameflow_session["map"]["gameModeName"] + "(%d)" %(gameflow_session["gameData"]["queue"]["id"]) if gameflow_session["gameData"]["queue"]["name"] == "" else gameflow_session["gameData"]["queue"]["name"]
         wb03Name: str = "Recently Played Summoners in Lobby %s-%s (%s).xlsx" %(platformId, lobby_information["partyId"], gameModeName)
         for member in lobby_information["members"]:
@@ -1605,7 +1605,7 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
         elif len(recent_friend_summonerNames) > 1:
             logPrint("以上玩家中，%s是您的好友。\nAmong the above players, %s are your friends." %("、".join(recent_friend_summonerNames), ", ".join(recent_friend_summonerNames)))
     elif gameflow_phase == "ChampSelect":
-        champ_select_session = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
+        champ_select_session: dict[str, Any] = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
         logPrint(champ_select_session)
         if "errorCode" in champ_select_session:
             if champ_select_session["message"] == "No active delegate": #在没有英雄选择阶段的游戏模式中，有时gameflow_phase的结果是“ChampSelect”，但是实际上没有可用的英雄选择会话（In game modes without champ select stage, sometimes `gameflow_phase` is "ChampSelect", but there's actually no available champ select session）
@@ -1765,7 +1765,7 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
     elif gameflow_phase == "InProgress" or gameflow_phase == "Reconnect":
         gameflow_session = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
         logPrint(gameflow_session)
-        gameData = gameflow_session["gameData"]
+        gameData: dict[str, Any] = gameflow_session["gameData"]
         gameModeName = gameflow_session["map"]["gameModeName"] + "(%d)" %(gameData["queue"]["id"]) if gameData["queue"]["name"] == "" else gameData["queue"]["name"]
         wb05Name: str = "Recently Played Summoners in Match %s-%s (%s).xlsx" %(platformId, gameData["gameId"], gameModeName)
         if gameData["queue"]["mapId"] == "22" or gameData["queue"]["mapId"] == "30": #玩家在API上的阵营划分随对局模式而不同。云顶之弈和斗魂竞技场虽然有多个阵营，但是都是记录在gameData["teamOne"]中，这需要和其它模式区分开来。该条件语句与“if gameData["queue"]["gameMode"] == "TFT" or gameData["queue"]["gameMode"] == "CHERRY"”等价，但是因为召唤师峡谷还能分成CLASSIC、URF等模式，所以这里直接用地图序号作为判断依据（The team where a player belongs varies by the game mode. Although there're actually more than 2 teams in TFT and Arena, all players are recorded in `gameData["teamOne"]`, which needs ditinguishing from other game modes. This conditional statement is equivalent to `if gameData["queue"]["gameMode"] == "TFT" or gameData["queue"]["gameMode"] == "CHERRY"`, but since there're multiple modes based on one map, like CLASSIC and URF based on Summoner's Rift, the mapId is thus taken as the judgment criterium）
@@ -2720,6 +2720,7 @@ async def detect_custom_list(connection: Connection, search_LoL: bool, search_TF
         infos = {}
     current_puuid_list: list[str] = list(map(lambda x: x["puuid"], AllAccounts))
     current_summonerName_list: list[str] = list(map(get_info_name, AllAccounts))
+    summoners: list[str] = []
     logPrint(f"请输入一个由召唤师名称或玩家通用唯一识别码组成的列表。注意列表的每个元素都必须用半角引号括起来。示例：\nPlease input a list of summoner names or puuids. Note that each element of the list must be quoted with English quotation marks. Examples:\n%s\n%s" %(json.dumps(current_summonerName_list, ensure_ascii = False), json.dumps(current_puuid_list, ensure_ascii = False))) 
     while True:
         summoners_str: str = logInput()
@@ -2740,7 +2741,7 @@ async def detect_custom_list(connection: Connection, search_LoL: bool, search_TF
                 elif not all(map(lambda x: isinstance(x, str), tmp)):
                     logPrint("请输入一个元素全为字符串的列表！\nPlease input a list consisting of only string elements.")
                 else:
-                    summoners: list[str] = tmp
+                    summoners = tmp
                     break
     if summoners_str == "0":
         return
@@ -2815,7 +2816,7 @@ async def detect_custom_list(connection: Connection, search_LoL: bool, search_TF
 
 async def search_recent_players(connection: Connection) -> None:
     global session, platformId, AllAccounts
-    platformId = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
     riot_client_info: list[str] = await (await connection.request("GET", "/riotclient/command-line-args")).json()
     client_info: dict[str, str] = {}
     for i in range(len(riot_client_info)):
@@ -2930,7 +2931,7 @@ async def search_recent_players(connection: Connection) -> None:
                     if len(members_to_detect) > 1:
                         logPrint("检测到您正在房间内。是否检测其他玩家的近期一起玩过的玩家？（输入下方其他玩家对应的编号以查询其他玩家，或者直接按回车键以查询用户本人。）\nThe program detected that you're currently in a lobby. Do you want to detect recently played summoners of another player? (Submit the number corresponding to another player below to search for his/her recently player summoners, or press Enter directly to search for recently played summoners of the user itself.)")
                 elif gameflow_phase == "ChampSelect":
-                    champ_select_session = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
+                    champ_select_session: dict[str, Any] = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
                     for ally in champ_select_session["myTeam"]:
                         if not ally["puuid"] in {current_info["puuid"], "", BOT_UUID} and (ally["nameVisibilityType"] == "VISIBLE" or ally["nameVisibilityType"] == ""):
                             ally_info_recapture: int = 0
@@ -2975,7 +2976,7 @@ async def search_recent_players(connection: Connection) -> None:
                     if len(members_to_detect) > 1:
                         logPrint("检测到您正在英雄选择阶段。是否检测其他玩家的近期一起玩过的玩家？（输入下方其他玩家对应的编号以查询其他玩家，或者直接按回车键以查询用户本人。）\nThe program detected that you're currently during champ select stage. Do you want to detect recently played summoners of another player? (Submit the number corresponding to another player below to search for his/her recently player summoners, or press Enter directly to search for recently played summoners of the user itself.)")
                 else:
-                    gameflow_session = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
+                    gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
                     gameData: dict[str, Any] = gameflow_session["gameData"]
                     for player in gameData["teamOne"] + gameData["teamTwo"]:
                         if "puuid" in player and player["puuid"] != current_info["puuid"]: #电脑玩家没有玩家通用唯一识别码（Bot players don't have puuids）

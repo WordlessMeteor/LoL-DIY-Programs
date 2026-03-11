@@ -19,9 +19,9 @@ async def sort_game_leaderboard(connection: Connection, queueTypes_list: Optiona
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
+    challenger_ladder_queueTypes: list[str] = await (await connection.request("GET", "/lol-ranked/v1/challenger-ladders-enabled")).json()
+    topRated_ladder_queueTypes: list[str] = await (await connection.request("GET", "/lol-ranked/v1/top-rated-ladders-enabled")).json()
     if queueTypes_list == []:
-        challenger_ladder_queueTypes: list[str] = await (await connection.request("GET", "/lol-ranked/v1/challenger-ladders-enabled")).json()
-        topRated_ladder_queueTypes: list[str] = await (await connection.request("GET", "/lol-ranked/v1/top-rated-ladders-enabled")).json()
         queueTypes_list = challenger_ladder_queueTypes + topRated_ladder_queueTypes
     game_leaderboard_header_keys: list[str] = list(game_leaderboard_header.keys())
     game_leaderboard_data: dict[str, list[Any]] = {key: [] for key in game_leaderboard_header_keys}
@@ -36,7 +36,7 @@ async def sort_game_leaderboard(connection: Connection, queueTypes_list: Optiona
                 for i in range(len(game_leaderboard_header_keys)):
                     key: str = game_leaderboard_header_keys[i]
                     if i <= 3:
-                        to_append = participantInfo_body[key]
+                        to_append: Any = participantInfo_body[key]
                     elif i <= 15:
                         if i == 4: #分级（`division`）
                             to_append = "" if participant_leaderboard["division"] == "NA" else participant_leaderboard["division"]

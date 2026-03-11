@@ -38,16 +38,16 @@ async def test_bot(connection: Connection, LoLChampions: dict[int, dict[str, Any
         }
     }
     response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/lobby", data = custom)).json()
+    count: int = 0
     if isinstance(response, dict) and "errorCode" in response:
         logPrint(response, verbose = verbose)
         logPrint("测试房间创建失败。请检查您的游戏状态。\nTest lobby creation failed. Please check your gameflow phase.")
     else:
         logPrint("championId\tname\ttitle\talias", verbose = verbose)
-        count: int = 0
         for championId in LoLChampions:
             botUuid: str = str(uuid.uuid4())
-            bot: dict[str, str] = {"championId": championId, "botDifficulty": "RSINTERMEDIATE", "teamId": "200", "position": "TOP", "botUuid": botUuid}
-            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/bots", data = bot)).json()
+            body: dict[str, int | str] = {"championId": championId, "botDifficulty": "RSINTERMEDIATE", "teamId": "200", "position": "TOP", "botUuid": botUuid}
+            response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/bots", data = body)).json()
             if response == None: #这里认为当返回内容为空时，电脑玩家被添加（Here the principle is, once the response body is empty, the bot player is definitely added）
                 # start: float = time.time()
                 LoLChampions_subset[championId] = LoLChampions[championId]

@@ -1,7 +1,7 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import os, pandas, re, time
-from openpyxl import load_workbook
+from openpyxl import load_workbook, Workbook
 from typing import Any
 from src.utils.summoner import print_summoner_info, get_info_name
 from src.utils.format import getISOTime, optimize_bool_display, format_df, addDefaultStyle
@@ -15,7 +15,7 @@ from src.core.config.localization import celebrationTypes, clientNotifyLevels, d
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/07
+# 更新（Last update）：     2026/03/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -216,49 +216,46 @@ async def get_mission_info(connection: Connection) -> None:
         print("警告：由于该文件已存在，本次导出已追加新工作表到工作簿的末尾。这可能导致工作表顺序的错乱。是否需要对工作表进行排序？（输入任意键排序，否则不排序）\nWarning: Because the excel workbook has existed, new sheets are appended to the last of the original sheet list. This may result in the disarrangement of worksheet order. Do you want to sort the sheets? (Input anything to sort the sheets, or null to skip sorting)")
         sort: bool = bool(input())
         if sort:
-            mission_loaded: bool = True
             print("正在读取刚刚创建的工作表……\nLoading the workbook just created ...")
             while True:
                 try:
-                    wb = load_workbook(wbPath)
+                    wb: Workbook = load_workbook(wbPath)
                 except FileNotFoundError:
                     print('任务信息工作簿读取失败！请确保“%s”文件夹内含有名为“%s”的工作簿。如果需要退出程序，请输入“0”。\nERROR reading the Missions workbook! Please make sure the workbook "%s" is in the folder "%s". If you want to exit the program, please submit "0".' %(folder, excel_name, excel_name, folder))
                     mission_reload: str = input()
                     if mission_reload == "0":
-                        mission_loaded = False
                         break
                 else:
+                    sheetnames: list[str] = wb.sheetnames #第一次获取原工作簿的工作表名称列表（The first time to get the sheet name list of the original workbook）
+                    print("请选择排序方式：\nPlease select an ordering pattern:\n1\t时间优先（默认）【Time in priority (by default)】\n2\t类别优先（Type in priority）")
+                    op: str = input()
+                    print("正在创建顺序工作表列表……\nCreating the ordered sheet list ...")
+                    date_re: re.Pattern[str] = re.compile(r"\d{4}-\d{2}-\d{2}") #设置正则表达式识别
+                    if op == "" or op[0] != "2": #按照时间优先的原则对工作表进行排序，时间相同则任务工作表在前，目标工作表在后（Sort the sheets by time in priority. If the times are the same, then the mission sheet is arranged in front of the objective sheet）
+                        sheetname_date_list: list[str] = list(map(lambda x: date_re.search(x).group(), sheetnames)) #从工作表名称提取日期信息形成列表（Extract the dates from the sheetnames to form a list）
+                        sheetname_type_list: list[str] = list(map(lambda x: x.split()[0], sheetnames)) #从工作表名称提取数据类型信息形成列表（Extract the data types from the sheetnames to form a list）
+                        sheetname_platform_list: list[str] = list(map(lambda x: x.split("_")[1], sheetnames)) #从工作表名称提取大区信息形成列表（Extract the platformId from the sheetnames to form a list）
+                        sheetname_tmpDf: pandas.DataFrame = pandas.DataFrame(data = [sheetnames, sheetname_date_list, sheetname_type_list, sheetname_platform_list]).transpose() #创建一个四列数据框，各列分别是完整工作表名、日期信息、数据类型信息和大区信息（Create a 4-column dataframe whose columns are the complete sheetname, date, data type and platformId）
+                        sheetnames_sorted: list[str] = sheetname_tmpDf.sort_values(by = [1, 2, 3], ascending = [True, True, True]).iloc[:, 0].tolist() #将工作表名按照第一关键字——日期信息正序排列，第二关键字——数据类型信息正序排列（先任务后目标），第三关键字——大区信息正序排列（Order the sheetnames according to the ascending order of the first keyword - date, the ascending order of the second keyword - data type and the ascending order of the third keyword - platformId）
+                    else:
+                        sheets_Missions: list[str] = [sheet_iter for sheet_iter in sheetnames if sheet_iter.startswith("Missions")] #提取任务类型的工作表名称（Extract the names of the sheets containing mission data）
+                        sheets_Objectives: list[str] = [sheet_iter for sheet_iter in sheetnames if sheet_iter.startswith("Objectives")] #提取目标类型的工作表名称（Extract the names of the sheets containing objective data）
+                        sheets_Missions = sorted(sheets_Missions, key = lambda x: date_re.search(x).group()) #按照日期正序排列任务类型的工作表名称（Order the mission sheetnames according to the ascending order of dates）
+                        sheets_Objectives = sorted(sheets_Objectives, key = lambda x: date_re.search(x).group()) #按照日期正序排列目标类型的工作表名称（Order the objective sheetnames according to the ascending order of dates）
+                        sheetnames_sorted = sheets_Missions + sheets_Objectives #合并列表得到先按类别排列、再按日期排列的工作表名称（Combine the lists to get the sheetname list ordered firstly by data type and secondly by date）
+                    #下面排列所有工作表（The following code arrange all sheets）
+                    print("正在排序……\nOrdering ...")
+                    for i in range(len(sheetnames_sorted)): #排序的思路是每次将一个工作表根据其在原工作表列表中的索引和在顺序工作表列表中的索引的差值进行移动（The main idea of sheets' sorting is to move each sheet according to the difference of the indices between in the original sheet list and in the ordered sheet list）
+                        sheetnames = wb.sheetnames #因为一次移动可能导致很多其它工作表的位置发生变化，所以必须每次都重新获取工作表列表（Because a moving event may result in location change of many other sheets, the sheet list must be obtained each time）
+                        sheetname_iter: str = sheetnames_sorted[i] #这里以顺序工作表为迭代器进行遍历，因为顺序工作表是固定不变的（Here the ordered sheet list acts as the iterator to be traversed, for the ordered sheet list is fixed）
+                        if sheetnames[i] != sheetname_iter:
+                            preIndex: int = sheetnames.index(sheetname_iter)
+                            wb.move_sheet(sheetname_iter, i - preIndex) #注意移动距离数应当是排序后的索引减去排序前的索引（Note that the moving offset should be the index in the ordered list subtracted by that in the original list）
+                        #print("排序进度（Ordering process）：%d/%d\t工作表名称（Sheet name）： %s" %(i + 1, len(sheetnames_sorted), sheetname_iter))
+                    print('正在保存中……\nSaving the ordered workbook ...')
+                    wb.save(os.path.join(folder, excel_name_sorted))
+                    print('排序完成！排好序的工作簿已保存为“%s”。\nOrdering finished! The ordered workbook is saved as "%s".\n' %(excel_name_sorted, excel_name_sorted))
                     break
-            if mission_loaded:
-                sheetnames: list[str] = wb.sheetnames #第一次获取原工作簿的工作表名称列表（The first time to get the sheet name list of the original workbook）
-                print("请选择排序方式：\nPlease select an ordering pattern:\n1\t时间优先（默认）【Time in priority (by default)】\n2\t类别优先（Type in priority）")
-                op: str = input()
-                print("正在创建顺序工作表列表……\nCreating the ordered sheet list ...")
-                date_re = re.compile(r"\d{4}-\d{2}-\d{2}") #设置正则表达式识别
-                if op == "" or op[0] != "2": #按照时间优先的原则对工作表进行排序，时间相同则任务工作表在前，目标工作表在后（Sort the sheets by time in priority. If the times are the same, then the mission sheet is arranged in front of the objective sheet）
-                    sheetname_date_list: list[str] = list(map(lambda x: date_re.search(x).group(), sheetnames)) #从工作表名称提取日期信息形成列表（Extract the dates from the sheetnames to form a list）
-                    sheetname_type_list: list[str] = list(map(lambda x: x.split()[0], sheetnames)) #从工作表名称提取数据类型信息形成列表（Extract the data types from the sheetnames to form a list）
-                    sheetname_platform_list: list[str] = list(map(lambda x: x.split("_")[1], sheetnames)) #从工作表名称提取大区信息形成列表（Extract the platformId from the sheetnames to form a list）
-                    sheetname_tmpDf: pandas.DataFrame = pandas.DataFrame(data = [sheetnames, sheetname_date_list, sheetname_type_list, sheetname_platform_list]).transpose() #创建一个四列数据框，各列分别是完整工作表名、日期信息、数据类型信息和大区信息（Create a 4-column dataframe whose columns are the complete sheetname, date, data type and platformId）
-                    sheetnames_sorted: list[str] = sheetname_tmpDf.sort_values(by = [1, 2, 3], ascending = [True, True, True]).iloc[:, 0].tolist() #将工作表名按照第一关键字——日期信息正序排列，第二关键字——数据类型信息正序排列（先任务后目标），第三关键字——大区信息正序排列（Order the sheetnames according to the ascending order of the first keyword - date, the ascending order of the second keyword - data type and the ascending order of the third keyword - platformId）
-                else:
-                    sheets_Missions: list[str] = [sheet_iter for sheet_iter in sheetnames if sheet_iter.startswith("Missions")] #提取任务类型的工作表名称（Extract the names of the sheets containing mission data）
-                    sheets_Objectives: list[str] = [sheet_iter for sheet_iter in sheetnames if sheet_iter.startswith("Objectives")] #提取目标类型的工作表名称（Extract the names of the sheets containing objective data）
-                    sheets_Missions = sorted(sheets_Missions, key = lambda x: date_re.search(x).group()) #按照日期正序排列任务类型的工作表名称（Order the mission sheetnames according to the ascending order of dates）
-                    sheets_Objectives = sorted(sheets_Objectives, key = lambda x: date_re.search(x).group()) #按照日期正序排列目标类型的工作表名称（Order the objective sheetnames according to the ascending order of dates）
-                    sheetnames_sorted = sheets_Missions + sheets_Objectives #合并列表得到先按类别排列、再按日期排列的工作表名称（Combine the lists to get the sheetname list ordered firstly by data type and secondly by date）
-                #下面排列所有工作表（The following code arrange all sheets）
-                print("正在排序……\nOrdering ...")
-                for i in range(len(sheetnames_sorted)): #排序的思路是每次将一个工作表根据其在原工作表列表中的索引和在顺序工作表列表中的索引的差值进行移动（The main idea of sheets' sorting is to move each sheet according to the difference of the indices between in the original sheet list and in the ordered sheet list）
-                    sheetnames = wb.sheetnames #因为一次移动可能导致很多其它工作表的位置发生变化，所以必须每次都重新获取工作表列表（Because a moving event may result in location change of many other sheets, the sheet list must be obtained each time）
-                    sheetname_iter: str = sheetnames_sorted[i] #这里以顺序工作表为迭代器进行遍历，因为顺序工作表是固定不变的（Here the ordered sheet list acts as the iterator to be traversed, for the ordered sheet list is fixed）
-                    if sheetnames[i] != sheetname_iter:
-                        preIndex: int = sheetnames.index(sheetname_iter)
-                        wb.move_sheet(sheetname_iter, i - preIndex) #注意移动距离数应当是排序后的索引减去排序前的索引（Note that the moving offset should be the index in the ordered list subtracted by that in the original list）
-                    #print("排序进度（Ordering process）：%d/%d\t工作表名称（Sheet name）： %s" %(i + 1, len(sheetnames_sorted), sheetname_iter))
-                print('正在保存中……\nSaving the ordered workbook ...')
-                wb.save(os.path.join(folder, excel_name_sorted))
-                print('排序完成！排好序的工作簿已保存为“%s”。\nOrdering finished! The ordered workbook is saved as "%s".\n' %(excel_name_sorted, excel_name_sorted))
 
 async def check_repeating_missions(connection: Connection) -> None:
     #查看可重复任务的刷新状态（Check repeating missions' cooldown status）

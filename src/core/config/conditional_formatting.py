@@ -2,10 +2,11 @@ import pandas, openpyxl
 from openpyxl.styles import Color, numbers, PatternFill
 from openpyxl.formatting.rule import ColorScaleRule, DataBarRule, FormulaRule, Rule
 from openpyxl.utils import get_column_letter
+from openpyxl.worksheet.worksheet import Worksheet
 #声明：每个函数的命名与对应的表头一一对应（Declaration: Each function's naming obeys the one-to-one correspondence with the dataframe header）
-def addFormat_LoLHistory_wb(worksheet: openpyxl.workbook.child._WorkbookChild, LoLHistory_df: pandas.DataFrame) -> None:
+def addFormat_LoLHistory_wb(worksheet: Worksheet, LoLHistory_df: pandas.DataFrame) -> None:
     #胜负颜色（Win/Lose color）
-    col_idx: int = LoLHistory_df.columns.get_loc("result") + 2
+    col_idx: int = LoLHistory_df.columns.to_list().index("result") + 2
     col_letter: str = get_column_letter(col_idx)
     rangeStr: str = "%s3:%s%d" %(col_letter, col_letter, len(LoLHistory_df) + 1)
     win_formulaRule_lol: Rule = FormulaRule(formula = ['$%s3="%s"' %(col_letter, "胜利")], stopIfTrue = True, fill = PatternFill(start_color = "63BE7B", end_color = "63BE7B", fill_type = "solid"))
@@ -15,13 +16,13 @@ def addFormat_LoLHistory_wb(worksheet: openpyxl.workbook.child._WorkbookChild, L
     worksheet.conditional_formatting.add(rangeStr, lose_formulaRule_lol)
     worksheet.conditional_formatting.add(rangeStr, terminated_formulaRule_lol)
     #斗魂竞技场队伍排名颜色设置（Arena subteamPlacement color）
-    col_idx = LoLHistory_df.columns.get_loc("subteamPlacement") + 2
+    col_idx = LoLHistory_df.columns.to_list().index("subteamPlacement") + 2
     col_letter = get_column_letter(col_idx)
     rangeStr = "%s3:%s%d" %(col_letter, col_letter, len(LoLHistory_df) + 1)
     firstPlace_formulaRule_lol: Rule = FormulaRule(formula = ["$%s3=1" %(col_letter)], stopIfTrue = False, fill = PatternFill(start_color = "FFC000", end_color = "FFC000", fill_type = "solid"))
     worksheet.conditional_formatting.add(rangeStr, firstPlace_formulaRule_lol)
 
-def addFormat_LoLGame_summary_wb(worksheet: openpyxl.workbook.child._WorkbookChild, LoLGame_summary_df: pandas.DataFrame, numColorScale_order: int = 5) -> None:
+def addFormat_LoLGame_summary_wb(worksheet: Worksheet, LoLGame_summary_df: pandas.DataFrame, numColorScale_order: int = 5) -> None:
     #定义条件格式（Define the conditional formats）
     twoDigitPercentage_columns_lol: list[str] = [column for column in LoLGame_summary_df.columns if column.endswith("_percent") or column == "GUE"] #百分比（Percentage）
     oneDigitFloat_columns_lol: list[str] = ["KDA"] #一位小数（One-digit float）
@@ -32,21 +33,21 @@ def addFormat_LoLGame_summary_wb(worksheet: openpyxl.workbook.child._WorkbookChi
     percent_dataBarRule_lol: Rule = DataBarRule(start_type = "percentile", start_value = 0, end_type = "percentile", end_value = 100, color = Color("008AEF"), minLength = None, maxLength = None)
     #套用保留两位小数的百分比格式（Two-digit percentage）
     for column in twoDigitPercentage_columns_lol:
-        col_idx: int = LoLGame_summary_df.columns.get_loc(column) + 2
+        col_idx: int = LoLGame_summary_df.columns.to_list().index(column) + 2
         for row in range(3, len(LoLGame_summary_df) + 2):
             worksheet.cell(row = row, column = col_idx).number_format = numbers.FORMAT_PERCENTAGE_00
     #套用一位小数（One-digit float）
     for column in oneDigitFloat_columns_lol:
-        col_idx = LoLGame_summary_df.columns.get_loc(column) + 2
+        col_idx = LoLGame_summary_df.columns.to_list().index(column) + 2
         for row in range(3, len(LoLGame_summary_df) + 2):
             worksheet.cell(row = row, column = col_idx).number_format = "0.0"
     #套用三位小数（Three-digit float）
     for column in threeDigitFloat_columns_lol:
-        col_idx = LoLGame_summary_df.columns.get_loc(column) + 2
+        col_idx = LoLGame_summary_df.columns.to_list().index(column) + 2
         for row in range(3, len(LoLGame_summary_df) + 2):
             worksheet.cell(row = row, column = col_idx).number_format = "0.000"
     #胜负颜色（Win/Lose color）
-    col_idx = LoLGame_summary_df.columns.get_loc("win/lose") + 2
+    col_idx = LoLGame_summary_df.columns.to_list().index("win/lose") + 2
     col_letter: str = get_column_letter(col_idx)
     rangeStr: str = "%s3:%s%d" %(col_letter, col_letter, len(LoLGame_summary_df) + 1)
     win_formulaRule_lol: Rule = FormulaRule(formula = ['$%s3="%s"' %(col_letter, "胜利")], stopIfTrue = True, fill = PatternFill(start_color = "63BE7B", end_color = "63BE7B", fill_type = "solid"))
@@ -57,12 +58,15 @@ def addFormat_LoLGame_summary_wb(worksheet: openpyxl.workbook.child._WorkbookChi
     worksheet.conditional_formatting.add(rangeStr, terminated_formulaRule_lol)
     #百分比颜色（Percent color）
     rangeStrs: list[str] = [] #存储尽可能连贯的条件格式区域（Stores continuous conditional formatting areas）
+    startCol_idx: int = 0
+    endCol_idx: int = 0
+    col_idx: int = 0
     for i in range(len(dataBar_columns_lol)): #这里需要注意尽量保持条件格式的区域连贯，以免在打开工作簿时条件格式过多导致卡顿（Note that each conditional formatting area should be as large as possible, otherwise the workbook will perform slow when opening it due to too many rules）
         column = dataBar_columns_lol[i]
         if i == 0:
-            startCol_idx = endCol_idx = LoLGame_summary_df.columns.get_loc(column) + 2
+            startCol_idx = endCol_idx = LoLGame_summary_df.columns.to_list().index(column) + 2
         else:
-            col_idx = LoLGame_summary_df.columns.get_loc(column) + 2
+            col_idx = LoLGame_summary_df.columns.to_list().index(column) + 2
             if col_idx == endCol_idx + 1: #如果下一个要添加条件格式的列号与上一个要添加条件格式的列号差1，那么这两列是相邻的，即连贯的（If the number of the current column to add conditional format is greater than the number of the predecessive column to add conditional format by 1, then these two columns are continuous）
                 endCol_idx = col_idx
             else: #如果两列不相邻，则提取得到上一个连贯的区域（If these two columns aren't continuous, then get the previous continuous area）
@@ -79,7 +83,7 @@ def addFormat_LoLGame_summary_wb(worksheet: openpyxl.workbook.child._WorkbookChi
     for rangeStr in rangeStrs:
         worksheet.conditional_formatting.add(rangeStr, percent_dataBarRule_lol)
     #斗魂竞技场队伍排名颜色设置（Arena subteamPlacement color）
-    col_idx = LoLGame_summary_df.columns.get_loc("subteamPlacement") + 2
+    col_idx = LoLGame_summary_df.columns.to_list().index("subteamPlacement") + 2
     col_letter = get_column_letter(col_idx)
     rangeStr = "%s3:%s%d" %(col_letter, col_letter, len(LoLGame_summary_df) + 1)
     firstPlace_formulaRule_lol: Rule = FormulaRule(formula = ["$%s3=1" %(col_letter)], stopIfTrue = False, fill = PatternFill(start_color = "FFC000", end_color = "FFC000", fill_type = "solid"))
@@ -90,9 +94,9 @@ def addFormat_LoLGame_summary_wb(worksheet: openpyxl.workbook.child._WorkbookChi
     for i in range(len(colorScale_columns_lol)): #这里需要注意尽量保持条件格式的区域连贯，以免在打开工作簿时条件格式过多导致卡顿（Note that each conditional formatting area should be as large as possible, otherwise the workbook will perform slow when opening it due to too many rules）
         column = colorScale_columns_lol[i]
         if i == 0:
-            startCol_idx = endCol_idx = LoLGame_summary_df.columns.get_loc(column) + 2
+            startCol_idx = endCol_idx = LoLGame_summary_df.columns.to_list().index(column) + 2
         else:
-            col_idx = LoLGame_summary_df.columns.get_loc(column) + 2
+            col_idx = LoLGame_summary_df.columns.to_list().index(column) + 2
             if col_idx == endCol_idx + 1: #如果下一个要添加条件格式的列号与上一个要添加条件格式的列号差1，那么这两列是相邻的，即连贯的（If the number of the current column to add conditional format is greater than the number of the predecessive column to add conditional format by 1, then these two columns are continuous）
                 endCol_idx = col_idx
             else: #如果两列不相邻，则提取得到上一个连贯的区域（If these two columns aren't continuous, then get the previous continuous area）
@@ -115,7 +119,7 @@ def addFormat_LoLGame_summary_wb(worksheet: openpyxl.workbook.child._WorkbookChi
         worksheet.conditional_formatting.add(rangeStr, order_noFillRule)
         worksheet.conditional_formatting.add(rangeStr, order_colorScaleRule_lol)
 
-def addFormat_LoLGame_summary_wb_transpose(worksheet: openpyxl.workbook.child._WorkbookChild, LoLGame_summary_df: pandas.DataFrame, numColorScale_order: int = 5) -> None:
+def addFormat_LoLGame_summary_wb_transpose(worksheet: Worksheet, LoLGame_summary_df: pandas.DataFrame, numColorScale_order: int = 5) -> None:
     #定义条件格式（Define the conditional formats）
     twoDigitPercentage_rows_lol: list[str] = [row for row in LoLGame_summary_df.index if row.endswith("_percent") or row == "GUE"] #百分比（Percentage）
     oneDigitFloat_rows_lol: list[str] = ["KDA"] #一位小数（One-digit float）
@@ -126,21 +130,21 @@ def addFormat_LoLGame_summary_wb_transpose(worksheet: openpyxl.workbook.child._W
     percent_dataBarRule_lol: Rule = DataBarRule(start_type = "percentile", start_value = 0, end_type = "percentile", end_value = 100, color = Color("008AEF"), minLength = None, maxLength = None)
     #套用保留两位小数的百分比格式（Two-digit percentage）
     for row in twoDigitPercentage_rows_lol:
-        row_idx: int = LoLGame_summary_df.index.get_loc(row) + 2
+        row_idx: int = LoLGame_summary_df.index.to_list().index(row) + 2
         for column in range(3, len(LoLGame_summary_df) + 2):
             worksheet.cell(column = column, row = row_idx).number_format = numbers.FORMAT_PERCENTAGE_00
     #套用一位小数（One-digit float）
     for row in oneDigitFloat_rows_lol:
-        row_idx = LoLGame_summary_df.index.get_loc(row) + 2
+        row_idx = LoLGame_summary_df.index.to_list().index(row) + 2
         for column in range(3, len(LoLGame_summary_df) + 2):
             worksheet.cell(column = column, row = row_idx).number_format = "0.0"
     #套用三位小数（Three-digit float）
     for row in threeDigitFloat_rows_lol:
-        row_idx = LoLGame_summary_df.index.get_loc(row) + 2
+        row_idx = LoLGame_summary_df.index.to_list().index(row) + 2
         for column in range(3, len(LoLGame_summary_df) + 2):
             worksheet.cell(column = column, row = row_idx).number_format = "0.000"
     #胜负颜色（Win/Lose color）
-    row_idx = LoLGame_summary_df.index.get_loc("win/lose") + 2
+    row_idx = LoLGame_summary_df.index.to_list().index("win/lose") + 2
     col_letter: str = get_column_letter(len(LoLGame_summary_df) + 1)
     rangeStr: str = "C%d:%s%d" %(row_idx, col_letter, row_idx)
     win_formulaRule_lol: Rule = FormulaRule(formula = ['C$%d="%s"' %(row_idx, "胜利")], stopIfTrue = True, fill = PatternFill(start_color = "63BE7B", end_color = "63BE7B", fill_type = "solid"))
@@ -151,12 +155,15 @@ def addFormat_LoLGame_summary_wb_transpose(worksheet: openpyxl.workbook.child._W
     worksheet.conditional_formatting.add(rangeStr, terminated_formulaRule_lol)
     #百分比颜色（Percent color）
     rangeStrs: list[str] = [] #存储尽可能连贯的条件格式区域（Stores continuous conditional formatting areas）
+    startRow_idx: int = 0
+    endRow_idx: int = 0
+    row_idx: int = 0
     for i in range(len(dataBar_rows_lol)): #这里需要注意尽量保持条件格式的区域连贯，以免在打开工作簿时条件格式过多导致卡顿（Note that each conditional formatting area should be as large as possible, otherwise the workbook will perform slow when opening it due to too many rules）
         row = dataBar_rows_lol[i]
         if i == 0:
-            startRow_idx = endRow_idx = LoLGame_summary_df.index.get_loc(row) + 2
+            startRow_idx = endRow_idx = LoLGame_summary_df.index.to_list().index(row) + 2
         else:
-            row_idx = LoLGame_summary_df.index.get_loc(row) + 2
+            row_idx = LoLGame_summary_df.index.to_list().index(row) + 2
             if row_idx == endRow_idx + 1: #如果下一个要添加条件格式的行号与上一个要添加条件格式的行号差1，那么这两行是相邻的，即连贯的（If the number of the current row to add conditional format is greater than the number of the predecessive row to add conditional format by 1, then these two rows are continuous）
                 endRow_idx = row_idx
             else: #如果两行不相邻，则提取得到上一个连贯的区域（If these two rows aren't continuous, then get the previous continuous area）
@@ -171,7 +178,7 @@ def addFormat_LoLGame_summary_wb_transpose(worksheet: openpyxl.workbook.child._W
     for rangeStr in rangeStrs:
         worksheet.conditional_formatting.add(rangeStr, percent_dataBarRule_lol)
     #斗魂竞技场队伍排名颜色设置（Arena subteamPlacement color）
-    row_idx = LoLGame_summary_df.index.get_loc("subteamPlacement") + 2
+    row_idx = LoLGame_summary_df.index.to_list().index("subteamPlacement") + 2
     col_letter = get_column_letter(len(LoLGame_summary_df) + 1)
     rangeStr = "C%d:%s%d" %(row_idx, col_letter, row_idx)
     firstPlace_formulaRule_lol: Rule = FormulaRule(formula = ["C$%d=1" %(row_idx)], stopIfTrue = False, fill = PatternFill(start_color = "FFC000", end_color = "FFC000", fill_type = "solid"))
@@ -182,9 +189,9 @@ def addFormat_LoLGame_summary_wb_transpose(worksheet: openpyxl.workbook.child._W
     for i in range(len(colorScale_rows_lol)): #这里需要注意尽量保持条件格式的区域连贯，以免在打开工作簿时条件格式过多导致卡顿（Note that each conditional formatting area should be as large as possible, otherwise the workbook will perform slow when opening it due to too many rules）
         row = colorScale_rows_lol[i]
         if i == 0:
-            startRow_idx = endRow_idx = LoLGame_summary_df.index.get_loc(row) + 2
+            startRow_idx = endRow_idx = LoLGame_summary_df.index.to_list().index(row) + 2
         else:
-            row_idx = LoLGame_summary_df.index.get_loc(row) + 2
+            row_idx = LoLGame_summary_df.index.to_list().index(row) + 2
             if row_idx == endRow_idx + 1: #如果下一个要添加条件格式的行号与上一个要添加条件格式的行号差1，那么这两行是相邻的，即连贯的（If the number of the current row to add conditional format is greater than the number of the predecessive row to add conditional format by 1, then these two rows are continuous）
                 endRow_idx = row_idx
             else: #如果两列不相邻，则提取得到上一个连贯的区域（If these two columns aren't continuous, then get the previous continuous area）
@@ -205,7 +212,7 @@ def addFormat_LoLGame_summary_wb_transpose(worksheet: openpyxl.workbook.child._W
         worksheet.conditional_formatting.add(rangeStr, order_noFillRule)
         worksheet.conditional_formatting.add(rangeStr, order_colorScaleRule_lol)
 
-def addFormat_LoLPlayer_summary_wb(worksheet: openpyxl.workbook.child._WorkbookChild, LoLPlayer_summary_df: pandas.DataFrame, numColorScale_order: int = 5) -> None:
+def addFormat_LoLPlayer_summary_wb(worksheet: Worksheet, LoLPlayer_summary_df: pandas.DataFrame, numColorScale_order: int = 5) -> None:
     #定义条件格式（Define the conditional formats）
     twoDigitPercentage_columns_lol_summary: list[str] = ["KP_percent"] #百分比（Percentage）
     oneDigitFloat_columns_lol_summary: list[str] = ["KDA"] #一位小数（One-digit float）
@@ -215,16 +222,16 @@ def addFormat_LoLPlayer_summary_wb(worksheet: openpyxl.workbook.child._WorkbookC
     percent_dataBarRule_lol: Rule = DataBarRule(start_type = "percentile", start_value = 0, end_type = "percentile", end_value = 100, color = Color("008AEF"), minLength = None, maxLength = None)
     #套用保留两位小数的百分比格式（Two-digit percentage）
     for column in twoDigitPercentage_columns_lol_summary:
-        col_idx: int = LoLPlayer_summary_df.columns.get_loc(column) + 2 #Excel中的第一列（A列）的索引是1，且又是数据框的索引列【The index of the first column (Column A) in Excel is 1, and this column is the index of column of the dataframe）
+        col_idx: int = LoLPlayer_summary_df.columns.to_list().index(column) + 2 #Excel中的第一列（A列）的索引是1，且又是数据框的索引列【The index of the first column (Column A) in Excel is 1, and this column is the index of column of the dataframe）
         for row in range(3, len(LoLPlayer_summary_df) + 2):
             worksheet.cell(row = row, column = col_idx).number_format = numbers.FORMAT_PERCENTAGE_00
     #套用一位小数（One-digit float）
     for column in oneDigitFloat_columns_lol_summary:
-        col_idx = LoLPlayer_summary_df.columns.get_loc(column) + 2
+        col_idx = LoLPlayer_summary_df.columns.to_list().index(column) + 2
         for row in range(3, len(LoLPlayer_summary_df) + 2):
             worksheet.cell(row = row, column = col_idx).number_format = "0.0"
     #胜负颜色（Win/Lose color）
-    col_idx = LoLPlayer_summary_df.columns.get_loc("win/lose") + 2
+    col_idx = LoLPlayer_summary_df.columns.to_list().index("win/lose") + 2
     col_letter: str = get_column_letter(col_idx)
     rangeStr: str = "%s3:%s%d" %(col_letter, col_letter, len(LoLPlayer_summary_df) + 1)
     win_formulaRule_lol: Rule = FormulaRule(formula = ['$%s3="%s"' %(col_letter, "胜利")], stopIfTrue = True, fill = PatternFill(start_color = "63BE7B", end_color = "63BE7B", fill_type = "solid"))
@@ -235,12 +242,15 @@ def addFormat_LoLPlayer_summary_wb(worksheet: openpyxl.workbook.child._WorkbookC
     worksheet.conditional_formatting.add(rangeStr, terminated_formulaRule_lol)
     #百分比颜色（Percent color）
     rangeStrs: list[str] = [] #存储尽可能连贯的条件格式区域（Stores continuous conditional formatting areas）
+    startCol_idx: int = 0
+    endCol_idx: int = 0
+    col_idx: int = 0
     for i in range(len(dataBar_columns_lol_summary)): #这里需要注意尽量保持条件格式的区域连贯，以免在打开工作簿时条件格式过多导致卡顿（Note that each conditional formatting area should be as large as possible, otherwise the workbook will perform slow when opening it due to too many rules）
-        column: list[str] = dataBar_columns_lol_summary[i]
+        column: str = dataBar_columns_lol_summary[i]
         if i == 0:
-            startCol_idx = endCol_idx = LoLPlayer_summary_df.columns.get_loc(column) + 2
+            startCol_idx = endCol_idx = LoLPlayer_summary_df.columns.to_list().index(column) + 2
         else:
-            col_idx = LoLPlayer_summary_df.columns.get_loc(column) + 2
+            col_idx = LoLPlayer_summary_df.columns.to_list().index(column) + 2
             if col_idx == endCol_idx + 1: #如果下一个要添加条件格式的列号与上一个要添加条件格式的列号差1，那么这两列是相邻的，即连贯的（If the number of the current column to add conditional format is greater than the number of the predecessive column to add conditional format by 1, then these two columns are continuous）
                 endCol_idx = col_idx
             else: #如果两列不相邻，则提取得到上一个连贯的区域（If these two columns aren't continuous, then get the previous continuous area）
@@ -258,13 +268,13 @@ def addFormat_LoLPlayer_summary_wb(worksheet: openpyxl.workbook.child._WorkbookC
         worksheet.conditional_formatting.add(rangeStr, percent_dataBarRule_lol)
     #位次颜色（Order color）
     rangeStrs = []
-    rangeTuples: list[tuple[int, int]] = []
+    rangeTuples: list[tuple[str, str]] = []
     for i in range(len(colorScale_columns_lol_summary)):
         column = colorScale_columns_lol_summary[i]
         if i == 0:
-            startCol_idx = endCol_idx = LoLPlayer_summary_df.columns.get_loc(column) + 2
+            startCol_idx = endCol_idx = LoLPlayer_summary_df.columns.to_list().index(column) + 2
         else:
-            col_idx = LoLPlayer_summary_df.columns.get_loc(column) + 2
+            col_idx = LoLPlayer_summary_df.columns.to_list().index(column) + 2
             if col_idx == endCol_idx + 1:
                 endCol_idx = col_idx
             else:
@@ -287,17 +297,17 @@ def addFormat_LoLPlayer_summary_wb(worksheet: openpyxl.workbook.child._WorkbookC
         worksheet.conditional_formatting.add(rangeStr, order_noFillRule)
         worksheet.conditional_formatting.add(rangeStr, order_colorScaleRule_lol)
 
-def addFormat_inGame_allPlayer_wb(worksheet: openpyxl.workbook.child._WorkbookChild, inGame_allPlayer_df: pandas.DataFrame) -> None:
+def addFormat_inGame_allPlayer_wb(worksheet: Worksheet, inGame_allPlayer_df: pandas.DataFrame) -> None:
     #定义条件格式（Define the conditional formats）
     oneDigitFloat_columns_lol: list[str] = ["KDA"] #一位小数（One-digit float）
     threeDigitFloat_columns_lol: list[str] = ["CSPM"] #三位小数（Three-digit float）
     #套用一位小数（One-digit float）
     for column in oneDigitFloat_columns_lol:
-        col_idx: int = inGame_allPlayer_df.columns.get_loc(column) + 2
+        col_idx: int = inGame_allPlayer_df.columns.to_list().index(column) + 2
         for row in range(3, len(inGame_allPlayer_df) + 2):
             worksheet.cell(row = row, column = col_idx).number_format = "0.0"
     #套用三位小数（Three-digit float）
     for column in threeDigitFloat_columns_lol:
-        col_idx = inGame_allPlayer_df.columns.get_loc(column) + 2
+        col_idx = inGame_allPlayer_df.columns.to_list().index(column) + 2
         for row in range(3, len(inGame_allPlayer_df) + 2):
             worksheet.cell(row = row, column = col_idx).number_format = "0.000"

@@ -1,11 +1,11 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-import copy, json, numpy, os, pandas, platform, pyperclip, re, time, traceback
+import copy, json, os, pandas, platform, pyperclip, re, subprocess, time, traceback
 from typing import Any, Optional
 from src.utils.format import getISOTime, optimize_bool_display, format_df, addDefaultStyle, pyobj2json
 from src.utils.logger import LogManager
 from src.utils.summoner import print_summoner_info, get_info_name
-from src.core.config.localization import slotTypes, positions, recommendedAttributes
+from src.core.config.localization import gamemaps, slotTypes, positions, recommendedAttributes
 from src.core.config.headers import perk_header, recommendedPage_header, perkPage_header
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.dataframes.champions import sort_inventory_champions, filter_champion
@@ -16,7 +16,7 @@ from src.core.dataframes.champions import sort_inventory_champions, filter_champ
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/09
+# 更新（Last update）：     2026/03/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -43,9 +43,9 @@ connector: Connector = Connector()
 #-----------------------------------------------------------------------------
 def clear_screen() -> None:
     if platform.system() == "Windows":
-        os.system("CLS")
+        subprocess.call("CLS", shell = True)
     else:
-        os.system("clear")
+        subprocess.call("clear", shell = True)
 
 async def prepare_data_resources(connection: Connection) -> None:
     global spells, perks_source, perks, perkstyles_source, perkstyles, LoLChampions, recommended_position_for_champion, champion_colloq_dict
@@ -88,12 +88,12 @@ def sort_perk_data(perks_source: list[dict[str, Any]], perkstyles_source: dict[s
             kStatMod_perkIds.append(perk["id"])
     defaultPerkOrder += sorted(kStatMod_perkIds)
     ##其它符文按照符文序号正序排列（Other perks are sorted by the ascending order of perkId）
-    perkIds_sorted: list[str] = sorted(map(lambda x: x["id"], perks_source))
+    perkIds_sorted: list[int] = sorted(map(lambda x: x["id"], perks_source))
     for perkId in perkIds_sorted:
         if not perkId in defaultPerkOrder:
             defaultPerkOrder.append(perkId)
     ##构建符文序号权重字典（Create the status dictionary of perkIds）
-    defaultPerkOrder_dict: dict[str, int] = {defaultPerkOrder[i]: i for i in range(len(defaultPerkOrder))}
+    defaultPerkOrder_dict: dict[int, int] = {defaultPerkOrder[i]: i for i in range(len(defaultPerkOrder))}
     perk_header_keys: list[str] = list(perk_header.keys())
     perk_data: dict[str, list[Any]] = {key: [] for key in perk_header_keys}
     for perk in perks_source:
@@ -118,7 +118,7 @@ def sort_perk_data(perks_source: list[dict[str, Any]], perkstyles_source: dict[s
 
 def sort_recommended_perk(recommendedPages: list[dict[str, Any]]) -> pandas.DataFrame:
     if recommendedPages == []:
-        recommendedPage_df: pandas.DataFrame = pandas.DataFrame(data = recommendedPage_header, index = 0)
+        recommendedPage_df: pandas.DataFrame = pandas.DataFrame(data = recommendedPage_header, index = [0])
     else:
         recommendedPage_header_keys: list[str] = list(recommendedPage_header.keys())
         recommendedPage_data: dict[str, list[Any]] = {key: [] for key in recommendedPage_header_keys}
@@ -189,7 +189,7 @@ async def get_perk_page(connection: Connection) -> pandas.DataFrame:
 
 #过程（Process）
 def check_all_perks_classified(perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]]) -> None:
-    HTML_tag_re = re.compile(r"<[^>]*>")
+    HTML_tag_re: re.Pattern[str] = re.compile(r"<[^>]*>")
     perkIds_unprinted: list[int] = list(map(lambda x: x["id"], perks.values()))
     #先打印符文系下的符文（First, print perks under perkstyles）
     for i in range(len(perkstyles)):
@@ -267,7 +267,7 @@ def check_all_perks_classified(perks: dict[int, dict[str, Any]], perkstyles: dic
     #clear_screen()
 
 def check_all_perks_tabified(perk_df: pandas.DataFrame) -> None:
-    HTML_tag_re = re.compile(r"<[^>]*>")
+    HTML_tag_re: re.Pattern[str] = re.compile(r"<[^>]*>")
     for i in range(1, len(perk_df)):
         shortDesc = perk_df["shortDesc"][i]
         while (matchObj := HTML_tag_re.search(shortDesc)):
@@ -314,6 +314,8 @@ def check_all_perks() -> None:
 
 def specify_recommend_perkPage_parameters() -> tuple[int, int, str, int]:
     championId: int = 0
+    championName: str = ""
+    championAlias: str = ""
     championPosition: str = "TOP"
     mapId: int = 11
     step: int = 1
@@ -322,16 +324,13 @@ def specify_recommend_perkPage_parameters() -> tuple[int, int, str, int]:
             break
         elif step == 1:
             logPrint("第一步：请选择一个英雄：\nStep 1: Please select a champion:")
-            LoLChampion_df, count = sort_inventory_champions(LoLChampions, recommended_position_for_champion)
+            LoLChampion_df: pandas.DataFrame = sort_inventory_champions(LoLChampions, recommended_position_for_champion)[0]
             LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict.get(x, []), LoLChampion_df["id"][1:]))
             LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
             LoLChampion_df_query_initial: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print + ["colloq"]] #代表初始值（Represent the initial value）
             LoLChampion_df_query: pandas.DataFrame = LoLChampion_df_query_initial #代表查询过程中的值（Represent the value during a query）
             print(format_df(LoLChampion_df.loc[:, LoLChampion_fields_to_print])[0])
             log.write(format_df(LoLChampion_df.loc[:, LoLChampion_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
-            championId: int = 0
-            championName: str = ""
-            championAlias: str = ""
             while True:
                 champion_queryStr: str = logInput()
                 if champion_queryStr == "":
@@ -342,15 +341,16 @@ def specify_recommend_perkPage_parameters() -> tuple[int, int, str, int]:
                 else:
                     break_flag, championId, LoLChampion_df_query = filter_champion(champion_queryStr, LoLChampion_df_query, LoLChampion_df_query_initial)
                     if break_flag:
+                        championName = LoLChampions[championId]["name"]
+                        championAlias = LoLChampions[championId]["alias"]
                         break
         elif step == 2:
-            positionDict: dict[str, str] = {"TOP": "上路", "JUNGLE": "打野", "MIDDLE": "中路", "BOTTOM": "下路", "UTILITY": "辅助"}
             recommendedPositions: list[str] = recommended_position_for_champion[str(championId)]["recommendedPositions"] if str(championId) in recommended_position_for_champion else ["TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"]
             logPrint("第二步：请选择一条推荐路线：\nStep 2: Please select a recommended position:")
             position_count: int = 0
             for position in recommendedPositions:
                 position_count += 1
-                logPrint("%d\t%s\t%s" %(position_count, position, positionDict[position]))
+                logPrint("%d\t%s\t%s" %(position_count, position, positions[position]))
             while True:
                 position_str: str = logInput()
                 if position_str == "0":
@@ -362,13 +362,12 @@ def specify_recommend_perkPage_parameters() -> tuple[int, int, str, int]:
                 elif position_str in list(map(str, range(1, len(recommendedPositions) + 1))):
                     championPosition = recommendedPositions[int(position_str) - 1]
                     break
-                elif position_str.upper() in positionDict:
-                    logPrint("%s的推荐路线中没有%s。请重新输入。\n%s isn't a recommended position of %s. Please try again." %(result_champion_df["name"][0], position_str.upper(), position_str.upper(), result_champion_df["alias"][0]))
+                elif position_str.upper() in positions:
+                    logPrint("%s的推荐路线中没有%s。请重新输入。\n%s isn't a recommended position of %s. Please try again." %(championName, position_str.upper(), position_str.upper(), championAlias))
                 else:
                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
         elif step == 3:
             logPrint("第三步：请输入地图序号：\nStep 3: Please enter the mapId:")
-            gamemaps: dict[int, dict[str, str]] = {8: {"zh_CN": "水晶之痕", "en_US": "Crystal Scar"}, 10: {"zh_CN": "扭曲丛林", "en_US": "Twisted Treeline"}, 11: {"zh_CN": "召唤师峡谷", "en_US": "Summoner's Rift"}, 12: {"zh_CN": "随机地图", "en_US": "Random Map"}, 14: {"zh_CN": "屠夫之桥", "en_US": "Butcher's Bridge"}, 16: {"zh_CN": "星界废墟", "en_US": "Cosmic Ruins"}, 18: {"zh_CN": "瓦洛兰城市公园", "en_US": "Valoran City Park"}, 19: {"zh_CN": "第43区", "en_US": "Substructure 43"}, 20: {"zh_CN": "飞船坠落点", "en_US": "Crash Site"}, 21: {"zh_CN": "百合与莲花的神庙", "en_US": "Temple of Lily and Lotus"}, 22: {"zh_CN": "聚点危机", "en_US": "Convergence"}, 30: {"zh_CN": "怒火角斗场", "en_US": "Rings of Wrath"}, 33: {"zh_CN": "最终都市", "en_US": "Final City"}, 35: {"zh_CN": "班德尔之森", "en_US": "The Bandlewood"}}
             gamemap_df: pandas.DataFrame = pandas.DataFrame(data = {"mapId": list(gamemaps.keys()), "zh_CN": list(map(lambda x: x["zh_CN"], gamemaps.values())), "en_US": list(map(lambda x: x["en_US"], gamemaps.values()))})
             print(format_df(gamemap_df)[0])
             log.write(format_df(gamemap_df, width_exceed_ask = False, direct_print = False)[0])
@@ -392,10 +391,12 @@ def specify_recommend_perkPage_parameters() -> tuple[int, int, str, int]:
         step += 1
     return (step, championId, championPosition, mapId)
 
-def check_recommend_perkPage(recommendedPages: list[dict[str, Any]]) -> None:
+def check_recommend_perkPage(recommendedPages: list[dict[str, Any]], championId: int, position: str, mapId: int) -> None:
     recommendedPage_df: pandas.DataFrame = sort_recommended_perk(recommendedPages)
+    championName: str = LoLChampions[championId]["name"]
+    championAlias: str = LoLChampions[championId]["alias"]
     if len(recommendedPage_df) == 1: #一般情况下接口数据是正常获取的（The endpoint should work in normal cases）
-        logPrint("%s中的%s%s推荐符文信息不可用。\nRecommended perk information of %s %s on %s isn't available." %(gamemaps[mapId]["zh_CN"], positionDict[championPosition], result_champion_df["name"][0], championPosition, result_champion_df["alias"][0], gamemaps[mapId]["en_US"]))
+        logPrint("%s中的%s%s推荐符文信息不可用。\nRecommended perk information of %s %s on %s isn't available." %(gamemaps[mapId]["zh_CN"], positions[position], championName, position, championAlias, gamemaps[mapId]["en_US"]))
     else:
         logPrint('选择下方的一个方案以查看详细信息。输入“0”以返回上一层。\nSelect a page to check the details. Submit "0" to return to the last step.')
         recommendedPage_df_fields_to_print: list[str] = ["primaryPerkStyleName", "secondaryPerkStyleName", "keystone name", "summonerSpellNames"]
@@ -521,7 +522,7 @@ def set_perks_successively(page_body: dict[str, Any]) -> int:
                     parameter_dict[i + 1] = styleId
                     perkTableStr += "\n#%d\t%d\t%s" %(i + 1, styleId, perkstyles[styleId]["name"])
         elif step <= 8:
-            substyle: dict[str, Any] = perkstyles[page_body["subStyleId"]]["name"] if page_body["subStyleId"] in perkstyles else "副系"
+            substyle: str = perkstyles[page_body["subStyleId"]]["name"] if page_body["subStyleId"] in perkstyles else "副系"
             tooltip = f"第{step}步：请选择一个{substyle}符文。\nStep {step}: Please select a {substyle} perk."
             perkTableStr = ""
             if page_body["primaryStyleId"] in perkstyles and page_body["subStyleId"] in allowedSubStyles:
@@ -672,7 +673,7 @@ async def change_perkPage_name(connection: Connection, page_body: dict[str, Any]
                 dummy_page_created: bool = False
                 if len(perkPages) == 0: #如果用户没有符文页，则创建一个占位符文页。目的只是为了拿到一个具体的符文页序号（If the user doesn't have any perk page, create one. The aim is only to get a perk page id）
                     dummy_page_body: dict[str, Any] = {"name": "占位符文页", "isTemporary": True, "primaryStyleId": -1, "subStyleId": -1, "selectedPerkIds": [-1, -1, -1, -1, -1, -1, -1, -1, -1]}
-                    response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-perks/v1/pages", data = dummy_page_body)).json()
+                    response: dict[str, Any] = await (await connection.request("POST", "/lol-perks/v1/pages", data = dummy_page_body)).json()
                     logPrint(response)
                     if "errorCode" in response:
                         logPrint(response)
@@ -828,6 +829,7 @@ async def edit_perkPage(connection: Connection) -> None:
         if page_edit:
             logPrint("请选择编辑方式：\nPlease select a method of:\n0\t放弃修改（Quit editing）\n1\t逐个修改（Successively）\n2\t批量修改（In batch）\n3\t仅重命名（Rename only）\n4\t读取Json数据（From json data）\n5\t读取文件（From a file）")
             while True:
+                page_body: dict[str, Any] = {"name": "", "isTemporary": isTemporary, "primaryStyleId": -1, "subStyleId": -1, "selectedPerkIds": [-1, -1, -1, -1, -1, -1, -1, -1, -1]} #请求主体初始化（Initialize the request body）
                 method = logInput()
                 if method == "":
                     continue
@@ -835,13 +837,11 @@ async def edit_perkPage(connection: Connection) -> None:
                     page_edit = False
                     break
                 elif method[0] == "1": #保持与客户端符文配置步骤相同（Keep synchronized with the latest perk configuration steps in the League Client）
-                    page_body: dict[str, Any] = {"name": "", "isTemporary": isTemporary, "primaryStyleId": -1, "subStyleId": -1, "selectedPerkIds": [-1, -1, -1, -1, -1, -1, -1, -1, -1]} #请求主体初始化（Initialize the request body）
                     step: int = set_perks_successively(page_body)
                     page_edit = step != 0
                     if page_edit:
                         await change_perkPage_name(connection, page_body, page_exist, old_pageName = pageName)
                 elif method[0] == "2":
-                    page_body: dict[str, Any] = {"name": "", "isTemporary": isTemporary, "primaryStyleId": -1, "subStyleId": -1, "selectedPerkIds": [-1, -1, -1, -1, -1, -1, -1, -1, -1]}
                     logPrint("请输入一个由符文序号组成的列表。\nPlease input a list composed of perkIds.\n例如（Example）：[8008, 9111, 9104, 8014, 8347, 8304, 5005, 5008, 5001]")
                     while True:
                         uiPerksStr: str = logInput()
@@ -1001,12 +1001,12 @@ async def arrange_perk_pages(connection: Connection) -> None:
         logPrint("您还未创建任何符文页！请先创建一个符文页再选择此操作。\nYou don't have any page currently. Please select this action after creating a page.")
     else:
         pageIds: list[int] = list(map(lambda x: x["id"], perkPages))
-        current_pageOrder_list: list[int] = list(perkPage_df.loc[1:].sort_values(by = "order", ascending = True)["id"])
         logPrint('''请输入一个您期望的符文页序号排列顺序列表，排在前面的代表显示在前，排在后面的代表显示在后。例如，如果想恢复您当前的排序，您可以输入“%s”。\nPlease input a perk page id order list, where the page whose pageId is in the front of pageId list will be moved in the front of the page list, and vice versa. For example, if you'd like to recover the current page order, you may input "%s".''' %(current_pageOrder_list, current_pageOrder_list))
         perkPage_df: pandas.DataFrame = await get_perk_page(connection)
         perkPage_df_fields_to_print: list[str] = ["id", "name", "order", "primaryStyleName", "secondaryStyleName"]
         print(format_df(perkPage_df.loc[:, perkPage_df_fields_to_print])[0])
         log.write(format_df(perkPage_df.loc[:, perkPage_df_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
+        current_pageOrder_list: list[int] = list(perkPage_df.loc[1:].sort_values(by = "order", ascending = True)["id"])
         page_order: list[int] = []
         while True:
             page_order_got: bool = False
@@ -1155,7 +1155,7 @@ async def configure_perks(connection: Connection) -> None:
             if step == 0:
                 continue
             recommendedPages: list[dict[str, Any]] = await (await connection.request("GET", f"/lol-perks/v1/recommended-pages/champion/{championId}/position/{championPosition}/map/{mapId}")).json()
-            check_recommend_perkPage(recommendedPages)
+            check_recommend_perkPage(recommendedPages, championId, championPosition, mapId)
         elif option[0] == "3":
             logPrint("您的符文页信息如下：\nYour perk pages are listed below:")
             perkPage_df: pandas.DataFrame = await get_perk_page(connection)
