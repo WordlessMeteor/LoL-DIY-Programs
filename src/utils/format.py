@@ -1,6 +1,6 @@
 import datetime, json, pandas, shutil, unicodedata, uuid
 from wcwidth import wcswidth
-from typing import Any, Literal, Optional
+from typing import Any, Generator, Literal, Optional
 
 def format_json(origin: str, indent_char: str = " ", number: int = 4) -> str: #对字符串origin进行格式化（Formalize the string `origin`）
     '''
@@ -59,10 +59,26 @@ def optimize_bool_display(df: pandas.DataFrame, onTrue: str = "√", onFalse: st
             df[column] = df[column].astype(str)
             df[column] = list(map(lambda x: "√" if x == "True" else "", df[column].to_list()))
 
-def count_nonASCII(s: str) -> int: #统计一个字符串中占用命令行2个宽度单位的字符个数（Count the number of characters that take up 2 width unit in CMD）
+def count_nonASCII(s: str) -> int:
+    '''
+    统计一个字符串中占用命令行2个宽度单位的字符个数。<br>Count the number of characters that take up 2 width unit in CMD.
+    
+    :param s: 任意字符串。<br>Any string.
+    :type s: str
+    :return: 占用2个宽度单位的字符个数。<br>The number of characters that take up 2 width.
+    :rtype: int
+    '''
     return sum([unicodedata.east_asian_width(character) in ("F", "W") for character in list(str(s))])
 
-def rm_ctrl_char(s: str) -> str: #移除一个字符串中的所有C0和C1字符（Remove all C0 and C1 characters from a string）
+def rm_ctrl_char(s: str) -> str:
+    '''
+    移除一个字符串中的所有C0和C1字符。<br>Remove all C0 and C1 characters from a string.
+    
+    :param s: 原字符串。<br>The original string.
+    :type s: str
+    :return: 移除终端中显示异常的字符后的字符串。<br>The result string after removing characters that don't display correctly in terminal.
+    :rtype: str
+    '''
     return "".join(ch for ch in s if unicodedata.category(ch) != "Cc") #该表达式等价于（This expression is equivalent to）`re.sub(r"[\x00-\x1F\x7F-\x9F]", "", s)`
 
 def format_df(df: pandas.DataFrame, width_exceed_ask: bool = True, direct_print: bool = False, print_header: bool = True, print_index: bool = False, reserve_index: bool = False, start_index: int = 0, header_align: str = "^", align: str = "^", align_replicate_rule: Literal["all", "last"] = "all") -> tuple[str, dict[str, int]]: #按照每列最长字符串的命令行宽度加上2，再根据每个数据的中文字符数量决定最终格式化输出的字符串宽度（Get the width of the longest string of each column, add it by 2, and substract it by the number of each cell string's Chinese characters to get the final width for each cell to print using `format` function）
@@ -236,6 +252,14 @@ def getISOTime(timestamp: float, tz: datetime.timezone = datetime.timezone.utc) 
     return dt.isoformat(timespec = "milliseconds").replace("+00:00", "Z")
 
 def format_runtime(seconds: int | float) -> str: #专用于导出工作表时的进度统计（Specially used in the process counter of worksheets）
+    '''
+    将一段持续时长格式化为文本。<br>Format a time duration into a piece of text.
+    
+    :param seconds: 持续时间，以秒为单位。<br>Time duration in seconds.
+    :type seconds: int | float
+    :return: 结果字符串。形式为“{天数} d {小时} h {分钟} m {秒} s”。<br>Result string. In the form of "{day} d {hour} h {minute} m {second} s".
+    :rtype: str
+    '''
     units: list[tuple[str, int]] = [(" d", 86400), (" h", 3600), (" m", 60), (" s", 1)]
     results: list[str] = []
     for unit_name, unit_seconds in units:
@@ -269,7 +293,15 @@ def write_roman(num: int) -> str: #此部分代码来自Stack Overflow（The fol
     roman[4] = "IV"
     roman[1] = "I"
 
-    def roman_num(num: int):
+    def roman_num(num: int) -> Generator[str]:
+        '''
+        罗马数字生成器。<br>Roman number generator.
+        
+        :param num: 阿拉伯数字。<br>An arabic number.
+        :type num: int
+        :return: 罗马数字生成器。<br>Roman number generator.
+        :rtype: Generator[str]
+        '''
         for r in roman.keys():
             x: int = divmod(num, r)[0]
             yield roman[r] * x
@@ -279,7 +311,15 @@ def write_roman(num: int) -> str: #此部分代码来自Stack Overflow（The fol
 
     return "".join([a for a in roman_num(num)])
 
-def verify_uuid(s: str) -> bool: #检查一段字符串是否符合通用唯一识别码的格式（Check whether a string complies with the format of a universally unique identifier）
+def verify_uuid(s: str) -> bool:
+    '''
+    检查一段字符串是否符合通用唯一识别码的格式。<br>Check whether a string complies with the format of a universally unique identifier.
+    
+    :param s: 任意字符串。<br>Any string.
+    :type s: str
+    :return: 字符串是否符合通用唯一识别码的格式。<br>Whether this string follows the format of a UUID.
+    :rtype: bool
+    '''
     try:
         return s == str(uuid.UUID(s))
     except ValueError:

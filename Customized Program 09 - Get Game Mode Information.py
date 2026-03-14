@@ -1,6 +1,7 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import os, pandas, time
+from typing import Any
 from src.utils.format import format_df, addDefaultStyle
 from src.utils.summoner import print_summoner_info
 from src.core.dataframes.gameMode import sort_queue_data, check_available_queue
@@ -11,7 +12,7 @@ from src.core.dataframes.gameMode import sort_queue_data, check_available_queue
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/07
+# 更新（Last update）：     2026/03/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -26,13 +27,9 @@ connector: Connector = Connector()
 #-----------------------------------------------------------------------------
 # 获取游戏模式信息（Get game mode information）
 #-----------------------------------------------------------------------------
-def lcuTimestamp(timestamp: int) -> str: #根据队列开放和关闭时间戳返回对局时间（Return the time according to the timestamp of queue opening and closure）
-    min = timestamp // 60
-    sec = timestamp % 60
-    return str(min) + ":" + "{0:0>2}".format(str(sec))
-
-async def gamemode(connection: Connection) -> None:
-    queue_df: pandas.DataFrame = await sort_queue_data(connection)
+async def gamemode(connection: Connection) -> None: #导出游戏模式信息到工作簿中（Export game mode information into a workbook）
+    queues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
+    queue_df: pandas.DataFrame = sort_queue_data(queues_source)
     #下面设置覆盖写时添加的Sheet名称（The code here sets the Sheet name to be appended into the xlsx file with the same name）
     riot_client_info: list[str] = await (await connection.request("GET", "/riotclient/command-line-args")).json()
     client_info: dict[str, str] = {}
@@ -61,7 +58,7 @@ async def gamemode(connection: Connection) -> None:
             break
     #要完整读取游戏队列信息，请使用命令（To read in the queue information entirely, it's highly recommended that user use the following command）：df = pandas.read_excel("游戏队列信息.xlsx", header = 0, index_col = 0)
 
-async def print_available_queue(connection: Connection) -> None:
+async def print_available_queue(connection: Connection) -> None: #打印可用队列信息（Print available queues）
     platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
     game_version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
     print("是否检查可用队列？（输入任意键检查，否则退出程序）\nDo you want to check available queues? (Submit anything to check, or null to exit the program)")

@@ -50,6 +50,12 @@ connector: Connector = Connector()
 # 定义全局变量（Define global variables）
 #-----------------------------------------------------------------------------
 async def prepare_data_resources(connection: Connection) -> None:
+    '''
+    准备全局数据资源。<br>Prepare global data resources.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     global current_summoner, LoLChampions, LoLChampion_df, gameQueues
     current_summoner = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     LoLChampions_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champions/v1/inventories/%s/champions" %(current_summoner["summonerId"]))).json()
@@ -133,6 +139,25 @@ async def create_lobby(connection: Connection, queueId: int = 0, isCustom: bool 
 # 秒选英雄（Instantly pick and lock a champion）
 #-----------------------------------------------------------------------------
 async def secLock(connection: Connection, championId: int = 11, action_type: str = "pick", completed: bool = True) -> None:
+    '''
+    秒选一名英雄。<br>Immediately lock a champion.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param championId: 英雄序号。<br>ChampionId.
+    :type championId: int
+    :param action_type: 行为类型。有以下可用取值。<br>Action type, which has the following available values:
+    
+        - pick: 选用
+        - ban: 禁用
+        - vote: 投票
+        
+        另外还有一个取值，但玩家无法指定为该值。<br>There's another value which can't be specified by the player.
+        - ten_bans_reveal: 禁用揭晓
+    :type action_type: Literal["pick", "ban", "vote"]
+    :param completed: 是否完成动作。相当于在选择英雄后，是否按下“锁定”按钮。<br>Whether to complete this action. That is, whether to press "Lock" button after selecting a champion.
+    :type completed: bool
+    '''
     champ_select_session: dict[str, Any] = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
     localPlayerCellId: int = champ_select_session["localPlayerCellId"]
     logPrint(f"用户槽位序号（Local player cellId）：{localPlayerCellId}")
@@ -310,8 +335,8 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
     '''
     统计在全随机模式中选到想玩的英雄的频率。在只需要房主选定一名英雄的情况下可使用此函数。<br>Count the frequency of rolling candidate champions in an all-random mode. This function may be used when only the lobby owner needs some specific champions.
     
-    :param connection: 一个lcu_driver.connection.Connection对象。在程序中一般直接指定为connection即可。<br> A `lcu_driver.connection.Connection` object. In program, it's usually used with the name "connection".
-    :type connection: lcu_driver.connection.Connection
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
     :param premade: 是否预组队，即用户所在阵营是否有超过1名人类玩家。默认为假。<br>Whether this party is premade, that is, whether there's more than 1 human player in the user's belonging team. False by default.
     
         注意，其他成员需要指定和房主相同的英雄，以便函数输出正确的提示，并正确中止运行。<br>Note that other members should specify the same champions as the lobby owner does, so that the function could give correct hints and cancel correctly.
@@ -1052,7 +1077,56 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
 
 async def RotateBlindPickCustomAARAM(connection: Connection, premade: bool = False, isCrowd: bool = False, roleType: Literal[1, 2, 3] = 1, queueId: int = 3270, preset_championIds: Optional[list[int]] = None, ally_candidate_championId_options: Optional[list[list[int]]] = None, enemy_candidate_championId_options: Optional[list[list[int]]] = None, interval: Optional[float] = None, champion_frequency_dict: Optional[dict[int, int]] = None) -> None: #通过连续按回车键以在海克斯大乱斗自定义游戏中连续测试想玩的英雄（Continuously start custom pick ARAM: Mayhem games using wanted champions by continuously pressing Enter）
     '''
-    参数注释见StartBlindPickCustomAARAM函数。<br>Refer to `StartBlindPickCustomAARAM` function for explanations on these parameters.
+    反复启动大乱斗英雄选择概率测试。<br>Repeatedly start the ARAM champ select probability test.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param premade: 是否预组队，即用户所在阵营是否有超过1名人类玩家。默认为假。<br>Whether this party is premade, that is, whether there's more than 1 human player in the user's belonging team. False by default.
+    
+        注意，其他成员需要指定和房主相同的英雄，以便函数输出正确的提示，并正确中止运行。<br>Note that other members should specify the same champions as the lobby owner does, so that the function could give correct hints and cancel correctly.
+        
+        如果是选择了多选模式，且房主指定了对方的候选英雄序号，则房主的对手在分别指定友军和敌军的候选英雄序号列表时，需要以房主的输入为基准。<br>Note that under crowd mode, if the lobby owner specifies the opponents' championId list, then when the lobby owner's opponents are trying to specify the ally and enemy candidate championId lists, they should follow the lobby owner's input.
+        
+    :type premade: bool
+    :param isCrowd: 是否启用多选模式。默认为假。<br>Whether to enable multiple choices. False by default.
+    
+        在单选模式下，用户可以传入一个候选英雄序号列表，其中的一个英雄将被房主选择。<br>Under single mode, the user may pass a candidate championId list, from which one champion will be selected for the lobby owner only.
+        
+        在多选模式下，用户可以传入友方候选英雄序号列表和敌方候选英雄序号列表（如果敌方英雄选择信息可用）。<br>Under crowd mode, the user may pass an ally candidate championId list and an enemy candidate championId list (if enemy selected champions are revealed).
+        
+    :type isCrowd: bool
+    :param roleType: 角色类型。仅在预组队时可用。有以下取值：<br>Player's role. Only available when the party is premade, namely `premade` is True. It may be one of the following values:
+    
+        - 1: 房主，或者说主播，即能开启游戏的那名玩家。<br>The lobby owner, or the host / streamer, which is the player that can start the game.
+        - 2: 一般权限友军。<br>An ally without any priviledge.
+        - 3: 一般权限敌军。注意，在全随机模式中，这个信息往往不可见，因此往往用不到这个取值。<br>An enemy without any priviledge. Note that in all-random mode, this information is always invisible, so this always is never used.
+        
+        两种角色执行的行为如下：<br>Behaviors of these two roles are as follows:
+        
+        1: 房主/主播。<br>Lobby owner / Host.
+        
+            - 房主能够开启游戏。<br>The lobby owner can start the game.
+            - 房主会在英雄选择阶段扫描所有人的英雄选择状态。<br>The lobby owner will scan every player's seletion status during the champ select stage.
+            - 等待所有人选定一名英雄后，房主会扫描所有已选择的英雄以及替补英雄池中的英雄。如果这些英雄和预选英雄有重合，那么一次测试结束；否则，重新启动下一个英雄选择阶段。<br>After everyone's picked a champion, the lobby owner will scan all selected champions and bench champions. If they overlap with the candidate champions, then this test is over; otherwise, start the next champ select stage.
+            
+        2/3: 普通成员/水友。<br>Member / Audience.
+        
+            - 水友等待房主开启游戏后，在进入英雄选择阶段的一瞬间，水友迅速选择优先级较低的英雄卡片，以便房主迅速做出决定。<br>After the lobby owner starts the game, at the instance of enter the champ select stage, the member immediately select a champion card with lowest priority, so that the lobby owner can make a decision as quickly as possible.
+            - 在任意玩家发起英雄交换请求时，迅速同意之。<br>Once a champion swap request is made, accept it.
+        
+    :type roleType: int
+    :param queueId: 拟创建的自定义房间的对局序号。自定义房间必须是**全随机模式**。默认创建海克斯大乱斗自定义。<br>QueueId of the custom lobby to create. The custom lobby must be **all-random**. ARAM: Mayhem lobby is created by default.
+    :type queueId: int
+    :param preset_championIds: 指定预选英雄序号列表参数以快速指定英雄。如果不指定，将会在函数体内要求用户输入一个英雄序号列表。<br>Specify this parameter to quickly specify champions. If it's not specified, the function will ask the user to submit a championId list.
+    :type preset_championIds: list[int]
+    :param ally_candidate_championId_options: 我方候选英雄序号方案。<br>A list of candidate championId schemes of myTeam.
+    :type ally_candidate_championId_options: list[int]
+    :param enemy_candidate_championId_options: 对方候选英雄序号列表。<br>A list of candidate championId schemes of theirTeam.
+    :type enemy_candidate_championId_options: list[int]
+    :param interval: 操作间隔。这个参数用于防止请求频繁导致客户端直接卡死。这个间隔依据服务器延迟而定，可设置为0.2～1秒。<br>Interval between operation cycles. This parameter is meant to prevent League Client from being seriously stuck. This interval can be set as a value between 0.2 and 1 second, which depends on the server lag.
+    :type interval: float
+    :param champion_frequency_dict: 欲补充的英雄出现次数频数统计字典。如果不传入该参数，函数将自动初始化该参数。<br>The champion occurrence frequency distribution dictionary to supplement. If this parameter isn't passed into any value, the function will automatically initialize this parameter.
+    :type champion_frequency_dict: dict[int, int]
     '''
     #参数预处理（Parameter preprocess）
     if preset_championIds == None:
@@ -1151,6 +1225,10 @@ async def RotateBlindPickCustomAARAM(connection: Connection, premade: bool = Fal
 
 async def ARAMBalanceBuffTest(connection: Connection, preset_championIds: Optional[list[int]] = None) -> None: #通过连续按回车键以连续开启不同的嚎哭深渊 自定义 自选模式（Continuously start custom pick ARAM games by continuously pressing Enter）
     '''
+    测试极地大乱斗的平衡性增益。<br>Test the champion balance buff in ARAM.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
     :param preset_championIds: 指定预选英雄序号列表参数以快速指定英雄。<br>Specify this parameter to quickly specify champions.
     :type preset_championIds: list[int]
     '''

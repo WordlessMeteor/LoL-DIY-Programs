@@ -8,7 +8,23 @@ if not wd in sys.path:
 from src.utils.logger import LogManager
 from src.utils.webRequest import SGPSession
 
-def subscope(scope: Optional[dict[Any, Any]] = None, log: Optional[LogManager] = None, verbose: bool = True):
+def subscope(scope: Optional[dict[Any, Any]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> int:
+    '''
+    在程序运行期间开启一个私密的作用域，允许用户自行调试和计算结果。运行效果类似于带有部分运行时变量的一个新的Python终端。<br>Open a private scope to allow users debug and make calculations during the program execution. The experience is like a new Python terminal with some runtime variables inherited.
+    
+    为了观察表达式的计算结果，建议用户用“print”函数将表达式包裹起来。<br>To inspect the calculation result, it's highly suggested that users enclose the expression with a "print" function.
+    
+    :param scope: 作用域，存储需要从运行环境中继承的变量。<br>A scope that stores variables to be inherited from the runtime environment.
+    
+        在用于执行计算时，作用域会经历一次深度拷贝，以避免影响到原运行环境中的变量。<br>To perform calculations, the scope is deep copied, in case the original variables in runtime would be influenced.
+    :type scope: dict[Any, Any]
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
+    :type verbose: bool
+    :return: 状态码。在正常退出函数的情况下，总是返回0。<br>Status code. When this function is exited as normal, 0 is always returned.
+    :rtype: int
+    '''
     if scope == None:
         scope = {}
     if log == None:
@@ -36,6 +52,14 @@ def subscope(scope: Optional[dict[Any, Any]] = None, log: Optional[LogManager] =
 # 向服务器发送指令（Send commands to the server）
 #-----------------------------------------------------------------------------
 async def send_LCU_commands(connection: Connection, log: Optional[LogManager] = None) -> None:
+    '''
+    使用LCU API发送指令，并将响应主体保存到临时文件中。<br>Send commands through LCU API, and save the response body into a temporary file.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    '''
     if log == None:
         log = LogManager()
     logInput = log.logInput
@@ -109,6 +133,14 @@ async def send_LCU_commands(connection: Connection, log: Optional[LogManager] = 
         logPrint("请依次输入方法、统一资源标识符、参数和请求主体（如有），以空格为分隔符：\nPlease enter the method, URI, parameters and request body (if needed), split by space:")
 
 async def send_SGP_commands(connection: Connection, log: Optional[LogManager] = None) -> None:
+    '''
+    使用SGP API发送指令，并将响应主体保存到临时文件中。<br>Send commands through SGP API, and save the response body into a temporary file.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    '''
     if log == None:
         log = LogManager()
     logInput = log.logInput
@@ -243,6 +275,14 @@ async def send_SGP_commands(connection: Connection, log: Optional[LogManager] = 
         logPrint("请依次输入方法、统一资源标识符、参数、请求主体和请求头（如有），以空格为分隔符：\nPlease enter the method, URI, parameters, request body and request header (if needed), split by space:")
 
 async def send_commands(connection: Connection, log: Optional[LogManager] = None) -> None:
+    '''
+    一个综合的调试LCU API和SGP API的函数。直接应用于调试脚本。<br>A universal function to debug LCU API and SGP API. Directly used in Customized Program 03.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    '''
     if log == None:
         log = LogManager()
     logInput = log.logInput

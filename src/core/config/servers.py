@@ -111,6 +111,28 @@ hosts: dict[str, str] = {
 } #这个变量目前并未投入使用（This variable isn't put to use for now）
 
 def set_platform_folder(region: str, platformId: str) -> str:
+    '''
+    通过大区和服务器代号设置大区文件夹。<br>Set the platform folder through region and platformId.
+    
+    :param region: 大区。有以下选项：<br>Region. Options are as follows:
+    
+        - TENCENT: 腾讯游戏
+        - GARENA: 竞舞娱乐
+        - RIOT: 拳头游戏
+        
+        可通过以下LCU接口得到：<br>Obtained by the folowing LCU endpoint:
+        
+        - `GET /riotclient/region-locale`
+        - `GET /riotclient/command-line-args`
+    :type region: str
+    :param platformId: 服务器代号。可通过以下LCU接口得到：<br>PlatfromId, which can be obtained by any of the following LCU endpoints:
+    
+        - `GET /lol-platform-config/v1/namespaces/LoginDataPacket/platfromId`
+        - `GET /riotclient/command-line-args` (Only for Tencent servers)
+    :type platformId: str
+    :return: 大区文件夹路径。对主目录的相对路径。<br>Platform folder path. Relative to the home directory.
+    :rtype: str
+    '''
     if region == "TENCENT":
         platform_folder: str = "召唤师信息（Summoner Information）/国服（TENCENT）/%s" %(platform_TENCENT[platformId])
     elif region == "GARENA":
@@ -120,6 +142,34 @@ def set_platform_folder(region: str, platformId: str) -> str:
     return platform_folder
 
 def set_summonerInfo_folder(region: str, platformId: str, info: dict[str, Any]) -> str:
+    '''
+    通过大区、服务器代号和召唤师信息设置召唤师文件夹。<br>Set the summoner folder through region, platformId and summoner information.
+    
+    :param region: 大区。有以下选项：<br>Region. Options are as follows:
+    
+        - TENCENT: 腾讯游戏
+        - GARENA: 竞舞娱乐
+        - RIOT: 拳头游戏
+        
+        可通过以下LCU接口得到：<br>Obtained by the folowing LCU endpoint:
+        
+        - `GET /riotclient/region-locale`
+        - `GET /riotclient/command-line-args`
+    :type region: str
+    :param platformId: 服务器代号。可通过以下LCU接口得到：<br>PlatfromId, which can be obtained by any of the following LCU endpoints:
+    
+        - `GET /lol-platform-config/v1/namespaces/LoginDataPacket/platfromId`
+        - `GET /riotclient/command-line-args` (Only for Tencent servers)
+    :type platformId: str
+    :param info: 召唤师信息。可通过以下LCU接口得到：<br>Summoner information, which can be obtained by any of the following LCU endpoints:
+    
+        - `GET /lol-summoner/v1/current-summoner`
+        - `GET /lol-summoner/v1/summoners?name={name}`
+        - `GET /lol-summoner/v2/summoners/puuid/{puuid}`
+    :type info: dict[str, Any]
+    :return: 召唤师文件夹路径。对主目录的相对路径。<br>Summoner folder path. Relative to the home directory.
+    :rtype: str
+    '''
     platform_folder = set_platform_folder(region, platformId)
     if region == "TENCENT":
         summonerInfo_folder: str = platform_folder + "/" + get_info_name(info, 2)
@@ -130,6 +180,34 @@ def set_summonerInfo_folder(region: str, platformId: str, info: dict[str, Any]) 
     return summonerInfo_folder
 
 def set_rankedApex_folder(region: str, platformId: str, currentSeason: int, currentSplit: int) -> str:
+    '''
+    通过大区、服务器代号和当前赛季序号设置赛季天梯文件夹。<br>Set the seasonal apex folder through region, platformId and current season number.
+    
+    :param region: 大区。有以下选项：<br>Region. Options are as follows:
+    
+        - TENCENT: 腾讯游戏
+        - GARENA: 竞舞娱乐
+        - RIOT: 拳头游戏
+        
+        可通过以下LCU接口得到：<br>Obtained by the folowing LCU endpoint:
+        
+        - `GET /riotclient/region-locale`
+        - `GET /riotclient/command-line-args`
+    :type region: str
+    :param platformId: 服务器代号。可通过以下LCU接口得到：<br>PlatfromId, which can be obtained by any of the following LCU endpoints:
+    
+        - `GET /lol-platform-config/v1/namespaces/LoginDataPacket/platfromId`
+        - `GET /riotclient/command-line-args` (Only for Tencent servers)
+    :type platformId: str
+    :param currentSeason: 当前赛季序号。可通过以下LCU接口得到：<br>Current season number, which can be obtained by the following LCU endpoint:
+    
+        - `GET /lol-platform-config/v1/namespaces/ClientSystemStates/currentSeason`
+    :type currentSeason: int
+    :param currentSplit: 当前赛段序号。现已弃用。<br>Current split number. Deprecated now.
+    :type currntSplit: int
+    :return: 赛季天梯文件夹路径。对主目录的相对路径。<br>Seasonal apex folder path. Relative to the home directory.
+    :rtype: str
+    '''
     if region == "TENCENT":
         apex_folder: str = "顶尖排位玩家（Ranked Apex）/国服（TENCENT）/%s/第%d赛季（SEASON %d）" %(platform_TENCENT[platformId], currentSeason, currentSeason)
     elif region == "GARENA":
@@ -139,6 +217,12 @@ def set_rankedApex_folder(region: str, platformId: str, currentSeason: int, curr
     return apex_folder
 
 async def save_platform_info(connection: Connection) -> None:
+    '''
+    在与联盟客户端创建连接时，保存大区的配置信息到大区文件夹内。<br>Upon building a connection with League Client, save the platform configuration into the local platform folder.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     #准备数据资源（Prepare data resources）
     platform_config: dict[str, Any] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces")).json()
     riot_client_info: dict[str, str] = await (await connection.request("GET", "/riotclient/command-line-args")).json()

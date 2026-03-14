@@ -11,6 +11,26 @@ from src.core.config.localization import damageTypes, attackTypes
 from src.core.config.headers import LoLChampion_ddragon_header, LoLChampion_inventory_header, LoLChampion_plugin_header, champion_summary_header
 
 async def test_bot(connection: Connection, LoLChampions: dict[int, dict[str, Any]], log: Optional[LogManager] = None, verbose: bool = True) -> tuple[dict[int, dict[str, Any]], int]:
+    '''
+    创建一个测试用的训练模式房间，并且通过遍历所有英雄筛选存在可用电脑模型的英雄。<br>Create a Practice Tool lobby to traverse and test all champions with available AI models.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param LoLChampions: 整理后的英雄数据资源。支持以下数据来源：<br>Organized champion data resource. The following data resources are supported:
+    
+        - LCU API
+        - DataDragon
+        - CommunityDragon
+        
+        整理后的英雄数据资源为字典。键是英雄序号，值是英雄信息字典。<br>The organized champion data resource should be a dictionary. Each key is a championId, and each value is a champion information dictionary.
+    :type LoLChampions: dict[int, dict[str, Any]]
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
+    :type verbose: bool
+    :return: 传入的英雄数据资源中，拥有可用电脑模型的子集，及其数量。<br>A subset of `LoLChampions` which has available AI models, and its size.
+    :rtype: tuple[dict[int, dict[str, Any]], int]
+    '''
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -77,6 +97,18 @@ async def test_bot(connection: Connection, LoLChampions: dict[int, dict[str, Any
     return (LoLChampions_subset, count)
 
 def sort_ddragon_champions(LoLChampions: dict[int, dict[str, Any]], log: Optional[LogManager] = None, verbose: bool = False) -> tuple[pandas.DataFrame, int]: #这里的LoLChampions参数的键是英雄序号，值是英雄数据（Keys of `LoLChampions` parameter are championIds, and values are champion data）
+    '''
+    将从DataDragon数据库中下载后整理的英雄数据资源转化成表格。<br>Convert the champion data resource downloaded from DataDragon database into a dataframe.
+    
+    :param LoLChampions: 整理后的英雄数据资源。键是英雄序号，值是英雄信息字典。<br>Organized champion data resource. Each key is a championId, and each value is a champion information dictionary.
+    :type LoLChampions: dict[int, dict[str, Any]]
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
+    :type verbose: bool
+    :return: 英雄数据框及英雄数量。<br>A champion dataframe and the number of champions.
+    :rtype: tuple[pandas.DataFrame, int]
+    '''
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -131,6 +163,20 @@ def sort_ddragon_champions(LoLChampions: dict[int, dict[str, Any]], log: Optiona
     return (LoLChampion_df, count)
 
 def sort_inventory_champions(LoLChampions: dict[int, dict[str, Any]], recommended_position_for_champion: dict[str, dict[str, Any]], log: Optional[LogManager] = None, verbose: bool = False) -> tuple[pandas.DataFrame, int]:
+    '''
+    将从CommunityDragon数据库中下载后整理的英雄数据资源转化成表格。<br>Convert the champion data resource downloaded from CommunityDragon database into a dataframe.
+    
+    :param LoLChampions: 整理后的英雄数据资源。键是英雄序号，值是英雄信息字典。<br>Organized champion data resource. Each key is a championId, and each value is a champion information dictionary.
+    :type LoLChampions: dict[int, dict[str, Any]]
+    :param recommended_position_for_champion: 英雄的推荐分路，通过`GET /lol-perks/v1/recommended-position-for-champion`接口得到。<br>Recommended position for champions, obtained through `GET /lol-perks/v1/recommended-position-for-champion` endpoint.
+    :type recommended_position_for_champion: dict[str, dict[str, Any]]
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
+    :type verbose: bool
+    :return: 英雄数据框及英雄数量。<br>A champion dataframe and the number of champions.
+    :rtype: tuple[pandas.DataFrame, int]
+    '''
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -210,6 +256,18 @@ def sort_inventory_champions(LoLChampions: dict[int, dict[str, Any]], recommende
     return (LoLChampion_df, count)
 
 def sort_plugin_champions(LoLChampions: dict[int, dict[str, Any]], log: Optional[LogManager] = None, verbose: bool = False) -> tuple[pandas.DataFrame, int]:
+    '''
+    将从LCU API获取并整理的英雄数据资源转化成表格。<br>Convert the champion data resource acquired through LCU API into a dataframe.
+    
+    :param LoLChampions: 整理后的英雄数据资源。键是英雄序号，值是英雄信息字典。<br>Organized champion data resource. Each key is a championId, and each value is a champion information dictionary.
+    :type LoLChampions: dict[int, dict[str, Any]]
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
+    :type verbose: bool
+    :return: 英雄数据框及英雄数量。<br>A champion dataframe and the number of champions.
+    :rtype: tuple[pandas.DataFrame, int]
+    '''
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -267,6 +325,14 @@ def sort_plugin_champions(LoLChampions: dict[int, dict[str, Any]], log: Optional
     return (LoLChampion_df, count)
 
 def sort_champion_summary(LoLChampions: dict[int, dict[str, Any]]) -> pandas.DataFrame:
+    '''
+    将从CommunityDragon数据库中下载后整理的英雄概要转化成表格。<br>Convert the champion summary downloaded from CommunityDragon database into a dataframe.
+    
+    :param LoLChampions: 整理后的英雄数据资源。键是英雄序号，值是英雄信息字典。<br>Organized champion data resource. Each key is a championId, and each value is a champion information dictionary.
+    :type LoLChampions: dict[int, dict[str, Any]]
+    :return: 英雄数据框。<br>A champion dataframe.
+    :rtype: pandas.DataFrame
+    '''
     LoLChampion_header: dict[str, str] = champion_summary_header
     LoLChampion_header_keys: list[str] = list(LoLChampion_header.keys())
     LoLChampion_data: dict[str, list[Any]] = {}

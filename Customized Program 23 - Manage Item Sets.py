@@ -45,7 +45,12 @@ logPrint = log.logPrint
 # 配置配装方案（Configure item sets）
 #-----------------------------------------------------------------------------
 async def prepare_data_resources(connection: Connection) -> None:
-    #准备数据资源（Prepare data resources）
+    '''
+    准备全局数据资源。<br>Prepare global data resources.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     logPrint("正在准备数据资源……\nPreparing data resources ...")
     global spells, LoLChampions, LoLItems
     ##召唤师技能（Summoner spell）
@@ -60,12 +65,6 @@ async def prepare_data_resources(connection: Connection) -> None:
     logPrint("正在加载英雄联盟装备信息……\nLoading LoL item information ...")
     LoLItems_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/items.json")).json()
     LoLItems = {int(LoLItem_iter["id"]): LoLItem_iter for LoLItem_iter in LoLItems_source}
-
-def sort_spell_data(spells: dict[int, dict[str, Any]]) -> str:
-    result: str = "id\tname"
-    for spellId in spells:
-        result += "\n%d\t%s" %(spellId, spells[spellId]["name"])
-    return result
 
 def calculate_totalPrice(item_key: str, items_bin: dict[str, list[str] | dict[str, Any]]) -> int:
     '''
@@ -768,7 +767,9 @@ class ItemSet:
         else: #创建新的配装页，即创建新的区块（Create a new item page, which means to create a new block）
             create = True
             original_block = {}
-        spell_df_str: str = sort_spell_data(self.spells)
+        spell_df_str: str = "id\tname"
+        for spellId in spells:
+            spell_df_str += "\n%d\t%s" %(spellId, self.spells[spellId]["name"])
         if create:
             title: str = "新的配装方案"
             showIfSummonerSpell: str = ""
@@ -1551,6 +1552,12 @@ class ItemSet:
             return False
 
 async def manage_item_set(connection: Connection) -> None:
+    '''
+    管理配装方案。由此进入各个选项。<br>Manage the item set. Entry to each option.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     current_summoner: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     current_summonerId: int = current_summoner["summonerId"]
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
@@ -1891,6 +1898,17 @@ async def disconnect(connection: Connection) -> None:
 # 导出装备数据（Export item data）
 #-----------------------------------------------------------------------------
 def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame], bool]:
+    '''
+    整理DataDragon数据库的装备数据。可同时整理多个版本。<br>Organize item data in DataDragon database. Multiple versions can be organized at the same time.
+    
+    :param locale: 装备的语言文化代码。默认使用简体中文。<br>Langauge code of items. Chinese Simplified by default.
+    :type locale: str
+    :return: 二元组，包括以下内容：<br>A two-tuple that contains the following content:
+    
+        - 装备数据框字典。键是版本，值是装备数据框。<br>An item dataframe dictionary. Each key is a version, and each value is an item dataframe.
+        - 是否形成了装备数据框，决定了是否导出到工作簿。<br>Whether an item dataframe is formed, which determines whether to open a workbook and export data into it.
+    :rtype: tuple[dict[str, pandas.DataFrame], bool]
+    '''
     item_df_formed: bool = False
     session: requests.Session = requests.Session()
     # session.trust_env = False
@@ -2131,6 +2149,17 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
     return (LoLItem_dfs, item_df_formed)
 
 def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame], bool]:
+    '''
+    整理CommunityDragon数据库的装备数据。可同时整理多个版本。<br>Organize item data in CommunityDragon database. Multiple versions can be organized at the same time.
+    
+    :param locale: 装备的语言文化代码。默认使用简体中文。<br>Langauge code of items. Chinese Simplified by default.
+    :type locale: str
+    :return: 二元组，包括以下内容：<br>A two-tuple that contains the following content:
+    
+        - 装备数据框字典。键是版本，值是装备数据框。<br>An item dataframe dictionary. Each key is a version, and each value is an item dataframe.
+        - 是否形成了装备数据框，决定了是否导出到工作簿。<br>Whether an item dataframe is formed, which determines whether to open a workbook and export data into it.
+    :rtype: tuple[dict[str, pandas.DataFrame], bool]
+    '''
     item_df_formed: bool = False
     session: requests.Session = requests.Session()
     # session.trust_env = False
@@ -2419,6 +2448,11 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
     return (LoLItem_dfs, item_df_formed)
 
 def export_item_data() -> None:
+    '''
+    导出装备数据的主函数。<br>The main function to export item data.
+    
+    选择一个语言，选择一个数据来源，然后导出数据。<br>Select a language, then select a data source, and finally export data.
+    '''
     logPrint("请选择装备的输出语言【默认为中文（中国）】：\nPlease select a language to output the items (the default option is zh_CN):") #本来考虑把可用CDragon数据版本放在第三列，但是后来发现表头名字太长了，索性放在最后了（I had considered putting "Applicable CDragon Data Patches" at the third column, but then found the header was too long. So I put it at the last column）
     language_dict: dict[str, list[int | str]] = {"No.": list(language_ddragon.keys()), "CODE": list(map(lambda x: x["CODE"], language_ddragon.values())), "LANGUAGE": list(map(lambda x: x["LANGUAGE (EN)"], language_ddragon.values())), "语言": list(map(lambda x: x["LANGUAGE (ZH)"], language_ddragon.values())), "Applicable CDragon Data Patches": list(map(lambda x: x["Applicable CDragon Data Patches"], language_ddragon.values()))}
     language_df: pandas.DataFrame = pandas.DataFrame(language_dict)

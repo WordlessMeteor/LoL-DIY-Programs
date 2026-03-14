@@ -50,6 +50,12 @@ connector: Connector = Connector()
 # 获取商品（Capture items in the store）
 #-----------------------------------------------------------------------------
 async def prepare_data_resources(connection: Connection) -> None: #准备数据资源（Prepare data resources）
+    '''
+    准备全局数据资源。<br>Prepare global data resources.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     global championSkins_source, companions_source, nexusfinishers_source, statstones_source, strawberryHub_source, summonerEmotes_source, summonerIcons_source, tftdamageskins_source, tftmapskins_source, tftplaybooks_source, tftzoomskins_source, wardSkins_source, lolinventorytypes, catalogDict, catalogList, store, storeDict, collection
     #皮肤（Champion skin）
     championSkins_source = await (await connection.request("GET", "/lol-game-data/assets/v1/skins.json")).json()
@@ -105,6 +111,8 @@ async def create_hashtable(connection: Connection) -> dict[str, dict[Any, dict[s
     '''
     创建各种道具类型从道具序号到名称和描述的映射。<br>Build the map from itemIds to names and descriptions for all kinds of inventory types.
     
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
     :return: 综合索引字典。一级键是道具类型，二级键是道具序号或标识符，值是名称和描述组成的对象。<br>Universal index dictionary, whose level-1 keys are inventory types, level-2 keys are itemIds and values are objects composed of a name and a description.
     :rtype: dict[str, dict[Any, dict[str, str]]]
     '''

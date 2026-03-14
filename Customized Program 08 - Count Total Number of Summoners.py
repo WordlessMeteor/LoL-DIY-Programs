@@ -35,12 +35,30 @@ connector: Connector = Connector()
 # 统计当前服务器的玩家数量（Count the number of players in the current server）
 #-----------------------------------------------------------------------------
 async def prepare_data_resources(connection: Connection) -> None:
+    '''
+    准备全局数据资源。<br>Prepare global data resources.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     global summonerIcons
     logPrint("正在加载召唤师图标信息……\nLoading summoner icon information ...")
     summonerIcons_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/summoner-icons.json")).json()
     summonerIcons = {int(summonerIcon_iter["id"]): summonerIcon_iter for summonerIcon_iter in summonerIcons_source}
 
 async def generate_info_records(connection: Connection, info_data: dict[str, list[Any]], puuid: str) -> bool:
+    '''
+    向召唤师生涯数据中追加记录。<br>Append records into the summoner information data.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param info_data: 召唤师生涯数据。记录将追加到其中。<br>Summoner information data. Records are appended into it.
+    :type info_data: dict[str, list[Any]]
+    :param puuid: 要查询的召唤师的玩家通用唯一识别码。<br>Puuid of the summoner to query.
+    :type puuid: str
+    :return: 是否成功获取该召唤师的信息。<br>Whether the summoner information is successfully fetched.
+    :rtype: bool
+    '''
     #设置召唤师信息获取的异常处理机制（Set the exception handling mechanism for getting summoner information）
     info_recapture: int = 0
     info: dict[str, Any] = await get_info(connection, puuid)

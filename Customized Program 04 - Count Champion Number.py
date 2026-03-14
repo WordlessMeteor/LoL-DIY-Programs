@@ -32,6 +32,16 @@ session: requests.Session = requests.Session()
 # 统计英雄数量（Count champions）
 #-----------------------------------------------------------------------------
 def get_ddragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, Any]], str]:
+    '''
+    获取DataDragon数据库上的所有英雄数据，并将其整理成一个字典。<br>Get all champion information from DataDragon database and organize them into a dictionary.
+    
+    :param locale: 语言文化代码。默认使用简体中文。<br>Language code. Chinese Simplified by default.
+    :type locale: str
+    :return: 整理后的英雄数据以及所使用的版本。<br>Organize champion data and the patch used.
+    
+        整理后的英雄数据中，键是英雄序号，值是英雄信息字典。<br>In the organized champion data, each key is a championId, and each value is the champion information dictionary.
+    :rtype: tuple[dict[int, dict[str, Any]], str]
+    '''
     global session
     patches_url: str = "https://ddragon.leagueoflegends.com/api/versions.json"
     patches_local_default: str = "离线数据（Offline Data）/versions.json"
@@ -131,6 +141,16 @@ def get_ddragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, An
     return (LoLChampions, patch_in_url)
 
 def get_cdragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, Any]], str]:
+    '''
+    获取CommunityDragon数据库上的所有英雄数据，并将其整理成一个字典。<br>Get all champion information from CommunityDragon database and organize them into a dictionary.
+    
+    :param locale: 语言文化代码。默认使用简体中文。<br>Language code. Chinese Simplified by default.
+    :type locale: str
+    :return: 整理后的英雄数据以及所使用的版本。<br>Organize champion data and the patch used.
+    
+        整理后的英雄数据中，键是英雄序号，值是英雄信息字典。<br>In the organized champion data, each key is a championId, and each value is the champion information dictionary.
+    :rtype: tuple[dict[int, dict[str, Any]], str]
+    '''
     global session
     print("请输入您想要获取的版本。输入空字符串以获取最新版本英雄信息。\nPlease input the patch you want to search from. Submit an empty string to get the latest champion data.")
     patches_cdragon, patchList_fetched = get_cdragon_patchList(session = session) #对应于DataDragon数据库的版本，从CommunityDragons数据库主页获取可用版本（Corresponding to getting patches DataDragon database, get the available patches in CommunityDragon database through its homepage）
@@ -243,6 +263,14 @@ def get_cdragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, An
     return (LoLChampions, version)
 
 async def get_plugin_champions(connection: Connection) -> list[dict[str, Any]]: #和整理静态英雄数据资源的函数不同，这里返回的是一个列表（What's different from the functions that organize static champion data resources is that this function returns a list）
+    '''
+    通过LCU API读取插件中的英雄数据，并将其整理成一个列表。<br>Read champion data in the plugin through LCU API and organize them into a list.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 汇总后的英雄原始数据。<br>Merged raw champion data.
+    :rtype: list[dict[str, Any]]
+    '''
     champion_summary: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/champion-summary.json")).json()
     championIds: list[int] = list(map(lambda x: x["id"], champion_summary))
     LoLChampions_source: list[dict[str, Any]] = []

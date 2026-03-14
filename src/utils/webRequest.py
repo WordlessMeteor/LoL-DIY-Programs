@@ -8,7 +8,27 @@ if not wd in sys.path:
     sys.path.append(wd)
 from src.utils.logger import LogManager
 
-def requestUrl(method: str, url: str, retry: int = 5, session: Optional[requests.sessions.Session] = None, log: Optional[LogManager] = None, verbose: bool = True, **kwargs: Any) -> tuple[requests.models.Response, int, requests.sessions.Session]:
+def requestUrl(method: str, url: str, retry: int = 5, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True, **kwargs: Any) -> tuple[requests.models.Response, int, requests.Session]:
+    '''
+    一个综合的网络请求函数，包含以下特性：<br>A universal web request function integrated with the following features:
+    - 异常处理。<br>Error handling.
+    - 重复请求。<br>Repeat on error.
+    
+    :param method: 请求方法。全大写。<br>Request method. Whole word in upper case.
+    :type method: str
+    :param url: 请求链接。<br>Request url.
+    :type url: str
+    :param session: 网络请求会话。<br>Web request session.
+    :type session: requests.Session
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
+    :type verbose: bool
+    :param kwargs: 任何可传入`session.request`函数中的参数。<br>Any parameters that can be passed into `session.request` function.
+    :type kwargs: Any
+    :return: 响应主体、状态码和网络请求会话组成的三元组。<br>A three-tuple composed of the response body, http status code and web request session.
+    :rtype: tuple[requests.models.Response, int, requests.Session]
+    '''
     if session == None:
         session = requests.Session()
         # session.trust_env = False
@@ -75,6 +95,24 @@ def requestUrl(method: str, url: str, retry: int = 5, session: Optional[requests
 
 class SGPSession:
     def __init__(self, token: Optional[str] = None, client_settings: Optional[dict[str, Any]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> None:
+        '''
+        SGP会话类的构造函数。<br>The constructor of `SGPSession` class.
+        
+        :param token: 英雄联盟会话令牌。可先不指定，后续通过`init`方法来指定。<br>League session token. It may be left unspecified when creating an object of this class, waiting to be specified using the `init` method.
+        
+            英雄联盟会话令牌可以通过以下LCU接口获取：<br>Leauge session token can be obtained through the following LCU endpoint:
+            - `GET /lol-league-session/v1/league-session-token`
+        :type token: str
+        :param client_settings: 客户端设置数据。可先不指定，后续通过`init`方法来指定。<br>Client settings data. It may be left unspecified when creating an object of this class, waiting to be specified using the `init` method.
+        
+            客户端设置可以通过以下LCU接口获取：<br>Client settings can be obtained through the following LCU endpoint:
+            - `GET /client-config/v2/namespace/lol.client_settings`
+        :type client_settings: dict[str, Any]
+        :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+        :type log: LogManager
+        :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
+        :type verbose: bool
+        '''
         self.userInfoToken: str = "" if token == None else token
         self._headers: dict[str, str] = {"Authorization": f"Bearer {token}", "Content-type": "application/json"}
         self.session: requests.Session = requests.Session()
@@ -87,10 +125,22 @@ class SGPSession:
     def __repr__(self) -> str:
         return (f'SGPSession("{self.userInfoToken}")')
     
-    def setLog(self, log: LogManager):
+    def setLog(self, log: LogManager) -> None:
+        '''
+        设置日志文件流。<br>Set the log file iostream.
+        
+        :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+        :type log: LogManager
+        '''
         self.log = log
     
     async def update_userInfo_token(self, connection: Connection) -> None:
+        '''
+        更新联盟会话令牌。<br>Update the league session token.
+        
+        :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+        :type connection: Connection
+        '''
         token: str = await (await connection.request("GET", "/lol-league-session/v1/league-session-token")).json()
         if isinstance(token, str):
             self.userInfoToken = token
@@ -103,6 +153,12 @@ class SGPSession:
                 self.log.logPrint("令牌更新失败！\nToken update failed!", verbose = self.verbose)
     
     async def init(self, connection: Connection) -> None:
+        '''
+        初始化SGP会话对象的联盟会话令牌和客户端设置。<br>Initialize an `SGPSession` object's league session token and client settings.
+        
+        :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+        :type connection: Connection
+        '''
         await self.update_userInfo_token(connection)
         self.client_settings = await (await connection.request("GET", "/client-config/v2/namespace/lol.client_settings")).json()
         self.session = requests.Session()
@@ -110,6 +166,33 @@ class SGPSession:
         # self.session.trust_env = False #忽略系统代理设置（Bypass system proxy）
     
     async def request(self, connection: Connection, method: str, endpoint: str, headers: Optional[dict[str, str]] = None, retry: int = 5, verbose: bool = True, **kwargs: Any) -> requests.models.Response: #参考了lcu_driver的代码（Referred to code in `lcu_driver`）
+        '''
+        通过SGP API发送一个网络请求。<br>Send a web request through SGP API.
+        
+        :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+        :type connection: Connection
+        :param method: 请求方法。全大写。<br>Request method. Whole word in upper case.
+        :type method: str
+        :param endpoint: 终端节点路径。<br>An endpoint path.
+        
+            在SGP API的请求网址中，每个网址的开头是一段因服务器而异的域名，后面的路径则在各服务器上都相同。当用户只传入路径时，函数将自适应地从客户端设置中找到域名。<br>In the url of an SGP request, the header is a domain name that depends on the server, while the subsequent path remains the same across all servers. When the user only provides the path, this function will adaptively determine the domain name from the client settings.
+        :type endpoint: str
+        :param headers: 额外的请求头。<br>Extra request headers.
+        
+            函数默认使用以下请求头：<br>This function uses the following header by default:
+            - `{"Authorization": "Bearer {token}", "Content-type": "application/json"}`
+            
+            用户可以另外指定其它的字段。函数会将其与默认请求头进行合并。<br>The user may specify other fields in the header. This function will join them with the default header.
+        :type headers: dict[str, str]
+        :param retry: 最大尝试次数。默认为5次。<br>Maximum number of attempts. 5 by default.
+        :type retry: int
+        :param verbose: 控制网络请求的异常提示是否在终端输出。默认为真。<br>Controls whether the error information of the web request is printed to terminal. True by default.
+        :type verbose: bool
+        :param kwargs: 任何可传入`session.request`函数中的参数。<br>Any parameters that can be passed into `session.request` function.
+        :type kwargs: Any
+        :return: 原始响应信息。<br>Raw response.
+        :rtype: requests.model.Response
+        '''
         #参数预处理（Parameter preparation）
         if not hasattr(self, "client_settings"):
             self.client_settings = await (await connection.request("GET", "/client-config/v2/namespace/lol.client_settings")).json()
@@ -139,6 +222,37 @@ class SGPSession:
         return source
 
 def sgpConnect(method: str, url: str, token: str, extra_headers: Optional[dict[str, str]] = None, session: Optional[requests.Session] = None, **kwargs: Any) -> tuple[dict[str, Any], requests.Session]: #一个单独用来调试SGP API的函数（A function specially designed to debug SGP API）
+    '''
+    一个用来调用SGP API的相对较为独立的函数。<br>A relatively standalone function to call SGP API.
+    
+    :param method: 请求方法。全大写。<br>Request method. Whole word in upper case.
+    :type method: str
+    :param url: 请求链接。<br>Request url.
+    :type url: str
+    :param token: 英雄联盟会话令牌。可先不指定，后续通过`init`方法来指定。<br>League session token. It may be left unspecified when creating an object of this class, waiting to be specified using the `init` method.
+        
+        英雄联盟会话令牌可以通过以下LCU接口获取：<br>Leauge session token can be obtained through the following LCU endpoint:
+        - `GET /lol-league-session/v1/league-session-token`
+    :type token: str
+    :param extra_headers: 额外的请求头。<br>Extra request headers.
+        
+        函数默认使用以下请求头：<br>This function uses the following header by default:
+        - `{"Authorization": "Bearer {token}", "Content-type": "application/json"}`
+        
+        用户可以另外指定其它的字段。函数会将其与默认请求头进行合并。<br>The user may specify other fields in the header. This function will join them with the default header.
+    :type extra_headers: dict[str, str]
+    :param session: 网络请求会话。<br>Web request session.
+    :type session: requests.Session
+    :param kwargs: 任何可传入`session.request`函数中的参数。<br>Any parameters that can be passed into `session.request` function.
+    :type kwargs: Any
+    :return: 响应结构体和网络请求会话。<br>Response struct and web request session.
+    
+        响应结构体由以下三部分组成：<br>The response struct is composed of the following three elements:
+        - status_code: 状态码。<br>Status code.
+        - json: 响应主体。<br>Response body.
+        - error: 异常对象的字符串表达。<br>The string representation of any error arising.
+    :rtype: tuple[dict[str, Any], requests.Session]
+    '''
     if session == None:
         session = requests.Session()
         # session.trust_env = False #忽略系统代理设置（Bypass system proxy）

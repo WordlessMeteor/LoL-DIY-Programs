@@ -22,7 +22,7 @@ from src.core.dataframes.gameflow import sort_ChampSelect_players
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/11
+# 更新（Last update）：     2026/03/14
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -71,6 +71,12 @@ connector: Connector = Connector()
 # 好友管理（Friend management）
 #-----------------------------------------------------------------------------
 async def prepare_data_resources(connection: Connection) -> None:
+    '''
+    准备全局数据资源。<br>Prepare global data resources.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     logPrint("正在加载数据资源……\nLoading data resources ...")
     global platformId, regaliaBanners, challenges, queues, gameQueues, summonerIcons, LoLChampions, titles, wardSkins, championSkins, spells, LoLItems, perks, perkstyles, CherryAugments, TFTCompanions, TFTCompanions_itemIdMap, TFTTraits, TFTChampions, TFTItems, TFTDamageSkins, TFTMapSkins
     ##大区信息（Platform information）
@@ -153,6 +159,14 @@ async def prepare_data_resources(connection: Connection) -> None:
 
 #定义整理过程（Define data organization processes）
 async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取所有好友的信息，并整理成表格。<br>Get all friends' information and organize it into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 好友数据框。<br>Friend dataframe.
+    :rtype: pandas.DataFrame
+    '''
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     friends: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
     friend_groups: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friend-groups")).json()
@@ -350,6 +364,14 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
     return friend_hovercard_df
 
 async def sort_friend_hovercard_simple(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取所有好友的信息，并将其中的部分信息整理成表格。<br>Get all friends' information and organize part of it into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 简化版本的好友数据框。<br>Simplified friend dataframe.
+    :rtype: pandas.DataFrame
+    '''
     friends: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
     #定义好友数据结构（Define the friend hovercard data structure）
     friend_hovercard_header_simple: dict[str, str] = {"availability": "可用性", "gameName": "玩家名称", "gameTag": "名称编号", "groupId": "分组序号", "groupName": "分组名称", "name": "显示名", "note": "备注", "pid": "社交代码", "puuid": "玩家通用唯一识别码", "summonerId": "召唤师序号"}
@@ -372,6 +394,14 @@ async def sort_friend_hovercard_simple(connection: Connection) -> pandas.DataFra
     return friend_hovercard_df_simple
 
 async def sort_friend_group(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取所有好友分组的信息，并整理成表格。<br>Get all friend groups' information and organize into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 好友分组数据框。<br>Friend group dataframe.
+    :rtype: pandas.DataFrame
+    '''
     friend_groups: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friend-groups")).json()
     if isinstance(friend_groups, list) and all(map(lambda x: isinstance(x, dict), friend_groups)) and all(i in group for i in ["collapsed", "id", "isLocalized", "isMetaGroup", "name", "priority"] for group in friend_groups):
         friend_group_header_keys: list[str] = list(friend_group_header.keys())
@@ -394,6 +424,14 @@ async def sort_friend_group(connection: Connection) -> pandas.DataFrame:
     return friend_group_df
 
 async def sort_conversation_metadata(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取所有对话的元数据，并整理成表格。<br>Get all conversations' metadata and organize them into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 对话元数据框。<br>Conversation meta-dataframe.
+    :rtype: pandas.DataFrame
+    '''
     conversations: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/conversations")).json()
     conversation_header_keys: list[str] = list(conversation_header.keys())
     conversation_metadata: dict[str, list[Any]] = {key: [] for key in conversation_header_keys}
@@ -412,6 +450,19 @@ async def sort_conversation_metadata(connection: Connection) -> pandas.DataFrame
     return conversation_df
 
 async def sort_message_data(connection: Connection, messages: Any) -> pandas.DataFrame:
+    '''
+    将一个对话中的消息整理成表格。<br>Organize the messages of a conversation into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param messages: 一个对话中的消息。<br>Messages of a conversation.
+    
+        消息可通过以下接口获取：<br>Messages can be obtained by the following endpoint:
+        - `GET /lol-chat/v1/conversations/{chatId}/messages`
+    :type messages: list[dict[str, Any]]
+    :return: 消息数据框。<br>Message dataframe.
+    :rtype: pandas.DataFrame
+    '''
     if isinstance(messages, list) and all(map(lambda x: isinstance(x, dict), messages)) and all(i in message for i in ["body", "fromId", "fromObfuscatedPuuid", "fromObfuscatedSummonerId", "fromPid", "fromPuuid", "fromSummonerId", "id", "isHistorical", "timestamp", "type"] for message in messages):
         message_header_keys: list[str] = list(message_header.keys())
         message_data: dict[str, list[Any]] = {key: [] for key in message_header_keys}
@@ -441,6 +492,24 @@ async def sort_message_data(connection: Connection, messages: Any) -> pandas.Dat
     return message_df
 
 async def get_recent_players(connection: Connection, search_mode: int = 2, lol_sgp: bool = True) -> dict[str, pandas.DataFrame]:
+    '''
+    获取近期一起玩过的玩家，并整理成表格。<br>Get recently played summoners and organize their information into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param search_mode: 搜索模式。有以下取值：<br>Search mode, which has the following available values:
+    
+        - 1: 获取近期一起玩过的英雄联盟和云顶之弈玩家。<br>Get recently played LoL and TFT summoners.
+        - 2: （☆）获取近期一起玩过的英雄联盟玩家。<br>Get recently played LoL summoners.
+        - 3: 获取近期一起玩过的云顶之弈玩家。<br>Get recently played TFT summoners.
+        
+        如果设置了其它值，则不获取玩家信息。<br>If it's specified with a value other than the above ones, then the function doesn't get summoner information.
+    :type search_mode: int
+    :param lol_sgp: 是否通过SGP API获取近期一起玩过的英雄联盟玩家信息。默认为真。<br>Whether to get recently played LoL summoners through SGP API. True by default.
+    :type lol_sgp: bool
+    :return: 近期一起玩过的英雄联盟和云顶之弈玩家数据框。分别存储在返回结构的“LoL”和“TFT”键中。<br>Recently played LoL and TFT player dataframes, stored in the "LoL" and "TFT" keys of the returned struct, respectively.
+    :rtype: dict[str, pandas.DataFrame]
+    '''
     if search_mode == 1:
         search_LoL: bool = True
         search_TFT: bool = True
@@ -509,6 +578,14 @@ async def get_recent_players(connection: Connection, search_mode: int = 2, lol_s
     return {"LoL": recent_LoLPlayer_df, "TFT": recent_TFTPlayer_df}
 
 async def sort_friend_request(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取好友请求，并整理成一张表格。<br>Get friend request data and organize them into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 好友请求数据框。<br>Friend request dataframe.
+    :rtype: pandas.DataFrame
+    '''
     friend_requests: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v2/friend-requests")).json()
     friend_request_header_keys: list[str] = list(friend_request_header.keys())
     friend_request_data: dict[str, list[Any]] = {key: [] for key in friend_request_header_keys}
@@ -528,6 +605,16 @@ async def sort_friend_request(connection: Connection) -> pandas.DataFrame:
     return friend_request_df
 
 async def sort_party_data(connection: Connection, parties: Any) -> pandas.DataFrame:
+    '''
+    将好友创建的公开小队整理成一个表格。<br>Organize open parties created by friends into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param parties: 小队列表。<br>A list of parties.
+    :type parties: list[dict[str, Any]]
+    :return: 小队数据框。<br>Party dataframe.
+    :rtype: pandas.DataFrame
+    '''
     if isinstance(parties, list) and all(map(lambda x: isinstance(x, dict), parties)) and all(i in party for i in ["maxPlayers", "partyId", "queueId", "summoners"] for party in parties):
         party_header_keys: list[str] = list(party_header.keys())
         party_data: dict[str, list[Any]] = {key: [] for key in party_header_keys}
@@ -569,6 +656,14 @@ async def sort_party_data(connection: Connection, parties: Any) -> pandas.DataFr
     return party_df
 
 async def sort_received_invitations(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取收到的组队邀请，并整理成一张表格。<br>Get received party invitations and organize them into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 组队邀请数据框。<br>Party invitation dataframe.
+    :rtype: pandas.DataFrame
+    '''
     receivedInvitations: list[dict[str, Any]] = await (await connection.request("GET", "/lol-lobby/v2/received-invitations")).json()
     invid_header_keys: list[str] = list(invid_header.keys())
     invid_data: dict[str, list[Any]] = {key: [] for key in invid_header_keys}
@@ -611,6 +706,14 @@ async def sort_received_invitations(connection: Connection) -> pandas.DataFrame:
     return invid_df
 
 async def sort_mutedPlayers_champSelect(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取静音玩家列表并整理成数据框。<br>Get muted players and organize them into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 静音玩家数据框。<br>Muted player dataframe.
+    :rtype: pandas.DataFrame
+    '''
     muted_players: dict[str, dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/player-mutes")).json()
     champSelect_mutedPlayer_header_keys: list[str] = list(champSelect_mutedPlayer_header.keys())
     muted_player_data: dict[str, list[Any]] = {key: [] for key in champSelect_mutedPlayer_header_keys}
@@ -631,6 +734,14 @@ async def sort_mutedPlayers_champSelect(connection: Connection) -> pandas.DataFr
     return muted_player_df
 
 async def sort_capture_devices(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取输入设备列表并整理成数据框。<br>Get capture devices and organize them into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 输入设备数据框。<br>Capture device dataframe.
+    :rtype: pandas.DataFrame
+    '''
     captureDevices: list[dict[str, Any]] = await (await connection.request("GET", "/lol-premade-voice/v1/capturedevices")).json()
     captureDevice_header_keys: list[str] = list(captureDevice_header.keys())
     captureDevice_data: dict[str, list[Any]] = {key: [] for key in captureDevice_header_keys}
@@ -647,11 +758,27 @@ async def sort_capture_devices(connection: Connection) -> pandas.DataFrame:
     return captureDevice_df
 
 async def sort_voice_settings(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取声音设置并整理成数据框。<br>Get voice settings and organize them into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 声音设置数据框。<br>Voice settings dataframe.
+    :rtype: pandas.DataFrame
+    '''
     voiceSettings: dict[str, Any] = await (await connection.request("GET", "/lol-premade-voice/v1/settings")).json()
     voiceSettings_df: pandas.DataFrame = pandas.concat([pandas.DataFrame(voiceSettings_header, index = [0]), pandas.DataFrame(voiceSettings, index = [1])], axis = 1)
     return voiceSettings_df
 
 async def sort_voice_participants(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取预组队语音信息并整理成数据框。<br>Get premade voice information and organize it into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 预组队成员语音数据框。<br>Premade member voice dataframe.
+    :rtype: pandas.DataFrame
+    '''
     participant_records: list[dict[str, Any]] = await (await connection.request("GET", "/lol-premade-voice/v1/participant-records")).json()
     participant_record_header_keys: list[str] = list(participant_record_header.keys())
     participant_record_data: dict[str, list[Any]] = {key: [] for key in participant_record_header_keys}
@@ -672,6 +799,18 @@ async def sort_voice_participants(connection: Connection) -> pandas.DataFrame:
 
 #定义客户端操作模拟过程（Define client behavior simulation processes）
 async def output_friend_hovercard(connection: Connection, print_index: bool = False, start_index: int = 1) -> pandas.DataFrame:
+    '''
+    输出好友列表。<br>Output friend information.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param print_index: 是否打印索引列。默认为假。<br>Whether to print the index column. False by default.
+    :type print_index: bool
+    :param start_index: 在输出处理后的索引时的起始索引。仅当打印索引列但不输出原始索引时可用。默认值为1。<br>The starting index when the function prints the processed indices. Available only when the index column is going to be printed but not the original indices. Default value is 1.
+    :type start_index: int
+    :return: 好友数据框。<br>Friend dataframe.
+    :rtype: pandas.DataFrame
+    '''
     friend_hovercard_df: pandas.DataFrame = await sort_friend_hovercard(connection)
     friend_hovercard_fields_to_print: list[str] = ["name", "gameName", "gameTag", "availability", "level"]
     print(format_df(friend_hovercard_df.loc[1:, friend_hovercard_fields_to_print], print_index = print_index, start_index = start_index)[0], end = "\n\n")
@@ -679,6 +818,18 @@ async def output_friend_hovercard(connection: Connection, print_index: bool = Fa
     return friend_hovercard_df
 
 async def output_friend_hovercard_simple(connection: Connection, print_index: bool = False, start_index: int = 1) -> pandas.DataFrame:
+    '''
+    输出简化的好友列表。<br>Output simplified friend information.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param print_index: 是否打印索引列。默认为假。<br>Whether to print the index column. False by default.
+    :type print_index: bool
+    :param start_index: 在输出处理后的索引时的起始索引。仅当打印索引列但不输出原始索引时可用。默认值为1。<br>The starting index when the function prints the processed indices. Available only when the index column is going to be printed but not the original indices. Default value is 1.
+    :type start_index: int
+    :return: 简化版好友数据框。<br>Simplified friend dataframe.
+    :rtype: pandas.DataFrame
+    '''
     friend_hovercard_df: pandas.DataFrame = await sort_friend_hovercard_simple(connection)
     friend_hovercard_fields_to_print: list[str] = ["name", "gameName", "gameTag", "groupId", "groupName"]
     print(format_df(friend_hovercard_df.loc[1:, friend_hovercard_fields_to_print], print_index = print_index, start_index = start_index)[0])
@@ -686,6 +837,12 @@ async def output_friend_hovercard_simple(connection: Connection, print_index: bo
     return friend_hovercard_df
 
 async def check_friend_list(connection: Connection) -> None:
+    '''
+    查看好友列表，并将好友信息导出到工作簿中。<br>Check the friend list and export it to the workbook.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     #输出到终端（Output to Terminal）
     friend_hovercard_df: pandas.DataFrame = await output_friend_hovercard(connection)
     #保存文件（Save file）
@@ -710,6 +867,14 @@ async def check_friend_list(connection: Connection) -> None:
                 break
 
 async def output_friend_group(connection: Connection) -> tuple[list[dict[str, Any]], list[int], pandas.DataFrame]:
+    '''
+    输出好友分组信息。<br>Output friend group information.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 好友分组数据、好友分组序号列表和好友分组数据框。<br>Friend group data, friend groupId list and friend group dataframe.
+    :rtype: tuple[list[dict[str, Any]], list[int], pandas.DataFrame]
+    '''
     friend_groups: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friend-groups")).json()
     friend_groupIds: list[int] = list(map(lambda x: x["id"], friend_groups))
     logPrint("您一共设置了%d个分组：\nYou have %d group(s):\n" %(len(friend_groups), len(friend_groups)))
@@ -720,6 +885,12 @@ async def output_friend_group(connection: Connection) -> tuple[list[dict[str, An
     return (friend_groups, friend_groupIds, friend_group_df)
 
 async def add_friend_group(connection: Connection) -> None:
+    '''
+    添加好友分组。<br>Add a friend group.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     friend_group_df: pandas.DataFrame = await sort_friend_group(connection)
     logPrint("请输入新分组名称：（输入默认分组名称以退出创建）\nPlease enter the new group name: (Submit the default folder name, namely **Default, to quit creating)")
     while True:
@@ -742,6 +913,12 @@ async def add_friend_group(connection: Connection) -> None:
                 logPrint("创建分组失败。\nThe program failed to create the new folder.")
 
 async def collapse_expand_friend_group(connection: Connection) -> None:
+    '''
+    折叠/展开一个好友分组。<br>Collapse or expand a friend group.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     friend_groups: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friend-groups")).json()
     friend_groupIds: list[int] = list(map(lambda x: x["id"], friend_groups))
     logPrint("请选择折叠/展开选项：\nPlease select a collapse/expand option:\n0\t返回上一层（Return to the last step）\n1\t全部展开（Expand all）\n2\t全部折叠（Collaspe all）\n3\t展开/折叠指定分组（Expand/Collapse specific groups）")
@@ -795,6 +972,12 @@ async def collapse_expand_friend_group(connection: Connection) -> None:
         logPrint("请选择折叠/展开选项：\nPlease select a collapse/expand option:\n1\t全部展开（Expand all）\n2\t全部折叠（Collaspe all）\n3\t展开/折叠指定分组（Expand/Collapse specific folders）")
 
 async def rename_friend_group(connection: Connection) -> None:
+    '''
+    重命名一个好友分组。<br>Rename a friend group.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     friend_groups: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friend-groups")).json()
     friend_groupIds: list[int] = list(map(lambda x: x["id"], friend_groups))
     logPrint('请输入要重命名的分组序号。输入“-1”以返回上一层。\nPlease input the group ids to rename. Submit "-1" to return to the last step.')
@@ -832,6 +1015,12 @@ async def rename_friend_group(connection: Connection) -> None:
         logPrint("请输入要重命名的分组序号：\nPlease input the group ids to rename:")
 
 async def arrange_friend_group(connection: Connection) -> None:
+    '''
+    排序好友分组。<br>Arrange the order of friend groups.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     friend_groups: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friend-groups")).json()
     friend_groupIds: list[int] = list(map(lambda x: x["id"], friend_groups))
     friend_group_df: pandas.DataFrame = await sort_friend_group(connection)
@@ -876,6 +1065,12 @@ async def arrange_friend_group(connection: Connection) -> None:
                     logPrint("您的输入格式有误！请重新输入。\nERROR format of input! Please try again.")
 
 async def remove_friend_group(connection: Connection) -> None:
+    '''
+    移除好友分组。<br>Remove friend groups.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     friend_groups: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friend-groups")).json()
     friend_groupIds: list[int] = list(map(lambda x: x["id"], friend_groups))
     logPrint('请输入您要删除的分组序号。输入“-1”以退出。\nPlease input the id of the group to remove. Submit "-1" to exit.')
@@ -924,6 +1119,12 @@ async def remove_friend_group(connection: Connection) -> None:
         logPrint('请输入您要删除的分组序号。输入“-1”以退出。\nPlease input the id of the group to remove. Submit "-1" to exit.')
 
 async def manage_friend_group(connection: Connection) -> None:
+    '''
+    管理好友分组。由此函数进入各个好友分组的设置。<br>Manage friend groups. The entry to all kinds of settings of friend groups.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     friend_groups, friend_groupIds, friend_group_df = await output_friend_group(connection)
     logPrint("请选择好友分组操作：\nPlease select an operation on friend groups:\n0\t返回上一层（Return to the last step）\n1\t添加分组（Add folder）\n2\t折叠/展开分组（Collapse/Expand folder）\n3\t重命名分组（Rename folder）\n*4\t排列分组顺序（Arrange folder order）\n5\t删除分组（Delete folder）\n6\t刷新好友分组（Refresh folders）")
     while True:
@@ -950,6 +1151,12 @@ async def manage_friend_group(connection: Connection) -> None:
         logPrint("请选择好友分组操作：\nPlease select an operation on friend groups:\n0\t返回上一层（Return to the last step）\n1\t添加分组（Add folder）\n2\t折叠/展开分组（Collapse/Expand folder）\n3\t重命名分组（Rename folder）\n*4\t排列分组顺序（Arrange folder order）\n5\t删除分组（Delete folder）\n6\t刷新好友分组（Refresh folders）")
 
 async def count_friend_statistics(connection: Connection) -> None:
+    '''
+    统计好友状态。<br>Count friend status.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     friend_counts: dict[str, int] = await (await connection.request("GET", "/lol-chat/v1/friend-counts")).json()
     logPrint("好友在线/离线状态数据如下：\nFriend online/offline status is listed below:\n")
     friend_count_data: dict[str, list[str | int]] = {"项目": ["好友总数", "在线", "闲置", "队列中", "英雄选择", "游戏中", "离开", "在线分组"], "Items": ["numFriends", "numFriendsOnline", "numFriendsAvailable", "numFriendsInQueue", "numFriendsInChampSelect", "numFriendsInGame", "numFriendsAway", "numFriendsMobile"], "值": [friend_counts["numFriends"], friend_counts["numFriendsOnline"], friend_counts["numFriendsAvailable"], friend_counts["numFriendsInQueue"], friend_counts["numFriendsInChampSelect"], friend_counts["numFriendsInGame"], friend_counts["numFriendsAway"], friend_counts["numFriendsMobile"]]}
@@ -958,6 +1165,12 @@ async def count_friend_statistics(connection: Connection) -> None:
     log.write(format_df(friend_count_df, align = "><^", width_exceed_ask = False, direct_print = False)[0] + "\n\n")
 
 async def export_conversation(connection: Connection) -> None:
+    '''
+    导出对话。<br>Export conversations.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     logPrint("提示：请在客户端右侧点击你想要导出对话的好友以激活对话。\nHint: Please activate the conversation by clicking the friend whom you want to export the messages from and to at the right side of the client.")
     json1name: str = "Conversations - %s.json" %(get_info_name(current_info))
     if os.path.exists(os.path.join(folder, json1name)):
@@ -1077,13 +1290,16 @@ async def chat(connection: Connection, pid: str) -> None:
     '''
     向目标社交代码的用户或群体发送消息。<br>Send messages to a target or community with the target pid.
     
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
     :param pid: 社交代码。对于召唤师而言，往往由**玩家通用唯一识别码**和**对战网址后缀**构成。<br>Player id. When it comes to a summoner, this pid is always composed of **puuid** and **PvP net suffix**.
     :type pid: str
     '''
     isFriendPid: bool = pid.endswith("@pvp.net") or pid.endswith("@%s.pvp.net" %(platformId.lower()))
     messages: list[dict[str, Any]] | dict[str, Any] = await (await connection.request("GET", f"/lol-chat/v1/conversations/{pid}/messages")).json()
-    if "errorCode" in messages and messages["httpStatus"] == 404:
-        logPrint("该对话尚未激活。如果这是一位好友的社交代码，请在客户端右边的好友列表中点击该好友，或者直接发送一条聊天类消息，以激活对话。\nThis conversation hasn't been activated yet. If this is a friend's pid, please click this friend in the friend list at the right side of the client, or send a chat message directly to activate the conversation.")
+    if isinstance(messages, dict):
+        if "errorCode" in messages and messages["httpStatus"] == 404:
+            logPrint("该对话尚未激活。如果这是一位好友的社交代码，请在客户端右边的好友列表中点击该好友，或者直接发送一条聊天类消息，以激活对话。\nThis conversation hasn't been activated yet. If this is a friend's pid, please click this friend in the friend list at the right side of the client, or send a chat message directly to activate the conversation.")
     mTypeDict = {"1": "chat", "2": "groupchat", "3": "system", "4": "information", "5": "celebration"}
     logPrint("请选择您要发送的消息类型：\nPlease select the type of the message you want to send:\n0\t返回上一层（Return to the last step）\n1\t聊天（Chat）\n%s2\t小队聊天（Groupchat）\n3\t系统（System）\n4\t通知（Information）\n5\t庆祝语（Celebration）\n6\t自定义（Custom）" %("!" if isFriendPid else ""))
     while True:
@@ -1139,6 +1355,12 @@ async def chat(connection: Connection, pid: str) -> None:
         logPrint("请选择您要发送的消息类型：\nPlease select the type of the message you want to send:\n0\t返回上一层（Return to the last step）\n1\t聊天（Chat）\n%s2\t小队聊天（Groupchat）\n3\t系统（System）\n4\t通知（Information）\n5\t庆祝语（Celebration）\n6\t自定义（Custom）" %("!" if isFriendPid else ""))
 
 async def send_message(connection: Connection) -> None:
+    '''
+    聊天。<br>Chat.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     global message_hint_printed
     if not message_hint_printed:
         logPrint("（提示：编辑好内容后，在终端中按Ctrl-D以插入结束字符，再按回车键发送消息。插入两个Ctrl-D以取消对话。插入三个Ctrl-D以刷新消息。如果终端不支持插入Ctrl-D字符，新建一个Python工作台，引入pyperclip库后使用pyperclip.copy(chr(4))以复制Ctrl-D实际代表的字符，再粘贴在聊天终端中，按回车键发送消息。）\n(Hint: If you finished editing the message, you must press Ctrl-D to insert the ending character and then press Enter to send the message. Append double Ctrl-D to cancel chatting. Append triple Ctrl-D to refresh messages. If the current terminal doesn't support inserting Ctrl-D character, please create a Python console, import pyperclip library and then use `pyperclip.copy(chr(4))` to copy the character that Ctrl-D actually represents. Finally, paste it into the current terminal and press Enter to send the message.)")
@@ -1251,6 +1473,12 @@ async def send_message(connection: Connection) -> None:
         logPrint("请选择聊天场合：\nPlease select a chat situation:\n0\t返回上一层（Return to the last step）\n1\t好友聊天（Friend chat）\n2\t活动对话（Active conversation）\n3\t指定社交代码（Specify pid）")
 
 async def add_friend(connection: Connection) -> None:
+    '''
+    添加好友。<br>Add friend.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     logPrint("已经知道好友的玩家名称#名称编号？快给TA发送好友请求吧！请输入您想要添加的玩家名称：\nAlready know your friend’s Riot ID? Send them a friend request! Please submit the Riot IDs of the player(s) you want to make friend with:")
     while True:
         friends: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
@@ -1300,6 +1528,12 @@ async def add_friend(connection: Connection) -> None:
                 logPrint(prefriend_info["message"])
 
 async def manage_friend_request(connection: Connection) -> None:
+    '''
+    管理好友请求，包括同意、拒绝和忽略。<br>Manage friend requests, including accepting, declining and neglecting a friend request.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     friend_requests: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v2/friend-requests")).json()
     if "errorCode" in friend_requests:
         logPrint(friend_requests)
@@ -1462,6 +1696,12 @@ async def manage_friend_request(connection: Connection) -> None:
                     logPrint("请选择好友请求处理模式：\nPlease select a mode to handle friend requests:\n0\t返回上一层（Return to the last step）\n1\t单个处理（Single）\n2\t批量处理（In batches）\n3\t全部处理（All）")
 
 async def move_group(connection: Connection) -> None:
+    '''
+    移动好友至分组。<br>Move a friend to a group.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     friends: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
     if len(friends) == 0:
         logPrint("看起来你现在还没有添加任何好友。邀请好友来聊天并一起玩游戏。\nLooks like you haven't added any friends yet. Invite friends to chat and play together.")
@@ -1668,6 +1908,12 @@ async def move_group(connection: Connection) -> None:
             logPrint("请选择移动模式：\nPlease select a moving mode:\n0\t返回上一层（Return to the last step）\n1\t单个移动（Single）\n2\t批量移动（In batches）\n3\t全部移动（All）")
 
 async def edit_friend_note(connection: Connection) -> None:
+    '''
+    编辑好友备注。<br>Edit a friend's note.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     friends: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
     if len(friends) == 0:
         logPrint("看起来你现在还没有添加任何好友。邀请好友来聊天并一起玩游戏。\nLooks like you haven't added any friends yet. Invite friends to chat and play together.")
@@ -1725,6 +1971,12 @@ async def edit_friend_note(connection: Connection) -> None:
                 friend_hovercard_df = await output_friend_hovercard_simple(connection, print_index = True, start_index = 1)
 
 async def remove_friend(connection: Connection) -> None:
+    '''
+    解除好友关系。<br>Remove friend relationship.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     friends: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
     if len(friends) == 0:
         logPrint("看起来你现在还没有添加任何好友。邀请好友来聊天并一起玩游戏。\nLooks like you haven't added any friends yet. Invite friends to chat and play together.")
@@ -1912,6 +2164,12 @@ async def remove_friend(connection: Connection) -> None:
             logPrint("请选择删除模式：\nPlease select an unfriending mode:\n0\t返回上一层（Return to the last step）\n1\t单个删除（Single）\n2\t批量删除（In batches）\n3\t全部删除（All）")
 
 async def block_friend(connection: Connection) -> None:
+    '''
+    将好友拉入黑名单。<br>Block friends.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     friends: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
     if len(friends) == 0:
         logPrint("看起来你现在还没有添加任何好友。邀请好友来聊天并一起玩游戏。\nLooks like you haven't added any friends yet. Invite friends to chat and play together.")
@@ -2103,6 +2361,9 @@ async def block_friend(connection: Connection) -> None:
             logPrint("请选择拉黑模式：\nPlease select a blocking mode:\n0\t返回上一层（Return to the last step）\n1\t单个拉黑（Single）\n2\t批量拉黑（In batches）\n3\t全部拉黑（All）")
 
 async def manage_friend(connection: Connection) -> None:
+    '''
+    管理好友。由此函数进入各个好友管理选项。<br>Manage friends. The entry to all kinds of friend management options.
+    '''
     logPrint("请选择好友管理行为：\nPlease select a friend management action:\n1\t添加好友（Add friends）\n2\t好友请求操作（Friend request operations）\n3\t移动好友至分组（Move to group）\n4\t修改好友备注（Add/Edit note）\n5\t解除好友关系（Unfriend）\n6\t拉入聊天黑名单（Block）")
     while True:
         action: str = logInput()
@@ -2128,6 +2389,12 @@ async def manage_friend(connection: Connection) -> None:
         logPrint("请选择好友管理行为：\nPlease select a friend management action:\n1\t添加好友（Add friends）\n2\t好友请求操作（Friend request operations）\n3\t移动好友至分组（Move to group）\n4\t修改好友备注（Add/Edit note）\n5\t解除好友关系（Unfriend）\n6\t拉入聊天黑名单（Block）")
 
 async def invite(connection: Connection) -> None:
+    '''
+    邀请玩家至小队。<br>Invite a player to lobby.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     global TFTBasic_got, session, TFTAugments
     gameflow_phase: str = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
     if gameflow_phase == "Lobby":
@@ -2610,6 +2877,8 @@ async def configure_nonFriendInvite_setting(connection: Connection, enable: bool
     
     如果用户本来就接收，则不做任何处理。否则，修改设置以接受，并标记为选项已变更。<br>If the user has enabled receiving game invitations from strangers, this function will do nothing. Otherwise, change the setting to receive them and mark that the setting is changed.
     
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
     :param enable: 是否启用接收来自陌生人的游戏邀请。默认为真。<br>Whether to enable receiving game invitations from strangers. True by default.
     :type enable: bool
     :return: 设置是否已变更。主要用于恢复用户原来的设置。如果设置发生了变更，那么恢复原来的设置。<br>Whether this setting is changed. Mainly used to recover the user's original setting. If this setting is changed, then recover the original setting.
@@ -2634,6 +2903,12 @@ async def configure_nonFriendInvite_setting(connection: Connection, enable: bool
         return False
 
 async def join_game(connection: Connection) -> None:
+    '''
+    加入一场对局。<br>Join a game.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     while True:
         logPrint("您是要加入好友的公开小队，还是接受邀请？\nDo you want to join a friend's open party or accept an invitation?\n1\t加入公开小队（Join party）\n2\t接受邀请（Accept an invitation）")
         action: str = logInput()
@@ -2883,6 +3158,12 @@ async def join_game(connection: Connection) -> None:
             break
 
 async def spectate_compat(connection: Connection) -> None: #带有旧接口兼容性的观战过程（A spectate function compatible with old endpoints）
+    '''
+    观战。仅在无任何游戏状态的时候可用。<br>Spectate a game. Available only when the user doesn't have any gameflow phase.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     global spectatorPluginNA_hint_printed, spectatorPluginLegacyDisabled_hint_printed
     gameflow_phase: str = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
     if gameflow_phase == "None":
@@ -3197,6 +3478,12 @@ async def spectate_compat(connection: Connection) -> None: #带有旧接口兼�
         logPrint("您目前的状态不可观战。请等待游戏结束或者退出房间来进行观战。\nYou're not allowed to spectate for now. Please wait for the current game to end or exit the party or lobby to spectate any game.")
 
 async def switch_capture_device(connection: Connection) -> None:
+    '''
+    切换输入设备。<br>Switch the capture device.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     captureDevice_df: pandas.DataFrame = await sort_capture_devices(connection)
     if len(captureDevice_df) == 1:
         logPrint("未检测到输入设备。\nNo capture devices detected.")
@@ -3244,6 +3531,12 @@ async def switch_capture_device(connection: Connection) -> None:
                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
 
 async def test_capture_device(connection: Connection) -> None:
+    '''
+    测试输入设备。<br>Test the capture device.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     captureDevices: list[dict[str, Any]] = await (await connection.request("GET", "/lol-premade-voice/v1/capturedevices")).json()
     captureDevices_transformed = {device["name"]: device for device in captureDevices}
     voiceSettings: dict[str, Any] = await (await connection.request("GET", "/lol-premade-voice/v1/settings")).json()
@@ -3265,6 +3558,12 @@ async def test_capture_device(connection: Connection) -> None:
             break
 
 async def switch_capture_mode(connection: Connection) -> None:
+    '''
+    切换输入设备。<br>Switch the capture mode.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     logPrint("请选择输入模式：\nPlease select an input mode:\n0\t返回上一层（Return to the last step）\n1\t语音活跃度（Voice activity）\n2\t按住以发言（Push to talk）")
     while True:
         mode: str = logInput()
@@ -3296,6 +3595,12 @@ async def switch_capture_mode(connection: Connection) -> None:
             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
 
 async def set_voice_activation_threshold(connection: Connection) -> None:
+    '''
+    在选择语音活跃度的情况下，设置语音激活阈值。<br>When voice activation mode is selected, set the voice activation threshold.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     logPrint("请输入一个不超过100的自然数。\nPlease enter a nonnegative integer not greater than 100.")
     while True:
         sensitivity_str: str = logInput()
@@ -3322,6 +3627,12 @@ async def set_voice_activation_threshold(connection: Connection) -> None:
                         logPrint("语音激活阈值修改失败。\nVoice activation threshold change failed.")
 
 async def set_pushToTalk_hotkey(connection: Connection) -> None:
+    '''
+    设置按住以发言模式的热键。<br>Set the hotkey of push-to-talk mode.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     pttAvailable: bool = await (await connection.request("POST", "/lol-premade-voice/v1/push-to-talk/check-available", data = "0")).json() #这里和上面一样神奇（This is just as magical as above）
     if pttAvailable:
         logPrint('请输入按键字符串。按键字符串应为单键或组合键，如“[c]”“[Ctrl][c]”“[Shift][Ctrl][c]”“[<Unbound>]”。\nPlease input the key string. A key string represents either a single key or a combined key, like "[c]", "[Ctrl][c]", "[Shift][Ctrl][c]" or "[<Unbound>]".')
@@ -3341,6 +3652,12 @@ async def set_pushToTalk_hotkey(connection: Connection) -> None:
         logPrint("按住以发言不可用。如果要启用【按键发言】，你必须提供额外的访问许可。你可以点击MacOS命令符或在系统偏好设置中，在安全及隐私(Security & Privacy) > 隐私(Privacy) > 可访问性(Accessibility)下启用LeagueClient.app的检查框。\nPush to Talk not available. To enable push to talk, you must grant additional accessibility permissions. Either click on the MacOS prompt or in System Preferences, enable the checkbox for LeagueClient.app under Security & Privacy > Privacy > Accessibility.")
 
 async def set_input_volume(connection: Connection) -> None:
+    '''
+    设置输入音量。<br>Set the input volume.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     logPrint("请输入一个不超过100的自然数。\nPlease enter a nonnegative integer not greater than 100.")
     while True:
         micLevel_str: str = logInput()
@@ -3367,6 +3684,12 @@ async def set_input_volume(connection: Connection) -> None:
                         logPrint("输入音量（增强）修改失败。\nInput Volume (Gain) change failed.")
 
 async def mute_self(connection: Connection) -> None:
+    '''
+    自我静音。<br>Self mute.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     voiceSettings = await (await connection.request("GET", "/lol-premade-voice/v1/settings")).json()
     if voiceSettings["localMicMuted"]:
         response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-premade-voice/v1/self/mute", data = "0")).json()
@@ -3384,6 +3707,12 @@ async def mute_self(connection: Connection) -> None:
             logPrint("自我静音失败。\nSelf mute failed.")
 
 async def output_voice_settings(connection: Connection) -> None:
+    '''
+    输出音量设置。<br>Output voice settings.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     captureDevices: list[dict[str, Any]] = await (await connection.request("GET", "/lol-premade-voice/v1/capturedevices")).json()
     captureDevices_transformed: dict[str, dict[str, Any]] = {device["name"]: device for device in captureDevices}
     voiceSettings: list[dict[str, Any]] = await (await connection.request("GET", "/lol-premade-voice/v1/settings")).json()
@@ -3394,6 +3723,12 @@ async def output_voice_settings(connection: Connection) -> None:
     log.write(format_df(voiceSettings_df, width_exceed_ask = False, direct_print = False, align = "><^")[0] + "\n\n")
 
 async def manage_voice_inputSettings(connection: Connection) -> None:
+    '''
+    管理声音输入设置。由此函数进入各个具体设置项。<br>Manage voice input settings. Entry to each specific configuration.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     capture_permission: bool = await (await connection.request("GET", "/lol-premade-voice/v1/devices/capture/permission")).json()
     if capture_permission:
         logPrint("请选择具体设置：\nPlease select a detailed setting:\n0\t返回上一层（Return to the last step）\n1\t更改输入设备（Switch the capture device）\n2\t测试当前输入设备（Test the current capture device）\n3\t切换输入模式（Switch the input mode）\n4\t设置语音激活阈值（Change voice activation threshold）\n5\t设置【按键发言】热键（不可用）【Change Push to Talk hotkey (not available)】\n6\t设置输入音量（Set input volume）\n7\t自我静音/解除自我静音（Self mute/unmute）\n8\t输出设置信息（Output settings）")
@@ -3426,6 +3761,9 @@ async def manage_voice_inputSettings(connection: Connection) -> None:
         logPrint("您的输入设备没有获得访问许可。\nYour capture devices aren't granted accessibility permissions.")
 
 async def manage_voice_outputSettings(connection: Connection) -> None:
+    '''
+    管理声音输出设置。<br>Manage voice output settings.
+    '''
     participant_records: list[dict[str, Any]] = await (await connection.request("GET", "/lol-premade-voice/v1/participant-records")).json()
     if len(participant_records) == 0:
         logPrint("您尚未加入语音频道。请连接至语音。\nYou haven't joined the voice channel. Please connect to League Voice.")
@@ -3746,6 +4084,9 @@ async def manage_voice_outputSettings(connection: Connection) -> None:
             logPrint("请选择设置方法：\nPlease select a voice setting:\n0\t返回上一层（Return to the last step）\n1\t静音/解除静音（Mute/Unmute）\n2\t修改音量（Change volume）")
 
 async def manage_premade_voice(connection: Connection) -> None:
+    '''
+    管理预组队语音。<br>Manage premade voice.
+    '''
     voiceAvailability: dict[str, Any] = await (await connection.request("GET", "/lol-premade-voice/v1/availability")).json()
     if voiceAvailability["connectedToVoiceServer"]:
         if voiceAvailability["enabled"]:
@@ -3779,6 +4120,12 @@ async def manage_premade_voice(connection: Connection) -> None:
         logPrint("您未连接到语音服务。请检查网络情况。如果这个问题持续存在，请重新启动英雄联盟客户端。\nYou're not connected to League Voice service. Please check your network condition. If this problem persists, please restart the League Client.")
 
 async def mute_champSelect_player(connection: Connection) -> None:
+    '''
+    静音英雄选择阶段的玩家。<br>Mute players in the champ select stage.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     gameflow_phase = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
     if gameflow_phase == "ChampSelect":
         champ_select_session = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
@@ -3969,6 +4316,12 @@ async def mute_champSelect_player(connection: Connection) -> None:
         logPrint("提示：以下静音操作仅在英雄选择阶段生效。请确保您目前正在英雄选择阶段。\nHint: The following mute actions only apply in a champ select group chat. Please confirm that you're during champ select.")
 
 async def mute(connection: Connection) -> None:
+    '''
+    静音玩家。<br>Mute players.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     logPrint("请选择静音场景：\nPlease select a mute situation:\n0\t返回上一层（Return to the last step）\n1\t预组队语音（Premade voice）\n2\t英雄选择小队聊天（Group chat during champ select）")
     while True:
         situation: str = logInput()
@@ -3986,6 +4339,12 @@ async def mute(connection: Connection) -> None:
         logPrint("请选择静音场景：\nPlease select a mute situation:\n0\t返回上一层（Return to the last step）\n1\t预组队语音（Premade voice）\n2\t英雄选择小队聊天（Group chat during champ select）")
 
 async def friend_behavior_simulation(connection: Connection) -> None: #在本函数中可以看到一些查战绩脚本中涉及的数据资源。但是这里是通过LCU API来获取的，这是因为该脚本获取的数据一定是实时的，而查战绩脚本和自定义脚本11会涉及过时的数据（This function involves some data resources in Customized Program 05, except that they're obtained through LCU API in this program. This is because the data this program obtains must be real-time, while Customized Program 05 and 11 may get old data）
+    '''
+    模拟与好友相关的行为。由此进入各个场景。<br>Simulate behaviors related to friends. Entry to scenarios.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     global spectatorPluginNA_hint_printed, spectatorPluginLegacyDisabled_hint_printed, current_info, folder
     spectatorPluginNA_hint_printed = False
     spectatorPluginLegacyDisabled_hint_printed = False
@@ -4043,6 +4402,18 @@ async def friend_behavior_simulation(connection: Connection) -> None: #在本函
 # 黑名单管理（Black list management）
 #-----------------------------------------------------------------------------
 async def sort_blockList_data(connection: Connection, CustomURF_blockList_enabled: bool = False, blockList: Any = None) -> pandas.DataFrame:
+    '''
+    获取黑名单信息，并整理成一张表格。<br>Get block list and organize it into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param CustomURF_blockList_enabled: 是否启用自定义无限火力专用黑名单。默认为假。<br>Whether to enable Custom URF special block list. False by default.
+    :type CustomURF_blockList_enabled: bool
+    :param blockList: 自定义无限火力专用黑名单。仅在`CustomURF_blockList_enabled`参数为真时可用。<br>Custom URF special block list. Available only when `CustomURF_blockList_enabled` parameter is True.
+    :type blockList: list[dict[str, Any]]
+    :return: 黑名单玩家数据框。<br>Blocked player dataframe.
+    :rtype: pandas.DataFrame
+    '''
     if blockList == None:
         blockList = []
     if CustomURF_blockList_enabled:
@@ -4078,6 +4449,12 @@ async def sort_blockList_data(connection: Connection, CustomURF_blockList_enable
     return blockList_df
 
 async def block(connection: Connection) -> None:
+    '''
+    拉黑一名玩家。<br>Block a player.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     blockList = await (await connection.request("GET", "/lol-chat/v1/blocked-players")).json()
     if isinstance(blockList, dict) and "errorCode" in blockList:
         if blockList["httpStatus"] == 503 and blockList["message"] == "Error response for GET /chat/v3/blocked: ":
@@ -4236,6 +4613,19 @@ async def block(connection: Connection) -> None:
             logPrint("请选择拉黑模式：\nPlease select a blocking mode:\n0\t返回上一层（Return to the last step）\n1\t单个拉黑（Single）\n2\t批量拉黑（In batches）\n3\t从文件中拉黑（From file）")
 
 async def detect_blockedPlayer_state(connection: Connection, blockList: list[dict[str, Any]], blockList_df: pandas.DataFrame) -> None:
+    '''
+    检测用户是否即将和一名黑名单成员进行游戏。<br>Detect whether the user is going to have a game with a blocked player.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param blockList: 黑名单。<br>Block list.
+    
+        黑名单信息可以通过以下LCU接口获取：<br>Block list can be obtained through the following LCU endpoint:
+        - `GET /lol-chat/v1/blocked-players`
+    :type blockList: list[dict[str, Any]]
+    :param blockList_df: 黑名单玩家数据框。<br>Blocked player dataframe.
+    :type blockList_df: pandas.DataFrame
+    '''
     blockList_fields_to_print = ["gameName", "gameTag", "puuid", "icon title"]
     blockDict: dict[str, dict[str, Any]] = {player["puuid"]: player for player in blockList}
     blocked_puuids = set(map(lambda x: x["puuid"], blockList))
@@ -4451,6 +4841,12 @@ async def detect_blockedPlayer_state(connection: Connection, blockList: list[dic
             break
 
 async def unblock(connection: Connection) -> None:
+    '''
+    将一名黑名单玩家移除聊天黑名单。<br>Remove a blocked player from the block list.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     blockList: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/blocked-players")).json()
     if isinstance(blockList, dict) and "errorCode" in blockList:
         if blockList["httpStatus"] == 503 and blockList["message"] == "Error response for GET /chat/v3/blocked: ":
@@ -4706,6 +5102,12 @@ async def unblock(connection: Connection) -> None:
             logPrint("请选择取消拉黑模式：\nPlease select an unblocking mode:\n0\t返回上一层（Return to the last step）\n1\t单个移出（Single）\n2\t批量移出（In batches）\n3\t全部移出（All）\n4\t从文件中移出（From file）")
 
 async def blacklist_behavior_simulation(connection: Connection) -> None:
+    '''
+    模拟与黑名单相关的行为。由此进入各个场景。<br>Simulate behaviors related to block list. Entry to scenarios.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     global current_info
     current_info = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     current_hovercard: dict[str, Any] = await (await connection.request("GET", "/lol-hovercard/v1/friend-info/%s" %(current_info["puuid"]))).json()
@@ -4820,7 +5222,7 @@ async def blacklist_behavior_simulation(connection: Connection) -> None:
                                 for i in range(len(puuids_found)):
                                     logPrint(puuids_found[i] + "\t" + summonerNames_to_block[i])
                                 CustomURF_BlockList_enabled = True
-                        #以下代码将聊天黑名单与自定义无限火力黑名单同步。现已弃用（The following code synchronize the League of Legends block list with Custom URF block list. They're deserted now）
+                        #以下代码将聊天黑名单与自定义无限火力黑名单同步。现已弃用（The following code synchronize the League of Legends block list with Custom URF block list. They're deprecated now）
                         puuids_to_unblock: list[str] = []
                         for player in blockList:
                             if not player["puuid"] in blocked_puuids:

@@ -29,7 +29,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/11
+# 更新（Last update）：     2026/03/14
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -86,6 +86,14 @@ connector: Connector = Connector()
 # 定义全局变量（Define global variables）
 #-----------------------------------------------------------------------------
 async def check_account_ready(connection: Connection) -> bool:
+    '''
+    检查账号信息是否准备就绪。<br>Check if the account information is ready from API.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 账号信息是否准备就绪。<br>Whether the account information is ready.
+    :rtype: bool
+    '''
     platform_config: dict[str, Any] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces")).json()
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     if isinstance(platform_config, dict) and "errorCode" in platform_config:
@@ -113,6 +121,12 @@ async def check_account_ready(connection: Connection) -> bool:
     return True
 
 async def prepare_data_resources(connection: Connection) -> None:
+    '''
+    准备全局数据资源。<br>Prepare global data resources.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     #准备数据资源（Prepare data resources）
     global platformId, current_info, queues, summonerIcons, LoLChampions, recommended_position_for_champion, skins_flat, championSkins, skinlines, spells, available_spell_dict, LoLItems, perks, perkstyles, CherryAugments, TFTCompanions, TFTTraits, TFTChampions, TFTItems, TFTDamageSkins, TFTMapSkins, strawberryMaps, wardSkins, champion_colloq_dict, collection_df_refresh, collection_df, skin_df_refresh, skin_df
     ##大区信息（Platform information）
@@ -292,6 +306,14 @@ async def prepare_data_resources(connection: Connection) -> None:
 # 通用行为（Generic actions）
 #-----------------------------------------------------------------------------
 async def sort_conversation_metadata(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取所有对话的元数据，并整理成表格。<br>Get all conversations' metadata and organize them into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 对话元数据框。<br>Conversation meta-dataframe.
+    :rtype: pandas.DataFrame
+    '''
     conversations: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/conversations")).json()
     conversation_header_keys: list[str] = list(conversation_header.keys())
     conversation_metadata: dict[str, list[Any]] = {key: [] for key in conversation_header_keys}
@@ -310,6 +332,12 @@ async def sort_conversation_metadata(connection: Connection) -> pandas.DataFrame
     return conversation_df
 
 async def handle_invitations(connection: Connection) -> None:
+    '''
+    选择一个组队邀请并接受。<br>Select an invitation to accept.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     receivedInvitations: list[dict[str, Any]] = await (await connection.request("GET", "/lol-lobby/v2/received-invitations")).json()
     if len(receivedInvitations) == 0:
         logPrint("您还没有收到邀请。\nYou've not received any invitation.")
@@ -353,6 +381,22 @@ async def handle_invitations(connection: Connection) -> None:
                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
 
 async def join_party(connection: Connection, partyId: str, data: Optional[dict[str, Any]] = None) -> tuple[Optional[dict[str, Any]], str]:
+    '''
+    加入一个小队。<br>Join a party.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param partyId: 小队编号。<br>PartyId.
+    
+        对于房主来说，小队编号可通过以下LCU接口获取。<br>For the lobby owner, partyId can be obtained through the following LCU endpoints:
+        - `GET /lol-lobby/v2/lobby`
+        - `GET /lol-lobby/v1/parties/player`
+    :type partyId: str.
+    :param data: 请求主体。可选参数。格式如下：<br>Request body. An optional parameter. Schemas is as follows:<br>`{"lobbyPassword": str | None, "team": None | "SPECTATOR"}`
+    :type data: dict[str, Any]
+    :return: 加入小队请求的响应主体和异常信息。<br>The response body of the request to join a party and the error information.
+    :rtype: tuple[Optional[dict[str, Any]], str]
+    '''
     response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-lobby/v2/party/{partyId}/join", data = data)).json()
     if isinstance(response, dict) and "errorCode" in response:
         if response["httpStatus"] == 400:
@@ -375,6 +419,16 @@ async def join_party(connection: Connection, partyId: str, data: Optional[dict[s
     return (response, message)
 
 async def join_game(connection: Connection) -> bool:
+    '''
+    加入一个游戏。<br>Join a game.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 是否成功加入游戏。<br>Whether the user successfully joined the game.
+    
+        在成功加入游戏时，程序会返回主页。<br>If it succeeds, then the program will return to home page.
+    :rtype: bool
+    '''
     logPrint("您想要加入小队还是自定义房间？\nWhich kind do you want to join, party or lobby?\n1\t小队（Party）\n2\t自定义房间（Custom lobby）\n3\t冠军杯赛（Clash）")
     while True:
         suboption: str = logInput()
@@ -512,6 +566,12 @@ async def join_game(connection: Connection) -> bool:
         logPrint("您想要加入小队还是自定义房间？\nWhich kind do you want to join, party or lobby?\n1\t小队（Party）\n2\t自定义房间（Custom lobby）\n3\t冠军杯赛（Clash）")
 
 async def manage_ux(connection: Connection) -> None:
+    '''
+    管理用户体验界面的窗口和进程。由此进入各选项。<br>Manage the League Client Ux's window and process. Entry to each option.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     logPrint("请选择您想要对英雄联盟客户端执行的操作：\nPlease select an operation you want to do with LeagueClientUx.exe:\n1\t窗口管理（Window management）\n2\t进程管理（Process management）")
     while True:
         option: str = logInput()
@@ -815,6 +875,12 @@ async def manage_ux(connection: Connection) -> None:
         logPrint("请选择您想要对英雄联盟客户端执行的操作：\nPlease select an operation you want to do with LeagueClientUx.exe:\n1\t窗口管理（Window management）\n2\t进程管理（Process management）")
 
 async def chat(connection: Connection) -> None:
+    '''
+    选择一个已激活的对话并聊天。<br>Select an active conversation and chat.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     global message_hint_printed
     if not message_hint_printed:
         logPrint("（提示：编辑好内容后，在终端中按Ctrl-D以插入结束字符，再按回车键发送消息。插入两个Ctrl-D以取消对话。插入三个Ctrl-D以刷新消息。如果终端不支持插入Ctrl-D字符，新建一个Python工作台，引入pyperclip库后使用pyperclip.copy(chr(4))以复制Ctrl-D实际代表的字符，再粘贴在聊天终端中，按回车键发送消息。）\n(Hint: If you finished editing the message, you must press Ctrl-D to insert the ending character and then press Enter to send the message. Append double Ctrl-D to cancel chatting. Append triple Ctrl-D to refresh messages. If the current terminal doesn't support inserting Ctrl-D character, please create a Python console, import pyperclip library and then use `pyperclip.copy(chr(4))` to copy the character that Ctrl-D actually represents. Finally, paste it into the current terminal and press Enter to send the message.)")
@@ -900,6 +966,16 @@ async def chat(connection: Connection) -> None:
             break
 
 async def debug_gameflow_phase(connection: Connection) -> str:
+    '''
+    调试游戏状态。<br>Debug gameflow phase.
+    
+    由此函数直接进入各游戏状态的主函数。<br>Entry to the main function of each corresponding gameflow phase.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 游戏状态代码。<br>Gameflow phase string.
+    :rtype: str
+    '''
     gameflow_phase_dict: dict[int, str] = {1: "None", 2: "Lobby", 3: "Matchmaking", 4: "ReadyCheck", 5: "ChampSelect", 6: "InProgress", 7: "Reconnect", 8: "WaitingForStats", 9: "PreEndOfGame", 10: "EndOfGame"}
     gameflow_phase_df: pandas.DataFrame = pandas.DataFrame(data = {"Index": list(range(1, 11)), "游戏状态": ["无", "房间内", "阵容匹配", "就绪确认", "英雄选择", "游戏中", "重连", "等待数据", "赛后预结算", "赛后结算"], "GameflowPhase": ["None", "Lobby", "Matchmaking", "ReadyCheck", "ChampSelect", "InProgress", "Reconnect", "WaitingForStats", "PreEndOfGame", "EndOfGame"]})
     while True:
@@ -915,6 +991,12 @@ async def debug_gameflow_phase(connection: Connection) -> str:
             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
 
 async def toggle_nonfriend_game_invite(connection: Connection) -> None:
+    '''
+    切换“只接受好友邀请”选项。<br>Toggle "Allow game invites only from friends" option.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     lol_notifications: dict[str, Any] = await (await connection.request("GET", "/lol-settings/v2/account/LCUPreferences/lol-notifications")).json()
     nonfriend_invitation_blocked: bool = isinstance(lol_notifications, dict) and "blockNonFriendGameInvites" in lol_notifications["data"] and lol_notifications["data"]["blockNonFriendGameInvites"]
     if nonfriend_invitation_blocked:
@@ -933,6 +1015,12 @@ async def toggle_nonfriend_game_invite(connection: Connection) -> None:
             logPrint('''已启用“只接受好友游戏邀请”选项。您将屏蔽所有来自陌生人的游戏邀请。\nEnabled "Allow game invites only from friends" option. You'll block any invitation from strangers.''')
 
 async def expand_match_history(connection: Connection) -> None:
+    '''
+    将一名召唤师在生涯界面中的英雄联盟和云顶之弈对局记录从最近20场扩展到最近200场。<br>Expand a summoner's LoL and TFT match history in the League Client's Profile tab from the recent 20 matches to 200.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     global expand_matchHistory_hint_printed
     if not expand_matchHistory_hint_printed:
         logPrint("请确保您从未点击过要查询的玩家的对局记录。如果您已经点击过，则程序只能获取到目前客户端接收到的对局，请等待该信息过期后再重新使用此功能。\nPlease make sure you haven't clicked the MATCH HISTORY tab of the summoner you want to search for. If you happen to have clicked it, then the program can only get the matches already received, and you need to wait for that information to expire and then use this function.\n")
@@ -1034,10 +1122,30 @@ async def expand_match_history(connection: Connection) -> None:
         logPrint('请输入要查询的召唤师名称，退出请输入“0”：\nPlease input the summoner name to be searched. Submit "0" to exit.')
 
 async def display_current_info(connection: Connection) -> None:
+    '''
+    打印当前召唤师的身份信息。<br>Print the current summoner's identity information.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     logPrint(json.dumps(current_info, indent = 4, ensure_ascii = False), write_time = False)
 
 def select_report_categories(gameflow_phase: str, summoner_name: str = "") -> list[str]:
+    '''
+    选择一个举报类别。<br>Select a report category.
+    
+    举报类别随游戏状态不同而有所不同。<br>Report categories vary among gameflow phases.
+    
+    :param gameflow_phase: 游戏状态。<br>Gameflow phase.
+    :type gameflow_phase: str
+    :param summoner_name: 要举报的召唤师名称。仅用于输出提示。<br>Name of the summoner to report. Only used for hint output.
+    :type summoner_name: str
+    :return: 举报类别列表。<br>A list of report categories.
+    
+        在联盟客户端中，玩家最多同时选择三项举报类别。<br>In the League Client, a player can pick at most three report categories at the same time.
+    :rtype: list[str]
+    '''
     if gameflow_phase == "ChampSelect":
         logPrint(f"举报{summoner_name}，理由是：\nReport {summoner_name} for: \n1\t玩家水平过低（Unskilled Play）\n2\t滥用聊天工具（Comms Abuse）\n3\t抢位置（Refusing to play position）\n4\t态度恶劣/威胁（Griefing / Hostage taking）\n5\t滥用小队语音聊天工具（Team Voice Comms Abuse）\n6\t不当的用户名（Inappropriate Name）\n7\t其它（Other）")
         report_category_list: list[str] = REPORT_CATEGORY_LIST_CHAMPSELECT
@@ -1123,6 +1231,12 @@ async def send_report_request(connection: Connection, resource: dict[str, Any], 
     return response
 
 async def report_player_champSelect(connection: Connection) -> None:
+    '''
+    在英雄选择阶段举报一名玩家。<br>Report a player during a champ select stage.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     gameflow_phase: str = await get_gameflow_phase(connection)
     if gameflow_phase == "ChampSelect":
         champ_select_session: dict[str, Any] = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
@@ -1219,6 +1333,12 @@ async def report_player_champSelect(connection: Connection) -> None:
         logPrint("您目前不在英雄选择阶段。\nYou're not duing the champ select stage.")
 
 async def report_player_inGame(connection: Connection) -> None:
+    '''
+    在游戏内举报一名玩家。<br>Report a player in game.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     gameflow_phase: str = await get_gameflow_phase(connection)
     if gameflow_phase in {"FailedToLaunch", "InProgress", "Reconnect"}:
         gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
@@ -1316,6 +1436,12 @@ async def report_player_inGame(connection: Connection) -> None:
         logPrint("您目前不在游戏内。\nYou're currently not in a game.")
 
 async def report_player_endOfGame(connection: Connection) -> None:
+    '''
+    在赛后结算阶段举报一名玩家。<br>Report a player at the end of a game.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     gameflow_phase: str = await get_gameflow_phase(connection)
     if gameflow_phase == "PreEndOfGame" or gameflow_phase == "EndOfGame":
         gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
@@ -1431,6 +1557,12 @@ async def report_player_endOfGame(connection: Connection) -> None:
         logPrint("您目前不在游戏内。\nYou're currently not in a game.")
 
 async def report_player_matchHistory(connection: Connection) -> None:
+    '''
+    在对局记录界面举报一名玩家。<br>Report a player in the match history tab.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     global TFTBasic_got, session, TFTAugments
     if not TFTBasic_got:
         ##云顶之弈基础信息（TFT basic）
@@ -1573,6 +1705,20 @@ async def report_player_matchHistory(connection: Connection) -> None:
 # 未登录状态（Unlogged state）
 #-----------------------------------------------------------------------------
 async def unlogged_actions(connection: Connection) -> None:
+    '''
+    在账号信息未准备就绪时的主函数。<br>The main function when the account information isn't ready.
+    
+    账号信息未准备就绪有以下场景：<br>The following circumstances are where account information isn't ready:
+    - 账号未登录。<br>Account not logged in.
+        - 服务器正在维护。<br>Server under maintenance.
+        - 账号被封禁。<br>Account suspended.
+        - 网络异常。<br>Network error.
+    - 在登录后调用了以下LCU接口。<br>The following LCU endpoint called after login.
+        - `POST /riotclient/unload`
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     while True:
         logPrint("请选择一个操作：\nPlease select an operation:\n-1\t调试自定义接口（Debug custom endpoints）\n1\t客户端任务管理（Manage the League Client task）")
         option: str = logInput()
@@ -1588,12 +1734,20 @@ async def unlogged_actions(connection: Connection) -> None:
 #-----------------------------------------------------------------------------
 # 创建房间（Create a lobby）
 #-----------------------------------------------------------------------------
-async def create_queue_lobby(connection: Connection, loop_test: bool = False) -> int: #返回值为0代表请求正确发送，为1代表返回异常请求，为2代表中途退出。自定义房间创建函数同理（The returned value is 0 if the request is sent properly, 1 if an error message is returned and 2 if the user exits the function halfway. So as `create_custom_lobby` function）
+async def create_queue_lobby(connection: Connection, loop_test: bool = False) -> int:
     '''
-    创建小队。现在适用于所有游戏模式。<br>Create a party. Now applies to any game mode.
+    创建一个小队。现在适用于所有游戏模式。<br>Create a party. Now applies to any game mode.
     
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
     :param loop_test: 是否启用循环测试。在启用时，用户可以连续输入队列序号以连续创建不同房间。默认为假。<br>Whether to enable loop test. When it's enabled, the user may input queueIds continuously to create different lobbies. False by default.
     :type loop_test: bool
+    :return: 状态码。<br>Status code.
+    
+        - 0: 请求发送成功。<br>Request sent successfully.
+        - 1: 请求出现异常。<br>Request has an error.
+        - 2: 取消操作。<br>Operation cancelled.
+    :rtype: int
     '''
     game_version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
     gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
@@ -1815,6 +1969,18 @@ async def create_queue_lobby(connection: Connection, loop_test: bool = False) ->
     return status
 
 async def create_custom_lobby(connection: Connection) -> int:
+    '''
+    创建一个传统自定义房间。从25.18版本起不再可用。<br>Create a legacy custom lobby. No longer available after Patch 25.17.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 状态码。<br>Status code.
+    
+        - 0: 请求发送成功。<br>Request sent successfully.
+        - 1: 请求出现异常。<br>Request has an error.
+        - 2: 取消操作。<br>Operation cancelled.
+    :rtype: int
+    '''
     #定义常量（Define constants）
     practiceGameTypeConfigIds_source: list[float] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/ClientSystemStates/practiceGameTypeConfigIdList")).json()
     practiceGameTypeConfigIds: list[int] = sorted(map(int, practiceGameTypeConfigIds_source))
@@ -2048,6 +2214,14 @@ async def create_custom_lobby(connection: Connection) -> int:
         return 2
 
 async def sort_custom_lobbies(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取当前大区公开的自定义房间列表，并整理成一张表格。<br>Get the public custom lobby list and organize it into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 公开自定义房间数据框。<br>Public custom lobby dataframe.
+    :rtype: pandas.DataFrame
+    '''
     response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/custom-games/refresh")).json()
     custom_lobbies: list[dict[str, Any]] = await (await connection.request("GET", "/lol-lobby/v1/custom-games")).json()
     custom_lobby_header_keys: list[str] = list(custom_lobby_header.keys())
@@ -2075,6 +2249,20 @@ async def sort_custom_lobbies(connection: Connection) -> pandas.DataFrame:
     return custom_lobby_df
 
 async def create_lobby_json(connection: Connection) -> int:
+    '''
+    通过用户输入读取创建房间的请求主体。<br>Read the request body to create a lobby from user input.
+    
+    支持Python字典的格式和json格式。<br>Both Python dictionary format and json format are supported.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 状态码。<br>Status code.
+    
+        - 0: 请求发送成功。<br>Request sent successfully.
+        - 1: 请求出现异常。<br>Request has an error.
+        - 2: 取消操作。<br>Operation cancelled.
+    :rtype: int
+    '''
     logPrint('请输入用于创建房间的json代码：\nPlease input the json code to create the custom lobby:\n格式（Format）：\n{"queueId": 0, "isCustom": True, "customGameLobby": {"lobbyName": "string", "lobbyPassword": "string", "configuration": {"mapId": 0, "aramMapMutator": "string", "gameMode": "string", "mutators": {"id": 0}, "spectatorPolicy": "AllAllowed", "teamSize": 0, "gameServerRegion": "string", "spectatorDelayEnabled": True, "hidePublicly": True}}}\nlobbyChange = ', end = "")
     while True:
         s: str = logInput()
@@ -2103,6 +2291,16 @@ async def create_lobby_json(connection: Connection) -> int:
         return 0
 
 async def create_lobby(connection: Connection) -> bool:
+    '''
+    创建一个房间。由此进入各个创建方式。<br>Create a lobby. Entry to each creation method.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 是否成功创建房间。<br>Whether a lobby is successfully created.
+    
+        在成功创建房间时，程序会返回主页。<br>If it succeeds, then the program will return home.
+    :rtype: bool
+    '''
     while True:
         logPrint("选择一个房间类型：\nSelect a type of lobby:\n1\t创建小队（Create a party）\n2\t创建自定义房间（Create a custom lobby）\n3\t通过json创建（Create through json）")
         method: str = logInput()
@@ -2128,6 +2326,22 @@ async def create_lobby(connection: Connection) -> bool:
                 pass
 
 async def add_bots_team(connection: Connection, teamId: str = "200") -> None:
+    '''
+    在自定义房间中为一支队伍批量添加电脑玩家。<br>Add bot players to a team in a custom lobby in batch.
+    
+    该函数支持以下添加方式：<br>This function supports adding bot players in the following approaches:
+    1. 完全随机地生成电脑玩家。<br>Generate all bot players with all random parameters.
+    2. 按照分路和角色定位随机生成电脑玩家。<br>Generate all bot players with all positions and roles specified.
+    3. 自行输入电脑玩家的英雄序号。<br>Generate all bot players with championIds specified.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param teamId: 阵营代号。有以下取值：<br>TeamId, which has the following values:
+    
+        - 100: 蓝方/左边。<br>Blue team / Left.
+        - 200: 红方/右边。<br>Red team / Right.
+    :type teamId: str
+    '''
     if not os.path.exists("available-bots.xlsx"):
         logPrint("未在同目录下发现可用电脑玩家工作簿。请使用查英雄脚本生成该工作簿。\nAvailable bot workbook isn't found under the same directory. Please generate it through Customized Program 04.")
         return
@@ -2460,7 +2674,15 @@ async def add_bots_team(connection: Connection, teamId: str = "200") -> None:
             logPrint("{0:<14}".format(LoLChampions[team[i]]["name"]) + "\t" + "{0:<14}".format(LoLChampions[team[i]]["alias"]) + "\t" + botDifficulties_team[i] + "\t" + botPositions_team[i] + "\t" + botUuid_team[i], write_time = False)
         logPrint("*****************************************************************************\n", write_time = False)
 
-async def sort_received_invitations(connection: Connection) -> None:
+async def sort_received_invitations(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取收到的组队邀请，并整理成一张表格。<br>Get received party invitations and organize them into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 组队邀请数据框。<br>Party invitation dataframe.
+    :rtype: pandas.DataFrame
+    '''
     gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
     gameQueues: dict[int, dict[str, Any]] = {queue["id"]: queue for queue in gameQueues_source}
     receivedInvitations: list[dict[str, Any]] = await (await connection.request("GET", "/lol-lobby/v2/received-invitations")).json()
@@ -2505,6 +2727,12 @@ async def sort_received_invitations(connection: Connection) -> None:
     return invid_df
 
 async def spectate(connection: Connection) -> None:
+    '''
+    观战。仅在无任何游戏状态的时候可用。<br>Spectate a game. Available only when the user doesn't have any gameflow phase.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     logPrint('请输入您想要观看的玩家召唤师名。输入“0”以返回上一层。\nPlease input the summonerName of the player to spectate. Submit "0" to return to the last step.')
     spectatorKey: str = str(uuid.uuid4())
     while True:
@@ -2603,6 +2831,14 @@ async def spectate(connection: Connection) -> None:
         logPrint('请输入您想要观看的玩家召唤师名。输入“0”以返回上一层。\nPlease input the summonerName of the player to spectate. Submit "0" to return to the last step.')
 
 async def gameflow_phase_transition(connection: Connection) -> str:
+    '''
+    无任何游戏状态时的主函数。由此进入各个选项。<br>The main function when gameflow phase is "None". Entry to each option.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 游戏状态调试字符串。默认为空字符串。<br>Gameflow phase debug string. An empty string will be returned by default.
+    :rtype: str
+    '''
     while True:
         logPrint("请选择一个操作：\nPlease select an operation:\n1\t创建房间（Create a lobby）\n2\t处理邀请（Handle invitations）\n3\t加入小队或自定义房间（Join party/lobby）\n4\t观战（Spectate a game）\n5\t聊天（Chat）\n6\t举报一名玩家（Report a player）\n7\t其它（Others）\n8\t客户端任务管理（Manage the League Client task）")
         option: str = logInput()
@@ -2662,6 +2898,14 @@ async def gameflow_phase_transition(connection: Connection) -> str:
 # 房间内行为模拟（Lobby action simulation）
 #-----------------------------------------------------------------------------
 async def get_perk_page(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取用户的符文配置，并整理成一张表格。<br>Get perk configuration of the user and organize it into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 用户符文页数据框。<br>User perk page dataframe.
+    :rtype: pandas.DataFrame
+    '''
     current_summonerId: int = current_info["summonerId"]
     perkPages: list[dict[str, Any]] = await (await connection.request("GET", "/lol-perks/v1/pages")).json()
     perkPage_header_keys: list[str] = list(perkPage_header.keys())
@@ -2694,6 +2938,18 @@ async def get_perk_page(connection: Connection) -> pandas.DataFrame:
     return perkPage_df
 
 async def sort_social_leaderboard(connection: Connection, queueType: str, ignore_warning: bool = False) -> pandas.DataFrame:
+    '''
+    在处于某个队列房间中时，获取该游戏模式的社交排行榜并整理成一张表格。<br>When the user is in a queue lobby, get the social leaderboard corresponding to the game mode and organize it into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param queueType: 当前小队的队列类型。<br>Queue type of the current party.
+    :type queueType: str
+    :param ignore_warning: 是否输出社交排行榜获取失败的提示。默认为假。<br>Whether to print the hint on failure in getting the social leaderboard data. False by default.
+    :type ignore_warning: bool
+    :return: 该队列类型的社交排行榜数据框。<br>Social leaderboard dataframe of this queue type.
+    :rtype: pandas.DataFrame
+    '''
     social_leaderboard_header_keys: list[str] = list(social_leaderboard_header.keys())
     social_leaderboard: dict[str, Any] = await (await connection.request("GET", f"/lol-social-leaderboard/v1/social-leaderboard-data?queueType={queueType}")).json()
     social_leaderboard_data: dict[str, list[Any]] = {key: [] for key in social_leaderboard_header_keys}
@@ -2732,6 +2988,16 @@ async def sort_social_leaderboard(connection: Connection, queueType: str, ignore
     return social_leaderboard_df
 
 async def get_collection(connection: Connection, verbose: bool = True) -> pandas.DataFrame: #这部分代码根据商品藏品信息脚本改写而成（This part of code is drafted according to Customized Program 07）
+    '''
+    获取用户的藏品信息，并整理成一张表格。<br>Get the user's collections and organize them into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param verbose: 是否在终端输出详细信息。默认为真。<br>Whether to print the details to terminal. True by default.
+    :type verbose: bool
+    :return: 用户的藏品数据框。<br>The user's collection dataframe.
+    :rtype: pandas.DataFrame
+    '''
     #准备数据资源（Prepare data resources）
     logPrint("[get_collection]正在准备藏品相关数据资源…… | Preparing collection-related data resources ...", print_time = True, verbose = verbose)
     championSkins_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/skins.json")).json()
@@ -2947,6 +3213,14 @@ async def get_collection(connection: Connection, verbose: bool = True) -> pandas
     return collection_df
 
 async def sort_available_bots(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取当前自定义房间的官方可用电脑玩家列表，并整理成一张表格。<br>Get the officially available bot champions in the current custom lobby and organize them into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 可用电脑英雄数据框。<br>Available bot champion dataframe.
+    :rtype: pandas.DataFrame
+    '''
     availableBot_header_keys: list[str] = list(availableBot_header.keys())
     available_bots: list[dict[str, Any]] = await (await connection.request("GET", "/lol-lobby/v2/lobby/custom/available-bots")).json()
     availableBot_data: dict[str, list[Any]] = {key: [] for key in availableBot_header_keys}
@@ -2966,6 +3240,14 @@ async def sort_available_bots(connection: Connection) -> pandas.DataFrame:
     return availableBot_df
 
 async def sort_lobby_members(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取当前房间内的成员信息，并整理成一张表格。<br>Get the information of members in the current lobby and organize it into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 房间成员数据框。<br>Lobby member dataframe.
+    :rtype: pandas.DataFrame
+    '''
     member_header_keys: list[str] = list(member_header.keys())
     member_data: dict[str, list[Any]] = {key: [] for key in member_header_keys}
     lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
@@ -3030,6 +3312,19 @@ async def sort_lobby_members(connection: Connection) -> pandas.DataFrame:
     return member_df
 
 async def print_search_error(connection: Connection, response: dict[str, Any], lobbyInfo: dict[str, Any]) -> None:
+    '''
+    将发送寻找对局请求过程出现的异常转化成人类可读的形式。<br>Transform the error that occurred after sending the "Find match" request into human-readable form.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param response: 异常响应主体。<br>Error response body.
+    :type response: dict[str, Any]
+    :param lobbyInfo: 房间信息。<br>Lobby information.
+    
+        房间信息可以通过以下LCU接口获取：<br>Lobby information can be obtained from the following LCU endpoints:
+        - `GET /lol-lobby/v2/lobby`
+    :type lobbyInfo: dict[str, Any]
+    '''
     if response["httpStatus"] == 400:
         if response["message"] == "INVALID_PERMISSIONS":
             logPrint("您不是小队拥有者，无法进行此操作。\nYou're not the party owner and thus can't perform this operation.")
@@ -3117,6 +3412,21 @@ async def print_search_error(connection: Connection, response: dict[str, Any], l
         logPrint("未知错误。\nUnknown error.")
 
 async def select_party_position(connection: Connection) -> None:
+    '''
+    在有位置指示器的游戏模式中选择一个分路。<br>Select a position in a game mode that requires position selection.
+    
+    目前适用于以下模式：<br>Current supported game modes:
+    - 400: 匹配模式（Normal）
+    - 420: 排位赛 单排/双排（Ranked Solo/Duo）
+    - 440: 排位赛 灵活排位（Ranked Flex）
+    - 3100: 召唤师峡谷 自选 自定义（SR Blind Pick Custom）
+    - 3110: 召唤师峡谷 征召 自定义（SR Draft Pick Custom）
+    - 3120: 召唤师峡谷 全随机（SR All Random）
+    - 3130: 召唤师峡谷 比赛 征召（SR Tournament Draft）
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
     # if lobby_information["gameConfig"]["showPositionSelector"]: #在2026赛季的自定义房间中，需要选定位置，但是房间信息的“showPositionSelector”键的值为假。因此禁用此条件筛选（In the custom lobby in Season 2026, position is required, but the value of "showPositionSelector" key in lobby information is False. Therefore, this condition is currently disabled）
     slotPositions: list[str] = ["TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY", "FILL"]
@@ -3172,6 +3482,23 @@ async def select_party_position(connection: Connection) -> None:
     #     logPrint("当前模式不支持位置选择。\nThe current mode doesn't support position selection.")
 
 async def configure_quickplay_slot(connection: Connection) -> None:
+    '''
+    配置快速选择模式的英雄槽位。<br>Configure the champion slots of a quickplay mode.
+    
+    配置槽位分为以下步骤：<br>Follow these steps to configure a slot:
+    1. 选择一个英雄。<br>Select a champion.
+    2. 选择一个分路。<br>Select a position.
+    3. 选择两个召唤师技能。<br>Select two summoner spells.
+    4. 选择一个符文页。<br>Select a perk page.
+    5. 设置皮肤。<br>Select a skin.
+    
+    目前适用于以下模式：<br>Current supported game modes:
+    - 480: 快速模式（Swiftplay）
+    - 2300: 神木之门（Brawl）
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
     logPrint('请按照以下步骤完成英雄选择。在后续任何步骤，输入“0”以返回上一步。\nPlease follow the steps below to determine the quickplay slots. Submit "0" to return to the last step at any subsequent step.')
     slotId: int = 1
@@ -3412,6 +3739,17 @@ async def configure_quickplay_slot(connection: Connection) -> None:
             logPrint("请求成功。\nRequest succeeded.")
 
 async def set_party_subteam(connection: Connection) -> None:
+    '''
+    设置用户所处的子阵营槽位。<br>Set the subteam location the user is at.
+    
+    目前适用于以下模式：<br>Current supported game modes:
+    - 1700: 斗魂竞技场（Arena）
+    - 1704: 斗魂竞技场（测试服 2v2）【Arena (PBE 2v2)】
+    - 1710: 斗魂竞技场（Arena）
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
     memberSlots: list[dict[str, Any]] = []
     for member in lobby_information["members"]:
@@ -3501,6 +3839,16 @@ async def set_party_subteam(connection: Connection) -> None:
         logPrint("例如，如果想要恢复您现在的位置，您可以输入：\nFor example, if you want to return to your current slot, you may input:\n%d %d" %(lobby_information["localMember"]["subteamIndex"], lobby_information["localMember"]["intraSubteamPosition"]))
 
 async def toggle_party_readiness(connection: Connection) -> None:
+    '''
+    切换用户在当前小队中的就绪状态。<br>Toggle readiness of the user in the current party.
+    
+    只有当小队中的每个成员都准备就绪时，房主才可以寻找对局。<br>Only when each member in the party is ready is the lobby owner allowed to find match.
+    
+    函数会根据用户当前的就绪状态，将相反的就绪状态设置为高亮。按下回车键以输入空字符串，从而直接选择该高亮的就绪状态。<br>This function will recommend and highlight the option opposite to the user's current readiness. Enter nothing to directly select this highlighted option.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
     ready: bool = isinstance(lobby_information["localMember"]["memberData"], dict) and lobby_information["localMember"]["memberData"].get("isPlayerReady", "") == "true"
     logPrint("请选择一个操作：\nPlease select an operation:\n%s1\t准备就绪（Toggle ready）\n%s2\t取消就绪（Toggle not ready）" %("☆" if not ready else "", "☆" if ready else ""))
@@ -3543,6 +3891,20 @@ async def toggle_party_readiness(connection: Connection) -> None:
         logPrint("请选择一个操作：\nPlease select an operation:\n%s1\t准备就绪（Toggle ready）\n%s2\t取消就绪（Toggle not ready）" %("☆" if not ready else "", "☆" if ready else ""))
 
 async def configure_TFTParty_loadout(connection: Connection) -> None:
+    '''
+    配置云顶之弈的赛前配置。<br>Configure the TFT loadout.
+    
+    适用于任何云顶之弈模式。<br>Supports any TFT mode.
+    
+    云顶之弈赛前配置包括以下内容：<br>TFT loadout contains the following content:
+    - 小小英雄（Tactician）
+    - 进攻特效（Boom）
+    - 棋盘皮肤（Arena skin）
+    - 传送门（Portal）
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     loadout_scope: dict[str, Any] | list[dict[str, Any]] = await (await connection.request("GET", "/lol-loadouts/v4/loadouts/scope/account")).json()
     if isinstance(loadout_scope, dict) and "errorCode" in loadout_scope:
         logPrint(loadout_scope)
@@ -3613,10 +3975,20 @@ async def configure_TFTParty_loadout(connection: Connection) -> None:
             logPrint("请选择一项赛前配置：\nPlease select a loadout:\n1\t小小英雄（Tacticians）\n2\t进攻特效（Booms）\n3\t棋盘皮肤（Arena skins）\n4\t传送门（Portals）")
 
 async def check_party_leaderboard(connection: Connection, queueType: str) -> None:
+    '''
+    查看一个小队所属游戏模式的社交排行榜。<br>Check the social leaderboard of the game mode that the current party belongs to.
+    
+    警告：一个已经存续数年的问题：查看云顶之弈 双人作战的社交排行榜会导致联盟客户端闪退。<br>Warning: A BUG that has persisted for years: Checking the social leaderboard of TFT pairs will cause the League Client to crash.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param queueType: 当前小队的队列类型。<br>Queue type of the current party.
+    :type queueType: str
+    '''
     if queueType in ["RANKED_TFT_DOUBLE_UP", "RANKED_TFT_PAIRS"]:
         logPrint("查询该游戏模式的好友排行榜会导致英雄联盟崩溃。您确定要继续吗？（输入任意键以继续，否则拒绝。）\nFetching friends leaderboard of this mode will result in a crash of League of Legends. Do you really want to continue? (Submit any non-empty string to continue, or null to take a risk.)")
         leaderboard_crash_continue_str: str = logInput()
-        check_confirm: bool = not bool(leaderboard_crash_continue_str)
+        check_confirm: bool = bool(leaderboard_crash_continue_str)
     else:
         check_confirm = True
     if check_confirm:
@@ -3631,6 +4003,12 @@ async def check_party_leaderboard(connection: Connection, queueType: str) -> Non
             logPrint("无好友排行榜数据。\nNo rowData in Friends Leaderboard.")
 
 async def toggle_party_publicity(connection: Connection) -> None:
+    '''
+    切换小队的公开性。<br>Toggle the party's publicity.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
     logPrint("请选择一个操作：\nPlease select a operation:\n%s1\t让小队仅能通过邀请来进入（Make party invite-only）\n%s2\t将小队公开给好友（Open party to friends）" %("☆" if lobby_information["partyType"] == "open" else "", "☆" if lobby_information["partyType"] == "closed" else ""))
     while True:
@@ -3674,6 +4052,14 @@ async def toggle_party_publicity(connection: Connection) -> None:
         logPrint("请选择一个操作：\nPlease select a operation:\n%s1\t让小队仅能通过邀请来进入（Make party invite-only）\n%s2\t将小队公开给好友（Open party to friends）" %("☆" if lobby_information["partyType"] == "open" else "", "☆" if lobby_information["partyType"] == "closed" else ""))
 
 async def find_match(connection: Connection) -> None:
+    '''
+    在所有小队成员准备就绪后，寻找对局。<br>Find match after all members are ready.
+    
+    现在适用于匹配游戏和自定义游戏。<br>Now both matchmade games and custom games are supported.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
     response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/lobby/matchmaking/search")).json()
     logPrint(response)
@@ -3688,6 +4074,14 @@ async def find_match(connection: Connection) -> None:
             logPrint("加入寻找对局队列失败。\nFailed to join the matchmaking queue.")
 
 async def manage_party(connection: Connection) -> bool:
+    '''
+    管理小队。由此进入小队的各个管理选项。<br>Manage a party. Entry to each management option.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 是否返回主页。<br>Whether to return to home page.
+    :rtype: bool
+    '''
     logPrint("请选择一个小队操作：\nPlease select a party operation:\n1\t入队准备（Prepare before in queue）\n2\t查看社交排行榜（Check friends leaderboard）\n3\t改变小队公开性（Toggle party open/closed）\n4\t更换模式（Change mode）\n5\t寻找对局（Find match）")
     while True:
         suboption: str = logInput()
@@ -3788,6 +4182,20 @@ async def manage_party(connection: Connection) -> bool:
     return False
 
 async def add_bot(connection: Connection) -> None:
+    '''
+    添加一个电脑玩家。步骤如下：<br>Add a bot player. Steps are as follows:
+    1. 选择一个英雄。<br>Select a champion.
+    2. 选择一个难度。<br>Select a difficulty.
+    3. 选择一个阵营。<br>Select a team.
+    4. 选择一个分路。<br>Select a position.
+        - 程序会高亮推荐分路。<br>Recommend positions are highlighted.
+    5. 指定电脑玩家通用唯一识别码。<br>Specify this bot's puuid.
+        - 电脑玩家的玩家通用唯一识别码可以唯一确定一名电脑玩家，便于后续移除之。<br>Puuid is used to uniquely determine a bot player, so that it can be removed subsequently.
+        - 目前此功能已失效。服务器会自动生成一个通用唯一识别码。<br>Currently this configuration no longer works, because the server will automatically generate a uuid for each bot player.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     logPrint('请按照以下步骤添加电脑玩家。在后续任何步骤，输入“0”以返回上一步。\nPlease follow the steps below to add a bot. Submit "0" to return to the last step at any subsequent step.')
     championId: int = 0
     botDifficulty: str = ""
@@ -4022,6 +4430,12 @@ async def add_bot(connection: Connection) -> None:
                     logPrint("电脑玩家添加失败。\nBot failed to be added.")
 
 async def remove_bots(connection: Connection) -> None:
+    '''
+    移除电脑玩家。<br>Remove bot players.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     member_df: pandas.DataFrame = await sort_lobby_members(connection)
     member_df_fields_to_print: list[str] = ["teamId", "botChampionId", "botChampion_name", "botChampion_alias", "botPosition", "botDifficulty", "botUuid"]
     member_df_selected: pandas.DataFrame = pandas.concat([member_df.iloc[:1, :], member_df[member_df["isBot"] == "√"]], ignore_index = True)
@@ -4103,6 +4517,12 @@ async def remove_bots(connection: Connection) -> None:
                             logPrint("删除%s成功。\nSuccessfully removed bot %s (%s)."%(botChampion_name, botChampion_alias, botUuidToDelete))
 
 async def switch_team(connection: Connection) -> None:
+    '''
+    交换阵营。<br>Switch team.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
     currentTeam: str = "SPECTATOR" if lobby_information["localMember"]["isSpectator"] else "TEAM1" if current_info["puuid"] in list(map(lambda x: x["puuid"], lobby_information["gameConfig"]["customTeam100"])) else "TEAM2" if current_info["puuid"] in list(map(lambda x: x["puuid"], lobby_information["gameConfig"]["customTeam200"])) else "UNKNOWN"
     team1_highlight: bool = (currentTeam == "SPECTATOR" or currentTeam == "TEAM2") and len(lobby_information["gameConfig"]["customTeam100"]) < lobby_information["gameConfig"]["maxTeamSize"]
@@ -4234,6 +4654,16 @@ async def switch_team(connection: Connection) -> None:
                         logPrint("更换队伍失败。请检查%s是否满员，或者等待一段时间再观察是否更换成功。\nTeam switch failed. Please check if %s is full, or wait a moment to see if this switch will succeed." %("队伍1" if targetTeam == "TEAM1" else "队伍2" if targetTeam == "TEAM2" else "观战者队伍", "TEAM 1" if targetTeam == "TEAM1" else "TEAM 2" if targetTeam == "TEAM2" else "the SPECTATORS team"))
 
 async def start_custom_game(connection: Connection) -> bool:
+    '''
+    开始一场自定义游戏。<br>Start a custom game.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 是否成功开启游戏。<br>Whether the game is started successfully.
+    
+        在成功开启游戏时，程序会返回主页。<br>If it succeeds, the program will return to home page.
+    :rtype: bool
+    '''
     lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
     if lobby_information["gameConfig"]["isCustom"] and lobby_information["multiUserChatId"].endswith("-team-select"):
         response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v1/lobby/custom/start-champ-select")).json()
@@ -4273,6 +4703,14 @@ async def start_custom_game(connection: Connection) -> bool:
     return False
 
 async def manage_lobby(connection: Connection) -> bool:
+    '''
+    管理一个自定义房间。由此进入各个选项。<br>Manage a custom lobby. Entry to each option.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 是否返回主页。<br>Whether to return to home page.
+    :rtype: bool
+    '''
     logPrint("请选择一个自定义房间操作：\nPlease select a lobby operation:\n1\t添加电脑玩家（Add a bot）\n2\t批量添加电脑玩家（Add bots）\n3\t移除电脑玩家（Remove bots）\n4\t交换队伍（Switch team）\n5\t更换模式（Change mode）\n6\t开始游戏（Start game）")
     while True:
         suboption: str = logInput()
@@ -4345,6 +4783,12 @@ async def manage_lobby(connection: Connection) -> bool:
     return False
 
 async def invite(connection: Connection) -> None: #相比聊天脚本，这里设计的很简约。因为本脚本所要实现的目的是实现每个接口的用法，不追求在此基础上对输入输出做进一步的优化。换句话说，聊天脚本中的对应功能可视为此处的一个升级版（Compared with the similar function in Customized Program 16, the design here is fairly simple. This is because this program only aims at implementing each endpoint, but not optimize I/O further. In other words, the corresponding function in Customized Program 16 may be regarded as an upgraded version of here）
+    '''
+    邀请一名玩家至房间中。<br>Invite a player to lobby.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
     lobbyMember_summonerIds: list[int] = list(map(lambda x: x["summonerId"], lobby_information["members"]))
     logPrint('请输入您想要邀请的玩家的召唤师名。输入“-1”以退出。\nPlease submit the summoner name of the player you want to invite. Submit "-1" to exit.')
@@ -4390,6 +4834,12 @@ async def invite(connection: Connection) -> None: #相比聊天脚本，这里�
                 logPrint(invitee_info["message"])
 
 async def manage_lobby_member(connection: Connection) -> None:
+    '''
+    管理房间内的成员。只有房主可以使用此选项。<br>Manage members in a lobby. Only the lobby owner can use this option.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     member_df: pandas.DataFrame = await sort_lobby_members(connection)
     member_df_fields_to_print: list[str] = ["gameName", "tagLine", "summonerLevel", "summonerIcon_title"]
     member_df_selected: pandas.DataFrame = pandas.concat([member_df.iloc[:1, :], member_df[member_df["isBot"] == ""]], ignore_index = True)
@@ -4556,6 +5006,16 @@ async def manage_lobby_member(connection: Connection) -> None:
                 logPrint("请选择一名成员：\nPlease select a member:")
 
 async def exit_lobby(connection: Connection) -> bool:
+    '''
+    退出当前房间，返回客户端大厅。<br>Exit the current lobby and return to the home page of the League Client.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 是否成功离开房间。<br>Whether the user has successfully left the lobby.
+    
+        在成功离开房间时，程序会返回主页。<br>If it succeeds, the program will return to home page.
+    :rtype: bool
+    '''
     return_home: bool = False
     response: Optional[dict[str, Any]] = await (await connection.request("DELETE", "/lol-lobby/v2/lobby")).json()
     logPrint(response)
@@ -4574,6 +5034,12 @@ async def exit_lobby(connection: Connection) -> bool:
     return return_home
 
 async def output_lobby_information(connection: Connection) -> None:
+    '''
+    输出当前房间信息。<br>Output the current lobby information.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
     logPrint(lobby_information)
     with open("lobby-information.json", "w", encoding = "utf-8") as fp:
@@ -4581,6 +5047,14 @@ async def output_lobby_information(connection: Connection) -> None:
     logPrint('房间信息已导出到同目录下的“lobby-information.json”。\nLobby information has been exported into "lobby-information.json" under the same directory.')
 
 async def lobby_simulation(connection: Connection) -> str:
+    '''
+    游戏状态为房间时的主函数。由此进入各个选项。<br>The main function when gameflow phase is "Lobby". Entry to each option.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 游戏状态调试字符串。默认为空字符串。<br>Gameflow phase debug string. An empty string will be returned by default.
+    :rtype: str
+    '''
     while True:
         logPrint("请选择一个操作：\nPlease select an operation:\n1\t管理小队（Manage a party）\n2\t管理自定义房间（Manage a custom lobby）\n3\t邀请玩家（Invite to game）\n4\t聊天（Chat）\n5\t成员管理（Manage members）\n6\t输出房间信息（Print lobby information）\n7\t处理邀请（Handle invitations）\n8\t加入小队或自定义房间（Join party/lobby）\n9\t退出房间（Exit the party/lobby）\n10\t举报一名玩家（Report a player）\n11\t其它（Others）\n12\t客户端任务管理（Manage the League Client task）")
         option: str = logInput()
@@ -5083,6 +5557,12 @@ async def lobby_simulation(connection: Connection) -> str:
 # 队列阶段模拟（In-queue stage simulation）
 #-----------------------------------------------------------------------------
 async def quit_queue(connection: Connection) -> None:
+    '''
+    退出寻找对局的队列。<br>Leave the queue of finding match.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     response: Optional[dict[str, Any]] = await (await connection.request("DELETE", "/lol-lobby/v2/lobby/matchmaking/search")).json()
     logPrint(response)
     if isinstance(response, dict) and "errorCode" in response:
@@ -5099,6 +5579,12 @@ async def quit_queue(connection: Connection) -> None:
             logPrint("服务器接收到了退出队列请求，但您的状态似乎还没有更新。\nThe server received your queue exit request, but it seems your gameflow phase hasn't been updated yet.")
 
 async def output_matchmaking_information(connection: Connection) -> None:
+    '''
+    输出阵容匹配信息。<br>Output matchmaking information.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     matchmaking_information: dict[str, Any] = await (await connection.request("GET", "/lol-matchmaking/v1/search")).json()
     logPrint(matchmaking_information)
     with open("matchmaking-search.json", "w", encoding = "utf-8") as fp:
@@ -5106,6 +5592,14 @@ async def output_matchmaking_information(connection: Connection) -> None:
     logPrint('寻找队列信息已导出到同目录下的“matchmaking-search.json”。\nMatchmaking information has been exported into "matchmaking-search.json" under the same directory.')
 
 async def inQueue_simulation(connection: Connection) -> str:
+    '''
+    游戏状态为阵容匹配时的主函数。由此进入各个选项。<br>The main function when gameflow phase is "Matchmaking". Entry to each option.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 游戏状态调试字符串。默认为空字符串。<br>Gameflow phase debug string. An empty string will be returned by default.
+    :rtype: str
+    '''
     while True:
         logPrint("请选择一个操作：\nPlease select an operation:\n1\t输出寻找对局信息（Print matchmaking information）\n2\t聊天（Chat）\n3\t处理邀请（Handle invitations）\n4\t加入小队或自定义房间（Join party/lobby）\n5\t退出队列（Quit the queue）\n6\t举报一名玩家（Report a player）\n7\t其它（Others）\n8\t客户端任务管理（Manage the League Client task）")
         option: str = logInput()
@@ -5207,6 +5701,12 @@ async def inQueue_simulation(connection: Connection) -> str:
 # 就位确认阶段模拟（Match accept stage simulation）
 #-----------------------------------------------------------------------------
 async def accept_readyCheck(connection: Connection) -> None:
+    '''
+    接受对局。<br>Accept a match.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-matchmaking/v1/ready-check/accept")).json()
     logPrint(response)
     if isinstance(response, dict) and "errorCode" in response:
@@ -5226,6 +5726,12 @@ async def accept_readyCheck(connection: Connection) -> None:
                 logPrint("接受对局失败。\nFailed to accept ready check.")
 
 async def reject_readyCheck(connection: Connection) -> None:
+    '''
+    拒绝对局。<br>Decline a match.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-matchmaking/v1/ready-check/decline")).json()
     logPrint(response)
     if isinstance(response, dict) and "errorCode" in response:
@@ -5245,6 +5751,12 @@ async def reject_readyCheck(connection: Connection) -> None:
                 logPrint("拒绝对局失败。\nFailed to decline ready check.")
 
 async def output_readyCheck_information(connection: Connection) -> None:
+    '''
+    输出就绪检查信息。<br>Output ready check information.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     readyCheck_information: dict[str, Any] = await (await connection.request("GET", "/lol-matchmaking/v1/ready-check")).json()
     logPrint(readyCheck_information)
     with open("readyCheck.json", "w", encoding = "utf-8") as fp:
@@ -5252,6 +5764,14 @@ async def output_readyCheck_information(connection: Connection) -> None:
     logPrint('就位确认信息已导出到同目录下的“readyCheck.json”。\nReady check information has been exported into "readyCheck.json" under the same directory.')
 
 async def readyCheck_simulation(connection: Connection) -> str:
+    '''
+    游戏状态为就位确认时的主函数。由此进入各个选项。<br>The main function when gameflow phase is "ReadyCheck". Entry to each option.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 游戏状态调试字符串。默认为空字符串。<br>Gameflow phase debug string. An empty string will be returned by default.
+    :rtype: str
+    '''
     while True:
         logPrint("请选择一个操作：\nPlease select an operation:\n1\t接受（Accept）\n2\t拒绝（Decline）\n3\t输出就位确认阶段信息（Print the ready check information）\n4\t其它（Others）\n5\t客户端任务管理（Manage the League Client task）")
         option: str = logInput()
@@ -5292,6 +5812,14 @@ async def readyCheck_simulation(connection: Connection) -> str:
 # 英雄选择阶段模拟（Champ select stage simulation）
 #-----------------------------------------------------------------------------
 async def sort_grid_champions(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取英雄选择阶段的英雄方格信息，并整理成一张表格。<br>Get the champion grid information during a champ select stage and organize it into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 英雄方格数据框。<br>Champion grid dataframe.
+    :rtype: pandas.DataFrame
+    '''
     grid_champions: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champ-select/v1/all-grid-champions")).json()
     grid_champion_header_keys: list[str] = list(grid_champion_header.keys())
     grid_champion_data: dict[str, list[Any]] = {key: [] for key in grid_champion_header_keys}
@@ -5314,6 +5842,18 @@ async def sort_grid_champions(connection: Connection) -> pandas.DataFrame:
     return grid_champion_df
 
 async def sort_swaps_info(connection: Connection, champ_select_session: dict[str, Any], swap_typeId: int) -> pandas.DataFrame:
+    '''
+    将英雄选择阶段的交换信息梳理成一张表格。<br>Organize the swap information during a champ select stage into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param champ_select_sesssion: 英雄选择会话。<br>Champ select session.
+    :type champ_select_session: dict[str, Any]
+    :param swap_typeId: 交换类型代号。由本程序定义。<br>Swap type id. Defined by this program.
+    :type swap_typeId: int
+    :return: 交换数据框。<br>Swap dataframe.
+    :rtype: pandas.DataFrame
+    '''
     swap_types: dict[int, str] = {1: "pickOrderSwaps", 2: "positionSwaps", 3: "trades"}
     swaps: list[dict[str, Any]] = sorted(champ_select_session[swap_types[swap_typeId]], key = lambda x: x["cellId"])
     swap_header: dict[str, str] = {"cellId": "槽位序号", "id": "交换代码", "state": "可交换性"}
@@ -5334,6 +5874,16 @@ async def sort_swaps_info(connection: Connection, champ_select_session: dict[str
     return merged_df
 
 async def sort_skin_data(connection: Connection, verbose: bool = True) -> pandas.DataFrame:
+    '''
+    获取用户的皮肤拥有情况，并整理成一张表格。<br>Get skin ownership of the user and organize it into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param verbose: 是否在终端输出详细信息。默认为真。<br>Whether to print the details to terminal. True by default.
+    :type verbose: bool
+    :return: 用户的皮肤数据框。<br>The user's skin dataframe.
+    :rtype: pandas.DataFrame
+    '''
     logPrint("[sort_skin_data]正在获取英雄和皮肤数据…… | Preparing champion and skin data ...", print_time = True, verbose = verbose)
     LoLChampions_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champions/v1/inventories/%d/champions" %current_info["summonerId"])).json()
     LoLChampions: dict[int, dict[str, Any]] = {champion["id"]: champion for champion in LoLChampions_source}
@@ -5405,6 +5955,14 @@ async def sort_skin_data(connection: Connection, verbose: bool = True) -> pandas
     return skin_df
 
 async def sort_mutedPlayers_chat(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取英雄选择阶段的静音玩家信息，并整理成一张表格。<br>Get muted player information during a champ select stage and organize it into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 静音玩家数据框。<br>Muted player dataframe.
+    :rtype: pandas.DataFrame
+    '''
     muted_players: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champ-select/v1/muted-players")).json()
     chat_mutedPlayer_header_keys: list[str] = list(chat_mutedPlayer_header.keys())
     muted_player_data: dict[str, list[Any]] = {key: [] for key in chat_mutedPlayer_header_keys}
@@ -5433,6 +5991,12 @@ async def sort_mutedPlayers_chat(connection: Connection) -> pandas.DataFrame:
     return muted_player_df
 
 async def swap_bench(connection: Connection) -> None:
+    '''
+    从替补英雄池中交换一名英雄。<br>Swap a champion fron a bench.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
     benchedChampionIds: list[int] = list(map(lambda x: x["championId"], champ_select_session["benchChampions"]))
     if len(benchedChampionIds) == 0:
@@ -5488,6 +6052,12 @@ async def swap_bench(connection: Connection) -> None:
                         logPrint("交换失败。\nSwap failed.")
 
 async def swap(connection: Connection) -> None:
+    '''
+    和英雄选择阶段的一名玩家发起选用顺序、分路或交换请求。<br>Initiate a pick order, position or champion swap request with another player in a champ select session.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     tooltip1_zh: dict[str, str] = {"1": "选用顺序", "2": "分路", "3": "英雄"}
     tooltip1_en_lowercase: dict[str, str] = {"1": "pick order", "2": "position", "3": "champion"}
     tooltip1_en_capitalize: dict[str, str] = {key: value.capitalize() for (key, value) in tooltip1_en_lowercase.items()}
@@ -5643,6 +6213,12 @@ async def swap(connection: Connection) -> None:
         logPrint("请选择交换对象：\nPlease select an object to swap:\n1\t选用顺序（Pick order）\n2\t分路（Position）\n3\t队友英雄（Ally champions）\n4\t可用英雄池（替补席）【Available champion pool (Bench)】")
 
 async def pick_champion(connection: Connection) -> None:
+    '''
+    选择你的英雄。<br>Select a champion.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     logPrint("请选择行为类型：\nPlease select an action:\n1\t禁用（Ban）\n2\t选择（Pick）\n3\t重随（Reroll）\n4\t投票（Vote）")
     while True:
         option: str = logInput()
@@ -5800,6 +6376,12 @@ async def pick_champion(connection: Connection) -> None:
         logPrint("请选择行为类型：\nPlease select an action:\n1\t禁用（Ban）\n2\t选择（Pick）\n3\t重随（Reroll）\n4\t投票（Vote）")
 
 async def change_champSelect_spell(connection: Connection) -> None:
+    '''
+    在英雄选择阶段更换召唤师技能。<br>Change the summoner spells in the champ select session.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
     logPrint("该模式可用召唤师技能如下：\nAvailable summoner spells of this game mode are as follows:")
     gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
@@ -5860,6 +6442,14 @@ async def change_champSelect_spell(connection: Connection) -> None:
                 logPrint("召唤师技能更换失败！\nSummoner spell change failed!")
 
 async def change_champSelect_championSkin(connection: Connection) -> None:
+    '''
+    在英雄选择阶段更换一个皮肤。<br>Change a skin during the champ select stage.
+    
+    在选下一名英雄而未锁定时，就已经可以选择皮肤了。<br>Even if a champion is selected but not locked, the user can already select a skin.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
     if champ_select_session["isLegacyChampSelect"]:
         pickable_skin_ids: list[int] = await (await connection.request("GET", "/lol-champ-select/v1/pickable-skin-ids")).json()
@@ -5906,7 +6496,17 @@ async def change_champSelect_championSkin(connection: Connection) -> None:
                         logPrint("皮肤更换失败！请在锁定英雄后检查是否更换成功。\nChampion skin change failed! Please check if the skin is changed after locking in.")
                 break
 
-async def change_emote_wheel(connection: Connection, inventoryType: str, loadoutId: str, loadoutName: str) -> None:
+async def change_emote_wheel(connection: Connection, loadoutId: str, loadoutName: str) -> None:
+    '''
+    更换表情轮盘。<br>Change the emote wheel.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param loadoutId: 赛前配置识别码。用于确定更换哪个赛前配置方案。<br>Loadout id. Used to decide which loadout to change.
+    :type loadoutId: str
+    :param loadoutName: 赛前配置名称。用于维持原名称。<br>Loadout name. Used to maintain the original name.
+    :type loadoutName: str
+    '''
     logPrint("请选择方位：\nPlease select a direction:\n1\t中央（Center）\n2\t左（Left）\n3\t右（Right）\n4\t上（Upper）\n5\t下（Lower）\n6\t左上（Upper-Left）\n7\t右上（Upper-Right）\n8\t左下（Lower-Left）\n9\t右下（Lower-Right）")
     directions: dict[str, str] = {"1": "CENTER", "2": "LEFT", "3": "RIGHT", "4": "UPPER", "5": "LOWER", "6": "UPPER_LEFT", "7": "UPPER_RIGHT", "8": "LOWER_LEFT", "9": "LOWER_RIGHT"}
     while True:
@@ -5921,7 +6521,7 @@ async def change_emote_wheel(connection: Connection, inventoryType: str, loadout
             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
             continue
         logPrint('请选择您想要使用的道具：（输入-1以初始化当前选择。）\nPlease select an item to use: (Submit "-1" to initialize the current choice.)')
-        collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
+        collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == "EMOTE"]], ignore_index = True)
         collection_df_fields_to_print: list[str] = ["inventoryType", "itemId", "name", "ownershipType"]
         print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
         log.write(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
@@ -5943,8 +6543,8 @@ async def change_emote_wheel(connection: Connection, inventoryType: str, loadout
         if index_got:
             contentId: str = "" if item_index == -1 else collection_df_selected["uuid"][item_index]
             itemId: int = 0 if item_index == -1 else collection_df_selected["itemId"][item_index]
-            loadout_key: str = f"{inventoryType}_WHEEL_{direction}" #不是所有的配置键都符合道具类型后缀“_SLOT”的格式。比如表情（EMOTE）的配置键包括“EMOTE_WHEEL_PANEL”。但是这个格式适用于这里的四个道具类型（Not all loadout keys follows the pattern where an inventoryType is followed by "_SLOT". For example, the loadout key for EMOTE may be "EMOTE_WHEEL_PANEL". Nevertheless, this pattern applies to all of the four inventoryTypes here）
-            body: dict[str, Any] = {"id": loadoutId, "name": loadoutName, "loadout": {loadout_key: {"inventoryType": inventoryType, "contentId": contentId, "itemId": itemId}}}
+            loadout_key: str = f"EMOTE_WHEEL_{direction}" #不是所有的配置键都符合道具类型后缀“_SLOT”的格式。比如表情（EMOTE）的配置键包括“EMOTE_WHEEL_PANEL”。但是这个格式适用于这里的四个道具类型（Not all loadout keys follows the pattern where an inventoryType is followed by "_SLOT". For example, the loadout key for EMOTE may be "EMOTE_WHEEL_PANEL". Nevertheless, this pattern applies to all of the four inventoryTypes here）
+            body: dict[str, Any] = {"id": loadoutId, "name": loadoutName, "loadout": {loadout_key: {"inventoryType": "EMOTE", "contentId": contentId, "itemId": itemId}}}
             response: Optional[dict[str, Any]] = await (await connection.request("PATCH", f"/lol-loadouts/v4/loadouts/{loadoutId}", data = body)).json()
             logPrint(response)
             if isinstance(response, dict) and "errorCode" in response:
@@ -5961,7 +6561,21 @@ async def change_emote_wheel(connection: Connection, inventoryType: str, loadout
                     logPrint("更新赛前配置失败。\nLoadout update failed.")
         logPrint("请选择方位：\nPlease select a direction:\n1\t中央（Center）\n2\t左（Left）\n3\t右（Right）\n4\t上（Upper）\n5\t下（Lower）\n6\t左上（Upper-Left）\n7\t右上（Upper-Right）\n8\t左下（Lower-Left）\n9\t右下（Lower-Right）")
 
-async def change_emote_reaction(connection: Connection, inventoryType: str, loadoutId: str, loadoutName: str) -> None:
+async def change_emote_reaction(connection: Connection, loadoutId: str, loadoutName: str) -> None:
+    '''
+    更换回应表情。包括以下事件。<br>Change the emote reactions. Involves the following events:
+    - START: 开始
+    - FIRST_BLOOD: 第一滴血
+    - ACE: 团灭
+    - VICTORY: 胜利
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param loadoutId: 赛前配置识别码。用于确定更换哪个赛前配置方案。<br>Loadout id. Used to decide which loadout to change.
+    :type loadoutId: str
+    :param loadoutName: 赛前配置名称。用于维持原名称。<br>Loadout name. Used to maintain the original name.
+    :type loadoutName: str
+    '''
     logPrint("请选择回应：\nPlease select a reaction:\n1\t开始（Start）\n2\t第一滴血（First blood）\n3\t团灭（Ace）\n4\t胜利（Victory）")
     reactions = {"1": "START", "2": "FIRST_BLOOD", "3": "ACE", "4": "VICTORY"}
     while True:
@@ -5976,7 +6590,7 @@ async def change_emote_reaction(connection: Connection, inventoryType: str, load
             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
             continue
         logPrint('请选择您想要使用的道具：（输入-1以初始化当前选择。）\nPlease select an item to use: (Submit "-1" to initialize the current choice.)')
-        collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
+        collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == "EMOTE"]], ignore_index = True)
         collection_df_fields_to_print: list[str] = ["inventoryType", "itemId", "name", "ownershipType"]
         print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
         log.write(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0])
@@ -5999,8 +6613,8 @@ async def change_emote_reaction(connection: Connection, inventoryType: str, load
         if index_got:
             contentId: str = "" if item_index == -1 else collection_df_selected["uuid"][item_index]
             itemId: int = 0 if item_index == -1 else collection_df_selected["itemId"][item_index]
-            loadout_key: str = f"{inventoryType}_{reaction}" #不是所有的配置键都符合道具类型后缀“_SLOT”的格式。比如表情（EMOTE）的配置键包括“EMOTE_WHEEL_PANEL”。但是这个格式适用于这里的四个道具类型（Not all loadout keys follows the pattern where an inventoryType is followed by "_SLOT". For example, the loadout key for EMOTE may be "EMOTE_WHEEL_PANEL". Nevertheless, this pattern applies to all of the four inventoryTypes here）
-            body: dict[str, Any] = {"id": loadoutId, "name": loadoutName, "loadout": {loadout_key: {"inventoryType": inventoryType, "contentId": contentId, "itemId": itemId}}}
+            loadout_key: str = f"EMOTE_{reaction}" #不是所有的配置键都符合道具类型后缀“_SLOT”的格式。比如表情（EMOTE）的配置键包括“EMOTE_WHEEL_PANEL”。但是这个格式适用于这里的四个道具类型（Not all loadout keys follows the pattern where an inventoryType is followed by "_SLOT". For example, the loadout key for EMOTE may be "EMOTE_WHEEL_PANEL". Nevertheless, this pattern applies to all of the four inventoryTypes here）
+            body: dict[str, Any] = {"id": loadoutId, "name": loadoutName, "loadout": {loadout_key: {"inventoryType": "EMOTE", "contentId": contentId, "itemId": itemId}}}
             response: Optional[dict[str, Any]] = await (await connection.request("PATCH", f"/lol-loadouts/v4/loadouts/{loadoutId}", data = body)).json()
             logPrint(response)
             if isinstance(response, dict) and "errorCode" in response:
@@ -6018,6 +6632,18 @@ async def change_emote_reaction(connection: Connection, inventoryType: str, load
         logPrint("请选择回应：\nPlease select a reaction:\n1\t开始（Start）\n2\t第一滴血（First blood）\n3\t团灭（Ace）\n4\t胜利（Victory）")
 
 async def change_champSelect_loadout(connection: Connection, inventoryType: str, loadoutId: str, loadoutName: str) -> None:
+    '''
+    更换英雄选择阶段表情之外的赛前配置方案。<br>Change the loadout for the champ select stage, except emotes.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param inventoryType: 道具类型。<br>Inventory type.
+    :type inventoryType: str
+    :param loadoutId: 赛前配置识别码。用于确定更换哪个赛前配置方案。<br>Loadout id. Used to decide which loadout to change.
+    :type loadoutId: str
+    :param loadoutName: 赛前配置名称。用于维持原名称。<br>Loadout name. Used to maintain the original name.
+    :type loadoutName: str
+    '''
     logPrint('请选择您想要使用的道具：（输入-1以初始化当前选择。）\nPlease select an item to use: (Submit "-1" to initialize the current choice.)')
     collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
     collection_df_fields_to_print: list[str] = ["inventoryType", "itemId", "name", "ownershipType"]
@@ -6075,7 +6701,17 @@ async def change_champSelect_loadout(connection: Connection, inventoryType: str,
                 else:
                     logPrint("更新赛前配置失败。\nLoadout update failed.")
 
-async def change_emote(connection: Connection, inventoryType: str, loadoutId: str, loadoutName: str) -> None:
+async def change_emote(connection: Connection, loadoutId: str, loadoutName: str) -> None:
+    '''
+    配置表情。由此进入各个种类。<br>Set the emote config. Entry to each category.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param loadoutId: 赛前配置识别码。用于确定更换哪个赛前配置方案。<br>Loadout id. Used to decide which loadout to change.
+    :type loadoutId: str
+    :param loadoutName: 赛前配置名称。用于维持原名称。<br>Loadout name. Used to maintain the original name.
+    :type loadoutName: str
+    '''
     logPrint("请选择您想要配置的表情种类：\nPlease select the category of emotes:\n1\t表情轮盘（Emote wheel）\n2\t回应（Reactions）")
     while True:
         category: str = logInput()
@@ -6084,15 +6720,23 @@ async def change_emote(connection: Connection, inventoryType: str, loadoutId: st
         elif category[0] == "0":
             break
         elif category[0] == "1":
-            await change_emote_wheel(connection, inventoryType, loadoutId, loadoutName)
+            await change_emote_wheel(connection, loadoutId, loadoutName)
         elif category[0] == "2":
-            await change_emote_reaction(connection, inventoryType, loadoutId, loadoutName)
+            await change_emote_reaction(connection, loadoutId, loadoutName)
         else:
             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
             continue
         logPrint("请选择您想要配置的表情种类：\nPlease select the category of emotes:\n1\t表情轮盘（Emote wheel）\n2\t回应（Reactions）")
 
 async def prepare_champSelect_loadout_general(connection: Connection, inventoryType: str) -> None:
+    '''
+    在英雄选择阶段设置一项赛前配置。<br>Set a loadout of certain inventory type.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param inventoryType: 道具类型。<br>Inventory type.
+    :type inventoryType: str
+    '''
     loadoutId: str = ""
     loadoutName: str = "default"
     loadout_scope: dict[str, Any] | list[dict[str, Any]] = await (await connection.request("GET", "/lol-loadouts/v4/loadouts/scope/account")).json()
@@ -6110,11 +6754,17 @@ async def prepare_champSelect_loadout_general(connection: Connection, inventoryT
         logPrint("您目前没有该类道具的使用权。\nYou don't have permissions to use any item of this inventoryType.")
     else:
         if inventoryType == "EMOTE":
-            await change_emote(connection, inventoryType, loadoutId, loadoutName)
+            await change_emote(connection, loadoutId, loadoutName)
         else:
             await change_champSelect_loadout(connection, inventoryType, loadoutId, loadoutName)
 
 async def prepare_champSelect_loadout(connection: Connection) -> None:
+    '''
+    在英雄选择阶段修改赛前配置的总函数。由此进入各个道具类型。<br>A general function to change the loadout during the champ select stage. Entry to each inventory type.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     logPrint("请选择要修改的赛前配置：\nPlease select a loadout:\n1\t符文（Perks）\n2\t召唤师技能（Summoner spells）\n3\t皮肤（Skin）\n4\t守卫（眼）皮肤（Ward skin）\n5\t表情（Emotes）\n6\t召唤师图标（Summoner icon）\n7\t水晶枢纽终结特效（Nexus finisher）\n8\t旗帜（Banner）\n9\t徽章（Crest）\n10\t冠军杯赛奖杯（Tournament trophy）")
     while True:
         loadout_option: str = logInput()
@@ -6153,6 +6803,12 @@ async def prepare_champSelect_loadout(connection: Connection) -> None:
         logPrint("请选择要修改的赛前配置：\nPlease select a loadout:\n1\t符文（Perks）\n2\t召唤师技能（Summoner spells）\n3\t皮肤（Skin）\n4\t守卫（眼）皮肤（Ward skin）\n5\t表情（Emotes）\n6\t召唤师图标（Summoner icon）\n7\t水晶枢纽终结特效（Nexus finisher）\n8\t旗帜（Banner）\n9\t徽章（Crest）\n10\t冠军杯赛奖杯（Tournament trophy）")
 
 async def mute_champSelect_player(connection: Connection) -> None:
+    '''
+    在英雄选择阶段切换一名玩家的静音状态。<br>Toggle a player's mute status during a champ select stage.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     while True:
         back: bool = False
         gameflow_phase: str = await get_gameflow_phase(connection)
@@ -6270,6 +6926,12 @@ async def mute_champSelect_player(connection: Connection) -> None:
             break
 
 async def unlock_battle_boost(connection: Connection) -> None:
+    '''
+    解锁战斗加成。仅支持国际服全随机模式。<br>Unlock battle boost. Only all-random modes in Riot region are supported.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
     if champ_select_session["isLegacyChampSelect"]:
         response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-champ-select/v1/team-boost/purchase")).json()
@@ -6297,6 +6959,12 @@ async def unlock_battle_boost(connection: Connection) -> None:
         logPrint("全员战斗加成已解锁！\nBattle boost unlocked!")
 
 async def set_favorite_champion(connection: Connection) -> None:
+    '''
+    设置最爱的分路英雄。<br>Set favorite champions for each lane.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     grid_champions_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champ-select/v1/all-grid-champions")).json() #该接口在自定义对局中不会及时更新，因此在使用该功能时不能完全依赖于程序提示，需要结合客户端来进行判断（The result from this endpoint doesn't update in time, so when using this function, users shouldn't completely rely on the program prompts. Instead, it's highly suggested to judge with the help of League Client）
     grid_champions: dict[int, dict[str, Any]] = {champion["id"]: champion for champion in grid_champions_source}
     candidatePositions: list[str] = ["top", "jungle", "middle", "bottom", "support"]
@@ -6387,6 +7055,12 @@ async def set_favorite_champion(connection: Connection) -> None:
         logPrint("请选择一条分路：\nPlease choose a position:\n1\t上路（Top）\n2\t打野（Jungle）\n3\t中路（Middle）\n4\t下路（Bottom）\n5\t辅助（Support）")
 
 async def clear_muted_players(connection: Connection) -> None:
+    '''
+    清除所有静音的玩家。<br>Clear all muted players.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     muted_players: list[dict[str, Any]] = await (await connection.request("GET", "/lol-champ-select/v1/muted-players")).json()
     if len(muted_players) == 0:
         logPrint("当前无静音玩家。\nThere's not any muted player.")
@@ -6410,6 +7084,18 @@ async def clear_muted_players(connection: Connection) -> None:
                     logPrint("解除玩家%d静音成功。\nSuccessfully unmuted Player %d." %(i + 1, i + 1))
 
 async def quit_champ_select(connection: Connection) -> bool:
+    '''
+    强制退出英雄选择阶段。<br>Force to exit the champ select stage.
+    
+    注意，退出匹配对局的英雄选择阶段不会阻止对局的发生，只会让用户返回客户端大厅。<br>Note that quitting the champ select stage of a matchmade game doesn't prevent this game from happening. It only redirects the user to the home hub.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 是否成功退出英雄选择阶段。<br>Whether the user has successfully quitted the champ select stage.
+    
+        在成功退出英雄选择阶段后，程序会返回主页。<br>If it succeeds, the program will return to home page.
+    :rtype: bool
+    '''
     gameflow_phase: str = await get_gameflow_phase(connection)
     if gameflow_phase == "ChampSelect":
         champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
@@ -6470,6 +7156,12 @@ async def quit_champ_select(connection: Connection) -> bool:
     return False
 
 async def output_champSelect_session(connection: Connection) -> None:
+    '''
+    输出当前英雄选择会话。<br>Output current champ select session.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
     logPrint(champ_select_session)
     with open("champ-select-session.json", "w", encoding = "utf-8") as fp:
@@ -6477,6 +7169,14 @@ async def output_champSelect_session(connection: Connection) -> None:
     logPrint('英雄选择会话已导出到同目录下的“champ-select-session.json”。\nChamp select session has been exported into "champ-select-session.json" under the same directory.')
 
 async def champ_select_simulation(connection: Connection) -> str:
+    '''
+    游戏状态为英雄选择的主函数。由此进入各个选项。<br>The main function when gameflow phase is "ChampSelect". Entry to each option.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 游戏状态调试字符串。默认为空字符串。<br>Gameflow phase debug string. An empty string will be returned by default.
+    :rtype: str
+    '''
     while True:
         logPrint("请选择一个操作：\nPlease select an operation:\n1\t交换（Swap）\n2\t英雄选择（Select a champion）\n3\t准备赛前配置（Prepare loadouts）\n4\t静音玩家（Mute players）\n5\t聊天（Chat）\n6\t举报一名玩家（Report a player）\n7\t其它（Others）\n8\t输出英雄选择会话（Output the champ select session）\n9\t客户端任务管理（Manage the League Client task）")
         option = logInput()
@@ -6739,6 +7439,17 @@ async def champ_select_simulation(connection: Connection) -> str:
 # 游戏内模拟（In-game simulation）
 #-----------------------------------------------------------------------------
 def sort_player_abilities(allgamedata: dict[str, Any]) -> pandas.DataFrame:
+    '''
+    将从游戏客户端获取的玩家技能整理成一个表格。<br>Organize player abilities obtained through Game Client API into a dataframe.
+    
+    :param allgamedata: 游戏进行时的所有游戏数据。<br>All game data when a game is running.
+    
+        所有游戏数据可以通过以下游戏客户端接口获取：<br>All game data can be obtained from the following game client API:
+        - https://127.0.0.1:2999/liveclientdata/allgamedata
+    :type allgamedata: dict[str, Any]
+    :return: 玩家技能数据框。<br>Player ability dataframe.
+    :rtype: pandas.DataFrame
+    '''
     abilities: dict[str, dict[str, Any]] = allgamedata["activePlayer"]["abilities"]
     inGame_playerAbility_header_keys: list[str] = list(inGame_playerAbility_header.keys())
     inGame_playerAbility_data: dict[str, list[Any]] = {key: [] for key in inGame_playerAbility_header_keys}
@@ -6761,6 +7472,17 @@ def sort_player_abilities(allgamedata: dict[str, Any]) -> pandas.DataFrame:
     return inGame_playerAbility_df
 
 def sort_inGame_championStats(allgamedata: dict[str, Any]) -> pandas.DataFrame:
+    '''
+    将从游戏客户端获取的英雄属性整理成一个表格。<br>Organize champion stats obtained through Game Client API into a dataframe.
+    
+    :param allgamedata: 游戏进行时的所有游戏数据。<br>All game data when a game is running.
+    
+        所有游戏数据可以通过以下游戏客户端接口获取：<br>All game data can be obtained from the following game client API:
+        - https://127.0.0.1:2999/liveclientdata/allgamedata
+    :type allgamedata: dict[str, Any]
+    :return: 英雄属性数据框。<br>Champion stats dataframe.
+    :rtype: pandas.DataFrame
+    '''
     championStats: dict[str, Any] = allgamedata["activePlayer"]["championStats"]
     inGame_championStat_data: dict[str, list[Any]] = {"项目": list(inGame_championStat_header.values()), "Items": list(inGame_championStat_header.keys()), "值": list(map(lambda x: championStats[x], inGame_championStat_header))}
     inGame_championStat_statistics_output_order: list[int] = [12, 20, 27, 28, 25, 5, 1, 2, 19, 7, 0, 10, 11, 21, 14, 26, 13, 3, 4, 17, 18, 15, 24, 29, 22, 6, 30]
@@ -6768,6 +7490,17 @@ def sort_inGame_championStats(allgamedata: dict[str, Any]) -> pandas.DataFrame:
     return inGame_championStat_df
 
 def sort_inGame_allplayers(allgamedata: dict[str, Any]) -> pandas.DataFrame:
+    '''
+    将从游戏客户端获取的玩家信息整理成一个表格。<br>Organize player information obtained through Game Client API into a dataframe.
+    
+    :param allgamedata: 游戏进行时的所有游戏数据。<br>All game data when a game is running.
+    
+        所有游戏数据可以通过以下游戏客户端接口获取：<br>All game data can be obtained from the following game client API:
+        - https://127.0.0.1:2999/liveclientdata/allgamedata
+    :type allgamedata: dict[str, Any]
+    :return: 玩家数据框。<br>Player dataframe.
+    :rtype: pandas.DataFrame
+    '''
     inGame_allPlayer_header_keys: list[str] = list(inGame_allPlayer_header.keys())
     inGame_allPlayer_data: dict[str, list[Any]] = {key: [] for key in inGame_allPlayer_header_keys}
     for player in allgamedata["allPlayers"]:
@@ -6810,6 +7543,17 @@ def sort_inGame_allplayers(allgamedata: dict[str, Any]) -> pandas.DataFrame:
     return inGame_allPlayer_df
 
 def sort_inGame_events(allgamedata: dict[str, Any]) -> pandas.DataFrame:
+    '''
+    将从游戏客户端获取的事件整理成一个表格。<br>Organize events obtained through Game Client API into a dataframe.
+    
+    :param allgamedata: 游戏进行时的所有游戏数据。<br>All game data when a game is running.
+    
+        所有游戏数据可以通过以下游戏客户端接口获取：<br>All game data can be obtained from the following game client API:
+        - https://127.0.0.1:2999/liveclientdata/allgamedata
+    :type allgamedata: dict[str, Any]
+    :return: 事件数据框。<br>Event dataframe.
+    :rtype: pandas.DataFrame
+    '''
     championName_riotId_map: dict[str, str] = {}
     for player in allgamedata["allPlayers"]:
         if player["riotIdGameName"] in championName_riotId_map and championName_riotId_map[player["riotIdGameName"]] != player["championName"]: #解决克隆大作战中多名玩家具有相同的召唤师名称和选用英雄名称的问题（Solve the problem where more than one player has not only the same summonerName but also the same championName）
@@ -6852,6 +7596,17 @@ def sort_inGame_events(allgamedata: dict[str, Any]) -> pandas.DataFrame:
     return inGame_event_df
 
 def sort_inGame_metadata(allgamedata: dict[str, Any]) -> pandas.DataFrame:
+    '''
+    将从游戏客户端获取的游戏元数据整理成一个表格。<br>Organize game metadata obtained through Game Client API into a dataframe.
+    
+    :param allgamedata: 游戏进行时的所有游戏数据。<br>All game data when a game is running.
+    
+        所有游戏数据可以通过以下游戏客户端接口获取：<br>All game data can be obtained from the following game client API:
+        - https://127.0.0.1:2999/liveclientdata/allgamedata
+    :type allgamedata: dict[str, Any]
+    :return: 游戏元数据框。<br>Game meta-dataframe.
+    :rtype: pandas.DataFrame
+    '''
     gameData: dict[str, Any] = allgamedata["gameData"]
     gameTime_norm: str = "%d:%02d" %(round(gameData["gameTime"]) // 60, round(gameData["gameTime"]) % 60)
     inGame_metadata: dict[str, list[Any]] = {"项目": list(inGame_metadata_header.values()), "Items": list(inGame_metadata_header.keys()), "值": list(map(lambda x: gameData[x], list(inGame_metadata_header.keys())[:5])) + [gameTime_norm]}
@@ -6860,6 +7615,12 @@ def sort_inGame_metadata(allgamedata: dict[str, Any]) -> pandas.DataFrame:
     return inGame_metaDf
 
 async def export_inGame_champions(connection: Connection) -> None:
+    '''
+    将游戏内的玩家信息导出到工作簿中。<br>Export in-game player information into a workbook.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
     gameData: dict[str, Any] = gameflow_session["gameData"]
     gameModeName: str = gameflow_session["map"]["gameModeName"] + "(%d)" %(gameData["queue"]["id"]) if gameData["queue"]["name"] == "" else gameData["queue"]["name"]
@@ -6875,6 +7636,9 @@ async def export_inGame_champions(connection: Connection) -> None:
         logPrint(f'游戏内的成员构成已导出到同目录下的“{excel_name}”。\nMember composition in the game has been exported into {excel_name} under the same directory.')
 
 def access_game_client() -> None:
+    '''
+    访问游戏客户端接口的总函数。用户只有在启动游戏后才能访问该接口。<br>A general function to access Game Client API. Only after the user starts a game is he/she allowed to access it.
+    '''
     allgamedata: dict[str, Any] = {}
     allgamedata_fetched: bool = False
     if args.cert_path == "":
@@ -6987,6 +7751,12 @@ def access_game_client() -> None:
             logPrint("请选择要查看的内容：\nPlease select the content to check:\n0\t返回上一层（Return to the last step）\n1\t当前玩家信息（Current player's information）\n2\t所有玩家信息（All players' information）\n3\t事件（Events）\n4\t游戏模式（Game mode）\n5\t导出所有游戏信息（Export all game data）")
 
 async def output_gameflow_session(connection: Connection) -> None:
+    '''
+    输出当前游戏会话。<br>Output the current gameflow session.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     gameflow_session: str = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
     logPrint(gameflow_session)
     with open("gameflow-session.json", "w", encoding = "utf-8") as fp:
@@ -6994,6 +7764,14 @@ async def output_gameflow_session(connection: Connection) -> None:
     logPrint('游戏会话已导出到同目录下的“gameflow-session.json”。\nGameflow session has been exported into "gameflow-session.json" under the same directory.')
 
 async def inGame_simulation(connection: Connection) -> str:
+    '''
+    游戏状态为游戏内时的主函数。由此进入各个选项。<br>The main function when gameflow phase is "InGame". Entry to each option.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 游戏状态调试字符串。默认为空字符串。<br>Gameflow phase debug string. An empty string will be returned by default.
+    :rtype: str
+    '''
     global gameClientApi_port_warning_printed, gameClientApi_cert_not_specified_warning_printed
     while True:
         logPrint("请选择一个操作：\nPlease select an operation:\n1\t查看英雄信息（Check champion information）\n2\t访问游戏客户端接口（Access game client API）\n3\t输出游戏会话（Output the gameflow session）\n4\t向好友发送密语（Chat with friends）\n5\t举报一名玩家（Report a player）\n6\t其它（Others）\n7\t客户端任务管理（Manage the League Client task）")
@@ -7049,6 +7827,14 @@ async def inGame_simulation(connection: Connection) -> str:
 # 赛后预结算阶段模拟（Pre-end-of-game stage simulation）
 #-----------------------------------------------------------------------------
 async def sort_ballot_players(connection: Connection) -> pandas.DataFrame:
+    '''
+    将各玩家的荣誉投票信息整理成一张表格。<br>Organize players' honor ballot information into a table.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 玩家荣誉投票数据框。<br>Player honor ballot dataframe.
+    :rtype: pandas.DataFrame
+    '''
     ballot_player_header_keys: list[str] = list(ballot_player_header.keys())
     ballot_player_data: dict[str, list[Any]] = {key: [] for key in ballot_player_header_keys}
     honor_ballot: dict[str, Any] = await (await connection.request("GET", "/lol-honor-v2/v1/ballot")).json()
@@ -7090,6 +7876,12 @@ async def sort_ballot_players(connection: Connection) -> pandas.DataFrame:
     return ballot_player_df
 
 async def honor_player(connection: Connection) -> None:
+    '''
+    赞誉一名玩家。<br>Honor a player.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     honor_ballot: dict[str, Any] = await (await connection.request("GET", "/lol-honor-v2/v1/ballot")).json()
     if honor_ballot["votePool"]["votes"] == 0:
         logPrint("您已经没有赞誉票了。\nYou've run out of votes.")
@@ -7140,6 +7932,17 @@ async def honor_player(connection: Connection) -> None:
                         logPrint("赞誉失败。\nHonor failed.")
 
 def output_honor_votes(honor_ballot: dict[str, Any]) -> str:
+    '''
+    输出荣誉投票的票数信息。<br>Output the number of votes to honor players.
+    
+    :param honor_ballot: 荣誉投票信息。<br>Honor ballot information.
+    
+        荣誉投票信息可以通过以下LCU接口获取：<br>Honor ballot information can be obtained through the following LCU endpoint:
+        - `GET /lol-honor-v2/v1/ballot`
+    :type honor_ballot: dict[str, Any]
+    :return: 票数信息字符串。<br>A string of number of honor votes.
+    :rtype: str
+    '''
     s = "你每局获取1张荣誉投票，并且至多总共储存4张。未使用的投票可用在下一局比赛。\n\n"
     votes_total: int = honor_ballot["votePool"]["votes"]
     votes_fromGamePlayed: int = honor_ballot["votePool"]["fromGamePlayed"]
@@ -7169,6 +7972,12 @@ def output_honor_votes(honor_ballot: dict[str, Any]) -> str:
     return s
 
 async def skip_honor_vote(connection: Connection) -> None:
+    '''
+    跳过赞誉阶段。<br>Skip the honor vote phase.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     response: Optional[dict[str, Any]] = await (await connection.request("DELETE", "/lol-honor-v2/v1/ballot")).json()
     logPrint(response)
     if isinstance(response, dict) and "errorCode" in response:
@@ -7182,6 +7991,12 @@ async def skip_honor_vote(connection: Connection) -> None:
             logPrint("跳过赞誉阶段失败。\nSkipping honor phase failed.")
 
 async def output_honor_ballot(connection: Connection) -> None:
+    '''
+    输出当前荣誉投票信息。<br>Output the current honor ballot information.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     honor_ballot: dict[str, Any] = await (await connection.request("GET", "/lol-honor-v2/v1/ballot")).json()
     logPrint(honor_ballot)
     with open("honor-ballot.json", "w", encoding = "utf-8") as fp:
@@ -7189,6 +8004,12 @@ async def output_honor_ballot(connection: Connection) -> None:
     logPrint('荣誉投票信息已导出到同目录下的“honor-ballot.json”。\nHonor ballot information has been exported into "honor-ballot.json" under the same directory.')
 
 async def output_current_sequence_event(connection: Connection) -> None:
+    '''
+    输出当前的序列事件信息。<br>Output the current sequence event information.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     currentSequenceEvent: str = await (await connection.request("GET", "/lol-pre-end-of-game/v1/currentSequenceEvent")).json()
     logPrint(currentSequenceEvent)
     with open("currentSequenceEvent.json", "w", encoding = "utf-8") as fp:
@@ -7196,6 +8017,14 @@ async def output_current_sequence_event(connection: Connection) -> None:
     logPrint('当前序列事件信息已导出到同目录下的“currentSequenceEvent.json”。\nCurrent sequence event has been exported into "currentSequenceEvent.json" under the same directory.')
 
 async def preEndOfGame_simulation(connection: Connection) -> str:
+    '''
+    游戏状态为赛后预结算时的主函数。由此进入各个选项。<br>The main function when gameflow phase is "PreEndOfGame". Entry to each option.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 游戏状态调试字符串。默认为空字符串。<br>Gameflow phase debug string. An empty string will be returned by default.
+    :rtype: str
+    '''
     while True:
         logPrint("请选择一个操作：\nPlease select an operation:\n!1\t赞誉其他玩家（Honor players）\n2\t查看票数（Check the number of votes）\n3\t这次不行（Not this time）\n4\t输出荣誉投票信息（Print honor ballot information）\n5\t输出当前事件（Print current sequence event）\n6\t聊天（Chat）\n7\t举报一名玩家（Report a player）\n8\t其它（Others）\n9\t客户端任务管理（Manage the League Client task）")
         option: str = logInput()
@@ -7286,6 +8115,14 @@ async def preEndOfGame_simulation(connection: Connection) -> str:
 # 赛后结算阶段模拟（End-of-game stage simulation）
 #-----------------------------------------------------------------------------
 async def sort_eog_champion_mastery_update(connection: Connection) -> pandas.DataFrame:
+    '''
+    将对局结算阶段的英雄成就更新信息整理成一张表格。<br>Organize the champion mastery update information at the end of a game into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 英雄成就更新数据框。<br>Champion mastery update dataframe.
+    :rtype: pandas.DataFrame
+    '''
     mastery_updates = await (await connection.request("GET", "/lol-end-of-game/v1/champion-mastery-updates")).json()
     eog_mastery_update_header_keys: list[str] = list(eog_mastery_update_header.keys())
     eog_mastery_update_data: dict[str, list[Any]] = {"项目": [], "Items": [], "值": []}
@@ -7322,6 +8159,14 @@ async def sort_eog_champion_mastery_update(connection: Connection) -> pandas.Dat
     return eog_mastery_update_df
 
 async def sort_eog_stat_lol_metadata(connection: Connection) -> pandas.DataFrame:
+    '''
+    将一场英雄联盟对局结算阶段的元数据整理成一张表格。<br>Organize the end-of-game metadata of a LoL game into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 英雄联盟对局结算元数据框。<br>LoL end-of-game meta-dataframe.
+    :rtype: pandas.DataFrame
+    '''
     gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
     gameQueues: dict[int, dict[str, Any]] = {queue["id"]: queue for queue in gameQueues_source}
     eog_stats_block: dict[str, Any] = await (await connection.request("GET", "/lol-end-of-game/v1/eog-stats-block")).json()
@@ -7376,6 +8221,14 @@ async def sort_eog_stat_lol_metadata(connection: Connection) -> pandas.DataFrame
     return eog_stat_metaDf_lol
 
 async def sort_eog_teamstat_lol_data(connection: Connection) -> pandas.DataFrame:
+    '''
+    将一场英雄联盟对局结算阶段的队伍信息整理成一张表格。<br>Organize the team stats at the end of a game into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 英雄联盟对局结算队伍数据框。<br>LoL end-of-game team dataframe.
+    :rtype: pandas.DataFrame
+    '''
     eog_teamstat_data_lol_header_keys: list[str] = list(eog_teamstat_data_lol_header.keys())
     eog_teamstat_data_lol: dict[str, Any] = {key: [] for key in eog_teamstat_data_lol_header_keys}
     eog_stats_block: dict[str, Any] = await (await connection.request("GET", "/lol-end-of-game/v1/eog-stats-block")).json()
@@ -7405,6 +8258,14 @@ async def sort_eog_teamstat_lol_data(connection: Connection) -> pandas.DataFrame
     return eog_teamstat_df_lol
 
 async def sort_eog_stat_tft_metadata(connection: Connection) -> pandas.DataFrame:
+    '''
+    将一场云顶之弈对局结算阶段的元数据整理成一张表格。<br>Organize the end-of-game metadata of a TFT game into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 云顶之弈对局结算元数据框。<br>TFT end-of-game meta-dataframe.
+    :rtype: pandas.DataFrame
+    '''
     gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
     gameQueues: dict[int, dict[str, Any]] = {queue["id"]: queue for queue in gameQueues_source}
     tft_eog_stats: dict[str, Any] = await (await connection.request("GET", "/lol-end-of-game/v1/tft-eog-stats")).json()
@@ -7440,6 +8301,12 @@ async def sort_eog_stat_tft_metadata(connection: Connection) -> pandas.DataFrame
     return eog_stat_metaDf_tft
 
 async def check_stats_block(connection: Connection) -> None:
+    '''
+    将对局结算数据导出到工作簿中。<br>Export end-of-game data into a workbook.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
     if gameflow_session["map"]["mapStringId"] == "TFT":
         tft_eog_stats: dict[str, Any] = await (await connection.request("GET", "/lol-end-of-game/v1/tft-eog-stats")).json()
@@ -7497,6 +8364,16 @@ async def check_stats_block(connection: Connection) -> None:
             logPrint(f'本场对局结算数据已导出到同目录下的“{excel_name}”中。\nEnd-of-game stats of this match have been exported into {excel_name} under the same folder.')
 
 async def play_again(connection: Connection) -> bool:
+    '''
+    再来一局。<br>Play again.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 是否成功发送请求。<br>Whether the request is successfully sent.
+    
+        如果成功发送请求，程序会返回主页。<br>If it succeeds, the program will return to home page.
+    :rtype: bool
+    '''
     return_home: bool = False
     response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/play-again")).json()
     logPrint(response)
@@ -7518,6 +8395,16 @@ async def play_again(connection: Connection) -> bool:
     return return_home
 
 async def dismiss_endOfGame(connection: Connection) -> bool:
+    '''
+    关闭对局结算阶段。<br>Close the end of a game.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 是否成功发送请求。<br>Whether the request is successfully sent.
+    
+        如果成功发送请求，程序会返回主页。<br>If it succeeds, the program will return to home page.
+    :rtype: bool
+    '''
     return_home: bool = False
     response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-end-of-game/v1/state/dismiss-stats")).json() #这个接口比下面注释起来的接口更有效一些（This endpoint is more effective than the following commented one）
     # response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/play-again-decline")).json()
@@ -7537,6 +8424,12 @@ async def dismiss_endOfGame(connection: Connection) -> bool:
     return return_home
 
 async def recall_honor_vote(connection: Connection) -> None:
+    '''
+    重新唤起荣誉投票界面。<br>Recall the honor vote interface.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     honor_ballot: dict[str, Any] = await (await connection.request("GET", "/lol-honor-v2/v1/ballot")).json()
     if isinstance(honor_ballot, dict) and "errorCode" in honor_ballot:
         logPrint(honor_ballot)
@@ -7567,6 +8460,14 @@ async def recall_honor_vote(connection: Connection) -> None:
                     logPrint("赞誉失败。\nHonor failed.")
 
 async def endOfGame_simulation(connection: Connection) -> str:
+    '''
+    游戏状态为赛后结算时的主函数。由此进入各个选项。<br>The main function when gameflow phase is "EndOfGame". Entry to each option.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 游戏状态调试字符串。默认为空字符串。<br>Gameflow phase debug string. An empty string will be returned by default.
+    :rtype: str
+    '''
     while True:
         logPrint("请选择一个操作：\nPlease select an operation:\n1\t查看英雄成就点数更新情况（Check champion mastery updates）\n2\t查看计分板数据（Check stats block）\n3\t聊天（Chat）\n4\t举报一名玩家（Report a player）\n5\t再来一局（Play again）\n6\t离开（Dismiss）\n!7\t唤起赞誉投票界面（Recall honor vote phase）\n8\t其它（Others）\n9\t客户端任务管理（Manage the League Client task）")
         option: str = logInput()
@@ -7735,7 +8636,7 @@ async def connect(connection: Connection) -> None:
                         gameflow_phase_toggle = ""
                         break
                     else:
-                        response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-end-of-game/v1/state/dismiss-stats")).json()
+                        response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-pre-end-of-game/v1/skip-pre-end-of-game")).json()
                         logPrint(response)
                         if isinstance(response, dict) and "errorCode" in response:
                             logPrint("跳过等待失败。\nFailed to skip waiting.")

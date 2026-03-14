@@ -1,10 +1,25 @@
-import pandas, openpyxl
+import pandas
 from openpyxl.styles import Color, numbers, PatternFill
 from openpyxl.formatting.rule import ColorScaleRule, DataBarRule, FormulaRule, Rule
 from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.worksheet import Worksheet
 #声明：每个函数的命名与对应的表头一一对应（Declaration: Each function's naming obeys the one-to-one correspondence with the dataframe header）
 def addFormat_LoLHistory_wb(worksheet: Worksheet, LoLHistory_df: pandas.DataFrame) -> None:
+    '''
+    为英雄联盟对局记录工作表添加条件格式。包括以下格式：<br>Add conditional formats to a LoL match history sheet. The following formats are involved:
+    
+    1. “结果”列：公式规则。<br>Column "Result": FormatRule.
+    - 胜利/V(ictory): 绿色（Green）
+    - 失败/D(efeat): 蓝色（Blue）
+    - 被终止/T(erminated): 灰色（Grey）
+    2. “队伍排名”列：公式规则。<br>Column "subteamPlacement": FormatRule.
+    - 1: 橙色（Orange）
+    
+    :param worksheet: 工作表对象，通过对一个`pandas.ExcelWriter`对象对工作表取下标得到，如`writer["Sheet1"]`。<br>A Worksheet object obtained by subscripting a `pandas.ExcelWriter` object, e.g. `writer["Sheet1"]`.
+    :type worksheet: Worksheet.
+    :param LoLHistory_df: 英雄联盟对局记录数据框。<br>LoL match history dataframe.
+    :type LoLHistory_df: pandas.DataFrame
+    '''
     #胜负颜色（Win/Lose color）
     col_idx: int = LoLHistory_df.columns.to_list().index("result") + 2
     col_letter: str = get_column_letter(col_idx)
@@ -23,6 +38,29 @@ def addFormat_LoLHistory_wb(worksheet: Worksheet, LoLHistory_df: pandas.DataFram
     worksheet.conditional_formatting.add(rangeStr, firstPlace_formulaRule_lol)
 
 def addFormat_LoLGame_summary_wb(worksheet: Worksheet, LoLGame_summary_df: pandas.DataFrame, numColorScale_order: int = 5) -> None:
+    '''
+    为英雄联盟对局概要工作表添加条件格式。包括以下格式：<br>Add conditional formats to a LoL match summary sheet. The following formats are involved:
+    
+    1. 百分比列：<br>Percentage columns:
+    - 保留两位小数。<br>Keep two decimal places.
+    - 数据条，从0到1。<br>Data bar, from 0 to 1.
+    2. “战损比”列：保留一位小数。<br>Column "KDA": Keep one decimal place.
+    3. “分均补刀”“伤害转化率”和“分均经济”列：保留三位小数。<br>Columns "CSPM" "D/G" and "GPM": Keep three decimal places.
+    4. 位次列：三色刻度。从1到该列最大值，颜色由红色逐渐变为绿色。<br>Order columns: Three-color scale. From 1 to the maximum value of this column, the color gradually changes from red to green.
+    5. “胜负”列：公式规则。<br>Column "win/lose": FormatRule.
+    - 胜利/V(ictory): 绿色（Green）
+    - 失败/D(efeat): 蓝色（Blue）
+    - 被终止/T(erminated): 灰色（Grey）
+    6. “队伍排名”列：公式规则。<br>Column "subteamPlacement": FormatRule.
+    - 1: 橙色（Orange）
+    
+    :param worksheet: 工作表对象，通过对一个`pandas.ExcelWriter`对象对工作表取下标得到，如`writer["Sheet1"]`。<br>A Worksheet object obtained by subscripting a `pandas.ExcelWriter` object, e.g. `writer["Sheet1"]`.
+    :type worksheet: Worksheet
+    :param LoLGame_summary_df: 英雄联盟对局概要数据框。<br>LoL match summary dataframe.
+    :type LoLGame_summary_df: pandas.DataFrame
+    :param numColorScale_order: 三色刻度的颜色位阶数量。等于单队最大玩家数量。默认为5。<br>The number of color levels for three-color scale. Equal to the maximum number of players per team. 5 by default.
+    :type numColorScale_order: int
+    '''
     #定义条件格式（Define the conditional formats）
     twoDigitPercentage_columns_lol: list[str] = [column for column in LoLGame_summary_df.columns if column.endswith("_percent") or column == "GUE"] #百分比（Percentage）
     oneDigitFloat_columns_lol: list[str] = ["KDA"] #一位小数（One-digit float）
@@ -120,6 +158,31 @@ def addFormat_LoLGame_summary_wb(worksheet: Worksheet, LoLGame_summary_df: panda
         worksheet.conditional_formatting.add(rangeStr, order_colorScaleRule_lol)
 
 def addFormat_LoLGame_summary_wb_transpose(worksheet: Worksheet, LoLGame_summary_df: pandas.DataFrame, numColorScale_order: int = 5) -> None:
+    '''
+    为转置后的英雄联盟对局概要工作表添加条件格式。包括以下格式：<br>Add conditional formats to a transposed LoL match summary sheet. The following formats are involved:
+    
+    1. 百分比列：<br>Percentage columns:
+    - 保留两位小数。<br>Keep two decimal places.
+    - 数据条，从0到1。<br>Data bar, from 0 to 1.
+    2. “战损比”列：保留一位小数。<br>Column "KDA": Keep one decimal place.
+    3. “分均补刀”“伤害转化率”和“分均经济”列：保留三位小数。<br>Columns "CSPM" "D/G" and "GPM": Keep three decimal places.
+    4. 位次列：三色刻度。从1到该列最大值，颜色由红色逐渐变为绿色。<br>Order columns: Three-color scale. From 1 to the maximum value of this column, the color gradually changes from red to green.
+    5. “胜负”列：公式规则。<br>Column "win/lose": FormatRule.
+    - 胜利/V(ictory): 绿色（Green）
+    - 失败/D(efeat): 蓝色（Blue）
+    - 被终止/T(erminated): 灰色（Grey）
+    6. “队伍排名”列：公式规则。<br>Column "subteamPlacement": FormatRule.
+    - 1: 橙色（Orange）
+    
+    警告：在一次性导出多场对局概要时，添加条件格式可能显著降低导出速度，增大工作簿体积。<br>Warning: When a lot of match summary sheets are going to be exported, adding conditional formats may result in a significant slow of export speed and a significant increase of the workbook size.
+    
+    :param worksheet: 工作表对象，通过对一个`pandas.ExcelWriter`对象对工作表取下标得到，如`writer["Sheet1"]`。<br>A Worksheet object obtained by subscripting a `pandas.ExcelWriter` object, e.g. `writer["Sheet1"]`.
+    :type worksheet: Worksheet
+    :param LoLGame_summary_df: 英雄联盟对局概要数据框。<br>LoL match summary dataframe.
+    :type LoLGame_summary_df: pandas.DataFrame
+    :param numColorScale_order: 三色刻度的颜色位阶数量。等于单队最大玩家数量。默认为5。<br>The number of color levels for three-color scale. Equal to the maximum number of players per team. 5 by default.
+    :type numColorScale_order: int
+    '''
     #定义条件格式（Define the conditional formats）
     twoDigitPercentage_rows_lol: list[str] = [row for row in LoLGame_summary_df.index if row.endswith("_percent") or row == "GUE"] #百分比（Percentage）
     oneDigitFloat_rows_lol: list[str] = ["KDA"] #一位小数（One-digit float）
@@ -213,6 +276,26 @@ def addFormat_LoLGame_summary_wb_transpose(worksheet: Worksheet, LoLGame_summary
         worksheet.conditional_formatting.add(rangeStr, order_colorScaleRule_lol)
 
 def addFormat_LoLPlayer_summary_wb(worksheet: Worksheet, LoLPlayer_summary_df: pandas.DataFrame, numColorScale_order: int = 5) -> None:
+    '''
+    `addFormat_LoLGame_summary_wb`函数的简化版本，仅用于战绩汇总脚本。包括以下格式：<br>A simplified version of `addFormat_LoLGame_summary_wb` function, only for Customized Program 20. Other schemes are same as `addFormat_LoLGame_summary_wb` function. The following formats are involved:
+    
+    1. 百分比列：<br>Percentage columns:
+    - 保留两位小数。<br>Keep two decimal places.
+    - 数据条，从0到1。<br>Data bar, from 0 to 1.
+    2. “战损比”列：保留一位小数。<br>Column "KDA": Keep one decimal place.
+    3. 位次列：三色刻度。从1到该列最大值，颜色由红色逐渐变为绿色。<br>Order columns: Three-color scale. From 1 to the maximum value of this column, the color gradually changes from red to green.
+    4. “胜负”列：公式规则。<br>Column "win/lose": FormatRule.
+    - 胜利/V(ictory): 绿色（Green）
+    - 失败/D(efeat): 蓝色（Blue）
+    - 被终止/T(erminated): 灰色（Grey）
+    
+    :param worksheet: 工作表对象，通过对一个`pandas.ExcelWriter`对象对工作表取下标得到，如`writer["Sheet1"]`。<br>A Worksheet object obtained by subscripting a `pandas.ExcelWriter` object, e.g. `writer["Sheet1"]`.
+    :type worksheet: Worksheet
+    :param LoLGame_summary_df: 英雄联盟玩家概要数据框。<br>LoL player summary dataframe.
+    :type LoLGame_summary_df: pandas.DataFrame
+    :param numColorScale_order: 三色刻度的颜色位阶数量。等于单队最大玩家数量。默认为5。<br>The number of color levels for three-color scale. Equal to the maximum number of players per team. 5 by default.
+    :type numColorScale_order: int
+    '''
     #定义条件格式（Define the conditional formats）
     twoDigitPercentage_columns_lol_summary: list[str] = ["KP_percent"] #百分比（Percentage）
     oneDigitFloat_columns_lol_summary: list[str] = ["KDA"] #一位小数（One-digit float）
@@ -298,6 +381,17 @@ def addFormat_LoLPlayer_summary_wb(worksheet: Worksheet, LoLPlayer_summary_df: p
         worksheet.conditional_formatting.add(rangeStr, order_colorScaleRule_lol)
 
 def addFormat_inGame_allPlayer_wb(worksheet: Worksheet, inGame_allPlayer_df: pandas.DataFrame) -> None:
+    '''
+    为通过游戏客户端接口整理得到的游戏内玩家信息工作表设置单元格格式。包括以下格式：<br>Set cell format for in-game player information sheet organized from Game Client API. The following formats are involved:
+    
+    1. “战损比”列：保留一位小数。<br>Column "KDA": Keep one decimal place.
+    2. “分均补刀”列：保留三位小数。<br>Column "CSPM": Keep three decimal places.
+    
+    :param worksheet: 工作表对象，通过对一个`pandas.ExcelWriter`对象对工作表取下标得到，如`writer["Sheet1"]`。<br>A Worksheet object obtained by subscripting a `pandas.ExcelWriter` object, e.g. `writer["Sheet1"]`.
+    :type worksheet: Worksheet
+    :param LoLGame_summary_df: 游戏内玩家数据框。<br>In-game player dataframe.
+    :type LoLGame_summary_df: pandas.DataFrame
+    '''
     #定义条件格式（Define the conditional formats）
     oneDigitFloat_columns_lol: list[str] = ["KDA"] #一位小数（One-digit float）
     threeDigitFloat_columns_lol: list[str] = ["CSPM"] #三位小数（Three-digit float）

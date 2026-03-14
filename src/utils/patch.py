@@ -45,12 +45,12 @@ class Patch:
     def __repr__(self) -> str: #自我描述（Self description）
         return f'Patch({", ".join(str(part) for part in self.parts)})'
 
-    def __eq__(self, other) -> bool: #重载等号（Overloads the equal sign）
+    def __eq__(self, other: Any) -> bool: #重载等号（Overloads the equal sign）
         if not isinstance(other, Patch):
             return False
         return self.parts == other.parts
 
-    def __lt__(self, other) -> bool: #重载小于号（Overloads the less-than sign）
+    def __lt__(self, other: Any) -> bool: #重载小于号（Overloads the less-than sign）
         if not isinstance(other, Patch):
             return NotImplemented
         
@@ -64,22 +64,22 @@ class Patch:
         
         return False
 
-    def __gt__(self, other) -> bool: #重载大于号（Overloads the greater-than sign）
+    def __gt__(self, other: Any) -> bool: #重载大于号（Overloads the greater-than sign）
         if not isinstance(other, Patch):
             return NotImplemented
         return not (self < other or self == other)
 
-    def __le__(self, other) -> bool: #重载小于等于号（Overloads the less-than-or-equal-to sign）
+    def __le__(self, other: Any) -> bool: #重载小于等于号（Overloads the less-than-or-equal-to sign）
         if not isinstance(other, Patch):
             return NotImplemented
         return self < other or self == other
 
-    def __ge__(self, other) -> bool: #重载大于等于号（Overloads the greater-than-or-equal-to sign）
+    def __ge__(self, other: Any) -> bool: #重载大于等于号（Overloads the greater-than-or-equal-to sign）
         if not isinstance(other, Patch):
             return NotImplemented
         return self > other or self == other
 
-    def __ne__(self, other) -> bool: #重载不等号（Overloads the not-equal-to sign）
+    def __ne__(self, other: Any) -> bool: #重载不等号（Overloads the not-equal-to sign）
         if not isinstance(other, Patch):
             return NotImplemented
         return not self == other
@@ -143,6 +143,14 @@ def FindPostPatch(patch: Patch, patchList: list[Patch]) -> str: #二分查找某
         return "pbe"
 
 def get_ddragon_versionList(session: Optional[requests.Session] = None, log: Optional[LogManager] = None) -> tuple[list[str], bool]:
+    '''
+    获取DataDragon数据库的版本列表。<br>Get the version list of DataDragon database.
+    
+    :param session: 网络请求会话。<br>Web request session.
+    :type session: requests.Session
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    '''
     if session == None:
         session = requests.Session()
     if log == None:
@@ -165,6 +173,14 @@ def get_ddragon_versionList(session: Optional[requests.Session] = None, log: Opt
     return (versions, versionList_fetched)
 
 def get_cdragon_patchList(session: Optional[requests.Session] = None, log: Optional[LogManager] = None) -> tuple[list[str], bool]:
+    '''
+    获取CommunityDragon数据库的版本列表。<br>Get the version list of CommunityDragon database.
+    
+    :param session: 网络请求会话。<br>Web request session.
+    :type session: requests.Session
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    '''
     if session == None:
         session = requests.Session()
     if log == None:

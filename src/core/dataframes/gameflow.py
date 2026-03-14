@@ -16,9 +16,27 @@ from src.core.config.headers import TFTGame_summary_header, champSelect_player_h
 from src.core.dataframes.matchHistory import get_LoLGame_summary, get_game_summary_sgp, sort_LoLGame_summary, sort_LoLGame_summary_sgp, sort_TFTGame_summary
 
 def isChampSelectSession(session: Any) -> bool:
+    '''
+    判断一个会话是否符合英雄选择阶段会话的格式。<br>Judge whether a session belongs to champ select.
+    
+    :param session: 会话数据。<br>Session data.
+    :type session: Any
+    :return: 该会话是否是一个英雄选择会话。<br>Whether this session is a champ select session.
+    :rtype: bool
+    '''
     return isinstance(session, dict) and all(key in session for key in ["actions", "allowBattleBoost", "allowDuplicatePicks", "allowLockedEvents", "allowRerolling", "allowSkinSelection", "allowSubsetChampionPicks", "bans", "benchChampions", "benchEnabled", "boostableSkinCount", "chatDetails", "counter", "disallowBanningTeammateHoveredChampions", "gameId", "hasSimultaneousBans", "hasSimultaneousPicks", "id", "isCustomGame", "isLegacyChampSelect", "isSpectating", "localPlayerCellId", "lockedEventIndex", "myTeam", "pickOrderSwaps", "positionSwaps", "queueId", "rerollsRemaining", "showQuitButton", "skipChampionSelect", "theirTeam", "timer", "trades"]) and all(map(lambda key: isinstance(session[key], list), ["actions", "benchChampions", "myTeam", "pickOrderSwaps", "positionSwaps", "theirTeam", "trades"])) and all(map(lambda key: isinstance(session[key], bool), ["allowBattleBoost", "allowDuplicatePicks", "allowLockedEvents", "allowPlayerPickSameChampion", "allowRerolling", "allowSkinSelection", "allowSubsetChampionPicks", "benchEnabled", "disallowBanningTeammateHoveredChampions", "hasSimultaneousBans", "hasSimultaneousPicks", "isCustomGame", "isLegacyChampSelect", "isSpectating", "showQuitButton", "skipChampionSelect"])) and all(map(lambda key: isinstance(session[key], dict), ["chatDetails", "timer"])) and all(map(lambda key: isinstance(session[key], int), ["boostableSkinCount", "counter", "gameId", "localPlayerCellId", "lockedEventIndex", "queueId", "rerollsRemaining"])) and all(map(lambda key: isinstance(session[key], str), ["id"]))
 
 async def get_gameflow_phase(connection: Connection) -> str: #设计该函数的原因是通过“GET lol-gameflow/v1/gameflow-phase”获得的游戏状态不一定真实，特别是在调用“POST /lol-lobby/v1/lobby/custom/cancel-champ-select”之后（The reason why this function is designed is that the in-game status returned by the API "GET /lol-gameflow/v1/gameflow-phase" may be unreal, especially when "POST /lol-lobby/v1/lobby/custom/cancel-champ-select" is called）
+    '''
+    参考多个LCU接口来推断用户的真实游戏状态。<br>Infer the user's real gameflow phase by referring to multiple LCU endpoints.
+    
+    一般来说，该函数与`GET /lol-gameflow/v1/gameflow-phase`函数返回的内容相同。在用户使用过`POST /lol-lobby/v1/lobby/custom/cancel-champ-select`接口之后可能会有差别。<br>Basically, this function returns the same result as what `GET /lol-gameflow/v1/gameflow-phase` returns. After `POST /lol-lobby/v1/lobby/custom/cancel-champ-select` is used, they may be different.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 用户的当前游戏状态。<br>The user's current gameflow phase.
+    :rtype: str
+    '''
     gameflow_phase: str = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
     if gameflow_phase in {"None", "Lobby", "Matchmaking"}:
         lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
@@ -41,6 +59,14 @@ async def get_gameflow_phase(connection: Connection) -> str: #设计该函数的
     return gameflow_phase
 
 async def get_champ_select_session(connection: Connection) -> dict[str, Any]: #设计该函数的原因是在创建随机自定义房间然后通过接口删除房间和匹配状态后，用户会仍然处于英雄选择阶段，但是无法在客户端内进行操作。这时，往往通过传统的接口获取不到英雄选择会话，而通过阵容匹配接口可以获取到。另一方面，传统自定义对局的英雄选择阶段无法通过阵容匹配接口获取其会话，不然清一色地用阵容匹配接口就完事了（The reason why this function is designed is that when the user creates an all random custom lobby, starts the champ select stage and then delete this lobby and the matchmaking state through API, the user is still in a champ select stage, but can't do anything through the client. In that case, the champ select session can't be obtained by the legacy endpoint, but can be obtained by the team-builder endpoint. On the other hand, the champ select session of a legacy custom game can't be obtained through the team-builder endpoint, or I would simply use that endpoint）
+    '''
+    通过调用传统和阵容匹配版英雄选择会话接口，来获取英雄选择会话信息。<br>Get the champ select session by calling both the legacy and the team-builder champ select session endpoints.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 英雄选择会话。<br>Champ select session.
+    :rtype: str
+    '''
     champ_select_session: dict[str, Any] = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/session")).json()
     if "errorCode" in champ_select_session and champ_select_session["httpStatus"] == 404 and champ_select_session["message"] == "No champ select session in progress.":
         champ_select_session = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
@@ -50,8 +76,8 @@ async def update_champ_select_session(connection: Connection, old_session: dict[
     '''
     更新英雄选择会话。<br>Update the champ select session.
     
-    :param connection: 通过lcu_driver库创建的连接对象。<br>A Connection object created through lcu-driver library.
-    :type connection: lcu_driver.connection.Connection
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
     :param old_session: 旧的英雄选择会话。<br>The old champ select session.<br>如果旧的会话是异常会话，则直接返回，因为没有更新的必要。<br>If the old session is an error session, then it'll be directly returned, for there's no need to update it.
     :type old_session: dict[str, Any]
     :param force_update: 是否通过交换两个召唤师技能的顺序来强制更新英雄选择会话。默认为假。<br>Whether to force the champ select session to update by swapping the order of two summoner spells. False by default.
@@ -80,6 +106,16 @@ async def update_champ_select_session(connection: Connection, old_session: dict[
     return new_session
 
 async def get_champSelect_localPlayer(connection: Connection, current_puuid: str) -> dict[str, Any]: #已弃用（Deprecated）
+    '''
+    从英雄选择会话中提取当前玩家的信息。<br>Get the information of the current player from the champ select session.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param current_puuid: 当前召唤师的玩家通用唯一识别码。<br>Puuid of the current summoner.
+    :type current_puuid: str
+    :return: 当前玩家的英雄选择信息。<br>Champ select information of the current summoner.
+    :rtype: dict[str, Any]
+    '''
     champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
     players: list[dict[str, Any]] = champ_select_session["myTeam"] + champ_select_session["theirTeam"]
     for player in players:
@@ -90,13 +126,13 @@ async def get_champSelect_localPlayer(connection: Connection, current_puuid: str
 
 async def get_champSelect_player(connection: Connection, cellId: Optional[int] = None) -> dict[str, Any]:
     '''
-    从英雄选择会话中提取某个槽位的玩家信息。<br>Get the information of a player with some `cellId` from the champ select session.
+    从英雄选择会话中提取某个槽位的玩家信息。需在线使用。<br>Get the information of a player with some `cellId` from the champ select session. Need to be called online.
     
-    :param connection: 通过lcu_driver库创建的连接对象。<br>A Connection object created through lcu-driver library.
-    :type connection: lcu_driver.connection.Connection
-    :param cellId: 同extract_champSelect_player函数。<br>Same as in `extract_champSelect_player` function.
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param cellId: 待提取信息的玩家的槽位序号。<br>The cellId of the player to extract the information.<br>如果不指定，则默认获取用户自己的信息。<br>If unspecified, the function will return the information of the user itself.
     :type cellId: int
-    :return: 同extract_champSelect_player函数。<br>Same as in `extract_champSelect_player` function.
+    :return: 指定槽位序号的玩家信息。<br>Information of the player with specified `cellId`.
     :rtype: dict[str, Any]
     '''
     champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
@@ -114,7 +150,7 @@ def extract_champSelect_player(champ_select_session: dict[str, Any], cellId: Opt
     
     :param champ_select_session: 英雄选择会话。<br>Champ select session.
     :type champ_select_session: dict[str, Any]
-    :param cellId: 待提取信息的玩家的槽位序号。<br>The cellId of the player to extract the information.<br>如果不指定，则默认获取用户的信息。<br>If unspecified, the function will return the information of the user itself.
+    :param cellId: 待提取信息的玩家的槽位序号。<br>The cellId of the player to extract the information.<br>如果不指定，则默认获取用户自己的信息。<br>If unspecified, the function will return the information of the user itself.
     :type cellId: int
     :return: 指定槽位序号的玩家信息。<br>Information of the player with specified `cellId`.
     :rtype: dict[str, Any]
@@ -130,6 +166,65 @@ def extract_champSelect_player(champ_select_session: dict[str, Any], cellId: Opt
         return {}
 
 async def sort_ChampSelect_players(connection: Connection, champ_select_session: dict[str, Any], LoLChampions: dict[int, dict[str, Any]], championSkins: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], wardSkins: dict[int, dict[str, Any]], playerMode: int = 1, skipBot: bool = True, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame: #以下代码来自聊天服务脚本（The following code come from Customized Program 16）
+    '''
+    将英雄选择会话中的玩家信息整理形成一个表格。<br>Organize the player information in a champ select session into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param champ_select_session: 英雄选择会话。<br>A champ select session.
+    :type champ_select_session: dict[str, Any]
+    :param LoLChampions: 整理后的英雄数据资源。键是英雄序号，值是英雄信息字典。<br>Organized champion data resource. Each key is a championId, and each value is a champion information dictionary.
+    
+        原始英雄数据资源可通过以下链接获取：<br>The raw champion data resource can be obtained through the following links:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champions/{championId}.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoints:
+        - `GET /lol-game-data/assets/v1/champion-summary.json`
+        - `GET /lol-game-data/assets/v1/champions/{championId}.json`
+        - `GET /lol-champions/v1/inventories/{summonerId}/champions`
+    :type LoLChampions: dict[int, dict[str, Any]]
+    :param championSkins: 整理后的英雄皮肤数据资源。键是皮肤序号，值是皮肤信息字典。<br>Organized champion skin data resource. Each key is a skinId, and each value is a skin information dictionary.
+    
+        原始英雄皮肤数据资源可通过以下链接获取：<br>The raw champion skin data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/skins.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoints:
+        - `GET /lol-game-data/assets/v1/skins.json`
+        - `GET /lol-champions/v1/inventories/{summonerId}/champions`
+    :type championSkins: dict[int, dict[str, Any]]
+    :param spells: 整理后的召唤师技能数据资源。键是召唤师技能序号，值是召唤师技能信息字典。<br>Organized summoner spell data resource. Each key is a spellId, and each value is a summoner spell information dictionary.
+    
+        原始召唤师技能数据资源可通过以下链接获取：<br>The raw summoner spell data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/summoner-spells.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/summoner-spells.json`
+    :type spells: dict[int, dict[str, Any]]
+    :param wardSkins: 整理后的饰品皮肤数据资源。键是皮肤序号，值是皮肤信息字典。<br>Organized ward skin data resource. Each key is a skinId, and each value is a skin information dictionary.
+    
+        原始饰品皮肤数据资源可通过以下链接获取：<br>The raw ward skin data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/ward-skins.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/ward-skins.json`
+    :type wardSkins: dict[int, dict[str, Any]]
+    :param playerMode: 玩家模式。有以下可选项。<br>Player mode. Here're several options available.
+    
+        - 1: （☆）所有玩家。<br>All players.
+        - 2: 仅队友。<br>Teammates only.
+        - 3: 仅对手。<br>Opponents only.
+        - 4: 无。<br>None.
+    :type playerMode: int
+    :param skipBot: 是否跳过电脑玩家的整理。默认为是。<br>Whether to skip organizing bot champion data. True by default.
+    :type skipBot: bool
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
+    :type verbose: bool
+    :return: 英雄选择阶段的玩家数据框。<br>Player dataframe in the champ select stage.
+    :rtype: pandas.DataFrame
+    '''
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -209,6 +304,75 @@ async def sort_ChampSelect_players(connection: Connection, champ_select_session:
     return champSelect_player_df
 
 async def sort_multiChampSelect_players(connection: Connection, sessions: list[dict[str, Any]], queues: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], championSkins: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], wardSkins: dict[int, dict[str, Any]], playerMode: int = 1, skipBot: bool = True, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
+    '''
+    将多个英雄选择阶段中的玩家信息整合成表格。<br>Merge players in multiple champ select sessions into a dataframe.
+    
+    在合并的过程中会附加各英雄选择阶段的对局序号和游戏模式信息。<br>While dataframes are merged, queueId and game mode information will be added.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param sessions: 英雄选择会话列表。<br>A list of champ select sessions.
+    :type sessions: list[dict[str, Any]]
+    :param queues: 整理后的队列数据资源。键是队列序号，值是游戏模式信息字典。<br>Organized queue data resource. Each key is a queueId, and each value is a game mode information dictionary.
+    
+        原始队列数据资源可通过以下链接获取：<br>The raw queue data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/queues.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/queues.json`
+    :type queues: dict[int, dict[str, Any]]
+    :param LoLChampions: 整理后的英雄数据资源。键是英雄序号，值是英雄信息字典。<br>Organized champion data resource. Each key is a championId, and each value is a champion information dictionary.
+    
+        原始英雄数据资源可通过以下链接获取：<br>The raw champion data resource can be obtained through the following links:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champions/{championId}.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoints:
+        - `GET /lol-game-data/assets/v1/champion-summary.json`
+        - `GET /lol-game-data/assets/v1/champions/{championId}.json`
+        - `GET /lol-champions/v1/inventories/{summonerId}/champions`
+    :type LoLChampions: dict[int, dict[str, Any]]
+    :param championSkins: 整理后的英雄皮肤数据资源。键是皮肤序号，值是皮肤信息字典。<br>Organized champion skin data resource. Each key is a skinId, and each value is a skin information dictionary.
+    
+        原始英雄皮肤数据资源可通过以下链接获取：<br>The raw champion skin data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/skins.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoints:
+        - `GET /lol-game-data/assets/v1/skins.json`
+        - `GET /lol-champions/v1/inventories/{summonerId}/champions`
+    :type championSkins: dict[int, dict[str, Any]]
+    :param spells: 整理后的召唤师技能数据资源。键是召唤师技能序号，值是召唤师技能信息字典。<br>Organized summoner spell data resource. Each key is a spellId, and each value is a summoner spell information dictionary.
+    
+        原始召唤师技能数据资源可通过以下链接获取：<br>The raw summoner spell data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/summoner-spells.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/summoner-spells.json`
+    :type spells: dict[int, dict[str, Any]]
+    :param wardSkins: 整理后的饰品皮肤数据资源。键是皮肤序号，值是皮肤信息字典。<br>Organized ward skin data resource. Each key is a skinId, and each value is a skin information dictionary.
+    
+        原始饰品皮肤数据资源可通过以下链接获取：<br>The raw ward skin data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/ward-skins.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/ward-skins.json`
+    :type wardSkins: dict[int, dict[str, Any]]
+    :param playerMode: 玩家模式。有以下可选项。<br>Player mode. Here're several options available.
+    
+        - 1: （☆）所有玩家。<br>All players.
+        - 2: 仅队友。<br>Teammates only.
+        - 3: 仅对手。<br>Opponents only.
+        - 4: 无。<br>None.
+    :type playerMode: int
+    :param skipBot: 是否跳过电脑玩家的整理。默认为是。<br>Whether to skip organizing bot champion data. True by default.
+    :type skipBot: bool
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
+    :type verbose: bool
+    :return: 汇总多个英雄选择阶段得到的玩家数据框。<br>Player dataframe gathered from multiple champ select stages.
+    :rtype: pandas.DataFrame
+    '''
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -244,6 +408,56 @@ async def sort_multiChampSelect_players(connection: Connection, sessions: list[d
     return multiChampSelect_player_df
 
 async def sort_inGame_players(connection: Connection, LoLChampions: dict[int, dict[str, Any]], championSkins: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], skipBot: bool = False, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
+    '''
+    将游戏内的玩家信息整理成一个表格。<br>Organize the in-game players into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param LoLChampions: 整理后的英雄数据资源。键是英雄序号，值是英雄信息字典。<br>Organized champion data resource. Each key is a championId, and each value is a champion information dictionary.
+    
+        原始英雄数据资源可通过以下链接获取：<br>The raw champion data resource can be obtained through the following links:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champions/{championId}.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoints:
+        - `GET /lol-game-data/assets/v1/champion-summary.json`
+        - `GET /lol-game-data/assets/v1/champions/{championId}.json`
+        - `GET /lol-champions/v1/inventories/{summonerId}/champions`
+    :type LoLChampions: dict[int, dict[str, Any]]
+    :param championSkins: 整理后的英雄皮肤数据资源。键是皮肤序号，值是皮肤信息字典。<br>Organized champion skin data resource. Each key is a skinId, and each value is a skin information dictionary.
+    
+        原始英雄皮肤数据资源可通过以下链接获取：<br>The raw champion skin data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/skins.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoints:
+        - `GET /lol-game-data/assets/v1/skins.json`
+        - `GET /lol-champions/v1/inventories/{summonerId}/champions`
+    :type championSkins: dict[int, dict[str, Any]]
+    :param summonerIcons: 整理后的召唤师图标数据资源。键是召唤师图标序号，值是召唤师图标信息字典。<br>Organized champion skin data resource. Each key is a profileIconId, and each value is a summoner icon information dictionary.
+    
+        原始召唤师图标数据资源可通过以下链接获取：<br>The raw summoner icon data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/summoner-icons.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/summoner-icons.json`
+    :type summonerIcons: dict[int, dict[str, Any]]
+    :param spells: 整理后的召唤师技能数据资源。键是召唤师技能序号，值是召唤师技能信息字典。<br>Organized summoner spell data resource. Each key is a spellId, and each value is a summoner spell information dictionary.
+    
+        原始召唤师技能数据资源可通过以下链接获取：<br>The raw summoner spell data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/summoner-spells.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/summoner-spells.json`
+    :type spells: dict[int, dict[str, Any]]
+    :param skipBot: 是否跳过电脑玩家的整理。默认为是。<br>Whether to skip organizing bot champion data. True by default.
+    :type skipBot: bool
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
+    :type verbose: bool
+    :return: 游戏内玩家数据框。<br>In-game player dataframe.
+    :rtype: pandas.DataFrame
+    '''
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -330,6 +544,63 @@ async def sort_inGame_players(connection: Connection, LoLChampions: dict[int, di
     return inGame_player_df
 
 async def sort_eog_playerstat_lol_data(connection: Connection, summonerIcons: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], skipBot: bool = False) -> pandas.DataFrame:
+    '''
+    将一场英雄联盟对局的赛后结算阶段中的玩家信息整理成表格。<br>Organize player information during the end-of-game stage of a LoL match into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param summonerIcons: 整理后的召唤师图标数据资源。键是召唤师图标序号，值是召唤师图标信息字典。<br>Organized champion skin data resource. Each key is a profileIconId, and each value is a summoner icon information dictionary.
+    
+        原始召唤师图标数据资源可通过以下链接获取：<br>The raw summoner icon data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/summoner-icons.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/summoner-icons.json`
+    :type summonerIcons: dict[int, dict[str, Any]]
+    :param spells: 整理后的召唤师技能数据资源。键是召唤师技能序号，值是召唤师技能信息字典。<br>Organized summoner spell data resource. Each key is a spellId, and each value is a summoner spell information dictionary.
+    
+        原始召唤师技能数据资源可通过以下链接获取：<br>The raw summoner spell data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/summoner-spells.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/summoner-spells.json`
+    :type spells: dict[int, dict[str, Any]]
+    :param LoLItems: 整理后的英雄联盟装备信息。键是装备序号，值是装备信息字典。<br>Organized LoL item data resource. Each key is an itemId, and each value is an item information dictionary.
+    
+        原始英雄联盟装备数据资源可通过以下链接获取：<br>The raw LoL item data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/items.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/items.json` LoLItems: dict[int, dict[str, Any]]
+    :param perks: 整理后的符文信息。键是符文序号，值是符文信息字典。<br>Organized perk data resource. Each key is a perkId, and each value is a perk information dictionary.
+    
+        原始符文数据资源可通过以下链接获取：<br>The raw perk data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/perks.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/perks.json`
+    :type perks: dict[int, dict[str, Any]]
+    :param perkstyles: 整理后的符文系信息。键是符文系序号，值是符文系信息字典。<br>Organized perkstyle data resource. Each key is a perkstyleId, and each value is a perkstyle information dictionary.
+    
+        原始符文系数据资源可通过以下链接获取：<br>The raw perkstyle data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/perkstyles.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/perkstyles.json`
+    :type perkstyles: dict[int, dict[str, Any]]
+    :param CherryAugments: 整理后的斗魂竞技场强化符文信息。键是强化符文序号，值是强化符文信息字典。<br>Organized Arena augment data resource. Each key is an augmentId, and each value is an augment information dictionary.
+    
+        原始斗魂竞技场强化符文数据资源可通过以下链接获取：<br>The raw Arena augment data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/cherry-augments.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/cherry-augments.json`
+    :type CherryAugments: dict[int, dict[str, Any]]
+    :param skipBot: 是否跳过电脑玩家的整理。默认为是。<br>Whether to skip organizing bot champion data. True by default.
+    :type skipBot: bool
+    :return: 赛后结算阶段的玩家信息表。<br>End-of-game player dataframe.
+    :rtype: pandas.DataFrame
+    '''
     eog_playerstat_data_lol_header_keys: list[str] = list(eog_playerstat_data_lol_header.keys())
     eog_playerstat_data_lol: dict[str, list[Any]] = {key: [] for key in eog_playerstat_data_lol_header_keys}
     eog_stats_block: dict[str, Any] = await (await connection.request("GET", "/lol-end-of-game/v1/eog-stats-block")).json()
@@ -416,6 +687,22 @@ async def sort_eog_playerstat_lol_data(connection: Connection, summonerIcons: di
     return eog_playerstat_df_lol
 
 async def sort_eog_stat_tft_data(connection: Connection, summonerIcons: dict[int, dict[str, Any]]) -> pandas.DataFrame: #云顶之弈的电脑玩家无法与人类玩家进行区分（Bot players in TFT can't be distinguished from human players）
+    '''
+    将一场云顶之弈对局的赛后结算阶段中的玩家信息整理成表格。<br>Organize player information during the end-of-game stage of a TFT match into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param summonerIcons: 整理后的召唤师图标数据资源。键是召唤师图标序号，值是召唤师图标信息字典。<br>Organized champion skin data resource. Each key is a profileIconId, and each value is a summoner icon information dictionary.
+    
+        原始召唤师图标数据资源可通过以下链接获取：<br>The raw summoner icon data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/summoner-icons.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/summoner-icons.json`
+    :type summonerIcons: dict[int, dict[str, Any]]
+    :return: 赛后结算阶段的玩家信息表。<br>End-of-game player dataframe.
+    :rtype: pandas.DataFrame
+    '''
     eog_stat_data_tft_header_keys: list[str] = list(eog_stat_data_tft_header.keys())
     eog_stat_data_tft: dict[str, Any] = {key: [] for key in eog_stat_data_tft_header_keys}
     tft_eog_stats: dict[str, Any] = await (await connection.request("GET", "/lol-end-of-game/v1/tft-eog-stats")).json()
@@ -462,7 +749,100 @@ async def sort_eog_stat_tft_data(connection: Connection, summonerIcons: dict[int
 
 async def sort_postgame_players_lol(connection: Connection, sgpSession: SGPSession, matchId: int, queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], puuid: str | list[str] = "", use_sgp: bool = False, useAllVersions: bool = False, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[int, dict[str, Any], pandas.DataFrame]:
     '''
-    在已知一场英雄联盟对局序号的情况下，给定辅助数据资源，返回对局数据框。<br>Given a LoL matchId, with auxillary data resources provided, return a match dataframe.
+    将一场过往英雄联盟对局中的玩家战绩整理成表格。<br>Organize player stats in a previous LoL match into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param sgpSession: SGP会话对象。<br>An SGPSession object.
+    :type sgpSession: SGPSession
+    :param matchId: 对局序号。<br>GameId.
+    :type matchId: int
+    :param queues: 整理后的队列数据资源。键是队列序号，值是游戏模式信息字典。<br>Organized queue data resource. Each key is a queueId, and each value is a game mode information dictionary.
+    
+        原始队列数据资源可通过以下链接获取：<br>The raw queue data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/queues.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/queues.json`
+    :type queues: dict[int, dict[str, Any]]
+    :param summonerIcons: 整理后的召唤师图标数据资源。键是召唤师图标序号，值是召唤师图标信息字典。<br>Organized champion skin data resource. Each key is a profileIconId, and each value is a summoner icon information dictionary.
+    
+        原始召唤师图标数据资源可通过以下链接获取：<br>The raw summoner icon data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/summoner-icons.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/summoner-icons.json`
+    :type summonerIcons: dict[int, dict[str, Any]]
+    :param LoLChampions: 整理后的英雄数据资源。键是英雄序号，值是英雄信息字典。<br>Organized champion data resource. Each key is a championId, and each value is a champion information dictionary.
+    
+        原始英雄数据资源可通过以下链接获取：<br>The raw champion data resource can be obtained through the following links:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champions/{championId}.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoints:
+        - `GET /lol-game-data/assets/v1/champion-summary.json`
+        - `GET /lol-game-data/assets/v1/champions/{championId}.json`
+        - `GET /lol-champions/v1/inventories/{summonerId}/champions`
+    :type LoLChampions: dict[int, dict[str, Any]]
+    :param spells: 整理后的召唤师技能数据资源。键是召唤师技能序号，值是召唤师技能信息字典。<br>Organized summoner spell data resource. Each key is a spellId, and each value is a summoner spell information dictionary.
+    
+        原始召唤师技能数据资源可通过以下链接获取：<br>The raw summoner spell data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/summoner-spells.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/summoner-spells.json`
+    :type spells: dict[int, dict[str, Any]]
+    :param LoLItems: 整理后的英雄联盟装备信息。键是装备序号，值是装备信息字典。<br>Organized LoL item data resource. Each key is an itemId, and each value is an item information dictionary.
+    
+        原始英雄联盟装备数据资源可通过以下链接获取：<br>The raw LoL item data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/items.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/items.json` LoLItems: dict[int, dict[str, Any]]
+    :param perks: 整理后的符文信息。键是符文序号，值是符文信息字典。<br>Organized perk data resource. Each key is a perkId, and each value is a perk information dictionary.
+    
+        原始符文数据资源可通过以下链接获取：<br>The raw perk data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/perks.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/perks.json`
+    :type perks: dict[int, dict[str, Any]]
+    :param perkstyles: 整理后的符文系信息。键是符文系序号，值是符文系信息字典。<br>Organized perkstyle data resource. Each key is a perkstyleId, and each value is a perkstyle information dictionary.
+    
+        原始符文系数据资源可通过以下链接获取：<br>The raw perkstyle data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/perkstyles.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/perkstyles.json`
+    :type perkstyles: dict[int, dict[str, Any]]
+    :param CherryAugments: 整理后的斗魂竞技场强化符文信息。键是强化符文序号，值是强化符文信息字典。<br>Organized Arena augment data resource. Each key is an augmentId, and each value is an augment information dictionary.
+    
+        原始斗魂竞技场强化符文数据资源可通过以下链接获取：<br>The raw Arena augment data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/cherry-augments.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/cherry-augments.json`
+    :type CherryAugments: dict[int, dict[str, Any]]
+    :param puuid: 玩家通用唯一识别码。可以是单一值，也可以是一个列表。这个参数只用于确定敌友阵营。<br>Puuid. Both a single value and a list are supported. This parameter is only used to determine the enemy and ally teams.
+    :type puuid: str | list[str]
+    :param use_sgp: 是否使用SGP API访问对局记录服务。默认为假。<br>Whether to use SGP API to access match history service. False by default.
+    :type use_sgp: bool
+    :param useAllVersions: 是否为数据资源异常处理执行版本回溯。默认为假。<br>Whether to perform version backtracking for data resource exception handling. False by default.
+    :type useAllVersions: bool
+    :param versionList: 适用于CommunityDragon数据库的版本对象列表。<br>A list of Patch objects compatible with CommunityDragon database versioning.
+    :type versionList: list[Patch]
+    :param locale: 语言文化代码。默认使用美式英语。<br>Language code. English (US) by default.
+    :type locale: str
+    :param current_versions: 各数据资源目前正在使用的版本信息。<br>Current patches of data resources.
+    :type current_versions: dict[str, str]
+    :param unmapped_keys: 各数据资源未找到的键。用于控制数据未找到匹配记录的提示最多输出一次。<br>Unmapped keys in all data resources, used to control the hint about data not found to be printed at most once.
+    :type unmapped_keys: dict[str, set[int]]
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
+    :type verbose: bool
+    :return: 英雄联盟对局概要数据框。<br>LoL match summary dataframe.
+    :rtype: pandas.DataFrame.
     '''
     if versionList == None:
         versionList = []
@@ -498,6 +878,79 @@ async def sort_postgame_players_lol(connection: Connection, sgpSession: SGPSessi
     return (status, LoLGame_summary, LoLGame_summary_df)
 
 async def sort_postgame_players_tft(connection: Connection, sgpSession: SGPSession, matchId: int, queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], puuid: str | list[str] = "", useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[int, dict[str, Any], pandas.DataFrame]:
+    '''
+    将一场过往云顶之弈对局中的玩家战绩整理成表格。<br>Organize player stats in a previous TFT match into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param sgpSession: SGP会话对象。<br>An SGPSession object.
+    :type sgpSession: SGPSession
+    :param matchId: 对局序号。<br>GameId.
+    :type matchId: int
+    :param queues: 整理后的队列数据资源。键是队列序号，值是游戏模式信息字典。<br>Organized queue data resource. Each key is a queueId, and each value is a game mode information dictionary.
+    
+        原始队列数据资源可通过以下链接获取：<br>The raw queue data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/queues.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/queues.json`
+    :type queues: dict[int, dict[str, Any]]
+    :param TFTAugments: 整理后的云顶之弈强化符文数据资源。键是强化符文代码，值是强化符文信息字典。<br>Organized TFT augment data resource. Each key is an augmentId, and each value is an augment information dictionary.
+    
+        原始云顶之弈强化符文数据资源可通过以下链接获取：<br>The raw TFT augment data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/cdragon/tft/en_us.json
+    :type TFTAugments: dict[str, dict[str, Any]]
+    :param TFTChampions: 整理后的云顶之弈英雄数据资源。键是英雄代码，值是英雄信息字典。<br>Organized TFT champion data resource. Each key is a championid, and each value is a champion information dictionary.
+    
+        原始云顶之弈英雄数据资源可通过以下链接获取：<br>The raw TFT champion data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/tftchampions.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/tftchampions.json`
+    :type TFTChampions: dict[str, dict[str, Any]]
+    :param TFTItems: 整理后的云顶之弈装备信息。键是装备代码，值是装备信息字典。<br>Organized TFT item data resource. Each key is an itemId, and each value is an item information dictionary.
+    
+        原始云顶之弈装备数据资源可通过以下链接获取：<br>The raw TFT item data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/tftitems.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/tftitems.json`
+    :type TFTItems: dict[int, dict[str, Any]]
+    :param TFTCompanions: 整理后的小小英雄信息。键是小小英雄代码，值是小小英雄信息字典。<br>Organized companion data resource. Each key is a companionId, and each value is a companion information dictionary.
+    
+        原始小小英雄数据资源可通过以下链接获取：<br>The raw companion data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/companions.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/companions.json`
+    :type TFTCompanions: dict[str, dict[str, Any]]
+    :param TFTTraits: 整理后的云顶之弈羁绊信息。键是羁绊代码，值是羁绊信息字典。<br>Organized TFT trait data resource. Each key is a traitId, and each value is a trait information dictionary.
+    
+        原始云顶之弈羁绊数据资源可通过以下链接获取：<br>The raw TFT trait data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/tfttraits.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/tfttraits.json`
+    :type TFTTraits: dict[str, dict[str, Any]]
+    :param puuid: 玩家通用唯一识别码。可以是单一值，也可以是一个列表。这个参数只用于确定敌友阵营。<br>Puuid. Both a single value and a list are supported. This parameter is only used to determine the enemy and ally teams.
+    :type puuid: str | list[str]
+    :param useAllVersions: 是否为数据资源异常处理执行版本回溯。默认为假。<br>Whether to perform version backtracking for data resource exception handling. False by default.
+    :type useAllVersions: bool
+    :param versionList: 适用于CommunityDragon数据库的版本对象列表。<br>A list of Patch objects compatible with CommunityDragon database versioning.
+    :type versionList: list[Patch]
+    :param locale: 语言文化代码。默认使用美式英语。<br>Language code. English (US) by default.
+    :type locale: str
+    :param current_versions: 各数据资源目前正在使用的版本信息。<br>Current patches of data resources.
+    :type current_versions: dict[str, str]
+    :param unmapped_keys: 各数据资源未找到的键。用于控制数据未找到匹配记录的提示最多输出一次。<br>Unmapped keys in all data resources, used to control the hint about data not found to be printed at most once.
+    :type unmapped_keys: dict[str, set[int]]
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
+    :type verbose: bool
+    :return: 云顶之弈对局概要数据框。<br>TFT match summary dataframe.
+    :rtype: pandas.DataFrame
+    '''
     if versionList == None:
         versionList = []
     if log == None:

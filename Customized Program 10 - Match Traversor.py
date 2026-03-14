@@ -38,6 +38,16 @@ connector: Connector = Connector()
 # 遍历对局以查找符合要求的对局（Traverse the matches to find one that fits the demands）
 #-----------------------------------------------------------------------------
 def specify_matchId_limit(start_matchId: Optional[int] = None, end_matchId: Optional[int] = None) -> tuple[int, int]: #处理命令行和函数传入的变量（Handle the arguments passed from cmdline and a function）
+    '''
+    设置对局序号的上下限。<br>Set the lower and upper limits of the matchId range.
+    
+    :param start_matchId: 对局序号下限。如果未指定，则会在函数内确定。<br>Lower limit of matchId. If unspecified, it will be determined inside the function.
+    :type start_matchId: int
+    :param end_matchId: 对局序号上限。如果未指定，则会在函数内确定。<br>Upper limit of matchId. If unspecified, it will be determined inside the function.
+    :type end_matchId: int
+    :return: 对局序号范围。闭区间。<br>MatchId range. A close interval.
+    :rtype: tuple[int, int]
+    '''
     if args.begin == 0 or not isinstance(args.begin, int):
         if start_matchId == None:
             print("请输入起始对局序号：\nPlease input the starting matchId:")
@@ -606,6 +616,14 @@ def first_match_after_mainteinance(game_summary: dict[str, Any], patch: str) -> 
     return game_summary["json"].get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_summary["json"]["gameVersion"]) >= Patch(patch)
 
 def define_function() -> tuple[str, Optional[Callable[[dict[str, Any]], bool]]]:
+    '''
+    定义判断条件函数或者阈值函数。<br>Define a condition judgment functin or threshold function.
+    
+    :return: 函数主体字符串和函数接口。<br>Function body string and the function.
+    
+        函数主体字符串用于输出到日志中。<br>Function body string exists here to be exported into the log file.
+    :rtype: tuple[str, Optional[Callable[[dict[str, Any]], bool]]]
+    '''
     while True:
         func_str: str = input("f(game_summary): ")
         if func_str == "":
@@ -628,7 +646,7 @@ def define_function() -> tuple[str, Optional[Callable[[dict[str, Any]], bool]]]:
                         print("您输入的函数返回的不是逻辑值！请重新输入。\nYour function doesn't return a boolean value! Please try again.")
     return (func_str, func)
 
-async def index_traversal_main(connection: Connection) -> None:
+async def index_traversal_main(connection: Connection) -> None: #按序遍历对局（Traverse matches by order）
     prepared: bool = False #标记函数参数是否准备就绪（Marks whether the parameters are ready）
     step: int = 1 #步骤计数（Step counter）
     start_matchId: int = -1 #起始对局序号（Starting matchId）
@@ -675,7 +693,7 @@ async def index_traversal_main(connection: Connection) -> None:
     if prepared:
         await index_traverse_match(connection, start_matchId = start_matchId, end_matchId = end_matchId, func_str = func_str, product = product)
 
-async def history_traversal_main(connection: Connection) -> None:
+async def history_traversal_main(connection: Connection) -> None: #从对局记录递归遍历对局（Recursively traverse matches from match history）
     prepared: bool = False #标记函数参数是否准备就绪（Marks whether the parameters are ready）
     step: int = 1 #步骤计数（Step counter）
     start_puuid: str = "" #起始玩家通用唯一识别码（Starting puuid）
@@ -732,7 +750,7 @@ async def history_traversal_main(connection: Connection) -> None:
     if prepared:
         await history_traverse_match(connection, start_puuid, product, func_str = func_str)
 
-async def binary_search_main(connection: Connection) -> None:
+async def binary_search_main(connection: Connection) -> None: #类二分搜索一场对局（Search for a match by a binary-like method）
     threshold_function_definition_hint_printed: bool = False #标记是否已经打印过阈值函数定义的提示（Marks whether the program has printed the hint of a threshold function's definition）
     prepared: bool = False
     step: int = 1

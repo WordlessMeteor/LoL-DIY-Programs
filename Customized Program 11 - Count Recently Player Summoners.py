@@ -72,6 +72,19 @@ connector: Connector = Connector()
 # 查找最近一起并肩作战的召唤师并给出统计信息（Find recently played summoners and give statistics of it）
 #-----------------------------------------------------------------------------
 def prepare_data_resources(platformId: str, locale: str) -> bool:
+    '''
+    准备全局数据资源。<br>Prepare global data resources.
+    
+    :param platformId: 服务器代号。决定使用正式服还是测试服的数据资源。<br>PlatformId, which determines one of Live and PBE data resources will be used.
+    
+        服务器代号可以通过以下LCU接口获取：<br>PlatformId can be obtained through the following LCU endpoint:
+        - `GET /lol-platform-config/v1/namespaces/LoginDataPacket/platformId`
+    :type platformId: str
+    :param locale: 语言文化代码。决定了数据资源的语言。<br>Language code, which determines the language of the data resources.
+    :type locale
+    :return: 是否切换语言。<br>Whether to switch language.
+    :rtype: bool
+    '''
     global session, URLPatch, patches_initial, bigPatches, queues_initial, spells_initial, LoLChampions_initial, LoLItems_initial, summonerIcons_initial, perks_initial, perkstyles_initial, TFTAugments_initial, TFTChampions_initial, TFTItems_initial, TFTCompanions_initial, TFTTraits_initial, CherryAugments_initial
     #下面声明一些数据资源的地址（The following code declare some data resources' URLs）
     URLPatch = "pbe" if platformId == "PBE1" or platformId == "PBE" else "latest"
@@ -967,6 +980,12 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
     return switch_language
 
 async def prepare_lcu_plugins(connection: Connection) -> None:
+    '''
+    从LCU插件中读取实时数据资源。<br>Read real-time data resources from LCU plugin.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     global wardSkins, championSkins
     ##饰品（Ward skin）
     wardSkins_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/ward-skins.json")).json()
@@ -985,6 +1004,18 @@ async def prepare_lcu_plugins(connection: Connection) -> None:
                     championSkins[tier["id"]] = tier
 
 async def load_smurf(connection: Connection, selfDetect: bool, infos: Optional[dict[str, dict[str, Any]]] = None) -> list[dict[str, Any]]:
+    '''
+    读取小号信息。<br>Load smurf information.
+    
+    用户可以手动输入小号，也可以选择从一个本地文件读取。读取完成后，也可以选择更新本地的小号信息。<br>Users may choose to manually input smurf information, or load smurfs from a local file. After loading, the user can decide whether to update the local smurf information.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
+    :return: 小号信息列表。<br>A list of smurfs.
+    :rtype: list[dict[str, Any]]
+    '''
     if infos == None:
         infos = {}
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
@@ -1104,6 +1135,28 @@ async def load_smurf(connection: Connection, selfDetect: bool, infos: Optional[d
     return smurfs
 
 def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame, gameQueues: dict[int, dict[str, Any]], displayName: str, export_folder: str) -> int:
+    '''
+    生成模式，生成近期一起玩过的玩家图表和工作簿。<br>Generate mode, which generates graphs and workbooks of recently played summoners.
+    
+    :param search_LoL: 是否搜索过英雄联盟对局记录。<br>Whether LoL match history has been searched.
+    :type search_LoL: bool
+    :param search_TFT: 是否搜索过云顶之弈对局记录。<br>Whether TFT match history has been searched.
+    :type search_TFT: bool
+    :param recent_LoLPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_LoLPlayer_df: pandas.DataFrame
+    :param recent_TFTPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_TFTPlayer_df: pandas.DataFrame
+    :param gameQueues: 整理后的队列数据资源。键是队列序号，值是游戏模式信息字典。<br>Organized queue data resource. Each key is a queueId, and each value is a game mode information dictionary.
+    
+        原始队列数据资源可以通过以下LCU接口获取：<br>The raw queue data resource can be obtained through the following LCU endpoint:
+        - `GET /lol-game-queues/v1/queues`
+    :type gameQueues: dict[int, dict[str, Any]]
+    :param displayName: 用于图表和工作簿命名的召唤师名称。<br>The summoner name used as a part of the workbook's and graph's name.
+    :type displayName: str
+    :param export_folder: 图表和工作簿的导出目录。<br>The export directory of the graphs and workbooks.
+    :return: 状态码。在正常退出函数的情况下，总是返回0。<br>Status code. When this function is exited as normal, 0 is always returned.
+    :rtype: int
+    '''
     recent_players_metadata: dict[str, dict[str, Any]] = {} #这里另外设置元数据是为了整理出用于可视化的数据（Here the metadata is designed to sort out data for visualization）
     if search_LoL:
         #logPrint("用于可视化的元数据创建进度（Creating process of metadata for visualization）：")
@@ -1407,6 +1460,26 @@ def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: panda
     return 0
 
 async def detect_mode(connection: Connection, search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame, language_code: str, infos: Optional[dict[str, dict[str, Any]]] = None) -> bool:
+    '''
+    检测模式。由此函数进入各个检测场景。<br>Detect mode. The entry to scenarios.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param search_LoL: 是否搜索过英雄联盟对局记录。<br>Whether LoL match history has been searched.
+    :type search_LoL: bool
+    :param search_TFT: 是否搜索过云顶之弈对局记录。<br>Whether TFT match history has been searched.
+    :type search_TFT: bool
+    :param recent_LoLPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_LoLPlayer_df: pandas.DataFrame
+    :param recent_TFTPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_TFTPlayer_df: pandas.DataFrame
+    :param language_code: 语言文化代码。用于确定数据资源链接。<br>Language code. Used to determine links to data resources.
+    :type language_code: str
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
+    :return: 是否更新对局记录数据。<br>Whether to update match history data.
+    :rtype: bool
+    '''
     if infos == None:
         infos = {}
     #下面根据用户的游戏状态推荐选项（Recommend an option according to the user's gameflow phase）
@@ -1468,6 +1541,22 @@ async def detect_mode(connection: Connection, search_LoL: bool, search_TFT: bool
     return update
 
 async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame, infos: Optional[dict[str, dict[str, Any]]] = None) -> None:
+    '''
+    检测一场对局的各个阶段中遇到过的玩家。<br>Detect recently played summoners in each phase of a game.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param search_LoL: 是否搜索过英雄联盟对局记录。<br>Whether LoL match history has been searched.
+    :type search_LoL: bool
+    :param search_TFT: 是否搜索过云顶之弈对局记录。<br>Whether TFT match history has been searched.
+    :type search_TFT: bool
+    :param recent_LoLPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_LoLPlayer_df: pandas.DataFrame
+    :param recent_TFTPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_TFTPlayer_df: pandas.DataFrame
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
+    '''
     if infos == None:
         infos = {}
     current_puuid_list: list[str] = list(map(lambda x: x["puuid"], AllAccounts))
@@ -2023,6 +2112,24 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
         champ_select_session_cache.clear() #在进入游戏后，清理所有缓存的英雄选择会话（After the user enters a game, clear all champ select session cache）
 
 async def detect_postgame(connection: Connection, search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame, language_code: str, infos: Optional[dict[str, dict[str, Any]]] = None) -> None:
+    '''
+    检测某场过往对局中曾经一起玩过的玩家。<br>Detect recently played summoners in a previous match.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param search_LoL: 是否搜索过英雄联盟对局记录。<br>Whether LoL match history has been searched.
+    :type search_LoL: bool
+    :param search_TFT: 是否搜索过云顶之弈对局记录。<br>Whether TFT match history has been searched.
+    :type search_TFT: bool
+    :param recent_LoLPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_LoLPlayer_df: pandas.DataFrame
+    :param recent_TFTPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_TFTPlayer_df: pandas.DataFrame
+    :param language_code: 语言文化代码。用于确定数据资源链接。<br>Language code. Used to determine links to data resources.
+    :type language_code: str
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
+    '''
     #初始化数据资源（Initialize data resources）
     patches: list[str] = patches_initial.copy()
     queues: dict[int, dict[str, Any]] = queues_initial.copy()
@@ -2192,6 +2299,14 @@ async def detect_postgame(connection: Connection, search_LoL: bool, search_TFT: 
             logPrint('请输入对局序号。输入“0”以返回上一层。\nPlease enter the gameId. Submit "0" to return to the last step.')
 
 async def detect_dodged_champSelect(connection: Connection, infos: Optional[dict[str, dict[str, Any]]] = None) -> None:
+    '''
+    检测过往被秒退的英雄选择阶段中曾经遇到过的队友。<br>Detect allies encountered in dodged champ select stages.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
+    '''
     if infos == None:
         infos = {}
     #检测前先清理已经存在的对局记录的英雄选择会话缓存（Before detection, clear the champ select sessions whose corresponding matches are already in the history）
@@ -2365,6 +2480,20 @@ async def detect_dodged_champSelect(connection: Connection, infos: Optional[dict
         champ_select_session_cache[matchId] = champ_select_session
 
 async def detect_friend(connection: Connection, search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame) -> None:
+    '''
+    检测近期一起玩过的好友。<br>Detect recently played friends.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param search_LoL: 是否搜索过英雄联盟对局记录。<br>Whether LoL match history has been searched.
+    :type search_LoL: bool
+    :param search_TFT: 是否搜索过云顶之弈对局记录。<br>Whether TFT match history has been searched.
+    :type search_TFT: bool
+    :param recent_LoLPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_LoLPlayer_df: pandas.DataFrame
+    :param recent_TFTPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_TFTPlayer_df: pandas.DataFrame
+    '''
     recent_friend_count: int = 0
     recent_LoLPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"] if use_sgp else ["gameName", "tagLine", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"]
     recent_TFTPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameDate", "gameModeName", "last_round_format"]
@@ -2431,6 +2560,20 @@ async def detect_friend(connection: Connection, search_LoL: bool, search_TFT: bo
             logPrint('''%d名好友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d friends present in your past matches. Please check the workbook "%s" in the main directory.''' %(recent_friend_count, wb08Name, recent_friend_count, wb08Name))
 
 async def detect_friend_request(connection: Connection, search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame) -> None:
+    '''
+    检测好友请求中近期一起玩过的玩家。<br>Detect recently played summoners in the friend requests.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param search_LoL: 是否搜索过英雄联盟对局记录。<br>Whether LoL match history has been searched.
+    :type search_LoL: bool
+    :param search_TFT: 是否搜索过云顶之弈对局记录。<br>Whether TFT match history has been searched.
+    :type search_TFT: bool
+    :param recent_LoLPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_LoLPlayer_df: pandas.DataFrame
+    :param recent_TFTPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_TFTPlayer_df: pandas.DataFrame
+    '''
     recent_prefriend_count: int = 0
     recent_LoLPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"] if use_sgp else ["gameName", "tagLine", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"]
     recent_TFTPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameDate", "gameModeName", "last_round_format"]
@@ -2495,6 +2638,22 @@ async def detect_friend_request(connection: Connection, search_LoL: bool, search
             logPrint('''好友请求列表中的%d名好友曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d friends in the request that is present in your past matches. Please check the workbook "%s" in the main directory.''' %(recent_prefriend_count, wb09Name, recent_prefriend_count, wb09Name))
 
 async def detect_party_invitaion(connection: Connection, search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame, infos: Optional[dict[str, dict[str, Any]]] = None) -> None:
+    '''
+    检测组队邀请发起人中近期一起玩过的玩家。<br>Detect recently played summoners who send party invitations.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param search_LoL: 是否搜索过英雄联盟对局记录。<br>Whether LoL match history has been searched.
+    :type search_LoL: bool
+    :param search_TFT: 是否搜索过云顶之弈对局记录。<br>Whether TFT match history has been searched.
+    :type search_TFT: bool
+    :param recent_LoLPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_LoLPlayer_df: pandas.DataFrame
+    :param recent_TFTPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_TFTPlayer_df: pandas.DataFrame
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
+    '''
     if infos == None:
         infos = {}
     invitee_count: int = 0
@@ -2654,6 +2813,20 @@ async def detect_party_invitaion(connection: Connection, search_LoL: bool, searc
                 logPrint("以上玩家中，%s是您的好友。\nAmong the above players, %s are your friends." %("、".join(recent_friend_summonerNames), ", ".join(recent_friend_summonerNames)))
 
 async def detect_blockList(connection: Connection, search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame) -> None:
+    '''
+    检测黑名单中近期一起玩过的玩家。<br>Detect recently played summoners in the block list.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param search_LoL: 是否搜索过英雄联盟对局记录。<br>Whether LoL match history has been searched.
+    :type search_LoL: bool
+    :param search_TFT: 是否搜索过云顶之弈对局记录。<br>Whether TFT match history has been searched.
+    :type search_TFT: bool
+    :param recent_LoLPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_LoLPlayer_df: pandas.DataFrame
+    :param recent_TFTPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_TFTPlayer_df: pandas.DataFrame
+    '''
     recent_blockedPlayer_count: int = 0
     recent_LoLPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"] if use_sgp else ["gameName", "tagLine", "gameCreationDate", "gameModeName", "champion_name", "K/D/A"]
     recent_TFTPlayer_fields: list[str] = ["riotIdGameName", "riotIdTagline", "gameDate", "gameModeName", "last_round_format"]
@@ -2716,6 +2889,22 @@ async def detect_blockList(connection: Connection, search_LoL: bool, search_TFT:
             logPrint('''%d名黑名单玩家曾经出现在您的历史对局中。请查看主目录下的“%s”文件。\nThere're %d blocked players present in your past matches. Please check the workbook "%s" in the main directory.''' %(recent_blockedPlayer_count, wb11Name, recent_blockedPlayer_count, wb11Name))
 
 async def detect_custom_list(connection: Connection, search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame, infos: Optional[dict[str, dict[str, Any]]] = None) -> None:
+    '''
+    检测一个自定义召唤师名称列表中近期一起玩过的玩家。<br>Detect recently played summoners in a custom summoner name list.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param search_LoL: 是否搜索过英雄联盟对局记录。<br>Whether LoL match history has been searched.
+    :type search_LoL: bool
+    :param search_TFT: 是否搜索过云顶之弈对局记录。<br>Whether TFT match history has been searched.
+    :type search_TFT: bool
+    :param recent_LoLPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_LoLPlayer_df: pandas.DataFrame
+    :param recent_TFTPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_TFTPlayer_df: pandas.DataFrame
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
+    '''
     if infos == None:
         infos = {}
     current_puuid_list: list[str] = list(map(lambda x: x["puuid"], AllAccounts))

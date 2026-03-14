@@ -1,7 +1,7 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import argparse, os, pandas, psutil, time, win32com.client
-from typing import Any
+from typing import Any, Optional
 from src.utils.summoner import print_summoner_info, get_info, get_info_name, sort_summoner_info
 from src.utils.logger import LogManager
 from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, normalize_file_name, verify_uuid
@@ -48,7 +48,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/11
+# 更新（Last update）：     2026/03/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -86,7 +86,15 @@ connector: Connector = Connector()
 #-----------------------------------------------------------------------------
 # 汇总英雄选择阶段或游戏内玩家的战绩（Summarize players' stats in recent matches during champ select stage or in game）
 #-----------------------------------------------------------------------------
-def check_proc_trees(pids: list[int]) -> pandas.DataFrame: #查看本程序创建的所有进程及其子进程（Check all processes and subprocess created by this program）
+def check_proc_trees(pids: list[int]) -> pandas.DataFrame:
+    '''
+    查看本程序创建的所有进程及其子进程，并将它们整理成一张表格。<br>Check all processes and subprocess created by this program and organize them into a dataframe.
+    
+    :param pids: 本程序的进程号。<br>The process id of this program.
+    :type pids: list[int]
+    :return: 进程数据框。<br>Process dataframe.
+    :rtype: pandas.DataFrame
+    '''
     process_header: dict[str, str] = {"No.": "序号", "pid": "进程号", "name": "名称", "createTime": "进程创建时间", "status": "状态"}
     process_header_keys: list[str] = list(process_header.keys())
     process_data: dict[str, list[Any]] = {key: [] for key in process_header_keys}
@@ -123,7 +131,15 @@ def check_proc_trees(pids: list[int]) -> pandas.DataFrame: #查看本程序创�
     process_df = pandas.concat([pandas.DataFrame([process_header])[process_df.columns], process_df], ignore_index = True)
     return process_df
 
-def kill_proc_tree(pid: int, including_parent: bool = True) -> None: #清理残留进程及其子进程（Clear the remaining processes）
+def kill_proc_tree(pid: int, including_parent: bool = True) -> None:
+    '''
+    清理残留进程及其子进程。<br>Clear the remaining processes.
+    
+    :param pid: 进程号。<br>Process id.
+    :type pid: int
+    :param including_parent: 在清理子进程的同时是否清理该进程。默认为真。<br>While the program is clearing the subprocesses, whether to clear this process. True by default.
+    :type including_parent: bool
+    '''
     parent: psutil.Process = psutil.Process(pid)
     for child in parent.children(recursive = True):
         child.kill()
@@ -131,6 +147,14 @@ def kill_proc_tree(pid: int, including_parent: bool = True) -> None: #清理残�
         parent.kill()
 
 async def prepare_data_resources(connection: Connection, verbose: bool = True) -> None:
+    '''
+    准备全局数据资源。<br>Prepare global data resources.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param verbose: 是否将详细信息打印到终端。默认为真。<br>Whether to print details to terminal. True by default.
+    :type verbose: bool
+    '''
     #准备数据资源（Prepare data resources）
     logPrint("正在准备数据资源……\nPreparing data resources ...")
     global queues, spells, LoLChampions, championSkins, LoLItems, summonerIcons, perks, perkstyles, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, CherryAugments, wardSkins, regaliaBanners
@@ -228,7 +252,27 @@ async def prepare_data_resources(connection: Connection, verbose: bool = True) -
     ##旗帜（Regalia banner）
     regaliaBanners = await (await connection.request("GET", "/lol-regalia/v3/inventory/REGALIA_BANNER")).json()
 
-async def search_player_match_stats_lol(connection: Connection, puuid: str, begIndex: int = 0, endIndex: int = 20, lol_sgp: bool = True, log: LogManager | None = None, verbose: bool = True) -> pandas.DataFrame: #查询某个玩家的对局记录数据（Search for a player's match history stats）
+async def search_player_match_stats_lol(connection: Connection, puuid: str, begIndex: int = 0, endIndex: int = 20, lol_sgp: bool = True, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame: #查询某个玩家的对局记录数据（Search for a player's match history stats）
+    '''
+    获取一名玩家的英雄联盟对局概要，并整理成一张表格。<br>Get a player's LoL match summaries and organize them into a dataframe.
+    
+    :param :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param puuid: 要查询的玩家的玩家通用唯一识别码。<br>Puuid of the summoner to query.
+    :type puuid: str
+    :param begIndex: 起始索引。默认为0。<br>Beginning index. 0 by default.
+    :type begIndex: int
+    :param endIndex: 终止索引。默认为20。<br>Ending index. 20 by default.
+    :type endIndex: int
+    :param lol_sgp: 是否通过SGP API获取英雄联盟对局概要。默认为真。<br>Whether to get LoL match summaries through SGP API. True by default.
+    :type lol_sgp: bool
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
+    :type verbose: bool
+    :return: 玩家英雄联盟对局概要数据框。<br>Player LoL match summary dataframe.
+    :rtype: pandas.DataFrame
+    '''
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -281,7 +325,25 @@ async def search_player_match_stats_lol(connection: Connection, puuid: str, begI
     LoLGame_stat_df = pandas.concat([pandas.DataFrame([LoLGame_stat_header])[LoLGame_stat_df.columns], LoLGame_stat_df], ignore_index = True)
     return LoLGame_stat_df
 
-async def search_player_match_stats_tft(connection: Connection, puuid: str, begin: int = 0, count: int = 20, log: LogManager | None = None, verbose: bool = True) -> pandas.DataFrame:
+async def search_player_match_stats_tft(connection: Connection, puuid: str, begin: int = 0, count: int = 20, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
+    '''
+    获取一名玩家的云顶之弈对局概要，并整理成一张表格。<br>Get a player's TFT match summaries and organize them into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param puuid: 要查询的玩家的玩家通用唯一识别码。<br>Puuid of the summoner to query.
+    :type puuid: str
+    :param begin: 起始索引。默认为0。<br>Beginning index. 0 by default.
+    :type begin: int
+    :param count: 对局数量。默认为200。<br>Number of matches. 200 by default.
+    :type count: int
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
+    :type verbose: bool
+    :return: 玩家云顶之弈对局概要数据框。<br>Player TFT match summary dataframe.
+    :rtype: pandas.DataFrame
+    '''
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -321,6 +383,13 @@ async def search_player_match_stats_tft(connection: Connection, puuid: str, begi
     return TFTGame_stat_df
 
 def open_workbook(path: str) -> tuple[Any, Any]:
+    '''
+    使用Excel程序打开一个工作簿。<br>Open a workbook with Excel application.
+    
+    :param path: 工作簿的路径。<br>Path of the workbook.
+    :type path: str
+    :return: Excel应用对象和工作簿对象。如果打开失败，则为两个None。<br>An Excel application object and a workbook object. If the program failed to open it, then return two Nones.
+    '''
     try:
         excel = win32com.client.GetActiveObject("Excel.Application")
     except: #pywintypes.com_error: (-2147221021, "操作无法使用", None, None)
@@ -334,7 +403,7 @@ def open_workbook(path: str) -> tuple[Any, Any]:
             excel.ActiveWindow.WindowState = -4137
         return (excel, workbook)
     except Exception as e:
-        logPrint(f"打开工作簿时出错：{e}")
+        logPrint(f"打开工作簿时出错：\nAn error happened when the program was trying to open this workbook:\n{e}")
         return (None, None)
 
 async def Clarke_revival(connection: Connection) -> None:
@@ -764,7 +833,8 @@ async def Clarke_revival(connection: Connection) -> None:
                         break
                     else:
                         logPrint("请输入一个正整数！\nPlease enter a positive integer!")
-        queue_df: pandas.DataFrame = await sort_queue_data(connection)
+        queues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
+        queue_df: pandas.DataFrame = sort_queue_data(queues_source)
         queue_df_fields_to_print: list[str] = ["id", "name", "mapId", "category", "pickMode"]
         queue_df_indices_to_select: list[int] = [0] + list(queue_df[(queue_df["queueAvailability"] == "√") | (queue_df["isVisible"] == "√")].index)
         queueIds: list[int] = []

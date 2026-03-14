@@ -9,9 +9,16 @@ from src.utils.format import optimize_bool_display
 from src.core.config.headers import queue_header
 from src.core.config.localization import categories, gameSelectCategories, gameSelectModeGroups, tiers, queueAvailability_dict, banModes, pickModes
 
-async def sort_queue_data(connection: Connection) -> pandas.DataFrame:
-    queues: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json() #以前含有“最大召唤师等级”参数（There was previously a "maxLevel" parameter）
-    queue_header_keys: list[str] = list(queue_header.keys())
+def sort_queue_data(queues: list[dict[str, Any]]) -> pandas.DataFrame:
+    '''
+    将游戏队列信息整理成一个表格。<br>Sort the game queue information into a dataframe.
+    
+    :param queues: 队列信息。通过`GET /lol-game-queues/v1/queues`接口获取。<br>Game queue information obtained through `GET /lol-game-queues/v1/queues` endpoint.
+    :type queues: list[dict[str, Any]]
+    :return: 游戏模式表。<br>Game mode dataframe.
+    :rtype: pandas.DataFrame
+    '''
+    queue_header_keys: list[str] = list(queue_header.keys()) #以前含有“最大召唤师等级”参数（There was previously a "maxLevel" parameter）
     queue_data: dict[str, Any] = {key: [] for key in queue_header_keys}
     for queue in queues:
         for i in range(len(queue_header_keys)):
@@ -56,6 +63,14 @@ async def sort_queue_data(connection: Connection) -> pandas.DataFrame:
     return queue_df
 
 async def check_available_queue(connection: Connection) -> pandas.DataFrame: #梳理可用队列（Sort out available queues）
+    '''
+    梳理服务器开放的游戏模式，并整理成表格的形式。<br>Filter platform available game modes and organize them into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 可用游戏模式表。<br>Available game mode dataframe.
+    :rtype: pandas.DataFrame
+    '''
     gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
     platform_config: dict[str, Any] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces")).json()
     map_CN: dict[int, str] = {8: "水晶之痕", 10: "扭曲丛林", 11: "召唤师峡谷", 12: "随机地图", 14: "屠夫之桥", 16: "星界废墟", 18: "瓦洛兰城市公园", 19: "第43区", 20: "飞船坠落点", 21: "百合与莲花的神庙", 22: "聚点危机", 30: "怒火角斗场", 33: "最终都市", 35: "班德尔之森"}

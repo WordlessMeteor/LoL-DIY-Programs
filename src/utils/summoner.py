@@ -15,6 +15,14 @@ from src.core.config.localization import tiers, challengeCategories, challengeCr
 # 输出召唤师信息（Output summoner information）
 #-----------------------------------------------------------------------------
 async def print_summoner_info(connection: Connection, name: str = "current-summoner") -> None:
+    '''
+    打印目标召唤师的身份信息。<br>Print the target summoner's identity information.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param name: 召唤师检索字符串。可以是召唤师名称、召唤师序号或者玩家通用唯一识别码。如果未指定，则检索用户本人。<br>Summoner query string. Can be a summoner name, a summonerId or a puuid. If it's unspecified, then the user itself will be queried.
+    :type name: str
+    '''
     info: dict[str, Any] = await get_info(connection, name)
     if info["info_got"]:
         info_body: dict[str, Any] = info["body"]
@@ -27,6 +35,12 @@ async def print_summoner_info(connection: Connection, name: str = "current-summo
 #  lockfile
 #-----------------------------------------------------------------------------
 async def update_lockfile(connection: Connection) -> None:
+    '''
+    更新英雄联盟游戏目录下的lockfile文件。已弃用。<br>Update the lockfile under League of Legends installation directory. Deprecated.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     path: str = os.path.join(connection.installation_path.encode("gb18030").decode("utf-8"), "lockfile")
     if os.path.isfile(path):
         file: IO[Any] = open(path, "w+")
@@ -36,6 +50,14 @@ async def update_lockfile(connection: Connection) -> None:
     return None
 
 async def get_lockfile(connection: Connection) -> Optional[str]:
+    '''
+    获取英雄联盟游戏目录下的lockfile文件中的内容。已弃用。<br>Get the content of the lockfile under League of Legends installation directory. Deprecated.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 当文件存在时，返回LCU API认证令牌。否则返回None。<br>When the lockfile exists, return the LCU API authorization token. Otherwise, return None.
+    :rtype: Optional[str]
+    '''
     path: str = os.path.join(connection.installation_path.encode("gb18030").decode("utf-8"), "lockfile")
     if os.path.isfile(path):
         file: IO[Any] = open(path, "r")
@@ -50,6 +72,33 @@ async def get_lockfile(connection: Connection) -> Optional[str]:
 #  查询召唤师信息（Search for summoner information）
 #-----------------------------------------------------------------------------
 async def get_info(connection: Connection, name: str, searchType: str | int = "riotId") -> dict[str, Any]:
+    '''
+    获取一名召唤师的信息。<br>Get a summoner's information.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param name: 召唤师检索字符串。可以是召唤师名称、召唤师序号或者玩家通用唯一识别码。<br>Summoner query string. Can be a summoner name, a summonerId or a puuid.
+    :type name: str
+    :param searchType: 指定使用什么接口查询召唤师信息。有以下选项：<br>Specify which endpoint is used to search for the summoner's information. Here're several options:
+    
+        - 0: selfCheck: 查看自己的召唤师信息。将`name`指定为“current-summoner”，则使用这个接口。<br>Check the summoner information of the user itself. This endpoint is used when `name` is specified as "current-summoner".
+        - 1: riotId: 通过召唤师名称接口查询。<br>Use the summoner name endpoint.
+        - 2: puuid: 通过玩家通用唯一识别码接口查询。<br>Use the puuid endpoint.
+        - 3: summonerId: 通过召唤师序号接口查询。<br>Use the summonerId endpoint.
+        
+        由于目前本函数已经实现了接口的智能选择，因此这个参数已经弃用。<br>Because this function has achieved automatically selecting an endpoint based on the format of name parameter, this parameter has been deprecated.
+    :type searchType: Literal[0, 1, 2, 3, "selfCheck", "riotId", "puuid", "summonerId"]
+    :return: 召唤师信息结构体。由以下部分组成：<br>Summoner information struct. Composed of the following elements:
+    
+        - searchType: 检索接口类型。<br>The type of the endpoint.
+        - endpoint: 检索接口。<br>Query endpoint.
+        - info_got: 是否成功获取召唤师信息。<br>Whether the summoner information is successfully got.
+        - network_error: 是否出现网络异常。<br>Whether a network error occurred.
+        - body: 响应主体。<br>Response body.
+        - message: 人类可读的消息。<br>Human-readable message.
+        - selfInfo: 该召唤师信息是否是自己的召唤师信息。<br>Whether the queried summoner is the user itself.
+    :rtype: dict[str, Any]
+    '''
     #searchTypes = {0: "selfCheck", 1: "riotId", 2: "puuid", 3: "summonerId"}
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     result: dict[str, Any] = {"searchType": "riotId", "endpoint": "/lol-summoner/v2/summoners/puuid/{puuid}", "info_got": False, "network_error": False, "body": {}, "message": "", "selfInfo": False}
@@ -142,7 +191,8 @@ async def get_infos(connection: Connection, puuids: Optional[list[str]] = None, 
     '''
     通过POST /lol-summoner/v2/summoners/puuid接口批量获取多名召唤师的信息。对于天梯等内部数据的信息呈现非常有帮助。<br>Get multiple summoners' information through `POST /lol-summoner/v2/summoners/puuid` endpoint in batches. Especially helpful for internal data transformation like ranked ladders.
     
-    :type connection: lcu_driver.connection.Connection
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
     :param puuids: 由玩家通用唯一识别码组成的列表。<br>A list of player universally unique identifiers (PUUIDs).
     :type puuids: list[str]
     :param batch_size: 每批召唤师的数量。默认为1500个。这个数量不能过多，否则上述接口会返回错误信息。<br>The number of each batch of summoners to query. 1500 by default. This number shouldn't be set too high, or the above endpoint will return an error message.
@@ -186,6 +236,26 @@ async def get_infos(connection: Connection, puuids: Optional[list[str]] = None, 
     return summoners
 
 def get_info_name(info: Any, mode: int = 1, verbose: bool = True) -> str:
+    '''
+    根据给定的召唤师信息主体中计算其名称并返回。<br>Calculate and return the summoner name according to the supplied summoner information body.
+    
+    :param info: 召唤师信息。<br>Summoner information.
+    
+        如果是通过`get_info`函数获取的召唤师信息，需要将其返回值中的响应主体内容传递到该参数。<br>If the summoner information is obtained by `get_info` function, the user should pass the content of "body" into this parameter.
+    :type info: dict[str, Any]
+    :param mode: 路径分化模式。仅用于确定新玩家的召唤师文件夹。有以下取值：<br>Path mutator mode. Only used to determine the summoner folder of a new player. Values are as follows:
+    
+        - 1: 召唤师信息将保存到大区文件夹下的玩家通用唯一识别码文件夹下。<br>Summoner information will be saved into a puuid folder under the platform folder.
+        - 2: 召唤师信息将保存到大区文件夹下的中文版新玩家文件夹下。<br>Summoner information will be saved into the new player folder in Chinese under the platform folder.
+        - 3: 召唤师信息将保存到大区文件夹下的英文版新玩家文件夹下。<br>Summoner information will be saved into the new player folder in English under the platform folder.
+    :type mode: Literal[1, 2, 3]
+    :param verbose: 是否输出异常信息。默认为真。<br>Whether to print error information. True by default.
+    
+        在不经赋值而直接使用此函数的场景（如通过格式化占位符将该函数返回结果嵌入字符串中）下，建议将此参数置为假。<br>Under circumstances that skip assignment (e.g. the returned result is embedded into a string through a format placeholder), it's suggested that this parameter be set as False.
+    :type verbose: bool
+    :return: 召唤师名称。对于新玩家，返回玩家通用唯一识别码。<br>Summoner name, or puuid when the summoner is a new player.
+    :rtype: str
+    '''
     if isinstance(info, dict):
         #初始化变量（Initialize variables）
         displayName_exist: bool = False
@@ -261,6 +331,57 @@ def get_info_name(info: Any, mode: int = 1, verbose: bool = True) -> str:
     return name
 
 async def sort_summoner_info(connection: Connection, puuids: list[str], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], regaliaBanners: dict[str, dict[str, Any]], unmapped_keys: Optional[dict[str, set[Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
+    '''
+    整理多名召唤师的个人档案，形成一个表格。<br>Organize multiple summoner's profiles into a table.
+    
+    目前，个人档案包括以下信息：<br>Currently, a profile involves the following information:
+    - 召唤师身份信息（经常被说成“召唤师信息”）。<br>Summoner identity information (usually referred as "summoner information").
+    - 排位。<br>Ranked.
+    - 冠军杯赛旗帜。<br>Tournament flag.
+    - 成就。<br>Challenges.
+    - 永恒星碑。<br>Statstones.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param puuids: 要查询的玩家的玩家通用唯一识别码。<br>Puuids of players to query.
+    :type puuids: list[str]
+    :param summonerIcons: 整理后的召唤师图标数据资源。键是召唤师图标序号，值是召唤师图标信息字典。<br>Organized champion skin data resource. Each key is a profileIconId, and each value is a summoner icon information dictionary.
+    
+        原始召唤师图标数据资源可通过以下链接获取：<br>The raw summoner icon data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/summoner-icons.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/summoner-icons.json`
+    :type summonerIcons: dict[int, dict[str, Any]]
+    :param LoLChampions: 整理后的英雄数据资源。键是英雄序号，值是英雄信息字典。<br>Organized champion data resource. Each key is a championId, and each value is a champion information dictionary.
+    
+        原始英雄数据资源可通过以下链接获取：<br>The raw champion data resource can be obtained through the following links:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champions/{championId}.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoints:
+        - `GET /lol-game-data/assets/v1/champion-summary.json`
+        - `GET /lol-game-data/assets/v1/champions/{championId}.json`
+        - `GET /lol-champions/v1/inventories/{summonerId}/champions`
+    :type LoLChampions: dict[int, dict[str, Any]]
+    :param regaliaBanners: 旗帜数据资源。键是旗帜序号，值是旗帜信息字典。<br>Regalia banner data resource. Each key is a bannerId, and each value is a regalia banner information dictionary.
+    
+        原始旗帜数据资源可通过以下链接获取：<br>The raw regalia banner data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/regalia.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoints:
+        - `GET /lol-game-data/assets/v1/regalia.json`
+        - `GET /lol-regalia/v3/inventory/REGALIA_BANNER`
+    :type ragaliaBanners: dict[str, dict[str, Any]]
+    :param unmapped_keys: 各数据资源未找到的键。用于控制数据未找到匹配记录的提示最多输出一次。<br>Unmapped keys in all data resources, used to control the hint about data not found to be printed at most once.
+    :type unmapped_keys: dict[str, set[int]]
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
+    :type verbose: bool
+    :return: 召唤师个人档案数据框。<br>Summoner profile dataframe.
+    :rtype: pandas.DataFrame
+    '''
     if log == None:
         log = LogManager()
     logPrint = log.logPrint

@@ -18,11 +18,26 @@ from src.utils.runtimeDebug import subscope
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/03/11
+# 更新（Last update）：     2026/03/13
 #=============================================================================
 
 #定义异质性检验函数（Define heterogeneity verification function）
-def verifyDictHeterogeneity(dict_list: list[dict[str, Any]]) -> tuple[pandas.DataFrame, pandas.DataFrame, pandas.DataFrame, pandas.DataFrame]: #检查不同的字典中是否存在键相同但值不同的键值对（Check if there're any key-value pairs among dictionaries, where keys are the same but values are not）
+def verifyDictHeterogeneity(dict_list: list[dict[str, Any]]) -> tuple[pandas.DataFrame, pandas.DataFrame, pandas.DataFrame, pandas.DataFrame]:
+    '''
+    检查不同的字典中是否存在键相同但值不同的键值对。<br>Check if there're any key-value pairs among dictionaries, where keys are the same but values are not.
+    
+    在本脚本中，主要用于调试是否不同的二进制描述数据可以合并。<br>In this program, this function is mainly used to debug whether different binary description data can be merged.
+    
+    :param dict_list: 由字典组成的列表。<br>A list of dictionaries.
+    :type dict_list: list[dict[str, Any]]
+    :return: 不同字典的键值覆盖情况。由以下四个表格组成：<br>Key-value pair overlay situation between different dictionaries. Composed of the following four dataframes:
+    
+        1. 重合键矩阵。每个单元格代表两个字典中的共享键的**集合**。<br>Overlapped key matrix. Each cell represents the **set** of shared keys between this pair of dictionaries.
+        2. 重合键数量矩阵。每个单元格代表两个字典中的共享键的**数量**。<br>Overlapped key count matrix. Each cell represents the **number** of shared keys between this pair of dictionaries.
+        3. 逻辑矩阵。每个单元格代表两个字典**是否满足**但凡相同的键的值都相同这一命题。<br>Logical matrix. Each cell represents whether this pair of dictionaries **follow the proposition that** the values of each shared key is the same.
+        4. 差异矩阵。每个单元格代表两个字典中值不同的共享键的集合。<br>Diff matrix. Each cell represents the set of keys whose values are different between this pair of dictionaries.
+    :rtype: tuple[pandas.DataFrame, pandas.DataFrame, pandas.DataFrame, pandas.DataFrame]
+    '''
     matrix: list[list[set[str]]] = []
     count_matrix: list[list[int]] = []
     bool_matrix: list[list[int]] = []
@@ -45,7 +60,15 @@ def verifyDictHeterogeneity(dict_list: list[dict[str, Any]]) -> tuple[pandas.Dat
     return overlay_table, overlay_count_table, overlay_identical_table, overlay_difference_table
 
 #定义键汇总函数族（Define the key summary function family）
-def syncListOrder(src: list[Any], ref: list[Any]) -> None: #根据参考列表中元素的顺序排列一个列表中元素的顺序（Arrange elements in a list in the order of those in the reference list）
+def syncListOrder(src: list[Any], ref: list[Any]) -> None:
+    '''
+    根据参考列表中元素的顺序排列一个列表中元素的顺序。<br>Arrange elements in a list in the order of those in the reference list.
+    
+    :param src: 要排序的列表。<br>The list to be ordered.
+    :type src: list[Any]
+    :param ref: 参考列表。<br>Reference list. 
+    :type src: list[Any]
+    '''
     #求两个列表的交集，并保持其元素在ref中的顺序（Get the intersection of two lists and reserve its element order as in `ref`）
     intersection: list[Any] = []
     for key in ref:
@@ -1039,7 +1062,7 @@ class LoLDataExtractor:
         :type rowIndex: int
         :param enableModeOverride: 是否启用模式覆盖。启用后，将统计某个变量在不同模式中的数值。默认为假。<br>Whether to enable mode overriden values. If enabled, values among different modes will be taken into consideration. False by default.
         :type enableModeOverride: bool
-        :param reservedVars: 见variableCalculation函数。<br>See `variableCalculation` function.
+        :param reservedVars: 处理暂存的变量值，对于一些在嵌套时仍然保持变量形式的说明文本尤其有用，例如奥恩被动的说明文本。<br>Handles reserved variable values, especially useful for some tooltips that still keep the variable form during nesting, e.g. OrnnP.
         :type reservedVars: dict[str, str] | None
         :param flexibleData: 附加数据。<br>Supplemental data.
         :type flexibleData: dict[str, dict[str, Any] | Any] | None
@@ -1166,7 +1189,7 @@ class LoLDataExtractor:
         :type enableModeOverride: bool
         :param rowIndex: 见variableCalculation函数。<br>See `variableCalculation` function.
         :type rowIndex: int
-        :param reservedVars: 见variableCalculation函数。<br>See `variableCalculation` function.
+        :param reservedVars: 处理暂存的变量值，对于一些在嵌套时仍然保持变量形式的说明文本尤其有用，例如奥恩被动的说明文本。<br>Handles reserved variable values, especially useful for some tooltips that still keep the variable form during nesting, e.g. OrnnP.
         :type reservedVars: dict[str, str] | None
         :param flexibleData: 附加数据。<br>Supplemental data.
         :type flexibleData: dict[str, dict[str, Any] | Any] | None
@@ -1724,7 +1747,7 @@ class LoLDataExtractor:
         :type enableModeOverride: bool
         :param reserve_variable: 是否将变量代换后的结果写成“[{变量名}] = {值}”的形式。默认为假。<br>Whether to write the result after variable substitution in the form of "[{Var_name}] = {Value}". False by default.
         :type reserve_variable: bool
-        :param reservedVars: 见variableCalculation函数。<br>See `variableCalculation` function.
+        :param reservedVars: 处理暂存的变量值，对于一些在嵌套时仍然保持变量形式的说明文本尤其有用，例如奥恩被动的说明文本。<br>Handles reserved variable values, especially useful for some tooltips that still keep the variable form during nesting, e.g. OrnnP.
         :type reservedVars: dict[str, str] | None
         :param flexibleData: 附加数据。<br>Supplemental data.
         :type flexibleData: dict[str, dict[str, Any] | Any] | None
@@ -2147,8 +2170,20 @@ class LoLDataExtractor:
         '''
         在保留原始说明文本中的CSS标签和修饰符的基础上，只进行变量代换。<br>Perform variable substitution only. The original CSS tags and descriptors in the tooltip are retained.
         
-        所有参数说明见tooltipTransform方法。<br>For the description of all parameters, see `tooltipTransform` method.
-        
+        :param tooltip: 原始说明文本。<br>Raw tooltip.
+        :type tooltip: str
+        :param strtable_locale: 字符串常量池。<br>Stringtable.
+        :type strtable_locale: dict[str, int | dict[str, str]]
+        :param binData: **原始**二进制描述数据。<br>**Raw** binary description data.
+        :type binData: dict[str, Any]
+        :param isCHS: 是否使用简体中文标点符号。默认为假。<br>Whether to use punctuation marks in Chinese Simplified. False by default.
+        :type isCHS: bool
+        :param enableModeOverride: 是否启用模式覆盖。启用后，将统计某个变量在不同模式中的数值。默认为假。<br>Whether to enable mode overriden values. If enabled, values among different modes will be taken into consideration. False by default.
+        :type enableModeOverride: bool
+        :param reserve_variable: 是否将变量代换后的结果写成“[{变量名}] = {值}”的形式。默认为假。<br>Whether to write the result after variable substitution in the form of "[{Var_name}] = {Value}". False by default.
+        :type reserve_variable: bool
+        :param flexibleData: 附加数据。<br>Supplemental data.
+        :type flexibleData: dict[str, dict[str, Any] | Any] | None
         :return: 变量代换后的说明文本。<br>Tooltip after variable substitution.
         :rtype: str
         '''
@@ -2184,15 +2219,34 @@ class LoLDataExtractor:
 
 class MapExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
+        '''
+        初始化一个地图提取器对象。<br>Initialize a MapExtractor object.
+        
+        :param extractor: 父类对象。用于继承其属性。<br>Parent object. Pass it to inherit its attributes.
+        :type extractor: LoLDataExtractor
+        '''
         self.__dict__.update(extractor.__dict__)
         #self.extractor: LoLDataExtractor = extractor #主要应用于子类对象调用和修改父类对象的属性（Mainly designed for a child object to call and modify the attribute of a parent object）
         self.maps_ready: dict[int, bool] = {mapId: False for mapId in [11, 12, 21, 22, 30, 33, 35]}
         self.map_df: pandas.DataFrame = pandas.DataFrame()
     
     def init_data_readiness(self) -> None:
+        '''
+        初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
+        '''
         self.maps_ready = {mapId: False for mapId in self.maps_ready}
     
     def get_map_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
+        '''
+        在线获取地图二进制描述数据。包括以下内容：<br>Get binary description data of maps online. Including the following content:
+        - 召唤师峡谷（Summoner's Rift）
+        - 嚎哭深渊（Howling Abyss）
+        - 百合与莲花的神庙（Temple of Lily and Lotus）
+        - 聚点危机（Convergence）
+        - 怒火角斗场（Rings of Wrath）
+        - 最终都市（Final City）
+        - 班德尔之森（The Bandlewoods）
+        '''
         logPrint = self.log.logPrint
         #召唤师峡谷（Summoner's Rift）
         map11_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map11/map11.bin.json"
@@ -2330,7 +2384,17 @@ class MapExtractor(LoLDataExtractor):
     
     def read_map_data(self, paths: list[str]) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
         '''
-        :param paths: 地图二进制描述文件的本地路径列表，按照召唤师峡谷（11）、嚎哭深渊（12）、百合与莲花的神庙（21）、聚点危机（22）、怒火角斗场/最高清算（30）、最终都市（33）和班德尔之森（35）的顺序排列。<br>A local path list of map binary description files, following the order of Summoner's Rift (11), Howling Abyss (12), Temple of Lily and Lotus (21), Convergence (22), Rings of Wrath / The Grand Reckoning (30), Final City (33) and The Bandlewood (35) in turn.
+        离线获取地图二进制描述数据。<br>Get binary description data of maps offline.
+        
+        :param paths: 地图二进制描述文件的本地路径列表，按照以下顺序排列：<br>A local path list of map binary description files, arranged in the following order:
+        
+            - 11: 召唤师峡谷（Summoner's Rift）
+            - 12: 嚎哭深渊（Howling Abyss）
+            - 21: 百合与莲花的神庙（Temple of Lily and Lotus）
+            - 22: 聚点危机（Convergence）
+            - 30: 怒火角斗场（Rings of Wrath）
+            - 33: 最终都市（Final City）
+            - 35: 班德尔之森（The Bandlewoods）
         :type paths: list[str]
         '''
         logPrint = self.log.logPrint
@@ -2407,6 +2471,22 @@ class MapExtractor(LoLDataExtractor):
         self.maps_ready[35] = True
         
     def build_map_dataframe(self, debug: bool = False, paths: Optional[list[str]] = None) -> int:
+        '''
+        构建地图数据框。<br>Build map dataframe.
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param paths: 地图二进制描述文件的本地路径列表，按照召唤师峡谷（11）、嚎哭深渊（12）、百合与莲花的神庙（21）、聚点危机（22）、怒火角斗场/最高清算（30）、最终都市（33）和班德尔之森（35）的顺序排列。<br>A local path list of map binary description files, following the order of Summoner's Rift (11), Howling Abyss (12), Temple of Lily and Lotus (21), Convergence (22), Rings of Wrath / The Grand Reckoning (30), Final City (33) and The Bandlewood (35) in turn.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type paths: list[str]
+        :return: 状态码。<br>Status code.
+        
+            - 0: 成功。<br>Success.
+            - 1: 未指定本地文件路径。<br>Local path not specified.
+            - 2: 数据未准备就绪。<br>Data not ready.
+        :rtype: int
+        '''
         logPrint = self.log.logPrint
         if not all(self.maps_ready.values()):
             #获取地图信息（Get map information）
@@ -2634,6 +2714,17 @@ class MapExtractor(LoLDataExtractor):
         return 0
     
     def export_map_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
+        '''
+        导出地图数据到工作簿中。产生以下工作表：<br>Export map data to a workbook. The following worksheet is added:
+        - 地图（Map）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param paths: 地图二进制描述文件的本地路径列表，按照召唤师峡谷（11）、嚎哭深渊（12）、百合与莲花的神庙（21）、聚点危机（22）、怒火角斗场/最高清算（30）、最终都市（33）和班德尔之森（35）的顺序排列。<br>A local path list of map binary description files, following the order of Summoner's Rift (11), Howling Abyss (12), Temple of Lily and Lotus (21), Convergence (22), Rings of Wrath / The Grand Reckoning (30), Final City (33) and The Bandlewood (35) in turn.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type paths: list[str]
+        '''
         logInput = self.log.logInput
         logPrint = self.log.logPrint
         if self.wbPath == "":
@@ -2671,15 +2762,27 @@ class MapExtractor(LoLDataExtractor):
 
 class CheatExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
+        '''
+        初始化一个作弊指令提取器对象。<br>Initialize a CheatExtractor object.
+        
+        :param extractor: 父类对象。用于继承其属性。<br>Parent object. Pass it to inherit its attributes.
+        :type extractor: LoLDataExtractor
+        '''
         self.__dict__.update(extractor.__dict__)
         self.cheats_ready: bool = False
         self.cheatset_df: pandas.DataFrame = pandas.DataFrame()
         self.cheat_df: pandas.DataFrame = pandas.DataFrame()
 
     def init_data_readiness(self) -> None:
+        '''
+        初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
+        '''
         self.cheats_ready = False
     
     def get_cheat_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
+        '''
+        在线获取作弊指令二进制描述数据。<br>Get binary description data of cheats online.
+        '''
         logPrint = self.log.logPrint
         cheats_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/cheats.cdtb.bin.json"
         if cheats_bin_url in self.__class__.data_cache["online"]:
@@ -2699,6 +2802,12 @@ class CheatExtractor(LoLDataExtractor):
         self.cheats_ready = True
     
     def read_cheat_data(self, path: str) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
+        '''
+        离线获取作弊指令二进制描述数据。<br>Get binary description data of cheats offline.
+        
+        :param path: 作弊指令二进制描述文件的本地路径。<br>A local path of cheat binary description file.
+        :type path: str
+        '''
         logPrint = self.log.logPrint
         if not os.path.exists(path):
             logPrint(f"以下路径不存在：\nThe following path doesn't exist:\n{path}")
@@ -2714,6 +2823,22 @@ class CheatExtractor(LoLDataExtractor):
         self.cheats_ready = True
     
     def build_cheat_dataframe(self, debug: bool = False, path: Optional[str] = None) -> int:
+        '''
+        构建作弊指令数据框。<br>Build cheat dataframes.
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 作弊指令二进制描述文件的本地路径。<br>A local path of cheat binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        :return: 状态码。<br>Status code.
+        
+            - 0: 成功。<br>Success.
+            - 1: 未指定本地文件路径。<br>Local path not specified.
+            - 2: 数据未准备就绪。<br>Data not ready.
+        :rtype: int
+        '''
         logPrint = self.log.logPrint
         if not self.cheats_ready:
             #获取作弊指令信息（Get cheat information）
@@ -2821,6 +2946,18 @@ class CheatExtractor(LoLDataExtractor):
         return 0
         
     def export_cheat_data(self, debug: bool = False, path: Optional[str] = None) -> None:
+        '''
+        导出作弊指令数据到工作簿中。产生以下工作表：<br>Export cheat data to a workbook. The following worksheets are added:
+        - 指令集（CheatSet）
+        - 指令（Cheat）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 作弊指令二进制描述文件的本地路径。<br>A local path of cheat binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        '''
         logInput = self.log.logInput
         logPrint = self.log.logPrint
         if self.wbPath == "":
@@ -2861,15 +2998,27 @@ class CheatExtractor(LoLDataExtractor):
 
 class PerkExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
+        '''
+        初始化一个符文提取器对象。<br>Initialize a CheatExtractor object.
+        
+        :param extractor: 父类对象。用于继承其属性。<br>Parent object. Pass it to inherit its attributes.
+        :type extractor: LoLDataExtractor
+        '''
         self.__dict__.update(extractor.__dict__)
         self.perk_ready: bool = False
         self.perkstyle_df: pandas.DataFrame = pandas.DataFrame()
         self.perk_df: pandas.DataFrame = pandas.DataFrame()
         
     def init_data_readiness(self) -> None:
+        '''
+        初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
+        '''
         self.perk_ready = False
     
     def get_perk_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
+        '''
+        在线获取符文二进制描述数据。<br>Get binary description data of perks online.
+        '''
         logPrint = self.log.logPrint
         perks_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/perks.cdtb.bin.json"
         if perks_bin_url in self.__class__.data_cache["online"]:
@@ -2889,6 +3038,12 @@ class PerkExtractor(LoLDataExtractor):
         self.perk_ready = True
     
     def read_perk_data(self, path: str) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
+        '''
+        离线获取符文二进制描述数据。<br>Get binary description data of perks offline.
+        
+        :param path: 符文二进制描述文件的本地路径。<br>A local path of perk binary description file.
+        :type path: str
+        '''
         logPrint = self.log.logPrint
         if not os.path.exists(path):
             logPrint(f"以下路径不存在：\nThe following path doesn't exist:\n{path}")
@@ -2904,6 +3059,22 @@ class PerkExtractor(LoLDataExtractor):
         self.perk_ready = True
     
     def build_perk_dataframe(self, debug: bool = False, path: Optional[str] = None) -> int:
+        '''
+        构建符文数据框。<br>Build perk dataframes.
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 符文二进制描述文件的本地路径。<br>A local path of perk binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        :return: 状态码。<br>Status code.
+        
+            - 0: 成功。<br>Success.
+            - 1: 未指定本地文件路径。<br>Local path not specified.
+            - 2: 数据未准备就绪。<br>Data not ready.
+        :rtype: int
+        '''
         logPrint = self.log.logPrint
         if not self.perk_ready:
             #获取符文信息（Get perk information）
@@ -3124,6 +3295,18 @@ class PerkExtractor(LoLDataExtractor):
         return 0
     
     def export_perk_data(self, debug: bool = False, path: Optional[str] = None) -> None:
+        '''
+        导出符文数据到工作簿中。产生以下工作表：<br>Export perk data to a workbook. The following worksheets are added:
+        - 符文系（PerkStyles）
+        - 符文（Perks）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 符文二进制描述文件的本地路径。<br>A local path of perk binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        '''
         logInput = self.log.logInput
         logPrint = self.log.logPrint
         if self.wbPath == "":
@@ -3164,6 +3347,12 @@ class PerkExtractor(LoLDataExtractor):
 
 class ChampionExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
+        '''
+        初始化一个英雄提取器对象。<br>Initialize a ChampionExtractor object.
+        
+        :param extractor: 父类对象。用于继承其属性。<br>Parent object. Pass it to inherit its attributes.
+        :type extractor: LoLDataExtractor
+        '''
         self.__dict__.update(extractor.__dict__)
         self.useAllCharacter: bool = False #决定数据资源是否使用所有角色信息（Determines whether the data resources are from all characters）
         self.characters_ready: dict[str, bool] = {"map22": False, "characterList1": False, "characterList2": False, "character_binary": False} #后面在判断角色数据是否准备就绪时只用到了“character_binary”键（Only "character_binary" key is used later to judge whether character data are prepared）
@@ -3173,10 +3362,19 @@ class ChampionExtractor(LoLDataExtractor):
         self.champion_spell_df: pandas.DataFrame = pandas.DataFrame()
 
     def init_data_readiness(self) -> None:
+        '''
+        初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
+        '''
         self.characters_ready = {key: False for key in self.characters_ready}
         self.champions_ready = {key: False for key in self.champions_ready}
     
     def set_mode(self, useAllCharacter: Optional[bool] = None) -> int:
+        '''
+        设置要导出的角色信息范围。<br>Set the range of character data to export.
+        
+        :param useAllCharacter: 是否导出所有角色数据。如果未指定，则会输出提示来询问。<br>Whether to export data of all characters. If it's unspecified, hints will be given to ask the user.
+        :type useAllCharacter: bool
+        '''
         logInput = self.log.logInput
         logPrint = self.log.logPrint
         if useAllCharacter == None:
@@ -3198,6 +3396,11 @@ class ChampionExtractor(LoLDataExtractor):
         return 0
     
     def get_champion_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
+        '''
+        在线获取英雄二进制描述数据。<br>Get binary description data of champions online.
+        
+        在`useAllCharacter`属性为真时，将获取所有角色的数据，否则只获取英雄的数据。<br>When the attribute `useAllCharacter` is True, all characters' data will be fetched, otherwise only champion data will be fetched.
+        '''
         logPrint = self.log.logPrint
         if self.useAllCharacter:
             if "characters_bin_dict" in self.__class__.merged_data_cache:
@@ -3419,7 +3622,19 @@ class ChampionExtractor(LoLDataExtractor):
     
     def read_champion_data(self, useAllCharacter: bool = False, paths: Optional[list[str]] = None) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
         '''
-        :param paths: 当使用所有角色数据时，paths是一个由聚点危机地图（22）二进制描述文件和两个角色文件夹组成的列表；当仅使用英雄数据时，paths是一个由英雄概要信息和一个角色文件夹组成的列表。<br>When all characters' data are used, `paths` is a list composed of the binary description file of Convergence (map22) and two character folders; when only champions' data are used, `paths` is a list composed of the champion summary and a character folder.
+        离线获取英雄二进制描述数据。<br>Get binary description data of champions offline.
+        
+        :param useAllCharacter: 是否导出所有角色数据。默认为假。<br>Whether to export data of all characters. False by default.
+        :type useAllCharacter: bool
+        :param paths: 当使用所有角色数据时，`paths`由以下部分组成：<br>When all characters' data are used, `paths` is a list composed of the following content:
+        
+            - 聚点危机地图二进制描述文件路径（Convergence map binary description file path）
+            - 角色文件夹1路径（Character folder 1 path）： game/data/characters
+            - 角色文件夹2路径（Character folder 2 path）： game/characters
+            
+            当仅使用英雄数据时，`paths`由以下部分组成：<br>When only champions' data are used, `paths` is a list composed of the following content:
+            - 英雄概要文件路径（Champion summary file path）
+            - 角色文件夹路径（Character folder path）： game/data/characters
         :type paths: list[str]
         '''
         logPrint = self.log.logPrint
@@ -3533,7 +3748,33 @@ class ChampionExtractor(LoLDataExtractor):
                     self.__class__.merged_data_cache["champions_bin_dict"] = self.champions_bin_dict
             self.champions_ready["champion_binary"] = True
     
-    def build_champion_dataframe(self, debug: bool = False, useAllCharacter: Optional[bool] = None, paths: Optional[list[str]] = None) -> int:
+    def build_champion_dataframe(self, useAllCharacter: Optional[bool] = None, debug: bool = False, paths: Optional[list[str]] = None) -> int:
+        '''
+        构建英雄数据框。<br>Build champion dataframe.
+        
+        :param useAllCharacter: 是否导出所有角色数据。如果未指定，则使用对象的属性值。<br>Whether to export data of all characters. If unspecified, it'll use the attribute value of the object.
+        :type useAllCharacter: bool
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param paths: 当使用所有角色数据时，`paths`由以下部分组成：<br>When all characters' data are used, `paths` is a list composed of the following content:
+        
+            - 聚点危机地图二进制描述文件路径（Convergence map binary description file path）
+            - 角色文件夹1路径（Character folder 1 path）： game/data/characters
+            - 角色文件夹2路径（Character folder 2 path）： game/characters
+            
+            当仅使用英雄数据时，`paths`由以下部分组成：<br>When only champions' data are used, `paths` is a list composed of the following content:
+            - 英雄概要文件路径（Champion summary file path）
+            - 角色文件夹路径（Character folder path）： game/data/characters
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type paths: list[str]
+        :return: 状态码。<br>Status code.
+        
+            - 0: 成功。<br>Success.
+            - 1: 未指定本地文件路径。<br>Local path not specified.
+            - 2: 数据未准备就绪。<br>Data not ready.
+        :rtype: int
+        '''
         logPrint = self.log.logPrint
         if useAllCharacter == None:
             useAllCharacter = self.useAllCharacter
@@ -3928,7 +4169,35 @@ class ChampionExtractor(LoLDataExtractor):
         self.champion_spell_df = champion_spell_df
         return 0
 
-    def export_champion_data(self, debug: bool = False, useAllCharacter: Optional[bool] = None, paths: Optional[list[str]] = None) -> None:
+    def export_champion_data(self, useAllCharacter: Optional[bool] = None, debug: bool = False, paths: Optional[list[str]] = None) -> None:
+        '''
+        导出英雄数据到工作簿中。<br>Export champion data to a workbook.
+        
+        在导出所有角色数据时，产生以下工作表：<br>When all character data are exported, the following worksheets are added:
+        - 角色（Characters）
+        - 角色技能（Character Spells）
+        
+        在仅导出英雄数据时，产生以下工作表：<br>When only champion data are exported, the following worksheets are added:
+        - 英雄（Champions）
+        - 英雄技能（Champion Spells）
+        
+        :param useAllCharacter: 是否导出所有角色数据。如果未指定，则使用对象的属性值。<br>Whether to export data of all characters. If unspecified, it'll use the attribute value of the object.
+        :type useAllCharacter: bool
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param paths: 当使用所有角色数据时，`paths`由以下部分组成：<br>When all characters' data are used, `paths` is a list composed of the following content:
+        
+            - 聚点危机地图二进制描述文件路径（Convergence map binary description file path）
+            - 角色文件夹1路径（Character folder 1 path）： game/data/characters
+            - 角色文件夹2路径（Character folder 2 path）： game/characters
+            
+            当仅使用英雄数据时，`paths`由以下部分组成：<br>When only champions' data are used, `paths` is a list composed of the following content:
+            - 英雄概要文件路径（Champion summary file path）
+            - 角色文件夹路径（Character folder path）： game/data/characters
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type paths: list[str]
+        '''
         logInput = self.log.logInput
         logPrint = self.log.logPrint
         if self.wbPath == "":
@@ -3940,7 +4209,7 @@ class ChampionExtractor(LoLDataExtractor):
         if useAllCharacter == None:
             useAllCharacter = self.useAllCharacter
         if self.champion_df.empty or self.champion_spell_df.empty:
-            status = self.build_champion_dataframe(debug = debug, useAllCharacter = useAllCharacter, paths = paths)
+            status = self.build_champion_dataframe(useAllCharacter = useAllCharacter, debug = debug, paths = paths)
             if status != 0:
                 logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
                 logInput()
@@ -3975,14 +4244,26 @@ class ChampionExtractor(LoLDataExtractor):
 
 class ItemExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
+        '''
+        初始化一个装备提取器对象。<br>Initialize a ItemExtractor object.
+        
+        :param extractor: 父类对象。用于继承其属性。<br>Parent object. Pass it to inherit its attributes.
+        :type extractor: LoLDataExtractor
+        '''
         self.__dict__.update(extractor.__dict__)
         self.item_ready: bool = False
         self.item_df: pandas.DataFrame = pandas.DataFrame()
         
     def init_data_readiness(self) -> None:
+        '''
+        初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
+        '''
         self.item_ready = False
     
     def get_item_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
+        '''
+        在线获取装备二进制描述数据。<br>Get binary description data of items online.
+        '''
         logPrint = self.log.logPrint
         items_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/items.cdtb.bin.json"
         if items_bin_url in self.__class__.data_cache["online"]:
@@ -4002,6 +4283,12 @@ class ItemExtractor(LoLDataExtractor):
         self.item_ready = True
     
     def read_item_data(self, path: str) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
+        '''
+        离线获取装备二进制描述数据。<br>Get binary description data of items offline.
+        
+        :param path: 装备二进制描述文件的本地路径。<br>A local path of item binary description file.
+        :type path: str
+        '''
         logPrint = self.log.logPrint
         if not os.path.exists(path):
             logPrint(f"以下路径不存在：\nThe following path doesn't exist:\n{path}")
@@ -4017,6 +4304,22 @@ class ItemExtractor(LoLDataExtractor):
         self.item_ready = True
     
     def build_item_dataframe(self, debug: bool = False, path: Optional[str] = None) -> int:
+        '''
+        构建装备数据框。<br>Build item dataframe.
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 装备二进制描述文件的本地路径。<br>A local path of item binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        :return: 状态码。<br>Status code.
+        
+            - 0: 成功。<br>Success.
+            - 1: 未指定本地文件路径。<br>Local path not specified.
+            - 2: 数据未准备就绪。<br>Data not ready.
+        :rtype: int
+        '''
         logPrint = self.log.logPrint
         if not self.item_ready:
             #获取装备信息（Get item information）
@@ -4159,6 +4462,17 @@ class ItemExtractor(LoLDataExtractor):
         return 0
     
     def export_item_data(self, debug: bool = False, path: Optional[str] = None) -> None:
+        '''
+        导出装备数据到工作簿中。产生以下工作表：<br>Export item data to a workbook. The following worksheet is added:
+        - 装备（Items）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 装备二进制描述文件的本地路径。<br>A local path of item binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        '''
         logInput = self.log.logInput
         logPrint = self.log.logPrint
         if self.wbPath == "":
@@ -4196,15 +4510,29 @@ class ItemExtractor(LoLDataExtractor):
 
 class AugmentExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
+        '''
+        初始化一个强化符文提取器对象。<br>Initialize a AugmentExtractor object.
+        
+        :param extractor: 父类对象。用于继承其属性。<br>Parent object. Pass it to inherit its attributes.
+        :type extractor: LoLDataExtractor
+        '''
         self.__dict__.update(extractor.__dict__)
         self.augments_ready: dict[str, bool] = {"map30": False, "map12": False, "cherry": False, "kiwi": False}
         self.CherryAugment_df: pandas.DataFrame = pandas.DataFrame()
         self.KiwiAugment_df: pandas.DataFrame = pandas.DataFrame()
         
     def init_data_readiness(self) -> None:
+        '''
+        初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
+        '''
         self.augments_ready = {key: False for key in self.augments_ready}
     
     def get_augment_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
+        '''
+        在线获取强化符文二进制描述数据。包括以下游戏模式：<br>Get binary description data of augments online. Including the following game modes:
+        - 斗魂竞技场（Arena）
+        - 海克斯大乱斗（ARAM: Mayhem）
+        '''
         logPrint = self.log.logPrint
         #怒火角斗场地图（Rings of Wrath map）
         map30_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map30/map30.bin.json"
@@ -4284,7 +4612,14 @@ class AugmentExtractor(LoLDataExtractor):
     
     def read_augment_data(self, paths: list[str]) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
         '''
-        :param paths: 一个由怒火角斗场地图二进制描述文件路径、嚎哭深渊地图二进制描述文件路径和海克斯大乱斗强化符文二进制描述文件路径组成的列表。<br>A list composed of binary description file paths of Rings of Wrath map (30), Howling Abyss map (12) and ARAM: Mayhem augments.
+        离线获取强化符文二进制描述数据。<br>Get binary description data of augments offline.
+        
+        :param paths: 强化符文二进制描述文件的本地路径列表，按照以下顺序排列：<br>A local path list of augment binary description files, arranged in the following order:
+        
+            - 怒火角斗场地图（Rings of Wrath map）
+            - 嚎哭深渊地图（Howling Abyss map）
+            - 斗魂竞技场模式专属信息（Arena mode specific data）
+            - 海克斯大乱斗模式专属信息（ARAM: Mayhem mode specific data）
         :type paths: list[str]
         '''
         logPrint = self.log.logPrint
@@ -4334,6 +4669,27 @@ class AugmentExtractor(LoLDataExtractor):
         self.augments_ready["kiwi"] = True
     
     def build_augment_dataframe(self, debug: bool = False, paths: Optional[list[str]] = None) -> int:
+        '''
+        构建强化符文数据框。<br>Build augment dataframes.
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param paths: 强化符文二进制描述文件的本地路径列表，按照以下顺序排列：<br>A local path list of augment binary description files, arranged in the following order:
+        
+            - 怒火角斗场地图（Rings of Wrath map）
+            - 嚎哭深渊地图（Howling Abyss map）
+            - 斗魂竞技场模式专属信息（Arena mode specific data）
+            - 海克斯大乱斗模式专属信息（ARAM: Mayhem mode specific data）
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type paths: list[str]
+        :return: 状态码。<br>Status code.
+        
+            - 0: 成功。<br>Success.
+            - 1: 未指定本地文件路径。<br>Local path not specified.
+            - 2: 数据未准备就绪。<br>Data not ready.
+        :rtype: int
+        '''
         logPrint = self.log.logPrint
         if not all(self.augments_ready.values()):
             #获取强化符文信息（Get augment information）
@@ -4597,6 +4953,24 @@ class AugmentExtractor(LoLDataExtractor):
         return 0
     
     def export_augment_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
+        '''
+        导出强化符文数据到工作簿中。产生以下工作表：<br>Export augment data to a workbook. The following worksheets are added:
+        - 斗魂竞技场强化符文（Cherry Augments）
+        - 海克斯大乱斗强化符文（Kiwi Augments）
+        - 海克斯大乱斗强化符文套装（Kiwi Augment Set）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param paths: 强化符文二进制描述文件的本地路径列表，按照以下顺序排列：<br>A local path list of augment binary description files, arranged in the following order:
+        
+            - 怒火角斗场地图（Rings of Wrath map）
+            - 嚎哭深渊地图（Howling Abyss map）
+            - 斗魂竞技场模式专属信息（Arena mode specific data）
+            - 海克斯大乱斗模式专属信息（ARAM: Mayhem mode specific data）
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type paths: list[str]
+        '''
         logInput = self.log.logInput
         logPrint = self.log.logPrint
         if self.wbPath == "":
@@ -4644,15 +5018,29 @@ class AugmentExtractor(LoLDataExtractor):
 
 class AnvilExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
+        '''
+        初始化一个锻造器提取器对象。<br>Initialize a AnvilExtractor object.
+        
+        :param extractor: 父类对象。用于继承其属性。<br>Parent object. Pass it to inherit its attributes.
+        :type extractor: LoLDataExtractor
+        '''
         self.__dict__.update(extractor.__dict__)
         self.anvils_ready: dict[str, bool] = {"map30": False, "kiwi": False}
         self.CherryAnvil_df: pandas.DataFrame = pandas.DataFrame()
         self.KiwiAnvil_df: pandas.DataFrame = pandas.DataFrame()
         
     def init_data_readiness(self) -> None:
+        '''
+        初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
+        '''
         self.anvils_ready = {key: False for key in self.anvils_ready}
     
     def get_anvil_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
+        '''
+        在线获取锻造器二进制描述数据。包括以下模式：<br>Get binary description data of anvils online. Including the following game modes:
+        - 斗魂竞技场（Arena）
+        - 海克斯大乱斗（ARAM: Mayhem）
+        '''
         logPrint = self.log.logPrint
         #怒火角斗场地图（Rings of Wrath map）
         map30_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map30/map30.bin.json"
@@ -4711,7 +5099,12 @@ class AnvilExtractor(LoLDataExtractor):
     
     def read_anvil_data(self, paths: list[str]) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
         '''
-        :param paths: 一个由怒火角斗场地图二进制描述文件路径和海克斯大乱斗强化符文二进制描述文件路径组成的列表。<br>A list composed of binary description file paths of Rings of Wrath map (30) and ARAM: Mayhem augments.
+        离线获取锻造器二进制描述数据。<br>Get binary description data of anvils offline.
+        
+        :param paths: 锻造器二进制描述文件的本地路径列表，按照以下顺序排列：<br>A local path list of anvil binary description files, arranged in the following order:
+        
+            - 怒火角斗场地图（Rings of Wrath map）
+            - 海克斯大乱斗锻造器（ARAM: Mayhem anvils）
         :type paths: list[str]
         '''
         logPrint = self.log.logPrint
@@ -4743,6 +5136,25 @@ class AnvilExtractor(LoLDataExtractor):
         self.anvils_ready["kiwi"] = True
     
     def build_anvil_dataframe(self, debug: bool = False, paths: Optional[list[str]] = None) -> int:
+        '''
+        构建锻造器数据框。<br>Build anvil dataframes.
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param paths: 锻造器二进制描述文件的本地路径列表，按照以下顺序排列：<br>A local path list of anvil binary description files, arranged in the following order:
+        
+            - 怒火角斗场地图（Rings of Wrath map）
+            - 海克斯大乱斗锻造器（ARAM: Mayhem anvils）
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type paths: list[str]
+        :return: 状态码。<br>Status code.
+        
+            - 0: 成功。<br>Success.
+            - 1: 未指定本地文件路径。<br>Local path not specified.
+            - 2: 数据未准备就绪。<br>Data not ready.
+        :rtype: int
+        '''
         logPrint = self.log.logPrint
         if not all(self.anvils_ready.values()):
             #获取锻造器信息（Get anvil information）
@@ -4895,6 +5307,21 @@ class AnvilExtractor(LoLDataExtractor):
         return 0
     
     def export_anvil_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
+        '''
+        导出锻造器数据到工作簿中。产生以下工作表：<br>Export anvil data to a workbook. The following worksheets are added:
+        - 斗魂竞技场锻造器（Cherry Anvils）
+        - 海克斯大乱斗锻造器（Kiwi Anvils）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param paths: 锻造器二进制描述文件的本地路径列表，按照以下顺序排列：<br>A local path list of anvil binary description files, arranged in the following order:
+        
+            - 怒火角斗场地图（Rings of Wrath map）
+            - 海克斯大乱斗锻造器（ARAM: Mayhem anvils）
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type paths: list[str]
+        '''
         logInput = self.log.logInput
         logPrint = self.log.logPrint
         if self.wbPath == "":
@@ -4935,6 +5362,12 @@ class AnvilExtractor(LoLDataExtractor):
 
 class TFTExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
+        '''
+        初始化一个云顶之弈提取器对象。<br>Initialize a TFTExtractor object.
+        
+        :param extractor: 父类对象。用于继承其属性。<br>Parent object. Pass it to inherit its attributes.
+        :type extractor: LoLDataExtractor
+        '''
         self.__dict__.update(extractor.__dict__)
         self.map22_ready: bool = False
         self.TFTSet_df: pandas.DataFrame = pandas.DataFrame()
@@ -4957,9 +5390,15 @@ class TFTExtractor(LoLDataExtractor):
         self.TFTAnnouncement_df: pandas.DataFrame = pandas.DataFrame()
 
     def init_data_readiness(self) -> None:
+        '''
+        初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
+        '''
         self.map22_ready = False
     
     def get_tft_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
+        '''
+        在线获取聚点危机地图二进制描述数据。<br>Get binary description data of Convergence map online.
+        '''
         logPrint = self.log.logPrint
         map22_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map22/map22.bin.json"
         if map22_bin_url in self.__class__.data_cache["online"]:
@@ -4979,6 +5418,12 @@ class TFTExtractor(LoLDataExtractor):
         self.map22_ready = True
 
     def read_tft_data(self, path: str) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
+        '''
+        离线获取聚点危机地图二进制描述数据。<br>Get binary description data of Convergence map offline.
+        
+        :param path: 聚点危机地图二进制描述文件的本地路径。<br>A local path of Convergence map binary description file.
+        :type path: str
+        '''
         logPrint = self.log.logPrint
         if not os.path.exists(path):
             logPrint(f"以下路径不存在：\nThe following path doesn't exist:\n{path}")
@@ -4994,6 +5439,22 @@ class TFTExtractor(LoLDataExtractor):
         self.map22_ready = True
 
     def build_tft_dataframe(self, debug: bool = False, path: Optional[str] = None) -> int:
+        '''
+        构建云顶之弈数据框。<br>Build TFT dataframes.
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 聚点危机地图二进制描述文件的本地路径。<br>A local path of Convergence map binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        :return: 状态码。<br>Status code.
+        
+            - 0: 成功。<br>Success.
+            - 1: 未指定本地文件路径。<br>Local path not specified.
+            - 2: 数据未准备就绪。<br>Data not ready.
+        :rtype: int
+        '''
         logInput = self.log.logInput
         logPrint = self.log.logPrint
         if not "characters_bin_dict" in self.__class__.merged_data_cache:
@@ -6121,6 +6582,34 @@ class TFTExtractor(LoLDataExtractor):
         return 0
             
     def export_tft_data(self, debug: bool = False, path: Optional[str] = None) -> None:
+        '''
+        导出云顶之弈数据到工作簿中。产生以下工作表：<br>Export TFT data to a workbook. The following worksheets are added:
+        - 云顶之弈赛季（TFT Set）
+        - 云顶之弈商店（TFT Shop）
+        - 云顶之弈商店内容（TFT Shop Content）
+        - 云顶之弈掉率表（TFT Drop Rate）
+        - 云顶之弈回合阶段（TFT Stage Round）
+        - 云顶之弈回合（TFT Round）
+        - 云顶之弈传送门（TFT Portal）
+        - 云顶之弈开场奇遇（TFT Encounter Distribution）
+        - 云顶之弈奇遇（TFT Encounter）
+        - 云顶之弈单位属性（TFT Unit Property）
+        - 云顶之弈角色定位（TFT Character Role）
+        - 云顶之弈装备列表（TFT Item List）
+        - 云顶之弈装备（TFT Item）
+        - 云顶之弈羁绊列表（TFT Trait List）
+        - 云顶之弈羁绊（TFT Trait）
+        - 云顶之弈电脑玩家英雄（TFT PVE NPC）
+        - 云顶之弈脚本（TFT Script）
+        - 云顶之弈通告（TFT Announcement）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 聚点危机地图二进制描述文件的本地路径。<br>A local path of Convergence map binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        '''
         logInput = self.log.logInput
         logPrint = self.log.logPrint
         if self.wbPath == "":
@@ -6225,7 +6714,7 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], objectType: str, keyPa
         ItemData        DataValuesModeOverride          模式覆盖数值（Mode overriden data values）
         </pre>
     :type keyPaths: str
-    :param gameModeName: 游戏模式代号，在地图二进制描述中可找到。<br>The game mode name that can be found in the maps' binary description.<br>目前已知的游戏模式代号及其名称：<br>Currently known gameModeNames and the localized names:
+    :param gameModeName: 游戏模式代号，在地图二进制描述中可找到。<br>The game mode name that can be found in the map binary description.<br>目前已知的游戏模式代号及其名称：<br>Currently known gameModeNames and the localized names:
         <pre>
         **gameModeName**      **description**<br>
         TUTORIAL            新手教程（Tutorial）<br>

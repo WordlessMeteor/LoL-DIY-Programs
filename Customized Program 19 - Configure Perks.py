@@ -42,12 +42,21 @@ connector: Connector = Connector()
 # 配置符文（Configure perks）
 #-----------------------------------------------------------------------------
 def clear_screen() -> None:
+    '''
+    清理终端屏幕。跨平台支持。<br>Clear the terminal screen. Cross-platform support.
+    '''
     if platform.system() == "Windows":
         subprocess.call("CLS", shell = True)
     else:
         subprocess.call("clear", shell = True)
 
 async def prepare_data_resources(connection: Connection) -> None:
+    '''
+    准备全局数据资源。<br>Prepare global data resources.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     global spells, perks_source, perks, perkstyles_source, perkstyles, LoLChampions, recommended_position_for_champion, champion_colloq_dict
     #召唤师技能（Summoner spell）
     spells_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/summoner-spells.json")).json()
@@ -70,6 +79,28 @@ async def prepare_data_resources(connection: Connection) -> None:
 
 #数据整理部分（Data organization）
 def sort_perk_data(perks_source: list[dict[str, Any]], perkstyles_source: dict[str, Any]) -> pandas.DataFrame:
+    '''
+    将符文和符文系数据整理成表格。<br>Sort perk and perkstyle data into a dataframe.
+    
+    :param perks_source: 原始符文数据资源。<br>Raw perk data resource.
+    
+        原始符文数据资源可通过以下链接获取：<br>The raw perk data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/perks.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/perks.json`
+    :type perks_source: list[dict[str, Any]]
+    :param perkstyles_source: 原始符文系数据资源。<br>Raw perkstyle data resource.
+    
+        原始符文系数据资源可通过以下链接获取：<br>The raw perkstyle data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/perkstyles.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/perkstyles.json`
+    :type perkstyles_source: dict[str, Any]
+    :return: 符文数据框。<br>Perk dataframe.
+    :rtype: pandas.DataFrame
+    '''
     perkstyles: dict[int, dict[str, Any]] = {style["id"]: style for style in perkstyles_source["styles"]}
     #下面指定符文的排列顺序（The following code specify the perk ordering）
     defaultPerkOrder: list[int] = [] #后续形成数据框时，对符文按照其在客户端中的出现顺序进行排序（When the dataframe is formed, sort it by the order that the perks appear in the League Client）
@@ -117,6 +148,14 @@ def sort_perk_data(perks_source: list[dict[str, Any]], perkstyles_source: dict[s
     return perk_df
 
 def sort_recommended_perk(recommendedPages: list[dict[str, Any]]) -> pandas.DataFrame:
+    '''
+    将推荐符文页整理成一张表格。<br>Organize recommended pages into a dataframe.
+    
+    :param recommendedPages: 推荐符文页列表。<br>A list of recommended pages.
+    :type recommendedPages: list[dict[str, Any]]
+    :return: 推荐符文页数据框。<br>Recommended page dataframe.
+    :rtype: pandas.DataFrame
+    '''
     if recommendedPages == []:
         recommendedPage_df: pandas.DataFrame = pandas.DataFrame(data = recommendedPage_header, index = [0])
     else:
@@ -155,6 +194,14 @@ def sort_recommended_perk(recommendedPages: list[dict[str, Any]]) -> pandas.Data
     return recommendedPage_df
 
 async def get_perk_page(connection: Connection) -> pandas.DataFrame:
+    '''
+    获取用户的符文配置，并整理成一张表格。<br>Get perk configuration of the user and organize it into a dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :return: 用户符文页数据框。<br>User perk page dataframe.
+    :rtype: pandas.DataFrame
+    '''
     perkPages: list[dict[str, Any]] = await (await connection.request("GET", "/lol-perks/v1/pages")).json()
     perkPage_header_keys: list[str] = list(perkPage_header.keys())
     perkPage_data: dict[str, list[Any]] = {key: [] for key in perkPage_header_keys}
@@ -189,6 +236,26 @@ async def get_perk_page(connection: Connection) -> pandas.DataFrame:
 
 #过程（Process）
 def check_all_perks_classified(perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]]) -> None:
+    '''
+    按类别打印所有符文。<br>Print all perks by classes.
+    
+    :param perks: 整理后的符文信息。键是符文序号，值是符文信息字典。<br>Organized perk data resource. Each key is a perkId, and each value is a perk information dictionary.
+    
+        原始符文数据资源可通过以下链接获取：<br>The raw perk data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/perks.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/perks.json`
+    :type perks: dict[int, dict[str, Any]]
+    :param perkstyles: 整理后的符文系信息。键是符文系序号，值是符文系信息字典。<br>Organized perkstyle data resource. Each key is a perkstyleId, and each value is a perkstyle information dictionary.
+    
+        原始符文系数据资源可通过以下链接获取：<br>The raw perkstyle data resource can be obtained through the following link:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/perkstyles.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoint:
+        - `GET /lol-game-data/assets/v1/perkstyles.json`
+    :type perkstyles: dict[int, dict[str, Any]]
+    '''
     HTML_tag_re: re.Pattern[str] = re.compile(r"<[^>]*>")
     perkIds_unprinted: list[int] = list(map(lambda x: x["id"], perks.values()))
     #先打印符文系下的符文（First, print perks under perkstyles）
@@ -267,6 +334,12 @@ def check_all_perks_classified(perks: dict[int, dict[str, Any]], perkstyles: dic
     #clear_screen()
 
 def check_all_perks_tabified(perk_df: pandas.DataFrame) -> None:
+    '''
+    将符文数据框打印到终端。<br>Print the perk dataframe to terminal.
+    
+    :param perk_df: 符文数据框。<br>Perk dataframe.
+    :type perk_df: pandas.DataFrame
+    '''
     HTML_tag_re: re.Pattern[str] = re.compile(r"<[^>]*>")
     for i in range(1, len(perk_df)):
         shortDesc = perk_df["shortDesc"][i]
@@ -278,6 +351,12 @@ def check_all_perks_tabified(perk_df: pandas.DataFrame) -> None:
     log.write(format_df(perk_df.loc[:, perk_df_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
 
 def export_all_perks(perk_df: pandas.DataFrame) -> None:
+    '''
+    将符文数据框导出到工作簿。<br>Export the perk dataframe into a workbook.
+    
+    :param perk_df: 符文数据框。<br>Perk dataframe.
+    :type perk_df: pandas.DataFrame
+    '''
     excel_name: str = "Perks.xlsx"
     while True:
         try:
@@ -291,6 +370,9 @@ def export_all_perks(perk_df: pandas.DataFrame) -> None:
     logPrint(f'符文信息已导出到同目录下的“{excel_name}”中。\nPerk information has been exported into {excel_name} under the same folder.')
 
 def check_all_perks() -> None:
+    '''
+    查看所有符文信息。由此进入各种输出形式。<br>Check all perks. Entry to output forms.
+    '''
     logPrint("请选择输出形式：\nPlease select a form to output:\n0\t返回上一层（Return to the last step）\n1\t分类（Classified）\n2\t表格（Tabified）\n3\t文件（File）")
     while True:
         form: str = logInput()
@@ -313,6 +395,14 @@ def check_all_perks() -> None:
             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
 
 def specify_recommend_perkPage_parameters() -> tuple[int, int, str, int]:
+    '''
+    指定推荐符文接口的参数。<br>Specify parameters required by the recommend perk endpoint.
+    
+    :return: 步骤数、英雄序号、分路和地图序号。<br>Step number, championId, position and mapId.
+    
+        步骤数的作用类似于状态码。当步骤数为0时，表示用户取消操作；否则表示操作完成。<br>The role of step number resembles a status code. When step is 0, it means the user has cancelled this operation. Otherwise, the operation is finished.
+    :rtype: tuple[int, int, str, int]
+    '''
     championId: int = 0
     championName: str = ""
     championAlias: str = ""
@@ -392,6 +482,21 @@ def specify_recommend_perkPage_parameters() -> tuple[int, int, str, int]:
     return (step, championId, championPosition, mapId)
 
 def check_recommend_perkPage(recommendedPages: list[dict[str, Any]], championId: int, position: str, mapId: int) -> None:
+    '''
+    输出并导出推荐符文。<br>Output and export recommend perk information.
+    
+    :param recommendedPages: 推荐符文列表。<br>Recommend perks list.
+    
+        推荐符文信息可以通过以下LCU接口获取：<br>Recommend perk information can be obtained from the following LCU endpoint:
+        - `GET /lol-perks/v1/recommended-pages/champion/{championId}/position/{position}/map/{mapId}`
+    :type recommendedPages: list[dict[str, Any]]
+    :param championId: 英雄序号。仅用于输出。<br>ChampionId. Only used for output.
+    :type championId: int
+    :param position: 分路。仅用于输出。<br>Position. Only used for output.
+    :type position: str
+    :param mapId: 地图序号。仅用于输出。<br>MapId. Only used for output.
+    :type mapId: int
+    '''
     recommendedPage_df: pandas.DataFrame = sort_recommended_perk(recommendedPages)
     championName: str = LoLChampions[championId]["name"]
     championAlias: str = LoLChampions[championId]["alias"]
@@ -457,7 +562,17 @@ def check_recommend_perkPage(recommendedPages: list[dict[str, Any]], championId:
             else:
                 logPrint("您的输入有误！请重新输入。\nERROR input. Please try again.")
 
-def export_all_perkPages(displayName: str, folder: str) -> None:
+def export_all_perkPages(perkPage_df: pandas.DataFrame, displayName: str, folder: str) -> None:
+    '''
+    将用户的所有符文配置导出到工作簿中。<br>Export the user's all perk configuration into a workbook.
+    
+    :param perkPage_df: 符文页数据框。<br>Perk page dataframe.
+    :type perkPage_df: pandas.DataFrame
+    :param displayName: 工作簿命名中的召唤师名称部分。<br>The summoner name part in the name of the workbook.
+    :type displayName: str
+    :param folder: 工作簿的导出目录。<br>Export directory of the workbook.
+    :type folder: str
+    '''
     excel_name: str = f"Player Perk Pages - {displayName}.xlsx"
     wbPath: str = os.path.join(folder, excel_name).replace("\\", "/")
     os.makedirs(folder, exist_ok = True)
@@ -475,6 +590,16 @@ def export_all_perkPages(displayName: str, folder: str) -> None:
             break
 
 def set_perks_successively(page_body: dict[str, Any]) -> int:
+    '''
+    按照步骤设置一个符文页。<br>Set a perk page following steps.
+    
+    :param page_body: 符文页主体。修改将在此参数上进行。<br>Perk page body. Modification will be made on this parameter.
+    :type page_body: dict[str, Any]
+    :return: 步骤数。<br>Step number.
+    
+        步骤数的作用类似于状态码。当步骤数为0时，表示用户取消操作；否则表示操作完成。<br>The role of step number resembles a status code. When step is 0, it means the user has cancelled this operation. Otherwise, the operation is finished.
+    :rtype: int
+    '''
     logPrint('在下面的步骤中，请确保输入的是正整数类型的符文系序号和符文序号。输入“0”以撤回最近一次输入。\nDuring the following steps, please make sure you submit the perkStyleId and perkId of integer type. Submit "0" to revert the latest input.')
     allowedSubStyles: list[int] = []
     step: int = 1
@@ -582,7 +707,15 @@ def set_perks_successively(page_body: dict[str, Any]) -> int:
         step += 1
     return step
 
-def verify_perkIds(perkIds: Any) -> tuple[bool, list[int]]:
+def verify_perkIds(perkIds: Any) -> bool:
+    '''
+    检验符文序号列表合法性的一个标准函数。<br>A standard function that verifies the validity of the perkId list.
+    
+    :param perkIds: 符文序号列表。
+    :type perkIds: list[int]
+    :return: 符文序号列表是否合法。<br>Whether the passed perkId list is legal.
+    :rtype: bool
+    '''
     keystoneIds: list[int] = [perk["id"] for perk in perks_source if perk["slotType"] == "kKeyStone"] #提取基石序号列表，用于判断基石的正确性（Extract the list of keystone ids to judge the keystone's correctness）
     statmodIds: list[int] = [perk["id"] for perk in perks_source if perk["slotType"] == "kStatMod"] #提取属性符文序号列表，用于判断基石的正确性（Extract the list of stat mod ids to judge the keystone's correctness）
     perkMap: dict[int, dict[str, Any]] = {} #建立一个由符文对应到所属符文页的对应关系，并从符文页信息中提取每个符文的槽位类型和槽位名称（Build a map from perks to the belonging perkstyles and extract each perk's slot type and slot label from perkstyle information）
@@ -644,11 +777,28 @@ def verify_perkIds(perkIds: Any) -> tuple[bool, list[int]]:
             logPrint("您输入的符文数量过少！请输入由9个符文序号组成的列表。\nPerk number not enough! Please submit a list composed of 9 perkIds.")
     else:
         perkIds_valid = False
-        uiPerksIds = []
         logPrint("您的输入格式有误！请输入一个由符文序号正整数组成的列表。\nERROR format! Please submit a list composed of perkIds of integer type.")
-    return (perkIds_valid, uiPerksIds)
+    return perkIds_valid
 
 async def change_perkPage_name(connection: Connection, page_body: dict[str, Any], page_exist: bool, old_pageName: str = "", skip_ask: bool = False, verify: bool = False) -> bool:
+    '''
+    修改符文页名称。<br>Change the name of a perk page.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param page_body: 修改符文页请求主体。修改将在此参数上进行。<br>The request body to edit a perk page. Modification will be made on this parameter.
+    :type page_body: dict[str, Any]
+    :param page_exist: 符文页是否存在。决定了是创建符文页还是修改符文页。<br>Whether this perk page already exists, which determines the program will create or edit a perk page downstream.
+    :type page_exist: bool
+    :param old_pageName: 旧符文页名称。如果未指定，则视为用户正在创建符文页。<br>Old page name. If it's unspecified, the function wil regard the user is creating a page.
+    
+        该参数本可以替换为符文页序号，这样旧符文页名称可直接通过接口获取，这样设计似乎更加符合直觉。但是这样的话，需要在函数体内另外声明符文页不存在时的异常处理，而这在外部已经声明了。而且，引入接口还会导致更多的类型检查错误。所以为了简约起见，这里要求用户手动传入旧符文页名称。<br>This parameter could have been replaced with some other parameter like "pageId", so that the old name could have been obtained by simply accessing the API, which feels more intuitive than what it is now. But in that case, I would have to implement the exception handling about page not found inside the function, which now has been implemented outside. Besides, introducing API will result in more type checking errors. Anyway, to make this function as simple as possible, "old_pageName" is used here.
+    :type old_pageName: str
+    :param skip_ask: 跳过修改符文页的询问，直接开始输入新符文页的名称。默认为假。<br>Skip asking whether to change the perk page and start inputting the new page name directly. False by default.
+    :type skip_ask: bool
+    :param verify: 是否验证符文页名称合法性。默认为否。<br>Whether to verify the name validity of the perk page. False by default.
+    :type verify: bool
+    '''
     if page_exist:
         if skip_ask:
             pageNameChange: bool = True
@@ -725,6 +875,14 @@ async def change_perkPage_name(connection: Connection, page_body: dict[str, Any]
     return page_body["name"] != old_pageName
 
 def input_perkPage_body() -> dict[str, Any]:
+    '''
+    通过用户输入读取编辑/创建符文页的请求主体。<br>Read the request body to edit / create a perk page from user input.
+    
+    支持Python字典的格式和json格式。<br>Both Python dictionary format and json format are supported.
+    
+    :return: 读取到的符文页请求主体。在取消操作时，返回一个空结构。<br>Loaded perk page request body. When this operation is cancelled, the function will return an empty struct.
+    :rtype: dict[str, Any]
+    '''
     logPrint('请在单行内输入包含新符文页信息的字典或Json代码：\nPlease input a Python dictionary or a piece of Json code that represents the new perk page information in a single line:\n示例（Examples）：\nPython字典（Python dictionary）：\n{"name": "无极剑圣 - 致命节奏", "isActive": False, "isTemporary": True, "primaryStyleId": 8000, "secondaryStyleId": 8300, "selectedPerkIds": [8008, 9111, 9104, 8014, 8347, 8304, 5005, 5008, 5001]}\nJson：\n{"name": "无极剑圣 - 致命节奏", "isActive": false, "isTemporary": true, "primaryStyleId": 8000, "secondaryStyleId": 8300, "selectedPerkIds": [8008, 9111, 9104, 8014, 8347, 8304, 5005, 5008, 5001]}')
     while True:
         page_body_str: str = logInput()
@@ -752,6 +910,14 @@ def input_perkPage_body() -> dict[str, Any]:
     return page_body
 
 def import_perkPage_body() -> dict[str, Any]:
+    '''
+    通过用户输入读取编辑/创建符文页的请求主体。<br>Read the request body to edit / create a perk page from user input.
+    
+    文件内容必须符合json格式。<br>File content must follow the standard json format.
+    
+    :return: 读取到的符文页请求主体。在取消操作时，返回一个空结构。<br>Loaded perk page request body. When this operation is cancelled, the function will return an empty struct.
+    :rtype: dict[str, Any]
+    '''
     logPrint('请输入以Json格式存储新符文页信息的文件路径。输入“0”以返回上一层。\nPlease submit the path of the file that stores the new perk page information in Json format. Submit "0" to return to the last step.')
     while True:
         page_body_path: str = logInput()
@@ -776,6 +942,12 @@ def import_perkPage_body() -> dict[str, Any]:
     return page_body
 
 async def edit_perkPage(connection: Connection) -> None:
+    '''
+    编辑一个符文页。由此进入各个编辑选项。<br>Edit a perk page. Entry to each edit option.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     logPrint('请选择一个符文页：（输入索引范围之外的整数则创建一个新的符文页。）\nPlease select a page: (Enter an integer beyong the index range to create a new page.)')
     perkPage_df: pandas.DataFrame = await get_perk_page(connection)
     perkPage_df_fields_to_print: list[str] = ["id", "name", "isTemporary", "primaryStyleName", "secondaryStyleName", "pageKeystone name"]
@@ -857,8 +1029,9 @@ async def edit_perkPage(connection: Connection) -> None:
                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                             else:
                                 #下面对uiPerksIds展开重重检验，确保生成的是有效的符文页（The following code perform continuous tests on `uiPerksIds` to ensure that a valid perk page will be generated）
-                                perkIds_valid, uiPerksIds = verify_perkIds(tmp)
+                                perkIds_valid = verify_perkIds(tmp)
                                 if perkIds_valid: #前面的检验都通过，则用户输入的符文序号列表是合法的（If all the previous tests are passed, then the perkId list is valid）
+                                    uiPerksIds: list[int] = tmp
                                     page_body["primaryStyleId"] = perks[uiPerksIds[0]]["styleId"]
                                     page_body["substyleId"] = perks[uiPerksIds[4]]["styleId"] #第4个和第5个符文的所属符文系是相同的，这里默认使用了第4个（The 4th and 5th perks have the same belonging perkstyles. Here the 4th's is used）
                                     page_body["selectedPerkIds"] = uiPerksIds
@@ -947,6 +1120,12 @@ async def edit_perkPage(connection: Connection) -> None:
         log.write(format_df(perkPage_df.loc[:, perkPage_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
 
 async def switch_active_perkPage(connection: Connection) -> None:
+    '''
+    选择一个符文页，用于游戏内使用。<br>Select a perk page to be used in game.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     perkPages: list[dict[str, Any]] = await (await connection.request("GET", "/lol-perks/v1/pages")).json()
     if len(perkPages) == 0:
         logPrint("您还未创建任何符文页！请先创建一个符文页再选择此操作。\nYou don't have any page currently. Please select this action after creating a page.")
@@ -996,6 +1175,14 @@ async def switch_active_perkPage(connection: Connection) -> None:
                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
 
 async def arrange_perk_pages(connection: Connection) -> None:
+    '''
+    排序符文页。<br>Order the perk pages.
+    
+    本功能允许用户绕过访问藏品，直接在英雄选择阶段修改符文页的显示顺序。<br>This function allows user to skip opening Collection and directly change the display order of perk pages during a champ select stage.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
     perkPages: list[dict[str, Any]] = await (await connection.request("GET", "/lol-perks/v1/pages")).json() #排序过程容易牵一发而动全身地出现问题，因此尽可能还是保证符文页信息是最新的（One problem may bring about cascade effects during ordering, so the program had better keep the perk page information latest）
     if len(perkPages) == 0:
         logPrint("您还未创建任何符文页！请先创建一个符文页再选择此操作。\nYou don't have any page currently. Please select this action after creating a page.")
@@ -1071,6 +1258,9 @@ async def arrange_perk_pages(connection: Connection) -> None:
                 logPrint("排序完成。\nOrder success.")
 
 async def remove_perkPage(connection: Connection) -> None:
+    '''
+    移除符文页。<br>Remove perk pages.
+    '''
     perkPages: dict[str, Any] = await (await connection.request("GET", "/lol-perks/v1/pages")).json()
     if len(perkPages) == 0:
         logPrint("您还未创建任何符文页！请先创建一个符文页再选择此操作。\nYou don't have any page currently. Please select this action after creating a page.")
@@ -1170,7 +1360,7 @@ async def configure_perks(connection: Connection) -> None:
                 elif action[0] == "0":
                     break
                 elif action[0] == "1":
-                    export_all_perkPages(displayName, folder)
+                    export_all_perkPages(perkPage_df, displayName, folder)
                 elif action[0] == "2":
                     await edit_perkPage(connection)
                 elif action[0] == "3":

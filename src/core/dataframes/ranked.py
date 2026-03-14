@@ -12,6 +12,31 @@ from src.core.config.headers import game_leaderboard_header
 from src.core.config.localization import queueTypes, tiers, ratedTiers
 
 async def sort_game_leaderboard(connection: Connection, queueTypes_list: Optional[list[str]] = None, puuids: Optional[list[str]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
+    '''
+    整理多名玩家的排位信息，形成对局排行表。<br>Organize multiple players' ranked information into a game leaderboard dataframe.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param queueTypes_list: 排位队列列表。如果未指定，则默认使用所有队列。<br>Ranked queue type list. If unspecified, all ranked queues will be used.
+    
+        所有排位队列列举如下：<br>All ranked queues are listed as follows:
+        - RANKED_SOLO_5x5: 排位赛 单排/双排 -- Ranked Solo/Duo
+        - RANKED_FLEX_SR: 排位赛 灵活排位 -- Ranked Flex
+        - RANKED_TFT: 云顶之弈（排位赛） -- Teamfight Tactics (Ranked)
+        - RANKED_TFT_PAIRS: 云顶之弈（双人作战） -- Teamfight Tactics (Double Up)
+        - RANKED_TFT_DOUBLE_UP: 云顶之弈（双人作战） -- Teamfight Tactics (Double Up)
+        - RANKED_TFT_TURBO: 云顶之弈（狂暴模式） -- Teamfight Tactics (Hyper Roll)
+        - CHERRY: 斗魂竞技场 -- Arena
+    :type queueTypes_list: list[str]
+    :param puuids: 要查询的玩家的玩家通用唯一识别码列表。<br>A list of puuids of players to query.
+    :type puuids: list[str]
+    :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+    :type log: LogManager
+    :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
+    :type verbose: bool
+    :return: 对局排行榜数据框。<br>A game leaderboard dataframe.
+    :rtype: Match leaderboard dataframe.
+    '''
     if queueTypes_list == None:
         queueTypes_list = []
     if puuids == None:

@@ -257,8 +257,7 @@ async def get_mission_info(connection: Connection) -> None:
                     print('排序完成！排好序的工作簿已保存为“%s”。\nOrdering finished! The ordered workbook is saved as "%s".\n' %(excel_name_sorted, excel_name_sorted))
                     break
 
-async def check_repeating_missions(connection: Connection) -> None:
-    #查看可重复任务的刷新状态（Check repeating missions' cooldown status）
+async def check_repeating_missions(connection: Connection) -> None: #查看可重复任务的刷新状态（Check repeating missions' cooldown status）
     while True:
         missions: list[dict[str, Any]] = await (await connection.request("GET", "/lol-missions/v1/missions")).json()
         repeating_missions: list[dict[str, Any]] = [mission for mission in missions if mission["cooldownTimeMillis"] != -1]

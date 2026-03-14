@@ -2,6 +2,14 @@ import os, time
 from typing import Any, IO, Optional
 
 def aInput() -> str: #高级输入模式（Advanced input mode）
+    '''
+    在同一个输入函数中允许输入换行符。输入Ctrl-D字符以结束输入。<br>An input function that allows entering the line escape character before the result concludes. Enter Ctrl-D character to cancel the input.
+    
+    Ctrl-D字符在终端中形如“^D”。可通过`pyperclip.copy(chr(4))`方法来复制Ctrl-D字符。<br>Ctrl-D character looks like "^D" in the terminal. It may be obtained by `pyperclip.copy(chr(4))` command.
+    
+    :return: 输入的字符串。<br>The input string.
+    :rtype: str
+    '''
     text: str = ""
     count: int = 0
     while True:
@@ -30,7 +38,11 @@ class LogManager:
         :type encoding: str
         :param sep: 分隔符。默认为一个空格。<br>Separator. One space by default.
         :type sep: str
-        :param flush: 是否将缓存文字即刻写入文件。默认为真。<br>Whether to write cached strings into file. True by default.
+        :param start: 输出语句的抬头部分。相当于logging库的不同日志输出级别。<br>The header part of the print statement, which acts in a similar way to the different log output levels of `logging` library.
+        :type start: str
+        :param end: 输出语句的结尾字符串。默认为换行符。<br>The ending character in the print statement. A line escape character by default.
+        :type end: str
+        :param flush: 是否将缓存文字即刻写入文件。默认为真。<br>Whether to write cached strings into file immediately. True by default.
         :type flush: bool
         :param print_time: 是否在终端显式打印抬头时间戳。默认为假。<br>Whether to print the header timestamp to terminal explicitly. False by default.
         :type print_time: bool
@@ -91,12 +103,23 @@ class LogManager:
         self.verbose = True
     
     def realpath(self) -> str: #返回完整路径（Return the complete path）
+        '''
+        返回日志文件的绝对路径。<br>Returns the absolute path of the log file.
+        '''
         if hasattr(self, "path"):
             return os.path.realpath(self.path)
         else: #在未指定文件指针时，返回当前目录（Without file pointer specified, this function returns the current working directory）
             return os.path.realpath(os.getcwd())
     
     def logInput(self, prompt: str = "", write_time: bool = True) -> str:
+        '''
+        日志输入方法。<br>Log input method.
+        
+        :param prompt: 在用户输入前部预先打印的部分。默认为空字符串。<br>The part that is printed right before the user is going to input something. An empty string by default.
+        :type prompt: str
+        :param print_time: 是否在终端显式打印抬头时间戳。默认为假。<br>Whether to print the header timestamp to terminal explicitly. False by default.
+        :type print_time: bool
+        '''
         s: str = input(prompt)
         if self.file_opened:
             currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())
@@ -108,7 +131,21 @@ class LogManager:
         '''
         日志输出方法。优先使用**此方法中的默认参数**，其次使用对象内相应的属性。<br>Log output method. This method will first use **the default parameters of this method**, and then use the attributes of the object of this class.
         
-        :param: 相关参数类型说明见构造函数。<br>Refer to the constructor for explanations of these default parameters.
+        :param sep: 分隔符。<br>Separator.
+        :type sep: str
+        :param start: 抬头部分。相当于logging库的不同日志输出级别。<br>The header part, which acts in a similar way to the different log output levels of `logging` library.
+        :type start: str
+        :param end: 结尾字符串。<br>The ending character.
+        :type end: str
+        :param flush: 是否将缓存文字即刻写入文件。<br>Whether to write cached strings into file immediately.
+        :type flush: bool
+        :param print_time: 是否在终端显式打印抬头时间戳。<br>Whether to print the header timestamp to terminal explicitly.
+        :type print_time: bool
+        :param write_time: 是否将抬头时间戳写入日志文件。<br>Whether to write the header timestamp into the log.
+        :type write_time: bool
+        :param verbose: 是否在终端中输出。<br>Whether to print to terminal.
+        :type verbose: bool
+        
         '''
         #参数预处理（Parameter preparation）
         if not isinstance(sep, str):
@@ -135,6 +172,11 @@ class LogManager:
             print(write_str, end = end, file = self.__log, flush = flush) #即使用回车字符结束，日志中也不会将光标回到行首（Even if end is carriage return, in the log file the cursor won't return to the head of the line）
     
     def write(self, s: str = "", write_time: bool = False) -> None:
+        '''
+        向日志文件流写入字符串。<br>Write a string into the log file iostream.
+        
+        如果未指定日志，则不执行任何操作。<br>If no log is specified, then nothing will happen.
+        '''
         if self.file_opened:
             if write_time:
                 currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())
@@ -142,6 +184,11 @@ class LogManager:
             self.__log.write(s)
         
     def close(self) -> None:
+        '''
+        关闭日志文件流。<br>Close the log file iostream.
+        
+        如果未指定日志，则不执行任何操作。<br>If no log is specified, then nothing will happen.
+        '''
         if self.file_opened:
             self.__log.close()
             self.file_opened = False

@@ -37,7 +37,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/03/11
+# 更新（Last update）：     2026/03/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -76,6 +76,19 @@ connector: Connector = Connector()
 # 搜索召唤师生涯（Search summoner profile）
 #-----------------------------------------------------------------------------
 def prepare_data_resources(platformId: str, locale: str) -> bool:
+    '''
+    准备全局数据资源。<br>Prepare global data resources.
+    
+    :param platformId: 服务器代号。决定使用正式服还是测试服的数据资源。<br>PlatformId, which determines one of Live and PBE data resources will be used.
+    
+        服务器代号可以通过以下LCU接口获取：<br>PlatformId can be obtained through the following LCU endpoint:
+        - `GET /lol-platform-config/v1/namespaces/LoginDataPacket/platformId`
+    :type platformId: str
+    :param locale: 语言文化代码。决定了数据资源的语言。<br>Language code, which determines the language of the data resources.
+    :type locale
+    :return: 是否切换语言。<br>Whether to switch language.
+    :rtype: bool
+    '''
     global session, URLPatch, patches_initial, bigPatches, queues_initial, spells_initial, LoLChampions_initial, LoLItems_initial, summonerIcons_initial, perks_initial, perkstyles_initial, TFTAugments_initial, TFTChampions_initial, TFTItems_initial, TFTCompanions_initial, TFTTraits_initial, CherryAugments_initial
     #下面声明一些数据资源的地址（The following code declare some data resources' URLs）
     URLPatch = "pbe" if platformId == "PBE1" or platformId == "PBE" else "latest"
@@ -959,6 +972,18 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
     return switch_language
 
 async def load_smurf(connection: Connection, infos: Optional[dict[str, dict[str, Any]]] = None) -> list[dict[str, Any]]:
+    '''
+    读取小号信息。<br>Load smurf information.
+    
+    用户可以手动输入小号，也可以选择从一个本地文件读取。读取完成后，也可以选择更新本地的小号信息。<br>Users may choose to manually input smurf information, or load smurfs from a local file. After loading, the user can decide whether to update the local smurf information.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
+    :return: 小号信息列表。<br>A list of smurfs.
+    :rtype: list[dict[str, Any]]
+    '''
     if infos == None:
         infos = {}
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
@@ -1078,6 +1103,20 @@ async def load_smurf(connection: Connection, infos: Optional[dict[str, dict[str,
     return smurfs
 
 async def sort_basic_info(connection: Connection, puuid: str, remove_empty: bool = True) -> pandas.DataFrame:
+    '''
+    将**一名**召唤师的个人档案整理成一个表格。<br>Sort the personal profile of **a** summoner into a dataframe.
+    
+    有关个人档案包括的内容，请参阅召唤师模块中的`sort_summoner_info`函数。<br>To get the details of a summoner's profile, please refer to `sort_summoner_info` function in `src.utils.summoner` module.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param puuid: 要查询的召唤师的玩家通用唯一识别码。<br>The puuid of the player to query.
+    :type puuid: str
+    :param remove_empty: 是否从表格中移除内容为空的字段。默认为真。<br>Whether to remove empty fields from the table. True by default.
+    :type remove_empty: bool
+    :return: 召唤师档案数据框。<br>Summoner profile dataframe.
+    :rtype: pandas.DataFrame
+    '''
     info: dict[str, Any] = await get_info(connection, puuid)
     info_body: dict[str, Any] = info["body"]
     displayName: str = get_info_name(info_body)
@@ -1252,7 +1291,27 @@ async def sort_basic_info(connection: Connection, puuid: str, remove_empty: bool
         info_df = info_df[info_df["值"] != ""]
     return info_df
 
-async def sort_champion_mastery(connection: Connection, LoLChampions: dict[int, dict[str, Any]], puuid: str) -> pandas.DataFrame:
+async def sort_champion_mastery(connection: Connection, puuid: str, LoLChampions: dict[int, dict[str, Any]]) -> pandas.DataFrame:
+    '''
+    将一名玩家的英雄成就整理成一张表格。<br>Sort the champion mastery of a player into a table.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param puuid: 要查询的召唤师的玩家通用唯一识别码。<br>The puuid of the player to query.
+    :type puuid: str
+    :param LoLChampions: 整理后的英雄数据资源。键是英雄序号，值是英雄信息字典。<br>Organized champion data resource. Each key is a championId, and each value is a champion information dictionary.
+    
+        原始英雄数据资源可通过以下链接获取：<br>The raw champion data resource can be obtained through the following links:
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json
+        - https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champions/{championId}.json
+        
+        也可以通过以下LCU接口获取：<br>It can also be obtained from the following LCU endpoints:
+        - `GET /lol-game-data/assets/v1/champion-summary.json`
+        - `GET /lol-game-data/assets/v1/champions/{championId}.json`
+        - `GET /lol-champions/v1/inventories/{summonerId}/champions`
+    :type LoLChampions: dict[int, dict[str, Any]]
+    :return: 英雄成就数据框。<br>Champion mastery dataframe.
+    '''
     mastery: list[dict[str, Any]] = await (await connection.request("GET", f"/lol-champion-mastery/v1/{puuid}/champion-mastery")).json()
     mastery_header_keys: list[str] = list(mastery_header.keys())
     mastery_data: dict[str, list[Any]] = {key: [] for key in mastery_header_keys}
@@ -1299,6 +1358,16 @@ async def sort_champion_mastery(connection: Connection, LoLChampions: dict[int, 
     mastery_htmltable: str = mastery_df_web.to_html(escape = False)
 
 async def sort_ranked_data(connection: Connection, puuid: str) -> pandas.DataFrame:
+    '''
+    将一名玩家的排位数据整理成一张表格。<br>Organize a player's ranked data into a table.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param puuid: 要查询的召唤师的玩家通用唯一识别码。<br>The puuid of the player to query.
+    :type puuid: str
+    :return: 排位数据框。<br>Ranked dataframe.
+    :rtype: pandas.DataFrame
+    '''
     ranked: dict[str, Any] = await (await connection.request("GET", f"/lol-ranked/v1/ranked-stats/{puuid}")).json()
     ranked_header_keys: list[str] = list(ranked_header.keys())
     ranked_data: dict[str, list[Any]] = {key: [] for key in ranked_header_keys}
@@ -1330,6 +1399,16 @@ async def sort_ranked_data(connection: Connection, puuid: str) -> pandas.DataFra
     return ranked_df
 
 async def sort_ranked_ladders(connection: Connection, puuid: str) -> pandas.DataFrame:
+    '''
+    将一名玩家的排位天梯信息整理成一张表格。<br>Organize a player's ranked ladder data into a table.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param puuid: 要查询的召唤师的玩家通用唯一识别码。<br>The puuid of the player to query.
+    :type puuid: str
+    :return: 排位天梯数据框。<br>Ranked ladder dataframe.
+    :rtype: pandas.DataFrame
+    '''
     ladders: list[dict[str, Any]] = await (await connection.request("GET", f"/lol-ranked/v1/league-ladders/{puuid}")).json()
     # ladder_summoner_infos: dict[str, dict[str, Any]] = await get_infos(connection, puuids = [standing["puuid"] for ladder in ladders for division in ladder["divisions"] for standing in division["standings"]])
     ladder_header_keys: list[str] = list(ladder_header.keys())
@@ -1589,7 +1668,7 @@ async def search_profile(connection: Connection) -> None:
         # pkl2name: str = f"Intermediate Object - mastery (Champion Mastery) - {displayName} ({currentTime}).pkl"
         # with open(os.path.join(folder, pkl2name), "wb") as IntObj2:
         #     pickle.dump(mastery, IntObj2)
-        mastery_df: pandas.DataFrame = await sort_champion_mastery(connection, LoLChampions, current_puuid)
+        mastery_df: pandas.DataFrame = await sort_champion_mastery(connection, current_puuid, LoLChampions)
         
         #整理排位数据（Organize ranked data）
         #logPrint("召唤师排位数据如下：\nSummoner ranked data are as follows:") #排位赛部分数据位于召唤师信息中（Part of ranked data are in Profile Sheet）
@@ -1670,7 +1749,7 @@ async def search_profile(connection: Connection) -> None:
         game_summary_dfs: dict[int, pandas.DataFrame] = {}
         game_timeline_dfs: dict[int, pandas.DataFrame] = {}
         game_event_dfs: dict[int, pandas.DataFrame] = {}
-        info_exist_error: dict[int, bool] = {} #当获取对局记录反复出现异常时，为了保证第二次没有获取到的报错信息在导出时不会覆盖上一次使用该程序时导出的正确工作表，设置该列表。列表中的某个元素为True，代表对应的对局记录将能正常导出。由于对局概要往往比对局时间轴更受关注，这里只以LoLGame_summary的完整性作为exist_error的追加依据（When the match history service encounters errors frequently, to make sure the error information won't overlay the normally captured match information in the last time using this program, this list is declared here. When some element in this list is True, the corresponding match information / timeline can be exported as usual. Because the LoLGame_summary is basically more focused on than LoLGame_timeline, True/False is appended to exist_error only based on the integrity of LoLGame_summary）
+        info_exist_error: dict[int, bool] = {} #当获取对局记录反复出现异常时，为了保证第二次没有获取到的报错信息在导出时不会覆盖上一次使用该程序时导出的正确工作表，设置该列表。列表中的某个元素为True，代表对应的对局记录将能正常导出。由于对局概要往往比对局时间轴更受关注，这里只以LoLGame_summary的完整性作为exist_error的追加依据（When the match history service encounters errors frequently, to make sure the error information won't overlay the normally captured match summary in the last time using this program, this list is declared here. When some element in this list is True, the corresponding match summary / timeline can be exported as usual. Because the LoLGame_summary is basically more focused on than LoLGame_timeline, True/False is appended to exist_error only based on the integrity of LoLGame_summary）
         timeline_exist_error: dict[int, bool] = {}
         main_player_included: dict[int, bool] = {} #当通过列表来查询对局记录时，有可能某场对局并不包含该召唤师（When searching the match history using a list, maybe the summoner isn't present in some match）
         match_reserve_strategy: dict[int, bool] = {} #当某场对局不包含该召唤师，或者对局数据异常时，决定将该对局概要和时间轴导出到Excel中（Decides whether to export the summary and timeline of a match into Excel when this match doesn't include the searched summoner at present or the match data are lost）
@@ -1684,7 +1763,7 @@ async def search_profile(connection: Connection) -> None:
         LoLGamePlayed: bool = False
         if search_LoL:
             LoLHistory_dfs: list[pandas.DataFrame] = []
-            LoLGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {} #在从SGP API中获取对局概要时，顺便把整理出对局概要也一并获取了（While fetching match summary through SGP API, the program also sorts out match information）
+            LoLGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {} #在从SGP API中获取对局概要时，顺便把整理出对局概要也一并获取了（While fetching match summary through SGP API, the program also sorts out match summary）
             LoLGame_timeline_cache_fromDetails_sgp: dict[int, dict[str, Any]] = {} #同上，通过一次性获取所有对局时间轴，来减少网络请求次数（Same as above, reduce the number of web requests through fetching all matches' timeline information at one time）
             for i in range(len(AllAccounts)):
                 queues = queues_initial.copy()
@@ -1879,9 +1958,9 @@ async def search_profile(connection: Connection) -> None:
                 LoLGame_stat_data: dict[str, list[Any]] = {key: [] for key in LoLGame_stat_header_keys} #将主召唤师的信息单独导出到一个工作表中（Export the game stats of the main summoner into a single sheet）
                 for matchId in LoLMatchIDs:
                     match_id: str = f"{platformId}_{matchId}"
-                    LoLGame_summary_export: bool = not (old_LoLMatch_detected and update_unsaved_only and matchId in saved_LoLMatchIDs) #标记是否导出对局详细信息。如果是在批量查询全部对局的情况下仅保存本地没有的对局，且该对局已在本地，则不保存本场对局（Marks whether to export the match information. If the user submits "3" to search matches in batch and selected to update the matches that don't exist locally, while the current match already exists, then the program won't export this match）
+                    LoLGame_summary_export: bool = not (old_LoLMatch_detected and update_unsaved_only and matchId in saved_LoLMatchIDs) #标记是否导出对局概要。如果是在批量查询全部对局的情况下仅保存本地没有的对局，且该对局已在本地，则不保存本场对局（Marks whether to export the match summary. If the user submits "3" to search matches in batch and selected to update the matches that don't exist locally, while the current match already exists, then the program won't export this match）
                     LoLGame_leaderboard_export: bool = args.export_leaderboard #标记是否导出对局排行榜。仅可通过命令行变量指定（Marks whether to export the match leaderboard. Can only be specified by the command line argument）
-                    LoLGame_timeline_export: bool = LoLGame_summary_export #标记是否导出对局时间轴。时间轴的整理依赖于详细信息，因此目前认为这两者的值相同（Marks whether to export the match timeline. Timeline data organization is based on the match information, so its value is set the same as the above）
+                    LoLGame_timeline_export: bool = LoLGame_summary_export #标记是否导出对局时间轴。时间轴的整理依赖于概要，因此目前认为这两者的值相同（Marks whether to export the match timeline. Timeline data organization is based on the match summary, so its value is set the same as the above）
                     #LoLGame_event_export: bool = LoLGame_timeline_export #标记是否导出对局事件信息。由于事件信息源于时间轴，因此这两者的值在任何情形下是相同的（Marks whether to export the match events. Because events are extracted from the timeline, these two values should be the same under any circumstance）
                     info_text_saved = timeline_text_saved = False #标记对局概要和时间轴的文本文档是否保存（Marks whether the json files of match summary and timeline are saved）
                     isLoL[matchId] = False #这里可以使用（This assignment can be replaced by）：`isLoL[matchId] = isTFT[matchId] = False`
@@ -1978,7 +2057,7 @@ async def search_profile(connection: Connection) -> None:
                     ##信息/概要（Information / Summary）
                     if status == 200 and (not use_sgp or "json" in LoLGame_summary):
                         if save_all_json and save_one_json:
-                            json10name: str = f"Match Information (LoL) - {platformId}-{matchId} (SGP).json" if use_sgp else f"Match Information (LoL) - {platformId}-{matchId}.json"
+                            json10name: str = f"Match Summary (LoL) - {platformId}-{matchId} (SGP).json" if use_sgp else f"Match Summary (LoL) - {platformId}-{matchId}.json"
                             os.makedirs(match_folder, exist_ok = True)
                             try:
                                 with open(os.path.join(match_folder, json10name), "w", encoding = "utf-8") as jsonfile10: #如果有两个人存在于同一场对局中，那么保存第二个人的对局概要时，将重新写一遍这个文件（If two players exist in one match, then to save the second player's match summary, the same json file will be written twice）
@@ -1989,7 +2068,7 @@ async def search_profile(connection: Connection) -> None:
                                 info_text_saved = True
                                 LoLMatches_exported.append(matchId)
                             # currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
-                            # pkl7name = f"Intermediate Object - Match Information (LoL) - {platformId}-{matchId}.pkl"
+                            # pkl7name = f"Intermediate Object - Match Summary (LoL) - {platformId}-{matchId}.pkl"
                             # with open(os.path.join(match_folder, pkl7name), "wb") as IntObj6:
                             #     pickle.dump(LoLGame_summary, IntObj6)
                         if use_sgp:
@@ -2337,7 +2416,7 @@ async def search_profile(connection: Connection) -> None:
                         #导出数据（Export data）
                         if "json" in TFTGame_summary and bool(TFTGame_summary["json"]):
                             if save_all_json and save_one_json:
-                                json12name: str = f"Match Information (TFT) - {platformId}-{matchId}.json"
+                                json12name: str = f"Match Summary (TFT) - {platformId}-{matchId}.json"
                                 os.makedirs(match_folder, exist_ok = True)
                                 try:
                                     with open(os.path.join(match_folder, json12name), "w", encoding = "utf-8") as jsonfile12:
@@ -2348,7 +2427,7 @@ async def search_profile(connection: Connection) -> None:
                                     info_text_saved = True
                                     TFTMatches_exported.append(matchId)
                                 # currentTime: str = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
-                                # pkl9name: str = f"Intermediate Object - Match Information (TFT) - {platformId}-{matchId}.pkl"
+                                # pkl9name: str = f"Intermediate Object - Match Summary (TFT) - {platformId}-{matchId}.pkl"
                                 # with open(os.path.join(match_folder, pkl9name), "wb") as IntObj8:
                                 #     pickle.dump(TFTGame_summary, IntObj8)
                             
@@ -2366,7 +2445,7 @@ async def search_profile(connection: Connection) -> None:
                             TFTGame_leaderboard_df = pandas.DataFrame()
                         #注意到对于对局出现异常的情况，英雄联盟对局概要数据框的构建方式和云顶之弈有所不同。这是因为当云顶之弈对局概要获取异常时，往往是其“json”键为空或者无“json”键，而没有详细报错信息（Note that when an error occurs to a match, the method of creating the LoL match summary dataframe is different from that of creating the TFT match summary dataframe. This is because when a TFT match summary fails to be loaded, either its "json" value is null, or its "json" key is missing, without a detailed error information）
                     else: #为了简化输出，跳过导出的对局概要不再输出提示（To simplify output, skipped match summary won't have prompts）
-                        info_note: str = " (Match information skipped)"
+                        info_note: str = " (Match summary skipped)"
                         TFTGame_summary_df: pandas.DataFrame = pandas.DataFrame()
                         TFTGame_leaderboard_df = pandas.DataFrame()
                     
@@ -2580,7 +2659,7 @@ async def search_profile(connection: Connection) -> None:
                                     logPrint("剩余时间（Time remaining）                                 ： %s" %(format_runtime(total_remaining)))
                                     logPrint("预计总时间（Expected total time）                          ： %s" %(format_runtime(total_used + total_remaining)), end = "\n\n")
                             if len(matchIDs) != 0:
-                                logPrint("对局概要和时间轴导出完成！\nMatch information and timeline exported!")
+                                logPrint("对局概要和时间轴导出完成！\nMatch summary and timeline exported!")
                 except PermissionError:
                     logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
                     logInput()
