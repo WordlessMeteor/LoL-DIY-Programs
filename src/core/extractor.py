@@ -18,7 +18,7 @@ from src.utils.runtimeDebug import subscope
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/03/13
+# 更新（Last update）：     2026/03/15
 #=============================================================================
 
 #定义异质性检验函数（Define heterogeneity verification function）
@@ -4517,9 +4517,11 @@ class AugmentExtractor(LoLDataExtractor):
         :type extractor: LoLDataExtractor
         '''
         self.__dict__.update(extractor.__dict__)
-        self.augments_ready: dict[str, bool] = {"map30": False, "map12": False, "cherry": False, "kiwi": False}
+        self.augments_ready: dict[str, bool] = {"map30": False, "cherry": False, "map33": False, "map12": False, "kiwi": False}
         self.CherryAugment_df: pandas.DataFrame = pandas.DataFrame()
+        self.SwarmAugment_df: pandas.DataFrame = pandas.DataFrame()
         self.KiwiAugment_df: pandas.DataFrame = pandas.DataFrame()
+        self.KiwiAugmentSet_df: pandas.DataFrame = pandas.DataFrame()
         
     def init_data_readiness(self) -> None:
         '''
@@ -4531,6 +4533,7 @@ class AugmentExtractor(LoLDataExtractor):
         '''
         在线获取强化符文二进制描述数据。包括以下游戏模式：<br>Get binary description data of augments online. Including the following game modes:
         - 斗魂竞技场（Arena）
+        - 无尽狂潮（Swarm）
         - 海克斯大乱斗（ARAM: Mayhem）
         '''
         logPrint = self.log.logPrint
@@ -4551,23 +4554,6 @@ class AugmentExtractor(LoLDataExtractor):
             self.map30_bin: dict[str, list[str] | dict[str, Any]] = source.json()
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.augments_ready["map30"] = True
-        #嚎哭深渊地图（Howling Abyss map）
-        map12_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map12/map12.bin.json"
-        if map12_bin_url in self.__class__.data_cache["online"]:
-            self.map12_bin = self.__class__.data_cache["online"][map12_bin_url]
-        else:
-            source, status, self.session = requestUrl("GET", map12_bin_url, session = self.session)
-            if status != 200:
-                if status == -1:
-                    logPrint("嚎哭深渊地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
-                elif status == 404:
-                    logPrint("嚎哭深渊地图信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(map12_bin_url))
-                time.sleep(3)
-                self.init_data_readiness()
-                return
-            self.map12_bin: dict[str, list[str] | dict[str, Any]] = source.json()
-            self.__class__.data_cache["online"][map12_bin_url] = self.map12_bin
-        self.augments_ready["map12"] = True
         #斗魂竞技场模式（Arena mode）
         cherry_bin_url = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/cherry.bin.json"
         if cherry_bin_url in self.__class__.data_cache["online"]:
@@ -4584,9 +4570,47 @@ class AugmentExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.cherry_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+                self.cherry_bin = source.json()
             self.__class__.data_cache["online"][cherry_bin_url] = self.cherry_bin
         self.augments_ready["cherry"] = True
+        #最终都市地图（Final City map）
+        map33_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map33/map33.bin.json"
+        if map33_bin_url in self.__class__.data_cache["online"]:
+            self.map33_bin = self.__class__.data_cache["online"][map33_bin_url]
+        else:
+            source, status, self.session = requestUrl("GET", map33_bin_url, session = self.session)
+            if status != 200:
+                if status == 404:
+                    logPrint("最终都市地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nFinal City map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map33_bin_url))
+                    self.map33_bin: dict[str, list[str] | dict[str, Any]] = {}
+                else:
+                    logPrint("最终都市地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nFinal City map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                    time.sleep(3)
+                    self.init_data_readiness()
+                    return
+            else:
+                self.map33_bin = source.json()
+            self.__class__.data_cache["online"][map33_bin_url] = self.map33_bin
+        self.augments_ready["map33"] = True
+        #嚎哭深渊地图（Howling Abyss map）
+        map12_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map12/map12.bin.json"
+        if map12_bin_url in self.__class__.data_cache["online"]:
+            self.map12_bin = self.__class__.data_cache["online"][map12_bin_url]
+        else:
+            source, status, self.session = requestUrl("GET", map12_bin_url, session = self.session)
+            if status != 200:
+                if status == 404:
+                    logPrint("嚎哭深渊地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nHowling Abyss map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map12_bin_url))
+                    self.map12_bin: dict[str, list[str] | dict[str, Any]] = {}
+                else:
+                    logPrint("嚎哭深渊地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                    time.sleep(3)
+                    self.init_data_readiness()
+                    return
+            else:
+                self.map12_bin = source.json()
+            self.__class__.data_cache["online"][map12_bin_url] = self.map12_bin
+        self.augments_ready["map12"] = True
         #海克斯大乱斗模式（ARAM: Mayhem mode）
         if Patch(self.patch_number) >= Patch("16.2.7366411"):
             kiwi_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/kiwi.bin.json"
@@ -4617,8 +4641,9 @@ class AugmentExtractor(LoLDataExtractor):
         :param paths: 强化符文二进制描述文件的本地路径列表，按照以下顺序排列：<br>A local path list of augment binary description files, arranged in the following order:
         
             - 怒火角斗场地图（Rings of Wrath map）
-            - 嚎哭深渊地图（Howling Abyss map）
             - 斗魂竞技场模式专属信息（Arena mode specific data）
+            - 最终都市地图（Final City map）
+            - 嚎哭深渊地图（Howling Abyss map）
             - 海克斯大乱斗模式专属信息（ARAM: Mayhem mode specific data）
         :type paths: list[str]
         '''
@@ -4640,17 +4665,8 @@ class AugmentExtractor(LoLDataExtractor):
                 self.map30_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
             self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
         self.augments_ready["map30"] = True
-        #嚎哭深渊地图（Howling Abyss map）
-        map12_bin_path: str = paths[1]
-        if map12_bin_path in self.__class__.data_cache["local"]:
-            self.map12_bin = self.__class__.data_cache["local"][map12_bin_path]
-        else:
-            with open(map12_bin_path, "r", encoding = "utf-8") as fp:
-                self.map12_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
-            self.__class__.data_cache["local"][map12_bin_path] = self.map12_bin
-        self.augments_ready["map12"] = True
         #斗魂竞技场模式（Arena mode）
-        cherry_bin_path: str = paths[2]
+        cherry_bin_path: str = paths[1]
         if cherry_bin_path in self.__class__.data_cache["local"]:
             self.cherry_bin = self.__class__.data_cache["local"][cherry_bin_path]
         else:
@@ -4658,8 +4674,26 @@ class AugmentExtractor(LoLDataExtractor):
                 self.cherry_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
             self.__class__.data_cache["local"][cherry_bin_path] = self.cherry_bin
         self.augments_ready["cherry"] = True
+        #最终都市地图（Final City map）
+        map33_bin_path: str = paths[2]
+        if map33_bin_path in self.__class__.data_cache["local"]:
+            self.map33_bin = self.__class__.data_cache["local"][map33_bin_path]
+        else:
+            with open(map33_bin_path, "r", encoding = "utf-8") as fp:
+                self.map33_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+            self.__class__.data_cache["local"][map33_bin_path] = self.map33_bin
+        self.augments_ready["map33"] = True
+        #嚎哭深渊地图（Howling Abyss map）
+        map12_bin_path: str = paths[3]
+        if map12_bin_path in self.__class__.data_cache["local"]:
+            self.map12_bin = self.__class__.data_cache["local"][map12_bin_path]
+        else:
+            with open(map12_bin_path, "r", encoding = "utf-8") as fp:
+                self.map12_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+            self.__class__.data_cache["local"][map12_bin_path] = self.map12_bin
+        self.augments_ready["map12"] = True
         #海克斯大乱斗模式（ARAM: Mayhem mode）
-        kiwi_bin_path: str = paths[3]
+        kiwi_bin_path: str = paths[4]
         if kiwi_bin_path in self.__class__.data_cache["local"]:
             self.kiwi_bin = self.__class__.data_cache["local"][kiwi_bin_path]
         else:
@@ -4677,8 +4711,9 @@ class AugmentExtractor(LoLDataExtractor):
         :param paths: 强化符文二进制描述文件的本地路径列表，按照以下顺序排列：<br>A local path list of augment binary description files, arranged in the following order:
         
             - 怒火角斗场地图（Rings of Wrath map）
-            - 嚎哭深渊地图（Howling Abyss map）
             - 斗魂竞技场模式专属信息（Arena mode specific data）
+            - 最终都市地图（Final City map）
+            - 嚎哭深渊地图（Howling Abyss map）
             - 海克斯大乱斗模式专属信息（ARAM: Mayhem mode specific data）
         
             仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
@@ -4691,7 +4726,7 @@ class AugmentExtractor(LoLDataExtractor):
         :rtype: int
         '''
         logPrint = self.log.logPrint
-        if not all(self.augments_ready.values()):
+        if not self.augments_ready["map30"]:
             #获取强化符文信息（Get augment information）
             logPrint("正在读取强化符文数据……\nReading augment data ...", print_time = True)
             if debug:
@@ -4702,7 +4737,7 @@ class AugmentExtractor(LoLDataExtractor):
                     self.read_augment_data(paths = paths)
             else:
                 self.get_augment_data()
-            if not all(self.augments_ready.values()):
+            if not self.augments_ready["map30"]:
                 logPrint("强化符文数据尚未准备就绪！\nAugment data not prepared!")
                 return 2
         #合并数据（Merge data）
@@ -4715,6 +4750,10 @@ class AugmentExtractor(LoLDataExtractor):
         CherryAugment_header_keys: list[str] = list(CherryAugment_header.keys())
         CherryAugment_data: dict[str, list[Any]] = {key: [] for key in CherryAugment_header_keys}
         CherryAugment_data_json: dict[str, list[Any]] = copy.deepcopy(CherryAugment_data)
+        SwarmAugment_header: dict[str, str] = {"key": "主键", "AugmentNameId": "强化符文代码", "NameTra": "名称键", "DescriptionTra": "简介键", "AugmentTooltipTra": "强化符文详细信息键", "RootSpell": "根指令", "mBuildTags": "构建标签", "AugmentLargeIconPath": "强化符文大图标路径", "AugmentSmallIconPath": "强化符文小图标路径", "rarity": "稀有度", "AugmentPlatformId": "强化符文序号", "NameTra_content_zh": "名称（中文）", "NameTra_content_en": "名称（英文）", "DescriptionTra_content_zh": "简介（中文）", "DescriptionTra_content_zh_burn": "简介（中文/数值转换）", "DescriptionTra_content_en": "简介（英文）", "DescriptionTra_content_en_burn": "简介（英文/数值转换）", "AugmentTooltipTra_content_zh": "强化符文详细信息（中文）", "AugmentTooltipTra_content_zh_burn": "强化符文详细信息（中文/数值转换）", "AugmentTooltipTra_content_en": "强化符文详细信息（英文）", "AugmentTooltipTra_content_en_burn": "强化符文详细信息（英文/数值转换）", "rarityValue": "位阶", "RootSpellObject": "根指令对象"}
+        SwarmAugment_header_keys: list[str] = list(SwarmAugment_header.keys())
+        SwarmAugment_data: dict[str, list[Any]] = {key: [] for key in SwarmAugment_header_keys}
+        SwarmAugment_data_json: dict[str, list[Any]] = copy.deepcopy(SwarmAugment_data)
         KiwiAugment_header: dict[str, str] = {"key": "主键", "AugmentNameId": "强化符文代码", "Enabled": "可用性", "NameTra": "名称键", "DescriptionTra": "简介键", "AugmentTooltipTra": "强化符文详细信息键", "RootSpell": "根指令", "{40c7b66f}": "其它指令", "mAugmentTags": "强化符文标签", "mBuildTags": "构建标签", "AugmentLargeIconPath": "强化符文大图标路径", "AugmentSmallIconPath": "强化符文小图标路径", "AugmentDisplayTags": "强化符文显示标签", "rarity": "稀有度", "{ed593c9c}": "套装效果永久保留", "AugmentPlatformId": "强化符文序号", "NameTra_content_zh": "名称（中文）", "NameTra_content_en": "名称（英文）", "DescriptionTra_content_zh": "简介（中文）", "DescriptionTra_content_zh_burn": "简介（中文/数值转换）", "DescriptionTra_content_en": "简介（英文）", "DescriptionTra_content_en_burn": "简介（英文/数值转换）", "AugmentTooltipTra_content_zh": "强化符文详细信息（中文）", "AugmentTooltipTra_content_zh_burn": "强化符文详细信息（中文/数值转换）", "AugmentTooltipTra_content_en": "强化符文详细信息（英文）", "AugmentTooltipTra_content_en_burn": "强化符文详细信息（英文/数值转换）", "AugmentDisplayTags_content": "强化符文显示标签内容", "rarityValue": "位阶", "RootSpellObject": "根指令对象", "{40c7b66f}_Object": "其它指令对象", "augmentSet": "强化符文套装列表", "augmentSet_contents_zh": "强化符文套装（中文）", "augmentSet_contents_en": "强化符文套装（英文）"}
         KiwiAugment_header_keys: list[str] = list(KiwiAugment_header.keys())
         KiwiAugment_data: dict[str, list[Any]] = {key: [] for key in KiwiAugment_header_keys}
@@ -4727,8 +4766,8 @@ class AugmentExtractor(LoLDataExtractor):
         #数据整理核心部分（Data organization core part）
         AugmentDisplayTags: dict[int, str] = {0: "己方", 1: "伤害", 2: "综合", 3: "复原力", 4: "速度", 5: "功能", 6: "属性锻造器", 7: "经济"} #通过字符串常量池的“cherry_augmentdisplaytag_...”类键得到（Obtained by "cherry_augmentdisplaytag_..." keys）
         #AugmentDisplayTags: dict[int, str] = {0: "Ally", 1: "Damage", 2: "General", 3: "Resilience", 4: "Speed", 5: "Utility", 6: "Stat Anvil", 7: "Economy"}
-        augment_rarities: dict[int, str] = {0: "白银", 1: "黄金", 2: "棱彩"}
-        #augment_rarities: dict[int, str] = {0: "Silver", 1: "Gold", 2: "Prismatic"}
+        augment_rarities: dict[int, str] = {0: "白银", 1: "黄金", 2: "棱彩", 3: "超凡"}
+        #augment_rarities: dict[int, str] = {0: "Silver", 1: "Gold", 2: "Prismatic", 3: "Unique"}
         pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
@@ -4786,6 +4825,54 @@ class AugmentExtractor(LoLDataExtractor):
         optimize_bool_display(CherryAugment_df)
         CherryAugment_df = pandas.concat([pandas.DataFrame([CherryAugment_header])[CherryAugment_df.columns], CherryAugment_df], ignore_index = True)
         self.CherryAugment_df = CherryAugment_df
+        ##无尽狂潮强化（Swarm augments）
+        self.init_mSpells()
+        for (key, value) in self.map33_bin.items(): #提取指令字典（Extract spell dictionary）
+            if key != "__linked" and value["__type"] == "SpellObject":
+                self.__class__.mSpells[value["mScriptName"]] = value
+        for (key1, value) in self.map33_bin.items():
+            if key1 != "__linked" and value["__type"] == "AugmentData":
+                for i in range(len(SwarmAugment_header_keys)):
+                    key = SwarmAugment_header_keys[i]
+                    if i == 0: #主键（`Key`）
+                        to_append: Any = key1
+                    elif i <= 10:
+                        to_append = value.get(key, "")
+                    elif i <= 20: #字符串常量（String constants）
+                        subkey2: str = pStrConst.search(key).group()
+                        subkey1: str = key.replace(subkey2, "")
+                        useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                        tooltip_key: str = SwarmAugment_data[subkey1][-1]
+                        tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        if subkey2.endswith("_burn"):
+                            spellKey: str = value["RootSpell"]
+                            if spellKey in self.map33_bin:
+                                mSpell: Optional[dict[str, Any]] = self.map33_bin[spellKey]["mSpell"]
+                            else:
+                                mSpell: Optional[dict[str, Any]] = None
+                            if mSpell == None:
+                                to_append = ""
+                            else:
+                                self.__class__.calculatedVariables = {}
+                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                to_append = tooltip_burn
+                        else:
+                            to_append = tooltip_raw
+                    elif i == 21: #位阶（`rarityValue`）
+                        to_append = augment_rarities[value.get("rarity", 0)]
+                    else: #根指令对象（`RootSpellObject`）
+                        to_append = self.map33_bin.get(value["RootSpell"], "")
+                    SwarmAugment_data[key].append(to_append)
+                    SwarmAugment_data_json[key].append(pyobj2json(to_append))
+        SwarmAugment_statistics_output_order: list[int] = [0, 1, 10, 2, 11, 12, 9, 21, 6, 3, 13, 14, 15, 16, 4, 17, 18, 19, 20, 5, 22, 7, 8]
+        SwarmAugment_data_organized: dict[str, list[Any]] = {SwarmAugment_header_keys[i]: SwarmAugment_data_json[SwarmAugment_header_keys[i]] for i in SwarmAugment_statistics_output_order}
+        SwarmAugment_df = pandas.DataFrame(data = SwarmAugment_data_organized)
+        logPrint("正在优化无尽狂潮强化数据框的逻辑值显示……\nOptimizing boolean value display of the Swarm augment dataframe ...")
+        optimize_bool_display(SwarmAugment_df)
+        SwarmAugment_df = pandas.concat([pandas.DataFrame([SwarmAugment_header])[SwarmAugment_df.columns], SwarmAugment_df], ignore_index = True)
+        self.SwarmAugment_df = SwarmAugment_df
         ##海克斯大乱斗强化符文（ARAM: Mayhem augments）
         self.init_mSpells()
         augmentSet_map: dict[str, list[str]] = {}
@@ -4964,8 +5051,9 @@ class AugmentExtractor(LoLDataExtractor):
         :param paths: 强化符文二进制描述文件的本地路径列表，按照以下顺序排列：<br>A local path list of augment binary description files, arranged in the following order:
         
             - 怒火角斗场地图（Rings of Wrath map）
-            - 嚎哭深渊地图（Howling Abyss map）
             - 斗魂竞技场模式专属信息（Arena mode specific data）
+            - 最终都市地图（Final City map）
+            - 嚎哭深渊地图（Howling Abyss map）
             - 海克斯大乱斗模式专属信息（ARAM: Mayhem mode specific data）
         
             仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
@@ -4979,7 +5067,7 @@ class AugmentExtractor(LoLDataExtractor):
         if self.patch == "" and self.sheet_naming_fold:
             logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
             return
-        if self.CherryAugment_df.empty: #海克斯大乱斗未发布时，应当也能够正确导出强化符文数据（Augment data should be exported properly when ARAM: Mayhem wasn't released）
+        if self.CherryAugment_df.empty: #无尽狂潮和海克斯大乱斗未发布时，应当也能够正确导出强化符文数据（Augment data should be exported properly when Swarm and ARAM: Mayhem weren't released）
             status = self.build_augment_dataframe(debug = debug, paths = paths)
             if status != 0:
                 logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
@@ -4990,22 +5078,27 @@ class AugmentExtractor(LoLDataExtractor):
         workbook_exist = os.path.exists(self.wbPath)
         currentTime = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
         sheet1_name: str = f"{self.patch_number} CherryAugments" if self.sheet_naming_fold else "斗魂竞技场强化符文（Cherry Augments）"
-        sheet2_name: str = f"{self.patch_number} KiwiAugments" if self.sheet_naming_fold else "海克斯大乱斗强化符文（Kiwi Augments）"
-        sheet3_name: str = f"{self.patch_number} KiwiAugmentSet" if self.sheet_naming_fold else "海克斯大乱斗强化符文套装（Kiwi Augment Set）"
+        sheet2_name: str = f"{self.patch_number} SwarmAugments" if self.sheet_naming_fold else "无尽狂潮强化（Swarm Augments）"
+        sheet3_name: str = f"{self.patch_number} KiwiAugments" if self.sheet_naming_fold else "海克斯大乱斗强化符文（Kiwi Augments）"
+        sheet4_name: str = f"{self.patch_number} KiwiAugmentSet" if self.sheet_naming_fold else "海克斯大乱斗强化符文套装（Kiwi Augment Set）"
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
                     addDefaultStyle(self.CherryAugment_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    if not self.SwarmAugment_df.empty:
+                        addDefaultStyle(self.SwarmAugment_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
                     if not self.KiwiAugment_df.empty:
-                        addDefaultStyle(self.KiwiAugment_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                        addDefaultStyle(self.KiwiAugment_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
                     if not self.KiwiAugmentSet_df.empty:
-                        addDefaultStyle(self.KiwiAugmentSet_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
+                        addDefaultStyle(self.KiwiAugmentSet_df).to_excel(excel_writer = writer, sheet_name = sheet4_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
-                    if not self.KiwiAugment_df.empty:
+                    if not self.SwarmAugment_df.empty:
                         self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
-                    if not self.KiwiAugmentSet_df.empty:
+                    if not self.KiwiAugment_df.empty:
                         self.version_df.to_excel(excel_writer = writer, sheet_name = sheet3_name, header = None, index = False, startcol = 0, startrow = 0)
+                    if not self.KiwiAugmentSet_df.empty:
+                        self.version_df.to_excel(excel_writer = writer, sheet_name = sheet4_name, header = None, index = False, startcol = 0, startrow = 0)
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
                 cont = logInput()
@@ -7354,15 +7447,17 @@ if __name__ == "__main__":
                 if dir_type == "extract":
                     augment_paths: list[str] = [
                         "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json",
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map12/map12.bin.json",
                         "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/cherry.bin.json"
+                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map33/map33.bin.json",
+                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map12/map12.bin.json",
                         "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/kiwi.bin.json"
                     ]
                 else:
                     augment_paths = [
                         "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json",
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map12/map12.bin.json",
                         "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json"
+                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json",
+                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map12/map12.bin.json",
                         "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json"
                     ]
                 augmentExtractor.build_augment_dataframe(debug = True, paths = augment_paths)
@@ -7406,23 +7501,25 @@ if __name__ == "__main__":
         '''
         #数据资源（Data resource）
         ##字符串常量池（Stringtable）
-        lolstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/lol.stringtable.json"
-        with open(lolstringtable_zh_path, "r", encoding = "utf-8") as fp:
-            lolstringtable_zh = json.load(fp)
-        lolstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/lol.stringtable.json"
-        with open(lolstringtable_en_path, "r", encoding = "utf-8") as fp:
-            lolstringtable_en = json.load(fp)
-        tftstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/tft.stringtable.json"
-        with open(tftstringtable_zh_path, "r", encoding = "utf-8") as fp:
-            tftstringtable_zh = json.load(fp)
-        tftstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/tft.stringtable.json"
-        with open(tftstringtable_en_path, "r", encoding = "utf-8") as fp:
-            tftstringtable_en = json.load(fp)
+        # lolstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/lol.stringtable.json"
+        # with open(lolstringtable_zh_path, "r", encoding = "utf-8") as fp:
+        #     lolstringtable_zh = json.load(fp)
+        # lolstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/lol.stringtable.json"
+        # with open(lolstringtable_en_path, "r", encoding = "utf-8") as fp:
+        #     lolstringtable_en = json.load(fp)
+        # tftstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/tft.stringtable.json"
+        # with open(tftstringtable_zh_path, "r", encoding = "utf-8") as fp:
+        #     tftstringtable_zh = json.load(fp)
+        # tftstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/tft.stringtable.json"
+        # with open(tftstringtable_en_path, "r", encoding = "utf-8") as fp:
+        #     tftstringtable_en = json.load(fp)
         ##地图（Map）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
         #     map22_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
         #     map30_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
+            map33_bin = json.load(fp)
         ##装备（Item）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
         #     items_bin = json.load(fp)
@@ -7436,8 +7533,8 @@ if __name__ == "__main__":
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
         #     kiwi_bin = json.load(fp)
         ##整合后的数据（Merged data）
-        with open("C:/Users/19250/Documents/Workspace/JupyterLab/自定义脚本/英雄联盟自定义房间创建/champions_bin.json", "r", encoding = "utf-8") as fp:
-            champions_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/Workspace/JupyterLab/自定义脚本/英雄联盟自定义房间创建/champions_bin.json", "r", encoding = "utf-8") as fp:
+        #     champions_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/自定义脚本/英雄联盟自定义房间创建/characters_bin.json", "r", encoding = "utf-8") as fp:
         #     characters_bin = json.load(fp)
         
@@ -7459,8 +7556,8 @@ if __name__ == "__main__":
         #总结数据结构（Summarize the data structure）
         # with open("C:/Users/19250/Desktop/英雄联盟自定义房间创建/temporary data.json", "r", encoding = "utf-8") as fp:
         #     LoLGame_info: dict[Literal["metadata", "json"], dict[str, Any]] = json.load(fp)
-        # keyList: list[str] = getBinaryKeys(LoLGame_info, isBin = False, keyPaths = "json|participants|missions")[0]["None"]
-        # print(keyList)
+        keyList: list[str] = getBinaryKeys(map33_bin, isBin = True, objectTypes = "AugmentData")[1]
+        print(json.dumps(keyList, indent = 4, ensure_ascii = False))
         # import pyperclip
         # s: str = ""
         # for key in keyList:
@@ -7468,7 +7565,7 @@ if __name__ == "__main__":
         # pyperclip.copy(s)
         
         #输出键的hash值（Output hash value of a key）
-        print(LoLDataExtractor.compute_rsthash("Kiwi_Augment_Set_Ambulance_TierTooltip_V2", 5))
+        # print(LoLDataExtractor.compute_rsthash("Kiwi_Augment_Set_Ambulance_TierTooltip_V2", 5))
         
         #键对应（Key map）
         # mDisplayName_key = "Item_2523_Name"
@@ -7484,7 +7581,7 @@ if __name__ == "__main__":
         # print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
         # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
         # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
-        print(modeOverrideTooltipTransform(champions_bin, objectType = "SpellObject", keyPaths = "mSpell|DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
+        # print(modeOverrideTooltipTransform(champions_bin, objectType = "SpellObject", keyPaths = "mSpell|DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
         
         return 0
 

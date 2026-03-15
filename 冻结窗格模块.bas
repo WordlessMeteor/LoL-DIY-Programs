@@ -8,11 +8,10 @@ Sub FreezeAndFilterGameDataSheets()
                 Or ws.Name = "英雄（Champions）" Or Right$(ws.Name, 9) = "Champions" _
                 Or ws.Name = "英雄技能（Champion Spells）" Or Right$(ws.Name, 14) = "ChampionSpells" Or ws.Name = "角色（Characters）" Or Right$(ws.Name, 10) = "Characters" _
                 Or ws.Name = "角色技能（Character Spells）" Or Right$(ws.Name, 16) = "CharacterSpells" _
-                Or ws.Name = "装备（Items）" Or Right$(ws.Name, 5) = "Items" Or ws.Name = "斗魂竞技场强化符文（Cherry Augments）" Or Right$(ws.Name, 14) = "CherryAugments" _
-                Or ws.Name = "海克斯大乱斗强化符文（Kiwi Augments）" Or Right$(ws.Name, 12) = "KiwiAugments" _
-                Or ws.Name = "海克斯大乱斗强化符文套装（Kiwi Augment Set）" Or Right$(ws.Name, 14) = "KiwiAugmentSet" _
-                Or ws.Name = "斗魂竞技场锻造器（Cherry Anvils）" Or Right$(ws.Name, 12) = "CherryAnvils" _
-                Or ws.Name = "海克斯大乱斗锻造器（Kiwi Anvils）" Or Right$(ws.Name, 10) = "KiwiAnvils" Or ws.Name = "云顶之弈赛季（TFT Set）" Or Right$(ws.Name, 6) = "TFTSet" _
+                Or ws.Name = "装备（Items）" Or Right$(ws.Name, 5) = "Items" Or ws.Name = "斗魂竞技场强化符文（Cherry Augments）" Or Right$(ws.Name, 14) = "CherryAugments" Or ws.Name = "无尽狂潮强化（Swarm Augments）" Or Right$(ws.Name, 13) = "SwarmAugments" _
+                Or ws.Name = "海克斯大乱斗强化符文（Kiwi Augments）" Or Right$(ws.Name, 12) = "KiwiAugments" Or ws.Name = "海克斯大乱斗强化符文套装（Kiwi Augment Set）" Or Right$(ws.Name, 14) = "KiwiAugmentSet" _
+                Or ws.Name = "斗魂竞技场锻造器（Cherry Anvils）" Or Right$(ws.Name, 12) = "CherryAnvils" Or ws.Name = "海克斯大乱斗锻造器（Kiwi Anvils）" Or Right$(ws.Name, 10) = "KiwiAnvils" _
+                Or ws.Name = "云顶之弈赛季（TFT Set）" Or Right$(ws.Name, 6) = "TFTSet" _
                 Or ws.Name = "云顶之弈商店（TFT Shop）" Or Right$(ws.Name, 7) = "TFTShop" _
                 Or ws.Name = "云顶之弈商店内容（TFT Shop Content）" Or Right$(ws.Name, 14) = "TFTShopContent" _
                 Or ws.Name = "云顶之弈掉率表（TFT Drop Rate）" Or Right$(ws.Name, 11) = "TFTDropRate" _
@@ -28,10 +27,11 @@ Sub FreezeAndFilterGameDataSheets()
             ActiveWindow.FreezePanes = False '取消当前冻结窗格效果（Disable the current pane freezing）
             ActiveWindow.SplitColumn = 0 '取消任何可能的列拆分（Remove any existing column split）
             ActiveWindow.SplitRow = 0 '取消任何可能的行拆分（Remove any existing row split）
-            If ws.Name = "符文系（PerkStyles）" Or Right$(ws.Name, 10) = "PerkStyles"
+            If ws.Name = "符文系（PerkStyles）" Or Right$(ws.Name, 10) = "PerkStyles" _
                     Or ws.Name = "符文（Perks）" Or Right$(ws.Name, 5) = "Perks" _
                     Or ws.Name = "英雄（Champions）" Or Right$(ws.Name, 9) = "Champions" _
                     Or ws.Name = "角色（Characters）" Or Right$(ws.Name, 10) = "Characters" _
+                    Or ws.Name = "无尽狂潮强化（Swarm Augments）" Or Right$(ws.Name, 13) = "SwarmAugments" _
                     Or ws.Name = "云顶之弈商店（TFT Shop）" Or Right$(ws.Name, 7) = "TFTShop" _
                     Or ws.Name = "云顶之弈传送门（TFT Portal）" Or Right$(ws.Name, 9) = "TFTPortal" Then
                 ws.Range("H3").Select '冻结前两行和前七列（Freeze the first two rows and seven columns）
