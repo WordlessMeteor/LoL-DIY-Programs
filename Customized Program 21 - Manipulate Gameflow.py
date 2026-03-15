@@ -29,7 +29,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/14
+# 更新（Last update）：     2026/03/15
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -3927,12 +3927,16 @@ async def configure_TFTParty_loadout(connection: Connection) -> None:
                 break
             elif loadout_option[0] in list(map(str, range(1, 5))):
                 inventoryTypes: dict[str, str] = {"1": "COMPANION", "2": "TFT_DAMAGE_SKIN", "3": "TFT_MAP_SKIN", "4": "TFT_ZOOM_SKIN"}
+                inventoryTypeNames_zh: dict[str, str] = {"COMPANION": "小小英雄", "TFT_DAMAGE_SKIN": "进攻特效", "TFT_MAP_SKIN": "棋盘皮肤", "TFT_ZOOM_SKIN": "传送门"}
+                inventoryTypeNames_en: dict[str, str] = {"COMPANION": "tactician", "TFT_DAMAGE_SKIN": "boom", "TFT_MAP_SKIN": "arena skin", "TFT_ZOOM_SKIN": "portal"}
                 inventoryType: str = inventoryTypes[loadout_option[0]]
+                inventoryTypeName_zh: str = inventoryTypeNames_zh[inventoryType]
+                inventoryTypeName_en: str = inventoryTypeNames_en[inventoryType]
                 collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
                 if len(collection_df_selected) == 1:
-                    logPrint("您目前没有该类道具的使用权。\nYou don't have permissions to use any item of this inventoryType.")
+                    logPrint("您目前没有%s的使用权。\nYou don't have permission to use any %s." %(inventoryTypeName_zh, inventoryTypeName_en))
                 else:
-                    logPrint('请选择您想要使用的道具：（输入-1以初始化当前选择。）\nPlease select an item to use: (Submit "-1" to initialize the current choice.)')
+                    logPrint('请选择您想要使用的%s：（输入“-1”以初始化当前选择。）\nPlease select %s %s to use: (Submit "-1" to initialize the current choice.)' %(inventoryTypeName_zh, "an" if inventoryType == "TFT_MAP_SKIN" else "a", inventoryTypeName_en))
                     print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
                     log.write(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
                     while True:
@@ -3964,8 +3968,8 @@ async def configure_TFTParty_loadout(connection: Connection) -> None:
                                 logPrint("未知错误！\nUnknown error!")
                         else:
                             time.sleep(GLOBAL_RESPONSE_LAG)
-                            loadout = await (await connection.request("GET", f"/lol-loadouts/v4/loadouts/{loadoutId}")).json()
-                            if loadout["loadout"][loadout_key] == body["loadout"][loadout_key]:
+                            loadout: dict[str, Any] = await (await connection.request("GET", f"/lol-loadouts/v4/loadouts/{loadoutId}")).json()
+                            if all(loadout["loadout"][loadout_key][key] == body["loadout"][loadout_key][key] for key in ["contentId", "inventoryType", "itemId"]):
                                 logPrint("更新赛前配置成功。客户端内显示可能有延迟，请尝试关闭相应窗口再打开，观察配置是否更新。进入游戏即可正常使用。\nLoadout update succeeded. The League Client may not display the change properly due to a lag. Please try closing the corresponding window and then open it again to see if loadout is updated. As you enter the game, you should be using the updated loadouts.")
                             else:
                                 logPrint("更新赛前配置失败。\nLoadout update failed.")
@@ -4109,6 +4113,7 @@ async def manage_party(connection: Connection) -> bool:
                         lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
                         if lobby_information["gameConfig"]["showQuickPlaySlotSelection"]:
                             await configure_quickplay_slot(connection)
+                            await prepare_champSelect_loadout_general(connection, "WARD_SKIN")
                         else:
                             logPrint("当前模式不支持英雄预选。\nThis mode doesn't support slot selection.")
                     else:
@@ -6520,7 +6525,7 @@ async def change_emote_wheel(connection: Connection, loadoutId: str, loadoutName
         else:
             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
             continue
-        logPrint('请选择您想要使用的道具：（输入-1以初始化当前选择。）\nPlease select an item to use: (Submit "-1" to initialize the current choice.)')
+        logPrint('请选择您想要使用的表情：（输入“-1”以初始化当前选择。）\nPlease select an emote to use: (Submit "-1" to initialize the current choice.)')
         collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == "EMOTE"]], ignore_index = True)
         collection_df_fields_to_print: list[str] = ["inventoryType", "itemId", "name", "ownershipType"]
         print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
@@ -6555,7 +6560,7 @@ async def change_emote_wheel(connection: Connection, loadoutId: str, loadoutName
             else:
                 time.sleep(GLOBAL_RESPONSE_LAG)
                 loadout: dict[str, Any] = await (await connection.request("GET", f"/lol-loadouts/v4/loadouts/{loadoutId}")).json()
-                if not loadout_key in loadout["loadout"] or loadout["loadout"][loadout_key] == body["loadout"][loadout_key]:
+                if not loadout_key in loadout["loadout"] or all(loadout["loadout"][loadout_key][key] == body["loadout"][loadout_key][key] for key in ["contentId", "inventoryType", "itemId"]):
                     logPrint("更新赛前配置成功。客户端内显示可能有延迟，请尝试关闭相应窗口再打开，观察配置是否更新。进入游戏即可正常使用。\nLoadout update succeeded. The League Client may not display the change properly due to a lag. Please try closing the corresponding window and then open it again to see if loadout is updated. As you enter the game, you should be using the updated loadouts.")
                 else:
                     logPrint("更新赛前配置失败。\nLoadout update failed.")
@@ -6589,7 +6594,7 @@ async def change_emote_reaction(connection: Connection, loadoutId: str, loadoutN
         else:
             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
             continue
-        logPrint('请选择您想要使用的道具：（输入-1以初始化当前选择。）\nPlease select an item to use: (Submit "-1" to initialize the current choice.)')
+        logPrint('请选择您想要使用的表情：（输入“-1”以初始化当前选择。）\nPlease select an emote to use: (Submit "-1" to initialize the current choice.)')
         collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == "EMOTE"]], ignore_index = True)
         collection_df_fields_to_print: list[str] = ["inventoryType", "itemId", "name", "ownershipType"]
         print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
@@ -6624,8 +6629,8 @@ async def change_emote_reaction(connection: Connection, loadoutId: str, loadoutN
                     logPrint("未知错误！\nUnknown error!")
             else:
                 time.sleep(GLOBAL_RESPONSE_LAG)
-                loadout = await (await connection.request("GET", f"/lol-loadouts/v4/loadouts/{loadoutId}")).json()
-                if loadout["loadout"][loadout_key] == body["loadout"][loadout_key]:
+                loadout: dict[str, Any] = await (await connection.request("GET", f"/lol-loadouts/v4/loadouts/{loadoutId}")).json()
+                if all(loadout["loadout"][loadout_key][key] == body["loadout"][loadout_key][key] for key in ["contentId", "inventoryType", "itemId"]):
                     logPrint("更新赛前配置成功。客户端内显示可能有延迟，请尝试关闭相应窗口再打开，观察配置是否更新。进入游戏即可正常使用。\nLoadout update succeeded. The League Client may not display the change properly due to a lag. Please try closing the corresponding window and then open it again to see if loadout is updated. As you enter the game, you should be using the updated loadouts.")
                 else:
                     logPrint("更新赛前配置失败。\nLoadout update failed.")
@@ -6644,7 +6649,11 @@ async def change_champSelect_loadout(connection: Connection, inventoryType: str,
     :param loadoutName: 赛前配置名称。用于维持原名称。<br>Loadout name. Used to maintain the original name.
     :type loadoutName: str
     '''
-    logPrint('请选择您想要使用的道具：（输入-1以初始化当前选择。）\nPlease select an item to use: (Submit "-1" to initialize the current choice.)')
+    inventoryTypeNames_zh: dict[str, str] = {"WARD_SKIN": "饰品", "SUMMONER_ICON": "召唤师图标", "NEXUS_FINISHER": "终结特效", "REGALIA_BANNER": "旗帜", "REGALIA_CREST": "徽章", "TOURNAMENT_TROPHY": "冠军杯赛奖杯"}
+    inventoryTypeNames_en: dict[str, str] = {"WARD_SKIN": "ward skin", "SUMMONER_ICON": "summoner icon", "NEXUS_FINISHER": "nexus finisher", "REGALIA_BANNER": "banner", "REGALIA_CREST": "crest", "TOURNAMENT_TROPHY": "tournament trophy"}
+    inventoryTypeName_zh: str = inventoryTypeNames_zh[inventoryType]
+    inventoryTypeName_en: str = inventoryTypeNames_en[inventoryType]
+    logPrint('请选择您想要使用的%s：（输入“-1”以初始化当前选择。）\nPlease select a %s to use: (Submit "-1" to initialize the current choice.)' %(inventoryTypeName_zh, inventoryTypeName_en))
     collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
     collection_df_fields_to_print: list[str] = ["inventoryType", "itemId", "name", "ownershipType"]
     print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
@@ -6695,8 +6704,8 @@ async def change_champSelect_loadout(connection: Connection, inventoryType: str,
                     logPrint("未知错误！\nUnknown error!")
             else:
                 time.sleep(GLOBAL_RESPONSE_LAG)
-                loadout = await (await connection.request("GET", f"/lol-loadouts/v4/loadouts/{loadoutId}")).json()
-                if loadout["loadout"][loadout_key] == body["loadout"][loadout_key]:
+                loadout: dict[str, Any] = await (await connection.request("GET", f"/lol-loadouts/v4/loadouts/{loadoutId}")).json()
+                if all(loadout["loadout"][loadout_key][key] == body["loadout"][loadout_key][key] for key in ["contentId", "inventoryType", "itemId"]):
                     logPrint("更新赛前配置成功。客户端内显示可能有延迟，请尝试关闭相应窗口再打开，观察配置是否更新。进入游戏即可正常使用。\nLoadout update succeeded. The League Client may not display the change properly due to a lag. Please try closing the corresponding window and then open it again to see if loadout is updated. As you enter the game, you should be using the updated loadouts.")
                 else:
                     logPrint("更新赛前配置失败。\nLoadout update failed.")
@@ -6737,6 +6746,10 @@ async def prepare_champSelect_loadout_general(connection: Connection, inventoryT
     :param inventoryType: 道具类型。<br>Inventory type.
     :type inventoryType: str
     '''
+    inventoryTypeNames_zh: dict[str, str] = {"WARD_SKIN": "饰品", "EMOTE": "表情", "SUMMONER_ICON": "召唤师图标", "NEXUS_FINISHER": "终结特效", "REGALIA_BANNER": "旗帜", "REGALIA_CREST": "徽章", "TOURNAMENT_TROPHY": "冠军杯赛奖杯"}
+    inventoryTypeNames_en: dict[str, str] = {"WARD_SKIN": "ward skin", "EMOTE": "emote", "SUMMONER_ICON": "summoner icon", "NEXUS_FINISHER": "nexus finisher", "REGALIA_BANNER": "banner", "REGALIA_CREST": "crest", "TOURNAMENT_TROPHY": "tournament trophy"}
+    inventoryTypeName_zh: str = inventoryTypeNames_zh[inventoryType]
+    inventoryTypeName_en: str = inventoryTypeNames_en[inventoryType]
     loadoutId: str = ""
     loadoutName: str = "default"
     loadout_scope: dict[str, Any] | list[dict[str, Any]] = await (await connection.request("GET", "/lol-loadouts/v4/loadouts/scope/account")).json()
@@ -6751,7 +6764,7 @@ async def prepare_champSelect_loadout_general(connection: Connection, inventoryT
             loadoutName = loadout_scope[0]["name"]
     collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
     if len(collection_df_selected) == 1:
-        logPrint("您目前没有该类道具的使用权。\nYou don't have permissions to use any item of this inventoryType.")
+        logPrint("您目前没有%s的使用权。\nYou don't have permissions to use any %s." %(inventoryTypeName_zh, inventoryTypeName_en))
     else:
         if inventoryType == "EMOTE":
             await change_emote(connection, loadoutId, loadoutName)
