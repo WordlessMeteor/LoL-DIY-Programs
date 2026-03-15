@@ -5,8 +5,6 @@
 ----
 **This program set only supports study use or personal entertainment. Any commercial use is forbidden!**
 
-**Warning: Use Customized Programs 14 and 15 with extreme caution! Improper use will result in a permaban!**
-
 ----
 > Truth is: Anything can be converted into a 2D table.
 
