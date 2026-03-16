@@ -6923,7 +6923,7 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
             if i == 0: #游戏序号（`gameIndex`）
                 to_append: Any = gameIndex
             elif i == 5: #对局序号（`game_id`）
-                to_append = TFTGame_summary["metadata"]["match_id"].split("_")[1]
+                to_append = int(TFTGame_summary["metadata"]["match_id"].split("_")[1])
             elif i == 14: #对局创建时间（`gameCreationDate`）
                 to_append = getISOTime(TFTGame_summary["metadata"].get("timestamp", 0) / 1000)
             elif i in {51, 304}:
