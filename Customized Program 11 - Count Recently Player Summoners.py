@@ -3050,8 +3050,9 @@ async def search_recent_players(connection: Connection) -> None:
     #控制只输出一遍的提示（Control the hint to be displayed only once）
     # Vanguard_warning_printed: str = False
     #定义全局对局信息缓存（Define global match information caches）
-    LoLGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
-    TFTGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
+    LoLGame_summary_cache_lcu: dict[int, dict[str, Any]] = {}
+    LoLGame_summary_cache_sgp: dict[int, dict[str, Any]] = {}
+    TFTGame_summary_cache_sgp: dict[int, dict[str, Any]] = {}
     logPrint("请选择本脚本的使用模式：\nPlease select a mode for use:\n1\t生成模式（Generate Mode）\n2\t检测模式（Detect Mode）")
     detectMode: bool = False
     mode: str = logInput()
@@ -3301,25 +3302,27 @@ async def search_recent_players(connection: Connection) -> None:
                 info_puuid: str = current_puuid_list[i]
                 info_summonerName: str = current_summonerName_list[i]
                 logPrint("[%d/%d]正在获取客户端内玩家%s的英雄联盟对局记录……\nGetting LoL match history of player %s in the client ..." %(i + 1, len(AllAccounts), info_summonerName, info_summonerName))
+                LoLHistory_lcu: dict[str, Any] = {}
+                LoLHistory_sgp: dict[str, Any] = {}
                 if use_sgp:
-                    LoLHistory_get, LoLHistory = await get_matchSummary_sgp(connection, sgpSession, info_puuid, "LoL", begin = 0, count = 1000, log = log)
-                    for game in LoLHistory["games"]:
+                    LoLHistory_get, LoLHistory_sgp = await get_matchSummary_sgp(connection, sgpSession, info_puuid, "LoL", begin = 0, count = 1000, log = log)
+                    for game in LoLHistory_sgp["games"]:
                         matchId: int = int(game["metadata"]["match_id"].split("_")[1])
-                        if not matchId in LoLGame_summary_cache_fromSummary_sgp:
-                            LoLGame_summary_cache_fromSummary_sgp[matchId] = game
+                        if not matchId in LoLGame_summary_cache_sgp:
+                            LoLGame_summary_cache_sgp[matchId] = game
                 else:
-                    LoLHistory_get, LoLHistory = await get_LoLHistory(connection, main_info_body["puuid"], log = log)
+                    LoLHistory_get, LoLHistory_lcu = await get_LoLHistory(connection, main_info_body["puuid"], log = log)
                 if LoLHistory_get:
-                    LoLGameCount: int = len(LoLHistory["games"]) if use_sgp else LoLHistory["games"]["gameCount"]
+                    LoLGameCount: int = len(LoLHistory_sgp["games"]) if use_sgp else LoLHistory_lcu["games"]["gameCount"]
                     LoLGamePlayed: bool = LoLGameCount != 0 #标记该玩家是否进行过英雄联盟对局（Mark whether this summoner has played any LoL game）
                     if LoLGamePlayed:
                         logPrint(f"玩家{info_summonerName}共进行{LoLGameCount}场英雄联盟对局。\nPlayer {info_summonerName} has played {LoLGameCount} LoL matches.\n")
                     else:
                         logPrint(f"玩家{info_summonerName}从5月1日起就没有进行过任何英雄联盟对局。\nPlayer {info_summonerName} hasn't played any LoL game yet since May 1st.")
                     if use_sgp:
-                        LoLHistory_df: pandas.DataFrame = (sort_LoLHistory_sgp(LoLHistory, info_puuid, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, log = log))[0]
+                        LoLHistory_df: pandas.DataFrame = (sort_LoLHistory_sgp(LoLHistory_sgp, info_puuid, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, log = log))[0]
                     else:
-                        LoLHistory_df = (sort_LoLHistory(LoLHistory, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, log = log))[0]
+                        LoLHistory_df = (sort_LoLHistory(LoLHistory_lcu, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, log = log))[0]
                     LoLHistory_dfs.append(LoLHistory_df)
                     #LoLHistory_df.apply(lambda x: pandas.Series([-3], index = ["K/D/A"]))
                     if LoLGamePlayed:
@@ -3420,9 +3423,9 @@ async def search_recent_players(connection: Connection) -> None:
             current_versions["queue"] = current_versions["summonerIcon"] = current_versions["spell"] = current_versions["LoLChampion"] = current_versions["LoLItem"] = current_versions["perk"] = current_versions["perkstyle"] = current_versions["CherryAugment"] = URLPatch
             unmapped_keys["queue"], unmapped_keys["summonerIcon"], unmapped_keys["spell"], unmapped_keys["LoLChampion"], unmapped_keys["LoLItem"], unmapped_keys["perk"], unmapped_keys["perkstyle"], unmapped_keys["CherryAugment"] = set(), set(), set(), set(), set(), set(), set(), set()
             if use_sgp:
-                recent_LoLPlayer_df: pandas.DataFrame = await sort_LoLGame_stats_sgp(connection, sgpSession, LoLMatchIDs, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, puuid = current_puuid_list, excluded_reserve = args.reserve, save_self = args.save_self, save_other = True, save_bot = False, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, LoLGame_summary_cache = LoLGame_summary_cache_fromSummary_sgp, session = session, log = log)
+                recent_LoLPlayer_df: pandas.DataFrame = await sort_LoLGame_stats_sgp(connection, sgpSession, LoLMatchIDs, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, puuid = current_puuid_list, excluded_reserve = args.reserve, save_self = args.save_self, save_other = True, save_bot = False, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, LoLGame_summary_cache = LoLGame_summary_cache_sgp, session = session, log = log)
             else:
-                recent_LoLPlayer_df = await sort_LoLGame_stats(connection, LoLMatchIDs, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, puuid = current_puuid_list, excluded_reserve = args.reserve, save_self = args.save_self, save_other = True, save_bot = False, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, log = log)
+                recent_LoLPlayer_df = await sort_LoLGame_stats(connection, LoLMatchIDs, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, puuid = current_puuid_list, excluded_reserve = args.reserve, save_self = args.save_self, save_other = True, save_bot = False, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, LoLGame_summary_cache = LoLGame_summary_cache_lcu, session = session, log = log)
             LoLGamePlayed: bool = len(recent_LoLPlayer_df) > 1
         else:
             if use_sgp:
@@ -3460,8 +3463,8 @@ async def search_recent_players(connection: Connection) -> None:
                 TFTHistory_get, TFTHistory = await get_matchSummary_sgp(connection, sgpSession, info_puuid, "TFT", begin = 0, count = 1000, log = log) #这里之所以把count参数写出来，是因为考虑到后续可能随时要调整这个参数。毕竟1000场数据是非常庞大的（Here the reason I write this `count` parameter is considering its value might be adjusted at some time later. After all, data of 1000 matches can be really big）
                 for game in TFTHistory["games"]:
                     matchId: int = int(game["metadata"]["match_id"].split("_")[1])
-                    if not matchId in TFTGame_summary_cache_fromSummary_sgp: #由于云顶之弈的对局记录包含所有玩家的信息，所以如果多个玩家的对局记录包含同一场对局，则这些对局的信息一定是相同的（Because TFT match history includes all players' information, if a match is included in multiple players' match histories, then information of the matches recorded in different players' match histories must be the same）
-                        TFTGame_summary_cache_fromSummary_sgp[matchId] = game
+                    if not matchId in TFTGame_summary_cache_sgp: #由于云顶之弈的对局记录包含所有玩家的信息，所以如果多个玩家的对局记录包含同一场对局，则这些对局的信息一定是相同的（Because TFT match history includes all players' information, if a match is included in multiple players' match histories, then information of the matches recorded in different players' match histories must be the same）
+                        TFTGame_summary_cache_sgp[matchId] = game
                 if TFTHistory_get:
                     TFTGamePlayed: bool = (TFTGameCount := len(TFTHistory["games"])) > 0 #标记该玩家是否进行过云顶之弈对局（Mark whether this summoner has played any TFT game）
                     if TFTGamePlayed:
@@ -3571,7 +3574,7 @@ async def search_recent_players(connection: Connection) -> None:
             TFTTraits = TFTTraits_initial.copy()
             current_versions["queue"] = current_versions["TFTAugment"] = current_versions["TFTChampion"] = current_versions["TFTItem"] = current_versions["TFTCompanion"] = current_versions["TFTTrait"] = URLPatch
             unmapped_keys["queue"], unmapped_keys["TFTAugment"], unmapped_keys["TFTChampion"], unmapped_keys["TFTItem"], unmapped_keys["TFTCompanion"], unmapped_keys["TFTTrait"] = set(), set(), set(), set(), set(), set()
-            recent_TFTPlayer_df: pandas.DataFrame = await sort_TFTGame_stats(connection, sgpSession, TFTMatchIDs, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, puuid = current_puuid_list, excluded_reserve = args.reserve, save_self = args.save_self, save_other = True, save_bot = False, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, TFTGame_summary_cache = TFTGame_summary_cache_fromSummary_sgp, useInfoDict = True, infos = infos, log = log)
+            recent_TFTPlayer_df: pandas.DataFrame = await sort_TFTGame_stats(connection, sgpSession, TFTMatchIDs, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, puuid = current_puuid_list, excluded_reserve = args.reserve, save_self = args.save_self, save_other = True, save_bot = False, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, TFTGame_summary_cache = TFTGame_summary_cache_sgp, useInfoDict = True, infos = infos, log = log)
             TFTGamePlayed: bool = len(recent_TFTPlayer_df) > 1
         else:
             TFTHistory_header_keys: list[str] = list(TFTHistory_header.keys())

@@ -57,7 +57,8 @@ TFTChampions: dict[str, dict[str, Any]] = {}
 TFTItems: dict[str, dict[str, Any]] = {}
 TFTDamageSkins: dict[str, dict[str, Any]] = {}
 TFTMapSkins: dict[str, dict[str, Any]] = {}
-LoLGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
+LoLGame_summary_cache_lcu: dict[int, dict[str, Any]] = {}
+LoLGame_summary_cache_sgp: dict[int, dict[str, Any]] = {}
 folder: str = ""
 current_info: dict[str, Any] = {}
 platformId: str = ""
@@ -529,21 +530,21 @@ async def get_recent_players(connection: Connection, search_mode: int = 2, lol_s
     LoLMatchIDs: list[int] = []
     if search_LoL:
         logPrint("开始获取英雄联盟对局记录。\nStart getting LoL match history.")
-        LoLHistory_get, LoLHistory = await get_LoLHistory(connection, current_info["puuid"], log = log)
+        LoLHistory_get, LoLHistory_lcu = await get_LoLHistory(connection, current_info["puuid"], log = log)
         if LoLHistory_get:
-            LoLMatchIDs = list(map(lambda x: x["gameId"], LoLHistory["games"]["games"]))
+            LoLMatchIDs = list(map(lambda x: x["gameId"], LoLHistory_lcu["games"]["games"]))
     if len(LoLMatchIDs) > 0:
         logPrint("开始整理英雄联盟对局数据……\nStart organizing LoL match data ...")
         unmapped_keys1: dict[str, set[int]] = {"queue": set(), "summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "CherryAugment": set()}
         if lol_sgp:
-            LoLHistory_get, LoLHistory = await get_matchSummary_sgp(connection, sgpSession, current_puuid, "LoL", begin = 0, count = 1000, log = log)
-            for game in LoLHistory["games"]:
+            LoLHistory_get, LoLHistory_sgp = await get_matchSummary_sgp(connection, sgpSession, current_puuid, "LoL", begin = 0, count = 1000, log = log)
+            for game in LoLHistory_sgp["games"]:
                 matchId: int = int(game["metadata"]["match_id"].split("_")[1])
-                if not matchId in LoLGame_summary_cache_fromSummary_sgp:
-                    LoLGame_summary_cache_fromSummary_sgp[matchId] = game
-            recent_LoLPlayer_df: pandas.DataFrame = await sort_LoLGame_stats_sgp(connection, sgpSession, LoLMatchIDs, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, puuid = current_puuid, save_self = False, save_other = True, save_bot = False, useAllVersions = False, unmapped_keys = unmapped_keys1, LoLGame_summary_cache = LoLGame_summary_cache_fromSummary_sgp, log = log)
+                if not matchId in LoLGame_summary_cache_sgp:
+                    LoLGame_summary_cache_sgp[matchId] = game
+            recent_LoLPlayer_df: pandas.DataFrame = await sort_LoLGame_stats_sgp(connection, sgpSession, LoLMatchIDs, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, puuid = current_puuid, save_self = False, save_other = True, save_bot = False, useAllVersions = False, unmapped_keys = unmapped_keys1, LoLGame_summary_cache = LoLGame_summary_cache_sgp, log = log)
         else:
-            recent_LoLPlayer_df = await sort_LoLGame_stats(connection, LoLMatchIDs, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, puuid = current_puuid, save_self = False, save_other = True, save_bot = False, useAllVersions = False, unmapped_keys = unmapped_keys1, log = log)
+            recent_LoLPlayer_df = await sort_LoLGame_stats(connection, LoLMatchIDs, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, puuid = current_puuid, save_self = False, save_other = True, save_bot = False, useAllVersions = False, unmapped_keys = unmapped_keys1, LoLGame_summary_cache = LoLGame_summary_cache_lcu, log = log)
     else:
         recent_LoLPlayer_df = pandas.DataFrame()
     #对于云顶之弈可以作一处优化：直接从对局记录获取全部信息（An optimization can be made on TFT: Get all information from the match history）

@@ -79,7 +79,8 @@ TFTTraits: dict[str, dict[str, Any]] = {}
 CherryAugments: dict[int, dict[str, Any]] = {}
 wardSkins: dict[int, dict[str, Any]] = {}
 regaliaBanners: dict[str, dict[str, Any]]
-LoLGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
+LoLGame_summary_cache_lcu: dict[int, dict[str, Any]] = {}
+LoLGame_summary_cache_sgp: dict[int, dict[str, Any]] = {}
 log: LogManager = LogManager()
 
 connector: Connector = Connector()
@@ -283,15 +284,15 @@ async def search_player_match_stats_lol(connection: Connection, puuid: str, begI
     info: dict[str, Any] = await get_info(connection, puuid)
     if info["info_got"]:
         if lol_sgp:
-            LoLHistory_get, LoLHistory = await get_matchSummary_sgp(connection, sgpSession, puuid, "LoL", begin = 0, count = 1000, log = log, verbose = verbose)
-            for game in LoLHistory["games"]:
+            LoLHistory_get, LoLHistory_sgp = await get_matchSummary_sgp(connection, sgpSession, puuid, "LoL", begin = 0, count = 1000, log = log, verbose = verbose)
+            for game in LoLHistory_sgp["games"]:
                 matchId: int = int(game["metadata"]["match_id"].split("_")[1])
-                if not matchId in LoLGame_summary_cache_fromSummary_sgp:
-                    LoLGame_summary_cache_fromSummary_sgp[matchId] = game
-            games: list[dict[str, Any]] = LoLHistory["games"]
+                if not matchId in LoLGame_summary_cache_sgp:
+                    LoLGame_summary_cache_sgp[matchId] = game
+            games: list[dict[str, Any]] = LoLHistory_sgp["games"]
         else:
-            LoLHistory_get, LoLHistory = await get_LoLHistory(connection, puuid, begIndex = begIndex, endIndex = endIndex, log = log, verbose = verbose)
-            games = LoLHistory["games"]["games"]
+            LoLHistory_get, LoLHistory_lcu = await get_LoLHistory(connection, puuid, begIndex = begIndex, endIndex = endIndex, log = log, verbose = verbose)
+            games = LoLHistory_lcu["games"]["games"]
         if LoLHistory_get:
             unmapped_keys: dict[str, set[int]] = {"queue": set(), "summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "CherryAugment": set()}
             logPrint("对局加载进度（Match loading process）：")
@@ -299,15 +300,21 @@ async def search_player_match_stats_lol(connection: Connection, puuid: str, begI
                 matchId: int = int(games[i]["metadata"]["match_id"].split("_")[1]) if lol_sgp else games[i]["gameId"]
                 match_id: str = f"{platformId}_{matchId}"
                 if lol_sgp:
-                    if matchId in LoLGame_summary_cache_fromSummary_sgp:
-                        LoLGame_summary: dict[str, Any] = LoLGame_summary_cache_fromSummary_sgp[matchId]
+                    if matchId in LoLGame_summary_cache_sgp:
+                        LoLGame_summary: dict[str, Any] = LoLGame_summary_cache_sgp[matchId]
                         status: int = 200
                     else:
                         status, LoLGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, skipTFT = True, log = log, verbose = verbose)
                         if status == 200:
-                            LoLGame_summary_cache_fromSummary_sgp[matchId] = LoLGame_summary
+                            LoLGame_summary_cache_sgp[matchId] = LoLGame_summary
                 else:
-                    status, LoLGame_summary = await get_LoLGame_summary(connection, matchId, log = log, verbose = verbose)
+                    if matchId in LoLGame_summary_cache_lcu:
+                        LoLGame_summary = LoLGame_summary_cache_lcu[matchId]
+                        status = 200
+                    else:
+                        status, LoLGame_summary = await get_LoLGame_summary(connection, matchId, log = log, verbose = verbose)
+                        if status == 200:
+                            LoLGame_summary_cache_lcu[matchId] = LoLGame_summary
                 if status == 200:
                     #下一行语句的关键是sortStats和LoLGame_stats_data参数（The key point of the following statement is `sortStats` and `LoLGame_stats_data` parameters）
                     if lol_sgp:

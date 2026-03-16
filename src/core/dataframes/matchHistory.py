@@ -706,7 +706,7 @@ async def get_game_timeline_sgp(connection: Connection, sgpSession: SGPSession, 
                 break
     return (status, game_timeline)
 
-async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int], puuid: str | list[str], queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]]]: #参数顺序遵循一个原则：首先是连接信息和数据字典，然后是数据资源字典，最后是一些附加参数（The order of parameters follow a principle: first connection and the data dictionary, then data resource dictionaries and finally some supplemental parameters）
+async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int], puuid: str | list[str], queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, LoLGame_summary_cache: Optional[dict[int, dict[str, Any]]] = None, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]]]: #参数顺序遵循一个原则：首先是连接信息和数据字典，然后是数据资源字典，最后是一些附加参数（The order of parameters follow a principle: first connection and the data dictionary, then data resource dictionaries and finally some supplemental parameters）
     '''
     基于传入的对局序号列表重建英雄联盟对局记录。<br>Reconstruct LoL match history according to LoL matchId list supplied.
     
@@ -795,6 +795,8 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
     :type session: requests.Session
     :param unmapped_keys: 各数据资源未找到的键。用于控制数据未找到匹配记录的提示最多输出一次。<br>Unmapped keys in all data resources, used to control the hint about data not found to be printed at most once.
     :type unmapped_keys: dict[str, set[int]]
+    :param LoLGame_summary_cache: 英雄联盟对局概要缓存。键为对局序号，值为对局概要。<br>LoL match summary cache. Each key is a matchId, and each value is a match summary.
+    :type LoLGame_summary_cache: dict[int, dict[str, Any]]
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -809,6 +811,8 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
         current_versions = {"queue": "", "summonerIcon": "", "spell": "", "LoLChampion": "", "LoLItem": "", "summonerIcon": "", "perk": "", "perkstyle": "", "CherryAugment": ""}
     if unmapped_keys == None:
         unmapped_keys = {"queue": set(), "summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "CherryAugment": set()}
+    if LoLGame_summary_cache == None or not (isinstance(LoLGame_summary_cache, dict) and all(map(lambda x: isinstance(x, int), LoLGame_summary_cache.keys())) and all(map(lambda x: isinstance(x, dict) and all(map(lambda y: y in {"endOfGameResult", "gameCreation", "gameCreationDate", "gameDuration", "gameId", "gameMode", "gameModeMutators", "gameType", "gameVersion", "mapId", "participantIdentities", "participants", "platformId", "queueId", "seasonId", "teams"}, x.keys())), LoLGame_summary_cache.values()))):
+        LoLGame_summary_cache = {}
     if session == None:
         session = requests.Session()
     if log == None:
@@ -834,7 +838,13 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
         #开始赋值（Begin assignment）
         for i in range(len(LoLMatchIDs)): #对于对局记录而言，每场对局对应一条记录（For match history, each record represents a match）
             matchId: int = LoLMatchIDs[i]
-            status, LoLGame_summary = await get_LoLGame_summary(connection, matchId, log = log)
+            if matchId in LoLGame_summary_cache:
+                LoLGame_summary: dict[str, Any] = LoLGame_summary_cache[matchId]
+                status: int = 200
+            else:
+                status, LoLGame_summary = await get_LoLGame_summary(connection, matchId, log = log)
+                if status == 200:
+                    LoLGame_summary_cache[matchId] = LoLGame_summary
             if status != 200:
                 continue
             version: str = LoLGame_summary["gameVersion"]
@@ -5196,7 +5206,7 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
     LoLGame_summary_df = pandas.concat([pandas.DataFrame([LoLGame_summary_header])[LoLGame_summary_df.columns], LoLGame_summary_df], ignore_index = True)
     return (LoLGame_summary_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments)
 
-async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], puuid: str | list[str] = "", excluded_reserve: bool = False, save_self: bool = True, save_other: bool = False, save_bot: bool = False, useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
+async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], puuid: str | list[str] = "", excluded_reserve: bool = False, save_self: bool = True, save_other: bool = False, save_bot: bool = False, useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, LoLGame_summary_cache: Optional[dict[int, dict[str, Any]]] = None, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
     '''
     将多场英雄联盟对局中的玩家数据汇总形成一个表格，同时包含对局元数据和玩家战绩。<br>Organize player stats in multiple LoL matches into a dataframe, which contains match metadata and player stats.
     
@@ -5293,6 +5303,8 @@ async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], que
     :type current_versions: dict[str, str]
     :param unmapped_keys: 各数据资源未找到的键。用于控制数据未找到匹配记录的提示最多输出一次。<br>Unmapped keys in all data resources, used to control the hint about data not found to be printed at most once.
     :type unmapped_keys: dict[str, set[Any]]
+    :param LoLGame_summary_cache: 英雄联盟对局概要缓存。键为对局序号，值为对局概要。<br>LoL match summary cache. Each key is a matchId, and each value is a match summary.
+    :type LoLGame_summary_cache: dict[int, dict[str, Any]]
     :param session: 网络请求会话。<br>Web request session.
     :type session: requests.Session
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
@@ -5309,6 +5321,8 @@ async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], que
         current_versions = {"queue": "", "summonerIcon": "", "spell": "", "LoLChampion": "", "LoLItem": "", "summonerIcon": "", "perk": "", "perkstyle": "", "CherryAugment": ""}
     if unmapped_keys == None:
         unmapped_keys = {"queue": set(), "summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "CherryAugment": set()}
+    if LoLGame_summary_cache == None or not (isinstance(LoLGame_summary_cache, dict) and all(map(lambda x: isinstance(x, int), LoLGame_summary_cache.keys())) and all(map(lambda x: isinstance(x, dict) and all(map(lambda y: y in {"endOfGameResult", "gameCreation", "gameCreationDate", "gameDuration", "gameId", "gameMode", "gameModeMutators", "gameType", "gameVersion", "mapId", "participantIdentities", "participants", "platformId", "queueId", "seasonId", "teams"}, x.keys())), LoLGame_summary_cache.values()))):
+        LoLGame_summary_cache = {}
     if session == None:
         session = requests.Session()
     if log == None:
@@ -5322,7 +5336,13 @@ async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], que
     LoLGame_summary_header_keys: list[str] = list(LoLGame_summary_header.keys())
     LoLGame_stat_data: dict[str, list[Any]] = {key: [] for key in LoLGame_summary_header_keys}
     for matchId in LoLMatchIDs:
-        status, LoLGame_summary = await get_LoLGame_summary(connection, matchId, log = log)
+        if matchId in LoLGame_summary_cache:
+            LoLGame_summary: dict[str, Any] = LoLGame_summary_cache[matchId]
+            status: int = 200
+        else:
+            status, LoLGame_summary = await get_LoLGame_summary(connection, matchId, log = log)
+            if status == 200:
+                LoLGame_summary_cache[matchId] = LoLGame_summary
         
         if "errorCode" in LoLGame_summary:
             logPrint(LoLGame_summary, verbose = verbose)
