@@ -3049,6 +3049,9 @@ async def search_recent_players(connection: Connection) -> None:
     unmapped_keys: dict[str, set[Any]] = {"summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "TFTAugment": set(), "TFTChampion": set(), "TFTItem": set(), "TFTCompanion": set(), "TFTTrait": set(), "CherryAugment": set()}
     #控制只输出一遍的提示（Control the hint to be displayed only once）
     # Vanguard_warning_printed: str = False
+    #定义全局对局信息缓存（Define global match information caches）
+    LoLGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
+    TFTGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
     logPrint("请选择本脚本的使用模式：\nPlease select a mode for use:\n1\t生成模式（Generate Mode）\n2\t检测模式（Detect Mode）")
     detectMode: bool = False
     mode: str = logInput()
@@ -3282,7 +3285,6 @@ async def search_recent_players(connection: Connection) -> None:
         search_LoL_str: str = logInput()
         search_LoL: bool = bool(search_LoL_str)
         LoLMatchIDs: list[int] = []
-        LoLGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
         if search_LoL:
             LoLHistory_dfs: list[pandas.DataFrame] = []
             for i in range(len(AllAccounts)):
@@ -3337,10 +3339,7 @@ async def search_recent_players(connection: Connection) -> None:
             
             #下面获取最近一起玩过的英雄联盟玩家的信息（The following code captures the recently played LoL players' information）
             logPrint('请输入要查询的英雄联盟对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出英雄联盟对局查询请输入“0”：\nPlease enter the LoL match ID to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to quit searching for LoL matches.')
-            LoLGameIDs: list[int] = []
-            for gameId in LoLHistory_df_all["gameId"][1:]:
-                if not gameId in LoLGameIDs:
-                    LoLGameIDs.append(gameId)
+            LoLGameIDs: list[int] = LoLHistory_df_all["gameId"][1:].to_list()
             while True:
                 matchId_str: str = logInput()
                 if matchId_str == "":
@@ -3442,7 +3441,6 @@ async def search_recent_players(connection: Connection) -> None:
         search_TFT_str: str = logInput()
         search_TFT: bool = bool(search_TFT_str)
         TFTMatchIDs: list[int] = []
-        TFTGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
         if search_TFT:
             TFTHistory_dfs: list[pandas.DataFrame] = []
             TFTHistory_dict: dict[int, dict[str, Any]] = {}
@@ -3479,11 +3477,23 @@ async def search_recent_players(connection: Connection) -> None:
                     if TFTGamePlayed:
                         logPrint(TFTHistory_df[:min(21, TFTGameCount + 1)], write_time = False)
             #由于云顶之弈的对局记录包含所有玩家的信息，所以这里考虑先整合所有账号的对局记录，再对总对局记录进行整理。如果先整理再整合，后续排序时玩家顺序的信息会丢失，因为在这种情形下根据对局序号排序，而数据框中不包含玩家序号键，无法按照玩家序号进行升序排列（Because TFT match history includes all players' information, here the program first merges all accounts' match history, and then aggregates match history. Otherwise, if the program first organize the match history respectively and then merge the result dataframe, the participantId order may be lost during the subsequent ordering, for gameId is taken to arrange the aggregate dataframe, but the key `participantId` isn't in the dataframe, and therefore the dataframe can't be arranged in the ascending order of participantId）
-            TFTGameIDs: list[int] = sorted(TFTGame_summary_cache_fromSummary_sgp.keys(), reverse = True)
             # TFTHistory_all: dict[str, str | list[dict[str, Any]]] = {"active_puuid": "", "games": list(map(lambda x: TFTHistory_dict[x], TFTGameIDs))}
+            #构建云顶之弈对局记录数据框（Construct TFT match history dataframe）
+            TFTHistory_df_all: pandas.DataFrame = pandas.concat([TFTHistory_dfs[0].iloc[:1]] + list(map(lambda x: x.iloc[1:], TFTHistory_dfs)), ignore_index = True) #需要注意数据框的中文表头占用了一行（Note that the Chinese header takes up a record）
+            gameIds_occurred: set[str | int] = {TFTHistory_df_all["game_id"][0]}
+            lines_to_drop: list[int] = []
+            for i in range(1, len(TFTHistory_df_all)):
+                if TFTHistory_df_all["game_id"][i] in gameIds_occurred:
+                    lines_to_drop.append(i)
+                else:
+                    gameIds_occurred.add(TFTHistory_df_all["game_id"][i])
+            TFTHistory_df_all.drop(lines_to_drop, inplace = True)
+            TFTHistory_df_all = TFTHistory_df_all.reset_index(drop = True)
+            TFTHistory_df_all = pandas.concat([TFTHistory_df_all.iloc[:1], TFTHistory_df_all.iloc[1:].sort_values(by = "gameCreationDate", ascending = False)], ignore_index = True) #这里弃用了根据对局序号排序（Here gameId isn't used to sort the values）
             
             #下面获取最近一起玩过的云顶之弈玩家的信息（The following code captures the recently played TFT players' information）
             logPrint('请输入要查询的云顶之弈对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出云顶之弈对局查询请输入“0”：\nPlease enter the TFT match ID to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to quit searching for TFT matches.')
+            TFTGameIDs: list[int] = TFTHistory_df_all["game_id"][1:].to_list()
             while True:
                 matchId_str: str = logInput()
                 if matchId_str == "":

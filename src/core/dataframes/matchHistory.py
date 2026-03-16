@@ -1244,6 +1244,8 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
                 status: int = 200
             else:
                 status, LoLGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, skipTFT = True, log = log)
+                if status == 200:
+                    LoLGame_summary_cache[matchId] = LoLGame_summary
             if status != 200 or not LoLGame_summary.get("json"):
                 continue
             LoLGame_summary_json: dict[str, Any] = LoLGame_summary["json"]
@@ -1687,6 +1689,8 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
                 status: int = 200
             else:
                 status, TFTGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, checkLoL = False, checkTFT = True, log = log, verbose = verbose)
+                if status == 200:
+                    TFTGame_summary_cache[matchId] = TFTGame_summary
             if status != 200 or not TFTGame_summary.get("json"): #在没有json数据的情况下，当然不可能找得到主召唤师（Without json data, the program certainly can't find the main summoner）
                 continue
             TFTGame_summary_json: dict[str, Any] = TFTGame_summary["json"]
@@ -5767,6 +5771,8 @@ async def sort_LoLGame_stats_sgp(connection: Connection, sgpSession: SGPSession,
             status: int = 200
         else:
             status, LoLGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, skipTFT = True, log = log)
+            if status == 200:
+                LoLGame_summary_cache[matchId] = LoLGame_summary
         
         if status == 200 and LoLGame_summary.get("json"):
             LoLGame_summary_json: dict[str, Any] = LoLGame_summary["json"]
@@ -8315,6 +8321,8 @@ async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFT
             status: int = 200
         else:
             status, TFTGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, checkLoL = False, checkTFT = True, log = log, verbose = verbose)
+            if status == 200:
+                TFTGame_summary_cache[matchId] = TFTGame_summary
         if "errorCode" in TFTGame_summary:
             logPrint(TFTGame_summary, verbose = verbose)
             error_TFTMatchIDs.append(matchId)

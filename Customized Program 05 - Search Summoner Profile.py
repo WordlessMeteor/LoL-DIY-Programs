@@ -37,7 +37,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/03/12
+# 更新（Last update）：     2026/03/16
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1512,6 +1512,10 @@ async def search_profile(connection: Connection) -> None:
     unmapped_keys: dict[str, set[Any]] = {"queue": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "TFTAugment": set(), "TFTChampion": set(), "TFTItem": set(), "TFTCompanion": set(), "TFTTrait": set(), "CherryAugment": set()}
     #控制只输出一遍的提示（Control the hint to be displayed only once）
     puuid_change_warning_printed: bool = False
+    #定义全局对局信息缓存（Define global match information caches）
+    LoLGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {} #在从SGP API中获取对局概要时，顺便把整理出对局概要也一并获取了（While fetching match summary through SGP API, the program also sorts out match summary）
+    LoLGame_timeline_cache_fromDetails_sgp: dict[int, dict[str, Any]] = {} #同上，通过一次性获取所有对局时间轴，来减少网络请求次数（Same as above, reduce the number of web requests through fetching all matches' timeline information at one time）
+    TFTGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
     #logPrint('''在腾讯代理的服务器上，如果查询某名玩家的对局记录，请尝试以下操作：\nTo search for the match history of a player on Tencent servers, try out the following operations:\n1. 在浏览器中打开本地主机网络协议：%s\n   Open the localhost IP in any browser: %s\n2. 尝试用以下用户名和密码登录：\n   Try logining in with the following username and password:\n   用户名（Username）：riot\n   密码（Password）：%s\n3. （如果可以立即知道一位玩家的玩家通用唯一识别码，则可以跳过第3和4步）在浏览器的地址栏中的地址最后，添加“lol-summoner/v1/summoners?name={name}”，其中{name}指的是召唤师名称编码后的字符串。当召唤师名称只包含英文字母和阿拉伯数字时，直接以召唤师名称去空格后的字符串代入{name}即可；当召唤师名称存在非美国标准信息交换代码时，以召唤师名称编码后的字符串代入{name}。\n(If a summoner's puuid can be immediately known, the user may skip Steps 3 and 4) Add to following the last character of the address in the browser's address bar "lol-summoner/v1/summoners?name={name}", where {name} refers to strings encoded from summonerName. When summonerName contains only English letters and Arabic numbers, simply substitute {name} with the strings with the spaces removed from summonerName. When a non-ASCII character exists in summonerName, substitute {name} by encoded summonerName.\n3.1 对于包含非美国标准信息交换代码的召唤师名称，如果可以得到该召唤师的精确名称（如通过复制到剪贴板），那么在Python中可以得知其编码后的字符串。在Python中使用from urllib.parse import quote命令引入quote函数，再使用quote(x)函数获取字符串x编码后的字符串。\nFor summonerNames that include non-ASCII characters, if the exact summonerName can be obtained (e. g. by copying to clipboard), then its encoded string can be returned in Python. In Python console, use "from urllib.parse import quote" to introduce the "quote" function. Then use quote(x) function to get the string encoded from the string x.\n4. 在lol-summoner/v1/summoners?name={name}返回的结果中找到puuid并复制。\n   Find "puuid" in the result returned by "lol-summoner/v1/summoners?name={name}" and copy it.\n5. 将地址栏中4位IP地址后的斜杠后的内容删除，再添加“lol-match-history/v1/products/lol/{puuid}/matches?begIndex=0&endIndex=20”或“lol-match-history/v1/products/tft/{puuid}/matches?begin=0&count=20”，其中{puuid}是事先获知的玩家通用唯一识别码，或者是第4步复制到剪贴板的puuid。\nDelete the content following the slash after the 4-bit IP address in the address bar and then add to the end "lol-match-history/v1/products/lol/{puuid}/matches?begIndex=0&endIndex=20" or "lol-match-history/v1/products/tft/{puuid}/matches?begin=0&count=20", where {puuid} refers to the puuid previously known, or copied to clipboard in Step 4.\n6. 尝试将上一步输入的地址中的“endIndex=”或“count=”后的数字依次替换成21、199、200和500，观察每次替换后返回的网页结果有没有变多。\nTry changing the number following "endIndex=" or "count=" in the last step into 21, 199, 200 and 500 one by one, and observe whether the returned webpage contains more information after each change.\n7. 教程完成，请继续执行本脚本……\n   Instruction finished. Please continue to run this program ...''' %(connection.address, connection.address, connection.auth_key))
     while True:
         #初始化所有数据资源（Initialize all data resources）
@@ -1763,8 +1767,6 @@ async def search_profile(connection: Connection) -> None:
         LoLGamePlayed: bool = False
         if search_LoL:
             LoLHistory_dfs: list[pandas.DataFrame] = []
-            LoLGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {} #在从SGP API中获取对局概要时，顺便把整理出对局概要也一并获取了（While fetching match summary through SGP API, the program also sorts out match summary）
-            LoLGame_timeline_cache_fromDetails_sgp: dict[int, dict[str, Any]] = {} #同上，通过一次性获取所有对局时间轴，来减少网络请求次数（Same as above, reduce the number of web requests through fetching all matches' timeline information at one time）
             for i in range(len(AllAccounts)):
                 queues = queues_initial.copy()
                 spells = spells_initial.copy()
@@ -1833,7 +1835,7 @@ async def search_profile(connection: Connection) -> None:
             LoLHistory_df_all = pandas.concat([LoLHistory_df_all.iloc[:1], LoLHistory_df_all.iloc[1:].sort_values(by = "gameCreationDate", ascending = False)], ignore_index = True) #这里弃用了根据对局序号排序（Here gameId isn't used to sort the values）
             
             logPrint('请输入要查询的英雄联盟对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出英雄联盟对局查询请输入“0”：\nPlease enter the LoL matchId to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to quit searching for LoL matches.')
-            LoLGameIDs: list[int] = sorted(LoLGame_summary_cache_fromSummary_sgp.keys(), reverse = True) #代表对局记录中的所有对局序号（Represents all matchIds in the match history）
+            LoLGameIDs: list[int] = LoLHistory_df_all["gameId"][1:].to_list() #代表对局记录中的所有对局序号（Represents all matchIds in the match history）
             LoLMatchIDs: list[int] = [] #代表实际需要查询的对局序号（Represents the matchIds for query）
             LoLMatches_not_found: list[int] = [] #在扫描模式下，当从本地文件获取的对局从API重新获取出现异常时，处理策略是输出异常信息并跳过该对局，而不是将其直接从对局序号列表中去除，因为这样会使循环乱套。而后面的info_exist_error、timeline_exist_error、main_player_included和match_reserve_strategy只会在该对局正常获取时才会统计。所以一旦出现数据获取失败的对局，在最后导出数据时，“if match_reserve_strategy[i]:”语句会出现“IndexError: list index out of range”报错（Under scan mode, when an exception occurred during crawling matches with LoLMatchIDs obtained from local files from API, the strategy is to print the exception and skip this match, instead of directly removing them from the matchId list, for the removal will disturb the loop. However, the variables info_exist_error, timeline_exist_error, main_player_included and match_reserve_strategy only work when the matches are crawled from the database as expected. So once a match fails to be captured, during xlsx file export at the end of the program, an "IndexError: list index out of range" exception will emerge from the statement "if match_reserve_strategy[i]:"）
             error_LoLMatchIDs: list[int] = [] #记录实际存在但未如期获取的对局序号（Records the LoL matchIDs that really exist but fail to be fetched）
@@ -1973,6 +1975,8 @@ async def search_profile(connection: Connection) -> None:
                             status: int = 200
                         else:
                             status, LoLGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, skipTFT = True, log = log)
+                            if status == 200:
+                                LoLGame_summary_cache_fromSummary_sgp[matchId] = LoLGame_summary
                     else:
                         status, LoLGame_summary = await get_LoLGame_summary(connection, matchId, log = log)
                     if status == 200 and (not use_sgp or "json" in LoLGame_summary and bool(LoLGame_summary["json"])):
@@ -2027,6 +2031,8 @@ async def search_profile(connection: Connection) -> None:
                                 status: int = 200
                             else:
                                 status, LoLGame_timeline = await get_game_timeline_sgp(connection, sgpSession, match_id, checkTFT = False, log = log)
+                                if status == 200:
+                                    LoLGame_timeline_cache_fromDetails_sgp[matchId] = LoLGame_timeline
                         else:
                             status, LoLGame_timeline = await get_LoLGame_timeline(connection, matchId, log = log)
                         if "errorCode" in LoLGame_timeline:
@@ -2160,7 +2166,6 @@ async def search_profile(connection: Connection) -> None:
         if search_TFT:
             TFTHistory_dfs: list[pandas.DataFrame] = []
             TFTHistory_dict: dict[int, dict[str, Any]] = {}
-            TFTGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
             for i in range(len(AllAccounts)):
                 queues = queues_initial.copy()
                 TFTAugments = TFTAugments_initial.copy()
@@ -2204,7 +2209,6 @@ async def search_profile(connection: Connection) -> None:
                     if TFTGamePlayed:
                         logPrint(TFTHistory_df[:min(21, TFTGameCount + 1)], write_time = False)
             #由于云顶之弈的对局记录包含所有玩家的信息，所以这里考虑先整合所有账号的对局记录，再对总对局记录进行整理。如果先整理再整合，后续排序时玩家顺序的信息会丢失，因为在这种情形下根据对局序号排序，而数据框中不包含玩家序号键，无法按照玩家序号进行升序排列（Because TFT match history includes all players' information, here the program first merges all accounts' match history, and then sort out the aggregate match history. Otherwise, if the program first organize the match history respectively and then merge the result dataframe, the participantId order may be lost during the subsequent ordering, for gameId is taken to arrange the aggregate dataframe, but the key `participantId` isn't in the dataframe, and therefore the dataframe can't be arranged in the ascending order of participantId）
-            TFTGameIDs: list[int] = sorted(TFTGame_summary_cache_fromSummary_sgp.keys(), reverse = True)
             # TFTHistory_all: dict[str, str | list[dict[str, Any]]] = {"active_puuid": "", "games": list(map(lambda x: TFTGame_summary_cache_fromSummary_sgp[x], TFTGameIDs))}
             #构建云顶之弈对局记录数据框（Construct TFT match history dataframe）
             TFTHistory_df_all: pandas.DataFrame = pandas.concat([TFTHistory_dfs[0].iloc[:1]] + list(map(lambda x: x.iloc[1:], TFTHistory_dfs)), ignore_index = True) #需要注意数据框的中文表头占用了一行（Note that the Chinese header takes up a record）
@@ -2220,6 +2224,7 @@ async def search_profile(connection: Connection) -> None:
             TFTHistory_df_all = pandas.concat([TFTHistory_df_all.iloc[:1], TFTHistory_df_all.iloc[1:].sort_values(by = "gameCreationDate", ascending = False)], ignore_index = True) #这里弃用了根据对局序号排序（Here gameId isn't used to sort the values）
             
             logPrint('请输入要查询的云顶之弈对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出云顶之弈对局查询请输入“0”：\nPlease enter the TFT matchId to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to quit searching for TFT matches.')
+            TFTGameIDs: list[int] = TFTHistory_df_all["game_id"][1:].to_list()
             TFTMatches_not_found: list[int] = []
             error_TFTMatchIDs: list[int] = []
             scan_tft: bool = False
@@ -2339,6 +2344,8 @@ async def search_profile(connection: Connection) -> None:
                             status: int = 200
                         else:
                             status, TFTGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, checkLoL = False, checkTFT = True, log = log) #通过LCU API和SGP API获取到的云顶之弈对局记录和对局概要是相同的（TFT match history and TFT game summary obtained through LCU API and SGP API are the same）
+                            if status == 200:
+                                TFTGame_summary_cache_fromSummary_sgp[matchId] = TFTGame_summary
                         if status == 200 and "json" in TFTGame_summary and bool(TFTGame_summary["json"]):
                             isTFT[matchId] = True
                             info_exist_error[matchId] = False

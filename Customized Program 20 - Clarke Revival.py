@@ -48,7 +48,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/12
+# 更新（Last update）：     2026/03/16
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -79,6 +79,7 @@ TFTTraits: dict[str, dict[str, Any]] = {}
 CherryAugments: dict[int, dict[str, Any]] = {}
 wardSkins: dict[int, dict[str, Any]] = {}
 regaliaBanners: dict[str, dict[str, Any]]
+LoLGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
 log: LogManager = LogManager()
 
 connector: Connector = Connector()
@@ -281,7 +282,6 @@ async def search_player_match_stats_lol(connection: Connection, puuid: str, begI
     LoLGame_stat_data: dict[str, list[Any]] = {key: [] for key in LoLGame_stat_header_keys}
     info: dict[str, Any] = await get_info(connection, puuid)
     if info["info_got"]:
-        LoLGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
         if lol_sgp:
             LoLHistory_get, LoLHistory = await get_matchSummary_sgp(connection, sgpSession, puuid, "LoL", begin = 0, count = 1000, log = log, verbose = verbose)
             for game in LoLHistory["games"]:
@@ -304,6 +304,8 @@ async def search_player_match_stats_lol(connection: Connection, puuid: str, begI
                         status: int = 200
                     else:
                         status, LoLGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, skipTFT = True, log = log, verbose = verbose)
+                        if status == 200:
+                            LoLGame_summary_cache_fromSummary_sgp[matchId] = LoLGame_summary
                 else:
                     status, LoLGame_summary = await get_LoLGame_summary(connection, matchId, log = log, verbose = verbose)
                 if status == 200:

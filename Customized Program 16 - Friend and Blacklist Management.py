@@ -22,7 +22,7 @@ from src.core.dataframes.gameflow import sort_ChampSelect_players
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/14
+# 更新（Last update）：     2026/03/16
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -57,6 +57,7 @@ TFTChampions: dict[str, dict[str, Any]] = {}
 TFTItems: dict[str, dict[str, Any]] = {}
 TFTDamageSkins: dict[str, dict[str, Any]] = {}
 TFTMapSkins: dict[str, dict[str, Any]] = {}
+LoLGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
 folder: str = ""
 current_info: dict[str, Any] = {}
 platformId: str = ""
@@ -535,7 +536,6 @@ async def get_recent_players(connection: Connection, search_mode: int = 2, lol_s
         logPrint("开始整理英雄联盟对局数据……\nStart organizing LoL match data ...")
         unmapped_keys1: dict[str, set[int]] = {"queue": set(), "summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "CherryAugment": set()}
         if lol_sgp:
-            LoLGame_summary_cache_fromSummary_sgp: dict[int, dict[str, Any]] = {}
             LoLHistory_get, LoLHistory = await get_matchSummary_sgp(connection, sgpSession, current_puuid, "LoL", begin = 0, count = 1000, log = log)
             for game in LoLHistory["games"]:
                 matchId: int = int(game["metadata"]["match_id"].split("_")[1])
