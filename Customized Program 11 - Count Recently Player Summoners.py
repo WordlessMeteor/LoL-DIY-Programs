@@ -29,7 +29,7 @@ use_sgp: bool = args.lol_api == "sgp"
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/03/11
+# 更新（Last update）：     2026/03/16
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -3005,7 +3005,7 @@ async def detect_custom_list(connection: Connection, search_LoL: bool, search_TF
 
 async def search_recent_players(connection: Connection) -> None:
     global session, platformId, AllAccounts
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    platformId = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
     riot_client_info: list[str] = await (await connection.request("GET", "/riotclient/command-line-args")).json()
     client_info: dict[str, str] = {}
     for i in range(len(riot_client_info)):
@@ -3049,8 +3049,6 @@ async def search_recent_players(connection: Connection) -> None:
     unmapped_keys: dict[str, set[Any]] = {"summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "TFTAugment": set(), "TFTChampion": set(), "TFTItem": set(), "TFTCompanion": set(), "TFTTrait": set(), "CherryAugment": set()}
     #控制只输出一遍的提示（Control the hint to be displayed only once）
     # Vanguard_warning_printed: str = False
-    #设置电脑玩家的玩家通用唯一识别码（Set the puuid of a bot player）
-    BOT_UUID: str = "00000000-0000-0000-0000-000000000000"
     logPrint("请选择本脚本的使用模式：\nPlease select a mode for use:\n1\t生成模式（Generate Mode）\n2\t检测模式（Detect Mode）")
     detectMode: bool = False
     mode: str = logInput()
@@ -3214,17 +3212,17 @@ async def search_recent_players(connection: Connection) -> None:
             logPrint("请输入非空字符串！\nPlease input a string instead of null!")
             continue
         else:
-            info: dict[str, Any] = await get_info(connection, summoner_name)
-            if not info["info_got"]:
-                logPrint(info["message"])
+            main_info: dict[str, Any] = await get_info(connection, summoner_name)
+            if not main_info["info_got"]:
+                logPrint(main_info["message"])
                 continue
             else:
-                info_body: dict[str, Any] = info["body"]
-        displayName: str = get_info_name(info_body) #用于扫描模式定位到某召唤师（Determines the directory which contains the summoner's data）
-        current_summonerId: int = info_body["summonerId"] #用于排除房间邀请信息中的自己（Defined to exclude the user itself from the lobby invitations）
-        current_puuid: str = info_body["puuid"] #用于核验对局是否包含该召唤师。此外，还用于扫描模式从对局的所有玩家信息中定位到该玩家（For use of checking whether the searched matches include this summoner. In addition, it's used for localization of this player from all players in a match in "scan" mode）
-        current_summonerName: str = info_body["displayName"] if info_body["gameName"] == "" and info_body["tagLine"] == "" else info_body["gameName"] + "#" + info_body["tagLine"] #作用同上，用于模糊定位，主要应用于玩家通用唯一识别码发生变动的大区且在名称编号引入后注册的主召唤师的对局记录扫描模式（Acts as the same role as the above variable for a rough localization. It's mainly designed for Scan Mode on players that signed up after tagLine was introduced on servers that changed the players' puuids）
-        infos[current_puuid] = info_body
+                main_info_body: dict[str, Any] = main_info["body"]
+        displayName: str = get_info_name(main_info_body) #用于扫描模式定位到某召唤师（Determines the directory which contains the summoner's data）
+        current_summonerId: int = main_info_body["summonerId"] #用于排除房间邀请信息中的自己（Defined to exclude the user itself from the lobby invitations）
+        current_puuid: str = main_info_body["puuid"] #用于核验对局是否包含该召唤师。此外，还用于扫描模式从对局的所有玩家信息中定位到该玩家（For use of checking whether the searched matches include this summoner. In addition, it's used for localization of this player from all players in a match in "scan" mode）
+        current_summonerName: str = main_info_body["displayName"] if main_info_body["gameName"] == "" and main_info_body["tagLine"] == "" else main_info_body["gameName"] + "#" + main_info_body["tagLine"] #作用同上，用于模糊定位，主要应用于玩家通用唯一识别码发生变动的大区且在名称编号引入后注册的主召唤师的对局记录扫描模式（Acts as the same role as the above variable for a rough localization. It's mainly designed for Scan Mode on players that signed up after tagLine was introduced on servers that changed the players' puuids）
+        infos[current_puuid] = main_info_body
         #下面检测本地已保存的召唤师信息是否包含已改名的召唤师（Detect whether the local summoner information contain any summoner that has changed its name）
         folderNames: list[str] = os.listdir(platform_folder)
         if len(folderNames) > 0:
@@ -3247,7 +3245,7 @@ async def search_recent_players(connection: Connection) -> None:
                                 logPrint(f"警告：检测到同大区下该召唤师存在其它显示名：\nWarning: Another displayName of this summoner is detected in this server:\n{test_displayName}")
                                 break
         #下面设置扫描模式的扫描目录（The following code determines the scanning directory for scan mode）
-        folder: str = set_summonerInfo_folder(region, platformId, info_body)
+        folder: str = set_summonerInfo_folder(region, platformId, main_info_body)
         saved_LoLMatchIDs: list[int] = []
         json03name: str = f"Matches Saved (LoL) - {displayName}.json"
         json03path: str = os.path.join(folder, json03name).replace("\\", "/")
@@ -3276,7 +3274,7 @@ async def search_recent_players(connection: Connection) -> None:
                     logPrint("已存储的云顶之弈对局数据格式错误！\nSaved TFT match data format error!")
         
         #整理账号信息（Organize accounts）
-        AllAccounts = [info_body] + smurfs if selfDetect and smurfMode else [info_body]
+        AllAccounts = [main_info_body] + smurfs
         current_puuid_list: list[str] = list(map(lambda x: x["puuid"], AllAccounts))
         current_summonerName_list: list[str] = list(map(get_info_name, AllAccounts))
         #下面获取最近一起玩过的英雄联盟玩家的信息（The following code captures the recently played LoL players' information）
@@ -3308,7 +3306,7 @@ async def search_recent_players(connection: Connection) -> None:
                         if not matchId in LoLGame_summary_cache_fromSummary_sgp:
                             LoLGame_summary_cache_fromSummary_sgp[matchId] = game
                 else:
-                    LoLHistory_get, LoLHistory = await get_LoLHistory(connection, info_body["puuid"], log = log)
+                    LoLHistory_get, LoLHistory = await get_LoLHistory(connection, main_info_body["puuid"], log = log)
                 if LoLHistory_get:
                     LoLGameCount: int = len(LoLHistory["games"]) if use_sgp else LoLHistory["games"]["gameCount"]
                     LoLGamePlayed: bool = LoLGameCount != 0 #标记该玩家是否进行过英雄联盟对局（Mark whether this summoner has played any LoL game）
@@ -3457,7 +3455,7 @@ async def search_recent_players(connection: Connection) -> None:
                 TFTTraits = TFTTraits_initial.copy()
                 current_versions["queue"] = current_versions["TFTAugment"] = current_versions["TFTChampion"] = current_versions["TFTItem"] = current_versions["TFTCompanion"] = current_versions["TFTTrait"] = URLPatch
                 unmapped_keys["queue"], unmapped_keys["TFTAugment"], unmapped_keys["TFTChampion"], unmapped_keys["TFTItem"], unmapped_keys["TFTCompanion"], unmapped_keys["TFTTrait"] = set(), set(), set(), set(), set(), set()
-                info_body: dict[str, Any] = AllAccounts[i]
+                main_info_body: dict[str, Any] = AllAccounts[i]
                 info_puuid: str = current_puuid_list[i]
                 info_summonerName: str = current_summonerName_list[i]
                 logPrint("[%d/%d]正在获取客户端内玩家%s的云顶之弈对局记录……\nGetting TFT match history of player %s in the client ..." %(i + 1, len(AllAccounts), info_summonerName, info_summonerName))
@@ -3476,7 +3474,7 @@ async def search_recent_players(connection: Connection) -> None:
                         match_id: int = int(game["metadata"]["match_id"].split("_")[-1])
                         if not match_id in TFTHistory_dict: #由于云顶之弈的对局记录包含所有玩家的信息，所以如果多个玩家的对局记录包含同一场对局，则这些对局的信息一定是相同的（Because TFT match history includes all players' information, if a match is included in multiple players' match histories, then information of the matches recorded in different players' match histories must be the same）
                             TFTHistory_dict[match_id] = game
-                    TFTHistory_df: pandas.DataFrame = (await sort_TFTHistory(connection, TFTHistory, info_body["puuid"], queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, useInfoDict = True, infos = infos, log = log))[0]
+                    TFTHistory_df: pandas.DataFrame = (await sort_TFTHistory(connection, TFTHistory, main_info_body["puuid"], queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, useInfoDict = True, infos = infos, log = log))[0]
                     TFTHistory_dfs.append(TFTHistory_df)
                     if TFTGamePlayed:
                         logPrint(TFTHistory_df[:min(21, TFTGameCount + 1)], write_time = False)
