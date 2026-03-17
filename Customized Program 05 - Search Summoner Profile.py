@@ -37,7 +37,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/03/16
+# 更新（Last update）：     2026/03/17
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2565,9 +2565,10 @@ async def search_profile(connection: Connection) -> None:
                             logPrint("召唤师英雄联盟对局记录导出完成！\nSummoner LoL match history exported!\n")
                             if LoLGame_stat_df_export:
                                 if scan_lol:
-                                    addDefaultStyle(LoLGame_stat_df).to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Scan")
                                     if not workbook_exist and not args.deny_empty_sheet_creation:
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats")
+                                    addDefaultStyle(LoLGame_stat_df).to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Scan")
+                                    if not workbook_exist and not args.deny_empty_sheet_creation:
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Manual")
                                     worksheet = writer.sheets["LoL Match Stats - Scan"]
                                 else:
