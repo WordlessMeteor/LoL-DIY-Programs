@@ -396,6 +396,7 @@ async def get_challenger_tier(connection: Connection) -> None:
                         logPrint('正在保存中……\nSaving the ordered workbook ...')
                         wb.save(os.path.join(folder, excel_name_sorted))
                         logPrint('排序完成！排好序的工作簿已保存为“%s”。\nOrdering finished! The ordered workbook is saved as "%s".\n' %(excel_name_sorted, excel_name_sorted))
+                        wb.close()
                         break
 
 #-----------------------------------------------------------------------------

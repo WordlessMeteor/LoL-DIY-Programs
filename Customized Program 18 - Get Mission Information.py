@@ -227,7 +227,7 @@ async def get_mission_info(connection: Connection) -> None:
                         break
                 else:
                     sheetnames: list[str] = wb.sheetnames #第一次获取原工作簿的工作表名称列表（The first time to get the sheet name list of the original workbook）
-                    print("请选择排序方式：\nPlease select an ordering pattern:\n1\t时间优先（默认）【Time in priority (by default)】\n2\t类别优先（Type in priority）")
+                    print("请选择排序方式：\nPlease select an ordering pattern:\n☆1\t时间优先（Time in priority）\n2\t类别优先（Type in priority）")
                     op: str = input()
                     print("正在创建顺序工作表列表……\nCreating the ordered sheet list ...")
                     date_re: re.Pattern[str] = re.compile(r"\d{4}-\d{2}-\d{2}") #设置正则表达式识别
@@ -255,6 +255,7 @@ async def get_mission_info(connection: Connection) -> None:
                     print('正在保存中……\nSaving the ordered workbook ...')
                     wb.save(os.path.join(folder, excel_name_sorted))
                     print('排序完成！排好序的工作簿已保存为“%s”。\nOrdering finished! The ordered workbook is saved as "%s".\n' %(excel_name_sorted, excel_name_sorted))
+                    wb.close()
                     break
 
 async def check_repeating_missions(connection: Connection) -> None: #查看可重复任务的刷新状态（Check repeating missions' cooldown status）

@@ -2749,6 +2749,7 @@ async def search_profile(connection: Connection) -> None:
                             logPrint('正在保存中……\nSaving the ordered workbook ...')
                             wb.save(os.path.join(folder, wbName_sorted))
                             logPrint('排序完成！排好序的工作簿已保存为“%s”。\nOrdering finished! The ordered workbook is saved as "%s".\n' %(wbName_sorted, wbName_sorted))
+                            wb.close()
                             break
 
 #-----------------------------------------------------------------------------

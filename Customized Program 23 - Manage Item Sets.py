@@ -20,7 +20,7 @@ from src.core.dataframes.champions import sort_champion_summary
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/11
+# 更新（Last update）：     2026/03/18
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2573,6 +2573,7 @@ def export_item_data() -> None:
                     print('正在保存中……\nSaving the ordered workbook ...')
                     wb.save(excel_name_sorted)
                     print('排序完成！排好序的工作簿已保存为“%s”。\nOrdering finished! The ordered workbook is saved as "%s".\n' %(excel_name_sorted, excel_name_sorted))
+                    wb.close()
                     break
 
 #-----------------------------------------------------------------------------
