@@ -273,6 +273,11 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
                     if "itemLists" in value:
                         for itemList_key in value["itemLists"]:
                             gameModeItemIds += [items_bin[_]["itemID"] for _ in map_bin[itemList_key]["mItems"] if _ in items_bin]
+                    if "Configs" in value:
+                        for config_key in value["Configs"]:
+                            if config_key in map_bin and map_bin[config_key]["__type"] == "{3d900309}":
+                                for itemList_key in map_bin[config_key]["itemLists"].values():
+                                    gameModeItemIds += [items_bin[_]["itemID"] for _ in map_bin[itemList_key]["mItems"] if _ in items_bin]
                     gameModeItemIds = sorted(set(gameModeItemIds)) #依据装备序号去重（Remove redundancy according to itemId）
                     exclusive_itemIds -= set(gameModeItemIds)
                     for i in range(len(gameModeItemIds)):
