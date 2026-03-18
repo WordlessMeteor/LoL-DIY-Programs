@@ -6410,7 +6410,7 @@ async def change_champSelect_spell(connection: Connection) -> None:
             index_got = False
             break
         else:
-            tmp: list[str] = tmp.split()
+            tmp: list[str] = spell_str.split()
             if len(tmp) != 2:
                 logPrint("请输入两个召唤师技能的序号！\nPlease submit two spellIds!")
             else:
