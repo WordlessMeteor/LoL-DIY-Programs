@@ -42,6 +42,7 @@
                 6. 若要恢复原始lcu_driver库文件，请先在命令行中输入`pip uninstall lcu_driver`，再输入`pip install lcu_driver`重新安装。
         - openpyxl
         - pandas
+        - numpy
         - requests
         - pyperclip
         - pickle

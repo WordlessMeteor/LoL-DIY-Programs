@@ -44,6 +44,7 @@ This program set mainly achieves **LoL Summoner information export** and **Leagu
                 6. If you need to recover the original `lcu_driver` library, please enter `pip uninstall lcu_driver` in CMD to uninstall the modified library, and then enter `pip install lcu_driver` to reinstall the original release of the library.
         - openpyxl
         - pandas
+        - numpy
         - requests
         - pyperclip
         - pickle

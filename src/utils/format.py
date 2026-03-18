@@ -1,6 +1,6 @@
-import datetime, json, pandas, shutil, unicodedata, uuid
+import datetime, json, numpy, pandas, shutil, unicodedata, uuid
 from wcwidth import wcswidth
-from typing import Any, Generator, Literal, Optional
+from typing import Any, Generator, Iterable, Literal, Optional
 
 def format_json(origin: str, indent_char: str = " ", number: int = 4) -> str: #对字符串origin进行格式化（Formalize the string `origin`）
     '''
@@ -207,6 +207,42 @@ def format_df(df: pandas.DataFrame, width_exceed_ask: bool = True, direct_print:
     else:
         print("排列方式参数错误！请传入字符串。\nAlignment parameter ERROR! Please pass a string instead.")
     return (result, maxLens)
+
+def eliminate_empty_fields(df: pandas.DataFrame, header: Optional[int | list[int]] = 0, na_values: Any | Iterable[Any] = None) -> pandas.DataFrame:
+    '''
+    移除一个数据框中所有值全为空值的列。空值包括空字符串和0。<br>Remove the columns where each value is an empty value from a dataframe. An empty value includes an empty string and 0.
+    
+    传入的数据框不得是转置后的。即数据框的列应当代表字段，而不是索引。<br>`df` shouldn't be transposed. That is, the columns of `df` should represent fields instead of indices.
+    
+    :param df: 要消除空列的数据框。操作将在此数据框上**原位**进行。<br>Dataframes to eliminate empty fields. The operation is performed **in vivo**.
+    :type df: pandas.DataFrame
+    :param header: 数据区域中作为表头的部分。适用于本存储库中将中文表头作为数据区域第0行的数据框，此时header应指定为`0`或者`[0]`。
+    :type header: The header indices in the data area. Applys to the dataframes which takes the 0th line as the Chinese header, when `header` should be specified as `0` or `[0]`.
+    :param na_values: 数据框中的缺失数据。默认为`numpy.nan`。<br>NA values in the dataframe. `numpy.nan` by default.
+    :type na_values: Any | Iterable[Any]
+    :return: 消除空字段后的数据框。<br>The dataframe after eliminating empty fields.
+    :rtype: pandas.DataFrame
+    '''
+    #参数预处理（Parameter preprocess）
+    if header == None:
+        header = []
+    elif isinstance(header, int):
+        header = [header]
+    if na_values == None:
+        na_values = {numpy.nan}
+    elif isinstance(na_values, Iterable):
+        na_values = set(na_values)
+    else:
+        na_values = {na_values}
+    empty_values: set[Any] = {0, ""} | na_values
+    record_indices: list[int] = sorted(set(range(len(df))) - set(header))
+    #筛选空列（Filter for empty columns）
+    fields_to_drop: list[str] = []
+    for field in df.columns:
+        if any(all(map(lambda x: x == _, df[field][record_indices])) for _ in empty_values):
+            fields_to_drop.append(field)
+    #消除空列（Eliminate empty columns）
+    return df.drop(fields_to_drop, axis = 1)
 
 def addDefaultStyle(df: pandas.DataFrame) -> pandas.io.formats.style.Styler: #为数据框添加默认样式（Add default style for a dataframe）
     '''

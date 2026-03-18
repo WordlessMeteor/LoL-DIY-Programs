@@ -6,7 +6,7 @@ from openpyxl import load_workbook, Workbook
 from typing import Any, Optional
 from src.utils.summoner import print_summoner_info, get_info, get_infos, get_info_name
 from src.utils.logger import LogManager
-from src.utils.format import getISOTime, optimize_bool_display, format_df, addDefaultStyle, format_runtime, verify_uuid
+from src.utils.format import getISOTime, optimize_bool_display, format_df, eliminate_empty_fields, addDefaultStyle, format_runtime, verify_uuid
 from src.utils.patch import Patch
 from src.utils.webRequest import requestUrl, SGPSession
 from src.core.config.headers import profile_header, mastery_header, ranked_header, ladder_header
@@ -37,7 +37,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/03/17
+# 更新（Last update）：     2026/03/18
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2642,10 +2642,10 @@ async def search_profile(connection: Connection) -> None:
                                 if match_reserve_strategy[matchIDs[i]]:
                                     match_reserved += 1
                                     if not info_exist_error[matchIDs[i]]:
-                                        game_summary_df = game_summary_dfs[matchIDs[i]]
                                         if args.export_leaderboard:
                                             addDefaultStyle(game_leaderboard_dfs[matchIDs[i]]).to_excel(excel_writer = writer, sheet_name = "Match %d - Leaderboard" %(matchIDs[i]))
                                             logPrint("对局段位排行榜导出完成。\nMatch leaderboard exported.")
+                                        game_summary_df: pandas.DataFrame = game_summary_dfs[matchIDs[i]]
                                         addDefaultStyle(game_summary_df.transpose()).to_excel(excel_writer = writer, sheet_name = "Match %d - Summary" %(matchIDs[i]))
                                         if isLoL.get(matchIDs[i], False) and args.info_color:
                                             worksheet = writer.sheets["Match %d - Summary" %(matchIDs[i])]
@@ -2666,9 +2666,11 @@ async def search_profile(connection: Connection) -> None:
                                             addFormat_LoLGame_summary_wb_transpose(worksheet, game_summary_df.transpose(), numColorScale_order = max_numPlayersPerTeam_lol)
                                         logPrint("对局概要导出完成。\nMatch summary exported.")
                                     if not timeline_exist_error[matchIDs[i]]:
-                                        addDefaultStyle(game_timeline_dfs[matchIDs[i]]).to_excel(excel_writer = writer, sheet_name = "Match %d - Timeline" %(matchIDs[i]))
+                                        game_timeline_df: pandas.DataFrame = game_timeline_dfs[matchIDs[i]]
+                                        addDefaultStyle(game_timeline_df).to_excel(excel_writer = writer, sheet_name = "Match %d - Timeline" %(matchIDs[i]))
                                         logPrint("对局时间轴导出完成。\nMatch timeline exported.")
-                                        addDefaultStyle(game_event_dfs[matchIDs[i]]).to_excel(excel_writer = writer, sheet_name = "Match %d - Events" %(matchIDs[i]))
+                                        game_event_df: pandas.DataFrame = game_event_dfs[matchIDs[i]]
+                                        addDefaultStyle(game_event_df).to_excel(excel_writer = writer, sheet_name = "Match %d - Events" %(matchIDs[i]))
                                         logPrint("对局事件导出完成。\nMatch events exported.")
                                 end: float = time.time()
                                 unit: float = end - start
