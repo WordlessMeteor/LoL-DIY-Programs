@@ -20,7 +20,7 @@ from src.core.dataframes.champions import sort_champion_summary
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/18
+# 更新（Last update）：     2026/03/20
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1964,7 +1964,7 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
             LoLItems_default_url: str = "https://ddragon.leagueoflegends.com/cdn/%s/data/en_US/item.json" %version
             champions_locale_url: str = "https://ddragon.leagueoflegends.com/cdn/%s/data/%s/champion.json" %(version, locale)
             logPrint(f"正在获取{version}版本的目标语言装备信息……\nFetching LoL item information of version {version} in target language ...")
-            source, status, session = requestUrl("GET", LoLItems_locale_url, session = session)
+            source, status, session = requestUrl("GET", LoLItems_locale_url, session = session, log = log)
             if status != 200:
                 if status == -1:
                     logPrint("目标语言装备信息获取失败！\nLoL item information in target language capture failed!")
@@ -1974,7 +1974,7 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                 continue
             LoLItems_locale: dict[str, Any] = source.json()
             logPrint(f"正在获取{version}版本的英文装备信息……\nFetching LoL item information of version {version} in English ...")
-            source, status, session = requestUrl("GET", LoLItems_default_url, session = session)
+            source, status, session = requestUrl("GET", LoLItems_default_url, session = session, log = log)
             if status != 200:
                 if status == -1:
                     logPrint("英文装备信息获取失败！\nLoL item information in English capture failed!")
@@ -1984,7 +1984,7 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                 continue
             LoLItems_default: dict[str, Any] = source.json()
             logPrint(f"正在获取{version}版本的目标语言英雄信息……\nFetching champion information of version {version} in target language ...")
-            source, status, session = requestUrl("GET", champions_locale_url, session = session)
+            source, status, session = requestUrl("GET", champions_locale_url, session = session, log = log)
             if status != 200:
                 if status == -1:
                     logPrint("目标语言英雄信息获取失败！\nChampion information in target language capture failed!")
@@ -2222,7 +2222,7 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
             LoLItems_binary_url1: str = "https://raw.communitydragon.org/%s/game/global/items/items.bin.json" %(version)
             LoLItems_binary_url2: str = "https://raw.communitydragon.org/%s/game/items.cdtb.bin.json" %(version)
             logPrint(f"正在获取{version}版本的目标语言装备信息……\nFetching LoL item information of version {version} in target language ...")
-            source, status, session = requestUrl("GET", LoLItems_locale_url, session = session)
+            source, status, session = requestUrl("GET", LoLItems_locale_url, session = session, log = log)
             if status != 200:
                 if status == -1:
                     logPrint("目标语言装备信息获取失败！\nLoL item information in target language capture failed!")
@@ -2232,7 +2232,7 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                 continue
             LoLItems_locale: list[dict[str, Any]] = source.json()
             logPrint(f"正在获取{version}版本的英文装备信息……\nFetching LoL item information of version {version} in English ...")
-            source, status, session = requestUrl("GET", LoLItems_default_url, session = session)
+            source, status, session = requestUrl("GET", LoLItems_default_url, session = session, log = log)
             if status != 200:
                 if status == -1:
                     logPrint("英文装备信息获取失败！\nLoL item information in English capture failed!")
@@ -2242,7 +2242,7 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                 continue
             LoLItems_default: list[dict[str, Any]] = source.json()
             logPrint(f"正在获取{version}版本的目标语言英雄信息……\nFetching champion information of version {version} in target language ...")
-            source, status, session = requestUrl("GET", champions_locale_url, session = session)
+            source, status, session = requestUrl("GET", champions_locale_url, session = session, log = log)
             if status != 200:
                 if status == -1:
                     logPrint("目标语言英雄信息获取失败！\nChampion information in target language capture failed!")
@@ -2252,7 +2252,7 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                 continue
             champions_locale: list[dict[str, Any]] = source.json()
             logPrint(f"正在获取{version}版本的目标语言字符串常量池（英雄联盟）……\nFetching stringtable (LoL) of version {version} in target language ...")
-            source, status, session = requestUrl("GET", fontconfig_locale_url if Patch(version) < Patch("12.23") else strtable_locale_url1 if Patch(version) < Patch("14.4") else strtable_locale_url2 if Patch(version) < Patch("14.15") else strtable_locale_url3, session = session) #翻译数据在12.23、14.4和14.15版本发生了路径迁移（Path transfer occurred to the localization data in Patches 12.23, 14.4 and 14.15）
+            source, status, session = requestUrl("GET", fontconfig_locale_url if Patch(version) < Patch("12.23") else strtable_locale_url1 if Patch(version) < Patch("14.4") else strtable_locale_url2 if Patch(version) < Patch("14.15") else strtable_locale_url3, session = session, log = log) #翻译数据在12.23、14.4和14.15版本发生了路径迁移（Path transfer occurred to the localization data in Patches 12.23, 14.4 and 14.15）
             status_strtable_locale: int = status
             if status != 200:
                 if status == -1:
@@ -2267,7 +2267,7 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                 failed_count += 1
                 continue
             logPrint(f"正在获取{version}版本的二进制装备信息……\nFetching binary LoL item of version {version} ...")
-            source, status, session = requestUrl("GET", LoLItems_binary_url1 if Patch(version) < Patch("13.15") else LoLItems_binary_url2, session = session) #二进制装备信息在13.15版本发生了路径迁移（Path transfer occurred to the binary item information in Patch 13.15）
+            source, status, session = requestUrl("GET", LoLItems_binary_url1 if Patch(version) < Patch("13.15") else LoLItems_binary_url2, session = session, log = log) #二进制装备信息在13.15版本发生了路径迁移（Path transfer occurred to the binary item information in Patch 13.15）
             status_item_binary: int = status
             if status != 200:
                 if status == -1:

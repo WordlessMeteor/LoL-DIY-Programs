@@ -48,7 +48,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/16
+# 更新（Last update）：     2026/03/20
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -207,7 +207,7 @@ async def prepare_data_resources(connection: Connection, verbose: bool = True) -
     URLPatch: str = "pbe" if platformId == "PBE1" or platformId == "PBE" else "latest"
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     locale: str = region_locale["locale"].lower()
-    source, status = requestUrl("GET", f"https://raw.communitydragon.org/{URLPatch}/cdragon/tft/{locale}.json")[:2]
+    source, status = requestUrl("GET", f"https://raw.communitydragon.org/{URLPatch}/cdragon/tft/{locale}.json", log = log)[:2]
     if status != 200:
         if status == -1:
             logPrint("云顶之弈基础数据获取失败！请检查系统网络状况和代理设置。程序即将退出。\nTFT basic data capture failure! Please check the system network condition and proxy configuration. The program will exit now.")

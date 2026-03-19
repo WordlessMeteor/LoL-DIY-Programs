@@ -373,7 +373,7 @@ class LoLDataExtractor:
         '''
         logPrint = self.log.logPrint
         game_version_url: str = f"https://raw.communitydragon.org/{self.version}/compat-version-metadata.json"
-        source, status, self.session = requestUrl("GET", game_version_url, session = self.session)
+        source, status, self.session = requestUrl("GET", game_version_url, session = self.session, log = log)
         if status != 200:
             if status == -1:
                 logPrint("游戏版本获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nGame version capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -421,7 +421,7 @@ class LoLDataExtractor:
         '''
         logPrint = self.log.logPrint
         file_exported_url: str = f"https://raw.communitydragon.org/{self.version}/cdragon/files.exported.txt"
-        source, status, self.session = requestUrl("GET", file_exported_url, session = self.session)
+        source, status, self.session = requestUrl("GET", file_exported_url, session = self.session, log = log)
         if status != 200:
             if status == -1:
                 logPrint("文件导出列表获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nFile export list capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -457,7 +457,7 @@ class LoLDataExtractor:
         if shared_bin_url in self.__class__.data_cache["online"]:
             self.shared_bin = self.__class__.data_cache["online"][shared_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", shared_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", shared_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == -1:
                     logPrint("共享数据获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nShared data capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -546,7 +546,7 @@ class LoLDataExtractor:
             if mainstringtable_target_url in self.__class__.data_cache["online"]:
                 self.mainstringtable_target = self.__class__.data_cache["online"][mainstringtable_target_url]
             else:
-                source, status, self.session = requestUrl("GET", mainstringtable_target_url, session = self.session)
+                source, status, self.session = requestUrl("GET", mainstringtable_target_url, session = self.session, log = log)
                 if status != 200:
                     if status == -1:
                         logPrint("目标语言的字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nStringtable in target language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -562,7 +562,7 @@ class LoLDataExtractor:
             if mainstringtable_default_url in self.__class__.data_cache["online"]:
                 self.mainstringtable_default = self.__class__.data_cache["online"][mainstringtable_default_url]
             else:
-                source, status, self.session = requestUrl("GET", mainstringtable_default_url, session = self.session)
+                source, status, self.session = requestUrl("GET", mainstringtable_default_url, session = self.session, log = log)
                 if status != 200:
                     if status == -1:
                         logPrint("默认语言的字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nStringtable in default language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -584,7 +584,7 @@ class LoLDataExtractor:
             if lolstringtable_target_url in self.__class__.data_cache["online"]:
                 self.lolstringtable_target = self.__class__.data_cache["online"][lolstringtable_target_url]
             else:
-                source, status, self.session = requestUrl("GET", lolstringtable_target_url, session = self.session)
+                source, status, self.session = requestUrl("GET", lolstringtable_target_url, session = self.session, log = log)
                 if status != 200:
                     if status == -1:
                         logPrint("目标语言的英雄联盟字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nLoL stringtable in target language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -600,7 +600,7 @@ class LoLDataExtractor:
             if lolstringtable_default_url in self.__class__.data_cache["online"]:
                 self.lolstringtable_default = self.__class__.data_cache["online"][lolstringtable_default_url]
             else:
-                source, status, self.session = requestUrl("GET", lolstringtable_default_url, session = self.session)
+                source, status, self.session = requestUrl("GET", lolstringtable_default_url, session = self.session, log = log)
                 if status != 200:
                     if status == -1:
                         logPrint("默认语言的英雄联盟字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nLoL stringtable in default language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -616,7 +616,7 @@ class LoLDataExtractor:
             if tftstringtable_target_url in self.__class__.data_cache["online"]:
                 self.tftstringtable_target = self.__class__.data_cache["online"][tftstringtable_target_url]
             else:
-                source, status, self.session = requestUrl("GET", tftstringtable_target_url, session = self.session)
+                source, status, self.session = requestUrl("GET", tftstringtable_target_url, session = self.session, log = log)
                 if status != 200:
                     if status == -1:
                         logPrint("目标语言的云顶之弈字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nTFT stringtable in target language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -632,7 +632,7 @@ class LoLDataExtractor:
             if tftstringtable_default_url in self.__class__.data_cache["online"]:
                 self.tftstringtable_default = self.__class__.data_cache["online"][tftstringtable_default_url]
             else:
-                source, status, self.session = requestUrl("GET", tftstringtable_default_url, session = self.session)
+                source, status, self.session = requestUrl("GET", tftstringtable_default_url, session = self.session, log = log)
                 if status != 200:
                     if status == -1:
                         logPrint("默认语言的云顶之弈字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nTFT stringtable in default language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
@@ -2253,7 +2253,7 @@ class MapExtractor(LoLDataExtractor):
         if map11_bin_url in self.__class__.data_cache["online"]:
             self.map11_bin = self.__class__.data_cache["online"][map11_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", map11_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map11_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == 404:
                     logPrint("召唤师峡谷地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nSummoner's Rift map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map11_bin_url))
@@ -2272,7 +2272,7 @@ class MapExtractor(LoLDataExtractor):
         if map12_bin_url in self.__class__.data_cache["online"]:
             self.map12_bin = self.__class__.data_cache["online"][map12_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", map12_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map12_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == 404:
                     logPrint("嚎哭深渊地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nHowling Abyss map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map12_bin_url))
@@ -2291,7 +2291,7 @@ class MapExtractor(LoLDataExtractor):
         if map21_bin_url in self.__class__.data_cache["online"]:
             self.map21_bin = self.__class__.data_cache["online"][map21_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", map21_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map21_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == 404:
                     logPrint("百合与莲花的神庙地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nTemple of Lily and Lotus map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map21_bin_url))
@@ -2310,7 +2310,7 @@ class MapExtractor(LoLDataExtractor):
         if map22_bin_url in self.__class__.data_cache["online"]:
             self.map22_bin = self.__class__.data_cache["online"][map22_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == 404:
                     logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nConvergence map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map22_bin_url))
@@ -2329,7 +2329,7 @@ class MapExtractor(LoLDataExtractor):
         if map30_bin_url in self.__class__.data_cache["online"]:
             self.map30_bin = self.__class__.data_cache["online"][map30_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == 404:
                     logPrint("怒火角斗场地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nRings of Wrath map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map30_bin_url))
@@ -2348,7 +2348,7 @@ class MapExtractor(LoLDataExtractor):
         if map33_bin_url in self.__class__.data_cache["online"]:
             self.map33_bin = self.__class__.data_cache["online"][map33_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", map33_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map33_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == 404:
                     logPrint("最终都市地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nFinal City map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map33_bin_url))
@@ -2367,7 +2367,7 @@ class MapExtractor(LoLDataExtractor):
         if map35_bin_url in self.__class__.data_cache["online"]:
             self.map35_bin = self.__class__.data_cache["online"][map35_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", map35_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map35_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == 404:
                     logPrint("班德尔之森地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nThe Bandlewoods map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map35_bin_url))
@@ -2788,7 +2788,7 @@ class CheatExtractor(LoLDataExtractor):
         if cheats_bin_url in self.__class__.data_cache["online"]:
             self.cheats_bin = self.__class__.data_cache["online"][cheats_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", cheats_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", cheats_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == -1:
                     logPrint('作弊指令信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCheat data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.')
@@ -3024,7 +3024,7 @@ class PerkExtractor(LoLDataExtractor):
         if perks_bin_url in self.__class__.data_cache["online"]:
             self.perks_bin = self.__class__.data_cache["online"][perks_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", perks_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", perks_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == -1:
                     logPrint("符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nPerk data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -3413,7 +3413,7 @@ class ChampionExtractor(LoLDataExtractor):
                     if map22_bin_url in self.__class__.data_cache["online"]:
                         self.map22_bin = self.__class__.data_cache["online"][map22_bin_url]
                     else:
-                        source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session)
+                        source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session, log = log)
                         if status != 200:
                             if status == 404:
                                 logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nConvergence map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map22_bin_url))
@@ -3451,7 +3451,7 @@ class ChampionExtractor(LoLDataExtractor):
                         if character_binary_url in self.__class__.data_cache["online"]:
                             character_binary = self.__class__.data_cache["online"][character_binary_url]
                         else:
-                            source, status, self.session = requestUrl("GET", character_binary_url, session = self.session)
+                            source, status, self.session = requestUrl("GET", character_binary_url, session = self.session, log = log)
                             if status != 200:
                                 if status == 404:
                                     logPrint(f"未找到角色{characterName}的信息。程序将跳过该角色。\nCharacter {characterName} data not found. The program will skip this character.")
@@ -3475,7 +3475,7 @@ class ChampionExtractor(LoLDataExtractor):
                     if map22_bin_url in self.__class__.data_cache["online"]:
                         self.map22_bin = self.__class__.data_cache["online"][map22_bin_url]
                     else:
-                        source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session)
+                        source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session, log = log)
                         if status != 200:
                             if status == 404:
                                 logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nConvergence map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map22_bin_url))
@@ -3494,7 +3494,7 @@ class ChampionExtractor(LoLDataExtractor):
                     if characterList_url1 in self.__class__.data_cache["online"]:
                         characterList1 = self.__class__.data_cache["online"][characterList_url1]
                     else:
-                        source, status, self.session = requestUrl("GET", characterList_url1, session = self.session)
+                        source, status, self.session = requestUrl("GET", characterList_url1, session = self.session, log = log)
                         if status != 200:
                             if status == -1:
                                 logPrint("第一批角色列表获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCharacter List 1 capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -3510,7 +3510,7 @@ class ChampionExtractor(LoLDataExtractor):
                     if characterList_url2 in self.__class__.data_cache["online"]:
                         characterList2 = self.__class__.data_cache["online"][characterList_url2]
                     else:
-                        source, status, self.session = requestUrl("GET", characterList_url2, session = self.session)
+                        source, status, self.session = requestUrl("GET", characterList_url2, session = self.session, log = log)
                         if status != 200:
                             if status == -1:
                                 logPrint("第二批角色列表获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCharacter List 2 capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -3547,7 +3547,7 @@ class ChampionExtractor(LoLDataExtractor):
                                 character_binary = self.__class__.data_cache["online"][character_binary_url]
                             else:
                                 logPrint("[%d/%d][%d/%d]正在加载链接（Fetching url）： %s" %(i + 1, len(characterNames), j + 1, len(character_bin_urls), character_binary_url), write_time = False)
-                                source, status, self.session = requestUrl("GET", character_binary_url, session = self.session)
+                                source, status, self.session = requestUrl("GET", character_binary_url, session = self.session, log = log)
                                 if status != 200:
                                     if status == 404:
                                         if len(character_bin_urls) > 1 and j < len(character_bin_urls) - 1:
@@ -3579,7 +3579,7 @@ class ChampionExtractor(LoLDataExtractor):
                 if champion_summary_url in self.__class__.data_cache["online"]:
                     champion_summary = self.__class__.data_cache["online"][champion_summary_url]
                 else:
-                    source, status, self.session = requestUrl("GET", champion_summary_url, session = self.session)
+                    source, status, self.session = requestUrl("GET", champion_summary_url, session = self.session, log = log)
                     if status != 200:
                         if status == -1:
                             logPrint("英雄概要信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion summary data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -3603,7 +3603,7 @@ class ChampionExtractor(LoLDataExtractor):
                         if champion_binary_url in self.__class__.data_cache["online"]:
                             champion_binary = self.__class__.data_cache["online"][champion_binary_url]
                         else:
-                            source, status, self.session = requestUrl("GET", champion_binary_url, session = self.session)
+                            source, status, self.session = requestUrl("GET", champion_binary_url, session = self.session, log = log)
                             if status != 200:
                                 if status == -1:
                                     logPrint("英雄信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -4271,7 +4271,7 @@ class ItemExtractor(LoLDataExtractor):
         if items_bin_url in self.__class__.data_cache["online"]:
             self.items_bin = self.__class__.data_cache["online"][items_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", items_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", items_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == -1:
                     logPrint("装备信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nItem data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -4613,7 +4613,7 @@ class AugmentExtractor(LoLDataExtractor):
         if map30_bin_url in self.__class__.data_cache["online"]:
             self.map30_bin = self.__class__.data_cache["online"][map30_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == -1:
                     logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -4630,7 +4630,7 @@ class AugmentExtractor(LoLDataExtractor):
         if cherry_bin_url in self.__class__.data_cache["online"]:
             self.cherry_bin = self.__class__.data_cache["online"][cherry_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", cherry_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", cherry_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == 404:
                     logPrint("斗魂竞技场强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nArena augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(cherry_bin_url))
@@ -4649,7 +4649,7 @@ class AugmentExtractor(LoLDataExtractor):
         if map33_bin_url in self.__class__.data_cache["online"]:
             self.map33_bin = self.__class__.data_cache["online"][map33_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", map33_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map33_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == 404:
                     logPrint("最终都市地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nFinal City map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map33_bin_url))
@@ -4668,7 +4668,7 @@ class AugmentExtractor(LoLDataExtractor):
         if map12_bin_url in self.__class__.data_cache["online"]:
             self.map12_bin = self.__class__.data_cache["online"][map12_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", map12_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map12_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == 404:
                     logPrint("嚎哭深渊地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nHowling Abyss map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map12_bin_url))
@@ -4690,7 +4690,7 @@ class AugmentExtractor(LoLDataExtractor):
         if kiwi_bin_url in self.__class__.data_cache["online"]:
             self.kiwi_bin = self.__class__.data_cache["online"][kiwi_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", kiwi_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", kiwi_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == 404:
                     logPrint("海克斯大乱斗强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nARAM: Mayhem augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(kiwi_bin_url))
@@ -5211,7 +5211,7 @@ class AnvilExtractor(LoLDataExtractor):
         if map30_bin_url in self.__class__.data_cache["online"]:
             self.map30_bin = self.__class__.data_cache["online"][map30_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == -1:
                     logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -5229,7 +5229,7 @@ class AnvilExtractor(LoLDataExtractor):
             if map12_bin_url in self.__class__.data_cache["online"]:
                 self.KiwiAnvils_bin = self.__class__.data_cache["online"][map12_bin_url]
             else:
-                source, status, self.session = requestUrl("GET", map12_bin_url, session = self.session)
+                source, status, self.session = requestUrl("GET", map12_bin_url, session = self.session, log = log)
                 if status != 200:
                     if status == 404:
                         logPrint("嚎哭深渊地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -5248,7 +5248,7 @@ class AnvilExtractor(LoLDataExtractor):
             if kiwi_bin_url in self.__class__.data_cache["online"]:
                 self.KiwiAnvils_bin = self.__class__.data_cache["online"][kiwi_bin_url]
             else:
-                source, status, self.session = requestUrl("GET", kiwi_bin_url, session = self.session)
+                source, status, self.session = requestUrl("GET", kiwi_bin_url, session = self.session, log = log)
                 if status != 200:
                     if status == -1:
                         logPrint("海克斯大乱斗强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nARAM: Mayhem augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(kiwi_bin_url))
@@ -5568,7 +5568,7 @@ class TFTExtractor(LoLDataExtractor):
         if map22_bin_url in self.__class__.data_cache["online"]:
             self.map22_bin = self.__class__.data_cache["online"][map22_bin_url]
         else:
-            source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session)
+            source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session, log = log)
             if status != 200:
                 if status == -1:
                     logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
@@ -7097,14 +7097,14 @@ if __name__ == "__main__":
         return language_code
 
     #定义版本设置过程（Define the process of setting version）
-    def set_version(session: Optional[requests.Session] = None) -> dict[list[str], requests.Session]:
+    def set_version(session: Optional[requests.Session] = None) -> tuple[list[str], requests.Session]:
         '''
         设置游戏数据版本。<br>Set the game data version.
         
         :param session: 网络请求会话。如果没有指定，则内部新建一个会话，对外不可见。<br>Web request session. If unspecified, a new session will be created, which isn't visible to outside.
         :type session: requests.Session | None
         :return: 大版本号列表和网络请求会话。<br>List of major version numbers and web request session.
-        :rtype: dict[list[str], requests.Session]
+        :rtype: tuple[list[str], requests.Session]
         '''
         if session == None:
             session = requests.Session()
