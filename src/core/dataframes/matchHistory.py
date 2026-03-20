@@ -3085,9 +3085,9 @@ def sort_LoLHistory_sgp(LoLHistory: dict[str, Any], current_puuid: str | list[st
     games: list[dict[str, Any]] = LoLHistory["games"]
     for i in range(len(games)):
         matchId: int = int(games[i]["metadata"]["match_id"].split("_")[1])
-        LoLGame_summary_json: dict[str, Any] = games[i]["json"]
         participantIndex: int = LoL_main_player_indices[i]
         if participantIndex != -1:
+            LoLGame_summary_json: dict[str, Any] = games[i]["json"]
             version: str = LoLGame_summary_json["gameVersion"]
             bigVersion: str = ".".join(version.split(".")[:2])
             stats: dict[str, Any] = LoLGame_summary_json["participants"][participantIndex]
@@ -4894,311 +4894,312 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
     #常量准备（Parameter preparation）
     logPrint = log.logPrint
     puuidList: list[str] = [current_puuid] if isinstance(current_puuid, str) else current_puuid
-    LoLGame_summary_json: dict[str, Any] = LoLGame_summary["json"]
-    version: str = LoLGame_summary_json["gameVersion"]
-    bigVersion: str = ".".join(version.split(".")[:2])
-    matchId: int = LoLGame_summary_json["gameId"]
-    #整理对局禁用信息（Sort out the team ban information）
-    if len(LoLGame_summary_json["teams"]) == 0:
-        bans: list[dict[str, int]] = []
-    elif len(LoLGame_summary_json["teams"]) == 1:
-        bans = LoLGame_summary_json["teams"][0]["bans"]
-    else:
-        bans = LoLGame_summary_json["teams"][0]["bans"] + LoLGame_summary_json["teams"][1]["bans"]
-        if len(LoLGame_summary_json["teams"]) > 2:
-            logPrint("警告：对局%d中含有%d支阵营。\nWarning: There're %d teams in Match %d." %(matchId, len(LoLGame_summary_json["teams"]), len(LoLGame_summary_json["teams"]), matchId), verbose = verbose)
-    if LoLGame_summary_json["gameMode"] == "CHERRY" and Patch("14.8") < Patch(version):
-        bans_tmp: list[dict[str, int]] = bans[:]
-        bans = []
-        emptyBan: dict[str, int] = {"championId": -1, "pickTurn": 0} #定义一个初始化禁用字典，用于后续数据框填充空值（Define an initialized banning dictionary so that empty values are appended to the dataframe at certain times subsequently）
-        playerSubteam: dict[int, list[int]] = {} #存储不同子阵营的玩家，键是子阵营序号，值是该子阵营中的玩家的API序号列表（Stores different subteams' players. Keys are playerSubteamIds, and values are index lists from API for players in the subteams）
-        for i in range(len(LoLGame_summary_json["participants"])):
-            bans.append(emptyBan.copy())
-            playerSubteamId: int = LoLGame_summary_json["participants"][i]["playerSubteamId"]
-            if not playerSubteamId in playerSubteam:
-                playerSubteam[playerSubteamId] = []
-            playerSubteam[playerSubteamId].append(i)
-        if Patch("14.12") < Patch(version):
-            participantBanIds: list[int] = []
-            for i in sorted(playerSubteam.keys()):
-                participantBanIds += [playerSubteam[i][0], playerSubteam[i][1]] #这里默认采用某个子阵营在API中记录的第一名玩家作为该子阵营的先选者。这可能与实际选用顺序有出入（Here the first player of a subteam recorded in API is considered as the player that picks a champion first. This player may not be the real first player.）
-        else:
-            participantBanIds = [playerSubteam[i][0] for i in sorted(playerSubteam.keys())] #这里默认采用某个子阵营在API中记录的第一名玩家作为禁用英雄的玩家。这可能与实际禁用英雄的玩家有出入（Here the first player of a subteam recorded in API is considered as the player that banned some champion. This player may not be the real player that banned it）
-        for i in range(len(participantBanIds)):
-            bans[participantBanIds[i]] = bans_tmp[i]
-    legacy_banData_appended: dict[int, bool] = {100: False, 200: False} #自定义对局中的征召模式是由每个阵营的1号选手禁用3个英雄，所以当禁用信息添加到一个阵营的第一名玩家后，后续玩家不需要再添加禁用信息。这个字典就是用来判断这一点的（Draft mode in custom matches is performed by the first player of each team banning 3 champions, so if the ban information is added into the first player, the subsequent player in the same team doesn't need to add this information. That's what this dictionary is used for）
-    #下面针对每场对局建立总的数据资源异常处理机制（Builds the summarized data resource exceptional handling mechanism for each match）
-    if useAllVersions:
-        ##游戏模式（Game mode）
-        queueIds_match_list: list[int] = [LoLGame_summary_json["queueId"]]
-        for i in queueIds_match_list:
-            if not i in queues and current_versions["queue"] != bigVersion:
-                queuePatch_adopted: str = bigVersion
-                queue_recapture: int = 1
-                logPrint("对局%d游戏模式信息（%d）获取失败！正在第%d次尝试改用%s版本的游戏模式信息……\nGame mode information (%d) of Match %d capture failed! Changing to game modes of Patch %s ... Times tried: %d." %(matchId, i, queue_recapture, queuePatch_adopted, i, matchId, queuePatch_adopted, queue_recapture), verbose = verbose)
-                while True:
-                    try:
-                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        queue: list[dict[str, Any]] = source.json()
-                    except requests.exceptions.JSONDecodeError:
-                        queuePatch_deserted: str = queuePatch_adopted
-                        queuePatch_adopted = FindPostPatch(Patch(queuePatch_adopted), versionList)
-                        queue_recapture = 1
-                        logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to game modes of Patch %s ... Times tried: %d." %(queuePatch_deserted, queue_recapture, queuePatch_adopted, queuePatch_deserted, queuePatch_adopted, queue_recapture), verbose = verbose)
-                    except requests.exceptions.RequestException:
-                        if queue_recapture < 3:
-                            queue_recapture += 1
-                            logPrint("网络环境异常！正在第%d次尝试改用%s版本的游戏模式信息……\nYour network environment is abnormal! Changing to game modes of Patch %s ... Times tried: %d." %(queue_recapture, queuePatch_adopted, queuePatch_adopted, queue_recapture), verbose = verbose)
-                        else:
-                            logPrint("网络环境异常！对局%d的游戏模式信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the game mode (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
-                            break
-                    else:
-                        logPrint("已改用%s版本的游戏模式信息。\nGame mode information changed to Patch %s." %(queuePatch_adopted, queuePatch_adopted), verbose = verbose)
-                        queues = {queue_iter["id"]: queue_iter for queue_iter in queue}
-                        current_versions["queue"] = queuePatch_adopted
-                        unmapped_keys["queue"].clear()
-                        break
-                break
-        ##召唤师图标（Summoner icon）
-        summonerIconIds_match_list: list[int] = sorted(set(map(lambda x: x["profileIcon"], LoLGame_summary_json["participants"])))
-        for i in summonerIconIds_match_list:
-            if not i in summonerIcons and current_versions["summonerIcon"] != bigVersion:
-                summonerIconPatch_adopted: str = bigVersion
-                summonerIcon_recapture: int = 1
-                logPrint("对局%d召唤师图标信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师图标信息……\nSummoner icon information (%d) of Match %d capture failed! Changing to summoner icons of Patch %s ... Times tried: %d." %(matchId, i, summonerIcon_recapture, summonerIconPatch_adopted, i, matchId, summonerIconPatch_adopted, summonerIcon_recapture), verbose = verbose)
-                while True:
-                    try:
-                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        summonerIcon: list[dict[str, Any]] = source.json()
-                    except requests.exceptions.JSONDecodeError:
-                        summonerIconPatch_deserted: str = summonerIconPatch_adopted
-                        summonerIconPatch_adopted = FindPostPatch(Patch(summonerIconPatch_adopted), versionList)
-                        summonerIcon_recapture = 1
-                        logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to summoner icons of Patch %s ... Times tried: %d." %(summonerIconPatch_deserted, summonerIcon_recapture, summonerIconPatch_adopted, summonerIconPatch_deserted, summonerIconPatch_adopted, summonerIcon_recapture), verbose = verbose)
-                    except requests.exceptions.RequestException:
-                        if summonerIcon_recapture < 3:
-                            summonerIcon_recapture += 1
-                            logPrint("网络环境异常！正在第%d次尝试改用%s版本的召唤师图标信息……\nYour network environment is abnormal! Changing to summoner icons of Patch %s ... Times tried: %d." %(summonerIcon_recapture, summonerIconPatch_adopted, summonerIconPatch_adopted, summonerIcon_recapture), verbose = verbose)
-                        else:
-                            logPrint("网络环境异常！对局%d的召唤师图标信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the summoner icon (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
-                            break
-                    else:
-                        logPrint("已改用%s版本的召唤师图标信息。\nSummoner icon information changed to Patch %s." %(summonerIconPatch_adopted, summonerIconPatch_adopted), verbose = verbose)
-                        summonerIcons = {int(summonerIcon_iter["id"]): summonerIcon_iter for summonerIcon_iter in summonerIcon}
-                        current_versions["summonerIcon"] = summonerIconPatch_adopted
-                        unmapped_keys["summonerIcon"].clear()
-                        break
-                break
-        ##英雄：包含选用英雄和禁用英雄（LoL champions, which contain picked and banned ones）
-        LoLChampionIds_match_list: list[int] = sorted(set(map(lambda x: x["championId"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["championId"], bans)))
-        for i in LoLChampionIds_match_list:
-            if not i in LoLChampions and current_versions["LoLChampion"] != bigVersion:
-                LoLChampionPatch_adopted: str = bigVersion
-                LoLChampion_recapture: int = 1
-                logPrint("对局%d英雄信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄信息……\nLoL champion information (%d) of Match %d capture failed! Changing to LoL champions of Patch %s ... Times tried: %d." %(matchId, i, LoLChampion_recapture, LoLChampionPatch_adopted, i, matchId, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
-                while True:
-                    try:
-                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        LoLChampion: list[dict[str, Any]] = source.json()
-                    except requests.exceptions.JSONDecodeError:
-                        LoLChampionPatch_deserted: str = LoLChampionPatch_adopted
-                        LoLChampionPatch_adopted = FindPostPatch(Patch(LoLChampionPatch_adopted), versionList)
-                        LoLChampion_recapture = 1
-                        logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to LoL champions of Patch %s ... Times tried: %d." %(LoLChampionPatch_deserted, LoLChampion_recapture, LoLChampionPatch_adopted, LoLChampionPatch_deserted, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
-                    except requests.exceptions.RequestException:
-                        if LoLChampion_recapture < 3:
-                            LoLChampion_recapture += 1
-                            logPrint("网络环境异常！正在第%d次尝试改用%s版本的英雄信息……\nYour network environment is abnormal! Changing to LoL champions of Patch %s ... Times tried: %d." %(LoLChampion_recapture, LoLChampionPatch_adopted, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
-                        else:
-                            logPrint("网络环境异常！对局%d的英雄信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the LoL champion (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
-                            break
-                    else:
-                        logPrint("已改用%s版本的英雄信息。\nLoL champion information changed to Patch %s." %(LoLChampionPatch_adopted, LoLChampionPatch_adopted), verbose = verbose)
-                        LoLChampions = {int(LoLChampion_iter["id"]): LoLChampion_iter for LoLChampion_iter in LoLChampion}
-                        current_versions["LoLChampion"] = LoLChampionPatch_adopted
-                        unmapped_keys["LoLChampion"].clear()
-                        break
-                break
-        ##召唤师技能（Summoner spells）
-        spellIds_match_list: list[int] = sorted(set(map(lambda x: x["spell1Id"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["spell2Id"], LoLGame_summary_json["participants"])))
-        for i in spellIds_match_list:
-            if not i in spells and current_versions["spell"] != bigVersion and i != 0: #需要注意电脑玩家的召唤师技能序号都是0（Note that Spell Ids of bot players are both 0s）
-                spellPatch_adopted: str = bigVersion
-                spell_recapture: int = 1
-                logPrint("对局%d召唤师技能信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师技能信息……\nSpell information (%d) of Match %d capture failed! Changing to spells of Patch %s ... Times tried: %d." %(matchId, i, spell_recapture, spellPatch_adopted, i, matchId, spellPatch_adopted, spell_recapture), verbose = verbose)
-                while True:
-                    try:
-                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        spell: list[dict[str, Any]] = source.json()
-                    except requests.exceptions.JSONDecodeError:
-                        spellPatch_deserted: str = spellPatch_adopted
-                        spellPatch_adopted = FindPostPatch(Patch(spellPatch_adopted), versionList)
-                        spell_recapture = 1
-                        logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to spells of Patch %s ... Times tried: %d." %(spellPatch_deserted, spell_recapture, spellPatch_adopted, spellPatch_deserted, spellPatch_adopted, spell_recapture), verbose = verbose)
-                    except requests.exceptions.RequestException:
-                        if spell_recapture < 3:
-                            spell_recapture += 1
-                            logPrint("网络环境异常！正在第%d次尝试改用%s版本的召唤师技能信息……\nYour network environment is abnormal! Changing to spells of Patch %s ... Times tried: %d." %(spell_recapture, spellPatch_adopted, spellPatch_adopted, spell_recapture), verbose = verbose)
-                        else:
-                            logPrint("网络环境异常！对局%d的召唤师技能信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the spell (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
-                            break
-                    else:
-                        logPrint("已改用%s版本的召唤师技能信息。\nSpell information changed to Patch %s." %(spellPatch_adopted, spellPatch_adopted), verbose = verbose)
-                        spells = {int(spell_iter["id"]): spell_iter for spell_iter in spell}
-                        current_versions["spell"] = spellPatch_adopted
-                        unmapped_keys["spell"].clear()
-                        break
-                break
-        ##英雄联盟装备（LoL items）
-        #接下来查询具体的对局概要，使用的可能并不是历史记录中记载的对局序号形成的列表。考虑实际使用需求，这里对于装备的合适版本信息采取的思路是默认从最新版本开始获取，如果有装备不存在于最新版本的装备信息，则获取游戏概要中存储的版本对应的装备信息。该思路仍然有问题，详见后续关于美测服的装备获取的注释（The next step is to capture the summary of each specific match, which may not originate from the matchIDs recorded in the match history. Considering the practical use, here the stream of thought for an appropriate version for items is to get items' information from the latest patch, and if some item doesn't exist in the items information of the latest patch, then get the items of the version corresponding to the game according to gameVersion recorded in the match summary. There's a flaw of this idea. Please refer to the annotation regarding PBE data crawling for further solution）
-        LoLItemIds_match_list: list[int] = sorted(set(item for s in [set(map(lambda x: x.get(key, 0), LoLGame_summary_json["participants"])) for key in ["item0", "item1", "item2", "item3", "item4", "item5", "item6", "roleBoundItem"]] for item in s)) #该表达式等价于以下表达式（This expression is equivalent to the following expression）：`LoLItemIds_match_list = sorted(set(map(lambda x: x["item0"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["item1"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["item2"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["item3"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["item4"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["item5"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["item6"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["roleBoundItem"], LoLGame_summary_json["participants"])))`
-        for i in LoLItemIds_match_list:
-            if not i in LoLItems and current_versions["LoLItem"] != bigVersion and i != 0: #空装备序号是0（The itemId of an empty item is 0）
-                LoLItemPatch_adopted: str = bigVersion
-                LoLItem_recapture: int = 1
-                logPrint("对局%d英雄联盟装备信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nLoL item information (%d) of Match %d capture failed! Changing to LoL items of Patch %s ... Times tried: %d." %(matchId, i, LoLItem_recapture, LoLItemPatch_adopted, i, matchId, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
-                while True:
-                    try:
-                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        LoLItem: list[dict[str, Any]] = source.json()
-                    except requests.exceptions.JSONDecodeError:
-                        LoLItemPatch_deserted: str = LoLItemPatch_adopted
-                        LoLItemPatch_adopted = FindPostPatch(Patch(LoLItemPatch_adopted), versionList)
-                        LoLItem_recapture = 1
-                        logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
-                    except requests.exceptions.RequestException:
-                        if LoLItem_recapture < 3:
-                            LoLItem_recapture += 1
-                            logPrint("网络环境异常！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nYour network environment is abnormal! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
-                        else:
-                            logPrint("网络环境异常！对局%d的英雄联盟装备信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the LoL item (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
-                            break
-                    else:
-                        logPrint("已改用%s版本的英雄联盟装备信息。\nLoL item information changed to Patch %s." %(LoLItemPatch_adopted, LoLItemPatch_adopted), verbose = verbose)
-                        LoLItems = {int(LoLItem_iter["id"]): LoLItem_iter for LoLItem_iter in LoLItem}
-                        current_versions["LoLItem"] = LoLItemPatch_adopted
-                        unmapped_keys["LoLItem"].clear()
-                        break
-                break
-        ##符文（Perks）
-        perkIds_match_list: list[int] = []
-        for participant in LoLGame_summary_json["participants"]:
-            if "perks" in participant:
-                if "statPerks" in participant["perks"]:
-                    perkIds_match_list += list(participant["perks"]["statPerks"].values())
-                if "styles" in participant["perks"]:
-                    for style in participant["perks"]["styles"]:
-                        if "selections" in style:
-                            perkIds_match_list += list(map(lambda x: x["perk"], style["selections"]))
-        perkIds_match_list = sorted(set(perkIds_match_list))
-        for i in perkIds_match_list:
-            if not i in perks and current_versions["perk"] != bigVersion and i != 0: #在一些非常规模式（如新手训练）的对局中，玩家可能没有携带任何符文（In matches with unconventional game mode (e.g. TUTORIAL), maybe the player doesn't take any runes）
-                perkPatch_adopted: str = bigVersion
-                perk_recapture: int = 1
-                logPrint("对局%d基石符文信息（%d）获取失败！正在第%d次尝试改用%s版本的基石符文信息……\nPerk information (%d) of Match %d capture failed! Changing to perks of Patch %s ... Times tried: %d." %(matchId, i, perk_recapture, perkPatch_adopted, i, matchId, perkPatch_adopted, perk_recapture), verbose = verbose)
-                while True:
-                    try:
-                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        perk: list[dict[str, Any]] = source.json()
-                    except requests.exceptions.JSONDecodeError:
-                        perkPatch_deserted: str = perkPatch_adopted
-                        perkPatch_adopted = FindPostPatch(Patch(perkPatch_adopted), versionList)
-                        perk_recapture = 1
-                        logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to perks of Patch %s ... Times tried: %d." %(perkPatch_deserted, perk_recapture, perkPatch_adopted, perkPatch_deserted, perkPatch_adopted, perk_recapture), verbose = verbose)
-                    except requests.exceptions.RequestException:
-                        if perk_recapture < 3:
-                            perk_recapture += 1
-                            logPrint("网络环境异常！正在第%d次尝试改用%s版本的基石符文信息……\nYour network environment is abnormal! Changing to perks of Patch %s ... Times tried: %d." %(perk_recapture, perkPatch_adopted, perkPatch_adopted, perk_recapture), verbose = verbose)
-                        else:
-                            logPrint("网络环境异常！对局%d的基石符文信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the perk (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
-                            break
-                    else:
-                        logPrint("已改用%s版本的基石符文信息。\nPerk information changed to Patch %s." %(perkPatch_adopted, perkPatch_adopted), verbose = verbose)
-                        perks = {int(perk_iter["id"]): perk_iter for perk_iter in perk}
-                        current_versions["perk"] = perkPatch_adopted
-                        unmapped_keys["perk"].clear()
-                        break
-                break
-        ##符文系（Perkstyles）
-        perkstyleIds_match_list: list[int] = []
-        for participant in LoLGame_summary_json["participants"]:
-            if "perks" in participant and "styles" in participant["perks"]:
-                perkstyleIds_match_list += list(map(lambda x: x["style"], participant["perks"]["styles"]))
-        perkstyleIds_match_list = sorted(set(perkstyleIds_match_list))
-        for i in perkstyleIds_match_list:
-            if not i in perkstyles and current_versions["perkstyle"] != bigVersion and i != 0: #在一些非常规模式（如新手训练）的对局中，玩家可能没有携带任何符文（In matches with unconventional game mode (e.g. TUTORIAL), maybe the player doesn't take any runes）
-                perkstylePatch_adopted: str = bigVersion
-                perkstyle_recapture = 1
-                logPrint("对局%d符文系信息（%d）获取失败！正在第%d次尝试改用%s版本的符文系信息……\nPerkstyle information (%d) of Match %d capture failed! Changing to perkstyles of Patch %s ... Times tried: %d." %(matchId, i, perkstyle_recapture, perkstylePatch_adopted, i, matchId, perkstylePatch_adopted, perkstyle_recapture), verbose = verbose)
-                while True:
-                    try:
-                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        perkstyle: dict[str, Any] = source.json()
-                    except requests.exceptions.JSONDecodeError:
-                        perkstylePatch_deserted: str = perkstylePatch_adopted
-                        perkstylePatch_adopted = FindPostPatch(Patch(perkstylePatch_adopted), versionList)
-                        perkstyle_recapture = 1
-                        logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to perks of Patch %s ... Times tried: %d." %(perkstylePatch_deserted, perkstyle_recapture, perkstylePatch_adopted, perkstylePatch_deserted, perkstylePatch_adopted, perkstyle_recapture), verbose = verbose)
-                    except requests.exceptions.RequestException:
-                        if perkstyle_recapture < 3:
-                            perkstyle_recapture += 1
-                            logPrint("网络环境异常！正在第%d次尝试改用%s版本的符文系信息……\nYour network environment is abnormal! Changing to perkstyles of Patch %s ... Times tried: %d." %(perkstyle_recapture, perkstylePatch_adopted, perkstylePatch_adopted, perkstyle_recapture), verbose = verbose)
-                        else:
-                            logPrint("网络环境异常！对局%d的符文系信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the perkstyle (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
-                            break
-                    else:
-                        logPrint("已改用%s版本的符文系信息。\nPerkstyle information changed to Patch %s." %(perkstylePatch_adopted, perkstylePatch_adopted), verbose = verbose)
-                        perkstyles = {int(perkstyle_iter["id"]): perkstyle_iter for perkstyle_iter in perkstyle["styles"]}
-                        current_versions["perkstyle"] = perkstylePatch_adopted
-                        unmapped_keys["perkstyle"].clear()
-                        break
-                break
-        ##斗魂竞技场强化符文（Cherry augments）
-        CherryAugmentIds_match_set: set[int] = set()
-        for participant in LoLGame_summary_json["participants"]:
-            for i in range(1, 7):
-                key: str = f"playerAugment{i}"
-                if key in participant:
-                    CherryAugmentIds_match_set.add(participant[key])
-        CherryAugmentIds_match_list: list[int] = sorted(CherryAugmentIds_match_set)
-        for i in CherryAugmentIds_match_list:
-            if not i in CherryAugments and current_versions["CherryAugment"] != bigVersion and i != 0:
-                CherryAugmentPatch_adopted: str = bigVersion
-                CherryAugment_recapture: int = 1
-                logPrint("对局%d强化符文信息（%d）获取失败！正在第%d次尝试改用%s版本的斗魂竞技场强化符文信息……\nAugment information (%d) of Match %d capture failed! Changing to Cherry augments of Patch %s ... Times tried: %d." %(matchId, i, CherryAugment_recapture, CherryAugmentPatch_adopted, i, matchId, CherryAugmentPatch_adopted, CherryAugment_recapture), verbose = verbose)
-                while True:
-                    try:
-                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        CherryAugment: list[dict[str, Any]] = source.json()
-                    except requests.exceptions.JSONDecodeError:
-                        CherryAugmentPatch_deserted: str = CherryAugmentPatch_adopted
-                        CherryAugmentPatch_adopted = FindPostPatch(Patch(CherryAugmentPatch_adopted), versionList)
-                        CherryAugment_recapture = 1
-                        logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to Cherry augments of Patch %s ... Times tried: %d." %(CherryAugmentPatch_deserted, CherryAugment_recapture, CherryAugmentPatch_adopted, CherryAugmentPatch_deserted, CherryAugmentPatch_adopted, CherryAugment_recapture), verbose = verbose)
-                    except requests.exceptions.RequestException:
-                        if CherryAugment_recapture < 3:
-                            CherryAugment_recapture += 1
-                            logPrint("网络环境异常！正在第%d次尝试改用%s版本的斗魂竞技场强化符文信息……\nYour network environment is abnormal! Changing to Cherry augments of Patch %s ... Times tried: %d." %(CherryAugment_recapture, CherryAugmentPatch_adopted, CherryAugmentPatch_adopted, CherryAugment_recapture), verbose = verbose)
-                        else:
-                            logPrint("网络环境异常！对局%d的强化符文信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the Cherry augment (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
-                            break
-                    else:
-                        logPrint("已改用%s版本的斗魂竞技场强化符文信息。\nCherry augment information changed to Patch %s." %(CherryAugmentPatch_adopted, CherryAugmentPatch_adopted), verbose = verbose)
-                        CherryAugments = {int(CherryAugment_iter["id"]): CherryAugment_iter for CherryAugment_iter in CherryAugment}
-                        current_versions["CherryAugment"] = CherryAugmentPatch_adopted
-                        unmapped_keys["CherryAugment"].clear()
-                        break
-                break
-    #下面开始整理数据（Organize data）
     LoLGame_summary_header: dict[str, str] = LoLGame_summary_sgp_header #通过在函数内指定同名变量，使得其不再使用全局变量，并减少以下代码的修改（By specifying the variable with the same name, this variable is no longer the global one, and meanwhile the following code doesn't need changing much）
     LoLGame_summary_header_keys: list[str] = list(LoLGame_summary_header.keys())
     LoLGame_summary_data: dict[str, list[Any]] = {key: [] for key in LoLGame_summary_header} #这里将对局的数据放在一个字典中，键为统计量，值为由所有玩家的数据组成的列表（Here the whole match data are stored in a dictionary whose keys are statistics and values are lists composed of corresponding data of all players）
-    for i in range(len(LoLGame_summary_json["participants"])): #对于对局概要而言，每个玩家对应一条记录（For match summary, each record represents a player）
-        generate_LoLGameInfo_records_sgp(LoLGame_summary_data, LoLGame_summary, i, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = gameIndex, current_puuid = puuidList, bans = bans, legacy_banData_appended = legacy_banData_appended, unmapped_keys = unmapped_keys, log = log, verbose = verbose)
-        if sortStats and LoLGame_summary_json["participants"][i]["puuid"] in puuidList: #这个if语句块是适配查战绩脚本而做的修改（This if-block is a modification made to adapt to Customized Program 05）
-            for j in range(len(LoLGame_summary_header_keys)):
-                key: str = LoLGame_summary_header_keys[j]
-                LoLGame_stat_data[key].append(LoLGame_summary_data[key][-1]) #直接添加最近一次追加的数据，以简化代码（Directly append the recently appended data to simplify the code）
+    if LoLGame_summary.get("json"):
+        LoLGame_summary_json: dict[str, Any] = LoLGame_summary["json"]
+        version: str = LoLGame_summary_json["gameVersion"]
+        bigVersion: str = ".".join(version.split(".")[:2])
+        matchId: int = LoLGame_summary_json["gameId"]
+        #整理对局禁用信息（Sort out the team ban information）
+        if len(LoLGame_summary_json["teams"]) == 0:
+            bans: list[dict[str, int]] = []
+        elif len(LoLGame_summary_json["teams"]) == 1:
+            bans = LoLGame_summary_json["teams"][0]["bans"]
+        else:
+            bans = LoLGame_summary_json["teams"][0]["bans"] + LoLGame_summary_json["teams"][1]["bans"]
+            if len(LoLGame_summary_json["teams"]) > 2:
+                logPrint("警告：对局%d中含有%d支阵营。\nWarning: There're %d teams in Match %d." %(matchId, len(LoLGame_summary_json["teams"]), len(LoLGame_summary_json["teams"]), matchId), verbose = verbose)
+        if LoLGame_summary_json["gameMode"] == "CHERRY" and Patch("14.8") < Patch(version):
+            bans_tmp: list[dict[str, int]] = bans[:]
+            bans = []
+            emptyBan: dict[str, int] = {"championId": -1, "pickTurn": 0} #定义一个初始化禁用字典，用于后续数据框填充空值（Define an initialized banning dictionary so that empty values are appended to the dataframe at certain times subsequently）
+            playerSubteam: dict[int, list[int]] = {} #存储不同子阵营的玩家，键是子阵营序号，值是该子阵营中的玩家的API序号列表（Stores different subteams' players. Keys are playerSubteamIds, and values are index lists from API for players in the subteams）
+            for i in range(len(LoLGame_summary_json["participants"])):
+                bans.append(emptyBan.copy())
+                playerSubteamId: int = LoLGame_summary_json["participants"][i]["playerSubteamId"]
+                if not playerSubteamId in playerSubteam:
+                    playerSubteam[playerSubteamId] = []
+                playerSubteam[playerSubteamId].append(i)
+            if Patch("14.12") < Patch(version):
+                participantBanIds: list[int] = []
+                for i in sorted(playerSubteam.keys()):
+                    participantBanIds += [playerSubteam[i][0], playerSubteam[i][1]] #这里默认采用某个子阵营在API中记录的第一名玩家作为该子阵营的先选者。这可能与实际选用顺序有出入（Here the first player of a subteam recorded in API is considered as the player that picks a champion first. This player may not be the real first player.）
+            else:
+                participantBanIds = [playerSubteam[i][0] for i in sorted(playerSubteam.keys())] #这里默认采用某个子阵营在API中记录的第一名玩家作为禁用英雄的玩家。这可能与实际禁用英雄的玩家有出入（Here the first player of a subteam recorded in API is considered as the player that banned some champion. This player may not be the real player that banned it）
+            for i in range(len(participantBanIds)):
+                bans[participantBanIds[i]] = bans_tmp[i]
+        legacy_banData_appended: dict[int, bool] = {100: False, 200: False} #自定义对局中的征召模式是由每个阵营的1号选手禁用3个英雄，所以当禁用信息添加到一个阵营的第一名玩家后，后续玩家不需要再添加禁用信息。这个字典就是用来判断这一点的（Draft mode in custom matches is performed by the first player of each team banning 3 champions, so if the ban information is added into the first player, the subsequent player in the same team doesn't need to add this information. That's what this dictionary is used for）
+        #下面针对每场对局建立总的数据资源异常处理机制（Builds the summarized data resource exceptional handling mechanism for each match）
+        if useAllVersions:
+            ##游戏模式（Game mode）
+            queueIds_match_list: list[int] = [LoLGame_summary_json["queueId"]]
+            for i in queueIds_match_list:
+                if not i in queues and current_versions["queue"] != bigVersion:
+                    queuePatch_adopted: str = bigVersion
+                    queue_recapture: int = 1
+                    logPrint("对局%d游戏模式信息（%d）获取失败！正在第%d次尝试改用%s版本的游戏模式信息……\nGame mode information (%d) of Match %d capture failed! Changing to game modes of Patch %s ... Times tried: %d." %(matchId, i, queue_recapture, queuePatch_adopted, i, matchId, queuePatch_adopted, queue_recapture), verbose = verbose)
+                    while True:
+                        try:
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/queues.json" %(queuePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            queue: list[dict[str, Any]] = source.json()
+                        except requests.exceptions.JSONDecodeError:
+                            queuePatch_deserted: str = queuePatch_adopted
+                            queuePatch_adopted = FindPostPatch(Patch(queuePatch_adopted), versionList)
+                            queue_recapture = 1
+                            logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to game modes of Patch %s ... Times tried: %d." %(queuePatch_deserted, queue_recapture, queuePatch_adopted, queuePatch_deserted, queuePatch_adopted, queue_recapture), verbose = verbose)
+                        except requests.exceptions.RequestException:
+                            if queue_recapture < 3:
+                                queue_recapture += 1
+                                logPrint("网络环境异常！正在第%d次尝试改用%s版本的游戏模式信息……\nYour network environment is abnormal! Changing to game modes of Patch %s ... Times tried: %d." %(queue_recapture, queuePatch_adopted, queuePatch_adopted, queue_recapture), verbose = verbose)
+                            else:
+                                logPrint("网络环境异常！对局%d的游戏模式信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the game mode (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
+                                break
+                        else:
+                            logPrint("已改用%s版本的游戏模式信息。\nGame mode information changed to Patch %s." %(queuePatch_adopted, queuePatch_adopted), verbose = verbose)
+                            queues = {queue_iter["id"]: queue_iter for queue_iter in queue}
+                            current_versions["queue"] = queuePatch_adopted
+                            unmapped_keys["queue"].clear()
+                            break
+                    break
+            ##召唤师图标（Summoner icon）
+            summonerIconIds_match_list: list[int] = sorted(set(map(lambda x: x["profileIcon"], LoLGame_summary_json["participants"])))
+            for i in summonerIconIds_match_list:
+                if not i in summonerIcons and current_versions["summonerIcon"] != bigVersion:
+                    summonerIconPatch_adopted: str = bigVersion
+                    summonerIcon_recapture: int = 1
+                    logPrint("对局%d召唤师图标信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师图标信息……\nSummoner icon information (%d) of Match %d capture failed! Changing to summoner icons of Patch %s ... Times tried: %d." %(matchId, i, summonerIcon_recapture, summonerIconPatch_adopted, i, matchId, summonerIconPatch_adopted, summonerIcon_recapture), verbose = verbose)
+                    while True:
+                        try:
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-icons.json" %(summonerIconPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            summonerIcon: list[dict[str, Any]] = source.json()
+                        except requests.exceptions.JSONDecodeError:
+                            summonerIconPatch_deserted: str = summonerIconPatch_adopted
+                            summonerIconPatch_adopted = FindPostPatch(Patch(summonerIconPatch_adopted), versionList)
+                            summonerIcon_recapture = 1
+                            logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to summoner icons of Patch %s ... Times tried: %d." %(summonerIconPatch_deserted, summonerIcon_recapture, summonerIconPatch_adopted, summonerIconPatch_deserted, summonerIconPatch_adopted, summonerIcon_recapture), verbose = verbose)
+                        except requests.exceptions.RequestException:
+                            if summonerIcon_recapture < 3:
+                                summonerIcon_recapture += 1
+                                logPrint("网络环境异常！正在第%d次尝试改用%s版本的召唤师图标信息……\nYour network environment is abnormal! Changing to summoner icons of Patch %s ... Times tried: %d." %(summonerIcon_recapture, summonerIconPatch_adopted, summonerIconPatch_adopted, summonerIcon_recapture), verbose = verbose)
+                            else:
+                                logPrint("网络环境异常！对局%d的召唤师图标信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the summoner icon (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
+                                break
+                        else:
+                            logPrint("已改用%s版本的召唤师图标信息。\nSummoner icon information changed to Patch %s." %(summonerIconPatch_adopted, summonerIconPatch_adopted), verbose = verbose)
+                            summonerIcons = {int(summonerIcon_iter["id"]): summonerIcon_iter for summonerIcon_iter in summonerIcon}
+                            current_versions["summonerIcon"] = summonerIconPatch_adopted
+                            unmapped_keys["summonerIcon"].clear()
+                            break
+                    break
+            ##英雄：包含选用英雄和禁用英雄（LoL champions, which contain picked and banned ones）
+            LoLChampionIds_match_list: list[int] = sorted(set(map(lambda x: x["championId"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["championId"], bans)))
+            for i in LoLChampionIds_match_list:
+                if not i in LoLChampions and current_versions["LoLChampion"] != bigVersion:
+                    LoLChampionPatch_adopted: str = bigVersion
+                    LoLChampion_recapture: int = 1
+                    logPrint("对局%d英雄信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄信息……\nLoL champion information (%d) of Match %d capture failed! Changing to LoL champions of Patch %s ... Times tried: %d." %(matchId, i, LoLChampion_recapture, LoLChampionPatch_adopted, i, matchId, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
+                    while True:
+                        try:
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            LoLChampion: list[dict[str, Any]] = source.json()
+                        except requests.exceptions.JSONDecodeError:
+                            LoLChampionPatch_deserted: str = LoLChampionPatch_adopted
+                            LoLChampionPatch_adopted = FindPostPatch(Patch(LoLChampionPatch_adopted), versionList)
+                            LoLChampion_recapture = 1
+                            logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to LoL champions of Patch %s ... Times tried: %d." %(LoLChampionPatch_deserted, LoLChampion_recapture, LoLChampionPatch_adopted, LoLChampionPatch_deserted, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
+                        except requests.exceptions.RequestException:
+                            if LoLChampion_recapture < 3:
+                                LoLChampion_recapture += 1
+                                logPrint("网络环境异常！正在第%d次尝试改用%s版本的英雄信息……\nYour network environment is abnormal! Changing to LoL champions of Patch %s ... Times tried: %d." %(LoLChampion_recapture, LoLChampionPatch_adopted, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
+                            else:
+                                logPrint("网络环境异常！对局%d的英雄信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the LoL champion (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
+                                break
+                        else:
+                            logPrint("已改用%s版本的英雄信息。\nLoL champion information changed to Patch %s." %(LoLChampionPatch_adopted, LoLChampionPatch_adopted), verbose = verbose)
+                            LoLChampions = {int(LoLChampion_iter["id"]): LoLChampion_iter for LoLChampion_iter in LoLChampion}
+                            current_versions["LoLChampion"] = LoLChampionPatch_adopted
+                            unmapped_keys["LoLChampion"].clear()
+                            break
+                    break
+            ##召唤师技能（Summoner spells）
+            spellIds_match_list: list[int] = sorted(set(map(lambda x: x["spell1Id"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["spell2Id"], LoLGame_summary_json["participants"])))
+            for i in spellIds_match_list:
+                if not i in spells and current_versions["spell"] != bigVersion and i != 0: #需要注意电脑玩家的召唤师技能序号都是0（Note that Spell Ids of bot players are both 0s）
+                    spellPatch_adopted: str = bigVersion
+                    spell_recapture: int = 1
+                    logPrint("对局%d召唤师技能信息（%d）获取失败！正在第%d次尝试改用%s版本的召唤师技能信息……\nSpell information (%d) of Match %d capture failed! Changing to spells of Patch %s ... Times tried: %d." %(matchId, i, spell_recapture, spellPatch_adopted, i, matchId, spellPatch_adopted, spell_recapture), verbose = verbose)
+                    while True:
+                        try:
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/summoner-spells.json" %(spellPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            spell: list[dict[str, Any]] = source.json()
+                        except requests.exceptions.JSONDecodeError:
+                            spellPatch_deserted: str = spellPatch_adopted
+                            spellPatch_adopted = FindPostPatch(Patch(spellPatch_adopted), versionList)
+                            spell_recapture = 1
+                            logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to spells of Patch %s ... Times tried: %d." %(spellPatch_deserted, spell_recapture, spellPatch_adopted, spellPatch_deserted, spellPatch_adopted, spell_recapture), verbose = verbose)
+                        except requests.exceptions.RequestException:
+                            if spell_recapture < 3:
+                                spell_recapture += 1
+                                logPrint("网络环境异常！正在第%d次尝试改用%s版本的召唤师技能信息……\nYour network environment is abnormal! Changing to spells of Patch %s ... Times tried: %d." %(spell_recapture, spellPatch_adopted, spellPatch_adopted, spell_recapture), verbose = verbose)
+                            else:
+                                logPrint("网络环境异常！对局%d的召唤师技能信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the spell (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
+                                break
+                        else:
+                            logPrint("已改用%s版本的召唤师技能信息。\nSpell information changed to Patch %s." %(spellPatch_adopted, spellPatch_adopted), verbose = verbose)
+                            spells = {int(spell_iter["id"]): spell_iter for spell_iter in spell}
+                            current_versions["spell"] = spellPatch_adopted
+                            unmapped_keys["spell"].clear()
+                            break
+                    break
+            ##英雄联盟装备（LoL items）
+            #接下来查询具体的对局概要，使用的可能并不是历史记录中记载的对局序号形成的列表。考虑实际使用需求，这里对于装备的合适版本信息采取的思路是默认从最新版本开始获取，如果有装备不存在于最新版本的装备信息，则获取游戏概要中存储的版本对应的装备信息。该思路仍然有问题，详见后续关于美测服的装备获取的注释（The next step is to capture the summary of each specific match, which may not originate from the matchIDs recorded in the match history. Considering the practical use, here the stream of thought for an appropriate version for items is to get items' information from the latest patch, and if some item doesn't exist in the items information of the latest patch, then get the items of the version corresponding to the game according to gameVersion recorded in the match summary. There's a flaw of this idea. Please refer to the annotation regarding PBE data crawling for further solution）
+            LoLItemIds_match_list: list[int] = sorted(set(item for s in [set(map(lambda x: x.get(key, 0), LoLGame_summary_json["participants"])) for key in ["item0", "item1", "item2", "item3", "item4", "item5", "item6", "roleBoundItem"]] for item in s)) #该表达式等价于以下表达式（This expression is equivalent to the following expression）：`LoLItemIds_match_list = sorted(set(map(lambda x: x["item0"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["item1"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["item2"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["item3"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["item4"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["item5"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["item6"], LoLGame_summary_json["participants"])) | set(map(lambda x: x["roleBoundItem"], LoLGame_summary_json["participants"])))`
+            for i in LoLItemIds_match_list:
+                if not i in LoLItems and current_versions["LoLItem"] != bigVersion and i != 0: #空装备序号是0（The itemId of an empty item is 0）
+                    LoLItemPatch_adopted: str = bigVersion
+                    LoLItem_recapture: int = 1
+                    logPrint("对局%d英雄联盟装备信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nLoL item information (%d) of Match %d capture failed! Changing to LoL items of Patch %s ... Times tried: %d." %(matchId, i, LoLItem_recapture, LoLItemPatch_adopted, i, matchId, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
+                    while True:
+                        try:
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            LoLItem: list[dict[str, Any]] = source.json()
+                        except requests.exceptions.JSONDecodeError:
+                            LoLItemPatch_deserted: str = LoLItemPatch_adopted
+                            LoLItemPatch_adopted = FindPostPatch(Patch(LoLItemPatch_adopted), versionList)
+                            LoLItem_recapture = 1
+                            logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
+                        except requests.exceptions.RequestException:
+                            if LoLItem_recapture < 3:
+                                LoLItem_recapture += 1
+                                logPrint("网络环境异常！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nYour network environment is abnormal! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
+                            else:
+                                logPrint("网络环境异常！对局%d的英雄联盟装备信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the LoL item (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
+                                break
+                        else:
+                            logPrint("已改用%s版本的英雄联盟装备信息。\nLoL item information changed to Patch %s." %(LoLItemPatch_adopted, LoLItemPatch_adopted), verbose = verbose)
+                            LoLItems = {int(LoLItem_iter["id"]): LoLItem_iter for LoLItem_iter in LoLItem}
+                            current_versions["LoLItem"] = LoLItemPatch_adopted
+                            unmapped_keys["LoLItem"].clear()
+                            break
+                    break
+            ##符文（Perks）
+            perkIds_match_list: list[int] = []
+            for participant in LoLGame_summary_json["participants"]:
+                if "perks" in participant:
+                    if "statPerks" in participant["perks"]:
+                        perkIds_match_list += list(participant["perks"]["statPerks"].values())
+                    if "styles" in participant["perks"]:
+                        for style in participant["perks"]["styles"]:
+                            if "selections" in style:
+                                perkIds_match_list += list(map(lambda x: x["perk"], style["selections"]))
+            perkIds_match_list = sorted(set(perkIds_match_list))
+            for i in perkIds_match_list:
+                if not i in perks and current_versions["perk"] != bigVersion and i != 0: #在一些非常规模式（如新手训练）的对局中，玩家可能没有携带任何符文（In matches with unconventional game mode (e.g. TUTORIAL), maybe the player doesn't take any runes）
+                    perkPatch_adopted: str = bigVersion
+                    perk_recapture: int = 1
+                    logPrint("对局%d基石符文信息（%d）获取失败！正在第%d次尝试改用%s版本的基石符文信息……\nPerk information (%d) of Match %d capture failed! Changing to perks of Patch %s ... Times tried: %d." %(matchId, i, perk_recapture, perkPatch_adopted, i, matchId, perkPatch_adopted, perk_recapture), verbose = verbose)
+                    while True:
+                        try:
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perks.json" %(perkPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            perk: list[dict[str, Any]] = source.json()
+                        except requests.exceptions.JSONDecodeError:
+                            perkPatch_deserted: str = perkPatch_adopted
+                            perkPatch_adopted = FindPostPatch(Patch(perkPatch_adopted), versionList)
+                            perk_recapture = 1
+                            logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to perks of Patch %s ... Times tried: %d." %(perkPatch_deserted, perk_recapture, perkPatch_adopted, perkPatch_deserted, perkPatch_adopted, perk_recapture), verbose = verbose)
+                        except requests.exceptions.RequestException:
+                            if perk_recapture < 3:
+                                perk_recapture += 1
+                                logPrint("网络环境异常！正在第%d次尝试改用%s版本的基石符文信息……\nYour network environment is abnormal! Changing to perks of Patch %s ... Times tried: %d." %(perk_recapture, perkPatch_adopted, perkPatch_adopted, perk_recapture), verbose = verbose)
+                            else:
+                                logPrint("网络环境异常！对局%d的基石符文信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the perk (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
+                                break
+                        else:
+                            logPrint("已改用%s版本的基石符文信息。\nPerk information changed to Patch %s." %(perkPatch_adopted, perkPatch_adopted), verbose = verbose)
+                            perks = {int(perk_iter["id"]): perk_iter for perk_iter in perk}
+                            current_versions["perk"] = perkPatch_adopted
+                            unmapped_keys["perk"].clear()
+                            break
+                    break
+            ##符文系（Perkstyles）
+            perkstyleIds_match_list: list[int] = []
+            for participant in LoLGame_summary_json["participants"]:
+                if "perks" in participant and "styles" in participant["perks"]:
+                    perkstyleIds_match_list += list(map(lambda x: x["style"], participant["perks"]["styles"]))
+            perkstyleIds_match_list = sorted(set(perkstyleIds_match_list))
+            for i in perkstyleIds_match_list:
+                if not i in perkstyles and current_versions["perkstyle"] != bigVersion and i != 0: #在一些非常规模式（如新手训练）的对局中，玩家可能没有携带任何符文（In matches with unconventional game mode (e.g. TUTORIAL), maybe the player doesn't take any runes）
+                    perkstylePatch_adopted: str = bigVersion
+                    perkstyle_recapture = 1
+                    logPrint("对局%d符文系信息（%d）获取失败！正在第%d次尝试改用%s版本的符文系信息……\nPerkstyle information (%d) of Match %d capture failed! Changing to perkstyles of Patch %s ... Times tried: %d." %(matchId, i, perkstyle_recapture, perkstylePatch_adopted, i, matchId, perkstylePatch_adopted, perkstyle_recapture), verbose = verbose)
+                    while True:
+                        try:
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/perkstyles.json" %(perkstylePatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            perkstyle: dict[str, Any] = source.json()
+                        except requests.exceptions.JSONDecodeError:
+                            perkstylePatch_deserted: str = perkstylePatch_adopted
+                            perkstylePatch_adopted = FindPostPatch(Patch(perkstylePatch_adopted), versionList)
+                            perkstyle_recapture = 1
+                            logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to perks of Patch %s ... Times tried: %d." %(perkstylePatch_deserted, perkstyle_recapture, perkstylePatch_adopted, perkstylePatch_deserted, perkstylePatch_adopted, perkstyle_recapture), verbose = verbose)
+                        except requests.exceptions.RequestException:
+                            if perkstyle_recapture < 3:
+                                perkstyle_recapture += 1
+                                logPrint("网络环境异常！正在第%d次尝试改用%s版本的符文系信息……\nYour network environment is abnormal! Changing to perkstyles of Patch %s ... Times tried: %d." %(perkstyle_recapture, perkstylePatch_adopted, perkstylePatch_adopted, perkstyle_recapture), verbose = verbose)
+                            else:
+                                logPrint("网络环境异常！对局%d的符文系信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the perkstyle (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
+                                break
+                        else:
+                            logPrint("已改用%s版本的符文系信息。\nPerkstyle information changed to Patch %s." %(perkstylePatch_adopted, perkstylePatch_adopted), verbose = verbose)
+                            perkstyles = {int(perkstyle_iter["id"]): perkstyle_iter for perkstyle_iter in perkstyle["styles"]}
+                            current_versions["perkstyle"] = perkstylePatch_adopted
+                            unmapped_keys["perkstyle"].clear()
+                            break
+                    break
+            ##斗魂竞技场强化符文（Cherry augments）
+            CherryAugmentIds_match_set: set[int] = set()
+            for participant in LoLGame_summary_json["participants"]:
+                for i in range(1, 7):
+                    key: str = f"playerAugment{i}"
+                    if key in participant:
+                        CherryAugmentIds_match_set.add(participant[key])
+            CherryAugmentIds_match_list: list[int] = sorted(CherryAugmentIds_match_set)
+            for i in CherryAugmentIds_match_list:
+                if not i in CherryAugments and current_versions["CherryAugment"] != bigVersion and i != 0:
+                    CherryAugmentPatch_adopted: str = bigVersion
+                    CherryAugment_recapture: int = 1
+                    logPrint("对局%d强化符文信息（%d）获取失败！正在第%d次尝试改用%s版本的斗魂竞技场强化符文信息……\nAugment information (%d) of Match %d capture failed! Changing to Cherry augments of Patch %s ... Times tried: %d." %(matchId, i, CherryAugment_recapture, CherryAugmentPatch_adopted, i, matchId, CherryAugmentPatch_adopted, CherryAugment_recapture), verbose = verbose)
+                    while True:
+                        try:
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/cherry-augments.json" %(CherryAugmentPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            CherryAugment: list[dict[str, Any]] = source.json()
+                        except requests.exceptions.JSONDecodeError:
+                            CherryAugmentPatch_deserted: str = CherryAugmentPatch_adopted
+                            CherryAugmentPatch_adopted = FindPostPatch(Patch(CherryAugmentPatch_adopted), versionList)
+                            CherryAugment_recapture = 1
+                            logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to Cherry augments of Patch %s ... Times tried: %d." %(CherryAugmentPatch_deserted, CherryAugment_recapture, CherryAugmentPatch_adopted, CherryAugmentPatch_deserted, CherryAugmentPatch_adopted, CherryAugment_recapture), verbose = verbose)
+                        except requests.exceptions.RequestException:
+                            if CherryAugment_recapture < 3:
+                                CherryAugment_recapture += 1
+                                logPrint("网络环境异常！正在第%d次尝试改用%s版本的斗魂竞技场强化符文信息……\nYour network environment is abnormal! Changing to Cherry augments of Patch %s ... Times tried: %d." %(CherryAugment_recapture, CherryAugmentPatch_adopted, CherryAugmentPatch_adopted, CherryAugment_recapture), verbose = verbose)
+                            else:
+                                logPrint("网络环境异常！对局%d的强化符文信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the Cherry augment (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
+                                break
+                        else:
+                            logPrint("已改用%s版本的斗魂竞技场强化符文信息。\nCherry augment information changed to Patch %s." %(CherryAugmentPatch_adopted, CherryAugmentPatch_adopted), verbose = verbose)
+                            CherryAugments = {int(CherryAugment_iter["id"]): CherryAugment_iter for CherryAugment_iter in CherryAugment}
+                            current_versions["CherryAugment"] = CherryAugmentPatch_adopted
+                            unmapped_keys["CherryAugment"].clear()
+                            break
+                    break
+        #下面开始整理数据（Organize data）
+        for i in range(len(LoLGame_summary_json["participants"])): #对于对局概要而言，每个玩家对应一条记录（For match summary, each record represents a player）
+            generate_LoLGameInfo_records_sgp(LoLGame_summary_data, LoLGame_summary, i, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = gameIndex, current_puuid = puuidList, bans = bans, legacy_banData_appended = legacy_banData_appended, unmapped_keys = unmapped_keys, log = log, verbose = verbose)
+            if sortStats and LoLGame_summary_json["participants"][i]["puuid"] in puuidList: #这个if语句块是适配查战绩脚本而做的修改（This if-block is a modification made to adapt to Customized Program 05）
+                for j in range(len(LoLGame_summary_header_keys)):
+                    key: str = LoLGame_summary_header_keys[j]
+                    LoLGame_stat_data[key].append(LoLGame_summary_data[key][-1]) #直接添加最近一次追加的数据，以简化代码（Directly append the recently appended data to simplify the code）
     #数据框列序整理（Dataframe column ordering）
     LoLGame_summary_statistics_output_order: list[int] = [219, 210, 110, 583, 144, 128, 129, 142, 125, 143, 67, 21, 176, 53, 580, 581, 94, 130, 80, 147, 51, 50, 54, 215, 216, 178, 179, 180, 181, 182, 183, 184, 213, 192, 204, 193, 205, 194, 206, 195, 207, 196, 208, 197, 209, 93, 63, 45, 222, 223, 226, 227, 96, 92, 97, 49, 71, 70, 73, 72, 65, 162, 126, 111, 169, 148, 159, 152, 113, 100, 164, 151, 112, 99, 163, 95, 60, 59, 57, 58, 156, 157, 161, 153, 154, 114, 101, 165, 61, 171, 174, 173, 132, 172, 64, 77, 224, 78, 225, 91, 56, 158, 103, 150, 155, 166, 167, 81, 82, 104, 106, 168, 83, 105, 66, 47, 107, 108, 98, 48, 55, 76, 127, 124, 109, 43, 44, 102, 68, 69, 170, 62, 46, 79, 149, 160, 133, 135, 137, 138, 220, 140, 141, 557, 571, 563, 559, 564, 560, 565, 561, 566, 562, 575, 573, 576, 574, 553, 551, 552, 145, 74, 75, 228, 115, 139, 627, 613, 598, 683, 629, 626, 630, 602, 615, 670, 647, 642, 676, 656, 667, 660, 644, 633, 672, 659, 643, 632, 671, 628, 610, 609, 607, 608, 664, 665, 669, 661, 662, 645, 634, 673, 611, 678, 681, 680, 649, 679, 614, 620, 621, 625, 606, 666, 636, 658, 663, 684, 674, 675, 623, 624, 637, 638, 616, 600, 639, 640, 631, 601, 605, 619, 648, 646, 641, 596, 597, 635, 617, 618, 677, 612, 599, 622, 657, 668, 650, 651, 652, 653, 682, 654, 655, 757, 705, 704, 728, 714, 699, 785, 786, 788, 730, 727, 731, 703, 716, 772, 748, 743, 778, 758, 769, 762, 745, 734, 774, 761, 744, 733, 773, 729, 711, 710, 708, 709, 766, 767, 771, 763, 764, 746, 735, 775, 712, 780, 783, 782, 750, 781, 715, 721, 722, 789, 726, 707, 768, 737, 765, 760, 787, 776, 777, 724, 725, 717, 701, 740, 741, 738, 739, 732, 702, 706, 720, 749, 747, 742, 697, 698, 736, 718, 719, 779, 713, 700, 723, 759, 770, 751, 752, 753, 754, 784, 755, 756, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521]
     LoLGame_summary_data_organized: dict[str, list[Any]] = {LoLGame_summary_header_keys[i]: LoLGame_summary_data[LoLGame_summary_header_keys[i]] for i in LoLGame_summary_statistics_output_order}

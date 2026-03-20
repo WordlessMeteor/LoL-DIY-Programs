@@ -59,7 +59,7 @@ else:
 #-----------------------------------------------------------------------------
 
 wd: str = os.getcwd()
-queueId_options: dict[str, dict[str, str]] = {"#1": {"description": "所有玩家对战（All PvP games）", "expression": '[queue["id"] for queue in queue_souce if queue["category"] == "PvP"]'}, "#2": {"description": "所有英雄联盟玩家对战（All LoL PvP games）", "expression": '[queue["id"] for queue in queue_souce if queue["category"] == "PvP" and queue["mapId"] != 22]'}, "#3": {"description": "所有云顶之弈玩家对战（All TFT PvP games）", "expression": '[queue["id"] for queue in queue_souce if queue["category"] == "PvP" and queue["mapId"] == 22]'}, "#4": {"description": "所有召唤师峡谷排位队列（All Summoner's Rift ranked queues）", "expression": '[queue["id"] for queue in queue_souce if queue["isRanked"] and queue["mapId"] == 11]'}, "#5": {"description": "所有云顶之弈排位队列（All TFT ranked queues）", "expression": '[queue["id"] for queue in queue_souce if queue["isRanked"] and queue["mapId"] == 22]'}}
+queueId_options: dict[str, dict[str, str]] = {"#1": {"description": "所有玩家对战（All PvP games）", "expression": '[queue["id"] for queue in gameQueues_source if queue["category"] == "PvP"]'}, "#2": {"description": "所有英雄联盟玩家对战（All LoL PvP games）", "expression": '[queue["id"] for queue in gameQueues_source if queue["category"] == "PvP" and queue["mapId"] != 22]'}, "#3": {"description": "所有云顶之弈玩家对战（All TFT PvP games）", "expression": '[queue["id"] for queue in gameQueues_source if queue["category"] == "PvP" and queue["mapId"] == 22]'}, "#4": {"description": "所有召唤师峡谷排位队列（All Summoner's Rift ranked queues）", "expression": '[queue["id"] for queue in gameQueues_source if queue["isRanked"] and queue["mapId"] == 11]'}, "#5": {"description": "所有云顶之弈排位队列（All TFT ranked queues）", "expression": '[queue["id"] for queue in gameQueues_source if queue["isRanked"] and queue["mapId"] == 22]'}}
 created_processes: list[psutil.Process] = [] #标记清理残留进程（Stores processes to clear at the end of the program）
 
 sgpSession: SGPSession = SGPSession()
@@ -162,8 +162,8 @@ async def prepare_data_resources(connection: Connection, verbose: bool = True) -
     global queues, spells, LoLChampions, championSkins, LoLItems, summonerIcons, perks, perkstyles, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, CherryAugments, wardSkins, regaliaBanners
     ##游戏模式（Game mode）
     logPrint("正在加载游戏模式信息……\nLoading game mode information ...", verbose = verbose)
-    queue_souce: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/queues.json")).json()
-    queues = {int(queue_iter["id"]): queue_iter for queue_iter in queue_souce}
+    queues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/queues.json")).json()
+    queues = {int(queue_iter["id"]): queue_iter for queue_iter in queues_source}
     ##召唤师技能（Summoner spell）
     logPrint("正在加载召唤师技能信息……\nLoading summoner spell information ...", verbose = verbose)
     spells_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/summoner-spells.json")).json()
@@ -284,7 +284,7 @@ async def search_player_match_stats_lol(connection: Connection, puuid: str, begI
     info: dict[str, Any] = await get_info(connection, puuid)
     if info["info_got"]:
         if lol_sgp:
-            LoLHistory_get, LoLHistory_sgp = await get_matchSummary_sgp(connection, sgpSession, puuid, "LoL", begin = 0, count = 1000, log = log, verbose = verbose)
+            LoLHistory_get, LoLHistory_sgp = await get_matchSummary_sgp(connection, sgpSession, puuid, "LoL", begin = 0, count = endIndex - begIndex + 1, log = log, verbose = verbose)
             for game in LoLHistory_sgp["games"]:
                 matchId: int = int(game["metadata"]["match_id"].split("_")[1])
                 if not matchId in LoLGame_summary_cache_sgp:
@@ -842,8 +842,8 @@ async def Clarke_revival(connection: Connection) -> None:
                         break
                     else:
                         logPrint("请输入一个正整数！\nPlease enter a positive integer!")
-        queues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
-        queue_df: pandas.DataFrame = sort_queue_data(queues_source)
+        gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
+        queue_df: pandas.DataFrame = sort_queue_data(gameQueues_source)
         queue_df_fields_to_print: list[str] = ["id", "name", "mapId", "category", "pickMode"]
         queue_df_indices_to_select: list[int] = [0] + list(queue_df[(queue_df["queueAvailability"] == "√") | (queue_df["isVisible"] == "√")].index)
         queueIds: list[int] = []
