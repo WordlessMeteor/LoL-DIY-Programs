@@ -565,8 +565,7 @@ async def get_game_summary_sgp(connection: Connection, sgpSession: SGPSession, m
                     break
                 if status == 404:
                     if game_summary["errorCode"] == "RESOURCE_NOT_FOUND" and game_summary["message"] == "match file not found":
-                        if skipTFT:
-                            logPrint(f"未找到序号为{match_id}的英雄联盟回放文件！\nLoL match file with matchId {match_id} not found!", verbose = verbose)
+                        logPrint(f"未找到序号为{match_id}的英雄联盟回放文件！\nLoL match file with matchId {match_id} not found!", verbose = verbose)
                         checkTFT = True
                         break
                 logPrint(game_summary, verbose = verbose)

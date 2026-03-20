@@ -12,7 +12,7 @@ from src.core.dataframes.matchHistory import get_game_summary_sgp, get_game_time
 #=============================================================================
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
-# 更新（Last update）：     2026/03/16
+# 更新（Last update）：     2026/03/20
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -196,27 +196,24 @@ async def download_replay(connection: Connection, matchId: int) -> None:
     timeline_got: bool = False #指示是否获取到对局时间轴。仅当对局概要获取失败时，这个变量才有可能为真（Indicates whether match timeline is fetched. Only when match summary failed to be fetched may this variable become True）
     game_summary: dict[str, Any] = {}
     game_timeline: dict[str, Any] = {}
-    status, game_summary = await get_game_summary_sgp(connection, sgpSession, match_id)
+    status, game_summary = await get_game_summary_sgp(connection, sgpSession, match_id, skipTFT = True)
     if status == 200:
         summary_got = True
         product: str = game_summary["metadata"]["product"]
     else: #黑色玫瑰大区对局序号为8595461971的对局的概要损坏，但是时间轴正常。这是一把瑞天帝（The summary of match HN10-8595461971 is corrupted, but the timeline is fine. This is a match of Ryze, the god）
-        status, game_timeline = await get_game_timeline_sgp(connection, sgpSession, match_id)
+        status, game_timeline = await get_game_timeline_sgp(connection, sgpSession, match_id, checkTFT = False)
         if status == 200:
             timeline_got = True
             product = game_timeline["metadata"]["product"]
-        elif status == 404:
-            print(f"未找到对局{matchId}文件。<br>Match {matchId} file not found.")
-            return
         else:
             product = ""
     if product == "":
-        print("无法确定对局产品名。请手动指定。\nCan't determine the product of the match. Please specify it manually.\n0\t返回上一层（Return to the last step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）")
+        print("无法确定对局产品名。请手动指定。\nCan't determine the product of the match. Please specify it manually.\n0\t返回上一层（Return to the last step）\n☆1\t英雄联盟（LoL）\n!2\t云顶之弈（TFT）")
         while True:
             choice: str = input()
             if choice == "":
-                continue
-            elif choice[0] == "0":
+                choice = "1"
+            if choice[0] == "0":
                 return
             elif choice[0] == "1":
                 product = "LoL"
