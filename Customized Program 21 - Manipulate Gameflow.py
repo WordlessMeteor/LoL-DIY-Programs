@@ -29,7 +29,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/15
+# 更新（Last update）：     2026/03/20
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -4734,6 +4734,7 @@ async def manage_lobby(connection: Connection) -> bool:
             else:
                 logPrint("您目前不在房间内。\nYou're currently not in a lobby.")
         elif suboption[0] == "2":
+            gameflow_phase: str = await get_gameflow_phase(connection)
             if gameflow_phase == "Lobby" or gameflow_phase == "ChampSelect":
                 lobby_information = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
                 if lobby_information["localMember"]["isLeader"]:
