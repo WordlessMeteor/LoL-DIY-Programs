@@ -12,7 +12,7 @@ from src.core.dataframes.matchHistory import get_game_summary_sgp, get_game_time
 #=============================================================================
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
-# 更新（Last update）：     2026/03/20
+# 更新（Last update）：     2026/03/21
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -89,6 +89,8 @@ def sort_match_metadata(data: dict[str, Any], product: str, info_type: Literal["
                         mapName = "莲华栈桥（Koeshin's Crossing）"
                     elif "mapskin_ha_bilgewater" in data["json"]["gameModeMutators"]:
                         mapName = "屠夫之桥（Butcher's Bridge）"
+                    else:
+                        mapName = "嚎哭深渊（Howling Abyss）"
                 result["map"] = mapName
                 #游戏类型（Game type）
                 gameType: str = gameTypes_history[data["json"]["gameType"]]

@@ -1175,7 +1175,7 @@ class LoLDataExtractor:
     @classmethod
     def subpartCalculation(cls, binData: dict[str, Any], subpart_formula: dict[str, Any], var_prefix: str, isCHS: bool = False, enableModeOverride: bool = False, rowIndex: int = -1, reservedVars: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str:
         '''
-        副部计算。通常作为中间处理过程而重新末端计算方法。<br>Subpart calculation. Usually serve as an intermediate process to call `leafletCalculation` method.
+        副部计算。通常作为中间处理过程而调用末端计算方法。<br>Subpart calculation. Usually serve as an intermediate process to call `leafletCalculation` method.
         
         :param binData: 用于变量代换的标准化二进制描述数据。只用于递归时传递参数。<br>Normalized binary description data used for variable substitution. Only used to pass the value during recursion.
         :type binData: dict[str, Any] | None
