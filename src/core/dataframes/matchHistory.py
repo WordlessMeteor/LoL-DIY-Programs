@@ -6462,10 +6462,12 @@ def sort_LoLGame_timeline(LoLGame_timeline: dict[str, Any], LoLGame_summary: dic
     LoLGame_event_df = pandas.concat([pandas.DataFrame([LoLGame_event_header])[LoLGame_event_df.columns], LoLGame_event_df], ignore_index = True)
     return (LoLGame_timeline_df, LoLGame_event_df, LoLItems)
 
-def sort_LoLGame_timeline_sgp(LoLGame_timeline: dict[str, Any], LoLGame_summary: dict[str, Any], LoLChampions: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], useAllVersions: bool = False, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, pandas.DataFrame, dict[int, dict[str, Any]]]:
+async def sort_LoLGame_timeline_sgp(connection: Connection, LoLGame_timeline: dict[str, Any], LoLGame_summary: dict[str, Any], LoLChampions: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], useAllVersions: bool = False, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, useInfoDict: bool = False, infos: Optional[dict[str, dict[str, Any]]] = None, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, pandas.DataFrame, dict[int, dict[str, Any]]]:
     '''
     将英雄联盟对局时间轴信息整理成对局时间轴和对局事件两张表格。<br>Organize LoL match timeline information into two dataframes including match timeline and match events.
     
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
     :param LoLGame_timeline: 英雄联盟对局时间轴。通过以下SGP接口得到：<br>LoL match timeline, obtained through the following SGP endpoint:
     
         - `GET /match-history-query/v1/products/lol/{match_id}/DETAILS`
@@ -6521,92 +6523,120 @@ def sort_LoLGame_timeline_sgp(LoLGame_timeline: dict[str, Any], LoLGame_summary:
         current_versions = {"LoLItem": ""}
     if unmapped_keys == None:
         unmapped_keys = {"LoLItem": set()}
+    if infos == None:
+        infos = {}
     if session == None:
         session = requests.Session()
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
-    #准备LoLGame_summary的相关变量（Prepare variables related to `LoLGame_summary`）
-    LoLGame_summary_json: dict[str, Any] = LoLGame_summary["json"]
-    matchId: int = LoLGame_summary_json["gameId"]
-    version: str = LoLGame_summary_json["gameVersion"]
-    bigVersion: str = ".".join(version.split(".")[:2])
-    LoLGame_summary_participants: dict[int, dict[str, Any]] = {participant["participantId"]: participant for participant in LoLGame_summary_json["participants"]} #构建从玩家序号到玩家的映射（Build the map from participantId to participant）
+    #从时间轴信息准备常量（Prepare constants from timeline information）
+    matchId: int = int(LoLGame_timeline["metadata"]["match_id"].split("_")[1])
     frames: list[dict[str, Any]] = LoLGame_timeline["json"]["frames"]
     events: dict[int, dict[str, Any]] = {}
     for frame in frames:
         for event in frame["events"]:
             events[event["timestamp"]] = event
-    #下面针对每场对局建立总的数据资源异常处理机制（Builds the summarized data resource exceptional handling mechanism for each match）
-    if useAllVersions:
-        ##英雄：只包含选用英雄（LoL champions, which only contain picked ones）
-        LoLChampionIds_match_list: list[int] = sorted(set(map(lambda x: x["championId"], LoLGame_summary_json["participants"])))
-        for i in LoLChampionIds_match_list:
-            if not i in LoLChampions and current_versions["LoLChampion"] != bigVersion:
-                LoLChampionPatch_adopted: str = bigVersion
-                LoLChampion_recapture: int = 1
-                logPrint("对局%d英雄信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄信息……\nLoL champion information (%d) of Match %d capture failed! Changing to LoL champions of Patch %s ... Times tried: %d." %(matchId, i, LoLChampion_recapture, LoLChampionPatch_adopted, i, matchId, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
-                while True:
-                    try:
-                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        LoLChampion: list[dict[str, Any]] = source.json()
-                    except requests.exceptions.JSONDecodeError:
-                        LoLChampionPatch_deserted: str = LoLChampionPatch_adopted
-                        LoLChampionPatch_adopted = FindPostPatch(Patch(LoLChampionPatch_adopted), versionList)
-                        LoLChampion_recapture = 1
-                        logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to LoL champions of Patch %s ... Times tried: %d." %(LoLChampionPatch_deserted, LoLChampion_recapture, LoLChampionPatch_adopted, LoLChampionPatch_deserted, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
-                    except requests.exceptions.RequestException:
-                        if LoLChampion_recapture < 3:
-                            LoLChampion_recapture += 1
-                            logPrint("网络环境异常！正在第%d次尝试改用%s版本的英雄信息……\nYour network environment is abnormal! Changing to LoL champions of Patch %s ... Times tried: %d." %(LoLChampion_recapture, LoLChampionPatch_adopted, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
+    #准备LoLGame_summary的相关变量（Prepare variables related to `LoLGame_summary`）
+    summary_valid: bool = LoLGame_summary.get("json") #表示对局概要信息是否正常获取（Represents whether match summary is normal）
+    if summary_valid:
+        LoLGame_summary_json: dict[str, Any] = LoLGame_summary["json"]
+        version: str = LoLGame_summary_json["gameVersion"]
+        bigVersion: str = ".".join(version.split(".")[:2])
+        LoLGame_summary_participants: dict[int, dict[str, Any]] = {participant["participantId"]: participant for participant in LoLGame_summary_json["participants"]} #构建从玩家序号到玩家的映射（Build the map from participantId to participant）
+        #下面针对每场对局建立总的数据资源异常处理机制（Builds the summarized data resource exceptional handling mechanism for each match）
+        if useAllVersions:
+            ##英雄：只包含选用英雄（LoL champions, which only contain picked ones）
+            LoLChampionIds_match_list: list[int] = sorted(set(map(lambda x: x["championId"], LoLGame_summary_json["participants"])))
+            for i in LoLChampionIds_match_list:
+                if not i in LoLChampions and current_versions["LoLChampion"] != bigVersion:
+                    LoLChampionPatch_adopted: str = bigVersion
+                    LoLChampion_recapture: int = 1
+                    logPrint("对局%d英雄信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄信息……\nLoL champion information (%d) of Match %d capture failed! Changing to LoL champions of Patch %s ... Times tried: %d." %(matchId, i, LoLChampion_recapture, LoLChampionPatch_adopted, i, matchId, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
+                    while True:
+                        try:
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(LoLChampionPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            LoLChampion: list[dict[str, Any]] = source.json()
+                        except requests.exceptions.JSONDecodeError:
+                            LoLChampionPatch_deserted: str = LoLChampionPatch_adopted
+                            LoLChampionPatch_adopted = FindPostPatch(Patch(LoLChampionPatch_adopted), versionList)
+                            LoLChampion_recapture = 1
+                            logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to LoL champions of Patch %s ... Times tried: %d." %(LoLChampionPatch_deserted, LoLChampion_recapture, LoLChampionPatch_adopted, LoLChampionPatch_deserted, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
+                        except requests.exceptions.RequestException:
+                            if LoLChampion_recapture < 3:
+                                LoLChampion_recapture += 1
+                                logPrint("网络环境异常！正在第%d次尝试改用%s版本的英雄信息……\nYour network environment is abnormal! Changing to LoL champions of Patch %s ... Times tried: %d." %(LoLChampion_recapture, LoLChampionPatch_adopted, LoLChampionPatch_adopted, LoLChampion_recapture), verbose = verbose)
+                            else:
+                                logPrint("网络环境异常！对局%d的英雄信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the LoL champion (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
+                                break
                         else:
-                            logPrint("网络环境异常！对局%d的英雄信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the LoL champion (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
+                            logPrint("已改用%s版本的英雄信息。\nLoL champion information changed to Patch %s." %(LoLChampionPatch_adopted, LoLChampionPatch_adopted), verbose = verbose)
+                            LoLChampions = {int(LoLChampion_iter["id"]): LoLChampion_iter for LoLChampion_iter in LoLChampion}
+                            current_versions["LoLChampion"] = LoLChampionPatch_adopted
+                            unmapped_keys["LoLChampion"].clear()
                             break
-                    else:
-                        logPrint("已改用%s版本的英雄信息。\nLoL champion information changed to Patch %s." %(LoLChampionPatch_adopted, LoLChampionPatch_adopted), verbose = verbose)
-                        LoLChampions = {int(LoLChampion_iter["id"]): LoLChampion_iter for LoLChampion_iter in LoLChampion}
-                        current_versions["LoLChampion"] = LoLChampionPatch_adopted
-                        unmapped_keys["LoLChampion"].clear()
-                        break
-                break
-        ##英雄联盟装备（LoL items）
-        LoLItemIds_match_set: set[int] = set()
-        for event in events.values():
-            if "itemId" in event:
-                LoLItemIds_match_set.add(event["itemId"])
-            if "afterId" in event:
-                LoLItemIds_match_set.add(event["afterId"])
-            if "beforeId" in event:
-                LoLItemIds_match_set.add(event["beforeId"])
-        LoLItemIds_match_list: list[int] = sorted(LoLItemIds_match_set)
-        for i in LoLItemIds_match_list:
-            if not i in LoLItems and current_versions["LoLItem"] != bigVersion and i != 0: #空装备序号是0（The itemId of an empty item is 0）
-                LoLItemPatch_adopted: str = bigVersion
-                LoLItem_recapture: int = 1
-                logPrint("对局%d英雄联盟装备信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nLoL item information (%d) of Match %d capture failed! Changing to LoL items of Patch %s ... Times tried: %d." %(matchId, i, LoLItem_recapture, LoLItemPatch_adopted, i, matchId, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
-                while True:
-                    try:
-                        source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
-                        LoLItem: list[dict[str, Any]] = source.json()
-                    except requests.exceptions.JSONDecodeError:
-                        LoLItemPatch_deserted: str = LoLItemPatch_adopted
-                        LoLItemPatch_adopted = FindPostPatch(Patch(LoLItemPatch_adopted), versionList)
-                        LoLItem_recapture = 1
-                        logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
-                    except requests.exceptions.RequestException:
-                        if LoLItem_recapture < 3:
-                            LoLItem_recapture += 1
-                            logPrint("网络环境异常！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nYour network environment is abnormal! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
+                    break
+            ##英雄联盟装备（LoL items）
+            LoLItemIds_match_set: set[int] = set()
+            for event in events.values():
+                if "itemId" in event:
+                    LoLItemIds_match_set.add(event["itemId"])
+                if "afterId" in event:
+                    LoLItemIds_match_set.add(event["afterId"])
+                if "beforeId" in event:
+                    LoLItemIds_match_set.add(event["beforeId"])
+            LoLItemIds_match_list: list[int] = sorted(LoLItemIds_match_set)
+            for i in LoLItemIds_match_list:
+                if not i in LoLItems and current_versions["LoLItem"] != bigVersion and i != 0: #空装备序号是0（The itemId of an empty item is 0）
+                    LoLItemPatch_adopted: str = bigVersion
+                    LoLItem_recapture: int = 1
+                    logPrint("对局%d英雄联盟装备信息（%d）获取失败！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nLoL item information (%d) of Match %d capture failed! Changing to LoL items of Patch %s ... Times tried: %d." %(matchId, i, LoLItem_recapture, LoLItemPatch_adopted, i, matchId, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
+                    while True:
+                        try:
+                            source, status, session = requestUrl("GET", "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/items.json" %(LoLItemPatch_adopted, language_cdragon[locale]), session = session, log = log)
+                            LoLItem: list[dict[str, Any]] = source.json()
+                        except requests.exceptions.JSONDecodeError:
+                            LoLItemPatch_deserted: str = LoLItemPatch_adopted
+                            LoLItemPatch_adopted = FindPostPatch(Patch(LoLItemPatch_adopted), versionList)
+                            LoLItem_recapture = 1
+                            logPrint("%s版本文件不存在！正在第%s次尝试转至%s版本……\n%s patch file doesn't exist! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItemPatch_deserted, LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_deserted, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
+                        except requests.exceptions.RequestException:
+                            if LoLItem_recapture < 3:
+                                LoLItem_recapture += 1
+                                logPrint("网络环境异常！正在第%d次尝试改用%s版本的英雄联盟装备信息……\nYour network environment is abnormal! Changing to LoL items of Patch %s ... Times tried: %d." %(LoLItem_recapture, LoLItemPatch_adopted, LoLItemPatch_adopted, LoLItem_recapture), verbose = verbose)
+                            else:
+                                logPrint("网络环境异常！对局%d的英雄联盟装备信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the LoL item (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
+                                break
                         else:
-                            logPrint("网络环境异常！对局%d的英雄联盟装备信息（%s）将采用原始数据！\nNetwork error! The original data will be used for the LoL item (%s) of Match %d!" %(matchId, i, i, matchId), verbose = verbose)
+                            logPrint("已改用%s版本的英雄联盟装备信息。\nLoL item information changed to Patch %s." %(LoLItemPatch_adopted, LoLItemPatch_adopted), verbose = verbose)
+                            LoLItems = {int(LoLItem_iter["id"]): LoLItem_iter for LoLItem_iter in LoLItem}
+                            current_versions["LoLItem"] = LoLItemPatch_adopted
+                            unmapped_keys["LoLItem"].clear()
                             break
-                    else:
-                        logPrint("已改用%s版本的英雄联盟装备信息。\nLoL item information changed to Patch %s." %(LoLItemPatch_adopted, LoLItemPatch_adopted), verbose = verbose)
-                        LoLItems = {int(LoLItem_iter["id"]): LoLItem_iter for LoLItem_iter in LoLItem}
-                        current_versions["LoLItem"] = LoLItemPatch_adopted
-                        unmapped_keys["LoLItem"].clear()
-                        break
-                break
+                    break
+    else: #对局概要信息时，当然无法进行版本回溯（When the match summary has an error, version backtrack can't be performed of course）
+        bigVersion = ""
+        LoLGame_summary_participants = {}
+        for participant in LoLGame_timeline["json"]["participants"]:
+            if useInfoDict and participant["puuid"] in infos:
+                participant_info_body = infos[participant["puuid"]]
+                LoLGame_summary_participants[participant["participantId"]] = participant_info_body
+            else:
+                participant_info_recapture: int = 0
+                participant_info: dict[str, Any] = await get_info(connection, participant["puuid"])
+                while not participant_info["info_got"] and participant_info["body"]["httpStatus"] != 404 and participant_info_recapture < 3:
+                    logPrint(participant_info["body"], verbose = verbose)
+                    participant_info_recapture += 1
+                    logPrint("对局%d玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of player (puuid: %s) in Match %d capture failed! Recapturing this player's information ... Times tried: %d." %(matchId, participant["puuid"], participant_info_recapture, participant["puuid"], matchId, participant_info_recapture), verbose = verbose)
+                    participant_info = await get_info(connection, participant["puuid"])
+                if participant_info["info_got"]:
+                    participant_info_body = participant_info["body"]
+                    if useInfoDict:
+                        infos[participant["puuid"]] = participant_info_body
+                    LoLGame_summary_participants[participant["participantId"]] = participant_info_body
+                else:
+                    logPrint(participant_info["body"], verbose = verbose)
+                    logPrint("对局%d玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of player (puuid: %s) in Match %d capture failed!" %(matchId, participant["puuid"], participant["puuid"], matchId), verbose = verbose)
     #数据整理核心部分（Data organization core part）
     ##时间轴（Timeline）
     LoLGame_timeline_header: dict[str, str] = LoLGame_timeline_sgp_header
@@ -6634,24 +6664,30 @@ def sort_LoLGame_timeline_sgp(LoLGame_timeline: dict[str, Any], LoLGame_summary:
                     else: #对于同一个记录帧的多个玩家而言，时间戳和事件只需要输出一次即可。剩余部分留空，以保证表格对齐（For multiple players in one frame, timestamp and events only need to be appended once. The rest part should be empty stings to align the table）
                         to_append = ""
                 elif i <= 9:
-                    if i >= 4 and i <= 7: #选用英雄相关键（Champion-related keys）
-                        championId: int = LoLGame_summary_participant["championId"]
-                        if i == 4: #选用英雄序号（`championId`）
-                            to_append = championId
-                        else:
-                            if championId in LoLChampions:
-                                to_append = LoLChampions[championId][key.split("_")[1]]
+                    if summary_valid:
+                        if i >= 4 and i <= 7: #选用英雄相关键（Champion-related keys）
+                            championId: int = LoLGame_summary_participant["championId"]
+                            if i == 4: #选用英雄序号（`championId`）
+                                to_append = championId
                             else:
-                                if not championId in unmapped_keys["LoLChampion"]:
-                                    unmapped_keys["LoLChampion"].add(championId)
-                                    logPrint("【%d. %s】对局%d（对局版本：%s）英雄信息（%d）获取失败！将采用原始数据！\n[%d. %s] Champion information (%d) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, matchId, version, championId, i, key, championId, matchId, version), verbose = verbose)
-                                to_append = ""
-                    elif i == 8: #召唤师名称（`summonerName`）
-                        to_append = get_info_name(LoLGame_summary_participant)
-                    elif i == 9: #阵营（`team_color`）
-                        to_append = team_colors_int[LoLGame_summary_participant["teamId"]]
-                    else: #阵营代号（`teamId`）
-                        to_append = LoLGame_summary_participant["teamId"]
+                                if championId in LoLChampions:
+                                    to_append = LoLChampions[championId][key.split("_")[1]]
+                                else:
+                                    if not championId in unmapped_keys["LoLChampion"]:
+                                        unmapped_keys["LoLChampion"].add(championId)
+                                        logPrint("【%d. %s】对局%d（对局版本：%s）英雄信息（%d）获取失败！将采用原始数据！\n[%d. %s] Champion information (%d) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, matchId, version, championId, i, key, championId, matchId, version), verbose = verbose)
+                                    to_append = ""
+                        elif i == 8: #召唤师名称（`summonerName`）
+                            to_append = get_info_name(LoLGame_summary_participant)
+                        elif i == 9: #阵营（`team_color`）
+                            to_append = team_colors_int[LoLGame_summary_participant["teamId"]]
+                        else: #阵营代号（`teamId`）
+                            to_append = LoLGame_summary_participant["teamId"]
+                    else:
+                        if i == 8:
+                            to_append = get_info_name(LoLGame_summary_participant)
+                        else:
+                            to_append = ""
                 elif i <= 20:
                     if i == 16: #当前位置坐标（`position`）
                         position: dict[str, int] = participant["position"]
@@ -6750,27 +6786,38 @@ def sort_LoLGame_timeline_sgp(LoLGame_timeline: dict[str, Any], LoLGame_summary:
                         assistingParticipant_summonerNames: list[str] = []
                         for participantId in event["assistingParticipantIds"]:
                             if participantId in LoLGame_summary_participants:
-                                championId: int = LoLGame_summary_participants[participantId]["championId"]
-                                if i == 41: #助攻者英雄序号（`assistingChampionIds`）
-                                    assistingChampionIds.append(championId)
-                                elif i <= 44: #助攻者英雄相关键（Assistant champion related keys）
-                                    if championId in LoLChampions:
-                                        if i == 42: #助攻者英雄名称（`assistingChampionNames`）
-                                            assistingChampion_names.append(LoLChampions[championId]["name"])
-                                        elif i == 43: #助攻者英雄代号（`assistingChampionAliases`）
-                                            assistingChampion_aliases.append(LoLChampions[championId]["alias"])
-                                        else: #助攻者英雄方块头像路径（`assistingChampionSquarePortraitPaths`）
-                                            assistingChampion_squarePortraitPaths.append(LoLChampions[championId]["squarePortraitPath"])
+                                if i == 45: #助攻者召唤师名（`assistingParticipantSummonerName`）
+                                    player: dict[str, Any] = LoLGame_summary_participants[participantId]
+                                    assistingParticipant_summonerNames.append(get_info_name(player))
+                                else:
+                                    if summary_valid:
+                                        championId: int = LoLGame_summary_participants[participantId]["championId"]
+                                        if i == 41: #助攻者英雄序号（`assistingChampionIds`）
+                                            assistingChampionIds.append(championId)
+                                        else: #助攻者英雄相关键（Assistant champion related keys）
+                                            if championId in LoLChampions:
+                                                if i == 42: #助攻者英雄名称（`assistingChampionNames`）
+                                                    assistingChampion_names.append(LoLChampions[championId]["name"])
+                                                elif i == 43: #助攻者英雄代号（`assistingChampionAliases`）
+                                                    assistingChampion_aliases.append(LoLChampions[championId]["alias"])
+                                                else: #助攻者英雄方块头像路径（`assistingChampionSquarePortraitPaths`）
+                                                    assistingChampion_squarePortraitPaths.append(LoLChampions[championId]["squarePortraitPath"])
+                                            else:
+                                                if i == 42:
+                                                    assistingChampion_names.append(championId)
+                                                elif i == 43:
+                                                    assistingChampion_aliases.append("")
+                                                else:
+                                                    assistingChampion_squarePortraitPaths.append("")
                                     else:
-                                        if i == 42:
-                                            assistingChampion_names.append(championId)
+                                        if i == 41:
+                                            assistingChampionIds.append("")
+                                        elif i == 42:
+                                            assistingChampion_names.append("")
                                         elif i == 43:
                                             assistingChampion_aliases.append("")
                                         else:
                                             assistingChampion_squarePortraitPaths.append("")
-                                else: #助攻者召唤师名（`assistingParticipantSummonerName`）
-                                    player: dict[str, Any] = LoLGame_summary_participants[participantId]
-                                    assistingParticipant_summonerNames.append(get_info_name(player))
                             else: #在末日人工智能中，末日BOSS维迦的参与者序号是0（In Doom Bots, Boss Veigar's participantId is 0）
                                 if i == 41:
                                     assistingChampionIds.append("")
@@ -6805,17 +6852,21 @@ def sort_LoLGame_timeline_sgp(LoLGame_timeline: dict[str, Any], LoLGame_summary:
                             to_append = ""
                         else:
                             if event[subkey] in LoLGame_summary_participants:
-                                championId: int = LoLGame_summary_participants[event[subkey]]["championId"]
-                                if champion_subkey_index == -1: #英雄序号（ChampionId）
-                                    to_append = championId
-                                elif champion_subkey_index <= 2: #英雄子键（Champion's subkeys）
-                                    if championId in LoLChampions:
-                                        to_append = LoLChampions[championId][champion_subkey_index_map[champion_subkey_index]]
-                                    else:
-                                        to_append = championId if champion_subkey_index == 0 else ""
-                                else: #召唤师名（SummonerName）
+                                if champion_subkey_index == 3: #召唤师名（SummonerName）
                                     player: dict[str, Any] = LoLGame_summary_participants[event[subkey]]
                                     to_append = get_info_name(player)
+                                else:
+                                    if summary_valid:
+                                        championId: int = LoLGame_summary_participants[event[subkey]]["championId"]
+                                        if champion_subkey_index == -1: #英雄序号（ChampionId）
+                                            to_append = championId
+                                        else: #英雄子键（Champion's subkeys）
+                                            if championId in LoLChampions:
+                                                to_append = LoLChampions[championId][champion_subkey_index_map[champion_subkey_index]]
+                                            else:
+                                                to_append = championId if champion_subkey_index == 0 else ""
+                                    else:
+                                        to_append = ""
                             else:
                                 to_append = ""
                     else:

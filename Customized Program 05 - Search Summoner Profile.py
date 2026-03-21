@@ -37,7 +37,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/03/19
+# 更新（Last update）：     2026/03/21
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1835,6 +1835,7 @@ async def search_profile(connection: Connection) -> None:
             LoLHistory_df_all.drop(lines_to_drop, inplace = True)
             LoLHistory_df_all = LoLHistory_df_all.reset_index(drop = True)
             LoLHistory_df_all = pandas.concat([LoLHistory_df_all.iloc[:1], LoLHistory_df_all.iloc[1:].sort_values(by = "gameCreationDate", ascending = False)], ignore_index = True) #这里弃用了根据对局序号排序（Here gameId isn't used to sort the values）
+            #警告：在按照对局创建日期排序后，通过SGP API获取的异常对局由于其时间戳是0，将被放到对局记录的最底部（Warning: After ordering by game creation date, those abnormal matches are put at the bottom because their game creation timestamps are 0）
             
             logPrint('请输入要查询的英雄联盟对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出英雄联盟对局查询请输入“0”：\nPlease enter the LoL matchId to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to quit searching for LoL matches.')
             LoLGameIDs: list[int] = LoLHistory_df_all["gameId"][1:].to_list() #代表对局记录中的所有对局序号（Represents all matchIds in the match history）
@@ -2138,7 +2139,7 @@ async def search_profile(connection: Connection) -> None:
                                 # with open(os.path.join(match_folder, pkl8name), "wb") as IntObj7:
                                 #     pickle.dump(LoLGame_timeline, IntObj7)
                             if use_sgp:
-                                LoLGame_timeline_df, LoLGame_event_df, LoLItems = sort_LoLGame_timeline_sgp(LoLGame_timeline, LoLGame_summary, LoLChampions, LoLItems, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, log = log)
+                                LoLGame_timeline_df, LoLGame_event_df, LoLItems = await sort_LoLGame_timeline_sgp(connection, LoLGame_timeline, LoLGame_summary, LoLChampions, LoLItems, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, useInfoDict = True, infos = infos, log = log)
                             else:
                                 LoLGame_timeline_df, LoLGame_event_df, LoLItems = sort_LoLGame_timeline(LoLGame_timeline, LoLGame_summary, LoLChampions, LoLItems, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, log = log)
                     
