@@ -18,7 +18,7 @@ from src.utils.runtimeDebug import subscope
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/03/15
+# 更新（Last update）：     2026/04/01
 #=============================================================================
 
 #定义异质性检验函数（Define heterogeneity verification function）
@@ -3261,7 +3261,7 @@ class PerkExtractor(LoLDataExtractor):
                             if mSpellScriptData == None:
                                 to_append = ""
                             else:
-                                self.__class__.calculatedVariables = {}
+                                self.__class__.calculatedVariables.clear()
                                 tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpellScriptData, isCHS = isCHS, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                         else:
@@ -3899,7 +3899,7 @@ class ChampionExtractor(LoLDataExtractor):
                                     if mSpell == None:
                                         to_append = ""
                                     else:
-                                        self.__class__.calculatedVariables = {}
+                                        self.__class__.calculatedVariables.clear()
                                         tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                         to_append = tooltip_burn
                                 else:
@@ -3998,7 +3998,7 @@ class ChampionExtractor(LoLDataExtractor):
                                             if mSpell == None:
                                                 tooltips_burn.append("")
                                             else:
-                                                self.__class__.calculatedVariables = {}
+                                                self.__class__.calculatedVariables.clear()
                                                 tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                                 tooltips_burn.append(tooltip_burn)
                                         to_append = tooltips_burn
@@ -4093,7 +4093,7 @@ class ChampionExtractor(LoLDataExtractor):
                             tooltip_key: str = champion_spell_data[subkey1][-1]
                             tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                             if subkey2.endswith("_burn"):
-                                self.__class__.calculatedVariables = {}
+                                self.__class__.calculatedVariables.clear()
                                 tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value["mSpell"], isCHS = isCHS, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                             else:
@@ -4450,7 +4450,7 @@ class ItemExtractor(LoLDataExtractor):
                             tooltip_key: str = item_data[subkey1][-1]
                             tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                             if subkey2.endswith("_burn"):
-                                self.__class__.calculatedVariables = {}
+                                self.__class__.calculatedVariables.clear()
                                 tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, isCHS = isCHS, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                             else:
@@ -4875,7 +4875,7 @@ class AugmentExtractor(LoLDataExtractor):
                             if mSpell == None:
                                 to_append = ""
                             else:
-                                self.__class__.calculatedVariables = {}
+                                self.__class__.calculatedVariables.clear()
                                 tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                         else:
@@ -4926,7 +4926,7 @@ class AugmentExtractor(LoLDataExtractor):
                             if mSpell == None:
                                 to_append = ""
                             else:
-                                self.__class__.calculatedVariables = {}
+                                self.__class__.calculatedVariables.clear()
                                 tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                         else:
@@ -4987,7 +4987,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 if mSpell == None:
                                     to_append = ""
                                 else:
-                                    self.__class__.calculatedVariables = {}
+                                    self.__class__.calculatedVariables.clear()
                                     tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                     to_append = tooltip_burn
                             else:
@@ -5042,7 +5042,7 @@ class AugmentExtractor(LoLDataExtractor):
                             if mSpell == None:
                                 to_append = ""
                             else:
-                                self.__class__.calculatedVariables = {}
+                                self.__class__.calculatedVariables.clear()
                                 tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                         else:
@@ -5081,7 +5081,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                                 if subkey2.endswith("_burn"):
                                     mSpell = rootSpell["mSpell"]
-                                    self.__class__.calculatedVariables = {}
+                                    self.__class__.calculatedVariables.clear()
                                     tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                     to_append = tooltip_burn
                                 else:
@@ -5389,7 +5389,7 @@ class AnvilExtractor(LoLDataExtractor):
                             if mSpell == None:
                                 to_append = ""
                             else:
-                                self.__class__.calculatedVariables = {}
+                                self.__class__.calculatedVariables.clear()
                                 tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                         else:
@@ -5445,7 +5445,7 @@ class AnvilExtractor(LoLDataExtractor):
                             if mSpell == None:
                                 to_append = ""
                             else:
-                                self.__class__.calculatedVariables = {}
+                                self.__class__.calculatedVariables.clear()
                                 tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                         else:
@@ -5808,7 +5808,7 @@ class TFTExtractor(LoLDataExtractor):
                             tooltip_key: str = TFTSet_data[subkey1][-1]
                             tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                             if subkey2.endswith("_burn"):
-                                self.__class__.calculatedVariables = {}
+                                self.__class__.calculatedVariables.clear()
                                 tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                                 to_append = tooltip_burn
                             else:
@@ -5988,7 +5988,7 @@ class TFTExtractor(LoLDataExtractor):
                                 tooltip_key: str = TFTSet_data[subkey1][-1]
                                 tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                                 if subkey2.endswith("_burn"):
-                                    self.__class__.calculatedVariables = {}
+                                    self.__class__.calculatedVariables.clear()
                                     tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                                     to_append = tooltip_burn
                                 else:
@@ -6083,7 +6083,7 @@ class TFTExtractor(LoLDataExtractor):
                         else:
                             mSpell = value
                         if subkey2.endswith("_burn"):
-                            self.__class__.calculatedVariables = {}
+                            self.__class__.calculatedVariables.clear()
                             tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                             to_append = tooltip_burn
                         else:
@@ -6235,7 +6235,7 @@ class TFTExtractor(LoLDataExtractor):
                         tooltip_key: str = TFTPortal_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
-                            self.__class__.calculatedVariables = {}
+                            self.__class__.calculatedVariables.clear()
                             tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                             to_append = tooltip_burn
                         else:
@@ -6340,7 +6340,7 @@ class TFTExtractor(LoLDataExtractor):
                         tooltip_key: str = TFTCharacterRole_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
-                            self.__class__.calculatedVariables = {}
+                            self.__class__.calculatedVariables.clear()
                             tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                             to_append = tooltip_burn
                         else:
@@ -6463,7 +6463,7 @@ class TFTExtractor(LoLDataExtractor):
                         tooltip_key: str = TFTItem_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
-                            self.__class__.calculatedVariables = {}
+                            self.__class__.calculatedVariables.clear()
                             tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                             to_append = tooltip_burn
                         else:
@@ -6530,7 +6530,7 @@ class TFTExtractor(LoLDataExtractor):
                         tooltip_key: str = TFTTrait_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
-                            self.__class__.calculatedVariables = {}
+                            self.__class__.calculatedVariables.clear()
                             tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                             to_append = tooltip_burn
                         else:
