@@ -8,7 +8,67 @@ if not wd in sys.path:
     sys.path.append(wd)
 from src.utils.logger import LogManager
 
-def requestUrl(method: str, url: str, retry: int = 5, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True, **kwargs: Any) -> tuple[requests.models.Response, int, requests.Session]:
+class SessionFactory:
+    def __init__(self, base_session: Optional[requests.Session] = None):
+        '''
+        一个重建网络请求会话的工厂类。<br>A factory class to re-create the web request session.
+        
+        :param base_session: 原会话。用于提取其配置信息。<br>The original session. Used to extract its configuration.
+        :type base_session: requests.Session
+        '''
+        self._config: Optional[dict[str, Any]] = None
+        if base_session:
+            self._config = self._extract_config(base_session)
+    
+    def _extract_config(self, session: requests.Session) -> dict[str, Any]:
+        '''
+        提取一个网络请求会话的配置。<br>Extract the configuration of a web request session.
+        
+        :param session: 网络请求会话。<br>Web request session.
+        :type session: requests.Session
+        :return: 配置信息。包含以下内容：<br>Configuration, which contains the following content:
+        
+            - headers: 表头
+            - cookies
+            - auth: 认证信息
+            - proxies: 代理
+            - verify: 是否启用SSL验证
+            - cert: 证书
+            - max_redirects: 最大重定向次数
+            - trust_env: 是否启用系统代理
+        :rtype: dict[str, Any]
+        '''
+        return {
+            "headers": dict(session.headers),
+            # "cookies": dict(session.cookies),
+            "auth": session.auth,
+            "proxies": dict(session.proxies) if session.proxies else {},
+            "verify": session.verify,
+            "cert": session.cert,
+            "max_redirects": session.max_redirects,
+            "trust_env": session.trust_env,
+        }
+    
+    def create(self) -> requests.Session:
+        '''
+        创建新的网络请求会话，同时保留原会话的配置。<br>Create a new web request session while preserving the original configuration.
+        
+        :return: 保持原有配置的网络请求会话。<br>A web request session that reserves the original configuration.
+        :rtype: requests.Session
+        '''
+        session: requests.Session = requests.Session()
+        if self._config:
+            session.headers.update(self._config["headers"])
+            # session.cookies.update(self._config["cookies"])
+            session.auth = self._config["auth"]
+            session.proxies.update(self._config["proxies"])
+            session.verify = self._config["verify"]
+            session.cert = self._config["cert"]
+            session.max_redirects = self._config["max_redirects"]
+            session.trust_env = self._config["trust_env"]
+        return session
+
+def requestUrl(method: str, url: str, retry: int = 5, session: Optional[requests.Session] = None, reserve_config: bool = False, log: Optional[LogManager] = None, verbose: bool = True, **kwargs: Any) -> tuple[requests.models.Response, int, requests.Session]:
     '''
     一个综合的网络请求函数，包含以下特性：<br>A universal web request function integrated with the following features:
     - 异常处理。<br>Error handling.
@@ -20,6 +80,10 @@ def requestUrl(method: str, url: str, retry: int = 5, session: Optional[requests
     :type url: str
     :param session: 网络请求会话。<br>Web request session.
     :type session: requests.Session
+    :param reserve_config: 是否在重建网络请求会话时保持原会话的配置。默认为假。<br>Whether to reserve the configuration of the original web request session when a new session will be created. False by default.
+    
+        警告：如果启用此项，当原会话的配置出现连接池损坏时，损坏的连接池会被新会话继承。<br>Warning: If this parameter is enabled, when the HTTP pool in the original session is corrupted, this pool will be inherited by the new session.
+    :type reserve_config: bool
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -32,6 +96,7 @@ def requestUrl(method: str, url: str, retry: int = 5, session: Optional[requests
     if session == None:
         session = requests.Session()
         # session.trust_env = False
+    factory: SessionFactory = SessionFactory(session) #原会话的配置信息将保存到该工厂对象中（Configuration of the original session will be saved into this factory）
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -42,7 +107,7 @@ def requestUrl(method: str, url: str, retry: int = 5, session: Optional[requests
         try:
             source: requests.Response = session.request(method, url, verify = verify, **kwargs)
         except Exception as e:
-            session = requests.Session()
+            session = factory.create() if reserve_config else requests.Session()
             if count > retry:
                 source = requests.Response() #这只是为了保持代码类型检查的一致性（This is meant to keep consistency for code type checking）
                 source.status_code = -1
@@ -77,7 +142,7 @@ def requestUrl(method: str, url: str, retry: int = 5, session: Optional[requests
                 try:
                     source.raise_for_status()
                 except Exception as e:
-                    session = requests.Session()
+                    session = factory.create() if reserve_config else requests.Session()
                     # session.trust_env = False
                     if count > retry:
                         break
