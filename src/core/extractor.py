@@ -6538,36 +6538,48 @@ class TFTExtractor(LoLDataExtractor):
                     TFTTrait_data[key].append(to_append)
                     TFTTrait_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "{d545dcdd}": #云顶之弈电脑玩家英雄（TFT PVE NPC）
-                for champion_index in range(len(value["champions"])):
-                    champion = value["champions"][champion_index]
+                if "champions" in value:
+                    for champion_index in range(len(value["champions"])):
+                        champion = value["champions"][champion_index]
+                        for i in range(len(TFTPVENPC_header_keys)):
+                            key = TFTPVENPC_header_keys[i]
+                            if i == 0: #主键（`key`）
+                                to_append: Any = key1
+                            elif i == 1: #代码（`name`）
+                                to_append = value["name"]
+                            elif i == 2: #英雄索引（`championIndex`）
+                                to_append = champion_index
+                            elif i <= 8:
+                                to_append = champion.get(key, "")
+                            elif i == 9: #坐标（`Coordinate`）
+                                to_append = "(%d, %d)" %(champion["Row"], champion["Col"])
+                            else: #本地化装备名称（Localized item names）
+                                if "items" in champion:
+                                    itemNames: list[str] = []
+                                    for item_key in champion["items"]:
+                                        if item_key in TFTItemMap: #这里要注意，人机对战敌方阵营的装备都是用装备代码而不是装备主键来显示的（Note here that the items of a bot opponent are denoted by the item's mName instead of the item key）
+                                            if "mDisplayNameTra" in TFTItemMap[item_key]:
+                                                tooltip_key: str = TFTItemMap[item_key]["mDisplayNameTra"]
+                                                strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 10 else strtable_tft_default
+                                                itemNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
+                                            else:
+                                                itemNames.append(TFTItemMap[item_key]["mName"])
+                                        else:
+                                            itemNames.append(item_key)
+                                    to_append = itemNames
+                                else:
+                                    to_append = ""
+                            TFTPVENPC_data[key].append(to_append)
+                            TFTPVENPC_data_json[key].append(pyobj2json(to_append))
+                else:
                     for i in range(len(TFTPVENPC_header_keys)):
                         key = TFTPVENPC_header_keys[i]
                         if i == 0: #主键（`key`）
                             to_append: Any = key1
                         elif i == 1: #代码（`name`）
                             to_append = value["name"]
-                        elif i == 2: #英雄索引（`championIndex`）
-                            to_append = champion_index
-                        elif i <= 8:
-                            to_append = champion.get(key, "")
-                        elif i == 9: #坐标（`Coordinate`）
-                            to_append = "(%d, %d)" %(champion["Row"], champion["Col"])
-                        else: #本地化装备名称（Localized item names）
-                            if "items" in value:
-                                itemNames: list[str] = []
-                                for item_key in value["items"]:
-                                    if item_key in TFTItemMap: #这里要注意，人机对战敌方阵营的装备都是用装备代码而不是装备主键来显示的（Note here that the items of a bot opponent are denoted by the item's mName instead of the item key）
-                                        if "mDisplayNameTra" in TFTItemMap[item_key]:
-                                            tooltip_key: str = TFTItemMap[item_key]["mDisplayNameTra"]
-                                            strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 10 else strtable_tft_default
-                                            itemNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
-                                        else:
-                                            itemNames.append(TFTItemMap[item_key]["mName"])
-                                    else:
-                                        itemNames.append(item_key)
-                                to_append = itemNames
-                            else:
-                                to_append = ""
+                        else:
+                            to_append = ""
                         TFTPVENPC_data[key].append(to_append)
                         TFTPVENPC_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "ScriptDataObject": #云顶之弈脚本（TFT Script）
