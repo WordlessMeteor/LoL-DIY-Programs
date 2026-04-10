@@ -29,7 +29,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/20
+# 更新（Last update）：     2026/04/01
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1476,7 +1476,7 @@ async def report_player_endOfGame(connection: Connection) -> None:
                 if isTFT:
                     humanPlayers: list[dict[str, Any]] = tft_eog_stats["players"] #虽然在国服会出现电脑玩家，但是这些电脑玩家被赋予了独立的玩家名称和名称编号，因此这里把他们当成人类玩家来对待（Although bot players may appear in Tencent region's TFT games, these bot players are always assigned independent gameNames and tagLines, so they're regarded as normal human players here）
                 else:
-                    humanPlayers = [player for player in team for team in eog_stats_block["teams"] if not player["botPlayer"]]
+                    humanPlayers = [player for team in eog_stats_block["teams"] for player in team if not player["botPlayer"]]
                 if len(humanPlayers) == 1: #只有自己的情况下（Only the user itself）
                     logPrint("本场对局无其他人类玩家。\nNo more human players are found in this game.")
                 else:
