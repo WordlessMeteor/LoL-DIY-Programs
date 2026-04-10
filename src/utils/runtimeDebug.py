@@ -8,7 +8,7 @@ if not wd in sys.path:
 from src.utils.logger import LogManager
 from src.utils.webRequest import SGPSession
 
-def subscope(scope: Optional[dict[Any, Any]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> int:
+def subscope(scope: Optional[dict[Any, Any]] = None, clone: bool = True, log: Optional[LogManager] = None, verbose: bool = True) -> int:
     '''
     在程序运行期间开启一个私密的作用域，允许用户自行调试和计算结果。运行效果类似于带有部分运行时变量的一个新的Python终端。<br>Open a private scope to allow users debug and make calculations during the program execution. The experience is like a new Python terminal with some runtime variables inherited.
     
@@ -18,6 +18,10 @@ def subscope(scope: Optional[dict[Any, Any]] = None, log: Optional[LogManager] =
     
         在用于执行计算时，作用域会经历一次深度拷贝，以避免影响到原运行环境中的变量。<br>To perform calculations, the scope is deep copied, in case the original variables in runtime would be influenced.
     :type scope: dict[Any, Any]
+    :param clone: 是否创建作用域的深度拷贝。默认为真。<br>Whether to create a deep copy of the scope. True by default.
+    
+        深度拷贝通过`copy.deepcopy`函数实现。在有变量无法通过此函数实现深度拷贝时，则应将此参数置为假。<br>Deep copy is implemented by `copy.deepcopy` function. When there are variables that cannot be deep copied by this function, this parameter should be set as False.
+    :type clone: bool
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -31,15 +35,16 @@ def subscope(scope: Optional[dict[Any, Any]] = None, log: Optional[LogManager] =
         log = LogManager()
     logInput = log.logInput
     logPrint = log.logPrint
-    s: dict[Any, Any] = copy.deepcopy(scope)
+    s: dict[Any, Any] = copy.deepcopy(scope) if clone else scope
     while True:
         expr: str = logInput()
         # tokens: list[str] = expr.split() #去除空格的词法分析（Parse by spliting by space）
         if expr == "-1":
             break
         elif expr == "0":
-            s = copy.deepcopy(scope)
-            logPrint("变量和作用域已复位。\nVariables and the scope have been reset.", verbose = verbose)
+            if clone:
+                s = copy.deepcopy(scope)
+                logPrint("变量和作用域已复位。\nVariables and the scope have been reset.", verbose = verbose)
         else:
             try:
                 exec(expr, s)
