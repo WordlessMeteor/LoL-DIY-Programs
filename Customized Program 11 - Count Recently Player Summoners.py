@@ -1281,10 +1281,10 @@ def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: panda
             sumPvPRecency += delta * recent_player["isPvP"][i]
             sumPvERecency += delta * recent_player["isPvE"][i]
             sumCustomRecency += delta * recent_player["isCustom"][i]
-        recent_player["totalRecency"] = sumRecency
-        recent_player["totalPvPRecency"] = sumPvPRecency
-        recent_player["totalPvERecency"] = sumPvERecency
-        recent_player["totalCustomRecency"] = sumCustomRecency
+        recent_player["totalRecency"] = sumRecency * 1000 #后来添加的修饰因子（Later added modifier）
+        recent_player["totalPvPRecency"] = sumPvPRecency * 1000
+        recent_player["totalPvERecency"] = sumPvERecency * 1000
+        recent_player["totalCustomRecency"] = sumCustomRecency * 1000
     #pyperclip.copy(json.dumps(recent_players_metadata, ensure_ascii = False))
     json01name: str = "Recently Played Summoners - %s.json" %displayName
     json01path: str = os.path.join(export_folder, json01name).replace("\\", "/")
@@ -1381,25 +1381,25 @@ def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: panda
         topN = min(topN, len(set(recent_LoLPlayer_df["puuid"][1:])) + len(set(recent_TFTPlayer_df["puuid"][1:])))
         plt.rcParams["font.sans-serif"] = ["Microsoft YaHei"] #设置默认字体为微软雅黑（Set the default font Microsoft YaHei）
         valuefont: dict[str, str | int] = {"family": "Times New Roman", "weight": "normal", "size": 9} #指定柱上显示的数据的字体格式（Determines the font of the values above the bars）
-        chart_data: list[tuple[list[tuple[str, Any]], str, str, str]] = [
-            (totalTime_sorted, "总游戏时间\nGame Time: All Modes", "游戏时长（秒）\ntotalGameTime (s)", "Time_total"),
-            (PvPTime_sorted, "玩家对战时间\nGame Time: PvP", "游戏时长（秒）\ntotalGameTime (s)", "Time_PvP"),
-            (PvETime_sorted, "人机对战时间\nGame Time: PvE", "游戏时长（秒）\ntotalGameTime (s)", "Time_PvE"),
-            (CustomTime_sorted, "自定义对战时间\nGame Time: Custom", "游戏时长（秒）\ntotalGameTime (s)", "Time_Custom"),
-            (totalCount_sorted, "总游戏对局数\nGame Count: All Modes", "对局数\ntotalGameCount", "Count_total"),
-            (PvPCount_sorted, "玩家对战局数\nGame Count: PvP", "对局数\ntotalGameCount", "Count_PvP"),
-            (PvECount_sorted, "人机对战局数\nGame Count: PvE", "对局数\ntotalGameCount", "Count_PvE"),
-            (CustomCount_sorted, "自定义对战局数\nGame Count: Custom", "对局数\ntotalGameCount", "Count_Custom"),
-            (totalRecency_sorted, "总游玩热度\nRecency: All Modes", "陪伴得分\ncompanion score", "Recency_total"),
-            (PvPRecency_sorted, "玩家对战热度\nRecency: PvP", "陪伴得分\ncompanion score", "Recency_PvP"),
-            (PvERecency_sorted, "人机对战热度\nRecency: PvE", "陪伴得分\ncompanion score", "Recency_PvE"),
-            (CustomRecency_sorted, "自定义对战热度\nRecency: Custom", "陪伴得分\ncompanion score", "Recency_Custom")
+        chart_data: list[tuple[list[tuple[str, Any]], str, str, str, int]] = [
+            (totalTime_sorted, "总游戏时间\nGame Time: All Modes", "游戏时长（秒）\ntotalGameTime (s)", "Time_total", 0),
+            (PvPTime_sorted, "玩家对战时间\nGame Time: PvP", "游戏时长（秒）\ntotalGameTime (s)", "Time_PvP", 0),
+            (PvETime_sorted, "人机对战时间\nGame Time: PvE", "游戏时长（秒）\ntotalGameTime (s)", "Time_PvE", 0),
+            (CustomTime_sorted, "自定义对战时间\nGame Time: Custom", "游戏时长（秒）\ntotalGameTime (s)", "Time_Custom", 0),
+            (totalCount_sorted, "总游戏对局数\nGame Count: All Modes", "对局数\ntotalGameCount", "Count_total", 0),
+            (PvPCount_sorted, "玩家对战局数\nGame Count: PvP", "对局数\ntotalGameCount", "Count_PvP", 0),
+            (PvECount_sorted, "人机对战局数\nGame Count: PvE", "对局数\ntotalGameCount", "Count_PvE", 0),
+            (CustomCount_sorted, "自定义对战局数\nGame Count: Custom", "对局数\ntotalGameCount", "Count_Custom", 0),
+            (totalRecency_sorted, "总游玩热度\nRecency: All Modes", "陪伴得分\ncompanion score", "Recency_total", 0),
+            (PvPRecency_sorted, "玩家对战热度\nRecency: PvP", "陪伴得分\ncompanion score", "Recency_PvP", 0),
+            (PvERecency_sorted, "人机对战热度\nRecency: PvE", "陪伴得分\ncompanion score", "Recency_PvE", 0),
+            (CustomRecency_sorted, "自定义对战热度\nRecency: Custom", "陪伴得分\ncompanion score", "Recency_Custom", 0)
         ]
         logPrint("您想要将所有图表合并为一张图表，还是分别生成？（输入任意非空字符串以分别生成，否则合并为一张图表。）\nDo you want to merge all charts into one, or generate them separately? (Input any non-empty string to generate them separately, or null to merge them into one chart.)")
         separate_str: str = logInput()
         separate: bool = bool(separate_str)
         if separate:
-            for data, title, ylabel, file_suffix in chart_data:
+            for data, title, ylabel, file_suffix, ndigits in chart_data:
                 plt.figure(figsize = (max(topN / 2, 6), 12))
                 players: list[str] = [data[j][0] for j in range(topN)]
                 values: list[int | float] = [data[j][1] for j in range(topN)]
@@ -1408,14 +1408,14 @@ def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: panda
                 plt.ylabel(ylabel)
                 plt.yticks(fontproperties = "Calibri", size = 12)
                 for player, playtime in data[:topN]:
-                    plt.text(player, round(playtime), round(playtime), ha = "center", va = "bottom", fontdict = valuefont)
+                    plt.text(player, round(playtime, ndigits), round(playtime, ndigits), ha = "center", va = "bottom", fontdict = valuefont)
                 plt.title(title)
                 plt.savefig(os.path.join(export_folder, "Recently Played Summoners - %s - %s.png" % (displayName, file_suffix)), bbox_inches = "tight")
                 plt.clf()
         else:
             fig, axes = plt.subplots(nrows = 3, ncols = 4, figsize = (max(topN * 2, 10), 24))
             axes = axes.flatten()
-            for i, (data, title, ylabel, file_suffix) in enumerate(chart_data):
+            for i, (data, title, ylabel, file_suffix, ndigits) in enumerate(chart_data):
                 ax = axes[i]
                 players = [data[j][0] for j in range(topN)]
                 values = [data[j][1] for j in range(topN)]
@@ -1428,7 +1428,7 @@ def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: panda
                 for label in ax.get_yticklabels():
                     label.set_fontfamily("Calibri")
                 for player, playtime in data[:topN]:
-                    ax.text(player, round(playtime), round(playtime), ha = "center", va = "bottom", fontdict = valuefont)
+                    ax.text(player, round(playtime, ndigits), round(playtime, ndigits), ha = "center", va = "bottom", fontdict = valuefont)
             plt.tight_layout(pad = 3.0)
             plt.savefig(os.path.join(export_folder, "Recently Played Summoners - %s.png" %displayName))
         plt.close("all")
