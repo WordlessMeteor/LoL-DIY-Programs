@@ -632,8 +632,8 @@ while True:
                         local_date: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(local_timestamp))
                         table_content["file"].append(name)
                         table_content["size"].append("")
-                        table_content["web_date"].append(0)
-                        table_content["web_timestamp"].append("")
+                        table_content["web_date"].append("")
+                        table_content["web_timestamp"].append(0)
                         table_content["local_date"].append(local_date)
                         table_content["local_timestamp"].append(local_timestamp)
                         files_to_delete.append(os.path.join(localdir, name).replace("\\", "/")) #与全局扫描不同，这里是直接从空列表开始逐个追加本地路径（What's different from Global Scan is local path is successively appended to the list of files to delete）
@@ -689,20 +689,56 @@ while True:
                 if not name in os.listdir(localdir):
                     update = added = True
                 else:
-                    with open(os.path.join(localdir, name), "r", encoding = "utf-8") as fp:
+                    with open(file_path, "r", encoding = "utf-8") as fp:
                         dst: str = fp.read()
                     if src != dst:
                         update = True
                 if mode == "1" and update or mode == "2": #当选择全局扫描时，只更新有变化的文档；当选择根据修改时间更新时，如果网页修改时间超前，那么无论文件内容是否发生变化，都重新保存一次，便于后续按照修改时间更新（When the user selects Global Scan, the program updates the changed files. When the user selects Updating according to modification time, if the web modification time of a file succeeds to the local midification time of that, then save the web content to local, no matter whether the web file is same as the local file in terms of content）
-                    with open(os.path.join(localdir, name), "w", encoding = "utf-8") as fp:
+                    with open(file_path, "w", encoding = "utf-8") as fp:
                         fp.write(src)
                 if update:
                     if added:
-                        logPrint("已添加文件（Added file）：%s" %(os.path.join(localdir, name)), print_time = True)
+                        logPrint("已添加文件（Added file）： %s" %(file_path), print_time = True)
                         added_files.append(urljoin(url, name))
                     else:
-                        logPrint("已更新文件（Updated file）：%s" %(os.path.join(localdir, name)), print_time = True)
+                        logPrint("已更新文件（Updated file）： %s" %(file_path), print_time = True)
                         updated_files.append(urljoin(url, name))
+            #下面处理大文件。注意，一定是先把本地文件更新好，再去检查大文件（Large files are handled here. Note that big file checking must be performed after the local files are updated）
+            #这样会导致在按照修改时间进行更新时，即使文件没有更新，程序也会读取一次该文件。这是没有办法的事情，因为要读取该文件来确定其有哪些对象类型，进而确定其子文件是否应当都保留（In this case, when the program updates data resources according to modification time, even if the file isn't updated, this program still reads this file. There's no way to avoid this, for this file must be read to determine the object types, then further judge whether each sub-file should be reserved or deleted）
+            for name in os.listdir(localdir):
+                file_path: str = os.path.join(localdir, name).replace("\\", "/")
+                file_size: int = os.path.getsize(file_path)
+                if not file_path in files_to_delete and os.path.splitext(name)[1] == ".json" and file_size > 80 * 1024 * 1024: #当本地的json文件大小大于80 MB，且这个json文件没有被标记为待删除时，对文件按照对象类型进行拆分，以便Git比对文件变化（When the local file is larger than 80 MiB, and this file isn't marked as to be deleted, split the file into different object types, so that Git can compare the file change）
+                    with open(file_path, "r", encoding = "utf-8") as fp:
+                        src_data = json.load(fp)
+                    if "__linked" in src_data and all("__type" in value for (key, value) in src_data.items() if key != "__linked"): #只拆分二进制描述文件（Only split binary description files）
+                        objectType_data: dict[str, dict[str, dict[str, Any]]] = {}
+                        for (key, value) in src_data.items():
+                            if key != "__linked":
+                                objectType_data[value["__type"]] = value
+                        #下面分对象类型逐个比对本地文件（Next, compare local files based on object types one by one）
+                        for (key, value) in objectType_data.items():
+                            update_split: bool = False
+                            added_split: bool = False
+                            split_file_name: str = os.path.splitext(name)[0] + "." + key + os.path.splitext(name)[1]
+                            split_file_path: str = os.path.join(localdir, split_file_name).replace("\\", "/")
+                            if split_file_path in files_to_delete: #如果原始文件存在且可以拆分出来子文件，那么将子文件从待删除文件列表中移除（If the original file exists and can be generated from the original file, then remove this file from the files to be deleted）
+                                files_to_delete.remove(split_file_path)
+                            src_split: str = json.dumps(value, indent = 4, ensure_ascii = False)
+                            if not split_file_name in os.listdir(localdir):
+                                update_split = added_split = True
+                            else:
+                                with open(split_file_path, "r", encoding = "utf-8") as fp:
+                                    dst_split: str = fp.read()
+                                if src_split != dst_split:
+                                    update_split = True
+                            if update_split:
+                                with open(split_file_path, "w", encoding = "utf-8") as fp:
+                                    fp.write(src_split)
+                                if added_split:
+                                    logPrint("已添加文件（Added file）： %s" %(split_file_path), print_time = True)
+                                else:
+                                    logPrint("已更新文件（Updated file）： %s" %(split_file_path), print_time = True)
         if updated_files:
             logPrint("已更新以下%d个文件：\nUpdated the following %d file(s):" %(len(updated_files), len(updated_files)), write_time = False)
             for file in updated_files:
@@ -763,7 +799,7 @@ while True:
                     mode = "2"
             elif step == 2:
                 if ddragon_hint:
-                    hint: str = '请按以下步骤操作：\nPlease follow these steps:\n1. 访问网址https://developer.riotgames.com/docs/lol#data-dragon\n   Visit the website: https://developer.riotgames.com/docs/lol#data-dragon\n2. 在Latest中找到正式服最新版本数据资源压缩包下载链接。例如：https://ddragon.leagueoflegends.com/cdn/dragontail-16.6.1.tgz\n   Find the link to download the compressed tarball of the latest data resource for live servers. For example: https://ddragon.leagueoflegends.com/cdn/dragontail-16.6.1.tgz\n3. 下载。这需要花费一些时间。\n   Download the file. It may take some time.\n4. 将下载好的tgz文件直接“解压至此”。\n   "Extract here" for the tgz file.\n5. 将解压出来的压缩包再次解压到选定文件夹下与压缩包同名的文件夹。示例：将“dragontail-16.6.1.tar”解压到“D:/360AI浏览器下载/dragontail-16.6.1”文件夹下。\nExtract to "Archive-Name" folder under the selected folder for the extracted tar file. For example, extract "dragontail-16.6.1.tar" into the folder "D:/Downloads/dragontail-16.6.1".\n接下来，请给出数据资源的位置。（按照上例应为“D:/360AI浏览器下载/dragontail-16.6.1/16.6.1/data”。）\nNext, please provide the directory that stores the data resources. (By the above example, the directory should be "D:/Downloads/dragontail-16.6.1/16.6.1/data".)'
+                    hint: str = '请按以下步骤操作：\nPlease follow these steps:\n1. 访问网址https://developer.riotgames.com/docs/lol#data-dragon\n   Visit the website: https://developer.riotgames.com/docs/lol#data-dragon\n2. 在Latest中找到正式服最新版本数据资源压缩包下载链接。例如：https://ddragon.leagueoflegends.com/cdn/dragontail-16.7.1.tgz\n   Find the link to download the compressed tarball of the latest data resource for live servers. For example: https://ddragon.leagueoflegends.com/cdn/dragontail-16.7.1.tgz\n3. 下载。这需要花费一些时间。\n   Download the file. It may take some time.\n4. 将下载好的tgz文件直接“解压至此”。\n   "Extract here" for the tgz file.\n5. 将解压出来的压缩包再次解压到选定文件夹下与压缩包同名的文件夹。示例：将“dragontail-16.7.1.tar”解压到“D:/360AI浏览器下载/dragontail-16.7.1”文件夹下。\nExtract to "Archive-Name" folder under the selected folder for the extracted tar file. For example, extract "dragontail-16.7.1.tar" into the folder "D:/Downloads/dragontail-16.7.1".\n接下来，请给出数据资源的位置。（按照上例应为“D:/360AI浏览器下载/dragontail-16.7.1/16.7.1/data”。）\nNext, please provide the directory that stores the data resources. (By the above example, the directory should be "D:/Downloads/dragontail-16.7.1/16.7.1/data".)'
                     logPrint(hint, write_time = False)
                     ddragon_hint = False
                 else:
