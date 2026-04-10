@@ -12,7 +12,7 @@ from src.core.dataframes.matchHistory import get_game_summary_sgp, get_game_time
 #=============================================================================
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
-# 更新（Last update）：     2026/03/21
+# 更新（Last update）：     2026/03/28
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -62,8 +62,8 @@ def sort_match_metadata(data: dict[str, Any], product: str, info_type: Literal["
         - summary: 对局概要（Match summary）
         - details: 对局时间轴（Match timeline）
     :type info_type: Literal["summary", "details"]
-    :return: 元数据字符串。<br>Metadata string.
-    :rtype: str
+    :return: 元数据。<br>Metadata.
+    :rtype: dict[str, Any]
     '''
     result: dict[str, Any] = {"gameId": int(data["metadata"]["match_id"].split("_")[1])}
     if product == "LoL":
@@ -208,7 +208,7 @@ async def download_replay(connection: Connection, matchId: int) -> None:
             timeline_got = True
             product = game_timeline["metadata"]["product"]
         else:
-            product = ""
+            product = "LoL"
     if product == "":
         print("无法确定对局产品名。请手动指定。\nCan't determine the product of the match. Please specify it manually.\n0\t返回上一层（Return to the last step）\n☆1\t英雄联盟（LoL）\n!2\t云顶之弈（TFT）")
         while True:
@@ -230,13 +230,13 @@ async def download_replay(connection: Connection, matchId: int) -> None:
         product = "LoL"
     elif product.lower() == "tft":
         product = "TFT"
-    response: requests.Response = await sgpSession.request(connection, "GET", f"/match-history-query/v3/product/{product}/matchId/{match_id}/infoType/replay")
+    source: requests.Response = await sgpSession.request(connection, "GET", f"/match-history-query/v3/product/{product}/matchId/{match_id}/infoType/replay")
     try:
-        response_body: Any = response.json()
+        response: Any = source.json()
     except requests.exceptions.JSONDecodeError: #sgpSession.request方法中已经输出过相应的信息了，这里不需要再输出一次（Corresponding information has been output in `sgpSession.request` method, so here it doesn't need to be output once more）
-        content: bytes = response.content
+        content: bytes = source.content
         try:
-            text = content.decode()
+            text: str = content.decode()
         except UnicodeDecodeError:
             with open(rofl_path, "wb") as fp:
                 fp.write(content)
@@ -259,7 +259,7 @@ async def download_replay(connection: Connection, matchId: int) -> None:
     except AttributeError: #AttributeError: 'NoneType' object has no attribute 'json'
         print("请求失败。\nRequest failed.")
     else:
-        print(response_body)
+        print(response)
 
 async def set_replay_folder(connection: Connection) -> str:
     '''
