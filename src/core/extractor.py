@@ -18,7 +18,7 @@ from src.utils.runtimeDebug import subscope
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/04/01
+# 更新（Last update）：     2026/04/08
 #=============================================================================
 
 #定义异质性检验函数（Define heterogeneity verification function）
@@ -1101,9 +1101,9 @@ class LoLDataExtractor:
             formulaStr = partCalc + " × stack of " + formulaPart["mBuffName"]
         elif formulaPart_type == "ByCharLevelBreakpointsCalculationPart": #阶梯式等级提供增益（Bonus value provided by levels in a step function manner）
             mLevel1Value: int | float = formulaPart.get("mLevel1Value", 0)
-            levelValues: list[int | float] = [] #从封魔剑魂 永恩的【凛神斩】的对小兵最小伤害中推断出，mBonusPerLevelAtAndAfter键适用于1级（From YoneW's MinimumDamageMinions, we can infer that `mBonusPerLevelAtAndAfter` applies at Level 1）
             mBonusPerLevelAtAndAfter = formulaPart.get("mInitialBonusPerLevel", 0) #每级增加的数值（The value to increment reaching each level）
             if "mBreakpoints" in formulaPart:
+                levelValues: list[int | float] = [] #从封魔剑魂 永恩的【凛神斩】的对小兵最小伤害中推断出，mBonusPerLevelAtAndAfter键适用于1级（From YoneW's MinimumDamageMinions, we can infer that `mBonusPerLevelAtAndAfter` applies at Level 1）
                 formulaPart["mBreakpoints"] = sorted(formulaPart["mBreakpoints"], key = lambda x: x.get("mLevel", 1)) #这一步其实无关紧要，因为断点列表总是按照等级正序排列的（This step is actually unnecessary, for the breakpoints are always sorted in the ascending order of mLevel）
                 mLevel_i_Value: int | float = mLevel1Value
                 i: int = 1 #等级（Level）
@@ -1125,9 +1125,7 @@ class LoLDataExtractor:
                 formulaStr = "/".join(list(map(str, levelValues))) + " (based on Level)"
             else:
                 mLevel18Value = mLevel1Value + 17 * mBonusPerLevelAtAndAfter
-                levelValues.append(mLevel18Value)
-                levelValues = list(map(lambda x: cls.aRound(x, 5), levelValues))
-                formulaStr = " - ".join(list(map(str, levelValues))) + " (based on Level)"
+                formulaStr = "%s - %s (based on Level)" %(cls.aRound(mLevel1Value, 5), cls.aRound(mLevel18Value, 5))
         elif formulaPart_type == "ByCharLevelFormulaCalculationPart": #公式等级提供增益（Bonus value provided by levels following a formula）
             formulaStr = cls.burnValueList(formulaPart["values"] if "values" in formulaPart else formulaPart["mValues"]) #在25.06版本以前，值列表的键名是mValues（Before Patch 25.06, the value list's key name is "mValues"）
         elif formulaPart_type == "ByCharLevelInterpolationCalculationPart": #线性等级提供增益（Bonus value provided by levels in a linear manner）
@@ -7584,25 +7582,25 @@ if __name__ == "__main__":
         '''
         #数据资源（Data resource）
         ##字符串常量池（Stringtable）
-        # lolstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/lol.stringtable.json"
-        # with open(lolstringtable_zh_path, "r", encoding = "utf-8") as fp:
-        #     lolstringtable_zh = json.load(fp)
-        # lolstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/lol.stringtable.json"
-        # with open(lolstringtable_en_path, "r", encoding = "utf-8") as fp:
-        #     lolstringtable_en = json.load(fp)
-        # tftstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/tft.stringtable.json"
-        # with open(tftstringtable_zh_path, "r", encoding = "utf-8") as fp:
-        #     tftstringtable_zh = json.load(fp)
-        # tftstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/tft.stringtable.json"
-        # with open(tftstringtable_en_path, "r", encoding = "utf-8") as fp:
-        #     tftstringtable_en = json.load(fp)
+        lolstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/lol.stringtable.json"
+        with open(lolstringtable_zh_path, "r", encoding = "utf-8") as fp:
+            lolstringtable_zh = json.load(fp)
+        lolstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/lol.stringtable.json"
+        with open(lolstringtable_en_path, "r", encoding = "utf-8") as fp:
+            lolstringtable_en = json.load(fp)
+        tftstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/tft.stringtable.json"
+        with open(tftstringtable_zh_path, "r", encoding = "utf-8") as fp:
+            tftstringtable_zh = json.load(fp)
+        tftstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/tft.stringtable.json"
+        with open(tftstringtable_en_path, "r", encoding = "utf-8") as fp:
+            tftstringtable_en = json.load(fp)
         ##地图（Map）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
         #     map22_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
         #     map30_bin = json.load(fp)
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
-            map33_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
+        #     map33_bin = json.load(fp)
         ##装备（Item）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
         #     items_bin = json.load(fp)
@@ -7613,8 +7611,8 @@ if __name__ == "__main__":
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/perks.cdtb.bin.json", "r", encoding = "utf-8") as fp:
         #     perks_bin = json.load(fp)
         ##强化符文（Augment）
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
-        #     kiwi_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
+            kiwi_bin = json.load(fp)
         ##整合后的数据（Merged data）
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/自定义脚本/英雄联盟自定义房间创建/champions_bin.json", "r", encoding = "utf-8") as fp:
         #     champions_bin = json.load(fp)
@@ -7639,8 +7637,8 @@ if __name__ == "__main__":
         #总结数据结构（Summarize the data structure）
         # with open("C:/Users/19250/Desktop/英雄联盟自定义房间创建/temporary data.json", "r", encoding = "utf-8") as fp:
         #     LoLGame_info: dict[Literal["metadata", "json"], dict[str, Any]] = json.load(fp)
-        keyList: list[str] = getBinaryKeys(map33_bin, isBin = True, objectTypes = "AugmentData")[1]
-        print(json.dumps(keyList, indent = 4, ensure_ascii = False))
+        # keyList: list[str] = getBinaryKeys(map33_bin, isBin = True, objectTypes = "AugmentData")[1]
+        # print(json.dumps(keyList, indent = 4, ensure_ascii = False))
         # import pyperclip
         # s: str = ""
         # for key in keyList:
@@ -7648,19 +7646,19 @@ if __name__ == "__main__":
         # pyperclip.copy(s)
         
         #输出键的hash值（Output hash value of a key）
-        # print(LoLDataExtractor.compute_rsthash("Kiwi_Augment_Set_Ambulance_TierTooltip_V2", 5))
+        # print(LoLDataExtractor.compute_rsthash("Spell_TFT17_PykeSpell_Name", 5))
         
         #键对应（Key map）
         # mDisplayName_key = "Item_2523_Name"
         # print(LoLDataExtractor.get_strtable_value(lolstringtable_zh, mDisplayName_key, default = "获取失败。"))
         
         #说明文本转换（Tooltip transformation）
-        # tooltip_raw = "Kiwi_Augment_Set_Ambulance_TierTooltip_V2"
-        # print("原始说明文本：\n" + tooltip_raw)
-        # binData = kiwi_bin["{82eee788}"]["mSpell"]
-        # print("----")
-        # print("转换文本：")
-        # print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
+        tooltip_raw = "When you Attack, fire @AdditionalBolts@ additional <keywordMajor>Firecrackers</keywordMajor> that each deal <physicalDamage>@DamagePerBolt@ physical damage</physicalDamage>. Each cardinal direction has a @Cooldown@ second Cooldown.<br><br>Each bolt can Critically Strike and applies On-Hits at @OnHitRatio*100@% effectiveness.<br><br>Damage Dealt: @f2@"
+        print("原始说明文本：\n" + tooltip_raw)
+        binData = kiwi_bin["{66e41949}"]["mSpell"]
+        print("----")
+        print("转换文本：")
+        print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
         # print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
         # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
         # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
