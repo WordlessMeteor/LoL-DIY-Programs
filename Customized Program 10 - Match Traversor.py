@@ -1,6 +1,6 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-import argparse, json, keyboard, os, random, time
+import argparse, json, keyboard, os, random, requests, time
 from typing import Any, Callable, Iterable, Optional
 from typing_extensions import Literal
 from src.utils.logger import LogManager
@@ -22,7 +22,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/07
+# 更新（Last update）：     2026/04/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -102,7 +102,7 @@ def specify_matchId_limit(start_matchId: Optional[int] = None, end_matchId: Opti
     else:
         return (start_matchId, end_matchId)
 
-async def index_traverse_match(connection: Connection, start_matchId: Optional[int] = None, end_matchId: Optional[int] = None, func_str: str = "", product: Literal["LoL", "TFT", ""] = "") -> int:
+async def index_traverse_match(connection: Connection, start_matchId: Optional[int] = None, end_matchId: Optional[int] = None, func_str: str = "", product: Literal["LoL", "TFT", ""] = "", save_json: bool = True, save_rofl: bool = False) -> int:
     '''
     在给定对局上下限的情况下，遍历范围内的对局，并保存所有符合条件的对局概要和时间轴。<br>Given the starting and ending matchIds, traverse save summary and timeline of matches that meet the condition.
     
@@ -119,6 +119,12 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
         - LoL: 英雄联盟（League of Legends）
         - TFT: 云顶之弈（Teamfight Tactics）
     :type product: str
+    :param save_json: 是否保存对局信息json文件。包括对局概要和时间轴。默认为真。<br>Whether to save match information json files, including match summary and timeline. True by default.
+    :type save_json: bool
+    :param save_rofl: 在成功获取对局信息后，是否尝试下载回放文件。默认为假。<br>Whether to try downloading the replay after match information is fetched successfully. False by default.
+    
+        警告：由于本函数**只通过对局概要**来判断是否获取到对局，因此如果选择下载回放，则那些对局概要异常但时间轴正常的对局会被遗漏。<br>Warning: Because this function judges whether a match exists **only by summary**, when the user chooses to download replays, those which have erroneous summary but normal timeline will be ommitted.
+    :type save_json: bool
     :return: 状态码。<br>Status code.
     :rtype: int
     '''
@@ -159,6 +165,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     session: SGPSession = SGPSession()
     await session.init(connection)
     session.session.trust_env = False #英雄联盟请求无需走代理（League of Legends requests don't need a proxy）
+    session.verbose = False #去除下载回放时处理二进制数据产生的异常提示（Eliminate error information thrown by handling the downloaded replay binary data）
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     region: str = region_locale["region"]
     platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
@@ -169,6 +176,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     if not os.path.exists(log_path):
         with open(log_path, "w", encoding = "utf-8") as fp: #因为要追加写，所以要先创建这个文件（To append content, this file must be created previously）
             pass
+    replay_folder: str = await (await connection.request("GET", "/lol-replays/v1/rofls/path")).json() #这个文件夹在启动客户端时一定已经被创建好了（This folder must have been created when League Client is launched）
     log: LogManager = LogManager(path = log_path, mode = "a+", encoding = "utf-8")
     logPrint = log.logPrint
     session.setLog(log)
@@ -181,6 +189,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     json_folder: str = os.path.join(set_platform_folder(region, platformId), "1. MatchIDs").replace("\\", "/")
     os.makedirs(json_folder, exist_ok = True)
     saved_matchIds: set[int] = set(map(lambda x: int(x.split("-")[-1].split()[0]), [_ for _ in os.listdir(json_folder) if _.startswith(f"Match Information ({product}) - ") and "(SGP)" in _]))
+    downloaded_matches: set[int] = set(map(lambda x: int(os.path.splitext(os.path.basename(x))[0].split("-")[1]), [_ for _ in os.listdir(replay_folder) if _.startswith(f"{platformId}-") and os.path.splitext(_)[1] == ".rofl"]))
     #遍历对局序号（Traverse matchIds）
     gameCount: int = end_matchId - start_matchId + 1
     for matchId in range(start_matchId, end_matchId + 1):
@@ -197,7 +206,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
                 matches_found.append(matchId)
                 logPrint(f"【找到对局】[{currentProcess}/{gameCount}]对局{matchId}符合条件。已将其加入列表。\nMatch {matchId} fits the requirements and has been added to the found match list!", print_time = True)
                 #下面将json文件保存到对局文件夹中（The following code save the json files into the match folder）
-                if not matchId in saved_matchIds:
+                if save_json and not matchId in saved_matchIds:
                     match_product: str = game_summary["metadata"]["product"]
                     json1name: str = f"Match Information ({match_product}) - {platformId}-{matchId} (SGP).json"
                     with open(os.path.join(json_folder, json1name), "w", encoding = "utf-8") as fp:
@@ -209,6 +218,23 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
                             with open(os.path.join(json_folder, json2name), "w", encoding = "utf-8") as fp:
                                 json.dump(game_timeline, fp, indent = 4, ensure_ascii = False)
                     saved_matchIds.add(matchId)
+                #下面下载回放（The following code download the replay）
+                if save_rofl and not matchId in downloaded_matches:
+                    rofl_name: str = f"{platformId}-{matchId}.rofl"
+                    rofl_path: str = os.path.join(replay_folder, rofl_name).replace("\\", "/")
+                    source: requests.Response = await session.request(connection, "GET", f"/match-history-query/v3/product/{product}/matchId/{match_id}/infoType/replay", verbose = True)
+                    try:
+                        response: Any = source.json()
+                    except requests.exceptions.JSONDecodeError:
+                        content: bytes = source.content
+                        try:
+                            text: str = content.decode()
+                        except UnicodeDecodeError:
+                            with open(rofl_path, "wb") as fp:
+                                fp.write(content)
+                            downloaded_matches.add(matchId)
+                    except AttributeError: #AttributeError: 'NoneType' object has no attribute 'json'
+                        pass
             else:
                 logPrint(f"【跳过对局】[{currentProcess}/{gameCount}]对局{matchId}不符合条件。\nMatch {matchId} doesn't meet the requirements.", print_time = True)
     #保存数据到本地文件（Saved data to a local file）
@@ -224,7 +250,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     log.close()
     return 0
 
-async def history_traverse_match(connection: Connection, start_puuid: str, product: Literal["LoL", "TFT"], func_str: str = "") -> int:
+async def history_traverse_match(connection: Connection, start_puuid: str, product: Literal["LoL", "TFT"], func_str: str = "", save_json: bool = False, save_rofl: bool = True) -> int:
     '''
     指定一个起始玩家通用唯一识别码，查询其对局记录，并查询其对战历史中遇到过的所有人类玩家的对局记录，往复。<br>Specify a starting puuid, search for its match history, and search for match history of each human player involved, and so on.
     
@@ -238,6 +264,12 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     
         提示：与另外两个函数不同的是，由于本函数中的游戏产品是预先确定的，所以在制作判断条件函数时可以跳过对产品名的假设。<br>Hint: What's different from the other two functions is that because `product` is preemptively determined in this function, users may skip the verification of the game product when making the custom condition judgment function.
     :type func_str: str
+    :param save_json: 是否保存对局信息json文件。包括对局概要和时间轴。默认为真。<br>Whether to save match information json files, including match summary and timeline. True by default.
+    :type save_json: bool
+    :param save_rofl: 在成功获取对局信息后，是否尝试下载回放文件。默认为假。<br>Whether to try downloading the replay after match information is fetched successfully. False by default.
+    
+        警告：由于本函数**只通过对局概要**来判断是否获取到对局，因此如果选择下载回放，则那些对局概要异常但时间轴正常的对局会被遗漏。<br>Warning: Because this function judges whether a match exists **only by summary**, when the user chooses to download replays, those which have erroneous summary but normal timeline will be ommitted.
+    :type save_json: bool
     :return: 状态码。<br>Status code.
     :rtype: int
     '''
@@ -267,9 +299,16 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
         return -1
     #变量和会话初始化（Variable and session initialization）
     start_summoner_name: str = get_info_name(start_summoner_info["body"])
+    if product == "TFT":
+        checkLoL: bool = False
+        checkTFT: bool = True
+    else:
+        checkLoL = True
+        checkTFT = False
     session: SGPSession = SGPSession()
     await session.init(connection)
     session.session.trust_env = False #英雄联盟请求无需走代理（League of Legends requests don't need a proxy）
+    session.verbose = False #去除下载回放时处理二进制数据产生的异常提示（Eliminate error information thrown by handling the downloaded replay binary data）
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     region: str = region_locale["region"]
     platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
@@ -280,6 +319,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     if not os.path.exists(log_path):
         with open(log_path, "w", encoding = "utf-8") as fp: #因为要追加写，所以要先创建这个文件（To append content, this file must be created previously）
             pass
+    replay_folder: str = await (await connection.request("GET", "/lol-replays/v1/rofls/path")).json() #这个文件夹在启动客户端时一定已经被创建好了（This folder must have been created when League Client is launched）
     log: LogManager = LogManager(path = log_path, mode = "a+", encoding = "utf-8")
     logPrint = log.logPrint
     session.setLog(log)
@@ -296,6 +336,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     traversed_player_count: int = 0
     found_match_count: int = 0
     saved_matchIds: set[int] = set(map(lambda x: int(x.split("-")[-1].split()[0]), [_ for _ in os.listdir(json_folder) if _.startswith(f"Match Information ({product}) - ") and "(SGP)" in _]))
+    downloaded_matches: set[int] = set(map(lambda x: int(os.path.splitext(os.path.basename(x))[0].split("-")[1]), [_ for _ in os.listdir(replay_folder) if _.startswith(f"{platformId}-") and os.path.splitext(_)[1] == ".rofl"]))
     #遍历对局序号（Traverse matchIds）
     while len(puuids_to_search) > 0:
         if keyboard.is_pressed("esc"):
@@ -322,6 +363,9 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
             else:
                 matchTimelines = {}
             for game_summary in matchHistory["games"]:
+                if keyboard.is_pressed("esc"):
+                    logPrint("【手动中止】您已放弃检查该召唤师的对局。\nYou've quited checking this summoner's matches.")
+                    break
                 match_id: str = game_summary["metadata"]["match_id"]
                 matchId: int = int(match_id.split("_")[1])
                 if "participants" in game_summary["metadata"]:
@@ -331,17 +375,39 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
                     found_match_count += 1
                     logPrint(f"【找到对局】[{traversed_player_count}][{found_match_count}]对局{matchId}符合条件。已将其加入集合。\nMatch {matchId} fits the requirements and has been added to the found match set!")
                     #下面将json文件保存到日志文件夹中（The following code save the json files into the log folder）
-                    if not matchId in saved_matchIds:
+                    if save_json and not matchId in saved_matchIds:
                         match_product: str = game_summary["metadata"]["product"]
                         json1name: str = f"Match Information ({match_product}) - {platformId}-{matchId} (SGP).json"
                         with open(os.path.join(json_folder, json1name), "w", encoding = "utf-8") as fp:
                             json.dump(game_summary, fp, indent = 4, ensure_ascii = False)
+                        json2name: str = f"Match Timeline ({match_product}) - {platformId}-{matchId} (SGP).json"
                         if matchId in matchTimelines:
-                            json2name: str = f"Match Timeline ({match_product}) - {platformId}-{matchId} (SGP).json"
                             game_timeline: dict[str, Any] = matchTimelines[matchId]
                             with open(os.path.join(json_folder, json2name), "w", encoding = "utf-8") as fp:
                                 json.dump(game_timeline, fp, indent = 4, ensure_ascii = False)
+                        else:
+                            status, game_timeline = await get_game_timeline_sgp(connection, session, match_id, checkLoL = checkLoL, checkTFT = checkTFT)
+                            if status == 200:
+                                with open(os.path.join(json_folder, json2name), "w", encoding = "utf-8") as fp:
+                                    json.dump(game_timeline, fp, indent = 4, ensure_ascii = False)
                         saved_matchIds.add(matchId)
+                    #下面下载回放（The following code download the replay）
+                    if save_rofl and not matchId in downloaded_matches:
+                        rofl_name: str = f"{platformId}-{matchId}.rofl"
+                        rofl_path: str = os.path.join(replay_folder, rofl_name).replace("\\", "/")
+                        source: requests.Response = await session.request(connection, "GET", f"/match-history-query/v3/product/{product}/matchId/{match_id}/infoType/replay", verbose = True)
+                        try:
+                            response: Any = source.json()
+                        except requests.exceptions.JSONDecodeError:
+                            content: bytes = source.content
+                            try:
+                                text: str = content.decode()
+                            except UnicodeDecodeError:
+                                with open(rofl_path, "wb") as fp:
+                                    fp.write(content)
+                                downloaded_matches.add(matchId)
+                        except AttributeError: #AttributeError: 'NoneType' object has no attribute 'json'
+                            pass
                 else:
                     logPrint(f"【跳过对局】[{traversed_player_count}][{found_match_count}]对局{matchId}不符合条件。\nMatch {matchId} doesn't meet the requirements.")
         else:
@@ -654,18 +720,21 @@ async def index_traversal_main(connection: Connection) -> None: #按序遍历对
     func_str: str = "" #函数字符串（Function string）
     func: Optional[Callable[[dict[str, Any]], bool]] = None #函数对象（Function object）
     product: str = "" #产品（Product）
+    save_json: bool = True #是否保存对局信息（Whether to save match information）
+    save_rofl: bool = False #是否尝试下载回放（Whether to try downloading replays）
     while True:
         if step == 0:
             break
         elif step == 1:
+            print("第一步：请指定对局范围。\nStep 1: Please specify the matchId range.")
             start_matchId, end_matchId = specify_matchId_limit()
             if start_matchId == -1 and end_matchId == -1:
                 step -= 2
         elif step == 2:
-            print('请输入一个筛选对局的函数。该函数应当返回逻辑值。\nPlease input a function to filter matches. This function should return a boolean value.\n示例（Example）：\ngame_summary["metadata"]["product"] == "LoL" and game_summary["json"]["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\n输入空字符串以放弃筛选，转而保留所有对局的信息。\nSumbit an empty string to give up filtering and save all matches instead.')
+            print('第二步：请输入一个筛选对局的函数。该函数应当返回逻辑值。\nStep 2: Please input a function to filter matches. This function should return a boolean value.\n示例（Example）：\ngame_summary["metadata"]["product"] == "LoL" and game_summary["json"]["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\n输入空字符串以放弃筛选，转而保留所有对局的信息。\nSumbit an empty string to give up filtering and save all matches instead.')
             func_str, func = define_function()
         elif step == 3:
-            print('请选择一个产品。\nPlease select a product.\n0\t返回第一步（Return to the first step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）\n%s3\t全部（Both）' %("☆" if func == None else "!"))
+            print("第三步：请选择一个产品。\nStep 3: Please select a product.\n0\t返回第一步（Return to the first step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）\n%s3\t全部（Both）" %("☆" if func == None else "!"))
             while True:
                 product_option: str = input()
                 if product_option == "":
@@ -685,13 +754,37 @@ async def index_traversal_main(connection: Connection) -> None: #按序遍历对
                 else:
                     print("您的输入有误！请重新输入。\nERROR input! Please try again.")
         elif step == 4:
+            print("第四步：是否保存对局信息？\nStep 4: Whether to save match information?\n☆1\t是（Yes）\n2\t否（No）")
+            while True:
+                save_json_str: str = input()
+                if save_json_str == "":
+                    save_json_str = "1"
+                if save_json_str[0] == "0":
+                    step -= 2
+                    break
+                else:
+                    save_json = save_json_str[0] != "2"
+                    break
+        elif step == 5:
+            print("第五步：是否尝试下载回放？\nStep 5: Whether to try downloading replays?\n1\t是（Yes）\n☆2\t否（No）")
+            while True:
+                save_rofl_str: str = input()
+                if save_rofl_str == "":
+                    save_rofl_str = "2"
+                if save_rofl_str[0] == "0":
+                    step -= 2
+                    break
+                else:
+                    save_rofl = save_rofl_str[0] == "1"
+                    break
+        elif step == 6:
             prepared = True
             break
         else:
             print("步骤异常。请联系开发人员修复程序。\nStep error. Please contact the developer to fix the program.")
         step += 1
     if prepared:
-        await index_traverse_match(connection, start_matchId = start_matchId, end_matchId = end_matchId, func_str = func_str, product = product)
+        await index_traverse_match(connection, start_matchId = start_matchId, end_matchId = end_matchId, func_str = func_str, product = product, save_json = save_json, save_rofl = save_rofl)
 
 async def history_traversal_main(connection: Connection) -> None: #从对局记录递归遍历对局（Recursively traverse matches from match history）
     prepared: bool = False #标记函数参数是否准备就绪（Marks whether the parameters are ready）
@@ -700,11 +793,13 @@ async def history_traversal_main(connection: Connection) -> None: #从对局记�
     product: str = "LoL" #产品（Product）
     func_str: str = "" #函数字符串（Function string）
     func: Optional[Callable[[dict[str, Any]], bool]] = None #函数对象（Function object）
+    save_json: bool = True #是否保存对局信息（Whether to save match information）
+    save_rofl: bool = False #是否尝试下载回放（Whether to try downloading replays）
     while True:
         if step == 0:
             break
         elif step == 1:
-            print('请输入您想要当作遍历起点的召唤师名称。输入空字符串从自己开始。输入“0”以退出程序。\nPlease input the name of the summoner you want to start with. Submit an empty string to start from yourself. Submit "0" to exit the program.')
+            print('第一步：请输入您想要当作遍历起点的召唤师名称。输入空字符串从自己开始。输入“0”以退出程序。\nStep 1: Please input the name of the summoner you want to start with. Submit an empty string to start from yourself. Submit "0" to exit the program.')
             while True:
                 start_summoner_name: str = input()
                 if start_summoner_name == "":
@@ -722,10 +817,10 @@ async def history_traversal_main(connection: Connection) -> None: #从对局记�
                     else:
                         print(start_info["message"])
         elif step == 2:
-            print('请输入一个筛选对局的函数。该函数应当返回逻辑值。\nPlease input a function to filter matches. This function should return a boolean value.\n示例（Example）：\ngame_summary["metadata"]["product"] == "LoL" and game_summary["json"]["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\n输入空字符串以放弃筛选，转而保留所有对局的信息。\nSumbit an empty string to give up filtering and save all matches instead.')
+            print('第二步：请输入一个筛选对局的函数。该函数应当返回逻辑值。\nStep 2: Please input a function to filter matches. This function should return a boolean value.\n示例（Example）：\ngame_summary["metadata"]["product"] == "LoL" and game_summary["json"]["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\n输入空字符串以放弃筛选，转而保留所有对局的信息。\nSumbit an empty string to give up filtering and save all matches instead.')
             func_str, func = define_function()
         elif step == 3:
-            print('请选择一个产品。\nPlease select a product.\n0\t返回第一步（Return to the first step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）')
+            print('第三步：请选择一个产品。\nStep 3: Please select a product.\n0\t返回第一步（Return to the first step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）')
             while True:
                 product_option: str = input()
                 if product_option == "":
@@ -742,13 +837,31 @@ async def history_traversal_main(connection: Connection) -> None: #从对局记�
                 else:
                     print("您的输入有误！请重新输入。\nERROR input! Please try again.")
         elif step == 4:
+            print("第四步：是否保存对局信息？\nStep 4: Whether to save match information?\n☆1\t是（Yes）\n2\t否（No）")
+            save_json_str: str = input()
+            if save_json_str == "":
+                save_json_str = "1"
+            if save_json_str[0] == "0":
+                step -= 2
+            else:
+                save_json = save_json_str[0] != "2"
+        elif step == 5:
+            print("第五步：是否尝试下载回放？\nStep 5: Whether to try downloading replays?\n1\t是（Yes）\n☆2\t否（No）")
+            save_rofl_str: str = input()
+            if save_rofl_str == "":
+                save_rofl_str = "2"
+            if save_rofl_str[0] == "0":
+                step -= 2
+            else:
+                save_rofl = save_rofl_str[0] == "1"
+        elif step == 6:
             prepared = True
             break
         else:
             print("步骤异常。请联系开发人员修复程序。\nStep error. Please contact the developer to fix the program.")
         step += 1
     if prepared:
-        await history_traverse_match(connection, start_puuid, product, func_str = func_str)
+        await history_traverse_match(connection, start_puuid, product, func_str = func_str, save_json = save_json, save_rofl = save_rofl)
 
 async def binary_search_main(connection: Connection) -> None: #类二分搜索一场对局（Search for a match by a binary-like method）
     threshold_function_definition_hint_printed: bool = False #标记是否已经打印过阈值函数定义的提示（Marks whether the program has printed the hint of a threshold function's definition）
@@ -764,6 +877,7 @@ async def binary_search_main(connection: Connection) -> None: #类二分搜索�
         if step == 0:
             break
         elif step == 1:
+            print("第一步：请指定对局范围。\nStep 1: Please specify the matchId range.")
             start_matchId, end_matchId = specify_matchId_limit()
             if start_matchId == -1 and end_matchId == -1:
                 step -= 2
@@ -771,12 +885,12 @@ async def binary_search_main(connection: Connection) -> None: #类二分搜索�
             if not threshold_function_definition_hint_printed:
                 print("阈值函数f：存在唯一的对局序号x₀ ∈ [a, b]，使得对于任意的x < x₀，f(x)为假，且对于任意的x ≥ x₀，f(x)为真。\nThreshold function f: There exists a unique matchId x₀ ∈ [a, b] such that for any x < x₀, f(x) is false, and for any x ≥ x₀, f(x) is true.")
                 threshold_function_definition_hint_printed = True
-            print('请输入一个阈值函数。该函数应当返回逻辑值。\nPlease input a threshold function. This function should return a boolean value.\n示例（Example）：\ngame_summary["json"]["gameId"] >= 8502294282 #获取对局序号在8502294282之后的下一场可用对局（Get the next available match after Match 8502294282）\ngame_summary["json"].get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_summary["json"]["gameVersion"]) >= Patch("16.5") #查找当前大区在26.05版本的第一场对局（Check the first match in Patch 26.05 on the current server）\n输入空字符串以返回上一步。\nSumbit an empty string to return to the last step.')
+            print('第二步：请输入一个阈值函数。该函数应当返回逻辑值。\nStep 2: Please input a threshold function. This function should return a boolean value.\n示例（Example）：\ngame_summary["json"]["gameId"] >= 8502294282 #获取对局序号在8502294282之后的下一场可用对局（Get the next available match after Match 8502294282）\ngame_summary["json"].get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_summary["json"]["gameVersion"]) >= Patch("16.5") #查找当前大区在26.05版本的第一场对局（Check the first match in Patch 26.05 on the current server）\n输入空字符串以返回上一步。\nSumbit an empty string to return to the last step.')
             func_str, func = define_function()
             if func == None:
                 step -= 2
         elif step == 3:
-            print('请选择一个产品。\nPlease select a product.\n0\t返回上一步（Return to the last step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）')
+            print('第三步：请选择一个产品。\nStep 3: Please select a product.\n0\t返回上一步（Return to the last step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）')
             while True:
                 product_option: str = input()
                 if product_option == "":
@@ -793,7 +907,7 @@ async def binary_search_main(connection: Connection) -> None: #类二分搜索�
                 else:
                     print("您的输入有误！请重新输入。\nERROR input! Please try again.")
         elif step == 4:
-            print('''如果您已知某些对局不存在，请在下方输入它们的对局序号组成的列表。输入空字符串以跳过此步骤。输入“0”以返回上一步。\nIf you already know that some matches don't exist, please provide them here. Submit an empty string to skip this step. Submit "0" to return to the last step.''')
+            print('''第四步：如果您已知某些对局不存在，请在下方输入它们的对局序号组成的列表。输入空字符串以跳过此步骤。输入“0”以返回上一步。\nStep 4: If you already know that some matches don't exist, please provide them here. Submit an empty string to skip this step. Submit "0" to return to the last step.''')
             while True:
                 matchIds_not_found_str: str = input()
                 if matchIds_not_found_str == "":
