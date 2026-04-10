@@ -90,7 +90,7 @@ def requestUrl(method: str, url: str, retry: int = 5, session: Optional[requests
                 else:
                     return (source, source.status_code, session)
             else:
-                return (source, 200, session)
+                return (source, source.status_code, session)
     return (source, source.status_code, session)
 
 class SGPSession:
