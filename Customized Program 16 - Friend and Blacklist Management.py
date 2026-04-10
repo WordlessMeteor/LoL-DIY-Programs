@@ -22,7 +22,7 @@ from src.core.dataframes.gameflow import sort_ChampSelect_players
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/03/16
+# 更新（Last update）：     2026/04/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -178,6 +178,22 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
     friend_hovercard_data: dict[str, list[Any]] = {key: [] for key in friend_hovercard_header_keys}
     #数据整理核心部分（Data assignment - core part）
     for friend in friends:
+        lol: dict[str, Any] = friend["lol"]
+        if "spectatingTargetPuuid" in lol:
+            spectatingTarget_info: dict[str, list[Any]] = await get_info(connection, lol["spectatingTargetPuuid"])
+            while not spectatingTarget_info["info_got"] and spectatingTarget_info["body"]["httpStatus"] != 404 and spectatingTarget_info_recapture < 3:
+                logPrint(spectatingTarget_info["message"])
+                spectatingTarget_info_recapture += 1
+                logPrint("被观战者信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of a spectated target (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(lol["spectatingTargetPuuid"], spectatingTarget_info_recapture, lol["spectatingTargetPuuid"], spectatingTarget_info_recapture))
+                spectatingTarget_info = await get_info(connection, lol["spectatingTargetPuuid"])
+            if not spectatingTarget_info["info_got"]:
+                logPrint(spectatingTarget_info["message"])
+                logPrint("被观战者信息（玩家通用唯一识别码：%s）获取失败！将忽略该被观战者。\nInformation of a spectated target (puuid: %s) capture failed! The program will ignore this inviter." %(lol["spectatingTargetPuuid"], lol["spectatingTargetPuuid"]))
+                spectatingTarget_info_body: dict[str, Any] = {}
+            else:
+                spectatingTarget_info_body = spectatingTarget_info["body"]
+        else:
+            spectatingTarget_info_body = {}
         for i in range(len(friend_hovercard_header_keys)):
             key: str = friend_hovercard_header_keys[i]
             if i <= 29:
@@ -198,12 +214,11 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
                     to_append = friend[key]
             elif i <= 32:
                 to_append = friend["discordInfo"][key.split()[1]] if bool(friend["discordInfo"]) else ""
-            elif i <= 108:
+            elif i <= 111:
                 if friend["lol"] == {}:
                     to_append = ""
                 else:
-                    lol: dict[str, Any] = friend["lol"]
-                    if i in {33, 35, 37, 38, 39, 40, 46, 47, 48, 49, 51, 52, 56, 59, 60, 61, 64}: #正整数被转化为字符串的值的键（Keys whose values are originally integers but transformed into strings）
+                    if i in {33, 35, 37, 38, 39, 40, 46, 47, 48, 49, 51, 52, 56, 59, 60, 61, 64, 65}: #正整数被转化为字符串的值的键（Keys whose values are originally integers but transformed into strings）
                         to_append = "" if not key in lol or lol[key] == "" else int(lol[key])
                     elif i == 34: #成就等级（`challengeCrystalLevel`）
                         to_append = "" if not key in lol else challengeCrystalLevels[lol[key]]
@@ -217,95 +232,95 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
                         to_append = "" if not key in lol or lol[key] == "NA" else lol[key]
                     elif i == 55 or i == 58: #段位相关键（Tier-related keys）
                         to_append = "" if not key in lol else tiers[lol[key]]
-                    elif i == 65 or i == 66: #旗帜相关键（Banner-related keys）
+                    elif i == 66 or i == 67: #旗帜相关键（Banner-related keys）
                         if "bannerIdSelected" in lol and lol["bannerIdSelected"] != "":
                             regaliaBanner_item: dict[str, Any] = regaliaBanners[lol["bannerIdSelected"]]["items"][0]
                             to_append = regaliaBanner_item[key.split()[1]]
                         else:
                             to_append = ""
-                    elif i == 67: #选用勋章名称（`challengeTokenNamesSelected`）
+                    elif i == 68: #选用勋章名称（`challengeTokenNamesSelected`）
                         if "challengeTokensSelected" in lol and lol["challengeTokensSelected"] != "":
                             challengeTokensSelected: list[str] = lol["challengeTokensSelected"].split(",")
                             to_append = list(map(lambda x: challenges["challenges"][x]["name"], challengeTokensSelected))
                         else:
                             to_append = ""
-                    elif i >= 68 and i <= 70: #英雄相关键（Champion-related keys）
+                    elif i >= 69 and i <= 71: #英雄相关键（Champion-related keys）
                         if "championId" in lol:
                             if lol["championId"] == "":
                                 to_append = ""
                             else:
                                 championId: int = int(lol["championId"])
-                                if i == 70:
+                                if i == 71:
                                     iconPath: str = LoLChampions[championId][key.split()[1]]
                                     to_append = "" if iconPath == "" else urljoin(connection.address, iconPath)
                                 else:
                                     to_append = LoLChampions[championId][key.split()[1]]
                         else:
                             to_append = ""
-                    elif i >= 71 and i <= 78: #小小英雄相关键（Companion-related keys）
+                    elif i >= 72 and i <= 79: #小小英雄相关键（Companion-related keys）
                         if "companionId" in lol:
                             if lol["companionId"] == "":
                                 to_append = ""
                             else:
                                 companionId = int(lol["companionId"])
-                                if i == 73:
+                                if i == 74:
                                     iconPath = TFTCompanions_itemIdMap[companionId][key.split()[1]]
                                     to_append = "" if iconPath == "" else urljoin(connection.address, iconPath)
-                                elif i == 77:
+                                elif i == 78:
                                     to_append = rarities[TFTCompanions_itemIdMap[companionId][key.split()[1]]]
                                 else:
                                     to_append = TFTCompanions_itemIdMap[companionId][key.split()[1]]
                         else:
                             to_append = ""
-                    elif i >= 79 and i <= 86: #云顶之弈攻击特效相关键（TFT damage skin-related keys）
+                    elif i >= 80 and i <= 87: #云顶之弈攻击特效相关键（TFT damage skin-related keys）
                         if "damageSkinId" in lol:
                             if lol["damageSkinId"] == "":
                                 to_append = ""
                             else:
                                 damageSkinId: str = int(lol["damageSkinId"])
-                                if i == 81:
+                                if i == 82:
                                     iconPath = TFTDamageSkins[damageSkinId][key.split()[1]]
                                     to_append = "" if iconPath == "" else urljoin(connection.address, iconPath)
-                                if i == 84:
+                                if i == 85:
                                     to_append = rarities[TFTDamageSkins[damageSkinId][key.split()[1]]]
                                 else:
                                     to_append = TFTDamageSkins[damageSkinId][key.split()[1]]
                         else:
                             to_append = ""
-                    elif i == 87: #游戏模式名称（`gameModeName`）
+                    elif i == 88: #游戏模式名称（`gameModeName`）
                         if "queueId" in lol and lol["queueId"] != "":
                             queueId: int = int(lol["queueId"])
                             to_append = "自定义" if queueId == -1 or queueId == 0 else gameQueues[queueId]["name"]
                         else:
                             to_append = ""
-                    elif i >= 88 and i <= 94: #棋盘皮肤相关键（TFT map skin-related keys）
+                    elif i >= 89 and i <= 95: #棋盘皮肤相关键（TFT map skin-related keys）
                         if "mapSkinId" in lol:
                             if lol["mapSkinId"] == "":
                                 to_append = ""
                             else:
                                 mapSkinId: int = int(lol["mapSkinId"])
-                                if i == 90:
+                                if i == 91:
                                     iconPath = TFTMapSkins[mapSkinId][key.split()[1]]
                                     to_append = "" if iconPath == "" else urljoin(connection.address, iconPath)
-                                if i == 93:
+                                if i == 94:
                                     to_append = rarities[TFTMapSkins[mapSkinId][key.split()[1]]]
                                 else:
                                     to_append = TFTMapSkins[mapSkinId][key.split()[1]]
                         else:
                             to_append = ""
-                    elif i >= 95 and i <= 98: #头衔相关键（Title-related keys）
+                    elif i >= 96 and i <= 99: #头衔相关键（Title-related keys）
                         if "playerTitleSelected" in lol:
                             title_contentId: str = lol["playerTitleSelected"]
                             if title_contentId == "":
                                 to_append = ""
                             else:
-                                if i == 97:
+                                if i == 98:
                                     to_append = titleAcquisitionTypes[titles[title_contentId][key.split()[1]]]
                                 else:
                                     to_append = titles[title_contentId][key.split()[1]]
                         else:
                             to_append = ""
-                    elif i >= 99 and i <= 108: #选用皮肤相关键（`skinVariant`-related keys）
+                    elif i >= 100 and i <= 109: #选用皮肤相关键（`skinVariant`-related keys）
                         if "skinVariant" in lol:
                             if lol["skinVariant"] == "":
                                 to_append = ""
@@ -314,21 +329,26 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
                                 if not key.split()[1] in championSkins[skinId]:
                                     to_append = ""
                                 else:
-                                    if i >= 101 and i <= 105 or i == 107 or i == 108:
+                                    if i >= 102 and i <= 106 or i == 108 or i == 109:
                                         iconPath = championSkins[skinId][key.split()[1]]
                                         to_append = "" if iconPath == "" else urljoin(connection.address, iconPath)
-                                    elif i == 106:
+                                    elif i == 107:
                                         to_append = krarities[championSkins[skinId][key.split()[1]]]
                                     else:
                                         to_append = championSkins[skinId][key.split()[1]]
                         else:
                             to_append = ""
+                    elif i == 110 or i == 111: #被观战者玩家相关键（Spectating target related keys）
+                        if "spectatingTargetPuuid" in lol:
+                            to_append = spectatingTarget_info_body["gameName" if i == 110 else "tagLine"]
+                        else:
+                            to_append = ""
                     else:
                         to_append = lol.get(key, "")
-            elif i <= 113:
+            elif i <= 116:
                 if friend["lol"] != {} and "pty" in friend and friend["pty"] != "":
                     party: dict[str, Any] = json.loads(friend["lol"]["pty"])
-                    if i == 113: #小队召唤师名（`pty summonerNames`）
+                    if i == 116: #小队召唤师名（`pty summonerNames`）
                         summonerIds: list[int] = party["summoners"]
                         summonerNames: list[Any] = []
                         for summonerId in summonerIds:
@@ -341,7 +361,7 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
                                 member_info = await get_info(connection, summonerId)
                             if member_info_recapture >= 3:
                                 logPrint(member_info["message"])
-                                logPrint("成员信息（召唤师序号：%d）获取失败！将忽略该成员。\nInformation of a member (summonerId: %d) capture failed! The program will ignore this member.")
+                                logPrint("成员信息（召唤师序号：%d）获取失败！将忽略该成员。\nInformation of a member (summonerId: %d) capture failed! The program will ignore this member." %(summonerId, summonerId))
                                 summonerNames.append(summonerId)
                                 continue
                             summonerNames.append(get_info_name(member_info["body"]))
@@ -358,7 +378,7 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
                     to_append = ""
             friend_hovercard_data[key].append(to_append)
     #数据框列序整理（Dataframe column ordering）
-    friend_hovercard_statistics_output_order: list[int] = [13, 5, 6, 23, 20, 16, 7, 8, 25, 26, 0, 11, 21, 14, 28, 29, 30, 1, 2, 32, 31, 47, 54, 55, 53, 60, 56, 58, 57, 59, 66, 34, 35, 46, 95, 96, 97, 98, 67, 43, 111, 113, 110, 41, 42, 52, 87, 48, 40, 68, 69, 100, 106, 72, 74, 75, 77, 80, 86, 83, 84, 89, 92, 93, 45, 63]
+    friend_hovercard_statistics_output_order: list[int] = [13, 5, 6, 23, 20, 16, 7, 8, 25, 26, 0, 11, 21, 14, 28, 29, 30, 1, 2, 32, 31, 47, 54, 55, 53, 60, 56, 58, 57, 59, 67, 34, 35, 46, 96, 97, 98, 99, 68, 43, 114, 116, 113, 41, 42, 52, 88, 48, 40, 69, 70, 101, 107, 73, 75, 76, 78, 81, 87, 84, 85, 90, 93, 94, 45, 63, 64, 110, 111]
     friend_hovercard_data_organized: dict[str, list[Any]] = {friend_hovercard_header_keys[i]: friend_hovercard_data[friend_hovercard_header_keys[i]] for i in friend_hovercard_statistics_output_order}
     friend_hovercard_df: pandas.DataFrame = pandas.DataFrame(data = friend_hovercard_data_organized)
     optimize_bool_display(friend_hovercard_df)
@@ -637,7 +657,7 @@ async def sort_party_data(connection: Connection, parties: Any) -> pandas.DataFr
                             member_info = await get_info(connection, summonerId)
                         if not member_info["info_got"]:
                             logPrint(member_info["message"])
-                            logPrint("成员信息（召唤师序号：%d）获取失败！将忽略该成员。\nInformation of a member (summonerId: %d) capture failed! The program will ignore this member.")
+                            logPrint("成员信息（召唤师序号：%d）获取失败！将忽略该成员。\nInformation of a member (summonerId: %d) capture failed! The program will ignore this member." %(summonerId, summonerId))
                             summonerNames.append("")
                             continue
                         summonerNames.append(get_info_name(member_info["body"]))
@@ -669,16 +689,17 @@ async def sort_received_invitations(connection: Connection) -> pandas.DataFrame:
     invid_header_keys: list[str] = list(invid_header.keys())
     invid_data: dict[str, list[Any]] = {key: [] for key in invid_header_keys}
     for invid in receivedInvitations:
+        fromSummonerId: int = invid["fromSummonerId"]
         inviter_info_recapture: int = 0
-        inviter_info: dict[str, list[Any]] = await get_info(connection, invid["fromSummonerId"])
+        inviter_info: dict[str, list[Any]] = await get_info(connection, fromSummonerId)
         while not inviter_info["info_got"] and inviter_info["body"]["httpStatus"] != 404 and inviter_info_recapture < 3:
             logPrint(inviter_info["message"])
             inviter_info_recapture += 1
-            logPrint("邀请者信息（召唤师序号：%d）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an inviter (summonerId: %d) capture failed! Recapturing this player's information ... Times tried: %d." %(invid["fromSummonerId"], inviter_info_recapture, invid["fromSummonerId"], inviter_info_recapture))
-            inviter_info = await get_info(connection, invid["fromSummonerId"])
+            logPrint("邀请者信息（召唤师序号：%d）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an inviter (summonerId: %d) capture failed! Recapturing this player's information ... Times tried: %d." %(fromSummonerId, inviter_info_recapture, fromSummonerId, inviter_info_recapture))
+            inviter_info = await get_info(connection, fromSummonerId)
         if not inviter_info["info_got"]:
             logPrint(inviter_info["message"])
-            logPrint("邀请者信息（召唤师序号：%d）获取失败！将忽略该邀请者。\nInformation of an inviter (summonerId: %d) capture failed! The program will ignore this inviter.")
+            logPrint("邀请者信息（召唤师序号：%d）获取失败！将忽略该邀请者。\nInformation of an inviter (summonerId: %d) capture failed! The program will ignore this inviter." %(fromSummonerId, fromSummonerId))
         for i in range(len(invid_header_keys)):
             key: str = invid_header_keys[i]
             if i <= 9:
