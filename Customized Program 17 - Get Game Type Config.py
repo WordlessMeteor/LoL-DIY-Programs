@@ -3,7 +3,7 @@ from lcu_driver.connection import Connection
 import os, pandas, json
 from typing import Any
 from src.utils.summoner import print_summoner_info
-from src.utils.format import optimize_bool_display, addDefaultStyle
+from src.utils.format import optimize_bool_display, addDefaultStyle, create_workbook_win32
 from src.core.config.localization import gameTypes_config
 from src.core.config.headers import gametype_config_header
 
@@ -13,7 +13,7 @@ from src.core.config.headers import gametype_config_header
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/07
+# 更新（Last update）：     2026/04/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -69,10 +69,12 @@ async def sort_gametype_config(connection: Connection) -> None:
     gametype_config_df = pandas.concat([pandas.DataFrame([gametype_config_header])[gametype_config_df.columns], gametype_config_df], ignore_index = True)
     #导出到Excel工作簿（Export to an Excel workbook）
     excel_name: str = "游戏类型信息.xlsx"
+    if not os.path.exists(excel_name):
+        wbCreateFlag: bool = create_workbook_win32(os.path.abspath(excel_name), sheet1_name = "所有游戏类型（All Game Types）")
     while True:
         try:
             with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name)) as writer:
-                addDefaultStyle(gametype_config_df).to_excel(excel_writer = writer, sheet_name = "All Game Types")
+                addDefaultStyle(gametype_config_df).to_excel(excel_writer = writer, sheet_name = "所有游戏类型（All Game Types）")
         except PermissionError:
             print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
             input()

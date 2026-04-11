@@ -6,7 +6,7 @@ from openpyxl import load_workbook, Workbook
 from typing import Any, Optional
 from src.utils.summoner import print_summoner_info, get_info, get_infos, get_info_name
 from src.utils.logger import LogManager
-from src.utils.format import getISOTime, optimize_bool_display, format_df, eliminate_empty_fields, addDefaultStyle, format_runtime, verify_uuid
+from src.utils.format import getISOTime, optimize_bool_display, format_df, eliminate_empty_fields, addDefaultStyle, format_runtime, verify_uuid, create_workbook_win32
 from src.utils.patch import Patch
 from src.utils.webRequest import requestUrl, SGPSession
 from src.core.config.headers import profile_header, mastery_header, ranked_header, ladder_header
@@ -37,7 +37,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/03/21
+# 更新（Last update）：     2026/04/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1689,9 +1689,12 @@ async def search_profile(connection: Connection) -> None:
                 wbName: str = f"Summoner Profile - {displayName}.xlsx"
                 wbPath: str = os.path.join(folder, wbName)
                 os.makedirs(folder, exist_ok = True)
+                if not os.path.exists(wbPath):
+                    wbCreateFlag: bool = create_workbook_win32(os.path.abspath(wbPath), log = log)
+                workbook_exist: bool = os.path.exists(wbPath)
                 while True:
                     try:
-                        with pandas.ExcelWriter(path = wbPath) as writer:
+                        with (pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = wbPath)) as writer:
                             addDefaultStyle(info_df).to_excel(excel_writer = writer, sheet_name = "Profile")
                             addDefaultStyle(mastery_df).to_excel(excel_writer = writer, sheet_name = "Champion Mastery")
                     except PermissionError:
@@ -2528,8 +2531,10 @@ async def search_profile(connection: Connection) -> None:
             wbName: str = f"Summoner Profile - {displayName}.xlsx"
             wbPath: str = os.path.join(folder, wbName)
             wbName_sorted: str = f"Summoner Profile - {displayName} (sorted).xlsx"
-            workbook_exist: bool = os.path.exists(wbPath)
             os.makedirs(folder, exist_ok = True)
+            if not os.path.exists(wbPath):
+                wbCreateFlag: bool = create_workbook_win32(os.path.abspath(wbPath), sheet1_name = "Profile", log = log) #通过使用系统自带的Excel应用创建工作簿，使得默认字体为西文字体——等线（Use the built-in Excel application to create a workbook, so that its default font is of English style - SimHei）
+            workbook_exist: bool = os.path.exists(wbPath)
             while True:
                 try:
                     with (pandas.ExcelWriter(path = wbPath, engine = "openpyxl", mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = wbPath, engine = "openpyxl")) as writer:

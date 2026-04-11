@@ -5,7 +5,7 @@ import json, os, pandas, time
 from typing import Any
 from src.utils.summoner import print_summoner_info, get_info, get_infos, get_info_name
 from src.utils.logger import LogManager
-from src.utils.format import optimize_bool_display, addDefaultStyle, format_runtime
+from src.utils.format import optimize_bool_display, addDefaultStyle, format_runtime, create_workbook_win32
 from src.core.config.servers import platform_TENCENT, platform_RIOT, platform_GARENA
 from src.core.config.headers import challenger_ladder_metadata_header, challenger_ladder_header, topRated_ladder_header
 
@@ -15,7 +15,7 @@ from src.core.config.headers import challenger_ladder_metadata_header, challenge
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/11
+# 更新（Last update）：     2026/04/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -293,6 +293,8 @@ async def get_challenger_tier(connection: Connection) -> None:
         excel_name_sorted: str = f"Ranked Apex - {platformId} ({currentSeason}) (sorted).xlsx"
         wbPath: str = os.path.join(folder, excel_name)
         os.makedirs(folder, exist_ok = True)
+        if not os.path.exists(wbPath):
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(wbPath), sheet1_name = f"Tier Apex Metadata - Season {currentSeason}")
         workbook_exist: bool = os.path.exists(wbPath)
         while True:
             try:

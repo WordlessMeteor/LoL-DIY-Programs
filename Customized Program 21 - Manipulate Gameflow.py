@@ -5,7 +5,7 @@ from urllib.parse import quote, unquote, urljoin
 from typing import Any, Optional
 from src.utils.logger import aInput, LogManager
 from src.utils.summoner import print_summoner_info, get_info, get_info_name
-from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, lcuTime, getISOTime, verify_uuid, normalize_file_name
+from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, lcuTime, getISOTime, verify_uuid, normalize_file_name, create_workbook_win32
 from src.utils.runtimeDebug import send_commands
 from src.utils.webRequest import SGPSession, requestUrl
 from src.core.config.const import ALL_GAMEFLOW_PHASES, BOT_DIFFICULTY_LIST, BOT_UUID, SPECTATOR_POLICY_LIST, GLOBAL_RESPONSE_LAG, REPORT_CATEGORY_LIST_CHAMPSELECT, REPORT_CATEGORY_LIST_POSTGAME
@@ -29,7 +29,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/04/01
+# 更新（Last update）：     2026/04/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -7643,6 +7643,8 @@ async def export_inGame_champions(connection: Connection) -> None:
     excel_name: str = "Player Stats in Match %s-%s (%s).xlsx" %(platformId, gameData["gameId"], normalize_file_name(gameModeName))
     players_metaDf: pandas.DataFrame = await sort_inGame_players(connection, LoLChampions, championSkins, summonerIcons, spells, log = log)
     print(format_df(players_metaDf)[0])
+    if not os.path.exists(excel_name):
+        wbCreateFlag: bool = create_workbook_win32(os.path.abspath(excel_name), sheet1_name = "MemberComposition (InProgress)", log = log)
     try:
         with (pandas.ExcelWriter(path = excel_name, engine = "openpyxl", mode = "a", if_sheet_exists = "replace") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name, engine = "openpyxl")) as writer:
             addDefaultStyle(players_metaDf).to_excel(excel_writer = writer, sheet_name = "MemberComposition (InProgress)")
@@ -7731,6 +7733,8 @@ def access_game_client() -> None:
             elif suboption[0] == "2":
                 inGame_allPlayer_df: pandas.DataFrame = sort_inGame_allplayers(allgamedata)
                 excel_name: str = "inGame_data.xlsx"
+                if not os.path.exists(excel_name):
+                    wbCreateFlag: bool = create_workbook_win32(os.path.abspath(excel_name), sheet1_name = "AllPlayers", log = log)
                 try:
                     with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name)) as writer:
                         addDefaultStyle(inGame_allPlayer_df).to_excel(excel_writer = writer, sheet_name = "AllPlayers")
@@ -7744,6 +7748,8 @@ def access_game_client() -> None:
             elif suboption[0] == "3":
                 inGame_event_df: pandas.DataFrame = sort_inGame_events(allgamedata)
                 excel_name: str = "inGame_data.xlsx"
+                if not os.path.exists(excel_name):
+                    wbCreateFlag: bool = create_workbook_win32(os.path.abspath(excel_name), sheet1_name = "Events", log = log)
                 try:
                     with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name)) as writer:
                         addDefaultStyle(inGame_event_df).to_excel(excel_writer = writer, sheet_name = "Events")
@@ -8339,9 +8345,11 @@ async def check_stats_block(connection: Connection) -> None:
             eog_stat_df_tft_fields_to_export: list[str] = ["isLocalPlayer", "summonerName", "riotIdGameName", "riotIdTagLine", "summonerId", "puuid", "icon title", "setCoreName", "isInteractable", "partnerGroupId", "companion speciesName", "companion colorName", "health", "rank", "playbook name", "customAugmentContainer description", "customAugmentContainer displayName", "augment1 name", "augment2 name", "augment3 name", "unit0 name", "unit0 price", "unit0 level", "unit0 traits", "unit0 item0 name", "unit0 item1 name", "unit0 item2 name", "unit1 name", "unit1 price", "unit1 level", "unit1 traits", "unit1 item0 name", "unit1 item1 name", "unit1 item2 name", "unit2 name", "unit2 price", "unit2 level", "unit2 traits", "unit2 item0 name", "unit2 item1 name", "unit2 item2 name", "unit3 name", "unit3 price", "unit3 level", "unit3 traits", "unit3 item0 name", "unit3 item1 name", "unit3 item2 name", "unit4 name", "unit4 price", "unit4 level", "unit4 traits", "unit4 item0 name", "unit4 item1 name", "unit4 item2 name", "unit5 name", "unit5 price", "unit5 level", "unit5 traits", "unit5 item0 name", "unit5 item1 name", "unit5 item2 name", "unit6 name", "unit6 price", "unit6 level", "unit6 traits", "unit6 item0 name", "unit6 item1 name", "unit6 item2 name", "unit7 name", "unit7 price", "unit7 level", "unit7 traits", "unit7 item0 name", "unit7 item1 name", "unit7 item2 name", "unit8 name", "unit8 price", "unit8 level", "unit8 traits", "unit8 item0 name", "unit8 item1 name", "unit8 item2 name", "unit9 name", "unit9 price", "unit9 level", "unit9 traits", "unit9 item0 name", "unit9 item1 name", "unit9 item2 name", "unit10 name", "unit10 price", "unit10 level", "unit10 traits", "unit10 item0 name", "unit10 item1 name", "unit10 item2 name"]
             eog_stat_df_tft_export: pandas.DataFrame = eog_stat_df_tft.loc[:, eog_stat_df_tft_fields_to_export].transpose()
             excel_name: str = "EndOfGame Stats of %s-%d.xlsx" %(platformId, gameId)
+            if not os.path.exists(excel_name):
+                wbCreateFlag: bool = create_workbook_win32(os.path.abspath(excel_name), sheet1_name = "Metadata", log = log)
             while True:
                 try:
-                    with pandas.ExcelWriter(path = excel_name) as writer:
+                    with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name)) as writer:
                         addDefaultStyle(eog_stat_metaDf_tft).to_excel(excel_writer = writer, sheet_name = "Metadata")
                         addDefaultStyle(eog_stat_df_tft_export).to_excel(excel_writer = writer, sheet_name = "Player Stats")
                 except PermissionError:
@@ -8366,9 +8374,11 @@ async def check_stats_block(connection: Connection) -> None:
             eog_playerstat_df_lol_fields_to_export: list[str] = ["teamId", "team_color", "stats PLAYER_SUBTEAM", "stats playerSubteamColor", "isLocalPlayer", "summonerName", "riotIdGameName", "riotIdTagLine", "summonerId", "puuid", "profileIcon_title", "level", "botPlayer", "leaver", "leaves", "wins", "losses", "championName", "selectedPosition", "detectedTeamPosition", "stats LEVEL", "spell1_name", "spell2_name", "item0_name", "item1_name", "item2_name", "item3_name", "item4_name", "item5_name", "item6_name", "stats role_bound_item name", "stats KDA", "stats PLAYER_AUGMENT_1 nameTRA", "stats PLAYER_AUGMENT_1 rarity", "stats PLAYER_AUGMENT_2 nameTRA", "stats PLAYER_AUGMENT_2 rarity", "stats PLAYER_AUGMENT_3 nameTRA", "stats PLAYER_AUGMENT_3 rarity", "stats PLAYER_AUGMENT_4 nameTRA", "stats PLAYER_AUGMENT_4 rarity", "stats PLAYER_AUGMENT_5 nameTRA", "stats PLAYER_AUGMENT_5 rarity", "stats PLAYER_AUGMENT_6 nameTRA", "stats PLAYER_AUGMENT_6 rarity", "stats CHAMPIONS_KILLED", "stats NUM_DEATHS", "stats ASSISTS", "stats LARGEST_KILLING_SPREE", "stats LARGEST_MULTI_KILL", "stats TOTAL_TIME_CROWD_CONTROL_DEALT", "stats TIME_CCING_OTHERS", "stats TOTAL_DAMAGE_DEALT_TO_CHAMPIONS", "stats PHYSICAL_DAMAGE_DEALT_TO_CHAMPIONS", "stats MAGIC_DAMAGE_DEALT_TO_CHAMPIONS", "stats TRUE_DAMAGE_DEALT_TO_CHAMPIONS", "stats TOTAL_DAMAGE_DEALT", "stats PHYSICAL_DAMAGE_DEALT_PLAYER", "stats MAGIC_DAMAGE_DEALT_PLAYER", "stats TRUE_DAMAGE_DEALT_PLAYER", "stats LARGEST_CRITICAL_STRIKE", "stats TOTAL_DAMAGE_DEALT_TO_BUILDINGS", "stats TOTAL_DAMAGE_DEALT_TO_OBJECTIVES", "stats TOTAL_DAMAGE_DEALT_TO_TURRETS", "stats TOTAL_HEAL", "stats TOTAL_HEAL_ON_TEAMMATES", "stats TOTAL_DAMAGE_SHIELDED_ON_TEAMMATES", "stats TOTAL_DAMAGE_TAKEN", "stats PHYSICAL_DAMAGE_TAKEN", "stats MAGIC_DAMAGE_TAKEN", "stats TRUE_DAMAGE_TAKEN", "stats TOTAL_DAMAGE_SELF_MITIGATED", "stats VISION_SCORE", "stats WARD_PLACED", "stats WARD_KILLED", "stats SIGHT_WARDS_BOUGHT_IN_GAME", "stats VISION_WARDS_BOUGHT_IN_GAME", "stats GOLD_EARNED", "stats MINIONS_KILLED", "stats NEUTRAL_MINIONS_KILLED", "stats NEUTRAL_MINIONS_KILLED_YOUR_JUNGLE", "stats NEUTRAL_MINIONS_KILLED_ENEMY_JUNGLE", "stats TURRETS_KILLED", "stats BARRACKS_KILLED", "stats TEAM_OBJECTIVE", "stats NODE_CAPTURE", "stats NODE_CAPTURE_ASSIST", "stats NODE_NEUTRALIZE", "stats NODE_NEUTRALIZE_ASSIST", "stats TOTAL_TIME_SPENT_DEAD", "stats PERK_PRIMARY_STYLE name", "stats PERK_SUB_STYLE name", "stats PERK0 name", "stats PERK0 EndOfGameStatDescs", "stats PERK1 name", "stats PERK1 EndOfGameStatDescs", "stats PERK2 name", "stats PERK2 EndOfGameStatDescs", "stats PERK3 name", "stats PERK3 EndOfGameStatDescs", "stats PERK4 name", "stats PERK4 EndOfGameStatDescs", "stats PERK5 name", "stats PERK5 EndOfGameStatDescs", "stats SPELL1_CAST", "stats SPELL2_CAST", "stats WAS_AFK", "stats TEAM_EARLY_SURRENDERED", "stats GAME_ENDED_IN_EARLY_SURRENDER", "stats GAME_ENDED_IN_SURRENDER", "stats WIN", "stats LOSE", "stats PLAYER_SUBTEAM_PLACEMENT", "stats VICTORY_POINT_TOTAL"]
             eog_playerstat_df_lol_export: pandas.DataFrame = eog_playerstat_df_lol.loc[:, eog_playerstat_df_lol_fields_to_export].transpose()
             excel_name: str = "EndOfGame Stats of %s-%d.xlsx" %(platformId, gameId)
+            if not os.path.exists(excel_name):
+                wbCreateFlag: bool = create_workbook_win32(os.path.abspath(excel_name), sheet1_name = "Metadata", log = log)
             while True:
                 try:
-                    with pandas.ExcelWriter(path = excel_name) as writer:
+                    with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name)) as writer:
                         addDefaultStyle(eog_stat_metaDf_lol).to_excel(excel_writer = writer, sheet_name = "Metadata")
                         addDefaultStyle(eog_teamstat_df_lol).to_excel(excel_writer = writer, sheet_name = "Team Stats")
                         addDefaultStyle(eog_playerstat_df_lol_export).to_excel(excel_writer = writer, sheet_name = "Player Stats")

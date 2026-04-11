@@ -2,7 +2,7 @@ from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import json, keyboard, os, pandas, time
 from typing import Any
-from src.utils.format import addDefaultStyle, optimize_bool_display
+from src.utils.format import addDefaultStyle, optimize_bool_display, create_workbook_win32
 from src.utils.summoner import print_summoner_info, get_info
 from src.utils.logger import LogManager
 from src.utils.webRequest import SGPSession
@@ -15,7 +15,7 @@ from src.core.dataframes.matchHistory import get_matchSummary_sgp
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/07
+# 更新（Last update）：     2026/04/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -225,9 +225,12 @@ async def interaction_traverse_summoner(connection: Connection, export: bool = T
     info_df = pandas.concat([pandas.DataFrame([info_header])[info_df.columns], info_df], ignore_index = True)
     if export:
         excel_name: str = f"Summoner Traversal on {platformId}.xlsx"
+        if not os.path.exists(excel_name):
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(excel_name))
+        workbook_exist: bool = os.path.exists(excel_name)
         while True:
             try:
-                with pandas.ExcelWriter(path = excel_name, mode = "w") as writer:
+                with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = excel_name, mode = "w")) as writer:
                     addDefaultStyle(info_df).to_excel(excel_writer = writer)
             except PermissionError:
                 logPrint("无写入权限！请确保文件未被打开且非只读状态！按回车键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press Enter to try again.")

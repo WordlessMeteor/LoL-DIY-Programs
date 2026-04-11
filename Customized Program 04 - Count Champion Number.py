@@ -4,7 +4,7 @@ from urllib.parse import urljoin
 from typing import Any
 from src.utils.patch import get_cdragon_patchList
 from src.utils.webRequest import requestUrl
-from src.utils.format import format_df, addDefaultStyle
+from src.utils.format import format_df, addDefaultStyle, create_workbook_win32
 from src.utils.summoner import print_summoner_info
 from src.utils.repeatConnect import LCUConnect
 from src.core.config.localization import language_ddragon, language_cdragon
@@ -16,7 +16,7 @@ from src.core.dataframes.champions import test_bot, sort_ddragon_champions, sort
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/11
+# 更新（Last update）：     2026/04/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -352,7 +352,9 @@ async def count_champions(connection: Connection) -> None:
             elif data_type[0] == "2":
                 LoLChampion_df, count = sort_plugin_champions(LoLChampions, verbose = mode[0] != "2")
             wbPath: str = "available-bots.xlsx"
-            workbook_exist: bool = os.path.exists("available-bots.xlsx")
+            if not os.path.exists(wbPath):
+                wbCreateFlag: bool = create_workbook_win32(os.path.abspath(wbPath))
+            workbook_exist: bool = os.path.exists(wbPath)
             while True:
                 try:
                     with (pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = wbPath)) as writer:
@@ -416,6 +418,8 @@ def main():
                     LoLChampion_df, count = sort_ddragon_champions(LoLChampions, verbose = True)
                     version_df: pandas.DataFrame = pandas.DataFrame({"Patch": [version]})
                     wbPath: str = "available-bots.xlsx"
+                    if not os.path.exists(wbPath):
+                        wbCreateFlag: bool = create_workbook_win32(os.path.abspath(wbPath))
                     workbook_exist: bool = os.path.exists(wbPath)
                     while True:
                         try:
@@ -436,6 +440,8 @@ def main():
                     LoLChampion_df, count = sort_plugin_champions(LoLChampions)
                     version_df = pandas.DataFrame({"Patch": [version]})
                     wbPath = "available-bots.xlsx"
+                    if not os.path.exists(wbPath):
+                        wbCreateFlag: bool = create_workbook_win32(os.path.abspath(wbPath))
                     workbook_exist = os.path.exists(wbPath)
                     while True:
                         try:

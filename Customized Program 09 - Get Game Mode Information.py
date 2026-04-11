@@ -2,7 +2,7 @@ from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import os, pandas, time
 from typing import Any
-from src.utils.format import format_df, addDefaultStyle
+from src.utils.format import format_df, addDefaultStyle, create_workbook_win32
 from src.utils.summoner import print_summoner_info
 from src.core.dataframes.gameMode import sort_queue_data, check_available_queue
 
@@ -12,7 +12,7 @@ from src.core.dataframes.gameMode import sort_queue_data, check_available_queue
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/12
+# 更新（Last update）：     2026/04/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -44,9 +44,13 @@ async def gamemode(connection: Connection) -> None: #导出游戏模式信息到
     locale: str = client_info["--locale"]
     version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
     version_df: pandas.DataFrame = pandas.DataFrame({"Patch": [version]})
+    excel_name: str = "游戏队列信息.xlsx"
+    if not os.path.exists(excel_name):
+        wbCreateFlag: bool = create_workbook_win32(os.path.abspath(excel_name))
+    workbook_exist: bool = os.path.exists(excel_name)
     while True:
         try:
-            with (pandas.ExcelWriter(path = "游戏队列信息.xlsx", mode = "a", if_sheet_exists = "overlay") if os.path.exists("游戏队列信息.xlsx") else pandas.ExcelWriter(path = "游戏队列信息.xlsx")) as writer:
+            with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "overlay") if workbook_exist else pandas.ExcelWriter(path = excel_name)) as writer:
                 currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
                 addDefaultStyle(queue_df).to_excel(excel_writer = writer, sheet_name = f"{currentTime} {platformId} {locale}")
                 version_df.to_excel(excel_writer = writer, sheet_name = f"{currentTime} {platformId} {locale}", header = None, index = False, startcol = 0, startrow = 0)

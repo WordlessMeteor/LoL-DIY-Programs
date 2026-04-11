@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from typing import Any, Optional
 from src.utils.summoner import print_summoner_info, get_info, get_info_name
 from src.utils.logger import LogManager
-from src.utils.format import format_df, addDefaultStyle, verify_uuid
+from src.utils.format import format_df, addDefaultStyle, verify_uuid, create_workbook_win32
 from src.utils.patch import Patch
 from src.utils.webRequest import requestUrl, SGPSession
 from src.core.config.conditional_formatting import addFormat_LoLGame_summary_wb, addFormat_LoLGame_summary_wb_transpose
@@ -29,7 +29,7 @@ use_sgp: bool = args.lol_api == "sgp"
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/03/16
+# 更新（Last update）：     2026/04/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1309,10 +1309,12 @@ def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: panda
     #默认导出玩家对局数量统计表（Export recent played summoner count table by default）
     wb01Name: str = f"Recently Played Summoner Count - {displayName}.xlsx"
     wb01Path: str = os.path.join(export_folder, wb01Name).replace("\\", "/")
+    if not os.path.exists(wb01Path):
+        wb01CreateFlag: bool = create_workbook_win32(os.path.abspath(wb01Path), log = log)
     os.makedirs(export_folder, exist_ok = True)
     while True:
         try:
-            with pandas.ExcelWriter(path = wb01Path) as writer:
+            with (pandas.ExcelWriter(path = wb01Path, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb01Path) else pandas.ExcelWriter(path = wb01Path)) as writer:
                 addDefaultStyle(recent_players_metaDf).to_excel(excel_writer = writer)
         except PermissionError:
             logPrint("近期一起玩过的玩家对局数量统计表导出失败！请检查文件的权限以及是否被占用！按回车键重试，或者输入任意非空字符串以放弃导出。\nRecently played summoner count table export failure! Please check the permission and if the file is occupied! Press Enter to try again, or submit any non-empty string to give up exporting.")
@@ -1438,6 +1440,8 @@ def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: panda
     if export:
         wb02Name: str = f"Summoner Profile - {displayName}.xlsx"
         wb02Path: str = os.path.join(export_folder, wb02Name).replace("\\", "/")
+        if not os.path.exists(wb02Path):
+            wb02CreateFlag: bool = create_workbook_win32(os.path.abspath(wb02Path), sheet1_name = "Recently Played Summoners (LoL)" if search_LoL else "Recently Played Summoners (TFT)")
         while True:
             try:
                 with (pandas.ExcelWriter(path = wb02Path, engine = "openpyxl", mode = "a", if_sheet_exists = "replace") if os.path.exists(wb02Path) else pandas.ExcelWriter(path = wb02Path, engine = "openpyxl")) as writer:
@@ -1648,6 +1652,8 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
                     TFTMember_df_to_print = pandas.concat([TFTMember_df_to_print, TFTMember_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
                     if member["puuid"] in friend_puuids:
                         recent_friend_summonerNames.append(get_info_name(member_info_body))
+                    if not os.path.exists(wb03Name):
+                        wb03CreateFlag: bool = create_workbook_win32(os.path.abspath(wb03Name))
                     while True:
                         try:
                             with (pandas.ExcelWriter(path = wb03Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb03Name) else pandas.ExcelWriter(path = wb03Name)) as writer:
@@ -1748,6 +1754,8 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
                     TFTAlly_df_to_print = pandas.concat([TFTAlly_df_to_print, TFTAlly_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
                     if ally["puuid"] in friend_puuids:
                         recent_friend_summonerNames.append(get_info_name(ally_info_body))
+                    if not os.path.exists(wb04Name):
+                        wb04CreateFlag: bool = create_workbook_win32(os.path.abspath(wb04Name))
                     while True:
                         try:
                             with (pandas.ExcelWriter(path = wb04Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb04Name) else pandas.ExcelWriter(path = wb04Name)) as writer:
@@ -1799,6 +1807,8 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
                         TFTEnemy_df_to_print = pandas.concat([TFTEnemy_df_to_print, TFTEnemy_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
                         if enemy["puuid"] in friend_puuids:
                             recent_friend_summonerNames.append(get_info_name(enemy_info_body))
+                        if not os.path.exists(wb04Name):
+                            wb04CreateFlag: bool = create_workbook_win32(os.path.abspath(wb04Name))
                         while True:
                             try:
                                 with (pandas.ExcelWriter(path = wb04Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb04Name) else pandas.ExcelWriter(path = wb04Name)) as writer:
@@ -1895,6 +1905,8 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
                         TFTPlayer_df_to_print = pandas.concat([TFTPlayer_df_to_print, TFTPlayer_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
                         if player["puuid"] in friend_puuids:
                             recent_friend_summonerNames.append(get_info_name(player_info_body))
+                        if not os.path.exists(wb05Name):
+                            wb05CreateFlag: bool = create_workbook_win32(os.path.abspath(wb05Name))
                         while True:
                             try:
                                 with (pandas.ExcelWriter(path = wb05Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb05Name) else pandas.ExcelWriter(path = wb05Name)) as writer:
@@ -1991,6 +2003,8 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
                         TFTAlly_df_to_print = pandas.concat([TFTAlly_df_to_print, TFTAlly_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
                         if ally["puuid"] in friend_puuids:
                             recent_friend_summonerNames.append(get_info_name(ally_info_body))
+                        if not os.path.exists(wb05Name):
+                            wb05CreateFlag = create_workbook_win32(os.path.abspath(wb05Name))
                         while True:
                             try:
                                 with (pandas.ExcelWriter(path = wb05Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb05Name) else pandas.ExcelWriter(path = wb05Name)) as writer:
@@ -2044,6 +2058,8 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
                         TFTEnemy_df_to_print = pandas.concat([TFTEnemy_df_to_print, TFTEnemy_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
                         if enemy["puuid"] in friend_puuids:
                             recent_friend_summonerNames.append((get_info_name(enemy_info_body)))
+                        if not os.path.exists(wb05Name):
+                            wb05CreateFlag = create_workbook_win32(os.path.abspath(wb05Name))
                         while True:
                             try:
                                 with (pandas.ExcelWriter(path = wb05Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb05Name) else pandas.ExcelWriter(path = wb05Name)) as writer:
@@ -2243,6 +2259,8 @@ async def detect_postgame(connection: Connection, search_LoL: bool, search_TFT: 
                     recent_TFTParticipant_df_to_print = pandas.concat([recent_TFTParticipant_df_to_print, recent_TFTParticipant_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
                     if participant_puuid in friend_puuids:
                         recent_friend_summonerNames.append(participant_summonerName)
+                    if not os.path.exists(wb06Name):
+                        wb06CreateFlag: bool = create_workbook_win32(os.path.abspath(wb06Name), sheet1_name = f"Match {gameId} - Information")
                     while True:
                         try:
                             with (pandas.ExcelWriter(path = wb06Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb06Name) else pandas.ExcelWriter(path = wb06Name)) as writer:
@@ -2399,6 +2417,8 @@ async def detect_dodged_champSelect(connection: Connection, infos: Optional[dict
                 LoLAlly_df_to_print = pandas.concat([LoLAlly_df_to_print, LoLAlly_df.loc[1:, recent_ChampSelect_player_fields]], axis = 0)
                 if ally["puuid"] in friend_puuids:
                     recent_friend_summonerNames.append(get_info_name(ally_info_body))
+                if not os.path.exists(wb07Name):
+                    wb07CreateFlag: bool = create_workbook_win32(os.path.abspath(wb07Name))
                 while True:
                     try:
                         with (pandas.ExcelWriter(path = wb07Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb07Name) else pandas.ExcelWriter(path = wb07Name)) as writer:
@@ -2440,6 +2460,8 @@ async def detect_dodged_champSelect(connection: Connection, infos: Optional[dict
                     LoLEnemy_df_to_print = pandas.concat([LoLEnemy_df_to_print, LoLEnemy_df.loc[1:, recent_ChampSelect_player_fields]], axis = 0)
                     if enemy["puuid"] in friend_puuids:
                         recent_friend_summonerNames.append(get_info_name(enemy_info_body))
+                    if not os.path.exists(wb07Name):
+                        wb07CreateFlag: bool = create_workbook_win32(os.path.abspath(wb07Name))
                     while True:
                         try:
                             with (pandas.ExcelWriter(path = wb07Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb07Name) else pandas.ExcelWriter(path = wb07Name)) as writer:
@@ -2527,6 +2549,8 @@ async def detect_friend(connection: Connection, search_LoL: bool, search_TFT: bo
             # recent_LoLFriend_df.insert(1, "note", ["备注"] + [friend["note"]] * (len(LoLFriend_index) - 1))
             recent_TFTFriend_df = pandas.concat([recent_TFTFriend_df.iloc[:, :1], pandas.DataFrame({"note": ["备注"] + [friend["note"]] * (len(TFTFriend_index) - 1)}, index = TFTFriend_index), recent_TFTFriend_df.iloc[:, 1:]], axis = 1)
             recent_TFTFriend_df_to_print = pandas.concat([recent_TFTFriend_df_to_print, recent_TFTFriend_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
+            if not os.path.exists(wb08Name):
+                wb08CreateFlag: bool = create_workbook_win32(os.path.abspath(wb08Name))
             while True:
                 try:
                     with (pandas.ExcelWriter(path = wb08Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb08Name) else pandas.ExcelWriter(path = wb08Name)) as writer:
@@ -2605,6 +2629,8 @@ async def detect_friend_request(connection: Connection, search_LoL: bool, search
             recent_LoLPrefriend_df_to_print = pandas.concat([recent_LoLPrefriend_df_to_print, recent_LoLPrefriend_df.loc[1:, recent_LoLPlayer_fields]], axis = 0)
             recent_TFTPrefriend_df: pandas.DataFrame = recent_TFTPlayer_df.loc[TFTPrefriend_index, :]
             recent_TFTPrefriend_df_to_print = pandas.concat([recent_TFTPrefriend_df_to_print, recent_TFTPrefriend_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
+            if not os.path.exists(wb09Name):
+                wb09CreateFlag: bool = create_workbook_win32(os.path.abspath(wb09Name))
             while True:
                 try:
                     with (pandas.ExcelWriter(path = wb09Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb09Name) else pandas.ExcelWriter(path = wb09Name)) as writer:
@@ -2710,6 +2736,8 @@ async def detect_party_invitaion(connection: Connection, search_LoL: bool, searc
                     TFTInvitee_df_to_print = pandas.concat([TFTInvitee_df_to_print, TFTInvitee_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
                     if invitee_info_body["puuid"] in friend_puuids:
                         recent_friend_summonerNames.append(get_info_name(invitee_info_body))
+                    if not os.path.exists(wb10Name):
+                        wb10CreateFlag: bool = create_workbook_win32(os.path.abspath(wb10Name))
                     while True:
                         try:
                             with (pandas.ExcelWriter(path = wb10Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb10Name) else pandas.ExcelWriter(path = wb10Name)) as writer:
@@ -2757,6 +2785,8 @@ async def detect_party_invitaion(connection: Connection, search_LoL: bool, searc
             TFTInviter_df_to_print = pandas.concat([TFTInviter_df_to_print, TFTInviter_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
             if inviter_info_body["puuid"] in friend_puuids:
                 recent_friend_summonerNames.append(get_info_name(inviter_info_body))
+            if not os.path.exists(wb10Name):
+                wb10CreateFlag: bool = create_workbook_win32(os.path.abspath(wb10Name))
             while True:
                 try:
                     with (pandas.ExcelWriter(path = wb10Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb10Name) else pandas.ExcelWriter(path = wb10Name)) as writer:
@@ -2856,6 +2886,8 @@ async def detect_blockList(connection: Connection, search_LoL: bool, search_TFT:
             recent_LoLBlockedPlayer_df_to_print = pandas.concat([recent_LoLBlockedPlayer_df_to_print, recent_LoLBlockedPlayer_df.loc[1:, recent_LoLPlayer_fields]], axis = 0)
             recent_TFTBlockedPlayer_df: pandas.DataFrame = recent_TFTPlayer_df.loc[TFTBlockedPlayer_index, :]
             recent_TFTBlockedPlayer_df_to_print = pandas.concat([recent_TFTBlockedPlayer_df_to_print, recent_TFTBlockedPlayer_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
+            if not os.path.exists(wb11Name):
+                wb11CreateFlag: bool = create_workbook_win32(os.path.abspath(wb11Name))
             while True:
                 try:
                     with (pandas.ExcelWriter(path = wb11Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb11Name) else pandas.ExcelWriter(path = wb11Name)) as writer:
@@ -2969,6 +3001,8 @@ async def detect_custom_list(connection: Connection, search_LoL: bool, search_TF
                 recent_LoLPlayer_df_to_print = pandas.concat([recent_LoLPlayer_df_to_print, recent_LoLPlayer_df.loc[1:, recent_LoLPlayer_fields]], axis = 0)
                 recent_TFTPlayer_df = recent_TFTPlayer_df.loc[TFTPlayer_index, :]
                 recent_TFTPlayer_df_to_print = pandas.concat([recent_TFTPlayer_df_to_print, recent_TFTPlayer_df.loc[1:, recent_TFTPlayer_fields]], axis = 0)
+                if not os.path.exists(wb12Name):
+                    wb12CreateFlag: bool = create_workbook_win32(os.path.abspath(wb12Name))
                 while True:
                     try:
                         with (pandas.ExcelWriter(path = wb12Name, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb12Name) else pandas.ExcelWriter(path = wb12Name)) as writer:

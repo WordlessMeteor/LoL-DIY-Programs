@@ -4,7 +4,7 @@ import copy, os, json, time, pandas, re, requests
 from openpyxl import load_workbook, Workbook
 from typing import Any
 from src.utils.summoner import print_summoner_info, get_info_name
-from src.utils.format import getISOTime, addDefaultStyle, optimize_bool_display, pyobj2json
+from src.utils.format import getISOTime, addDefaultStyle, optimize_bool_display, pyobj2json, create_workbook_win32
 from src.core.config.servers import set_platform_folder, set_summonerInfo_folder, save_platform_info
 from src.core.config.localization import inventoryType_dict, ownershipTypes, subInventoryTypes
 
@@ -14,7 +14,7 @@ from src.core.config.localization import inventoryType_dict, ownershipTypes, sub
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/11
+# 更新（Last update）：     2026/04/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -541,6 +541,8 @@ async def fetch_store(connection: Connection) -> None:
     excel_name: str = f"Store - {platformId}.xlsx"
     wb1Path: str = os.path.join(platform_folder, excel_name)
     os.makedirs(platform_folder, exist_ok = True)
+    if not os.path.exists(wb1Path):
+        wb1CreateFlag: bool = create_workbook_win32(os.path.abspath(wb1Path))
     workbook1_exist: bool = os.path.exists(wb1Path)
     while True:
         try:
@@ -565,6 +567,8 @@ async def fetch_store(connection: Connection) -> None:
     wb2Path: str = os.path.join(folder, excel_name)
     excel_name_sorted: str = "Catalog and Collections - %s (sorted).xlsx" %displayName
     os.makedirs(folder, exist_ok = True)
+    if not os.path.exists(wb2Path):
+        wb2CreateFlag: bool = create_workbook_win32(os.path.abspath(wb2Path))
     workbook2_exist: bool = os.path.exists(wb2Path)
     while True:
         try:

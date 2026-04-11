@@ -4,7 +4,7 @@ import os, pandas, re, time
 from openpyxl import load_workbook, Workbook
 from typing import Any
 from src.utils.summoner import print_summoner_info, get_info_name
-from src.utils.format import getISOTime, optimize_bool_display, format_df, addDefaultStyle
+from src.utils.format import getISOTime, optimize_bool_display, format_df, addDefaultStyle, create_workbook_win32
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.config.headers import mission_header, objective_group_header, objective_category_header
 from src.core.config.localization import celebrationTypes, clientNotifyLevels, displayTypes, missionTypes, metadataMissionTypes, objectiveStatus_dict, objectiveTypes, rewardGroupStrategies, rewardTypes, missionStatus_dict, gameTypes_mission, objectivesTypes, categoryTypes, lolEventHubTypes, objectiveCategoryFilter_dict, tftPassTypes
@@ -15,7 +15,7 @@ from src.core.config.localization import celebrationTypes, clientNotifyLevels, d
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/11
+# 更新（Last update）：     2026/04/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -197,6 +197,8 @@ async def get_mission_info(connection: Connection) -> None:
     excel_name: str = f"Player Mission - {displayName}.xlsx" 
     excel_name_sorted: str = f"Player Mission - {displayName} (sorted).xlsx"
     wbPath: str = os.path.join(folder, excel_name)
+    if not os.path.exists(wbPath):
+        wbCreateFlag: bool = create_workbook_win32(os.path.abspath(wbPath))
     workbook_exist: bool = os.path.exists(wbPath)
     while True:
         try:

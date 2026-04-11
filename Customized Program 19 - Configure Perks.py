@@ -2,7 +2,7 @@ from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import copy, json, os, pandas, platform, pyperclip, re, subprocess, time, traceback
 from typing import Any, Optional
-from src.utils.format import getISOTime, optimize_bool_display, format_df, addDefaultStyle, pyobj2json
+from src.utils.format import getISOTime, optimize_bool_display, format_df, addDefaultStyle, pyobj2json, create_workbook_win32
 from src.utils.logger import LogManager
 from src.utils.summoner import print_summoner_info, get_info_name
 from src.core.config.localization import gamemaps, slotTypes, positions, recommendedAttributes
@@ -16,7 +16,7 @@ from src.core.dataframes.champions import sort_inventory_champions, filter_champ
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/11
+# 更新（Last update）：     2026/04/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -358,9 +358,11 @@ def export_all_perks(perk_df: pandas.DataFrame) -> None:
     :type perk_df: pandas.DataFrame
     '''
     excel_name: str = "Perks.xlsx"
+    if not os.path.exists(excel_name):
+        wbCreateFlag: bool = create_workbook_win32(os.path.abspath(excel_name), sheet1_name = "Perks")
     while True:
         try:
-            with pandas.ExcelWriter(path = excel_name) as writer:
+            with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name)) as writer:
                 addDefaultStyle(perk_df).to_excel(excel_writer = writer, sheet_name = "Perks") #数据框在导出到Excel中时保留最原始的数据（When the dataframe is exported to Excel, the most original information is reserved）
         except PermissionError:
             logPrint("无写入权限！请确保文件未被打开且非只读状态！按回车键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press Enter to try again.")
@@ -576,6 +578,8 @@ def export_all_perkPages(perkPage_df: pandas.DataFrame, displayName: str, folder
     excel_name: str = f"Player Perk Pages - {displayName}.xlsx"
     wbPath: str = os.path.join(folder, excel_name).replace("\\", "/")
     os.makedirs(folder, exist_ok = True)
+    if not os.path.exists(wbPath):
+        wbCreateFlag: bool = create_workbook_win32(os.path.abspath(wbPath))
     workbook_exist: bool = os.path.exists(wbPath)
     while True:
         try:

@@ -5,7 +5,7 @@ from urllib.parse import urljoin
 from typing import Any, Optional
 from src.utils.logger import LogManager, aInput
 from src.utils.summoner import print_summoner_info, get_info, get_info_name
-from src.utils.format import getISOTime, optimize_bool_display, format_df, addDefaultStyle
+from src.utils.format import getISOTime, optimize_bool_display, format_df, addDefaultStyle, create_workbook_win32
 from src.utils.patch import Patch
 from src.utils.runtimeDebug import subscope
 from src.utils.webRequest import requestUrl, SGPSession
@@ -875,6 +875,8 @@ async def check_friend_list(connection: Connection) -> None:
         excel_name: str = "Friend List - %s.xlsx" %(get_info_name(current_info))
         wbPath: str = os.path.join(folder, excel_name)
         os.makedirs(folder, exist_ok = True)
+        if not os.path.exists(wbPath):
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(wbPath))
         workbook_exist: bool = os.path.exists(wbPath)
         while True:
             try:
@@ -1282,6 +1284,8 @@ async def export_conversation(connection: Connection) -> None:
                         os.makedirs(folder, exist_ok = True)
                         workbook_exist: bool = os.path.exists(wbPath)
                         sheet_name: str = conversation["gameName"] + "#" + conversation["gameTag"] if conversation["type"] == "chat" else conversation["id"].split("@")[0]
+                        if not os.path.exists(wbPath):
+                            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(wbPath), sheet1_name = sheet_name)
                         while True:
                             try:
                                 with (pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = wbPath)) as writer:

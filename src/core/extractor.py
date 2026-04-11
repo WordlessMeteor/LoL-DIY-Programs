@@ -9,7 +9,7 @@ if not wd in sys.path:
 from src.utils.logger import LogManager
 from src.utils.patch import Patch, get_cdragon_patchList
 from src.utils.webRequest import requestUrl
-from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, pyobj2json, capitalize, decapitalize
+from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, pyobj2json, capitalize, decapitalize, create_workbook_win32
 from src.utils.runtimeDebug import subscope
 
 #=============================================================================
@@ -18,7 +18,7 @@ from src.utils.runtimeDebug import subscope
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/04/08
+# 更新（Last update）：     2026/04/11
 #=============================================================================
 
 #定义异质性检验函数（Define heterogeneity verification function）
@@ -2739,8 +2739,10 @@ class MapExtractor(LoLDataExtractor):
                 return
         #导出数据（Export data）
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
-        workbook_exist = os.path.exists(self.wbPath)
-        currentTime = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
+        if not os.path.exists(self.wbPath):
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
+        workbook_exist: bool = os.path.exists(self.wbPath)
+        currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
         sheet1_name: str = f"{self.patch_number} Map" if self.sheet_naming_fold else "地图（Map）"
         while True:
             try:
@@ -2972,8 +2974,10 @@ class CheatExtractor(LoLDataExtractor):
                 return
         #导出数据（Export data）
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
-        workbook_exist = os.path.exists(self.wbPath)
-        currentTime = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
+        if not os.path.exists(self.wbPath):
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
+        workbook_exist: bool = os.path.exists(self.wbPath)
+        currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
         sheet1_name: str = f"{self.patch_number} CheatSet" if self.sheet_naming_fold else "指令集（CheatSet）"
         sheet2_name: str = f"{self.patch_number} Cheat" if self.sheet_naming_fold else "指令（Cheat）"
         while True:
@@ -3321,8 +3325,10 @@ class PerkExtractor(LoLDataExtractor):
                 return
         #导出数据（Export data）
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
-        workbook_exist = os.path.exists(self.wbPath)
-        currentTime = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
+        if not os.path.exists(self.wbPath):
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
+        workbook_exist: bool = os.path.exists(self.wbPath)
+        currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
         sheet1_name: str = f"{self.patch_number} PerkStyles" if self.sheet_naming_fold else "符文系（PerkStyles）"
         sheet2_name: str = f"{self.patch_number} Perks" if self.sheet_naming_fold else "符文（Perks）"
         while True:
@@ -4214,8 +4220,10 @@ class ChampionExtractor(LoLDataExtractor):
                 return
         #导出数据（Export data）
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
-        workbook_exist = os.path.exists(self.wbPath)
-        currentTime = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
+        if not os.path.exists(self.wbPath):
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
+        workbook_exist: bool = os.path.exists(self.wbPath)
+        currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
         sheet1_name1: str = "角色（Characters）" if useAllCharacter else "英雄（Champions）"
         sheet1_name2: str = f"{self.patch_number} Characters" if useAllCharacter else f"{self.patch_number} Champions"
         sheet2_name1: str = "角色技能（Character Spells）" if useAllCharacter else "英雄技能（Champion Spells）"
@@ -4552,8 +4560,10 @@ class ItemExtractor(LoLDataExtractor):
                 return
         #导出数据（Export data）
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
-        workbook_exist = os.path.exists(self.wbPath)
-        currentTime = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
+        if not os.path.exists(self.wbPath):
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
+        workbook_exist: bool = os.path.exists(self.wbPath)
+        currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
         sheet1_name: str = f"{self.patch_number} Items" if self.sheet_naming_fold else "装备（Items）"
         sheet2_name: str = f"{self.patch_number} ItemGroups" if self.sheet_naming_fold else "装备分组（Item Groups）"
         sheet3_name: str = f"{self.patch_number} ItemModifiers" if self.sheet_naming_fold else "装备修饰（Item Modifiers）"
@@ -5144,8 +5154,10 @@ class AugmentExtractor(LoLDataExtractor):
                 return
         #导出数据（Export data）
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
-        workbook_exist = os.path.exists(self.wbPath)
-        currentTime = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
+        if not os.path.exists(self.wbPath):
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
+        workbook_exist: bool = os.path.exists(self.wbPath)
+        currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
         sheet1_name: str = f"{self.patch_number} CherryAugments" if self.sheet_naming_fold else "斗魂竞技场强化符文（Cherry Augments）"
         sheet2_name: str = f"{self.patch_number} SwarmAugments" if self.sheet_naming_fold else "无尽狂潮强化（Swarm Augments）"
         sheet3_name: str = f"{self.patch_number} KiwiAugments" if self.sheet_naming_fold else "海克斯大乱斗强化符文（Kiwi Augments）"
@@ -5500,8 +5512,10 @@ class AnvilExtractor(LoLDataExtractor):
                 return
         #导出数据（Export data）
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
-        workbook_exist = os.path.exists(self.wbPath)
-        currentTime = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
+        if not os.path.exists(self.wbPath):
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
+        workbook_exist: bool = os.path.exists(self.wbPath)
+        currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
         sheet1_name: str = f"{self.patch_number} CherryAnvils" if self.sheet_naming_fold else "斗魂竞技场锻造器（Cherry Anvils）"
         sheet2_name: str = f"{self.patch_number} KiwiAnvils" if self.sheet_naming_fold else "海克斯大乱斗锻造器（Kiwi Anvils）"
         while True:
@@ -6800,8 +6814,10 @@ class TFTExtractor(LoLDataExtractor):
                 return
         #导出数据（Export data）
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
-        workbook_exist = os.path.exists(self.wbPath)
-        currentTime = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
+        if not os.path.exists(self.wbPath):
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
+        workbook_exist: bool = os.path.exists(self.wbPath)
+        currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
         sheet1_name: str = f"{self.patch_number} TFTSet" if self.sheet_naming_fold else "云顶之弈赛季（TFT Set）"
         sheet2_name: str = f"{self.patch_number} TFTShop" if self.sheet_naming_fold else "云顶之弈商店（TFT Shop）"
         sheet3_name: str = f"{self.patch_number} TFTShopContent" if self.sheet_naming_fold else "云顶之弈商店内容（TFT Shop Content）"

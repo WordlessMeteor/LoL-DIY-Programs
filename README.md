@@ -52,6 +52,7 @@ This program set mainly achieves **LoL Summoner information export** and **Leagu
         - wcwidth
         - bs4
         - keyboard
+        - pywin32
 2. To improve the response speed, please open any program in this program set by Command Prompt or Terminal, instead of Python IDLE.
     - To prevent the window from flashing quickly, it's suggested that users first open Command Prompt (or Terminal), switch to the directory of the program set using `cd` command and then open some program by `python [Filename]` or `python -W ignore [Filename]`. In this way, it's easy check the returned information.
 3. All programs must run after the user logs into the League Client. 

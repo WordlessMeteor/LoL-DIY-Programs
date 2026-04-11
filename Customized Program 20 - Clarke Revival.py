@@ -4,7 +4,7 @@ import argparse, os, pandas, psutil, time, win32com.client
 from typing import Any, Optional
 from src.utils.summoner import print_summoner_info, get_info, get_info_name, sort_summoner_info
 from src.utils.logger import LogManager
-from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, normalize_file_name, verify_uuid
+from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, normalize_file_name, verify_uuid, create_workbook_win32
 from src.utils.webRequest import requestUrl, SGPSession
 from src.utils.runtimeDebug import subscope
 from src.core.config.const import BOT_UUID
@@ -48,7 +48,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/20
+# 更新（Last update）：     2026/04/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -971,9 +971,11 @@ async def Clarke_revival(connection: Connection) -> None:
             TFTPlayer_summary_df = pandas.concat(TFTPlayer_stat_summary_dfs, ignore_index = True)
         #导出玩家战绩（Export player stats）
         logPrint("正在保存玩家战绩……\nSaving player stats ...")
+        if not os.path.exists(excel_name):
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(excel_name), sheet1_name = "MemberIdentity")
         while True:
             try:
-                with pandas.ExcelWriter(path = excel_name, engine = "openpyxl") as writer: #使用openpyxl引擎套用条件格式（Use "openpyxl" engine to add conditional formats）
+                with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace", engine = "openpyxl") if os.path.exists(excel_name) else pandas.ExcelWriter(path = excel_name, engine = "openpyxl")) as writer: #使用openpyxl引擎套用条件格式（Use "openpyxl" engine to add conditional formats）
                     addDefaultStyle(player_info_df).to_excel(excel_writer = writer, sheet_name = "MemberIdentity")
                     logPrint("成员身份信息已导出。\nMember identity information has been exported.")
                     if mode == "1" and gameflow_phase == "ChampSelect":

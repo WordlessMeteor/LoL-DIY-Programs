@@ -2,7 +2,7 @@ from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import os, pandas, json, time
 from typing import Any, IO
-from src.utils.format import addDefaultStyle
+from src.utils.format import addDefaultStyle, create_workbook_win32
 from src.utils.summoner import print_summoner_info, get_info_name
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.config.headers import player_loot_header
@@ -14,7 +14,7 @@ from src.core.config.localization import essenceTypes, lootCategories, itemStatu
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/11
+# 更新（Last update）：     2026/04/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -85,17 +85,20 @@ async def analyze_player_loots(connection: Connection) -> None: #导出玩家目
     player_loot_df: pandas.DataFrame = pandas.DataFrame(data = player_loot_data_organized)
     player_loot_df = pandas.concat([pandas.DataFrame([player_loot_header])[player_loot_df.columns], player_loot_df], ignore_index = True)
     excel_name: str = "Player Loot - %s.xlsx" %displayName
+    wbPath: str = os.path.join(folder, excel_name)
     os.makedirs(folder, exist_ok = True)
+    if not os.path.exists(wbPath):
+        wbCreateFlag: bool = create_workbook_win32(os.path.abspath(wbPath))
     while True:
         try:
-            with (pandas.ExcelWriter(path = os.path.join(folder, excel_name), mode = "a", if_sheet_exists = "replace") if os.path.exists(os.path.join(folder, excel_name)) else pandas.ExcelWriter(path = os.path.join(folder, excel_name))) as writer:
+            with (pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "replace") if os.path.exists(wbPath) else pandas.ExcelWriter(path = wbPath)) as writer:
                 currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
                 addDefaultStyle(player_loot_df).to_excel(excel_writer = writer, sheet_name = f"{currentTime} {platformId} {locale}")
         except PermissionError:
             print("无写入权限！请确保文件未被打开且非只读状态！按回车键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press Enter to try again.")
             input()
         else:
-            print('玩家战利品信息已保存为“%s”！请按回车键退出。\nPlayer loot information is saved as "%s"! Press Enter to exit ...' %(os.path.join(folder, excel_name), os.path.join(folder, excel_name)))
+            print('玩家战利品信息已保存为“%s”！请按回车键退出。\nPlayer loot information is saved as "%s"! Press Enter to exit ...' %(wbPath, wbPath))
             break
 
 #-----------------------------------------------------------------------------

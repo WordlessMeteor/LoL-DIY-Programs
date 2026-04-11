@@ -5,7 +5,7 @@ from typing import Any, Optional
 from src.utils.summoner import print_summoner_info
 from src.utils.logger import LogManager
 from src.utils.repeatConnect import LCUConnect
-from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, format_runtime, verify_uuid, pyobj2json
+from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, format_runtime, verify_uuid, pyobj2json, create_workbook_win32
 from src.utils.patch import Patch, get_ddragon_versionList, get_cdragon_patchList
 from src.utils.runtimeDebug import subscope
 from src.utils.webRequest import requestUrl
@@ -20,7 +20,7 @@ from src.core.dataframes.champions import sort_champion_summary
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/20
+# 更新（Last update）：     2026/04/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2499,6 +2499,8 @@ def export_item_data() -> None:
             export: bool = bool(export_str)
             if export:
                 versions_sort: list[str] = list(LoLItem_dfs.keys())
+                if not os.path.exists(excel_name):
+                    wbCreateFlag: bool = create_workbook_win32(os.path.abspath(excel_name), sheet1_name = "latest")
                 workbook_exist = os.path.exists(excel_name)
                 logPrint("正在保存中……\nSaving the data ...")
                 while True:
