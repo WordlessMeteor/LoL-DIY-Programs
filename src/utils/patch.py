@@ -95,6 +95,7 @@ class Patch:
         :rtype: list[Patch]
         '''
         if isinstance(patchList, list) and all(map(lambda x: isinstance(x, Patch), patchList)):
+            patchList = patchList[:]
             for i in range(1, len(patchList)):
                 tmp = patchList[i] #将第i个元素临时存储（Temporarily stores the i-th element of `patchList`）
                 j = i - 1
