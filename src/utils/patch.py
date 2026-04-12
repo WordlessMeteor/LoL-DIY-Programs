@@ -15,29 +15,33 @@ class Patch:
         :param *parts: 一个由正整数组成的可迭代对象，或者是一个仅由整数和英文句点组成的版本号字符串。<br>An iterable object composed of only positive integers or a version string composed of only digital characters and English dots.
         :type *parts: Iterable[int] | str
         '''
-        self.parts: list[int] = []
+        numbers: list[int] = []
         if len(parts) == 1 and isinstance(parts[0], str):
             if parts[0] == "latest":
-                self.parts = [99, 97] #正式服版本总是视为99.97版本（Latest version is always considered as Patch 99.97）
+                numbers = [99, 97] #正式服版本总是视为99.97版本（Latest version is always considered as Patch 99.97）
             elif parts[0] == "pbe":
-                self.parts = [99, 98] #测试服版本总是视为99.98版本（PBE version is always considered as Patch 99.98）
+                numbers = [99, 98] #测试服版本总是视为99.98版本（PBE version is always considered as Patch 99.98）
             else:
-                numbers: list[str] = parts[0].split(".")
+                tmp = parts[0].split(".")
                 try:
-                    self.parts = list(map(int, numbers))
+                    numbers = list(map(int, tmp))
                 except ValueError:
                     raise ValueError("All parts must be non-negative integers.")
         else:
             for part in parts:
                 if isinstance(part, int) and part >= 0:
-                    self.parts.append(part)
+                    numbers.append(part)
                 else:
                     raise ValueError("All parts must be non-negative integers.")
+        self.parts: tuple[int, ...] = tuple(numbers)
+        
+    def __hash__(self) -> int: #使本类成为可哈希类型（Make this class hashable）
+        return hash(self.parts)
         
     def __str__(self) -> str: #生成版本字符串（Generate the patch string）
-        if self.parts == [99, 97]:
+        if self.parts == (99, 97):
             return "latest"
-        elif self.parts == [99, 98]:
+        elif self.parts == (99, 98):
             return "pbe"
         else:
             return ".".join(str(part) for part in self.parts)
@@ -84,8 +88,8 @@ class Patch:
             return NotImplemented
         return not self == other
     
-    @classmethod
-    def sort(cls, patchList: list[Patch]) -> list[Patch]: #利用插入排序算法对版本列表进行升序排列（Sorts a patch list through the insertion sort algorithm）
+    @staticmethod
+    def sort(patchList: list[Patch]) -> list[Patch]: #利用插入排序算法对版本列表进行升序排列（Sorts a patch list through the insertion sort algorithm）
         '''
         对版本列表进行升序排列。<br>Sort a list of `Patch` objects in ascending order.
         
@@ -106,6 +110,19 @@ class Patch:
             return patchList
         else:
             raise TypeError("The parameter patchList must be a list of Patch objects.")
+    
+    @staticmethod
+    def isPatch(s: str) -> bool:
+        '''
+        判断一个字符串是不是版本号。<br>Judge whether a string is a version number.
+        
+        :param s: 任意字符串。<br>Any string.
+        :type s: str
+        :return: 字符串是不是版本号。<br>Whether a string is a version number.
+        :rtype: bool
+        '''
+        pVersion: re.Pattern[str] = re.compile(r"\d+(\.\d+)+")
+        return bool(pVersion.fullmatch(s))
 
 def FindPostPatch(patch: Patch, patchList: list[Patch]) -> str: #二分查找某个版本号在DataDragon数据库的后一个版本（Binary search for the precedent patch of a given patch in the patch list archived in DataDragon database）
     '''
