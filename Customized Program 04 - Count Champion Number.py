@@ -4,9 +4,10 @@ from urllib.parse import urljoin
 from typing import Any
 from src.utils.patch import get_cdragon_patchList
 from src.utils.webRequest import requestUrl
-from src.utils.format import format_df, addDefaultStyle, create_workbook_win32
+from src.utils.format import format_df, addDefaultStyle
 from src.utils.summoner import print_summoner_info
 from src.utils.repeatConnect import LCUConnect
+from src.utils.excel_workbook import create_workbook_win32
 from src.core.config.localization import language_ddragon, language_cdragon
 from src.core.dataframes.champions import test_bot, sort_ddragon_champions, sort_inventory_champions, sort_plugin_champions
 
@@ -16,7 +17,7 @@ from src.core.dataframes.champions import test_bot, sort_ddragon_champions, sort
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/11
+# 更新（Last update）：     2026/04/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------

@@ -3,7 +3,8 @@ from lcu_driver.connection import Connection
 import os, pandas, json
 from typing import Any
 from src.utils.summoner import print_summoner_info
-from src.utils.format import optimize_bool_display, addDefaultStyle, create_workbook_win32
+from src.utils.format import optimize_bool_display, addDefaultStyle
+from src.utils.excel_workbook import create_workbook_win32
 from src.core.config.localization import gameTypes_config
 from src.core.config.headers import gametype_config_header
 
@@ -13,7 +14,7 @@ from src.core.config.headers import gametype_config_header
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/11
+# 更新（Last update）：     2026/04/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------

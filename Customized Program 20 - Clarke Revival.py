@@ -4,9 +4,10 @@ import argparse, os, pandas, psutil, time, win32com.client
 from typing import Any, Optional
 from src.utils.summoner import print_summoner_info, get_info, get_info_name, sort_summoner_info
 from src.utils.logger import LogManager
-from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, normalize_file_name, verify_uuid, create_workbook_win32
+from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, normalize_file_name, verify_uuid
 from src.utils.webRequest import requestUrl, SGPSession
 from src.utils.runtimeDebug import subscope
+from src.utils.excel_workbook import create_workbook_win32
 from src.core.config.const import BOT_UUID
 from src.core.config.conditional_formatting import addFormat_LoLPlayer_summary_wb, addFormat_LoLGame_summary_wb, addFormat_LoLGame_summary_wb_transpose
 from src.core.config.headers import TFTGame_summary_header as TFTGame_stat_header
@@ -48,7 +49,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/11
+# 更新（Last update）：     2026/04/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------

@@ -4,7 +4,8 @@ import copy, os, json, time, pandas, re, requests
 from openpyxl import load_workbook, Workbook
 from typing import Any
 from src.utils.summoner import print_summoner_info, get_info_name
-from src.utils.format import getISOTime, addDefaultStyle, optimize_bool_display, pyobj2json, create_workbook_win32
+from src.utils.format import getISOTime, addDefaultStyle, optimize_bool_display, pyobj2json
+from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from src.core.config.servers import set_platform_folder, set_summonerInfo_folder, save_platform_info
 from src.core.config.localization import inventoryType_dict, ownershipTypes, subInventoryTypes
 
@@ -14,7 +15,7 @@ from src.core.config.localization import inventoryType_dict, ownershipTypes, sub
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/11
+# 更新（Last update）：     2026/04/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -616,13 +617,7 @@ async def fetch_store(connection: Connection) -> None:
                         sheetnames_sorted: list[str] = sheets_Store + sheets_Collections #合并列表得到先按类别排列、再按日期排列的工作表名称（Combine the lists to get the sheetname list ordered firstly by data type and secondly by date）
                     #下面排列所有工作表（The following code arrange all sheets）
                     print("正在排序……\nOrdering ...")
-                    for i in range(len(sheetnames_sorted)): #排序的思路是每次将一个工作表根据其在原工作表列表中的索引和在顺序工作表列表中的索引的差值进行移动（The main idea of sheets' sorting is to move each sheet according to the difference of the indices between in the original sheet list and in the ordered sheet list）
-                        sheetnames = wb.sheetnames #因为一次移动可能导致很多其它工作表的位置发生变化，所以必须每次都重新获取工作表列表（Because a moving event may result in location change of many other sheets, the sheet list must be obtained each time）
-                        sheetname_iter: str = sheetnames_sorted[i] #这里以顺序工作表为迭代器进行遍历，因为顺序工作表是固定不变的（Here the ordered sheet list acts as the iterator to be traversed, for the ordered sheet list is fixed）
-                        if sheetnames[i] != sheetname_iter:
-                            preIndex: int = sheetnames.index(sheetname_iter)
-                            wb.move_sheet(sheetname_iter, i - preIndex) #注意移动距离数应当是排序后的索引减去排序前的索引（Note that the moving offset should be the index in the ordered list subtracted by that in the original list）
-                        #print("排序进度（Ordering process）：%d/%d\t工作表名称（Sheet name）： %s" %(i + 1, len(sheetnames_sorted), sheetname_iter))
+                    sort_worksheet(wb, sheetnames_sorted)
                     print('正在保存中……\nSaving the ordered workbook ...')
                     wb.save(os.path.join(folder, excel_name_sorted))
                     print('排序完成！排好序的工作簿已保存为“%s”。请按任意键退出。\nOrdering finished! The ordered workbook is saved as "%s". Press any key to exit ...\n' %(excel_name_sorted, excel_name_sorted))

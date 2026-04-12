@@ -5,9 +5,10 @@ import matplotlib.pyplot as plt
 from typing import Any, Optional
 from src.utils.summoner import print_summoner_info, get_info, get_info_name
 from src.utils.logger import LogManager
-from src.utils.format import format_df, addDefaultStyle, verify_uuid, create_workbook_win32
+from src.utils.format import format_df, addDefaultStyle, verify_uuid
 from src.utils.patch import Patch
 from src.utils.webRequest import requestUrl, SGPSession
+from src.utils.excel_workbook import create_workbook_win32
 from src.core.config.conditional_formatting import addFormat_LoLGame_summary_wb, addFormat_LoLGame_summary_wb_transpose
 from src.core.config.const import BOT_UUID
 from src.core.config.servers import valid_platformIds, set_platform_folder, set_summonerInfo_folder, save_platform_info
@@ -29,7 +30,7 @@ use_sgp: bool = args.lol_api == "sgp"
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/04/11
+# 更新（Last update）：     2026/04/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------

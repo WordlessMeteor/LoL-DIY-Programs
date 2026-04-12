@@ -1,6 +1,7 @@
 import copy, json, os, pandas, re, requests, sys, time
 from urllib.parse import urljoin
 from xxhash import xxh3_64_intdigest
+from openpyxl import load_workbook, Workbook
 from typing import Any, Callable, Literal, Optional
 wd: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")).replace("\\", "/")
 os.chdir(wd)
@@ -9,8 +10,9 @@ if not wd in sys.path:
 from src.utils.logger import LogManager
 from src.utils.patch import Patch, get_cdragon_patchList
 from src.utils.webRequest import requestUrl
-from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, pyobj2json, capitalize, decapitalize, create_workbook_win32
+from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, pyobj2json, capitalize, decapitalize
 from src.utils.runtimeDebug import subscope
+from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 
 #=============================================================================
 # * 声明（Declaration）
@@ -18,7 +20,7 @@ from src.utils.runtimeDebug import subscope
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/04/11
+# 更新（Last update）：     2026/04/12
 #=============================================================================
 
 #定义异质性检验函数（Define heterogeneity verification function）
@@ -7165,6 +7167,64 @@ if __name__ == "__main__":
                         logPrint("您的输入有误，请重新输入！\nERROR input! Please try again.")
         return (versions, session)
 
+    #定义工作表排序函数（Define worksheet sorting function）
+    def sort_workbook_sheets(wbPath: str, naming_pattern: int) -> None:
+        '''
+        对游戏数据提取工作簿的工作表进行排序。<br>Sort the sheets of Game Data Extraction workbook.
+        
+        :param wbPath: 游戏数据提取工作簿路径。<br>Game Data Extraction workbook path.
+        :type wbPath: str
+        :param naming_pattern: 命名模式代号。有以下两个取值：<br>Naming pattern code, which has the following two values:
+        
+            - 1: 中文备注英文。如“斗魂竞技场强化符文（Cherry Augments）”。<br>Chinese with English note. E.g. "斗魂竞技场强化符文（Cherry Augments）".
+            - 2: 版本号和英文。如“16.8.7638450 CherryAugments”。<br>Patch number and English. E.g. "16.8.7638450 CherryAugments".
+        :type naming_pattern: int
+        '''
+        if not os.path.exists(wbPath):
+            logPrint("文件不存在。不执行任何操作。\nFile not found. No operation will be performed.")
+            return
+        elif not os.path.isfile(wbPath):
+            logPrint("参数不是文件。不执行任何操作。\nThe parameter isn't a file. No operation will be performed.")
+            return
+        elif not os.path.splitext(wbPath)[1] == ".xlsx":
+            logPrint("文件格式错误。不执行任何操作。\nFile format error. No operation will be performed.")
+            return
+        if naming_pattern != 1 and naming_pattern != 2:
+            logPrint("命名模式代号有误。不执行任何操作。\nNaming pattern code error. No operation will be performed.")
+            return
+        wbPath = wbPath.replace("\\", "/")
+        wbPath_sorted: str = " (sorted)".join(os.path.splitext(wbPath))
+        #读取工作簿（Read the workbook）
+        try:
+            wb: Workbook = load_workbook(wbPath)
+        except Exception as e:
+            logPrint(e)
+            logPrint("工作簿读取失败。不执行任何操作。\nWorkbook reading failed. No operation will be performed.")
+            return
+        #首先整理出所有工作表的排列顺序（First, sort out the order of all sheets）
+        sheetnames: list[str] = wb.sheetnames
+        logPrint("正在创建顺序工作表列表……\nCreating the ordered sheet list ...", print_time = True)
+        if naming_pattern == 1:
+            sheetnames_order: list[str] = ["地图（Map）", "指令集（CheatSet）", "指令（Cheat）", "符文系（PerkStyles）", "符文（Perks）", "英雄（Champions）", "英雄技能（Champion Spells）", "角色（Characters）", "角色技能（Character Spells）", "装备（Items）", "装备分组（Item Groups）", "装备修饰（Item Modifiers）", "斗魂竞技场强化符文（Cherry Augments）", "无尽狂潮强化（Swarm Augments）", "海克斯大乱斗强化符文（Kiwi Augments）", "海克斯大乱斗强化符文套装（Kiwi Augment Set）", "斗魂竞技场锻造器（Cherry Anvils）", "海克斯大乱斗锻造器（Kiwi Anvils）", "云顶之弈赛季（TFT Set）", "云顶之弈商店（TFT Shop）", "云顶之弈商店内容（TFT Shop Content）", "云顶之弈掉率表（TFT Drop Rate）", "云顶之弈回合阶段（TFT Stage Round）", "云顶之弈回合（TFT Round）", "云顶之弈传送门（TFT Portal）", "云顶之弈开场奇遇（TFT Encounter Distribu", "云顶之弈开场奇遇（TFT Encounter Distribution）", "云顶之弈奇遇（TFT Encounter）", "云顶之弈单位属性（TFT Unit Property）", "云顶之弈角色定位（TFT Character Role）", "云顶之弈装备列表（TFT Item List）", "云顶之弈装备（TFT Item）", "云顶之弈羁绊列表（TFT Trait List）", "云顶之弈羁绊（TFT Trait）", "云顶之弈电脑玩家英雄（TFT PVE NPC）", "云顶之弈脚本（TFT Script）", "云顶之弈通告（TFT Announcement）"]
+        else:
+            pVersion_dataType: re.Pattern[str] = re.compile(r"\d+(\.\d+)*\s\w+") #定义正则表达式来检验工作表名称是否符合整合工作簿中的工作表格式——版本号+数据类型（Define a regular expression to verify whether a sheet name obeys the format of sheets in an integrated workbook: version number + data type）
+            version_order: list[Patch] = sorted(set(Patch(name.split()[0]) for name in sheetnames if pVersion_dataType.fullmatch(name))) #提取工作表的版本部分，整理形成正序版本列表（Extract the version part of sheet names and organize them into a ascending list）
+            dataType_order: list[str] = ["Map", "CheatSet", "Cheat", "PerkStyles", "Perks", "Champions", "ChampionSpells", "Characters", "CharacterSpells", "Items", "ItemGroups", "ItemModifiers", "CherryAugments", "SwarmAugments", "KiwiAugments", "KiwiAugmentSet", "CherryAnvils", "KiwiAnvils", "TFTSet", "TFTShop", "TFTShopContent", "TFTDropRate", "TFTStageRound", "TFTRound", "TFTPortal", "TFTEncounterDistri", "TFTEncounterDistr", "TFTEncounterDistribution", "TFTEncounter", "TFTUnitProperty", "TFTCharacterRole", "TFTItemList", "TFTItem", "TFTTraitList", "TFTTrait", "TFTPVENPC", "TFTScript", "TFTAnnouncement"]
+            tmpDf: pandas.DataFrame = pandas.DataFrame(data = [{"name": name, "version_weight": version_order.index(Patch(name.split()[0])), "type_weight": dataType_order.index(name.split()[1])} for name in sheetnames if pVersion_dataType.fullmatch(name)]) #忽略名称不合法的工作表（Bypass sheets with illegal names）
+            tmpDf_sorted: pandas.DataFrame = tmpDf.sort_values(by = ["version_weight", "type_weight"]) #工作表名称按照版本的正序和数据类型的正序进行排列（Arrange sheet names in the ascending orders of versions and data types）
+            sheetnames_order = tmpDf_sorted["name"].to_list()
+        sheetnames_sorted: list[str] = [] #所有工作表的期望顺序存储在sheetnames_sorted变量中（The ordered result of all sheets is stored in the variable `sheetnames_sorted`）
+        for sheet_iter in sheetnames_order:
+            if sheet_iter in sheetnames:
+                sheetnames_sorted.append(sheet_iter)
+        #然后排列所有工作表（Then, arrange all sheets）
+        logPrint("正在排序……\nOrdering ...", print_time = True)
+        sort_worksheet(wb, sheetnames_sorted)
+        logPrint("正在保存中……\nSaving the ordered workbook ...", print_time = True)
+        wb.save(wbPath_sorted)
+        logPrint("排序完成！排好序的工作簿已保存为以下文件。\nOrdering finished! The ordered workbook is saved as the following file.\n%s" %(wbPath_sorted), print_time = True)
+        wb.close()
+
     #定义主函数（Define the main function）
     def main() -> int:
         '''
@@ -7292,6 +7352,39 @@ if __name__ == "__main__":
                     tftExtractor.export_tft_data()
                 else:
                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+        else:
+            print("是否排序工作表？（输入任意非空字符串以排序，否则不排序。）\nDo you want to sort the worksheets? (Submit any non-empty string to sort, or null to refuse sorting.)")
+            sort_sheet_str: str = logInput()
+            sort_sheet: bool = bool(sort_sheet_str)
+            if sort_sheet:
+                wbPaths: list[str] = []
+                if integrate:
+                    logPrint("请输入一个含有多版本数据的工作簿路径。\nPlease the path of a workbook that contains data of multiple patches.")
+                else:
+                    logPrint('请依次输入每个版本的工作簿路径。输入“-1”以结束。\nPlease input the paths of workbooks of single patches one by one. Enter "-1" to cancel.')
+                while True:
+                    wbPath: str = logInput()
+                    if wbPath == "":
+                        continue
+                    elif wbPath == "-1" and not integrate:
+                        break
+                    elif os.path.exists(wbPath) and os.path.isfile(wbPath) and os.path.splitext(wbPath)[1] == ".xlsx":
+                        wbPaths.append(wbPath.replace("\\", "/"))
+                        if integrate:
+                            break
+                    elif not os.path.exists(wbPath):
+                        logPrint("文件未找到。请重新输入。\nFile not found. Please try again.")
+                    elif not os.path.isfile(wbPath):
+                        logPrint("请输入一个文件。\nPlease provide a file.")
+                    else:
+                        logPrint('文件格式错误。请输入以“.xlsx”为后缀的文件。\nFile format error. Please provide a file with ".xlsx" extension.')
+                for i in range(len(wbPaths)):
+                    logPrint("[%d/%d]正在排序（Ordering）： %s" %(i + 1, len(wbPaths), wbPath), print_time = True)
+                    wbPath: str = wbPaths[i]
+                    sort_workbook_sheets(wbPath, 2 if integrate else 1)
+                else:
+                    if len(wbPaths) > 0:
+                        logPrint("排序完成。程序即将退出。\nOrder finished. The program will exit soon.")
         return 0
 
     #定义调试函数。开发者可在其中随时修改代码（Define the debug function. Code in this function may be modified at will）

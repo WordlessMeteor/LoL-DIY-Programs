@@ -5,10 +5,11 @@ from typing import Any, Optional
 from src.utils.summoner import print_summoner_info
 from src.utils.logger import LogManager
 from src.utils.repeatConnect import LCUConnect
-from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, format_runtime, verify_uuid, pyobj2json, create_workbook_win32
+from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, format_runtime, verify_uuid, pyobj2json
 from src.utils.patch import Patch, get_ddragon_versionList, get_cdragon_patchList
 from src.utils.runtimeDebug import subscope
 from src.utils.webRequest import requestUrl
+from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from src.core.config.localization import language_ddragon, language_cdragon
 from src.core.extractor import LoLDataExtractor
 from src.core.config.localization import gamemaps
@@ -20,7 +21,7 @@ from src.core.dataframes.champions import sort_champion_summary
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/11
+# 更新（Last update）：     2026/04/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2570,13 +2571,7 @@ def export_item_data() -> None:
                     sheetnames_sorted += cdragon_version_sorted + ddragon_version_sorted #所有工作表的期望顺序存储在sheetnames_sorted变量中（The ordered result of all sheets is stored in the variable `sheetnames_sorted`）
                     #下面排列所有工作表（The following code arrange all sheets）
                     print("正在排序……\nOrdering ...")
-                    for i in range(len(sheetnames_sorted)): #排序的思路是每次将一个工作表根据其在原工作表列表中的索引和在顺序工作表列表中的索引的差值进行移动（The main idea of sheets' sorting is to move each sheet according to the difference of the indices between in the original sheet list and in the ordered sheet list）
-                        sheetnames = wb.sheetnames #因为一次移动可能导致很多其它工作表的位置发生变化，所以必须每次都重新获取工作表列表（Because a moving event may result in location change of many other sheets, the sheet list must be obtained each time）
-                        sheetname_iter = sheetnames_sorted[i] #这里以顺序工作表为迭代器进行遍历，因为顺序工作表是固定不变的（Here the ordered sheet list acts as the iterator to be traversed, for the ordered sheet list is fixed）
-                        if sheetnames[i] != sheetname_iter:
-                            preIndex: int = sheetnames.index(sheetname_iter)
-                            wb.move_sheet(sheetname_iter, i - preIndex) #注意移动距离数应当是排序后的索引减去排序前的索引（Note that the moving offset should be the index in the ordered list subtracted by that in the original list）
-                        #print("排序进度（Ordering process）：%d/%d\t工作表名称（Sheet name）： %s" %(i + 1, len(sheetnames_sorted), sheetname_iter))
+                    sort_worksheet(wb, sheetnames_sorted)
                     print('正在保存中……\nSaving the ordered workbook ...')
                     wb.save(excel_name_sorted)
                     print('排序完成！排好序的工作簿已保存为“%s”。\nOrdering finished! The ordered workbook is saved as "%s".\n' %(excel_name_sorted, excel_name_sorted))
