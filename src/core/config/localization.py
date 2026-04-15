@@ -1010,7 +1010,8 @@ augment_rarity: dict[int | str, str] = {
     "kBronze": "青铜",
     "kSilver": "白银",
     "kGold": "黄金",
-    "kPrismatic": "棱彩"
+    "kPrismatic": "棱彩",
+    "kEventChoice": "事件"
 }
 ##英雄联盟事件（LoL events）
 eventTypes: dict[str, str] = {
@@ -1817,7 +1818,8 @@ honorType_tooltip_bodies: dict[str, str] = {
 #     "KBronze": "Bronze",
 #     "KSilver": "Silver",
 #     "kGold": "Gold",
-#     "kPrismatic": "Prismatic"
+#     "kPrismatic": "Prismatic",
+#     "kEventChoice": "Event"
 # }
 ##英雄联盟事件（LoL events）
 # eventTypes: dict[str, str] = {

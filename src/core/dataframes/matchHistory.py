@@ -4516,7 +4516,7 @@ def sort_LoLGame_summary(LoLGame_summary: dict[str, Any], queues: dict[int, dict
         if Patch("14.12") < Patch(version):
             participantBanIds: list[int] = []
             for i in sorted(playerSubteam.keys()):
-                participantBanIds += [playerSubteam[i][0], playerSubteam[i][1]] #这里默认采用某个子阵营在API中记录的第一名玩家作为该子阵营的先选者。这可能与实际选用顺序有出入（Here the first player of a subteam recorded in API is considered as the player that picks a champion first. This player may not be the real first player.）
+                participantBanIds += playerSubteam[i] #这里默认采用某个子阵营在API中记录的第一名玩家作为该子阵营的先选者。这可能与实际选用顺序有出入（Here the first player of a subteam recorded in API is considered as the player that picks a champion first. This player may not be the real first player.）
         else:
             participantBanIds = [playerSubteam[i][0] for i in sorted(playerSubteam.keys())] #这里默认采用某个子阵营在API中记录的第一名玩家作为禁用英雄的玩家。这可能与实际禁用英雄的玩家有出入（Here the first player of a subteam recorded in API is considered as the player that banned some champion. This player may not be the real player that banned it）
         for i in range(len(participantBanIds)):
@@ -4931,7 +4931,7 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
             if Patch("14.12") < Patch(version):
                 participantBanIds: list[int] = []
                 for i in sorted(playerSubteam.keys()):
-                    participantBanIds += [playerSubteam[i][0], playerSubteam[i][1]] #这里默认采用某个子阵营在API中记录的第一名玩家作为该子阵营的先选者。这可能与实际选用顺序有出入（Here the first player of a subteam recorded in API is considered as the player that picks a champion first. This player may not be the real first player.）
+                    participantBanIds += playerSubteam[i] #这里默认采用某个子阵营在API中记录的第一名玩家作为该子阵营的先选者。这可能与实际选用顺序有出入（Here the first player of a subteam recorded in API is considered as the player that picks a champion first. This player may not be the real first player.）
             else:
                 participantBanIds = [playerSubteam[i][0] for i in sorted(playerSubteam.keys())] #这里默认采用某个子阵营在API中记录的第一名玩家作为禁用英雄的玩家。这可能与实际禁用英雄的玩家有出入（Here the first player of a subteam recorded in API is considered as the player that banned some champion. This player may not be the real player that banned it）
             for i in range(len(participantBanIds)):
@@ -5381,7 +5381,7 @@ async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], que
                 if Patch("14.12") < Patch(version):
                     participantBanIds: list[int] = []
                     for i in sorted(playerSubteam.keys()):
-                        participantBanIds += [playerSubteam[i][0], playerSubteam[i][1]] #这里默认采用某个子阵营在API中记录的第一名玩家作为该子阵营的先选者。这可能与实际选用顺序有出入（Here the first player of a subteam recorded in API is considered as the player that picks a champion first. This player may not be the real first player.）
+                        participantBanIds += playerSubteam[i] #这里默认采用某个子阵营在API中记录的第一名玩家作为该子阵营的先选者。这可能与实际选用顺序有出入（Here the first player of a subteam recorded in API is considered as the player that picks a champion first. This player may not be the real first player.）
                 else:
                     participantBanIds = [playerSubteam[i][0] for i in sorted(playerSubteam.keys())] #这里默认采用某个子阵营在API中记录的第一名玩家作为禁用英雄的玩家。这可能与实际禁用英雄的玩家有出入（Here the first player of a subteam recorded in API is considered as the player that banned some champion. This player may not be the real player that banned it）
                 for i in range(len(participantBanIds)):
@@ -5829,7 +5829,7 @@ async def sort_LoLGame_stats_sgp(connection: Connection, sgpSession: SGPSession,
                 if Patch("14.12") < Patch(version):
                     participantBanIds: list[int] = []
                     for i in sorted(playerSubteam.keys()):
-                        participantBanIds += [playerSubteam[i][0], playerSubteam[i][1]] #这里默认采用某个子阵营在API中记录的第一名玩家作为该子阵营的先选者。这可能与实际选用顺序有出入（Here the first player of a subteam recorded in API is considered as the player that picks a champion first. This player may not be the real first player.）
+                        participantBanIds += playerSubteam[i] #这里默认采用某个子阵营在API中记录的第一名玩家作为该子阵营的先选者。这可能与实际选用顺序有出入（Here the first player of a subteam recorded in API is considered as the player that picks a champion first. This player may not be the real first player.）
                 else:
                     participantBanIds = [playerSubteam[i][0] for i in sorted(playerSubteam.keys())] #这里默认采用某个子阵营在API中记录的第一名玩家作为禁用英雄的玩家。这可能与实际禁用英雄的玩家有出入（Here the first player of a subteam recorded in API is considered as the player that banned some champion. This player may not be the real player that banned it）
                 for i in range(len(participantBanIds)):
