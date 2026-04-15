@@ -38,7 +38,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/04/12
+# 更新（Last update）：     2026/04/16
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2535,6 +2535,8 @@ async def search_profile(connection: Connection) -> None:
             os.makedirs(folder, exist_ok = True)
             if not os.path.exists(wbPath):
                 wbCreateFlag: bool = create_workbook_win32(os.path.abspath(wbPath), sheet1_name = "Profile", log = log) #通过使用系统自带的Excel应用创建工作簿，使得默认字体为西文字体——等线（Use the built-in Excel application to create a workbook, so that its default font is of English style - SimHei）
+            else:
+                wbCreateFlag = False
             workbook_exist: bool = os.path.exists(wbPath)
             while True:
                 try:
@@ -2548,21 +2550,21 @@ async def search_profile(connection: Connection) -> None:
                             logPrint("召唤师排位天梯数据导出完成！\nSummoner league ladder data exported!\n")
                         addDefaultStyle(mastery_df).to_excel(excel_writer = writer, sheet_name = "Champion Mastery")
                         logPrint("召唤师英雄成就导出完成！\nSummoner champion mastery exported!\n")
-                        if not workbook_exist:
+                        if not workbook_exist or wbCreateFlag:
                             pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "Recently Played Summoners (LoL)")
                             pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "Recently Played Summoners (TFT)")
                             logPrint("已创建近期一起玩过的玩家的空白数据表！\nCreated an empty sheet for recently played summoners!\n")
                         if search_LoL:
                             if scan_lol:
-                                if not workbook_exist and not args.deny_empty_sheet_creation:
+                                if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History")
                                 addDefaultStyle(LoLHistory_df_all).to_excel(excel_writer = writer, sheet_name = "LoL Match History - Scan")
-                                if not workbook_exist and not args.deny_empty_sheet_creation:
+                                if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Manual")
                                 worksheet = writer.sheets["LoL Match History - Scan"]
                             else:
                                 addDefaultStyle(LoLHistory_df_all).to_excel(excel_writer = writer, sheet_name = "LoL Match History")
-                                if not workbook_exist and not args.deny_empty_sheet_creation:
+                                if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Scan")
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Manual")
                                 worksheet = writer.sheets["LoL Match History"]
@@ -2572,15 +2574,15 @@ async def search_profile(connection: Connection) -> None:
                             logPrint("召唤师英雄联盟对局记录导出完成！\nSummoner LoL match history exported!\n")
                             if LoLGame_stat_df_export:
                                 if scan_lol:
-                                    if not workbook_exist and not args.deny_empty_sheet_creation:
+                                    if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats")
                                     addDefaultStyle(LoLGame_stat_df).to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Scan")
-                                    if not workbook_exist and not args.deny_empty_sheet_creation:
+                                    if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Manual")
                                     worksheet = writer.sheets["LoL Match Stats - Scan"]
                                 else:
                                     addDefaultStyle(LoLGame_stat_df).to_excel(excel_writer = writer, sheet_name = "LoL Match Stats")
-                                    if not workbook_exist and not args.deny_empty_sheet_creation:
+                                    if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Scan")
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Manual")
                                     worksheet = writer.sheets["LoL Match Stats"]
@@ -2589,12 +2591,12 @@ async def search_profile(connection: Connection) -> None:
                                     max_numPlayersPerTeam_lol = 5 if len(LoLGame_stat_df) <= 1 else max(map(lambda x: 5 if x == 0 or not x in gameQueues else 2 if gameQueues[x]["gameMode"] == "CHERRY" else gameQueues[x]["numPlayersPerTeam"], LoLGame_stat_df["queueId"][1:])) #自定义对局的队伍规模视为5；斗魂竞技场的队伍规模虽然在API中记录为16，但这里应该考虑的是子阵营（The team size of any custom game is regarded as 5; although the team size of an Arena game is recorded as in LCU API, the subteam has more reference value）
                                     addFormat_LoLGame_summary_wb(worksheet, LoLGame_stat_df, numColorScale_order = max_numPlayersPerTeam_lol)
                                 logPrint("召唤师英雄联盟战绩导出完成！\nSummoner LoL game stats exported!\n")
-                            elif not workbook_exist and not args.deny_empty_sheet_creation:
+                            elif (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
                                 pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats")
                                 pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Scan")
                                 pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Manual")
                                 logPrint("已创建英雄联盟战绩的空白数据表。\nCreated an empty sheet for LoL game stats!\n")
-                        elif not workbook_exist and not args.deny_empty_sheet_creation:
+                        elif (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
                             pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History")
                             pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Scan")
                             pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Manual")
@@ -2605,18 +2607,18 @@ async def search_profile(connection: Connection) -> None:
                             logPrint("已创建英雄联盟战绩的空白数据表。\nCreated an empty sheet for LoL game stats!\n")
                         if search_TFT:
                             if scan_tft:
-                                if not workbook_exist and not args.deny_empty_sheet_creation:
+                                if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History")
                                 addDefaultStyle(TFTHistory_df_all).to_excel(excel_writer = writer, sheet_name = "TFT Match History - Scan")
-                                if not workbook_exist and not args.deny_empty_sheet_creation:
+                                if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History - Manual")
                             else:
                                 addDefaultStyle(TFTHistory_df_all).to_excel(excel_writer = writer, sheet_name = "TFT Match History")
-                                if not workbook_exist and not args.deny_empty_sheet_creation:
+                                if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History - Scan")
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History - Manual")
                             logPrint("召唤师云顶之弈对局记录导出完成！\nSummoner TFT match history exported!\n")
-                        elif not workbook_exist and not args.deny_empty_sheet_creation:
+                        elif (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
                             pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History")
                             pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History - Scan")
                             pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History - Manual")
