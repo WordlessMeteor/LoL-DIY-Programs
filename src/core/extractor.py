@@ -20,7 +20,7 @@ from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/04/15
+# 更新（Last update）：     2026/04/16
 #=============================================================================
 
 #定义异质性检验函数（Define heterogeneity verification function）
@@ -5629,7 +5629,7 @@ class GoHExtractor(LoLDataExtractor):
         
         #定义数据结构（Define the data structure）
         logPrint("正在构建荣誉嘉宾数据框……\nBuilding the GoH dataframes ...", print_time = True)
-        GoH_header: dict[str, str] = {"key": "主键", "{1ff99d7f} title": "事件键", "{1ff99d7f} Subtitle": "姓名键", "{1ff99d7f} {bff2f361}": "简述键", "{1ff99d7f} {3b7aa707}": "详细信息键", "EventIcon": "事件缩略图路径", "{982aa425}": "荣誉嘉宾缩略图路径", "{1ff99d7f} title_content_zh": "事件（中文）", "{1ff99d7f} title_content_en": "事件（英文）", "{1ff99d7f} Subtitle_content_zh": "姓名（中文）", "{1ff99d7f} Subtitle_content_en": "姓名（英文）", "{1ff99d7f} {bff2f361}_content_zh": "简述（中文）", "{1ff99d7f} {bff2f361}_content_en": "简述（英文）", "{1ff99d7f} {bff2f361}_content_zh_burn": "简述（中文/去格式化）", "{1ff99d7f} {bff2f361}_content_en_burn": "简述（英文/去格式化）", "{1ff99d7f} {3b7aa707}_content_zh": "详细信息（中文）", "{1ff99d7f} {3b7aa707}_content_en": "详细信息（英文）", "{1ff99d7f} {3b7aa707}_content_zh_burn": "详细信息（中文/去格式化）", "{1ff99d7f} {3b7aa707}_content_en_burn": "详细信息（英文/去格式化）"}
+        GoH_header: dict[str, str] = {"key": "主键", "{1ff99d7f} title": "事件键", "{1ff99d7f} Subtitle": "姓名键", "{1ff99d7f} {bff2f361}": "简述键", "{1ff99d7f} {3b7aa707}": "详细信息键", "EventIcon": "事件缩略图路径", "{982aa425}": "荣誉嘉宾缩略图路径", "{1ff99d7f} title_content_zh": "事件（中文）", "{1ff99d7f} title_content_en": "事件（英文）", "{1ff99d7f} Subtitle_content_zh": "姓名（中文）", "{1ff99d7f} Subtitle_content_en": "姓名（英文）", "{1ff99d7f} {bff2f361}_content_zh": "简述（中文）", "{1ff99d7f} {bff2f361}_content_en": "简述（英文）", "{1ff99d7f} {3b7aa707}_content_zh": "详细信息（中文）", "{1ff99d7f} {3b7aa707}_content_en": "详细信息（英文）", "{1ff99d7f} {3b7aa707}_content_zh_burn": "详细信息（中文/去格式化）", "{1ff99d7f} {3b7aa707}_content_en_burn": "详细信息（英文/去格式化）"}
         GoH_header_keys: list[str] = list(GoH_header.keys())
         GoH_data: dict[str, list[Any]] = {key: [] for key in GoH_header_keys}
         GoH_data_json: dict[str, list[Any]] = copy.deepcopy(GoH_data)
@@ -5666,7 +5666,7 @@ class GoHExtractor(LoLDataExtractor):
                             to_append = tooltip_raw
                     GoH_data[key].append(to_append)
                     GoH_data_json[key].append(pyobj2json(to_append))
-        GoH_statistics_output_order: list[int] = [0, 1, 7, 8, 2, 9, 10, 3, 11, 12, 13, 14, 4, 15, 16, 17, 18, 5, 6]
+        GoH_statistics_output_order: list[int] = [0, 1, 7, 8, 2, 9, 10, 3, 11, 12, 4, 13, 15, 14, 16, 5, 6]
         GoH_data_organized: dict[str, list[Any]] = {GoH_header_keys[i]: GoH_data_json[GoH_header_keys[i]] for i in GoH_statistics_output_order}
         GoH_df: pandas.DataFrame = pandas.DataFrame(data = GoH_data_organized)
         GoH_df = pandas.concat([pandas.DataFrame([GoH_header])[GoH_df.columns], GoH_df], ignore_index = True)
