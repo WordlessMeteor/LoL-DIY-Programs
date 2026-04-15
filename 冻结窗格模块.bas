@@ -12,6 +12,7 @@ Sub FreezeAndFilterGameDataSheets()
                 Or ws.Name = "斗魂竞技场强化符文（Cherry Augments）" Or Right$(ws.Name, 14) = "CherryAugments" Or ws.Name = "无尽狂潮强化（Swarm Augments）" Or Right$(ws.Name, 13) = "SwarmAugments" _
                 Or ws.Name = "海克斯大乱斗强化符文（Kiwi Augments）" Or Right$(ws.Name, 12) = "KiwiAugments" Or ws.Name = "海克斯大乱斗强化符文套装（Kiwi Augment Set）" Or Right$(ws.Name, 14) = "KiwiAugmentSet" _
                 Or ws.Name = "斗魂竞技场锻造器（Cherry Anvils）" Or Right$(ws.Name, 12) = "CherryAnvils" Or ws.Name = "海克斯大乱斗锻造器（Kiwi Anvils）" Or Right$(ws.Name, 10) = "KiwiAnvils" _
+                Or ws.Name = "斗魂竞技场荣誉嘉宾（Cherry Guests）" Or Right$(ws.Name, 12) = "CherryGuests" _
                 Or ws.Name = "云顶之弈赛季（TFT Set）" Or Right$(ws.Name, 6) = "TFTSet" _
                 Or ws.Name = "云顶之弈商店（TFT Shop）" Or Right$(ws.Name, 7) = "TFTShop" _
                 Or ws.Name = "云顶之弈商店内容（TFT Shop Content）" Or Right$(ws.Name, 14) = "TFTShopContent" _
