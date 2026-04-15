@@ -2618,7 +2618,7 @@ class MapExtractor(LoLDataExtractor):
         for (key1, value) in maps_bin.items():
             if key1 != "__linked" and value["__type"] == "GameModeMapData":
                 for i in range(1 + len(map_header_basic)):
-                    key = map_header_keys[i]
+                    key: str = map_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     else: #基础表头部分（Basic header part）
@@ -2656,7 +2656,7 @@ class MapExtractor(LoLDataExtractor):
                                 if key2 != "__type":
                                     value_dict[key][value1Type][key2] = maps_bin[value1][key2]
                 for i in range(1 + len(map_header_basic), 1 + len(map_header_basic) + len(map_header_transformed)):
-                    key = map_header_keys[i]
+                    key: str = map_header_keys[i]
                     Level1Key, objectType, Level2Key = key.split()
                     if Level1Key in value_dict and objectType in value_dict[Level1Key] and Level2Key in value_dict[Level1Key][objectType]:
                         to_append = value_dict[Level1Key][objectType][Level2Key]
@@ -2665,7 +2665,7 @@ class MapExtractor(LoLDataExtractor):
                     map_data[key].append(to_append)
                     map_data_json[key].append(pyobj2json(to_append))
                 for i in range(1 + len(map_header_basic) + len(map_header_transformed), len(map_header_keys)): #附件说明表头部分（Supplemental header part）
-                    key = map_header_keys[i]
+                    key: str = map_header_keys[i]
                     Level1Key, objectType, Level2Key = key.split()[:3]
                     if Level1Key in value and value[Level1Key] in maps_bin and Level2Key in maps_bin[value[Level1Key]]:
                         to_append = self.get_strtable_value(strtable_lol_target, maps_bin[value[Level1Key]][Level2Key], default = "")
@@ -2705,7 +2705,7 @@ class MapExtractor(LoLDataExtractor):
 
         ##创建数据框（Create the dataframe）
         map_data_organized: dict[str, list[Any]] = {map_header_keys[i]: map_data_json[map_header_keys[i]] for i in map_statistics_output_order}
-        map_df = pandas.DataFrame(data = map_data_organized)
+        map_df: pandas.DataFrame = pandas.DataFrame(data = map_data_organized)
         logPrint("正在优化地图数据框的逻辑值显示……\nOptimizing boolean value display of the map dataframe ...")
         optimize_bool_display(map_df)
         map_df = pandas.concat([pandas.DataFrame([map_header])[map_df.columns], map_df], ignore_index = True)
@@ -2734,7 +2734,7 @@ class MapExtractor(LoLDataExtractor):
             logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
             return
         if self.map_df.empty:
-            status = self.build_map_dataframe(debug = debug, paths = paths)
+            status: int = self.build_map_dataframe(debug = debug, paths = paths)
             if status != 0:
                 logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
                 logInput()
@@ -2744,7 +2744,6 @@ class MapExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
         sheet1_name: str = f"{self.patch_number} Map" if self.sheet_naming_fold else "地图（Map）"
         while True:
             try:
@@ -2888,7 +2887,7 @@ class CheatExtractor(LoLDataExtractor):
         for (key1, value) in self.cheats_bin.items():
             if key1 != "__linked" and value["__type"] == "CheatSet":
                 for i in range(len(cheatset_header_keys)):
-                    key = cheatset_header_keys[i]
+                    key: str = cheatset_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     else:
@@ -2900,7 +2899,7 @@ class CheatExtractor(LoLDataExtractor):
                     cheatset_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"].endswith("Cheat"):
                 for i in range(len(cheat_header_keys)):
-                    key = cheat_header_keys[i]
+                    key: str = cheat_header_keys[i]
                     if i == 0:
                         to_append = key1
                     elif i <= 29:
@@ -2932,7 +2931,7 @@ class CheatExtractor(LoLDataExtractor):
         ##作弊指令集（Cheatset）
         cheatset_statistics_output_order: list[int] = [0, 1, 2, 7, 3, 4, 5, 6]
         cheatset_data_organized: dict[str, list[Any]] = {cheatset_header_keys[i]: cheatset_data_json[cheatset_header_keys[i]] for i in cheatset_statistics_output_order}
-        cheatset_df = pandas.DataFrame(data = cheatset_data_organized)
+        cheatset_df: pandas.DataFrame = pandas.DataFrame(data = cheatset_data_organized)
         logPrint("正在优化指令集数据框的逻辑值显示……\nOptimizing boolean value display of the cheatset dataframe ...")
         optimize_bool_display(cheatset_df)
         cheatset_df = pandas.concat([pandas.DataFrame([cheatset_header])[cheatset_df.columns], cheatset_df], ignore_index = True)
@@ -2940,7 +2939,7 @@ class CheatExtractor(LoLDataExtractor):
         ##作弊指令（ScriptCheat）
         cheat_statistics_output_order: list[int] = [0, 29, 44, 1, 30, 2, 36, 9, 31, 38, 39, 32, 40, 41, 33, 42, 43, 34, 35, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
         cheat_data_organized: dict[str, list[Any]] = {cheat_header_keys[i]: cheat_data_json[cheat_header_keys[i]] for i in cheat_statistics_output_order}
-        cheat_df = pandas.DataFrame(data = cheat_data_organized)
+        cheat_df: pandas.DataFrame = pandas.DataFrame(data = cheat_data_organized)
         logPrint("正在优化指令数据框的逻辑值显示……\nOptimizing boolean value display of the cheat dataframe ...")
         optimize_bool_display(cheat_df)
         cheat_df = pandas.concat([pandas.DataFrame([cheat_header])[cheat_df.columns], cheat_df], ignore_index = True)
@@ -2969,7 +2968,7 @@ class CheatExtractor(LoLDataExtractor):
             logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
             return
         if self.cheatset_df.empty or self.cheat_df.empty:
-            status = self.build_cheat_dataframe(debug = debug, path = path)
+            status: int = self.build_cheat_dataframe(debug = debug, path = path)
             if status != 0:
                 logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
                 logInput()
@@ -2979,7 +2978,6 @@ class CheatExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
         sheet1_name: str = f"{self.patch_number} CheatSet" if self.sheet_naming_fold else "指令集（CheatSet）"
         sheet2_name: str = f"{self.patch_number} Cheat" if self.sheet_naming_fold else "指令（Cheat）"
         while True:
@@ -3130,7 +3128,7 @@ class PerkExtractor(LoLDataExtractor):
         for (key1, value) in self.perks_bin.items():
             if key1 != "__linked" and value["__type"] == "PerkStyle":
                 for i in range(len(perkstyle_header_keys)):
-                    key = perkstyle_header_keys[i]
+                    key: str = perkstyle_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     elif i <= 20:
@@ -3230,7 +3228,7 @@ class PerkExtractor(LoLDataExtractor):
                     perkstyle_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "Perk":
                 for i in range(len(perk_header_keys)):
-                    key = perk_header_keys[i]
+                    key: str = perk_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append = key1
                     elif i <= 20:
@@ -3282,7 +3280,7 @@ class PerkExtractor(LoLDataExtractor):
         #数据框构建和排序（Build the dataframe and sort the keys and values）
         perkstyle_statistics_output_order: list[int] = [0, 1, 2, 3, 21, 22, 7, 4, 23, 24, 8, 27, 28, 9, 16, 83, 84, 15, 55, 58, 59, 56, 57, 60, 61, 62, 65, 66, 63, 64, 67, 68, 69, 72, 73, 70, 71, 74, 75, 76, 79, 80, 77, 78, 81, 82, 14, 31, 33, 34, 32, 35, 36, 37, 39, 40, 38, 41, 42, 43, 45, 46, 44, 47, 48, 49, 51, 52, 50, 53, 54, 5, 25, 26, 13, 29, 30, 17, 18, 19, 6, 10, 11, 12, 20]
         perkstyle_data_organized: dict[str, list[Any]] = {perkstyle_header_keys[i]: perkstyle_data_json[perkstyle_header_keys[i]] for i in perkstyle_statistics_output_order}
-        perkstyle_df = pandas.DataFrame(data = perkstyle_data_organized)
+        perkstyle_df: pandas.DataFrame = pandas.DataFrame(data = perkstyle_data_organized)
         perkstyle_df = perkstyle_df.sort_values(by = "mPerkStyleId", ascending = True, ignore_index = True)
         logPrint("正在优化符文系数据框的逻辑值显示……\nOptimizing boolean value display of the perkstyle dataframe ...")
         optimize_bool_display(perkstyle_df)
@@ -3290,7 +3288,7 @@ class PerkExtractor(LoLDataExtractor):
         self.perkstyle_df = perkstyle_df
         perk_statistics_output_order: list[int] = [0, 1, 2, 3, 21, 22, 12, 11, 18, 4, 23, 25, 24, 26, 9, 5, 27, 28, 6, 29, 31, 30, 32, 7, 33, 35, 34, 36, 8, 37, 38, 17, 19, 13, 14, 15, 20, 10, 16]
         perk_data_organized: dict[str, list[Any]] = {perk_header_keys[i]: perk_data_json[perk_header_keys[i]] for i in perk_statistics_output_order}
-        perk_df = pandas.DataFrame(data = perk_data_organized)
+        perk_df: pandas.DataFrame = pandas.DataFrame(data = perk_data_organized)
         perk_df = perk_df.sort_values(by = "mPerkId", ascending = True, ignore_index = True)
         logPrint("正在优化符文数据框的逻辑值显示……\nOptimizing boolean value display of the perk dataframe ...")
         optimize_bool_display(perk_df)
@@ -3320,7 +3318,7 @@ class PerkExtractor(LoLDataExtractor):
             logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
             return
         if self.perkstyle_df.empty or self.perk_df.empty:
-            status = self.build_perk_dataframe(debug = debug, path = path)
+            status: int = self.build_perk_dataframe(debug = debug, path = path)
             if status != 0:
                 logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
                 logInput()
@@ -3330,7 +3328,6 @@ class PerkExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
         sheet1_name: str = f"{self.patch_number} PerkStyles" if self.sheet_naming_fold else "符文系（PerkStyles）"
         sheet2_name: str = f"{self.patch_number} Perks" if self.sheet_naming_fold else "符文（Perks）"
         while True:
@@ -3864,7 +3861,7 @@ class ChampionExtractor(LoLDataExtractor):
         for (key1, value) in champions_bin.items():
             if key1 != "__linked" and value["__type"] in {"CharacterRecord", "TFTCharacterRecord"}: #之所以不把二者分开来放，是因为三个原因：①CharacterRecord对象和TFTCharacterRecord对象有部分重合键；②早期云顶之弈的角色对象类型仍为CharacterRecord，如“Characters/TFT3_FizzShark/CharacterRecords/Root”；③英雄联盟和云顶之弈的角色数据存放位置也是掺杂的（There're three reasons why these two value types are put together to be sorted out: ①A CharacterRecord object's keys partly overlap with a TFTCharacterRecord object's; ②The early TFT character's object type is "CharacterRecord", e.g. "Characters/TFT3_FizzShark/CharacterRecords/Root"; ③Locations of LoL and TFT character data files are usually mixed with each other）
                 for i in range(len(champion_header_keys)):
-                    key = champion_header_keys[i]
+                    key: str = champion_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     elif i == 1: #模式文件夹（`modeFolder`）
@@ -4030,7 +4027,7 @@ class ChampionExtractor(LoLDataExtractor):
                 # logPrint("[%d/%d]已整理角色对象（Organized character record）： %s" %(count, len(champions_bin.items()), key1), print_time = True)
             elif key1 != "__linked" and value["__type"] == "SpellObject":
                 for i in range(len(champion_spell_header_keys)):
-                    key = champion_spell_header_keys[i]
+                    key: str = champion_spell_header_keys[i]
                     if i <= 10: #主键衍生键（`key`-derivated keys）
                         if i == 0: #主键（`key`）
                             to_append: Any = key1
@@ -4215,7 +4212,7 @@ class ChampionExtractor(LoLDataExtractor):
         if useAllCharacter == None:
             useAllCharacter = self.useAllCharacter
         if self.champion_df.empty or self.champion_spell_df.empty:
-            status = self.build_champion_dataframe(useAllCharacter = useAllCharacter, debug = debug, paths = paths)
+            status: int = self.build_champion_dataframe(useAllCharacter = useAllCharacter, debug = debug, paths = paths)
             if status != 0:
                 logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
                 logInput()
@@ -4225,7 +4222,6 @@ class ChampionExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
         sheet1_name1: str = "角色（Characters）" if useAllCharacter else "英雄（Champions）"
         sheet1_name2: str = f"{self.patch_number} Characters" if useAllCharacter else f"{self.patch_number} Champions"
         sheet2_name1: str = "角色技能（Character Spells）" if useAllCharacter else "英雄技能（Champion Spells）"
@@ -4382,7 +4378,7 @@ class ItemExtractor(LoLDataExtractor):
         for (key1, value) in self.items_bin.items():
             if key1 != "__linked" and value["__type"] == "ItemData":
                 for i in range(len(item_header_keys)):
-                    key = item_header_keys[i]
+                    key: str = item_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     elif i <= 100:
@@ -4512,7 +4508,7 @@ class ItemExtractor(LoLDataExtractor):
         #数据框构建和排序（Build the dataframe and sort the keys and values）
         item_statistics_output_order: list[int] = [0, 9, 2, 84, 85, 7, 22, 19, 1, 35, 27, 70, 20, 21, 23, 24, 25, 26, 75, 101, 102, 103, 77, 33, 94, 95, 10, 14, 87, 17, 15, 28, 88, 89, 31, 92, 93, 73, 98, 99, 78, 29, 90, 30, 91, 11, 12, 86, 13, 3, 4, 8, 5, 34, 96, 97, 6, 16, 18, 51, 69, 60, 65, 58, 59, 62, 63, 47, 55, 56, 45, 57, 52, 53, 54, 71, 68, 67, 61, 48, 39, 50, 49, 64, 66, 38, 44, 72, 32, 42, 36, 37, 40, 41, 46, 43, 80, 81, 100, 74, 76, 79, 83, 82, 104, 105, 106, 127, 138, 128, 207, 208, 209, 210, 129, 211, 212, 213, 214, 130, 215, 216, 217, 218, 107, 139, 140, 108, 141, 142, 143, 144, 109, 145, 146, 147, 148, 110, 149, 150, 151, 152, 111, 153, 154, 112, 155, 156, 157, 158, 113, 159, 160, 161, 162, 114, 163, 164, 165, 166, 115, 167, 168, 169, 170, 116, 171, 172, 117, 173, 174, 175, 176, 118, 177, 178, 179, 180, 119, 181, 182, 183, 184, 120, 185, 186, 187, 188, 121, 189, 190, 191, 192, 122, 193, 194, 123, 195, 196, 197, 198, 124, 199, 200, 201, 202, 125, 203, 204, 205, 206, 126, 131, 132, 133, 134, 219, 135, 136, 137]
         item_data_organized: dict[str, list[Any]] = {item_header_keys[i]: item_data_json[item_header_keys[i]] for i in item_statistics_output_order}
-        item_df = pandas.DataFrame(data = item_data_organized)
+        item_df: pandas.DataFrame = pandas.DataFrame(data = item_data_organized)
         item_df = item_df.sort_values(by = "itemID", ascending = True, ignore_index = True)
         logPrint("正在优化装备数据框的逻辑值显示……\nOptimizing boolean value display of the item dataframe ...")
         optimize_bool_display(item_df)
@@ -4520,14 +4516,14 @@ class ItemExtractor(LoLDataExtractor):
         self.item_df = item_df
         itemGroup_statistics_output_order: list[int] = [0, 1, 5, 2, 3, 4, 7, 6]
         itemGroup_data_organized: dict[str, list[Any]] = {itemGroup_header_keys[i]: itemGroup_data_json[itemGroup_header_keys[i]] for i in itemGroup_statistics_output_order}
-        itemGroup_df = pandas.DataFrame(data = itemGroup_data_organized)
+        itemGroup_df: pandas.DataFrame = pandas.DataFrame(data = itemGroup_data_organized)
         logPrint("正在优化装备分组数据框的逻辑值显示……\nOptimizing boolean value display of the item group dataframe ...")
         optimize_bool_display(itemGroup_df)
         itemGroup_df = pandas.concat([pandas.DataFrame([itemGroup_header])[itemGroup_df.columns], itemGroup_df], ignore_index = True)
         self.itemGroup_df = itemGroup_df
         itemModifier_statistics_output_order: list[int] = [0, 1, 3, 30, 31, 5, 26, 18, 12, 9, 10, 25, 4, 6, 14, 15, 13, 11, 2, 28, 29, 7, 32, 33, 8, 34, 35, 22, 44, 45, 23, 46, 47, 24, 48, 49, 16, 36, 37, 17, 38, 39, 20, 40, 41, 21, 42, 43, 19, 27]
         itemModifier_data_organized: dict[str, list[Any]] = {itemModifier_header_keys[i]: itemModifier_data_json[itemModifier_header_keys[i]] for i in itemModifier_statistics_output_order}
-        itemModifier_df = pandas.DataFrame(data = itemModifier_data_organized)
+        itemModifier_df: pandas.DataFrame = pandas.DataFrame(data = itemModifier_data_organized)
         logPrint("正在优化装备修饰数据框的逻辑值显示……\nOptimizing boolean value display of the item modifier dataframe ...")
         optimize_bool_display(itemModifier_df)
         itemModifier_df = pandas.concat([pandas.DataFrame([itemModifier_header])[itemModifier_df.columns], itemModifier_df], ignore_index = True)
@@ -4555,7 +4551,7 @@ class ItemExtractor(LoLDataExtractor):
             logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
             return
         if self.item_df.empty:
-            status = self.build_item_dataframe(debug = debug, path = path)
+            status: int = self.build_item_dataframe(debug = debug, path = path)
             if status != 0:
                 logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
                 logInput()
@@ -4565,7 +4561,6 @@ class ItemExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
         sheet1_name: str = f"{self.patch_number} Items" if self.sheet_naming_fold else "装备（Items）"
         sheet2_name: str = f"{self.patch_number} ItemGroups" if self.sheet_naming_fold else "装备分组（Item Groups）"
         sheet3_name: str = f"{self.patch_number} ItemModifiers" if self.sheet_naming_fold else "装备修饰（Item Modifiers）"
@@ -4860,7 +4855,7 @@ class AugmentExtractor(LoLDataExtractor):
         for (key1, value) in map30_bin_whole.items():
             if key1 != "__linked" and value["__type"] == "AugmentData":
                 for i in range(len(CherryAugment_header_keys)):
-                    key = CherryAugment_header_keys[i]
+                    key: str = CherryAugment_header_keys[i]
                     if i == 0: #主键（`Key`）
                         to_append: Any = key1
                     elif i <= 13:
@@ -4900,7 +4895,7 @@ class AugmentExtractor(LoLDataExtractor):
                     CherryAugment_data_json[key].append(pyobj2json(to_append))
         CherryAugment_statistics_output_order: list[int] = [0, 1, 13, 2, 3, 14, 15, 12, 25, 11, 24, 7, 8, 4, 16, 17, 18, 19, 5, 20, 21, 22, 23, 6, 26, 9, 10]
         CherryAugment_data_organized: dict[str, list[Any]] = {CherryAugment_header_keys[i]: CherryAugment_data_json[CherryAugment_header_keys[i]] for i in CherryAugment_statistics_output_order}
-        CherryAugment_df = pandas.DataFrame(data = CherryAugment_data_organized)
+        CherryAugment_df: pandas.DataFrame = pandas.DataFrame(data = CherryAugment_data_organized)
         CherryAugment_df = CherryAugment_df.sort_values(by = "AugmentPlatformId", ascending = True, ignore_index = True)
         logPrint("正在优化斗魂竞技场强化符文数据框的逻辑值显示……\nOptimizing boolean value display of the Cherry augment dataframe ...")
         optimize_bool_display(CherryAugment_df)
@@ -4914,7 +4909,7 @@ class AugmentExtractor(LoLDataExtractor):
         for (key1, value) in self.map33_bin.items():
             if key1 != "__linked" and value["__type"] == "AugmentData":
                 for i in range(len(SwarmAugment_header_keys)):
-                    key = SwarmAugment_header_keys[i]
+                    key: str = SwarmAugment_header_keys[i]
                     if i == 0: #主键（`Key`）
                         to_append: Any = key1
                     elif i <= 10:
@@ -4949,7 +4944,7 @@ class AugmentExtractor(LoLDataExtractor):
                     SwarmAugment_data_json[key].append(pyobj2json(to_append))
         SwarmAugment_statistics_output_order: list[int] = [0, 1, 10, 2, 11, 12, 9, 21, 6, 3, 13, 14, 15, 16, 4, 17, 18, 19, 20, 5, 22, 7, 8]
         SwarmAugment_data_organized: dict[str, list[Any]] = {SwarmAugment_header_keys[i]: SwarmAugment_data_json[SwarmAugment_header_keys[i]] for i in SwarmAugment_statistics_output_order}
-        SwarmAugment_df = pandas.DataFrame(data = SwarmAugment_data_organized)
+        SwarmAugment_df: pandas.DataFrame = pandas.DataFrame(data = SwarmAugment_data_organized)
         logPrint("正在优化无尽狂潮强化数据框的逻辑值显示……\nOptimizing boolean value display of the Swarm augment dataframe ...")
         optimize_bool_display(SwarmAugment_df)
         SwarmAugment_df = pandas.concat([pandas.DataFrame([SwarmAugment_header])[SwarmAugment_df.columns], SwarmAugment_df], ignore_index = True)
@@ -4969,7 +4964,7 @@ class AugmentExtractor(LoLDataExtractor):
         for (key1, value) in map12_bin_whole.items():
             if key1 != "__linked" and value["__type"] == "AugmentData": #强化符文（Augment）
                 for i in range(len(KiwiAugment_header_keys)):
-                    key = KiwiAugment_header_keys[i]
+                    key: str = KiwiAugment_header_keys[i]
                     if i == 0: #主键（`Key`）
                         to_append: Any = key1
                     elif i <= 29:
@@ -5030,7 +5025,7 @@ class AugmentExtractor(LoLDataExtractor):
                     KiwiAugment_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "{27bc6378}": #强化符文套装（Augment set）
                 for i in range(len(KiwiAugmentSet_header_keys)):
-                    key = KiwiAugmentSet_header_keys[i]
+                    key: str = KiwiAugmentSet_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     elif i <= 8:
@@ -5107,7 +5102,7 @@ class AugmentExtractor(LoLDataExtractor):
                     KiwiAugmentSet_data_json[key].append(pyobj2json(to_append))
         KiwiAugment_statistics_output_order: list[int] = [0, 1, 15, 2, 3, 16, 17, 13, 27, 12, 26, 30, 31, 32, 8, 9, 14, 4, 18, 19, 20, 21, 5, 22, 23, 24, 25, 6, 28, 7, 29, 10, 11]
         KiwiAugment_data_organized: dict[str, list[Any]] = {KiwiAugment_header_keys[i]: KiwiAugment_data_json[KiwiAugment_header_keys[i]] for i in KiwiAugment_statistics_output_order}
-        KiwiAugment_df = pandas.DataFrame(data = KiwiAugment_data_organized)
+        KiwiAugment_df: pandas.DataFrame = pandas.DataFrame(data = KiwiAugment_data_organized)
         KiwiAugment_df = KiwiAugment_df.sort_values(by = "AugmentPlatformId", ascending = True, ignore_index = True)
         logPrint("正在优化海克斯大乱斗强化符文数据框的逻辑值显示……\nOptimizing boolean value display of the Kiwi augment dataframe ...")
         optimize_bool_display(KiwiAugment_df)
@@ -5115,7 +5110,7 @@ class AugmentExtractor(LoLDataExtractor):
         self.KiwiAugment_df = KiwiAugment_df
         KiwiAugmentSet_statistics_output_order: list[int] = [0, 1, 3, 9, 10, 4, 11, 12, 13, 14, 18, 19, 20, 21, 22, 5, 15, 16, 6, 17, 7, 23, 8, 2]
         KiwiAugmentSet_data_organized: dict[str, list[Any]] = {KiwiAugmentSet_header_keys[i]: KiwiAugmentSet_data_json[KiwiAugmentSet_header_keys[i]] for i in KiwiAugmentSet_statistics_output_order}
-        KiwiAugmentSet_df = pandas.DataFrame(data = KiwiAugmentSet_data_organized)
+        KiwiAugmentSet_df: pandas.DataFrame = pandas.DataFrame(data = KiwiAugmentSet_data_organized)
         KiwiAugmentSet_df = pandas.concat([pandas.DataFrame([KiwiAugmentSet_header])[KiwiAugmentSet_df.columns], KiwiAugmentSet_df], ignore_index = True)
         self.KiwiAugmentSet_df = KiwiAugmentSet_df
         return 0
@@ -5149,7 +5144,7 @@ class AugmentExtractor(LoLDataExtractor):
             logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
             return
         if self.CherryAugment_df.empty: #无尽狂潮和海克斯大乱斗未发布时，应当也能够正确导出强化符文数据（Augment data should be exported properly when Swarm and ARAM: Mayhem weren't released）
-            status = self.build_augment_dataframe(debug = debug, paths = paths)
+            status: int = self.build_augment_dataframe(debug = debug, paths = paths)
             if status != 0:
                 logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
                 logInput()
@@ -5159,7 +5154,6 @@ class AugmentExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
         sheet1_name: str = f"{self.patch_number} CherryAugments" if self.sheet_naming_fold else "斗魂竞技场强化符文（Cherry Augments）"
         sheet2_name: str = f"{self.patch_number} SwarmAugments" if self.sheet_naming_fold else "无尽狂潮强化（Swarm Augments）"
         sheet3_name: str = f"{self.patch_number} KiwiAugments" if self.sheet_naming_fold else "海克斯大乱斗强化符文（Kiwi Augments）"
@@ -5373,7 +5367,7 @@ class AnvilExtractor(LoLDataExtractor):
         for (key1, value) in self.map30_bin.items():
             if key1 != "__linked" and value["__type"] == "AnvilData":
                 for i in range(len(CherryAnvil_header_keys)):
-                    key = CherryAnvil_header_keys[i]
+                    key: str = CherryAnvil_header_keys[i]
                     if i == 0: #主键（`Key`）
                         to_append: Any = key1
                     elif i <= 13:
@@ -5419,7 +5413,7 @@ class AnvilExtractor(LoLDataExtractor):
                     CherryAnvil_data_json[key].append(pyobj2json(to_append))
         CherryAnvil_statistics_output_order: list[int] = [0, 1, 13, 2, 3, 14, 15, 12, 25, 11, 24, 7, 8, 4, 16, 17, 18, 19, 5, 20, 21, 22, 23, 6, 26, 9, 10]
         CherryAnvil_data_organized: dict[str, list[Any]] = {CherryAnvil_header_keys[i]: CherryAnvil_data_json[CherryAnvil_header_keys[i]] for i in CherryAnvil_statistics_output_order}
-        CherryAnvil_df = pandas.DataFrame(data = CherryAnvil_data_organized)
+        CherryAnvil_df: pandas.DataFrame = pandas.DataFrame(data = CherryAnvil_data_organized)
         logPrint("正在优化斗魂竞技场锻造器数据框的逻辑值显示……\nOptimizing boolean value display of the Cherry anvil dataframe ...")
         optimize_bool_display(CherryAnvil_df)
         CherryAnvil_df = pandas.concat([pandas.DataFrame([CherryAnvil_header])[CherryAnvil_df.columns], CherryAnvil_df], ignore_index = True)
@@ -5432,7 +5426,7 @@ class AnvilExtractor(LoLDataExtractor):
         for (key1, value) in self.KiwiAnvils_bin.items():
             if key1 != "__linked" and value["__type"] == "AnvilData":
                 for i in range(len(KiwiAnvil_header_keys)):
-                    key = KiwiAnvil_header_keys[i]
+                    key: str = KiwiAnvil_header_keys[i]
                     if i == 0: #主键（`Key`）
                         to_append: Any = key1
                     elif i <= 13:
@@ -5475,7 +5469,7 @@ class AnvilExtractor(LoLDataExtractor):
                     KiwiAnvil_data_json[key].append(pyobj2json(to_append))
         KiwiAnvil_statistics_output_order: list[int] = [0, 1, 13, 2, 3, 14, 15, 12, 25, 11, 24, 7, 8, 4, 16, 17, 18, 19, 5, 20, 21, 22, 23, 6, 26, 9, 10]
         KiwiAnvil_data_organized: dict[str, list[Any]] = {KiwiAnvil_header_keys[i]: KiwiAnvil_data_json[KiwiAnvil_header_keys[i]] for i in KiwiAnvil_statistics_output_order}
-        KiwiAnvil_df = pandas.DataFrame(data = KiwiAnvil_data_organized)
+        KiwiAnvil_df: pandas.DataFrame = pandas.DataFrame(data = KiwiAnvil_data_organized)
         logPrint("正在优化海克斯大乱斗锻造器数据框的逻辑值显示……\nOptimizing boolean value display of the Kiwi anvil dataframe ...")
         optimize_bool_display(KiwiAnvil_df)
         KiwiAnvil_df = pandas.concat([pandas.DataFrame([KiwiAnvil_header])[KiwiAnvil_df.columns], KiwiAnvil_df], ignore_index = True)
@@ -5507,7 +5501,7 @@ class AnvilExtractor(LoLDataExtractor):
             logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
             return
         if self.CherryAnvil_df.empty or self.KiwiAnvil_df.empty:
-            status = self.build_anvil_dataframe(debug = debug, paths = paths)
+            status: int = self.build_anvil_dataframe(debug = debug, paths = paths)
             if status != 0:
                 logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
                 logInput()
@@ -5517,7 +5511,6 @@ class AnvilExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
         sheet1_name: str = f"{self.patch_number} CherryAnvils" if self.sheet_naming_fold else "斗魂竞技场锻造器（Cherry Anvils）"
         sheet2_name: str = f"{self.patch_number} KiwiAnvils" if self.sheet_naming_fold else "海克斯大乱斗锻造器（Kiwi Anvils）"
         while True:
@@ -5535,6 +5528,196 @@ class AnvilExtractor(LoLDataExtractor):
                     break
             else:
                 logPrint(f"锻造器数据已导出到{self.wbPath}。按回车键继续。\nAnvil data have been exported to {self.wbPath}. Press Enter to continue.", print_time = True)
+                logInput()
+                break
+
+class GoHExtractor(LoLDataExtractor):
+    def __init__(self, extractor: LoLDataExtractor) -> None:
+        '''
+        初始化一个荣誉嘉宾提取器对象。<br>Initial a GoHExtractor object.
+        
+        :param extractor: 父类对象。用于继承其属性。<br>Parent object. Pass it to inherit its attributes.
+        :type extractor: LoLDataExtractor
+        '''
+        self.__dict__.update(extractor.__dict__)
+        self.GoH_ready: bool = False
+        self.GoH_df: pandas.DataFrame = pandas.DataFrame()
+        
+    def init_data_readiness(self) -> None:
+        '''
+        初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
+        '''
+        self.GoH_ready = False
+    
+    def get_GoH_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
+        '''
+        在线获取荣誉嘉宾二进制描述数据。<br>Get binary description data of Guests of Honor online.
+        '''
+        logPrint = self.log.logPrint
+        cherry_bin_url = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/cherry.bin.json"
+        if cherry_bin_url in self.__class__.data_cache["online"]:
+            self.cherry_bin = self.__class__.data_cache["online"][cherry_bin_url]
+        else:
+            source, status, self.session = requestUrl("GET", cherry_bin_url, session = self.session, log = self.log)
+            if status != 200:
+                if status == 404:
+                    logPrint("斗魂竞技场强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nArena augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(cherry_bin_url))
+                    self.cherry_bin: dict[str, list[str] | dict[str, Any]] = {}
+                else:
+                    logPrint('斗魂竞技场强化符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nArena augment data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.')
+                    time.sleep()
+                    self.init_data_readiness()
+                    return
+            else:
+                self.cherry_bin = source.json()
+            self.__class__.data_cache["online"][cherry_bin_url] = self.cherry_bin
+        self.GoH_ready = True
+    
+    def read_GoH_data(self, path: str) -> None:
+        '''
+        离线获取荣誉嘉宾二进制描述数据。<br>Get binary description data of Guests of Honor offline.
+        
+        :param path: 荣誉嘉宾二进制描述文件的本地路径。<br>A local path of GoH binary description file.
+        :type path: str
+        '''
+        logPrint = self.log.logPrint
+        if not os.path.exists(path):
+            logPrint(f"以下路径不存在：\nThe following path doesn't exist:\n{path}")
+            self.init_data_readiness()
+            return
+        cherry_bin_path: str = path
+        if cherry_bin_path in self.__class__.data_cache["local"]:
+            self.cherry_bin = self.__class__.data_cache["local"][cherry_bin_path]
+        else:
+            with open(cherry_bin_path, "r", encoding = "utf-8") as fp:
+                self.cherry_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+            self.__class__.data_cache["local"][cherry_bin_path] = self.cherry_bin
+        self.GoH_ready = True
+    
+    def build_GoH_dataframe(self, debug: bool = False, path: Optional[str] = None) -> int:
+        '''
+        构建荣誉嘉宾数据框。<br>Build GoH dataframe.
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 荣誉嘉宾二进制描述文件的本地路径。<br>A local path of GoH binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        :return: 状态码。<br>Status code.
+        
+            - 0: 成功。<br>Success.
+            - 1: 未指定本地文件路径。<br>Local path not specified.
+            - 2: 数据未准备就绪。<br>Data not ready.
+        :rtype: int
+        '''
+        logPrint = self.log.logPrint
+        if not self.GoH_ready:
+            #获取荣誉嘉宾信息（Get GoH information）
+            logPrint("正在读取荣誉嘉宾数据……\nReading GoH data ...", print_time = True)
+            if debug:
+                if path == None:
+                    logPrint("尚未指定本地文件路径！\nLocal path not specified yet!")
+                    return 1
+                else:
+                    self.read_GoH_data(path = path)
+            else:
+                self.get_GoH_data()
+            if not self.GoH_ready:
+                logPrint("用于嘉宾数据尚未准备就绪！\nGoH data not prepared!")
+                return 2
+        
+        #定义数据结构（Define the data structure）
+        logPrint("正在构建荣誉嘉宾数据框……\nBuilding the GoH dataframes ...", print_time = True)
+        GoH_header: dict[str, str] = {"key": "主键", "{1ff99d7f} title": "事件键", "{1ff99d7f} Subtitle": "姓名键", "{1ff99d7f} {bff2f361}": "简述键", "{1ff99d7f} {3b7aa707}": "详细信息键", "EventIcon": "事件缩略图路径", "{982aa425}": "荣誉嘉宾缩略图路径", "{1ff99d7f} title_content_zh": "事件（中文）", "{1ff99d7f} title_content_en": "事件（英文）", "{1ff99d7f} Subtitle_content_zh": "姓名（中文）", "{1ff99d7f} Subtitle_content_en": "姓名（英文）", "{1ff99d7f} {bff2f361}_content_zh": "简述（中文）", "{1ff99d7f} {bff2f361}_content_en": "简述（英文）", "{1ff99d7f} {bff2f361}_content_zh_burn": "简述（中文/去格式化）", "{1ff99d7f} {bff2f361}_content_en_burn": "简述（英文/去格式化）", "{1ff99d7f} {3b7aa707}_content_zh": "详细信息（中文）", "{1ff99d7f} {3b7aa707}_content_en": "详细信息（英文）", "{1ff99d7f} {3b7aa707}_content_zh_burn": "详细信息（中文/去格式化）", "{1ff99d7f} {3b7aa707}_content_en_burn": "详细信息（英文/去格式化）"}
+        GoH_header_keys: list[str] = list(GoH_header.keys())
+        GoH_data: dict[str, list[Any]] = {key: [] for key in GoH_header_keys}
+        GoH_data_json: dict[str, list[Any]] = copy.deepcopy(GoH_data)
+        
+        #数据整理核心部分（Data organization core part）
+        pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
+        strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
+        strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
+        for (key1, value) in self.cherry_bin.items():
+            if key1 != "__linked" and value["__type"] == "{05c8aed6}":
+                for i in range(len(GoH_header_keys)):
+                    key: str = GoH_header_keys[i]
+                    if i == 0: #主键（`key`）
+                        to_append: Any = key1
+                    elif i >= 1 and i <= 4: #字符串常量键子键（`{1ff99d7f}`'s subkeys）
+                        to_append = value["{1ff99d7f}"][key.split()[1]]
+                    elif i == 5 or i == 6:
+                        to_append = value[key]
+                    else:
+                        subkey2: str = pStrConst.search(key).group()
+                        subkey1: str = key.replace(subkey2, "")
+                        useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                        tooltip_key: str = GoH_data[subkey1][-1]
+                        tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        if subkey2.endswith("_burn"):
+                            # self.__class__.calculatedVariables.clear()
+                            # tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, {}, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable)
+                            tooltip_burn = self.tooltipPreparation(tooltip_raw, isCHS = isCHS)
+                            tooltip_burn = self.tooltipPostProcessing(tooltip_raw, isCHS = isCHS)
+                            to_append = tooltip_burn
+                        else:
+                            to_append = tooltip_raw
+                    GoH_data[key].append(to_append)
+                    GoH_data_json[key].append(pyobj2json(to_append))
+        GoH_statistics_output_order: list[int] = [0, 1, 7, 8, 2, 9, 10, 3, 11, 12, 13, 14, 4, 15, 16, 17, 18, 5, 6]
+        GoH_data_organized: dict[str, list[Any]] = {GoH_header_keys[i]: GoH_data_json[GoH_header_keys[i]] for i in GoH_statistics_output_order}
+        GoH_df: pandas.DataFrame = pandas.DataFrame(data = GoH_data_organized)
+        GoH_df = pandas.concat([pandas.DataFrame([GoH_header])[GoH_df.columns], GoH_df], ignore_index = True)
+        self.GoH_df = GoH_df
+        return 0
+    
+    def export_GoH_data(self, debug: bool = False, path: Optional[str] = None) -> None:
+        '''
+        导出荣誉嘉宾数据到工作簿中。产生以下工作表：<br>Export GoH data to a workbook. The following worksheet is added:
+        - 斗魂竞技场荣誉嘉宾（Arena GoH）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 荣誉嘉宾二进制描述文件的本地路径。<br>A local path of GoH binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        '''
+        logInput = self.log.logInput
+        logPrint = self.log.logPrint
+        if self.wbPath == "":
+            logPrint("尚未指定文件保存路径。\nPath of exported file not specified.")
+            return
+        if self.patch == "" and self.sheet_naming_fold:
+            logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
+            return
+        if self.GoH_df.empty:
+            status: int = self.build_GoH_dataframe(debug = debug, path = path)
+            if status != 0:
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
+                logInput()
+                return
+        #导出数据（Export data）
+        logPrint("正在导出数据……\nExporting data ...", print_time = True)
+        if not os.path.exists(self.wbPath):
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
+        workbook_exist: bool = os.path.exists(self.wbPath)
+        sheet1_name: str = f"{self.patch_number} CherryGuests" if self.sheet_naming_fold else "斗魂竞技场荣誉嘉宾（Cherry Guests）"
+        while True:
+            try:
+                with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
+                    addDefaultStyle(self.GoH_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
+                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
+            except PermissionError:
+                logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
+                cont = logInput()
+                if cont != "" and cont[0] == "0":
+                    break
+            else:
+                logPrint(f"荣誉嘉宾数据已导出到{self.wbPath}。按回车键继续。\nGoH data have been exported to {self.wbPath}. Press Enter to continue.", print_time = True)
                 logInput()
                 break
 
@@ -5792,7 +5975,7 @@ class TFTExtractor(LoLDataExtractor):
         for (key1, value) in self.map22_bin.items():
             if key1 != "__linked" and value["__type"] == "TFTSetData": #云顶之弈赛季（TFT Set）
                 for i in range(len(TFTSet_header_keys)):
-                    key = TFTSet_header_keys[i]
+                    key: str = TFTSet_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     elif i <= 130:
@@ -6070,7 +6253,7 @@ class TFTExtractor(LoLDataExtractor):
                     TFTSet_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "TftShopData": #云顶之弈商店（TFT Shop）
                 for i in range(len(TFTShop_header_keys)):
-                    key = TFTShop_header_keys[i]
+                    key: str = TFTShop_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     elif i <= 15:
@@ -6110,7 +6293,7 @@ class TFTExtractor(LoLDataExtractor):
                         for TierBagEntryIndex in range(len(value["TierBags"][TierBagIndex]["TierBagEntries"])):
                             TierBagEntry = value["TierBags"][TierBagIndex]["TierBagEntries"][TierBagEntryIndex]
                             for i in range(len(TFTShopContent_header_keys)):
-                                key = TFTShopContent_header_keys[i]
+                                key: str = TFTShopContent_header_keys[i]
                                 if i == 0: #主键（`key`）
                                     to_append: Any = key1
                                 elif i == 1: #星级背包索引（`TierBagIndex`）
@@ -6135,7 +6318,7 @@ class TFTExtractor(LoLDataExtractor):
                                 TFTShopContent_data_json[key].append(pyobj2json(to_append))
                 else:
                     for i in range(len(TFTShopContent_header_keys)):
-                        key = TFTShopContent_header_keys[i]
+                        key: str = TFTShopContent_header_keys[i]
                         if i == 0: #主键（`key`）
                             to_append: Any = key1
                         else:
@@ -6146,7 +6329,7 @@ class TFTExtractor(LoLDataExtractor):
                 for level_index in range(len(value["mDropRatesByLevel"])):
                     dropRates = value["mDropRatesByLevel"][level_index]
                     for i in range(len(TFTDropRate_header_keys)):
-                        key = TFTDropRate_header_keys[i]
+                        key: str = TFTDropRate_header_keys[i]
                         if i == 0: #主键（`key`）
                             to_append: Any = key1
                         elif i == 1: #弈士等级（`mDropRatesByLevel Level`）
@@ -6164,7 +6347,7 @@ class TFTExtractor(LoLDataExtractor):
                     for round_index in range(len(value["stages"][stage_index]["mRounds"])):
                         mRound_key = value["stages"][stage_index]["mRounds"][round_index]
                         for i in range(len(TFTStageRound_header_keys)):
-                            key = TFTStageRound_header_keys[i]
+                            key: str = TFTStageRound_header_keys[i]
                             if i == 0: #主键（`key`）
                                 to_append: Any = key1
                             elif i == 1: #阶段序号（`stageIndex`）
@@ -6186,7 +6369,7 @@ class TFTExtractor(LoLDataExtractor):
                             TFTStageRound_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "TFTRoundData": #云顶之弈回合（TFT Round）
                 for i in range(len(TFTRound_header_keys)):
-                    key = TFTRound_header_keys[i]
+                    key: str = TFTRound_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     elif i <= 46:
@@ -6226,7 +6409,7 @@ class TFTExtractor(LoLDataExtractor):
                     TFTRound_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "{b3f382ff}": #云顶之弈传送门（TFT Portal）
                 for i in range(len(TFTPortal_header_keys)):
-                    key = TFTPortal_header_keys[i]
+                    key: str = TFTPortal_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     elif i <= 14:
@@ -6275,7 +6458,7 @@ class TFTExtractor(LoLDataExtractor):
                     TFTPortal_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "{42c94584}": #云顶之弈开场奇遇（TFT Encounter Distribution）
                 for i in range(len(TFTEncounterDistribution_header_keys)):
-                    key = TFTEncounterDistribution_header_keys[i]
+                    key: str = TFTEncounterDistribution_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     else:
@@ -6284,7 +6467,7 @@ class TFTExtractor(LoLDataExtractor):
                     TFTEncounterDistribution_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "TftEncounterData": #云顶之弈奇遇（TFT Encounter）
                 for i in range(len(TFTEncounter_header_keys)):
-                    key = TFTEncounter_header_keys[i]
+                    key: str = TFTEncounter_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     elif i <= 12:
@@ -6314,7 +6497,7 @@ class TFTExtractor(LoLDataExtractor):
                     TFTEncounter_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "TftUnitPropertyDefinition": #云顶之弈单位属性（TFT Unit Property）
                 for i in range(len(TFTUnitProperty_header_keys)):
-                    key = TFTUnitProperty_header_keys[i]
+                    key: str = TFTUnitProperty_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     else:
@@ -6337,7 +6520,7 @@ class TFTExtractor(LoLDataExtractor):
                     TFTUnitProperty_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "TFTCharacterRoleData": #云顶之弈角色定位（TFT Character Role）
                 for i in range(len(TFTCharacterRole_header_keys)):
-                    key = TFTCharacterRole_header_keys[i]
+                    key: str = TFTCharacterRole_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     elif i <= 9:
@@ -6376,7 +6559,7 @@ class TFTExtractor(LoLDataExtractor):
                     TFTCharacterRole_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "TFTItemList": #云顶之弈装备列表（TFT Item List）
                 for i in range(len(TFTItemList_header_keys)):
-                    key = TFTItemList_header_keys[i]
+                    key: str = TFTItemList_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     elif i <= 3:
@@ -6406,7 +6589,7 @@ class TFTExtractor(LoLDataExtractor):
                     TFTItemList_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "TftItemData": #云顶之弈装备（TFT Item）
                 for i in range(len(TFTItem_header_keys)):
-                    key = TFTItem_header_keys[i]
+                    key: str = TFTItem_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     elif i <= 26:
@@ -6491,7 +6674,7 @@ class TFTExtractor(LoLDataExtractor):
                     TFTItem_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "TftTraitList": #云顶之弈羁绊列表（TFT Trait List）
                 for i in range(len(TFTTraitList_header_keys)):
-                    key = TFTTraitList_header_keys[i]
+                    key: str = TFTTraitList_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     elif i <= 2:
@@ -6521,7 +6704,7 @@ class TFTExtractor(LoLDataExtractor):
                     TFTTraitList_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "TftTraitData": #云顶之弈羁绊（TFT Trait）
                 for i in range(len(TFTTrait_header_keys)):
-                    key = TFTTrait_header_keys[i]
+                    key: str = TFTTrait_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     elif i <= 10:
@@ -6556,7 +6739,7 @@ class TFTExtractor(LoLDataExtractor):
                     for champion_index in range(len(value["champions"])):
                         champion = value["champions"][champion_index]
                         for i in range(len(TFTPVENPC_header_keys)):
-                            key = TFTPVENPC_header_keys[i]
+                            key: str = TFTPVENPC_header_keys[i]
                             if i == 0: #主键（`key`）
                                 to_append: Any = key1
                             elif i == 1: #代码（`name`）
@@ -6587,7 +6770,7 @@ class TFTExtractor(LoLDataExtractor):
                             TFTPVENPC_data_json[key].append(pyobj2json(to_append))
                 else:
                     for i in range(len(TFTPVENPC_header_keys)):
-                        key = TFTPVENPC_header_keys[i]
+                        key: str = TFTPVENPC_header_keys[i]
                         if i == 0: #主键（`key`）
                             to_append: Any = key1
                         elif i == 1: #代码（`name`）
@@ -6598,7 +6781,7 @@ class TFTExtractor(LoLDataExtractor):
                         TFTPVENPC_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "ScriptDataObject": #云顶之弈脚本（TFT Script）
                 for i in range(len(TFTScript_header_keys)):
-                    key = TFTScript_header_keys[i]
+                    key: str = TFTScript_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     elif i <= 3:
@@ -6612,7 +6795,7 @@ class TFTExtractor(LoLDataExtractor):
                     TFTScript_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "TFTAnnouncementData": #云顶之弈通告（TFT Announcement）
                 for i in range(len(TFTAnnouncement_header_keys)):
-                    key = TFTAnnouncement_header_keys[i]
+                    key: str = TFTAnnouncement_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
                     elif i <= 6:
@@ -6628,7 +6811,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈赛季（TFT Set）
         TFTSet_statistics_output_order: list[int] = [0, 1, 2, 5, 3, 89, 90, 4, 85, 10, 131, 11, 132, 12, 133, 13, 30, 145, 146, 147, 14, 15, 134, 82, 169, 16, 72, 17, 135, 136, 137, 19, 138, 18, 22, 139, 24, 26, 61, 111, 112, 62, 113, 114, 63, 115, 116, 64, 117, 118, 65, 119, 120, 66, 121, 122, 67, 123, 124, 68, 125, 126, 74, 163, 164, 165, 166, 167, 168, 25, 140, 141, 142, 27, 143, 144, 83, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 207, 208, 189, 209, 210, 190, 211, 212, 191, 213, 214, 192, 215, 216, 193, 217, 218, 194, 219, 220, 195, 221, 222, 196, 223, 224, 197, 225, 226, 198, 227, 228, 199, 229, 230, 200, 231, 232, 201, 233, 234, 202, 235, 236, 203, 237, 238, 204, 239, 240, 205, 241, 242, 206, 243, 244, 70, 21, 29, 34, 150, 151, 154, 155, 152, 156, 157, 153, 158, 160, 159, 161, 35, 36, 162, 20, 69, 81, 129, 130, 46, 37, 91, 92, 38, 93, 95, 94, 96, 39, 97, 98, 40, 41, 99, 100, 42, 101, 103, 102, 104, 43, 105, 106, 44, 107, 109, 108, 110, 45, 79, 47, 77, 78, 128, 84, 245, 247, 246, 76, 31, 148, 32, 149, 6, 7, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 71, 127, 88, 33, 8, 9, 23, 28, 58, 59, 60, 73, 75, 80, 86, 87]
         TFTSet_data_organized: dict[str, list[Any]] = {TFTSet_header_keys[i]: TFTSet_data_json[TFTSet_header_keys[i]] for i in TFTSet_statistics_output_order}
-        TFTSet_df = pandas.DataFrame(data = TFTSet_data_organized)
+        TFTSet_df: pandas.DataFrame = pandas.DataFrame(data = TFTSet_data_organized)
         logPrint("正在优化云顶之弈赛季数据框的逻辑值显示……\nOptimizing boolean value display of the TFT Set dataframe ...")
         optimize_bool_display(TFTSet_df)
         TFTSet_df = pandas.concat([pandas.DataFrame([TFTSet_header])[TFTSet_df.columns], TFTSet_df], ignore_index = True)
@@ -6636,7 +6819,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈商店（TFT Shop）
         TFTShop_statistics_output_order: list[int] = [0, 3, 1, 11, 16, 17, 2, 4, 5, 12, 18, 19, 13, 20, 22, 21, 23, 14, 24, 25, 15, 6, 7, 8, 9, 10]
         TFTShop_data_organized: dict[str, list[Any]] = {TFTShop_header_keys[i]: TFTShop_data_json[TFTShop_header_keys[i]] for i in TFTShop_statistics_output_order}
-        TFTShop_df = pandas.DataFrame(data = TFTShop_data_organized)
+        TFTShop_df: pandas.DataFrame = pandas.DataFrame(data = TFTShop_data_organized)
         # logPrint("正在优化云顶之弈商店数据框的逻辑值显示……\nOptimizing boolean value display of the TFT Shop dataframe ...")
         # optimize_bool_display(TFTShop_df)
         TFTShop_df = pandas.concat([pandas.DataFrame([TFTShop_header])[TFTShop_df.columns], TFTShop_df], ignore_index = True)
@@ -6644,7 +6827,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈商店内容（TFT Shop Content）
         TFTShopContent_statistics_output_order: list[int] = [0, 1, 2, 3, 5, 6, 4]
         TFTShopContent_data_organized: dict[str, list[Any]] = {TFTShopContent_header_keys[i]: TFTShopContent_data_json[TFTShopContent_header_keys[i]] for i in TFTShopContent_statistics_output_order}
-        TFTShopContent_df = pandas.DataFrame(data = TFTShopContent_data_organized)
+        TFTShopContent_df: pandas.DataFrame = pandas.DataFrame(data = TFTShopContent_data_organized)
         # logPrint("正在优化云顶之弈商店内容数据框的逻辑值显示……\nOptimizing boolean value display of the TFT Shop Content dataframe ...")
         # optimize_bool_display(TFTShopContent_df)
         TFTShopContent_df = pandas.concat([pandas.DataFrame([TFTShopContent_header])[TFTShopContent_df.columns], TFTShopContent_df], ignore_index = True)
@@ -6652,7 +6835,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈掉率表（TFT Drop Rate）
         TFTDropRate_statistics_output_order: list[int] = [0, 2, 1, 3, 4]
         TFTDropRate_data_organized: dict[str, list[Any]] = {TFTDropRate_header_keys[i]: TFTDropRate_data_json[TFTDropRate_header_keys[i]] for i in TFTDropRate_statistics_output_order}
-        TFTDropRate_df = pandas.DataFrame(data = TFTDropRate_data_organized)
+        TFTDropRate_df: pandas.DataFrame = pandas.DataFrame(data = TFTDropRate_data_organized)
         # logPrint("正在优化云顶之弈掉率数据框的逻辑值显示……\nOptimizing boolean value display of the TFT Drop Rate dataframe ...")
         # optimize_bool_display(TFTDropRate_df)
         TFTDropRate_df = pandas.concat([pandas.DataFrame([TFTDropRate_header])[TFTDropRate_df.columns], TFTDropRate_df], ignore_index = True)
@@ -6660,7 +6843,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈回合阶段（TFT Stage Round）
         TFTStageRound_statistics_output_order: list[int] = [0, 1, 2, 3, 4, 5, 6]
         TFTStageRound_data_organized: dict[str, list[Any]] = {TFTStageRound_header_keys[i]: TFTStageRound_data_json[TFTStageRound_header_keys[i]] for i in TFTStageRound_statistics_output_order}
-        TFTStageRound_df = pandas.DataFrame(data = TFTStageRound_data_organized)
+        TFTStageRound_df: pandas.DataFrame = pandas.DataFrame(data = TFTStageRound_data_organized)
         # logPrint("正在优化云顶之弈回合阶段数据框的逻辑值显示……\nOptimizing boolean value display of the TFT Stage Round dataframe ...")
         # optimize_bool_display(TFTStageRound_df)
         TFTStageRound_df = pandas.concat([pandas.DataFrame([TFTStageRound_header])[TFTStageRound_df.columns], TFTStageRound_df], ignore_index = True)
@@ -6668,7 +6851,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈回合（TFT Round）
         TFTRound_statistics_output_order: list[int] = [0, 1, 3, 47, 48, 4, 49, 50, 5, 51, 52, 12, 15, 53, 54, 13, 14, 16, 17, 18, 19, 20, 21, 22, 25, 55, 56, 23, 24, 26, 27, 30, 57, 58, 28, 29, 31, 34, 59, 60, 32, 33, 35, 36, 39, 61, 62, 37, 38, 40, 41, 63, 64, 42, 45, 65, 66, 43, 44, 46, 2, 6, 7, 8, 9, 10, 11]
         TFTRound_data_organized: dict[str, list[Any]] = {TFTRound_header_keys[i]: TFTRound_data_json[TFTRound_header_keys[i]] for i in TFTRound_statistics_output_order}
-        TFTRound_df = pandas.DataFrame(data = TFTRound_data_organized)
+        TFTRound_df: pandas.DataFrame = pandas.DataFrame(data = TFTRound_data_organized)
         logPrint("正在优化云顶之弈回合数据框的逻辑值显示……\nOptimizing boolean value display of the TFT Round dataframe ...")
         optimize_bool_display(TFTRound_df)
         TFTRound_df = pandas.concat([pandas.DataFrame([TFTRound_header])[TFTRound_df.columns], TFTRound_df], ignore_index = True)
@@ -6676,7 +6859,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈传送门（TFT Portal）
         TFTPortal_statistics_output_order: list[int] = [0, 1, 2, 3, 15, 16, 10, 11, 12, 4, 17, 19, 18, 20, 5, 21, 23, 22, 24, 14, 25, 26, 6, 13, 8, 7, 9]
         TFTPortal_data_organized: dict[str, list[Any]] = {TFTPortal_header_keys[i]: TFTPortal_data_json[TFTPortal_header_keys[i]] for i in TFTPortal_statistics_output_order}
-        TFTPortal_df = pandas.DataFrame(data = TFTPortal_data_organized)
+        TFTPortal_df: pandas.DataFrame = pandas.DataFrame(data = TFTPortal_data_organized)
         logPrint("正在优化云顶之弈传送门数据框的逻辑值显示……\nOptimizing boolean value display of the TFT Portal dataframe ...")
         optimize_bool_display(TFTPortal_df)
         TFTPortal_df = pandas.concat([pandas.DataFrame([TFTPortal_header])[TFTPortal_df.columns], TFTPortal_df], ignore_index = True)
@@ -6684,7 +6867,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈开场奇遇（TFT Encounter Distribution）
         TFTEncounterDistribution_statistics_output_order: list[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8]
         TFTEncounterDistribution_data_organized: dict[str, list[Any]] = {TFTEncounterDistribution_header_keys[i]: TFTEncounterDistribution_data_json[TFTEncounterDistribution_header_keys[i]] for i in TFTEncounterDistribution_statistics_output_order}
-        TFTEncounterDistribution_df = pandas.DataFrame(data = TFTEncounterDistribution_data_organized)
+        TFTEncounterDistribution_df: pandas.DataFrame = pandas.DataFrame(data = TFTEncounterDistribution_data_organized)
         # logPrint("正在优化云顶之弈开场奇遇数据框的逻辑值显示……\nOptimizing boolean value display of the TFT Encounter Distribution dataframe ...")
         # optimize_bool_display(TFTEncounterDistribution_df)
         TFTEncounterDistribution_df = pandas.concat([pandas.DataFrame([TFTEncounterDistribution_header])[TFTEncounterDistribution_df.columns], TFTEncounterDistribution_df], ignore_index = True)
@@ -6692,7 +6875,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈奇遇（TFT Encounter）
         TFTEncounter_statistics_output_order: list[int] = [0, 1, 5, 8, 2, 3, 7, 6, 13, 14, 4, 9, 10, 11, 15, 12]
         TFTEncounter_data_organized: dict[str, list[Any]] = {TFTEncounter_header_keys[i]: TFTEncounter_data_json[TFTEncounter_header_keys[i]] for i in TFTEncounter_statistics_output_order}
-        TFTEncounter_df = pandas.DataFrame(data = TFTEncounter_data_organized)
+        TFTEncounter_df: pandas.DataFrame = pandas.DataFrame(data = TFTEncounter_data_organized)
         # logPrint("正在优化云顶之弈奇遇据框的逻辑值显示……\nOptimizing boolean value display of the TFT Encounter dataframe ...")
         # optimize_bool_display(TFTEncounter_df)
         TFTEncounter_df = pandas.concat([pandas.DataFrame([TFTEncounter_header])[TFTEncounter_df.columns], TFTEncounter_df], ignore_index = True)
@@ -6700,7 +6883,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈单位属性（TFT Unit Property）
         TFTUnitProperty_statistics_output_order: list[int] = [0, 7, 3, 1, 2, 4, 5, 6, 8]
         TFTUnitProperty_data_organized: dict[str, list[Any]] = {TFTUnitProperty_header_keys[i]: TFTUnitProperty_data_json[TFTUnitProperty_header_keys[i]] for i in TFTUnitProperty_statistics_output_order}
-        TFTUnitProperty_df = pandas.DataFrame(data = TFTUnitProperty_data_organized)
+        TFTUnitProperty_df: pandas.DataFrame = pandas.DataFrame(data = TFTUnitProperty_data_organized)
         logPrint("正在优化云顶之弈单位属性数据框的逻辑值显示……\nOptimizing boolean value display of the TFT Unit Property dataframe ...")
         optimize_bool_display(TFTUnitProperty_df)
         TFTUnitProperty_df = pandas.concat([pandas.DataFrame([TFTUnitProperty_header])[TFTUnitProperty_df.columns], TFTUnitProperty_df], ignore_index = True)
@@ -6708,7 +6891,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈角色定位（TFT Character Role）
         TFTCharacterRole_statistics_output_order: list[int] = [0, 1, 3, 10, 11, 4, 12, 13, 5, 14, 16, 15, 17, 6, 18, 19, 7, 20, 21, 8, 22, 24, 23, 25, 9, 26, 27, 2]
         TFTCharacterRole_data_organized: dict[str, list[Any]] = {TFTCharacterRole_header_keys[i]: TFTCharacterRole_data_json[TFTCharacterRole_header_keys[i]] for i in TFTCharacterRole_statistics_output_order}
-        TFTCharacterRole_df = pandas.DataFrame(data = TFTCharacterRole_data_organized)
+        TFTCharacterRole_df: pandas.DataFrame = pandas.DataFrame(data = TFTCharacterRole_data_organized)
         # logPrint("正在优化云顶之弈角色定位数据框的逻辑值显示……\nOptimizing boolean value display of the TFT Character Role dataframe ...")
         # optimize_bool_display(TFTCharacterRole_df)
         TFTCharacterRole_df = pandas.concat([pandas.DataFrame([TFTCharacterRole_header])[TFTCharacterRole_df.columns], TFTCharacterRole_df], ignore_index = True)
@@ -6716,7 +6899,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈装备列表（TFT Item List）
         TFTItemList_statistics_output_order: list[int] = [0, 1, 2, 4, 5, 3, 6]
         TFTItemList_data_organized: dict[str, list[Any]] = {TFTItemList_header_keys[i]: TFTItemList_data_json[TFTItemList_header_keys[i]] for i in TFTItemList_statistics_output_order}
-        TFTItemList_df = pandas.DataFrame(data = TFTItemList_data_organized)
+        TFTItemList_df: pandas.DataFrame = pandas.DataFrame(data = TFTItemList_data_organized)
         # logPrint("正在优化云顶之弈装备列表数据框的逻辑值显示……\nOptimizing boolean value display of the TFT Item List dataframe ...")
         # optimize_bool_display(TFTItemList_df)
         TFTItemList_df = pandas.concat([pandas.DataFrame([TFTItemList_header])[TFTItemList_df.columns], TFTItemList_df], ignore_index = True)
@@ -6724,7 +6907,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈装备（TFT Item）
         TFTItem_statistics_output_order: list[int] = [0, 1, 15, 41, 43, 42, 44, 14, 2, 11, 4, 27, 28, 5, 29, 30, 6, 31, 32, 13, 25, 7, 33, 34, 8, 35, 36, 9, 37, 38, 10, 3, 16, 45, 47, 46, 48, 12, 39, 40, 17, 18, 19, 20, 21, 22, 23, 24, 26, 49]
         TFTItem_data_organized: dict[str, list[Any]] = {TFTItem_header_keys[i]: TFTItem_data_json[TFTItem_header_keys[i]] for i in TFTItem_statistics_output_order}
-        TFTItem_df = pandas.DataFrame(data = TFTItem_data_organized)
+        TFTItem_df: pandas.DataFrame = pandas.DataFrame(data = TFTItem_data_organized)
         logPrint("正在优化云顶之弈装备数据框的逻辑值显示……\nOptimizing boolean value display of the TFT Item dataframe ...")
         optimize_bool_display(TFTItem_df)
         TFTItem_df = pandas.concat([pandas.DataFrame([TFTItem_header])[TFTItem_df.columns], TFTItem_df], ignore_index = True)
@@ -6732,7 +6915,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈羁绊列表（TFT Trait List）
         TFTTraitList_statistics_output_order: list[int] = [0, 1, 3, 4, 2, 5]
         TFTTraitList_data_organized: dict[str, list[Any]] = {TFTTraitList_header_keys[i]: TFTTraitList_data_json[TFTTraitList_header_keys[i]] for i in TFTTraitList_statistics_output_order}
-        TFTTraitList_df = pandas.DataFrame(data = TFTTraitList_data_organized)
+        TFTTraitList_df: pandas.DataFrame = pandas.DataFrame(data = TFTTraitList_data_organized)
         # logPrint("正在优化云顶之弈羁绊列表数据框的逻辑值显示……\nOptimizing boolean value display of the TFT Trait List dataframe ...")
         # optimize_bool_display(TFTTraitList_df)
         TFTTraitList_df = pandas.concat([pandas.DataFrame([TFTTraitList_header])[TFTTraitList_df.columns], TFTTraitList_df], ignore_index = True)
@@ -6740,7 +6923,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈羁绊（TFT Trait）
         TFTTrait_statistics_output_order: list[int] = [0, 1, 2, 11, 12, 6, 7, 10, 8, 9, 3, 13, 15, 14, 16, 4, 17, 19, 18, 20, 5]
         TFTTrait_data_organized: dict[str, list[Any]] = {TFTTrait_header_keys[i]: TFTTrait_data_json[TFTTrait_header_keys[i]] for i in TFTTrait_statistics_output_order}
-        TFTTrait_df = pandas.DataFrame(data = TFTTrait_data_organized)
+        TFTTrait_df: pandas.DataFrame = pandas.DataFrame(data = TFTTrait_data_organized)
         logPrint("正在优化云顶之弈羁绊数据框的逻辑值显示……\nOptimizing boolean value display of the TFT Trait dataframe ...")
         optimize_bool_display(TFTTrait_df)
         TFTTrait_df = pandas.concat([pandas.DataFrame([TFTTrait_header])[TFTTrait_df.columns], TFTTrait_df], ignore_index = True)
@@ -6748,7 +6931,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈电脑玩家英雄（TFT PVE NPC）
         TFTPVENPC_statistics_output_order: list[int] = [0, 1, 2, 3, 4, 5, 6, 9, 7, 10, 11, 8]
         TFTPVENPC_data_organized: dict[str, list[Any]] = {TFTPVENPC_header_keys[i]: TFTPVENPC_data_json[TFTPVENPC_header_keys[i]] for i in TFTPVENPC_statistics_output_order}
-        TFTPVENPC_df = pandas.DataFrame(data = TFTPVENPC_data_organized)
+        TFTPVENPC_df: pandas.DataFrame = pandas.DataFrame(data = TFTPVENPC_data_organized)
         # logPrint("正在优化云顶之弈电脑玩家英雄数据框的逻辑值显示……\nOptimizing boolean value display of the TFT PVE NPC dataframe ...")
         # optimize_bool_display(TFTPVENPC_df)
         TFTPVENPC_df = pandas.concat([pandas.DataFrame([TFTPVENPC_header])[TFTPVENPC_df.columns], TFTPVENPC_df], ignore_index = True)
@@ -6756,7 +6939,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈脚本（TFT Script）
         TFTScript_statistics_output_order: list[int] = [0, 1, 2, 3, 4]
         TFTScript_data_organized: dict[str, list[Any]] = {TFTScript_header_keys[i]: TFTScript_data_json[TFTScript_header_keys[i]] for i in TFTScript_statistics_output_order}
-        TFTScript_df = pandas.DataFrame(data = TFTScript_data_organized)
+        TFTScript_df: pandas.DataFrame = pandas.DataFrame(data = TFTScript_data_organized)
         # logPrint("正在优化云顶之弈脚本数据框的逻辑值显示……\nOptimizing boolean value display of the TFT Script dataframe ...")
         # optimize_bool_display(TFTScript_df)
         TFTScript_df = pandas.concat([pandas.DataFrame([TFTScript_header])[TFTScript_df.columns], TFTScript_df], ignore_index = True)
@@ -6764,7 +6947,7 @@ class TFTExtractor(LoLDataExtractor):
         ##云顶之弈通告（TFT Announcement）
         TFTAnnouncement_statistics_output_order: list[int] = [0, 2, 7, 8, 3, 4, 1, 5, 6]
         TFTAnnouncement_data_organized: dict[str, list[Any]] = {TFTAnnouncement_header_keys[i]: TFTAnnouncement_data_json[TFTAnnouncement_header_keys[i]] for i in TFTAnnouncement_statistics_output_order}
-        TFTAnnouncement_df = pandas.DataFrame(data = TFTAnnouncement_data_organized)
+        TFTAnnouncement_df: pandas.DataFrame = pandas.DataFrame(data = TFTAnnouncement_data_organized)
         # logPrint("正在优化云顶之弈通告数据框的逻辑值显示……\nOptimizing boolean value display of the TFT Announcement dataframe ...")
         # optimize_bool_display(TFTAnnouncement_df)
         TFTAnnouncement_df = pandas.concat([pandas.DataFrame([TFTAnnouncement_header])[TFTAnnouncement_df.columns], TFTAnnouncement_df], ignore_index = True)
@@ -6809,7 +6992,7 @@ class TFTExtractor(LoLDataExtractor):
             logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
             return
         if self.TFTSet_df.empty or self.TFTShop_df.empty or self.TFTShopContent_df.empty or self.TFTDropRate_df.empty or self.TFTStageRound_df.empty or self.TFTRound_df.empty or self.TFTPortal_df.empty or self.TFTEncounterDistribution_df.empty or self.TFTEncounter_df.empty or self.TFTUnitProperty_df.empty or self.TFTCharacterRole_df.empty or self.TFTItemList_df.empty or self.TFTItem_df.empty or self.TFTTraitList_df.empty or self.TFTTrait_df.empty or self.TFTPVENPC_df.empty or self.TFTScript_df.empty or self.TFTAnnouncement_df.empty:
-            status = self.build_tft_dataframe(debug = debug, path = path)
+            status: int = self.build_tft_dataframe(debug = debug, path = path)
             if status != 0:
                 logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
                 logInput()
@@ -6819,7 +7002,6 @@ class TFTExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
         sheet1_name: str = f"{self.patch_number} TFTSet" if self.sheet_naming_fold else "云顶之弈赛季（TFT Set）"
         sheet2_name: str = f"{self.patch_number} TFTShop" if self.sheet_naming_fold else "云顶之弈商店（TFT Shop）"
         sheet3_name: str = f"{self.patch_number} TFTShopContent" if self.sheet_naming_fold else "云顶之弈商店内容（TFT Shop Content）"
@@ -7108,7 +7290,7 @@ if __name__ == "__main__":
                 language_cdragon[language_ddragon[i]["CODE"]] = language_ddragon[i]["CODE"].lower()
         logPrint("请选择说明文本的输出语言【默认为中文（中国）】：\nPlease select a language for tooltips (the default option is zh_CN):")
         language_dict: dict[str, list[str]] = {"No.": list(language_ddragon.keys()), "CODE": list(map(lambda x: x["CODE"], language_ddragon.values())), "LANGUAGE": list(map(lambda x: x["LANGUAGE (EN)"], language_ddragon.values())), "语言": list(map(lambda x: x["LANGUAGE (ZH)"], language_ddragon.values())), "Applicable CDragon Data Patches": list(map(lambda x: x["Applicable CDragon Data Patches"], language_ddragon.values()))}
-        language_df = pandas.DataFrame(language_dict)
+        language_df: pandas.DataFrame = pandas.DataFrame(language_dict)
         logPrint(format_df(language_df)[0], write_time = False)
         while True:
             language_option = logInput()
@@ -7286,7 +7468,7 @@ if __name__ == "__main__":
                 # continue
             #设置要提取的数据类型（Set the type of data to extract）
             while True:
-                logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t装备（Items）\n6\t强化符文（Augments）\n7\t锻造器（Anvils）\n8\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）")
+                logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t装备（Items）\n6\t强化符文（Augments）\n7\t锻造器（Anvils）\n8\t荣誉嘉宾（Guests of Honor）\n9\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）")
                 mode = logInput()
                 if mode == "":
                     continue
@@ -7325,30 +7507,33 @@ if __name__ == "__main__":
                 elif mode[0] == "0":
                     break
                 elif mode[0] == "1":
-                    mapExtractor = MapExtractor(extractor)
+                    mapExtractor: MapExtractor = MapExtractor(extractor)
                     mapExtractor.export_map_data()
                 elif mode[0] == "2":
-                    cheatExtractor = CheatExtractor(extractor)
+                    cheatExtractor: CheatExtractor = CheatExtractor(extractor)
                     cheatExtractor.export_cheat_data()
                 elif mode[0] == "3":
-                    perkExtractor = PerkExtractor(extractor)
+                    perkExtractor: PerkExtractor = PerkExtractor(extractor)
                     perkExtractor.export_perk_data()
                 elif mode[0] == "4":
-                    championExtractor = ChampionExtractor(extractor)
-                    status = championExtractor.set_mode()
+                    championExtractor: ChampionExtractor = ChampionExtractor(extractor)
+                    status: int = championExtractor.set_mode()
                     if status == 0: #当用户输入“0”时，返回上一层（When the user submits "0", the program will return to the last step）
                         championExtractor.export_champion_data()
                 elif mode[0] == "5":
-                    itemExtractor = ItemExtractor(extractor)
+                    itemExtractor: ItemExtractor = ItemExtractor(extractor)
                     itemExtractor.export_item_data()
                 elif mode[0] == "6":
-                    augmentExtractor = AugmentExtractor(extractor)
+                    augmentExtractor: AugmentExtractor = AugmentExtractor(extractor)
                     augmentExtractor.export_augment_data()
                 elif mode[0] == "7":
-                    anvilExtractor = AnvilExtractor(extractor)
+                    anvilExtractor: AnvilExtractor = AnvilExtractor(extractor)
                     anvilExtractor.export_anvil_data()
                 elif mode[0] == "8":
-                    tftExtractor = TFTExtractor(extractor)
+                    gohExtractor: GoHExtractor = GoHExtractor(extractor)
+                    gohExtractor.export_GoH_data()
+                elif mode[0] == "9":
+                    tftExtractor: TFTExtractor = TFTExtractor(extractor)
                     tftExtractor.export_tft_data()
                 else:
                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
@@ -7475,7 +7660,7 @@ if __name__ == "__main__":
             return 0
         #设置要提取的数据类型（Set the type of data to extract）
         while True:
-            logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t调试（Debug）\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t装备（Items）\n6\t强化符文（Augments）\n7\t锻造器（Anvils）\n8\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）")
+            logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t调试（Debug）\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t装备（Items）\n6\t强化符文（Augments）\n7\t锻造器（Anvils）\n8\t荣誉嘉宾（Guests of Honor）\n9\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）")
             mode = logInput()
             if mode == "":
                 continue
@@ -7553,7 +7738,7 @@ if __name__ == "__main__":
             elif mode[0] == "0":
                 break
             elif mode[0] == "1":
-                mapExtractor = MapExtractor(extractor)
+                mapExtractor: MapExtractor = MapExtractor(extractor)
                 if dir_type == "extract":
                     map_paths: list[str] = [
                         "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map11/map11.bin.json",
@@ -7578,7 +7763,7 @@ if __name__ == "__main__":
                 if export:
                     mapExtractor.export_map_data()
             elif mode[0] == "2":
-                cheatExtractor = CheatExtractor(extractor)
+                cheatExtractor: CheatExtractor = CheatExtractor(extractor)
                 if dir_type == "extract":
                     cheat_path = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/cheats.cdtb.bin.json"
                 else:
@@ -7587,7 +7772,7 @@ if __name__ == "__main__":
                 if export:
                     cheatExtractor.export_cheat_data()
             elif mode[0] == "3":
-                perkExtractor = PerkExtractor(extractor)
+                perkExtractor: PerkExtractor = PerkExtractor(extractor)
                 if dir_type == "extract":
                     perk_path: str = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/perks.cdtb.bin.json"
                 else:
@@ -7596,7 +7781,7 @@ if __name__ == "__main__":
                 if export:
                     perkExtractor.export_perk_data()
             elif mode[0] == "4":
-                championExtractor = ChampionExtractor(extractor)
+                championExtractor: ChampionExtractor = ChampionExtractor(extractor)
                 status: int = championExtractor.set_mode()
                 if status == -1: #当用户输入“0”时，返回上一层（When the user submits "0", the program will return to the last step）
                     continue
@@ -7624,7 +7809,7 @@ if __name__ == "__main__":
                 if export:
                     championExtractor.export_champion_data()
             elif mode[0] == "5":
-                itemExtractor = ItemExtractor(extractor)
+                itemExtractor: ItemExtractor = ItemExtractor(extractor)
                 if dir_type == "extract":
                     item_path: str = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/items.cdtb.bin.json"
                 else:
@@ -7633,7 +7818,7 @@ if __name__ == "__main__":
                 if export:
                     itemExtractor.export_item_data()
             elif mode[0] == "6":
-                augmentExtractor = AugmentExtractor(extractor)
+                augmentExtractor: AugmentExtractor = AugmentExtractor(extractor)
                 if dir_type == "extract":
                     augment_paths: list[str] = [
                         "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json",
@@ -7654,7 +7839,7 @@ if __name__ == "__main__":
                 if export:
                     augmentExtractor.export_augment_data()
             elif mode[0] == "7":
-                anvilExtractor = AnvilExtractor(extractor)
+                anvilExtractor: AnvilExtractor = AnvilExtractor(extractor)
                 if dir_type == "extract":
                     anvil_paths: list[str] = [
                         "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json",
@@ -7669,7 +7854,16 @@ if __name__ == "__main__":
                 if export:
                     anvilExtractor.export_anvil_data()
             elif mode[0] == "8":
-                tftExtractor = TFTExtractor(extractor)
+                gohExtractor: GoHExtractor = GoHExtractor(extractor)
+                if dir_type == "extract":
+                    cherry_path = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/cherry.bin.json"
+                else:
+                    cherry_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json"
+                gohExtractor.build_GoH_dataframe(debug = True, path = cherry_path)
+                if export:
+                    gohExtractor.export_GoH_data()
+            elif mode[0] == "9":
+                tftExtractor: TFTExtractor = TFTExtractor(extractor)
                 if dir_type == "extract":
                     map22_path = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map22/map22.bin.json"
                 else:
@@ -7691,18 +7885,18 @@ if __name__ == "__main__":
         '''
         #数据资源（Data resource）
         ##字符串常量池（Stringtable）
-        lolstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/lol.stringtable.json"
-        with open(lolstringtable_zh_path, "r", encoding = "utf-8") as fp:
-            lolstringtable_zh = json.load(fp)
-        lolstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/lol.stringtable.json"
-        with open(lolstringtable_en_path, "r", encoding = "utf-8") as fp:
-            lolstringtable_en = json.load(fp)
-        tftstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/tft.stringtable.json"
-        with open(tftstringtable_zh_path, "r", encoding = "utf-8") as fp:
-            tftstringtable_zh = json.load(fp)
-        tftstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/tft.stringtable.json"
-        with open(tftstringtable_en_path, "r", encoding = "utf-8") as fp:
-            tftstringtable_en = json.load(fp)
+        # lolstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/lol.stringtable.json"
+        # with open(lolstringtable_zh_path, "r", encoding = "utf-8") as fp:
+        #     lolstringtable_zh = json.load(fp)
+        # lolstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/lol.stringtable.json"
+        # with open(lolstringtable_en_path, "r", encoding = "utf-8") as fp:
+        #     lolstringtable_en = json.load(fp)
+        # tftstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/tft.stringtable.json"
+        # with open(tftstringtable_zh_path, "r", encoding = "utf-8") as fp:
+        #     tftstringtable_zh = json.load(fp)
+        # tftstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/tft.stringtable.json"
+        # with open(tftstringtable_en_path, "r", encoding = "utf-8") as fp:
+        #     tftstringtable_en = json.load(fp)
         ##地图（Map）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
         #     map22_bin = json.load(fp)
@@ -7719,9 +7913,11 @@ if __name__ == "__main__":
         ##符文（Perk）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/perks.cdtb.bin.json", "r", encoding = "utf-8") as fp:
         #     perks_bin = json.load(fp)
-        ##强化符文（Augment）
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
-            kiwi_bin = json.load(fp)
+        ##强化符文和荣誉嘉宾（Augment and Guest of Honor）
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
+            cherry_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
+        #     kiwi_bin = json.load(fp)
         ##整合后的数据（Merged data）
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/自定义脚本/英雄联盟自定义房间创建/champions_bin.json", "r", encoding = "utf-8") as fp:
         #     champions_bin = json.load(fp)
@@ -7744,15 +7940,13 @@ if __name__ == "__main__":
         #         LoLDataExtractor.TFTScriptDataMap[value["mName"]] = value
         
         #总结数据结构（Summarize the data structure）
-        # with open("C:/Users/19250/Desktop/英雄联盟自定义房间创建/temporary data.json", "r", encoding = "utf-8") as fp:
-        #     LoLGame_info: dict[Literal["metadata", "json"], dict[str, Any]] = json.load(fp)
-        # keyList: list[str] = getBinaryKeys(map33_bin, isBin = True, objectTypes = "AugmentData")[1]
-        # print(json.dumps(keyList, indent = 4, ensure_ascii = False))
-        # import pyperclip
-        # s: str = ""
-        # for key in keyList:
-        #     s += key + "\n"
-        # pyperclip.copy(s)
+        keyDict: dict[str, dict[str, int]] = getBinaryKeys(cherry_bin, isBin = True, keyPaths = "{1ff99d7f}", objectTypes = "{05c8aed6}")[1]
+        print(json.dumps(keyDict, indent = 4, ensure_ascii = False))
+        import pyperclip
+        s: str = ""
+        for key in keyDict["{fa33a427}"]:
+            s += key + "\n"
+        pyperclip.copy(s)
         
         #输出键的hash值（Output hash value of a key）
         # print(LoLDataExtractor.compute_rsthash("Spell_TFT17_PykeSpell_Name", 5))
@@ -7762,12 +7956,12 @@ if __name__ == "__main__":
         # print(LoLDataExtractor.get_strtable_value(lolstringtable_zh, mDisplayName_key, default = "获取失败。"))
         
         #说明文本转换（Tooltip transformation）
-        tooltip_raw = "When you Attack, fire @AdditionalBolts@ additional <keywordMajor>Firecrackers</keywordMajor> that each deal <physicalDamage>@DamagePerBolt@ physical damage</physicalDamage>. Each cardinal direction has a @Cooldown@ second Cooldown.<br><br>Each bolt can Critically Strike and applies On-Hits at @OnHitRatio*100@% effectiveness.<br><br>Damage Dealt: @f2@"
-        print("原始说明文本：\n" + tooltip_raw)
-        binData = kiwi_bin["{66e41949}"]["mSpell"]
-        print("----")
-        print("转换文本：")
-        print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
+        # tooltip_raw = "When you Attack, fire @AdditionalBolts@ additional <keywordMajor>Firecrackers</keywordMajor> that each deal <physicalDamage>@DamagePerBolt@ physical damage</physicalDamage>. Each cardinal direction has a @Cooldown@ second Cooldown.<br><br>Each bolt can Critically Strike and applies On-Hits at @OnHitRatio*100@% effectiveness.<br><br>Damage Dealt: @f2@"
+        # print("原始说明文本：\n" + tooltip_raw)
+        # binData = kiwi_bin["{66e41949}"]["mSpell"]
+        # print("----")
+        # print("转换文本：")
+        # print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
         # print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
         # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
         # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
