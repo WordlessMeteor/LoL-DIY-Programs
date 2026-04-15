@@ -4847,8 +4847,8 @@ class AugmentExtractor(LoLDataExtractor):
         #数据整理核心部分（Data organization core part）
         AugmentDisplayTags: dict[int, str] = {0: "己方", 1: "伤害", 2: "综合", 3: "复原力", 4: "速度", 5: "功能", 6: "属性锻造器", 7: "经济"} #通过字符串常量池的“cherry_augmentdisplaytag_...”类键得到（Obtained by "cherry_augmentdisplaytag_..." keys）
         #AugmentDisplayTags: dict[int, str] = {0: "Ally", 1: "Damage", 2: "General", 3: "Resilience", 4: "Speed", 5: "Utility", 6: "Stat Anvil", 7: "Economy"}
-        augment_rarities: dict[int, str] = {0: "白银", 1: "黄金", 2: "棱彩", 3: "超凡"}
-        #augment_rarities: dict[int, str] = {0: "Silver", 1: "Gold", 2: "Prismatic", 3: "Unique"}
+        augment_rarities: dict[int, str] = {0: "白银", 1: "黄金", 2: "棱彩", 3: "超凡", 4: "晶耀"}
+        #augment_rarities: dict[int, str] = {0: "Silver", 1: "Gold", 2: "Prismatic", 3: "Unique", 4: "SheenGlow"}
         pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
@@ -7379,8 +7379,8 @@ if __name__ == "__main__":
                     else:
                         logPrint('文件格式错误。请输入以“.xlsx”为后缀的文件。\nFile format error. Please provide a file with ".xlsx" extension.')
                 for i in range(len(wbPaths)):
-                    logPrint("[%d/%d]正在排序（Ordering）： %s" %(i + 1, len(wbPaths), wbPath), print_time = True)
                     wbPath: str = wbPaths[i]
+                    logPrint("[%d/%d]正在排序（Ordering）： %s" %(i + 1, len(wbPaths), wbPath), print_time = True)
                     sort_workbook_sheets(wbPath, 2 if integrate else 1)
                 else:
                     if len(wbPaths) > 0:
