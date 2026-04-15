@@ -5660,7 +5660,7 @@ class GoHExtractor(LoLDataExtractor):
                             # self.__class__.calculatedVariables.clear()
                             # tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, {}, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable)
                             tooltip_burn = self.tooltipPreparation(tooltip_raw, isCHS = isCHS)
-                            tooltip_burn = self.tooltipPostProcessing(tooltip_raw, isCHS = isCHS)
+                            tooltip_burn = self.tooltipPostProcessing(tooltip_burn, isCHS = isCHS)
                             to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
