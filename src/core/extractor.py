@@ -4844,12 +4844,21 @@ class AugmentExtractor(LoLDataExtractor):
                     key: str = CherryAugment_header_keys[i]
                     if i == 0: #主键（`Key`）
                         to_append: Any = key1
-                    elif i <= 13:
-                        if i == 2: #可用性（`Enabled`）
-                            to_append = not ("Enabled" in value and not value["Enabled"] or "enabled" in value and not value["enabled"])
+                    elif i <= 18:
+                        tmp_ptr: Any = value
+                        subkeyList: list[str] = key.split()
+                        for tmp_key in subkeyList:
+                            if tmp_key in tmp_ptr:
+                                tmp_ptr = tmp_ptr[tmp_key]
+                            else:
+                                if i == 17: #{ed593c9c}
+                                    to_append = False
+                                else:
+                                    to_append = ""
+                                break
                         else:
-                            to_append = value.get(key, "")
-                    elif i <= 23: #字符串常量（String constants）
+                            to_append = tmp_ptr
+                    elif i <= 44: #字符串常量（String constants）
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
@@ -4871,15 +4880,15 @@ class AugmentExtractor(LoLDataExtractor):
                                 to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
-                    elif i == 24: #强化符文显示标签内容（`AugmentDisplayTags_content`）
+                    elif i == 45: #强化符文显示标签内容（`AugmentDisplayTags_content`）
                         to_append = list(map(lambda x: AugmentDisplayTags[x], value["AugmentDisplayTags"]))
-                    elif i == 25: #位阶（`rarityValue`）
+                    elif i == 46: #位阶（`rarityValue`）
                         to_append = augment_rarities[value.get("rarity", 0)]
                     else: #根指令对象（`RootSpellObject`）
                         to_append = map30_bin_whole.get(value["RootSpell"], "")
                     CherryAugment_data[key].append(to_append)
                     CherryAugment_data_json[key].append(pyobj2json(to_append))
-        CherryAugment_statistics_output_order: list[int] = [0, 1, 13, 2, 3, 14, 15, 12, 25, 11, 24, 7, 8, 4, 16, 17, 18, 19, 5, 20, 21, 22, 23, 6, 26, 9, 10]
+        CherryAugment_statistics_output_order: list[int] = [0, 1, 18, 2, 3, 19, 20, 16, 46, 15, 45, 7, 8, 17, 4, 21, 22, 23, 24, 5, 25, 26, 27, 28, 9, 29, 30, 31, 32, 10, 33, 34, 35, 36, 11, 37, 38, 39, 40, 12, 41, 42, 43, 44, 6, 47, 13, 14]
         CherryAugment_data_organized: dict[str, list[Any]] = {CherryAugment_header_keys[i]: CherryAugment_data_json[CherryAugment_header_keys[i]] for i in CherryAugment_statistics_output_order}
         CherryAugment_df: pandas.DataFrame = pandas.DataFrame(data = CherryAugment_data_organized)
         CherryAugment_df = CherryAugment_df.sort_values(by = "AugmentPlatformId", ascending = True, ignore_index = True)
@@ -4953,15 +4962,24 @@ class AugmentExtractor(LoLDataExtractor):
                     key: str = KiwiAugment_header_keys[i]
                     if i == 0: #主键（`Key`）
                         to_append: Any = key1
-                    elif i <= 29:
-                        if i <= 15:
-                            if i == 2: #可用性（`Enabled`）
-                                to_append = value.get(key, True)
-                            elif i == 14: #{ed593c9c}
-                                to_append = value.get(key, False)
+                    elif i <= 50:
+                        if i <= 20:
+                            tmp_ptr: Any = value
+                            subkeyList: list[str] = key.split()
+                            for tmp_key in subkeyList:
+                                if tmp_key in tmp_ptr:
+                                    tmp_ptr = tmp_ptr[tmp_key]
+                                else:
+                                    if i == 2: #可用性（`Enabled`）
+                                        to_append = value.get(key, True)
+                                    elif i == 18: #{ed593c9c}
+                                        to_append = value.get(key, False)
+                                    else:
+                                        to_append = value.get(key, "")
+                                    break
                             else:
-                                to_append = value.get(key, "")
-                        elif i <= 25: #字符串常量（String constants）
+                                to_append = tmp_ptr
+                        elif i <= 46: #字符串常量（String constants）
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
@@ -4983,19 +5001,19 @@ class AugmentExtractor(LoLDataExtractor):
                                     to_append = tooltip_burn
                             else:
                                 to_append = tooltip_raw
-                        elif i == 26: #强化符文显示标签内容（`AugmentDisplayTags_content`）
+                        elif i == 47: #强化符文显示标签内容（`AugmentDisplayTags_content`）
                             to_append = list(map(lambda x: AugmentDisplayTags[x], value["AugmentDisplayTags"]))
-                        elif i == 27: #位阶（`rarityValue`）
+                        elif i == 48: #位阶（`rarityValue`）
                             to_append = augment_rarities[value.get("rarity", 0)]
-                        elif i == 28: #根指令对象（`RootSpellObject`）
+                        elif i == 49: #根指令对象（`RootSpellObject`）
                             to_append = map12_bin_whole.get(value["RootSpell"], "")
                         else: #其它指令对象（`{40c7b66f}_Object`）
                             to_append = list(map(lambda x: map12_bin_whole.get(x, ""), value.get("{40c7b66f}", [])))
                             if to_append == []:
                                 to_append = ""
-                    else: #强化符文套装相关键（Augment set related keys）
+                    elif i <= 53: #强化符文套装相关键（Augment set related keys）
                         if key1 in augmentSet_map:
-                            if i == 30: #强化符文套装列表（`augmentSet`）
+                            if i == 51: #强化符文套装列表（`augmentSet`）
                                 to_append = augmentSet_map[key1]
                             else: #强化符文套装本地化名称（Augment set localized names）
                                 augmentSets: list[str] = augmentSet_map[key1]
@@ -5007,6 +5025,11 @@ class AugmentExtractor(LoLDataExtractor):
                                 to_append = augmentSetNames
                         else:
                             to_append = ""
+                    else:
+                        if "ResourceResolver" in value and "resourceMap" in map12_bin_whole[value["ResourceResolver"]]:
+                            to_append = map12_bin_whole[value["ResourceResolver"]]["resourceMap"]
+                        else:
+                            to_append = ""
                     KiwiAugment_data[key].append(to_append)
                     KiwiAugment_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "{27bc6378}": #强化符文套装（Augment set）
@@ -5014,9 +5037,9 @@ class AugmentExtractor(LoLDataExtractor):
                     key: str = KiwiAugmentSet_header_keys[i]
                     if i == 0: #主键（`key`）
                         to_append: Any = key1
-                    elif i <= 8:
+                    elif i <= 9:
                         to_append = value.get(key, "")
-                    elif i <= 14: #强化符文套装名称和套装描述本地化文本（Augment set name and description localized text）
+                    elif i <= 15: #强化符文套装名称和套装描述本地化文本（Augment set name and description localized text）
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
@@ -5038,20 +5061,20 @@ class AugmentExtractor(LoLDataExtractor):
                                 to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
-                    elif i == 15 or i == 16: #强化符文列表本地化信息（Augment list localized text）
+                    elif i == 16 or i == 17: #强化符文列表本地化信息（Augment list localized text）
                         augmentNames: list[str] = []
                         for augment_key in value["augments"]:
                             tooltip_key = map12_bin_whole[augment_key]["NameTra"]
-                            strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 15 else strtable_lol_default
+                            strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 16 else strtable_lol_default
                             augmentNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
                         to_append = augmentNames
-                    elif i <= 22: #根指令对象（`{96b4b430}_object`）
+                    elif i <= 23: #根指令对象（`{96b4b430}_object`）
                         rootSpell_key: str = value["{96b4b430}"]
                         if rootSpell_key in map12_bin_whole:
                             rootSpell = map12_bin_whole[rootSpell_key]
-                            if i == 17: #根指令对象（`{96b4b430}_object`）
+                            if i == 18: #根指令对象（`{96b4b430}_object`）
                                 to_append = rootSpell
-                            elif i == 18: #套装说明文本键（`{96b4b430}_object keyTooltip`）
+                            elif i == 19: #套装说明文本键（`{96b4b430}_object keyTooltip`）
                                 tmp_ptr = rootSpell
                                 subkeyList: list[str] = ["mSpell", "mClientData", "mTooltipData", "mLocKeys", "keyTooltip"]
                                 for tmp_key in subkeyList:
@@ -5079,14 +5102,18 @@ class AugmentExtractor(LoLDataExtractor):
                                     to_append = tooltip_raw
                         else:
                             to_append = ""
-                    else: #资源解析器映射字典（`{01d14504} Map`）
+                    elif i == 24: #其它指令对象（`{40c7b66f}_Object`）
+                        to_append = list(map(lambda x: map12_bin_whole.get(x, ""), value.get("{40c7b66f}", [])))
+                        if to_append == []:
+                            to_append = ""
+                    else: #资源解析器映射字典（`{01d14504} resourceMap`）
                         if "{01d14504}" in value and "resourceMap" in map12_bin_whole[value["{01d14504}"]]:
                             to_append = map12_bin_whole[value["{01d14504}"]]["resourceMap"]
                         else:
                             to_append = ""
                     KiwiAugmentSet_data[key].append(to_append)
                     KiwiAugmentSet_data_json[key].append(pyobj2json(to_append))
-        KiwiAugment_statistics_output_order: list[int] = [0, 1, 15, 2, 3, 16, 17, 13, 27, 12, 26, 30, 31, 32, 8, 9, 14, 4, 18, 19, 20, 21, 5, 22, 23, 24, 25, 6, 28, 7, 29, 10, 11]
+        KiwiAugment_statistics_output_order: list[int] = [0, 1, 19, 2, 3, 21, 22, 17, 48, 16, 47, 51, 52, 53, 8, 9, 18, 4, 23, 24, 25, 26, 5, 27, 28, 29, 30, 10, 31, 32, 33, 34, 11, 35, 36, 37, 38, 12, 39, 40, 41, 42, 13, 43, 44, 45, 46, 6, 49, 7, 50, 20, 54, 14, 15]
         KiwiAugment_data_organized: dict[str, list[Any]] = {KiwiAugment_header_keys[i]: KiwiAugment_data_json[KiwiAugment_header_keys[i]] for i in KiwiAugment_statistics_output_order}
         KiwiAugment_df: pandas.DataFrame = pandas.DataFrame(data = KiwiAugment_data_organized)
         KiwiAugment_df = KiwiAugment_df.sort_values(by = "AugmentPlatformId", ascending = True, ignore_index = True)
@@ -5094,7 +5121,7 @@ class AugmentExtractor(LoLDataExtractor):
         optimize_bool_display(KiwiAugment_df)
         KiwiAugment_df = pandas.concat([pandas.DataFrame([KiwiAugment_header])[KiwiAugment_df.columns], KiwiAugment_df], ignore_index = True)
         self.KiwiAugment_df = KiwiAugment_df
-        KiwiAugmentSet_statistics_output_order: list[int] = [0, 1, 3, 9, 10, 4, 11, 12, 13, 14, 18, 19, 20, 21, 22, 5, 15, 16, 6, 17, 7, 23, 8, 2]
+        KiwiAugmentSet_statistics_output_order: list[int] = [0, 1, 3, 10, 11, 4, 12, 13, 14, 15, 19, 20, 21, 22, 23, 5, 16, 17, 6, 18, 9, 24, 7, 25, 8, 2]
         KiwiAugmentSet_data_organized: dict[str, list[Any]] = {KiwiAugmentSet_header_keys[i]: KiwiAugmentSet_data_json[KiwiAugmentSet_header_keys[i]] for i in KiwiAugmentSet_statistics_output_order}
         KiwiAugmentSet_df: pandas.DataFrame = pandas.DataFrame(data = KiwiAugmentSet_data_organized)
         KiwiAugmentSet_df = pandas.concat([pandas.DataFrame([KiwiAugmentSet_header])[KiwiAugmentSet_df.columns], KiwiAugmentSet_df], ignore_index = True)
@@ -7850,25 +7877,25 @@ if __name__ == "__main__":
         '''
         #数据资源（Data resource）
         ##字符串常量池（Stringtable）
-        lolstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/lol.stringtable.json"
-        with open(lolstringtable_zh_path, "r", encoding = "utf-8") as fp:
-            lolstringtable_zh = json.load(fp)
-        lolstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/lol.stringtable.json"
-        with open(lolstringtable_en_path, "r", encoding = "utf-8") as fp:
-            lolstringtable_en = json.load(fp)
-        tftstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/tft.stringtable.json"
-        with open(tftstringtable_zh_path, "r", encoding = "utf-8") as fp:
-            tftstringtable_zh = json.load(fp)
-        tftstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/tft.stringtable.json"
-        with open(tftstringtable_en_path, "r", encoding = "utf-8") as fp:
-            tftstringtable_en = json.load(fp)
+        # lolstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/lol.stringtable.json"
+        # with open(lolstringtable_zh_path, "r", encoding = "utf-8") as fp:
+        #     lolstringtable_zh = json.load(fp)
+        # lolstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/lol.stringtable.json"
+        # with open(lolstringtable_en_path, "r", encoding = "utf-8") as fp:
+        #     lolstringtable_en = json.load(fp)
+        # tftstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/tft.stringtable.json"
+        # with open(tftstringtable_zh_path, "r", encoding = "utf-8") as fp:
+        #     tftstringtable_zh = json.load(fp)
+        # tftstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/tft.stringtable.json"
+        # with open(tftstringtable_en_path, "r", encoding = "utf-8") as fp:
+        #     tftstringtable_en = json.load(fp)
         ##地图（Map）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
         #     map22_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
         #     map30_bin = json.load(fp)
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
-        #     map33_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
+            map33_bin = json.load(fp)
         ##装备（Item）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
         #     items_bin = json.load(fp)
@@ -7905,8 +7932,8 @@ if __name__ == "__main__":
         #         LoLDataExtractor.TFTScriptDataMap[value["mName"]] = value
         
         #总结数据结构（Summarize the data structure）
-        # keyDict: dict[str, dict[str, int]] = getBinaryKeys(cherry_bin, isBin = True, keyPaths = "{1ff99d7f}", objectTypes = "{05c8aed6}")[1]
-        # print(json.dumps(keyDict, indent = 4, ensure_ascii = False))
+        keyDict: dict[str, dict[str, int]] = getBinaryKeys(map33_bin, isBin = True, keyPaths = None, objectTypes = "AugmentData")[1]
+        print(json.dumps(keyDict, indent = 4, ensure_ascii = False))
         # import pyperclip
         # s: str = ""
         # for key in keyDict["{fa33a427}"]:
@@ -7921,12 +7948,12 @@ if __name__ == "__main__":
         # print(LoLDataExtractor.get_strtable_value(lolstringtable_zh, mDisplayName_key, default = "获取失败。"))
         
         #说明文本转换（Tooltip transformation）
-        tooltip_raw = "{{ Item_Active_Consume }} 自动开启一次半随机的选择，以选取一件棱彩装备。"
-        print("原始说明文本：\n" + tooltip_raw)
-        # binData = kiwi_bin["{66e41949}"]["mSpell"]
-        print("----")
-        print("转换文本：")
-        print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, None, isCHS = True, enableModeOverride = True, reserve_variable = False))
+        # tooltip_raw = "{{ Item_Active_Consume }} 自动开启一次半随机的选择，以选取一件棱彩装备。"
+        # print("原始说明文本：\n" + tooltip_raw)
+        # # binData = kiwi_bin["{66e41949}"]["mSpell"]
+        # print("----")
+        # print("转换文本：")
+        # print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, None, isCHS = True, enableModeOverride = True, reserve_variable = False))
         # print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
         # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
         # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
