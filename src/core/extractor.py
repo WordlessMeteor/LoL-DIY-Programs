@@ -537,13 +537,13 @@ class LoLDataExtractor:
         if Patch(self.version) < Patch("14.15"): #根据版本确定字符串常量池的网址（Determine stringtable url according to version）
             self.strtable_organize_manner = 2
             if Patch(self.version) < Patch("12.23"):
-                mainstringtable_target_url: str = f"https://raw.communitydragon.org/%s/game/data/menu/fontconfig_%s.txt.json" %(self.version, self.language_folder)
+                mainstringtable_target_url: str = f"https://raw.communitydragon.org/%s/game/data/menu/fontconfig_%s.txt.json" %(self.version, self.locale.lower())
                 mainstringtable_default_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/menu/fontconfig_en_us.txt.json"
             elif Patch(self.version) < Patch("14.4"):
-                mainstringtable_target_url: str = f"https://raw.communitydragon.org/%s/game/data/menu/main_%s.stringtable.json" %(self.version, self.language_folder)
+                mainstringtable_target_url: str = f"https://raw.communitydragon.org/%s/game/data/menu/main_%s.stringtable.json" %(self.version, self.locale.lower())
                 mainstringtable_default_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/menu/main_en_us.stringtable.json"
             else:
-                mainstringtable_target_url: str = f"https://raw.communitydragon.org/%s/game/%s/data/menu/en_us/main.stringtable.json" %(self.version, self.language_folder)
+                mainstringtable_target_url: str = f"https://raw.communitydragon.org/%s/game/%s/data/menu/en_us/main.stringtable.json" %(self.version, self.locale.lower())
                 mainstringtable_default_url: str = f"https://raw.communitydragon.org/{self.version}/game/en_us/data/menu/en_us/main.stringtable.json"
             #目标语言的字符串常量池（Stringtable in target language）
             if mainstringtable_target_url in self.__class__.data_cache["online"]:
@@ -579,9 +579,9 @@ class LoLDataExtractor:
             self.strtables_ready["default"] = True
         else:
             self.strtable_organize_manner = 1
-            lolstringtable_target_url: str = f"https://raw.communitydragon.org/%s/game/%s/data/menu/en_us/lol.stringtable.json" %(self.version, self.language_folder)
+            lolstringtable_target_url: str = f"https://raw.communitydragon.org/%s/game/%s/data/menu/en_us/lol.stringtable.json" %(self.version, self.locale.lower())
             lolstringtable_default_url: str = f"https://raw.communitydragon.org/{self.version}/game/en_us/data/menu/en_us/lol.stringtable.json"
-            tftstringtable_target_url: str = "https://raw.communitydragon.org/%s/game/%s/data/menu/en_us/tft.stringtable.json" %(self.version, self.language_folder)
+            tftstringtable_target_url: str = "https://raw.communitydragon.org/%s/game/%s/data/menu/en_us/tft.stringtable.json" %(self.version, self.locale.lower())
             tftstringtable_default_url: str = f"https://raw.communitydragon.org/{self.version}/game/en_us/data/menu/en_us/tft.stringtable.json"
             #目标语言的英雄联盟字符串常量池（LoL stringtable in target language）
             if lolstringtable_target_url in self.__class__.data_cache["online"]:
@@ -7879,25 +7879,25 @@ if __name__ == "__main__":
         '''
         #数据资源（Data resource）
         ##字符串常量池（Stringtable）
-        # lolstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/lol.stringtable.json"
-        # with open(lolstringtable_zh_path, "r", encoding = "utf-8") as fp:
-        #     lolstringtable_zh = json.load(fp)
-        # lolstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/lol.stringtable.json"
-        # with open(lolstringtable_en_path, "r", encoding = "utf-8") as fp:
-        #     lolstringtable_en = json.load(fp)
-        # tftstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/tft.stringtable.json"
-        # with open(tftstringtable_zh_path, "r", encoding = "utf-8") as fp:
-        #     tftstringtable_zh = json.load(fp)
-        # tftstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/tft.stringtable.json"
-        # with open(tftstringtable_en_path, "r", encoding = "utf-8") as fp:
-        #     tftstringtable_en = json.load(fp)
+        lolstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/lol.stringtable.json"
+        with open(lolstringtable_zh_path, "r", encoding = "utf-8") as fp:
+            lolstringtable_zh = json.load(fp)
+        lolstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/lol.stringtable.json"
+        with open(lolstringtable_en_path, "r", encoding = "utf-8") as fp:
+            lolstringtable_en = json.load(fp)
+        tftstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/tft.stringtable.json"
+        with open(tftstringtable_zh_path, "r", encoding = "utf-8") as fp:
+            tftstringtable_zh = json.load(fp)
+        tftstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/tft.stringtable.json"
+        with open(tftstringtable_en_path, "r", encoding = "utf-8") as fp:
+            tftstringtable_en = json.load(fp)
         ##地图（Map）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
         #     map22_bin = json.load(fp)
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
-        #     map30_bin = json.load(fp)
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
-            map33_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
+            map30_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
+        #     map33_bin = json.load(fp)
         ##装备（Item）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
         #     items_bin = json.load(fp)
@@ -7934,8 +7934,8 @@ if __name__ == "__main__":
         #         LoLDataExtractor.TFTScriptDataMap[value["mName"]] = value
         
         #总结数据结构（Summarize the data structure）
-        keyDict: dict[str, dict[str, int]] = getBinaryKeys(map33_bin, isBin = True, keyPaths = None, objectTypes = "AugmentData")[1]
-        print(json.dumps(keyDict, indent = 4, ensure_ascii = False))
+        # keyDict: dict[str, dict[str, int]] = getBinaryKeys(map33_bin, isBin = True, keyPaths = None, objectTypes = "AugmentData")[1]
+        # print(json.dumps(keyDict, indent = 4, ensure_ascii = False))
         # import pyperclip
         # s: str = ""
         # for key in keyDict["{fa33a427}"]:
@@ -7950,15 +7950,15 @@ if __name__ == "__main__":
         # print(LoLDataExtractor.get_strtable_value(lolstringtable_zh, mDisplayName_key, default = "获取失败。"))
         
         #说明文本转换（Tooltip transformation）
-        # tooltip_raw = "{{ Item_Active_Consume }} 自动开启一次半随机的选择，以选取一件棱彩装备。"
-        # print("原始说明文本：\n" + tooltip_raw)
-        # # binData = kiwi_bin["{66e41949}"]["mSpell"]
-        # print("----")
-        # print("转换文本：")
-        # print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, None, isCHS = True, enableModeOverride = True, reserve_variable = False))
-        # print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
-        # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
-        # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
+        tooltip_raw: str = "<status>定身</status>或<status>缚地</status>一个敌方英雄后获得<shield>@TotalShield@护盾值</shield>。<section>在最大等级时，<status>定身</status>或<status>缚地</status>一个敌方英雄还会使你的体型提升@SizeGrowth*100@%并且你获得<scaleTenacity>%i:scaleTenacity% @TenacityGain*100@韧性</scaleTenacity>。</section>"
+        print("原始说明文本：\n" + tooltip_raw)
+        binData: dict[str, Any] = map30_bin["Maps/Shipping/Map30/Spells/Augment_CourageoftheColossus"]["mSpell"]
+        print("----")
+        print("转换文本：")
+        print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
+        print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
+        print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
+        print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
         # print(modeOverrideTooltipTransform(champions_bin, objectType = "SpellObject", keyPaths = "mSpell|DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
         
         return 0
