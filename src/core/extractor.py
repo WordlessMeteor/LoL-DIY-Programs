@@ -4851,7 +4851,9 @@ class AugmentExtractor(LoLDataExtractor):
                             if tmp_key in tmp_ptr:
                                 tmp_ptr = tmp_ptr[tmp_key]
                             else:
-                                if i == 17: #{ed593c9c}
+                                if i == 2: #可用性（`Enabled`）
+                                    to_append = True
+                                elif i == 17: #{ed593c9c}
                                     to_append = False
                                 else:
                                     to_append = ""
