@@ -283,25 +283,25 @@ def sort_plugin_champions(LoLChampions: dict[int, dict[str, Any]], log: Optional
             count += 1
         for j in range(len(LoLChampion_header_keys)):
             key: str = LoLChampion_header_keys[j]
-            if j <= 10:
+            if j <= 11:
                 to_append: Any = champion[key]
-            elif j <= 14: #战略信息子键（`tacticalInfo`'s subkeys）
-                if j == 13: #战略信息：伤害（`tacticalInfo: damageType`）
+            elif j <= 15: #战略信息子键（`tacticalInfo`'s subkeys）
+                if j == 14: #战略信息：伤害（`tacticalInfo: damageType`）
                     to_append = damageTypes[champion["tacticalInfo"][key.split(": ")[1]]]
-                elif j == 14: #战略信息：攻击方式（`tacticalInfo: attackType`）
+                elif j == 15: #战略信息：攻击方式（`tacticalInfo: attackType`）
                     to_append = attackTypes[champion["tacticalInfo"][key.split(": ")[1]]]
                 else:
                     to_append = champion["tacticalInfo"][key.split(": ")[1]]
-            elif j <= 19: #玩法雷达图子键（`playStyleInfo`'s subkeys）
+            elif j <= 20: #玩法雷达图子键（`playStyleInfo`'s subkeys）
                 to_append = champion["playstyleInfo"][key.split(": ")[1]]
-            elif j <= 21: #英雄标签信息子键（`championTagInfo`'s subkeys）
+            elif j <= 22: #英雄标签信息子键（`championTagInfo`'s subkeys）
                 to_append = champion["championTagInfo"][key.split(": ")[1]]
-            elif j <= 27: #角色定位子键（`role`'s subkeys）
+            elif j <= 28: #角色定位子键（`role`'s subkeys）
                 if key.split(": ")[1] in champion["roles"]:
                     to_append = "√"
                 else:
                     to_append = ""
-            elif j <= 32: #被动技能子键（`passive`'s subkeys）
+            elif j <= 33: #被动技能子键（`passive`'s subkeys）
                 to_append = champion["passive"][key.split(": ")[1]]
             else: #技能相关键（Spell related keys）
                 spell_index: int = int(key[5:6]) - 1
@@ -315,7 +315,7 @@ def sort_plugin_champions(LoLChampions: dict[int, dict[str, Any]], log: Optional
                 else:
                     to_append = ""
             LoLChampion_data[key].append(to_append)
-    LoLChampion_statistics_output_order: list[int] = [0, 1, 3, 2, 5, 22, 23, 24, 25, 26, 27, 13, 11, 12, 14, 20, 21, 15, 16, 17, 18, 19, 4, 6, 7, 8, 9, 28, 34, 61, 88, 115]
+    LoLChampion_statistics_output_order: list[int] = [0, 2, 4, 3, 6, 23, 24, 25, 26, 27, 28, 14, 12, 13, 15, 21, 22, 16, 17, 18, 19, 20, 5, 7, 8, 9, 10, 29, 35, 62, 89, 116, 1]
     LoLChampion_data_organized: dict[str, list[Any]] = {LoLChampion_header_keys[i]: LoLChampion_data[LoLChampion_header_keys[i]] for i in LoLChampion_statistics_output_order}
     LoLChampion_df: pandas.DataFrame = pandas.DataFrame(data = LoLChampion_data_organized)
     # logPrint("正在优化逻辑值显示……\nOptimizing the display of boolean values ...", verbose = verbose)

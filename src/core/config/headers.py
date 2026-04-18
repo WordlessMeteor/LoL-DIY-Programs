@@ -3106,6 +3106,7 @@ LoLChampion_ddragon_header: dict[str, str] = {
 }
 LoLChampion_plugin_header: dict[str, str] = {
     "id": "英雄序号",
+    "contentId": "商品编号",
     "name": "称号",
     "alias": "英雄代号",
     "title": "名称",
@@ -3150,7 +3151,6 @@ LoLChampion_plugin_header: dict[str, str] = {
     "spell1: range": "技能1施法距离",
     "spell1: costCoefficients": "技能1施法资源系数",
     "spell1: cooldownCoefficients": "技能1冷却时间系数",
-    "spell1: maxLevel": "技能1最大等级",
     "spell1: coefficients: coefficient1": "技能1系数1",
     "spell1: coefficients: coefficient2": "技能1系数2",
     "spell1: effectAmounts: Effect1Amount": "技能1效应因子1",
@@ -3165,6 +3165,7 @@ LoLChampion_plugin_header: dict[str, str] = {
     "spell1: effectAmounts: Effect10Amount": "技能1效应因子10",
     "spell1: ammo: ammoRechargeTime": "技能1充能时间",
     "spell1: ammo: maxAmmo": "技能1最大充能数",
+    "spell1: maxLevel": "技能1最大等级",
     "spell2: spellKey": "技能2热键",
     "spell2: name": "技能2名称",
     "spell2: abilityIconPath": "技能2图标路径",
@@ -3177,7 +3178,6 @@ LoLChampion_plugin_header: dict[str, str] = {
     "spell2: range": "技能2施法距离",
     "spell2: costCoefficients": "技能2施法资源系数",
     "spell2: cooldownCoefficients": "技能2冷却时间系数",
-    "spell2: maxLevel": "技能2最大等级",
     "spell2: coefficients: coefficient1": "技能2系数1",
     "spell2: coefficients: coefficient2": "技能2系数2",
     "spell2: effectAmounts: Effect1Amount": "技能2效应因子1",
@@ -3192,6 +3192,7 @@ LoLChampion_plugin_header: dict[str, str] = {
     "spell2: effectAmounts: Effect10Amount": "技能2效应因子10",
     "spell2: ammo: ammoRechargeTime": "技能2充能时间",
     "spell2: ammo: maxAmmo": "技能2最大充能数",
+    "spell2: maxLevel": "技能2最大等级",
     "spell3: spellKey": "技能3热键",
     "spell3: name": "技能3名称",
     "spell3: abilityIconPath": "技能3图标路径",
@@ -3204,7 +3205,6 @@ LoLChampion_plugin_header: dict[str, str] = {
     "spell3: range": "技能3施法距离",
     "spell3: costCoefficients": "技能3施法资源系数",
     "spell3: cooldownCoefficients": "技能3冷却时间系数",
-    "spell3: maxLevel": "技能3最大等级",
     "spell3: coefficients: coefficient1": "技能3系数1",
     "spell3: coefficients: coefficient2": "技能3系数2",
     "spell3: effectAmounts: Effect1Amount": "技能3效应因子1",
@@ -3219,6 +3219,7 @@ LoLChampion_plugin_header: dict[str, str] = {
     "spell3: effectAmounts: Effect10Amount": "技能3效应因子10",
     "spell3: ammo: ammoRechargeTime": "技能3充能时间",
     "spell3: ammo: maxAmmo": "技能3最大充能数",
+    "spell3: maxLevel": "技能3最大等级",
     "spell4: spellKey": "技能4热键",
     "spell4: name": "技能4名称",
     "spell4: abilityIconPath": "技能4图标路径",
@@ -3231,7 +3232,6 @@ LoLChampion_plugin_header: dict[str, str] = {
     "spell4: range": "技能4施法距离",
     "spell4: costCoefficients": "技能4施法资源系数",
     "spell4: cooldownCoefficients": "技能4冷却时间系数",
-    "spell4: maxLevel": "技能4最大等级",
     "spell4: coefficients: coefficient1": "技能4系数1",
     "spell4: coefficients: coefficient2": "技能4系数2",
     "spell4: effectAmounts: Effect1Amount": "技能4效应因子1",
@@ -3245,7 +3245,8 @@ LoLChampion_plugin_header: dict[str, str] = {
     "spell4: effectAmounts: Effect9Amount": "技能4效应因子9",
     "spell4: effectAmounts: Effect10Amount": "技能4效应因子10",
     "spell4: ammo: ammoRechargeTime": "技能4充能时间",
-    "spell4: ammo: maxAmmo": "技能4最大充能数"
+    "spell4: ammo: maxAmmo": "技能4最大充能数",
+    "spell4: maxLevel": "技能4最大等级"
 }
 champion_summary_header: dict[str, str] = {
     "id": "序号",
