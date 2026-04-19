@@ -237,7 +237,7 @@ class LoLDataExtractor:
     #定义类属性，作为类内临时使用的全局变量（Define class attributes as temporarily used global variables within the class）
     calculatedVariables: dict[str, dict[Literal["value", "__type"], str | dict[str, str]]] = {} #缓存同一个说明文本中计算过的变量。切换到下一个说明文本时清空（Cache the variables that have been calculated before while transforming a tooltip. When another tooltip is to transform, this variable is cleaned）
     mSpells: dict[str, Any] = {} #收录某个二进制描述数据中所有的技能指令对象。键是每个技能指令对象的mScriptName键的值，值是每个技能指令对象（Collect all SpellObjects in binary description data. Each key is the value of the `mScriptName` key of a SpellObject, and its value is this SpellObject）
-    mItems: dict[str, Any] = {} #收录装备二进制描述数据中所有的装备对象。键是每个装备数据对象的装备序号，值是每个装备数据对象（Collect all ItemData objects in item binary description data. Each key is the value of `itemID` key of an ItemData object, and each value is this ItemData object）
+    # mItems: dict[str, Any] = {} #收录装备二进制描述数据中所有的装备对象。键是每个装备数据对象的装备序号，值是每个装备数据对象（Collect all ItemData objects in item binary description data. Each key is the value of `itemID` key of an ItemData object, and each value is this ItemData object）
     TFTUnitPropertyMap: dict[str, Any] = {} #收录聚点危机地图二进制描述数据中的单位属性定义对象。键是每个单位属性定义对象的名称，值是每个单位属性定义对象（Collect TftUnitPropertyDefinition objects in Convergence map's binary description data. Each key is the value of `name` key of a TftUnitPropertyDefinition object, and its value is this TftUnitPropertyDefinition object）
     TFTTraitMap: dict[str, Any] = {} #收录聚点危机地图二进制描述数据中的羁绊对象。键是每个羁绊对象的名称，值是每个羁绊对象（Collect TftTraitData objects in Convergence map's binary description data. Each key is the value of `name` key of a TftTraitData object, and its value is this TftTraitData object）
     TFTScriptDataMap: dict[str, Any] = {} #收录聚点危机地图二进制描述数据中的指令数据对象。键是每个指令数据对象的名称，值是每个指令数据对象（Collect ScriptDataObjects in Convergence map's binary description data. Each key is the value of `name` key of a ScriptDataObject, and its value os this ScriptDataObject）
@@ -343,10 +343,18 @@ class LoLDataExtractor:
     @classmethod
     def clear_cache(cls) -> None: #清空缓存（Clear data cache）
         '''
-        清空所有在线和离线数据缓存。一般情况下，只有在同一个网址或地址的数据发生变化时需要调用此方法。<br>Clear all online and local data caches. Basically, this method only needs to be called when the data of the same URL or path changes.
+        清空所有在线和离线数据缓存。一般情况下，在切换版本时需要调用此方法。<br>Clear all online and local data caches. Basically, this method only needs to be called when the user switches to another version.
         '''
-        cls.data_cache = {"online": {}, "local": {}}
-        cls.merged_data_cache = {}
+        cls.calculatedVariables.clear()
+        cls.mSpells.clear()
+        # cls.mItems.clear()
+        cls.TFTUnitPropertyMap.clear()
+        cls.TFTTraitMap.clear()
+        cls.TFTScriptDataMap.clear()
+        cls.Spell_tooltip_map.clear()
+        cls.data_cache["online"].clear()
+        cls.data_cache["local"].clear()
+        cls.merged_data_cache.clear()
     
     #获取版本数据框（Obtain version dataframe）
     def init_patch(self) -> None:
@@ -7493,6 +7501,7 @@ if __name__ == "__main__":
                             continue
                         logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t说明文本样式（Tooltip style）\n2\t变量替换样式（Variable substitution style）")
                 elif mode[0] == "0":
+                    LoLDataExtractor.clear_cache()
                     break
                 elif mode[0] == "1":
                     mapExtractor: MapExtractor = MapExtractor(extractor)
@@ -7724,6 +7733,7 @@ if __name__ == "__main__":
                         continue
                     logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t说明文本样式（Tooltip style）\n2\t变量替换样式（Variable substitution style）\n3\t数据导出（Data export）")
             elif mode[0] == "0":
+                LoLDataExtractor.clear_cache()
                 break
             elif mode[0] == "1":
                 mapExtractor: MapExtractor = MapExtractor(extractor)
