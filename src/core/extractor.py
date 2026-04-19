@@ -1084,7 +1084,7 @@ class LoLDataExtractor:
                     mStat_dict_en = {0: "Ability Power", 1: "Armor", 2: "Attack Damage", 3: "Attack Speed", 4: "Attack Windup", 5: "Magic Resistance", 6: "Movement Speed", 7: "Critical Strike Chance", 8: "Crit Damage", 9: "Cooldown Reduction", 10: "Ability Haste", 11: "Health", 12: "Current Health Percent", 13: "Lost Health Percent", 15: "Life Steal", 19: "Magic Penetration Flat", 26: "Lethality", 28: "Size", 29: "Health Regen", 31: "Heal and Shield Power"}
         formulaPart_type: str = formulaPart["__type"]
         if formulaPart_type in {"ClampSubPartsCalculationPart", "ProductOfSubPartsCalculationPart", "StatBySubPartCalculationPart", "SumOfSubPartsCalculationPart"}:
-            formulaStr = cls.subpartCalculation(binData, formulaPart, var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            formulaStr: str = cls.subpartCalculation(binData, formulaPart, var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             if formulaPart_type == "StatBySubPartCalculationPart": #仅用于装备中的卢安娜的飓风和闪电杖和强化符文中的小丑学院的背刺（Only applies to Runaan's Hurricane and Lightning Rod in items and backstab of Clown College in augments）
                 stat_header: str = mStatFormula_dict_zh[formulaPart.get("mStatFormula", 0)] if isCHS else mStatFormula_dict_en[formulaPart.get("mStatFormula", 0)]
                 stat_desc: str = mStat_dict_zh[formulaPart.get("mStat", 0)] if isCHS else mStat_dict_en[formulaPart.get("mStat", 0)]
@@ -1105,7 +1105,7 @@ class LoLDataExtractor:
             formulaStr = partCalc + " × stack of " + formulaPart["mBuffName"]
         elif formulaPart_type == "ByCharLevelBreakpointsCalculationPart": #阶梯式等级提供增益（Bonus value provided by levels in a step function manner）
             mLevel1Value: int | float = formulaPart.get("mLevel1Value", 0)
-            mBonusPerLevelAtAndAfter = formulaPart.get("mInitialBonusPerLevel", 0) #每级增加的数值（The value to increment reaching each level）
+            mBonusPerLevelAtAndAfter: int | float = formulaPart.get("mInitialBonusPerLevel", 0) #每级增加的数值（The value to increment reaching each level）
             if "mBreakpoints" in formulaPart:
                 levelValues: list[int | float] = [] #从封魔剑魂 永恩的【凛神斩】的对小兵最小伤害中推断出，mBonusPerLevelAtAndAfter键适用于1级（From YoneW's MinimumDamageMinions, we can infer that `mBonusPerLevelAtAndAfter` applies at Level 1）
                 formulaPart["mBreakpoints"] = sorted(formulaPart["mBreakpoints"], key = lambda x: x.get("mLevel", 1)) #这一步其实无关紧要，因为断点列表总是按照等级正序排列的（This step is actually unnecessary, for the breakpoints are always sorted in the ascending order of mLevel）
@@ -1161,13 +1161,13 @@ class LoLDataExtractor:
                 stat_header = "最大" if isCHS else "max "
             formulaStr += " × " + stat_header + stat_desc
         elif formulaPart_type == "{b22609db}": #仅用于刀锋舞者 艾瑞莉娅的【艾欧尼亚热诚】（Only applies to IreliaPassive）
-            mLevel1Value = cls.variableCalculation(binData, formulaPart["{91d404a5}"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
-            mLevel18Value = cls.variableCalculation(binData, formulaPart["{b2cd0eb0}"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
-            formulaStr = f"{mLevel1Value} - {mLevel18Value} (based on Level)"
+            mLevel1ValueStr: str = cls.variableCalculation(binData, formulaPart["{91d404a5}"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            mValuePerLevelStr: str = cls.variableCalculation(binData, formulaPart["{b2cd0eb0}"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            formulaStr = f"{mLevel1ValueStr} + {mValuePerLevelStr} × Level"
         elif formulaPart_type == "{ee18a47b}": #仅用于兽灵行者 乌迪尔的【狂暴爪击】（Only applies to UdyrQ）
-            mLevel1Value = cls.variableCalculation(binData, formulaPart["{0589a59c}"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
-            mLevel18Value = cls.variableCalculation(binData, formulaPart["{0b65bc23}"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
-            formulaStr = f"{mLevel1Value} - {mLevel18Value} (based on Level)"
+            mLevel1ValueStr = cls.variableCalculation(binData, formulaPart["{0589a59c}"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            mLevel18ValueStr: str = cls.variableCalculation(binData, formulaPart["{0b65bc23}"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            formulaStr = f"{mLevel1ValueStr} - {mLevel18ValueStr} (based on Level)"
         elif formulaPart_type == "{f3cbe7b2}": #mSpellCalculationKey来自mItemCalculations键的情形。在装备中仅用于夺萃之镰和无终恨意（The case where the value of `mSpellCalculationKey` is a key of the value of `mItemCalculations`. In items, this only applies to Essence Reaver and Unending Despair）
             formulaStr = cls.variableCalculation(binData, formulaPart["mSpellCalculationKey"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
         else: #异常处理（Exception handling）
