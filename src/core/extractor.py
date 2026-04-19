@@ -1776,10 +1776,23 @@ class LoLDataExtractor:
         pResult_ModeBurn: re.Pattern[str] = re.compile(sResult_ValueAmongModes)
         # pResult_ModeBurn: re.Pattern[str] = re.compile(r"(\{\w+\}|\d+\.\d+|\d+)(/(\{\w+\}|\d+\.\d+|\d+))*( \(mode: (\{\w+\}|\w+)\))?( \|\| (\{\w+\}|\d+\.\d+|\d+)(/(\{\w+\}|\d+\.\d+|\d+))*( \(mode: (\{\w+\}|\w+)\))?)*") #不同模式下的单个数值或连除式（Single value or continuous division among different modes）
         pModePart: re.Pattern[str] = re.compile(sResult_SingleModePart) #识别变量计算结果中的游戏模式名称部分。需要注意，游戏模式名称可能为未解析的hash值。这里假设每个模式覆盖变量都是最基本的单项式。作出这个假设是为了保证在识别出“a || b”后，能够正确地进行公式计算，得到“eval(a + formula) || eval(b + formula)”（Identifies the gameModeName in the calculation result of `var`. Note that the gameModeName may be an unhashed value. Here we assume each mode overriden variable is the most basic monomial. This assumption is made to ensure that the subsequent formula calculation can correctly derivate from "a || b" to "eval(a + formula) || eval(b + formula)"）
+        #被双花括号包围的变量不应被替换，而应放到嵌套替换函数中被替换（Variables nested within a pair of double curly brackets shouldn't be substituted here, but in `nestedVariableSubstitute` function）
+        sTooltipNestedStats: str = r"\{\{\s*\w*@\w+@\w*\s*\}\}"
+        pTooltipNestedStats: re.Pattern[str] = re.compile(sTooltipNestedStats)
+        coordinates_to_skip: list[tuple[int, int]] = []
+        for matchObj in pTooltipNestedStats.finditer(tooltip):
+            coordinates_to_skip.append((matchObj.start(), matchObj.end()))
         #下面通过一次性识别某个说明文本中所有的匹配情况，执行按索引替换字符串，而不是通过传统的replace方法替换。这样适用于相同变量替换成不同值的场景（By identifying all matches of a tooltip string for once, we'll replace the string according to the index, instead of the traditional string's replace method. This applies to the case where the same variables need to be replaced with different values）
         matchStructs: list[dict[str, str | int]] = []
         for matchObj in pStats.finditer(tooltip):
             stat: str = matchObj.group()
+            skip: bool = False
+            for coordinate in coordinates_to_skip:
+                if matchObj.start() >= coordinate[0] and matchObj.end() <= coordinate[1]:
+                    skip = True
+                    break
+            if skip:
+                continue
             matchStruct: dict[str, str | int] = {}
             matchStruct["var"] = stat #这个var键只是为了方便调试，实际没有参与字符串替换。注意，这个var键的值和下面替换过程中的var变量的值有所不同，它是有双@包围的（This `var` key is only meant for debug. It doesn't participant in string replacement actually. Note that the value of this `var` key is different from the value of the `var` variable in the following replacement stage, because the value of this `var` key is "@" enclosed）
             matchStruct["start"] = matchObj.start()
@@ -1982,12 +1995,12 @@ class LoLDataExtractor:
             levelStrs: list[str] = []
             tooltipNestedVarOther: str = matchObj.group()
             tooltipNestedVarOther_var: str = pTooltipNestedVarOther_var.search(tooltipNestedVarOther).group() #无需判断是否能匹配到，因为pTooltipNestedVar2本来就包含pTooltipNestedVarOther（Don't need to judge whether it can be matched, for `pTooltipNestedVar2` already contains `pTooltipNestedVarOther`）
-            for i in range(10):
-                tmp_var: str = tooltipNestedVarOther.lstrip("{").rstrip("}").replace(tooltipNestedVarOther_var, str(i))
+            for i in range(99):
+                tmp_var: str = tooltipNestedVarOther.lstrip("{").rstrip("}").strip().replace(tooltipNestedVarOther_var, str(i))
                 tmp_value: str = cls.get_strtable_value(strtable_locale, tmp_var, default = "")
                 if tmp_value != "":
                     levelStrs.append(tmp_value + " (level: %d)" %i)
-                elif i != 0: #当某个水平不存在时，认为其后的水平也不存在（When some level doesn't exist, we assume that the subsequent levels don't exist, either）
+                elif i >= 10: #当某个水平不存在时，认为其后的水平也不存在。但是，在第五代斗魂竞技场中，【寄生关系】的说明文本——“Cherry_ParasiticRelationship@TeamSize@_Summary”中的TeamSize变量是从2开始的。毕竟没有单人成队的斗魂竞技场。考虑到一般这类变量取值都是一位数，所以这里强制至少从0遍历到9（When some level doesn't exist, we assume that the subsequent levels don't exist, either. However, in Arena v5, `TeamSize` variable in the tooltip of Parasitic Relationship, namely "Cherry_ParasiticRelationship@TeamSize@_Summary", starts from 2. An Arena game where single player makes up of a team doesn't exist, after all. Considering the value of these kind of parameters usually has only one digit, here it's forced to traverse at least from 0 to 9）
                     break
             if len(levelStrs) > 0:
                 levelStr = "\n||\n".join(levelStrs)
@@ -7954,15 +7967,15 @@ if __name__ == "__main__":
         # print(LoLDataExtractor.get_strtable_value(lolstringtable_zh, mDisplayName_key, default = "获取失败。"))
         
         #说明文本转换（Tooltip transformation）
-        tooltip_raw: str = "<status>定身</status>或<status>缚地</status>一个敌方英雄后获得<shield>@TotalShield@护盾值</shield>。<section>在最大等级时，<status>定身</status>或<status>缚地</status>一个敌方英雄还会使你的体型提升@SizeGrowth*100@%并且你获得<scaleTenacity>%i:scaleTenacity% @TenacityGain*100@韧性</scaleTenacity>。</section>"
+        tooltip_raw: str = "{{ Cherry_ParasiticRelationship@TeamSize@_Summary }}"
         print("原始说明文本：\n" + tooltip_raw)
-        binData: dict[str, Any] = map30_bin["Maps/Shipping/Map30/Spells/Augment_CourageoftheColossus"]["mSpell"]
+        binData: dict[str, Any] = map30_bin["Maps/Shipping/Map30/Spells/Augment_ParasiticRelationship"]["mSpell"]
         print("----")
         print("转换文本：")
         print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
-        print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
-        print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
-        print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
+        # print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
+        # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
+        # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = True))
         # print(modeOverrideTooltipTransform(champions_bin, objectType = "SpellObject", keyPaths = "mSpell|DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
         
         return 0
