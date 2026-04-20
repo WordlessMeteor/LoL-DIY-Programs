@@ -4866,7 +4866,7 @@ class AugmentExtractor(LoLDataExtractor):
                     key: str = CherryAugment_header_keys[i]
                     if i == 0: #主键（`Key`）
                         to_append: Any = key1
-                    elif i <= 18:
+                    elif i <= 19:
                         tmp_ptr: Any = value
                         subkeyList: list[str] = key.split()
                         for tmp_key in subkeyList:
@@ -4875,14 +4875,14 @@ class AugmentExtractor(LoLDataExtractor):
                             else:
                                 if i == 2: #可用性（`Enabled`）
                                     to_append = True
-                                elif i == 17: #{ed593c9c}
+                                elif i == 18: #{ed593c9c}
                                     to_append = False
                                 else:
                                     to_append = ""
                                 break
                         else:
                             to_append = tmp_ptr
-                    elif i <= 44: #字符串常量（String constants）
+                    elif i <= 45: #字符串常量（String constants）
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
@@ -4904,15 +4904,30 @@ class AugmentExtractor(LoLDataExtractor):
                                 to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
-                    elif i == 45: #强化符文显示标签内容（`AugmentDisplayTags_content`）
+                    elif i == 46: #强化符文显示标签内容（`AugmentDisplayTags_content`）
                         to_append = list(map(lambda x: AugmentDisplayTags[x], value["AugmentDisplayTags"]))
-                    elif i == 46: #位阶（`rarityValue`）
+                    elif i == 47: #位阶（`rarityValue`）
                         to_append = augment_rarities[value.get("rarity", 0)]
-                    else: #根指令对象（`RootSpellObject`）
+                    elif i == 48: #根指令对象（`RootSpellObject`）
                         to_append = map30_bin_whole.get(value["RootSpell"], "")
+                    else: #最大等级（`RootSpell mSpell DataValues MaxLevel`）
+                        tmp_ptr: Any = map30_bin_whole
+                        subkeyList: list[str] = [value["RootSpell"], "mSpell", "DataValues"]
+                        for tmp_key in subkeyList:
+                            if tmp_key in tmp_ptr:
+                                tmp_ptr = tmp_ptr[tmp_key]
+                            else:
+                                to_append = ""
+                                break
+                        else:
+                            DataValues: dict[str, dict[str, str | list[float]]] = {dataValue["name"]: dataValue for dataValue in tmp_ptr}
+                            if "MaxLevel" in DataValues and "values" in DataValues["MaxLevel"]:
+                                to_append = int(self.burnValueList(DataValues["MaxLevel"]["values"])) #事先已知最大等级是一个定值（It's already known that MaxLevel is a constant）
+                            else:
+                                to_append = ""
                     CherryAugment_data[key].append(to_append)
                     CherryAugment_data_json[key].append(pyobj2json(to_append))
-        CherryAugment_statistics_output_order: list[int] = [0, 1, 18, 2, 3, 19, 20, 16, 46, 15, 45, 7, 8, 17, 4, 21, 22, 23, 24, 5, 25, 26, 27, 28, 9, 29, 30, 31, 32, 10, 33, 34, 35, 36, 11, 37, 38, 39, 40, 12, 41, 42, 43, 44, 6, 47, 13, 14]
+        CherryAugment_statistics_output_order: list[int] = [0, 1, 19, 2, 3, 20, 21, 17, 47, 49, 16, 46, 7, 8, 18, 15, 4, 22, 23, 24, 25, 5, 26, 27, 28, 29, 9, 30, 31, 32, 33, 10, 34, 35, 36, 37, 11, 38, 39, 40, 41, 12, 42, 43, 44, 45, 6, 48, 13, 14]
         CherryAugment_data_organized: dict[str, list[Any]] = {CherryAugment_header_keys[i]: CherryAugment_data_json[CherryAugment_header_keys[i]] for i in CherryAugment_statistics_output_order}
         CherryAugment_df: pandas.DataFrame = pandas.DataFrame(data = CherryAugment_data_organized)
         CherryAugment_df = CherryAugment_df.sort_values(by = "AugmentPlatformId", ascending = True, ignore_index = True)

@@ -5910,6 +5910,7 @@ CherryAugment_header: dict[str, str] = {
     "{791eb92e} {5753a320} {05835d27}": "满级效果详细信息键",
     "AugmentLargeIconPath": "强化符文大图标路径",
     "AugmentSmallIconPath": "强化符文小图标路径",
+    "{815dad28}": "",
     "AugmentDisplayTags": "强化符文显示标签",
     "rarity": "稀有度",
     "{ed593c9c}": "",
@@ -5942,7 +5943,8 @@ CherryAugment_header: dict[str, str] = {
     "{791eb92e} {5753a320} {05835d27}_content_en_burn": "满级效果详细信息（英文/数值转换）",
     "AugmentDisplayTags_content": "强化符文显示标签内容",
     "rarityValue": "位阶",
-    "RootSpellObject": "根指令对象"
+    "RootSpellObject": "根指令对象",
+    "RootSpell mSpell DataValues MaxLevel": "最大等级"
 }
 SwarmAugment_header: dict[str, str] = {
     "key": "主键",
