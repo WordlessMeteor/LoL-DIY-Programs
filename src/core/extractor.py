@@ -4900,7 +4900,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 to_append = ""
                             else:
                                 self.__class__.calculatedVariables.clear()
-                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -4966,7 +4966,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 to_append = ""
                             else:
                                 self.__class__.calculatedVariables.clear()
-                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -5036,7 +5036,7 @@ class AugmentExtractor(LoLDataExtractor):
                                     to_append = ""
                                 else:
                                     self.__class__.calculatedVariables.clear()
-                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                     to_append = tooltip_burn
                             else:
                                 to_append = tooltip_raw
@@ -5096,7 +5096,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 to_append = ""
                             else:
                                 self.__class__.calculatedVariables.clear()
-                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -5135,7 +5135,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 if subkey2.endswith("_burn"):
                                     mSpell = rootSpell["mSpell"]
                                     self.__class__.calculatedVariables.clear()
-                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                     to_append = tooltip_burn
                                 else:
                                     to_append = tooltip_raw
@@ -7848,7 +7848,7 @@ if __name__ == "__main__":
                 if dir_type == "extract":
                     augment_paths: list[str] = [
                         "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json",
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/cherry.bin.json"
+                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/cherry.bin.json",
                         "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map33/map33.bin.json",
                         "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map12/map12.bin.json",
                         "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/kiwi.bin.json"
@@ -7856,7 +7856,7 @@ if __name__ == "__main__":
                 else:
                     augment_paths = [
                         "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json",
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json"
+                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json",
                         "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json",
                         "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map12/map12.bin.json",
                         "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json"
@@ -7926,8 +7926,8 @@ if __name__ == "__main__":
         ##地图（Map）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
         #     map22_bin = json.load(fp)
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
-            map30_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
+        #     map30_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
         #     map33_bin = json.load(fp)
         ##装备（Item）
@@ -7940,8 +7940,8 @@ if __name__ == "__main__":
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/perks.cdtb.bin.json", "r", encoding = "utf-8") as fp:
         #     perks_bin = json.load(fp)
         ##强化符文和荣誉嘉宾（Augment and Guest of Honor）
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
-        #     cherry_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
+            cherry_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
         #     kiwi_bin = json.load(fp)
         ##整合后的数据（Merged data）
@@ -7982,9 +7982,9 @@ if __name__ == "__main__":
         # print(LoLDataExtractor.get_strtable_value(lolstringtable_zh, mDisplayName_key, default = "获取失败。"))
         
         #说明文本转换（Tooltip transformation）
-        tooltip_raw: str = "{{ Cherry_ParasiticRelationship@TeamSize@_Summary }}"
+        tooltip_raw: str = "{{Kiwi_GlassCannon_Summary}}<br><br>已造成的伤害：@f1@"
         print("原始说明文本：\n" + tooltip_raw)
-        binData: dict[str, Any] = map30_bin["Maps/Shipping/Map30/Spells/Augment_ParasiticRelationship"]["mSpell"]
+        binData: dict[str, Any] = cherry_bin["{5f69dfc1}"]["mSpell"]
         print("----")
         print("转换文本：")
         print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
