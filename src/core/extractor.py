@@ -1994,12 +1994,12 @@ class LoLDataExtractor:
         while (matchObj := pTooltipNestedVarOther.search(result, pos = start_pos)):
             levelStrs: list[str] = []
             tooltipNestedVarOther: str = matchObj.group()
-            tooltipNestedVarOther_var: str = pTooltipNestedVarOther_var.search(tooltipNestedVarOther).group() #无需判断是否能匹配到，因为pTooltipNestedVar2本来就包含pTooltipNestedVarOther（Don't need to judge whether it can be matched, for `pTooltipNestedVar2` already contains `pTooltipNestedVarOther`）
+            tooltipNestedVarOther_var: str = pTooltipNestedVarOther_var.search(tooltipNestedVarOther).group() #无需判断是否能匹配到，因为pTooltipNestedVarOther本来就包含pTooltipNestedVarOther_var（Don't need to judge whether it can be matched, for `pTooltipNestedVarOther` already contains `pTooltipNestedVarOther_var`）
             for i in range(99):
                 tmp_var: str = tooltipNestedVarOther.lstrip("{").rstrip("}").strip().replace(tooltipNestedVarOther_var, str(i))
                 tmp_value: str = cls.get_strtable_value(strtable_locale, tmp_var, default = "")
                 if tmp_value != "":
-                    levelStrs.append(tmp_value + " (level: %d)" %i)
+                    levelStrs.append("%s (level of $%s$: %d)" %(tmp_value, tooltipNestedVarOther_var, i))
                 elif i >= 10: #当某个水平不存在时，认为其后的水平也不存在。但是，在第五代斗魂竞技场中，【寄生关系】的说明文本——“Cherry_ParasiticRelationship@TeamSize@_Summary”中的TeamSize变量是从2开始的。毕竟没有单人成队的斗魂竞技场。考虑到一般这类变量取值都是一位数，所以这里强制至少从0遍历到9（When some level doesn't exist, we assume that the subsequent levels don't exist, either. However, in Arena v5, `TeamSize` variable in the tooltip of Parasitic Relationship, namely "Cherry_ParasiticRelationship@TeamSize@_Summary", starts from 2. An Arena game where single player makes up of a team doesn't exist, after all. Considering the value of these kind of parameters usually has only one digit, here it's forced to traverse at least from 0 to 9）
                     break
             if len(levelStrs) > 0:
