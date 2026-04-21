@@ -30,7 +30,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/04/12
+# 更新（Last update）：     2026/04/21
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1753,15 +1753,11 @@ async def create_queue_lobby(connection: Connection, loop_test: bool = False) ->
     game_version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
     gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
     gameQueues: dict[int, dict[str, Any]] = {queue["id"]: queue for queue in gameQueues_source}
-    enabled_queueIds: list[int] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/ClientSystemStates/enabledQueueIdsList")).json()
     ARAMmaps_zh: dict[str, str] = {key: ARAMmaps[key]["zh_CN"] for key in ARAMmaps}
     ARAMmaps_en: dict[str, str] = {key: ARAMmaps[key]["en_US"] for key in ARAMmaps}
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     custom_game_setup_name_default_dict: dict[str, str] = {"ar_AE": "مباراة {{summonerName}}", "cs_CZ": "Hra uživatele {{summonerName}}", "el_GR": "Παιχνίδι του {{summonerName}}", "pl_PL": "Rozgrywka gracza {{summonerName}}", "ro_RO": "Jocul lui {{summonerName}}", "hu_HU": "{{summonerName}} játéka", "en_GB": "{{summonerName}}'s Game", "de_DE": "Spiel von {{summonerName}}", "es_ES": "Partida de {{summonerName}}", "it_IT": "Partita di {{summonerName}}", "fr_FR": "Partie de {{summonerName}}", "ja_JP": "{{summonerName}}の試合", "ko_KR": "{{summonerName}} 님의 게임", "es_MX": "Partida de {{summonerName}}", "es_AR": "Partida de {{summonerName}}", "pt_BR": "Partida de {{summonerName}}", "en_US": "{{summonerName}}'s Game", "en_AU": "{{summonerName}}'s Game", "ru_RU": "Игра {{summonerName}}", "tr_TR": "{{summonerName}} oyunu", "en_PH": "{{summonerName}}'s Game", "en_SG": "{{summonerName}}'s Game", "th_TH": "เกมของ {{summonerName}}", "vi_VN": "Trận của {{summonerName}}", "id_ID": "Game {{summonerName}}", "zh_MY": "{{summonerName}} 的房间", "zh_CN": "{{summonerName}}的对局", "zh_TW": "{{summonerName}} 的房間"} #来自（From）：plugins/rcp-fe-lol-parties/global/{locale}/trans.json
     defaultLobbyName: str = custom_game_setup_name_default_dict.get(region_locale["locale"], "{{summonerName}}的对局").replace("{{summonerName}}", current_info["gameName"])
-    for i in range(len(enabled_queueIds)):
-        enabled_queueIds[i] = int(enabled_queueIds[i])
-    enabled_queueIds.sort()
     logPrint("当前可用队列房间序号：\nCurrently enabled QueueIds:")
     available_queue_df: pandas.DataFrame = await check_available_queue(connection)
     logPrint("*****************************************************************************")
