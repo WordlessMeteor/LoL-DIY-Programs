@@ -57,6 +57,8 @@ Sub FreezeAndFilterGameDataSheets()
                     Or ws.Name = "斗魂竞技场锻造器（Cherry Anvils）" Or Right$(ws.Name, 7) = "CherryAnvils" _
                     Or ws.Name = "海克斯大乱斗锻造器（Kiwi Anvils）" Or Right$(ws.Name, 7) = "KiwiAnvils" Then
                 ws.Range("I3").Select '冻结前两行和前八列（Freeze the first two rows and eight columns）
+            ElseIf Or ws.Name = "斗魂竞技场荣誉嘉宾（Cherry Guests）" Or Right$(ws.Name, 12) = "CherryGuests" Then
+                ws.Range("N3").Select '冻结前两行和前十三列（Freeze the first two rows and thirteen columns）
             Else
                 ws.Rows("3:3").Select '其它情况下统一冻结所有表头（In other cases, freeze all headers）
             End If

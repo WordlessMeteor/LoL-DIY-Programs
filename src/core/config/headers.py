@@ -6086,7 +6086,14 @@ CherryAnvil_header: dict[str, str] = {
     "RootSpellObject": "根指令对象"
 }
 GoH_header: dict[str, str] = {
-    "key": "主键",
+    "key1": "主键1",
+    "name": "名称",
+    "Character": "角色文件夹",
+    "Enabled": "可用性",
+    "SkinID": "皮肤序号",
+    "{b0f32561}": "可用回合",
+    "{e7879fb5}": "互斥荣誉嘉宾",
+    "key2": "主键2",
     "{1ff99d7f} title": "事件键",
     "{1ff99d7f} Subtitle": "姓名键",
     "{1ff99d7f} {bff2f361}": "简述键",
@@ -6102,7 +6109,9 @@ GoH_header: dict[str, str] = {
     "{1ff99d7f} {3b7aa707}_content_zh": "详细信息（中文）",
     "{1ff99d7f} {3b7aa707}_content_en": "详细信息（英文）",
     "{1ff99d7f} {3b7aa707}_content_zh_burn": "详细信息（中文/去格式化）",
-    "{1ff99d7f} {3b7aa707}_content_en_burn": "详细信息（英文/去格式化）"
+    "{1ff99d7f} {3b7aa707}_content_en_burn": "详细信息（英文/去格式化）",
+    "{e7879fb5} Subtitle_contents_zh": "互斥荣誉嘉宾姓名（中文）",
+    "{e7879fb5} Subtitle_contents_en": "互斥荣誉嘉宾姓名（英文）"
 }
 CherryRoundList_header: dict[str, str] = {
     "key": "方案主键",

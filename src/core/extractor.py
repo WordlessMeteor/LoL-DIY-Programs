@@ -388,7 +388,7 @@ class LoLDataExtractor:
         source, status, self.session = requestUrl("GET", game_version_url, session = self.session, log = self.log)
         if status != 200:
             if status == -1:
-                logPrint("游戏版本获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nGame version capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
+                logPrint("游戏版本获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nGame version capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
             elif status == 404:
                 logPrint("游戏版本获取失败！请检查以下链接的可用性。程序即将退出此版本。\nGame version capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(game_version_url))
             time.sleep(3)
@@ -436,7 +436,7 @@ class LoLDataExtractor:
         source, status, self.session = requestUrl("GET", file_exported_url, session = self.session, log = self.log)
         if status != 200:
             if status == -1:
-                logPrint("文件导出列表获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nFile export list capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
+                logPrint("文件导出列表获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nFile export list capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
             elif status == 404:
                 logPrint("文件导出列表获取失败！请检查以下链接的可用性。程序即将退出此版本。\nFile export list capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(file_exported_url))
             time.sleep(3)
@@ -472,7 +472,7 @@ class LoLDataExtractor:
             source, status, self.session = requestUrl("GET", shared_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == -1:
-                    logPrint("共享数据获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nShared data capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
+                    logPrint("共享数据获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nShared data capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
                 elif status == 404:
                     logPrint("共享数据获取失败！请检查以下链接的可用性。程序即将退出此版本。\nShared data capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(shared_bin_url))
                 time.sleep(3)
@@ -561,7 +561,7 @@ class LoLDataExtractor:
                 source, status, self.session = requestUrl("GET", mainstringtable_target_url, session = self.session, log = self.log)
                 if status != 200:
                     if status == -1:
-                        logPrint("目标语言的字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nStringtable in target language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
+                        logPrint("目标语言的字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nStringtable in target language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
                     elif status == 404:
                         logPrint("目标语言的字符串常量池获取失败！请检查以下链接的可用性。程序即将退出此版本。\nStringtable in target language capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(mainstringtable_target_url))
                     time.sleep(3)
@@ -577,7 +577,7 @@ class LoLDataExtractor:
                 source, status, self.session = requestUrl("GET", mainstringtable_default_url, session = self.session, log = self.log)
                 if status != 200:
                     if status == -1:
-                        logPrint("默认语言的字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nStringtable in default language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
+                        logPrint("默认语言的字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nStringtable in default language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
                     elif status == 404:
                         logPrint("默认语言的字符串常量池获取失败！请检查以下链接的可用性。程序即将退出此版本。\nStringtable in default language capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(mainstringtable_default_url))
                     time.sleep(3)
@@ -599,7 +599,7 @@ class LoLDataExtractor:
                 source, status, self.session = requestUrl("GET", lolstringtable_target_url, session = self.session, log = self.log)
                 if status != 200:
                     if status == -1:
-                        logPrint("目标语言的英雄联盟字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nLoL stringtable in target language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
+                        logPrint("目标语言的英雄联盟字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nLoL stringtable in target language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
                     elif status == 404:
                         logPrint("目标语言的英雄联盟字符串常量池获取失败！请检查以下链接的可用性。程序即将退出此版本。\nLoL stringtable in target language capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(lolstringtable_target_url))
                     time.sleep(3)
@@ -615,7 +615,7 @@ class LoLDataExtractor:
                 source, status, self.session = requestUrl("GET", lolstringtable_default_url, session = self.session, log = self.log)
                 if status != 200:
                     if status == -1:
-                        logPrint("默认语言的英雄联盟字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nLoL stringtable in default language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
+                        logPrint("默认语言的英雄联盟字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nLoL stringtable in default language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
                     elif status == 404:
                         logPrint("默认语言的英雄联盟字符串常量池获取失败！请检查以下链接的可用性。程序即将退出此版本。\nLoL stringtable in default language capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(lolstringtable_default_url))
                     time.sleep(3)
@@ -631,7 +631,7 @@ class LoLDataExtractor:
                 source, status, self.session = requestUrl("GET", tftstringtable_target_url, session = self.session, log = self.log)
                 if status != 200:
                     if status == -1:
-                        logPrint("目标语言的云顶之弈字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nTFT stringtable in target language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
+                        logPrint("目标语言的云顶之弈字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nTFT stringtable in target language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
                     elif status == 404:
                         logPrint("目标语言的云顶之弈字符串常量池获取失败！请检查以下链接的可用性。程序即将退出此版本。\nTFT stringtable in target language capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(tftstringtable_target_url))
                     time.sleep(3)
@@ -647,7 +647,7 @@ class LoLDataExtractor:
                 source, status, self.session = requestUrl("GET", tftstringtable_default_url, session = self.session, log = self.log)
                 if status != 200:
                     if status == -1:
-                        logPrint("默认语言的云顶之弈字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nTFT stringtable in default language capture failure! Please check the system network condition and agent configuration. The program will quit this version soon.")
+                        logPrint("默认语言的云顶之弈字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nTFT stringtable in default language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
                     elif status == 404:
                         logPrint("默认语言的云顶之弈字符串常量池获取失败！请检查以下链接的可用性。程序即将退出此版本。\nTFT stringtable in default language capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(tftstringtable_default_url))
                     time.sleep(3)
@@ -2282,7 +2282,7 @@ class MapExtractor(LoLDataExtractor):
                     logPrint("召唤师峡谷地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nSummoner's Rift map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map11_bin_url))
                     self.map11_bin: dict[str, list[str] | dict[str, Any]] = {}
                 else:
-                    logPrint("召唤师峡谷地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nSummoner's Rift map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                    logPrint("召唤师峡谷地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nSummoner's Rift map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
@@ -2301,7 +2301,7 @@ class MapExtractor(LoLDataExtractor):
                     logPrint("嚎哭深渊地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nHowling Abyss map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map12_bin_url))
                     self.map12_bin: dict[str, list[str] | dict[str, Any]] = {}
                 else:
-                    logPrint("嚎哭深渊地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                    logPrint("嚎哭深渊地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
@@ -2320,7 +2320,7 @@ class MapExtractor(LoLDataExtractor):
                     logPrint("百合与莲花的神庙地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nTemple of Lily and Lotus map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map21_bin_url))
                     self.map21_bin: dict[str, list[str] | dict[str, Any]] = {}
                 else:
-                    logPrint("百合与莲花的神庙地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nTemple of Lily and Lotus map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                    logPrint("百合与莲花的神庙地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nTemple of Lily and Lotus map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
@@ -2339,7 +2339,7 @@ class MapExtractor(LoLDataExtractor):
                     logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nConvergence map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map22_bin_url))
                     self.map22_bin: dict[str, list[str] | dict[str, Any]] = {}
                 else:
-                    logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                    logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
@@ -2358,7 +2358,7 @@ class MapExtractor(LoLDataExtractor):
                     logPrint("怒火角斗场地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nRings of Wrath map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map30_bin_url))
                     self.map30_bin: dict[str, list[str] | dict[str, Any]] = {}
                 else:
-                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
@@ -2377,7 +2377,7 @@ class MapExtractor(LoLDataExtractor):
                     logPrint("最终都市地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nFinal City map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map33_bin_url))
                     self.map33_bin: dict[str, list[str] | dict[str, Any]] = {}
                 else:
-                    logPrint("最终都市地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nFinal City map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                    logPrint("最终都市地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nFinal City map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
@@ -2396,7 +2396,7 @@ class MapExtractor(LoLDataExtractor):
                     logPrint("班德尔之森地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nThe Bandlewoods map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map35_bin_url))
                     self.map35_bin: dict[str, list[str] | dict[str, Any]] = {}
                 else:
-                    logPrint("班德尔之森地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nThe Bandlewoods map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                    logPrint("班德尔之森地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nThe Bandlewoods map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
@@ -2812,7 +2812,7 @@ class CheatExtractor(LoLDataExtractor):
             source, status, self.session = requestUrl("GET", cheats_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == -1:
-                    logPrint('作弊指令信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCheat data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.')
+                    logPrint('作弊指令信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCheat data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.')
                 elif status == 404:
                     logPrint('作弊指令信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nCheat data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s' %(cheats_bin_url))
                 time.sleep(3)
@@ -3046,7 +3046,7 @@ class PerkExtractor(LoLDataExtractor):
             source, status, self.session = requestUrl("GET", perks_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == -1:
-                    logPrint("符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nPerk data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                    logPrint("符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nPerk data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                 elif status == 404:
                     logPrint("符文信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nPerk data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(perks_bin_url))
                 time.sleep(3)
@@ -3436,7 +3436,7 @@ class ChampionExtractor(LoLDataExtractor):
                                 logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nConvergence map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map22_bin_url))
                                 self.map22_bin: dict[str, list[str] | dict[str, Any]] = {}
                             else:
-                                logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                                logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                                 time.sleep(3)
                                 self.init_data_readiness()
                                 return
@@ -3474,7 +3474,7 @@ class ChampionExtractor(LoLDataExtractor):
                                     logPrint(f"未找到角色{characterName}的信息。程序将跳过该角色。\nCharacter {characterName} data not found. The program will skip this character.")
                                     continue
                                 elif status == -1:
-                                    logPrint("角色信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                                    logPrint("角色信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                                     time.sleep(3)
                                 self.init_data_readiness()
                                 return
@@ -3498,7 +3498,7 @@ class ChampionExtractor(LoLDataExtractor):
                                 logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nConvergence map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map22_bin_url))
                                 self.map22_bin: dict[str, list[str] | dict[str, Any]] = {}
                             else:
-                                logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                                logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                                 time.sleep(3)
                                 self.init_data_readiness()
                                 return
@@ -3514,7 +3514,7 @@ class ChampionExtractor(LoLDataExtractor):
                         source, status, self.session = requestUrl("GET", characterList_url1, session = self.session, log = self.log)
                         if status != 200:
                             if status == -1:
-                                logPrint("第一批角色列表获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCharacter List 1 capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                                logPrint("第一批角色列表获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCharacter List 1 capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                             elif status == 404:
                                 logPrint("第一批角色列表获取失败！请检查以下链接的可用性。程序即将返回上一层。\nCharacter List 1 capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(characterList_url1))
                             time.sleep(3)
@@ -3530,7 +3530,7 @@ class ChampionExtractor(LoLDataExtractor):
                         source, status, self.session = requestUrl("GET", characterList_url2, session = self.session, log = self.log)
                         if status != 200:
                             if status == -1:
-                                logPrint("第二批角色列表获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCharacter List 2 capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                                logPrint("第二批角色列表获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCharacter List 2 capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                             elif status == 404:
                                 logPrint("第二批角色列表获取失败！请检查以下链接的可用性。程序即将返回上一层。\nCharacter List 2 capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(characterList_url2))
                             time.sleep(3)
@@ -3574,7 +3574,7 @@ class ChampionExtractor(LoLDataExtractor):
                                         continue
                                     else:
                                         if status == -1:
-                                            logPrint("角色信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                                            logPrint("角色信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                                             time.sleep(3)
                                         self.init_data_readiness()
                                         return
@@ -3599,7 +3599,7 @@ class ChampionExtractor(LoLDataExtractor):
                     source, status, self.session = requestUrl("GET", champion_summary_url, session = self.session, log = self.log)
                     if status != 200:
                         if status == -1:
-                            logPrint("英雄概要信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion summary data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                            logPrint("英雄概要信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion summary data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                         elif status == 404:
                             logPrint("英雄概要信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nChampion summary data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(champion_summary_url))
                         time.sleep(3)
@@ -3623,7 +3623,7 @@ class ChampionExtractor(LoLDataExtractor):
                             source, status, self.session = requestUrl("GET", champion_binary_url, session = self.session, log = self.log)
                             if status != 200:
                                 if status == -1:
-                                    logPrint("英雄信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                                    logPrint("英雄信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                                 elif status == 404:
                                     logPrint("英雄信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nChampion data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(champion_binary_url))
                                 time.sleep(3)
@@ -4289,7 +4289,7 @@ class ItemExtractor(LoLDataExtractor):
             source, status, self.session = requestUrl("GET", items_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == -1:
-                    logPrint("装备信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nItem data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                    logPrint("装备信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nItem data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                 elif status == 404:
                     logPrint("装备信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nItem data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(items_bin_url))
                 time.sleep(3)
@@ -4628,7 +4628,7 @@ class AugmentExtractor(LoLDataExtractor):
             source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == -1:
-                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                 elif status == 404:
                     logPrint("怒火角斗场地图信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(map30_bin_url))
                 time.sleep(3)
@@ -4638,7 +4638,7 @@ class AugmentExtractor(LoLDataExtractor):
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.augments_ready["map30"] = True
         #斗魂竞技场模式（Arena mode）
-        cherry_bin_url = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/cherry.bin.json"
+        cherry_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/cherry.bin.json"
         if cherry_bin_url in self.__class__.data_cache["online"]:
             self.cherry_bin = self.__class__.data_cache["online"][cherry_bin_url]
         else:
@@ -4648,7 +4648,7 @@ class AugmentExtractor(LoLDataExtractor):
                     logPrint("斗魂竞技场强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nArena augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(cherry_bin_url))
                     self.cherry_bin: dict[str, list[str] | dict[str, Any]] = {}
                 else:
-                    logPrint('斗魂竞技场强化符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nArena augment data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.')
+                    logPrint('斗魂竞技场强化符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nArena augment data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.')
                     time.sleep()
                     self.init_data_readiness()
                     return
@@ -4667,7 +4667,7 @@ class AugmentExtractor(LoLDataExtractor):
                     logPrint("最终都市地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nFinal City map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map33_bin_url))
                     self.map33_bin: dict[str, list[str] | dict[str, Any]] = {}
                 else:
-                    logPrint("最终都市地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nFinal City map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                    logPrint("最终都市地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nFinal City map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
@@ -4686,7 +4686,7 @@ class AugmentExtractor(LoLDataExtractor):
                     logPrint("嚎哭深渊地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nHowling Abyss map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map12_bin_url))
                     self.map12_bin: dict[str, list[str] | dict[str, Any]] = {}
                 else:
-                    logPrint("嚎哭深渊地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                    logPrint("嚎哭深渊地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
@@ -4708,7 +4708,7 @@ class AugmentExtractor(LoLDataExtractor):
                     logPrint("海克斯大乱斗强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nARAM: Mayhem augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(kiwi_bin_url))
                     self.kiwi_bin: dict[str, list[str] | dict[str, Any]] = {}
                 else:
-                    logPrint('海克斯大乱斗强化符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nARAM: Mayhem augment data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.')
+                    logPrint('海克斯大乱斗强化符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nARAM: Mayhem augment data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.')
                     time.sleep()
                     self.init_data_readiness()
                     return
@@ -5266,7 +5266,7 @@ class AnvilExtractor(LoLDataExtractor):
             source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == -1:
-                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                 elif status == 404:
                     logPrint("怒火角斗场地图信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(map30_bin_url))
                 time.sleep(3)
@@ -5284,7 +5284,7 @@ class AnvilExtractor(LoLDataExtractor):
                 source, status, self.session = requestUrl("GET", map12_bin_url, session = self.session, log = self.log)
                 if status != 200:
                     if status == 404:
-                        logPrint("嚎哭深渊地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                        logPrint("嚎哭深渊地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                         self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = {}
                     else:
                         logPrint("嚎哭深渊地图信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(map12_bin_url))
@@ -5305,7 +5305,7 @@ class AnvilExtractor(LoLDataExtractor):
                     if status == -1:
                         logPrint("海克斯大乱斗强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nARAM: Mayhem augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(kiwi_bin_url))
                     elif status == 404:
-                        logPrint('海克斯大乱斗强化符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nARAM: Mayhem augment data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.')
+                        logPrint('海克斯大乱斗强化符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nARAM: Mayhem augment data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.')
                     time.sleep(3)
                     self.init_data_readiness()
                     return
@@ -5583,70 +5583,108 @@ class GoHExtractor(LoLDataExtractor):
         :type extractor: LoLDataExtractor
         '''
         self.__dict__.update(extractor.__dict__)
-        self.GoH_ready: bool = False
+        self.GoH_ready: dict[str, bool] = {"map30": False, "cherry": False}
         self.GoH_df: pandas.DataFrame = pandas.DataFrame()
         
     def init_data_readiness(self) -> None:
         '''
         初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
         '''
-        self.GoH_ready = False
+        self.GoH_ready = {key: False for key in self.GoH_ready}
     
     def get_GoH_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
         '''
         在线获取荣誉嘉宾二进制描述数据。<br>Get binary description data of Guests of Honor online.
         '''
         logPrint = self.log.logPrint
-        cherry_bin_url = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/cherry.bin.json"
+        #怒火角斗场地图（Rings of Wrath map）
+        map30_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map30/map30.bin.json"
+        if map30_bin_url in self.__class__.data_cache["online"]:
+            self.map30_bin = self.__class__.data_cache["online"][map30_bin_url]
+        else:
+            source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session, log = self.log)
+            if status != 200:
+                if status == -1:
+                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
+                elif status == 404:
+                    logPrint("怒火角斗场地图信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(map30_bin_url))
+                time.sleep(3)
+                self.init_data_readiness()
+                return
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+            self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
+        self.GoH_ready["map30"] = True
+        #斗魂竞技场模式（Arena mode）
+        cherry_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/cherry.bin.json"
         if cherry_bin_url in self.__class__.data_cache["online"]:
             self.cherry_bin = self.__class__.data_cache["online"][cherry_bin_url]
         else:
             source, status, self.session = requestUrl("GET", cherry_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == 404:
-                    logPrint("斗魂竞技场荣誉嘉宾信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nArena GoH data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(cherry_bin_url))
+                    logPrint("斗魂竞技场模式专属信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nArena mode specific data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(cherry_bin_url))
                     self.cherry_bin: dict[str, list[str] | dict[str, Any]] = {}
                 else:
-                    logPrint('斗魂竞技场荣誉嘉宾信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nArena GoH data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.')
+                    logPrint('斗魂竞技场模式专属信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nArena mode specific data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.')
                     time.sleep()
                     self.init_data_readiness()
                     return
             else:
                 self.cherry_bin = source.json()
             self.__class__.data_cache["online"][cherry_bin_url] = self.cherry_bin
-        self.GoH_ready = True
+        self.GoH_ready["cherry"] = True
     
-    def read_GoH_data(self, path: str) -> None:
+    def read_GoH_data(self, paths: list[str]) -> None:
         '''
         离线获取荣誉嘉宾二进制描述数据。<br>Get binary description data of Guests of Honor offline.
         
-        :param path: 荣誉嘉宾二进制描述文件的本地路径。<br>A local path of GoH binary description file.
-        :type path: str
+        :param paths: 荣誉嘉宾二进制描述文件的本地路径列表，按照以下顺序排列。<br>A local path list of GoH binary description files, arranged in the following order:
+        
+            - 怒火角斗场地图（Rings of Wrath map）
+            - 斗魂竞技场模式专属信息（Arena mode specific data）
+        :type paths: list[str]
         '''
         logPrint = self.log.logPrint
-        if not os.path.exists(path):
-            logPrint(f"以下路径不存在：\nThe following path doesn't exist:\n{path}")
+        #检查路径是否都存在（Check if all paths exist）
+        paths_not_found: list[str] = [path for path in paths if not os.path.exists(path)]
+        if len(paths_not_found) > 0:
+            logPrint("以下路径不存在：\nThe following path(s) do(es)n't exist:")
+            for path in paths_not_found:
+                logPrint(path)
             self.init_data_readiness()
             return
-        cherry_bin_path: str = path
+        #怒火角斗场地图（Rings of Wrath map）
+        map30_bin_path: str = paths[0]
+        if map30_bin_path in self.__class__.data_cache["local"]:
+            self.map30_bin = self.__class__.data_cache["local"][map30_bin_path]
+        else:
+            with open(map30_bin_path, "r", encoding = "utf-8") as fp:
+                self.map30_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+            self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
+        self.GoH_ready["map30"] = True
+        #斗魂竞技场模式（Arena mode）
+        cherry_bin_path: str = paths[1]
         if cherry_bin_path in self.__class__.data_cache["local"]:
             self.cherry_bin = self.__class__.data_cache["local"][cherry_bin_path]
         else:
             with open(cherry_bin_path, "r", encoding = "utf-8") as fp:
                 self.cherry_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
             self.__class__.data_cache["local"][cherry_bin_path] = self.cherry_bin
-        self.GoH_ready = True
+        self.GoH_ready["cherry"] = True
     
-    def build_GoH_dataframe(self, debug: bool = False, path: Optional[str] = None) -> int:
+    def build_GoH_dataframe(self, debug: bool = False, paths: Optional[list[str]] = None) -> int:
         '''
         构建荣誉嘉宾数据框。<br>Build GoH dataframe.
         
         :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
         :type debug: bool
-        :param path: 荣誉嘉宾二进制描述文件的本地路径。<br>A local path of GoH binary description file.
+        :param paths: 荣誉嘉宾二进制描述文件的本地路径列表，按照以下顺序排列。<br>A local path list of GoH binary description files, arranged in the following order:
+        
+            - 怒火角斗场地图（Rings of Wrath map）
+            - 斗魂竞技场模式专属信息（Arena mode specific data）
         
             仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
-        :type path: str
+        :type paths: str
         :return: 状态码。<br>Status code.
         
             - 0: 成功。<br>Success.
@@ -5655,18 +5693,18 @@ class GoHExtractor(LoLDataExtractor):
         :rtype: int
         '''
         logPrint = self.log.logPrint
-        if not self.GoH_ready:
+        if not all(self.GoH_ready.values()):
             #获取荣誉嘉宾信息（Get GoH information）
             logPrint("正在读取荣誉嘉宾数据……\nReading GoH data ...", print_time = True)
             if debug:
-                if path == None:
+                if paths == None:
                     logPrint("尚未指定本地文件路径！\nLocal path not specified yet!")
                     return 1
                 else:
-                    self.read_GoH_data(path = path)
+                    self.read_GoH_data(paths = paths)
             else:
                 self.get_GoH_data()
-            if not self.GoH_ready:
+            if not all(self.GoH_ready.values()):
                 logPrint("荣誉嘉宾数据尚未准备就绪！\nGoH data not prepared!")
                 return 2
         
@@ -5676,53 +5714,104 @@ class GoHExtractor(LoLDataExtractor):
         GoH_data: dict[str, list[Any]] = {key: [] for key in GoH_header_keys}
         GoH_data_json: dict[str, list[Any]] = copy.deepcopy(GoH_data)
         
+        #原始数据加工。将荣誉嘉宾信息提取出来，将其键转换成英雄代号（Raw data processing. Extract GoH data and change the keys into champion aliases）
+        GoH_keys: list[str] = [] #按照原始顺序排列键（Last, arrange keys in the original order）
+        ##首先从怒火角斗场地图数据中提取所有荣誉嘉宾信息（First, extract all GoH data from map30 data）
+        GoH_map30: dict[tuple[str, str], dict[str, dict[str, Any]]] = {}
+        for (key, value) in self.map30_bin.items():
+            if key != "__linked" and value["__type"] == "{fe44baa3}":
+                GoH_key: str = value["name"]
+                GoH_value: dict[str, Any] = copy.deepcopy(value)
+                GoH_value["key"] = key
+                GoH_keys.append(GoH_key)
+                GoH_map30[GoH_key] = GoH_value
+        ##然后从斗魂竞技场模式专属数据中提取所有荣誉嘉宾信息（Second, extract all GoH data from Arena mode specific data）
+        GoH_cherry: dict[tuple[str, str], dict[str, dict[str, Any]]] = {}
+        for (key, value) in self.cherry_bin.items():
+            if key != "__linked" and value["__type"] == "{05c8aed6}":
+                GoH_key: str = value["{1ff99d7f}"]["title"].split("_")[-1]
+                GoH_value: dict[str, Any] = copy.deepcopy(value)
+                GoH_value["key"] = key
+                if not GoH_key in GoH_keys:
+                    GoH_keys.append(GoH_key)
+                GoH_cherry[GoH_key] = GoH_value
+        
         #数据整理核心部分（Data organization core part）
         pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
-        for (key1, value) in self.cherry_bin.items():
-            if key1 != "__linked" and value["__type"] == "{05c8aed6}":
-                for i in range(len(GoH_header_keys)):
-                    key: str = GoH_header_keys[i]
-                    if i == 0: #主键（`key`）
-                        to_append: Any = key1
-                    elif i >= 1 and i <= 4: #字符串常量键子键（`{1ff99d7f}`'s subkeys）
-                        to_append = value["{1ff99d7f}"][key.split()[1]]
-                    elif i == 5 or i == 6:
-                        to_append = value[key]
-                    else:
-                        subkey2: str = pStrConst.search(key).group()
-                        subkey1: str = key.replace(subkey2, "")
-                        useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
-                        strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
-                        tooltip_key: str = GoH_data[subkey1][-1]
-                        tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
-                        if subkey2.endswith("_burn"):
-                            # self.__class__.calculatedVariables.clear()
-                            # tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, {}, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable)
-                            tooltip_burn = self.tooltipPreparation(tooltip_raw, isCHS = isCHS)
-                            tooltip_burn = self.tooltipPostProcessing(tooltip_burn, isCHS = isCHS)
-                            to_append = tooltip_burn
+        for key1 in GoH_keys:
+            for i in range(len(GoH_header_keys)):
+                key: str = GoH_header_keys[i]
+                if i <= 6: #怒火角斗场地图——{fe44baa3}（Rings of Wrath: {fe44baa3}）
+                    if key1 in GoH_map30:
+                        if i == 0: #主键1（`key1`）
+                            to_append: Any = GoH_map30[key1]["key"]
                         else:
-                            to_append = tooltip_raw
-                    GoH_data[key].append(to_append)
-                    GoH_data_json[key].append(pyobj2json(to_append))
-        GoH_statistics_output_order: list[int] = [0, 1, 7, 8, 2, 9, 10, 3, 11, 12, 4, 13, 15, 14, 16, 5, 6]
+                            to_append = GoH_map30[key1].get(key, True if i == 3 else "")
+                    else:
+                        to_append = False if i == 3 else ""
+                elif i <= 23: #斗魂竞技场模式专属数据——{05c8aed6}（Arena mode specific data: {05c8aed6}）
+                    if key1 in GoH_cherry:
+                        if i == 7: #主键2（`key2`）
+                            to_append: Any = GoH_cherry[key1]["key"]
+                        elif i >= 8 and i <= 11: #字符串常量键子键（`{1ff99d7f}`'s subkeys）
+                            to_append = GoH_cherry[key1]["{1ff99d7f}"][key.split()[1]]
+                        elif i == 12 or i == 13:
+                            to_append = GoH_cherry[key1][key]
+                        else:
+                            subkey2: str = pStrConst.search(key).group()
+                            subkey1: str = key.replace(subkey2, "")
+                            useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                            isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                            strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                            tooltip_key: str = GoH_data[subkey1][-1]
+                            tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                            if subkey2.endswith("_burn"):
+                                # self.__class__.calculatedVariables.clear()
+                                # tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, {}, isCHS = isCHS, enableModeOverride = False, reserve_variable = self.reserve_variable)
+                                tooltip_burn = self.tooltipPreparation(tooltip_raw, isCHS = isCHS)
+                                tooltip_burn = self.tooltipPostProcessing(tooltip_burn, isCHS = isCHS)
+                                to_append = tooltip_burn
+                            else:
+                                to_append = tooltip_raw
+                    else:
+                        to_append = ""
+                else:
+                    strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 24 else strtable_lol_default
+                    if key1 in GoH_map30 and "{e7879fb5}" in GoH_map30[key1] and key1 in GoH_cherry:
+                        mutexGoHNames: list[str] = []
+                        for GoH_key in GoH_map30[key1]["{e7879fb5}"]:
+                            if GoH_key in self.map30_bin:
+                                GoH_name: str = self.map30_bin[GoH_key]["name"]
+                                GoH_subtitle_key: str = GoH_cherry[key1]["{1ff99d7f}"]["Subtitle"]
+                                GoH_subtitle: str = self.get_strtable_value(strtable_locale, GoH_subtitle_key, default = tooltip_key)
+                                mutexGoHNames.append(GoH_subtitle)
+                            else:
+                                mutexGoHNames.append("")
+                        to_append = mutexGoHNames
+                    else:
+                        to_append = ""
+                GoH_data[key].append(to_append)
+                GoH_data_json[key].append(pyobj2json(to_append))
+        GoH_statistics_output_order: list[int] = [0, 7, 1, 2, 3, 5, 8, 14, 15, 9, 16, 17, 4, 10, 18, 19, 11, 20, 22, 21, 23, 6, 24, 25, 12, 13]
         GoH_data_organized: dict[str, list[Any]] = {GoH_header_keys[i]: GoH_data_json[GoH_header_keys[i]] for i in GoH_statistics_output_order}
         GoH_df: pandas.DataFrame = pandas.DataFrame(data = GoH_data_organized)
         GoH_df = pandas.concat([pandas.DataFrame([GoH_header])[GoH_df.columns], GoH_df], ignore_index = True)
         self.GoH_df = GoH_df
         return 0
     
-    def export_GoH_data(self, debug: bool = False, path: Optional[str] = None) -> None:
+    def export_GoH_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
         '''
         导出荣誉嘉宾数据到工作簿中。产生以下工作表：<br>Export GoH data to a workbook. The following worksheet is added:
         - 斗魂竞技场荣誉嘉宾（Cherry Guests）
         
         :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
         :type debug: bool
-        :param path: 荣誉嘉宾二进制描述文件的本地路径。<br>A local path of GoH binary description file.
+        :param paths: 荣誉嘉宾二进制描述文件的本地路径列表，按照以下顺序排列。<br>A local path list of GoH binary description files, arranged in the following order:
+        
+            - 怒火角斗场地图（Rings of Wrath map）
+            - 斗魂竞技场模式专属信息（Arena mode specific data）
         
             仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
         :type path: str
@@ -5736,7 +5825,7 @@ class GoHExtractor(LoLDataExtractor):
             logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
             return
         if self.GoH_df.empty:
-            status: int = self.build_GoH_dataframe(debug = debug, path = path)
+            status: int = self.build_GoH_dataframe(debug = debug, paths = paths)
             if status != 0:
                 logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
                 logInput()
@@ -5796,7 +5885,7 @@ class CherryRoundExtractor(LoLDataExtractor):
                 if status == 404:
                     logPrint("怒火角斗场地图信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(map30_bin_url))
                 else:
-                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                 time.sleep(3)
                 self.init_data_readiness()
                 return
@@ -6065,7 +6154,7 @@ class TFTExtractor(LoLDataExtractor):
             source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == -1:
-                    logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                    logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                 elif status == 404:
                     logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nConvergence map data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(map22_bin_url))
                 time.sleep(3)
@@ -8325,10 +8414,16 @@ if __name__ == "__main__":
                         logPrint("[%d/%d]正在调试荣誉嘉宾数据……\nDebugging Guest of Honor data ..." %(nDataOption_iter, nDataOptions))
                         gohExtractor: GoHExtractor = GoHExtractor(extractor)
                         if dir_type == "extract":
-                            cherry_path = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/cherry.bin.json"
+                            GoHPaths: list[str] = [
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/cherry.bin.json"
+                            ]
                         else:
-                            cherry_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json"
-                        gohExtractor.build_GoH_dataframe(debug = True, path = cherry_path)
+                            GoHPaths: list[str] = [
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json"
+                            ]
+                        gohExtractor.build_GoH_dataframe(debug = True, paths = GoHPaths)
                         if export:
                             gohExtractor.export_GoH_data()
                     elif dOption == 11:
