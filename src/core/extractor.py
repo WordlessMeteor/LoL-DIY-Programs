@@ -2,7 +2,7 @@ import copy, json, os, pandas, re, requests, sys, time
 from urllib.parse import urljoin
 from xxhash import xxh3_64_intdigest
 from openpyxl import load_workbook, Workbook
-from typing import Any, Callable, Literal, Optional
+from typing import Any, Callable, Iterable, Literal, Optional
 wd: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")).replace("\\", "/")
 os.chdir(wd)
 if not wd in sys.path:
@@ -13,7 +13,7 @@ from src.utils.webRequest import requestUrl
 from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, pyobj2json, capitalize, decapitalize
 from src.utils.runtimeDebug import subscope
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
-from src.core.config.headers import map_header_l10n, cheatset_header, cheat_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, CherryAnvil_header, GoH_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header
+from src.core.config.headers import map_header_l10n, cheatset_header, cheat_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, CherryAnvil_header, GoH_header, CherryRoundList_header, CherryRound_header, CherryPhase_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header
 from src.core.config.localization import language_ddragon, language_cdragon
 
 #=============================================================================
@@ -22,7 +22,7 @@ from src.core.config.localization import language_ddragon, language_cdragon
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/04/16
+# 更新（Last update）：     2026/04/21
 #=============================================================================
 
 #定义异质性检验函数（Define heterogeneity verification function）
@@ -2778,8 +2778,7 @@ class MapExtractor(LoLDataExtractor):
                 if cont != "" and cont[0] == "0":
                     break
             else:
-                logPrint(f"地图数据已导出到{self.wbPath}。按回车键继续。\nMap data have been exported to {self.wbPath}. Press Enter to continue.", print_time = True)
-                logInput()
+                logPrint(f"地图数据已导出到{self.wbPath}。\nMap data have been exported to {self.wbPath}.", print_time = True)
                 break
 
 class CheatExtractor(LoLDataExtractor):
@@ -3013,8 +3012,7 @@ class CheatExtractor(LoLDataExtractor):
                 if cont != "" and cont[0] == "0":
                     break
             else:
-                logPrint(f"作弊指令数据已导出到{self.wbPath}。按回车键继续。\nCheat data have been exported to {self.wbPath}. Press Enter to continue.", print_time = True)
-                logInput()
+                logPrint(f"作弊指令数据已导出到{self.wbPath}。\nCheat data have been exported to {self.wbPath}.", print_time = True)
                 break
 
 class PerkExtractor(LoLDataExtractor):
@@ -3361,8 +3359,7 @@ class PerkExtractor(LoLDataExtractor):
                 if cont != "" and cont[0] == "0":
                     break
             else:
-                logPrint(f"符文数据已导出到{self.wbPath}。按回车键继续。\nPerk data have been exported to {self.wbPath}. Press Enter to continue.", print_time = True)
-                logInput()
+                logPrint(f"符文数据已导出到{self.wbPath}。\nPerk data have been exported to {self.wbPath}.", print_time = True)
                 break
 
 class ChampionExtractor(LoLDataExtractor):
@@ -4257,8 +4254,7 @@ class ChampionExtractor(LoLDataExtractor):
                 if cont != "" and cont[0] == "0":
                     break
             else:
-                logPrint(f"英雄数据已导出到{self.wbPath}。按回车键继续。\nChampion data have been exported to {self.wbPath}. Press Enter to continue.", print_time = True)
-                logInput()
+                logPrint(f"英雄数据已导出到{self.wbPath}。\nChampion data have been exported to {self.wbPath}.", print_time = True)
                 break
 
 class ItemExtractor(LoLDataExtractor):
@@ -4592,8 +4588,7 @@ class ItemExtractor(LoLDataExtractor):
                 if cont != "" and cont[0] == "0":
                     break
             else:
-                logPrint(f"装备数据已导出到{self.wbPath}。按回车键继续。\nItem data have been exported to {self.wbPath}. Press Enter to continue.", print_time = True)
-                logInput()
+                logPrint(f"装备数据已导出到{self.wbPath}。\nItem data have been exported to {self.wbPath}.", print_time = True)
                 break
 
 class AugmentExtractor(LoLDataExtractor):
@@ -5234,8 +5229,7 @@ class AugmentExtractor(LoLDataExtractor):
                 if cont != "" and cont[0] == "0":
                     break
             else:
-                logPrint(f"强化符文数据已导出到{self.wbPath}。按回车键继续。\nAugment data have been exported to {self.wbPath}. Press Enter to continue.", print_time = True)
-                logInput()
+                logPrint(f"强化符文数据已导出到{self.wbPath}。\nAugment data have been exported to {self.wbPath}.", print_time = True)
                 break
 
 class AnvilExtractor(LoLDataExtractor):
@@ -5577,8 +5571,7 @@ class AnvilExtractor(LoLDataExtractor):
                 if cont != "" and cont[0] == "0":
                     break
             else:
-                logPrint(f"锻造器数据已导出到{self.wbPath}。按回车键继续。\nAnvil data have been exported to {self.wbPath}. Press Enter to continue.", print_time = True)
-                logInput()
+                logPrint(f"锻造器数据已导出到{self.wbPath}。\nAnvil data have been exported to {self.wbPath}.", print_time = True)
                 break
 
 class GoHExtractor(LoLDataExtractor):
@@ -5611,10 +5604,10 @@ class GoHExtractor(LoLDataExtractor):
             source, status, self.session = requestUrl("GET", cherry_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == 404:
-                    logPrint("斗魂竞技场强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nArena augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(cherry_bin_url))
+                    logPrint("斗魂竞技场荣誉嘉宾信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nArena GoH data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(cherry_bin_url))
                     self.cherry_bin: dict[str, list[str] | dict[str, Any]] = {}
                 else:
-                    logPrint('斗魂竞技场强化符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nArena augment data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.')
+                    logPrint('斗魂竞技场荣誉嘉宾信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nArena GoH data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.')
                     time.sleep()
                     self.init_data_readiness()
                     return
@@ -5674,7 +5667,7 @@ class GoHExtractor(LoLDataExtractor):
             else:
                 self.get_GoH_data()
             if not self.GoH_ready:
-                logPrint("用于嘉宾数据尚未准备就绪！\nGoH data not prepared!")
+                logPrint("荣誉嘉宾数据尚未准备就绪！\nGoH data not prepared!")
                 return 2
         
         #定义数据结构（Define the data structure）
@@ -5766,8 +5759,263 @@ class GoHExtractor(LoLDataExtractor):
                 if cont != "" and cont[0] == "0":
                     break
             else:
-                logPrint(f"荣誉嘉宾数据已导出到{self.wbPath}。按回车键继续。\nGoH data have been exported to {self.wbPath}. Press Enter to continue.", print_time = True)
+                logPrint(f"荣誉嘉宾数据已导出到{self.wbPath}。\nGoH data have been exported to {self.wbPath}.", print_time = True)
+                break
+
+class CherryRoundExtractor(LoLDataExtractor):
+    def __init__(self, extractor: LoLDataExtractor) -> None:
+        '''
+        初始化一个斗魂竞技场回合阶段提取器对象。<br>Initial a CherryRoundExtractor object.
+        
+        :param extractor: 父类对象。用于继承其属性。<br>Parent object. Pass it to inherit its attributes.
+        :type extractor: LoLDataExtractor
+        '''
+        self.__dict__.update(extractor.__dict__)
+        self.map30_ready: bool = False
+        self.CherryRoundList_df: pandas.DataFrame = pandas.DataFrame()
+        self.CherryRound_df: pandas.DataFrame = pandas.DataFrame()
+        self.CherryPhase_df: pandas.DataFrame = pandas.DataFrame()
+    
+    def init_data_readiness(self) -> None:
+        '''
+        初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
+        '''
+        self.map30_ready = False
+    
+    def get_CherryRound_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
+        '''
+        在线获取斗魂竞技场回合二进制描述数据。<br>Get binary description data of Arena rounds online.
+        '''
+        logPrint = self.log.logPrint
+        map30_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map30/map30.bin.json"
+        if map30_bin_url in self.__class__.data_cache["online"]:
+            self.map30_bin = self.__class__.data_cache["online"][map30_bin_url]
+        else:
+            source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session, log = self.log)
+            if status != 200:
+                if status == 404:
+                    logPrint("怒火角斗场地图信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(map30_bin_url))
+                else:
+                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and agent configuration. The program will return to the last step soon.")
+                time.sleep(3)
+                self.init_data_readiness()
+                return
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+            self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
+        self.map30_ready = True
+    
+    def read_CherryRound_data(self, path: str) -> None:
+        '''
+        离线获取荣誉嘉宾二进制描述数据。<br>Get binary description data of Guests of Honor offline.
+        
+        :param path: 荣誉嘉宾二进制描述文件的本地路径。<br>A local path of GoH binary description file.
+        :type path: str
+        '''
+        logPrint = self.log.logPrint
+        if not os.path.exists(path):
+            logPrint(f"以下路径不存在：\nThe following path doesn't exist:\n{path}")
+            self.init_data_readiness()
+            return
+        map30_bin_path: str = path
+        if map30_bin_path in self.__class__.data_cache["local"]:
+            self.map30_bin = self.__class__.data_cache["local"][map30_bin_path]
+        else:
+            with open(map30_bin_path, "r", encoding = "utf-8") as fp:
+                self.map30_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+            self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
+        self.map30_ready = True
+    
+    def build_CherryRound_dataframe(self, debug: bool = False, path: Optional[str] = None) -> int:
+        '''
+        构建斗魂竞技场回合数据框。<br>Build Arena round dataframes.
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 斗魂竞技场回合二进制描述文件的本地路径。<br>A local path of Arena round binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        :return: 状态码。<br>Status code.
+        
+            - 0: 成功。<br>Success.
+            - 1: 未指定本地文件路径。<br>Local path not specified.
+            - 2: 数据未准备就绪。<br>Data not ready.
+        :rtype: int
+        '''
+        logPrint = self.log.logPrint
+        if not self.map30_ready:
+            #获取斗魂竞技场回合信息（Get Arena round information）
+            logPrint("正在读取斗魂竞技场回合数据……\nReading Arena round data ...", print_time = True)
+            if debug:
+                if path == None:
+                    logPrint("尚未指定本地文件路径！\nLocal path not specified yet!")
+                    return 1
+                else:
+                    self.read_CherryRound_data(path = path)
+            else:
+                self.get_CherryRound_data()
+            if not self.map30_ready:
+                logPrint("斗魂竞技场回合数据尚未准备就绪！\nArena round data not prepared!")
+                return 2
+        
+        #定义数据结构（Define the data structure）
+        logPrint("正在构建斗魂竞技场回合数据框……\nBuilding the Arena round dataframes ...", print_time = True)
+        CherryRoundList_header_keys: list[str] = list(CherryRoundList_header.keys())
+        CherryRoundList_data: dict[str, list[Any]] = {key: [] for key in CherryRoundList_header_keys}
+        CherryRoundList_data_json: dict[str, list[Any]] = copy.deepcopy(CherryRoundList_data)
+        CherryRound_header_keys: list[str] = list(CherryRound_header.keys())
+        CherryRound_data: dict[str, list[Any]] = {key: [] for key in CherryRound_header_keys}
+        CherryRound_data_json: dict[str, list[Any]] = copy.deepcopy(CherryRound_data)
+        CherryPhase_header_keys: list[str] = list(CherryPhase_header.keys())
+        CherryPhase_data: dict[str, list[Any]] = {key: [] for key in CherryPhase_header_keys}
+        CherryPhase_data_json: dict[str, list[Any]] = copy.deepcopy(CherryPhase_data)
+        
+        #数据整理核心部分（Data organization core part）
+        pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
+        strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
+        strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
+        for (key1, value) in self.map30_bin.items():
+            if key1 != "__linked" and value["__type"] == "LoLModesRoundsListData":
+                for round_index in range(len(value["Rounds"])):
+                    roundKey: str = value["Rounds"][round_index]
+                    for i in range(len(CherryRoundList_header_keys)):
+                        key: str = CherryRoundList_header_keys[i]
+                        if i == 0: #方案主键（`key`）
+                            to_append: Any = key1
+                        elif i == 1: #旗标（`{37e6e53a}`）
+                            to_append = value["{37e6e53a}"]
+                        elif i == 2: #回合数（`roundNumber`）
+                            to_append = round_index + 1
+                        elif i == 3: #回合主键（`roundKey`）
+                            to_append = roundKey
+                        else: #回合阶段本地化名称（Localized round phase names）
+                            strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 4 else strtable_lol_default
+                            if roundKey in self.map30_bin:
+                                phaseKeys: list[str] = self.map30_bin[roundKey]["Phases"]
+                                phaseNames: list[str] = []
+                                for phaseKey in phaseKeys:
+                                    if phaseKey in self.map30_bin:
+                                        phaseName_key: str = self.map30_bin[phaseKey]["DisplayNameTra"]
+                                        phaseName: str = self.get_strtable_value(strtable_locale, phaseName_key, default = phaseName_key)
+                                        phaseNames.append(phaseName)
+                                    else:
+                                        phaseNames.append("")
+                                to_append = phaseNames
+                            else:
+                                to_append = ""
+                        CherryRoundList_data[key].append(to_append)
+                        CherryRoundList_data_json[key].append(pyobj2json(to_append))
+            elif key1 != "__linked" and value["__type"] == "LoLModesRoundData":
+                phaseKeys: list[str] = value["Phases"]
+                for i in range(len(CherryRound_header_keys)):
+                    key: str = CherryRound_header_keys[i]
+                    if i == 0: #主键（`key`）
+                        to_append: Any = key1
+                    elif i == 1: #阶段主键列表（`Phases`）
+                        to_append = phaseKeys
+                    else: #回合阶段本地化名称（Localized round phase names）
+                        strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 2 else strtable_lol_default
+                        phaseNames: list[str] = []
+                        for phaseKey in phaseKeys:
+                            if phaseKey in self.map30_bin:
+                                phaseName_key: str = self.map30_bin[phaseKey]["DisplayNameTra"]
+                                phaseName: str = self.get_strtable_value(strtable_locale, phaseName_key, default = phaseName_key)
+                                phaseNames.append(phaseName)
+                            else:
+                                phaseNames.append("")
+                        to_append = phaseNames
+                    CherryRound_data[key].append(to_append)
+                    CherryRound_data_json[key].append(pyobj2json(to_append))
+            elif key1 != "__linked" and value["__type"] == "LoLModesPhaseData":
+                for subphase_index in range(len(value["SubPhases"])):
+                    subphase: dict[str, Any] = value["SubPhases"][subphase_index]
+                    for i in range(len(CherryPhase_header_keys)):
+                        key: str = CherryPhase_header_keys[i]
+                        if i == 0: #主键（`key`）
+                            to_append: Any = key1
+                        elif i <= 7:
+                            if i <= 5:
+                                to_append = value.get(key, "")
+                            else: #回合阶段本地化名称（Localized round phase names）
+                                strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 6 else strtable_lol_default
+                                to_append = self.get_strtable_value(strtable_locale, value["DisplayNameTra"], default = value["DisplayNameTra"])
+                        else:
+                            if i == 8: #阶段序号（`phase number`）
+                                to_append = subphase_index + 1
+                            else:
+                                to_append = subphase.get(key.split()[1], "")
+                        CherryPhase_data[key].append(to_append)
+                        CherryPhase_data_json[key].append(pyobj2json(to_append))
+        CherryRoundList_statistics_output_order: list[int] = [0, 2, 3, 4, 5]
+        CherryRoundList_data_organized: dict[str, list[Any]] = {CherryRoundList_header_keys[i]: CherryRoundList_data_json[CherryRoundList_header_keys[i]] for i in CherryRoundList_statistics_output_order}
+        CherryRoundList_df: pandas.DataFrame = pandas.DataFrame(data = CherryRoundList_data_organized)
+        CherryRoundList_df = pandas.concat([pandas.DataFrame([CherryRoundList_header])[CherryRoundList_df.columns], CherryRoundList_df], ignore_index = True)
+        self.CherryRoundList_df = CherryRoundList_df
+        CherryRound_statistics_output_order: list[int] = [0, 1, 2, 3]
+        CherryRound_data_organized: dict[str, list[Any]] = {CherryRound_header_keys[i]: CherryRound_data_json[CherryRound_header_keys[i]] for i in CherryRound_statistics_output_order}
+        CherryRound_df: pandas.DataFrame = pandas.DataFrame(data = CherryRound_data_organized)
+        CherryRound_df = pandas.concat([pandas.DataFrame([CherryRound_header])[CherryRound_df.columns], CherryRound_df], ignore_index = True)
+        self.CherryRound_df = CherryRound_df
+        CherryPhase_statistics_output_order: list[int] = [0, 2, 6, 7, 1, 8, 9, 10, 11, 12, 13, 3, 4, 5]
+        CherryPhase_data_organized: dict[str, list[Any]] = {CherryPhase_header_keys[i]: CherryPhase_data_json[CherryPhase_header_keys[i]] for i in CherryPhase_statistics_output_order}
+        CherryPhase_df: pandas.DataFrame = pandas.DataFrame(data = CherryPhase_data_organized)
+        CherryPhase_df = pandas.concat([pandas.DataFrame([CherryPhase_header])[CherryPhase_df.columns], CherryPhase_df], ignore_index = True)
+        self.CherryPhase_df = CherryPhase_df
+        return 0
+    
+    def export_CherryRound_data(self, debug: bool = False, path: Optional[str] = None) -> None:
+        '''
+        导出斗魂竞技场回合数据到工作簿中。产生以下工作表：<br>Export Arena round data to a workbook. The following worksheet is added:
+        - 斗魂竞技场回合列表（Arena Round List）
+        - 斗魂竞技场回合（Arena Round）
+        - 斗魂竞技场阶段（Arena Phase）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 斗魂竞技场回合二进制描述文件的本地路径。<br>A local path of Arena round binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        '''
+        logInput = self.log.logInput
+        logPrint = self.log.logPrint
+        if self.wbPath == "":
+            logPrint("尚未指定文件保存路径。\nPath of exported file not specified.")
+            return
+        if self.patch == "" and self.sheet_naming_fold:
+            logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
+            return
+        if self.CherryRoundList_df.empty or self.CherryRound_df.empty or self.CherryPhase_df.empty:
+            status: int = self.build_CherryRound_dataframe(debug = debug, path = path)
+            if status != 0:
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
                 logInput()
+                return
+        #导出数据（Export data）
+        logPrint("正在导出数据……\nExporting data ...", print_time = True)
+        if not os.path.exists(self.wbPath):
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
+        workbook_exist: bool = os.path.exists(self.wbPath)
+        sheet1_name: str = f"{self.patch_number} CherryRoundList" if self.sheet_naming_fold else "斗魂竞技场回合列表（Arena Round List）"
+        sheet2_name: str = f"{self.patch_number} CherryRound" if self.sheet_naming_fold else "斗魂竞技场回合（Arena Round）"
+        sheet3_name: str = f"{self.patch_number} CherryPhase" if self.sheet_naming_fold else "斗魂竞技场阶段（Arena Phase）"
+        while True:
+            try:
+                with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
+                    addDefaultStyle(self.CherryRoundList_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(self.CherryRound_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                    addDefaultStyle(self.CherryPhase_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
+                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
+                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
+                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
+                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet3_name, header = None, index = False, startcol = 0, startrow = 0)
+            except PermissionError:
+                logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
+                cont = logInput()
+                if cont != "" and cont[0] == "0":
+                    break
+            else:
+                logPrint(f"斗魂竞技场回合数据已导出到{self.wbPath}。\nArena round data have been exported to {self.wbPath}.", print_time = True)
                 break
 
 class TFTExtractor(LoLDataExtractor):
@@ -7097,8 +7345,7 @@ class TFTExtractor(LoLDataExtractor):
                 if cont != "" and cont[0] == "0":
                     break
             else:
-                logPrint(f"云顶之弈数据已导出到{self.wbPath}。按回车键继续。\nTFT data have been exported to {self.wbPath}. Press Enter to continue.", print_time = True)
-                logInput()
+                logPrint(f"云顶之弈数据已导出到{self.wbPath}。\nTFT data have been exported to {self.wbPath}.", print_time = True)
                 break
 
 #定义模式覆盖文本描述函数（Define the overriden data tooltip function）
@@ -7411,11 +7658,96 @@ if __name__ == "__main__":
         sheetnames: list[str] = wb.sheetnames
         logPrint("正在创建顺序工作表列表……\nCreating the ordered sheet list ...", print_time = True)
         if naming_pattern == 1:
-            sheetnames_order: list[str] = ["地图（Map）", "指令集（CheatSet）", "指令（Cheat）", "符文系（PerkStyles）", "符文（Perks）", "英雄（Champions）", "英雄技能（Champion Spells）", "角色（Characters）", "角色技能（Character Spells）", "装备（Items）", "装备分组（Item Groups）", "装备修饰（Item Modifiers）", "斗魂竞技场强化符文（Cherry Augments）", "无尽狂潮强化（Swarm Augments）", "海克斯大乱斗强化符文（Kiwi Augments）", "海克斯大乱斗强化符文套装（Kiwi Augment Set）", "斗魂竞技场锻造器（Cherry Anvils）", "海克斯大乱斗锻造器（Kiwi Anvils）", "斗魂竞技场荣誉嘉宾（Cherry Guests）", "云顶之弈赛季（TFT Set）", "云顶之弈商店（TFT Shop）", "云顶之弈商店内容（TFT Shop Content）", "云顶之弈掉率表（TFT Drop Rate）", "云顶之弈回合阶段（TFT Stage Round）", "云顶之弈回合（TFT Round）", "云顶之弈传送门（TFT Portal）", "云顶之弈开场奇遇（TFT Encounter Distribu", "云顶之弈开场奇遇（TFT Encounter Distribution）", "云顶之弈奇遇（TFT Encounter）", "云顶之弈单位属性（TFT Unit Property）", "云顶之弈角色定位（TFT Character Role）", "云顶之弈装备列表（TFT Item List）", "云顶之弈装备（TFT Item）", "云顶之弈羁绊列表（TFT Trait List）", "云顶之弈羁绊（TFT Trait）", "云顶之弈电脑玩家英雄（TFT PVE NPC）", "云顶之弈脚本（TFT Script）", "云顶之弈通告（TFT Announcement）"]
+            sheetnames_order: list[str] = [
+                "地图（Map）",
+                "指令集（CheatSet）",
+                "指令（Cheat）",
+                "符文系（PerkStyles）",
+                "符文（Perks）",
+                "英雄（Champions）",
+                "英雄技能（Champion Spells）",
+                "角色（Characters）",
+                "角色技能（Character Spells）",
+                "装备（Items）",
+                "装备分组（Item Groups）",
+                "装备修饰（Item Modifiers）",
+                "斗魂竞技场强化符文（Cherry Augments）",
+                "无尽狂潮强化（Swarm Augments）",
+                "海克斯大乱斗强化符文（Kiwi Augments）",
+                "海克斯大乱斗强化符文套装（Kiwi Augment Set）",
+                "斗魂竞技场锻造器（Cherry Anvils）",
+                "海克斯大乱斗锻造器（Kiwi Anvils）",
+                "斗魂竞技场荣誉嘉宾（Cherry Guests）",
+                "斗魂竞技场回合列表（Arena Round List）",
+                "斗魂竞技场回合（Arena Round）",
+                "斗魂竞技场阶段（Arena Phase）",
+                "云顶之弈赛季（TFT Set）",
+                "云顶之弈商店（TFT Shop）",
+                "云顶之弈商店内容（TFT Shop Content）",
+                "云顶之弈掉率表（TFT Drop Rate）",
+                "云顶之弈回合阶段（TFT Stage Round）",
+                "云顶之弈回合（TFT Round）",
+                "云顶之弈传送门（TFT Portal）",
+                "云顶之弈开场奇遇（TFT Encounter Distribu",
+                "云顶之弈开场奇遇（TFT Encounter Distribution）",
+                "云顶之弈奇遇（TFT Encounter）",
+                "云顶之弈单位属性（TFT Unit Property）",
+                "云顶之弈角色定位（TFT Character Role）",
+                "云顶之弈装备列表（TFT Item List）",
+                "云顶之弈装备（TFT Item）",
+                "云顶之弈羁绊列表（TFT Trait List）",
+                "云顶之弈羁绊（TFT Trait）",
+                "云顶之弈电脑玩家英雄（TFT PVE NPC）",
+                "云顶之弈脚本（TFT Script）",
+                "云顶之弈通告（TFT Announcement）"
+            ]
         else:
             pVersion_dataType: re.Pattern[str] = re.compile(r"\d+(\.\d+)*\s\w+") #定义正则表达式来检验工作表名称是否符合整合工作簿中的工作表格式——版本号+数据类型（Define a regular expression to verify whether a sheet name obeys the format of sheets in an integrated workbook: version number + data type）
             version_order: list[Patch] = sorted(set(Patch(name.split()[0]) for name in sheetnames if pVersion_dataType.fullmatch(name))) #提取工作表的版本部分，整理形成正序版本列表（Extract the version part of sheet names and organize them into a ascending list）
-            dataType_order: list[str] = ["Map", "CheatSet", "Cheat", "PerkStyles", "Perks", "Champions", "ChampionSpells", "Characters", "CharacterSpells", "Items", "ItemGroups", "ItemModifiers", "CherryAugments", "SwarmAugments", "KiwiAugments", "KiwiAugmentSet", "CherryAnvils", "KiwiAnvils", "CherryGuests", "TFTSet", "TFTShop", "TFTShopContent", "TFTDropRate", "TFTStageRound", "TFTRound", "TFTPortal", "TFTEncounterDistri", "TFTEncounterDistr", "TFTEncounterDistribution", "TFTEncounter", "TFTUnitProperty", "TFTCharacterRole", "TFTItemList", "TFTItem", "TFTTraitList", "TFTTrait", "TFTPVENPC", "TFTScript", "TFTAnnouncement"]
+            dataType_order: list[str] = [
+                "Map",
+                "CheatSet",
+                "Cheat",
+                "PerkStyles",
+                "Perks",
+                "Champions",
+                "ChampionSpells",
+                "Characters",
+                "CharacterSpells",
+                "Items",
+                "ItemGroups",
+                "ItemModifiers",
+                "CherryAugments",
+                "SwarmAugments",
+                "KiwiAugments",
+                "KiwiAugmentSet",
+                "CherryAnvils",
+                "KiwiAnvils",
+                "CherryGuests",
+                "CherryRoundList",
+                "CherryRound",
+                "CherryPhase",
+                "TFTSet",
+                "TFTShop",
+                "TFTShopContent",
+                "TFTDropRate",
+                "TFTStageRound",
+                "TFTRound",
+                "TFTPortal",
+                "TFTEncounterDistri",
+                "TFTEncounterDistr",
+                "TFTEncounterDistribution",
+                "TFTEncounter",
+                "TFTUnitProperty",
+                "TFTCharacterRole",
+                "TFTItemList",
+                "TFTItem",
+                "TFTTraitList",
+                "TFTTrait",
+                "TFTPVENPC",
+                "TFTScript",
+                "TFTAnnouncement"
+            ]
             tmpDf: pandas.DataFrame = pandas.DataFrame(data = [{"name": name, "version_weight": version_order.index(Patch(name.split()[0])), "type_weight": dataType_order.index(name.split()[1])} for name in sheetnames if pVersion_dataType.fullmatch(name)]) #忽略名称不合法的工作表（Bypass sheets with illegal names）
             tmpDf_sorted: pandas.DataFrame = tmpDf.sort_values(by = ["version_weight", "type_weight"]) #工作表名称按照版本的正序和数据类型的正序进行排列（Arrange sheet names in the ascending orders of versions and data types）
             sheetnames_order = tmpDf_sorted["name"].to_list()
@@ -7461,7 +7793,7 @@ if __name__ == "__main__":
         integrate: bool = bool(integrate_str)
         
         for i in range(len(versions)):
-            version = versions[i]
+            version: str = versions[i]
             logPrint(f"[%d/%d]开始处理%s版本的游戏数据。\nStart to process game data of Version %s." %(i + 1, len(versions), version, version))
             extractor = LoLDataExtractor(version, language_code, session = session)
             if integrate:
@@ -7490,10 +7822,13 @@ if __name__ == "__main__":
             if not extractor.shared_ready:
                 logPrint("共享数据获取失败。将忽略该数据。\nShared data capture failure! The program will ignore them.")
                 # continue
+            #初始化计数器（Initialize counter）
+            nDataOptions: int = 0
+            nDataOption_iter: int = 0
             #设置要提取的数据类型（Set the type of data to extract）
             while True:
-                logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t装备（Items）\n6\t强化符文（Augments）\n7\t锻造器（Anvils）\n8\t荣誉嘉宾（Guests of Honor）\n9\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）")
-                mode = logInput()
+                logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t角色（Characters）\n6\t装备（Items）\n7\t斗魂竞技场回合阶段（Arena Round Phase）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t荣誉嘉宾（Guests of Honor）\n11\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\nall\t所有（All）")
+                mode: str = logInput()
                 if mode == "":
                     continue
                 elif mode == "-1":
@@ -7531,37 +7866,76 @@ if __name__ == "__main__":
                 elif mode[0] == "0":
                     LoLDataExtractor.clear_cache()
                     break
-                elif mode[0] == "1":
-                    mapExtractor: MapExtractor = MapExtractor(extractor)
-                    mapExtractor.export_map_data()
-                elif mode[0] == "2":
-                    cheatExtractor: CheatExtractor = CheatExtractor(extractor)
-                    cheatExtractor.export_cheat_data()
-                elif mode[0] == "3":
-                    perkExtractor: PerkExtractor = PerkExtractor(extractor)
-                    perkExtractor.export_perk_data()
-                elif mode[0] == "4":
-                    championExtractor: ChampionExtractor = ChampionExtractor(extractor)
-                    status: int = championExtractor.set_mode()
-                    if status == 0: #当用户输入“0”时，返回上一层（When the user submits "0", the program will return to the last step）
-                        championExtractor.export_champion_data()
-                elif mode[0] == "5":
-                    itemExtractor: ItemExtractor = ItemExtractor(extractor)
-                    itemExtractor.export_item_data()
-                elif mode[0] == "6":
-                    augmentExtractor: AugmentExtractor = AugmentExtractor(extractor)
-                    augmentExtractor.export_augment_data()
-                elif mode[0] == "7":
-                    anvilExtractor: AnvilExtractor = AnvilExtractor(extractor)
-                    anvilExtractor.export_anvil_data()
-                elif mode[0] == "8":
-                    gohExtractor: GoHExtractor = GoHExtractor(extractor)
-                    gohExtractor.export_GoH_data()
-                elif mode[0] == "9":
-                    tftExtractor: TFTExtractor = TFTExtractor(extractor)
-                    tftExtractor.export_tft_data()
                 else:
-                    logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                    data_options: list[int] = []
+                    if mode == "all":
+                        data_options = list(range(1, 12))
+                    else:
+                        try:
+                            tmp = eval(mode)
+                        except Exception as e:
+                            logPrint(e, write_time = False)
+                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                        else:
+                            if isinstance(tmp, int):
+                                if tmp >= 1 and tmp <= 11:
+                                    data_options = [tmp]
+                                else:
+                                    logPrint("您输入的正整数不在合法范围内。请重新输入。\nThe integer you input doesn't fall within a legal range. Please try again.")
+                            elif isinstance(tmp, Iterable) and all(map(lambda x: isinstance(x, int), tmp)):
+                                data_options = [_ for _ in tmp if _ >= 1 and _ <= 12]
+                            else:
+                                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                    nDataOptions += len(data_options)
+                    for j in range(len(data_options)):
+                        nDataOption_iter += 1
+                        dOption: int = data_options[j]
+                        if dOption == 1:
+                            logPrint("[%d/%d][%d/%d]正在整理地图数据……\nOrganizing map data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
+                            mapExtractor: MapExtractor = MapExtractor(extractor)
+                            mapExtractor.export_map_data()
+                        elif dOption == 2:
+                            logPrint("[%d/%d][%d/%d]正在整理作弊指令数据……\nOrganizing cheat data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
+                            cheatExtractor: CheatExtractor = CheatExtractor(extractor)
+                            cheatExtractor.export_cheat_data()
+                        elif dOption == 3:
+                            logPrint("[%d/%d][%d/%d]正在整理符文数据……\nOrganizing perk data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
+                            perkExtractor: PerkExtractor = PerkExtractor(extractor)
+                            perkExtractor.export_perk_data()
+                        elif dOption == 4:
+                            logPrint("[%d/%d][%d/%d]正在整理英雄数据……\nOrganizing champion data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
+                            championExtractor1: ChampionExtractor = ChampionExtractor(extractor)
+                            championExtractor1.set_mode(False)
+                            championExtractor1.export_champion_data()
+                        elif dOption == 5:
+                            logPrint("[%d/%d][%d/%d]正在整理角色数据……\nOrganizing character data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
+                            championExtractor2: ChampionExtractor = ChampionExtractor(extractor)
+                            championExtractor2.set_mode(True)
+                            championExtractor2.export_champion_data()
+                        elif dOption == 6:
+                            logPrint("[%d/%d][%d/%d]正在整理装备数据……\nOrganizing item data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
+                            itemExtractor: ItemExtractor = ItemExtractor(extractor)
+                            itemExtractor.export_item_data()
+                        elif dOption == 7:
+                            logPrint("[%d/%d][%d/%d]正在整理斗魂竞技场回合数据……\nOrganizing Arena round data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
+                            cherryRoundExtractor: CherryRoundExtractor = CherryRoundExtractor(extractor)
+                            cherryRoundExtractor.export_CherryRound_data()
+                        elif dOption == 8:
+                            logPrint("[%d/%d][%d/%d]正在整理强化符文数据……\nOrganizing augment data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
+                            augmentExtractor: AugmentExtractor = AugmentExtractor(extractor)
+                            augmentExtractor.export_augment_data()
+                        elif dOption == 9:
+                            logPrint("[%d/%d][%d/%d]正在整理锻造器数据……\nOrganizing anvil data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
+                            anvilExtractor: AnvilExtractor = AnvilExtractor(extractor)
+                            anvilExtractor.export_anvil_data()
+                        elif dOption == 10:
+                            logPrint("[%d/%d][%d/%d]正在整理荣誉嘉宾数据……\nOrganizing Guest of Honor data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
+                            gohExtractor: GoHExtractor = GoHExtractor(extractor)
+                            gohExtractor.export_GoH_data()
+                        elif dOption == 11:
+                            logPrint("[%d/%d][%d/%d]正在整理云顶之弈数据……\nOrganizing TFT data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
+                            tftExtractor: TFTExtractor = TFTExtractor(extractor)
+                            tftExtractor.export_tft_data()
         else:
             print("是否排序工作表？（输入任意非空字符串以排序，否则不排序。）\nDo you want to sort the worksheets? (Submit any non-empty string to sort, or null to refuse sorting.)")
             sort_sheet_str: str = logInput()
@@ -7612,7 +7986,6 @@ if __name__ == "__main__":
         
             - **repo**: LoL-Dragon-Change-S16存储库中的测试服文件夹。<br>PBE folder under LoL-Dragon-Change-S16 repository.
             - **extract**: 通过LoL-Wad-Extract-Tencent存储库提取测试服时指定的目的文件夹。<br>The destination / target folder specified when extracting PBE data using LoL-Wad-Extract-Tencent repository.
-        
         :type dir_type: str
         :return: 状态码。<br>Status code.
         :rtype: int
@@ -7683,10 +8056,13 @@ if __name__ == "__main__":
         if not extractor.shared_ready:
             # logPrint("共享数据获取失败。将忽略该数据。\nShared data capture failure! The program will ignore them.")
             return 0
+        #初始化计数器（Initialize counter）
+        nDataOptions: int = 0
+        nDataOption_iter: int = 0
         #设置要提取的数据类型（Set the type of data to extract）
         while True:
-            logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t调试（Debug）\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t装备（Items）\n6\t强化符文（Augments）\n7\t锻造器（Anvils）\n8\t荣誉嘉宾（Guests of Honor）\n9\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）")
-            mode = logInput()
+            logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t调试（Debug）\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t角色（Characters）\n6\t装备（Items）\n7\t斗魂竞技场回合阶段（Arena Round Phase）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t荣誉嘉宾（Guests of Honor）\n11\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\nall\t所有（All）")
+            mode: str = logInput()
             if mode == "":
                 continue
             elif mode == "-2":
@@ -7763,142 +8139,208 @@ if __name__ == "__main__":
             elif mode[0] == "0":
                 LoLDataExtractor.clear_cache()
                 break
-            elif mode[0] == "1":
-                mapExtractor: MapExtractor = MapExtractor(extractor)
-                if dir_type == "extract":
-                    map_paths: list[str] = [
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map11/map11.bin.json",
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map12/map12.bin.json",
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map21/map21.bin.json",
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map22/map22.bin.json",
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json",
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map33/map33.bin.json",
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map35/map35.bin.json"
-                    ]
-                else:
-                    map_paths = [
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map11/map11.bin.json",
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map12/map12.bin.json",
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map21/map21.bin.json",
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json",
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json",
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json",
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map35/map35.bin.json"
-                    ]
-                mapExtractor.build_map_dataframe(debug = True, paths = map_paths)
-                if export:
-                    mapExtractor.export_map_data()
-            elif mode[0] == "2":
-                cheatExtractor: CheatExtractor = CheatExtractor(extractor)
-                if dir_type == "extract":
-                    cheat_path = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/cheats.cdtb.bin.json"
-                else:
-                    cheat_path: str = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/cheats.cdtb.bin.json"
-                cheatExtractor.build_cheat_dataframe(debug = True, path = cheat_path)
-                if export:
-                    cheatExtractor.export_cheat_data()
-            elif mode[0] == "3":
-                perkExtractor: PerkExtractor = PerkExtractor(extractor)
-                if dir_type == "extract":
-                    perk_path: str = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/perks.cdtb.bin.json"
-                else:
-                    perk_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/perks.cdtb.bin.json"
-                perkExtractor.build_perk_dataframe(debug = True, path = perk_path)
-                if export:
-                    perkExtractor.export_perk_data()
-            elif mode[0] == "4":
-                championExtractor: ChampionExtractor = ChampionExtractor(extractor)
-                status: int = championExtractor.set_mode()
-                if status == -1: #当用户输入“0”时，返回上一层（When the user submits "0", the program will return to the last step）
-                    continue
-                if dir_type == "extract":
-                    champion_paths: list[str] = [
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Plugins/rcp-be-lol-game-data/global/zh_cn/v1/champion-summary.json",
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/characters"
-                    ]
-                    character_paths: list[str] = [
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map22/map22.bin.json",
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/characters",
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/characters"
-                    ]
-                else:
-                    champion_paths = [
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/plugins/rcp-be-lol-game-data/global/zh_cn/v1/champion-summary.json",
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/characters"
-                    ]
-                    character_paths = [
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json",
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/characters",
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/characters"
-                    ]
-                championExtractor.build_champion_dataframe(debug = True, paths = character_paths if championExtractor.useAllCharacter else champion_paths)
-                if export:
-                    championExtractor.export_champion_data()
-            elif mode[0] == "5":
-                itemExtractor: ItemExtractor = ItemExtractor(extractor)
-                if dir_type == "extract":
-                    item_path: str = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/items.cdtb.bin.json"
-                else:
-                    item_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json"
-                itemExtractor.build_item_dataframe(debug = True, path = item_path)
-                if export:
-                    itemExtractor.export_item_data()
-            elif mode[0] == "6":
-                augmentExtractor: AugmentExtractor = AugmentExtractor(extractor)
-                if dir_type == "extract":
-                    augment_paths: list[str] = [
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json",
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/cherry.bin.json",
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map33/map33.bin.json",
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map12/map12.bin.json",
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/kiwi.bin.json"
-                    ]
-                else:
-                    augment_paths = [
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json",
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json",
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json",
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map12/map12.bin.json",
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json"
-                    ]
-                augmentExtractor.build_augment_dataframe(debug = True, paths = augment_paths)
-                if export:
-                    augmentExtractor.export_augment_data()
-            elif mode[0] == "7":
-                anvilExtractor: AnvilExtractor = AnvilExtractor(extractor)
-                if dir_type == "extract":
-                    anvil_paths: list[str] = [
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json",
-                        "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map12/map12.bin.json"
-                    ]
-                else:
-                    anvil_paths: list[str] = [
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json",
-                        "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map12/map12.bin.json"
-                    ]
-                anvilExtractor.build_anvil_dataframe(debug = True, paths = anvil_paths)
-                if export:
-                    anvilExtractor.export_anvil_data()
-            elif mode[0] == "8":
-                gohExtractor: GoHExtractor = GoHExtractor(extractor)
-                if dir_type == "extract":
-                    cherry_path = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/cherry.bin.json"
-                else:
-                    cherry_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json"
-                gohExtractor.build_GoH_dataframe(debug = True, path = cherry_path)
-                if export:
-                    gohExtractor.export_GoH_data()
-            elif mode[0] == "9":
-                tftExtractor: TFTExtractor = TFTExtractor(extractor)
-                if dir_type == "extract":
-                    map22_path = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map22/map22.bin.json"
-                else:
-                    map22_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json"
-                tftExtractor.build_tft_dataframe(debug = True, path = map22_path)
-                if export:
-                    tftExtractor.export_tft_data()
             else:
-                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                data_options: list[int] = []
+                if mode == "all":
+                    data_options = list(range(1, 12))
+                else:
+                    try:
+                        tmp = eval(mode)
+                    except Exception as e:
+                        logPrint(e, write_time = False)
+                        logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                    else:
+                        if isinstance(tmp, int):
+                            if tmp >= 1 and tmp <= 11:
+                                data_options = [tmp]
+                            else:
+                                logPrint("您输入的正整数不在合法范围内。请重新输入。\nThe integer you input doesn't fall within a legal range. Please try again.")
+                        elif isinstance(tmp, Iterable) and all(map(lambda x: isinstance(x, int), tmp)):
+                            data_options = [_ for _ in tmp if _ >= 1 and _ <= 12]
+                        else:
+                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                nDataOptions += len(data_options)
+                for i in range(len(data_options)):
+                    nDataOption_iter += 1
+                    dOption: int = data_options[i]
+                    if dOption == 1:
+                        logPrint("[%d/%d]正在调试地图数据……\nDebugging map data ..." %(nDataOption_iter, nDataOptions))
+                        mapExtractor: MapExtractor = MapExtractor(extractor)
+                        if dir_type == "extract":
+                            map_paths: list[str] = [
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map11/map11.bin.json",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map12/map12.bin.json",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map21/map21.bin.json",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map22/map22.bin.json",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map33/map33.bin.json",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map35/map35.bin.json"
+                            ]
+                        else:
+                            map_paths = [
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map11/map11.bin.json",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map12/map12.bin.json",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map21/map21.bin.json",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map35/map35.bin.json"
+                            ]
+                        mapExtractor.build_map_dataframe(debug = True, paths = map_paths)
+                        if export:
+                            mapExtractor.export_map_data()
+                    elif dOption == 2:
+                        logPrint("[%d/%d]正在调试作弊指令数据……\nDebugging cheat data ..." %(nDataOption_iter, nDataOptions))
+                        cheatExtractor: CheatExtractor = CheatExtractor(extractor)
+                        if dir_type == "extract":
+                            cheat_path = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/cheats.cdtb.bin.json"
+                        else:
+                            cheat_path: str = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/cheats.cdtb.bin.json"
+                        cheatExtractor.build_cheat_dataframe(debug = True, path = cheat_path)
+                        if export:
+                            cheatExtractor.export_cheat_data()
+                    elif dOption == 3:
+                        logPrint("[%d/%d]正在调试符文数据……\nDebugging perk data ..." %(nDataOption_iter, nDataOptions))
+                        perkExtractor: PerkExtractor = PerkExtractor(extractor)
+                        if dir_type == "extract":
+                            perk_path: str = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/perks.cdtb.bin.json"
+                        else:
+                            perk_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/perks.cdtb.bin.json"
+                        perkExtractor.build_perk_dataframe(debug = True, path = perk_path)
+                        if export:
+                            perkExtractor.export_perk_data()
+                    elif dOption == 4:
+                        logPrint("[%d/%d]正在调试英雄数据……\nDebugging champion data ..." %(nDataOption_iter, nDataOptions))
+                        championExtractor1: ChampionExtractor = ChampionExtractor(extractor)
+                        championExtractor1.set_mode(False)
+                        if dir_type == "extract":
+                            champion_paths: list[str] = [
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Plugins/rcp-be-lol-game-data/global/zh_cn/v1/champion-summary.json",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/characters"
+                            ]
+                            character_paths: list[str] = [
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map22/map22.bin.json",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/characters",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/characters"
+                            ]
+                        else:
+                            champion_paths = [
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/plugins/rcp-be-lol-game-data/global/zh_cn/v1/champion-summary.json",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/characters"
+                            ]
+                            character_paths = [
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/characters",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/characters"
+                            ]
+                        championExtractor1.build_champion_dataframe(debug = True, paths = character_paths if championExtractor1.useAllCharacter else champion_paths)
+                        if export:
+                            championExtractor1.export_champion_data()
+                    elif dOption == 5:
+                        logPrint("[%d/%d]正在调试角色数据……\nDebugging character data ..." %(nDataOption_iter, nDataOptions))
+                        championExtractor2: ChampionExtractor = ChampionExtractor(extractor)
+                        championExtractor2.set_mode(True)
+                        if dir_type == "extract":
+                            champion_paths: list[str] = [
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Plugins/rcp-be-lol-game-data/global/zh_cn/v1/champion-summary.json",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/characters"
+                            ]
+                            character_paths: list[str] = [
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map22/map22.bin.json",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/characters",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/characters"
+                            ]
+                        else:
+                            champion_paths = [
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/plugins/rcp-be-lol-game-data/global/zh_cn/v1/champion-summary.json",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/characters"
+                            ]
+                            character_paths = [
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/characters",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/characters"
+                            ]
+                        championExtractor2.build_champion_dataframe(debug = True, paths = character_paths if championExtractor2.useAllCharacter else champion_paths)
+                        if export:
+                            championExtractor2.export_champion_data()
+                    elif dOption == 6:
+                        logPrint("[%d/%d]正在调试装备数据……\nDebugging item data ..." %(nDataOption_iter, nDataOptions))
+                        itemExtractor: ItemExtractor = ItemExtractor(extractor)
+                        if dir_type == "extract":
+                            item_path: str = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/items.cdtb.bin.json"
+                        else:
+                            item_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json"
+                        itemExtractor.build_item_dataframe(debug = True, path = item_path)
+                        if export:
+                            itemExtractor.export_item_data()
+                    elif dOption == 7:
+                        logPrint("[%d/%d]正在调试斗魂竞技场回合数据……\nDebugging Arena round data ..." %(nDataOption_iter, nDataOptions))
+                        cherryRoundExtractor: CherryRoundExtractor = CherryRoundExtractor(extractor)
+                        if dir_type == "extract":
+                            CherryRound_path: str = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json"
+                        else:
+                            CherryRound_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json"
+                        cherryRoundExtractor.build_CherryRound_dataframe(debug = True, path = CherryRound_path)
+                        if export:
+                            cherryRoundExtractor.export_CherryRound_data()
+                    elif dOption == 8:
+                        logPrint("[%d/%d]正在调试强化符文数据……\nDebugging augment data ..." %(nDataOption_iter, nDataOptions))
+                        augmentExtractor: AugmentExtractor = AugmentExtractor(extractor)
+                        if dir_type == "extract":
+                            augment_paths: list[str] = [
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/cherry.bin.json",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map33/map33.bin.json",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map12/map12.bin.json",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/kiwi.bin.json"
+                            ]
+                        else:
+                            augment_paths = [
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map12/map12.bin.json",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json"
+                            ]
+                        augmentExtractor.build_augment_dataframe(debug = True, paths = augment_paths)
+                        if export:
+                            augmentExtractor.export_augment_data()
+                    elif dOption == 9:
+                        logPrint("[%d/%d]正在调试锻造器数据……\nDebugging anvil data ..." %(nDataOption_iter, nDataOptions))
+                        anvilExtractor: AnvilExtractor = AnvilExtractor(extractor)
+                        if dir_type == "extract":
+                            anvil_paths: list[str] = [
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json",
+                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map12/map12.bin.json"
+                            ]
+                        else:
+                            anvil_paths: list[str] = [
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json",
+                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map12/map12.bin.json"
+                            ]
+                        anvilExtractor.build_anvil_dataframe(debug = True, paths = anvil_paths)
+                        if export:
+                            anvilExtractor.export_anvil_data()
+                    elif dOption == 10:
+                        logPrint("[%d/%d]正在调试荣誉嘉宾数据……\nDebugging Guest of Honor data ..." %(nDataOption_iter, nDataOptions))
+                        gohExtractor: GoHExtractor = GoHExtractor(extractor)
+                        if dir_type == "extract":
+                            cherry_path = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/cherry.bin.json"
+                        else:
+                            cherry_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json"
+                        gohExtractor.build_GoH_dataframe(debug = True, path = cherry_path)
+                        if export:
+                            gohExtractor.export_GoH_data()
+                    elif dOption == 11:
+                        logPrint("[%d/%d]正在调试云顶之弈数据……\nDebugging TFT data ..." %(nDataOption_iter, nDataOptions))
+                        tftExtractor: TFTExtractor = TFTExtractor(extractor)
+                        if dir_type == "extract":
+                            map22_path = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map22/map22.bin.json"
+                        else:
+                            map22_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json"
+                        tftExtractor.build_tft_dataframe(debug = True, path = map22_path)
+                        if export:
+                            tftExtractor.export_tft_data()
         return 0
 
     #个性化函数（Personalized function）
