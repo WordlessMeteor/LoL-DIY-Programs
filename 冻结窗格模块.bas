@@ -9,11 +9,11 @@ Sub FreezeAndFilterGameDataSheets()
                 Or ws.Name = "英雄技能（Champion Spells）" Or Right$(ws.Name, 14) = "ChampionSpells" Or ws.Name = "角色（Characters）" Or Right$(ws.Name, 10) = "Characters" _
                 Or ws.Name = "角色技能（Character Spells）" Or Right$(ws.Name, 16) = "CharacterSpells" _
                 Or ws.Name = "装备（Items）" Or Right$(ws.Name, 5) = "Items" Or ws.Name = "装备分组（Item Groups）" Or Right$(ws.Name, 10) = "ItemGroups" Or ws.Name = "装备修饰（Item Modifiers）" Or Right$(ws.Name, 13) = "ItemModifiers" _
-                Or ws.Name = "斗魂竞技场回合列表（Arena Round List）" or Right$(ws.Name, 15) = "CherryRoundList" or ws.Name = "斗魂竞技场回合（Arena Round）" or Right$(ws.Name, 11) = "CherryRound" or ws.Name = "斗魂竞技场阶段（Arena Phase）" or Right$(ws.Name, 11) = "CherryPhase" _
                 Or ws.Name = "斗魂竞技场强化符文（Cherry Augments）" Or Right$(ws.Name, 14) = "CherryAugments" Or ws.Name = "无尽狂潮强化（Swarm Augments）" Or Right$(ws.Name, 13) = "SwarmAugments" _
                 Or ws.Name = "海克斯大乱斗强化符文（Kiwi Augments）" Or Right$(ws.Name, 12) = "KiwiAugments" Or ws.Name = "海克斯大乱斗强化符文套装（Kiwi Augment Set）" Or Right$(ws.Name, 14) = "KiwiAugmentSet" _
                 Or ws.Name = "斗魂竞技场锻造器（Cherry Anvils）" Or Right$(ws.Name, 12) = "CherryAnvils" Or ws.Name = "海克斯大乱斗锻造器（Kiwi Anvils）" Or Right$(ws.Name, 10) = "KiwiAnvils" _
-                Or ws.Name = "斗魂竞技场荣誉嘉宾（Cherry Guests）" Or Right$(ws.Name, 12) = "CherryGuests" _
+                Or ws.Name = "斗魂竞技场回合列表（Cherry Round List）" Or Right$(ws.Name, 15) = "CherryRoundList" Or ws.Name = "斗魂竞技场回合（Cherry Round）" Or Right$(ws.Name, 11) = "CherryRound" Or ws.Name = "斗魂竞技场阶段（Cherry Phase）" Or Right$(ws.Name, 11) = "CherryPhase" _
+                Or ws.Name = "斗魂竞技场场景英雄（Cherry Cameos）" Or Right$(ws.Name, 12) = "CherryCameos" Or ws.Name = "斗魂竞技场荣誉嘉宾（Cherry Guests）" Or Right$(ws.Name, 12) = "CherryGuests" _
                 Or ws.Name = "云顶之弈赛季（TFT Set）" Or Right$(ws.Name, 6) = "TFTSet" _
                 Or ws.Name = "云顶之弈商店（TFT Shop）" Or Right$(ws.Name, 7) = "TFTShop" _
                 Or ws.Name = "云顶之弈商店内容（TFT Shop Content）" Or Right$(ws.Name, 14) = "TFTShopContent" _
@@ -31,11 +31,12 @@ Sub FreezeAndFilterGameDataSheets()
             ActiveWindow.SplitColumn = 0 '取消任何可能的列拆分（Remove any existing column split）
             ActiveWindow.SplitRow = 0 '取消任何可能的行拆分（Remove any existing row split）
             If ws.Name = "符文系（PerkStyles）" Or Right$(ws.Name, 10) = "PerkStyles" _
-                    Or ws.Name = "装备修饰（Item Modifiers）" or Right$(ws.Name, 13) = "ItemModifiers" _
+                    Or ws.Name = "装备修饰（Item Modifiers）" Or Right$(ws.Name, 13) = "ItemModifiers" _
                     Or ws.Name = "符文（Perks）" Or Right$(ws.Name, 5) = "Perks" _
                     Or ws.Name = "英雄（Champions）" Or Right$(ws.Name, 9) = "Champions" _
                     Or ws.Name = "角色（Characters）" Or Right$(ws.Name, 10) = "Characters" _
-                    Or ws.Name = "斗魂竞技场阶段（Arena Phase）" or Right$(ws.Name, 11) = "CherryPhase" _
+                    Or ws.Name = "斗魂竞技场阶段（Cherry Phase）" Or Right$(ws.Name, 11) = "CherryPhase" _
+                    Or ws.Name = "斗魂竞技场场景英雄（Cherry Cameos）" Or Right$(ws.Name, 12) = "CherryCameos" _
                     Or ws.Name = "无尽狂潮强化（Swarm Augments）" Or Right$(ws.Name, 13) = "SwarmAugments" _
                     Or ws.Name = "云顶之弈商店（TFT Shop）" Or Right$(ws.Name, 7) = "TFTShop" _
                     Or ws.Name = "云顶之弈传送门（TFT Portal）" Or Right$(ws.Name, 9) = "TFTPortal" Then
@@ -57,7 +58,7 @@ Sub FreezeAndFilterGameDataSheets()
                     Or ws.Name = "斗魂竞技场锻造器（Cherry Anvils）" Or Right$(ws.Name, 7) = "CherryAnvils" _
                     Or ws.Name = "海克斯大乱斗锻造器（Kiwi Anvils）" Or Right$(ws.Name, 7) = "KiwiAnvils" Then
                 ws.Range("I3").Select '冻结前两行和前八列（Freeze the first two rows and eight columns）
-            ElseIf Or ws.Name = "斗魂竞技场荣誉嘉宾（Cherry Guests）" Or Right$(ws.Name, 12) = "CherryGuests" Then
+            ElseIf ws.Name = "斗魂竞技场荣誉嘉宾（Cherry Guests）" Or Right$(ws.Name, 12) = "CherryGuests" Then
                 ws.Range("N3").Select '冻结前两行和前十三列（Freeze the first two rows and thirteen columns）
             Else
                 ws.Rows("3:3").Select '其它情况下统一冻结所有表头（In other cases, freeze all headers）

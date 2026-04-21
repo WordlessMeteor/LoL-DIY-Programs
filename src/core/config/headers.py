@@ -6113,6 +6113,23 @@ GoH_header: dict[str, str] = {
     "{e7879fb5} Subtitle_contents_zh": "互斥荣誉嘉宾姓名（中文）",
     "{e7879fb5} Subtitle_contents_en": "互斥荣誉嘉宾姓名（英文）"
 }
+cameo_header: dict[str, str] = {
+    "key": "主键",
+    "championName": "英雄文件夹",
+    "ChampionNameHash": "英雄文件夹加密字符串",
+    "Enabled": "可用性",
+    "{be8164b4}": "事件键",
+    "{3942d706}": "简述键",
+    "{f426fde9}": "详细信息键",
+    "{be8164b4}_content_zh": "事件（中文）",
+    "{be8164b4}_content_en": "事件（英文）",
+    "{3942d706}_content_zh": "简述（中文）",
+    "{3942d706}_content_en": "简述（英文）",
+    "{f426fde9}_content_zh": "详细信息（中文）",
+    "{f426fde9}_content_en": "详细信息（英文）",
+    "{f426fde9}_content_zh_burn": "详细信息（中文/去格式化）",
+    "{f426fde9}_content_en_burn": "详细信息（英文/去格式化）"
+}
 CherryRoundList_header: dict[str, str] = {
     "key": "方案主键",
     "{37e6e53a}": "旗标",

@@ -13,7 +13,7 @@ from src.utils.webRequest import requestUrl
 from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, pyobj2json, capitalize, decapitalize
 from src.utils.runtimeDebug import subscope
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
-from src.core.config.headers import map_header_l10n, cheatset_header, cheat_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, CherryAnvil_header, GoH_header, CherryRoundList_header, CherryRound_header, CherryPhase_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header
+from src.core.config.headers import map_header_l10n, cheatset_header, cheat_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, CherryAnvil_header, GoH_header, cameo_header, CherryRoundList_header, CherryRound_header, CherryPhase_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header
 from src.core.config.localization import language_ddragon, language_cdragon
 
 #=============================================================================
@@ -5574,6 +5574,191 @@ class AnvilExtractor(LoLDataExtractor):
                 logPrint(f"锻造器数据已导出到{self.wbPath}。\nAnvil data have been exported to {self.wbPath}.", print_time = True)
                 break
 
+class CameoExtractor(LoLDataExtractor):
+    def __init__(self, extractor: LoLDataExtractor) -> None:
+        '''
+        初始化一个场景英雄提取器对象。<br>Initial a CameoExtractor object.
+        
+        :param extractor: 父类对象。用于继承其属性。<br>Parent object. Pass it to inherit its attributes.
+        :type extractor: LoLDataExtractor
+        '''
+        self.__dict__.update(extractor.__dict__)
+        self.cameo_ready: bool = False
+        self.cameo_df: pandas.DataFrame = pandas.DataFrame()
+        
+    def init_data_readiness(self) -> None:
+        '''
+        初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
+        '''
+        self.cameo_ready = False
+    
+    def get_cameo_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
+        '''
+        在线获取场景英雄二进制描述数据。<br>Get binary description data of cameos online.
+        '''
+        logPrint = self.log.logPrint
+        map30_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map30/map30.bin.json"
+        if map30_bin_url in self.__class__.data_cache["online"]:
+            self.map30_bin = self.__class__.data_cache["online"][map30_bin_url]
+        else:
+            source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session, log = self.log)
+            if status != 200:
+                if status == 404:
+                    logPrint("斗魂竞技场场景英雄信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nArena cameo data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map30_bin_url))
+                    self.map30_bin: dict[str, list[str] | dict[str, Any]] = {}
+                else:
+                    logPrint('斗魂竞技场场景英雄信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nArena cameo data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.')
+                    time.sleep()
+                    self.init_data_readiness()
+                    return
+            else:
+                self.map30_bin = source.json()
+            self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
+        self.cameo_ready = True
+    
+    def read_cameo_data(self, path: str) -> None:
+        '''
+        离线获取场景英雄二进制描述数据。<br>Get binary description data of Guests of Honor offline.
+        
+        :param path: 场景英雄二进制描述文件的本地路径。<br>A local path of cameo binary description file.
+        :type path: str
+        '''
+        logPrint = self.log.logPrint
+        if not os.path.exists(path):
+            logPrint(f"以下路径不存在：\nThe following path doesn't exist:\n{path}")
+            self.init_data_readiness()
+            return
+        map30_bin_path: str = path
+        if map30_bin_path in self.__class__.data_cache["local"]:
+            self.map30_bin = self.__class__.data_cache["local"][map30_bin_path]
+        else:
+            with open(map30_bin_path, "r", encoding = "utf-8") as fp:
+                self.map30_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+            self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
+        self.cameo_ready = True
+    
+    def build_cameo_dataframe(self, debug: bool = False, path: Optional[str] = None) -> int:
+        '''
+        构建场景英雄数据框。<br>Build cameo dataframe.
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 场景英雄二进制描述文件的本地路径。<br>A local path of cameo binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        :return: 状态码。<br>Status code.
+        
+            - 0: 成功。<br>Success.
+            - 1: 未指定本地文件路径。<br>Local path not specified.
+            - 2: 数据未准备就绪。<br>Data not ready.
+        :rtype: int
+        '''
+        logPrint = self.log.logPrint
+        if not self.cameo_ready:
+            #获取场景英雄信息（Get cameo information）
+            logPrint("正在读取场景英雄数据……\nReading cameo data ...", print_time = True)
+            if debug:
+                if path == None:
+                    logPrint("尚未指定本地文件路径！\nLocal path not specified yet!")
+                    return 1
+                else:
+                    self.read_cameo_data(path = path)
+            else:
+                self.get_cameo_data()
+            if not self.cameo_ready:
+                logPrint("场景英雄数据尚未准备就绪！\ncameo data not prepared!")
+                return 2
+        
+        #定义数据结构（Define the data structure）
+        logPrint("正在构建场景英雄数据框……\nBuilding the cameo dataframes ...", print_time = True)
+        cameo_header_keys: list[str] = list(cameo_header.keys())
+        cameo_data: dict[str, list[Any]] = {key: [] for key in cameo_header_keys}
+        cameo_data_json: dict[str, list[Any]] = copy.deepcopy(cameo_data)
+        
+        #数据整理核心部分（Data organization core part）
+        pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
+        strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
+        strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
+        for (key1, value) in self.map30_bin.items():
+            if key1 != "__linked" and value["__type"] == "CherryCameo":
+                for i in range(len(cameo_header_keys)):
+                    key: str = cameo_header_keys[i]
+                    if i == 0: #主键（`key`）
+                        to_append: Any = key1
+                    elif i >= 1 and i <= 6:
+                        to_append = value.get(key, True if i == 3 else "")
+                    else:
+                        subkey2: str = pStrConst.search(key).group()
+                        subkey1: str = key.replace(subkey2, "")
+                        useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                        tooltip_key: str = cameo_data[subkey1][-1]
+                        tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        if subkey2.endswith("_burn"):
+                            tooltip_burn = self.tooltipPreparation(tooltip_raw, isCHS = isCHS)
+                            tooltip_burn = self.tooltipPostProcessing(tooltip_burn, isCHS = isCHS)
+                            to_append = tooltip_burn
+                        else:
+                            to_append = tooltip_raw
+                    cameo_data[key].append(to_append)
+                    cameo_data_json[key].append(pyobj2json(to_append))
+        cameo_statistics_output_order: list[int] = [0, 1, 3, 4, 7, 8, 5, 9, 10, 6, 11, 13, 12, 14]
+        cameo_data_organized: dict[str, list[Any]] = {cameo_header_keys[i]: cameo_data_json[cameo_header_keys[i]] for i in cameo_statistics_output_order}
+        cameo_df: pandas.DataFrame = pandas.DataFrame(data = cameo_data_organized)
+        optimize_bool_display(cameo_df)
+        cameo_df = pandas.concat([pandas.DataFrame([cameo_header])[cameo_df.columns], cameo_df], ignore_index = True)
+        self.cameo_df = cameo_df
+        return 0
+    
+    def export_cameo_data(self, debug: bool = False, path: Optional[str] = None) -> None:
+        '''
+        导出场景英雄数据到工作簿中。产生以下工作表：<br>Export cameo data to a workbook. The following worksheet is added:
+        - 斗魂竞技场场景英雄（Cherry Cameos）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 荣誉嘉宾二进制描述文件的本地路径。<br>A local path of cameo binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        '''
+        logInput = self.log.logInput
+        logPrint = self.log.logPrint
+        if self.wbPath == "":
+            logPrint("尚未指定文件保存路径。\nPath of exported file not specified.")
+            return
+        if self.patch == "" and self.sheet_naming_fold:
+            logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
+            return
+        if self.cameo_df.empty:
+            status: int = self.build_cameo_dataframe(debug = debug, path = path)
+            if status != 0:
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
+                logInput()
+                return
+        #导出数据（Export data）
+        logPrint("正在导出数据……\nExporting data ...", print_time = True)
+        if not os.path.exists(self.wbPath):
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
+        workbook_exist: bool = os.path.exists(self.wbPath)
+        sheet1_name: str = f"{self.patch_number} CherryCameos" if self.sheet_naming_fold else "斗魂竞技场场景英雄（Cherry Cameos）"
+        while True:
+            try:
+                with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
+                    addDefaultStyle(self.cameo_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
+                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
+            except PermissionError:
+                logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
+                cont = logInput()
+                if cont != "" and cont[0] == "0":
+                    break
+            else:
+                logPrint(f"场景英雄数据已导出到{self.wbPath}。\nCameo data have been exported to {self.wbPath}.", print_time = True)
+                break
+
 class GoHExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
         '''
@@ -5797,6 +5982,7 @@ class GoHExtractor(LoLDataExtractor):
         GoH_statistics_output_order: list[int] = [0, 7, 1, 2, 3, 5, 8, 14, 15, 9, 16, 17, 4, 10, 18, 19, 11, 20, 22, 21, 23, 6, 24, 25, 12, 13]
         GoH_data_organized: dict[str, list[Any]] = {GoH_header_keys[i]: GoH_data_json[GoH_header_keys[i]] for i in GoH_statistics_output_order}
         GoH_df: pandas.DataFrame = pandas.DataFrame(data = GoH_data_organized)
+        optimize_bool_display(GoH_df)
         GoH_df = pandas.concat([pandas.DataFrame([GoH_header])[GoH_df.columns], GoH_df], ignore_index = True)
         self.GoH_df = GoH_df
         return 0
@@ -6055,9 +6241,9 @@ class CherryRoundExtractor(LoLDataExtractor):
     def export_CherryRound_data(self, debug: bool = False, path: Optional[str] = None) -> None:
         '''
         导出斗魂竞技场回合数据到工作簿中。产生以下工作表：<br>Export Arena round data to a workbook. The following worksheet is added:
-        - 斗魂竞技场回合列表（Arena Round List）
-        - 斗魂竞技场回合（Arena Round）
-        - 斗魂竞技场阶段（Arena Phase）
+        - 斗魂竞技场回合列表（Cherry Round List）
+        - 斗魂竞技场回合（Cherry Round）
+        - 斗魂竞技场阶段（Cherry Phase）
         
         :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
         :type debug: bool
@@ -6085,9 +6271,9 @@ class CherryRoundExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        sheet1_name: str = f"{self.patch_number} CherryRoundList" if self.sheet_naming_fold else "斗魂竞技场回合列表（Arena Round List）"
-        sheet2_name: str = f"{self.patch_number} CherryRound" if self.sheet_naming_fold else "斗魂竞技场回合（Arena Round）"
-        sheet3_name: str = f"{self.patch_number} CherryPhase" if self.sheet_naming_fold else "斗魂竞技场阶段（Arena Phase）"
+        sheet1_name: str = f"{self.patch_number} CherryRoundList" if self.sheet_naming_fold else "斗魂竞技场回合列表（Cherry Round List）"
+        sheet2_name: str = f"{self.patch_number} CherryRound" if self.sheet_naming_fold else "斗魂竞技场回合（Cherry Round）"
+        sheet3_name: str = f"{self.patch_number} CherryPhase" if self.sheet_naming_fold else "斗魂竞技场阶段（Cherry Phase）"
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
@@ -7766,10 +7952,11 @@ if __name__ == "__main__":
                 "海克斯大乱斗强化符文套装（Kiwi Augment Set）",
                 "斗魂竞技场锻造器（Cherry Anvils）",
                 "海克斯大乱斗锻造器（Kiwi Anvils）",
+                "斗魂竞技场回合列表（Cherry Round List）",
+                "斗魂竞技场回合（Cherry Round）",
+                "斗魂竞技场阶段（Cherry Phase）",
+                "斗魂竞技场场景英雄（Cherry Cameos）",
                 "斗魂竞技场荣誉嘉宾（Cherry Guests）",
-                "斗魂竞技场回合列表（Arena Round List）",
-                "斗魂竞技场回合（Arena Round）",
-                "斗魂竞技场阶段（Arena Phase）",
                 "云顶之弈赛季（TFT Set）",
                 "云顶之弈商店（TFT Shop）",
                 "云顶之弈商店内容（TFT Shop Content）",
@@ -7812,10 +7999,10 @@ if __name__ == "__main__":
                 "KiwiAugmentSet",
                 "CherryAnvils",
                 "KiwiAnvils",
-                "CherryGuests",
                 "CherryRoundList",
                 "CherryRound",
                 "CherryPhase",
+                "CherryGuests",
                 "TFTSet",
                 "TFTShop",
                 "TFTShopContent",
@@ -7916,7 +8103,7 @@ if __name__ == "__main__":
             nDataOption_iter: int = 0
             #设置要提取的数据类型（Set the type of data to extract）
             while True:
-                logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t角色（Characters）\n6\t装备（Items）\n7\t斗魂竞技场回合阶段（Arena Round Phase）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t荣誉嘉宾（Guests of Honor）\n11\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\nall\t所有（All）")
+                logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t角色（Characters）\n6\t装备（Items）\n7\t斗魂竞技场回合阶段（Arena Round Phase）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t场景英雄（Cameo）\n11\t荣誉嘉宾（Guests of Honor）\n12\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\nall\t所有（All）")
                 mode: str = logInput()
                 if mode == "":
                     continue
@@ -7958,7 +8145,7 @@ if __name__ == "__main__":
                 else:
                     data_options: list[int] = []
                     if mode == "all":
-                        data_options = list(range(1, 12))
+                        data_options = list(range(1, 13))
                     else:
                         try:
                             tmp = eval(mode)
@@ -8018,10 +8205,14 @@ if __name__ == "__main__":
                             anvilExtractor: AnvilExtractor = AnvilExtractor(extractor)
                             anvilExtractor.export_anvil_data()
                         elif dOption == 10:
+                            logPrint("[%d/%d][%d/%d]正在整理场景英雄数据……\nOrganizing Cameo data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
+                            cameoExtractor: CameoExtractor = CameoExtractor(extractor)
+                            cameoExtractor.export_cameo_data()
+                        elif dOption == 11:
                             logPrint("[%d/%d][%d/%d]正在整理荣誉嘉宾数据……\nOrganizing Guest of Honor data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             gohExtractor: GoHExtractor = GoHExtractor(extractor)
                             gohExtractor.export_GoH_data()
-                        elif dOption == 11:
+                        elif dOption == 12:
                             logPrint("[%d/%d][%d/%d]正在整理云顶之弈数据……\nOrganizing TFT data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             tftExtractor: TFTExtractor = TFTExtractor(extractor)
                             tftExtractor.export_tft_data()
@@ -8150,7 +8341,7 @@ if __name__ == "__main__":
         nDataOption_iter: int = 0
         #设置要提取的数据类型（Set the type of data to extract）
         while True:
-            logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t调试（Debug）\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t角色（Characters）\n6\t装备（Items）\n7\t斗魂竞技场回合阶段（Arena Round Phase）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t荣誉嘉宾（Guests of Honor）\n11\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\nall\t所有（All）")
+            logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t调试（Debug）\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t角色（Characters）\n6\t装备（Items）\n7\t斗魂竞技场回合阶段（Arena Round Phase）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t场景英雄（Cameo）\n11\t荣誉嘉宾（Guests of Honor）\n12\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\nall\t所有（All）")
             mode: str = logInput()
             if mode == "":
                 continue
@@ -8163,21 +8354,29 @@ if __name__ == "__main__":
                     elif draft_option[0] == "0":
                         break
                     elif draft_option[0] == "1":
-                        scope: dict[str, Any] = {"LogManager": LogManager, "Patch": Patch, "requestUrl": requestUrl, "format_df": format_df, "verifyDictHeterogeneity": verifyDictHeterogeneity, "syncListOrder": syncListOrder, "traverse_keyPath": traverse_keyPath, "getBinaryKeys": getBinaryKeys, "LoLDataExtractor": LoLDataExtractor, "MapExtractor": MapExtractor, "CheatExtractor": CheatExtractor, "PerkExtractor": PerkExtractor, "ChampionExtractor": ChampionExtractor, "ItemExtractor": ItemExtractor, "AugmentExtractor": AugmentExtractor, "AnvilExtractor": AnvilExtractor, "TFTExtractor": TFTExtractor, "modeOverrideTooltipTransform": modeOverrideTooltipTransform, "extractor": extractor}
+                        scope: dict[str, Any] = {"LogManager": LogManager, "Patch": Patch, "requestUrl": requestUrl, "format_df": format_df, "verifyDictHeterogeneity": verifyDictHeterogeneity, "syncListOrder": syncListOrder, "traverse_keyPath": traverse_keyPath, "getBinaryKeys": getBinaryKeys, "LoLDataExtractor": LoLDataExtractor, "MapExtractor": MapExtractor, "CheatExtractor": CheatExtractor, "PerkExtractor": PerkExtractor, "ChampionExtractor": ChampionExtractor, "ItemExtractor": ItemExtractor, "AugmentExtractor": AugmentExtractor, "AnvilExtractor": AnvilExtractor, "CherryRoundExtractor": CherryRoundExtractor, "CameoExtractor": CameoExtractor, "GoHExtractor": GoHExtractor, "TFTExtractor": TFTExtractor, "modeOverrideTooltipTransform": modeOverrideTooltipTransform, "extractor": extractor}
                         if "mapExtractor" in dir():
                             scope["mapExtractor"] = mapExtractor
                         if "cheatExtractor" in dir():
                             scope["cheatExtractor"] = cheatExtractor
                         if "perkExtractor" in dir():
                             scope["perkExtractor"] = perkExtractor
-                        if "championExtractor" in dir():
-                            scope["championExtractor"] = championExtractor
+                        if "championExtractor1" in dir():
+                            scope["championExtractor"] = championExtractor1
+                        if "championExtractor2" in dir():
+                            scope["championExtractor"] = championExtractor2
                         if "itemExtractor" in dir():
                             scope["itemExtractor"] = itemExtractor
+                        if "cherryRoundExtractor" in dir():
+                            scope["cherryRoundExtractor"] = cherryRoundExtractor
                         if "augmentExtractor" in dir():
                             scope["augmentExtractor"] = augmentExtractor
                         if "anvilExtractor" in dir():
                             scope["anvilExtractor"] = anvilExtractor
+                        if "cameoExtractor" in dir():
+                            scope["cameoExtractor"] = cameoExtractor
+                        if "gohExtractor" in dir():
+                            scope["gohExtractor"] = gohExtractor
                         if "tftExtractor" in dir():
                             scope["tftExtractor"] = tftExtractor
                         logPrint('示例（Examples）：\nprint(dir())\nlog: LogManager = LogManager()\nlogInput = log.logInput\nlogPrint = log.logPrint\nlogPrint(format_df(mapExtractor.map_df)[0], write_time = False)\n输入“-1”以退出调试。\nSubmit "-1" to quit debug.')
@@ -8231,7 +8430,7 @@ if __name__ == "__main__":
             else:
                 data_options: list[int] = []
                 if mode == "all":
-                    data_options = list(range(1, 12))
+                    data_options = list(range(1, 13))
                 else:
                     try:
                         tmp = eval(mode)
@@ -8411,6 +8610,16 @@ if __name__ == "__main__":
                         if export:
                             anvilExtractor.export_anvil_data()
                     elif dOption == 10:
+                        logPrint("[%d/%d]正在调试场景英雄数据……\nDebugging Cameo data ..." %(nDataOption_iter, nDataOptions))
+                        cameoExtractor: CameoExtractor = CameoExtractor(extractor)
+                        if dir_type == "extract":
+                            cameoPath: str = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json"
+                        else:
+                            cameoPath: str = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json"
+                        cameoExtractor.build_cameo_dataframe(debug = True, path = cameoPath)
+                        if export:
+                            cameoExtractor.export_cameo_data()
+                    elif dOption == 11:
                         logPrint("[%d/%d]正在调试荣誉嘉宾数据……\nDebugging Guest of Honor data ..." %(nDataOption_iter, nDataOptions))
                         gohExtractor: GoHExtractor = GoHExtractor(extractor)
                         if dir_type == "extract":
@@ -8426,7 +8635,7 @@ if __name__ == "__main__":
                         gohExtractor.build_GoH_dataframe(debug = True, paths = GoHPaths)
                         if export:
                             gohExtractor.export_GoH_data()
-                    elif dOption == 11:
+                    elif dOption == 12:
                         logPrint("[%d/%d]正在调试云顶之弈数据……\nDebugging TFT data ..." %(nDataOption_iter, nDataOptions))
                         tftExtractor: TFTExtractor = TFTExtractor(extractor)
                         if dir_type == "extract":
