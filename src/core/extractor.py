@@ -22,7 +22,7 @@ from src.core.config.localization import language_ddragon, language_cdragon
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/04/21
+# 更新（Last update）：     2026/04/22
 #=============================================================================
 
 #定义异质性检验函数（Define heterogeneity verification function）
@@ -5574,6 +5574,262 @@ class AnvilExtractor(LoLDataExtractor):
                 logPrint(f"锻造器数据已导出到{self.wbPath}。\nAnvil data have been exported to {self.wbPath}.", print_time = True)
                 break
 
+class CherryRoundExtractor(LoLDataExtractor):
+    def __init__(self, extractor: LoLDataExtractor) -> None:
+        '''
+        初始化一个斗魂竞技场回合阶段提取器对象。<br>Initial a CherryRoundExtractor object.
+        
+        :param extractor: 父类对象。用于继承其属性。<br>Parent object. Pass it to inherit its attributes.
+        :type extractor: LoLDataExtractor
+        '''
+        self.__dict__.update(extractor.__dict__)
+        self.map30_ready: bool = False
+        self.CherryRoundList_df: pandas.DataFrame = pandas.DataFrame()
+        self.CherryRound_df: pandas.DataFrame = pandas.DataFrame()
+        self.CherryPhase_df: pandas.DataFrame = pandas.DataFrame()
+    
+    def init_data_readiness(self) -> None:
+        '''
+        初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
+        '''
+        self.map30_ready = False
+    
+    def get_CherryRound_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
+        '''
+        在线获取斗魂竞技场回合二进制描述数据。<br>Get binary description data of Arena rounds online.
+        '''
+        logPrint = self.log.logPrint
+        map30_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map30/map30.bin.json"
+        if map30_bin_url in self.__class__.data_cache["online"]:
+            self.map30_bin = self.__class__.data_cache["online"][map30_bin_url]
+        else:
+            source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session, log = self.log)
+            if status != 200:
+                if status == 404:
+                    logPrint("怒火角斗场地图信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(map30_bin_url))
+                else:
+                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
+                time.sleep(3)
+                self.init_data_readiness()
+                return
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+            self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
+        self.map30_ready = True
+    
+    def read_CherryRound_data(self, path: str) -> None:
+        '''
+        离线获取荣誉嘉宾二进制描述数据。<br>Get binary description data of Guests of Honor offline.
+        
+        :param path: 荣誉嘉宾二进制描述文件的本地路径。<br>A local path of GoH binary description file.
+        :type path: str
+        '''
+        logPrint = self.log.logPrint
+        if not os.path.exists(path):
+            logPrint(f"以下路径不存在：\nThe following path doesn't exist:\n{path}")
+            self.init_data_readiness()
+            return
+        map30_bin_path: str = path
+        if map30_bin_path in self.__class__.data_cache["local"]:
+            self.map30_bin = self.__class__.data_cache["local"][map30_bin_path]
+        else:
+            with open(map30_bin_path, "r", encoding = "utf-8") as fp:
+                self.map30_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+            self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
+        self.map30_ready = True
+    
+    def build_CherryRound_dataframe(self, debug: bool = False, path: Optional[str] = None) -> int:
+        '''
+        构建斗魂竞技场回合数据框。<br>Build Arena round dataframes.
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 斗魂竞技场回合二进制描述文件的本地路径。<br>A local path of Arena round binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        :return: 状态码。<br>Status code.
+        
+            - 0: 成功。<br>Success.
+            - 1: 未指定本地文件路径。<br>Local path not specified.
+            - 2: 数据未准备就绪。<br>Data not ready.
+        :rtype: int
+        '''
+        logPrint = self.log.logPrint
+        if not self.map30_ready:
+            #获取斗魂竞技场回合信息（Get Arena round information）
+            logPrint("正在读取斗魂竞技场回合数据……\nReading Arena round data ...", print_time = True)
+            if debug:
+                if path == None:
+                    logPrint("尚未指定本地文件路径！\nLocal path not specified yet!")
+                    return 1
+                else:
+                    self.read_CherryRound_data(path = path)
+            else:
+                self.get_CherryRound_data()
+            if not self.map30_ready:
+                logPrint("斗魂竞技场回合数据尚未准备就绪！\nArena round data not prepared!")
+                return 2
+        
+        #定义数据结构（Define the data structure）
+        logPrint("正在构建斗魂竞技场回合数据框……\nBuilding the Arena round dataframes ...", print_time = True)
+        CherryRoundList_header_keys: list[str] = list(CherryRoundList_header.keys())
+        CherryRoundList_data: dict[str, list[Any]] = {key: [] for key in CherryRoundList_header_keys}
+        CherryRoundList_data_json: dict[str, list[Any]] = copy.deepcopy(CherryRoundList_data)
+        CherryRound_header_keys: list[str] = list(CherryRound_header.keys())
+        CherryRound_data: dict[str, list[Any]] = {key: [] for key in CherryRound_header_keys}
+        CherryRound_data_json: dict[str, list[Any]] = copy.deepcopy(CherryRound_data)
+        CherryPhase_header_keys: list[str] = list(CherryPhase_header.keys())
+        CherryPhase_data: dict[str, list[Any]] = {key: [] for key in CherryPhase_header_keys}
+        CherryPhase_data_json: dict[str, list[Any]] = copy.deepcopy(CherryPhase_data)
+        
+        #数据整理核心部分（Data organization core part）
+        pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
+        strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
+        strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
+        for (key1, value) in self.map30_bin.items():
+            if key1 != "__linked" and value["__type"] == "LoLModesRoundsListData":
+                for round_index in range(len(value["Rounds"])):
+                    roundKey: str = value["Rounds"][round_index]
+                    for i in range(len(CherryRoundList_header_keys)):
+                        key: str = CherryRoundList_header_keys[i]
+                        if i == 0: #方案主键（`key`）
+                            to_append: Any = key1
+                        elif i == 1: #旗标（`{37e6e53a}`）
+                            to_append = value["{37e6e53a}"]
+                        elif i == 2: #回合数（`roundNumber`）
+                            to_append = round_index + 1
+                        elif i == 3: #回合主键（`roundKey`）
+                            to_append = roundKey
+                        else: #回合阶段本地化名称（Localized round phase names）
+                            strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 4 else strtable_lol_default
+                            if roundKey in self.map30_bin:
+                                phaseKeys: list[str] = self.map30_bin[roundKey]["Phases"]
+                                phaseNames: list[str] = []
+                                for phaseKey in phaseKeys:
+                                    if phaseKey in self.map30_bin:
+                                        phaseName_key: str = self.map30_bin[phaseKey]["DisplayNameTra"]
+                                        phaseName: str = self.get_strtable_value(strtable_locale, phaseName_key, default = phaseName_key)
+                                        phaseNames.append(phaseName)
+                                    else:
+                                        phaseNames.append("")
+                                to_append = phaseNames
+                            else:
+                                to_append = ""
+                        CherryRoundList_data[key].append(to_append)
+                        CherryRoundList_data_json[key].append(pyobj2json(to_append))
+            elif key1 != "__linked" and value["__type"] == "LoLModesRoundData":
+                phaseKeys: list[str] = value["Phases"]
+                for i in range(len(CherryRound_header_keys)):
+                    key: str = CherryRound_header_keys[i]
+                    if i == 0: #主键（`key`）
+                        to_append: Any = key1
+                    elif i == 1: #阶段主键列表（`Phases`）
+                        to_append = phaseKeys
+                    else: #回合阶段本地化名称（Localized round phase names）
+                        strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 2 else strtable_lol_default
+                        phaseNames: list[str] = []
+                        for phaseKey in phaseKeys:
+                            if phaseKey in self.map30_bin:
+                                phaseName_key: str = self.map30_bin[phaseKey]["DisplayNameTra"]
+                                phaseName: str = self.get_strtable_value(strtable_locale, phaseName_key, default = phaseName_key)
+                                phaseNames.append(phaseName)
+                            else:
+                                phaseNames.append("")
+                        to_append = phaseNames
+                    CherryRound_data[key].append(to_append)
+                    CherryRound_data_json[key].append(pyobj2json(to_append))
+            elif key1 != "__linked" and value["__type"] == "LoLModesPhaseData":
+                for subphase_index in range(len(value["SubPhases"])):
+                    subphase: dict[str, Any] = value["SubPhases"][subphase_index]
+                    for i in range(len(CherryPhase_header_keys)):
+                        key: str = CherryPhase_header_keys[i]
+                        if i == 0: #主键（`key`）
+                            to_append: Any = key1
+                        elif i <= 7:
+                            if i <= 5:
+                                to_append = value.get(key, "")
+                            else: #回合阶段本地化名称（Localized round phase names）
+                                strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 6 else strtable_lol_default
+                                to_append = self.get_strtable_value(strtable_locale, value["DisplayNameTra"], default = value["DisplayNameTra"])
+                        else:
+                            if i == 8: #阶段序号（`phase number`）
+                                to_append = subphase_index + 1
+                            else:
+                                to_append = subphase.get(key.split()[1], "")
+                        CherryPhase_data[key].append(to_append)
+                        CherryPhase_data_json[key].append(pyobj2json(to_append))
+        CherryRoundList_statistics_output_order: list[int] = [0, 2, 3, 4, 5]
+        CherryRoundList_data_organized: dict[str, list[Any]] = {CherryRoundList_header_keys[i]: CherryRoundList_data_json[CherryRoundList_header_keys[i]] for i in CherryRoundList_statistics_output_order}
+        CherryRoundList_df: pandas.DataFrame = pandas.DataFrame(data = CherryRoundList_data_organized)
+        CherryRoundList_df = pandas.concat([pandas.DataFrame([CherryRoundList_header])[CherryRoundList_df.columns], CherryRoundList_df], ignore_index = True)
+        self.CherryRoundList_df = CherryRoundList_df
+        CherryRound_statistics_output_order: list[int] = [0, 1, 2, 3]
+        CherryRound_data_organized: dict[str, list[Any]] = {CherryRound_header_keys[i]: CherryRound_data_json[CherryRound_header_keys[i]] for i in CherryRound_statistics_output_order}
+        CherryRound_df: pandas.DataFrame = pandas.DataFrame(data = CherryRound_data_organized)
+        CherryRound_df = pandas.concat([pandas.DataFrame([CherryRound_header])[CherryRound_df.columns], CherryRound_df], ignore_index = True)
+        self.CherryRound_df = CherryRound_df
+        CherryPhase_statistics_output_order: list[int] = [0, 2, 6, 7, 1, 8, 9, 10, 11, 12, 13, 3, 4, 5]
+        CherryPhase_data_organized: dict[str, list[Any]] = {CherryPhase_header_keys[i]: CherryPhase_data_json[CherryPhase_header_keys[i]] for i in CherryPhase_statistics_output_order}
+        CherryPhase_df: pandas.DataFrame = pandas.DataFrame(data = CherryPhase_data_organized)
+        CherryPhase_df = pandas.concat([pandas.DataFrame([CherryPhase_header])[CherryPhase_df.columns], CherryPhase_df], ignore_index = True)
+        self.CherryPhase_df = CherryPhase_df
+        return 0
+    
+    def export_CherryRound_data(self, debug: bool = False, path: Optional[str] = None) -> None:
+        '''
+        导出斗魂竞技场回合数据到工作簿中。产生以下工作表：<br>Export Arena round data to a workbook. The following worksheet is added:
+        - 斗魂竞技场回合列表（Cherry Round List）
+        - 斗魂竞技场回合（Cherry Round）
+        - 斗魂竞技场阶段（Cherry Phase）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 斗魂竞技场回合二进制描述文件的本地路径。<br>A local path of Arena round binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        '''
+        logInput = self.log.logInput
+        logPrint = self.log.logPrint
+        if self.wbPath == "":
+            logPrint("尚未指定文件保存路径。\nPath of exported file not specified.")
+            return
+        if self.patch == "" and self.sheet_naming_fold:
+            logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
+            return
+        if self.CherryRoundList_df.empty or self.CherryRound_df.empty or self.CherryPhase_df.empty:
+            status: int = self.build_CherryRound_dataframe(debug = debug, path = path)
+            if status != 0:
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
+                logInput()
+                return
+        #导出数据（Export data）
+        logPrint("正在导出数据……\nExporting data ...", print_time = True)
+        if not os.path.exists(self.wbPath):
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
+        workbook_exist: bool = os.path.exists(self.wbPath)
+        sheet1_name: str = f"{self.patch_number} CherryRoundList" if self.sheet_naming_fold else "斗魂竞技场回合列表（Cherry Round List）"
+        sheet2_name: str = f"{self.patch_number} CherryRound" if self.sheet_naming_fold else "斗魂竞技场回合（Cherry Round）"
+        sheet3_name: str = f"{self.patch_number} CherryPhase" if self.sheet_naming_fold else "斗魂竞技场阶段（Cherry Phase）"
+        while True:
+            try:
+                with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
+                    addDefaultStyle(self.CherryRoundList_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(self.CherryRound_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                    addDefaultStyle(self.CherryPhase_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
+                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
+                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
+                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
+                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet3_name, header = None, index = False, startcol = 0, startrow = 0)
+            except PermissionError:
+                logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
+                cont = logInput()
+                if cont != "" and cont[0] == "0":
+                    break
+            else:
+                logPrint(f"斗魂竞技场回合数据已导出到{self.wbPath}。\nArena round data have been exported to {self.wbPath}.", print_time = True)
+                break
+
 class CameoExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
         '''
@@ -6035,262 +6291,6 @@ class GoHExtractor(LoLDataExtractor):
                     break
             else:
                 logPrint(f"荣誉嘉宾数据已导出到{self.wbPath}。\nGoH data have been exported to {self.wbPath}.", print_time = True)
-                break
-
-class CherryRoundExtractor(LoLDataExtractor):
-    def __init__(self, extractor: LoLDataExtractor) -> None:
-        '''
-        初始化一个斗魂竞技场回合阶段提取器对象。<br>Initial a CherryRoundExtractor object.
-        
-        :param extractor: 父类对象。用于继承其属性。<br>Parent object. Pass it to inherit its attributes.
-        :type extractor: LoLDataExtractor
-        '''
-        self.__dict__.update(extractor.__dict__)
-        self.map30_ready: bool = False
-        self.CherryRoundList_df: pandas.DataFrame = pandas.DataFrame()
-        self.CherryRound_df: pandas.DataFrame = pandas.DataFrame()
-        self.CherryPhase_df: pandas.DataFrame = pandas.DataFrame()
-    
-    def init_data_readiness(self) -> None:
-        '''
-        初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
-        '''
-        self.map30_ready = False
-    
-    def get_CherryRound_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
-        '''
-        在线获取斗魂竞技场回合二进制描述数据。<br>Get binary description data of Arena rounds online.
-        '''
-        logPrint = self.log.logPrint
-        map30_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map30/map30.bin.json"
-        if map30_bin_url in self.__class__.data_cache["online"]:
-            self.map30_bin = self.__class__.data_cache["online"][map30_bin_url]
-        else:
-            source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session, log = self.log)
-            if status != 200:
-                if status == 404:
-                    logPrint("怒火角斗场地图信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(map30_bin_url))
-                else:
-                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
-                time.sleep(3)
-                self.init_data_readiness()
-                return
-            self.map30_bin: dict[str, list[str] | dict[str, Any]] = source.json()
-            self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
-        self.map30_ready = True
-    
-    def read_CherryRound_data(self, path: str) -> None:
-        '''
-        离线获取荣誉嘉宾二进制描述数据。<br>Get binary description data of Guests of Honor offline.
-        
-        :param path: 荣誉嘉宾二进制描述文件的本地路径。<br>A local path of GoH binary description file.
-        :type path: str
-        '''
-        logPrint = self.log.logPrint
-        if not os.path.exists(path):
-            logPrint(f"以下路径不存在：\nThe following path doesn't exist:\n{path}")
-            self.init_data_readiness()
-            return
-        map30_bin_path: str = path
-        if map30_bin_path in self.__class__.data_cache["local"]:
-            self.map30_bin = self.__class__.data_cache["local"][map30_bin_path]
-        else:
-            with open(map30_bin_path, "r", encoding = "utf-8") as fp:
-                self.map30_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
-            self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
-        self.map30_ready = True
-    
-    def build_CherryRound_dataframe(self, debug: bool = False, path: Optional[str] = None) -> int:
-        '''
-        构建斗魂竞技场回合数据框。<br>Build Arena round dataframes.
-        
-        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
-        :type debug: bool
-        :param path: 斗魂竞技场回合二进制描述文件的本地路径。<br>A local path of Arena round binary description file.
-        
-            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
-        :type path: str
-        :return: 状态码。<br>Status code.
-        
-            - 0: 成功。<br>Success.
-            - 1: 未指定本地文件路径。<br>Local path not specified.
-            - 2: 数据未准备就绪。<br>Data not ready.
-        :rtype: int
-        '''
-        logPrint = self.log.logPrint
-        if not self.map30_ready:
-            #获取斗魂竞技场回合信息（Get Arena round information）
-            logPrint("正在读取斗魂竞技场回合数据……\nReading Arena round data ...", print_time = True)
-            if debug:
-                if path == None:
-                    logPrint("尚未指定本地文件路径！\nLocal path not specified yet!")
-                    return 1
-                else:
-                    self.read_CherryRound_data(path = path)
-            else:
-                self.get_CherryRound_data()
-            if not self.map30_ready:
-                logPrint("斗魂竞技场回合数据尚未准备就绪！\nArena round data not prepared!")
-                return 2
-        
-        #定义数据结构（Define the data structure）
-        logPrint("正在构建斗魂竞技场回合数据框……\nBuilding the Arena round dataframes ...", print_time = True)
-        CherryRoundList_header_keys: list[str] = list(CherryRoundList_header.keys())
-        CherryRoundList_data: dict[str, list[Any]] = {key: [] for key in CherryRoundList_header_keys}
-        CherryRoundList_data_json: dict[str, list[Any]] = copy.deepcopy(CherryRoundList_data)
-        CherryRound_header_keys: list[str] = list(CherryRound_header.keys())
-        CherryRound_data: dict[str, list[Any]] = {key: [] for key in CherryRound_header_keys}
-        CherryRound_data_json: dict[str, list[Any]] = copy.deepcopy(CherryRound_data)
-        CherryPhase_header_keys: list[str] = list(CherryPhase_header.keys())
-        CherryPhase_data: dict[str, list[Any]] = {key: [] for key in CherryPhase_header_keys}
-        CherryPhase_data_json: dict[str, list[Any]] = copy.deepcopy(CherryPhase_data)
-        
-        #数据整理核心部分（Data organization core part）
-        pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
-        strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
-        strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
-        for (key1, value) in self.map30_bin.items():
-            if key1 != "__linked" and value["__type"] == "LoLModesRoundsListData":
-                for round_index in range(len(value["Rounds"])):
-                    roundKey: str = value["Rounds"][round_index]
-                    for i in range(len(CherryRoundList_header_keys)):
-                        key: str = CherryRoundList_header_keys[i]
-                        if i == 0: #方案主键（`key`）
-                            to_append: Any = key1
-                        elif i == 1: #旗标（`{37e6e53a}`）
-                            to_append = value["{37e6e53a}"]
-                        elif i == 2: #回合数（`roundNumber`）
-                            to_append = round_index + 1
-                        elif i == 3: #回合主键（`roundKey`）
-                            to_append = roundKey
-                        else: #回合阶段本地化名称（Localized round phase names）
-                            strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 4 else strtable_lol_default
-                            if roundKey in self.map30_bin:
-                                phaseKeys: list[str] = self.map30_bin[roundKey]["Phases"]
-                                phaseNames: list[str] = []
-                                for phaseKey in phaseKeys:
-                                    if phaseKey in self.map30_bin:
-                                        phaseName_key: str = self.map30_bin[phaseKey]["DisplayNameTra"]
-                                        phaseName: str = self.get_strtable_value(strtable_locale, phaseName_key, default = phaseName_key)
-                                        phaseNames.append(phaseName)
-                                    else:
-                                        phaseNames.append("")
-                                to_append = phaseNames
-                            else:
-                                to_append = ""
-                        CherryRoundList_data[key].append(to_append)
-                        CherryRoundList_data_json[key].append(pyobj2json(to_append))
-            elif key1 != "__linked" and value["__type"] == "LoLModesRoundData":
-                phaseKeys: list[str] = value["Phases"]
-                for i in range(len(CherryRound_header_keys)):
-                    key: str = CherryRound_header_keys[i]
-                    if i == 0: #主键（`key`）
-                        to_append: Any = key1
-                    elif i == 1: #阶段主键列表（`Phases`）
-                        to_append = phaseKeys
-                    else: #回合阶段本地化名称（Localized round phase names）
-                        strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 2 else strtable_lol_default
-                        phaseNames: list[str] = []
-                        for phaseKey in phaseKeys:
-                            if phaseKey in self.map30_bin:
-                                phaseName_key: str = self.map30_bin[phaseKey]["DisplayNameTra"]
-                                phaseName: str = self.get_strtable_value(strtable_locale, phaseName_key, default = phaseName_key)
-                                phaseNames.append(phaseName)
-                            else:
-                                phaseNames.append("")
-                        to_append = phaseNames
-                    CherryRound_data[key].append(to_append)
-                    CherryRound_data_json[key].append(pyobj2json(to_append))
-            elif key1 != "__linked" and value["__type"] == "LoLModesPhaseData":
-                for subphase_index in range(len(value["SubPhases"])):
-                    subphase: dict[str, Any] = value["SubPhases"][subphase_index]
-                    for i in range(len(CherryPhase_header_keys)):
-                        key: str = CherryPhase_header_keys[i]
-                        if i == 0: #主键（`key`）
-                            to_append: Any = key1
-                        elif i <= 7:
-                            if i <= 5:
-                                to_append = value.get(key, "")
-                            else: #回合阶段本地化名称（Localized round phase names）
-                                strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 6 else strtable_lol_default
-                                to_append = self.get_strtable_value(strtable_locale, value["DisplayNameTra"], default = value["DisplayNameTra"])
-                        else:
-                            if i == 8: #阶段序号（`phase number`）
-                                to_append = subphase_index + 1
-                            else:
-                                to_append = subphase.get(key.split()[1], "")
-                        CherryPhase_data[key].append(to_append)
-                        CherryPhase_data_json[key].append(pyobj2json(to_append))
-        CherryRoundList_statistics_output_order: list[int] = [0, 2, 3, 4, 5]
-        CherryRoundList_data_organized: dict[str, list[Any]] = {CherryRoundList_header_keys[i]: CherryRoundList_data_json[CherryRoundList_header_keys[i]] for i in CherryRoundList_statistics_output_order}
-        CherryRoundList_df: pandas.DataFrame = pandas.DataFrame(data = CherryRoundList_data_organized)
-        CherryRoundList_df = pandas.concat([pandas.DataFrame([CherryRoundList_header])[CherryRoundList_df.columns], CherryRoundList_df], ignore_index = True)
-        self.CherryRoundList_df = CherryRoundList_df
-        CherryRound_statistics_output_order: list[int] = [0, 1, 2, 3]
-        CherryRound_data_organized: dict[str, list[Any]] = {CherryRound_header_keys[i]: CherryRound_data_json[CherryRound_header_keys[i]] for i in CherryRound_statistics_output_order}
-        CherryRound_df: pandas.DataFrame = pandas.DataFrame(data = CherryRound_data_organized)
-        CherryRound_df = pandas.concat([pandas.DataFrame([CherryRound_header])[CherryRound_df.columns], CherryRound_df], ignore_index = True)
-        self.CherryRound_df = CherryRound_df
-        CherryPhase_statistics_output_order: list[int] = [0, 2, 6, 7, 1, 8, 9, 10, 11, 12, 13, 3, 4, 5]
-        CherryPhase_data_organized: dict[str, list[Any]] = {CherryPhase_header_keys[i]: CherryPhase_data_json[CherryPhase_header_keys[i]] for i in CherryPhase_statistics_output_order}
-        CherryPhase_df: pandas.DataFrame = pandas.DataFrame(data = CherryPhase_data_organized)
-        CherryPhase_df = pandas.concat([pandas.DataFrame([CherryPhase_header])[CherryPhase_df.columns], CherryPhase_df], ignore_index = True)
-        self.CherryPhase_df = CherryPhase_df
-        return 0
-    
-    def export_CherryRound_data(self, debug: bool = False, path: Optional[str] = None) -> None:
-        '''
-        导出斗魂竞技场回合数据到工作簿中。产生以下工作表：<br>Export Arena round data to a workbook. The following worksheet is added:
-        - 斗魂竞技场回合列表（Cherry Round List）
-        - 斗魂竞技场回合（Cherry Round）
-        - 斗魂竞技场阶段（Cherry Phase）
-        
-        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
-        :type debug: bool
-        :param path: 斗魂竞技场回合二进制描述文件的本地路径。<br>A local path of Arena round binary description file.
-        
-            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
-        :type path: str
-        '''
-        logInput = self.log.logInput
-        logPrint = self.log.logPrint
-        if self.wbPath == "":
-            logPrint("尚未指定文件保存路径。\nPath of exported file not specified.")
-            return
-        if self.patch == "" and self.sheet_naming_fold:
-            logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
-            return
-        if self.CherryRoundList_df.empty or self.CherryRound_df.empty or self.CherryPhase_df.empty:
-            status: int = self.build_CherryRound_dataframe(debug = debug, path = path)
-            if status != 0:
-                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
-                logInput()
-                return
-        #导出数据（Export data）
-        logPrint("正在导出数据……\nExporting data ...", print_time = True)
-        if not os.path.exists(self.wbPath):
-            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
-        workbook_exist: bool = os.path.exists(self.wbPath)
-        sheet1_name: str = f"{self.patch_number} CherryRoundList" if self.sheet_naming_fold else "斗魂竞技场回合列表（Cherry Round List）"
-        sheet2_name: str = f"{self.patch_number} CherryRound" if self.sheet_naming_fold else "斗魂竞技场回合（Cherry Round）"
-        sheet3_name: str = f"{self.patch_number} CherryPhase" if self.sheet_naming_fold else "斗魂竞技场阶段（Cherry Phase）"
-        while True:
-            try:
-                with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    addDefaultStyle(self.CherryRoundList_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                    addDefaultStyle(self.CherryRound_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
-                    addDefaultStyle(self.CherryPhase_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
-                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet3_name, header = None, index = False, startcol = 0, startrow = 0)
-            except PermissionError:
-                logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                cont = logInput()
-                if cont != "" and cont[0] == "0":
-                    break
-            else:
-                logPrint(f"斗魂竞技场回合数据已导出到{self.wbPath}。\nArena round data have been exported to {self.wbPath}.", print_time = True)
                 break
 
 class TFTExtractor(LoLDataExtractor):
@@ -8103,7 +8103,7 @@ if __name__ == "__main__":
             nDataOption_iter: int = 0
             #设置要提取的数据类型（Set the type of data to extract）
             while True:
-                logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t角色（Characters）\n6\t装备（Items）\n7\t斗魂竞技场回合阶段（Arena Round Phase）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t场景英雄（Cameo）\n11\t荣誉嘉宾（Guests of Honor）\n12\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\nall\t所有（All）")
+                logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t角色（Characters）\n6\t装备（Items）\n7\t强化符文（Augments）\n8\t锻造器（Anvils）\n9\t斗魂竞技场回合阶段（Arena Round Phase）\n10\t场景英雄（Cameo）\n11\t荣誉嘉宾（Guests of Honor）\n12\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\nall\t所有（All）")
                 mode: str = logInput()
                 if mode == "":
                     continue
@@ -8193,17 +8193,17 @@ if __name__ == "__main__":
                             itemExtractor: ItemExtractor = ItemExtractor(extractor)
                             itemExtractor.export_item_data()
                         elif dOption == 7:
-                            logPrint("[%d/%d][%d/%d]正在整理斗魂竞技场回合数据……\nOrganizing Arena round data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
-                            cherryRoundExtractor: CherryRoundExtractor = CherryRoundExtractor(extractor)
-                            cherryRoundExtractor.export_CherryRound_data()
-                        elif dOption == 8:
                             logPrint("[%d/%d][%d/%d]正在整理强化符文数据……\nOrganizing augment data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             augmentExtractor: AugmentExtractor = AugmentExtractor(extractor)
                             augmentExtractor.export_augment_data()
-                        elif dOption == 9:
+                        elif dOption == 8:
                             logPrint("[%d/%d][%d/%d]正在整理锻造器数据……\nOrganizing anvil data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             anvilExtractor: AnvilExtractor = AnvilExtractor(extractor)
                             anvilExtractor.export_anvil_data()
+                        elif dOption == 9:
+                            logPrint("[%d/%d][%d/%d]正在整理斗魂竞技场回合数据……\nOrganizing Arena round data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
+                            cherryRoundExtractor: CherryRoundExtractor = CherryRoundExtractor(extractor)
+                            cherryRoundExtractor.export_CherryRound_data()
                         elif dOption == 10:
                             logPrint("[%d/%d][%d/%d]正在整理场景英雄数据……\nOrganizing Cameo data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             cameoExtractor: CameoExtractor = CameoExtractor(extractor)
@@ -8341,7 +8341,7 @@ if __name__ == "__main__":
         nDataOption_iter: int = 0
         #设置要提取的数据类型（Set the type of data to extract）
         while True:
-            logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t调试（Debug）\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t角色（Characters）\n6\t装备（Items）\n7\t斗魂竞技场回合阶段（Arena Round Phase）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t场景英雄（Cameo）\n11\t荣誉嘉宾（Guests of Honor）\n12\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\nall\t所有（All）")
+            logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t调试（Debug）\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t角色（Characters）\n6\t装备（Items）\n7\t强化符文（Augments）\n8\t锻造器（Anvils）\n9\t斗魂竞技场回合阶段（Arena Round Phase）\n10\t场景英雄（Cameo）\n11\t荣誉嘉宾（Guests of Honor）\n12\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\nall\t所有（All）")
             mode: str = logInput()
             if mode == "":
                 continue
@@ -8367,12 +8367,12 @@ if __name__ == "__main__":
                             scope["championExtractor"] = championExtractor2
                         if "itemExtractor" in dir():
                             scope["itemExtractor"] = itemExtractor
-                        if "cherryRoundExtractor" in dir():
-                            scope["cherryRoundExtractor"] = cherryRoundExtractor
                         if "augmentExtractor" in dir():
                             scope["augmentExtractor"] = augmentExtractor
                         if "anvilExtractor" in dir():
                             scope["anvilExtractor"] = anvilExtractor
+                        if "cherryRoundExtractor" in dir():
+                            scope["cherryRoundExtractor"] = cherryRoundExtractor
                         if "cameoExtractor" in dir():
                             scope["cameoExtractor"] = cameoExtractor
                         if "gohExtractor" in dir():
@@ -8562,16 +8562,6 @@ if __name__ == "__main__":
                         if export:
                             itemExtractor.export_item_data()
                     elif dOption == 7:
-                        logPrint("[%d/%d]正在调试斗魂竞技场回合数据……\nDebugging Arena round data ..." %(nDataOption_iter, nDataOptions))
-                        cherryRoundExtractor: CherryRoundExtractor = CherryRoundExtractor(extractor)
-                        if dir_type == "extract":
-                            CherryRound_path: str = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json"
-                        else:
-                            CherryRound_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json"
-                        cherryRoundExtractor.build_CherryRound_dataframe(debug = True, path = CherryRound_path)
-                        if export:
-                            cherryRoundExtractor.export_CherryRound_data()
-                    elif dOption == 8:
                         logPrint("[%d/%d]正在调试强化符文数据……\nDebugging augment data ..." %(nDataOption_iter, nDataOptions))
                         augmentExtractor: AugmentExtractor = AugmentExtractor(extractor)
                         if dir_type == "extract":
@@ -8593,7 +8583,7 @@ if __name__ == "__main__":
                         augmentExtractor.build_augment_dataframe(debug = True, paths = augment_paths)
                         if export:
                             augmentExtractor.export_augment_data()
-                    elif dOption == 9:
+                    elif dOption == 8:
                         logPrint("[%d/%d]正在调试锻造器数据……\nDebugging anvil data ..." %(nDataOption_iter, nDataOptions))
                         anvilExtractor: AnvilExtractor = AnvilExtractor(extractor)
                         if dir_type == "extract":
@@ -8609,6 +8599,16 @@ if __name__ == "__main__":
                         anvilExtractor.build_anvil_dataframe(debug = True, paths = anvil_paths)
                         if export:
                             anvilExtractor.export_anvil_data()
+                    elif dOption == 9:
+                        logPrint("[%d/%d]正在调试斗魂竞技场回合数据……\nDebugging Arena round data ..." %(nDataOption_iter, nDataOptions))
+                        cherryRoundExtractor: CherryRoundExtractor = CherryRoundExtractor(extractor)
+                        if dir_type == "extract":
+                            CherryRound_path: str = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json"
+                        else:
+                            CherryRound_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json"
+                        cherryRoundExtractor.build_CherryRound_dataframe(debug = True, path = CherryRound_path)
+                        if export:
+                            cherryRoundExtractor.export_CherryRound_data()
                     elif dOption == 10:
                         logPrint("[%d/%d]正在调试场景英雄数据……\nDebugging Cameo data ..." %(nDataOption_iter, nDataOptions))
                         cameoExtractor: CameoExtractor = CameoExtractor(extractor)
