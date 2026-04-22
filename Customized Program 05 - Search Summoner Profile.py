@@ -38,7 +38,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/04/16
+# 更新（Last update）：     2026/04/22
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1292,7 +1292,7 @@ async def sort_basic_info(connection: Connection, puuid: str, remove_empty: bool
         info_df = info_df[info_df["值"] != ""]
     return info_df
 
-async def sort_champion_mastery(connection: Connection, puuid: str, LoLChampions: dict[int, dict[str, Any]]) -> pandas.DataFrame:
+async def sort_champion_mastery(connection: Connection, puuid: str, LoLChampions: dict[int, dict[str, Any]], unmapped_keys: Optional[dict[str, set[Any]]] = None) -> pandas.DataFrame:
     '''
     将一名玩家的英雄成就整理成一张表格。<br>Sort the champion mastery of a player into a table.
     
@@ -1311,27 +1311,38 @@ async def sort_champion_mastery(connection: Connection, puuid: str, LoLChampions
         - `GET /lol-game-data/assets/v1/champions/{championId}.json`
         - `GET /lol-champions/v1/inventories/{summonerId}/champions`
     :type LoLChampions: dict[int, dict[str, Any]]
+    :param unmapped_keys: 各数据资源未找到的键。用于控制数据未找到匹配记录的提示最多输出一次。<br>Unmapped keys in all data resources, used to control the hint about data not found to be printed at most once.
+    :type unmapped_keys: dict[str, set[int]]
     :return: 英雄成就数据框。<br>Champion mastery dataframe.
     '''
+    if unmapped_keys == None:
+        unmapped_keys = {"LoLChampion": set()}
     mastery: list[dict[str, Any]] = await (await connection.request("GET", f"/lol-champion-mastery/v1/{puuid}/champion-mastery")).json()
     mastery_header_keys: list[str] = list(mastery_header.keys())
     mastery_data: dict[str, list[Any]] = {key: [] for key in mastery_header_keys}
     for mastery_iter in mastery:
         for i in range(len(mastery_header)):
             key: str = mastery_header_keys[i]
-            if i <= 15:
+            if i <= 16:
                 if i == 6: #已赚取海克斯宝箱（`chestGranted`）
                     to_append: Any = mastery_iter.get("chestGranted", False) #外服的英雄成就接口中没有“chestGranted”这个键（Champion mastery API in Riot servers don't include the key "chestGranted"）
-                elif i == 13: #英雄（`champion`）
-                    to_append = LoLChampions[mastery_iter["championId"]]["name"]
-                elif i == 14: #代号（`alias`）
-                    to_append = LoLChampions[mastery_iter["championId"]]["alias"]
-                elif i == 15: #上次使用时间（`lastPlayDate`） #这里需要将时间戳转换为标准格式的时间（Here the timestamp is going to be converted into time in standard format）
+                elif i >= 13 and i <= 15: #英雄（`champion`）
+                    subkey: str = "name" if i == 13 else "alias" if i == 14 else "squarePortraitPath"
+                    championId: int = mastery_iter["championId"]
+                    if championId in LoLChampions:
+                        if i == 13 or i == 14:
+                            to_append = LoLChampions[championId][subkey] if championId in LoLChampions else "" #在2026年4月22日，测试服的客户端数据中删除了堕落天使 莫甘娜的数据（On Apr. 22nd, 2026, Morgana was deleted from PBE League Client plugins data）
+                        else: #英雄方块图像（`championSquarePortrait`）
+                            to_append = urljoin(connection.address, LoLChampions[championId]["squarePortraitPath"]) if championId in LoLChampions else ""
+                    else:
+                        if not championId in unmapped_keys["LoLChampion"]:
+                            unmapped_keys["LoLChampion"].add(championId)
+                            logPrint("英雄成就（%d）获取失败。\nChampion mastery (%d) capture failed." %(championId, championId))
+                        to_append = ""
+                elif i == 16: #上次使用时间（`lastPlayDate`） #这里需要将时间戳转换为标准格式的时间（Here the timestamp is going to be converted into time in standard format）
                     to_append = getISOTime(mastery_iter["lastPlayTime"] / 1000) #英雄联盟中的时间戳精确到毫秒，也就是放大了1000倍（Timestamps in LCU API are accurate to milliseconds, namely multiplied by 1000）
                 else:
                     to_append = mastery_iter[key]
-            elif i == 16: #英雄方块图像（`championSquarePortrait`）
-                to_append = urljoin(connection.address, LoLChampions[mastery_iter["championId"]]["squarePortraitPath"])
             elif i >= 17 and i <= 19:
                 if i == 17: #已达到Ⅳ级里程碑（`nextSeasonMilestoneBonus`）
                     to_append = mastery_iter["nextSeasonMilestone"]["bonus"]
@@ -1345,13 +1356,13 @@ async def sort_champion_mastery(connection: Connection, puuid: str, LoLChampions
                 else: #下个里程点奖励物品序号（`nextSeasonMilestoneRewardValue`）
                     to_append = mastery_iter["nextSeasonMilestone"]["rewardConfig"]["rewardValue"]
             mastery_data[key].append(to_append)
-    mastery_statistics_output_order: list[int] = [13, 14, 1, 2, 3, 4, 9, 12, 6, 7, 5, 17, 10, 18, 19, 20, 21, 15]
+    mastery_statistics_output_order: list[int] = [13, 14, 1, 2, 3, 4, 9, 12, 6, 7, 5, 17, 10, 18, 19, 20, 21, 16]
     mastery_data_organized: dict[str, list[Any]] = {mastery_header_keys[i]: mastery_data[mastery_header_keys[i]] for i in mastery_statistics_output_order}
     mastery_df: pandas.DataFrame = pandas.DataFrame(data = mastery_data_organized)
     optimize_bool_display(mastery_df)
     mastery_df = pandas.concat([pandas.DataFrame([mastery_header])[mastery_df.columns], mastery_df], ignore_index = True)
     return mastery_df
-    mastery_web_display_order: list[int] = [16, 1, 2, 3, 4, 9, 12, 6, 7, 5, 17, 10, 18, 19, 20, 21, 15]
+    mastery_web_display_order: list[int] = [15, 1, 2, 3, 4, 9, 12, 6, 7, 5, 17, 10, 18, 19, 20, 21, 16]
     mastery_data_organized_web: dict[str, list[Any]] = {mastery_header_keys[i]: mastery_data[mastery_header_keys[i]] for i in mastery_web_display_order}
     mastery_df_web: pandas.DataFrame = pandas.DataFrame(data = mastery_data_organized_web)
     optimize_bool_display(mastery_df_web)
