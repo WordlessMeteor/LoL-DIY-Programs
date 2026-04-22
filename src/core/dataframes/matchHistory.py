@@ -565,16 +565,16 @@ async def get_game_summary_sgp(connection: Connection, sgpSession: SGPSession, m
             game_summary = (await sgpSession.request(connection, "GET", f"/match-history-query/v1/products/lol/{match_id}/SUMMARY")).json()
             #尝试修复错误（Try to fix the error）
             if "errorCode" in game_summary:
+                logPrint(game_summary, verbose = verbose)
                 status = game_summary["httpStatus"]
                 if count > retry:
                     logPrint(f"英雄联盟对局{match_id}概要获取失败！\nLoL match {match_id} summary capture failure!", verbose = verbose)
                     break
                 if status == 404:
-                    if game_summary["errorCode"] == "RESOURCE_NOT_FOUND" and game_summary["message"] == "match file not found":
+                    if game_summary["errorCode"] == "RESOURCE_NOT_FOUND" and game_summary["message"] == "match file not found" or game_summary == {"httpStatus": 404, "errorCode": "NOT_FOUND", "message": "Not Found", "implementationDetails": "match file not found"}:
                         logPrint(f"未找到序号为{match_id}的英雄联盟回放文件！\nLoL match file with matchId {match_id} not found!", verbose = verbose)
                         checkTFT = True
                         break
-                logPrint(game_summary, verbose = verbose)
                 logPrint(f"正在第{count}次尝试获取英雄联盟对局{match_id}概要……\nTimes trying to capture LoL Match {match_id}: No. {count} ...", verbose = verbose)
             elif "status" in game_summary and isinstance(game_summary["status"], dict) and all(_ in ["message", "status_code"] for _ in game_summary["status"]):
                 logPrint(game_summary, verbose = verbose)
@@ -603,7 +603,7 @@ async def get_game_summary_sgp(connection: Connection, sgpSession: SGPSession, m
                     logPrint(f"云顶之弈对局{match_id}概要获取失败！\nTFT match {match_id} summary capture failure!", verbose = verbose)
                     break
                 if status == 404:
-                    if game_summary["errorCode"] == "RESOURCE_NOT_FOUND" and game_summary["message"] == "match file not found":
+                    if game_summary["errorCode"] == "RESOURCE_NOT_FOUND" and game_summary["message"] == "match file not found" or game_summary == {"httpStatus": 404, "errorCode": "NOT_FOUND", "message": "Not Found", "implementationDetails": "match file not found"}:
                         logPrint(f"未找到序号为{match_id}的云顶之弈回放文件！\nTFT match file with matchId {match_id} not found!", verbose = verbose)
                         break
                 logPrint(f"正在第{count}次尝试获取云顶之弈对局{match_id}概要……\nTimes trying to capture TFT Match {match_id}: No. {count} ...", verbose = verbose)
@@ -663,7 +663,7 @@ async def get_game_timeline_sgp(connection: Connection, sgpSession: SGPSession, 
                     logPrint(f"英雄联盟对局{match_id}时间轴获取失败！\nLoL match {match_id} timeline capture failure!", verbose = verbose)
                     break
                 if status == 404:
-                    if game_timeline["errorCode"] == "RESOURCE_NOT_FOUND" and game_timeline["message"] == "match file not found":
+                    if game_timeline["errorCode"] == "RESOURCE_NOT_FOUND" and game_timeline["message"] == "match file not found" or game_timeline == {"httpStatus": 404, "errorCode": "NOT_FOUND", "message": "Not Found", "implementationDetails": "match file not found"}:
                         logPrint(f"未找到序号为{match_id}的英雄联盟回放文件！\nLoL match file with matchId {match_id} not found!", verbose = verbose)
                         break
                 logPrint(f"正在第{count}次尝试获取英雄联盟对局{match_id}时间轴……\nTimes trying to capture LoL Match {match_id}: No. {count} ...", verbose = verbose)
@@ -693,7 +693,7 @@ async def get_game_timeline_sgp(connection: Connection, sgpSession: SGPSession, 
                     logPrint(f"云顶之弈对局{match_id}概要获取失败！\nTFT match {match_id} summary capture failure!", verbose = verbose) #DETAILS接口返回的内容实际上和SUMMARY接口是一样的（The DETAILS endpoint returns the semantically same content as the SUMMARY endpoint）
                     break
                 if status == 404:
-                    if game_timeline["errorCode"] == "RESOURCE_NOT_FOUND" and game_timeline["message"] == "match file not found":
+                    if game_timeline["errorCode"] == "RESOURCE_NOT_FOUND" and game_timeline["message"] == "match file not found" or game_timeline == {"httpStatus": 404, "errorCode": "NOT_FOUND", "message": "Not Found", "implementationDetails": "match file not found"}:
                         logPrint(f"未找到序号为{match_id}的云顶之弈回放文件！\nTFT match file with matchId {match_id} not found!", verbose = verbose)
                         break
                 logPrint(f"正在第{count}次尝试获取云顶之弈对局{match_id}概要……\nTimes trying to capture TFT Match {match_id}: No. {count} ...", verbose = verbose)
