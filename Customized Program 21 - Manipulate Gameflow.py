@@ -30,7 +30,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/04/21
+# 更新（Last update）：     2026/04/22
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2408,7 +2408,7 @@ async def add_bots_team(connection: Connection, teamId: str = "200") -> None:
         for role in LoLChampions[championId]["roles"]:
             recommended_champion_for_role[role].append(championId)
     ##可用的电脑玩家难度（Available bot difficulty）
-    botDifficulties: list[str] = ["EASY", "MEDIUM", "HARD", "RSWARMINTRO", "RSINTRO", "RSBEGINNER", "RSINTERMEDIATE"]
+    botDifficulties: list[str] = ["EASY", "MEDIUM", "HARD", "RSWARMINTRO", "RSINTRO", "RSBEGINNER", "RSINTERMEDIATE", "MLINTRO"]
     #先生成电脑玩家的英雄序号（First, generate the bot championIds）
     botPositions_add: list[str] = []
     logPrint("队伍%s：请选择自选电脑玩家或者随机生成电脑玩家：\nTeam %s: Please select the option to generate bot players:\n0\t跳过该队伍（Skip this team）\n1\t完全随机生成（Completely Randomly）\n2\t按照分路随机生成（Randomly according to Positions）\n3\t自选（By Picking）" %(teamId[0], teamId[0]))
@@ -4325,7 +4325,7 @@ async def add_bot(connection: Connection) -> None:
             if not championId_got:
                 step -= 2
         elif step == 2:
-            logPrint("第二步：请选择电脑玩家难度。\nStep 2: Please select a bot difficulty.\n1\t新手（TUTORIAL）\n2\t入门（INTRO）\n3\t简单（EASY）\n4\t一般（MEDIUM）\n5\t困难（HARD）\n6\t末日（UBER）\n7\t温暖局入门级（RSWARMINTRO）\n8\t入门级（RSINTRO）\n9\t新手级（RSBEGINNER）\n10\t一般级（RSINTERMEDIATE）")
+            logPrint("第二步：请选择电脑玩家难度。\nStep 2: Please select a bot difficulty.\n1\t新手（TUTORIAL）\n2\t入门（INTRO）\n3\t简单（EASY）\n4\t一般（MEDIUM）\n5\t困难（HARD）\n6\t末日（UBER）\n7\t温暖局入门级（RSWARMINTRO）\n8\t入门级（RSINTRO）\n9\t新手级（RSBEGINNER）\n10\t一般级（RSINTERMEDIATE）\n11\t机器学习入门（MLINTRO）")
             while True:
                 botDifficulty_index_str: str = logInput()
                 if botDifficulty_index_str == "":
@@ -4336,7 +4336,7 @@ async def add_bot(connection: Connection) -> None:
                 elif botDifficulty_index_str == "0":
                     step -= 2
                     break
-                elif botDifficulty_index_str in list(map(str, range(1, 11))):
+                elif botDifficulty_index_str in list(map(str, range(1, 12))):
                     botDifficulty_index: int = int(botDifficulty_index_str)
                     botDifficulty = BOT_DIFFICULTY_LIST[botDifficulty_index]
                     break

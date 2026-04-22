@@ -1187,7 +1187,8 @@ botDifficulty_dict: dict[str, str] = {
     "RSWARMINTRO": "温暖局入门级",
     "RSINTRO": "入门级",
     "RSBEGINNER": "新手级",
-    "RSINTERMEDIATE": "一般级"
+    "RSINTERMEDIATE": "一般级",
+    "MLINTRO": "机器学习入门"
 }
 positions: dict[str, str] = {
     "": "",
@@ -1986,7 +1987,8 @@ honorType_tooltip_bodies: dict[str, str] = {
 #     "RSWARMINTRO": "RSWARMINTRO",
 #     "RSINTRO": "RSINTRO",
 #     "RSBEGINNER": "RSBEGINNER",
-#     "RSINTERMEDIATE": "RSINTERMEDIATE"
+#     "RSINTERMEDIATE": "RSINTERMEDIATE",
+#     "MLINTRO": "MLINTRO"
 # }
 # positions: dict[str, str] = {
 #     "": "",

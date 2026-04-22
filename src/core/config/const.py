@@ -30,7 +30,8 @@ BOT_DIFFICULTY_LIST: list[str] = [
     "RSWARMINTRO",
     "RSINTRO",
     "RSBEGINNER",
-    "RSINTERMEDIATE"
+    "RSINTERMEDIATE",
+    "MLINTRO"
 ]
 SPECTATOR_POLICY_LIST: list[str] = [
     "LobbyAllowed",
