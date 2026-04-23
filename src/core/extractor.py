@@ -22,7 +22,7 @@ from src.core.config.localization import language_ddragon, language_cdragon
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/04/22
+# 更新（Last update）：     2026/04/23
 #=============================================================================
 
 #定义异质性检验函数（Define heterogeneity verification function）
@@ -1012,6 +1012,7 @@ class LoLDataExtractor:
                 tooltip = cls.tooltipPreparation(tooltip, isCHS = isCHS)
             tooltip = cls.variableSubstitute(tooltip, binData, isCHS = isCHS, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVars = None, flexibleData = flexibleData)
         return tooltip
+
     @classmethod
     def aRound(cls, num: float, digits: int = 0) -> int | float: #高级保留小数函数（Advanced version of `round` function）
         '''
@@ -1085,13 +1086,15 @@ class LoLDataExtractor:
         mStatFormula_dict_en: dict[int, str] = {0: "", 1: "basic ", 2: "bonus "}
         mStat_dict_zh: dict[int, str] = {0: "法术强度", 1: "护甲", 2: "攻击力", 4: "攻击速度", 6: "魔法抗性", 7: "移动速度", 8: "暴击几率", 9: "暴击伤害", 10: "冷却缩减", 11: "技能急速", 12: "生命值", 14: "当前生命值百分比", 18: "生命偷取", 22: "固定法术穿透", 29: "穿甲", 31: "体型", 34: "治疗和护盾强度"}
         mStat_dict_en: dict[int, str] = {0: "Ability Power", 1: "Armor", 2: "Attack Damage", 4: "Attack Speed", 6: "Magic Resistance", 7: "Movement Speed", 8: "Critical Strike Chance", 9: "Crit Damage", 10: "Cooldown Reduction", 11: "Ability Haste", 12: "Health", 14: "Current Health Percent", 18: "Life Steal", 22: "Magic Penetration Flat", 29: "Lethality", 31: "Size", 34: "Heal and Shield Power"}
+        itemEpicness_dict_zh: dict[int, str] = {0: "无", 1: "初始", 2: "基础", 3: "工资装", 4: "史诗", 5: "传说", 6: "神话", 7: "升级", 8: "锻造器", 9: "棱彩"}
+        itemEpicness_dict_en: dict[int, str] = {0: "none", 1: "starter", 2: "basic", 3: "gold income", 4: "epic", 5: "legendary", 6: "mythic", 7: "level up", 8: "anvil", 9: "prismatic"}
         if isinstance(flexibleData, dict): #附加数据处理（Supplemental data processing）
             if "mStat_dict_override_version" in flexibleData and isinstance(flexibleData["mStat_dict_override_version"], str):
                 if Patch(flexibleData["mStat_dict_override_version"]) <= Patch("14.15"):
                     mStat_dict_zh = {0: "法术强度", 1: "护甲", 2: "攻击力", 3: "攻击速度", 4: "攻击前摇", 5: "魔法抗性", 6: "移动速度", 7: "暴击几率", 8: "暴击伤害", 9: "冷却缩减", 10: "技能急速", 11: "生命值", 12: "当前生命值百分比", 13: "已损失生命值百分比", 15: "生命偷取", 19: "固定法术穿透", 26: "穿甲", 28: "体型", 29: "生命回复", 31: "治疗和护盾强度"}
                     mStat_dict_en = {0: "Ability Power", 1: "Armor", 2: "Attack Damage", 3: "Attack Speed", 4: "Attack Windup", 5: "Magic Resistance", 6: "Movement Speed", 7: "Critical Strike Chance", 8: "Crit Damage", 9: "Cooldown Reduction", 10: "Ability Haste", 11: "Health", 12: "Current Health Percent", 13: "Lost Health Percent", 15: "Life Steal", 19: "Magic Penetration Flat", 26: "Lethality", 28: "Size", 29: "Health Regen", 31: "Heal and Shield Power"}
         formulaPart_type: str = formulaPart["__type"]
-        if formulaPart_type in {"ClampSubPartsCalculationPart", "ProductOfSubPartsCalculationPart", "StatBySubPartCalculationPart", "SumOfSubPartsCalculationPart"}:
+        if formulaPart_type in {"ClampSubPartsCalculationPart", "ExponentSubPartsCalculationPart", "ProductOfSubPartsCalculationPart", "StatBySubPartCalculationPart", "SubPartScaledProportionalToStat", "SumOfSubPartsCalculationPart", "{8a96ea3c}", "{382277da}"}:
             formulaStr: str = cls.subpartCalculation(binData, formulaPart, var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             if formulaPart_type == "StatBySubPartCalculationPart": #仅用于装备中的卢安娜的飓风和闪电杖和强化符文中的小丑学院的背刺（Only applies to Runaan's Hurricane and Lightning Rod in items and backstab of Clown College in augments）
                 stat_header: str = mStatFormula_dict_zh[formulaPart.get("mStatFormula", 0)] if isCHS else mStatFormula_dict_en[formulaPart.get("mStatFormula", 0)]
@@ -1099,6 +1102,9 @@ class LoLDataExtractor:
                 if mStat_dict_zh[formulaPart.get("mStat", 0)] == "生命值" and formulaPart.get("mStatFormula", 0) == 0:
                     stat_header = "最大" if isCHS else "max " #生命值的各类标头出现都较为频繁，需要特别声明（Each header of Health appears frequently, so the default case should be specifically noted）
                 formulaStr += " × " + stat_header + stat_desc
+            elif formulaPart_type == "SubPartScaledProportionalToStat": #仅用于云顶之弈强化符文，如【持枪假人】（Only used in TFT augments, such as Dummy With A Gun）
+                mRatio: float = cls.aRound(formulaPart["mRatio"], 5)
+                formulaStr += " × " + str(mRatio)
             formulaStr = "{" + formulaStr + "}"
         elif formulaPart_type == "AbilityResourceByCoefficientCalculationPart": #法力值收益率（Mana ratio）
             mCoefficient: float = formulaPart["mCoefficient"]
@@ -1144,6 +1150,10 @@ class LoLDataExtractor:
             mStartValue: int | float = cls.aRound(formulaPart.get("mStartValue", 0), 5)
             mEndValue: int | float = cls.aRound(formulaPart["mEndValue"], 5)
             formulaStr = f"{mStartValue} - {mEndValue} (based on Level)"
+        elif formulaPart_type == "ByItemEpicnessCountCalculationPart":
+            coefficient: int | float = cls.aRound(formulaPart.get("Coefficient", 0), 5)
+            itemEpicness_desc: str = itemEpicness_dict_zh[formulaPart["epicness"]] if isCHS else itemEpicness_dict_en[formulaPart["epicness"]]
+            formulaStr = str(coefficient) + " × " + (itemEpicness_desc + "装备数量" if isCHS else "number of " + itemEpicness_desc + " items")
         elif formulaPart_type == "CooldownMultiplierCalculationPart": #典型示例：无极剑圣 易的【阿尔法突袭】（A typical example: AlphaStrike）
             formulaStr = "100 / (100 + 技能急速)" if isCHS else "100 / (100 + Ability Haste)"
         elif formulaPart_type == "EffectValueCalculationPart": #在装备中仅用于灰烬小刀、冰雹刀刃和黑曜石锋刃的灼烧伤害，在强化符文中仅用于【招架】和【终极轮盘】中的【加农炮幕】的弹体伤害（Only applies to the burn damage from Emberknifre, Hailblade and Obsidian Edge in items and the missiles from [Parry] and [Cannon Barrage] in [Ultimate Roulette] in augments）
@@ -1168,11 +1178,97 @@ class LoLDataExtractor:
             if mStat_dict_zh[formulaPart.get("mStat", 0)] == "生命值" and formulaPart.get("mStatFormula", 0) == 0:
                 stat_header = "最大" if isCHS else "max "
             formulaStr += " × " + stat_header + stat_desc
+        elif formulaPart_type == "StatEfficiencyPerHundred":
+            formulaStr = cls.variableCalculation(binData, formulaPart["mDataValue"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            mBonusStatForEfficiency: float = cls.aRound(formulaPart["mBonusStatForEfficiency"], 5)
+            formulaStr += " × " + str(mBonusStatForEfficiency)
+        elif formulaPart_type == "{4ce08984}": #仅用于不落魔锋 亚恒的【不落之志】（Only applies to ZaahenPassive）
+            #下面假设所有与等级相关的值列表的所有元素相同。这样，`burnValueList`方法应当只返回一个值（We assume all elements in the value list of a level-related key are equal. In that case, `burnValueList` method should return a single value）
+            #如果后面出现与等级相关的值列表还随等级增长，那就只能使用非数学的一段描述性文字放到花括号中（If later Riot develops some mechanism where the level-scaling number scales with level, then I have to put a non-mathematical descriptional text into between the curly brackets）
+            mLevel1ValueStr: str = cls.variableCalculation(binData, formulaPart["{91d404a5}"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            mLevel1Value_modeSplitDict_str: dict[str, str] = cls.variableModeOverrideStrToStruct(mLevel1ValueStr) #经过此函数后，字典中保底有一个“default”键（The returned dictionary at least has a "default" key）
+            mLevel1Value_modeSplitDict_float: dict[str, float] = {key: float(value) for (key, value) in mLevel1Value_modeSplitDict_str.items()}
+            mBonusPerLevelStr: str = cls.variableCalculation(binData, formulaPart["{bbd778a2}"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            mBonusPerLevel_modeSplitDict_str: dict[str, str] = cls.variableModeOverrideStrToStruct(mBonusPerLevelStr)
+            mBonusPerLevel_modeSplitDict_float: dict[str, float] = {key: float(value) for (key, value) in mBonusPerLevel_modeSplitDict_str.items()}
+            if "{9823b29a}" in formulaPart:
+                levelValues_modeSplitDict_list: dict[str, list[float]] = {"default": []}
+                formulaPart["{9823b29a}"] = sorted(formulaPart["{9823b29a}"], key = lambda x: x.get("mLevel", 1))
+                mLevel_i_Value_modeSplitDict_float: dict[str, float] = mLevel1Value_modeSplitDict_float.copy()
+                i: int = 1 #等级（Level）
+                j: int = 0 #断点列表下标（Breakpoint list index）
+                while i <= 18:
+                    mBonusAtLevel_modeSplitDict_float: dict[str, float] = {}
+                    if i == formulaPart["{9823b29a}"][j].get("level"):
+                        if "{b0d8b2ac}" in formulaPart["{9823b29a}"][j]: #更新在该断点等级及之后等级的加成（Update bonus per level at and after this breakpoint level）
+                            mBonusPerLevelStr = cls.variableCalculation(binData, formulaPart["{9823b29a}"][j]["{b0d8b2ac}"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData) #原名是叫“BonusPerLevelAtAndAfter”，意思就是覆盖初始值，所以直接用“BonusPerLevel”作为变量名（The original name is "BonusPerLevelAtAndAfter", which means to override the initial value, so I use "BonusPerLevel" as a part of this variable's name）
+                            mBonusPerLevel_modeSplitDict_str = cls.variableModeOverrideStrToStruct(mBonusPerLevelStr)
+                            mBonusPerLevel_modeSplitDict_float: dict[str, float] = {key: float(value) for (key, value) in mBonusPerLevel_modeSplitDict_str.items()}
+                        if "{ae9b464d}" in formulaPart["{9823b29a}"][j]: #在该断点等级时的额外加成（Bonus at this breakpoint level）
+                            mBonusAtLevelStr: str = cls.variableCalculation(binData, formulaPart["{9823b29a}"][j]["{ae9b464d}"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+                            mBonusAtLevel_modeSplitDict_str = cls.variableModeOverrideStrToStruct(mBonusAtLevelStr)
+                            mBonusAtLevel_modeSplitDict_float = {key: float(value) for (key, value) in mBonusAtLevel_modeSplitDict_str.items()}
+                        if j < len(formulaPart["{9823b29a}"]) - 1:
+                            j += 1
+                    #梳理当前等级的所有模式分化（Sort out all modes at current level）
+                    modes: list[str] = list(mLevel1Value_modeSplitDict_float.keys())
+                    for mode in mBonusPerLevel_modeSplitDict_float:
+                        if not mode in mLevel1Value_modeSplitDict_float:
+                            modes.append(mode)
+                    for mode in mBonusAtLevel_modeSplitDict_float:
+                        if not mode in mLevel1Value_modeSplitDict_float:
+                            modes.append(mode)
+                    #针对每个游戏模式设置等级为i时的值（Set the value at Level i for each game mode）
+                    for mode in modes:
+                        delta: float = mBonusPerLevel_modeSplitDict_float.get(mode, 0) + mBonusAtLevel_modeSplitDict_float.get(mode, 0)
+                        if mode in mLevel_i_Value_modeSplitDict_float:
+                            mLevel_i_Value_modeSplitDict_float[mode] += delta
+                        else:
+                            mLevel_i_Value_modeSplitDict_float[mode] = mLevel_i_Value_modeSplitDict_float["default"] + delta
+                    #将各模式等级为i时的值追加到列表中（Append values at Level i into the list）
+                    ##先将此前没有的模式初始化为默认值列表（First, initialize the new mode's value list as the default value list）
+                    for mode in modes:
+                        if not mode in levelValues_modeSplitDict_list:
+                            levelValues_modeSplitDict_list[mode] = levelValues_modeSplitDict_list["default"][:]
+                    ##再对所有模式追加值（Next, append values to all modes）
+                    for mode in modes:
+                        levelValues_modeSplitDict_list[mode].append(mLevel_i_Value_modeSplitDict_float[mode])
+                    i += 1
+                levelValues_modeSplitList: list[str] = []
+                for mode in levelValues_modeSplitDict_list:
+                    levelValues = list(map(lambda x: cls.aRound(x, 5), levelValues_modeSplitDict_list[mode]))
+                    levelValues_modeBurn: str = "/".join(list(map(str, levelValues))) + ("" if mode == "default" else f" (mode: {mode})")
+                    levelValues_modeSplitList.append(levelValues_modeBurn)
+                formulaStr = " || ".join(levelValues_modeSplitList)
+            else:
+                levelValues_modeSplitDict_dict: dict[str, dict[int, float]] = {key: {1: value, 18: 0} for (key, value) in mLevel1Value_modeSplitDict_float.items()} #这个字典中也必定有一个“default”键（This dictionary must have a "default" key）
+                #梳理所有模式分化（Sort out all modes）
+                modes: list[str] = list(mLevel1Value_modeSplitDict_float.keys())
+                for mode in mBonusPerLevel_modeSplitDict_float:
+                    if not mode in mLevel1Value_modeSplitDict_float:
+                        modes.append(mode)
+                #针对每个游戏模式计算终止值（Calculate the value at max level for each game mode）
+                ##先将此前没有的模式初始化为默认值元组（First, initialize the new mode's value tuple as the default value tuple）
+                for mode in modes:
+                    if not mode in levelValues_modeSplitDict_dict:
+                        levelValues_modeSplitDict_dict[mode] = levelValues_modeSplitDict_dict["default"].copy()
+                ##再对所有模式设置值（Next, set values for all modes）
+                for mode in modes:
+                    mLevel1Value = levelValues_modeSplitDict_dict[mode][1]
+                    mLevel18Value = mLevel1Value + 17 * mBonusPerLevel_modeSplitDict_float.get(mode, 0)
+                    levelValues_modeSplitDict_dict[mode][18] = mLevel18Value
+                levelValues_modeSplitList: list[str] = []
+                for mode in levelValues_modeSplitDict_dict:
+                    mLevel1Value = levelValues_modeSplitDict_dict[mode][1]
+                    mLevel18Value = levelValues_modeSplitDict_dict[mode][18]
+                    levelValues_modeBurn: str = "%s - %s" %(cls.aRound(mLevel1Value, 5), cls.aRound(mLevel18Value, 5)) + ("" if mode == "default" else f" (mode: {mode})")
+                    levelValues_modeSplitList.append(levelValues_modeBurn)
+                formulaStr = " || ".join(levelValues_modeSplitList)
         elif formulaPart_type == "{b22609db}": #仅用于刀锋舞者 艾瑞莉娅的【艾欧尼亚热诚】（Only applies to IreliaPassive）
             mLevel1ValueStr: str = cls.variableCalculation(binData, formulaPart["{91d404a5}"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             mValuePerLevelStr: str = cls.variableCalculation(binData, formulaPart["{b2cd0eb0}"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             formulaStr = f"{mLevel1ValueStr} + {mValuePerLevelStr} × Level"
-        elif formulaPart_type == "{ee18a47b}": #仅用于兽灵行者 乌迪尔的【狂暴爪击】（Only applies to UdyrQ）
+        elif formulaPart_type == "{ee18a47b}": #用于兽灵行者 乌迪尔的【狂暴爪击】（Applies to UdyrQ）
             mLevel1ValueStr = cls.variableCalculation(binData, formulaPart["{0589a59c}"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             mLevel18ValueStr: str = cls.variableCalculation(binData, formulaPart["{0b65bc23}"], var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             formulaStr = f"{mLevel1ValueStr} - {mLevel18ValueStr} (based on Level)"
@@ -1208,9 +1304,11 @@ class LoLDataExtractor:
         '''
         #首先得出副部列表（First, get the list of subparts）
         subpart_formula_type: str = subpart_formula["__type"]
-        if subpart_formula_type in {"ClampSubPartsCalculationPart", "SumOfSubPartsCalculationPart"}:
+        if subpart_formula_type in {"ClampSubPartsCalculationPart", "SumOfSubPartsCalculationPart", "{8a96ea3c}", "{382277da}"}:
             subparts: list[dict[str, Any]] = subpart_formula["mSubparts"]
-        elif subpart_formula_type == "StatBySubPartCalculationPart":
+        elif subpart_formula_type == "ExponentSubPartsCalculationPart":
+            subparts = [subpart_formula["part1"], subpart_formula["part2"]]
+        elif subpart_formula_type in {"StatBySubPartCalculationPart", "SubPartScaledProportionalToStat"}:
             subparts = [subpart_formula["mSubpart"]] #在仅有一个元素时，下面的运算符将不会被添加（When there's only one element in `subpart_formula_strs`, the following operator won't be added）
         elif subpart_formula_type == "ProductOfSubPartsCalculationPart":
             subparts = []
@@ -1222,7 +1320,7 @@ class LoLDataExtractor:
         #接着对每个副部计算其结果字符串（Next, calculate the result string from each subpart）
         subpart_formula_strs: list[str] = []
         for subpart in subparts:
-            if subpart["__type"] in {"ClampSubPartsCalculationPart", "SumOfSubPartsCalculationPart", "ProductOfSubPartsCalculationPart"}:
+            if subpart["__type"] in {"ClampSubPartsCalculationPart", "ExponentSubPartsCalculationPart", "SumOfSubPartsCalculationPart", "ProductOfSubPartsCalculationPart", "{8a96ea3c}", "{382277da}"}:
                 subpart_formula_str: str = cls.subpartCalculation(binData, subpart, var_prefix, isCHS = isCHS, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
                 if subpart_formula["__type"] == "ClampSubPartsCalculationPart": #在装备中仅用于斯特拉克的挑战护手（In items, this only applies to Sterak's Gage）
                     mCeiling = cls.aRound(cls.dGet(subpart_formula, "mCeiling", 0, 0), 2)
@@ -1234,6 +1332,8 @@ class LoLDataExtractor:
         #最后连接每个结果字符串（Finally, concatenate all result strings）
         if subpart_formula["__type"] in {"ClampSubPartsCalculationPart", "SumOfSubPartsCalculationPart"}:
             operator: str = "+"
+        elif subpart_formula["__type"] == "ExponentSubPartsCalculationPart":
+            operator = "**"
         elif subpart_formula["__type"] == "ProductOfSubPartsCalculationPart":
             operator = "×"
         else:
@@ -1277,6 +1377,40 @@ class LoLDataExtractor:
             for (gameModeName, value) in var_modeValues.items():
                 result[gameModeName] = str(cls.aRound(value, 5))
         return result
+
+    @classmethod
+    def variableModeOverrideStrToStruct(cls, s: str) -> dict[str, str]:
+        '''
+        将一个模式重载数值字符串重构为可计算的结构。<br>Reconstruct a mode overriden value string into a structure that can be used for mathematical calculation.
+        
+        :param s: 模式重载数值字符串。<br>A mode overriden value string.
+        :type s: str
+        :return: 模式重载数值字典。键是模式，值是值字符串。<br>A mode overriden value dictionary, where each key is a mode, and each value is a value string.
+        :rtype: dict[str, str]
+        '''
+        #从此处开始，将逐渐推导出sResult_ValueAmongModes（From this step, we'll derivate and obtain `SResult_ValueAmongModes` as a result）
+        sResult_SingleValue: str = r"(\{\w+\}|\d+\.\d+|\d+)" #单值（Single value）
+        sResult_ValueOfSingleMode: str = f"{sResult_SingleValue}(/{sResult_SingleValue})*" #单值或连除式（Single value or continuous division）
+        sResult_SingleModePart: str = r" \(mode: (\{\w+\}|\w+)\)" #特定模式。注意前面有一个空格（Specific mode. Note that this pattern starts with a space）
+        sResult_ValueMode: str = f"{sResult_ValueOfSingleMode}({sResult_SingleModePart})?" #特定模式下的单个数值或连除式（Single value or continuous division of a mode）
+        sResult_ValueModeSeparator: str = r" \|\| " #不同模式的单个数值或连除式的分隔符（Separator of single value or continuous division among different modes）
+        sResult_ValueAmongModes: str = f"{sResult_ValueMode}({sResult_ValueModeSeparator}{sResult_ValueMode})*" #不同模式下的单个数值或连除式（Single value or continuous division among different modes）
+        pResult_ModeBurn: re.Pattern[str] = re.compile(sResult_ValueAmongModes)
+        # pResult_ModeBurn: re.Pattern[str] = re.compile(r"(\{\w+\}|\d+\.\d+|\d+)(/(\{\w+\}|\d+\.\d+|\d+))*( \(mode: (\{\w+\}|\w+)\))?( \|\| (\{\w+\}|\d+\.\d+|\d+)(/(\{\w+\}|\d+\.\d+|\d+))*( \(mode: (\{\w+\}|\w+)\))?)*") #不同模式下的单个数值或连除式（Single value or continuous division among different modes）
+        pModePart: re.Pattern[str] = re.compile(sResult_SingleModePart) #识别变量计算结果中的游戏模式名称部分。需要注意，游戏模式名称可能为未解析的hash值。这里假设每个模式覆盖变量都是最基本的单项式。作出这个假设是为了保证在识别出“a || b”后，能够正确地进行公式计算，得到“eval(a + formula) || eval(b + formula)”（Identifies the gameModeName in the calculation result of `var`. Note that the gameModeName may be an unhashed value. Here we assume each mode overriden variable is the most basic monomial. This assumption is made to ensure that the subsequent formula calculation can correctly derivate from "a || b" to "eval(a + formula) || eval(b + formula)"）
+        modeOverridenValueDict: dict[str, str] = {}
+        if (matchObj1 := pResult_ModeBurn.search(s)):
+            sValue: str = matchObj1.group()
+            values: list[str] = sValue.split(" || ")
+            for value in values:
+                if (matchObj2 := pModePart.search(value)):
+                    sModePart: str = matchObj2.group()
+                    mode: str = sModePart[8:-1]
+                    value_mode: str = value[:matchObj2.start()]
+                    modeOverridenValueDict[mode] = value_mode
+                else:
+                    modeOverridenValueDict["default"] = value
+        return modeOverridenValueDict
 
     @classmethod
     def variableCalculation(cls, binData: dict[str, Any], var: str, var_prefix: str, isCHS: bool = False, enableModeOverride: bool = False, rowIndex: int = -1, reservedVars: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str:
@@ -4379,8 +4513,8 @@ class ItemExtractor(LoLDataExtractor):
         
         #数据整理核心部分（Data organization core part）
         pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
-        item_rarities: dict[str, str] = {0: "无", 1: "初始", 2: "基础", 3: "工资装", 4: "史诗", 5: "传说", 6: "神话", 7: "升级", 8: "锻造器", 9: "棱彩"}
-        # item_rarities: dict[str, str] = {0: "NONE", 1: "STARTER", 2: "BASIC", 3: "Gold Income", 4: "EPIC", 5: "LEGENDARY", 6: "Mythic", 7: "Level Up", 8: "ANVIL", 9: "PRISMATIC"}
+        item_rarities: dict[int, str] = {0: "无", 1: "初始", 2: "基础", 3: "工资装", 4: "史诗", 5: "传说", 6: "神话", 7: "升级", 8: "锻造器", 9: "棱彩"}
+        # item_rarities: dict[int, str] = {0: "NONE", 1: "STARTER", 2: "BASIC", 3: "Gold Income", 4: "EPIC", 5: "LEGENDARY", 6: "Mythic", 7: "Level Up", 8: "ANVIL", 9: "PRISMATIC"}
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
         for (key1, value) in self.items_bin.items():
@@ -8154,7 +8288,7 @@ if __name__ == "__main__":
                             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                         else:
                             if isinstance(tmp, int):
-                                if tmp >= 1 and tmp <= 11:
+                                if tmp >= 1 and tmp <= 12:
                                     data_options = [tmp]
                                 else:
                                     logPrint("您输入的正整数不在合法范围内。请重新输入。\nThe integer you input doesn't fall within a legal range. Please try again.")
@@ -8439,7 +8573,7 @@ if __name__ == "__main__":
                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     else:
                         if isinstance(tmp, int):
-                            if tmp >= 1 and tmp <= 11:
+                            if tmp >= 1 and tmp <= 12:
                                 data_options = [tmp]
                             else:
                                 logPrint("您输入的正整数不在合法范围内。请重新输入。\nThe integer you input doesn't fall within a legal range. Please try again.")
@@ -8686,15 +8820,15 @@ if __name__ == "__main__":
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/perks.cdtb.bin.json", "r", encoding = "utf-8") as fp:
         #     perks_bin = json.load(fp)
         ##强化符文和荣誉嘉宾（Augment and Guest of Honor）
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
-            cherry_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
+        #     cherry_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
         #     kiwi_bin = json.load(fp)
         ##整合后的数据（Merged data）
-        # with open("C:/Users/19250/Documents/Workspace/JupyterLab/自定义脚本/英雄联盟自定义房间创建/champions_bin.json", "r", encoding = "utf-8") as fp:
+        # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
         #     champions_bin = json.load(fp)
-        # with open("C:/Users/19250/Documents/Workspace/JupyterLab/自定义脚本/英雄联盟自定义房间创建/characters_bin.json", "r", encoding = "utf-8") as fp:
-        #     characters_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/characters_bin.json", "r", encoding = "utf-8") as fp:
+            characters_bin = json.load(fp)
         
         #数据准备（Data preparation）
         # for (key, value) in shared_bin.items():
@@ -8728,9 +8862,9 @@ if __name__ == "__main__":
         # print(LoLDataExtractor.get_strtable_value(lolstringtable_zh, mDisplayName_key, default = "获取失败。"))
         
         #说明文本转换（Tooltip transformation）
-        tooltip_raw: str = "{{Kiwi_GlassCannon_Summary}}<br><br>已造成的伤害：@f1@"
+        tooltip_raw: str = "亚恒在用一次攻击或技能命中一个敌方英雄时，会获得一层<keyword>果决</keyword>(最大@MaxStacks@层)。他每层获得<physicalDamage>@PercentBonusADCalc@攻击力提升</physicalDamage>。<br><br>当叠满<keyword>果决</keyword>时，亚恒使已提供的<physicalDamage>攻击力</physicalDamage>翻倍，并且如果他即将阵亡，那么他会转而进入持续@ReviveDuration@秒的凝滞状态然后带着<healing>他的@RevivePercentCalc@最大生命值</healing>复活。<br><br>亚恒的复活有@ReviveCooldownCalc@秒冷却时间。<br>"
         print("原始说明文本：\n" + tooltip_raw)
-        binData: dict[str, Any] = cherry_bin["{5f69dfc1}"]["mSpell"]
+        binData: dict[str, Any] = characters_bin["{4c6e6c43}"]["mSpell"]
         print("----")
         print("转换文本：")
         print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
@@ -8741,8 +8875,8 @@ if __name__ == "__main__":
         
         return 0
 
-    status = main() #供用户使用（For user use）
-    # status = debug(dir_type = "repo") #供开发者使用（For developer use）
+    # status = main() #供用户使用（For user use）
+    status = debug(dir_type = "repo") #供开发者使用（For developer use）
     # status = DIY()
     #结束日志输入输出流（Cancel the log I/O stream）
     log.write(f"\n[Program terminated and returned status {status}.]\n")
