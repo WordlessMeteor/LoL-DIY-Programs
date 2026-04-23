@@ -5054,7 +5054,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 augmentSetNames: list[str] = []
                                 for augmentSet_key in augmentSets:
                                     tooltip_key = map12_bin_whole[augmentSet_key]["{0746ade9}"]
-                                    strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 31 else strtable_lol_default
+                                    strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 52 else strtable_lol_default
                                     augmentSetNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
                                 to_append = augmentSetNames
                         else:
