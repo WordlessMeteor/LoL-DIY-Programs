@@ -4003,7 +4003,7 @@ class ChampionExtractor(LoLDataExtractor):
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
         strtable_tft_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.tftstringtable_target
-        strtable_tft_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
+        strtable_tft_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.tftstringtable_default
         for (key1, value) in champions_bin.items():
             if key1 != "__linked" and value["__type"] in {"CharacterRecord", "TFTCharacterRecord"}: #之所以不把二者分开来放，是因为三个原因：①CharacterRecord对象和TFTCharacterRecord对象有部分重合键；②早期云顶之弈的角色对象类型仍为CharacterRecord，如“Characters/TFT3_FizzShark/CharacterRecords/Root”；③英雄联盟和云顶之弈的角色数据存放位置也是掺杂的（There're three reasons why these two value types are put together to be sorted out: ①A CharacterRecord object's keys partly overlap with a TFTCharacterRecord object's; ②The early TFT character's object type is "CharacterRecord", e.g. "Characters/TFT3_FizzShark/CharacterRecords/Root"; ③Locations of LoL and TFT character data files are usually mixed with each other）
                 for i in range(len(champion_header_keys)):
@@ -4033,14 +4033,20 @@ class ChampionExtractor(LoLDataExtractor):
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
                             isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
-                            strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                            strtable_locale_lol: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                            strtable_locale_tft: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                             tooltip_key: str = champion_data[subkey1][-1] #通过访问最近一次追加的数据来优化代码。代价是键必须放在值的前面（Optimize the code by accessing the recently appended data. In turn, the key must be put in front of the value）
+                            use_lol_strtable: bool = True
                             if (i == 133 or i == 134) and tooltip_key == "": #不存在显示名键的情况下，尝试通过一定的模式来确定显示名（When `name` key isn't present, try determining the displayName by certain pattern）
                                 if "mCharacterName" in value:
                                     tooltip_key: str = "displayName_" + value["mCharacterName"]
                                 else:
                                     tooltip_key = ""
-                            tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                            tooltip_raw: str = self.get_strtable_value(strtable_locale_lol, tooltip_key, default = "")
+                            if tooltip_raw == "": #如果没有找到，则尝试在云顶之弈字符串常量池中寻找（If the result isn't found, then search for it in TFT stringtable）
+                                tooltip_raw: str = self.get_strtable_value(strtable_locale_tft, tooltip_key, default = "")
+                                if tooltip_raw != "":
+                                    use_lol_strtable = False
                             if i == 127 or i == 128: #被动技能说明文本（中文/数值转换）和被动技能说明文本（英文/数值转换）（`passiveToolTip_content_zh_burn` and `passiveToolTip_content_en_burn`）
                                 if "mCharacterPassiveSpell" in value:
                                     spellKey = value["mCharacterPassiveSpell"]
@@ -4049,7 +4055,7 @@ class ChampionExtractor(LoLDataExtractor):
                                         to_append = ""
                                     else:
                                         self.__class__.calculatedVariables.clear()
-                                        tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, isCHS = isCHS, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                        tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale_lol if use_lol_strtable else strtable_locale_tft, mSpell, isCHS = isCHS, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                         to_append = tooltip_burn
                                 else:
                                     to_append = ""
@@ -4060,11 +4066,12 @@ class ChampionExtractor(LoLDataExtractor):
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
                             isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
-                            strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                            strtable_locale_lol: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                            strtable_locale_tft: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                             if "spells" in value:
                                 spellNames: list[str] = []
                                 for spell_key in value["spells"]:
-                                    tmp_ptr = champions_bin
+                                    tmp_ptr: Any = champions_bin
                                     for tmp_key in [spell_key, "mSpell", "mClientData", "mTooltipData", "mLocKeys", "keyName"]:
                                         if tmp_key in tmp_ptr:
                                             tmp_ptr = tmp_ptr[tmp_key]
@@ -4072,7 +4079,10 @@ class ChampionExtractor(LoLDataExtractor):
                                             spellNames.append(spell_key)
                                             break
                                     else:
-                                        spellNames.append(self.get_strtable_value(strtable_locale, tmp_ptr, tmp_ptr))
+                                        spellName: str = self.get_strtable_value(strtable_locale_lol, tmp_ptr, tmp_ptr)
+                                        if spellName == tmp_ptr: #判断是否使用云顶之弈字符串常量池的标准应该是结果是不是等于默认值（The condition to judge whether to use TFT stringtable should be whether the result equals the default value）
+                                            spellName = self.get_strtable_value(strtable_locale_tft, tmp_ptr, tmp_ptr)
+                                        spellNames.append(spellName)
                                 to_append = spellNames
                             else:
                                 to_append = ""
@@ -4238,12 +4248,18 @@ class ChampionExtractor(LoLDataExtractor):
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
                             isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
-                            strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                            strtable_locale_lol: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                            strtable_locale_tft: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                             tooltip_key: str = champion_spell_data[subkey1][-1]
-                            tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                            use_lol_strtable: bool = True
+                            tooltip_raw: str = self.get_strtable_value(strtable_locale_lol, tooltip_key, default = "")
+                            if tooltip_raw == "":
+                                tooltip_raw = self.get_strtable_value(strtable_locale_tft, tooltip_key, default = "")
+                                if tooltip_raw != "":
+                                    use_lol_strtable = False
                             if subkey2.endswith("_burn"):
                                 self.__class__.calculatedVariables.clear()
-                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value["mSpell"], isCHS = isCHS, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale_lol if use_lol_strtable else strtable_locale_tft, value["mSpell"], isCHS = isCHS, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                             else:
                                 to_append = tooltip_raw
@@ -8875,8 +8891,8 @@ if __name__ == "__main__":
         
         return 0
 
-    # status = main() #供用户使用（For user use）
-    status = debug(dir_type = "repo") #供开发者使用（For developer use）
+    status = main() #供用户使用（For user use）
+    # status = debug(dir_type = "repo") #供开发者使用（For developer use）
     # status = DIY()
     #结束日志输入输出流（Cancel the log I/O stream）
     log.write(f"\n[Program terminated and returned status {status}.]\n")
