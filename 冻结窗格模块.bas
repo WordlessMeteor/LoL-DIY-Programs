@@ -24,7 +24,9 @@ Sub FreezeAndFilterGameDataSheets()
                 Or ws.Name = "云顶之弈角色定位（TFT Character Role）" Or Right$(ws.Name, 16) = "TFTCharacterRole" Or ws.Name = "云顶之弈装备列表（TFT Item List）" Or Right$(ws.Name, 11) = "TFTItemList" _
                 Or ws.Name = "云顶之弈装备（TFT Item）" Or Right$(ws.Name, 7) = "TFTItem" Or ws.Name = "云顶之弈羁绊列表（TFT Trait List）" Or Right$(ws.Name, 12) = "TFTTraitList" _
                 Or ws.Name = "云顶之弈羁绊（TFT Trait）" Or Right$(ws.Name, 8) = "TFTTrait" Or ws.Name = "云顶之弈电脑玩家英雄（TFT PVE NPC）" Or Right$(ws.Name, 9) = "TFTPVENPC" _
-                Or ws.Name = "云顶之弈脚本（TFT Script）" Or Right$(ws.Name, 9) = "TFTScript" Or ws.Name = "云顶之弈通告（TFT Announcement）" Or Right$(ws.Name, 15) = "TFTAnnouncement" Then '限定冻结和筛选的工作表（Limit sheets that shouldn't be frozen any pane and selected）
+                Or ws.Name = "云顶之弈脚本（TFT Script）" Or Right$(ws.Name, 9) = "TFTScript" Or ws.Name = "云顶之弈通告（TFT Announcement）" Or Right$(ws.Name, 15) = "TFTAnnouncement" _
+                Or ws.Name = "字体描述（Font Description）" Or Right$(ws.Name, 15) = "FontDescription" Or ws.Name = "字体类型（Font Type）" Or Right$(ws.Name, 8) = "FontType" Or ws.Name = "字体分辨率（Font Resolution）" Or Right$(ws.Name, 14) = "FontResolution" Or ws.Name = "字体样式（Font Style）" Or Right$(ws.Name, 9) = "FontStyle" Or ws.Name = "CSS样式（CSS Style）" Or Right$(ws.Name, 12) = "FontCSSStyle" Or ws.Name = "内嵌图标（Inline Icon）" Or Right$(ws.Name, 10) = "InlineIcon" _
+                Then '限定冻结和筛选的工作表（Limit sheets that shouldn't be frozen any pane and selected）
             ws.Activate '选中该工作表（Select this sheet）
             If ws.AutoFilterMode Then ws.AutoFilterMode = False '取消已经存在的筛选（Remove any existing autofilter）
             ActiveWindow.FreezePanes = False '取消当前冻结窗格效果（Disable the current pane freezing）

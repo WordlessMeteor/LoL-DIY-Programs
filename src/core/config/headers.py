@@ -4571,6 +4571,7 @@ eog_stat_data_tft_header: dict[str, str] = {
     "playbook name": "指导手册名称"
 }
 #游戏数据提取（Game data extraction）
+##地图（Map）
 map_header_l10n: dict[str, str] = {
     "key": "主键",
     "mModeName": "模式代号",
@@ -4811,6 +4812,7 @@ map_header_l10n: dict[str, str] = {
     "mStatsUiData GlobalStatsUIData NumberStyleTotalAndScalingIcons string": "总和与缩放图标格式字符串",
     "mStatsUiData GlobalStatsUIData NumberStyleTotalAndFormula string": "总和与公式格式字符串"
 }
+##作弊指令（Cheat）
 cheatset_header: dict[str, str] = {
     "key": "主键",
     "mName": "代码",
@@ -4868,6 +4870,7 @@ cheat_header: dict[str, str] = {
     "mDynamicTooltipText_content_en": "详细信息（英文）",
     "belonging_cheatset_mName": "所属指令集代码"
 }
+##符文（Perk）
 perkstyle_header: dict[str, str] = {
     "key": "主键",
     "mPerkStyleId": "符文系序号",
@@ -4996,6 +4999,7 @@ perk_header: dict[str, str] = {
     "mEndOfGameStatDescriptions_contents_zh": "赛后结算描述（中文）",
     "mEndOfGameStatDescriptions_contents_en": "赛后结算描述（英文）"
 }
+##角色（Character）
 champion_header: dict[str, str] = {
     "key": "主键",
     "modeFolder": "游戏模式文件夹",
@@ -5610,6 +5614,7 @@ champion_spell_header: dict[str, str] = {
     "mBuff mTooltipData mLocKeys keyTooltipSimple_content_en_burn": "增益简述（英文/数值转换）",
     "BotData": "AI行为决策信息"
 }
+##装备（Item）
 item_header: dict[str, str] = {
     "key": "主键",
     "spellName": "施法事件名称",
@@ -5894,6 +5899,7 @@ itemModifier_header: dict[str, str] = {
     "mDisplayNameToPrepend_content_zh": "前附显示名（中文）",
     "mDisplayNameToPrepend_content_en": "前附显示名（英文）"
 }
+##强化符文（Augment）
 CherryAugment_header: dict[str, str] = {
     "key": "主键",
     "AugmentNameId": "强化符文代码",
@@ -6056,6 +6062,7 @@ KiwiAugmentSet_header: dict[str, str] = {
     "{40c7b66f}_Object": "其它指令对象",
     "{01d14504} resourceMap": "资源解析器映射字典"
 }
+##锻造器（Anvil）
 CherryAnvil_header: dict[str, str] = {
     "key": "主键",
     "AugmentNameId": "锻造器代码",
@@ -6085,6 +6092,7 @@ CherryAnvil_header: dict[str, str] = {
     "anvilRarities": "锻造器位阶",
     "RootSpellObject": "根指令对象"
 }
+##荣誉嘉宾（Guest of Honor）
 GoH_header: dict[str, str] = {
     "key1": "主键1",
     "name": "名称",
@@ -6113,6 +6121,7 @@ GoH_header: dict[str, str] = {
     "{e7879fb5} Subtitle_contents_zh": "互斥荣誉嘉宾姓名（中文）",
     "{e7879fb5} Subtitle_contents_en": "互斥荣誉嘉宾姓名（英文）"
 }
+##场景英雄（Cameo）
 cameo_header: dict[str, str] = {
     "key": "主键",
     "championName": "英雄文件夹",
@@ -6130,6 +6139,7 @@ cameo_header: dict[str, str] = {
     "{f426fde9}_content_zh_burn": "详细信息（中文/去格式化）",
     "{f426fde9}_content_en_burn": "详细信息（英文/去格式化）"
 }
+##斗魂竞技场回合阶段（Arena round phase）
 CherryRoundList_header: dict[str, str] = {
     "key": "方案主键",
     "{37e6e53a}": "旗标",
@@ -6160,6 +6170,7 @@ CherryPhase_header: dict[str, str] = {
     "phase SecondFlashOnTimeRemaining": "第二次闪烁倒计时",
     "phase TimerBarDefaultColor": "时间轴默认颜色方案"
 }
+##云顶之弈（TFT）
 TFTSet_header: dict[str, str] = {
     "key": "主键",
     "name": "赛季代码",
@@ -6754,4 +6765,63 @@ TFTAnnouncement_header: dict[str, str] = {
     "{1ccc919a}": "通告颗粒效果键",
     "mTitleTra_content_zh": "通告标题（中文）",
     "mTitleTra_content_en": "通告标题（英文）"
+}
+##字体（Font）
+fontDesc_header: dict[str, str] = {
+    "key": "主键",
+    "name": "代码",
+    "typeData": "字体类型键",
+    "resolutionData": "字体分辨率键",
+    "Color": "颜色",
+    "outlineColor": "轮廓颜色",
+    "colorblindColor": "色盲模式颜色",
+    "colorblindOutlineColor": "色盲模式轮廓颜色",
+    "shadowColor": "阴影颜色",
+    "fillTextureName": "填充纹理名称",
+    "glowColor": "发光颜色",
+    "SelectionBoxColor": "选择框颜色"
+}
+fontType_header: dict[str, str] = {
+    "key": "主键",
+    "localeType_index": "语言配置类型序号",
+    "localeName": "语言",
+    "mFontFilePath": "字体文件路径",
+    "FontFilePathBold": "粗体文件路径"
+}
+fontResolution_header: dict[str, str] = {
+    "key": "主键",
+    "autoScale": "自动缩放",
+    "localeResolution_index": "分辨率语言方案序号",
+    "localeName": "语言",
+    "resolution_index": "分辨率方案序号",
+    "screenHeight": "屏幕高度",
+    "fontSize": "字体大小",
+    "outlineSize": "轮廓大小",
+    "shadowDepthX": "阴影横坐标",
+    "shadowDepthY": "阴影纵坐标"
+}
+fontStyle_header: dict[str, str] = {
+    "key": "主键",
+    "displayName": "字体显示名",
+    "variant_index": "变体序号",
+    "variant displayName": "变体显示名",
+    "variant {75000be4}": "变体文件路径",
+    "variant WEIGHT": "变体权重",
+    "variant Style": "变体样式"
+}
+font_CSSStyle_header: dict[str, str] = {
+    "key": "主键",
+    "PathHashToSelf": "路径检索字符串",
+    "tag": "CSS样式",
+    "Color": "颜色",
+    "bold": "加粗",
+    "italics": "斜体",
+    "underline": "下划线"
+}
+font_CSSIcon_header: dict[str, str] = {
+    "key": "主键",
+    "PathHashToSelf": "路径检索字符串",
+    "tag": "修饰符标签",
+    "texture": "纹理路径",
+    "YAdjustment": "纵坐标偏移量"
 }
