@@ -2157,7 +2157,7 @@ class LoLDataExtractor:
         :rtype: str
         '''
         pFormat: re.Pattern[str] = re.compile(r"</?[\s\w=#\'\"@\-\.]*>")
-        pDescriptor: re.Pattern[str] = re.compile(r" ?%[A-Za-z0-9:]+% ?")
+        pDescriptor: re.Pattern[str] = re.compile(r"%[A-Za-z0-9:]+%")
         layertags: set[str] = {"titleLeft", "titleRight", "subtitleLeft", "subtitleRight", "mainText", "postScriptTitle"}
         result: str = tooltip.replace("<br>", "\n").replace("<li>", "\n-\n").replace("<rules>", "").replace("</rules>", "").replace("<attention>", "").replace("</attention>", "").replace("&nbsp;", " ")
         for layertag in layertags | {"section"}: #因为会优化分节的字符串，所以这里把分节部分的修饰符也去掉（Because section strings will be optimized subsequently, section tags are removed here）
@@ -2215,7 +2215,10 @@ class LoLDataExtractor:
                 result = result.replace("[]", "")
         while "()" in result:
             result = result.replace("()", "")
-        result = result.strip()
+        lines: list[str] = result.split("\n")
+        for i in range(len(lines)):
+            lines[i] = lines[i].strip() #消除行首和行尾的空格（Eliminate spaces at the start and end of a line）
+        result = "\n".join(lines)
         return result
 
     @classmethod
