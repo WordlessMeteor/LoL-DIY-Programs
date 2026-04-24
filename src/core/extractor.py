@@ -262,7 +262,7 @@ class LoLDataExtractor:
         self.version: str = version #CommunityDragon文件夹名称（CommunityDragon folder name）
         self.locale: str = locale
         self.language_folder: str = "default" if locale == "en_US" else locale.lower()
-        self.CHS_PUNCMARKS: set[str] = {"ja_JP", "ko_KR", "zh_CN", "zh_MY", "zh_TW"} #使用中文标点符号的语言（Languages that use Chinese punctuation marks）
+        self.ZH_LOCALE: set[str] = {"zh_CN", "zh_MY", "zh_TW"} #使用中文标点符号和提示语的语言文化代码（Language codes that use Chinese punctuation marks and prompts）
         self.session: requests.Session = requests.Session() if session == None else session
         self.log: LogManager = LogManager() if log == None else log
         self.patch: str = "" #完整版本号（Complete version）
@@ -976,7 +976,7 @@ class LoLDataExtractor:
         :type reserve_variable: bool
         :param binData: 用于变量代换的标准化二进制描述数据。仅在执行深度替换时需要该参数。<br>Normalized binary description data used for variable substitution. Only used when deep substitution is to perform.
         :type binData: dict[str, Any] | None
-        :param isCHS: 是否使用简体中文标点符号。默认为假。<br>Whether to use punctuation marks in Chinese Simplified. False by default.
+        :param isCHS: 是否使用简体中文标点符号和提示语。默认为假。<br>Whether to use punctuation marks and prompts in Chinese Simplified. False by default.
         :type isCHS: bool
         :param enableModeOverride: 是否启用模式覆盖。启用后，将统计某个变量在不同模式中的数值。默认为假。<br>Whether to enable mode overriden values. If enabled, values among different modes will be taken into consideration. False by default.
         :type enableModeOverride: bool
@@ -1069,7 +1069,7 @@ class LoLDataExtractor:
         :type formulaPart: dict[str, Any]
         :param var_prefix: 变量名前缀。只用于递归时传递参数。<br>Variable name prefix. Only used to pass the value during recursion.
         :type var_prefix: str
-        :param isCHS: 是否使用简体中文标点符号。默认为假。<br>Whether to use punctuation marks in Chinese Simplified. False by default.
+        :param isCHS: 是否使用简体中文标点符号和提示语。默认为假。<br>Whether to use punctuation marks and prompts in Chinese Simplified. False by default.
         :type isCHS: bool
         :param rowIndex: 见variableCalculation函数。<br>See `variableCalculation` function.
         :type rowIndex: int
@@ -1289,7 +1289,7 @@ class LoLDataExtractor:
         :type subpart_formula: dict[str, Any]
         :param var_prefix: 变量名前缀。只用于递归时传递参数。<br>Variable name prefix. Only used to pass the value during recursion.
         :type var_prefix: str
-        :param isCHS: 是否使用简体中文标点符号。默认为假。<br>Whether to use punctuation marks in Chinese Simplified. False by default.
+        :param isCHS: 是否使用简体中文标点符号和提示语。默认为假。<br>Whether to use punctuation marks and prompts in Chinese Simplified. False by default.
         :type isCHS: bool
         :param enableModeOverride: 是否启用模式覆盖。启用后，将统计某个变量在不同模式中的数值。默认为假。<br>Whether to enable mode overriden values. If enabled, values among different modes will be taken into consideration. False by default.
         :type enableModeOverride: bool
@@ -2008,7 +2008,7 @@ class LoLDataExtractor:
         :type strtable_locale: dict[str, int | dict[str, str]]
         :param binData: 标准化后的二进制描述数据。<br>Normalized binary description data.
         :type binData: dict[str, Any]
-        :param isCHS: 是否使用简体中文标点符号。默认为假。<br>Whether to use punctuation marks in Chinese Simplified. False by default.
+        :param isCHS: 是否使用简体中文标点符号和提示语。默认为假。<br>Whether to use punctuation marks and prompts in Chinese Simplified. False by default.
         :type isCHS: bool
         :param enableModeOverride: 是否启用模式覆盖。启用后，将统计某个变量在不同模式中的数值。默认为假。<br>Whether to enable mode overriden values. If enabled, values among different modes will be taken into consideration. False by default.
         :type enableModeOverride: bool
@@ -2150,7 +2150,7 @@ class LoLDataExtractor:
         
         :param tooltip: 原始说明文本。<br>Raw tooltip.
         :type tooltip: str
-        :param isCHS: 是否使用简体中文标点符号。默认为假。<br>Whether to use punctuation marks in Chinese Simplified. False by default.
+        :param isCHS: 是否使用简体中文标点符号和提示语。默认为假。<br>Whether to use punctuation marks and prompts in Chinese Simplified. False by default.
         :type isCHS: bool
         :return: 预处理后的说明文本。<br>Tooltip after preprocessing.
         :rtype: str
@@ -2188,7 +2188,7 @@ class LoLDataExtractor:
         
         :param tooltip: 预处理后的说明文本。<br>Tooltip after running `tooltipPreparation` method.
         :type tooltip: str
-        :param isCHS: 是否使用简体中文标点符号。默认为假。<br>Whether to use punctuation marks in Chinese Simplified. False by default.
+        :param isCHS: 是否使用简体中文标点符号和提示语。默认为假。<br>Whether to use punctuation marks and prompts in Chinese Simplified. False by default.
         :type isCHS: bool
         :return: 排版优化后的说明文本。<br>Tooltip after layout optimization.
         :rtype: str
@@ -2228,7 +2228,7 @@ class LoLDataExtractor:
         :type strtable_locale: dict[str, int | dict[str, str]]
         :param binData: **原始**二进制描述数据。<br>**Raw** binary description data.
         :type binData: dict[str, Any]
-        :param isCHS: 是否使用简体中文标点符号。默认为假。<br>Whether to use punctuation marks in Chinese Simplified. False by default.
+        :param isCHS: 是否使用简体中文标点符号和提示语。默认为假。<br>Whether to use punctuation marks and prompts in Chinese Simplified. False by default.
         :type isCHS: bool
         :param enableModeOverride: 是否启用模式覆盖。启用后，将统计某个变量在不同模式中的数值。默认为假。<br>Whether to enable mode overriden values. If enabled, values among different modes will be taken into consideration. False by default.
         :type enableModeOverride: bool
@@ -2333,7 +2333,7 @@ class LoLDataExtractor:
         :type strtable_locale: dict[str, int | dict[str, str]]
         :param binData: **原始**二进制描述数据。<br>**Raw** binary description data.
         :type binData: dict[str, Any]
-        :param isCHS: 是否使用简体中文标点符号。默认为假。<br>Whether to use punctuation marks in Chinese Simplified. False by default.
+        :param isCHS: 是否使用简体中文标点符号和提示语。默认为假。<br>Whether to use punctuation marks and prompts in Chinese Simplified. False by default.
         :type isCHS: bool
         :param enableModeOverride: 是否启用模式覆盖。启用后，将统计某个变量在不同模式中的数值。默认为假。<br>Whether to enable mode overriden values. If enabled, values among different modes will be taken into consideration. False by default.
         :type enableModeOverride: bool
@@ -3067,7 +3067,7 @@ class CheatExtractor(LoLDataExtractor):
                                 subkey2: str = pStrConst.search(key).group()
                                 subkey1: str = key.replace(subkey2, "")
                                 useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                                isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                                isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                                 tooltip_key: str = cheat_data[subkey1][-1]
                                 tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -3298,7 +3298,7 @@ class PerkExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = value[subkey1] #此处代码写法和其它地方有些不同。它不是引用列表上次追加的数据，而是直接从原始数据中获取。这是因为符文系数据相对比较平衡，很多键基本上都是常驻的（Here the code style somehow differs from other places. It doesn't use the data recently appended to the list; instead, it obtains the raw data. This is because perkstyle data are relatively balanced; many keys aren't flexible）
                         to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -3400,7 +3400,7 @@ class PerkExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = perk_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -4032,7 +4032,7 @@ class ChampionExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                            isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                            isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                             strtable_locale_lol: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                             strtable_locale_tft: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                             tooltip_key: str = champion_data[subkey1][-1] #通过访问最近一次追加的数据来优化代码。代价是键必须放在值的前面（Optimize the code by accessing the recently appended data. In turn, the key must be put in front of the value）
@@ -4065,7 +4065,7 @@ class ChampionExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                            isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                            isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                             strtable_locale_lol: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                             strtable_locale_tft: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                             if "spells" in value:
@@ -4090,7 +4090,7 @@ class ChampionExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                            isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                            isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                             if "CharacterRole" in value and value["CharacterRole"] in self.map22_bin:
                                 CharacterRoleNameTra_key: str = self.map22_bin[value["CharacterRole"]]["CharacterRoleNameTra"]
@@ -4107,7 +4107,7 @@ class ChampionExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                            isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                            isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                             if "mLinkedTraits" in value:
                                 trait_keys: list[str] = list(map(lambda x: x["TraitData"], value["mLinkedTraits"]))
@@ -4136,7 +4136,7 @@ class ChampionExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                            isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                            isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                             tooltip_key: str | list[str] = champion_data[subkey1][-1]
                             if i in {176, 177, 268, 269}: #说明文本单值（Single tooltip value）
@@ -4247,7 +4247,7 @@ class ChampionExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                            isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                            isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                             strtable_locale_lol: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                             strtable_locale_tft: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                             tooltip_key: str = champion_spell_data[subkey1][-1]
@@ -4607,7 +4607,7 @@ class ItemExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                            isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                            isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                             tooltip_key: str = item_data[subkey1][-1]
                             tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -4644,7 +4644,7 @@ class ItemExtractor(LoLDataExtractor):
                         subkey2: str = re.search(r"_mDisplayName_content_\w*", key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[3] == "zh"
-                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         item_key: str = itemModifier_data[subkey1][-1]
                         if item_key in self.items_bin and "mDisplayName" in self.items_bin[item_key]:
@@ -4656,7 +4656,7 @@ class ItemExtractor(LoLDataExtractor):
                         subkey2 = pStrConst.search(key).group()
                         subkey1 = key.replace(subkey2, "")
                         useTargetLocale = subkey2.split("_")[2] == "zh"
-                        isCHS = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        isCHS = useTargetLocale and self.locale in self.ZH_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key = itemModifier_data[subkey1][-1]
                         to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -5031,7 +5031,7 @@ class AugmentExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = CherryAugment_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -5097,7 +5097,7 @@ class AugmentExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = SwarmAugment_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -5167,7 +5167,7 @@ class AugmentExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                            isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                            isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                             tooltip_key: str = KiwiAugment_data[subkey1][-1]
                             tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -5227,7 +5227,7 @@ class AugmentExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = KiwiAugmentSet_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -5273,7 +5273,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 subkey2: str = pStrConst.search(key).group()
                                 subkey1: str = key.replace(subkey2, "")
                                 useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                                isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                                isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                                 tooltip_key: str = KiwiAugmentSet_data[subkey1][-1]
                                 tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -5574,7 +5574,7 @@ class AnvilExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = CherryAnvil_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -5632,7 +5632,7 @@ class AnvilExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = KiwiAnvil_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -6098,7 +6098,7 @@ class CameoExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = cameo_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -6354,7 +6354,7 @@ class GoHExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                            isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                            isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                             tooltip_key: str = GoH_data[subkey1][-1]
                             tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -6701,7 +6701,7 @@ class TFTExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                            isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                            isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                             flexibleData["mStat_dict_override_version"] = self.version
                             flexibleData["tftstringtable"] = strtable_locale
@@ -6881,7 +6881,7 @@ class TFTExtractor(LoLDataExtractor):
                                 subkey2: str = pStrConst.search(key).group()
                                 subkey1: str = key.replace(subkey2, "")
                                 useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                                isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                                isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                                 flexibleData["mStat_dict_override_version"] = self.version
                                 flexibleData["tftstringtable"] = strtable_locale
@@ -6937,7 +6937,7 @@ class TFTExtractor(LoLDataExtractor):
                                 subkey2: str = pStrConst.search(key).group()
                                 subkey1: str = key.replace(subkey2, "")
                                 useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                                isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                                isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                                 tooltip_key: str = TFTSet_data[subkey1][-1]
                                 tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -6966,7 +6966,7 @@ class TFTExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                         flexibleData["mStat_dict_override_version"] = self.version
                         flexibleData["tftstringtable"] = strtable_locale
@@ -7104,7 +7104,7 @@ class TFTExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                            isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                            isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                             tooltip_key: str = TFTRound_data[subkey1][-1]
                             tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -7128,7 +7128,7 @@ class TFTExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                         flexibleData["mStat_dict_override_version"] = self.version
                         flexibleData["tftstringtable"] = strtable_locale
@@ -7233,7 +7233,7 @@ class TFTExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                         flexibleData["mStat_dict_override_version"] = self.version
                         flexibleData["tftstringtable"] = strtable_locale
@@ -7356,7 +7356,7 @@ class TFTExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                         flexibleData["mStat_dict_override_version"] = self.version
                         flexibleData["tftstringtable"] = strtable_locale
@@ -7423,7 +7423,7 @@ class TFTExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                        isCHS: bool = useTargetLocale and self.locale in self.CHS_PUNCMARKS
+                        isCHS: bool = useTargetLocale and self.locale in self.ZH_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                         flexibleData["mStat_dict_override_version"] = self.version
                         flexibleData["tftstringtable"] = strtable_locale
