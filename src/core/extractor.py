@@ -4523,8 +4523,9 @@ class ItemExtractor(LoLDataExtractor):
         
         #数据整理核心部分（Data organization core part）
         pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
-        item_rarities: dict[int, str] = {0: "无", 1: "初始", 2: "基础", 3: "工资装", 4: "史诗", 5: "传说", 6: "神话", 7: "升级", 8: "锻造器", 9: "棱彩"}
-        # item_rarities: dict[int, str] = {0: "NONE", 1: "STARTER", 2: "BASIC", 3: "Gold Income", 4: "EPIC", 5: "LEGENDARY", 6: "Mythic", 7: "Level Up", 8: "ANVIL", 9: "PRISMATIC"}
+        item_rarities_zh: dict[int, str] = {0: "无", 1: "初始", 2: "基础", 3: "工资装", 4: "史诗", 5: "传说", 6: "神话", 7: "升级", 8: "锻造器", 9: "棱彩"}
+        item_rarities_en: dict[int, str] = {0: "NONE", 1: "STARTER", 2: "BASIC", 3: "Gold Income", 4: "EPIC", 5: "LEGENDARY", 6: "Mythic", 7: "Level Up", 8: "ANVIL", 9: "PRISMATIC"}
+        item_rarities: dict[int, str] = item_rarities_zh if self.locale in self.ZH_LOCALE else item_rarities_en
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
         for (key1, value) in self.items_bin.items():
@@ -4984,10 +4985,12 @@ class AugmentExtractor(LoLDataExtractor):
         KiwiAugmentSet_data_json: dict[str, list[Any]] = copy.deepcopy(KiwiAugmentSet_data)
         
         #数据整理核心部分（Data organization core part）
-        AugmentDisplayTags: dict[int, str] = {0: "己方", 1: "伤害", 2: "综合", 3: "复原力", 4: "速度", 5: "功能", 6: "属性锻造器", 7: "经济"} #通过字符串常量池的“cherry_augmentdisplaytag_...”类键得到（Obtained by "cherry_augmentdisplaytag_..." keys）
-        #AugmentDisplayTags: dict[int, str] = {0: "Ally", 1: "Damage", 2: "General", 3: "Resilience", 4: "Speed", 5: "Utility", 6: "Stat Anvil", 7: "Economy"}
-        augment_rarities: dict[int, str] = {0: "白银", 1: "黄金", 2: "棱彩", 3: "超凡", 4: "晶耀"}
-        #augment_rarities: dict[int, str] = {0: "Silver", 1: "Gold", 2: "Prismatic", 3: "Unique", 4: "SheenGlow"}
+        AugmentDisplayTags_zh: dict[int, str] = {0: "己方", 1: "伤害", 2: "综合", 3: "复原力", 4: "速度", 5: "功能", 6: "属性锻造器", 7: "经济"} #通过字符串常量池的“cherry_augmentdisplaytag_...”类键得到（Obtained by "cherry_augmentdisplaytag_..." keys）
+        AugmentDisplayTags_en: dict[int, str] = {0: "Ally", 1: "Damage", 2: "General", 3: "Resilience", 4: "Speed", 5: "Utility", 6: "Stat Anvil", 7: "Economy"}
+        AugmentDisplayTags: dict[int, str] = AugmentDisplayTags_zh if self.locale in self.ZH_LOCALE else AugmentDisplayTags_en
+        augment_rarities_zh: dict[int, str] = {0: "白银", 1: "黄金", 2: "棱彩", 3: "超凡", 4: "晶耀"}
+        augment_rarities_en: dict[int, str] = {0: "Silver", 1: "Gold", 2: "Prismatic", 3: "Unique", 4: "SheenGlow"}
+        augment_rarities: dict[int, str] = augment_rarities_zh if self.locale in self.ZH_LOCALE else augment_rarities_en
         pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
@@ -5533,10 +5536,12 @@ class AnvilExtractor(LoLDataExtractor):
         KiwiAnvil_data_json: dict[str, list[Any]] = copy.deepcopy(KiwiAnvil_data)
         
         #数据整理核心部分（Data organization core part）
-        AugmentDisplayTags: dict[int, str] = {0: "己方", 1: "伤害", 2: "综合", 3: "复原力", 4: "速度", 5: "功能", 6: "属性锻造器", 7: "经济"}
-        #AugmentDisplayTags: dict[int, str] = {0: "Ally", 1: "Damage", 2: "General", 3: "Resilience", 4: "Speed", 5: "Utility", 6: "Stat Anvil", 7: "Economy"}
-        anvil_rarities: dict[int, str] = {0: "白银阶属性", 1: "传说级战士装备", 2: "传说级射手装备", 3: "传说级刺客装备", 4: "传说级法师装备", 5: "传说级坦克装备", 6: "传说级辅助装备", 7: "棱彩装备", 8: "黄金阶属性", 9: "棱彩阶属性"}
-        # anvil_rarities: dict[int, str] = {0: "Silver Stat Anvil", 1: "Legendary Fighter Item", 2: "Legendary Marksman Item", 3: "Legendary Assassin Item", 4: "Legendary Mage Item", 5: "Legendary Tank Item", 6: "Legendary Support Item", 7: "Prismatic Item", 8: "Gold Stat Anvil", 9: "Prismatic Stat Anvil"}
+        AugmentDisplayTags_zh: dict[int, str] = {0: "己方", 1: "伤害", 2: "综合", 3: "复原力", 4: "速度", 5: "功能", 6: "属性锻造器", 7: "经济"}
+        AugmentDisplayTags_en: dict[int, str] = {0: "Ally", 1: "Damage", 2: "General", 3: "Resilience", 4: "Speed", 5: "Utility", 6: "Stat Anvil", 7: "Economy"}
+        AugmentDisplayTags: dict[int, str] = AugmentDisplayTags_zh if self.locale in self.ZH_LOCALE else AugmentDisplayTags_en
+        anvil_rarities_zh: dict[int, str] = {0: "白银阶属性", 1: "传说级战士装备", 2: "传说级射手装备", 3: "传说级刺客装备", 4: "传说级法师装备", 5: "传说级坦克装备", 6: "传说级辅助装备", 7: "棱彩装备", 8: "黄金阶属性", 9: "棱彩阶属性"}
+        anvil_rarities_en: dict[int, str] = {0: "Silver Stat Anvil", 1: "Legendary Fighter Item", 2: "Legendary Marksman Item", 3: "Legendary Assassin Item", 4: "Legendary Mage Item", 5: "Legendary Tank Item", 6: "Legendary Support Item", 7: "Prismatic Item", 8: "Gold Stat Anvil", 9: "Prismatic Stat Anvil"}
+        anvil_rarities: dict[int, str] = anvil_rarities_zh if self.locale in self.ZH_LOCALE else anvil_rarities_en
         pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
