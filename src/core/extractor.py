@@ -2133,7 +2133,7 @@ class LoLDataExtractor:
                 tmp_var: str = tooltipNestedVarOther.lstrip("{").rstrip("}").strip().replace(tooltipNestedVarOther_var, str(i))
                 tmp_value: str = cls.get_strtable_value(strtable_locale, tmp_var, default = "")
                 if tmp_value != "":
-                    levelStrs.append("%s (level of $%s$: %d)" %(tmp_value, tooltipNestedVarOther_var, i))
+                    levelStrs.append("%s (level of $%s$: %d)" %(tmp_value, tooltipNestedVarOther_var.strip("@"), i))
                 elif i >= 10: #当某个水平不存在时，认为其后的水平也不存在。但是，在第五代斗魂竞技场中，【寄生关系】的说明文本——“Cherry_ParasiticRelationship@TeamSize@_Summary”中的TeamSize变量是从2开始的。毕竟没有单人成队的斗魂竞技场。考虑到一般这类变量取值都是一位数，所以这里强制至少从0遍历到9（When some level doesn't exist, we assume that the subsequent levels don't exist, either. However, in Arena v5, `TeamSize` variable in the tooltip of Parasitic Relationship, namely "Cherry_ParasiticRelationship@TeamSize@_Summary", starts from 2. An Arena game where single player makes up of a team doesn't exist, after all. Considering the value of these kind of parameters usually has only one digit, here it's forced to traverse at least from 0 to 9）
                     break
             if len(levelStrs) > 0:
@@ -8827,8 +8827,8 @@ if __name__ == "__main__":
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
         #     map33_bin = json.load(fp)
         ##装备（Item）
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
-        #     items_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
+            items_bin = json.load(fp)
         ##共享数据（Shared data）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/shared.cdtb.bin.json", "r", encoding = "utf-8") as fp:
         #     shared_bin = json.load(fp)
@@ -8843,8 +8843,8 @@ if __name__ == "__main__":
         ##整合后的数据（Merged data）
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
         #     champions_bin = json.load(fp)
-        with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/characters_bin.json", "r", encoding = "utf-8") as fp:
-            characters_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/characters_bin.json", "r", encoding = "utf-8") as fp:
+        #     characters_bin = json.load(fp)
         
         #数据准备（Data preparation）
         # for (key, value) in shared_bin.items():
@@ -8878,9 +8878,9 @@ if __name__ == "__main__":
         # print(LoLDataExtractor.get_strtable_value(lolstringtable_zh, mDisplayName_key, default = "获取失败。"))
         
         #说明文本转换（Tooltip transformation）
-        tooltip_raw: str = "亚恒在用一次攻击或技能命中一个敌方英雄时，会获得一层<keyword>果决</keyword>(最大@MaxStacks@层)。他每层获得<physicalDamage>@PercentBonusADCalc@攻击力提升</physicalDamage>。<br><br>当叠满<keyword>果决</keyword>时，亚恒使已提供的<physicalDamage>攻击力</physicalDamage>翻倍，并且如果他即将阵亡，那么他会转而进入持续@ReviveDuration@秒的凝滞状态然后带着<healing>他的@RevivePercentCalc@最大生命值</healing>复活。<br><br>亚恒的复活有@ReviveCooldownCalc@秒冷却时间。<br>"
+        tooltip_raw: str = "<titleLeft><itemName@ItemActiveness@>德拉克萨的暮刃</itemName@ItemActiveness@></titleLeft><titleRight>{{ Item_Gold_Value_Sell }} <rules>(@SellBackModifier*100@%)</rules></titleRight><subtitleLeft>{{ Item_BriefIcon_@ItemActiveness@ }}处决</subtitleLeft><subtitleRight></subtitleRight><mainText><section><attention>%i:scaleAD%@FlatPhysicalDamageMod@</attention>攻击力<br><attention>%i:scaleAPen% @PhysicalLethality@</attention>穿甲<br><attention>%i:scaleCooldown%@AbilityHasteMod@</attention>技能急速</section><section>{{ Item_Passive_List }}<br><passive>夜行者</passive><br>你的技能可基于目标的<scaleHealth>已损失生命值</scaleHealth>至多造成额外的{{ Item_Melee_Ranged_Split_Dynamic }}伤害。如果一名在过去@TakedownWindow@秒内曾被你造成过伤害的英雄阵亡，你就会进入持续@StealthDuration@秒的<status>无形</status>状态。<br><br><rules>无形状态下的单位不可被选取并且不受非建筑物单位的影响。</rules></section><section></section><section><flavorText></flavorText></section></mainText><postScriptLeft>已对英雄造成的伤害：<attention>@f2@</attention></postScriptLeft>"
         print("原始说明文本：\n" + tooltip_raw)
-        binData: dict[str, Any] = characters_bin["{4c6e6c43}"]["mSpell"]
+        binData: dict[str, Any] = items_bin["Items/446691"]
         print("----")
         print("转换文本：")
         print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, isCHS = True, enableModeOverride = True, reserve_variable = False))
