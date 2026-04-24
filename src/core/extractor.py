@@ -373,10 +373,11 @@ class LoLDataExtractor:
             logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
         else:
             self.folder = os.path.expanduser("~/Desktop")
-            if self.sheet_naming_fold:
-                self.wbPath = os.path.join(self.folder, "游戏数据提取_AllPatches.xlsx").replace("\\", "/")
-            else:
-                self.wbPath = os.path.join(self.folder, f"游戏数据提取_{self.patch}.xlsx").replace("\\", "/")
+            wbContent: str = "游戏数据提取" if self.locale in self.ZH_LOCALE else "GameDataExtract"
+            locale: str = self.locale.replace("_", "-")
+            version: str = "AllPatches" if self.sheet_naming_fold else self.patch
+            wbName: str = f"{wbContent}_{locale}_{version}.xlsx" #工作簿命名结构（Structure of the workbook's name）
+            self.wbPath = os.path.join(self.folder, wbName).replace("\\", "/")
             return (self.folder, self.wbPath)
     
     def get_version(self) -> None: #在线加载——供用户使用（Online loading - For user use）
