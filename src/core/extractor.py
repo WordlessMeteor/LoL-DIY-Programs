@@ -22,7 +22,7 @@ from src.core.config.localization import language_ddragon, language_cdragon
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/04/23
+# 更新（Last update）：     2026/04/24
 #=============================================================================
 
 #定义异质性检验函数（Define heterogeneity verification function）
@@ -2082,7 +2082,7 @@ class LoLDataExtractor:
                 tooltipCitation_key: str = tooltipModeSplit_key.replace(tooltipModeSplit_result, value)
                 tooltipResult: str = cls.get_strtable_value(strtable_locale, tooltipCitation_key, tooltipCitation_key)
                 tooltipModeSplit_results_burn[gameModeName] = tooltipResult if gameModeName == "default" else f"{tooltipResult} (mode: {gameModeName})"
-            if tooltipModeSplit_key == result or (start == 0 or result[start - 1] == "\n") and (end == len(result) - 1 or result[end + 1] == "\n"): #有些技能是整个说明文本作为一个变量的值，这种情况下最好能够多行展示不同情形（Some abilities has the whole tooltip as a value of a variable. In that case, it's better to display the different situations among multiple lines）
+            if tooltipModeSplit_key == result or (start == 0 or result[start - 1] == "\n") and (end == len(result) - 1 or result[end + 1] == "\n"): #有些技能是整个说明文本作为一个变量的值，这种情况下最好能够多行展示不同情形（Some abilities has the whole tooltip as a value of a variable. Better to display the different situations among multiple lines in that case）
                 separator: str = "\n||\n"
             else:
                 separator: str = " || "
@@ -2137,7 +2137,7 @@ class LoLDataExtractor:
                 elif i >= 10: #当某个水平不存在时，认为其后的水平也不存在。但是，在第五代斗魂竞技场中，【寄生关系】的说明文本——“Cherry_ParasiticRelationship@TeamSize@_Summary”中的TeamSize变量是从2开始的。毕竟没有单人成队的斗魂竞技场。考虑到一般这类变量取值都是一位数，所以这里强制至少从0遍历到9（When some level doesn't exist, we assume that the subsequent levels don't exist, either. However, in Arena v5, `TeamSize` variable in the tooltip of Parasitic Relationship, namely "Cherry_ParasiticRelationship@TeamSize@_Summary", starts from 2. An Arena game where single player makes up of a team doesn't exist, after all. Considering the value of these kind of parameters usually has only one digit, here it's forced to traverse at least from 0 to 9）
                     break
             if len(levelStrs) > 0:
-                levelStr = "\n||\n".join(levelStrs)
+                levelStr = " || ".join(levelStrs)
                 result = result.replace(tooltipNestedVarOther, levelStr)
             else:
                 start_pos = matchObj.end()
