@@ -22,7 +22,7 @@ from src.core.config.localization import language_ddragon, language_cdragon
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/04/24
+# 更新（Last update）：     2026/04/25
 #=============================================================================
 
 #定义异质性检验函数（Define heterogeneity verification function）
@@ -6677,7 +6677,9 @@ class TFTExtractor(LoLDataExtractor):
                                 if tmp_key in tmp_ptr:
                                     tmp_ptr = tmp_ptr[tmp_key]
                                 else:
-                                    if i == 80: #{bdb41827}
+                                    if i == 59: #{dacd2fc1} {a211c44d}
+                                        to_append = "{dacd2fc1}" in value #默认值其实是真，但如果连上一级键都没有，当然应该设置为假（The default value is True, but if its parent key doesn't exist, then it should be set as False）
+                                    elif i == 80: #{bdb41827}
                                         to_append = True
                                     else:
                                         to_append = ""
