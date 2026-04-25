@@ -87,8 +87,8 @@ async def check_available_queue(connection: Connection) -> pandas.DataFrame: #æ¢
         queue_dict["map_CN"].append(map_CN[queue["mapId"]])
         queue_dict["map_EN"].append(map_EN[queue["mapId"]])
         queue_dict["gameMode"].append(queue["name"])
-        queue_dict["pickType_CN"].append(pickmode_CN[queue["gameTypeConfig"]["pickMode"]])
-        queue_dict["pickType_EN"].append(pickmode_EN[queue["gameTypeConfig"]["pickMode"]])
+        queue_dict["pickType_CN"].append(pickmode_CN[queue["pickMode"]])
+        queue_dict["pickType_EN"].append(pickmode_EN[queue["pickMode"]])
     available_queue_df: pandas.DataFrame = pandas.DataFrame(queue_dict)
     available_queue_df.sort_values(by = "queueID", inplace = True, ascending = True, ignore_index = True)
     return available_queue_df
