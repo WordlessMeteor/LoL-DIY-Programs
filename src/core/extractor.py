@@ -1,4 +1,5 @@
 import copy, json, os, pandas, re, requests, sys, time, warnings
+from pathlib import Path
 from urllib.parse import urljoin
 from xxhash import xxh3_64_intdigest
 from openpyxl import load_workbook, Workbook
@@ -8988,6 +8989,10 @@ if __name__ == "__main__":
         :return: 状态码。<br>Status code.
         :rtype: int
         '''
+        extract_game_dir: Path = Path("D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/")
+        extract_plugins_dir: Path = Path("D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Plugins/")
+        repo_game_dir: Path = Path("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/")
+        repo_plugins_dir: Path = Path("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/plugins/")
         #设置语言（Set the language）
         language_code = "zh_CN"
         if language_code == "":
@@ -9028,29 +9033,29 @@ if __name__ == "__main__":
         #加载中英文字符串常量池（Load the stringtable in Chinese and English）
         logPrint("正在加载字符串常量池……\nLoading stringtables ...", print_time = True)
         if dir_type == "extract":
-            strtable_paths: list[str] = [
-                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/zh_cn/data/menu/en_us/lol.stringtable.json",
-                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/en_us/data/menu/en_us/lol.stringtable.json",
-                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/zh_cn/data/menu/en_us/tft.stringtable.json",
-                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/en_us/data/menu/en_us/tft.stringtable.json",
+            strtable_paths: list[Path] = [
+                extract_game_dir / "zh_cn/data/menu/en_us/lol.stringtable.json",
+                extract_game_dir / "en_us/data/menu/en_us/lol.stringtable.json",
+                extract_game_dir / "zh_cn/data/menu/en_us/tft.stringtable.json",
+                extract_game_dir / "en_us/data/menu/en_us/tft.stringtable.json",
             ]
         else:
             strtable_paths = [
-                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/lol.stringtable.json",
-                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/lol.stringtable.json",
-                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/tft.stringtable.json",
-                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/tft.stringtable.json",
+                repo_game_dir / "zh_cn/data/menu/en_us/lol.stringtable.json",
+                repo_game_dir / "en_us/data/menu/en_us/lol.stringtable.json",
+                repo_game_dir / "zh_cn/data/menu/en_us/tft.stringtable.json",
+                repo_game_dir / "en_us/data/menu/en_us/tft.stringtable.json",
             ]
-        extractor.read_strtable(strtable_paths = strtable_paths)
+        extractor.read_strtable(strtable_paths = list(map(lambda x: x.as_posix(), strtable_paths)))
         if not (extractor.strtable_organize_manner == 1 and extractor.strtables_ready["lol_target"] and extractor.strtables_ready["lol_default"] and extractor.strtables_ready["tft_target"] and extractor.strtables_ready["tft_default"]) and not (extractor.strtable_organize_manner == 2 and extractor.strtables_ready["target"] and extractor.strtables_ready["default"]):
             return 0
         #加载共享数据（Load shared data）
         logPrint("正在加载共享数据……\nLoading shared data ...", print_time = True)
         if dir_type == "extract":
-            shared_bin_path = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/shared.cdtb.bin.json"
+            shared_bin_path: Path = extract_game_dir / "shared.cdtb.bin.json"
         else:
-            shared_bin_path: str = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/shared.cdtb.bin.json"
-        extractor.init_mSpells(debug = True, path = shared_bin_path)
+            shared_bin_path = repo_game_dir / "shared.cdtb.bin.json"
+        extractor.init_mSpells(debug = True, path = shared_bin_path.as_posix())
         if not extractor.shared_ready:
             # logPrint("共享数据获取失败。将忽略该数据。\nShared data capture failure! The program will ignore them.")
             return 0
@@ -9199,46 +9204,46 @@ if __name__ == "__main__":
                         logPrint("[%d/%d]正在调试地图数据……\nDebugging map data ..." %(nDataOption_iter, nDataOptions))
                         mapExtractor: MapExtractor = MapExtractor(extractor)
                         if dir_type == "extract":
-                            map_paths: list[str] = [
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map11/map11.bin.json",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map12/map12.bin.json",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map21/map21.bin.json",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map22/map22.bin.json",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map33/map33.bin.json",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map35/map35.bin.json"
+                            map_paths: list[Path] = [
+                                extract_game_dir / "data/maps/shipping/map11/map11.bin.json",
+                                extract_game_dir / "data/maps/shipping/map12/map12.bin.json",
+                                extract_game_dir / "data/maps/shipping/map21/map21.bin.json",
+                                extract_game_dir / "data/maps/shipping/map22/map22.bin.json",
+                                extract_game_dir / "data/maps/shipping/map30/map30.bin.json",
+                                extract_game_dir / "data/maps/shipping/map33/map33.bin.json",
+                                extract_game_dir / "data/maps/shipping/map35/map35.bin.json"
                             ]
                         else:
                             map_paths = [
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map11/map11.bin.json",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map12/map12.bin.json",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map21/map21.bin.json",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map35/map35.bin.json"
+                                repo_game_dir / "data/maps/shipping/map11/map11.bin.json",
+                                repo_game_dir / "data/maps/shipping/map12/map12.bin.json",
+                                repo_game_dir / "data/maps/shipping/map21/map21.bin.json",
+                                repo_game_dir / "data/maps/shipping/map22/map22.bin.json",
+                                repo_game_dir / "data/maps/shipping/map30/map30.bin.json",
+                                repo_game_dir / "data/maps/shipping/map33/map33.bin.json",
+                                repo_game_dir / "data/maps/shipping/map35/map35.bin.json"
                             ]
-                        mapExtractor.build_map_dataframe(debug = True, paths = map_paths)
+                        mapExtractor.build_map_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), map_paths)))
                         if export:
                             mapExtractor.export_map_data()
                     elif dOption == 2:
                         logPrint("[%d/%d]正在调试作弊指令数据……\nDebugging cheat data ..." %(nDataOption_iter, nDataOptions))
                         cheatExtractor: CheatExtractor = CheatExtractor(extractor)
                         if dir_type == "extract":
-                            cheat_path = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/cheats.cdtb.bin.json"
+                            cheat_path: Path = extract_game_dir / "cheats.cdtb.bin.json"
                         else:
-                            cheat_path: str = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/cheats.cdtb.bin.json"
-                        cheatExtractor.build_cheat_dataframe(debug = True, path = cheat_path)
+                            cheat_path = repo_game_dir / "cheats.cdtb.bin.json"
+                        cheatExtractor.build_cheat_dataframe(debug = True, path = cheat_path.as_posix())
                         if export:
                             cheatExtractor.export_cheat_data()
                     elif dOption == 3:
                         logPrint("[%d/%d]正在调试符文数据……\nDebugging perk data ..." %(nDataOption_iter, nDataOptions))
                         perkExtractor: PerkExtractor = PerkExtractor(extractor)
                         if dir_type == "extract":
-                            perk_path: str = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/perks.cdtb.bin.json"
+                            perk_path: str = extract_game_dir / "perks.cdtb.bin.json"
                         else:
-                            perk_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/perks.cdtb.bin.json"
-                        perkExtractor.build_perk_dataframe(debug = True, path = perk_path)
+                            perk_path = repo_game_dir / "perks.cdtb.bin.json"
+                        perkExtractor.build_perk_dataframe(debug = True, path = perk_path.as_posix())
                         if export:
                             perkExtractor.export_perk_data()
                     elif dOption == 4:
@@ -9246,16 +9251,16 @@ if __name__ == "__main__":
                         championExtractor1: ChampionExtractor = ChampionExtractor(extractor)
                         championExtractor1.set_mode(False)
                         if dir_type == "extract":
-                            champion_paths: list[str] = [
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Plugins/rcp-be-lol-game-data/global/zh_cn/v1/champion-summary.json",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/characters"
+                            champion_paths: list[Path] = [
+                                extract_plugins_dir / "rcp-be-lol-game-data/global/zh_cn/v1/champion-summary.json", #这里的语言文化代码可为任意值，因为在英雄提取器的读取英雄数据方法中，这个文件只是用来提取别名进一步确定各英雄二进制描述文件的路径的（Here the locale can be any value, for in `ChampionExtractor.read_champion_data`, this file is only used to determine paths of each champion's binary description file path）
+                                extract_game_dir / "data/characters"
                             ]
                         else:
                             champion_paths = [
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/plugins/rcp-be-lol-game-data/global/zh_cn/v1/champion-summary.json",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/characters"
+                                repo_plugins_dir / "rcp-be-lol-game-data/global/zh_cn/v1/champion-summary.json",
+                                repo_game_dir / "data/characters"
                             ]
-                        championExtractor1.build_champion_dataframe(debug = True, paths = champion_paths)
+                        championExtractor1.build_champion_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), champion_paths)))
                         if export:
                             championExtractor1.export_champion_data()
                     elif dOption == 5:
@@ -9263,86 +9268,86 @@ if __name__ == "__main__":
                         championExtractor2: ChampionExtractor = ChampionExtractor(extractor)
                         championExtractor2.set_mode(True)
                         if dir_type == "extract":
-                            character_paths: list[str] = [
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map22/map22.bin.json",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/characters",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/characters"
+                            character_paths: list[Path] = [
+                                extract_game_dir / "data/maps/shipping/map22/map22.bin.json",
+                                extract_game_dir / "data/characters",
+                                extract_game_dir / "characters"
                             ]
                         else:
                             character_paths = [
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/characters",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/characters"
+                                repo_game_dir / "data/maps/shipping/map22/map22.bin.json",
+                                repo_game_dir / "data/characters",
+                                repo_game_dir / "characters"
                             ]
-                        championExtractor2.build_champion_dataframe(debug = True, paths = character_paths)
+                        championExtractor2.build_champion_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), character_paths)))
                         if export:
                             championExtractor2.export_champion_data()
                     elif dOption == 6:
                         logPrint("[%d/%d]正在调试装备数据……\nDebugging item data ..." %(nDataOption_iter, nDataOptions))
                         itemExtractor: ItemExtractor = ItemExtractor(extractor)
                         if dir_type == "extract":
-                            item_path: str = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/items.cdtb.bin.json"
+                            item_path: Path = extract_game_dir / "items.cdtb.bin.json"
                         else:
-                            item_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json"
-                        itemExtractor.build_item_dataframe(debug = True, path = item_path)
+                            item_path = repo_game_dir / "items.cdtb.bin.json"
+                        itemExtractor.build_item_dataframe(debug = True, path = item_path.as_posix())
                         if export:
                             itemExtractor.export_item_data()
                     elif dOption == 7:
                         logPrint("[%d/%d]正在调试强化符文数据……\nDebugging augment data ..." %(nDataOption_iter, nDataOptions))
                         augmentExtractor: AugmentExtractor = AugmentExtractor(extractor)
                         if dir_type == "extract":
-                            augment_paths: list[str] = [
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/cherry.bin.json",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map33/map33.bin.json",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map12/map12.bin.json",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/kiwi.bin.json"
+                            augment_paths: list[Path] = [
+                                extract_game_dir / "data/maps/shipping/map30/map30.bin.json",
+                                extract_game_dir / "maps/modespecificdata/cherry.bin.json",
+                                extract_game_dir / "data/maps/shipping/map33/map33.bin.json",
+                                extract_game_dir / "data/maps/shipping/map12/map12.bin.json",
+                                extract_game_dir / "maps/modespecificdata/kiwi.bin.json"
                             ]
                         else:
                             augment_paths = [
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map12/map12.bin.json",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json"
+                                repo_game_dir / "data/maps/shipping/map30/map30.bin.json",
+                                repo_game_dir / "maps/modespecificdata/cherry.bin.json",
+                                repo_game_dir / "data/maps/shipping/map33/map33.bin.json",
+                                repo_game_dir / "data/maps/shipping/map12/map12.bin.json",
+                                repo_game_dir / "maps/modespecificdata/kiwi.bin.json"
                             ]
-                        augmentExtractor.build_augment_dataframe(debug = True, paths = augment_paths)
+                        augmentExtractor.build_augment_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), augment_paths)))
                         if export:
                             augmentExtractor.export_augment_data()
                     elif dOption == 8:
                         logPrint("[%d/%d]正在调试锻造器数据……\nDebugging anvil data ..." %(nDataOption_iter, nDataOptions))
                         anvilExtractor: AnvilExtractor = AnvilExtractor(extractor)
                         if dir_type == "extract":
-                            anvil_paths: list[str] = [
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map12/map12.bin.json"
+                            anvil_paths: list[Path] = [
+                                extract_game_dir / "data/maps/shipping/map30/map30.bin.json",
+                                extract_game_dir / "data/maps/shipping/map12/map12.bin.json"
                             ]
                         else:
-                            anvil_paths: list[str] = [
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map12/map12.bin.json"
+                            anvil_paths = [
+                                repo_game_dir / "data/maps/shipping/map30/map30.bin.json",
+                                repo_game_dir / "data/maps/shipping/map12/map12.bin.json"
                             ]
-                        anvilExtractor.build_anvil_dataframe(debug = True, paths = anvil_paths)
+                        anvilExtractor.build_anvil_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), anvil_paths)))
                         if export:
                             anvilExtractor.export_anvil_data()
                     elif dOption == 9:
                         logPrint("[%d/%d]正在调试斗魂竞技场回合数据……\nDebugging Arena round data ..." %(nDataOption_iter, nDataOptions))
                         cherryRoundExtractor: CherryRoundExtractor = CherryRoundExtractor(extractor)
                         if dir_type == "extract":
-                            CherryRound_path: str = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json"
+                            CherryRound_path: Path = extract_game_dir / "data/maps/shipping/map30/map30.bin.json"
                         else:
-                            CherryRound_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json"
-                        cherryRoundExtractor.build_CherryRound_dataframe(debug = True, path = CherryRound_path)
+                            CherryRound_path = repo_game_dir / "data/maps/shipping/map30/map30.bin.json"
+                        cherryRoundExtractor.build_CherryRound_dataframe(debug = True, path = CherryRound_path.as_posix())
                         if export:
                             cherryRoundExtractor.export_CherryRound_data()
                     elif dOption == 10:
                         logPrint("[%d/%d]正在调试场景英雄数据……\nDebugging Cameo data ..." %(nDataOption_iter, nDataOptions))
                         cameoExtractor: CameoExtractor = CameoExtractor(extractor)
                         if dir_type == "extract":
-                            cameoPath: str = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json"
+                            cameoPath: Path = extract_game_dir / "data/maps/shipping/map30/map30.bin.json"
                         else:
-                            cameoPath: str = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json"
-                        cameoExtractor.build_cameo_dataframe(debug = True, path = cameoPath)
+                            cameoPath = repo_game_dir / "data/maps/shipping/map30/map30.bin.json"
+                        cameoExtractor.build_cameo_dataframe(debug = True, path = cameoPath.as_posix())
                         if export:
                             cameoExtractor.export_cameo_data()
                     elif dOption == 11:
@@ -9350,35 +9355,35 @@ if __name__ == "__main__":
                         gohExtractor: GoHExtractor = GoHExtractor(extractor)
                         if dir_type == "extract":
                             GoHPaths: list[str] = [
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map30/map30.bin.json",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/maps/modespecificdata/cherry.bin.json"
+                                extract_game_dir / "data/maps/shipping/map30/map30.bin.json",
+                                extract_game_dir / "maps/modespecificdata/cherry.bin.json"
                             ]
                         else:
-                            GoHPaths: list[str] = [
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json"
+                            GoHPaths = [
+                                repo_game_dir / "data/maps/shipping/map30/map30.bin.json",
+                                repo_game_dir / "maps/modespecificdata/cherry.bin.json"
                             ]
-                        gohExtractor.build_GoH_dataframe(debug = True, paths = GoHPaths)
+                        gohExtractor.build_GoH_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), GoHPaths)))
                         if export:
                             gohExtractor.export_GoH_data()
                     elif dOption == 12:
                         logPrint("[%d/%d]正在调试云顶之弈数据……\nDebugging TFT data ..." %(nDataOption_iter, nDataOptions))
                         tftExtractor: TFTExtractor = TFTExtractor(extractor)
                         if dir_type == "extract":
-                            map22_path = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map22/map22.bin.json"
+                            map22_path: Path = extract_game_dir / "data/maps/shipping/map22/map22.bin.json"
                         else:
-                            map22_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json"
-                        tftExtractor.build_tft_dataframe(debug = True, path = map22_path)
+                            map22_path = repo_game_dir / "data/maps/shipping/map22/map22.bin.json"
+                        tftExtractor.build_tft_dataframe(debug = True, path = map22_path.as_posix())
                         if export:
                             tftExtractor.export_tft_data()
                     elif dOption == 13:
                         logPrint("[%d/%d]正在调试字体数据……\nDebugging font data ..." %(nDataOption_iter, nDataOptions))
                         fontExtractor: FontExtractor = FontExtractor(extractor)
                         if dir_type == "extract":
-                            font_path = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/ux/font.cdtb.bin.json"
+                            font_path: Path = extract_game_dir / "ux/font.cdtb.bin.json"
                         else:
-                            font_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/ux/fonts.cdtb.bin.json"
-                        fontExtractor.build_font_dataframe(debug = True, path = font_path)
+                            font_path = repo_game_dir / "ux/fonts.cdtb.bin.json"
+                        fontExtractor.build_font_dataframe(debug = True, path = font_path.as_posix())
                         if export:
                             fontExtractor.export_font_data()
         return 0
