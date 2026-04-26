@@ -383,7 +383,7 @@ def normalize_file_name(name: str, into: str = "_", scheme: Optional[dict[str, s
         result = result.replace(char, scheme.get(char, into))
     return result
 
-def pyobj2json(obj: Any, indent: Optional[int] = None) -> Any:
+def pyobj2json(obj: Any, indent: Optional[int] = None, truncate: bool = False) -> Any:
     '''
     将一个Python对象转换为json字符串。<br>Transform a Python object into a json string.
     
@@ -391,11 +391,18 @@ def pyobj2json(obj: Any, indent: Optional[int] = None) -> Any:
     :type obj: Any
     :param indent: 缩进空格数。默认为无缩进。<br>Number of spaces for indentation. No indentation by default.
     :type indent: int | None
+    :param truncate: 是否自动截断过长的单元格字符串。默认为假。<br>Whether to automatically cut off excessively long cell strings. False by default.
+    
+        过长指的是超过32767个字符数。<br>"Excessively long" means a string is longer than 32767 characters.
+        
+        该参数仅对转换后的json字符串有效。<br>This parameter only applies to json strings after transformation.
+    :type truncate: bool
     :return: json字符串或原始对象（当obj不是list或dict时）。<br>Json string or the original object (when `obj` isn't a list or dict).
     :rtype: Any
     '''
     if isinstance(obj, (list, dict)):
-        return json.dumps(obj, indent = indent, ensure_ascii = False)
+        result: str = json.dumps(obj, indent = indent, ensure_ascii = False)
+        return result[:32767] if truncate else result
     else:
         return obj
 

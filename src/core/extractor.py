@@ -1,4 +1,4 @@
-import copy, json, os, pandas, re, requests, sys, time
+import copy, json, os, pandas, re, requests, sys, time, warnings
 from urllib.parse import urljoin
 from xxhash import xxh3_64_intdigest
 from openpyxl import load_workbook, Workbook
@@ -22,8 +22,10 @@ from src.core.config.localization import language_ddragon, language_cdragon
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/04/25
+# 更新（Last update）：     2026/04/26
 #=============================================================================
+
+warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
 
 #定义异质性检验函数（Define heterogeneity verification function）
 def verifyDictHeterogeneity(dict_list: list[dict[str, Any]]) -> tuple[pandas.DataFrame, pandas.DataFrame, pandas.DataFrame, pandas.DataFrame]:
@@ -232,9 +234,176 @@ def getBinaryKeys(data: dict[str, Any], isBin: bool = True, objectTypes: Any = N
         print("您传入的二进制描述数据格式有误。请检查。函数将返回空列表。\nThe format of the passed binary description data is invalid. Please check it. The function will return an empty list instead.")
         return ({}, {})
 
+class TooltipOperand:
+    #定义用于整个类的正则表达式（Define the regular expressions in this class）
+    _sFloat: str = r"-?\d*\.\d+?"
+    _sInteger: str = r"-?\d+"
+    _sNumber: str = f"({_sFloat})|({_sInteger})"
+    _sContDivision: str = f"(?P<division>({_sNumber})/({_sNumber})(/({_sNumber}))+)" #连除式要求至少有两个斜杠（A continuous division must have at least 2 slashes）
+    _sContDivisionOperand: str = f'(?P<operand>TooltipOperand\\("{_sContDivision}"\\))'
+    pNumber: re.Pattern[str] = re.compile(_sNumber)
+    pContDivision: re.Pattern[str] = re.compile(_sContDivision)
+    pContDivisionOperand: re.Pattern[str] = re.compile(_sContDivisionOperand)
+    
+    def __init__(self, value: str):
+        '''
+        初始化说明文本运算子对象。<br>Initialize a `TooltipOperand` object.
+        
+        本类支持所有基本的算术运算，但是对说明文本中的连除式做了适应性改动。<br>This class supports all basic arithmetic operations, but is adapted to continuous division in tooltips.
+        
+        :param value: 操作数。除了常规的数字之外，还可以是一个连除式。<br>An operand. Can be not only a normal number but also a continuous division.
+        
+            连除式形如“x1/x2/...”。连除式必须包含至少两个斜杠。<br>A continuous division is in the form like "x1/x2/...", which must include at least two slashes.
+        :type value: str
+        '''
+        self._value: str = value
+        self._number: int | float = 0
+        self._levels: tuple[int | float, ...] = tuple()
+        self._isContDivision: bool = self.judge_contDivision(value)
+        self._isSingleNumber: bool = self.judge_number(value)
+        if self._isContDivision:
+            self._levels = tuple(map(float, value.split("/")))
+            self._levels = tuple(int(x) if x == int(x) else x for x in self._levels) #优化字符串，去除不必要的小数点位数（Optimize the string so that it doesn't contain unnecessary fractional part）
+        elif self._isSingleNumber:
+            self._number = float(value)
+            if self._number == int(self._number):
+                self._number = int(self._number)
+        else:
+            raise TypeError(f"'{value}' is neither a real number nor a continuous division.")
+    
+    def __repr__(self) -> str:
+        return self._value
+    
+    @staticmethod
+    def judge_contDivision(s: str) -> bool:
+        '''
+        判断一个字符串是不是连除式。<br>Judge whether a string is a continuous division.
+        
+        :param s: 任意字符串。<br>Any string.
+        :type s: str
+        :return: 是否连除式。<br>Whether or not it's a continuous division.
+        :rtype: bool
+        '''
+        return s.count("/") > 1 and all(map(lambda x: TooltipOperand.pNumber.fullmatch(x), s.split("/")))
+    
+    @staticmethod
+    def judge_number(s: str) -> bool:
+        '''
+        判断一个字符串是不是数字。<br>Judge whether a string is a number.
+        
+        :param s: 任意字符串。<br>Any string.
+        :type s: str
+        :return: 是否数字。<br>Whether or not it's a number.
+        :rtype: bool
+        '''
+        return bool(TooltipOperand.pNumber.fullmatch(s))
+    
+    @property #通过property装饰器使得属性对外可见但不可修改（By `property` decorator, the attribute is visible to outside but can't be changed）
+    def number(self) -> float:
+        '''
+        返回对象的`number`属性。<br>Return the `number` attribute of the object.
+        '''
+        return self._number
+    
+    @property
+    def levels(self) -> tuple[float, ...]:
+        '''
+        返回对象的`levels`属性。<br>Return the `levels` attribute of the object.
+        '''
+        return self._levels
+    
+    @property
+    def isContDivision(self) -> bool:
+        '''
+        返回对象的`isContDivision`属性。<br>Return the `isContDivision` attribute of the object.
+        '''
+        return self._isContDivision
+    
+    @property
+    def isSingleNumber(self) -> bool:
+        '''
+        返回对象的`isSingleNumber`属性。<br>Return the `isSingleNumber` attribute of the object.
+        '''
+        return self._isSingleNumber
+    
+    def _apply_operation(self, other: Any, op: Callable[[int | float, int | float], int | float], op_name: str) -> TooltipOperand:
+        '''
+        复用双目运算符的代码。在本类中包含加法、乘法和幂运算。<br>Reuse code of binary operators. In this class, these operations include sum, multiplicatio and power.
+        
+        :param other: 另一个数字或连除式。<br>Another number or continuous division.
+        :type other: Any
+        :param op: 运算符函数。通过lambda函数来定义。<br>Operator function defined by a `lambda` function.
+        :type op: Callable[[int | float, int | float], int | float]
+        :param op_name: 运算符的英文描述。用于异常输出。<br>English description of this operator. Used for exception output.
+        :type op_name: str
+        :result: 运算结果。<br>Operation result.
+        :rtype: TooltipOperand
+        ''' 
+        if not isinstance(other, TooltipOperand):
+            other = TooltipOperand(str(other))
+        if self.isSingleNumber and other.isSingleNumber:
+            result: int | float = op(self.number, other.number)
+            return TooltipOperand(str(result))
+        elif self.isSingleNumber and other.isContDivision:
+            levels: tuple[int | float, ...] = tuple(map(lambda x: op(x, self.number), other.levels))
+            return TooltipOperand("/".join(list(map(str, levels))))
+        elif self.isContDivision and other.isSingleNumber:
+            levels: tuple[int | float, ...] = tuple(map(lambda x: op(x, other.number), self.levels))
+            return TooltipOperand("/".join(list(map(str, levels))))
+        elif self.isContDivision and other.isContDivision:
+            self_levels_count: int = len(self.levels)
+            other_levels_count: int = len(other.levels)
+            if self_levels_count == other_levels_count:
+                levels: tuple[int | float, ...] = tuple(op(self.levels[i], other.levels[i]) for i in range(self_levels_count))
+                return TooltipOperand("/".join(list(map(str, levels))))
+            else:
+                raise ValueError(f"Cannot {op_name} two continuous divisions of size {self_levels_count} and {other_levels_count}.")
+        else: #实际上不可能走到这一步（Actually the program can't go to this flow）
+            other_type: str = type(other).__name__
+            raise TypeError(f"Cannot add an object of type {other_type}.")
+    
+    def __add__(self, other: Any) -> TooltipOperand: #重载加号（Override plus）
+        return self._apply_operation(other, lambda a, b: a + b, "add")
+    
+    def __sub__(self, other: Any) -> TooltipOperand: #重载减号（Override minus）
+        return self._apply_operation(other, lambda a, b: a - b, "substract")
+    
+    def __mul__(self, other: Any) -> TooltipOperand: #重载乘号（Override times）
+        return self._apply_operation(other, lambda a, b: a * b, "multiply")
+    
+    def __pow__(self, other: Any) -> TooltipOperand: #重载乘方（Override pow）
+        return self._apply_operation(other, lambda a, b: a ** b, "raise to the power of")
+    
+    @classmethod
+    def contDivision_to_object(cls, s: str) -> str:
+        '''
+        将一个连除式字符串转化成说明文本运算子字符串。对于通过`eval`函数计算尤其有用。<br>Transform a continuous division into a TooltipOperand object string. Especially useful when calculation is performed through `eval` function.
+        
+        另一方面，这个转换可以起到保护连除式的作用。<br>On the other hand, after transformation, the continuous division 
+        
+        :param s: 一个包含连除式的字符串。<br>A string that contains a continuous division.
+        :type s: str
+        :return: 一个包含说明文本运算子对象的字符串。<br>A string containing `TooltipOperand` string.
+        :rtype: str
+        '''
+        return cls.pContDivision.sub(lambda match: 'TooltipOperand("%s")' %(match.group("division")), s)
+    
+    @classmethod
+    def object_to_contDivision(cls, s: str) -> str:
+        '''
+        将一个通过连除式构建的说明文本运算子字符串还原成连除式字符串。<br>Collapse a TooltipOperand object string into a continuous division string.
+        
+        :param s: 一个包含说明文本运算子对象的字符串。<br>A string containing `TooltipOperand` string.
+        :type s: str
+        :return: 一个包含连除式的字符串。<br>A string that contains a continuous division.
+        :rtype: str
+        '''
+        return cls.pContDivisionOperand.sub(lambda match: match.group("division"), s)
+
 #定义数据导出类（Define the data export class）
 class LoLDataExtractor:
     #定义类常量（Define class constants）
+    DEFAULT_LOCALE: str = "en_US"
     ZH_LOCALE: set[str] = {"zh_CN", "zh_MY", "zh_TW"} #使用中文提示语的语言文化代码（Language codes that use Chinese prompts）
     FULL_WIDTH_LOCALE: set[str] = {"ja_JP", "ko_KR", "zh_CN", "zh_MY", "zh_TW"} #使用全角标点符号的语言文化代码（Language codes that use full-width punctuation marks）
     #定义类属性，作为类内临时使用的全局变量（Define class attributes as temporarily used global variables within the class）
@@ -1033,19 +1202,29 @@ class LoLDataExtractor:
         return result
 
     @classmethod
-    def isContDivision(cls, expr: str) -> bool: #判断一个表达式是不是连除式（Judge whether an expression is a continuous division）
+    def cdRound(cls, division: str, digits: int = 0) -> str: #连除式保留小数函数（`round` function for a continuous division）
         '''
-        判断一个表达式是不是形如a/b/c/...的表达式。<br>Judge whether an expression is in the form of a/b/c/...
+        对一个连除式中的元素保留小数，并自动忽略百万分位后的部分。如果参数不合法，则返回原字符串。<br>Round each element in a continuous division and automatically ignore the part after the millionth place. If the parameter doesn't rigorously follow the format, then it'll be directly returned.
         
-        :param expr: 表达式字符串。<br>The expression string.
-        :type expr: str
-        :return: 表达式是否为连除式。<br>Whether the expression is a continuous division.
-        :rtype: bool
+        :param division: 待处理的连除式。<br>A continuous division to process.
+        :type division: str
+        :param digits: 保留的小数位数。默认为0。<br>The number of decimal places to keep. 0 by default.
+        :type digits: int
+        :return: 处理后的连除式。如果保留小数后元素与整数相差不到一百万分之一，则直接返回整数。<br>The processed continuous division. If the rounded element differs from its integer form by less than one millionth, return the integer instead.
+        :rtype: int | float
         '''
-        pFigure: re.Pattern[str] = re.compile(r"-?\d+\.?\d*")
-        while (matchObj := pFigure.search(expr)):
-            expr = expr[:matchObj.start()] + expr[matchObj.end():]
-        return len(set(list(expr))) == 1 and "/" in expr
+        try:
+            operand: TooltipOperand = TooltipOperand(division)
+        except:
+            return division
+        else:
+            if operand.isContDivision:
+                rounded_list: list[int | float] = []
+                for level in operand.levels:
+                    rounded_list.append(cls.aRound(level, digits = digits))
+                return "/".join(list(map(str, rounded_list)))
+            else:
+                return division
 
     @classmethod
     def burnValueList(cls, values: list[float], digits: int = 5) -> str:
@@ -1553,14 +1732,22 @@ class LoLDataExtractor:
                     stats = binData["mCalculations"][var_hash]
             if stats["__type"] == "GameCalculation":
                 formulaStrs: list[str] = []
+                includeContDivision: bool = False #标记是否涉及连除式的计算（Marks whether the formula involves a continuous division）
                 for formulaPart in stats["mFormulaParts"]:
                     formulaStr = cls.leafletCalculation(binData, formulaPart, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
                     formulaStrs.append(formulaStr)
+                    if TooltipOperand.pContDivision.search(formulaStr):
+                        includeContDivision = True
                 normalValue = " + ".join(formulaStrs)
+                normalValue = TooltipOperand.contDivision_to_object(normalValue) #保护连除式（Protect continuous divisions）
                 try:
-                    normalValue = str(cls.aRound(eval(normalValue), 5))
+                    if includeContDivision:
+                        normalValue = cls.cdRound(str(eval(normalValue)), 5)
+                    else:
+                        normalValue = str(cls.aRound(eval(normalValue), 5))
                 except:
                     pass
+                normalValue = TooltipOperand.object_to_contDivision(normalValue) #还原连除式。如果说明文本运算子对象成功参与`eval`计算，那么这个语句将不起任何作用（Recover continuous divisions. If the TooltipOperand object successfully takes part in `eval` calculation, then this statement doesn't make any difference）
                 if "mMultiplier" in stats:
                     multiple: str = cls.leafletCalculation(binData, stats["mMultiplier"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
                     normalValue = f"({normalValue}) × ({multiple})"
@@ -1596,24 +1783,33 @@ class LoLDataExtractor:
                 normalValue = f"({baseValue}) × ({multiple})"
             elif stats["__type"] == "{e9a3c91d}": #远程/近战英雄不同属性收益（Different bonus on melee / ranged champions）
                 formulaStrs: list[str] = []
+                includeContDivision: bool = False
                 for formulaPart in stats["mFormulaParts"]:
                     formulaStr = cls.leafletCalculation(binData, formulaPart, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
                     formulaStrs.append(formulaStr)
+                    if TooltipOperand.pContDivision.search(formulaStr):
+                        includeContDivision = True
                 meleeValue: str = " + ".join(formulaStrs)
+                meleeValue = TooltipOperand.contDivision_to_object(meleeValue)
                 try:
-                    meleeValue: int | float = eval(meleeValue.replace("×", "*"))
+                    if includeContDivision:
+                        meleeValue = cls.cdRound(str(eval(meleeValue.replace(" × ", " * "))), 5)
+                    else:
+                        meleeValue = str(cls.aRound(eval(meleeValue.replace(" × ", " * ")), 5))
                 except:
                     pass
-                else:
-                    meleeValue = cls.aRound(meleeValue, 5)
                 rangedMultiple = cls.leafletCalculation(binData, stats["mRangedMultiplier"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
                 rangedValue: str = f"({meleeValue}) × ({rangedMultiple})"
+                rangedValue = TooltipOperand.contDivision_to_object(rangedValue)
                 try:
-                    rangedValue: int | float = eval(rangedValue.replace("×", "*"))
+                    if includeContDivision:
+                        rangedValue = cls.cdRound(str(eval(rangedValue.replace(" × ", " * "))), 5)
+                    else:
+                        rangedValue = str(cls.aRound(eval(rangedValue.replace(" × ", " * ")), 5))
                 except:
                     pass
-                else:
-                    rangedValue = cls.aRound(rangedValue, 5)
+                meleeValue = TooltipOperand.object_to_contDivision(meleeValue)
+                rangedValue = TooltipOperand.object_to_contDivision(rangedValue)
                 normalValue = f"{meleeValue} (melee) | {rangedValue} (ranged)"
             else:
                 skip = True
@@ -1948,6 +2144,20 @@ class LoLDataExtractor:
                     formula = ""
                 result: str = cls.variableCalculation(binData, var, "", locale, enableModeOverride = enableModeOverride, rowIndex = matchStruct["rowIndex"], reservedVars = reservedVars, flexibleData = flexibleData) #如果存在多个模式的数值，则这些数值由双竖线连接（If there're mode override values for `var`, these values should be concatenated by double "|"）
                 if formula == "": #这里认为在双@内涉及二次计算的表达式中的变量视为简单变量，即在binData、binData["DataValues"]或binData["mDataValues"]中能够直接找到的变量。不然的话，拳头的程序员为什么不把这个公式放到binData["mItemCalculations"]或者binData["mSpellCalculations"]的部分呢？（Here we assume if the expression has secondary calculation like "*100", then its variable must be a **simple variable**, that is, a variable that can be directly found in `binData`, `binData["DataValues"]` or `binData["mDataValues"]`. Otherwise, why don't Riot programmers put this formula in `binData["mItemCalculations"]` or `binData["mSpellCalculations"]`?）
+                    result = result.replace(" × ", " * ")
+                    if TooltipOperand.pContDivision.search(result):
+                        result = TooltipOperand.contDivision_to_object(result)
+                        try:
+                            result = cls.cdRound(str(eval(result)), 5)
+                        except:
+                            pass
+                        result = TooltipOperand.object_to_contDivision(result)
+                    else:
+                        try:
+                            result = str(cls.aRound(eval(result), 5))
+                        except:
+                            pass
+                    result = result.replace(" * ", " × ")
                     new: str = result
                 else:
                     #这里实际上并没有使用pResult_ModeBurn对result进行识别，因为基于以上假设，在存在二次计算公式的情况下，pResult_ModeBurn应完全匹配result。典型示例：探险家 伊泽瑞尔的【咒能高涨】的AttackSpeedPerStack变量（Here we're not using `pResult_ModeBurn` to identify the result among different modes, because based on the above assumption, `pResult_ModeBurn` should completely match and span `result`. A typical example: EzrealPassive's `AttackSpeedPerStack` variable）
@@ -1966,20 +2176,22 @@ class LoLDataExtractor:
                     modeOverrideValueDict_burn: dict[str, str] = {} #存储转换后带模式名的计算结果。join函数对此字典的值列表执行（Stores calculation result plus gameModeName after transformation. `join` function is used on this dictionary's value list）
                     for (gameModeName, value) in modeOverrideValues.items():
                         if value != old:
-                            if cls.isContDivision(value): #处理值列表元素不唯一的情形，防止其被视为连除式而参与后续eval的计算（Handles the case where value elements aren't the same, in case it would be considered as a continuous division by the subsequent `eval` function）
+                            if TooltipOperand.pContDivision.search(value): #处理值列表元素不唯一的情形，防止其被视为连除式而参与后续eval的计算（Handles the case where value elements aren't the same, in case it would be considered as a continuous division by the subsequent `eval` function）
                                 valueList: list[str] = list(map(lambda x: x + formula, value.split("/")))
                                 for i in range(len(valueList)):
+                                    valueList[i] = TooltipOperand.contDivision_to_object(valueList[i])
                                     try:
-                                        valueList[i] = eval(valueList[i].replace("×", "*"))
+                                        tmp = eval(valueList[i].replace(" × ", " * "))
                                     except:
                                         pass
                                     else:
-                                        valueList[i] = str(cls.aRound(valueList[i], 5))
+                                        valueList[i] = str(cls.aRound(tmp, 5))
+                                    valueList[i] = TooltipOperand.object_to_contDivision(valueList[i])
                                 value = "/".join(valueList)
                             else:
                                 value += formula
                                 try:
-                                    value = eval(value.replace("×", "*"))
+                                    value = eval(value.replace(" × ", " * "))
                                 except:
                                     pass
                                 else:
@@ -3401,6 +3613,7 @@ class PerkExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                        locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = perk_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -3413,7 +3626,7 @@ class PerkExtractor(LoLDataExtractor):
                                 to_append = ""
                             else:
                                 self.__class__.calculatedVariables.clear()
-                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpellScriptData, self.locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpellScriptData, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -3546,11 +3759,14 @@ class ChampionExtractor(LoLDataExtractor):
             self.useAllCharacter = useAllCharacter
         return 0
     
-    def get_champion_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
+    def get_champion_data(self, verbose: bool = True) -> None: #在线加载——供用户使用（Online loading - For user use）
         '''
         在线获取英雄二进制描述数据。<br>Get binary description data of champions online.
         
         在`useAllCharacter`属性为真时，将获取所有角色的数据，否则只获取英雄的数据。<br>When the attribute `useAllCharacter` is True, all characters' data will be fetched, otherwise only champion data will be fetched.
+        
+        :param verbose: 是否打印过程性信息。默认为是。<br>Whether to print the progress. True by default.
+        :type verbose: bool
         '''
         logPrint = self.log.logPrint
         if self.useAllCharacter:
@@ -3581,7 +3797,7 @@ class ChampionExtractor(LoLDataExtractor):
                     ##角色列表（Character list）
                     self.characters_ready["characterList1"] = True #在从文件导出列表中获取角色数据时，相当于角色列表已准备就绪（When the file export list is fetched, the character list must be ready）
                     self.characters_ready["characterList2"] = True
-                    logPrint("正在整理角色列表……\nSorting out characters into a list ...", print_time = True)
+                    logPrint("正在整理角色列表……\nSorting out characters into a list ...", print_time = True, verbose = verbose)
                     character_binary_urls1: dict[str, str] = {}
                     for item in self.files_exported:
                         if item.startswith("game/data/characters/") and item.endswith(".bin.json"):
@@ -3593,11 +3809,11 @@ class ChampionExtractor(LoLDataExtractor):
                             if len(item.split("/")) == 3:
                                 character_binary_urls1[characterName] = urljoin(f"https://raw.communitydragon.org/json/{self.version}/", item)
                     #读取所有角色的二进制描述数据（Load all characters' binary description data）
-                    logPrint("正在读取各角色数据……\nReading all character data ...", print_time = True)
+                    logPrint("正在读取各角色数据……\nReading all character data ...", print_time = True, verbose = verbose)
                     characterNames = list(character_binary_urls1.keys())
                     for i in range(len(characterNames)):
                         characterName = characterNames[i]
-                        # logPrint("[%d/%d]正在加载角色%s的信息…… | Loading character %s%s information ..." %(i + 1, len(characterNames), characterName, characterName, "s'" if characterName.endswith("s") else "'s"), print_time = True)
+                        # logPrint("[%d/%d]正在加载角色%s的信息…… | Loading character %s%s information ..." %(i + 1, len(characterNames), characterName, characterName, "s'" if characterName.endswith("s") else "'s"), print_time = True, verbose = verbose)
                         character_binary_url: str = character_binary_urls1[characterName]
                         if character_binary_url in self.__class__.data_cache["online"]:
                             character_binary = self.__class__.data_cache["online"][character_binary_url]
@@ -3615,12 +3831,12 @@ class ChampionExtractor(LoLDataExtractor):
                             character_binary: dict[str, list[str] | dict[str, Any]] = source.json()
                             self.__class__.data_cache["online"][character_binary_url] = character_binary
                         self.champions_bin_dict[characterName] = character_binary
-                        logPrint("[%d/%d]已加载角色（Character loaded）：%s" %(i + 1, len(characterNames), characterName), print_time = True)
+                        logPrint("[%d/%d]已加载角色（Character loaded）：%s" %(i + 1, len(characterNames), characterName), print_time = True, verbose = verbose)
                     else:
                         self.__class__.merged_data_cache["characters_bin_dict"] = self.champions_bin_dict
                 else: #当文件导出列表尚未准备就绪时，从两个指定文件夹中获取角色数据（When the file export list isn't ready yet, get character data from two specified folders）
                     #整理角色列表（Sort out the characters into a list）
-                    logPrint("正在整理角色列表……\nSorting out characters into a list ...", print_time = True)
+                    logPrint("正在整理角色列表……\nSorting out characters into a list ...", print_time = True, verbose = verbose)
                     ##聚点危机地图（Convergence map）
                     map22_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map22/map22.bin.json" #云顶之弈的小小英雄和羁绊信息（TFT champion and trait data）
                     if map22_bin_url in self.__class__.data_cache["online"]:
@@ -3686,18 +3902,18 @@ class ChampionExtractor(LoLDataExtractor):
                             else:
                                 character_binary_urls2[characterName] = [f"https://raw.communitydragon.org/{self.version}/game/characters/{characterName}.cdtb.bin.json"]
                     #读取所有角色的二进制描述数据（Load all characters' binary description data）
-                    logPrint("正在读取各角色数据……\nReading all character data ...", print_time = True)
+                    logPrint("正在读取各角色数据……\nReading all character data ...", print_time = True, verbose = verbose)
                     characterNames = list(character_binary_urls2.keys())
                     for i in range(len(characterNames)):
                         characterName = characterNames[i]
-                        logPrint("[%d/%d]正在加载角色%s的信息…… | Loading character %s%s information ..." %(i + 1, len(characterNames), characterName, characterName, "s'" if characterName.endswith("s") else "'s"), print_time = True)
+                        logPrint("[%d/%d]正在加载角色%s的信息…… | Loading character %s%s information ..." %(i + 1, len(characterNames), characterName, characterName, "s'" if characterName.endswith("s") else "'s"), print_time = True, verbose = verbose)
                         character_bin_urls: list[str] = character_binary_urls2[characterName]
                         for j in range(len(character_bin_urls)):
                             character_binary_url = character_bin_urls[j]
                             if character_binary_url in self.__class__.data_cache["online"]:
                                 character_binary = self.__class__.data_cache["online"][character_binary_url]
                             else:
-                                logPrint("[%d/%d][%d/%d]正在加载链接（Fetching url）： %s" %(i + 1, len(characterNames), j + 1, len(character_bin_urls), character_binary_url), write_time = False)
+                                logPrint("[%d/%d][%d/%d]正在加载链接（Fetching url）： %s" %(i + 1, len(characterNames), j + 1, len(character_bin_urls), character_binary_url), write_time = False, verbose = verbose)
                                 source, status, self.session = requestUrl("GET", character_binary_url, session = self.session, log = self.log)
                                 if status != 200:
                                     if status == 404:
@@ -3715,7 +3931,7 @@ class ChampionExtractor(LoLDataExtractor):
                                 character_binary: dict[str, list[str] | dict[str, Any]] = source.json()
                                 self.__class__.data_cache["online"][character_binary_url] = character_binary
                             self.champions_bin_dict[characterName] = character_binary
-                            # logPrint("[%d/%d]已加载角色（Character loaded）：%s" %(i + 1, len(characterNames), characterName), print_time = True)
+                            # logPrint("[%d/%d]已加载角色（Character loaded）：%s" %(i + 1, len(characterNames), characterName), print_time = True, verbose = verbose)
                             break
                     else:
                         self.__class__.merged_data_cache["characters_bin_dict"] = self.champions_bin_dict
@@ -3725,7 +3941,7 @@ class ChampionExtractor(LoLDataExtractor):
                 self.champions_bin_dict = self.__class__.merged_data_cache["champions_bin_dict"]
             else:
                 #获取所有英雄的名称信息（Get all champions' name information）
-                logPrint("正在读取英雄元数据……\nReading champion metadata ...", print_time = True)
+                logPrint("正在读取英雄元数据……\nReading champion metadata ...", print_time = True, verbose = verbose)
                 champion_summary_url: str = "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(self.version, self.language_folder)
                 if champion_summary_url in self.__class__.data_cache["online"]:
                     champion_summary = self.__class__.data_cache["online"][champion_summary_url]
@@ -3743,12 +3959,12 @@ class ChampionExtractor(LoLDataExtractor):
                     self.__class__.data_cache["online"][champion_summary_url] = champion_summary
                 self.champions_ready["summary"] = True
                 #读取所有英雄的二进制描述数据（Load all champions' binary description data）
-                logPrint("正在读取各英雄数据……\nReading all champion data ...", print_time = True)
+                logPrint("正在读取各英雄数据……\nReading all champion data ...", print_time = True, verbose = verbose)
                 for i in range(len(champion_summary)):
                     champion = champion_summary[i]
                     alias: str = champion["alias"].lower()
                     if alias == "none":
-                        logPrint("[%d/%d]已跳过英雄（Champion skipped）：%s" %(i + 1, len(champion_summary), champion["alias"]), print_time = True)
+                        logPrint("[%d/%d]已跳过英雄（Champion skipped）：%s" %(i + 1, len(champion_summary), champion["alias"]), print_time = True, verbose = verbose)
                     else:
                         champion_binary_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/characters/{alias}/{alias}.bin.json"
                         if champion_binary_url in self.__class__.data_cache["online"]:
@@ -3766,12 +3982,12 @@ class ChampionExtractor(LoLDataExtractor):
                             champion_binary: dict[str, list[str] | dict[str, Any]] = source.json()
                             self.__class__.data_cache["online"][champion_binary_url] = champion_binary
                         self.champions_bin_dict[champion["alias"]] = champion_binary
-                        logPrint("[%d/%d]已加载英雄（Champion loaded）：%s" %(i + 1, len(champion_summary), champion["alias"]), print_time = True)
+                        logPrint("[%d/%d]已加载英雄（Champion loaded）：%s" %(i + 1, len(champion_summary), champion["alias"]), print_time = True, verbose = verbose)
                 else:
                     self.__class__.merged_data_cache["champions_bin_dict"] = self.champions_bin_dict
             self.champions_ready["champion_binary"] = True #所有英雄的二进制描述数据准备就绪后，执行该语句（After all champions' binary description data are prepared, execute this statement）
     
-    def read_champion_data(self, useAllCharacter: bool = False, paths: Optional[list[str]] = None) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
+    def read_champion_data(self, useAllCharacter: bool = False, paths: Optional[list[str]] = None, verbose: bool = True) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
         '''
         离线获取英雄二进制描述数据。<br>Get binary description data of champions offline.
         
@@ -3787,6 +4003,8 @@ class ChampionExtractor(LoLDataExtractor):
             - 英雄概要文件路径（Champion summary file path）
             - 角色文件夹路径（Character folder path）： game/data/characters
         :type paths: list[str]
+        :param verbose: 是否打印过程性信息。默认为是。<br>Whether to print the progress. True by default.
+        :type verbose: bool
         '''
         logPrint = self.log.logPrint
         if paths == None:
@@ -3839,7 +4057,7 @@ class ChampionExtractor(LoLDataExtractor):
                 characterNames = list(character_binary_paths.keys())
                 for i in range(len(characterNames)):
                     characterName = characterNames[i]
-                    logPrint("[%d/%d]正在加载角色%s的信息……\nLoading character %s%s information ..." %(i + 1, len(characterNames), characterName, characterName, "s'" if characterName.endswith("s") else "'s"), print_time = True)
+                    logPrint("[%d/%d]正在加载角色%s的信息……\nLoading character %s%s information ..." %(i + 1, len(characterNames), characterName, characterName, "s'" if characterName.endswith("s") else "'s"), print_time = True, verbose = verbose)
                     character_bin_paths: list[str] = character_binary_paths[characterName]
                     for j in range(len(character_bin_paths)):
                         character_binary_path = character_bin_paths[j]
@@ -3883,7 +4101,7 @@ class ChampionExtractor(LoLDataExtractor):
                     champion = champion_summary[i]
                     alias: str = champion["alias"].lower()
                     if alias == "none":
-                        # logPrint("[%d/%d]已跳过英雄（Champion skipped）：%s" %(i + 1, len(champion_summary), champion["alias"]), print_time = True)
+                        # logPrint("[%d/%d]已跳过英雄（Champion skipped）：%s" %(i + 1, len(champion_summary), champion["alias"]), print_time = True, verbose = verbose)
                         pass
                     else:
                         champion_binary_path: str = os.path.join(paths[1], f"{alias}/{alias}.bin.json").replace("\\", "/")
@@ -3894,12 +4112,12 @@ class ChampionExtractor(LoLDataExtractor):
                                 champion_binary: dict[str, list[str] | dict[str, Any]] = json.load(fp)
                             self.__class__.data_cache["local"][champion_binary_path] = champion_binary
                         self.champions_bin_dict[champion["alias"]] = champion_binary
-                        # logPrint("[%d/%d]已加载英雄（Champion loaded）：%s" %(i + 1, len(champion_summary), champion["alias"]), print_time = True)
+                        # logPrint("[%d/%d]已加载英雄（Champion loaded）：%s" %(i + 1, len(champion_summary), champion["alias"]), print_time = True, verbose = verbose)
                 else:
                     self.__class__.merged_data_cache["champions_bin_dict"] = self.champions_bin_dict
             self.champions_ready["champion_binary"] = True
     
-    def build_champion_dataframe(self, useAllCharacter: Optional[bool] = None, debug: bool = False, paths: Optional[list[str]] = None) -> int:
+    def build_champion_dataframe(self, useAllCharacter: Optional[bool] = None, debug: bool = False, paths: Optional[list[str]] = None, verbose: bool = True) -> int:
         '''
         构建英雄数据框。<br>Build champion dataframe.
         
@@ -3919,6 +4137,8 @@ class ChampionExtractor(LoLDataExtractor):
         
             仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
         :type paths: list[str]
+        :param verbose: 是否打印过程性信息。默认为是。<br>Whether to print the progress. True by default.
+        :type verbose: bool
         :return: 状态码。<br>Status code.
         
             - 0: 成功。<br>Success.
@@ -3940,9 +4160,9 @@ class ChampionExtractor(LoLDataExtractor):
                     logPrint("尚未指定本地文件路径！\nLocal path not specified yet!")
                     return 1
                 else:
-                    self.read_champion_data(useAllCharacter = useAllCharacter, paths = paths)
+                    self.read_champion_data(useAllCharacter = useAllCharacter, paths = paths, verbose = verbose)
             else:
-                self.get_champion_data()
+                self.get_champion_data(verbose = verbose)
             if useAllCharacter and not self.characters_ready["character_binary"]:
                 logPrint("角色数据尚未准备就绪！\nCharacter data not prepared!")
                 return 2
@@ -4032,6 +4252,7 @@ class ChampionExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                            locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                             strtable_locale_lol: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                             strtable_locale_tft: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                             tooltip_key: str = champion_data[subkey1][-1] #通过访问最近一次追加的数据来优化代码。代价是键必须放在值的前面（Optimize the code by accessing the recently appended data. In turn, the key must be put in front of the value）
@@ -4054,7 +4275,7 @@ class ChampionExtractor(LoLDataExtractor):
                                         to_append = ""
                                     else:
                                         self.__class__.calculatedVariables.clear()
-                                        tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale_lol if use_lol_strtable else strtable_locale_tft, mSpell, self.locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                        tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale_lol if use_lol_strtable else strtable_locale_tft, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                         to_append = tooltip_burn
                                 else:
                                     to_append = ""
@@ -4132,6 +4353,7 @@ class ChampionExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                            locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                             tooltip_key: str | list[str] = champion_data[subkey1][-1]
                             if i in {176, 177, 268, 269}: #说明文本单值（Single tooltip value）
@@ -4153,7 +4375,7 @@ class ChampionExtractor(LoLDataExtractor):
                                                 tooltips_burn.append("")
                                             else:
                                                 self.__class__.calculatedVariables.clear()
-                                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, self.locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                                 tooltips_burn.append(tooltip_burn)
                                         to_append = tooltips_burn
                         else:
@@ -4242,6 +4464,7 @@ class ChampionExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                            locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                             strtable_locale_lol: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                             strtable_locale_tft: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                             tooltip_key: str = champion_spell_data[subkey1][-1]
@@ -4253,7 +4476,7 @@ class ChampionExtractor(LoLDataExtractor):
                                     use_lol_strtable = False
                             if subkey2.endswith("_burn"):
                                 self.__class__.calculatedVariables.clear()
-                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale_lol if use_lol_strtable else strtable_locale_tft, value["mSpell"], self.locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale_lol if use_lol_strtable else strtable_locale_tft, value["mSpell"], locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                             else:
                                 to_append = tooltip_raw
@@ -4305,7 +4528,7 @@ class ChampionExtractor(LoLDataExtractor):
         logPrint("正在排序英雄技能数据框……\nOrganizing champion spell dataframe ...")
         champion_spell_df_keys_ordered = []
         for i in range(1, len(champion_df)): #根据英雄数据框排序后的英雄顺序读取其技能，使得这些技能总是位于英雄技能数据框的顶部（Read the abilities of champions which follow the order in the champion dataframe to make champion abilities always in the front of the champion spell dataframe）
-            mAbilities_str: str = champion_df.loc[i, "mAbilities"]
+            mAbilities_str: str = champion_df["mAbilities"][i]
             if mAbilities_str != "":
                 mAbilities: list[str] = eval(mAbilities_str)
                 for ability_key in mAbilities:
@@ -4328,7 +4551,7 @@ class ChampionExtractor(LoLDataExtractor):
         self.champion_spell_df = champion_spell_df
         return 0
 
-    def export_champion_data(self, useAllCharacter: Optional[bool] = None, debug: bool = False, paths: Optional[list[str]] = None) -> None:
+    def export_champion_data(self, useAllCharacter: Optional[bool] = None, debug: bool = False, paths: Optional[list[str]] = None, verbose: bool = True) -> None:
         '''
         导出英雄数据到工作簿中。<br>Export champion data to a workbook.
         
@@ -4356,6 +4579,8 @@ class ChampionExtractor(LoLDataExtractor):
         
             仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
         :type paths: list[str]
+        :param verbose: 是否打印过程性信息。默认为是。<br>Whether to print the progress. True by default.
+        :type verbose: bool
         '''
         logInput = self.log.logInput
         logPrint = self.log.logPrint
@@ -4368,7 +4593,7 @@ class ChampionExtractor(LoLDataExtractor):
         if useAllCharacter == None:
             useAllCharacter = self.useAllCharacter
         if self.champion_df.empty or self.champion_spell_df.empty:
-            status: int = self.build_champion_dataframe(useAllCharacter = useAllCharacter, debug = debug, paths = paths)
+            status: int = self.build_champion_dataframe(useAllCharacter = useAllCharacter, debug = debug, paths = paths, verbose = verbose)
             if status != 0:
                 logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
                 logInput()
@@ -4602,12 +4827,13 @@ class ItemExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                            locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                             tooltip_key: str = item_data[subkey1][-1]
                             tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                             if subkey2.endswith("_burn"):
                                 self.__class__.calculatedVariables.clear()
-                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, self.locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                             else:
                                 to_append = tooltip_raw
@@ -5025,6 +5251,7 @@ class AugmentExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                        locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = CherryAugment_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -5038,7 +5265,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 to_append = ""
                             else:
                                 self.__class__.calculatedVariables.clear()
-                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, self.locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -5090,6 +5317,7 @@ class AugmentExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                        locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = SwarmAugment_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -5103,7 +5331,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 to_append = ""
                             else:
                                 self.__class__.calculatedVariables.clear()
-                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, self.locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -5159,6 +5387,7 @@ class AugmentExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                            locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                             tooltip_key: str = KiwiAugment_data[subkey1][-1]
                             tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -5172,7 +5401,7 @@ class AugmentExtractor(LoLDataExtractor):
                                     to_append = ""
                                 else:
                                     self.__class__.calculatedVariables.clear()
-                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, self.locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                     to_append = tooltip_burn
                             else:
                                 to_append = tooltip_raw
@@ -5218,6 +5447,7 @@ class AugmentExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                        locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = KiwiAugmentSet_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -5231,7 +5461,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 to_append = ""
                             else:
                                 self.__class__.calculatedVariables.clear()
-                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, self.locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -5263,13 +5493,14 @@ class AugmentExtractor(LoLDataExtractor):
                                 subkey2: str = pStrConst.search(key).group()
                                 subkey1: str = key.replace(subkey2, "")
                                 useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                                locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                                 tooltip_key: str = KiwiAugmentSet_data[subkey1][-1]
                                 tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                                 if subkey2.endswith("_burn"):
                                     mSpell = rootSpell["mSpell"]
                                     self.__class__.calculatedVariables.clear()
-                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, self.locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                     to_append = tooltip_burn
                                 else:
                                     to_append = tooltip_raw
@@ -5565,6 +5796,7 @@ class AnvilExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                        locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = CherryAnvil_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -5580,7 +5812,7 @@ class AnvilExtractor(LoLDataExtractor):
                             if mSpell == None:
                                 mSpell = {}
                             self.__class__.calculatedVariables.clear()
-                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, self.locale, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                             to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -5622,6 +5854,7 @@ class AnvilExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                        locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = KiwiAnvil_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
@@ -5635,7 +5868,7 @@ class AnvilExtractor(LoLDataExtractor):
                                 to_append = ""
                             else:
                                 self.__class__.calculatedVariables.clear()
-                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, self.locale, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -6091,8 +6324,8 @@ class CameoExtractor(LoLDataExtractor):
                         tooltip_key: str = cameo_data[subkey1][-1]
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
-                            tooltip_burn = self.tooltipPreparation(tooltip_raw, self.locale)
-                            tooltip_burn = self.tooltipPostProcessing(tooltip_burn, self.locale)
+                            tooltip_burn = self.tooltipPreparation(tooltip_raw, self.locale if useTargetLocale else self.DEFAULT_LOCALE)
+                            tooltip_burn = self.tooltipPostProcessing(tooltip_burn, self.locale if useTargetLocale else self.DEFAULT_LOCALE)
                             to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -6342,14 +6575,15 @@ class GoHExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                            locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                             tooltip_key: str = GoH_data[subkey1][-1]
                             tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                             if subkey2.endswith("_burn"):
                                 # self.__class__.calculatedVariables.clear()
-                                # tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, {}, self.locale, enableModeOverride = False, reserve_variable = self.reserve_variable)
-                                tooltip_burn = self.tooltipPreparation(tooltip_raw, self.locale)
-                                tooltip_burn = self.tooltipPostProcessing(tooltip_burn, self.locale)
+                                # tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, {}, locale, enableModeOverride = False, reserve_variable = self.reserve_variable)
+                                tooltip_burn = self.tooltipPreparation(tooltip_raw, locale)
+                                tooltip_burn = self.tooltipPostProcessing(tooltip_burn, locale)
                                 to_append = tooltip_burn
                             else:
                                 to_append = tooltip_raw
@@ -6690,6 +6924,7 @@ class TFTExtractor(LoLDataExtractor):
                             subkey2: str = pStrConst.search(key).group()
                             subkey1: str = key.replace(subkey2, "")
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                            locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                             flexibleData["mStat_dict_override_version"] = self.version
                             flexibleData["tftstringtable"] = strtable_locale
@@ -6698,7 +6933,7 @@ class TFTExtractor(LoLDataExtractor):
                             tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                             if subkey2.endswith("_burn"):
                                 self.__class__.calculatedVariables.clear()
-                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, self.locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
+                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                                 to_append = tooltip_burn
                             else:
                                 to_append = tooltip_raw
@@ -6869,6 +7104,7 @@ class TFTExtractor(LoLDataExtractor):
                                 subkey2: str = pStrConst.search(key).group()
                                 subkey1: str = key.replace(subkey2, "")
                                 useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                                locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                                 flexibleData["mStat_dict_override_version"] = self.version
                                 flexibleData["tftstringtable"] = strtable_locale
@@ -6877,7 +7113,7 @@ class TFTExtractor(LoLDataExtractor):
                                 tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                                 if subkey2.endswith("_burn"):
                                     self.__class__.calculatedVariables.clear()
-                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, self.locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
+                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                                     to_append = tooltip_burn
                                 else:
                                     to_append = tooltip_raw
@@ -6952,6 +7188,7 @@ class TFTExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                        locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                         flexibleData["mStat_dict_override_version"] = self.version
                         flexibleData["tftstringtable"] = strtable_locale
@@ -6970,7 +7207,7 @@ class TFTExtractor(LoLDataExtractor):
                             mSpell = value
                         if subkey2.endswith("_burn"):
                             self.__class__.calculatedVariables.clear()
-                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, self.locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
+                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                             to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -7112,6 +7349,7 @@ class TFTExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                        locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                         flexibleData["mStat_dict_override_version"] = self.version
                         flexibleData["tftstringtable"] = strtable_locale
@@ -7120,7 +7358,7 @@ class TFTExtractor(LoLDataExtractor):
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
                             self.__class__.calculatedVariables.clear()
-                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, self.locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
+                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                             to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -7216,6 +7454,7 @@ class TFTExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                        locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                         flexibleData["mStat_dict_override_version"] = self.version
                         flexibleData["tftstringtable"] = strtable_locale
@@ -7224,7 +7463,7 @@ class TFTExtractor(LoLDataExtractor):
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
                             self.__class__.calculatedVariables.clear()
-                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, self.locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
+                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                             to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -7338,6 +7577,7 @@ class TFTExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                        locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                         flexibleData["mStat_dict_override_version"] = self.version
                         flexibleData["tftstringtable"] = strtable_locale
@@ -7346,7 +7586,7 @@ class TFTExtractor(LoLDataExtractor):
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
                             self.__class__.calculatedVariables.clear()
-                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, self.locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
+                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                             to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -7404,6 +7644,7 @@ class TFTExtractor(LoLDataExtractor):
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                        locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                         flexibleData["mStat_dict_override_version"] = self.version
                         flexibleData["tftstringtable"] = strtable_locale
@@ -7412,7 +7653,7 @@ class TFTExtractor(LoLDataExtractor):
                         tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
                             self.__class__.calculatedVariables.clear()
-                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, self.locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
+                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                             to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -7707,14 +7948,14 @@ class TFTExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    addDefaultStyle(self.TFTSet_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(self.TFTSet_df.drop(labels = ["BotSkillData SkillAxes", "VfxResourceResolver resourceMap"], axis = 1)).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                     addDefaultStyle(self.TFTShop_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
                     addDefaultStyle(self.TFTShopContent_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
                     addDefaultStyle(self.TFTDropRate_df).to_excel(excel_writer = writer, sheet_name = sheet4_name)
                     addDefaultStyle(self.TFTStageRound_df).to_excel(excel_writer = writer, sheet_name = sheet5_name)
                     addDefaultStyle(self.TFTRound_df).to_excel(excel_writer = writer, sheet_name = sheet6_name)
                     addDefaultStyle(self.TFTPortal_df).to_excel(excel_writer = writer, sheet_name = sheet7_name)
-                    addDefaultStyle(self.TFTEncounterDistribution_df).to_excel(excel_writer = writer, sheet_name = sheet8_name)
+                    addDefaultStyle(self.TFTEncounterDistribution_df).to_excel(excel_writer = writer, sheet_name = sheet8_name[:31])
                     addDefaultStyle(self.TFTEncounter_df).to_excel(excel_writer = writer, sheet_name = sheet9_name)
                     addDefaultStyle(self.TFTUnitProperty_df).to_excel(excel_writer = writer, sheet_name = sheet10_name)
                     addDefaultStyle(self.TFTCharacterRole_df).to_excel(excel_writer = writer, sheet_name = sheet11_name)
@@ -7733,7 +7974,7 @@ class TFTExtractor(LoLDataExtractor):
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet5_name, header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet6_name, header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet7_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet8_name, header = None, index = False, startcol = 0, startrow = 0)
+                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet8_name[:31], header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet9_name, header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet10_name, header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet11_name, header = None, index = False, startcol = 0, startrow = 0)
@@ -9009,22 +9250,12 @@ if __name__ == "__main__":
                                 "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Plugins/rcp-be-lol-game-data/global/zh_cn/v1/champion-summary.json",
                                 "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/characters"
                             ]
-                            character_paths: list[str] = [
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map22/map22.bin.json",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/characters",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/characters"
-                            ]
                         else:
                             champion_paths = [
                                 "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/plugins/rcp-be-lol-game-data/global/zh_cn/v1/champion-summary.json",
                                 "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/characters"
                             ]
-                            character_paths = [
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/characters",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/characters"
-                            ]
-                        championExtractor1.build_champion_dataframe(debug = True, paths = character_paths if championExtractor1.useAllCharacter else champion_paths)
+                        championExtractor1.build_champion_dataframe(debug = True, paths = champion_paths)
                         if export:
                             championExtractor1.export_champion_data()
                     elif dOption == 5:
@@ -9032,26 +9263,18 @@ if __name__ == "__main__":
                         championExtractor2: ChampionExtractor = ChampionExtractor(extractor)
                         championExtractor2.set_mode(True)
                         if dir_type == "extract":
-                            champion_paths: list[str] = [
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Plugins/rcp-be-lol-game-data/global/zh_cn/v1/champion-summary.json",
-                                "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/characters"
-                            ]
                             character_paths: list[str] = [
                                 "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/maps/shipping/map22/map22.bin.json",
                                 "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/data/characters",
                                 "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/DATA/FINAL/characters"
                             ]
                         else:
-                            champion_paths = [
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/plugins/rcp-be-lol-game-data/global/zh_cn/v1/champion-summary.json",
-                                "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/characters"
-                            ]
                             character_paths = [
                                 "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json",
                                 "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/characters",
                                 "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/characters"
                             ]
-                        championExtractor2.build_champion_dataframe(debug = True, paths = character_paths if championExtractor2.useAllCharacter else champion_paths)
+                        championExtractor2.build_champion_dataframe(debug = True, paths = character_paths)
                         if export:
                             championExtractor2.export_champion_data()
                     elif dOption == 6:
@@ -9185,13 +9408,13 @@ if __name__ == "__main__":
         ##地图（Map）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
         #     map22_bin = json.load(fp)
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
-        #     map30_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
+            map30_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
         #     map33_bin = json.load(fp)
         ##装备（Item）
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
-            items_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
+        #     items_bin = json.load(fp)
         ##共享数据（Shared data）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/shared.cdtb.bin.json", "r", encoding = "utf-8") as fp:
         #     shared_bin = json.load(fp)
@@ -9242,9 +9465,9 @@ if __name__ == "__main__":
         
         #说明文本转换（Tooltip transformation）
         locale: str = "zh_CN"
-        tooltip_raw: str = "<titleLeft><itemName@ItemActiveness@>德拉克萨的暮刃</itemName@ItemActiveness@></titleLeft><titleRight>{{ Item_Gold_Value_Sell }} <rules>(@SellBackModifier*100@%)</rules></titleRight><subtitleLeft>{{ Item_BriefIcon_@ItemActiveness@ }}处决</subtitleLeft><subtitleRight></subtitleRight><mainText><section><attention>%i:scaleAD%@FlatPhysicalDamageMod@</attention>攻击力<br><attention>%i:scaleAPen% @PhysicalLethality@</attention>穿甲<br><attention>%i:scaleCooldown%@AbilityHasteMod@</attention>技能急速</section><section>{{ Item_Passive_List }}<br><passive>夜行者</passive><br>你的技能可基于目标的<scaleHealth>已损失生命值</scaleHealth>至多造成额外的{{ Item_Melee_Ranged_Split_Dynamic }}伤害。如果一名在过去@TakedownWindow@秒内曾被你造成过伤害的英雄阵亡，你就会进入持续@StealthDuration@秒的<status>无形</status>状态。<br><br><rules>无形状态下的单位不可被选取并且不受非建筑物单位的影响。</rules></section><section></section><section><flavorText></flavorText></section></mainText><postScriptLeft>已对英雄造成的伤害：<attention>@f2@</attention></postScriptLeft>"
+        tooltip_raw: str = "你的<speed>攻击速度</speed>无法超过@StaticRatio@。所有<speed>攻击速度</speed>加成会被转化为<scaleAD>攻击力</scaleAD> (每<speed>1%攻击速度</speed>转化为<scaleAD>@ADPerAS@攻击力</scaleAD>)。<br><br>当前获得：@f1@ <scaleAD>攻击力</scaleAD>"
         print("原始说明文本：\n" + tooltip_raw)
-        binData: dict[str, Any] = items_bin["Items/446691"]
+        binData: dict[str, Any] = map30_bin["Maps/Shipping/Map30/Spells/Augment_SlowAndSteady"]["mSpell"]
         print("----")
         print("转换文本：")
         print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reserve_variable = False))
