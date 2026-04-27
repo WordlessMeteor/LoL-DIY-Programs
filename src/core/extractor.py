@@ -543,6 +543,8 @@ class LoLDataExtractor:
         logPrint = self.log.logPrint
         if self.patch == "":
             logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
+        elif not self.locale in language_ddragon:
+            logPrint("语言不正确。\nInvalid language.")
         else:
             self.folder = os.path.expanduser("~/Desktop")
             wbContent: str = "游戏数据提取" if self.locale in self.ZH_LOCALE else "GameDataExtract"
@@ -551,6 +553,17 @@ class LoLDataExtractor:
             wbName: str = f"{wbContent}_{locale}_{version}.xlsx" #工作簿命名结构（Structure of the workbook's name）
             self.wbPath = os.path.join(self.folder, wbName).replace("\\", "/")
             return (self.folder, self.wbPath)
+    
+    def set_language(self, locale: str) -> None:
+        '''
+        设置语言。<br>Set the language.
+        
+        :param locale: 语言文化代码。<br>Language code.
+        :type locale: str
+        '''
+        self.locale = locale
+        self.language_folder = "default" if locale == "en_US" else locale.lower()
+        self.init_path_and_dir()
     
     def get_version(self) -> None: #在线加载——供用户使用（Online loading - For user use）
         '''
@@ -8542,10 +8555,16 @@ if __name__ == "__main__":
     logInput = log.logInput
     logPrint = log.logPrint
     #定义语言设置过程（Define the process of setting language）
-    def set_locale() -> str:
+    def set_locale(initial_launch: bool = True, old_locale: str = "") -> str:
         '''
         设置全局语言环境。<br>Set the global locale.
         
+        :param initial_launch: 该函数是否在程序刚开始运行时调用。默认为真。<br>Whether this function is called at the beginning of the program execution. True by default.
+        
+            如果是刚开始运行时调用，那么输入“0”直接退出程序。否则输入“0”取消语言更改操作。<br>If it is, then submitting "0" will directly exit the program. Otherwise, submitting "0" simply cancels the language changing operation.
+        :type initial_launch: bool
+        :param old_locale: 旧语言文化代码。仅在`initial_launch`参数为假时有用。默认为空字符串。<br>Old language code. It makes a difference only when `initial_launch` is False. An empty string by default.
+        :type old_locale: str
         :return: 语言文化代码。<br>Language code.
         :rtype: str
         '''
@@ -8560,7 +8579,7 @@ if __name__ == "__main__":
                 language_code = list(language_ddragon.keys())[int(language_option) - 1]
                 break
             elif language_option[0] == "0":
-                language_code = ""
+                language_code = "" if initial_launch else old_locale
                 break
             else:
                 logPrint("语言选项输入错误！请重新输入：\nERROR input of language option! Please try again:")
@@ -8768,7 +8787,7 @@ if __name__ == "__main__":
         # session.trust_env = False #忽略系统代理设置（Bypass system proxy）
 
         #设置语言（Set the language）
-        language_code = set_locale()
+        language_code: str = set_locale(initial_launch = True)
         if language_code == "":
             return 1
 
@@ -8822,7 +8841,7 @@ if __name__ == "__main__":
                 if mode == "":
                     continue
                 elif mode == "-1":
-                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t说明文本样式（Tooltip style）\n2\t变量替换样式（Variable substitution style）")
+                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）")
                     while True:
                         option = logInput()
                         if option == "":
@@ -8832,6 +8851,17 @@ if __name__ == "__main__":
                         elif option[0] == "0":
                             break
                         elif option[0] == "1":
+                            old_locale: str = language_code
+                            language_code = set_locale(initial_launch = False, old_locale = old_locale)
+                            if language_code != old_locale:
+                                logPrint("说明文本将使用%s。\nTooltips will be in %s." %(language_ddragon[language_code]["desc_zh"], language_ddragon[language_code]["desc_en"]))
+                                extractor.set_language(language_code)
+                                logPrint("正在加载字符串常量池……\nLoading stringtables ...", print_time = True)
+                                extractor.init_strtable_readiness()
+                                extractor.get_strtable()
+                                if not (extractor.strtable_organize_manner == 1 and extractor.strtables_ready["lol_target"] and extractor.strtables_ready["lol_default"] and extractor.strtables_ready["tft_target"] and extractor.strtables_ready["tft_default"]) and not (extractor.strtable_organize_manner == 2 and extractor.strtables_ready["target"] and extractor.strtables_ready["default"]):
+                                    continue
+                        elif option[0] == "2":
                             logPrint("是否保留说明文本的原始样式？（输入任意非空字符串以保留原始CSS样式；否则移除所有CSS样式，用统一的标点符号进行强调。）\nDo you want to reserve the original style of tooltips? (Input any non-empty string to reserve the original CSS style; otherwise, remove all CSS styles and use the unified punctuation marks for emphasis.)")
                             reserve_CSS_str: str = logInput()
                             reserve_CSS: bool = bool(reserve_CSS_str)
@@ -8840,7 +8870,7 @@ if __name__ == "__main__":
                                 logPrint("说明文本将移除所有CSS标签。\nCSS tags will be removed from the tooltips.")
                             else:
                                 logPrint("说明文本将保留原始CSS标签。\nCSS tags will be reserved in the tooltips.")
-                        elif option[0] == "2":
+                        elif option[0] == "3":
                             logPrint('是否在数值替换的同时保留原变量？（输入任意非空字符串以将转换后的变量写成“[{变量名}] = {值}”的形式，否则只保留值。）\nDo you want to reserve the original variable when variable substitution is being performed? (Input any non-empty string to transform the variable into the form "[{Var_name}] = {Value}", or null to reserve the value only.)')
                             reserve_variable_str: str = logInput()
                             reserve_variable: bool = bool(reserve_variable_str)
@@ -8852,7 +8882,7 @@ if __name__ == "__main__":
                         else:
                             logPrint("您的输入有误！请重新输入。\nERROR input. Please try again.")
                             continue
-                        logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t说明文本样式（Tooltip style）\n2\t变量替换样式（Variable substitution style）")
+                        logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）")
                 elif mode[0] == "0":
                     LoLDataExtractor.clear_cache()
                     break
@@ -8970,7 +9000,7 @@ if __name__ == "__main__":
         return 0
 
     #定义调试函数。开发者可在其中随时修改代码（Define the debug function. Code in this function may be modified at will）
-    def debug(dir_type: Literal["repo", "extract"] = "repo") -> int:
+    def debug(dir_type: Literal["repo", "extract"] = "repo", locale: str = "zh_CN") -> int:
         '''
         调试函数，用于测试。<br>Debug function for the beta version.
 
@@ -8985,6 +9015,8 @@ if __name__ == "__main__":
             - **repo**: LoL-Dragon-Change-S16存储库中的测试服文件夹。<br>PBE folder under LoL-Dragon-Change-S16 repository.
             - **extract**: 通过LoL-Wad-Extract-Tencent存储库提取测试服时指定的目的文件夹。<br>The destination / target folder specified when extracting PBE data using LoL-Wad-Extract-Tencent repository.
         :type dir_type: str
+        :param locale: 字符串常量池的目标语言文化代码。默认为简体中文。<br>Target language code of stringtables. Chinese Simplified by default.
+        :type locale: str
         :return: 状态码。<br>Status code.
         :rtype: int
         '''
@@ -8993,8 +9025,8 @@ if __name__ == "__main__":
         repo_game_dir: Path = Path("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/")
         repo_plugins_dir: Path = Path("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/plugins/")
         #设置语言（Set the language）
-        language_code = "zh_CN"
-        if language_code == "":
+        DEFAULT_LOCALE: str = LoLDataExtractor.DEFAULT_LOCALE
+        if not locale in language_ddragon:
             return 1
         
         #设置版本（Set the version）
@@ -9009,7 +9041,7 @@ if __name__ == "__main__":
         integrate: bool = bool(integrate_str)
         
         logPrint(f"开始处理%s版本的游戏数据。\nStart to process game data of Version %s." %(version, version))
-        extractor = LoLDataExtractor(version, language_code)
+        extractor = LoLDataExtractor(version, locale)
         if integrate:
             extractor.encapsulate()
         else:
@@ -9033,17 +9065,17 @@ if __name__ == "__main__":
         logPrint("正在加载字符串常量池……\nLoading stringtables ...", print_time = True)
         if dir_type == "extract":
             strtable_paths: list[Path] = [
-                extract_game_dir / "zh_cn/data/menu/en_us/lol.stringtable.json",
-                extract_game_dir / "en_us/data/menu/en_us/lol.stringtable.json",
-                extract_game_dir / "zh_cn/data/menu/en_us/tft.stringtable.json",
-                extract_game_dir / "en_us/data/menu/en_us/tft.stringtable.json",
+                extract_game_dir / locale.lower() / "data/menu/en_us/lol.stringtable.json",
+                extract_game_dir / DEFAULT_LOCALE.lower() / "data/menu/en_us/lol.stringtable.json",
+                extract_game_dir / locale.lower() / "data/menu/en_us/tft.stringtable.json",
+                extract_game_dir / DEFAULT_LOCALE.lower() / "data/menu/en_us/tft.stringtable.json",
             ]
         else:
             strtable_paths = [
-                repo_game_dir / "zh_cn/data/menu/en_us/lol.stringtable.json",
-                repo_game_dir / "en_us/data/menu/en_us/lol.stringtable.json",
-                repo_game_dir / "zh_cn/data/menu/en_us/tft.stringtable.json",
-                repo_game_dir / "en_us/data/menu/en_us/tft.stringtable.json",
+                repo_game_dir / locale.lower() / "data/menu/en_us/lol.stringtable.json",
+                repo_game_dir / DEFAULT_LOCALE.lower() / "data/menu/en_us/lol.stringtable.json",
+                repo_game_dir / locale.lower() / "data/menu/en_us/tft.stringtable.json",
+                repo_game_dir / DEFAULT_LOCALE.lower() / "data/menu/en_us/tft.stringtable.json",
             ]
         extractor.read_strtable(strtable_paths = list(map(lambda x: x.as_posix(), strtable_paths)))
         if not (extractor.strtable_organize_manner == 1 and extractor.strtables_ready["lol_target"] and extractor.strtables_ready["lol_default"] and extractor.strtables_ready["tft_target"] and extractor.strtables_ready["tft_default"]) and not (extractor.strtable_organize_manner == 2 and extractor.strtables_ready["target"] and extractor.strtables_ready["default"]):
@@ -9133,7 +9165,7 @@ if __name__ == "__main__":
                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     logPrint("请选择草稿选项：\nPlease select a draft option:\n0\t退出调试（Quit debug）\n1\t启动子环境（Start a sub-environment）")
             elif mode == "-1":
-                logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t说明文本样式（Tooltip style）\n2\t变量替换样式（Variable substitution style）\n3\t数据导出（Data export）")
+                logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\t数据导出（Data export）")
                 while True:
                     option = logInput()
                     if option == "":
@@ -9143,6 +9175,31 @@ if __name__ == "__main__":
                     elif option[0] == "0":
                         break
                     elif option[0] == "1":
+                        old_locale: str = locale
+                        locale = set_locale(initial_launch = False, old_locale = old_locale)
+                        if locale != old_locale:
+                            logPrint("说明文本将使用%s。\nTooltips will be in %s." %(language_ddragon[locale]["desc_zh"], language_ddragon[locale]["desc_en"]))
+                            extractor.set_language(locale)
+                            logPrint("正在加载字符串常量池……\nLoading stringtables ...", print_time = True)
+                            extractor.init_strtable_readiness()
+                            if dir_type == "extract":
+                                strtable_paths: list[Path] = [
+                                    extract_game_dir / locale.lower() / "data/menu/en_us/lol.stringtable.json",
+                                    extract_game_dir / DEFAULT_LOCALE.lower() / "data/menu/en_us/lol.stringtable.json",
+                                    extract_game_dir / locale.lower() / "data/menu/en_us/tft.stringtable.json",
+                                    extract_game_dir / DEFAULT_LOCALE.lower() / "data/menu/en_us/tft.stringtable.json",
+                                ]
+                            else:
+                                strtable_paths = [
+                                    repo_game_dir / locale.lower() / "data/menu/en_us/lol.stringtable.json",
+                                    repo_game_dir / DEFAULT_LOCALE.lower() / "data/menu/en_us/lol.stringtable.json",
+                                    repo_game_dir / locale.lower() / "data/menu/en_us/tft.stringtable.json",
+                                    repo_game_dir / DEFAULT_LOCALE.lower() / "data/menu/en_us/tft.stringtable.json",
+                                ]
+                            extractor.read_strtable(strtable_paths = list(map(lambda x: x.as_posix(), strtable_paths)))
+                            if not (extractor.strtable_organize_manner == 1 and extractor.strtables_ready["lol_target"] and extractor.strtables_ready["lol_default"] and extractor.strtables_ready["tft_target"] and extractor.strtables_ready["tft_default"]) and not (extractor.strtable_organize_manner == 2 and extractor.strtables_ready["target"] and extractor.strtables_ready["default"]):
+                                return 0
+                    elif option[0] == "2":
                         logPrint("是否保留说明文本的原始样式？（输入任意非空字符串以保留原始CSS样式；否则移除所有CSS样式，用统一的标点符号进行强调。）\nDo you want to reserve the original style of tooltips? (Input any non-empty string to reserve the original CSS style; otherwise, remove all CSS styles and use the unified punctuation marks for emphasis.)")
                         reserve_CSS_str: str = logInput()
                         reserve_CSS: bool = bool(reserve_CSS_str)
@@ -9151,7 +9208,7 @@ if __name__ == "__main__":
                             logPrint("说明文本将移除所有CSS标签。\nCSS tags will be removed from the tooltips.")
                         else:
                             logPrint("说明文本将保留原始CSS标签。\nCSS tags will be reserved in the tooltips.")
-                    elif option[0] == "2":
+                    elif option[0] == "3":
                         logPrint('是否在数值替换的同时保留原变量？（输入任意非空字符串以将转换后的变量写成“[{变量名}] = {值}”的形式，否则只保留值。）\nDo you want to reserve the original variable when variable substitution is being performed? (Input any non-empty string to transform the variable into the form "[{Var_name}] = {Value}", or null to reserve the value only.)')
                         reserve_variable_str: str = logInput()
                         reserve_variable: bool = bool(reserve_variable_str)
@@ -9160,7 +9217,7 @@ if __name__ == "__main__":
                             logPrint("说明文本在完成变量代换后将同时显示变量名和值。\nBoth the name and the value of variables will appear in the tooltip after variable substitution.")
                         else:
                             logPrint("说明文本在完成变量代换后将只显示值。\nOnly the value of variables will appear in the tooltip after variable substitution.")
-                    elif option[0] == "3":
+                    elif option[0] == "4":
                         logPrint("是否导出数据到Excel中？（输入任意非空字符串以导出，否则不导出。）\nDo you want to export data to Excel? (Submit any non-empty string to export, or null to refuse exporting.)")
                         export_str: str = logInput()
                         export = bool(export_str)
@@ -9171,7 +9228,7 @@ if __name__ == "__main__":
                     else:
                         logPrint("您的输入有误！请重新输入。\nERROR input. Please try again.")
                         continue
-                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t说明文本样式（Tooltip style）\n2\t变量替换样式（Variable substitution style）\n3\t数据导出（Data export）")
+                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\t数据导出（Data export）")
             elif mode[0] == "0":
                 LoLDataExtractor.clear_cache()
                 break
