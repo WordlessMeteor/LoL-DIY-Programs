@@ -294,13 +294,12 @@ def get_info_name(info: Any, mode: int = 1, verbose: bool = True) -> str:
             puuid_exist = True
         #分类讨论（Discuss）
         if displayName_exist and gameName_exist and tagLine_exist and puuid_exist:
-            if displayName_exist or gameName_exist:
-                if gameName and tagLine:
-                    name = gameName + "#" + tagLine
-                elif not tagLine and gameName:
-                    name = gameName
-                else:
-                    name = displayName
+            if gameName and tagLine:
+                name = gameName + "#" + tagLine
+            elif not tagLine and gameName:
+                name = gameName
+            elif displayName:
+                name = displayName
             else: #新玩家属于这种类型（This case matches new players）
                 if mode == 2: #仅用于设置召唤师数据保存路径（Designed to set the summoner name directory）
                     name = "0. 新玩家/" + puuid
