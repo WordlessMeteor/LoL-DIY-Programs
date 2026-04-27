@@ -10,7 +10,7 @@ from src.utils.patch import Patch, get_ddragon_versionList, get_cdragon_patchLis
 from src.utils.runtimeDebug import subscope
 from src.utils.webRequest import requestUrl
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
-from src.core.config.localization import language_ddragon, language_cdragon
+from src.core.config.localization import language_ddragon, language_dict, language_cdragon
 from src.core.extractor import LoLDataExtractor
 from src.core.config.localization import gamemaps
 from src.core.dataframes.champions import sort_champion_summary
@@ -21,7 +21,7 @@ from src.core.dataframes.champions import sort_champion_summary
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/26
+# 更新（Last update）：     2026/04/27
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2459,8 +2459,7 @@ def export_item_data() -> None:
     
     选择一个语言，选择一个数据来源，然后导出数据。<br>Select a language, then select a data source, and finally export data.
     '''
-    logPrint("请选择装备的输出语言【默认为中文（中国）】：\nPlease select a language to output the items (the default option is zh_CN):") #本来考虑把可用CDragon数据版本放在第三列，但是后来发现表头名字太长了，索性放在最后了（I had considered putting "Applicable CDragon Data Patches" at the third column, but then found the header was too long. So I put it at the last column）
-    language_dict: dict[str, list[int | str]] = {"No.": list(language_ddragon.keys()), "CODE": list(map(lambda x: x["CODE"], language_ddragon.values())), "LANGUAGE": list(map(lambda x: x["LANGUAGE (EN)"], language_ddragon.values())), "语言": list(map(lambda x: x["LANGUAGE (ZH)"], language_ddragon.values())), "Applicable CDragon Data Patches": list(map(lambda x: x["Applicable CDragon Data Patches"], language_ddragon.values()))}
+    logPrint("请选择装备的输出语言【默认为中文（中国）】：\nPlease select a language to output the items (the default option is zh_CN):")
     language_df: pandas.DataFrame = pandas.DataFrame(language_dict)
     logPrint(format_df(language_df)[0], write_time = False)
     while True:
@@ -2468,7 +2467,7 @@ def export_item_data() -> None:
         if language_option == "" or language_option in [str(i) for i in range(1, 30)]:
             if language_option == "":
                 language_option = "29"
-            language_code: str = language_ddragon[int(language_option)]["CODE"]
+            language_code: str = list(language_ddragon.keys())[int(language_option) - 1]
             break
         elif language_option[0] == "0":
             return

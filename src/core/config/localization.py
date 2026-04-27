@@ -1,192 +1,188 @@
 #语言文化代码（Locales）
-language_ddragon: dict[int, dict[str, str]] = {
-    1: {
-        "CODE": "ar_AE",
-        "LANGUAGE (EN)": "Arabic (United Arab Emirates)",
-        "LANGUAGE (ZH)": "阿拉伯语（阿拉伯联合酋长国）",
-        "Applicable CDragon Data Patches": "9.20～10.1, 13.20+"
+language_ddragon: dict[str, dict[str, str]] = {
+    "ar_AE": {
+        "desc_en": "Arabic (United Arab Emirates)",
+        "desc_zh": "阿拉伯语（阿拉伯联合酋长国）",
+        "desc_local": "العربية (الإمارات العربية المتحدة)",
+        "Available CDragon Data Patches": "9.20～10.1, 13.20+"
     },
-    2: {
-        "CODE": "cs_CZ",
-        "LANGUAGE (EN)": "Czech (Czech Republic)",
-        "LANGUAGE (ZH)": "捷克语（捷克共和国）",
-        "Applicable CDragon Data Patches": "7.1+"
+    "cs_CZ": {
+        "desc_en": "Czech (Czech Republic)",
+        "desc_zh": "捷克语（捷克共和国）",
+        "desc_local": "Čeština (Česká republika)",
+        "Available CDragon Data Patches": "7.1+"
     },
-    3: {
-        "CODE": "el_GR",
-        "LANGUAGE (EN)": "Greek (Greece)",
-        "LANGUAGE (ZH)": "希腊语（希腊）",
-        "Applicable CDragon Data Patches": "9.1+"
+    "el_GR": {
+        "desc_en": "Greek (Greece)",
+        "desc_zh": "希腊语（希腊）",
+        "desc_local": "Ελληνικά (Ελλάδα)",
+        "Available CDragon Data Patches": "7.1+"
     },
-    4: {
-        "CODE": "pl_PL",
-        "LANGUAGE (EN)": "Polish (Poland)",
-        "LANGUAGE (ZH)": "波兰语（波兰）",
-        "Applicable CDragon Data Patches": "9.1+"
+    "pl_PL": {
+        "desc_en": "Polish (Poland)",
+        "desc_zh": "波兰语（波兰）",
+        "desc_local": "Polski (Polska)",
+        "Available CDragon Data Patches": "7.1+"
     },
-    5: {
-        "CODE": "ro_RO",
-        "LANGUAGE (EN)": "Romanian (Romania)",
-        "LANGUAGE (ZH)": "罗马尼亚语（罗马尼亚）",
-        "Applicable CDragon Data Patches": "9.1+"
+    "ro_RO": {
+        "desc_en": "Romanian (Romania)",
+        "desc_zh": "罗马尼亚语（罗马尼亚）",
+        "desc_local": "Română (România)",
+        "Available CDragon Data Patches": "7.1+"
     },
-    6: {
-        "CODE": "hu_HU",
-        "LANGUAGE (EN)": "Hungarian (Hungary)",
-        "LANGUAGE (ZH)": "匈牙利语（匈牙利）",
-        "Applicable CDragon Data Patches": "9.1+"
+    "hu_HU": {
+        "desc_en": "Hungarian (Hungary)",
+        "desc_zh": "匈牙利语（匈牙利）",
+        "desc_local": "Magyar (Magyarország)",
+        "Available CDragon Data Patches": "7.1+"
     },
-    7: {
-        "CODE": "en_GB",
-        "LANGUAGE (EN)": "English (United Kingdom)",
-        "LANGUAGE (ZH)": "英语（英国）",
-        "Applicable CDragon Data Patches": "9.1+"
+    "en_GB": {
+        "desc_en": "English (United Kingdom)",
+        "desc_zh": "英语（英国）",
+        "desc_local": "English (United Kingdom)",
+        "Available CDragon Data Patches": "7.1+"
     },
-    8: {
-        "CODE": "de_DE",
-        "LANGUAGE (EN)": "German (Germany)",
-        "LANGUAGE (ZH)": "德语（德国）",
-        "Applicable CDragon Data Patches": "7.1+"
+    "de_DE": {
+        "desc_en": "German (Germany)",
+        "desc_zh": "德语（德国）",
+        "desc_local": "Deutsch (Deutschland)",
+        "Available CDragon Data Patches": "7.1+"
     },
-    9: {
-        "CODE": "es_ES",
-        "LANGUAGE (EN)": "Spanish (Spain)",
-        "LANGUAGE (ZH)": "西班牙语（西班牙）",
-        "Applicable CDragon Data Patches": "9.1+"
+    "es_ES": {
+        "desc_en": "Spanish (Spain)",
+        "desc_zh": "西班牙语（西班牙）",
+        "desc_local": "Español (España)",
+        "Available CDragon Data Patches": "7.1+"
     },
-    10: {
-        "CODE": "it_IT",
-        "LANGUAGE (EN)": "Italian (Italy)",
-        "LANGUAGE (ZH)": "意大利语（意大利）",
-        "Applicable CDragon Data Patches": "9.1+"
+    "it_IT": {
+        "desc_en": "Italian (Italy)",
+        "desc_zh": "意大利语（意大利）",
+        "desc_local": "Italiano (Italia)",
+        "Available CDragon Data Patches": "7.1+"
     },
-    11: {
-        "CODE": "fr_FR",
-        "LANGUAGE (EN)": "French (France)",
-        "LANGUAGE (ZH)": "法语（法国）",
-        "Applicable CDragon Data Patches": "9.1+"
+    "fr_FR": {
+        "desc_en": "French (France)",
+        "desc_zh": "法语（法国）",
+        "desc_local": "Français (France)",
+        "Available CDragon Data Patches": "7.1+"
     },
-    12: {
-        "CODE": "ja_JP",
-        "LANGUAGE (EN)": "Japanese (Japan)",
-        "LANGUAGE (ZH)": "日语（日本）",
-        "Applicable CDragon Data Patches": "9.1+"
+    "ja_JP": {
+        "desc_en": "Japanese (Japan)",
+        "desc_zh": "日语（日本）",
+        "desc_local": "日本語 (日本)",
+        "Available CDragon Data Patches": "7.1+"
     },
-    13: {
-        "CODE": "ko_KR",
-        "LANGUAGE (EN)": "Korean (Korea)",
-        "LANGUAGE (ZH)": "朝鲜语（韩国）",
-        "Applicable CDragon Data Patches": "9.7+"
+    "ko_KR": {
+        "desc_en": "Korean (Korea)",
+        "desc_zh": "朝鲜语（韩国）",
+        "desc_local": "한국어 (대한민국)",
+        "Available CDragon Data Patches": "9.7+"
     },
-    14: {
-        "CODE": "es_MX",
-        "LANGUAGE (EN)": "Spanish (Mexico)",
-        "LANGUAGE (ZH)": "西班牙语（墨西哥）",
-        "Applicable CDragon Data Patches": "9.1+"
+    "es_MX": {
+        "desc_en": "Spanish (Mexico)",
+        "desc_zh": "西班牙语（墨西哥）",
+        "desc_local": "Español (México)",
+        "Available CDragon Data Patches": "7.1+"
     },
-    15: {
-        "CODE": "es_AR",
-        "LANGUAGE (EN)": "Spanish (Argentina)",
-        "LANGUAGE (ZH)": "西班牙语（阿根廷）",
-        "Applicable CDragon Data Patches": "9.7+"
+    "es_AR": {
+        "desc_en": "Spanish (Argentina)",
+        "desc_zh": "西班牙语（阿根廷）",
+        "desc_local": "Español (Argentina)",
+        "Available CDragon Data Patches": "9.7+"
     },
-    16: {
-        "CODE": "pt_BR",
-        "LANGUAGE (EN)": "Portuguese (Brazil)",
-        "LANGUAGE (ZH)": "葡萄牙语（巴西）",
-        "Applicable CDragon Data Patches": "9.1+"
+    "pt_BR": {
+        "desc_en": "Portuguese (Brazil)",
+        "desc_zh": "葡萄牙语（巴西）",
+        "desc_local": "Português (Brasil)",
+        "Available CDragon Data Patches": "7.1+"
     },
-    17: {
-        "CODE": "en_US",
-        "LANGUAGE (EN)": "English (United States)",
-        "LANGUAGE (ZH)": "英语（美国）",
-        "Applicable CDragon Data Patches": "9.1+"
+    "en_US": {
+        "desc_en": "English (United States)",
+        "desc_zh": "英语（美国）",
+        "desc_local": "English (United States)",
+        "Available CDragon Data Patches": "7.1+"
     },
-    18: {
-        "CODE": "en_AU",
-        "LANGUAGE (EN)": "English (Australia)",
-        "LANGUAGE (ZH)": "英语（澳大利亚）",
-        "Applicable CDragon Data Patches": "9.1+"
+    "en_AU": {
+        "desc_en": "English (Australia)",
+        "desc_zh": "英语（澳大利亚）",
+        "desc_local": "English (Australia)",
+        "Available CDragon Data Patches": "7.1+"
     },
-    19: {
-        "CODE": "ru_RU",
-        "LANGUAGE (EN)": "Russian (Russia)",
-        "LANGUAGE (ZH)": "俄语（俄罗斯）",
-        "Applicable CDragon Data Patches": "9.1+"
+    "ru_RU": {
+        "desc_en": "Russian (Russia)",
+        "desc_zh": "俄语（俄罗斯）",
+        "desc_local": "Русский (Россия)",
+        "Available CDragon Data Patches": "7.1+"
     },
-    20: {
-        "CODE": "tr_TR",
-        "LANGUAGE (EN)": "Turkish (Turkey)",
-        "LANGUAGE (ZH)": "土耳其语（土耳其）",
-        "Applicable CDragon Data Patches": "9.1+"
+    "tr_TR": {
+        "desc_en": "Turkish (Turkey)",
+        "desc_zh": "土耳其语（土耳其）",
+        "desc_local": "Türkçe (Türkiye)",
+        "Available CDragon Data Patches": "7.1+"
     },
-    21: {
-        "CODE": "ms_MY",
-        "LANGUAGE (EN)": "Malay (Malaysia)",
-        "LANGUAGE (ZH)": "马来语（马来西亚）",
-        "Applicable CDragon Data Patches": ""
+    "ms_MY": {
+        "desc_en": "Malay (Malaysia)",
+        "desc_zh": "马来语（马来西亚）",
+        "desc_local": "Bahasa Melayu (Malaysia)",
+        "Available CDragon Data Patches": ""
     },
-    22: {
-        "CODE": "en_PH",
-        "LANGUAGE (EN)": "English (Republic of the Philippines)",
-        "LANGUAGE (ZH)": "英语（菲律宾共和国）",
-        "Applicable CDragon Data Patches": "10.5+"
+    "en_PH": {
+        "desc_en": "English (Republic of the Philippines)",
+        "desc_zh": "英语（菲律宾共和国）",
+        "desc_local": "English (Pilipinas)",
+        "Available CDragon Data Patches": "10.5+"
     },
-    23: {
-        "CODE": "en_SG",
-        "LANGUAGE (EN)": "English (Singapore)",
-        "LANGUAGE (ZH)": "英语（新加坡）",
-        "Applicable CDragon Data Patches": "10.5+"
+    "en_SG": {
+        "desc_en": "English (Singapore)",
+        "desc_zh": "英语（新加坡）",
+        "desc_local": "English (Singapore)",
+        "Available CDragon Data Patches": "10.5+"
     },
-    24: {
-        "CODE": "th_TH",
-        "LANGUAGE (EN)": "Thai (Thailand)",
-        "LANGUAGE (ZH)": "泰语（泰国）",
-        "Applicable CDragon Data Patches": "9.7+"
+    "th_TH": {
+        "desc_en": "Thai (Thailand)",
+        "desc_zh": "泰语（泰国）",
+        "desc_local": "ภาษาไทย (ประเทศไทย)",
+        "Available CDragon Data Patches": "9.7+"
     },
-    25: {
-        "CODE": "vn_VN",
-        "LANGUAGE (EN)": "Vietnamese (Viet Nam)",
-        "LANGUAGE (ZH)": "越南语（越南）",
-        "Applicable CDragon Data Patches": "9.7～13.9"
+    "vn_VN": {
+        "desc_en": "Vietnamese (Viet Nam)",
+        "desc_zh": "越南语（越南）",
+        "desc_local": "Tiếng Việt (Việt Nam)",
+        "Available CDragon Data Patches": "9.7～13.9"
     },
-    26: {
-        "CODE": "vi_VN",
-        "LANGUAGE (EN)": "Vietnamese (Viet Nam)",
-        "LANGUAGE (ZH)": "越南语（越南）",
-        "Applicable CDragon Data Patches": "12.17+"
+    "vi_VN": {
+        "desc_en": "Vietnamese (Viet Nam)",
+        "desc_zh": "越南语（越南）",
+        "desc_local": "Tiếng Việt (Việt Nam)",
+        "Available CDragon Data Patches": "12.17+"
     },
-    27: {
-        "CODE": "id_ID",
-        "LANGUAGE (EN)": "Indonesian (Indonesia)",
-        "LANGUAGE (ZH)": "印度尼西亚语（印度尼西亚）",
-        "Applicable CDragon Data Patches": ""
+    "id_ID": {
+        "desc_en": "Indonesian (Indonesia)",
+        "desc_zh": "印度尼西亚语（印度尼西亚）",
+        "desc_local": "Bahasa Indonesia (Indonesia)",
+        "Available CDragon Data Patches": "15.5+"
     },
-    28: {
-        "CODE": "zh_MY",
-        "LANGUAGE (EN)": "Chinese (Malaysia)",
-        "LANGUAGE (ZH)": "中文（马来西亚）",
-        "Applicable CDragon Data Patches": "10.5+"
+    "zh_MY": {
+        "desc_en": "Chinese (Malaysia)",
+        "desc_zh": "中文（马来西亚）",
+        "desc_local": "中文 (马来西亚)",
+        "Available CDragon Data Patches": "10.5+"
     },
-    29: {
-        "CODE": "zh_CN",
-        "LANGUAGE (EN)": "Chinese (China)",
-        "LANGUAGE (ZH)": "中文（中国）",
-        "Applicable CDragon Data Patches": "9.7+"
+    "zh_CN": {
+        "desc_en": "Chinese (China)",
+        "desc_zh": "中文（中国）",
+        "desc_local": "中文 (中国)",
+        "Available CDragon Data Patches": "9.7+"
     },
-    30: {
-        "CODE": "zh_TW",
-        "LANGUAGE (EN)": "Chinese (Taiwan)",
-        "LANGUAGE (ZH)": "中文（台湾）",
-        "Applicable CDragon Data Patches": "9.7+"
+    "zh_TW": {
+        "desc_en": "Chinese (Taiwan)",
+        "desc_zh": "中文（台湾）",
+        "desc_local": "中文 (台灣)",
+        "Available CDragon Data Patches": "9.7+"
     }
 }
-language_cdragon: dict[str, str] = {}
-for i in language_ddragon:
-    if language_ddragon[i]["CODE"] == "en_US":
-        language_cdragon[language_ddragon[i]["CODE"]] = "default" #在CommunityDragon数据库上，美服正式服的数据资源代码是default，而不是小写的en_US（The code for English (US) data resources on CommunityDragon database is "default" instead of the lowercase of "en_US"）
-    else:
-        language_cdragon[language_ddragon[i]["CODE"]] = language_ddragon[i]["CODE"].lower()
+language_cdragon: dict[str, str] = {key: "default" if key == "en_US" else key.lower() for key in language_ddragon} #在CommunityDragon数据库上，美服正式服的数据资源代码是default，而不是小写的en_US（The code for English (US) data resources on CommunityDragon database is "default" instead of the lowercase of "en_US"）
+language_dict: dict[str, list[int | str]] = {"No.": list(range(1, len(language_ddragon) + 1)), "CODE": list(language_ddragon.keys()), "LANGUAGE": list(map(lambda x: x["desc_local"], language_ddragon.values())), "Available CDragon Data Patches": list(map(lambda x: x["Available CDragon Data Patches"], language_ddragon.values()))} #本来考虑把可用CDragon数据版本放在第三列，但是后来发现表头名字太长了，索性放在最后了（I had considered putting "Available CDragon Data Patches" at the third column, but then found the header was too long. So I put it at the last column）
 
 #通用字典（General dictionaries）
 zoom_scale_dict: dict[float, str] = {

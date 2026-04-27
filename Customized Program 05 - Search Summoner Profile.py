@@ -11,7 +11,7 @@ from src.utils.patch import Patch
 from src.utils.webRequest import requestUrl, SGPSession
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from src.core.config.headers import profile_header, mastery_header, ranked_header, ladder_header
-from src.core.config.localization import language_cdragon, language_ddragon, tiers, tiers_all, ratedTiers, challengeCategories, challengeCrystalLevels, titleAcquisitionTypes, queueTypes
+from src.core.config.localization import language_ddragon, language_dict, language_cdragon, tiers, tiers_all, ratedTiers, challengeCategories, challengeCrystalLevels, titleAcquisitionTypes, queueTypes
 from src.core.config.servers import valid_platformIds, set_platform_folder, set_summonerInfo_folder, save_platform_info
 from src.core.config.conditional_formatting import addFormat_LoLHistory_wb, addFormat_LoLGame_summary_wb, addFormat_LoLGame_summary_wb_transpose
 from src.core.dataframes.ranked import sort_game_leaderboard
@@ -38,7 +38,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/04/23
+# 更新（Last update）：     2026/04/27
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -76,7 +76,7 @@ connector: Connector = Connector()
 #-----------------------------------------------------------------------------
 # 搜索召唤师生涯（Search summoner profile）
 #-----------------------------------------------------------------------------
-def prepare_data_resources(platformId: str, locale: str) -> bool:
+def prepare_data_resources(platformId: str, locale: str) -> tuple[bool, bool]:
     '''
     准备全局数据资源。<br>Prepare global data resources.
     
@@ -87,8 +87,8 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
     :type platformId: str
     :param locale: 语言文化代码。决定了数据资源的语言。<br>Language code, which determines the language of the data resources.
     :type locale
-    :return: 是否切换语言。<br>Whether to switch language.
-    :rtype: bool
+    :return: 是否切换语言，以及是否退出程序。<br>Whether to switch language and whether to exit the program.
+    :rtype: tuple[bool, bool]
     '''
     global session, URLPatch, patches_initial, bigPatches, queues_initial, spells_initial, LoLChampions_initial, LoLItems_initial, summonerIcons_initial, perks_initial, perkstyles_initial, TFTAugments_initial, TFTChampions_initial, TFTItems_initial, TFTCompanions_initial, TFTTraits_initial, CherryAugments_initial
     #下面声明一些数据资源的地址（The following code declare some data resources' URLs）
@@ -142,7 +142,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
                     elif patches_local[0] == "0":
                         logPrint("版本信息获取失败！请检查系统网络状况和代理设置。\nPatch information capture failure! Please check the system network condition and proxy configuration.")
                         time.sleep(5)
-                        return 1
+                        return (switch_language, True)
                     else:
                         switch_prepare_mode = True
                         break
@@ -196,7 +196,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
                     elif queue_local[0] == "0":
                         logPrint("游戏模式信息获取失败！请检查系统网络状况和代理设置。\nQueue information capture failure! Please check the system network condition and proxy configuration.")
                         time.sleep(5)
-                        return 1
+                        return (switch_language, True)
                     else:
                         switch_prepare_mode = True
                         break
@@ -236,7 +236,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
                     elif spell_local[0] == "0":
                         logPrint("召唤师技能信息获取失败！请检查系统网络状况和代理设置。\nSummoner spell information capture failure! Please check the system network condition and proxy configuration.")
                         time.sleep(5)
-                        return 1
+                        return (switch_language, True)
                     else:
                         switch_prepare_mode = True
                         break
@@ -276,7 +276,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
                     elif LoLChampion_local[0] == "0":
                         logPrint("英雄信息获取失败！请检查系统网络状况和代理设置。\nLoL champion information capture failure! Please check the system network condition and proxy configuration.")
                         time.sleep(5)
-                        return 1
+                        return (switch_language, True)
                     else:
                         switch_prepare_mode = True
                         break
@@ -316,7 +316,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
                     elif LoLItem_local[0] == "0":
                         logPrint("英雄联盟装备信息获取失败！请检查系统网络状况和代理设置。\nLoL item information capture failure! Please check the system network condition and proxy configuration.")
                         time.sleep(5)
-                        return 1
+                        return (switch_language, True)
                     else:
                         switch_prepare_mode = True
                         break
@@ -356,7 +356,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
                     elif summonerIcon_local[0] == "0":
                         logPrint("召唤师图标信息获取失败！请检查系统网络状况和代理设置。\nSummoner icon information capture failure! Please check the system network condition and proxy configuration.")
                         time.sleep(5)
-                        return 1
+                        return (switch_language, True)
                     else:
                         switch_prepare_mode = True
                         break
@@ -396,7 +396,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
                     elif perk_local[0] == "0":
                         logPrint("基石符文信息获取失败！请检查系统网络状况和代理设置。\nPerk information capture failure! Please check the system network condition and proxy configuration.")
                         time.sleep(5)
-                        return 1
+                        return (switch_language, True)
                     else:
                         switch_prepare_mode = True
                         break
@@ -436,7 +436,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
                     elif perkstyle_local[0] == "0":
                         logPrint("符文系信息获取失败！请检查系统网络状况和代理设置。\nperkstyle information capture failure! Please check the system network condition and proxy configuration.")
                         time.sleep(5)
-                        return 1
+                        return (switch_language, True)
                     else:
                         switch_prepare_mode = True
                         break
@@ -476,7 +476,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
                     elif TFTBasic_local[0] == "0":
                         logPrint("云顶之弈基础信息获取失败！请检查系统网络状况和代理设置。\nTFT basic information capture failure! Please check the system network condition and proxy configuration.")
                         time.sleep(5)
-                        return 1
+                        return (switch_language, True)
                     else:
                         switch_prepare_mode = True
                         break
@@ -516,7 +516,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
                     elif TFTChampion_local[0] == "0":
                         logPrint("云顶之弈英雄信息获取失败！请检查系统网络状况和代理设置。\nTFT champion information capture failure! Please check the system network condition and proxy configuration.")
                         time.sleep(5)
-                        return 1
+                        return (switch_language, True)
                     else:
                         switch_prepare_mode = True
                         break
@@ -556,7 +556,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
                     elif TFTItem_local[0] == "0":
                         logPrint("云顶之弈装备信息获取失败！请检查系统网络状况和代理设置。\nTFT item information capture failure! Please check the system network condition and proxy configuration.")
                         time.sleep(5)
-                        return 1
+                        return (switch_language, True)
                     else:
                         switch_prepare_mode = True
                         break
@@ -596,7 +596,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
                     elif TFTCompanion_local[0] == "0":
                         logPrint("云顶之弈小小英雄信息获取失败！请检查系统网络状况和代理设置。\nTFT companion information capture failure! Please check the system network condition and proxy configuration.")
                         time.sleep(5)
-                        return 1
+                        return (switch_language, True)
                     else:
                         switch_prepare_mode = True
                         break
@@ -636,7 +636,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
                     elif TFTTrait_local[0] == "0":
                         logPrint("云顶之弈羁绊信息获取失败！请检查系统网络状况和代理设置。\nTFT trait information capture failure! Please check the system network condition and proxy configuration.")
                         time.sleep(5)
-                        return 1
+                        return (switch_language, True)
                     else:
                         switch_prepare_mode = True
                         break
@@ -677,7 +677,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
                     elif CherryAugment_local[0] == "0":
                         logPrint("斗魂竞技场强化符文信息获取失败！请检查系统网络状况和代理设置。\nArena augment information capture failure! Please check the system network condition and proxy configuration.")
                         time.sleep(5)
-                        return 1
+                        return (switch_language, True)
                     else:
                         switch_prepare_mode = True
                         break
@@ -703,7 +703,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
             logPrint('请在浏览器中打开以下网页，待加载完成后按Ctrl + S保存网页json文件至同目录的“离线数据（Offline Data）”文件夹下，并根据括号内的提示放置和命名文件。\nPlease open the following URLs in a browser, then press Ctrl + S to save the online json files into the folder "离线数据（Offline Data）" under the same directory after the website finishes loading and organize and rename the downloaded files according to the hints in the circle brackets.\n版本信息（%s）： %s\n游戏模式（%s）： %s\n召唤师技能（%s）： %s\n英雄（%s）： %s\n英雄联盟装备（%s）： %s\n召唤师图标（%s）： %s\n基石符文（%s）： %s\n符文系（%s）： %s\n云顶之弈基础信息（%s）： %s\n云顶之弈棋子（%s）： %s\n云顶之弈装备（%s）： %s\n云顶之弈小小英雄（%s）： %s\n云顶之弈羁绊（%s）： %s\n斗魂竞技场强化符文（%s）： %s' %(patches_local_default[19:], patches_url, queue_local_default[19:], queue_url, spell_local_default[19:], spell_url, LoLChampion_local_default[19:], LoLChampion_url, LoLItem_local_default[19:], LoLItem_url, summonerIcon_local_default[19:], summonerIcon_url, perk_local_default[19:], perk_url, perkstyle_local_default[19:], perkstyle_url, TFTBasic_local_default[19:], TFTBasic_url, TFTChampion_local_default[19:], TFTChampion_url, TFTItem_local_default[19:], TFTItem_url, TFTCompanion_local_default[19:], TFTCompanion_url, TFTTrait_local_default[19:], TFTTrait_url, CherryAugment_local_default[19:], CherryAugment_url))
             offline_files_loaded: dict[str, bool] = {"patch": False, "queue": False, "spell": False, "LoLChampion": False, "LoLItem": False, "summonerIcon": False, "perk": False, "perkstyle": False, "TFT": False, "TFTChampion": False, "TFTItem": False, "TFTCompanion": False, "TFTTrait": False, "CherryAugment": False}
             offline_files: dict[str, dict[str, str]] = {"patch": {"file": patches_local_default, "URL": patches_url, "content": "版本信息"}, "queue": {"file": queue_local_default, "URL": queue_url, "content": "游戏模式"}, "spell": {"file": spell_local_default, "URL": spell_url, "content": "召唤师技能"}, "LoLChampion": {"file": LoLChampion_local_default, "URL": LoLChampion_url, "content": "英雄"}, "LoLItem": {"file": LoLItem_local_default, "URL": LoLItem_url, "content": "英雄联盟装备"}, "summonerIcon": {"file": summonerIcon_local_default, "URL": summonerIcon_url, "content": "召唤师图标"}, "perk": {"file": perk_local_default, "URL": perk_url, "content": "基石符文"}, "perkstyle": {"file": perkstyle_local_default, "URL": perkstyle_url, "content": "符文系"}, "TFT": {"file": TFTBasic_local_default, "URL": TFTBasic_url, "content": "云顶之弈基础信息"}, "TFTChampion": {"file": TFTChampion_local_default, "URL": TFTChampion_url, "content": "云顶之弈英雄"}, "TFTItem": {"file": TFTItem_local_default, "URL": TFTItem_url, "content": "云顶之弈装备"}, "TFTCompanion": {"file": TFTCompanion_local_default, "URL": TFTCompanion_url, "content": "云顶之弈小小英雄"}, "TFTTrait": {"file": TFTTrait_local_default, "URL": TFTTrait_url, "content": "云顶之弈羁绊"}, "CherryAugment": {"file": CherryAugment_local_default, "URL": CherryAugment_url, "content": "斗魂竞技场强化符文"}}
-            logPrint('请按任意键以加载离线数据。输入“1”以转为在线模式。输入“0”以退出程序。\nPlease input anything to load offline data. Input "1" to switch to online mode. Submit "0" to exit.')
+            logPrint('按回车键以加载离线数据。输入“1”以转为在线模式。输入“0”以退出程序。\nPress Enter to load offline data. Input "1" to switch to online mode. Submit "0" to exit.')
             while any(not _ for _ in offline_files_loaded.values()):
                 offline_files_notfound: dict[str, bool] = {"patch": False, "queue": False, "spell": False, "LoLChampion": False, "LoLItem": False, "summonerIcon": False, "perk": False, "perkstyle": False, "TFT": False, "TFTChampion": False, "TFTItem": False, "TFTCompanion": False, "TFTTrait": False, "CherryAugment": False}
                 offline_files_formaterror: dict[str, bool] = {"patch": False, "queue": False, "spell": False, "LoLChampion": False, "LoLItem": False, "summonerIcon": False, "perk": False, "perkstyle": False, "TFT": False, "TFTChampion": False, "TFTItem": False, "TFTCompanion": False, "TFTTrait": False, "CherryAugment": False}
@@ -712,7 +712,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
                     switch_prepare_mode = True
                     break
                 if prepareMode != "" and prepareMode[0] == "0":
-                    return 0
+                    return (switch_language, True)
                 #下面获取版本信息（The following code get the patch data）
                 if not offline_files_loaded["patch"]:
                     try:
@@ -944,7 +944,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
                     for i in formaterror_offline_files:
                         logPrint(offline_files[i]["file"] + "\t" + offline_files[i]["content"] + "\t" + offline_files[i]["URL"])
                 if any(not i for i in offline_files_loaded.values()):
-                    logPrint('请按任意键以加载离线数据。输入“1”以转为在线模式。输入“0”以退出程序。\nPlease input anything to load offline data. Input "1" to switch to online mode. Submit "0" to exit.')
+                    logPrint('按回车键以加载离线数据。输入“1”以转为在线模式。输入“0”以退出程序。\nPress Enter to load offline data. Input "1" to switch to online mode. Submit "0" to exit.')
             if not switch_prepare_mode:
                 break
     if not switch_language:
@@ -970,7 +970,7 @@ def prepare_data_resources(platformId: str, locale: str) -> bool:
             trait_iter["conditional_trait_sets"] = conditional_trait_sets
             TFTTraits_initial[trait_id] = trait_iter
         CherryAugments_initial = {int(CherryAugment_iter["id"]): CherryAugment_iter for CherryAugment_iter in CherryAugment_initial} #CherryAugments为嵌套字典，键为斗魂竞技场强化符文在LCU API上的表达形式，值为斗魂竞技场强化符文信息字典。一个键值对的实例如右：（Variable `CherryAugments` is a nested dictionary, whose keys are LCU API representation of Arena augments and values are Arena augment information dictionaries. An example of the key-value pairs is shown as follows: ）{205: {"nameTRA": "物理转魔法", "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ADAPt_small.png", "rarity": "kSilver"}}
-    return switch_language
+    return (switch_language, False)
 
 async def load_smurf(connection: Connection, infos: Optional[dict[str, dict[str, Any]]] = None) -> list[dict[str, Any]]:
     '''
@@ -1489,8 +1489,7 @@ async def search_profile(connection: Connection) -> None:
     region: str = client_info["--region"]
     platform_folder: str = set_platform_folder(region, platformId)
     match_folder: str = os.path.join(platform_folder, "1. MatchIDs")
-    logPrint("请选择召唤师技能和装备的输出语言【默认为中文（中国）】：\nPlease select a language to output the summoner spells and items (the default option is zh_CN):") #本来考虑把可用CDragon数据版本放在第三列，但是后来发现表头名字太长了，索性放在最后了（I had considered putting "Applicable CDragon Data Patches" at the third column, but then found the header was too long. So I put it at the last column）
-    language_dict: dict[str, list[int | str]] = {"No.": list(language_ddragon.keys()), "CODE": list(map(lambda x: x["CODE"], language_ddragon.values())), "LANGUAGE": list(map(lambda x: x["LANGUAGE (EN)"], language_ddragon.values())), "语言": list(map(lambda x: x["LANGUAGE (ZH)"], language_ddragon.values())), "Applicable CDragon Data Patches": list(map(lambda x: x["Applicable CDragon Data Patches"], language_ddragon.values()))}
+    logPrint("请选择召唤师技能和装备的输出语言【默认为中文（中国）】：\nPlease select a language to output the summoner spells and items (the default option is zh_CN):")
     language_df: pandas.DataFrame = pandas.DataFrame(language_dict)
     print(format_df(language_df)[0])
     log.write(format_df(language_df, width_exceed_ask = False, direct_print = False)[0] + "\n")
@@ -1499,8 +1498,10 @@ async def search_profile(connection: Connection) -> None:
         if language_option == "" or language_option in [str(i) for i in range(1, 31)]:
             if language_option == "":
                 language_option = "29"
-            language_code: str = language_ddragon[int(language_option)]["CODE"]
-            switch_language: bool = prepare_data_resources(platformId, language_code)
+            language_code: str = list(language_ddragon.keys())[int(language_option) - 1]
+            switch_language, exit_flag = prepare_data_resources(platformId, language_code)
+            if exit_flag:
+                return
             if switch_language:
                 continue
             else:

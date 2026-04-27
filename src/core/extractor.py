@@ -15,7 +15,7 @@ from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, 
 from src.utils.runtimeDebug import subscope
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from src.core.config.headers import map_header_l10n, cheatset_header, cheat_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, CherryAnvil_header, GoH_header, cameo_header, CherryRoundList_header, CherryRound_header, CherryPhase_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header, fontDesc_header, fontType_header, fontResolution_header, fontStyle_header, font_CSSStyle_header, font_CSSIcon_header
-from src.core.config.localization import language_ddragon, language_cdragon
+from src.core.config.localization import language_ddragon, language_dict
 
 #=============================================================================
 # * 声明（Declaration）
@@ -23,7 +23,7 @@ from src.core.config.localization import language_ddragon, language_cdragon
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/04/26
+# 更新（Last update）：     2026/04/27
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -8550,7 +8550,6 @@ if __name__ == "__main__":
         :rtype: str
         '''
         logPrint("请选择说明文本的输出语言【默认为中文（中国）】：\nPlease select a language for tooltips (the default option is zh_CN):")
-        language_dict: dict[str, list[str]] = {"No.": list(language_ddragon.keys()), "CODE": list(map(lambda x: x["CODE"], language_ddragon.values())), "LANGUAGE": list(map(lambda x: x["LANGUAGE (EN)"], language_ddragon.values())), "语言": list(map(lambda x: x["LANGUAGE (ZH)"], language_ddragon.values())), "Applicable CDragon Data Patches": list(map(lambda x: x["Applicable CDragon Data Patches"], language_ddragon.values()))}
         language_df: pandas.DataFrame = pandas.DataFrame(language_dict)
         logPrint(format_df(language_df)[0], write_time = False)
         while True:
@@ -8558,7 +8557,7 @@ if __name__ == "__main__":
             if language_option == "" or language_option in set(map(str, range(1, 31))):
                 if language_option == "":
                     language_option = "29"
-                language_code = language_ddragon[int(language_option)]["CODE"]
+                language_code = list(language_ddragon.keys())[int(language_option) - 1]
                 break
             elif language_option[0] == "0":
                 language_code = ""

@@ -8,7 +8,7 @@ from src.utils.format import format_df, addDefaultStyle
 from src.utils.summoner import print_summoner_info
 from src.utils.repeatConnect import LCUConnect
 from src.utils.excel_workbook import create_workbook_win32
-from src.core.config.localization import language_ddragon, language_cdragon
+from src.core.config.localization import language_ddragon, language_dict, language_cdragon
 from src.core.dataframes.champions import test_bot, sort_ddragon_champions, sort_inventory_champions, sort_plugin_champions
 
 #=============================================================================
@@ -17,7 +17,7 @@ from src.core.dataframes.champions import test_bot, sort_ddragon_champions, sort
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/12
+# 更新（Last update）：     2026/04/27
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -386,7 +386,6 @@ async def connect(connection: Connection) -> None: #注意到这里没有加装�
 #-----------------------------------------------------------------------------
 def main():
     print("请选择离线数据资源的语言【默认为中文（中国）】：\nPlease select a language for offline data resources (the default option is zh_CN):")
-    language_dict: dict[str, list[int | str]] = {"No.": list(language_ddragon.keys()), "CODE": list(map(lambda x: x["CODE"], language_ddragon.values())), "LANGUAGE": list(map(lambda x: x["LANGUAGE (EN)"], language_ddragon.values())), "语言": list(map(lambda x: x["LANGUAGE (ZH)"], language_ddragon.values())), "Applicable CDragon Data Patches": list(map(lambda x: x["Applicable CDragon Data Patches"], language_ddragon.values()))}
     language_df: pandas.DataFrame = pandas.DataFrame(language_dict)
     print(format_df(language_df)[0])
     while True:
@@ -403,7 +402,7 @@ def main():
             print("语言选项输入错误！\nERROR input of language option!")
     # loop_closed: bool = False #表明事件循环是否已经关闭。如果已经关闭，则同一线程中不能再执行此循环（Represent whether the event loop is closed. If it is, this loop shouldn't be accessed within the same thread）
     if language_specified:
-        language_code: str = language_ddragon[int(language_option)]["CODE"]
+        language_code: str = list(language_ddragon.keys())[int(language_option) - 1]
         print('请选择英雄数据来源：（输入“0”以退出程序。）\nPlease select the champion data source: (Submit "0" to exit.)\n1\tLCU API\n2\tDataDragon\n3\tCommunityDragon')
         while True:
             source: str = input()
