@@ -7,6 +7,7 @@ from src.utils.format import optimize_bool_display, addDefaultStyle
 from src.utils.excel_workbook import create_workbook_win32
 from src.core.config.localization import gameTypes_config
 from src.core.config.headers import gametype_config_header
+from src.core.config.servers import save_platform_info
 
 #=============================================================================
 # * 声明（Declaration）
@@ -14,7 +15,7 @@ from src.core.config.headers import gametype_config_header
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/12
+# 更新（Last update）：     2026/04/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -30,24 +31,7 @@ connector: Connector = Connector()
 # 获取英雄联盟中的所有游戏类型信息（Get all game types' information in League of Legends）
 #-----------------------------------------------------------------------------
 async def sort_gametype_config(connection: Connection) -> None:
-    gametype_config: list[dict[str, Any]] = []
-    for i in range(100):
-        response: dict[str, Any] = await (await connection.request("GET", f"/lol-game-queues/v1/game-type-config/{i}")).json()
-        print(response)
-        if "errorCode" in response:
-            if response["message"] == f'No game type config found with id {i}':
-                #print(f"没有找到序号为{i}的游戏类型信息。\nNo game type config found with id {i}.")
-                pass
-            else:
-                #print(f"序号为{i}的游戏类型信息获取失败。\nFailed to get the game type config with id {i}.")
-                pass
-        else:
-            print(f"序号为{i}的游戏类型信息如下：\nGame type config with id {i} is as follows:")
-            print(response)
-            gametype_config.append(response)
-    json_name: str = "GameTypeConfig.json"
-    with open(json_name, "w", encoding = "utf-8") as fp:
-        json.dump(gametype_config, fp, indent = 4, ensure_ascii = False)
+    gametype_config: list[dict[str, Any]] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/gameTypeConfigs")).json()
     gameTypes_zh: dict[str, str] = {gameType: gameTypes_config[gameType]["zh_CN"] for gameType in gameTypes_config}
     gameTypes_en: dict[str, str] = {gameType: gameTypes_config[gameType]["en_US"] for gameType in gameTypes_config}
     gametype_config_header_keys: list[str] = list(gametype_config_header.keys())
@@ -56,7 +40,10 @@ async def sort_gametype_config(connection: Connection) -> None:
         for i in range(len(gametype_config_header_keys)):
             key: str = gametype_config_header_keys[i]
             if i <= 21:
-                to_append: Any = config[key]
+                if key in config:
+                    to_append = config[key]
+                else:
+                    to_append = False if i in {0, 1, 4, 5, 6, 7, 8, 9, 12, 17, 20, 21} else ""
             else:
                 if i == 22: #中文名称（`localizedName_zh`）
                     to_append = gameTypes_zh.get(config["name"], "")
@@ -81,7 +68,7 @@ async def sort_gametype_config(connection: Connection) -> None:
             input()
         else:
             break
-    print(f"游戏类型信息已导出到同目录下的{json_name}和{excel_name}中。请按回车键退出。\nGame type config has been exported to {json_name} and {excel_name} under the same dierctory. Press Enter to exit.")
+    print(f"游戏类型信息已导出到同目录下的{excel_name}中。请按回车键退出。\nGame type config has been exported to {excel_name} under the same dierctory. Press Enter to exit.")
     input()
 
 #-----------------------------------------------------------------------------
@@ -90,6 +77,7 @@ async def sort_gametype_config(connection: Connection) -> None:
 @connector.ready
 async def connect(connection: Connection) -> None:
     await print_summoner_info(connection)
+    await save_platform_info(connection)
     await sort_gametype_config(connection)
 
 @connector.close
