@@ -1,7 +1,12 @@
 from lcu_driver.connection import Connection
-import json, os
-from ...utils.summoner import get_info_name
+import json, os, sys
 from typing import Any
+wd: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")).replace("\\", "/")
+os.chdir(wd)
+if not wd in sys.path:
+    sys.path.append(wd) #确保在“src”文件夹的父级目录运行此代码（Make sure this program is run under the parent folder of the "src" folder）
+from src.core.config.localization import language_ddragon
+from src.utils.summoner import get_info_name
 
 #大区数据（Servers/Platforms）
 platform_TENCENT: dict[str, str] = {
@@ -216,12 +221,14 @@ def set_rankedApex_folder(region: str, platformId: str, currentSeason: int, curr
         apex_folder = "顶尖排位玩家（Ranked Apex）/外服（RIOT）/%s/第%d赛季（SEASON %d）" %((platform_RIOT | platform_GARENA)[platformId], currentSeason, currentSeason)
     return apex_folder
 
-async def save_platform_info(connection: Connection) -> None:
+async def save_platform_info(connection: Connection, print_summary: bool = True) -> None:
     '''
     在与联盟客户端创建连接时，保存大区的配置信息到大区文件夹内。<br>Upon building a connection with League Client, save the platform configuration into the local platform folder.
     
     :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
     :type connection: Connection
+    :param print_summary: 是否输出当前大区和客户端的标识性信息。默认为真。<br>Whether to print some representative information of the current server and client. True by default.
+    :type print_summary: bool
     '''
     #准备数据资源（Prepare data resources）
     platform_config: dict[str, Any] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces")).json()
@@ -241,6 +248,14 @@ async def save_platform_info(connection: Connection) -> None:
             except IndexError:
                 pass
         region: str = client_info["--region"]
+        if print_summary: #打印大区信息（Print server information）
+            print("region:         %s" %region)
+            print("platformId:     %s" %platformId)
+            print("Server name:    %s" %((platform_TENCENT | platform_RIOT)[platformId]))
+            region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
+            print("locale:         %s" %(region_locale["locale"]))
+            print("Language:       %s" %(language_ddragon[region_locale["locale"]]["desc_local"]))
+            print("-")
         #保存Json文件（Save the json file）
         platform_folder: str = set_platform_folder(region, platformId)
         os.makedirs(platform_folder, exist_ok = True)
