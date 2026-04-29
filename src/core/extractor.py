@@ -6555,12 +6555,12 @@ class GoHExtractor(LoLDataExtractor):
         GoH_cherry: dict[tuple[str, str], dict[str, dict[str, Any]]] = {}
         for (key, value) in self.cherry_bin.items():
             if key != "__linked" and value["__type"] == "{05c8aed6}":
-                GoH_key: str = value["{1ff99d7f}"]["title"].split("_")[-1]
+                GoH_name: str = value["{1ff99d7f}"]["title"].split("_")[-1]
                 GoH_value: dict[str, Any] = copy.deepcopy(value)
                 GoH_value["key"] = key
-                if not GoH_key in GoH_keys:
-                    GoH_keys.append(GoH_key)
-                GoH_cherry[GoH_key] = GoH_value
+                if not GoH_name in GoH_keys:
+                    GoH_keys.append(GoH_name)
+                GoH_cherry[GoH_name] = GoH_value
         
         #数据整理核心部分（Data organization core part）
         pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
@@ -6603,14 +6603,14 @@ class GoHExtractor(LoLDataExtractor):
                                 to_append = tooltip_raw
                     else:
                         to_append = ""
-                else:
+                else: #互斥荣誉嘉宾本地化名称（Localized subtitles of mutex guests）
                     strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 24 else strtable_lol_default
                     if key1 in GoH_map30 and "{e7879fb5}" in GoH_map30[key1] and key1 in GoH_cherry:
                         mutexGoHNames: list[str] = []
                         for GoH_key in GoH_map30[key1]["{e7879fb5}"]:
                             if GoH_key in self.map30_bin:
                                 GoH_name: str = self.map30_bin[GoH_key]["name"]
-                                GoH_subtitle_key: str = GoH_cherry[key1]["{1ff99d7f}"]["Subtitle"]
+                                GoH_subtitle_key: str = GoH_cherry[GoH_name]["{1ff99d7f}"]["Subtitle"]
                                 GoH_subtitle: str = self.get_strtable_value(strtable_locale, GoH_subtitle_key, default = tooltip_key)
                                 mutexGoHNames.append(GoH_subtitle)
                             else:
