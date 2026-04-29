@@ -2425,8 +2425,14 @@ class LoLDataExtractor:
                 result = result.replace("【\n", "【")
             while "\n】" in result:
                 result = result.replace("\n】", "】")
-            while result.startswith("【【") and result.endswith("】】"): #在装备升级类强化符文中出现。下同（Appears in Upgrade-item augments. So does the following）
-                result = result.replace("【【", "【").replace("】】", "】")
+            while "【 " in result:
+                result = result.replace("【 ", "【")
+            while " 】" in result:
+                result = result.replace(" 】", "】")
+            while "【【" in result:
+                result = result.replace("【【", "【")
+            while "】】" in result:
+                result = result.replace("】】", "】")
             while "【】" in result:
                 result = result.replace("【】", "")
         else:
@@ -2434,8 +2440,14 @@ class LoLDataExtractor:
                 result = result.replace("[\n", "[")
             while "\n]" in result:
                 result = result.replace("\n]", "]")
-            while result.startswith("[[") and result.endswith("]]"): #在装备升级类强化符文中出现。下同（Appears in Upgrade-item augments. So does the following）
-                result = result.replace("[[", "[").replace("]]", "]")
+            while "[ " in result:
+                result = result.replace("[ ", "[")
+            while " ]" in result:
+                result = result.replace(" ]", "]")
+            while "[[" in result:
+                result = result.replace("[[", "[")
+            while "]]" in result:
+                result = result.replace("]]", "]")
             while "[]" in result:
                 result = result.replace("[]", "")
         while "()" in result:
