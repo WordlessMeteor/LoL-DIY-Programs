@@ -1379,6 +1379,9 @@ class LoLDataExtractor:
             formulaStr = cls.variableCalculation(binData, formulaPart["mDataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             mBonusStatForEfficiency: float = cls.aRound(formulaPart["mBonusStatForEfficiency"], 5)
             formulaStr += " × " + str(mBonusStatForEfficiency)
+        elif formulaPart_type == "{2b25a73a}": #仅用于【注魔】（Only applies to Juiced）
+            formulaStr = cls.variableCalculation(binData, formulaPart["{137cf12a}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            formulaStr += " × " + ("最大法力值" if useCHSPrompt else "max Mana")
         elif formulaPart_type == "{4ce08984}": #仅用于不落魔锋 亚恒的【不落之志】（Only applies to ZaahenPassive）
             #下面假设所有与等级相关的值列表的所有元素相同。这样，`burnValueList`方法应当只返回一个值（We assume all elements in the value list of a level-related key are equal. In that case, `burnValueList` method should return a single value）
             #如果后面出现与等级相关的值列表还随等级增长，那就只能使用非数学的一段描述性文字放到花括号中（If later Riot develops some mechanism where the level-scaling number scales with level, then I have to put a non-mathematical descriptional text into between the curly brackets）
@@ -9481,8 +9484,8 @@ if __name__ == "__main__":
         ##地图（Map）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
         #     map22_bin = json.load(fp)
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
-            map30_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
+        #     map30_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
         #     map33_bin = json.load(fp)
         ##装备（Item）
@@ -9495,8 +9498,8 @@ if __name__ == "__main__":
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/perks.cdtb.bin.json", "r", encoding = "utf-8") as fp:
         #     perks_bin = json.load(fp)
         ##强化符文和荣誉嘉宾（Augment and Guest of Honor）
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
-        #     cherry_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
+            cherry_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
         #     kiwi_bin = json.load(fp)
         ##整合后的数据（Merged data）
@@ -9537,10 +9540,10 @@ if __name__ == "__main__":
         # print(LoLDataExtractor.get_strtable_value(lolstringtable_zh, mDisplayName_key, default = "获取失败。"))
         
         #说明文本转换（Tooltip transformation）
-        locale: str = "zh_CN"
-        tooltip_raw: str = "你的<speed>攻击速度</speed>无法超过@StaticRatio@。所有<speed>攻击速度</speed>加成会被转化为<scaleAD>攻击力</scaleAD> (每<speed>1%攻击速度</speed>转化为<scaleAD>@ADPerAS@攻击力</scaleAD>)。<br><br>当前获得：@f1@ <scaleAD>攻击力</scaleAD>"
+        locale: str = "en_US"
+        tooltip_raw: str = "<OnHit> %i:OnHit% On-Hit</OnHit> consume <scaleMana>@Calc_Mana_Cost@ Mana</scaleMana> to deal <magicDamage>@Calc_Damage@ magic damage</magicDamage>, this damage can <crit>Critically Strike</crit>.<br><br><rules>Damage Dealt: @f1.0@<br>Mana Consumed: @f2.0@</rules>"
         print("原始说明文本：\n" + tooltip_raw)
-        binData: dict[str, Any] = map30_bin["Maps/Shipping/Map30/Spells/Augment_SlowAndSteady"]["mSpell"]
+        binData: dict[str, Any] = cherry_bin["{b0ef2279}"]["mSpell"]
         print("----")
         print("转换文本：")
         print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reserve_variable = False))
