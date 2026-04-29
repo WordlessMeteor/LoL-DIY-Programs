@@ -28,7 +28,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/03/11
+# 更新（Last update）：     2026/04/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1282,7 +1282,8 @@ async def ARAMBalanceBuffTest(connection: Connection, preset_championIds: Option
                 break
 
 async def main(connection: Connection) -> None:
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     game_version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
     crowd_mode_hine_printed: bool = False
     step: int = 1

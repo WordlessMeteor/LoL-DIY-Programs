@@ -49,7 +49,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/12
+# 更新（Last update）：     2026/04/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -204,7 +204,8 @@ async def prepare_data_resources(connection: Connection, verbose: bool = True) -
     perkstyles = {int(perkstyle_iter["id"]): perkstyle_iter for perkstyle_iter in perkstyles_source["styles"]}
     ##云顶之弈强化符文（TFT augments）
     logPrint("正在加载云顶之弈基础数据……\nLoading TFT basic data from CommunityDragon ...", verbose = verbose)
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     URLPatch: str = "pbe" if platformId == "PBE1" or platformId == "PBE" else "latest"
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     locale: str = region_locale["locale"].lower()
@@ -279,7 +280,8 @@ async def search_player_match_stats_lol(connection: Connection, puuid: str, begI
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     LoLGame_stat_header_keys: list[str] = list(LoLGame_stat_header.keys())
     LoLGame_stat_data: dict[str, list[Any]] = {key: [] for key in LoLGame_stat_header_keys}
     info: dict[str, Any] = await get_info(connection, puuid)
@@ -357,7 +359,8 @@ async def search_player_match_stats_tft(connection: Connection, puuid: str, begi
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    # current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    # platformId: str = current_party["platformId"]
     TFTGame_stat_header_keys: list[str] = list(TFTGame_stat_header.keys())
     TFTGame_stat_data: dict[str, list[Any]] = {key: [] for key in TFTGame_stat_header_keys}
     info: dict[str, Any] = await get_info(connection, puuid)
@@ -417,7 +420,8 @@ def open_workbook(path: str) -> tuple[Any, Any]:
         return (None, None)
 
 async def Clarke_revival(connection: Connection) -> None:
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
     gameQueues_source = sorted(gameQueues_source, key = lambda x: x["id"]) #将队列按照队列序号正序排列（Sort the queues in the ascending order of queueIds）

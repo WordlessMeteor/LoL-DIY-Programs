@@ -15,7 +15,7 @@ from src.core.config.localization import inventoryType_dict, ownershipTypes, sub
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/12
+# 更新（Last update）：     2026/04/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -495,7 +495,8 @@ async def fetch_store(connection: Connection) -> None:
     #获取大区信息，用于设置工作簿保存位置和工作表名称和获取相应的CommunityDragon数据资源（Get server information to set up workbook saving directory and sheet name and fetch the adaptive CommunityDragon data resources）
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     displayName: str = get_info_name(current_info)
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     riot_client_info: dict[str, Any] = await (await connection.request("GET", "/riotclient/command-line-args")).json()
     client_info: dict[str, Any] = {}
     for i in range(len(riot_client_info)):

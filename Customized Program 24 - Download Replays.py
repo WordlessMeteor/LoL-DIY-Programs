@@ -12,7 +12,7 @@ from src.core.dataframes.matchHistory import get_game_summary_sgp, get_game_time
 #=============================================================================
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
-# 更新（Last update）：     2026/03/28
+# 更新（Last update）：     2026/04/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -185,7 +185,8 @@ async def download_replay(connection: Connection, matchId: int) -> None:
     :type matchId: int
     '''
     #准备常量（Prepare constants）
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     match_id: str = f"{platformId}_{matchId}"
     rofl_name: str = f"{platformId}-{matchId}.rofl"
     # json_name: str = f"{platformId}-{matchId}.json"

@@ -16,7 +16,7 @@ from src.core.config.headers import challenger_ladder_metadata_header, challenge
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/12
+# 更新（Last update）：     2026/04/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -45,17 +45,19 @@ async def get_challenger_tier(connection: Connection) -> None:
         except IndexError:
             pass
     region: str = client_info["--region"]
-    currentSeason: int = round(platform_config["ClientSystemStates"]["currentSeason"]) #API中记录的赛季与平常所说的赛季有所不同（The season recorded in API is different from the often mentioned season）
+    currentLoLSeason: dict[str, Any] = await (await connection.request("GET", "/lol-seasons/v1/season/product/LOL")).json() #API中记录的赛季与平常所说的赛季有所不同（The season recorded in API is different from the often mentioned season）
+    currentLoLSeasonId: int = currentLoLSeason["seasonId"]
+    currentLoLSeasonSplitId: int = currentLoLSeason["currentSplit"]
     # currentSplit: int = int(platform_config["LeagueConfig"]["CurrentSplit"]) + 1 #API中记录的赛段序号从0开始，平常所说的赛季序号从1开始，因此要加1（The split recorded in API counts from 0, while the split that people usually talk about counts from 1, so 1 should be added here）
     if region == "TENCENT":
-        folder: str = "顶尖排位玩家（Ranked Apex）/国服（TENCENT）/%s/第%d赛季（SEASON %d）" %(platform_TENCENT[platformId], currentSeason, currentSeason)
+        folder: str = "顶尖排位玩家（Ranked Apex）/国服（TENCENT）/%s/第%d赛季 - 第%d赛段（SEASON %d - Split %d）" %(platform_TENCENT[platformId], currentLoLSeasonId, currentLoLSeasonSplitId, currentLoLSeasonId, currentLoLSeasonSplitId)
     elif region == "GARENA":
-        folder = "顶尖排位玩家（Ranked Apex）/竞舞（GARENA）/%s/第%d赛季（SEASON %d）" %(platform_GARENA[platformId], currentSeason, currentSeason)
+        folder = "顶尖排位玩家（Ranked Apex）/竞舞（GARENA）/%s/第%d赛季 - 第%d赛段（SEASON %d - Split %d）" %(platform_GARENA[platformId], currentLoLSeasonId, currentLoLSeasonSplitId, currentLoLSeasonId, currentLoLSeasonSplitId)
     else: #拳头公司与竞舞娱乐公司的合同于2023年1月终止（In January 2023, Riot Games ended its contract with Garena）
-        folder = "顶尖排位玩家（Ranked Apex）/外服（RIOT）/%s/第%d赛季（SEASON %d）" %((platform_RIOT | platform_GARENA)[platformId], currentSeason, currentSeason)
+        folder = "顶尖排位玩家（Ranked Apex）/外服（RIOT）/%s/第%d赛季 - 第%d赛段（SEASON %d - Split %d）" %((platform_RIOT | platform_GARENA)[platformId], currentLoLSeasonId, currentLoLSeasonSplitId, currentLoLSeasonId, currentLoLSeasonSplitId)
     
     # splitsConfig: dict[str, Any] = await (await connection.request("GET", "/lol-ranked/v1/splits-config")).json()
-    # json1name: str = "SplitsConfig (Season %d).json" %currentSeason
+    # json1name: str = "SplitsConfig (Season %d).json" %currentLoLSeasonId
     # while True:
     #     try:
     #         with open(os.path.join(folder, json1name), "w", encoding = "utf-8") as jsonfile1:
@@ -290,23 +292,23 @@ async def get_challenger_tier(connection: Connection) -> None:
     export_str: str = logInput()
     export: bool = bool(export_str)
     if export:
-        excel_name: str = f"Ranked Apex - {platformId} ({currentSeason}).xlsx"
-        excel_name_sorted: str = f"Ranked Apex - {platformId} ({currentSeason}) (sorted).xlsx"
+        excel_name: str = f"Ranked Apex - {platformId} ({currentLoLSeasonId}).xlsx"
+        excel_name_sorted: str = f"Ranked Apex - {platformId} ({currentLoLSeasonId}) (sorted).xlsx"
         wbPath: str = os.path.join(folder, excel_name)
         os.makedirs(folder, exist_ok = True)
         if not os.path.exists(wbPath):
-            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(wbPath), sheet1_name = f"Tier Apex Metadata - Season {currentSeason}")
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(wbPath), sheet1_name = f"Tier Apex Metadata - Season {currentLoLSeasonId}")
         workbook_exist: bool = os.path.exists(wbPath)
         while True:
             try:
                 with (pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = wbPath)) as writer:
-                    # addDefaultStyle(splits_info_df).to_excel(excel_writer = writer, sheet_name = f"Split Config - Season {currentSeason}")
+                    # addDefaultStyle(splits_info_df).to_excel(excel_writer = writer, sheet_name = f"Split Config - Season {currentLoLSeasonId}")
                     # logPrint("赛季信息导出完成！\nSplit config exported!\n")
-                    # addDefaultStyle(rewardTrack_df).to_excel(excel_writer = writer, sheet_name = f"Reward Track - Season {currentSeason}")
+                    # addDefaultStyle(rewardTrack_df).to_excel(excel_writer = writer, sheet_name = f"Reward Track - Season {currentLoLSeasonId}")
                     # logPrint("奖励里程导出完成！\nReward milestones exported!\n")
-                    addDefaultStyle(challenger_ladder_metadata_df).to_excel(excel_writer = writer, sheet_name = f"Tier Apex Metadata - Season {currentSeason}")
+                    addDefaultStyle(challenger_ladder_metadata_df).to_excel(excel_writer = writer, sheet_name = f"Tier Apex Metadata - Season {currentLoLSeasonId}")
                     logPrint("胜点系列段位天梯元数据导出完成！\nLP apex metadata exported!\n")
-                    # addDefaultStyle(topRated_ladder_metadata_df).to_excel(excel_writer = writer, sheet_name = f"Rating Apex Metadata - Season {currentSeason}")
+                    # addDefaultStyle(topRated_ladder_metadata_df).to_excel(excel_writer = writer, sheet_name = f"Rating Apex Metadata - Season {currentLoLSeasonId}")
                     # logPrint("排名分系列段位天梯元数据导出完成！\nRating apex metadata exported!\n")
                     runTimes: list[float] = [] #记录保存每个队列的顶级玩家信息所花费的时间（Records the time spent in saving the top player information of each queue）
                     total_used: float = 0

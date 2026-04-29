@@ -13,7 +13,7 @@ from src.core.dataframes.gameMode import sort_queue_data, check_available_queue
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/12
+# 更新（Last update）：     2026/04/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -40,7 +40,8 @@ async def gamemode(connection: Connection) -> None: #导出游戏模式信息到
         except IndexError:
             pass
     region: str = client_info["--region"]
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     #locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     locale: str = client_info["--locale"]
     version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
@@ -64,7 +65,8 @@ async def gamemode(connection: Connection) -> None: #导出游戏模式信息到
     #要完整读取游戏队列信息，请使用命令（To read in the queue information entirely, it's highly recommended that user use the following command）：df = pandas.read_excel("游戏队列信息.xlsx", header = 0, index_col = 0)
 
 async def print_available_queue(connection: Connection) -> None: #打印可用队列信息（Print available queues）
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     game_version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
     print("是否检查可用队列？（输入任意键检查，否则退出程序）\nDo you want to check available queues? (Submit anything to check, or null to exit the program)")
     check: bool = bool(input())

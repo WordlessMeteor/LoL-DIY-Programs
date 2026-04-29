@@ -12,7 +12,7 @@ from src.utils.excel_workbook import create_workbook_win32
 from src.core.config.const import ALL_GAMEFLOW_PHASES, BOT_DIFFICULTY_LIST, BOT_UUID, SPECTATOR_POLICY_LIST, GLOBAL_RESPONSE_LAG, REPORT_CATEGORY_LIST_CHAMPSELECT, REPORT_CATEGORY_LIST_POSTGAME
 from src.core.config.headers import champSelect_player_header, custom_lobby_header, skin_header, conversation_header, grid_champion_header, chat_mutedPlayer_header, invid_header, perkPage_header, social_leaderboard_header, availableBot_header, member_header, inGame_playerAbility_header, inGame_championStat_header, inGame_allPlayer_header, inGame_event_header, inGame_metadata_header, ballot_player_header, eog_mastery_update_header, eog_stat_metadata_lol_header, eog_teamstat_data_lol_header, eog_playerstat_data_lol_header, eog_stat_metadata_tft_header, eog_stat_data_tft_header
 from src.core.config.headers import LoLChampion_inventory_header as LoLChampion_header
-from src.core.config.localization import gamemodes, gamemaps, ARAMmaps, gameTypes_config, spectatorPolicies, report_categories, tiers_all, team_colors_int, subteam_colors, rarities, krarities, augment_rarity, skinClassifications, damageTypes, conversationTypes, messageTypes, system_messages, invidStates, invidTypes, slotTypes, availabilities, inventoryType_dict, ownershipTypes, botDifficulty_dict, roles, positions, eventTypes_liveclient, DragonTypes, team_colors_str, honorType_tooltip_headers, honorType_tooltip_bodies, zoom_scale_dict
+from src.core.config.localization import gamemodes, gamemaps, ARAMmaps, gameTypes_configId_map, spectatorPolicies, report_categories, tiers_all, team_colors_int, subteam_colors, rarities, krarities, augment_rarity, skinClassifications, damageTypes, conversationTypes, messageTypes, system_messages, invidStates, invidTypes, slotTypes, availabilities, inventoryType_dict, ownershipTypes, botDifficulty_dict, roles, positions, eventTypes_liveclient, DragonTypes, team_colors_str, honorType_tooltip_headers, honorType_tooltip_bodies, zoom_scale_dict
 from src.core.config.conditional_formatting import addFormat_inGame_allPlayer_wb
 from src.core.dataframes.gameflow import get_gameflow_phase, get_champ_select_session, get_champSelect_player, sort_ChampSelect_players, sort_inGame_players, sort_eog_playerstat_lol_data, sort_eog_stat_tft_data
 from src.core.dataframes.champions import test_bot, sort_inventory_champions, filter_champion
@@ -30,7 +30,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/04/22
+# 更新（Last update）：     2026/04/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -97,6 +97,7 @@ async def check_account_ready(connection: Connection) -> bool:
     '''
     platform_config: dict[str, Any] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces")).json()
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
     if isinstance(platform_config, dict) and "errorCode" in platform_config:
         logPrint(platform_config)
         if platform_config["httpStatus"] == 400 and platform_config["message"] == "PLATFORM_CONFIG_NOT_READY":
@@ -111,6 +112,9 @@ async def check_account_ready(connection: Connection) -> bool:
         else:
             logPrint("未知错误。\nUnknown error.")
         return False
+    if current_party["platformId"] == "":
+        logPrint(current_party)
+        logPrint("小队创建失败。请检查账号状态和服务器拥挤程度。\nParty failed to be created. Please check the account status or server congestion.")
     LoLChampions_source: list[dict[str, Any]] | dict[str, Any] = await (await connection.request("GET", "/lol-champions/v1/inventories/%d/champions" %current_info["summonerId"])).json()
     if isinstance(LoLChampions_source, dict) and "errorCode" in LoLChampions_source:
         logPrint(LoLChampions_source)
@@ -132,7 +136,8 @@ async def prepare_data_resources(connection: Connection) -> None:
     global platformId, current_info, queues, summonerIcons, LoLChampions, recommended_position_for_champion, skins_flat, championSkins, skinlines, spells, available_spell_dict, LoLItems, perks, perkstyles, CherryAugments, TFTCompanions, TFTTraits, TFTChampions, TFTItems, TFTDamageSkins, TFTMapSkins, strawberryMaps, wardSkins, champion_colloq_dict, collection_df_refresh, collection_df, skin_df_refresh, skin_df
     ##大区信息（Platform information）
     logPrint("正在准备大区信息……\nPreparing platform information ...")
-    platformId = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId = current_party["platformId"]
     ##自己的信息（Self info）
     current_info = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     ##队列（Queue）
@@ -1979,10 +1984,7 @@ async def create_custom_lobby(connection: Connection) -> int:
     :rtype: int
     '''
     #定义常量（Define constants）
-    practiceGameTypeConfigIds_source: list[float] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/ClientSystemStates/practiceGameTypeConfigIdList")).json()
-    practiceGameTypeConfigIds: list[int] = sorted(map(int, practiceGameTypeConfigIds_source))
-    gameTypeConfigs_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/gameTypeConfigs")).json()
-    gameTypeConfigs: dict[int, dict[str, Any]] = {int(config["id"]): config for config in gameTypeConfigs_source}
+    practiceGameTypeConfigIds: list[int] = [1, 2, 4, 6, 16] #测试服26.10版本移除了以下接口：（The following endpoint is removed in PBE Patch 26.10: ）`GET /lol-platform-config/v1/namespaces/ClientSystemStates/practiceGameTypeConfigIdList`
     enabledModes: list[str] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/Mutators/EnabledModes")).json()
     gamemodes_zh: dict[str, str] = {key: gamemodes[key]["zh_CN"] for key in gamemodes}
     gamemodes_en: dict[str, str] = {key: gamemodes[key]["en_US"] for key in gamemodes}
@@ -1991,8 +1993,8 @@ async def create_custom_lobby(connection: Connection) -> int:
     ARAMmaps_zh: dict[str, str] = {key: ARAMmaps[key]["zh_CN"] for key in ARAMmaps}
     ARAMmaps_en: dict[str, str] = {key: ARAMmaps[key]["en_US"] for key in ARAMmaps}
     availableMapIds: dict[str, list[int]] = {"ARAM": [12], "ARAM_BOT": [12], "ARAM_UNRANKED_5x5": [12], "ARSR": [11], "ASCENSION": [8], "ASSASSINATE": [11], "BILGEWATER": [11], "BOT": [11], "BOT_3x3": [10], "BRAWL": [35], "CHERRY": [30], "CHERRY_UNRANKED": [30], "CHONCC_TREASURE_TFT": [22], "CLASH": [11], "CLASSIC": [11, 12, 21, 22], "COUNTER_PICK": [11], "DARKSTAR": [16], "DOOMBOTSTEEMO": [11], "FIRSTBLOOD": [4], "FIRSTBLOOD_1x1": [4], "FIRSTBLOOD_2x2": [4], "FIVE_YEAR_ANNIVERSARY_TFT": [22], "GAMEMODEX": [21, 11, 12, 22], "HEXAKILL": [10], "KINGPORO": [12], "KING_PORO": [12], "LNY23_TFT": [22], "LNY24_TFT": [22], "LNY25_TFT": [22], "NEXUSBLITZ": [21], "NIGHTMARE_BOT": [11], "NORMAL": [11], "NORMAL_3x3": [11], "NORMAL_TFT": [22], "ODIN": [8], "ODIN_UNRANKED": [8], "ODYSSEY": [20], "ONEFORALL": [11], "ONEFORALL_5x5": [11], "PRACTICETOOL": [11], "PROJECT": [19], "PVE_PUZZLE_TFT": [22], "RANKED_FLEX_SR": [11], "RANKED_FLEX_SR_5x5": [11], "RANKED_FLEX_TT": [11], "RANKED_PREMADE-3x3": [10], "RANKED_SOLO_5x5": [11], "RANKED_TEAM_3x3": [10], "RANKED_TEAM_5x5": [11], "RANKED_TFT": [22], "RANKED_TFT_DOUBLE_UP": [22], "RANKED_TFT_PAIRS": [22], "RANKED_TFT_TURBO": [22], "RIOTSCRIPT_BOT": [11], "SET_REVIVAL_5_5_TFT": [22], "SET_REVIVAL_TFT": [22], "SF_TFT": [22], "SIEGE": [11], "SNOWURF": [11], "SOLO_DUO_RANKED_5x5": [11], "SR_6x6": [11], "STARGUARDIAN": [18], "STRAWBERRY": [33], "SWIFTPLAY": [11], "TFT": [22], "TUTORIAL": [11, 12, 21, 22], "TUTORIAL_MODULE_1": [11], "TUTORIAL_MODULE_2": [11], "TUTORIAL_MODULE_3": [11], "ULTBOOK": [11], "URF": [11], "URF_BOT": [11]}
-    gameTypes_zh: dict[str, str] = {key: gameTypes_config[key]["zh_CN"] for key in gameTypes_config}
-    gameTypes_en: dict[str, str] = {key: gameTypes_config[key]["en_US"] for key in gameTypes_config}
+    gameTypes_zh: dict[int, str] = {key: gameTypes_configId_map[key]["zh_CN"] for key in gameTypes_configId_map}
+    gameTypes_en: dict[int, str] = {key: gameTypes_configId_map[key]["en_US"] for key in gameTypes_configId_map}
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     custom_game_setup_name_default_dict: dict[str, str] = {"ar_AE": "مباراة {{summonerName}}", "cs_CZ": "Hra uživatele {{summonerName}}", "el_GR": "Παιχνίδι του {{summonerName}}", "pl_PL": "Rozgrywka gracza {{summonerName}}", "ro_RO": "Jocul lui {{summonerName}}", "hu_HU": "{{summonerName}} játéka", "en_GB": "{{summonerName}}'s Game", "de_DE": "Spiel von {{summonerName}}", "es_ES": "Partida de {{summonerName}}", "it_IT": "Partita di {{summonerName}}", "fr_FR": "Partie de {{summonerName}}", "ja_JP": "{{summonerName}}の試合", "ko_KR": "{{summonerName}} 님의 게임", "es_MX": "Partida de {{summonerName}}", "es_AR": "Partida de {{summonerName}}", "pt_BR": "Partida de {{summonerName}}", "en_US": "{{summonerName}}'s Game", "en_AU": "{{summonerName}}'s Game", "ru_RU": "Игра {{summonerName}}", "tr_TR": "{{summonerName}} oyunu", "en_PH": "{{summonerName}}'s Game", "en_SG": "{{summonerName}}'s Game", "th_TH": "เกมของ {{summonerName}}", "vi_VN": "Trận của {{summonerName}}", "id_ID": "Game {{summonerName}}", "zh_MY": "{{summonerName}} 的房间", "zh_CN": "{{summonerName}}的对局", "zh_TW": "{{summonerName}} 的房間"} #来自（From）：plugins/rcp-fe-lol-parties/global/{locale}/trans.json
     defaultLobbyName: str = custom_game_setup_name_default_dict.get(region_locale["locale"], "{{summonerName}}的对局").replace("{{summonerName}}", current_info["gameName"])
@@ -2070,8 +2072,7 @@ async def create_custom_lobby(connection: Connection) -> int:
         elif step == 4:
             logPrint("第四步：请选择自定义房间的游戏类型：\nStep 4: Please select a game type of the lobby:")
             for i in practiceGameTypeConfigIds:
-                config: str = gameTypeConfigs[i]
-                logPrint("%d\t%s%s%s%s" %(i, gameTypes_zh[config["name"]], "【" if "(" in gameTypes_en[config["name"]] else "（", gameTypes_en[config["name"]], "】" if "(" in gameTypes_en[config["name"]] else "）"), write_time = False)
+                logPrint("%d\t%s%s%s%s" %(i, gameTypes_zh[i], "【" if "(" in gameTypes_en[i] else "（", gameTypes_en[i], "】" if "(" in gameTypes_en[i] else "）"), write_time = False)
             while True:
                 mutatorId_str: str = logInput()
                 if mutatorId_str == "":

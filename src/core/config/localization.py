@@ -757,6 +757,92 @@ gameTypes_config: dict[str, dict[str, str]] = {
         "en_US": "Quickplay"
     }
 }
+gameTypes_configId_map: dict[int, dict[str, str]] = {
+    1: {
+        "zh_CN": "自选模式（自定义）",
+        "en_US": "Blind Pick (custom)"
+    },
+    2: {
+        "zh_CN": "征召模式（自定义）",
+        "en_US": "Draft Mode (custom)"
+    },
+    3: {
+        "zh_CN": "轮选模式",
+        "en_US": "Draft Noban (custom)"
+    },
+    4: {
+        "zh_CN": "全随机模式（自定义）",
+        "en_US": "All Random (custom)"
+    },
+    5: {
+        "zh_CN": "同选模式",
+        "en_US": "Simultaneous Pick (custom)"
+    },
+    6: {
+        "zh_CN": "竞技征召模式（自定义）",
+        "en_US": "Tournament Draft (custom)"
+    },
+    7: {
+        "zh_CN": "计时征召",
+        "en_US": "Timed Draft (custom)"
+    },
+    10: {
+        "zh_CN": "基础教程",
+        "en_US": "Basic Tutorial"
+    },
+    11: {
+        "zh_CN": "进阶教程",
+        "en_US": "Advanced Tutorial"
+    },
+    12: {
+        "zh_CN": "最终教程",
+        "en_US": "Capstone Tutorial"
+    },
+    13: {
+        "zh_CN": "盲选随机",
+        "en_US": "Blind Random (custom)"
+    },
+    14: {
+        "zh_CN": "克隆选择（自定义）",
+        "en_US": "All for one (custom)"
+    },
+    15: {
+        "zh_CN": "全队克隆",
+        "en_US": "All for one (cross-team)"
+    },
+    16: {
+        "zh_CN": "自选征召模式（自定义）",
+        "en_US": "Blind Draft Pick (custom)"
+    },
+    17: {
+        "zh_CN": "互选模式（自定义）",
+        "en_US": "Nemesis Draft (custom)"
+    },
+    18: {
+        "zh_CN": "征召模式",
+        "en_US": "Draft Pick"
+    },
+    19: {
+        "zh_CN": "自选模式",
+        "en_US": "Blind Pick"
+    },
+    20: {
+        "zh_CN": "自选征召",
+        "en_US": "Blind Draft Pick"
+    },
+    21: {
+        "zh_CN": "全随机模式",
+        "en_US": "All Random"
+    },
+    22: {
+        "zh_CN": "克隆选择",
+        "en_US": "All for one"
+    },
+    23: {
+        "zh_CN": "快速匹配",
+        "en_US": "Quickplay"
+    }
+}
 report_categories: dict[str, dict[str, str]] = {
     "LEAVING_AFK": {
         "zh_CN": "中途退出/挂机",

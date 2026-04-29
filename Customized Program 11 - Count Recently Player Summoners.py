@@ -30,7 +30,7 @@ use_sgp: bool = args.lol_api == "sgp"
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/04/27
+# 更新（Last update）：     2026/04/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -61,7 +61,7 @@ CherryAugments_initial: dict[int, dict[str, Any]] = {}
 wardSkins: dict[int, dict[str, Any]] = {}
 championSkins: dict[int, dict[str, Any]] = {}
 log: LogManager = LogManager()
-platform: str = ""
+platformId: str = ""
 AllAccounts: list[dict[str, Any]] = []
 champ_select_session_cache: dict[int, dict[str, Any]] = {}
 
@@ -79,7 +79,7 @@ def prepare_data_resources(platformId: str, locale: str) -> tuple[bool, bool]:
     :param platformId: 服务器代号。决定使用正式服还是测试服的数据资源。<br>PlatformId, which determines one of Live and PBE data resources will be used.
     
         服务器代号可以通过以下LCU接口获取：<br>PlatformId can be obtained through the following LCU endpoint:
-        - `GET /lol-platform-config/v1/namespaces/LoginDataPacket/platformId`
+        - `GET /lol-lobby/v1/parties/player`
     :type platformId: str
     :param locale: 语言文化代码。决定了数据资源的语言。<br>Language code, which determines the language of the data resources.
     :type locale
@@ -3039,7 +3039,8 @@ async def detect_custom_list(connection: Connection, search_LoL: bool, search_TF
 
 async def search_recent_players(connection: Connection) -> None:
     global session, platformId, AllAccounts
-    platformId = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId = current_party["platformId"]
     riot_client_info: list[str] = await (await connection.request("GET", "/riotclient/command-line-args")).json()
     client_info: dict[str, str] = {}
     for i in range(len(riot_client_info)):

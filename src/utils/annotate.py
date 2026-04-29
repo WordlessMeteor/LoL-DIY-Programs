@@ -25,7 +25,7 @@ dsRegion = Annotated[str, Description('''大区。有以下选项：<br>Region. 
         - `GET /riotclient/command-line-args`''')]
 dsPlatformId = Annotated[str, Description('''服务器代号。可通过以下LCU接口得到：<br>PlatfromId, which can be obtained by any of the following LCU endpoints:
     
-        - `GET /lol-platform-config/v1/namespaces/LoginDataPacket/platfromId`
+        - `GET /lol-lobby/v1/parties/player`
         - `GET /riotclient/command-line-args` (Only for Tencent servers)''')]
 dsProduct = Annotated[str, Description('''游戏产品名。有以下取值：<br>Game product name, which has the following values:
     

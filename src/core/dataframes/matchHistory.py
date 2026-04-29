@@ -1234,7 +1234,8 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
     #常量准备（Parameter preparation）
     logPrint = log.logPrint
     puuidList: list[str] = [puuid] if isinstance(puuid, str) else puuid
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     LoLHistory_header_keys: list[str] = list(LoLHistory_header.keys())
     LoLHistory_data: dict[str, list[Any]] = {key: [] for key in LoLHistory_header_keys}
     current_puuid_list: list[str] = []
@@ -1677,7 +1678,8 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
         log = LogManager()
     #常量准备（Parameter preparation）
     ##注意到infos没有做类似处理。因此，一旦出现不同函数调用间共享了infos参数……这是好事啊！（Note that `infos` parameter isn't processed in this manner. Hence, once it's shared between different function calls ... well, that's exactly what I want）
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     logPrint = log.logPrint
     puuidList: list[str] = [puuid] if isinstance(puuid, str) else puuid
     version_re: re.Pattern[str] = re.compile(r"\d+\.\d+\.\d+\.\d+")
@@ -5785,7 +5787,8 @@ async def sort_LoLGame_stats_sgp(connection: Connection, sgpSession: SGPSession,
     #常量准备（Parameter preparation）
     logPrint = log.logPrint
     puuidList: list[str] = [puuid] if isinstance(puuid, str) else puuid
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     error_LoLMatchIDs: list[int] = [] #记录实际存在但未如期获取的对局序号（Records the LoL matches that really exist but fail to be fetched）
     matches_to_remove: list[int] = [] #记录获取成功但不包含主玩家的对局序号（Records the matches that are fetched successfully but don't contain the main player）
     #开始获取各对局内的玩家信息。数据结构参考/lol-match-history/v1/recently-played-summoners（Begin to capture the players' information in each match. The data structure refers to "/lol-match-history/v1/recently-played-summoners"）
@@ -8384,7 +8387,8 @@ async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFT
         log = LogManager()
     #常量准备（Parameter preparation）
     logPrint = log.logPrint
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     puuidList: list[str] = [puuid] if isinstance(puuid, str) else puuid
     version_re: re.Pattern[str] = re.compile(r"\d+\.\d+\.\d+\.\d+")
     error_TFTMatchIDs: list[int] = [] #记录实际存在但未如期获取的对局序号（Records the matches that really exist but fail to be fetched）

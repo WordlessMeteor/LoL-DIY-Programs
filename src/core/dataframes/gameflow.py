@@ -848,7 +848,8 @@ async def sort_postgame_players_lol(connection: Connection, sgpSession: SGPSessi
         versionList = []
     if log == None:
         log = LogManager()
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     match_id: str = f"{platformId}_{matchId}"
     puuidList: list[str] = [puuid] if isinstance(puuid, str) else puuid
     if use_sgp:
@@ -955,7 +956,8 @@ async def sort_postgame_players_tft(connection: Connection, sgpSession: SGPSessi
         versionList = []
     if log == None:
         log = LogManager()
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     match_id: str = f"{platformId}_{matchId}"
     puuidList: list[str] = [puuid] if isinstance(puuid, str) else puuid
     status, TFTGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, checkLoL = False)

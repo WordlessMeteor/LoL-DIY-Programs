@@ -132,7 +132,7 @@ def set_platform_folder(region: str, platformId: str) -> str:
     :type region: str
     :param platformId: 服务器代号。可通过以下LCU接口得到：<br>PlatfromId, which can be obtained by any of the following LCU endpoints:
     
-        - `GET /lol-platform-config/v1/namespaces/LoginDataPacket/platfromId`
+        - `GET /lol-lobby/v1/parties/player`
         - `GET /riotclient/command-line-args` (Only for Tencent servers)
     :type platformId: str
     :return: 大区文件夹路径。对主目录的相对路径。<br>Platform folder path. Relative to the home directory.
@@ -163,7 +163,7 @@ def set_summonerInfo_folder(region: str, platformId: str, info: dict[str, Any]) 
     :type region: str
     :param platformId: 服务器代号。可通过以下LCU接口得到：<br>PlatfromId, which can be obtained by any of the following LCU endpoints:
     
-        - `GET /lol-platform-config/v1/namespaces/LoginDataPacket/platfromId`
+        - `GET /lol-lobby/v1/parties/player`
         - `GET /riotclient/command-line-args` (Only for Tencent servers)
     :type platformId: str
     :param info: 召唤师信息。可通过以下LCU接口得到：<br>Summoner information, which can be obtained by any of the following LCU endpoints:
@@ -184,7 +184,7 @@ def set_summonerInfo_folder(region: str, platformId: str, info: dict[str, Any]) 
         summonerInfo_folder = platform_folder + "/" + get_info_name(info, 3)
     return summonerInfo_folder
 
-def set_rankedApex_folder(region: str, platformId: str, currentSeason: int, currentSplit: int) -> str:
+def set_rankedApex_folder(region: str, platformId: str, currentLoLSeasonId: int, currentLoLSeasonSplitId: int) -> str:
     '''
     通过大区、服务器代号和当前赛季序号设置赛季天梯文件夹。<br>Set the seasonal apex folder through region, platformId and current season number.
     
@@ -201,24 +201,24 @@ def set_rankedApex_folder(region: str, platformId: str, currentSeason: int, curr
     :type region: str
     :param platformId: 服务器代号。可通过以下LCU接口得到：<br>PlatfromId, which can be obtained by any of the following LCU endpoints:
     
-        - `GET /lol-platform-config/v1/namespaces/LoginDataPacket/platfromId`
+        - `GET /lol-lobby/v1/parties/player`
         - `GET /riotclient/command-line-args` (Only for Tencent servers)
     :type platformId: str
-    :param currentSeason: 当前赛季序号。可通过以下LCU接口得到：<br>Current season number, which can be obtained by the following LCU endpoint:
+    :param currentLoLSeasonId: 当前赛季序号。可通过以下LCU接口得到：<br>Current season number, which can be obtained by the following LCU endpoint:
     
-        - `GET /lol-platform-config/v1/namespaces/ClientSystemStates/currentSeason`
-    :type currentSeason: int
-    :param currentSplit: 当前赛段序号。现已弃用。<br>Current split number. Deprecated now.
+        - `GET /lol-seasons/v1/season/product/LOL`
+    :type currentLoLSeasonId: int
+    :param currentLoLSeasonSplitId: 当前赛段序号。现已弃用。<br>Current split number. Deprecated now.
     :type currntSplit: int
     :return: 赛季天梯文件夹路径。对主目录的相对路径。<br>Seasonal apex folder path. Relative to the home directory.
     :rtype: str
     '''
     if region == "TENCENT":
-        apex_folder: str = "顶尖排位玩家（Ranked Apex）/国服（TENCENT）/%s/第%d赛季（SEASON %d）" %(platform_TENCENT[platformId], currentSeason, currentSeason)
+        apex_folder: str = "顶尖排位玩家（Ranked Apex）/国服（TENCENT）/%s/第%d赛季 - 第%d赛段（SEASON %d - Split %d）" %(platform_TENCENT[platformId], currentLoLSeasonId, currentLoLSeasonSplitId, currentLoLSeasonId, currentLoLSeasonSplitId)
     elif region == "GARENA":
-        apex_folder = "顶尖排位玩家（Ranked Apex）/竞舞（GARENA）/%s/第%d赛季（SEASON %d）" %(platform_GARENA[platformId], currentSeason, currentSeason)
+        apex_folder = "顶尖排位玩家（Ranked Apex）/竞舞（GARENA）/%s/第%d赛季 - 第%d赛段（SEASON %d - Split %d）" %(platform_GARENA[platformId], currentLoLSeasonId, currentLoLSeasonSplitId, currentLoLSeasonId, currentLoLSeasonSplitId)
     else: #拳头公司与竞舞娱乐公司的合同于2023年1月终止（In January 2023, Riot Games ended its contract with Garena）
-        apex_folder = "顶尖排位玩家（Ranked Apex）/外服（RIOT）/%s/第%d赛季（SEASON %d）" %((platform_RIOT | platform_GARENA)[platformId], currentSeason, currentSeason)
+        apex_folder = "顶尖排位玩家（Ranked Apex）/外服（RIOT）/%s/第%d赛季 - 第%d赛段（SEASON %d - Split %d）" %((platform_RIOT | platform_GARENA)[platformId], currentLoLSeasonId, currentLoLSeasonSplitId, currentLoLSeasonId, currentLoLSeasonSplitId)
     return apex_folder
 
 async def save_platform_info(connection: Connection, print_summary: bool = True) -> None:
@@ -232,15 +232,18 @@ async def save_platform_info(connection: Connection, print_summary: bool = True)
     '''
     #准备数据资源（Prepare data resources）
     platform_config: dict[str, Any] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
     riot_client_info: dict[str, str] = await (await connection.request("GET", "/riotclient/command-line-args")).json()
     client_settings: dict[str, Any] = await (await connection.request("GET", "/client-config/v2/namespace/lol.client_settings")).json()
     if isinstance(platform_config, dict) and "errorCode" in platform_config:
         print(platform_config)
         if platform_config["httpStatus"] == 400 and platform_config["message"] == "PLATFORM_CONFIG_NOT_READY":
             print("大区信息未准备就绪。\nPlatform config not ready.")
+    elif current_party["platformId"] == "":
+        print("小队信息未准备就绪。\nParty information not ready.")
     else:
         #确定大区信息文件夹参数（Determine parameters of the platform folder）
-        platformId: str = platform_config["LoginDataPacket"]["platformId"]
+        platformId: str = current_party["platformId"]
         client_info: dict[str, str] = {}
         for i in range(len(riot_client_info)):
             try:

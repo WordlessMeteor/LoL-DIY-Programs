@@ -83,7 +83,8 @@ async def prepare_data_resources(connection: Connection) -> None:
     logPrint("正在加载数据资源……\nLoading data resources ...")
     global platformId, regaliaBanners, challenges, queues, gameQueues, summonerIcons, LoLChampions, titles, wardSkins, championSkins, spells, LoLItems, perks, perkstyles, CherryAugments, TFTCompanions, TFTCompanions_itemIdMap, TFTTraits, TFTChampions, TFTItems, TFTDamageSkins, TFTMapSkins
     ##大区信息（Platform information）
-    platformId = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId = current_party["platformId"]
     ##旗帜（Regalia banner）
     regaliaBanners = await (await connection.request("GET", "/lol-regalia/v3/inventory/REGALIA_BANNER")).json()
     ##成就（Challenge）

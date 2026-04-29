@@ -16,7 +16,7 @@ from src.core.dataframes.matchHistory import get_matchSummary_sgp
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/12
+# 更新（Last update）：     2026/04/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -107,7 +107,8 @@ async def interaction_traverse_summoner(connection: Connection, export: bool = T
             - 好友关系的数值恒为1。<br>The value of a friendship is always 1.
     :rtype: tuple[pandas.DataFrame, dict[tuple[str, str], dict[str, Any]]]
     '''
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     current_puuid: str = current_info["puuid"]
     #获取起始召唤师（Get an initial summoner）

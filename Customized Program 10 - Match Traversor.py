@@ -22,7 +22,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/11
+# 更新（Last update）：     2026/04/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -168,7 +168,8 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     session.verbose = False #去除下载回放时处理二进制数据产生的异常提示（Eliminate error information thrown by handling the downloaded replay binary data）
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     region: str = region_locale["region"]
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     log_filename: str = f"Matches on {platformId} {start_matchId}-{end_matchId}.log"
     log_folder: str = "日志（Logs）/对局遍历器"
     log_path: str = os.path.join(log_folder, log_filename).replace("\\", "/")
@@ -311,7 +312,8 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     session.verbose = False #去除下载回放时处理二进制数据产生的异常提示（Eliminate error information thrown by handling the downloaded replay binary data）
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     region: str = region_locale["region"]
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     log_filename: str = f"Matches on {platformId} starting from {start_summoner_name}.log"
     log_folder: str = "日志（Logs）/对局遍历器"
     log_path: str = os.path.join(log_folder, log_filename).replace("\\", "/")
@@ -484,7 +486,8 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
     session: SGPSession = SGPSession()
     await session.init(connection)
     session.session.trust_env = False #英雄联盟请求无需走代理（League of Legends requests don't need a proxy）
-    platformId: str = await (await connection.request("GET", "/lol-platform-config/v1/namespaces/LoginDataPacket/platformId")).json()
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     skipTFT: bool = not (product == "TFT")
     traversed_matchIds: dict[int, bool] = {} #记录已经遍历过的对局是否符合条件（Records whether the traversed matches meet the condition）
     #准备日志输入输出流（Prepare log iostream）
