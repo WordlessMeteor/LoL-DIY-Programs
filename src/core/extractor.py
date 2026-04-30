@@ -2206,17 +2206,14 @@ class LoLDataExtractor:
                     for (gameModeName, value) in modeOverrideValues.items():
                         if value != old:
                             if TooltipOperand.pContDivision.search(value): #处理值列表元素不唯一的情形，防止其被视为连除式而参与后续eval的计算（Handles the case where value elements aren't the same, in case it would be considered as a continuous division by the subsequent `eval` function）
-                                valueList: list[str] = list(map(lambda x: x + formula, value.split("/")))
-                                for i in range(len(valueList)):
-                                    valueList[i] = TooltipOperand.contDivision_to_object(valueList[i])
-                                    try:
-                                        tmp = eval(valueList[i].replace(" × ", " * "))
-                                    except:
-                                        pass
-                                    else:
-                                        valueList[i] = str(cls.aRound(tmp, 5))
-                                    valueList[i] = TooltipOperand.object_to_contDivision(valueList[i])
-                                value = "/".join(valueList)
+                                value = TooltipOperand.contDivision_to_object(value)
+                                try:
+                                    tmp = eval(value.replace(" × ", " * ") + formula)
+                                except:
+                                    pass
+                                else:
+                                    value = cls.cdRound(str(tmp), 5)
+                                value = TooltipOperand.object_to_contDivision(value)
                             else:
                                 value += formula
                                 try:
@@ -9501,8 +9498,8 @@ if __name__ == "__main__":
         ##地图（Map）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
         #     map22_bin = json.load(fp)
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
-            map30_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
+        #     map30_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
         #     map33_bin = json.load(fp)
         ##装备（Item）
@@ -9515,8 +9512,8 @@ if __name__ == "__main__":
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/perks.cdtb.bin.json", "r", encoding = "utf-8") as fp:
         #     perks_bin = json.load(fp)
         ##强化符文和荣誉嘉宾（Augment and Guest of Honor）
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
-        #     cherry_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
+            cherry_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
         #     kiwi_bin = json.load(fp)
         ##整合后的数据（Merged data）
@@ -9558,9 +9555,9 @@ if __name__ == "__main__":
         
         #说明文本转换（Tooltip transformation）
         locale: str = "zh_CN"
-        tooltip_raw: str = "{{Cherry_Vengeance_Summary}}"
+        tooltip_raw: str = "参与击杀后，获得持续@BuffDuration@秒的<speed>@MSBuff*100@%移动速度</speed>和<attackSpeed>@ASBuff*100@%攻击速度</attackSpeed>。"
         print("原始说明文本：\n" + tooltip_raw)
-        binData: dict[str, Any] = map30_bin["Maps/Shipping/Map30/Spells/Augment_Vengeance"]["mSpell"]
+        binData: dict[str, Any] = cherry_bin["{6f703849}"]["mSpell"]
         print("----")
         print("转换文本：")
         print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reserve_variable = False))
