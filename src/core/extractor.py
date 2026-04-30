@@ -1293,7 +1293,11 @@ class LoLDataExtractor:
         formulaPart_type: str = formulaPart["__type"]
         if formulaPart_type in {"ClampSubPartsCalculationPart", "ExponentSubPartsCalculationPart", "ProductOfSubPartsCalculationPart", "StatBySubPartCalculationPart", "SubPartScaledProportionalToStat", "SumOfSubPartsCalculationPart", "{8a96ea3c}", "{382277da}"}:
             formulaStr: str = cls.subpartCalculation(binData, formulaPart, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
-            if formulaPart_type == "StatBySubPartCalculationPart": #仅用于装备中的卢安娜的飓风和闪电杖和强化符文中的小丑学院的背刺（Only applies to Runaan's Hurricane and Lightning Rod in items and backstab of Clown College in augments）
+            if formulaPart_type == "ClampSubPartsCalculationPart":
+                mCeiling = cls.aRound(cls.dGet(formulaPart, "mCeiling", 0, 0), 2)
+                mFloor = cls.aRound(cls.dGet(formulaPart, "mFloor", 0, 0), 2)
+                formulaStr += f" ∈ [{mFloor}, {mCeiling}]"
+            elif formulaPart_type == "StatBySubPartCalculationPart": #仅用于装备中的卢安娜的飓风和闪电杖和强化符文中的小丑学院的背刺（Only applies to Runaan's Hurricane and Lightning Rod in items and backstab of Clown College in augments）
                 stat_header: str = mStatFormula_dict_zh[formulaPart.get("mStatFormula", 0)] if useCHSPrompt else mStatFormula_dict_en[formulaPart.get("mStatFormula", 0)]
                 stat_desc: str = mStat_dict_zh[formulaPart.get("mStat", 0)] if useCHSPrompt else mStat_dict_en[formulaPart.get("mStat", 0)]
                 if mStat_dict_zh[formulaPart.get("mStat", 0)] == "生命值" and formulaPart.get("mStatFormula", 0) == 0:
@@ -1525,7 +1529,7 @@ class LoLDataExtractor:
                 if subpart_formula["__type"] == "ClampSubPartsCalculationPart": #在装备中仅用于斯特拉克的挑战护手（In items, this only applies to Sterak's Gage）
                     mCeiling = cls.aRound(cls.dGet(subpart_formula, "mCeiling", 0, 0), 2)
                     mFloor = cls.aRound(cls.dGet(subpart_formula, "mFloor", 0, 0), 2) #在14.13版本的奎桑提弈子的技能二进制描述中，某个“mFloor”键的值是None（In TFT10_KSante's spell data, the value of some "mFloor" is None）
-                    subpart_formula_str += f" ({mFloor} - {mCeiling})"
+                    subpart_formula_str += f" ∈ [{mFloor}, {mCeiling}]"
             else:
                 subpart_formula_str = cls.leafletCalculation(binData, subpart, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             subpart_formula_strs.append(subpart_formula_str)
