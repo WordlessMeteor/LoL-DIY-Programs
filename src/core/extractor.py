@@ -1365,6 +1365,10 @@ class LoLDataExtractor:
         elif formulaPart_type == "NumberCalculationPart":
             partCalc = cls.aRound(formulaPart.get("mNumber", 0), 5)
             formulaStr = str(partCalc)
+        elif formulaPart_type == "PercentageOfBuffNameElapsed":
+            mCoefficient = formulaPart["Coefficient"]
+            partCalc = cls.aRound(mCoefficient, 5)
+            formulaStr = str(partCalc) + " × stack of " + formulaPart["buffName"]
         elif formulaPart_type == "StatByCoefficientCalculationPart":
             partCalc = cls.aRound(formulaPart["mCoefficient"], 5)
             stat_header: str = mStatFormula_dict_zh[formulaPart.get("mStatFormula", 0)] if useCHSPrompt else mStatFormula_dict_en[formulaPart.get("mStatFormula", 0)]
