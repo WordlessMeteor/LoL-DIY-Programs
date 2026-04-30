@@ -237,7 +237,7 @@ def getBinaryKeys(data: dict[str, Any], isBin: bool = True, objectTypes: Any = N
 
 class TooltipOperand:
     #定义用于整个类的正则表达式（Define the regular expressions in this class）
-    _sFloat: str = r"-?\d*\.\d+?"
+    _sFloat: str = r"-?\d*\.\d+"
     _sInteger: str = r"-?\d+"
     _sNumber: str = f"({_sFloat})|({_sInteger})"
     _sContDivision: str = f"(?P<division>({_sNumber})/({_sNumber})(/({_sNumber}))+)" #连除式要求至少有两个斜杠（A continuous division must have at least 2 slashes）
@@ -1595,10 +1595,10 @@ class LoLDataExtractor:
         :rtype: dict[str, str]
         '''
         #从此处开始，将逐渐推导出sResult_ValueAmongModes（From this step, we'll derivate and obtain `SResult_ValueAmongModes` as a result）
-        sResult_SingleValue: str = r"(\{\w+\}|\d+\.\d+|\d+)" #单值（Single value）
+        sResult_SingleValue: str = r"(\{\w+\}|-?\d*\.\d+|-?\d+)" #单值（Single value）
         sResult_ValueOfSingleMode: str = f"{sResult_SingleValue}(/{sResult_SingleValue})*" #单值或连除式（Single value or continuous division）
         sResult_SingleModePart: str = r" \(mode: (\{\w+\}|\w+)\)" #特定模式。注意前面有一个空格（Specific mode. Note that this pattern starts with a space）
-        sResult_ValueMode: str = f"{sResult_ValueOfSingleMode}({sResult_SingleModePart})?" #特定模式下的单个数值或连除式（Single value or continuous division of a mode）
+        sResult_ValueMode: str = f"(\\({sResult_ValueOfSingleMode}\\)|{sResult_ValueOfSingleMode})({sResult_SingleModePart})?" #特定模式下的单个数值或连除式（Single value or continuous division of a mode）
         sResult_ValueModeSeparator: str = r" \|\| " #不同模式的单个数值或连除式的分隔符（Separator of single value or continuous division among different modes）
         sResult_ValueAmongModes: str = f"{sResult_ValueMode}({sResult_ValueModeSeparator}{sResult_ValueMode})*" #不同模式下的单个数值或连除式（Single value or continuous division among different modes）
         pResult_ModeBurn: re.Pattern[str] = re.compile(sResult_ValueAmongModes)
@@ -1619,7 +1619,7 @@ class LoLDataExtractor:
         return modeOverridenValueDict
 
     @classmethod
-    def variableCalculation(cls, binData: dict[str, Any], var: str, var_prefix: str, locale: str, enableModeOverride: bool = False, rowIndex: int = -1, reservedVars: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str:
+    def variableCalculation(cls, binData: dict[str, Any], var: str, var_prefix: str, locale: str, initial_call: bool = False, enableModeOverride: bool = False, rowIndex: int = -1, reservedVars: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str:
         r'''
         计算一个变量的值字符串。<br>Calculate the value string of a variable.
         
@@ -1632,6 +1632,10 @@ class LoLDataExtractor:
         :type var_prefix: str
         :param locale: 是否应用简体中文标点符号。默认为否。<br>Whether to use quotation marks in Chinese Simplified, `False` by default.
         :type locale: str
+        :param initial_call: 本次函数调用是否位于调用堆栈中本次函数的第一次调用。决定了部分括号的添加行为。默认为假。<br>Whether this function call is the first call to this function in the call stack, which determines the behavior of some brackets' addition. False by default.
+        
+            当该函数在同一个调用堆栈中首次被调用时，一些括号将被添加。<br>When this function is called for the first time in the same call stack, some brackets will be added.
+        :type initial_call: bool
         :param enableModeOverride: 启用模式覆盖数值计算。为真时会从数据中纳入DataValuesModeOverride键的变量。<br>Enable mode override calculation. If it's `True`, variables in `DataValuesModeOverride` will be considered.
         :type enableModeOverride: bool
         :param rowIndex: 标记变量的重复出现次数。专用于云顶之弈羁绊的变量计算，因为其说明文本中会多次引用相同变量字面量，且对应二进制描述数据中的mConditionalTraitSets键的值列表中有多个字典，其中也包含相同的变量。<br>Marks the number of times a variable has appeared. Specially used for variable substitution of TFT trait, because a TFT trait tooltip is likely to cite a same variable literal for multiple times, and in the corresponding binary description data, the value list of `mConditionalTraitSets` key contains multiple dictionaries which contain the same variables.
@@ -2090,7 +2094,7 @@ class LoLDataExtractor:
             del modeOverrideValues_tmp
         modeOverrideValueDict_raw: dict[str, str] = {} #存储转换中途带模式名的计算结果。所谓转换中途，指的是变量被转换为数值，但是仍保持连除式的格式（Stores halfway calculation result. "halfway" means the variable is transformed into the actual value where continuous division still remains）
         for (gameModeName, modeOverrideValue) in modeOverrideValues.items():
-            modeOverrideValueDict_raw[gameModeName] = modeOverrideValue if gameModeName == "default" else f"{modeOverrideValue} (mode: {gameModeName})"
+            modeOverrideValueDict_raw[gameModeName] = (f"({modeOverrideValue})" if initial_call and len(modeOverrideValues) > 1 else modeOverrideValue) + ("" if gameModeName == "default" else f" (mode: {gameModeName})")
         if len(modeOverrideValues) > 1:
             cls.calculatedVariables[calculatedVar] = {"value": modeOverrideValues, "__type": "ModeOverrideValue"}
         else:
@@ -2124,10 +2128,10 @@ class LoLDataExtractor:
         pStats: re.Pattern[str] = re.compile(r"@.*?@") #贪婪模式（Greedy pattern）
         pVar: re.Pattern[str] = re.compile(r"[\w\.\-\:\{\}]+") #部分变量引用了其它指令数据（Some variables cite other spell data）
         #从此处开始，将逐渐推导出sResult_ValueAmongModes（From this step, we'll derivate and obtain `SResult_ValueAmongModes` as a result）
-        sResult_SingleValue: str = r"(\{\w+\}|\d+\.\d+|\d+)" #单值（Single value）
+        sResult_SingleValue: str = r"(\{\w+\}|-?\d*\.\d+|-?\d+)" #单值（Single value）
         sResult_ValueOfSingleMode: str = f"{sResult_SingleValue}(/{sResult_SingleValue})*" #单值或连除式（Single value or continuous division）
         sResult_SingleModePart: str = r" \(mode: (\{\w+\}|\w+)\)" #特定模式。注意前面有一个空格（Specific mode. Note that this pattern starts with a space）
-        sResult_ValueMode: str = f"{sResult_ValueOfSingleMode}({sResult_SingleModePart})?" #特定模式下的单个数值或连除式（Single value or continuous division of a mode）
+        sResult_ValueMode: str = f"(\\({sResult_ValueOfSingleMode}\\)|{sResult_ValueOfSingleMode})({sResult_SingleModePart})?" #特定模式下的单个数值或连除式（Single value or continuous division of a mode）
         sResult_ValueModeSeparator: str = r" \|\| " #不同模式的单个数值或连除式的分隔符（Separator of single value or continuous division among different modes）
         sResult_ValueAmongModes: str = f"{sResult_ValueMode}({sResult_ValueModeSeparator}{sResult_ValueMode})*" #不同模式下的单个数值或连除式（Single value or continuous division among different modes）
         pResult_ModeBurn: re.Pattern[str] = re.compile(sResult_ValueAmongModes)
@@ -2167,7 +2171,7 @@ class LoLDataExtractor:
                 if formula == "{}": #特殊处理在转换过程中产生的变量（Special case: variable produced during processing）
                     var = "{" + var + "}"
                     formula = ""
-                result: str = cls.variableCalculation(binData, var, "", locale, enableModeOverride = enableModeOverride, rowIndex = matchStruct["rowIndex"], reservedVars = reservedVars, flexibleData = flexibleData) #如果存在多个模式的数值，则这些数值由双竖线连接（If there're mode override values for `var`, these values should be concatenated by double "|"）
+                result: str = cls.variableCalculation(binData, var, "", locale, initial_call = True, enableModeOverride = enableModeOverride, rowIndex = matchStruct["rowIndex"], reservedVars = reservedVars, flexibleData = flexibleData) #如果存在多个模式的数值，则这些数值由双竖线连接（If there're mode override values for `var`, these values should be concatenated by double "|"）
                 if formula == "": #这里认为在双@内涉及二次计算的表达式中的变量视为简单变量，即在binData、binData["DataValues"]或binData["mDataValues"]中能够直接找到的变量。不然的话，拳头的程序员为什么不把这个公式放到binData["mItemCalculations"]或者binData["mSpellCalculations"]的部分呢？（Here we assume if the expression has secondary calculation like "*100", then its variable must be a **simple variable**, that is, a variable that can be directly found in `binData`, `binData["DataValues"]` or `binData["mDataValues"]`. Otherwise, why don't Riot programmers put this formula in `binData["mItemCalculations"]` or `binData["mSpellCalculations"]`?）
                     result = result.replace(" × ", " * ")
                     if TooltipOperand.pContDivision.search(result):
@@ -2225,7 +2229,7 @@ class LoLDataExtractor:
                         modeOverrideValueDict_burn[gameModeName] = value if gameModeName == "default" else f"{value} (mode: {gameModeName})" #这一处可以在“{gameModeName}”前添加“Mode: ”，以指定该附加说明的用意，同时也便于后续可能的正则表达式识别环节（In this line, we can add "Mode: " to the front of "{gameModeName}" to specify this supplemental note's intention. In the meantime, adding "Mode: " may also make it convenient for subsequent regular expression identification）
                     new: str = " || ".join(list(modeOverrideValueDict_burn.values())) #本脚本规定，双竖线用于分隔不同模式的数值（Define double "|" as the separator of values among different modes）
                 if new != old:
-                    new = "{[%s] = %s}" %(expr, new) if reserve_variable else "{%s}" %(new) #一旦变量被对应上，变量两边的“@”就会被去掉，在下一次迭代时就不会被pStats识别，即使对应可能还没有完全完成，因此不存在花括号被重复添加的可能（Once the variable is matched with some value, the double "@" enclosing this variable will be removed, and then this variable won't be identified by `pStats`, even if the match isn't thorough, so there's no chance that the curly brackets could be added for multiple times）
+                    new = "{[%s] = {%s}}" %(expr, new) if reserve_variable else "{%s}" %(new) #一旦变量被对应上，变量两边的“@”就会被去掉，在下一次迭代时就不会被pStats识别，即使对应可能还没有完全完成，因此不存在花括号被重复添加的可能（Once the variable is matched with some value, the double "@" enclosing this variable will be removed, and then this variable won't be identified by `pStats`, even if the match isn't thorough, so there's no chance that the curly brackets could be added for multiple times）
                 matchStruct["result"] = new
             else: #这是极少见的情况，出现在双@内没有任何字符的情形，例如测试服16.1.730.7246版本的【增益引擎】的说明文本（This is a very rare case, when there's not any character between the pair of "@". An example is the tooltip of Bandlepipes in PBE Patch 16.1.730.7246）
                 matchStruct["result"] = old
@@ -9506,13 +9510,13 @@ if __name__ == "__main__":
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/perks.cdtb.bin.json", "r", encoding = "utf-8") as fp:
         #     perks_bin = json.load(fp)
         ##强化符文和荣誉嘉宾（Augment and Guest of Honor）
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
-            cherry_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
+        #     cherry_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
         #     kiwi_bin = json.load(fp)
         ##整合后的数据（Merged data）
-        # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
-        #     champions_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
+            champions_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/characters_bin.json", "r", encoding = "utf-8") as fp:
         #     characters_bin = json.load(fp)
         
@@ -9548,10 +9552,10 @@ if __name__ == "__main__":
         # print(LoLDataExtractor.get_strtable_value(lolstringtable_zh, mDisplayName_key, default = "获取失败。"))
         
         #说明文本转换（Tooltip transformation）
-        locale: str = "en_US"
-        tooltip_raw: str = "<OnHit> %i:OnHit% On-Hit</OnHit> consume <scaleMana>@Calc_Mana_Cost@ Mana</scaleMana> to deal <magicDamage>@Calc_Damage@ magic damage</magicDamage>, this damage can <crit>Critically Strike</crit>.<br><br><rules>Damage Dealt: @f1.0@<br>Mana Consumed: @f2.0@</rules>"
+        locale: str = "zh_CN"
+        tooltip_raw: str = "<spellActive>蛮冲姿态：</spellActive>乌迪尔获得在@MoveSpeedDuration@秒里持续衰减的<speed>@MoveSpeed@移动速度</speed>。此外，乌迪尔的攻击会使他冲刺到目标处并造成@StunDuration@秒<status>晕眩</status>。(对每个目标各有@ICD@秒冷却时间)。<br><br><keywordMajor>觉醒：</keywordMajor>免疫<status>定身</status>和<status>限制</status>效果，并额外提供持续@UnstoppableDuration@秒的<speed>@MoveSpeedBonus@移动速度</speed>。"
         print("原始说明文本：\n" + tooltip_raw)
-        binData: dict[str, Any] = cherry_bin["{b0ef2279}"]["mSpell"]
+        binData: dict[str, Any] = champions_bin["Characters/Udyr/Spells/UdyrEAbility/UdyrE"]["mSpell"]
         print("----")
         print("转换文本：")
         print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reserve_variable = False))
