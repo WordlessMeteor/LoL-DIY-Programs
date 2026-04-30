@@ -23,7 +23,7 @@ from src.core.config.localization import language_ddragon, language_dict
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/04/27
+# 更新（Last update）：     2026/04/30
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -2357,7 +2357,7 @@ class LoLDataExtractor:
             if tooltipForm_key == result or (start == 0 or result[start - 1] == "\n") and (end == len(result) or result[end + 1] == "\n"):
                 separator: str = "\n||\n"
             else:
-                separator: str = " || "
+                separator = " || "
             tooltip_form_result_burn: str = separator.join(tooltip_form_results) #因为前面判定整个说明文本被匹配了，所以这里不需要讨论分隔符（Since we determined that the whole tooltip is matched, there's no need to discuss the separator here）
             result = result.replace(tooltipForm_key, tooltip_form_result_burn)
         #下面对其它嵌套变量进行可能的转换。典型示例：海克斯大乱斗强化符文套装【掷骰狂人】（In the following, transform the tooltips with other nested variables. A typical example: ARAM: Mayhem augment set High Roller）
@@ -2368,6 +2368,7 @@ class LoLDataExtractor:
         start_pos: int = 0
         while (matchObj := pTooltipNestedVarOther.search(result, pos = start_pos)):
             levelStrs: list[str] = []
+            start, end = matchObj.span()
             tooltipNestedVarOther: str = matchObj.group()
             tooltipNestedVarOther_var: str = pTooltipNestedVarOther_var.search(tooltipNestedVarOther).group() #无需判断是否能匹配到，因为pTooltipNestedVarOther本来就包含pTooltipNestedVarOther_var（Don't need to judge whether it can be matched, for `pTooltipNestedVarOther` already contains `pTooltipNestedVarOther_var`）
             for i in range(99):
@@ -2378,7 +2379,11 @@ class LoLDataExtractor:
                 elif i >= 10: #当某个水平不存在时，认为其后的水平也不存在。但是，在第五代斗魂竞技场中，【寄生关系】的说明文本——“Cherry_ParasiticRelationship@TeamSize@_Summary”中的TeamSize变量是从2开始的。毕竟没有单人成队的斗魂竞技场。考虑到一般这类变量取值都是一位数，所以这里强制至少从0遍历到9（When some level doesn't exist, we assume that the subsequent levels don't exist, either. However, in Arena v5, `TeamSize` variable in the tooltip of Parasitic Relationship, namely "Cherry_ParasiticRelationship@TeamSize@_Summary", starts from 2. An Arena game where single player makes up of a team doesn't exist, after all. Considering the value of these kind of parameters usually has only one digit, here it's forced to traverse at least from 0 to 9）
                     break
             if len(levelStrs) > 0:
-                levelStr: str = " || ".join(levelStrs)
+                if tooltipNestedVarOther == result or (start == 0 or result[start - 1] == "\n") and (end == len(result) or result[end + 1] == "\n"):
+                    separator: str = "\n||\n"
+                else:
+                    separator = " || "
+                levelStr: str = separator.join(levelStrs)
                 result = result.replace(tooltipNestedVarOther, levelStr)
             else:
                 start_pos = matchObj.end()
@@ -9496,8 +9501,8 @@ if __name__ == "__main__":
         ##地图（Map）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
         #     map22_bin = json.load(fp)
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
-        #     map30_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
+            map30_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
         #     map33_bin = json.load(fp)
         ##装备（Item）
@@ -9515,8 +9520,8 @@ if __name__ == "__main__":
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
         #     kiwi_bin = json.load(fp)
         ##整合后的数据（Merged data）
-        with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
-            champions_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
+        #     champions_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/characters_bin.json", "r", encoding = "utf-8") as fp:
         #     characters_bin = json.load(fp)
         
@@ -9553,9 +9558,9 @@ if __name__ == "__main__":
         
         #说明文本转换（Tooltip transformation）
         locale: str = "zh_CN"
-        tooltip_raw: str = "<spellActive>蛮冲姿态：</spellActive>乌迪尔获得在@MoveSpeedDuration@秒里持续衰减的<speed>@MoveSpeed@移动速度</speed>。此外，乌迪尔的攻击会使他冲刺到目标处并造成@StunDuration@秒<status>晕眩</status>。(对每个目标各有@ICD@秒冷却时间)。<br><br><keywordMajor>觉醒：</keywordMajor>免疫<status>定身</status>和<status>限制</status>效果，并额外提供持续@UnstoppableDuration@秒的<speed>@MoveSpeedBonus@移动速度</speed>。"
+        tooltip_raw: str = "{{Cherry_Vengeance_Summary}}"
         print("原始说明文本：\n" + tooltip_raw)
-        binData: dict[str, Any] = champions_bin["Characters/Udyr/Spells/UdyrEAbility/UdyrE"]["mSpell"]
+        binData: dict[str, Any] = map30_bin["Maps/Shipping/Map30/Spells/Augment_Vengeance"]["mSpell"]
         print("----")
         print("转换文本：")
         print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reserve_variable = False))
