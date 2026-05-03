@@ -570,7 +570,7 @@ while True:
         files_to_delete: list[str] = [] #统计本地存在而数据库不存在的文件（Summarize the files that exist locally but don't exist in the database）
         for root, dirs, files in os.walk(local_prefix): #要统计本地不存在的文件和文件夹，一定要先把本地有的文件和文件夹全部列出来，然后跟数据库比对，数据库上有的则逐个从待删除列表中移除（To summarize the files and folders that don't exist, the program should first list all the local files and folders, then compare them with the database and remove each file or folder that exists in the database）
             if option == "1" or option == "2" and "latest" in root or option == "3" and "pbe" in root:
-                if not root in folders_to_delete and files != []: #请仔细体会后半个条件的作用（Please try to understand the role of the latter condition）
+                if not root in folders_to_delete and len(files) != 0: #请仔细体会后半个条件的作用（Please try to understand the role of the latter condition）
                     folders_to_delete.append(root.replace("\\", "/") + "/")
                 if mode == "1": #当更新模式不是全局扫描时，待删除的文件列表不会追加任何文件（When the updating mode isn't [Global Scan], the list that holds the folders to delete won't be appended any files）
                     files_to_delete += list(map(lambda x: os.path.join(root, x).replace("\\", "/"), files))
@@ -584,21 +584,22 @@ while True:
             logPrint("[%d/%d]正在检查文件夹（Checking the folder）：%s" %(cnt1, len(cdragon_folders), url), print_time = True)
             table_content: dict[str, list[str | float]] = {"file": [], "size": [], "web_date": [], "web_timestamp": [], "local_date": [], "local_timestamp": []}
             source, status, session = requestUrl("GET", jsonUrl, session)
-            if status != 200:
+            reserve_folder: bool = True #标记是否保留该文件夹，也就是是否将这个文件夹从待删除的文件夹列表中移除（Marks whether to reserve this folder, namely remove the folder from the list of folders to delete）
+            if status != 200: #先根据网络请求状态输出提示语，并确定要不要保留文件夹（First, print the prompt and determine whether to reserve the folder according to the status of the web request）
                 if status == -1:
                     logPrint("文件夹%s信息获取失败！请等待程序结束后手动比对。\nFolder %s information check failed! Please check manually after the program execution finishes." %(url, url), write_time = False)
-                    error_folders.append(url)
-                    if localdir in folders_to_delete: #比对失败的文件夹不应删除（Folders that fail to be checked shouldn't be deleted）
-                        folders_to_delete.remove(localdir)
+                    error_folders.append(url) #比对失败的文件夹不应删除（Folders that fail to be checked shouldn't be deleted）
                 elif status == 404:
                     logPrint("文件夹%s不存在！\nFolder %s not found!" %(url, url), write_time = False)
-                else:
-                    if localdir in folders_to_delete:
-                        folders_to_delete.remove(localdir)
+                    reserve_folder = False
+            if reserve_folder: #再执行保留文件夹的操作（Then, perform the operation of reserving the folder）
+                for i in range(len(folder.split("/")) - 1): #因为前面在创建待删除的文件夹列表时，所有文件夹最后一定是以斜杠结尾的，所以对文件夹按斜杠分割后，最后会有一个空字符串。跳过最后一个元素以忽略这个空字符串（Because previously when `folders_to_delete` is created, all folders must end with a slash, so after splitting the folder string by slash, there will be an empty string at the end of the list. Skip the final element, namely this empty string）
+                    localdir_iter: str = os.path.join(local_prefix, "/".join(folder.split("/")[:i + 1])).replace("\\", "/") + "/"
+                    if localdir_iter in folders_to_delete:
+                        folders_to_delete.remove(localdir_iter)
+            if status != 200: #最后直接跳过获取异常的文件夹（Finally, directly skip the folders that fail to be fetched）
                 continue
-            if localdir in folders_to_delete:
-                folders_to_delete.remove(localdir)
-            web_folder = source.json()
+            web_folder: list[dict[str, Any]] = source.json()
             optionStr: dict[str, dict[str, str]] = {"1": {"zh_CN": "页面", "en_US": ""}, "2": {"zh_CN": "页面", "en_US": ""}, "3": {"zh_CN": "页面", "en_US": ""}, "4": {"zh_CN": "本程序集涉及的", "en_US": " involved in this program set"}, "5": {"zh_CN": "指定文件夹涉及的", "en_US": " in specified folders"}}
             modeStr: dict[str, dict[str, str]] = {"1": {"zh_CN": "", "en_US": "File list"}, "2": {"zh_CN": "差异" if time_get_method == "1" else "指定修改时间（%s）后的" %(latest_mod_date), "en_US": "Difference file list" if time_get_method == "1" else "File list after the specified modification time (%s)" %(latest_mod_date)}}
             logPrint("%s%s文件列表如下：\n%s%s is as follows: " %(optionStr[option]["zh_CN"], modeStr[mode]["zh_CN"], modeStr[mode]["en_US"], optionStr[option]["en_US"]), print_time = True)
@@ -652,16 +653,16 @@ while True:
                 update: bool = False
                 added: bool = False
                 source, status, session = requestUrl("GET", urljoin(url, name), session)
+                reserve_file: bool = True #标记是否保留该文件，也就是是否将这个文件从待删除的文件列表中移除（Marks whether to reserve this file, namely remove the file from the list of files to delete）
                 if status != 200:
-                    if status == -1:
+                    if status == -1: #比对失败的文件不应删除（Files that fail to be checked shouldn't be deleted）
                         logPrint("文件%s比对失败！请等待程序结束后手动比对。\nFile %s check failed! Please check manually after the program execution finishes." %(urljoin(url, name), urljoin(url, name)), write_time = False)
                         error_files.append(urljoin(url, name))
-                        if file_path in files_to_delete: #比对失败的文件不应删除（Files that fail to be checked shouldn't be deleted）
-                            files_to_delete.remove(file_path)
                     elif status == 404:
                         logPrint("文件%s不存在！\nFile %s not found!" %(urljoin(url, name), urljoin(url, name)), write_time = False)
+                        reserve_file = False
                     continue
-                if file_path in files_to_delete:
+                if reserve_file and file_path in files_to_delete:
                     files_to_delete.remove(file_path)
                 if name.endswith(".json"):
                     try:
@@ -739,22 +740,22 @@ while True:
                                     logPrint("已添加文件（Added file）： %s" %(split_file_path), print_time = True)
                                 else:
                                     logPrint("已更新文件（Updated file）： %s" %(split_file_path), print_time = True)
-        if updated_files:
+        if len(updated_files) > 0:
             logPrint("已更新以下%d个文件：\nUpdated the following %d file(s):" %(len(updated_files), len(updated_files)), write_time = False)
             for file in updated_files:
                 logPrint(file, write_time = False)
             logPrint("", write_time = False)
-        if added_files:
+        if len(added_files) > 0:
             logPrint("已添加以下%d个文件：\nAdded the following %d file(s):" %(len(added_files), len(added_files)), write_time = False)
             for file in added_files:
                 logPrint(file, write_time = False)
             logPrint("", write_time = False)
-        if error_folders:
+        if len(error_folders) > 0:
             logPrint("以下%d个文件夹比对失败。请重新比对！\nThe following %d folder(s) fail to be checked. Please check manually!" %(len(error_folders), len(error_folders)), write_time = False)
             for folder in error_folders:
                 logPrint(folder, write_time = False)
             logPrint("", write_time = False)
-        if error_files:
+        if len(error_files) > 0:
             logPrint("以下%d个文件比对失败。请重新比对！\nThe following %d file(s) fail to be checked. Please check manually!" %(len(error_files), len(error_files)), write_time = False)
             for file in error_files:
                 logPrint(file, write_time = False)
