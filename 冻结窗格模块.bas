@@ -22,10 +22,10 @@ Sub FreezeAndFilterGameDataSheets()
                 Or ws.Name = "云顶之弈传送门（TFT Portal）" Or Right$(ws.Name, 9) = "TFTPortal" Or (ws.Name = "云顶之弈开场奇遇（TFT Encounter Distribution）" Or ws.Name = "云顶之弈开场奇遇（TFT Encounter Distribu") Or (Right$(ws.Name, 24) = "TFTEncounterDistribution" Or Right$(ws.Name, 17) = "TFTEncounterDistr") _
                 Or ws.Name = "云顶之弈奇遇（TFT Encounter）" Or Right$(ws.Name, 12) = "TFTEncounter" Or ws.Name = "云顶之弈单位属性（TFT Unit Property）" Or Right$(ws.Name, 15) = "TFTUnitProperty" _
                 Or ws.Name = "云顶之弈角色定位（TFT Character Role）" Or Right$(ws.Name, 16) = "TFTCharacterRole" Or ws.Name = "云顶之弈装备列表（TFT Item List）" Or Right$(ws.Name, 11) = "TFTItemList" _
-                Or ws.Name = "云顶之弈装备（TFT Item）" Or Right$(ws.Name, 7) = "TFTItem" Or ws.Name = "云顶之弈羁绊列表（TFT Trait List）" Or Right$(ws.Name, 12) = "TFTTraitList" _
-                Or ws.Name = "云顶之弈羁绊（TFT Trait）" Or Right$(ws.Name, 8) = "TFTTrait" Or ws.Name = "云顶之弈电脑玩家英雄（TFT PVE NPC）" Or Right$(ws.Name, 9) = "TFTPVENPC" _
+                Or ws.Name = "云顶之弈装备（TFT Items）" Or Right$(ws.Name, 8) = "TFTItems" Or ws.Name = "云顶之弈羁绊列表（TFT Trait List）" Or Right$(ws.Name, 12) = "TFTTraitList" _
+                Or ws.Name = "云顶之弈羁绊（TFT Traits）" Or Right$(ws.Name, 9) = "TFTTraits" Or ws.Name = "云顶之弈电脑玩家英雄（TFT PVE NPC）" Or Right$(ws.Name, 9) = "TFTPVENPC" _
                 Or ws.Name = "云顶之弈脚本（TFT Script）" Or Right$(ws.Name, 9) = "TFTScript" Or ws.Name = "云顶之弈通告（TFT Announcement）" Or Right$(ws.Name, 15) = "TFTAnnouncement" _
-                Or ws.Name = "字体描述（Font Description）" Or Right$(ws.Name, 15) = "FontDescription" Or ws.Name = "字体类型（Font Type）" Or Right$(ws.Name, 8) = "FontType" Or ws.Name = "字体分辨率（Font Resolution）" Or Right$(ws.Name, 14) = "FontResolution" Or ws.Name = "字体样式（Font Style）" Or Right$(ws.Name, 9) = "FontStyle" Or ws.Name = "CSS样式（CSS Style）" Or Right$(ws.Name, 12) = "FontCSSStyle" Or ws.Name = "内嵌图标（Inline Icon）" Or Right$(ws.Name, 10) = "InlineIcon" _
+                Or ws.Name = "字体描述（Font Description）" Or Right$(ws.Name, 15) = "FontDescription" Or ws.Name = "字体类型（Font Types）" Or Right$(ws.Name, 9) = "FontTypes" Or ws.Name = "字体分辨率（Font Resolution）" Or Right$(ws.Name, 14) = "FontResolution" Or ws.Name = "字体样式（Font Style）" Or Right$(ws.Name, 9) = "FontStyle" Or ws.Name = "CSS样式（CSS Style）" Or Right$(ws.Name, 12) = "FontCSSStyle" Or ws.Name = "内嵌图标（Inline Icons）" Or Right$(ws.Name, 11) = "InlineIcons" _
                 Then '限定冻结和筛选的工作表（Limit sheets that shouldn't be frozen any pane and selected）
             ws.Activate '选中该工作表（Select this sheet）
             If ws.AutoFilterMode Then ws.AutoFilterMode = False '取消已经存在的筛选（Remove any existing autofilter）
@@ -51,10 +51,10 @@ Sub FreezeAndFilterGameDataSheets()
                     Or ws.Name = "海克斯大乱斗强化符文套装（Kiwi Augment Set）" Or Right$(ws.Name, 14) = "KiwiAugmentSet" _
                     Or ws.Name = "云顶之弈回合（TFT Round）" Or Right$(ws.Name, 8) = "TFTRound" _
                     Or ws.Name = "云顶之弈角色定位（TFT Character Role）" Or Right$(ws.Name, 16) = "TFTCharacterRole" _
-                    Or ws.Name = "云顶之弈羁绊（TFT Trait）" Or Right$(ws.Name, 8) = "TFTTrait" Then
+                    Or ws.Name = "云顶之弈羁绊（TFT Traits）" Or Right$(ws.Name, 9) = "TFTTraits" Then
                 ws.Range("G3").Select '冻结前两行和前六列（Freeze the first two rows and six columns）
             ElseIf ws.Name = "云顶之弈赛季（TFT Set）" Or Right$(ws.Name, 6) = "TFTSet" _
-                    Or ws.Name = "云顶之弈装备（TFT Item）" Or Right$(ws.Name, 7) = "TFTItem" _
+                    Or ws.Name = "云顶之弈装备（TFT Items）" Or Right$(ws.Name, 8) = "TFTItems" _
                     Or ws.Name = "斗魂竞技场强化符文（Cherry Augments）" Or Right$(ws.Name, 7) = "CherryAugments" _
                     Or ws.Name = "海克斯大乱斗强化符文（Kiwi Augments）" Or Right$(ws.Name, 7) = "KiwiAugments" _
                     Or ws.Name = "斗魂竞技场锻造器（Cherry Anvils）" Or Right$(ws.Name, 7) = "CherryAnvils" _

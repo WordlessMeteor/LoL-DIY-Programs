@@ -23,7 +23,7 @@ from src.core.config.localization import language_ddragon, language_dict
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/04/30
+# 更新（Last update）：     2026/05/05
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -417,6 +417,291 @@ class LoLDataExtractor:
     Spell_tooltip_map: dict[str, Any] = {} #收录角色二进制描述数据中所有技能说明文本对应的技能指令对象。键是技能说明文本键，值是每个技能指令对象（Collect all SpellObjects that has spell tooltip key in character binary description data. Each key is a value of `keyTooltip`, and each value is the corresponding SpellObject）
     data_cache: dict[str, dict[str, Any]] = {"online": {}, "local": {}} #每个链接或路径指向的Json对象的缓存（Caches of Json objects directed by each URL or path）
     merged_data_cache: dict[str, Any] = {} #每个变量名代表的变量的缓存。在设计初衷上，这个数据结构只缓存那些获取较为麻烦的合并后的数据字典（Caches of the variables that the name keys represent. By design, this data structure only caches those data dictionaries hard to obtain）
+    df_queue: list[dict[str, Any]] = [] #要导出的数据框队列。每个元素是一个字典，包含“id”“dType”“sheet_name”和“sheet”键。每次导出以及切换版本时清空（Dataframe queue to export. Each element is a dictionary that contains "id", "sheet_name", and "sheet" keys. Cleared when exporting or switching versions）
+    worksheet_metadata: dict[str, dict[str, Any]] = {
+        "Map": {
+            "id": 1,
+            "dType": "Map",
+            "sheet_name_without_version": "地图（Map）",
+            "sheet_name_with_version": "{version} Map"
+        },
+        "CheatSet": {
+            "id": 2,
+            "dType": "CheatSet",
+            "sheet_name_without_version": "指令集（CheatSet）",
+            "sheet_name_with_version": "{version} CheatSet"
+        },
+        "Cheat": {
+            "id": 3,
+            "dType": "Cheat",
+            "sheet_name_without_version": "指令（Cheat）",
+            "sheet_name_with_version": "{version} Cheat"
+        },
+        "PerkStyle": {
+            "id": 4,
+            "dType": "PerkStyle",
+            "sheet_name_without_version": "符文系（PerkStyles）",
+            "sheet_name_with_version": "{version} PerkStyles"
+        },
+        "Perk": {
+            "id": 5,
+            "dType": "Perk",
+            "sheet_name_without_version": "符文（Perks）",
+            "sheet_name_with_version": "{version} Perks"
+        },
+        "Champion": {
+            "id": 6,
+            "dType": "Champion",
+            "sheet_name_without_version": "英雄（Champions）",
+            "sheet_name_with_version": "{version} Champions"
+        },
+        "ChampionSpell": {
+            "id": 7,
+            "dType": "ChampionSpell",
+            "sheet_name_without_version": "英雄技能（Champion Spells）",
+            "sheet_name_with_version": "{version} ChampionSpells"
+        },
+        "Character": {
+            "id": 8,
+            "dType": "Character",
+            "sheet_name_without_version": "角色（Characters）",
+            "sheet_name_with_version": "{version} Characters"
+        },
+        "CharacterSpell": {
+            "id": 9,
+            "dType": "CharacterSpell",
+            "sheet_name_without_version": "角色技能（Character Spells）",
+            "sheet_name_with_version": "{version} CharacterSpells"
+        },
+        "Item": {
+            "id": 10,
+            "dType": "Item",
+            "sheet_name_without_version": "装备（Items）",
+            "sheet_name_with_version": "{version} Items"
+        },
+        "ItemGroup": {
+            "id": 11,
+            "dType": "ItemGroup",
+            "sheet_name_without_version": "装备分组（Item Groups）",
+            "sheet_name_with_version": "{version} ItemGroups"
+        },
+        "ItemModifier": {
+            "id": 12,
+            "dType": "ItemModifier",
+            "sheet_name_without_version": "装备修饰（Item Modifiers）",
+            "sheet_name_with_version": "{version} ItemModifiers"
+        },
+        "CherryAugment": {
+            "id": 13,
+            "dType": "CherryAugment",
+            "sheet_name_without_version": "斗魂竞技场强化符文（Cherry Augments）",
+            "sheet_name_with_version": "{version} CherryAugments"
+        },
+        "SwarmAugment": {
+            "id": 14,
+            "dType": "SwarmAugment",
+            "sheet_name_without_version": "无尽狂潮强化（Swarm Augments）",
+            "sheet_name_with_version": "{version} SwarmAugments"
+        },
+        "KiwiAugment": {
+            "id": 15,
+            "dType": "KiwiAugment",
+            "sheet_name_without_version": "海克斯大乱斗强化符文（Kiwi Augments）",
+            "sheet_name_with_version": "{version} KiwiAugments"
+        },
+        "KiwiAugmentSet": {
+            "id": 16,
+            "dType": "KiwiAugmentSet",
+            "sheet_name_without_version": "海克斯大乱斗强化符文套装（Kiwi Augment Set）",
+            "sheet_name_with_version": "{version} KiwiAugmentSet"
+        },
+        "CherryAnvil": {
+            "id": 17,
+            "dType": "CherryAnvil",
+            "sheet_name_without_version": "斗魂竞技场锻造器（Cherry Anvils）",
+            "sheet_name_with_version": "{version} CherryAnvils"
+        },
+        "KiwiAnvil": {
+            "id": 18,
+            "dType": "KiwiAnvil",
+            "sheet_name_without_version": "海克斯大乱斗锻造器（Kiwi Anvils）",
+            "sheet_name_with_version": "{version} KiwiAnvils"
+        },
+        "CherryRoundList": {
+            "id": 19,
+            "dType": "CherryRoundList",
+            "sheet_name_without_version": "斗魂竞技场回合列表（Cherry Round List）",
+            "sheet_name_with_version": "{version} CherryRoundList"
+        },
+        "CherryRound": {
+            "id": 20,
+            "dType": "CherryRound",
+            "sheet_name_without_version": "斗魂竞技场回合（Cherry Round）",
+            "sheet_name_with_version": "{version} CherryRound"
+        },
+        "CherryPhase": {
+            "id": 21,
+            "dType": "CherryPhase",
+            "sheet_name_without_version": "斗魂竞技场阶段（Cherry Phase）",
+            "sheet_name_with_version": "{version} CherryPhase"
+        },
+        "CherryCameo": {
+            "id": 22,
+            "dType": "CherryCameo",
+            "sheet_name_without_version": "斗魂竞技场场景英雄（Cherry Cameos）",
+            "sheet_name_with_version": "{version} CherryCameos"
+        },
+        "CherryGoH": {
+            "id": 23,
+            "dType": "CherryGoH",
+            "sheet_name_without_version": "斗魂竞技场荣誉嘉宾（Cherry Guests）",
+            "sheet_name_with_version": "{version} CherryGuests"
+        },
+        "TFTSet": {
+            "id": 24,
+            "dType": "TFTSet",
+            "sheet_name_without_version": "云顶之弈赛季（TFT Set）",
+            "sheet_name_with_version": "{version} TFTSet"
+        },
+        "TFTShop": {
+            "id": 25,
+            "dType": "TFTShop",
+            "sheet_name_without_version": "云顶之弈商店（TFT Shop）",
+            "sheet_name_with_version": "{version} TFTShop"
+        },
+        "TFTShopContent": {
+            "id": 26,
+            "dType": "TFTShopContent",
+            "sheet_name_without_version": "云顶之弈商店内容（TFT Shop Content）",
+            "sheet_name_with_version": "{version} TFTShopContent"
+        },
+        "TFTDropRate": {
+            "id": 27,
+            "dType": "TFTDropRate",
+            "sheet_name_without_version": "云顶之弈掉率表（TFT Drop Rate）",
+            "sheet_name_with_version": "{version} TFTDropRate"
+        },
+        "TFTStageRound": {
+            "id": 28,
+            "dType": "TFTStageRound",
+            "sheet_name_without_version": "云顶之弈回合阶段（TFT Stage Round）",
+            "sheet_name_with_version": "{version} TFTStageRound"
+        },
+        "TFTRound": {
+            "id": 29,
+            "dType": "TFTRound",
+            "sheet_name_without_version": "云顶之弈回合（TFT Round）",
+            "sheet_name_with_version": "{version} TFTRound"
+        },
+        "TFTPortal": {
+            "id": 30,
+            "dType": "TFTPortal",
+            "sheet_name_without_version": "云顶之弈传送门（TFT Portal）",
+            "sheet_name_with_version": "{version} TFTPortal"
+        },
+        "TFTEncounterDistribution": {
+            "id": 31,
+            "dType": "TFTEncounterDistribution",
+            "sheet_name_without_version": "云顶之弈开场奇遇（TFT Encounter Distribution）",
+            "sheet_name_with_version": "{version} TFTEncounterDistribution"
+        },
+        "TFTEncounter": {
+            "id": 32,
+            "dType": "TFTEncounter",
+            "sheet_name_without_version": "云顶之弈奇遇（TFT Encounter）",
+            "sheet_name_with_version": "{version} TFTEncounter"
+        },
+        "TFTUnitProperty": {
+            "id": 33,
+            "dType": "TFTUnitProperty",
+            "sheet_name_without_version": "云顶之弈单位属性（TFT Unit Property）",
+            "sheet_name_with_version": "{version} TFTUnitProperty"
+        },
+        "TFTCharacterRole": {
+            "id": 34,
+            "dType": "TFTCharacterRole",
+            "sheet_name_without_version": "云顶之弈角色定位（TFT Character Role）",
+            "sheet_name_with_version": "{version} TFTCharacterRole"
+        },
+        "TFTItemList": {
+            "id": 35,
+            "dType": "TFTItemList",
+            "sheet_name_without_version": "云顶之弈装备列表（TFT Item List）",
+            "sheet_name_with_version": "{version} TFTItemList"
+        },
+        "TFTItem": {
+            "id": 36,
+            "dType": "TFTItem",
+            "sheet_name_without_version": "云顶之弈装备（TFT Items）",
+            "sheet_name_with_version": "{version} TFTItems"
+        },
+        "TFTTraitList": {
+            "id": 37,
+            "dType": "TFTTraitList",
+            "sheet_name_without_version": "云顶之弈羁绊列表（TFT Trait List）",
+            "sheet_name_with_version": "{version} TFTTraitList"
+        },
+        "TFTTrait": {
+            "id": 38,
+            "dType": "TFTTrait",
+            "sheet_name_without_version": "云顶之弈羁绊（TFT Traits）",
+            "sheet_name_with_version": "{version} TFTTraits"
+        },
+        "TFTPVENPC": {
+            "id": 39,
+            "dType": "TFTPVENPC",
+            "sheet_name_without_version": "云顶之弈电脑玩家英雄（TFT PVE NPC）",
+            "sheet_name_with_version": "{version} TFTPVENPC"
+        },
+        "TFTScript": {
+            "id": 40,
+            "dType": "TFTScript",
+            "sheet_name_without_version": "云顶之弈脚本（TFT Script）",
+            "sheet_name_with_version": "{version} TFTScript"
+        },
+        "TFTAnnouncement": {
+            "id": 41,
+            "dType": "TFTAnnouncement",
+            "sheet_name_without_version": "云顶之弈通告（TFT Announcement）",
+            "sheet_name_with_version": "{version} TFTAnnouncement"
+        },
+        "FontDescription": {
+            "id": 42,
+            "dType": "FontDescription",
+            "sheet_name_without_version": "字体描述（Font Description）",
+            "sheet_name_with_version": "{version} FontDescription"
+        },
+        "FontType": {
+            "id": 43,
+            "dType": "FontType",
+            "sheet_name_without_version": "字体类型（Font Types）",
+            "sheet_name_with_version": "{version} FontTypes"
+        },
+        "FontResolution": {
+            "id": 44,
+            "dType": "FontResolution",
+            "sheet_name_without_version": "字体分辨率（Font Resolution）",
+            "sheet_name_with_version": "{version} FontResolution"
+        },
+        "FontStyle": {
+            "id": 45,
+            "dType": "FontStyle",
+            "sheet_name_without_version": "字体样式（Font Style）",
+            "sheet_name_with_version": "{version} FontStyle"
+        },
+        "FontCSSStyle": {
+            "id": 46,
+            "dType": "FontCSSStyle",
+            "sheet_name_without_version": "CSS样式（CSS Style）",
+            "sheet_name_with_version": "{version} FontCSSStyle"
+        },
+        "InlineIcon": {
+            "id": 47,
+            "dType": "InlineIcon",
+            "sheet_name_without_version": "内嵌图标（Inline Icons）",
+            "sheet_name_with_version": "{version} InlineIcons"
+        }
+    } #工作表元数据（Worksheet metadata）
     
     #初始化类（Initialize class）
     def __init__(self, version: str, locale: str, session: Optional[requests.Session] = None, log: Optional[LogManager] = None) -> None:
@@ -527,6 +812,7 @@ class LoLDataExtractor:
         cls.data_cache["online"].clear()
         cls.data_cache["local"].clear()
         cls.merged_data_cache.clear()
+        cls.df_queue.clear()
     
     #获取版本数据框（Obtain version dataframe）
     def init_patch(self) -> None:
@@ -3126,6 +3412,13 @@ class MapExtractor(LoLDataExtractor):
         self.map_df = map_df
         return 0
     
+    def enqueue_map_dataframe(self) -> None:
+        if not self.map_df.empty:
+            map_ws: dict[str, Any] = self.worksheet_metadata["Map"]
+            sheet1_name: str = map_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else map_ws["sheet_name_without_version"]
+            map_df_struct: dict[str, Any] = {"id": map_ws["id"], "dType": map_ws["dType"], "sheet_name": sheet1_name, "sheet": self.map_df}
+            self.df_queue.append(map_df_struct)
+    
     def export_map_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
         '''
         导出地图数据到工作簿中。产生以下工作表：<br>Export map data to a workbook. The following worksheet is added:
@@ -3157,7 +3450,7 @@ class MapExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        sheet1_name: str = f"{self.patch_number} Map" if self.sheet_naming_fold else "地图（Map）"
+        sheet1_name: str = self.worksheet_metadata["Map"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["Map"]["sheet_name_without_version"]
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
@@ -3354,7 +3647,19 @@ class CheatExtractor(LoLDataExtractor):
         cheat_df = pandas.concat([pandas.DataFrame([cheat_header])[cheat_df.columns], cheat_df], ignore_index = True)
         self.cheat_df = cheat_df
         return 0
-        
+    
+    def enqueue_cheat_dataframe(self) -> None:
+        if not self.cheatset_df.empty:
+            cheatset_ws: dict[str, Any] = self.worksheet_metadata["CheatSet"]
+            sheet1_name: str = cheatset_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else cheatset_ws["sheet_name_without_version"]
+            cheatset_df_struct: dict[str, Any] = {"id": cheatset_ws["id"], "dType": cheatset_ws["dType"], "sheet_name": sheet1_name, "sheet": self.cheatset_df}
+            self.df_queue.append(cheatset_df_struct)
+        if not self.cheat_df.empty:
+            cheat_ws: dict[str, Any] = self.worksheet_metadata["Cheat"]
+            sheet2_name: str = cheat_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else cheat_ws["sheet_name_without_version"]
+            cheat_df_struct: dict[str, Any] = {"id": cheat_ws["id"], "dType": cheat_ws["dType"], "sheet_name": sheet2_name, "sheet": self.cheat_df}
+            self.df_queue.append(cheat_df_struct)
+    
     def export_cheat_data(self, debug: bool = False, path: Optional[str] = None) -> None:
         '''
         导出作弊指令数据到工作簿中。产生以下工作表：<br>Export cheat data to a workbook. The following worksheets are added:
@@ -3387,8 +3692,8 @@ class CheatExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        sheet1_name: str = f"{self.patch_number} CheatSet" if self.sheet_naming_fold else "指令集（CheatSet）"
-        sheet2_name: str = f"{self.patch_number} Cheat" if self.sheet_naming_fold else "指令（Cheat）"
+        sheet1_name: str = self.worksheet_metadata["CheatSet"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["CheatSet"]["sheet_name_without_version"]
+        sheet2_name: str = self.worksheet_metadata["Cheat"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["Cheat"]["sheet_name_without_version"]
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
@@ -3701,6 +4006,18 @@ class PerkExtractor(LoLDataExtractor):
         self.perk_df = perk_df
         return 0
     
+    def enqueue_perk_dataframe(self) -> None:
+        if not self.perkstyle_df.empty:
+            perkstyle_ws: dict[str, Any] = self.worksheet_metadata["PerkStyle"]
+            sheet1_name: str = perkstyle_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else perkstyle_ws["sheet_name_without_version"]
+            perkstyle_df_struct: dict[str, Any] = {"id": perkstyle_ws["id"], "dType": perkstyle_ws["dType"], "sheet_name": sheet1_name, "sheet": self.perkstyle_df}
+            self.df_queue.append(perkstyle_df_struct)
+        if not self.perk_df.empty:
+            perk_ws: dict[str, Any] = self.worksheet_metadata["Perk"]
+            sheet2_name: str = perk_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else perk_ws["sheet_name_without_version"]
+            perk_df_struct: dict[str, Any] = {"id": perk_ws["id"], "dType": perk_ws["dType"], "sheet_name": sheet2_name, "sheet": self.perk_df}
+            self.df_queue.append(perk_df_struct)
+    
     def export_perk_data(self, debug: bool = False, path: Optional[str] = None) -> None:
         '''
         导出符文数据到工作簿中。产生以下工作表：<br>Export perk data to a workbook. The following worksheets are added:
@@ -3733,8 +4050,8 @@ class PerkExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        sheet1_name: str = f"{self.patch_number} PerkStyles" if self.sheet_naming_fold else "符文系（PerkStyles）"
-        sheet2_name: str = f"{self.patch_number} Perks" if self.sheet_naming_fold else "符文（Perks）"
+        sheet1_name: str = self.worksheet_metadata["PerkStyle"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["PerkStyle"]["sheet_name_without_version"]
+        sheet2_name: str = self.worksheet_metadata["Perk"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["Perk"]["sheet_name_without_version"]
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
@@ -4030,12 +4347,10 @@ class ChampionExtractor(LoLDataExtractor):
                     self.__class__.merged_data_cache["champions_bin_dict"] = self.champions_bin_dict
             self.champions_ready["champion_binary"] = True #所有英雄的二进制描述数据准备就绪后，执行该语句（After all champions' binary description data are prepared, execute this statement）
     
-    def read_champion_data(self, useAllCharacter: bool = False, paths: Optional[list[str]] = None, verbose: bool = True) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
+    def read_champion_data(self, paths: Optional[list[str]] = None, verbose: bool = True) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
         '''
         离线获取英雄二进制描述数据。<br>Get binary description data of champions offline.
         
-        :param useAllCharacter: 是否导出所有角色数据。默认为假。<br>Whether to export data of all characters. False by default.
-        :type useAllCharacter: bool
         :param paths: 当使用所有角色数据时，`paths`由以下部分组成：<br>When all characters' data are used, `paths` is a list composed of the following content:
         
             - 聚点危机地图二进制描述文件路径（Convergence map binary description file path）
@@ -4053,7 +4368,7 @@ class ChampionExtractor(LoLDataExtractor):
         if paths == None:
             logPrint("尚未指定本地文件路径！\nLocal path not specified yet!")
             return
-        if useAllCharacter:
+        if self.useAllCharacter:
             if paths[0] in self.__class__.data_cache["local"] and "characters_bin_dict" in self.__class__.merged_data_cache:
                 self.map22_bin = self.__class__.data_cache["local"][paths[0]]
                 self.characters_ready["map22"] = True #当目的变量准备就绪时，应标记中间变量准备就绪（When the target variable is prepared, the intermediate variables should also be marked as prepared）
@@ -4160,12 +4475,10 @@ class ChampionExtractor(LoLDataExtractor):
                     self.__class__.merged_data_cache["champions_bin_dict"] = self.champions_bin_dict
             self.champions_ready["champion_binary"] = True
     
-    def build_champion_dataframe(self, useAllCharacter: Optional[bool] = None, debug: bool = False, paths: Optional[list[str]] = None, verbose: bool = True) -> int:
+    def build_champion_dataframe(self, debug: bool = False, paths: Optional[list[str]] = None, verbose: bool = True) -> int:
         '''
         构建英雄数据框。<br>Build champion dataframe.
         
-        :param useAllCharacter: 是否导出所有角色数据。如果未指定，则使用对象的属性值。<br>Whether to export data of all characters. If unspecified, it'll use the attribute value of the object.
-        :type useAllCharacter: bool
         :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
         :type debug: bool
         :param paths: 当使用所有角色数据时，`paths`由以下部分组成：<br>When all characters' data are used, `paths` is a list composed of the following content:
@@ -4190,10 +4503,8 @@ class ChampionExtractor(LoLDataExtractor):
         :rtype: int
         '''
         logPrint = self.log.logPrint
-        if useAllCharacter == None:
-            useAllCharacter = self.useAllCharacter
-        if useAllCharacter and not self.characters_ready["character_binary"] or not useAllCharacter and not self.champions_ready["champion_binary"]:
-            if useAllCharacter:
+        if self.useAllCharacter and not self.characters_ready["character_binary"] or not self.useAllCharacter and not self.champions_ready["champion_binary"]:
+            if self.useAllCharacter:
                 logPrint("正在读取角色数据……\nReading character data ...", print_time = True)
             else:
                 logPrint("正在读取英雄数据……\nReading champion data ...", print_time = True)
@@ -4203,13 +4514,13 @@ class ChampionExtractor(LoLDataExtractor):
                     logPrint("尚未指定本地文件路径！\nLocal path not specified yet!")
                     return 1
                 else:
-                    self.read_champion_data(useAllCharacter = useAllCharacter, paths = paths, verbose = verbose)
+                    self.read_champion_data(paths = paths, verbose = verbose)
             else:
                 self.get_champion_data(verbose = verbose)
-            if useAllCharacter and not self.characters_ready["character_binary"]:
+            if self.useAllCharacter and not self.characters_ready["character_binary"]:
                 logPrint("角色数据尚未准备就绪！\nCharacter data not prepared!")
                 return 2
-            if not useAllCharacter and not self.champions_ready["champion_binary"]:
+            if not self.useAllCharacter and not self.champions_ready["champion_binary"]:
                 logPrint("英雄数据尚未准备就绪！\nChampion data not prepared!")
                 return 2
 
@@ -4547,7 +4858,7 @@ class ChampionExtractor(LoLDataExtractor):
 
         #数据框构建和排序（Build the dataframe and sort the keys and values）
         ##英雄（Champion）
-        if useAllCharacter:
+        if self.useAllCharacter:
             if Patch(self.patch_number) < Patch("16.5"):
                 champion_statistics_output_order: list[int] = [0, 1, 2, 62, 133, 134, 3, 61, 222, 80, 230, 246, 247, 73, 84, 19, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 20, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 64, 135, 136, 8, 9, 21, 22, 23, 24, 26, 28, 33, 35, 34, 30, 10, 11, 32, 27, 25, 29, 37, 91, 79, 232, 223, 220, 221, 240, 226, 231, 229, 225, 228, 233, 237, 216, 234, 235, 238, 239, 211, 212, 217, 218, 214, 215, 219, 224, 213, 241, 242, 243, 244, 245, 227, 236, 86, 88, 42, 43, 85, 12, 14, 15, 16, 17, 13, 18, 69, 70, 71, 72, 38, 44, 66, 57, 58, 39, 202, 203, 204, 205, 206, 207, 208, 40, 41, 50, 36, 65, 63, 68, 31, 83, 4, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 7, 167, 168, 169, 170, 51, 123, 124, 52, 54, 89, 55, 118, 53, 125, 127, 126, 128, 90, 56, 49, 78, 81, 82, 45, 46, 137, 138, 119, 120, 121, 122, 47, 48, 67, 5, 6, 157, 158, 161, 162, 159, 163, 165, 164, 166, 160, 77, 209, 210, 59, 129, 130, 60, 131, 132, 74, 75, 76, 87, 92, 104, 106, 117, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 105, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 139, 140, 141, 142, 143]
             else:
@@ -4559,7 +4870,7 @@ class ChampionExtractor(LoLDataExtractor):
                 champion_statistics_output_order = [0, 1, 2, 62, 133, 134, 3, 61, 244, 80, 252, 268, 269, 73, 84, 19, 186, 198, 199, 200, 201, 191, 192, 193, 194, 195, 196, 197, 20, 202, 221, 222, 223, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 64, 135, 136, 144, 145, 148, 149, 150, 151, 152, 153, 156, 158, 157, 154, 146, 147, 155, 27, 25, 29, 37, 91, 79, 254, 245, 242, 243, 262, 248, 253, 251, 247, 250, 255, 259, 238, 256, 257, 260, 261, 233, 234, 239, 240, 236, 237, 241, 246, 235, 263, 264, 265, 266, 267, 249, 258, 86, 88, 42, 43, 85, 12, 14, 15, 16, 17, 13, 18, 69, 70, 71, 72, 38, 44, 66, 57, 58, 39, 224, 225, 226, 227, 228, 229, 230, 40, 41, 50, 36, 65, 63, 68, 31, 83, 4, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 7, 182, 183, 184, 185, 51, 123, 124, 52, 54, 89, 55, 118, 53, 125, 127, 126, 128, 90, 56, 49, 78, 81, 82, 45, 46, 137, 138, 119, 120, 121, 122, 47, 48, 67, 5, 6, 172, 173, 176, 177, 174, 178, 180, 179, 181, 175, 77, 231, 232, 59, 129, 130, 60, 131, 132, 74, 75, 76, 87, 92, 104, 106, 117, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 105, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 139, 140, 141, 142, 143]
         champion_data_organized: dict[str, list[Any]] = {champion_header_keys[i]: champion_data_json[champion_header_keys[i]] for i in champion_statistics_output_order}
         champion_df: pandas.DataFrame = pandas.DataFrame(data = champion_data_organized)
-        champion_df = champion_df.sort_values(by = "mCharacterName" if useAllCharacter else "characterToolData championId", ascending = True, ignore_index = True) #原来读取文件的顺序是英雄别名顺序，合并后的顺序是打乱后的顺序。因为这两种顺序都不太符合设计初衷（对于前者，试想虚空遁地兽 雷克塞和兽灵行者 乌迪尔中间掺和了一堆末日人机英雄），所以索性就用了英雄序号作为排序标准【Originally, the order to read files follows that of aliases, and the order of champions after being merged is shuffled. Because both orders don't accord to the intuitive intent by design (for the former order, think about those ruby champions between Rek'Sai and Udyr), championId is used here as the sorting criterium】
+        champion_df = champion_df.sort_values(by = "mCharacterName" if self.useAllCharacter else "characterToolData championId", ascending = True, ignore_index = True) #原来读取文件的顺序是英雄别名顺序，合并后的顺序是打乱后的顺序。因为这两种顺序都不太符合设计初衷（对于前者，试想虚空遁地兽 雷克塞和兽灵行者 乌迪尔中间掺和了一堆末日人机英雄），所以索性就用了英雄序号作为排序标准【Originally, the order to read files follows that of aliases, and the order of champions after being merged is shuffled. Because both orders don't accord to the intuitive intent by design (for the former order, think about those ruby champions between Rek'Sai and Udyr), championId is used here as the sorting criterium】
         logPrint("正在优化英雄数据框的逻辑值显示……\nOptimizing boolean value display of the champion dataframe ...")
         optimize_bool_display(champion_df)
         champion_df = pandas.concat([pandas.DataFrame([champion_header])[champion_df.columns], champion_df], ignore_index = True)
@@ -4593,8 +4904,20 @@ class ChampionExtractor(LoLDataExtractor):
         champion_spell_df = pandas.concat([pandas.DataFrame([champion_spell_header])[champion_spell_df.columns], champion_spell_df], ignore_index = True)
         self.champion_spell_df = champion_spell_df
         return 0
-
-    def export_champion_data(self, useAllCharacter: Optional[bool] = None, debug: bool = False, paths: Optional[list[str]] = None, verbose: bool = True) -> None:
+    
+    def enqueue_champion_dataframe(self) -> None:
+        if not self.champion_df.empty:
+            champion_ws: dict[str, Any] = self.worksheet_metadata["Character"] if self.useAllCharacter else self.worksheet_metadata["Champion"]
+            sheet1_name: str = champion_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else champion_ws["sheet_name_without_version"]
+            champion_df_struct: dict[str, Any] = {"id": champion_ws["id"], "dType": champion_ws["dType"], "sheet_name": sheet1_name, "sheet": self.champion_df}
+            self.df_queue.append(champion_df_struct)
+        if not self.champion_spell_df.empty:
+            champion_spell_ws: dict[str, Any] = self.worksheet_metadata["CharacterSpell"] if self.useAllCharacter else self.worksheet_metadata["ChampionSpell"]
+            sheet2_name: str = champion_spell_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else champion_spell_ws["sheet_name_without_version"]
+            champion_spell_df_struct: dict[str, Any] = {"id": champion_spell_ws["id"], "dType": champion_spell_ws["dType"], "sheet_name": sheet2_name, "sheet": self.champion_spell_df}
+            self.df_queue.append(champion_spell_df_struct)
+    
+    def export_champion_data(self, debug: bool = False, paths: Optional[list[str]] = None, verbose: bool = True) -> None:
         '''
         导出英雄数据到工作簿中。<br>Export champion data to a workbook.
         
@@ -4606,8 +4929,6 @@ class ChampionExtractor(LoLDataExtractor):
         - 英雄（Champions）
         - 英雄技能（Champion Spells）
         
-        :param useAllCharacter: 是否导出所有角色数据。如果未指定，则使用对象的属性值。<br>Whether to export data of all characters. If unspecified, it'll use the attribute value of the object.
-        :type useAllCharacter: bool
         :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
         :type debug: bool
         :param paths: 当使用所有角色数据时，`paths`由以下部分组成：<br>When all characters' data are used, `paths` is a list composed of the following content:
@@ -4633,10 +4954,8 @@ class ChampionExtractor(LoLDataExtractor):
         if self.patch == "" and self.sheet_naming_fold:
             logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
             return
-        if useAllCharacter == None:
-            useAllCharacter = self.useAllCharacter
         if self.champion_df.empty or self.champion_spell_df.empty:
-            status: int = self.build_champion_dataframe(useAllCharacter = useAllCharacter, debug = debug, paths = paths, verbose = verbose)
+            status: int = self.build_champion_dataframe(debug = debug, paths = paths, verbose = verbose)
             if status != 0:
                 logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
                 logInput()
@@ -4646,10 +4965,10 @@ class ChampionExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        sheet1_name1: str = "角色（Characters）" if useAllCharacter else "英雄（Champions）"
-        sheet1_name2: str = f"{self.patch_number} Characters" if useAllCharacter else f"{self.patch_number} Champions"
-        sheet2_name1: str = "角色技能（Character Spells）" if useAllCharacter else "英雄技能（Champion Spells）"
-        sheet2_name2: str = f"{self.patch_number} CharacterSpells" if useAllCharacter else f"{self.patch_number} ChampionSpells"
+        sheet1_name1: str = self.worksheet_metadata["Character"]["sheet_name_without_version"] if self.useAllCharacter else self.worksheet_metadata["Champion"]["sheet_name_without_version"]
+        sheet1_name2: str = self.worksheet_metadata["Character"]["sheet_name_with_version"] if self.useAllCharacter else self.worksheet_metadata["Champion"]["sheet_name_with_version"]
+        sheet2_name1: str = self.worksheet_metadata["CharacterSpell"]["sheet_name_without_version"] if self.useAllCharacter else self.worksheet_metadata["ChampionSpell"]["sheet_name_without_version"]
+        sheet2_name2: str = self.worksheet_metadata["CharacterSpell"]["sheet_name_with_version"] if self.useAllCharacter else self.worksheet_metadata["ChampionSpell"]["sheet_name_with_version"]
         sheet1_name: str = sheet1_name2 if self.sheet_naming_fold else sheet1_name1
         sheet2_name: str = sheet2_name2 if self.sheet_naming_fold else sheet2_name1
         while True:
@@ -4949,10 +5268,29 @@ class ItemExtractor(LoLDataExtractor):
         self.itemModifier_df = itemModifier_df
         return 0
     
+    def enqueue_item_dataframe(self) -> None:
+        if not self.item_df.empty:
+            item_ws: dict[str, Any] = self.worksheet_metadata["Item"]
+            sheet1_name: str = item_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else item_ws["sheet_name_without_version"]
+            item_df_struct: dict[str, Any] = {"id": item_ws["id"], "dType": item_ws["dType"], "sheet_name": sheet1_name, "sheet": self.item_df}
+            self.df_queue.append(item_df_struct)
+        if not self.itemGroup_df.empty:
+            itemGroup_ws: dict[str, Any] = self.worksheet_metadata["ItemGroup"]
+            sheet2_name: str = itemGroup_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else itemGroup_ws["sheet_name_without_version"]
+            itemGroup_df_struct: dict[str, Any] = {"id": itemGroup_ws["id"], "dType": itemGroup_ws["dType"], "sheet_name": sheet2_name, "sheet": self.itemGroup_df}
+            self.df_queue.append(itemGroup_df_struct)
+        if not self.itemModifier_df.empty:
+            itemModifier_ws: dict[str, Any] = self.worksheet_metadata["ItemModifier"]
+            sheet3_name: str = itemModifier_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else itemModifier_ws["sheet_name_without_version"]
+            itemModifier_df_struct: dict[str, Any] = {"id": itemModifier_ws["id"], "dType": itemModifier_ws["dType"], "sheet_name": sheet3_name, "sheet": self.itemModifier_df}
+            self.df_queue.append(itemModifier_df_struct)
+
     def export_item_data(self, debug: bool = False, path: Optional[str] = None) -> None:
         '''
-        导出装备数据到工作簿中。产生以下工作表：<br>Export item data to a workbook. The following worksheet is added:
+        导出装备数据到工作簿中。产生以下工作表：<br>Export item data to a workbook. The following worksheets are added:
         - 装备（Items）
+        - 装备分组（Item Groups）
+        - 装备修饰（Item Modifiers）
         
         :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
         :type debug: bool
@@ -4980,9 +5318,9 @@ class ItemExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        sheet1_name: str = f"{self.patch_number} Items" if self.sheet_naming_fold else "装备（Items）"
-        sheet2_name: str = f"{self.patch_number} ItemGroups" if self.sheet_naming_fold else "装备分组（Item Groups）"
-        sheet3_name: str = f"{self.patch_number} ItemModifiers" if self.sheet_naming_fold else "装备修饰（Item Modifiers）"
+        sheet1_name: str = self.worksheet_metadata["Item"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["Item"]["sheet_name_without_version"]
+        sheet2_name: str = self.worksheet_metadata["ItemGroup"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["ItemGroup"]["sheet_name_without_version"]
+        sheet3_name: str = self.worksheet_metadata["ItemModifier"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["ItemModifier"]["sheet_name_without_version"]
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
@@ -5575,6 +5913,28 @@ class AugmentExtractor(LoLDataExtractor):
         self.KiwiAugmentSet_df = KiwiAugmentSet_df
         return 0
     
+    def enqueue_augment_dataframe(self) -> None:
+        if not self.CherryAugment_df.empty:
+            CherryAugment_ws: dict[str, Any] = self.worksheet_metadata["CherryAugment"]
+            sheet1_name: str = CherryAugment_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else CherryAugment_ws["sheet_name_without_version"]
+            CherryAugment_df_struct: dict[str, Any] = {"id": CherryAugment_ws["id"], "dType": CherryAugment_ws["dType"], "sheet_name": sheet1_name, "sheet": self.CherryAugment_df}
+            self.df_queue.append(CherryAugment_df_struct)
+        if not self.SwarmAugment_df.empty:
+            SwarmAugment_ws: dict[str, Any] = self.worksheet_metadata["SwarmAugment"]
+            sheet2_name: str = SwarmAugment_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else SwarmAugment_ws["sheet_name_without_version"]
+            SwarmAugment_df_struct: dict[str, Any] = {"id": SwarmAugment_ws["id"], "dType": SwarmAugment_ws["dType"], "sheet_name": sheet2_name, "sheet": self.SwarmAugment_df}
+            self.df_queue.append(SwarmAugment_df_struct)
+        if not self.KiwiAugment_df.empty:
+            KiwiAugment_ws: dict[str, Any] = self.worksheet_metadata["KiwiAugment"]
+            sheet3_name: str = KiwiAugment_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else KiwiAugment_ws["sheet_name_without_version"]
+            KiwiAugment_df_struct: dict[str, Any] = {"id": KiwiAugment_ws["id"], "dType": KiwiAugment_ws["dType"], "sheet_name": sheet3_name, "sheet": self.KiwiAugment_df}
+            self.df_queue.append(KiwiAugment_df_struct)
+        if not self.KiwiAugmentSet_df.empty:
+            KiwiAugmentSet_ws: dict[str, Any] = self.worksheet_metadata["KiwiAugmentSet"]
+            sheet4_name: str = KiwiAugmentSet_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else KiwiAugmentSet_ws["sheet_name_without_version"]
+            KiwiAugmentSet_df_struct: dict[str, Any] = {"id": KiwiAugmentSet_ws["id"], "dType": KiwiAugmentSet_ws["dType"], "sheet_name": sheet4_name, "sheet": self.KiwiAugmentSet_df}
+            self.df_queue.append(KiwiAugmentSet_df_struct)
+
     def export_augment_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
         '''
         导出强化符文数据到工作簿中。产生以下工作表：<br>Export augment data to a workbook. The following worksheets are added:
@@ -5614,10 +5974,10 @@ class AugmentExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        sheet1_name: str = f"{self.patch_number} CherryAugments" if self.sheet_naming_fold else "斗魂竞技场强化符文（Cherry Augments）"
-        sheet2_name: str = f"{self.patch_number} SwarmAugments" if self.sheet_naming_fold else "无尽狂潮强化（Swarm Augments）"
-        sheet3_name: str = f"{self.patch_number} KiwiAugments" if self.sheet_naming_fold else "海克斯大乱斗强化符文（Kiwi Augments）"
-        sheet4_name: str = f"{self.patch_number} KiwiAugmentSet" if self.sheet_naming_fold else "海克斯大乱斗强化符文套装（Kiwi Augment Set）"
+        sheet1_name: str = self.worksheet_metadata["CherryAugment"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["CherryAugment"]["sheet_name_without_version"]
+        sheet2_name: str = self.worksheet_metadata["SwarmAugment"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["SwarmAugment"]["sheet_name_without_version"]
+        sheet3_name: str = self.worksheet_metadata["KiwiAugment"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["KiwiAugment"]["sheet_name_without_version"]
+        sheet4_name: str = self.worksheet_metadata["KiwiAugmentSet"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["KiwiAugmentSet"]["sheet_name_without_version"]
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
@@ -5935,6 +6295,18 @@ class AnvilExtractor(LoLDataExtractor):
         self.KiwiAnvil_df = KiwiAnvil_df
         return 0
     
+    def enqueue_anvil_dataframe(self) -> None:
+        if not self.CherryAnvil_df.empty:
+            CherryAnvil_ws: dict[str, Any] = self.worksheet_metadata["CherryAnvil"]
+            sheet1_name: str = CherryAnvil_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else CherryAnvil_ws["sheet_name_without_version"]
+            CherryAnvil_df_struct: dict[str, Any] = {"id": CherryAnvil_ws["id"], "dType": CherryAnvil_ws["dType"], "sheet_name": sheet1_name, "sheet": self.CherryAnvil_df}
+            self.df_queue.append(CherryAnvil_df_struct)
+        if not self.KiwiAnvil_df.empty:
+            KiwiAnvil_ws: dict[str, Any] = self.worksheet_metadata["KiwiAnvil"]
+            sheet2_name: str = KiwiAnvil_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else KiwiAnvil_ws["sheet_name_without_version"]
+            KiwiAnvil_df_struct: dict[str, Any] = {"id": KiwiAnvil_ws["id"], "dType": KiwiAnvil_ws["dType"], "sheet_name": sheet2_name, "sheet": self.KiwiAnvil_df}
+            self.df_queue.append(KiwiAnvil_df_struct)
+    
     def export_anvil_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
         '''
         导出锻造器数据到工作簿中。产生以下工作表：<br>Export anvil data to a workbook. The following worksheets are added:
@@ -5970,8 +6342,8 @@ class AnvilExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        sheet1_name: str = f"{self.patch_number} CherryAnvils" if self.sheet_naming_fold else "斗魂竞技场锻造器（Cherry Anvils）"
-        sheet2_name: str = f"{self.patch_number} KiwiAnvils" if self.sheet_naming_fold else "海克斯大乱斗锻造器（Kiwi Anvils）"
+        sheet1_name: str = self.worksheet_metadata["CherryAnvil"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["CherryAnvil"]["sheet_name_without_version"]
+        sheet2_name: str = self.worksheet_metadata["KiwiAnvil"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["KiwiAnvil"]["sheet_name_without_version"]
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
@@ -6190,6 +6562,23 @@ class CherryRoundExtractor(LoLDataExtractor):
         self.CherryPhase_df = CherryPhase_df
         return 0
     
+    def enqueue_CherryRound_dataframe(self) -> None:
+        if not self.CherryRoundList_df.empty:
+            CherryRoundList_ws: dict[str, Any] = self.worksheet_metadata["CherryRoundList"]
+            sheet1_name: str = CherryRoundList_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else CherryRoundList_ws["sheet_name_without_version"]
+            CherryRoundList_df_struct: dict[str, Any] = {"id": CherryRoundList_ws["id"], "dType": CherryRoundList_ws["dType"], "sheet_name": sheet1_name, "sheet": self.CherryRoundList_df}
+            self.df_queue.append(CherryRoundList_df_struct)
+        if not self.CherryRound_df.empty:
+            CherryRound_ws: dict[str, Any] = self.worksheet_metadata["CherryRound"]
+            sheet2_name: str = CherryRound_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else CherryRound_ws["sheet_name_without_version"]
+            CherryRound_df_struct: dict[str, Any] = {"id": CherryRound_ws["id"], "dType": CherryRound_ws["dType"], "sheet_name": sheet2_name, "sheet": self.CherryRound_df}
+            self.df_queue.append(CherryRound_df_struct)
+        if not self.CherryPhase_df.empty:
+            CherryPhase_ws: dict[str, Any] = self.worksheet_metadata["CherryPhase"]
+            sheet3_name: str = CherryPhase_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else CherryPhase_ws["sheet_name_without_version"]
+            CherryPhase_df_struct: dict[str, Any] = {"id": CherryPhase_ws["id"], "dType": CherryPhase_ws["dType"], "sheet_name": sheet3_name, "sheet": self.CherryPhase_df}
+            self.df_queue.append(CherryPhase_df_struct)
+    
     def export_CherryRound_data(self, debug: bool = False, path: Optional[str] = None) -> None:
         '''
         导出斗魂竞技场回合数据到工作簿中。产生以下工作表：<br>Export Arena round data to a workbook. The following worksheet is added:
@@ -6223,9 +6612,9 @@ class CherryRoundExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        sheet1_name: str = f"{self.patch_number} CherryRoundList" if self.sheet_naming_fold else "斗魂竞技场回合列表（Cherry Round List）"
-        sheet2_name: str = f"{self.patch_number} CherryRound" if self.sheet_naming_fold else "斗魂竞技场回合（Cherry Round）"
-        sheet3_name: str = f"{self.patch_number} CherryPhase" if self.sheet_naming_fold else "斗魂竞技场阶段（Cherry Phase）"
+        sheet1_name: str = self.worksheet_metadata["CherryRoundList"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["CherryRoundList"]["sheet_name_without_version"]
+        sheet2_name: str = self.worksheet_metadata["CherryRound"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["CherryRound"]["sheet_name_without_version"]
+        sheet3_name: str = self.worksheet_metadata["CherryPhase"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["CherryPhase"]["sheet_name_without_version"]
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
@@ -6382,6 +6771,13 @@ class CameoExtractor(LoLDataExtractor):
         self.cameo_df = cameo_df
         return 0
     
+    def enqueue_cameo_dataframe(self) -> None:
+        if not self.cameo_df.empty:
+            cameo_ws: dict[str, Any] = self.worksheet_metadata["CherryCameo"]
+            sheet1_name: str = cameo_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else cameo_ws["sheet_name_without_version"]
+            cameo_df_struct: dict[str, Any] = {"id": cameo_ws["id"], "dType": cameo_ws["dType"], "sheet_name": sheet1_name, "sheet": self.cameo_df}
+            self.df_queue.append(cameo_df_struct)
+    
     def export_cameo_data(self, debug: bool = False, path: Optional[str] = None) -> None:
         '''
         导出场景英雄数据到工作簿中。产生以下工作表：<br>Export cameo data to a workbook. The following worksheet is added:
@@ -6413,7 +6809,7 @@ class CameoExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        sheet1_name: str = f"{self.patch_number} CherryCameos" if self.sheet_naming_fold else "斗魂竞技场场景英雄（Cherry Cameos）"
+        sheet1_name: str = self.worksheet_metadata["CherryCameo"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["CherryCameo"]["sheet_name_without_version"]
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
@@ -6657,6 +7053,13 @@ class GoHExtractor(LoLDataExtractor):
         self.GoH_df = GoH_df
         return 0
     
+    def enqueue_GoH_dataframe(self) -> None:
+        if not self.GoH_df.empty:
+            GoH_ws: dict[str, Any] = self.worksheet_metadata["CherryGoH"]
+            sheet1_name: str = GoH_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else GoH_ws["sheet_name_without_version"]
+            GoH_df_struct: dict[str, Any] = {"id": GoH_ws["id"], "dType": GoH_ws["dType"], "sheet_name": sheet1_name, "sheet": self.GoH_df}
+            self.df_queue.append(GoH_df_struct)
+    
     def export_GoH_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
         '''
         导出荣誉嘉宾数据到工作簿中。产生以下工作表：<br>Export GoH data to a workbook. The following worksheet is added:
@@ -6691,7 +7094,7 @@ class GoHExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        sheet1_name: str = f"{self.patch_number} CherryGuests" if self.sheet_naming_fold else "斗魂竞技场荣誉嘉宾（Cherry Guests）"
+        sheet1_name: str = self.worksheet_metadata["CherryGoH"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["CherryGoH"]["sheet_name_without_version"]
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
@@ -7921,7 +8324,99 @@ class TFTExtractor(LoLDataExtractor):
         TFTAnnouncement_df = pandas.concat([pandas.DataFrame([TFTAnnouncement_header])[TFTAnnouncement_df.columns], TFTAnnouncement_df], ignore_index = True)
         self.TFTAnnouncement_df = TFTAnnouncement_df
         return 0
-            
+    
+    def enqueue_tft_dataframe(self) -> None:
+        if not self.TFTSet_df.empty:
+            TFTSet_ws: dict[str, Any] = self.worksheet_metadata["TFTSet"]
+            sheet1_name: str = TFTSet_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTSet_ws["sheet_name_without_version"]
+            TFTSet_df_struct: dict[str, Any] = {"id": TFTSet_ws["id"], "dType": TFTSet_ws["dType"], "sheet_name": sheet1_name, "sheet": self.TFTSet_df}
+            self.df_queue.append(TFTSet_df_struct)
+        if not self.TFTShop_df.empty:
+            TFTShop_ws: dict[str, Any] = self.worksheet_metadata["TFTShop"]
+            sheet2_name: str = TFTShop_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTShop_ws["sheet_name_without_version"]
+            TFTShop_df_struct: dict[str, Any] = {"id": TFTShop_ws["id"], "dType": TFTShop_ws["dType"], "sheet_name": sheet2_name, "sheet": self.TFTShop_df}
+            self.df_queue.append(TFTShop_df_struct)
+        if not self.TFTShopContent_df.empty:
+            TFTShopContent_ws: dict[str, Any] = self.worksheet_metadata["TFTShopContent"]
+            sheet3_name: str = TFTShopContent_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTShopContent_ws["sheet_name_without_version"]
+            TFTShopContent_df_struct: dict[str, Any] = {"id": TFTShopContent_ws["id"], "dType": TFTShopContent_ws["dType"], "sheet_name": sheet3_name, "sheet": self.TFTShopContent_df}
+            self.df_queue.append(TFTShopContent_df_struct)
+        if not self.TFTDropRate_df.empty:
+            TFTDropRate_ws: dict[str, Any] = self.worksheet_metadata["TFTDropRate"]
+            sheet4_name: str = TFTDropRate_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTDropRate_ws["sheet_name_without_version"]
+            TFTDropRate_df_struct: dict[str, Any] = {"id": TFTDropRate_ws["id"], "dType": TFTDropRate_ws["dType"], "sheet_name": sheet4_name, "sheet": self.TFTDropRate_df}
+            self.df_queue.append(TFTDropRate_df_struct)
+        if not self.TFTStageRound_df.empty:
+            TFTStageRound_ws: dict[str, Any] = self.worksheet_metadata["TFTStageRound"]
+            sheet5_name: str = TFTStageRound_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTStageRound_ws["sheet_name_without_version"]
+            TFTStageRound_df_struct: dict[str, Any] = {"id": TFTStageRound_ws["id"], "dType": TFTStageRound_ws["dType"], "sheet_name": sheet5_name, "sheet": self.TFTStageRound_df}
+            self.df_queue.append(TFTStageRound_df_struct)
+        if not self.TFTRound_df.empty:
+            TFTRound_ws: dict[str, Any] = self.worksheet_metadata["TFTRound"]
+            sheet6_name: str = TFTRound_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTRound_ws["sheet_name_without_version"]
+            TFTRound_df_struct: dict[str, Any] = {"id": TFTRound_ws["id"], "dType": TFTRound_ws["dType"], "sheet_name": sheet6_name, "sheet": self.TFTRound_df}
+            self.df_queue.append(TFTRound_df_struct)
+        if not self.TFTPortal_df.empty:
+            TFTPortal_ws: dict[str, Any] = self.worksheet_metadata["TFTPortal"]
+            sheet7_name: str = TFTPortal_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTPortal_ws["sheet_name_without_version"]
+            TFTPortal_df_struct: dict[str, Any] = {"id": TFTPortal_ws["id"], "dType": TFTPortal_ws["dType"], "sheet_name": sheet7_name, "sheet": self.TFTPortal_df}
+            self.df_queue.append(TFTPortal_df_struct)
+        if not self.TFTEncounterDistribution_df.empty:
+            TFTEncounterDistribution_ws: dict[str, Any] = self.worksheet_metadata["TFTEncounterDistribution"]
+            sheet8_name: str = TFTEncounterDistribution_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTEncounterDistribution_ws["sheet_name_without_version"]
+            TFTEncounterDistribution_df_struct: dict[str, Any] = {"id": TFTEncounterDistribution_ws["id"], "dType": TFTEncounterDistribution_ws["dType"], "sheet_name": sheet8_name, "sheet": self.TFTEncounterDistribution_df}
+            self.df_queue.append(TFTEncounterDistribution_df_struct)
+        if not self.TFTEncounter_df.empty:
+            TFTEncounter_ws: dict[str, Any] = self.worksheet_metadata["TFTEncounter"]
+            sheet9_name: str = TFTEncounter_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTEncounter_ws["sheet_name_without_version"]
+            TFTEncounter_df_struct: dict[str, Any] = {"id": TFTEncounter_ws["id"], "dType": TFTEncounter_ws["dType"], "sheet_name": sheet9_name, "sheet": self.TFTEncounter_df}
+            self.df_queue.append(TFTEncounter_df_struct)
+        if not self.TFTUnitProperty_df.empty:
+            TFTUnitProperty_ws: dict[str, Any] = self.worksheet_metadata["TFTUnitProperty"]
+            sheet10_name: str = TFTUnitProperty_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTUnitProperty_ws["sheet_name_without_version"]
+            TFTUnitProperty_df_struct: dict[str, Any] = {"id": TFTUnitProperty_ws["id"], "dType": TFTUnitProperty_ws["dType"], "sheet_name": sheet10_name, "sheet": self.TFTUnitProperty_df}
+            self.df_queue.append(TFTUnitProperty_df_struct)
+        if not self.TFTCharacterRole_df.empty:
+            TFTCharacterRole_ws: dict[str, Any] = self.worksheet_metadata["TFTCharacterRole"]
+            sheet11_name: str = TFTCharacterRole_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTCharacterRole_ws["sheet_name_without_version"]
+            TFTCharacterRole_df_struct: dict[str, Any] = {"id": TFTCharacterRole_ws["id"], "dType": TFTCharacterRole_ws["dType"], "sheet_name": sheet11_name, "sheet": self.TFTCharacterRole_df}
+            self.df_queue.append(TFTCharacterRole_df_struct)
+        if not self.TFTItemList_df.empty:
+            TFTItemList_ws: dict[str, Any] = self.worksheet_metadata["TFTItemList"]
+            sheet12_name: str = TFTItemList_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTItemList_ws["sheet_name_without_version"]
+            TFTItemList_df_struct: dict[str, Any] = {"id": TFTItemList_ws["id"], "dType": TFTItemList_ws["dType"], "sheet_name": sheet12_name, "sheet": self.TFTItemList_df}
+            self.df_queue.append(TFTItemList_df_struct)
+        if not self.TFTItem_df.empty:
+            TFTItem_ws: dict[str, Any] = self.worksheet_metadata["TFTItem"]
+            sheet13_name: str = TFTItem_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTItem_ws["sheet_name_without_version"]
+            TFTItem_df_struct: dict[str, Any] = {"id": TFTItem_ws["id"], "dType": TFTItem_ws["dType"], "sheet_name": sheet13_name, "sheet": self.TFTItem_df}
+            self.df_queue.append(TFTItem_df_struct)
+        if not self.TFTTraitList_df.empty:
+            TFTTraitList_ws: dict[str, Any] = self.worksheet_metadata["TFTTraitList"]
+            sheet14_name: str = TFTTraitList_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTTraitList_ws["sheet_name_without_version"]
+            TFTTraitList_df_struct: dict[str, Any] = {"id": TFTTraitList_ws["id"], "dType": TFTTraitList_ws["dType"], "sheet_name": sheet14_name, "sheet": self.TFTTraitList_df}
+            self.df_queue.append(TFTTraitList_df_struct)
+        if not self.TFTTrait_df.empty:
+            TFTTrait_ws: dict[str, Any] = self.worksheet_metadata["TFTTrait"]
+            sheet15_name: str = TFTTrait_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTTrait_ws["sheet_name_without_version"]
+            TFTTrait_df_struct: dict[str, Any] = {"id": TFTTrait_ws["id"], "dType": TFTTrait_ws["dType"], "sheet_name": sheet15_name, "sheet": self.TFTTrait_df}
+            self.df_queue.append(TFTTrait_df_struct)
+        if not self.TFTPVENPC_df.empty:
+            TFTPVENPC_ws: dict[str, Any] = self.worksheet_metadata["TFTPVENPC"]
+            sheet16_name: str = TFTPVENPC_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTPVENPC_ws["sheet_name_without_version"]
+            TFTPVENPC_df_struct: dict[str, Any] = {"id": TFTPVENPC_ws["id"], "dType": TFTPVENPC_ws["dType"], "sheet_name": sheet16_name, "sheet": self.TFTPVENPC_df}
+            self.df_queue.append(TFTPVENPC_df_struct)
+        if not self.TFTScript_df.empty:
+            TFTScript_ws: dict[str, Any] = self.worksheet_metadata["TFTScript"]
+            sheet17_name: str = TFTScript_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTScript_ws["sheet_name_without_version"]
+            TFTScript_df_struct: dict[str, Any] = {"id": TFTScript_ws["id"], "dType": TFTScript_ws["dType"], "sheet_name": sheet17_name, "sheet": self.TFTScript_df}
+            self.df_queue.append(TFTScript_df_struct)
+        if not self.TFTAnnouncement_df.empty:
+            TFTAnnouncement_ws: dict[str, Any] = self.worksheet_metadata["TFTAnnouncement"]
+            sheet18_name: str = TFTAnnouncement_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTAnnouncement_ws["sheet_name_without_version"]
+            TFTAnnouncement_df_struct: dict[str, Any] = {"id": TFTAnnouncement_ws["id"], "dType": TFTAnnouncement_ws["dType"], "sheet_name": sheet18_name, "sheet": self.TFTAnnouncement_df}
+            self.df_queue.append(TFTAnnouncement_df_struct)
+    
     def export_tft_data(self, debug: bool = False, path: Optional[str] = None) -> None:
         '''
         导出云顶之弈数据到工作簿中。产生以下工作表：<br>Export TFT data to a workbook. The following worksheets are added:
@@ -7970,24 +8465,24 @@ class TFTExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        sheet1_name: str = f"{self.patch_number} TFTSet" if self.sheet_naming_fold else "云顶之弈赛季（TFT Set）"
-        sheet2_name: str = f"{self.patch_number} TFTShop" if self.sheet_naming_fold else "云顶之弈商店（TFT Shop）"
-        sheet3_name: str = f"{self.patch_number} TFTShopContent" if self.sheet_naming_fold else "云顶之弈商店内容（TFT Shop Content）"
-        sheet4_name: str = f"{self.patch_number} TFTDropRate" if self.sheet_naming_fold else "云顶之弈掉率表（TFT Drop Rate）"
-        sheet5_name: str = f"{self.patch_number} TFTStageRound" if self.sheet_naming_fold else "云顶之弈回合阶段（TFT Stage Round）"
-        sheet6_name: str = f"{self.patch_number} TFTRound" if self.sheet_naming_fold else "云顶之弈回合（TFT Round）"
-        sheet7_name: str = f"{self.patch_number} TFTPortal" if self.sheet_naming_fold else "云顶之弈传送门（TFT Portal）"
-        sheet8_name: str = f"{self.patch_number} TFTEncounterDistribution" if self.sheet_naming_fold else "云顶之弈开场奇遇（TFT Encounter Distribution）"
-        sheet9_name: str = f"{self.patch_number} TFTEncounter" if self.sheet_naming_fold else "云顶之弈奇遇（TFT Encounter）"
-        sheet10_name: str = f"{self.patch_number} TFTUnitProperty" if self.sheet_naming_fold else "云顶之弈单位属性（TFT Unit Property）"
-        sheet11_name: str = f"{self.patch_number} TFTCharacterRole" if self.sheet_naming_fold else "云顶之弈角色定位（TFT Character Role）"
-        sheet12_name: str = f"{self.patch_number} TFTItemList" if self.sheet_naming_fold else "云顶之弈装备列表（TFT Item List）"
-        sheet13_name: str = f"{self.patch_number} TFTItem" if self.sheet_naming_fold else "云顶之弈装备（TFT Item）"
-        sheet14_name: str = f"{self.patch_number} TFTTraitList" if self.sheet_naming_fold else "云顶之弈羁绊列表（TFT Trait List）"
-        sheet15_name: str = f"{self.patch_number} TFTTrait" if self.sheet_naming_fold else "云顶之弈羁绊（TFT Trait）"
-        sheet16_name: str = f"{self.patch_number} TFTPVENPC" if self.sheet_naming_fold else "云顶之弈电脑玩家英雄（TFT PVE NPC）"
-        sheet17_name: str = f"{self.patch_number} TFTScript" if self.sheet_naming_fold else "云顶之弈脚本（TFT Script）"
-        sheet18_name: str = f"{self.patch_number} TFTAnnouncement" if self.sheet_naming_fold else "云顶之弈通告（TFT Announcement）"
+        sheet1_name: str = self.worksheet_metadata["TFTSet"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTSet"]["sheet_name_without_version"]
+        sheet2_name: str = self.worksheet_metadata["TFTShop"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTShop"]["sheet_name_without_version"]
+        sheet3_name: str = self.worksheet_metadata["TFTShopContent"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTShopContent"]["sheet_name_without_version"]
+        sheet4_name: str = self.worksheet_metadata["TFTDropRate"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTDropRate"]["sheet_name_without_version"]
+        sheet5_name: str = self.worksheet_metadata["TFTStageRound"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTStageRound"]["sheet_name_without_version"]
+        sheet6_name: str = self.worksheet_metadata["TFTRound"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTRound"]["sheet_name_without_version"]
+        sheet7_name: str = self.worksheet_metadata["TFTPortal"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTPortal"]["sheet_name_without_version"]
+        sheet8_name: str = self.worksheet_metadata["TFTEncounterDistribution"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTEncounterDistribution"]["sheet_name_without_version"]
+        sheet9_name: str = self.worksheet_metadata["TFTEncounter"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTEncounter"]["sheet_name_without_version"]
+        sheet10_name: str = self.worksheet_metadata["TFTUnitProperty"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTUnitProperty"]["sheet_name_without_version"]
+        sheet11_name: str = self.worksheet_metadata["TFTCharacterRole"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTCharacterRole"]["sheet_name_without_version"]
+        sheet12_name: str = self.worksheet_metadata["TFTItemList"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTItemList"]["sheet_name_without_version"]
+        sheet13_name: str = self.worksheet_metadata["TFTItem"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTItem"]["sheet_name_without_version"]
+        sheet14_name: str = self.worksheet_metadata["TFTTraitList"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTTraitList"]["sheet_name_without_version"]
+        sheet15_name: str = self.worksheet_metadata["TFTTrait"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTTrait"]["sheet_name_without_version"]
+        sheet16_name: str = self.worksheet_metadata["TFTPVENPC"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTPVENPC"]["sheet_name_without_version"]
+        sheet17_name: str = self.worksheet_metadata["TFTScript"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTScript"]["sheet_name_without_version"]
+        sheet18_name: str = self.worksheet_metadata["TFTAnnouncement"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["TFTAnnouncement"]["sheet_name_without_version"]
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
@@ -8312,7 +8807,39 @@ class FontExtractor(LoLDataExtractor):
         font_CSSIcon_df = pandas.concat([pandas.DataFrame([font_CSSIcon_header])[font_CSSIcon_df.columns], font_CSSIcon_df], ignore_index = True)
         self.font_CSSIcon_df = font_CSSIcon_df
         return 0
-            
+    
+    def enqueue_font_dataframe(self) -> None:
+        if not self.fontDesc_df.empty:
+            fontDesc_ws: dict[str, Any] = self.worksheet_metadata["FontDescription"]
+            sheet1_name: str = fontDesc_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else fontDesc_ws["sheet_name_without_version"]
+            fontDesc_df_struct: dict[str, Any] = {"id": fontDesc_ws["id"], "dType": fontDesc_ws["dType"], "sheet_name": sheet1_name, "sheet": self.fontDesc_df}
+            self.df_queue.append(fontDesc_df_struct)
+        if not self.fontType_df.empty:
+            fontType_ws: dict[str, Any] = self.worksheet_metadata["FontType"]
+            sheet1_name: str = fontType_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else fontType_ws["sheet_name_without_version"]
+            fontType_df_struct: dict[str, Any] = {"id": fontType_ws["id"], "dType": fontType_ws["dType"], "sheet_name": sheet1_name, "sheet": self.fontType_df}
+            self.df_queue.append(fontType_df_struct)
+        if not self.fontResolution_df.empty:
+            fontResolution_ws: dict[str, Any] = self.worksheet_metadata["FontResolution"]
+            sheet1_name: str = fontResolution_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else fontResolution_ws["sheet_name_without_version"]
+            fontResolution_df_struct: dict[str, Any] = {"id": fontResolution_ws["id"], "dType": fontResolution_ws["dType"], "sheet_name": sheet1_name, "sheet": self.fontResolution_df}
+            self.df_queue.append(fontResolution_df_struct)
+        if not self.fontStyle_df.empty:
+            fontStyle_ws: dict[str, Any] = self.worksheet_metadata["FontStyle"]
+            sheet1_name: str = fontStyle_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else fontStyle_ws["sheet_name_without_version"]
+            fontStyle_df_struct: dict[str, Any] = {"id": fontStyle_ws["id"], "dType": fontStyle_ws["dType"], "sheet_name": sheet1_name, "sheet": self.fontStyle_df}
+            self.df_queue.append(fontStyle_df_struct)
+        if not self.font_CSSStyle_df.empty:
+            font_CSSStyle_ws: dict[str, Any] = self.worksheet_metadata["FontCSSStyle"]
+            sheet1_name: str = font_CSSStyle_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else font_CSSStyle_ws["sheet_name_without_version"]
+            font_CSSStyle_df_struct: dict[str, Any] = {"id": font_CSSStyle_ws["id"], "dType": font_CSSStyle_ws["dType"], "sheet_name": sheet1_name, "sheet": self.font_CSSStyle_df}
+            self.df_queue.append(font_CSSStyle_df_struct)
+        if not self.font_CSSIcon_df.empty:
+            font_CSSIcon_ws: dict[str, Any] = self.worksheet_metadata["InlineIcon"]
+            sheet1_name: str = font_CSSIcon_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else font_CSSIcon_ws["sheet_name_without_version"]
+            font_CSSIcon_df_struct: dict[str, Any] = {"id": font_CSSIcon_ws["id"], "dType": font_CSSIcon_ws["dType"], "sheet_name": sheet1_name, "sheet": self.font_CSSIcon_df}
+            self.df_queue.append(font_CSSIcon_df_struct)
+    
     def export_font_data(self, debug: bool = False, path: Optional[str] = None) -> None:
         '''
         导出字体数据到工作簿中。产生以下工作表：<br>Export font data to a workbook. The following worksheets are added:
@@ -8349,12 +8876,12 @@ class FontExtractor(LoLDataExtractor):
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
         workbook_exist: bool = os.path.exists(self.wbPath)
-        sheet1_name: str = f"{self.patch_number} FontDescription" if self.sheet_naming_fold else "字体描述（Font Description）"
-        sheet2_name: str = f"{self.patch_number} FontType" if self.sheet_naming_fold else "字体类型（Font Type）"
-        sheet3_name: str = f"{self.patch_number} FontResolution" if self.sheet_naming_fold else "字体分辨率（Font Resolution）"
-        sheet4_name: str = f"{self.patch_number} FontStyle" if self.sheet_naming_fold else "字体样式（Font Style）"
-        sheet5_name: str = f"{self.patch_number} FontCSSStyle" if self.sheet_naming_fold else "CSS样式（CSS Style）"
-        sheet6_name: str = f"{self.patch_number} InlineIcon" if self.sheet_naming_fold else "内嵌图标（Inline Icon）"
+        sheet1_name: str = self.worksheet_metadata["FontDescription"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["FontDescription"]["sheet_name_without_version"]
+        sheet2_name: str = self.worksheet_metadata["FontType"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["FontType"]["sheet_name_without_version"]
+        sheet3_name: str = self.worksheet_metadata["FontResolution"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["FontResolution"]["sheet_name_without_version"]
+        sheet4_name: str = self.worksheet_metadata["FontStyle"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["FontStyle"]["sheet_name_without_version"]
+        sheet5_name: str = self.worksheet_metadata["FontCSSStyle"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["FontCSSStyle"]["sheet_name_without_version"]
+        sheet6_name: str = self.worksheet_metadata["InlineIcon"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["InlineIcon"]["sheet_name_without_version"]
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
@@ -8825,8 +9352,12 @@ if __name__ == "__main__":
         if len(versions) == 0:
             return 2
         
+        #设置默认导出行为（Set the default export behavior）
+        export: bool = False
+        logPrint('数据将只用来构建数据框，而不会导出。如果需要导出，请在选择数据类型的步骤输入“-2”以设置导出选项。\nData will only be used to build dataframes but not be exported. If you want to export data, please input "-2" in the data type selection step to set export options.')
+        
         #设置工作表集成（Determine whether to integrate sheets in different patches into one workbook）
-        logPrint("是否将不同版本的工作表集成到一个工作簿中？（输入任意非空字符串以确认集成，否则分不同版本保存。）\nDo you want to integrate sheets of different versions into a single workbook? (Input any non-empty string to confirm integration, or null save data into multiple workbooks of the different version.)")
+        logPrint("是否将不同版本的工作表集成到一个工作簿中？（输入任意非空字符串以确认集成，否则分不同版本保存。）\nDo you want to integrate sheets of different versions into a single workbook? (Input any non-empty string to confirm integration, or null to save data into multiple workbooks of the different version.)")
         integrate_str: str = logInput()
         integrate: bool = bool(integrate_str)
         
@@ -8865,12 +9396,12 @@ if __name__ == "__main__":
             nDataOption_iter: int = 0
             #设置要提取的数据类型（Set the type of data to extract）
             while True:
-                logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t角色（Characters）\n6\t装备（Items）\n7\t强化符文（Augments）\n8\t锻造器（Anvils）\n9\t斗魂竞技场回合阶段（Arena Round Phase）\n10\t场景英雄（Cameo）\n11\t荣誉嘉宾（Guests of Honor）\n12\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n13\t字体（Fonts）\nall\t所有（All）")
+                logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t角色（Characters）\n6\t装备（Items）\n7\t强化符文（Augments）\n8\t锻造器（Anvils）\n9\t斗魂竞技场回合阶段（Arena Round Phase）\n10\t场景英雄（Cameo）\n11\t荣誉嘉宾（Guests of Honor）\n12\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n13\t字体（Fonts）\nall\t所有（All）\n-1\t导出所有数据框并清空队列（Export all dataframes and clear queue）")
                 mode: str = logInput()
                 if mode == "":
                     continue
-                elif mode == "-1":
-                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）")
+                elif mode == "-2":
+                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\t单类数据导出（Single-type data export）")
                     while True:
                         option = logInput()
                         if option == "":
@@ -8908,12 +9439,73 @@ if __name__ == "__main__":
                                 logPrint("说明文本在完成变量代换后将同时显示变量名和值。\nBoth the name and the value of variables will appear in the tooltip after variable substitution.")
                             else:
                                 logPrint("说明文本在完成变量代换后将只显示值。\nOnly the value of variables will appear in the tooltip after variable substitution.")
+                        elif option[0] == "4":
+                            logPrint("是否导出数据到Excel中？（输入任意非空字符串以导出，否则不导出。）\nDo you want to export data to Excel? (Submit any non-empty string to export, or null to refuse exporting.)")
+                            export_str: str = logInput()
+                            export = bool(export_str)
+                            if export:
+                                logPrint("数据将导出到Excel工作簿中。\nData will be exported to an Excel workbook.")
+                            else:
+                                logPrint("数据将只用来构建数据框，而不会导出。\nData will only be used to build dataframes but not be exported.")
                         else:
                             logPrint("您的输入有误！请重新输入。\nERROR input. Please try again.")
                             continue
-                        logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）")
+                        logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\t单类数据导出（Single-type data export）")
+                elif mode == "-1":
+                    df_queue: list[dict[str, Any]] = sorted(extractor.df_queue, key = lambda x: x["id"])
+                    if len(df_queue) > 0:
+                        logPrint("正在导出数据……\nExporting data ...", print_time = True)
+                        while True:
+                            try:
+                                if not os.path.exists(extractor.wbPath):
+                                    wbCreateFlag: bool = create_workbook_win32(os.path.abspath(extractor.wbPath))
+                                workbook_exist: bool = os.path.exists(extractor.wbPath)
+                                with (pandas.ExcelWriter(extractor.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(extractor.wbPath, mode = "w")) as writer:
+                                    for j in range(len(df_queue)):
+                                        df_struct: dict[str, Any] = df_queue[j]
+                                        df: pandas.DataFrame = df_struct["sheet"]
+                                        if df_struct["dType"] == "TFTSet":
+                                            df = df.drop(labels = ["BotSkillData SkillAxes", "VfxResourceResolver resourceMap"], axis = 1)
+                                        sheet_name: str = df_struct["sheet_name"]
+                                        logPrint("[%d/%d]%s" %(j + 1, len(df_queue), sheet_name), end = "\r", print_time = True)
+                                        addDefaultStyle(df).to_excel(excel_writer = writer, sheet_name = sheet_name[:31])
+                                    else:
+                                        logPrint("已完成。 | Done.")
+                            except PermissionError:
+                                logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
+                                cont = logInput()
+                                if cont != "" and cont[0] == "0":
+                                    break
+                            else:
+                                logPrint(f"数据已导出到{extractor.wbPath}。\nData have been exported to {extractor.wbPath}.", print_time = True)
+                                break
+                        logPrint("正在为每个工作表追加版本号……\nAppending patch number to each worksheet ...", print_time = True)
+                        while True:
+                            try:
+                                with pandas.ExcelWriter(extractor.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
+                                    for j in range(len(df_queue)):
+                                        df_struct: dict[str, Any] = df_queue[j]
+                                        df: pandas.DataFrame = df_struct["sheet"]
+                                        sheet_name: str = df_struct["sheet_name"]
+                                        logPrint("[%d/%d]%s" %(j + 1, len(df_queue), sheet_name), end = "\r", print_time = True)
+                                        extractor.version_df.to_excel(excel_writer = writer, sheet_name = sheet_name[:31], header = None, index = False, startcol = 0, startrow = 0)
+                                    else:
+                                        logPrint("已完成。 | Done.")
+                            except PermissionError:
+                                logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
+                                cont = logInput()
+                                if cont != "" and cont[0] == "0":
+                                    break
+                            # except FileNotFoundError: #如果前面放弃导出，则接下来可能会进入此步骤……其实不可能（If the user quits exporting previously, then the program may execute this step ... Actually it's impossible）
+                            #     break
+                            else:
+                                break
+                        del df_queue
+                        extractor.df_queue.clear()
+                    else:
+                        logPrint("没有等待导出的数据。\nNo data waiting for export.")
                 elif mode[0] == "0":
-                    LoLDataExtractor.clear_cache()
+                    extractor.clear_cache()
                     break
                 else:
                     data_options: list[int] = []
@@ -8942,57 +9534,96 @@ if __name__ == "__main__":
                         if dOption == 1:
                             logPrint("[%d/%d][%d/%d]正在整理地图数据……\nOrganizing map data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             mapExtractor: MapExtractor = MapExtractor(extractor)
-                            mapExtractor.export_map_data()
+                            mapExtractor.build_map_dataframe()
+                            mapExtractor.enqueue_map_dataframe()
+                            if export:
+                                mapExtractor.export_map_data()
                         elif dOption == 2:
                             logPrint("[%d/%d][%d/%d]正在整理作弊指令数据……\nOrganizing cheat data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             cheatExtractor: CheatExtractor = CheatExtractor(extractor)
-                            cheatExtractor.export_cheat_data()
+                            cheatExtractor.build_cheat_dataframe()
+                            cheatExtractor.enqueue_cheat_dataframe()
+                            if export:
+                                cheatExtractor.export_cheat_data()
                         elif dOption == 3:
                             logPrint("[%d/%d][%d/%d]正在整理符文数据……\nOrganizing perk data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             perkExtractor: PerkExtractor = PerkExtractor(extractor)
-                            perkExtractor.export_perk_data()
+                            perkExtractor.build_perk_dataframe()
+                            perkExtractor.enqueue_perk_dataframe()
+                            if export:
+                                perkExtractor.export_perk_data()
                         elif dOption == 4:
                             logPrint("[%d/%d][%d/%d]正在整理英雄数据……\nOrganizing champion data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             championExtractor1: ChampionExtractor = ChampionExtractor(extractor)
                             championExtractor1.set_mode(False)
-                            championExtractor1.export_champion_data()
+                            championExtractor1.build_champion_dataframe()
+                            championExtractor1.enqueue_champion_dataframe()
+                            if export:
+                                championExtractor1.export_champion_data()
                         elif dOption == 5:
                             logPrint("[%d/%d][%d/%d]正在整理角色数据……\nOrganizing character data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             championExtractor2: ChampionExtractor = ChampionExtractor(extractor)
                             championExtractor2.set_mode(True)
-                            championExtractor2.export_champion_data()
+                            championExtractor2.build_champion_dataframe()
+                            championExtractor2.enqueue_champion_dataframe()
+                            if export:
+                                championExtractor2.export_champion_data()
                         elif dOption == 6:
                             logPrint("[%d/%d][%d/%d]正在整理装备数据……\nOrganizing item data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             itemExtractor: ItemExtractor = ItemExtractor(extractor)
-                            itemExtractor.export_item_data()
+                            itemExtractor.build_item_dataframe()
+                            itemExtractor.enqueue_item_dataframe()
+                            if export:
+                                itemExtractor.export_item_data()
                         elif dOption == 7:
                             logPrint("[%d/%d][%d/%d]正在整理强化符文数据……\nOrganizing augment data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             augmentExtractor: AugmentExtractor = AugmentExtractor(extractor)
-                            augmentExtractor.export_augment_data()
+                            augmentExtractor.build_augment_dataframe()
+                            augmentExtractor.enqueue_augment_dataframe()
+                            if export:
+                                augmentExtractor.export_augment_data()
                         elif dOption == 8:
                             logPrint("[%d/%d][%d/%d]正在整理锻造器数据……\nOrganizing anvil data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             anvilExtractor: AnvilExtractor = AnvilExtractor(extractor)
-                            anvilExtractor.export_anvil_data()
+                            anvilExtractor.build_anvil_dataframe()
+                            anvilExtractor.enqueue_anvil_dataframe()
+                            if export:
+                                anvilExtractor.export_anvil_data()
                         elif dOption == 9:
                             logPrint("[%d/%d][%d/%d]正在整理斗魂竞技场回合数据……\nOrganizing Arena round data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             cherryRoundExtractor: CherryRoundExtractor = CherryRoundExtractor(extractor)
-                            cherryRoundExtractor.export_CherryRound_data()
+                            cherryRoundExtractor.build_CherryRound_dataframe()
+                            cherryRoundExtractor.enqueue_CherryRound_dataframe()
+                            if export:
+                                cherryRoundExtractor.export_CherryRound_data()
                         elif dOption == 10:
                             logPrint("[%d/%d][%d/%d]正在整理场景英雄数据……\nOrganizing Cameo data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             cameoExtractor: CameoExtractor = CameoExtractor(extractor)
-                            cameoExtractor.export_cameo_data()
+                            cameoExtractor.build_cameo_dataframe()
+                            cameoExtractor.enqueue_cameo_dataframe()
+                            if export:
+                                cameoExtractor.export_cameo_data()
                         elif dOption == 11:
                             logPrint("[%d/%d][%d/%d]正在整理荣誉嘉宾数据……\nOrganizing Guest of Honor data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             gohExtractor: GoHExtractor = GoHExtractor(extractor)
-                            gohExtractor.export_GoH_data()
+                            gohExtractor.build_GoH_dataframe()
+                            gohExtractor.enqueue_GoH_dataframe()
+                            if export:
+                                gohExtractor.export_GoH_data()
                         elif dOption == 12:
                             logPrint("[%d/%d][%d/%d]正在整理云顶之弈数据……\nOrganizing TFT data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             tftExtractor: TFTExtractor = TFTExtractor(extractor)
-                            tftExtractor.export_tft_data()
+                            tftExtractor.build_tft_dataframe()
+                            tftExtractor.enqueue_tft_dataframe()
+                            if export:
+                                tftExtractor.export_tft_data()
                         elif dOption == 13:
                             logPrint("[%d/%d][%d/%d]正在整理字体数据……\nOrganizing font data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             fontExtractor: FontExtractor = FontExtractor(extractor)
-                            fontExtractor.export_font_data()
+                            fontExtractor.build_font_dataframe()
+                            fontExtractor.enqueue_font_dataframe()
+                            if export:
+                                fontExtractor.export_font_data()
         else:
             print("是否排序工作表？（输入任意非空字符串以排序，否则不排序。）\nDo you want to sort the worksheets? (Submit any non-empty string to sort, or null to refuse sorting.)")
             sort_sheet_str: str = logInput()
@@ -9063,9 +9694,10 @@ if __name__ == "__main__":
         
         #设置默认导出行为（Set the default export behavior）
         export: bool = False
+        # logPrint('数据将只用来构建数据框，而不会导出。如果需要导出，请在选择数据类型的步骤输入“-2”以设置导出选项。\nData will only be used to build dataframes but not be exported. If you want to export data, please input "-2" in the data type selection step to set export options.')
         
         #设置工作表集成（Determine whether to integrate sheets in different patches into one workbook）
-        logPrint("是否将不同版本的工作表集成到一个工作簿中？（输入任意非空字符串以确认集成，否则分不同版本保存。）\nDo you want to integrate sheets of different versions into a single workbook? (Input any non-empty string to confirm integration, or null save data into multiple workbooks of the different version.)")
+        logPrint("是否将不同版本的工作表集成到一个工作簿中？（输入任意非空字符串以确认集成，否则分不同版本保存。）\nDo you want to integrate sheets of different versions into a single workbook? (Input any non-empty string to confirm integration, or null to save data into multiple workbooks of the different version.)")
         integrate_str: str = logInput()
         integrate: bool = bool(integrate_str)
         
@@ -9124,11 +9756,11 @@ if __name__ == "__main__":
         nDataOption_iter: int = 0
         #设置要提取的数据类型（Set the type of data to extract）
         while True:
-            logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t调试（Debug）\n-1\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t角色（Characters）\n6\t装备（Items）\n7\t强化符文（Augments）\n8\t锻造器（Anvils）\n9\t斗魂竞技场回合阶段（Arena Round Phase）\n10\t场景英雄（Cameo）\n11\t荣誉嘉宾（Guests of Honor）\n12\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n13\t字体（Fonts）\nall\t所有（All）")
+            logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-3\t调试（Debug）\n-2\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t角色（Characters）\n6\t装备（Items）\n7\t强化符文（Augments）\n8\t锻造器（Anvils）\n9\t斗魂竞技场回合阶段（Arena Round Phase）\n10\t场景英雄（Cameo）\n11\t荣誉嘉宾（Guests of Honor）\n12\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n13\t字体（Fonts）\nall\t所有（All）\n-1\t导出所有数据框并清空队列（Export all dataframes and clear queue）")
             mode: str = logInput()
             if mode == "":
                 continue
-            elif mode == "-2":
+            elif mode == "-3":
                 logPrint("请选择草稿选项：\nPlease select a draft option:\n0\t退出调试（Quit debug）\n1\t启动子环境（Start a sub-environment）")
                 while True:
                     draft_option = logInput()
@@ -9193,8 +9825,8 @@ if __name__ == "__main__":
                     else:
                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     logPrint("请选择草稿选项：\nPlease select a draft option:\n0\t退出调试（Quit debug）\n1\t启动子环境（Start a sub-environment）")
-            elif mode == "-1":
-                logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\t数据导出（Data export）")
+            elif mode == "-2":
+                logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\t单类数据导出（Single-type data export）")
                 while True:
                     option = logInput()
                     if option == "":
@@ -9257,9 +9889,62 @@ if __name__ == "__main__":
                     else:
                         logPrint("您的输入有误！请重新输入。\nERROR input. Please try again.")
                         continue
-                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\t数据导出（Data export）")
+                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\t单类数据导出（Single-type data export）")
+            elif mode == "-1":
+                df_queue: list[dict[str, Any]] = sorted(extractor.df_queue, key = lambda x: x["id"])
+                if len(df_queue) > 0:
+                    logPrint("正在导出数据……\nExporting data ...", print_time = True)
+                    while True:
+                        try:
+                            if not os.path.exists(extractor.wbPath):
+                                wbCreateFlag: bool = create_workbook_win32(os.path.abspath(extractor.wbPath))
+                            workbook_exist: bool = os.path.exists(extractor.wbPath)
+                            with (pandas.ExcelWriter(extractor.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(extractor.wbPath, mode = "w")) as writer:
+                                for j in range(len(df_queue)):
+                                    df_struct: dict[str, Any] = df_queue[j]
+                                    df: pandas.DataFrame = df_struct["sheet"]
+                                    if df_struct["dType"] == "TFTSet":
+                                        df = df.drop(labels = ["BotSkillData SkillAxes", "VfxResourceResolver resourceMap"], axis = 1)
+                                    sheet_name: str = df_struct["sheet_name"]
+                                    logPrint("[%d/%d]%s" %(j + 1, len(df_queue), sheet_name), end = "\r", print_time = True)
+                                    addDefaultStyle(df).to_excel(excel_writer = writer, sheet_name = sheet_name[:31])
+                                else:
+                                    logPrint("已完成。 | Done.")
+                        except PermissionError:
+                            logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
+                            cont = logInput()
+                            if cont != "" and cont[0] == "0":
+                                break
+                        else:
+                            logPrint(f"数据已导出到{extractor.wbPath}。\nData have been exported to {extractor.wbPath}.", print_time = True)
+                            break
+                    logPrint("正在为每个工作表追加版本号……\nAppending patch number to each worksheet ...", print_time = True)
+                    while True:
+                        try:
+                            with pandas.ExcelWriter(extractor.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
+                                for j in range(len(df_queue)):
+                                    df_struct: dict[str, Any] = df_queue[j]
+                                    df: pandas.DataFrame = df_struct["sheet"]
+                                    sheet_name: str = df_struct["sheet_name"]
+                                    logPrint("[%d/%d]%s" %(j + 1, len(df_queue), sheet_name), end = "\r", print_time = True)
+                                    extractor.version_df.to_excel(excel_writer = writer, sheet_name = sheet_name[:31], header = None, index = False, startcol = 0, startrow = 0)
+                                else:
+                                    logPrint("已完成。 | Done.")
+                        except PermissionError:
+                            logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
+                            cont = logInput()
+                            if cont != "" and cont[0] == "0":
+                                break
+                        # except FileNotFoundError: #如果前面放弃导出，则接下来可能会进入此步骤……其实不可能（If the user quits exporting previously, then the program may execute this step ... Actually it's impossible）
+                        #     break
+                        else:
+                            break
+                    del df_queue
+                    extractor.df_queue.clear()
+                else:
+                    logPrint("没有等待导出的数据。\nNo data waiting for export.")
             elif mode[0] == "0":
-                LoLDataExtractor.clear_cache()
+                extractor.clear_cache()
                 break
             else:
                 data_options: list[int] = []
@@ -9309,6 +9994,7 @@ if __name__ == "__main__":
                                 repo_game_dir / "data/maps/shipping/map35/map35.bin.json"
                             ]
                         mapExtractor.build_map_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), map_paths)))
+                        mapExtractor.enqueue_map_dataframe()
                         if export:
                             mapExtractor.export_map_data()
                     elif dOption == 2:
@@ -9319,6 +10005,7 @@ if __name__ == "__main__":
                         else:
                             cheat_path = repo_game_dir / "cheats.cdtb.bin.json"
                         cheatExtractor.build_cheat_dataframe(debug = True, path = cheat_path.as_posix())
+                        cheatExtractor.enqueue_cheat_dataframe()
                         if export:
                             cheatExtractor.export_cheat_data()
                     elif dOption == 3:
@@ -9329,6 +10016,7 @@ if __name__ == "__main__":
                         else:
                             perk_path = repo_game_dir / "perks.cdtb.bin.json"
                         perkExtractor.build_perk_dataframe(debug = True, path = perk_path.as_posix())
+                        perkExtractor.enqueue_perk_dataframe()
                         if export:
                             perkExtractor.export_perk_data()
                     elif dOption == 4:
@@ -9346,6 +10034,7 @@ if __name__ == "__main__":
                                 repo_game_dir / "data/characters"
                             ]
                         championExtractor1.build_champion_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), champion_paths)))
+                        championExtractor1.enqueue_champion_dataframe()
                         if export:
                             championExtractor1.export_champion_data()
                     elif dOption == 5:
@@ -9365,6 +10054,7 @@ if __name__ == "__main__":
                                 repo_game_dir / "characters"
                             ]
                         championExtractor2.build_champion_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), character_paths)))
+                        championExtractor2.enqueue_champion_dataframe()
                         if export:
                             championExtractor2.export_champion_data()
                     elif dOption == 6:
@@ -9375,6 +10065,7 @@ if __name__ == "__main__":
                         else:
                             item_path = repo_game_dir / "items.cdtb.bin.json"
                         itemExtractor.build_item_dataframe(debug = True, path = item_path.as_posix())
+                        itemExtractor.enqueue_item_dataframe()
                         if export:
                             itemExtractor.export_item_data()
                     elif dOption == 7:
@@ -9397,6 +10088,7 @@ if __name__ == "__main__":
                                 repo_game_dir / "maps/modespecificdata/kiwi.bin.json"
                             ]
                         augmentExtractor.build_augment_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), augment_paths)))
+                        augmentExtractor.enqueue_augment_dataframe()
                         if export:
                             augmentExtractor.export_augment_data()
                     elif dOption == 8:
@@ -9413,6 +10105,7 @@ if __name__ == "__main__":
                                 repo_game_dir / "data/maps/shipping/map12/map12.bin.json"
                             ]
                         anvilExtractor.build_anvil_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), anvil_paths)))
+                        anvilExtractor.enqueue_anvil_dataframe()
                         if export:
                             anvilExtractor.export_anvil_data()
                     elif dOption == 9:
@@ -9423,6 +10116,7 @@ if __name__ == "__main__":
                         else:
                             CherryRound_path = repo_game_dir / "data/maps/shipping/map30/map30.bin.json"
                         cherryRoundExtractor.build_CherryRound_dataframe(debug = True, path = CherryRound_path.as_posix())
+                        cherryRoundExtractor.enqueue_CherryRound_dataframe()
                         if export:
                             cherryRoundExtractor.export_CherryRound_data()
                     elif dOption == 10:
@@ -9433,6 +10127,7 @@ if __name__ == "__main__":
                         else:
                             cameoPath = repo_game_dir / "data/maps/shipping/map30/map30.bin.json"
                         cameoExtractor.build_cameo_dataframe(debug = True, path = cameoPath.as_posix())
+                        cameoExtractor.enqueue_cameo_dataframe()
                         if export:
                             cameoExtractor.export_cameo_data()
                     elif dOption == 11:
@@ -9449,6 +10144,7 @@ if __name__ == "__main__":
                                 repo_game_dir / "maps/modespecificdata/cherry.bin.json"
                             ]
                         gohExtractor.build_GoH_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), GoHPaths)))
+                        gohExtractor.enqueue_GoH_dataframe()
                         if export:
                             gohExtractor.export_GoH_data()
                     elif dOption == 12:
@@ -9459,6 +10155,7 @@ if __name__ == "__main__":
                         else:
                             map22_path = repo_game_dir / "data/maps/shipping/map22/map22.bin.json"
                         tftExtractor.build_tft_dataframe(debug = True, path = map22_path.as_posix())
+                        tftExtractor.enqueue_tft_dataframe()
                         if export:
                             tftExtractor.export_tft_data()
                     elif dOption == 13:
@@ -9469,6 +10166,7 @@ if __name__ == "__main__":
                         else:
                             font_path = repo_game_dir / "ux/fonts.cdtb.bin.json"
                         fontExtractor.build_font_dataframe(debug = True, path = font_path.as_posix())
+                        fontExtractor.enqueue_font_dataframe()
                         if export:
                             fontExtractor.export_font_data()
         return 0
@@ -9571,6 +10269,6 @@ if __name__ == "__main__":
     status = main() #供用户使用（For user use）
     # status = debug(dir_type = "repo") #供开发者使用（For developer use）
     # status = DIY()
-    #结束日志输入输出流（Cancel the log I/O stream）
+    #结束日志输入流（Cancel the log input stream）
     log.write(f"\n[Program terminated and returned status {status}.]\n")
     log.close()
