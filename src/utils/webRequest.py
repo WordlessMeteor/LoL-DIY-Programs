@@ -137,23 +137,18 @@ def requestUrl(method: str, url: str, retry: int = 5, session: Optional[requests
                 logPrint(f"请求失败！正在尝试第{count}次重新获取数据！\nRequest failed! Trying to recapture the data with url: {url}. Time(s) tried: {count}", write_time = False, verbose = verbose)
         else:
             try:
-                response: Any = source.json() #检验响应内容是否可转换为json（Verify whether the response content can be transformed into json）
-            except:
-                try:
-                    source.raise_for_status()
-                except Exception as e:
-                    session = factory.create() if reserve_config else requests.Session()
-                    # session.trust_env = False
-                    if count > retry:
-                        break
-                    logPrint(e, verbose = verbose)
-                    if isinstance(e, requests.exceptions.HTTPError):
-                        if e.response.status_code in {403, 404}: #DataDragon数据库的数据不存在的状态码是403（The Http status for files not found in DataDragon database is 403）
-                            return (source, e.response.status_code, session)
-                    else:
-                        logPrint(f"请求失败！正在尝试第{count}次重新获取数据！\nRequest failed! Trying to recapture the data with url: {url}. Time(s) tried: {count}", write_time = False, verbose = verbose)
+                source.raise_for_status()
+            except Exception as e:
+                session = factory.create() if reserve_config else requests.Session()
+                # session.trust_env = False
+                if count > retry:
+                    break
+                logPrint(e, verbose = verbose)
+                if isinstance(e, requests.exceptions.HTTPError):
+                    if e.response.status_code in {403, 404}: #DataDragon数据库的数据不存在的状态码是403（The Http status for files not found in DataDragon database is 403）
+                        return (source, e.response.status_code, session)
                 else:
-                    return (source, source.status_code, session)
+                    logPrint(f"请求失败！正在尝试第{count}次重新获取数据！\nRequest failed! Trying to recapture the data with url: {url}. Time(s) tried: {count}", write_time = False, verbose = verbose)
             else:
                 return (source, source.status_code, session)
     return (source, source.status_code, session)

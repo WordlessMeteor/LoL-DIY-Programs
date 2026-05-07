@@ -1,59 +1,61 @@
 import json, os, pandas, requests, shutil, time, unicodedata
 from wcwidth import wcswidth
 from urllib.parse import urljoin
-from typing import Any, Literal
+from typing import Any, Literal, Optional
 
-def requestUrl(method: str, url: str, session: requests.sessions.Session | None = None, **kwargs: Any) -> tuple[requests.models.Response, int, requests.sessions.Session]:
+def requestUrl(method: str, url: str, retry: int = 5, session: Optional[requests.Session] = None, **kwargs: Any) -> tuple[requests.models.Response, int, requests.Session]:
     if session == None:
         session = requests.Session()
         # session.trust_env = False
-    retry: int = 0
+    verify: bool = True
+    count: int = 0
     while True:
-        retry += 1
+        count += 1
         try:
-            source = session.request(method, url, **kwargs)
+            source: requests.Response = session.request(method, url, verify = verify, **kwargs)
         except Exception as e:
             session = requests.Session()
-            if retry > 5:
+            if count > retry:
                 source = requests.Response() #这只是为了保持代码类型检查的一致性（This is meant to keep consistency for code type checking）
                 source.status_code = -1
                 # session.trust_env = False
                 break
             if isinstance(e, requests.exceptions.SSLError):
                 if "[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol" in str(e):
-                    print(f"违反协议导致读取中断！正在尝试第{retry}次重新获取数据！\nEOF occurred in violation of protocol! Trying to recapture the data with url: {url}. Time(s) tried: {retry}")
+                    print(f"违反协议导致读取中断！正在尝试第{count}次重新获取数据！\nEOF occurred in violation of protocol! Trying to recapture the data with url: {url}. Time(s) tried: {count}")
                 elif "certificate verify failed" in str(e):
-                    print(f"SSL证书验证失败！正在尝试第{retry}次重新获取数据！\nSSL certificate verify failed! Trying to recapture the data with url: {url}. Time(s) tried: {retry}")
+                    verify = False
+                    print(f"SSL证书验证失败！正在尝试第{count}次重新获取数据！\nSSL certificate verify failed! Trying to recapture the data with url: {url}. Time(s) tried: {count}")
                 elif "Max retries exceeded with url" in str(e):
-                    print(f"请求数量超过限制！正在尝试第{retry}次重新获取数据！\nMax retries exceed with url! Trying to recapture the data with url: {url}. Time(s) tried: {retry}")
+                    print(f"请求数量超过限制！正在尝试第{count}次重新获取数据！\nMax retries exceed with url! Trying to recapture the data with url: {url}. Time(s) tried: {count}")
             elif isinstance(e, requests.exceptions.ProxyError):
-                print(f"无法连接到代理！正在尝试第{retry}次重新获取数据！\nCannot connect to proxy! Trying to recapture the data with url: {url}. Time(s) tried: {retry}")
+                print(f"无法连接到代理！正在尝试第{count}次重新获取数据！\nCannot connect to proxy! Trying to recapture the data with url: {url}. Time(s) tried: {count}")
             elif isinstance(e, requests.exceptions.ChunkedEncodingError):
-                print(f"接收数据块长度不正确导致连接中断！正在尝试第{retry}次重新获取数据！\nConnection broken: InvalidChunkLength. Trying to recapture the data with url: {url}. Time(s) tried: {retry}")
+                print(f"接收数据块长度不正确导致连接中断！正在尝试第{count}次重新获取数据！\nConnection broken: InvalidChunkLength. Trying to recapture the data with url: {url}. Time(s) tried: {count}")
             elif isinstance(e, requests.exceptions.ConnectionError):
                 if "Failed to establish a new connection: [Errno 11001] getaddrinfo failed" in str(e):
-                    print(f"无法获取网址信息，因此无法建立连接！正在尝试第{retry}次重新获取数据！\nCannot get address information, so connection can't be established! Trying to recapture the data with url: {url}. Time(s) tried: {retry}")
+                    print(f"无法获取网址信息，因此无法建立连接！正在尝试第{count}次重新获取数据！\nCannot get address information, so connection can't be established! Trying to recapture the data with url: {url}. Time(s) tried: {count}")
                 else:
-                    print(f"由于远程服务器端无响应，连接已关闭！正在尝试第{retry}次重新获取数据！\nRemote end closed connection without response. Trying to recapture the data with url: {url}. Time(s) tried: {retry}")
+                    print(f"由于远程服务器端无响应，连接已关闭！正在尝试第{count}次重新获取数据！\nRemote end closed connection without response. Trying to recapture the data with url: {url}. Time(s) tried: {count}")
             elif isinstance(e, requests.exceptions.ReadTimeout):
-                print(f"读取超时！正在尝试第{retry}次重新获取数据！\nRead time out! Trying to recapture the data with url: {url}. Time(s) tried: {retry}")
+                print(f"读取超时！正在尝试第{count}次重新获取数据！\nRead time out! Trying to recapture the data with url: {url}. Time(s) tried: {count}")
             else:
                 print(e)
-                print(f"请求失败！正在尝试第{retry}次重新获取数据！\nRequest failed! Trying to recapture the data with url: {url}. Time(s) tried: {retry}")
+                print(f"请求失败！正在尝试第{count}次重新获取数据！\nRequest failed! Trying to recapture the data with url: {url}. Time(s) tried: {count}")
         else:
             try:
                 source.raise_for_status()
             except Exception as e:
                 session = requests.Session()
                 # session.trust_env = False
-                if retry > 5:
+                if count > retry:
                     break
+                print(e)
                 if isinstance(e, requests.exceptions.HTTPError):
                     if e.response.status_code in {403, 404}:
                         return (source, e.response.status_code, session)
                 else:
-                    print(e)
-                    print(f"请求失败！正在尝试第{retry}次重新获取数据！\nRequest failed! Trying to recapture the data with url: {url}. Time(s) tried: {retry}")
+                    print(f"请求失败！正在尝试第{count}次重新获取数据！\nRequest failed! Trying to recapture the data with url: {url}. Time(s) tried: {count}")
             else:
                 return (source, source.status_code, session)
     return (source, source.status_code, session)
@@ -72,7 +74,7 @@ def format_df(df: pandas.DataFrame, width_exceed_ask: bool = True, direct_print:
     maxWidth: int = shutil.get_terminal_size()[0]
     fields: list[str] = df.columns.tolist()
     for field in fields:
-        maxLens[field] = max(0 if len(df) == 0 else max(map(lambda x: wcswidth(rm_ctrl_char(str(x))), df[field])), wcswidth(rm_ctrl_char(field))) + 2
+        maxLens[field] = max(0 if len(df) == 0 else max(map(lambda x: wcswidth(rm_ctrl_char(str(x))), df[field])), wcswidth(rm_ctrl_char(str(field)))) + 2
     index_len: int = 0 if len(df) == 0 else max(map(lambda x: len(str(x)), old_index)) if reserve_index else max(len(str(start_index)), len(str(start_index + len(df) - 1)))
     if sum(maxLens.values()) + 2 * (len(fields) - 1) > maxWidth or print_index and index_len + sum(maxLens.values()) + 2 * len(fields) > maxWidth:
         if width_exceed_ask:
@@ -108,7 +110,7 @@ def format_df(df: pandas.DataFrame, width_exceed_ask: bool = True, direct_print:
             else:
                 header_alignments = header_alignments_tmp[:df.shape[1]]
         if len(align) == 0:
-            alignments = ["^"] * df.shape[1]
+            alignments: list[str] = ["^"] * df.shape[1]
         elif len(align) == 1:
             alignments = [align] * df.shape[1]
         else:
@@ -127,7 +129,7 @@ def format_df(df: pandas.DataFrame, width_exceed_ask: bool = True, direct_print:
                 result += " " * (index_len + 2)
             for i in range(df.shape[1]):
                 field: str = fields[i]
-                tmp: str = "{0:{align}{w}}".format(rm_ctrl_char(field), align = header_alignments[i], w = maxLens[field] - count_nonASCII(field))
+                tmp: str = "{0:{align}{w}}".format(rm_ctrl_char(str(field)), align = header_alignments[i], w = maxLens[field] - count_nonASCII(field))
                 result += tmp
                 #print(tmp, end = "")
                 if i != df.shape[1] - 1:
@@ -158,14 +160,9 @@ def format_df(df: pandas.DataFrame, width_exceed_ask: bool = True, direct_print:
 
 #允许用户选择语言（This program allows users to select a language）
 print('请选择翻译语言。输入“all”以翻译成所有语言。\nPlease select a language to translate into. Submit "all" to translate into all languages.')
-language_ddragon: dict[int, dict[str, str]] = {1: {"CODE": "ar_AE", "LANGUAGE (EN)": "Arabic (United Arab Emirates)", "LANGUAGE (ZH)": "阿拉伯语（阿拉伯联合酋长国）", "Applicable CDragon Data Patches": "9.20～10.1, 13.20+"}, 2: {"CODE": "cs_CZ", "LANGUAGE (EN)": "Czech (Czech Republic)", "LANGUAGE (ZH)": "捷克语（捷克共和国）", "Applicable CDragon Data Patches": "7.1+"}, 3: {"CODE": "el_GR", "LANGUAGE (EN)": "Greek (Greece)", "LANGUAGE (ZH)": "希腊语（希腊）", "Applicable CDragon Data Patches": "9.1+"}, 4: {"CODE": "pl_PL", "LANGUAGE (EN)": "Polish (Poland)", "LANGUAGE (ZH)": "波兰语（波兰）", "Applicable CDragon Data Patches": "9.1+"}, 5: {"CODE": "ro_RO", "LANGUAGE (EN)": "Romanian (Romania)", "LANGUAGE (ZH)": "罗马尼亚语（罗马尼亚）", "Applicable CDragon Data Patches": "9.1+"}, 6: {"CODE": "hu_HU", "LANGUAGE (EN)": "Hungarian (Hungary)", "LANGUAGE (ZH)": "匈牙利语（匈牙利）", "Applicable CDragon Data Patches": "9.1+"}, 7: {"CODE": "en_GB", "LANGUAGE (EN)": "English (United Kingdom)", "LANGUAGE (ZH)": "英语（英国）", "Applicable CDragon Data Patches": "9.1+"}, 8: {"CODE": "de_DE", "LANGUAGE (EN)": "German (Germany)", "LANGUAGE (ZH)": "德语（德国）", "Applicable CDragon Data Patches": "7.1+"}, 9: {"CODE": "es_ES", "LANGUAGE (EN)": "Spanish (Spain)", "LANGUAGE (ZH)": "西班牙语（西班牙）", "Applicable CDragon Data Patches": "9.1+"}, 10: {"CODE": "it_IT", "LANGUAGE (EN)": "Italian (Italy)", "LANGUAGE (ZH)": "意大利语（意大利）", "Applicable CDragon Data Patches": "9.1+"}, 11: {"CODE": "fr_FR", "LANGUAGE (EN)": "French (France)", "LANGUAGE (ZH)": "法语（法国）", "Applicable CDragon Data Patches": "9.1+"}, 12: {"CODE": "ja_JP", "LANGUAGE (EN)": "Japanese (Japan)", "LANGUAGE (ZH)": "日语（日本）", "Applicable CDragon Data Patches": "9.1+"}, 13: {"CODE": "ko_KR", "LANGUAGE (EN)": "Korean (Korea)", "LANGUAGE (ZH)": "朝鲜语（韩国）", "Applicable CDragon Data Patches": "9.7+"}, 14: {"CODE": "es_MX", "LANGUAGE (EN)": "Spanish (Mexico)", "LANGUAGE (ZH)": "西班牙语（墨西哥）", "Applicable CDragon Data Patches": "9.1+"}, 15: {"CODE": "es_AR", "LANGUAGE (EN)": "Spanish (Argentina)", "LANGUAGE (ZH)": "西班牙语（阿根廷）", "Applicable CDragon Data Patches": "9.7+"}, 16: {"CODE": "pt_BR", "LANGUAGE (EN)": "Portuguese (Brazil)", "LANGUAGE (ZH)": "葡萄牙语（巴西）", "Applicable CDragon Data Patches": "9.1+"}, 17: {"CODE": "en_US", "LANGUAGE (EN)": "English (United States)", "LANGUAGE (ZH)": "英语（美国）", "Applicable CDragon Data Patches": "9.1+"}, 18: {"CODE": "en_AU", "LANGUAGE (EN)": "English (Australia)", "LANGUAGE (ZH)": "英语（澳大利亚）", "Applicable CDragon Data Patches": "9.1+"}, 19: {"CODE": "ru_RU", "LANGUAGE (EN)": "Russian (Russia)", "LANGUAGE (ZH)": "俄语（俄罗斯）", "Applicable CDragon Data Patches": "9.1+"}, 20: {"CODE": "tr_TR", "LANGUAGE (EN)": "Turkish (Turkey)", "LANGUAGE (ZH)": "土耳其语（土耳其）", "Applicable CDragon Data Patches": "9.1+"}, 21: {"CODE": "ms_MY", "LANGUAGE (EN)": "Malay (Malaysia)", "LANGUAGE (ZH)": "马来语（马来西亚）", "Applicable CDragon Data Patches": ""}, 22: {"CODE": "en_PH", "LANGUAGE (EN)": "English (Republic of the Philippines)", "LANGUAGE (ZH)": "英语（菲律宾共和国）", "Applicable CDragon Data Patches": "10.5+"}, 23: {"CODE": "en_SG", "LANGUAGE (EN)": "English (Singapore)", "LANGUAGE (ZH)": "英语（新加坡）", "Applicable CDragon Data Patches": "10.5+"}, 24: {"CODE": "th_TH", "LANGUAGE (EN)": "Thai (Thailand)", "LANGUAGE (ZH)": "泰语（泰国）", "Applicable CDragon Data Patches": "9.7+"}, 25: {"CODE": "vn_VN", "LANGUAGE (EN)": "Vietnamese (Viet Nam)", "LANGUAGE (ZH)": "越南语（越南）", "Applicable CDragon Data Patches": "9.7～13.9"}, 26: {"CODE": "vi_VN", "LANGUAGE (EN)": "Vietnamese (Viet Nam)", "LANGUAGE (ZH)": "越南语（越南）", "Applicable CDragon Data Patches": "12.17+"}, 27: {"CODE": "id_ID", "LANGUAGE (EN)": "Indonesian (Indonesia)", "LANGUAGE (ZH)": "印度尼西亚语（印度尼西亚）", "Applicable CDragon Data Patches": ""}, 28: {"CODE": "zh_MY", "LANGUAGE (EN)": "Chinese (Malaysia)", "LANGUAGE (ZH)": "中文（马来西亚）", "Applicable CDragon Data Patches": "10.5+"}, 29: {"CODE": "zh_CN", "LANGUAGE (EN)": "Chinese (China)", "LANGUAGE (ZH)": "中文（中国）", "Applicable CDragon Data Patches": "9.7+"}, 30: {"CODE": "zh_TW", "LANGUAGE (EN)": "Chinese (Taiwan)", "LANGUAGE (ZH)": "中文（台湾）", "Applicable CDragon Data Patches": "9.7+"}}
-language_cdragon: dict[str, str] = {}
-for i in language_ddragon:
-    if language_ddragon[i]["CODE"] == "en_US":
-        language_cdragon[language_ddragon[i]["CODE"]] = "default" #在CommunityDragon数据库上，美服正式服的数据资源代码是default，而不是小写的en_US（The code for English (US) data resources on CommunityDragon database is "default" instead of the lowercase of "en_US"）
-    else:
-        language_cdragon[language_ddragon[i]["CODE"]] = language_ddragon[i]["CODE"].lower()
-language_dict: dict[str, list[int | str]] = {"No.": list(language_ddragon.keys()), "CODE": list(map(lambda x: x["CODE"], language_ddragon.values())), "LANGUAGE": list(map(lambda x: x["LANGUAGE (EN)"], language_ddragon.values())), "语言": list(map(lambda x: x["LANGUAGE (ZH)"], language_ddragon.values())), "Applicable CDragon Data Patches": list(map(lambda x: x["Applicable CDragon Data Patches"], language_ddragon.values()))}
+language_ddragon: dict[str, dict[str, str]] = {"ar_AE": {"desc_en": "Arabic (United Arab Emirates)", "desc_zh": "阿拉伯语（阿拉伯联合酋长国）", "desc_local": "العربية (الإمارات العربية المتحدة)", "Available CDragon Data Patches": "9.20～10.1, 13.20+"}, "cs_CZ": {"desc_en": "Czech (Czech Republic)", "desc_zh": "捷克语（捷克共和国）", "desc_local": "Čeština (Česká republika)", "Available CDragon Data Patches": "7.1+"}, "el_GR": {"desc_en": "Greek (Greece)", "desc_zh": "希腊语（希腊）", "desc_local": "Ελληνικά (Ελλάδα)", "Available CDragon Data Patches": "7.1+"}, "pl_PL": {"desc_en": "Polish (Poland)", "desc_zh": "波兰语（波兰）", "desc_local": "Polski (Polska)", "Available CDragon Data Patches": "7.1+"}, "ro_RO": {"desc_en": "Romanian (Romania)", "desc_zh": "罗马尼亚语（罗马尼亚）", "desc_local": "Română (România)", "Available CDragon Data Patches": "7.1+"}, "hu_HU": {"desc_en": "Hungarian (Hungary)", "desc_zh": "匈牙利语（匈牙利）", "desc_local": "Magyar (Magyarország)", "Available CDragon Data Patches": "7.1+"}, "en_GB": {"desc_en": "English (United Kingdom)", "desc_zh": "英语（英国）", "desc_local": "English (United Kingdom)", "Available CDragon Data Patches": "7.1+"}, "de_DE": {"desc_en": "German (Germany)", "desc_zh": "德语（德国）", "desc_local": "Deutsch (Deutschland)", "Available CDragon Data Patches": "7.1+"}, "es_ES": {"desc_en": "Spanish (Spain)", "desc_zh": "西班牙语（西班牙）", "desc_local": "Español (España)", "Available CDragon Data Patches": "7.1+"}, "it_IT": {"desc_en": "Italian (Italy)", "desc_zh": "意大利语（意大利）", "desc_local": "Italiano (Italia)", "Available CDragon Data Patches": "7.1+"}, "fr_FR": {"desc_en": "French (France)", "desc_zh": "法语（法国）", "desc_local": "Français (France)", "Available CDragon Data Patches": "7.1+"}, "ja_JP": {"desc_en": "Japanese (Japan)", "desc_zh": "日语（日本）", "desc_local": "日本語 (日本)", "Available CDragon Data Patches": "7.1+"}, "ko_KR": {"desc_en": "Korean (Korea)", "desc_zh": "朝鲜语（韩国）", "desc_local": "한국어 (대한민국)", "Available CDragon Data Patches": "9.7+"}, "es_MX": {"desc_en": "Spanish (Mexico)", "desc_zh": "西班牙语（墨西哥）", "desc_local": "Español (México)", "Available CDragon Data Patches": "7.1+"}, "es_AR": {"desc_en": "Spanish (Argentina)", "desc_zh": "西班牙语（阿根廷）", "desc_local": "Español (Argentina)", "Available CDragon Data Patches": "9.7+"}, "pt_BR": {"desc_en": "Portuguese (Brazil)", "desc_zh": "葡萄牙语（巴西）", "desc_local": "Português (Brasil)", "Available CDragon Data Patches": "7.1+"}, "en_US": {"desc_en": "English (United States)", "desc_zh": "英语（美国）", "desc_local": "English (United States)", "Available CDragon Data Patches": "7.1+"}, "en_AU": {"desc_en": "English (Australia)", "desc_zh": "英语（澳大利亚）", "desc_local": "English (Australia)", "Available CDragon Data Patches": "7.1+"}, "ru_RU": {"desc_en": "Russian (Russia)", "desc_zh": "俄语（俄罗斯）", "desc_local": "Русский (Россия)", "Available CDragon Data Patches": "7.1+"}, "tr_TR": {"desc_en": "Turkish (Turkey)", "desc_zh": "土耳其语（土耳其）", "desc_local": "Türkçe (Türkiye)", "Available CDragon Data Patches": "7.1+"}, "ms_MY": {"desc_en": "Malay (Malaysia)", "desc_zh": "马来语（马来西亚）", "desc_local": "Bahasa Melayu (Malaysia)", "Available CDragon Data Patches": ""}, "en_PH": {"desc_en": "English (Republic of the Philippines)", "desc_zh": "英语（菲律宾共和国）", "desc_local": "English (Pilipinas)", "Available CDragon Data Patches": "10.5+"}, "en_SG": {"desc_en": "English (Singapore)", "desc_zh": "英语（新加坡）", "desc_local": "English (Singapore)", "Available CDragon Data Patches": "10.5+"}, "th_TH": {"desc_en": "Thai (Thailand)", "desc_zh": "泰语（泰国）", "desc_local": "ภาษาไทย (ประเทศไทย)", "Available CDragon Data Patches": "9.7+"}, "vn_VN": {"desc_en": "Vietnamese (Viet Nam)", "desc_zh": "越南语（越南）", "desc_local": "Tiếng Việt (Việt Nam)", "Available CDragon Data Patches": "9.7～13.9"}, "vi_VN": {"desc_en": "Vietnamese (Viet Nam)", "desc_zh": "越南语（越南）", "desc_local": "Tiếng Việt (Việt Nam)", "Available CDragon Data Patches": "12.17+"}, "id_ID": {"desc_en": "Indonesian (Indonesia)", "desc_zh": "印度尼西亚语（印度尼西亚）", "desc_local": "Bahasa Indonesia (Indonesia)", "Available CDragon Data Patches": "15.5+"}, "zh_MY": {"desc_en": "Chinese (Malaysia)", "desc_zh": "中文（马来西亚）", "desc_local": "中文 (马来西亚)", "Available CDragon Data Patches": "10.5+"}, "zh_CN": {"desc_en": "Chinese (China)", "desc_zh": "中文（中国）", "desc_local": "中文 (中国)", "Available CDragon Data Patches": "9.7+"}, "zh_TW": {"desc_en": "Chinese (Taiwan)", "desc_zh": "中文（台湾）", "desc_local": "中文 (台灣)", "Available CDragon Data Patches": "9.7+"}}
+language_cdragon: dict[str, str] = {key: "default" if key == "en_US" else key.lower() for key in language_ddragon}
+language_dict: dict[str, list[int | str]] = {"No.": list(range(1, len(language_ddragon) + 1)), "CODE": list(language_ddragon.keys()), "LANGUAGE": list(map(lambda x: x["desc_local"], language_ddragon.values())), "Available CDragon Data Patches": list(map(lambda x: x["Available CDragon Data Patches"], language_ddragon.values()))}
 language_df: pandas.DataFrame = pandas.DataFrame(language_dict)
 print(format_df(language_df)[0])
 while True:
@@ -173,7 +170,7 @@ while True:
     if language_option == "" or language_option in [str(i) for i in range(1, 31)]:
         if language_option == "":
             language_option = "29"
-        language_code: str = language_ddragon[int(language_option)]["CODE"]
+        language_code: str = list(language_ddragon.keys())[int(language_option) - 1]
         break
     elif language_option[0] == "0":
         exit()
@@ -190,7 +187,7 @@ session: requests.Session = requests.Session()
 #获取翻译相关文件的地址（Get the URLs of translation files）
 print("[%s]" %(time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())), end = "")
 print("正在读取美测服在线索引……\nReading the online index file of pbe data resources...")
-source, status, session = requestUrl("GET", "https://raw.communitydragon.org/pbe/cdragon/files.exported.txt", session)
+source, status, session = requestUrl("GET", "https://raw.communitydragon.org/pbe/cdragon/files.exported.txt", session = session)
 if status != 200:
     if status == -1:
         print("获取索引失败！请检查系统网络状况和代理设置。程序即将退出。\nIndex capture failure! Please check the system network condition and agent configuration. The program will exit now.")
@@ -219,7 +216,7 @@ for i in range(len(language_codes)):
         cnt += 1
         print("[%s]" %(time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())), end = "")
         print("[%d/%d][%d/%d]正在获取文件（Fetching file）： %s" %(i + 1, len(language_codes), cnt, len(trans_files), url))
-        src, status, session = requestUrl("GET", url, session)
+        src, status, session = requestUrl("GET", url, session = session)
         if status != 200:
             if status == -1:
                 print("翻译数据获取失败！将转为离线模式。\nTranslation data capture failed. The program is going to retry in the offline mode.")
@@ -262,9 +259,8 @@ for i in range(len(language_codes)):
     #调整字典键序（Adjust the order of keys）
     trans_data_organized: dict[str, dict[str, str]] = {}
     for i in language_ddragon:
-        language_code_tmp: str = language_ddragon[i]["CODE"]
-        if language_code_tmp in trans_data:
-            trans_data_organized[language_code_tmp] = trans_data[language_code_tmp]
+        if i in trans_data:
+            trans_data_organized[i] = trans_data[i]
     #保存获取到的翻译数据（Export the captured translation data）
     with open("trans.json", "w", encoding = "utf-8") as fp:
         json.dump(trans_data_organized, fp, indent = 4, ensure_ascii = False)
