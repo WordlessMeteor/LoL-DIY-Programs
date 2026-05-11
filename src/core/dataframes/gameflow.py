@@ -165,6 +165,71 @@ def extract_champSelect_player(champ_select_session: dict[str, Any], cellId: Opt
     else:
         return {}
 
+async def get_champSelect_actions(connection: Connection, cellId: Optional[int] = None) -> list[dict[str, Any]]:
+    '''
+    从英雄选择会话中提取某个槽位的玩家动作。需在线使用。<br>Get the actions of a player with some `cellId` from the champ select sesion. Need to be called online.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param cellId: 待提取动作的玩家的槽位序号。<br>The cellId of the player to extract the action.<br>如果不指定，则默认获取用户自己的动作。<br>If unspecified, the function will return the action of the user itself.
+    :type cellId: int
+    :return: 指定槽位序号的玩家动作。<br>Action of the player with specified `cellId`.
+    :rtype: list[dict[str, Any]]
+    '''
+    champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
+    if "errorCode" in champ_select_session:
+        return []
+    else:
+        #参数预处理（Parameter pre-process）
+        if cellId == None:
+            cellId = champ_select_session["localPlayerCellId"]
+        return extract_champSelect_actions(champ_select_session, cellId = cellId)
+
+async def get_champSelect_action(connection: Connection, cellId: Optional[int] = None) -> dict[str, Any]:
+    '''
+    从英雄选择会话中提取某个槽位的玩家的**当前**动作。需在线使用。<br>Get the **current** action of a player with some `cellId` from the champ select sesion. Need to be called online.
+    
+    一个玩家的动作列表中**第一个未完成**的动作视为该玩家的当前动作。<br>The **first incomplete** action of a player is regarded as this player's current action.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param cellId: 待提取动作的玩家的槽位序号。<br>The cellId of the player to extract the action.<br>如果不指定，则默认获取用户自己的动作。<br>If unspecified, the function will return the action of the user itself.
+    :type cellId: int
+    :return: 指定槽位序号的玩家的当前动作。<br>Current action of the player with specified `cellId`.
+    :rtype: dict[str, Any]
+    '''
+    champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
+    if "errorCode" in champ_select_session:
+        return {}
+    else:
+        #参数预处理（Parameter pre-process）
+        if cellId == None:
+            cellId = champ_select_session["localPlayerCellId"]
+        actions: list[dict[str, Any]] = extract_champSelect_actions(champ_select_session, cellId = cellId)
+        current_action: dict[str, Any] = {}
+        if len(actions) > 0:
+            for action in actions:
+                if not action["completed"]:
+                    current_action = action
+                    break
+        return current_action #如果都完成，则返回最后一个动作（If all actions are completed, the return the last action）
+
+def extract_champSelect_actions(champ_select_session: dict[str, Any], cellId: Optional[int] = None) -> list[dict[str, Any]]:
+    '''
+    从英雄选择会话中提取某个槽位的玩家动作。离线使用。<br>Get the actions of a player with some `cellId` from the champ select session. For offline use.
+    
+    :param champ_select_session: 英雄选择会话。<br>Champ select session.
+    :type champ_select_session: dict[str, Any]
+    :param cellId: 待提取动作的玩家的槽位序号。<br>The cellId of the player to extract the action.<br>如果不指定，则默认获取用户自己的动作。<br>If unspecified, the function will return the action of the user itself.
+    :type cellId: int
+    :return: 指定槽位序号的玩家动作。<br>Actions of the player with specified `cellId`.
+    :rtype: list[dict[str, Any]]
+    '''
+    if cellId == None:
+        cellId = champ_select_session["localPlayerCellId"]
+    actionList: list[dict[str, Any]] = [action for stage in champ_select_session["actions"] for action in stage]
+    return list(filter(lambda x: x["actorCellId"] == cellId, actionList))
+
 async def sort_ChampSelect_players(connection: Connection, champ_select_session: dict[str, Any], LoLChampions: dict[int, dict[str, Any]], championSkins: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], wardSkins: dict[int, dict[str, Any]], playerMode: int = 1, skipBot: bool = True, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame: #以下代码来自聊天服务脚本（The following code come from Customized Program 16）
     '''
     将英雄选择会话中的玩家信息整理形成一个表格。<br>Organize the player information in a champ select session into a dataframe.

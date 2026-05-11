@@ -14,7 +14,7 @@ from src.core.config.headers import champSelect_player_header, custom_lobby_head
 from src.core.config.headers import LoLChampion_inventory_header as LoLChampion_header
 from src.core.config.localization import gamemodes, gamemaps, ARAMmaps, gameTypes_configId_map, spectatorPolicies, report_categories, tiers_all, team_colors_int, subteam_colors, rarities, krarities, augment_rarity, skinClassifications, damageTypes, conversationTypes, messageTypes, system_messages, invidStates, invidTypes, slotTypes, availabilities, inventoryType_dict, ownershipTypes, botDifficulty_dict, roles, positions, eventTypes_liveclient, DragonTypes, team_colors_str, honorType_tooltip_headers, honorType_tooltip_bodies, zoom_scale_dict
 from src.core.config.conditional_formatting import addFormat_inGame_allPlayer_wb
-from src.core.dataframes.gameflow import get_gameflow_phase, get_champ_select_session, get_champSelect_player, sort_ChampSelect_players, sort_inGame_players, sort_eog_playerstat_lol_data, sort_eog_stat_tft_data
+from src.core.dataframes.gameflow import get_gameflow_phase, get_champ_select_session, get_champSelect_player, get_champSelect_action, sort_ChampSelect_players, sort_inGame_players, sort_eog_playerstat_lol_data, sort_eog_stat_tft_data
 from src.core.dataframes.champions import test_bot, sort_inventory_champions, filter_champion
 from src.core.dataframes.gameMode import check_available_queue
 from src.core.dataframes.matchHistory import get_game_summary_sgp, sort_LoLGame_summary_sgp, sort_TFTGame_summary
@@ -30,7 +30,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/04/29
+# 更新（Last update）：     2026/05/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -6225,62 +6225,110 @@ async def pick_champion(connection: Connection) -> None:
     :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
     :type connection: Connection
     '''
-    logPrint("请选择行为类型：\nPlease select an action:\n1\t禁用（Ban）\n2\t选择（Pick）\n3\t重随（Reroll）\n4\t投票（Vote）")
+    logPrint("请选择行为类型：\nPlease select an action:\n1\t智能选择（Select）\n2\t仅锁定（Lock）\n3\t智能选择并锁定（Select and lock）\n4\t禁用（Ban）\n5\t选择（Pick）\n6\t重随（Reroll）\n7\t投票（Vote）")
     while True:
         option: str = logInput()
         if option == "":
             continue
         elif option[0] == "0":
             break
-        elif option[0] in {"1", "2", "4"}:
+        elif option[0] in {"1", "2", "3", "4", "5", "7"}:
             gameflow_phase: str = await get_gameflow_phase(connection)
             if gameflow_phase == "ChampSelect":
                 champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
-                action_type: str = "ban" if option[0] == "1" else "pick" if option[0] == "2" else "vote"
-                if action_type == "ban":
-                    if champ_select_session["isLegacyChampSelect"]:
-                        selectable_champion_ids: list[int] = await (await connection.request("GET", "/lol-champ-select/v1/bannable-champion-ids")).json()
-                    else:
-                        selectable_champion_ids = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/bannable-champion-ids")).json()
-                else:
-                    if champ_select_session["allowSubsetChampionPicks"]:
-                        selectable_champion_ids = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/subset-champion-list")).json()
-                    else:
-                        if champ_select_session["isLegacyChampSelect"]:
-                            selectable_champion_ids = await (await connection.request("GET", "/lol-champ-select/v1/pickable-champion-ids")).json()
+                #第一步：确定动作类型（Step 1: Determine the action type）
+                action_type: str = "" #初始化用于传入英雄选择接口请求主体的动作类型（Initialize the action type to be passed into the request body of the champ select endpoint）
+                current_localAction: dict[str, Any] = {} #初始化当前动作。这个数据在第二步还要用到（Initialize the current action. This is also used in Step 2）
+                lock_only: bool = option[0] == "2" #是否仅锁定当前选择（Whether to only lock the current selection）
+                if option[0] in {"1", "2", "3"}: #根据英雄选择会话自动判断动作类型（Judge action type according to the champ select session）
+                    timer_phase: str = champ_select_session["timer"]["phase"]
+                    action_type_got: bool = False
+                    if timer_phase == "PLANNING":
+                        if option[0] == "1":
+                            action_type = "pick" #阵容规划阶段的选择视为声明英雄（Selection during the planning phase is regarded as pick intent）
+                            action_type_got = True
                         else:
-                            selectable_champion_ids = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/pickable-champion-ids")).json()
-                LoLChampion_df: pandas.DataFrame = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)[0]
-                LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict.get(x, []), LoLChampion_df["id"][1:]))
-                LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
-                LoLChampion_df_query_initial: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print + ["colloq"]] #代表初始值（Represent the initial value）
-                LoLChampion_df_query: pandas.DataFrame = LoLChampion_df_query_initial #代表查询过程中的值（Represent the value during a query）
-                LoLChampion_df_selected: pandas.DataFrame = pandas.concat([LoLChampion_df.iloc[:1, :], LoLChampion_df[LoLChampion_df["id"].isin(selectable_champion_ids)]], ignore_index = True)
-                print(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print])[0]) #虽然这里输出的是筛选后的表格，但实际上用户仍然可以尝试选择不可用的英雄（Although the selected table is output here, users can still try choosing unavailable champions）
-                log.write(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
-                logPrint('请输入英雄的序号或者名称。输入“00”以从头筛选。\nPlease input the id or name of a champion. Submit "00" to de novo filter champions.')
-                back: bool = False
-                while True:
-                    champion_queryStr: str = logInput()
-                    if champion_queryStr == "":
-                        continue
-                    elif champion_queryStr == "0":
-                        back = True
-                        pick_championId: int = 0
-                        break
-                    elif champion_queryStr == "-3":
-                        pick_championId = -3
-                        break
+                            logPrint("您正处于阵容规划阶段。请等待禁用阶段开始。\nYou're in the planning phase. Please wait for ban phase to start.")
+                    elif timer_phase == "BAN_PICK":
+                        current_localAction = await get_champSelect_action(connection)
+                        if current_localAction == {}:
+                            logPrint("动作获取异常。\nAction error.")
+                        else:
+                            action_type: str = current_localAction["type"]
+                            if lock_only and current_localAction["championId"] == 0: #如果选择“仅锁定”且用户并没有作出任何选择，那么认为动作类型没有准备就绪，不执行下面的程序（If the user selects "Lock" but doesn't select any champion, then the program considers action type not ready and thus won't execute the downstream）
+                                if action_type == "ban":
+                                    logPrint("禁用一个英雄！\nBan a champion!")
+                                elif action_type == "pick":
+                                    logPrint("选择你的英雄！\nPick your champion!")
+                                elif action_type == "vote":
+                                    logPrint("票选一名英雄！\nVote for a champion!")
+                                else:
+                                    logPrint("请选择一个英雄。\nPlease select a champion.")
+                            else:
+                                action_type_got = True
+                    elif timer_phase == "FINALIZATION":
+                        logPrint("您已完成英雄选择。准备好你的赛前配置！\nYou've finished champ select. Prepare your loadout!")
                     else:
-                        break_flag, pick_championId, LoLChampion_df_query = filter_champion(champion_queryStr, LoLChampion_df_query, LoLChampion_df_query_initial)
-                        if break_flag:
+                        logPrint("未识别到的英雄选择阶段：%s\nUnidentified champ select phase: %s" %(timer_phase, timer_phase))
+                    if not action_type_got:
+                        logPrint("请选择行为类型：\nPlease select an action:\n1\t智能选择（Select）\n2\t仅锁定（Lock）\n3\t智能选择并锁定（Select and lock）\n4\t禁用（Ban）\n5\t选择（Pick）\n6\t重随（Reroll）\n7\t投票（Vote）")
+                        continue
+                else:
+                    action_type = "ban" if option[0] == "4" else "pick" if option[0] == "5" else "vote"
+                #第二步：确定英雄序号（Step 2: Determine championId）
+                pick_championId: int = 0 #初始化用于传入英雄选择接口请求主体的英雄序号（Initialize championId to be passed into the request body of the champ select endpoint）
+                if lock_only: #在仅锁定当前选择时，从当前动作中获取已选择的英雄序号（When the user chooses to only lock the current selection, get the selected championId from the current action）
+                    pick_championId = current_localAction["championId"] #这里已选择的英雄序号不可能是0（Here the selected championId can't be 0）
+                else:
+                    if action_type == "ban":
+                        if champ_select_session["isLegacyChampSelect"]:
+                            selectable_champion_ids: list[int] = await (await connection.request("GET", "/lol-champ-select/v1/bannable-champion-ids")).json()
+                        else:
+                            selectable_champion_ids = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/bannable-champion-ids")).json()
+                    else:
+                        if champ_select_session["allowSubsetChampionPicks"]:
+                            selectable_champion_ids = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/subset-champion-list")).json()
+                        else:
+                            if champ_select_session["isLegacyChampSelect"]:
+                                selectable_champion_ids = await (await connection.request("GET", "/lol-champ-select/v1/pickable-champion-ids")).json()
+                            else:
+                                selectable_champion_ids = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/pickable-champion-ids")).json()
+                    LoLChampion_df: pandas.DataFrame = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)[0]
+                    LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict.get(x, []), LoLChampion_df["id"][1:]))
+                    LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
+                    LoLChampion_df_query_initial: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print + ["colloq"]] #代表初始值（Represent the initial value）
+                    LoLChampion_df_query: pandas.DataFrame = LoLChampion_df_query_initial #代表查询过程中的值（Represent the value during a query）
+                    LoLChampion_df_selected: pandas.DataFrame = pandas.concat([LoLChampion_df.iloc[:1, :], LoLChampion_df[LoLChampion_df["id"].isin(selectable_champion_ids)]], ignore_index = True)
+                    print(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print])[0]) #虽然这里输出的是筛选后的表格，但实际上用户仍然可以尝试选择不可用的英雄（Although the selected table is output here, users can still try choosing unavailable champions）
+                    log.write(format_df(LoLChampion_df_selected.loc[:, LoLChampion_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
+                    logPrint('请输入英雄的序号或者名称。输入“00”以从头筛选。\nPlease input the id or name of a champion. Submit "00" to de novo filter champions.')
+                    back: bool = False #是否取消当前操作并返回上一层（Whether to cancel the current operation and return to the last step）
+                    while True:
+                        champion_queryStr: str = logInput()
+                        if champion_queryStr == "":
+                            continue
+                        elif champion_queryStr == "0":
+                            back = True
+                            pick_championId = 0
                             break
-                if back:
-                    logPrint("请选择行为类型：\nPlease select an action:\n1\t禁用（Ban）\n2\t选择（Pick）\n3\t重随（Reroll）\n4\t投票（Vote）")
-                    continue
-                logPrint("是否直接锁定选择？（输入任意键直接锁定，否则不锁定。）\nDo you want to lock in? (Submit any non-empty string to lock in, or null to refuse locking in.)")
-                complete_str: str = logInput()
-                complete: bool = bool(complete_str)
+                        elif champion_queryStr == "-3":
+                            pick_championId = -3
+                            break
+                        else:
+                            break_flag, pick_championId, LoLChampion_df_query = filter_champion(champion_queryStr, LoLChampion_df_query, LoLChampion_df_query_initial)
+                            if break_flag:
+                                break
+                    if back:
+                        logPrint("请选择行为类型：\nPlease select an action:\n1\t智能选择（Select）\n2\t仅锁定（Lock）\n3\t智能选择并锁定（Select and lock）\n4\t禁用（Ban）\n5\t选择（Pick）\n6\t重随（Reroll）\n7\t投票（Vote）")
+                        continue
+                #第三步：确定是否锁定（Step 3: Determine whether to lock）
+                if option[0] == "2" or option[0] == "3":
+                    complete: bool = True
+                else:
+                    logPrint("是否直接锁定选择？（输入任意键直接锁定，否则不锁定。）\nDo you want to lock in? (Submit any non-empty string to lock in, or null to refuse locking in.)")
+                    complete_str: str = logInput()
+                    complete = bool(complete_str)
+                #第四步：发送英雄选择请求（Step 4: Send the champion selection request）
                 gameflow_phase = await get_gameflow_phase(connection)
                 if gameflow_phase == "ChampSelect":
                     champ_select_session = await get_champ_select_session(connection)
@@ -6347,7 +6395,7 @@ async def pick_champion(connection: Connection) -> None:
             else:
                 logPrint("您目前不在英雄选择阶段。\nYou're not during a champ select stage.")
                 break
-        elif option[0] == "3":
+        elif option[0] == "6":
             gameflow_phase = await get_gameflow_phase(connection)
             if gameflow_phase == "ChampSelect":
                 champ_select_session = await get_champ_select_session(connection)
@@ -6379,7 +6427,7 @@ async def pick_champion(connection: Connection) -> None:
         else:
             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
             continue
-        logPrint("请选择行为类型：\nPlease select an action:\n1\t禁用（Ban）\n2\t选择（Pick）\n3\t重随（Reroll）\n4\t投票（Vote）")
+        logPrint("请选择行为类型：\nPlease select an action:\n1\t智能选择（Select）\n2\t仅锁定（Lock）\n3\t智能选择并锁定（Select and lock）\n4\t禁用（Ban）\n5\t选择（Pick）\n6\t重随（Reroll）\n7\t投票（Vote）")
 
 async def change_champSelect_spell(connection: Connection) -> None:
     '''
