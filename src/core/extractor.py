@@ -5692,7 +5692,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 to_append = ""
                     CherryAugment_data[key].append(to_append)
                     CherryAugment_data_json[key].append(pyobj2json(to_append))
-        CherryAugment_statistics_output_order: list[int] = [0, 1, 19, 2, 3, 20, 21, 17, 47, 49, 16, 46, 7, 8, 18, 15, 4, 22, 23, 24, 25, 5, 26, 27, 28, 29, 9, 30, 31, 32, 33, 10, 34, 35, 36, 37, 11, 38, 39, 40, 41, 12, 42, 43, 44, 45, 6, 48, 13, 14]
+        CherryAugment_statistics_output_order: list[int] = [0, 1, 19, 2, 3, 20, 21, 17, 47, 15, 49, 16, 46, 7, 8, 18, 4, 22, 23, 24, 25, 5, 26, 27, 28, 29, 9, 30, 31, 32, 33, 10, 34, 35, 36, 37, 11, 38, 39, 40, 41, 12, 42, 43, 44, 45, 6, 48, 13, 14]
         CherryAugment_data_organized: dict[str, list[Any]] = {CherryAugment_header_keys[i]: CherryAugment_data_json[CherryAugment_header_keys[i]] for i in CherryAugment_statistics_output_order}
         CherryAugment_df: pandas.DataFrame = pandas.DataFrame(data = CherryAugment_data_organized)
         CherryAugment_df = CherryAugment_df.sort_values(by = "AugmentPlatformId", ascending = True, ignore_index = True)
