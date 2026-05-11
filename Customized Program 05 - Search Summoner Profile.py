@@ -38,7 +38,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/04/29
+# 更新（Last update）：     2026/05/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1821,7 +1821,7 @@ async def search_profile(connection: Connection) -> None:
                     if not matchId in LoLGame_summary_cache_sgp:
                         LoLGame_summary_cache_sgp[matchId] = game
                 if use_sgp: #没必要将从SGP API获取的对局概要数据导出到json文件中，因为它实际上就是从SGP API获取的各对局概要数据的加和。因此，为了保证每次读取对局记录时都会在本地形成一个对局记录json文件，LCU API是无论如何都会访问一次的（It's unnecessary to export the match summary data obtained through SGP API into a json file, because it's actually the sum of all match summaries obtained from SGP API. Therefore, in order to make sure a json file will be generated every time the program fetches the match history, LCU API is always accessed）
-                    LoLDetails_get, LoLDetails = await get_matchDetails_sgp(connection, sgpSession, info_puuid, "LoL", begin = 0, count = 1000, log = log)
+                    LoLDetails_get, LoLDetails = await get_matchDetails_sgp(connection, sgpSession, info_puuid, "LoL", begin = 0, count = len(LoLHistory_sgp["games"]) if LoLHistory_get else 1000, log = log)
                     for game in LoLDetails["games"]:
                         matchId: int = int(game["metadata"]["match_id"].split("_")[1])
                         if not matchId in LoLGame_timeline_cache_sgp:

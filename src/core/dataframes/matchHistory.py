@@ -81,7 +81,7 @@ async def get_LoLHistory(connection: Connection, puuid: str, begIndex: int = 0, 
             break
     return (LoLHistory_get, LoLHistory)
 
-async def get_matchIds_sgp(connection: Connection, sgpSession: SGPSession, puuid: str, product: Literal["LoL", "TFT"], begin: int = 0, count: int = 200, batch: int = 200, tags: Optional[list[str]] = None, tagsQueryType: Literal["AND", "OR"] = "AND", retry: int = 5, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[bool, list[int]]:
+async def get_matchIds_sgp(connection: Connection, sgpSession: SGPSession, puuid: str, product: Literal["LoL", "TFT"], begin: int = 0, count: int = 200, batch_size: int = 200, tags: Optional[list[str]] = None, tagsQueryType: Literal["AND", "OR"] = "AND", retry: int = 5, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[bool, list[int]]:
     '''
     获取一名召唤师最近的对局记录的对局序号列表。<br>Get the matchId list of a summoner's recent match history.
     
@@ -100,8 +100,8 @@ async def get_matchIds_sgp(connection: Connection, sgpSession: SGPSession, puuid
     :type begin: int
     :param count: 对局数量。默认为200。<br>Number of matches. 200 by default.
     :type count: int
-    :param batch: 每一批对局的数量，决定了调用接口的次数。默认为200。<br>The number of matches per batch, which determines the number of times to call API. 200 by default.
-    :type batch: int
+    :param batch_size: 每一批对局的数量，决定了调用接口的次数。默认为200。<br>The number of matches per batch, which determines the number of times to call API. 200 by default.
+    :type batch_size: int
     :param tags: 对局标签。存在于元数据中。<br>Game tags, which exists in the metadata.
     :type tags: list[str]
     :param tagsQueryType: 标签筛选逻辑关系。有以下取值：<br>The logical relationship between the tags to filter matches, which has the following values:
@@ -132,10 +132,10 @@ async def get_matchIds_sgp(connection: Connection, sgpSession: SGPSession, puuid
     uri_tag_part += f"&tagsQueryType={tagsQueryType}"
     matchIds: list[int] = []
     matchId_get: bool = False #只要一批数据获取成功，那么就算获取到对局序号了（As long as one batch of data is fetched successfully, we consider the matchIds are successfully fetched）
-    for i in range(count // batch): #每次调用接口最多获取200场对局。通过多次接口获取对局记录切片，拼接后得到完整的对局记录（Each call of API returns at most 200 matches. By calling the endpoint for multiple times, match history slices are obtained. Merge them to get the complete match history）
-        if i * batch != count:
-            startIndex: int = begin + i * batch
-            gameCount: int = min(batch, count - i * batch) #还得是SGP API的count用的地道，通过作差消除了代码上的索引相对自然语言序号的偏移量。怪不得云顶之弈用的也是begin和count（How authentic `count` of SGP API is! Especially because it eliminates the offset between the index spoken in programming and the number spoken in natural language by difference. No wonder TFT match history endpoint uses `begin` and `count`, too）
+    for i in range(math.ceil(count / batch_size)): #每次调用接口最多获取200场对局。通过多次接口获取对局记录切片，拼接后得到完整的对局记录（Each call of API returns at most 200 matches. By calling the endpoint for multiple times, match history slices are obtained. Merge them to get the complete match history）
+        if i * batch_size != count:
+            startIndex: int = begin + i * batch_size
+            gameCount: int = min(batch_size, count - i * batch_size) #还得是SGP API的count用的地道，通过作差消除了代码上的索引相对自然语言序号的偏移量。怪不得云顶之弈用的也是begin和count（How authentic `count` of SGP API is! Especially because it eliminates the offset between the index spoken in programming and the number spoken in natural language by difference. No wonder TFT match history endpoint uses `begin` and `count`, too）
             match_history_uri: str = f"/match-history-query/v1/products/{product_lower}/player/{puuid}?startIndex={startIndex}&count={gameCount}" + uri_tag_part
             error_count: int = 0 #存储内部服务器错误次数（Stores the times of internal server error）
             stop: bool = False #标记是否放弃后续对局记录的获取（Marks whether to give up fetching subsequent matches）
@@ -161,7 +161,7 @@ async def get_matchIds_sgp(connection: Connection, sgpSession: SGPSession, puuid
         #当`i * batch == count`时，当前切片是0场对局，此时不需要再去调用接口（When `i * batch == count`, the current slice has 0 match, when the API doesn't neet to be called）
     return (matchId_get, matchIds)
 
-async def get_matchSummary_sgp(connection: Connection, sgpSession: SGPSession, puuid: str, product: Literal["LoL", "TFT"], begin: int = 0, count: int = 200, batch: int = 200, tags: Optional[list[str]] = None, tagsQueryType: Literal["AND", "OR"] = "AND", retry: int = 5, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[bool, dict[str, Any]]:
+async def get_matchSummary_sgp(connection: Connection, sgpSession: SGPSession, puuid: str, product: Literal["LoL", "TFT"], begin: int = 0, count: int = 200, batch_size: int = 200, tags: Optional[list[str]] = None, tagsQueryType: Literal["AND", "OR"] = "AND", retry: int = 5, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[bool, dict[str, Any]]:
     '''
     获取一名召唤师最近的对局记录的概要。<br>Get the summary of a summoner's recent match history.
     
@@ -180,8 +180,8 @@ async def get_matchSummary_sgp(connection: Connection, sgpSession: SGPSession, p
     :type begin: int
     :param count: 对局数量。默认为200。<br>Number of matches. 200 by default.
     :type count: int
-    :param batch: 每一批对局的数量，决定了调用接口的次数。默认为200。<br>The number of matches per batch, which determines the number of times to call API. 200 by default.
-    :type batch: int
+    :param batch_size: 每一批对局的数量，决定了调用接口的次数。默认为200。<br>The number of matches per batch, which determines the number of times to call API. 200 by default.
+    :type batch_size: int
     :param tags: 对局标签。存在于元数据中。<br>Game tags, which exists in the metadata.
     :type tags: list[str]
     :param tagsQueryType: 标签筛选逻辑关系。有以下取值：<br>The logical relationship between the tags to filter matches, which has the following values:
@@ -212,14 +212,14 @@ async def get_matchSummary_sgp(connection: Connection, sgpSession: SGPSession, p
     uri_tag_part += f"&tagsQueryType={tagsQueryType}"
     matchSummary: dict[str, list[dict[str, Any]]] = {"games": []}
     matchSummary_get: bool = False
-    for i in range(count // batch):
-        if i * batch != count:
-            startIndex: int = begin + i * batch
-            gameCount: int = min(batch, count - i * batch)
+    for i in range(math.ceil(count / batch_size)):
+        if i * batch_size != count:
+            startIndex: int = begin + i * batch_size
+            gameCount: int = min(batch_size, count - i * batch_size)
             match_history_uri: str = f"/match-history-query/v1/products/{product_lower}/player/{puuid}/SUMMARY?startIndex={startIndex}&count={gameCount}" + uri_tag_part
             error_count: int = 0
             stop: bool = False
-            logPrint("正在获取第%d/%d批对局记录……\nFetching match history batch %d / %d ..." %(i + 1, math.ceil(count / batch), i + 1, math.ceil(count / batch)), verbose = verbose)
+            logPrint("正在获取第%d/%d批对局记录……\nFetching match history batch %d / %d ..." %(i + 1, math.ceil(count / batch_size), i + 1, math.ceil(count / batch_size)), verbose = verbose)
             while True:
                 error_count += 1
                 matchSummary_slice: dict[str, list[dict[str, Any]]] = (await sgpSession.request(connection, "GET", match_history_uri)).json()
@@ -240,7 +240,7 @@ async def get_matchSummary_sgp(connection: Connection, sgpSession: SGPSession, p
                 break
     return (matchSummary_get, matchSummary)
 
-async def get_matchDetails_sgp(connection: Connection, sgpSession: SGPSession, puuid: str, product: Literal["LoL", "TFT"], begin: int = 0, count: int = 200, batch: int = 50, tags: Optional[list[str]] = None, tagsQueryType: Literal["AND", "OR"] = "AND", retry: int = 5, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[bool, dict[str, Any]]:
+async def get_matchDetails_sgp(connection: Connection, sgpSession: SGPSession, puuid: str, product: Literal["LoL", "TFT"], begin: int = 0, count: int = 200, batch_size: int = 50, tags: Optional[list[str]] = None, tagsQueryType: Literal["AND", "OR"] = "AND", retry: int = 5, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[bool, dict[str, Any]]:
     '''
     获取一名召唤师最近的对局记录的详细信息，即时间轴信息。<br>Get the details of a summoner's recent match history, namely the timeline information.
     
@@ -259,8 +259,8 @@ async def get_matchDetails_sgp(connection: Connection, sgpSession: SGPSession, p
     :type begin: int
     :param count: 对局数量。默认为200。<br>Number of matches. 200 by default.
     :type count: int
-    :param batch: 每一批对局的数量，决定了调用接口的次数。默认为50。<br>The number of matches per batch, which determines the number of times to call API. 50 by default.
-    :type batch: int
+    :param batch_size: 每一批对局的数量，决定了调用接口的次数。默认为50。<br>The number of matches per batch, which determines the number of times to call API. 50 by default.
+    :type batch_size: int
     :param tags: 对局标签。存在于元数据中。<br>Game tags, which exists in the metadata.
     :type tags: list[str]
     :param tagsQueryType: 标签筛选逻辑关系。有以下取值：<br>The logical relationship between the tags to filter matches, which has the following values:
@@ -291,14 +291,14 @@ async def get_matchDetails_sgp(connection: Connection, sgpSession: SGPSession, p
     uri_tag_part += f"&tagsQueryType={tagsQueryType}"
     matchDetails: dict[str, list[dict[str, Any]]] = {"games": []}
     matchDetails_get: bool = False
-    for i in range(count // batch):
-        if i * batch != count:
-            startIndex: int = begin + i * batch
-            gameCount: int = min(batch, count - i * batch)
+    for i in range(math.ceil(count / batch_size)):
+        if i * batch_size != count:
+            startIndex: int = begin + i * batch_size
+            gameCount: int = min(batch_size, count - i * batch_size)
             match_history_uri: str = f"/match-history-query/v1/products/{product_lower}/player/{puuid}/DETAILS?startIndex={startIndex}&count={gameCount}" + uri_tag_part
             error_count: int = 0
             stop: bool = False
-            logPrint("正在获取第%d/%d批对局时间轴……\nFetching match details batch %d / %d ..." %(i + 1, math.ceil(count / batch), i + 1, math.ceil(count / batch)))
+            logPrint("正在获取第%d/%d批对局时间轴……\nFetching match details batch %d / %d ..." %(i + 1, math.ceil(count / batch_size), i + 1, math.ceil(count / batch_size)))
             while True:
                 error_count += 1
                 matchDetails_slice: dict[str, list[dict[str, Any]]] = (await sgpSession.request(connection, "GET", match_history_uri)).json()

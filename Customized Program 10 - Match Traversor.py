@@ -22,7 +22,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/29
+# 更新（Last update）：     2026/05/11
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -360,7 +360,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
         matchHistory_get, matchHistory = await get_matchSummary_sgp(connection, session, puuid, product, begin = 0, count = 1000, log = log)
         if matchHistory_get:
             if product == "LoL":
-                matchDetails_get, matchDetails = await get_matchDetails_sgp(connection, session, puuid, product, begin = 0, count = 1000, log = log)
+                matchDetails_get, matchDetails = await get_matchDetails_sgp(connection, session, puuid, product, begin = 0, count = len(matchHistory["games"]) if matchHistory_get else 1000, log = log)
                 matchTimelines: dict[int, dict[str, Any]] = {int(game_timeline["metadata"]["match_id"].split("_")[1]): game_timeline for game_timeline in matchDetails["games"]}
             else:
                 matchTimelines = {}
