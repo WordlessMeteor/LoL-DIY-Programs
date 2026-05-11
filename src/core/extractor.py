@@ -23,7 +23,7 @@ from src.core.config.localization import language_ddragon, language_dict
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/05/05
+# 更新（Last update）：     2026/05/11
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -1606,37 +1606,41 @@ class LoLDataExtractor:
             formulaStr = partCalc + " × stack of " + formulaPart["mBuffName"]
         elif formulaPart_type == "ByCharLevelBreakpointsCalculationPart": #阶梯式等级提供增益（Bonus value provided by levels in a step function manner）
             mLevel1Value: int | float = formulaPart.get("mLevel1Value", 0)
-            mBonusPerLevelAtAndAfter: int | float = formulaPart.get("mInitialBonusPerLevel", 0) #每级增加的数值（The value to increment reaching each level）
+            mInitialBonusPerLevel: int | float = formulaPart.get("mInitialBonusPerLevel", 0) #每级增加的数值。从2级开始加（The value to increment reaching each level. It takes effect from Level 2）
+            mBonusPerLevelAtAndAfter: int | float = 0 #初始化每级增加的数值，包含当前等级（Initialize the value to increment reaching each level, including this level）
             if "mBreakpoints" in formulaPart:
-                levelValues: list[int | float] = [] #从封魔剑魂 永恩的【凛神斩】的对小兵最小伤害中推断出，mBonusPerLevelAtAndAfter键适用于1级（From YoneW's MinimumDamageMinions, we can infer that `mBonusPerLevelAtAndAfter` applies at Level 1）
+                levelValues: list[int | float] = []
                 formulaPart["mBreakpoints"] = sorted(formulaPart["mBreakpoints"], key = lambda x: x.get("mLevel", 1)) #这一步其实无关紧要，因为断点列表总是按照等级正序排列的（This step is actually unnecessary, for the breakpoints are always sorted in the ascending order of mLevel）
                 mLevel_i_Value: int | float = mLevel1Value
                 i: int = 1 #等级（Level）
                 j: int = 0 #断点列表下标（Breakpoint list index）
                 while i <= 18:
-                    if i == formulaPart["mBreakpoints"][j].get("mLevel"):
-                        if "mBonusPerLevelAtAndAfter" in formulaPart["mBreakpoints"][j]:
-                            mBonusPerLevelAtAndAfter = formulaPart["mBreakpoints"][j]["mBonusPerLevelAtAndAfter"]
-                        elif "mAdditionalBonusAtThisLevel" in formulaPart["mBreakpoints"][j]: #以斯塔缇克电刃的冷却时间计算最为典型（The most typical case is the calculation of cooldown of Statikk Shiv）
-                            mLevel_i_Value += formulaPart["mBreakpoints"][j]["mAdditionalBonusAtThisLevel"]
+                    if i < formulaPart["mBreakpoints"][0].get("mLevel", 1):
+                        mLevel_i_Value = mLevel1Value + (i - 1) * mInitialBonusPerLevel
+                    else:
+                        if i == formulaPart["mBreakpoints"][j].get("mLevel", 1):
+                            mBonusPerLevelAtAndAfter: int | float = formulaPart["mBreakpoints"][j].get("mBonusPerLevelAtAndAfter", 0)
+                            mAdditionalBonusAtThisLevel: int | float = formulaPart["mBreakpoints"][j].get("mAdditionalBonusAtThisLevel", 0) #以斯塔缇克电刃的冷却时间计算最为典型（The most typical case is the calculation of cooldown of Statikk Shiv）
+                            if j < len(formulaPart["mBreakpoints"]) - 1: #防止下标越界（Avoid index out of bounds）
+                                j += 1
                         else:
-                            pass
-                        if j < len(formulaPart["mBreakpoints"]) - 1:
-                            j += 1
-                    mLevel_i_Value += mBonusPerLevelAtAndAfter
+                            mAdditionalBonusAtThisLevel = 0
+                        mLevel_i_Value += mBonusPerLevelAtAndAfter + mAdditionalBonusAtThisLevel
                     levelValues.append(mLevel_i_Value)
                     i += 1
                 levelValues = list(map(lambda x: cls.aRound(x, 5), levelValues))
-                formulaStr = "/".join(list(map(str, levelValues))) + " (based on Level)"
+                formulaStr = "/".join(list(map(str, levelValues))) + " (Level 1 to 18)"
+            elif mBonusPerLevelAtAndAfter == 0:
+                formulaStr = str(mLevel1Value)
             else:
                 mLevel18Value = mLevel1Value + 17 * mBonusPerLevelAtAndAfter
-                formulaStr = "%s - %s (based on Level)" %(cls.aRound(mLevel1Value, 5), cls.aRound(mLevel18Value, 5))
+                formulaStr = "%s - %s (Level 1 to 18)" %(cls.aRound(mLevel1Value, 5), cls.aRound(mLevel18Value, 5))
         elif formulaPart_type == "ByCharLevelFormulaCalculationPart": #公式等级提供增益（Bonus value provided by levels following a formula）
             formulaStr = cls.burnValueList(formulaPart["values"] if "values" in formulaPart else formulaPart["mValues"]) #在25.06版本以前，值列表的键名是mValues（Before Patch 25.06, the value list's key name is "mValues"）
         elif formulaPart_type == "ByCharLevelInterpolationCalculationPart": #线性等级提供增益（Bonus value provided by levels in a linear manner）
             mStartValue: int | float = cls.aRound(formulaPart.get("mStartValue", 0), 5)
             mEndValue: int | float = cls.aRound(formulaPart["mEndValue"], 5)
-            formulaStr = f"{mStartValue} - {mEndValue} (based on Level)"
+            formulaStr = f"{mStartValue} - {mEndValue} (Level 1 to 18)"
         elif formulaPart_type == "ByItemEpicnessCountCalculationPart":
             coefficient: int | float = cls.aRound(formulaPart.get("Coefficient", 0), 5)
             itemEpicness_desc: str = itemEpicness_dict_zh[formulaPart["epicness"]] if useCHSPrompt else itemEpicness_dict_en[formulaPart["epicness"]]
@@ -1682,9 +1686,10 @@ class LoLDataExtractor:
             mLevel1ValueStr: str = cls.variableCalculation(binData, formulaPart["{91d404a5}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             mLevel1Value_modeSplitDict_str: dict[str, str] = cls.variableModeOverrideStrToStruct(mLevel1ValueStr) #经过此函数后，字典中保底有一个“default”键（The returned dictionary at least has a "default" key）
             mLevel1Value_modeSplitDict_float: dict[str, float] = {key: float(value) for (key, value) in mLevel1Value_modeSplitDict_str.items()}
-            mBonusPerLevelStr: str = cls.variableCalculation(binData, formulaPart["{bbd778a2}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
-            mBonusPerLevel_modeSplitDict_str: dict[str, str] = cls.variableModeOverrideStrToStruct(mBonusPerLevelStr)
-            mBonusPerLevel_modeSplitDict_float: dict[str, float] = {key: float(value) for (key, value) in mBonusPerLevel_modeSplitDict_str.items()}
+            mInitialBonusPerLevelStr: str = cls.variableCalculation(binData, formulaPart["{bbd778a2}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            mInitialBonusPerLevel_modeSplitDict_str: dict[str, str] = cls.variableModeOverrideStrToStruct(mInitialBonusPerLevelStr)
+            mInitialBonusPerLevel_modeSplitDict_float: dict[str, float] = {key: float(value) for (key, value) in mInitialBonusPerLevel_modeSplitDict_str.items()} #每级增加的数值。从2级开始加（The value to increment reaching each level. It takes effect from Level 2）
+            mBonusPerLevel_modeSplitDict_float: dict[str, float] = {} #初始化每级增加的数值，包含当前等级（Initialize the value to increment reaching each level, including this level）
             if "{9823b29a}" in formulaPart:
                 levelValues_modeSplitDict_list: dict[str, list[float]] = {"default": []}
                 formulaPart["{9823b29a}"] = sorted(formulaPart["{9823b29a}"], key = lambda x: x.get("mLevel", 1))
@@ -1692,33 +1697,47 @@ class LoLDataExtractor:
                 i: int = 1 #等级（Level）
                 j: int = 0 #断点列表下标（Breakpoint list index）
                 while i <= 18:
-                    mBonusAtLevel_modeSplitDict_float: dict[str, float] = {}
-                    if i == formulaPart["{9823b29a}"][j].get("level"):
-                        if "{b0d8b2ac}" in formulaPart["{9823b29a}"][j]: #更新在该断点等级及之后等级的加成（Update bonus per level at and after this breakpoint level）
-                            mBonusPerLevelStr = cls.variableCalculation(binData, formulaPart["{9823b29a}"][j]["{b0d8b2ac}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData) #原名是叫“BonusPerLevelAtAndAfter”，意思就是覆盖初始值，所以直接用“BonusPerLevel”作为变量名（The original name is "BonusPerLevelAtAndAfter", which means to override the initial value, so I use "BonusPerLevel" as a part of this variable's name）
-                            mBonusPerLevel_modeSplitDict_str = cls.variableModeOverrideStrToStruct(mBonusPerLevelStr)
-                            mBonusPerLevel_modeSplitDict_float: dict[str, float] = {key: float(value) for (key, value) in mBonusPerLevel_modeSplitDict_str.items()}
-                        if "{ae9b464d}" in formulaPart["{9823b29a}"][j]: #在该断点等级时的额外加成（Bonus at this breakpoint level）
-                            mBonusAtLevelStr: str = cls.variableCalculation(binData, formulaPart["{9823b29a}"][j]["{ae9b464d}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
-                            mBonusAtLevel_modeSplitDict_str = cls.variableModeOverrideStrToStruct(mBonusAtLevelStr)
-                            mBonusAtLevel_modeSplitDict_float = {key: float(value) for (key, value) in mBonusAtLevel_modeSplitDict_str.items()}
-                        if j < len(formulaPart["{9823b29a}"]) - 1:
-                            j += 1
-                    #梳理当前等级的所有模式分化（Sort out all modes at current level）
-                    modes: list[str] = list(mLevel1Value_modeSplitDict_float.keys())
-                    for mode in mBonusPerLevel_modeSplitDict_float:
-                        if not mode in mLevel1Value_modeSplitDict_float:
-                            modes.append(mode)
-                    for mode in mBonusAtLevel_modeSplitDict_float:
-                        if not mode in mLevel1Value_modeSplitDict_float:
-                            modes.append(mode)
-                    #针对每个游戏模式设置等级为i时的值（Set the value at Level i for each game mode）
-                    for mode in modes:
-                        delta: float = mBonusPerLevel_modeSplitDict_float.get(mode, 0) + mBonusAtLevel_modeSplitDict_float.get(mode, 0)
-                        if mode in mLevel_i_Value_modeSplitDict_float:
-                            mLevel_i_Value_modeSplitDict_float[mode] += delta
-                        else:
-                            mLevel_i_Value_modeSplitDict_float[mode] = mLevel_i_Value_modeSplitDict_float["default"] + delta
+                    if i < formulaPart["{9823b29a}"][0].get("level", 1):
+                        #梳理当前等级的所有模式分化（Sort out all modes at current level）
+                        modes: list[str] = list(mLevel1Value_modeSplitDict_float.keys())
+                        for mode in mInitialBonusPerLevel_modeSplitDict_float:
+                            if not mode in mLevel1Value_modeSplitDict_float:
+                                modes.append(mode)
+                        #针对每个游戏模式设置等级为i时的值（Set the value at Level i for each game mode）
+                        for mode in modes:
+                            delta: float = mInitialBonusPerLevel_modeSplitDict_float.get(mode, 0)
+                            if mode in mLevel1Value_modeSplitDict_float:
+                                mLevel_i_Value_modeSplitDict_float[mode] = mLevel1Value_modeSplitDict_float[mode] + (i - 1) * delta
+                            else:
+                                mLevel_i_Value_modeSplitDict_float[mode] = mLevel1Value_modeSplitDict_float["default"] + (i - 1) * delta
+                    else:
+                        mBonusPerLevelAtAndAfter_modeSplitDict_float: dict[str, float] = {}
+                        if i == formulaPart["{9823b29a}"][j].get("level", 1):
+                            if "{b0d8b2ac}" in formulaPart["{9823b29a}"][j]: #更新在该断点等级及之后等级的加成（Update bonus per level at and after this breakpoint level）
+                                mBonusPerLevelStr = cls.variableCalculation(binData, formulaPart["{9823b29a}"][j]["{b0d8b2ac}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData) #原名是叫“BonusPerLevelAtAndAfter”，意思就是覆盖初始值，所以直接用“BonusPerLevel”作为变量名（The original name is "BonusPerLevelAtAndAfter", which means to override the initial value, so I use "BonusPerLevel" as a part of this variable's name）
+                                mBonusPerLevel_modeSplitDict_str = cls.variableModeOverrideStrToStruct(mBonusPerLevelStr)
+                                mBonusPerLevel_modeSplitDict_float = {key: float(value) for (key, value) in mBonusPerLevel_modeSplitDict_str.items()}
+                            if "{ae9b464d}" in formulaPart["{9823b29a}"][j]: #在该断点等级时的额外加成（Bonus at this breakpoint level）
+                                mBonusPerLevelAtAndAfterStr: str = cls.variableCalculation(binData, formulaPart["{9823b29a}"][j]["{ae9b464d}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+                                mBonusPerLevelAtAndAfter_modeSplitDict_str = cls.variableModeOverrideStrToStruct(mBonusPerLevelAtAndAfterStr)
+                                mBonusPerLevelAtAndAfter_modeSplitDict_float = {key: float(value) for (key, value) in mBonusPerLevelAtAndAfter_modeSplitDict_str.items()}
+                            if j < len(formulaPart["{9823b29a}"]) - 1:
+                                j += 1
+                        #梳理当前等级的所有模式分化（Sort out all modes at current level）
+                        modes: list[str] = list(mLevel1Value_modeSplitDict_float.keys())
+                        for mode in mBonusPerLevel_modeSplitDict_float:
+                            if not mode in mLevel1Value_modeSplitDict_float:
+                                modes.append(mode)
+                        for mode in mBonusPerLevelAtAndAfter_modeSplitDict_float:
+                            if not mode in mLevel1Value_modeSplitDict_float:
+                                modes.append(mode)
+                        #针对每个游戏模式设置等级为i时的值（Set the value at Level i for each game mode）
+                        for mode in modes:
+                            delta: float = mBonusPerLevel_modeSplitDict_float.get(mode, 0) + mBonusPerLevelAtAndAfter_modeSplitDict_float.get(mode, 0)
+                            if mode in mLevel_i_Value_modeSplitDict_float:
+                                mLevel_i_Value_modeSplitDict_float[mode] += delta
+                            else:
+                                mLevel_i_Value_modeSplitDict_float[mode] = mLevel_i_Value_modeSplitDict_float["default"] + delta
                     #将各模式等级为i时的值追加到列表中（Append values at Level i into the list）
                     ##先将此前没有的模式初始化为默认值列表（First, initialize the new mode's value list as the default value list）
                     for mode in modes:
@@ -1765,7 +1784,7 @@ class LoLDataExtractor:
         elif formulaPart_type == "{ee18a47b}": #用于兽灵行者 乌迪尔的【狂暴爪击】（Applies to UdyrQ）
             mLevel1ValueStr = cls.variableCalculation(binData, formulaPart["{0589a59c}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             mLevel18ValueStr: str = cls.variableCalculation(binData, formulaPart["{0b65bc23}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
-            formulaStr = f"{mLevel1ValueStr} - {mLevel18ValueStr} (based on Level)"
+            formulaStr = f"{mLevel1ValueStr} - {mLevel18ValueStr} (Level 1 to 18)"
         elif formulaPart_type == "{f3cbe7b2}": #mSpellCalculationKey来自mItemCalculations键的情形。在装备中仅用于夺萃之镰和无终恨意（The case where the value of `mSpellCalculationKey` is a key of the value of `mItemCalculations`. In items, this only applies to Essence Reaver and Unending Despair）
             formulaStr = cls.variableCalculation(binData, formulaPart["mSpellCalculationKey"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
         else: #异常处理（Exception handling）
@@ -10210,13 +10229,13 @@ if __name__ == "__main__":
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/perks.cdtb.bin.json", "r", encoding = "utf-8") as fp:
         #     perks_bin = json.load(fp)
         ##强化符文和荣誉嘉宾（Augment and Guest of Honor）
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
-            cherry_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
+        #     cherry_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
         #     kiwi_bin = json.load(fp)
         ##整合后的数据（Merged data）
-        # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
-        #     champions_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
+            champions_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/characters_bin.json", "r", encoding = "utf-8") as fp:
         #     characters_bin = json.load(fp)
         
@@ -10253,16 +10272,37 @@ if __name__ == "__main__":
         
         #说明文本转换（Tooltip transformation）
         locale: str = "zh_CN"
-        tooltip_raw: str = "参与击杀后，获得持续@BuffDuration@秒的<speed>@MSBuff*100@%移动速度</speed>和<attackSpeed>@ASBuff*100@%攻击速度</attackSpeed>。"
-        print("原始说明文本：\n" + tooltip_raw)
-        binData: dict[str, Any] = cherry_bin["{6f703849}"]["mSpell"]
-        print("----")
-        print("转换文本：")
-        print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reserve_variable = False))
-        # print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reserve_variable = True))
-        # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reserve_variable = False))
-        # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reserve_variable = True))
-        # print(modeOverrideTooltipTransform(champions_bin, objectType = "SpellObject", keyPaths = "mSpell|DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
+        print("说明文本测试样例：")
+        tests: list[dict[str, Any]] = [
+            {
+                "tooltip": "{{Spell_ViPassive_Tooltip}}<br><br><rules>这个技能有@ShieldCooldown@秒的冷却时间，每当蔚触发<spellName>爆弹重拳</spellName>时，剩余的冷却时间就会减少@CDReductionOn3Hit@秒。</rules>",
+                "binData": champions_bin["Characters/Vi/Spells/ViPassiveAbility/ViPassive"]["mSpell"]
+            },
+            {
+                "tooltip": "<rules>命中的首个敌方英雄会使护盾生命值提升@FirstChampShieldMultiplier*100@%，命中的所有后续敌方英雄都会使护盾生命值提升@SecondChampShieldMultiplier*100@%。<br>这个技能的冷却时间和施放时间可通过攻击速度来缩短。<br>对小兵的最小总伤害为<scaleLevel>@MinimumDamageMinions@</scaleLevel>。</rules>",
+                "binData": champions_bin["Characters/Yone/Spells/YoneWAbility/YoneW"]["mSpell"]
+            },
+            {
+                "tooltip": "亚恒在用一次攻击或技能命中一个敌方英雄时，会获得一层<keyword>果决</keyword>(最大@MaxStacks@层)。他每层获得<physicalDamage>@PercentBonusADCalc@攻击力提升</physicalDamage>。<br><br>当叠满<keyword>果决</keyword>时，亚恒使已提供的<physicalDamage>攻击力</physicalDamage>翻倍，并且如果他即将阵亡，那么他会转而进入持续@ReviveDuration@秒的凝滞状态然后带着<healing>他的@RevivePercentCalc@最大生命值</healing>复活。<br><br>亚恒的复活有@ReviveCooldownCalc@秒冷却时间。<br>",
+                "binData": champions_bin["{4c6e6c43}"]["mSpell"]
+            },
+        ]
+        for i in range(len(tests)):
+            LoLDataExtractor.calculatedVariables.clear()
+            print("*" * 20)
+            print("样例%d：" %(i + 1))
+            tooltip_raw: str = tests[i]["tooltip"]
+            print("原始说明文本：\n" + tooltip_raw)
+            binData: dict[str, Any] = tests[i]["binData"]
+            print("----")
+            print("转换文本：")
+            print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reserve_variable = False))
+            # print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reserve_variable = True))
+            # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reserve_variable = False))
+            # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reserve_variable = True))
+            # print(modeOverrideTooltipTransform(champions_bin, objectType = "SpellObject", keyPaths = "mSpell|DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
+        else:
+            print("*" * 20)
         
         return 0
 
