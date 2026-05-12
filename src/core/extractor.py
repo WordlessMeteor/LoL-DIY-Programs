@@ -1,4 +1,4 @@
-import copy, json, os, pandas, re, requests, sys, time, warnings
+import argparse, copy, json, os, pandas, re, requests, sys, time, warnings
 from pathlib import Path
 from urllib.parse import urljoin
 from xxhash import xxh3_64_intdigest
@@ -17,13 +17,17 @@ from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from src.core.config.headers import map_header_l10n, cheatset_header, cheat_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, CherryAnvil_header, GoH_header, cameo_header, CherryRoundList_header, CherryRound_header, CherryPhase_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header, fontDesc_header, fontType_header, fontResolution_header, fontStyle_header, font_CSSStyle_header, font_CSSIcon_header
 from src.core.config.localization import language_ddragon, language_dict
 
+parser = argparse.ArgumentParser()
+parser.add_argument("--sfx", help = "启用音频库单元hash计算调试（Enable bank unit hash calculation debugging）", action = "store_true")
+args = parser.parse_args()
+
 #=============================================================================
 # * 声明（Declaration）
 #=============================================================================
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/05/11
+# 更新（Last update）：     2026/05/12
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -706,7 +710,7 @@ class LoLDataExtractor:
     #初始化类（Initialize class）
     def __init__(self, version: str, locale: str, session: Optional[requests.Session] = None, log: Optional[LogManager] = None) -> None:
         '''
-        初始化数据提取器类对象。<br>Initialize the `LoLDataExtractor` class object.
+        初始化数据提取器类对象。<br>Initialize a `LoLDataExtractor` class object.
         
         :param version: CommunityDragon文件夹名称。<br>CommunityDragon folder name.
         :type version: str
@@ -1226,7 +1230,7 @@ class LoLDataExtractor:
     @classmethod
     def compute_binhash(cls, s: str) -> str: #改编自cdtb.binfile.compute_binhash函数（Adapted from `cdtb.binfile.compute_binhash`）
         '''
-        计算某个出现在二进制描述文件中的字符串的hash值。<br>Compute the hash value of a string appearing in some binary description file.
+        使用FNV-1a算法计算某个出现在二进制描述文件中的字符串的hash值。<br>Compute the hash value of a string appearing in some binary description file using FNV-1a algorithm.
         '''
         basis: int = 0x811c9dc5 #偏移基准（Offset basis）
         hash_int: int = basis
@@ -1236,14 +1240,14 @@ class LoLDataExtractor:
         return "{" + result + "}"
     
     @staticmethod
-    def aGet(d: Any, keys: list[Any], default: Any = None) -> Any: #字典进阶get方法（An advanced version of `get` method of a dictionary）
+    def aGet(d: Any, keys: Iterable[Any], default: Any = None) -> Any: #字典进阶get方法（An advanced version of `get` method of a dictionary）
         '''
         对字典get方法的优化。该方法从一个列表中取键的值，如果找到一个键，则返回其值。如果一个键都没有找到，则返回默认值。<br>An optimization of dict `get` method. This method successively gets the value of a key in `keys`. If any key is found, return its value. Otherwise, return the default value.
         
         :param d: 一个字典。如果传入的不是字典，则引发类型错误。<br>A dictionary. A TypeError will be thrown if a non-dict-type variable is passed.
         :type d: dict
         :param keys: 一个键列表，从前到后依次寻找索引。<br>A key list to be indexxed one by one.
-        :type keys: list[Any]
+        :type keys: Iterable[Any]
         :param default: 在未找到指定值时的默认值。如果未指定，则为None。<br>The default value used when the path of keys isn't found. `None` if unspecified.
         :type default: Any
         :return: 遍历键列表后得到的值。如果没有完成遍历，则返回默认值。<br>A value traversed after traversing the whole key list. If the traversal doesn't finish, return the default value instead.
@@ -9125,6 +9129,30 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], objectType: str, keyPa
                                             s += "\n"
     return s
 
+#定义音效提取类（Define the sfx extractor class）
+class LoLSfxExtractor:
+    def __init__(self, log: Optional[LogManager] = None) -> None:
+        '''
+        初始化音效提取器类对象。<br>Initialize a `LoLSfxExtractor` class object.
+        
+        这个类目前只是一个初步构想。未来预期设计成一个建立音频库单元事件和封装后的音频文件中每个音频文件名之间的对应关系的类，并且有可能会放到其它模块中。<br>This class is a very preemptive concept. I plan to design it as a class that can build a map between bank unit events and names of audio files in encapsulated files. This class may be moved to another module some day.
+        '''
+        self.log: LogManager = LogManager() if log == None else log
+    
+    @classmethod
+    def compute_bankEvent_hash(cls, s: str) -> int:
+        '''
+        使用FNV-1算法计算某个音频库单元事件字符串的hash值。<br>Compute the hash value of a bank unit string using FNV-1 algorithm.
+        
+        :return: 字符串的hash值。<br>Hash value of the string.
+        :rtype: int
+        '''
+        basis: int = 0x811c9dc5 #偏移基准（Offset basis）
+        hash_int: int = basis
+        for b in s.lower().encode("ascii"):
+            hash_int = ((hash_int * 0x01000193) ^ b) % 0x100000000
+        return hash_int
+
 if __name__ == "__main__":
     log: LogManager = LogManager()
     logInput = log.logInput
@@ -10306,9 +10334,22 @@ if __name__ == "__main__":
         
         return 0
 
-    status = main() #供用户使用（For user use）
-    # status = debug(dir_type = "repo") #供开发者使用（For developer use）
-    # status = DIY()
+    def bankUnit_test() -> int:
+        print('请输入需要计算FNV-1 hash值的字符串。输入“-1”以退出程序。\nPlease input the string you want to calculate the FNV-1 hash value for. Submit "-1" to exit the program.')
+        while True:
+            event_name: str = logInput("> ")
+            if event_name == "-1":
+                break
+            hash_result: int = LoLSfxExtractor.compute_bankEvent_hash(event_name)
+            logPrint(hash_result)
+        return 0
+
+    if args.sfx:
+        status = bankUnit_test()
+    else:
+        status = main() #供用户使用（For user use）
+        # status = debug(dir_type = "repo") #供开发者使用（For developer use）
+        # status = DIY()
     #结束日志输入流（Cancel the log input stream）
     log.write(f"\n[Program terminated and returned status {status}.]\n")
     log.close()
