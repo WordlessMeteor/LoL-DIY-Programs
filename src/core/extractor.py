@@ -17,10 +17,6 @@ from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from src.core.config.headers import map_header_l10n, cheatset_header, cheat_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, CherryAnvil_header, GoH_header, cameo_header, CherryRoundList_header, CherryRound_header, CherryPhase_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header, fontDesc_header, fontType_header, fontResolution_header, fontStyle_header, font_CSSStyle_header, font_CSSIcon_header
 from src.core.config.localization import language_ddragon, language_dict
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--sfx", help = "启用音频库单元hash计算调试（Enable bank unit hash calculation debugging）", action = "store_true")
-args = parser.parse_args()
-
 #=============================================================================
 # * 声明（Declaration）
 #=============================================================================
@@ -9154,6 +9150,10 @@ class LoLSfxExtractor:
         return hash_int
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--sfx", help = "启用音频库单元hash计算调试（Enable bank unit hash calculation debugging）", action = "store_true")
+    args = parser.parse_args()
+    
     log: LogManager = LogManager()
     logInput = log.logInput
     logPrint = log.logPrint
