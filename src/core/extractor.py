@@ -5963,7 +5963,7 @@ class AugmentExtractor(LoLDataExtractor):
                 for i in range(len(augmentModifier_header_keys)):
                     key: str = augmentModifier_header_keys[i]
                     if i == 0: #主键（`key`）
-                        to_append = key
+                        to_append = key1
                     elif i == 1: #所属地图序号（`belonging_mapIds`）
                         belonging_mapIds: list[int] = []
                         if key1 in self.map12_bin:
