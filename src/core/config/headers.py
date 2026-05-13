@@ -6062,6 +6062,24 @@ KiwiAugmentSet_header: dict[str, str] = {
     "{40c7b66f}_Object": "其它指令对象",
     "{01d14504} resourceMap": "资源解析器映射字典"
 }
+augmentModifier_header: dict[str, str] = {
+    "key": "主键",
+    "belonging_mapId": "所属地图序号",
+    "ModifierId": "修饰名称",
+    "{30b1d74a}": "",
+    "{ab0ba193}": "抬头键",
+    "{9346bce8}": "",
+    "{629a3429}": "附加文本键",
+    "{6fd14d4c}": "修饰水印路径",
+    "{ab0ba193}_content_zh": "抬头（中文）",
+    "{ab0ba193}_content_zh_burn": "抬头（中文/去格式化）",
+    "{ab0ba193}_content_en": "抬头（英文）",
+    "{ab0ba193}_content_en_burn": "抬头（英文/去格式化）",
+    "{629a3429}_content_zh": "附加文本（中文）",
+    "{629a3429}_content_zh_burn": "附加文本（中文/去格式化）",
+    "{629a3429}_content_en": "附加文本（英文）",
+    "{629a3429}_content_en_burn": "附加文本（英文/去格式化）"
+}
 ##锻造器（Anvil）
 CherryAnvil_header: dict[str, str] = {
     "key": "主键",

@@ -14,7 +14,7 @@ from src.utils.webRequest import requestUrl
 from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, pyobj2json, capitalize, decapitalize
 from src.utils.runtimeDebug import subscope
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
-from src.core.config.headers import map_header_l10n, cheatset_header, cheat_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, CherryAnvil_header, GoH_header, cameo_header, CherryRoundList_header, CherryRound_header, CherryPhase_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header, fontDesc_header, fontType_header, fontResolution_header, fontStyle_header, font_CSSStyle_header, font_CSSIcon_header
+from src.core.config.headers import map_header_l10n, cheatset_header, cheat_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, augmentModifier_header, CherryAnvil_header, GoH_header, cameo_header, CherryRoundList_header, CherryRound_header, CherryPhase_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header, fontDesc_header, fontType_header, fontResolution_header, fontStyle_header, font_CSSStyle_header, font_CSSIcon_header
 from src.core.config.localization import language_ddragon, language_dict
 
 #=============================================================================
@@ -420,288 +420,296 @@ class LoLDataExtractor:
     df_queue: list[dict[str, Any]] = [] #要导出的数据框队列。每个元素是一个字典，包含“id”“dType”“sheet_name”和“sheet”键。每次导出以及切换版本时清空（Dataframe queue to export. Each element is a dictionary that contains "id", "sheet_name", and "sheet" keys. Cleared when exporting or switching versions）
     worksheet_metadata: dict[str, dict[str, Any]] = {
         "Map": {
-            "id": 1,
             "dType": "Map",
             "sheet_name_without_version": "地图（Map）",
             "sheet_name_with_version": "{version} Map"
         },
         "CheatSet": {
-            "id": 2,
             "dType": "CheatSet",
             "sheet_name_without_version": "指令集（CheatSet）",
             "sheet_name_with_version": "{version} CheatSet"
         },
         "Cheat": {
-            "id": 3,
             "dType": "Cheat",
             "sheet_name_without_version": "指令（Cheat）",
             "sheet_name_with_version": "{version} Cheat"
         },
         "PerkStyle": {
-            "id": 4,
             "dType": "PerkStyle",
             "sheet_name_without_version": "符文系（PerkStyles）",
             "sheet_name_with_version": "{version} PerkStyles"
         },
         "Perk": {
-            "id": 5,
             "dType": "Perk",
             "sheet_name_without_version": "符文（Perks）",
             "sheet_name_with_version": "{version} Perks"
         },
         "Champion": {
-            "id": 6,
             "dType": "Champion",
             "sheet_name_without_version": "英雄（Champions）",
             "sheet_name_with_version": "{version} Champions"
         },
         "ChampionSpell": {
-            "id": 7,
             "dType": "ChampionSpell",
             "sheet_name_without_version": "英雄技能（Champion Spells）",
             "sheet_name_with_version": "{version} ChampionSpells"
         },
         "Character": {
-            "id": 8,
             "dType": "Character",
             "sheet_name_without_version": "角色（Characters）",
             "sheet_name_with_version": "{version} Characters"
         },
         "CharacterSpell": {
-            "id": 9,
             "dType": "CharacterSpell",
             "sheet_name_without_version": "角色技能（Character Spells）",
             "sheet_name_with_version": "{version} CharacterSpells"
         },
         "Item": {
-            "id": 10,
             "dType": "Item",
             "sheet_name_without_version": "装备（Items）",
             "sheet_name_with_version": "{version} Items"
         },
         "ItemGroup": {
-            "id": 11,
             "dType": "ItemGroup",
             "sheet_name_without_version": "装备分组（Item Groups）",
             "sheet_name_with_version": "{version} ItemGroups"
         },
         "ItemModifier": {
-            "id": 12,
             "dType": "ItemModifier",
             "sheet_name_without_version": "装备修饰（Item Modifiers）",
             "sheet_name_with_version": "{version} ItemModifiers"
         },
         "CherryAugment": {
-            "id": 13,
             "dType": "CherryAugment",
             "sheet_name_without_version": "斗魂竞技场强化符文（Cherry Augments）",
             "sheet_name_with_version": "{version} CherryAugments"
         },
         "SwarmAugment": {
-            "id": 14,
             "dType": "SwarmAugment",
             "sheet_name_without_version": "无尽狂潮强化（Swarm Augments）",
             "sheet_name_with_version": "{version} SwarmAugments"
         },
         "KiwiAugment": {
-            "id": 15,
             "dType": "KiwiAugment",
             "sheet_name_without_version": "海克斯大乱斗强化符文（Kiwi Augments）",
             "sheet_name_with_version": "{version} KiwiAugments"
         },
         "KiwiAugmentSet": {
-            "id": 16,
             "dType": "KiwiAugmentSet",
             "sheet_name_without_version": "海克斯大乱斗强化符文套装（Kiwi Augment Set）",
             "sheet_name_with_version": "{version} KiwiAugmentSet"
         },
+        "AugmentModifier": {
+            "dType": "AugmentModifier",
+            "sheet_name_without_version": "强化符文修饰（Augment Modifiers）",
+            "sheet_name_with_version": "{version} AugmentModifiers"
+        },
         "CherryAnvil": {
-            "id": 17,
             "dType": "CherryAnvil",
             "sheet_name_without_version": "斗魂竞技场锻造器（Cherry Anvils）",
             "sheet_name_with_version": "{version} CherryAnvils"
         },
         "KiwiAnvil": {
-            "id": 18,
             "dType": "KiwiAnvil",
             "sheet_name_without_version": "海克斯大乱斗锻造器（Kiwi Anvils）",
             "sheet_name_with_version": "{version} KiwiAnvils"
         },
         "CherryRoundList": {
-            "id": 19,
             "dType": "CherryRoundList",
             "sheet_name_without_version": "斗魂竞技场回合列表（Cherry Round List）",
             "sheet_name_with_version": "{version} CherryRoundList"
         },
         "CherryRound": {
-            "id": 20,
             "dType": "CherryRound",
             "sheet_name_without_version": "斗魂竞技场回合（Cherry Round）",
             "sheet_name_with_version": "{version} CherryRound"
         },
         "CherryPhase": {
-            "id": 21,
             "dType": "CherryPhase",
             "sheet_name_without_version": "斗魂竞技场阶段（Cherry Phase）",
             "sheet_name_with_version": "{version} CherryPhase"
         },
         "CherryCameo": {
-            "id": 22,
             "dType": "CherryCameo",
             "sheet_name_without_version": "斗魂竞技场场景英雄（Cherry Cameos）",
             "sheet_name_with_version": "{version} CherryCameos"
         },
         "CherryGoH": {
-            "id": 23,
             "dType": "CherryGoH",
             "sheet_name_without_version": "斗魂竞技场荣誉嘉宾（Cherry Guests）",
             "sheet_name_with_version": "{version} CherryGuests"
         },
         "TFTSet": {
-            "id": 24,
             "dType": "TFTSet",
             "sheet_name_without_version": "云顶之弈赛季（TFT Set）",
             "sheet_name_with_version": "{version} TFTSet"
         },
         "TFTShop": {
-            "id": 25,
             "dType": "TFTShop",
             "sheet_name_without_version": "云顶之弈商店（TFT Shop）",
             "sheet_name_with_version": "{version} TFTShop"
         },
         "TFTShopContent": {
-            "id": 26,
             "dType": "TFTShopContent",
             "sheet_name_without_version": "云顶之弈商店内容（TFT Shop Content）",
             "sheet_name_with_version": "{version} TFTShopContent"
         },
         "TFTDropRate": {
-            "id": 27,
             "dType": "TFTDropRate",
             "sheet_name_without_version": "云顶之弈掉率表（TFT Drop Rate）",
             "sheet_name_with_version": "{version} TFTDropRate"
         },
         "TFTStageRound": {
-            "id": 28,
             "dType": "TFTStageRound",
             "sheet_name_without_version": "云顶之弈回合阶段（TFT Stage Round）",
             "sheet_name_with_version": "{version} TFTStageRound"
         },
         "TFTRound": {
-            "id": 29,
             "dType": "TFTRound",
             "sheet_name_without_version": "云顶之弈回合（TFT Round）",
             "sheet_name_with_version": "{version} TFTRound"
         },
         "TFTPortal": {
-            "id": 30,
             "dType": "TFTPortal",
             "sheet_name_without_version": "云顶之弈传送门（TFT Portal）",
             "sheet_name_with_version": "{version} TFTPortal"
         },
         "TFTEncounterDistribution": {
-            "id": 31,
             "dType": "TFTEncounterDistribution",
             "sheet_name_without_version": "云顶之弈开场奇遇（TFT Encounter Distribution）",
             "sheet_name_with_version": "{version} TFTEncounterDistribution"
         },
         "TFTEncounter": {
-            "id": 32,
             "dType": "TFTEncounter",
             "sheet_name_without_version": "云顶之弈奇遇（TFT Encounter）",
             "sheet_name_with_version": "{version} TFTEncounter"
         },
         "TFTUnitProperty": {
-            "id": 33,
             "dType": "TFTUnitProperty",
             "sheet_name_without_version": "云顶之弈单位属性（TFT Unit Property）",
             "sheet_name_with_version": "{version} TFTUnitProperty"
         },
         "TFTCharacterRole": {
-            "id": 34,
             "dType": "TFTCharacterRole",
             "sheet_name_without_version": "云顶之弈角色定位（TFT Character Role）",
             "sheet_name_with_version": "{version} TFTCharacterRole"
         },
         "TFTItemList": {
-            "id": 35,
             "dType": "TFTItemList",
             "sheet_name_without_version": "云顶之弈装备列表（TFT Item List）",
             "sheet_name_with_version": "{version} TFTItemList"
         },
         "TFTItem": {
-            "id": 36,
             "dType": "TFTItem",
             "sheet_name_without_version": "云顶之弈装备（TFT Items）",
             "sheet_name_with_version": "{version} TFTItems"
         },
         "TFTTraitList": {
-            "id": 37,
             "dType": "TFTTraitList",
             "sheet_name_without_version": "云顶之弈羁绊列表（TFT Trait List）",
             "sheet_name_with_version": "{version} TFTTraitList"
         },
         "TFTTrait": {
-            "id": 38,
             "dType": "TFTTrait",
             "sheet_name_without_version": "云顶之弈羁绊（TFT Traits）",
             "sheet_name_with_version": "{version} TFTTraits"
         },
         "TFTPVENPC": {
-            "id": 39,
             "dType": "TFTPVENPC",
             "sheet_name_without_version": "云顶之弈电脑玩家英雄（TFT PVE NPC）",
             "sheet_name_with_version": "{version} TFTPVENPC"
         },
         "TFTScript": {
-            "id": 40,
             "dType": "TFTScript",
             "sheet_name_without_version": "云顶之弈脚本（TFT Script）",
             "sheet_name_with_version": "{version} TFTScript"
         },
         "TFTAnnouncement": {
-            "id": 41,
             "dType": "TFTAnnouncement",
             "sheet_name_without_version": "云顶之弈通告（TFT Announcement）",
             "sheet_name_with_version": "{version} TFTAnnouncement"
         },
         "FontDescription": {
-            "id": 42,
             "dType": "FontDescription",
             "sheet_name_without_version": "字体描述（Font Description）",
             "sheet_name_with_version": "{version} FontDescription"
         },
         "FontType": {
-            "id": 43,
             "dType": "FontType",
             "sheet_name_without_version": "字体类型（Font Types）",
             "sheet_name_with_version": "{version} FontTypes"
         },
         "FontResolution": {
-            "id": 44,
             "dType": "FontResolution",
             "sheet_name_without_version": "字体分辨率（Font Resolution）",
             "sheet_name_with_version": "{version} FontResolution"
         },
         "FontStyle": {
-            "id": 45,
             "dType": "FontStyle",
             "sheet_name_without_version": "字体样式（Font Style）",
             "sheet_name_with_version": "{version} FontStyle"
         },
         "FontCSSStyle": {
-            "id": 46,
             "dType": "FontCSSStyle",
             "sheet_name_without_version": "CSS样式（CSS Style）",
             "sheet_name_with_version": "{version} FontCSSStyle"
         },
         "InlineIcon": {
-            "id": 47,
             "dType": "InlineIcon",
             "sheet_name_without_version": "内嵌图标（Inline Icons）",
             "sheet_name_with_version": "{version} InlineIcons"
         }
     } #工作表元数据（Worksheet metadata）
+    worksheet_dType_orderedList: list[str] = [
+        "Map",
+        "CheatSet",
+        "Cheat",
+        "PerkStyle",
+        "Perk",
+        "Champion",
+        "ChampionSpell",
+        "Character",
+        "CharacterSpell",
+        "Item",
+        "ItemGroup",
+        "ItemModifier",
+        "CherryAugment",
+        "SwarmAugment",
+        "KiwiAugment",
+        "KiwiAugmentSet",
+        "AugmentModifier",
+        "CherryAnvil",
+        "KiwiAnvil",
+        "CherryRoundList",
+        "CherryRound",
+        "CherryPhase",
+        "CherryCameo",
+        "CherryGoH",
+        "TFTSet",
+        "TFTShop",
+        "TFTShopContent",
+        "TFTDropRate",
+        "TFTStageRound",
+        "TFTRound",
+        "TFTPortal",
+        "TFTEncounterDistribution",
+        "TFTEncounter",
+        "TFTUnitProperty",
+        "TFTCharacterRole",
+        "TFTItemList",
+        "TFTItem",
+        "TFTTraitList",
+        "TFTTrait",
+        "TFTPVENPC",
+        "TFTScript",
+        "TFTAnnouncement",
+        "FontDescription",
+        "FontType",
+        "FontResolution",
+        "FontStyle",
+        "FontCSSStyle",
+        "InlineIcon"
+    ] #顺序数据类型列表（Ordered data type list）
     
     #初始化类（Initialize class）
     def __init__(self, version: str, locale: str, session: Optional[requests.Session] = None, log: Optional[LogManager] = None) -> None:
@@ -3432,10 +3440,13 @@ class MapExtractor(LoLDataExtractor):
         return 0
     
     def enqueue_map_dataframe(self) -> None:
+        '''
+        将地图数据框追加到数据提取器基类的数据框队列尾部。<br>Append the map dataframe into the end of `LoLDataExtractor.df_queue`.
+        '''
         if not self.map_df.empty:
             map_ws: dict[str, Any] = self.worksheet_metadata["Map"]
             sheet1_name: str = map_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else map_ws["sheet_name_without_version"]
-            map_df_struct: dict[str, Any] = {"id": map_ws["id"], "dType": map_ws["dType"], "sheet_name": sheet1_name, "sheet": self.map_df}
+            map_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(map_ws["dType"]), "dType": map_ws["dType"], "sheet_name": sheet1_name, "sheet": self.map_df}
             self.df_queue.append(map_df_struct)
     
     def export_map_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
@@ -3668,15 +3679,18 @@ class CheatExtractor(LoLDataExtractor):
         return 0
     
     def enqueue_cheat_dataframe(self) -> None:
+        '''
+        将作弊指令数据框追加到数据提取器基类的数据框队列尾部。<br>Append cheat dataframes into the end of `LoLDataExtractor.df_queue`.
+        '''
         if not self.cheatset_df.empty:
             cheatset_ws: dict[str, Any] = self.worksheet_metadata["CheatSet"]
             sheet1_name: str = cheatset_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else cheatset_ws["sheet_name_without_version"]
-            cheatset_df_struct: dict[str, Any] = {"id": cheatset_ws["id"], "dType": cheatset_ws["dType"], "sheet_name": sheet1_name, "sheet": self.cheatset_df}
+            cheatset_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(cheatset_ws["dType"]), "dType": cheatset_ws["dType"], "sheet_name": sheet1_name, "sheet": self.cheatset_df}
             self.df_queue.append(cheatset_df_struct)
         if not self.cheat_df.empty:
             cheat_ws: dict[str, Any] = self.worksheet_metadata["Cheat"]
             sheet2_name: str = cheat_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else cheat_ws["sheet_name_without_version"]
-            cheat_df_struct: dict[str, Any] = {"id": cheat_ws["id"], "dType": cheat_ws["dType"], "sheet_name": sheet2_name, "sheet": self.cheat_df}
+            cheat_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(cheat_ws["dType"]), "dType": cheat_ws["dType"], "sheet_name": sheet2_name, "sheet": self.cheat_df}
             self.df_queue.append(cheat_df_struct)
     
     def export_cheat_data(self, debug: bool = False, path: Optional[str] = None) -> None:
@@ -4026,15 +4040,18 @@ class PerkExtractor(LoLDataExtractor):
         return 0
     
     def enqueue_perk_dataframe(self) -> None:
+        '''
+        将符文数据框追加到数据提取器基类的数据框队列尾部。<br>Append perk dataframes into the end of `LoLDataExtractor.df_queue`.
+        '''
         if not self.perkstyle_df.empty:
             perkstyle_ws: dict[str, Any] = self.worksheet_metadata["PerkStyle"]
             sheet1_name: str = perkstyle_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else perkstyle_ws["sheet_name_without_version"]
-            perkstyle_df_struct: dict[str, Any] = {"id": perkstyle_ws["id"], "dType": perkstyle_ws["dType"], "sheet_name": sheet1_name, "sheet": self.perkstyle_df}
+            perkstyle_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(perkstyle_ws["dType"]), "dType": perkstyle_ws["dType"], "sheet_name": sheet1_name, "sheet": self.perkstyle_df}
             self.df_queue.append(perkstyle_df_struct)
         if not self.perk_df.empty:
             perk_ws: dict[str, Any] = self.worksheet_metadata["Perk"]
             sheet2_name: str = perk_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else perk_ws["sheet_name_without_version"]
-            perk_df_struct: dict[str, Any] = {"id": perk_ws["id"], "dType": perk_ws["dType"], "sheet_name": sheet2_name, "sheet": self.perk_df}
+            perk_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(perk_ws["dType"]), "dType": perk_ws["dType"], "sheet_name": sheet2_name, "sheet": self.perk_df}
             self.df_queue.append(perk_df_struct)
     
     def export_perk_data(self, debug: bool = False, path: Optional[str] = None) -> None:
@@ -4925,15 +4942,18 @@ class ChampionExtractor(LoLDataExtractor):
         return 0
     
     def enqueue_champion_dataframe(self) -> None:
+        '''
+        将角色数据框追加到数据提取器基类的数据框队列尾部。<br>Append character dataframes into the end of `LoLDataExtractor.df_queue`.
+        '''
         if not self.champion_df.empty:
             champion_ws: dict[str, Any] = self.worksheet_metadata["Character"] if self.useAllCharacter else self.worksheet_metadata["Champion"]
             sheet1_name: str = champion_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else champion_ws["sheet_name_without_version"]
-            champion_df_struct: dict[str, Any] = {"id": champion_ws["id"], "dType": champion_ws["dType"], "sheet_name": sheet1_name, "sheet": self.champion_df}
+            champion_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(champion_ws["dType"]), "dType": champion_ws["dType"], "sheet_name": sheet1_name, "sheet": self.champion_df}
             self.df_queue.append(champion_df_struct)
         if not self.champion_spell_df.empty:
             champion_spell_ws: dict[str, Any] = self.worksheet_metadata["CharacterSpell"] if self.useAllCharacter else self.worksheet_metadata["ChampionSpell"]
             sheet2_name: str = champion_spell_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else champion_spell_ws["sheet_name_without_version"]
-            champion_spell_df_struct: dict[str, Any] = {"id": champion_spell_ws["id"], "dType": champion_spell_ws["dType"], "sheet_name": sheet2_name, "sheet": self.champion_spell_df}
+            champion_spell_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(champion_spell_ws["dType"]), "dType": champion_spell_ws["dType"], "sheet_name": sheet2_name, "sheet": self.champion_spell_df}
             self.df_queue.append(champion_spell_df_struct)
     
     def export_champion_data(self, debug: bool = False, paths: Optional[list[str]] = None, verbose: bool = True) -> None:
@@ -5288,20 +5308,23 @@ class ItemExtractor(LoLDataExtractor):
         return 0
     
     def enqueue_item_dataframe(self) -> None:
+        '''
+        将装备数据框追加到数据提取器基类的数据框队列尾部。<br>Append item dataframes into the end of `LoLDataExtractor.df_queue`.
+        '''
         if not self.item_df.empty:
             item_ws: dict[str, Any] = self.worksheet_metadata["Item"]
             sheet1_name: str = item_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else item_ws["sheet_name_without_version"]
-            item_df_struct: dict[str, Any] = {"id": item_ws["id"], "dType": item_ws["dType"], "sheet_name": sheet1_name, "sheet": self.item_df}
+            item_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(item_ws["dType"]), "dType": item_ws["dType"], "sheet_name": sheet1_name, "sheet": self.item_df}
             self.df_queue.append(item_df_struct)
         if not self.itemGroup_df.empty:
             itemGroup_ws: dict[str, Any] = self.worksheet_metadata["ItemGroup"]
             sheet2_name: str = itemGroup_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else itemGroup_ws["sheet_name_without_version"]
-            itemGroup_df_struct: dict[str, Any] = {"id": itemGroup_ws["id"], "dType": itemGroup_ws["dType"], "sheet_name": sheet2_name, "sheet": self.itemGroup_df}
+            itemGroup_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(itemGroup_ws["dType"]), "dType": itemGroup_ws["dType"], "sheet_name": sheet2_name, "sheet": self.itemGroup_df}
             self.df_queue.append(itemGroup_df_struct)
         if not self.itemModifier_df.empty:
             itemModifier_ws: dict[str, Any] = self.worksheet_metadata["ItemModifier"]
             sheet3_name: str = itemModifier_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else itemModifier_ws["sheet_name_without_version"]
-            itemModifier_df_struct: dict[str, Any] = {"id": itemModifier_ws["id"], "dType": itemModifier_ws["dType"], "sheet_name": sheet3_name, "sheet": self.itemModifier_df}
+            itemModifier_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(itemModifier_ws["dType"]), "dType": itemModifier_ws["dType"], "sheet_name": sheet3_name, "sheet": self.itemModifier_df}
             self.df_queue.append(itemModifier_df_struct)
 
     def export_item_data(self, debug: bool = False, path: Optional[str] = None) -> None:
@@ -5373,6 +5396,7 @@ class AugmentExtractor(LoLDataExtractor):
         self.SwarmAugment_df: pandas.DataFrame = pandas.DataFrame()
         self.KiwiAugment_df: pandas.DataFrame = pandas.DataFrame()
         self.KiwiAugmentSet_df: pandas.DataFrame = pandas.DataFrame()
+        self.augmentModifier_df: pandas.DataFrame = pandas.DataFrame()
         
     def init_data_readiness(self) -> None:
         '''
@@ -5609,6 +5633,9 @@ class AugmentExtractor(LoLDataExtractor):
         KiwiAugmentSet_header_keys: list[str] = list(KiwiAugmentSet_header.keys())
         KiwiAugmentSet_data: dict[str, list[Any]] = {key: [] for key in KiwiAugmentSet_header_keys}
         KiwiAugmentSet_data_json: dict[str, list[Any]] = copy.deepcopy(KiwiAugmentSet_data)
+        augmentModifier_header_keys: list[str] = list(augmentModifier_header.keys())
+        augmentModifier_data: dict[str, list[Any]] = {key: [] for key in augmentModifier_header_keys}
+        augmentModifier_data_json: dict[str, list[Any]] = copy.deepcopy(augmentModifier_data)
         
         #数据整理核心部分（Data organization core part）
         AugmentDisplayTags_zh: dict[int, str] = {0: "己方", 1: "伤害", 2: "综合", 3: "复原力", 4: "速度", 5: "功能", 6: "属性锻造器", 7: "经济"} #通过字符串常量池的“cherry_augmentdisplaytag_...”类键得到（Obtained by "cherry_augmentdisplaytag_..." keys）
@@ -5930,36 +5957,83 @@ class AugmentExtractor(LoLDataExtractor):
         KiwiAugmentSet_df: pandas.DataFrame = pandas.DataFrame(data = KiwiAugmentSet_data_organized)
         KiwiAugmentSet_df = pandas.concat([pandas.DataFrame([KiwiAugmentSet_header])[KiwiAugmentSet_df.columns], KiwiAugmentSet_df], ignore_index = True)
         self.KiwiAugmentSet_df = KiwiAugmentSet_df
+        ##强化符文修饰（Augment modifiers）
+        for (key1, value) in (self.map12_bin | self.map30_bin).items():
+            if key1 != "__linked" and value["__type"] == "{23433cc1}":
+                for i in range(len(augmentModifier_header_keys)):
+                    key: str = augmentModifier_header_keys[i]
+                    if i == 0: #主键（`key`）
+                        to_append = key
+                    elif i == 1: #所属地图序号（`belonging_mapIds`）
+                        belonging_mapIds: list[int] = []
+                        if key1 in self.map12_bin:
+                            belonging_mapIds.append(12)
+                        if key1 in self.map30_bin:
+                            belonging_mapIds.append(30)
+                        to_append = belonging_mapIds
+                    elif i <= 7:
+                        to_append = value.get(key, "")
+                    else:
+                        subkey2: str = pStrConst.search(key).group()
+                        subkey1: str = key.replace(subkey2, "")
+                        useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                        locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
+                        strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                        tooltip_key: str = augmentModifier_data[subkey1][-1]
+                        tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        if subkey2.endswith("_burn"):
+                            tooltip_burn = self.tooltipPreparation(tooltip_raw, locale)
+                            tooltip_burn = self.tooltipPostProcessing(tooltip_burn, locale)
+                            to_append = tooltip_burn
+                        else:
+                            to_append = tooltip_raw
+                    augmentModifier_data[key].append(to_append)
+                    augmentModifier_data_json[key].append(pyobj2json(to_append))
+        augmentModifier_statistics_output_order: list[int] = [0, 2, 1, 3, 5, 4, 8, 9, 10, 11, 6, 12, 13, 14, 15, 7]
+        augmentModifier_data_organized: dict[str, list[Any]] = {augmentModifier_header_keys[i]: augmentModifier_data_json[augmentModifier_header_keys[i]] for i in augmentModifier_statistics_output_order}
+        augmentModifier_df: pandas.DataFrame = pandas.DataFrame(data = augmentModifier_data_organized)
+        augmentModifier_df = pandas.concat([pandas.DataFrame([augmentModifier_header])[augmentModifier_df.columns], augmentModifier_df], ignore_index = True)
+        self.augmentModifier_df = augmentModifier_df
         return 0
     
     def enqueue_augment_dataframe(self) -> None:
+        '''
+        将强化符文数据框追加到数据提取器基类的数据框队列尾部。<br>Append augment dataframes into the end of `LoLDataExtractor.df_queue`.
+        '''
         if not self.CherryAugment_df.empty:
             CherryAugment_ws: dict[str, Any] = self.worksheet_metadata["CherryAugment"]
             sheet1_name: str = CherryAugment_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else CherryAugment_ws["sheet_name_without_version"]
-            CherryAugment_df_struct: dict[str, Any] = {"id": CherryAugment_ws["id"], "dType": CherryAugment_ws["dType"], "sheet_name": sheet1_name, "sheet": self.CherryAugment_df}
+            CherryAugment_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(CherryAugment_ws["dType"]), "dType": CherryAugment_ws["dType"], "sheet_name": sheet1_name, "sheet": self.CherryAugment_df}
             self.df_queue.append(CherryAugment_df_struct)
         if not self.SwarmAugment_df.empty:
             SwarmAugment_ws: dict[str, Any] = self.worksheet_metadata["SwarmAugment"]
             sheet2_name: str = SwarmAugment_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else SwarmAugment_ws["sheet_name_without_version"]
-            SwarmAugment_df_struct: dict[str, Any] = {"id": SwarmAugment_ws["id"], "dType": SwarmAugment_ws["dType"], "sheet_name": sheet2_name, "sheet": self.SwarmAugment_df}
+            SwarmAugment_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(SwarmAugment_ws["dType"]), "dType": SwarmAugment_ws["dType"], "sheet_name": sheet2_name, "sheet": self.SwarmAugment_df}
             self.df_queue.append(SwarmAugment_df_struct)
         if not self.KiwiAugment_df.empty:
             KiwiAugment_ws: dict[str, Any] = self.worksheet_metadata["KiwiAugment"]
             sheet3_name: str = KiwiAugment_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else KiwiAugment_ws["sheet_name_without_version"]
-            KiwiAugment_df_struct: dict[str, Any] = {"id": KiwiAugment_ws["id"], "dType": KiwiAugment_ws["dType"], "sheet_name": sheet3_name, "sheet": self.KiwiAugment_df}
+            KiwiAugment_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(KiwiAugment_ws["dType"]), "dType": KiwiAugment_ws["dType"], "sheet_name": sheet3_name, "sheet": self.KiwiAugment_df}
             self.df_queue.append(KiwiAugment_df_struct)
         if not self.KiwiAugmentSet_df.empty:
             KiwiAugmentSet_ws: dict[str, Any] = self.worksheet_metadata["KiwiAugmentSet"]
             sheet4_name: str = KiwiAugmentSet_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else KiwiAugmentSet_ws["sheet_name_without_version"]
-            KiwiAugmentSet_df_struct: dict[str, Any] = {"id": KiwiAugmentSet_ws["id"], "dType": KiwiAugmentSet_ws["dType"], "sheet_name": sheet4_name, "sheet": self.KiwiAugmentSet_df}
+            KiwiAugmentSet_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(KiwiAugmentSet_ws["dType"]), "dType": KiwiAugmentSet_ws["dType"], "sheet_name": sheet4_name, "sheet": self.KiwiAugmentSet_df}
             self.df_queue.append(KiwiAugmentSet_df_struct)
+        if not self.augmentModifier_df.empty:
+            augmentModifier_ws: dict[str, Any] = self.worksheet_metadata["AugmentModifier"]
+            sheet5_name: str = augmentModifier_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else augmentModifier_ws["sheet_name_without_version"]
+            augmentModifier_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(augmentModifier_ws["dType"]), "dType": augmentModifier_ws["dType"], "sheet_name": sheet5_name, "sheet": self.augmentModifier_df}
+            self.df_queue.append(augmentModifier_df_struct)
 
     def export_augment_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
         '''
         导出强化符文数据到工作簿中。产生以下工作表：<br>Export augment data to a workbook. The following worksheets are added:
         - 斗魂竞技场强化符文（Cherry Augments）
+        - 无尽狂潮强化符文（Swarm Augments）
         - 海克斯大乱斗强化符文（Kiwi Augments）
         - 海克斯大乱斗强化符文套装（Kiwi Augment Set）
+        - 强化符文修饰（Augment Modifiers）
         
         :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
         :type debug: bool
@@ -5997,6 +6071,7 @@ class AugmentExtractor(LoLDataExtractor):
         sheet2_name: str = self.worksheet_metadata["SwarmAugment"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["SwarmAugment"]["sheet_name_without_version"]
         sheet3_name: str = self.worksheet_metadata["KiwiAugment"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["KiwiAugment"]["sheet_name_without_version"]
         sheet4_name: str = self.worksheet_metadata["KiwiAugmentSet"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["KiwiAugmentSet"]["sheet_name_without_version"]
+        sheet5_name: str = self.worksheet_metadata["AugmentModifier"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["AugmentModifier"]["sheet_name_without_version"]
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
@@ -6007,6 +6082,7 @@ class AugmentExtractor(LoLDataExtractor):
                         addDefaultStyle(self.KiwiAugment_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
                     if not self.KiwiAugmentSet_df.empty:
                         addDefaultStyle(self.KiwiAugmentSet_df).to_excel(excel_writer = writer, sheet_name = sheet4_name)
+                    addDefaultStyle(self.augmentModifier_df).to_excel(excel_writer = writer, sheet_name = sheet5_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
                     if not self.SwarmAugment_df.empty:
@@ -6015,6 +6091,7 @@ class AugmentExtractor(LoLDataExtractor):
                         self.version_df.to_excel(excel_writer = writer, sheet_name = sheet3_name, header = None, index = False, startcol = 0, startrow = 0)
                     if not self.KiwiAugmentSet_df.empty:
                         self.version_df.to_excel(excel_writer = writer, sheet_name = sheet4_name, header = None, index = False, startcol = 0, startrow = 0)
+                    self.augmentModifier_df.to_excel(excel_writer = writer, sheet_name = sheet5_name, header = None, index = False, startcol = 0, startrow = 0)
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
                 cont = logInput()
@@ -6315,15 +6392,18 @@ class AnvilExtractor(LoLDataExtractor):
         return 0
     
     def enqueue_anvil_dataframe(self) -> None:
+        '''
+        将锻造器数据框追加到数据提取器基类的数据框队列尾部。<br>Append anvil dataframes into the end of `LoLDataExtractor.df_queue`.
+        '''
         if not self.CherryAnvil_df.empty:
             CherryAnvil_ws: dict[str, Any] = self.worksheet_metadata["CherryAnvil"]
             sheet1_name: str = CherryAnvil_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else CherryAnvil_ws["sheet_name_without_version"]
-            CherryAnvil_df_struct: dict[str, Any] = {"id": CherryAnvil_ws["id"], "dType": CherryAnvil_ws["dType"], "sheet_name": sheet1_name, "sheet": self.CherryAnvil_df}
+            CherryAnvil_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(CherryAnvil_ws["dType"]), "dType": CherryAnvil_ws["dType"], "sheet_name": sheet1_name, "sheet": self.CherryAnvil_df}
             self.df_queue.append(CherryAnvil_df_struct)
         if not self.KiwiAnvil_df.empty:
             KiwiAnvil_ws: dict[str, Any] = self.worksheet_metadata["KiwiAnvil"]
             sheet2_name: str = KiwiAnvil_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else KiwiAnvil_ws["sheet_name_without_version"]
-            KiwiAnvil_df_struct: dict[str, Any] = {"id": KiwiAnvil_ws["id"], "dType": KiwiAnvil_ws["dType"], "sheet_name": sheet2_name, "sheet": self.KiwiAnvil_df}
+            KiwiAnvil_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(KiwiAnvil_ws["dType"]), "dType": KiwiAnvil_ws["dType"], "sheet_name": sheet2_name, "sheet": self.KiwiAnvil_df}
             self.df_queue.append(KiwiAnvil_df_struct)
     
     def export_anvil_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
@@ -6582,20 +6662,23 @@ class CherryRoundExtractor(LoLDataExtractor):
         return 0
     
     def enqueue_CherryRound_dataframe(self) -> None:
+        '''
+        将斗魂竞技场回合阶段数据框追加到数据提取器基类的数据框队列尾部。<br>Append Arena round phase dataframes into the end of `LoLDataExtractor.df_queue`.
+        '''
         if not self.CherryRoundList_df.empty:
             CherryRoundList_ws: dict[str, Any] = self.worksheet_metadata["CherryRoundList"]
             sheet1_name: str = CherryRoundList_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else CherryRoundList_ws["sheet_name_without_version"]
-            CherryRoundList_df_struct: dict[str, Any] = {"id": CherryRoundList_ws["id"], "dType": CherryRoundList_ws["dType"], "sheet_name": sheet1_name, "sheet": self.CherryRoundList_df}
+            CherryRoundList_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(CherryRoundList_ws["dType"]), "dType": CherryRoundList_ws["dType"], "sheet_name": sheet1_name, "sheet": self.CherryRoundList_df}
             self.df_queue.append(CherryRoundList_df_struct)
         if not self.CherryRound_df.empty:
             CherryRound_ws: dict[str, Any] = self.worksheet_metadata["CherryRound"]
             sheet2_name: str = CherryRound_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else CherryRound_ws["sheet_name_without_version"]
-            CherryRound_df_struct: dict[str, Any] = {"id": CherryRound_ws["id"], "dType": CherryRound_ws["dType"], "sheet_name": sheet2_name, "sheet": self.CherryRound_df}
+            CherryRound_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(CherryRound_ws["dType"]), "dType": CherryRound_ws["dType"], "sheet_name": sheet2_name, "sheet": self.CherryRound_df}
             self.df_queue.append(CherryRound_df_struct)
         if not self.CherryPhase_df.empty:
             CherryPhase_ws: dict[str, Any] = self.worksheet_metadata["CherryPhase"]
             sheet3_name: str = CherryPhase_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else CherryPhase_ws["sheet_name_without_version"]
-            CherryPhase_df_struct: dict[str, Any] = {"id": CherryPhase_ws["id"], "dType": CherryPhase_ws["dType"], "sheet_name": sheet3_name, "sheet": self.CherryPhase_df}
+            CherryPhase_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(CherryPhase_ws["dType"]), "dType": CherryPhase_ws["dType"], "sheet_name": sheet3_name, "sheet": self.CherryPhase_df}
             self.df_queue.append(CherryPhase_df_struct)
     
     def export_CherryRound_data(self, debug: bool = False, path: Optional[str] = None) -> None:
@@ -6791,10 +6874,13 @@ class CameoExtractor(LoLDataExtractor):
         return 0
     
     def enqueue_cameo_dataframe(self) -> None:
+        '''
+        将斗魂竞技场场景英雄数据框追加到数据提取器基类的数据框队列尾部。<br>Append the Arena cameo dataframe into the end of `LoLDataExtractor.df_queue`.
+        '''
         if not self.cameo_df.empty:
             cameo_ws: dict[str, Any] = self.worksheet_metadata["CherryCameo"]
             sheet1_name: str = cameo_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else cameo_ws["sheet_name_without_version"]
-            cameo_df_struct: dict[str, Any] = {"id": cameo_ws["id"], "dType": cameo_ws["dType"], "sheet_name": sheet1_name, "sheet": self.cameo_df}
+            cameo_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(cameo_ws["dType"]), "dType": cameo_ws["dType"], "sheet_name": sheet1_name, "sheet": self.cameo_df}
             self.df_queue.append(cameo_df_struct)
     
     def export_cameo_data(self, debug: bool = False, path: Optional[str] = None) -> None:
@@ -7073,10 +7159,13 @@ class GoHExtractor(LoLDataExtractor):
         return 0
     
     def enqueue_GoH_dataframe(self) -> None:
+        '''
+        将斗魂竞技场荣誉嘉宾数据框追加到数据提取器基类的数据框队列尾部。<br>Append the Arena GoH dataframe into the end of `LoLDataExtractor.df_queue`.
+        '''
         if not self.GoH_df.empty:
             GoH_ws: dict[str, Any] = self.worksheet_metadata["CherryGoH"]
             sheet1_name: str = GoH_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else GoH_ws["sheet_name_without_version"]
-            GoH_df_struct: dict[str, Any] = {"id": GoH_ws["id"], "dType": GoH_ws["dType"], "sheet_name": sheet1_name, "sheet": self.GoH_df}
+            GoH_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(GoH_ws["dType"]), "dType": GoH_ws["dType"], "sheet_name": sheet1_name, "sheet": self.GoH_df}
             self.df_queue.append(GoH_df_struct)
     
     def export_GoH_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
@@ -8345,95 +8434,98 @@ class TFTExtractor(LoLDataExtractor):
         return 0
     
     def enqueue_tft_dataframe(self) -> None:
+        '''
+        将云顶之弈数据框追加到数据提取器基类的数据框队列尾部。<br>Append TFT dataframes into the end of `LoLDataExtractor.df_queue`.
+        '''
         if not self.TFTSet_df.empty:
             TFTSet_ws: dict[str, Any] = self.worksheet_metadata["TFTSet"]
             sheet1_name: str = TFTSet_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTSet_ws["sheet_name_without_version"]
-            TFTSet_df_struct: dict[str, Any] = {"id": TFTSet_ws["id"], "dType": TFTSet_ws["dType"], "sheet_name": sheet1_name, "sheet": self.TFTSet_df}
+            TFTSet_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTSet_ws["dType"]), "dType": TFTSet_ws["dType"], "sheet_name": sheet1_name, "sheet": self.TFTSet_df}
             self.df_queue.append(TFTSet_df_struct)
         if not self.TFTShop_df.empty:
             TFTShop_ws: dict[str, Any] = self.worksheet_metadata["TFTShop"]
             sheet2_name: str = TFTShop_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTShop_ws["sheet_name_without_version"]
-            TFTShop_df_struct: dict[str, Any] = {"id": TFTShop_ws["id"], "dType": TFTShop_ws["dType"], "sheet_name": sheet2_name, "sheet": self.TFTShop_df}
+            TFTShop_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTShop_ws["dType"]), "dType": TFTShop_ws["dType"], "sheet_name": sheet2_name, "sheet": self.TFTShop_df}
             self.df_queue.append(TFTShop_df_struct)
         if not self.TFTShopContent_df.empty:
             TFTShopContent_ws: dict[str, Any] = self.worksheet_metadata["TFTShopContent"]
             sheet3_name: str = TFTShopContent_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTShopContent_ws["sheet_name_without_version"]
-            TFTShopContent_df_struct: dict[str, Any] = {"id": TFTShopContent_ws["id"], "dType": TFTShopContent_ws["dType"], "sheet_name": sheet3_name, "sheet": self.TFTShopContent_df}
+            TFTShopContent_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTShopContent_ws["dType"]), "dType": TFTShopContent_ws["dType"], "sheet_name": sheet3_name, "sheet": self.TFTShopContent_df}
             self.df_queue.append(TFTShopContent_df_struct)
         if not self.TFTDropRate_df.empty:
             TFTDropRate_ws: dict[str, Any] = self.worksheet_metadata["TFTDropRate"]
             sheet4_name: str = TFTDropRate_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTDropRate_ws["sheet_name_without_version"]
-            TFTDropRate_df_struct: dict[str, Any] = {"id": TFTDropRate_ws["id"], "dType": TFTDropRate_ws["dType"], "sheet_name": sheet4_name, "sheet": self.TFTDropRate_df}
+            TFTDropRate_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTDropRate_ws["dType"]), "dType": TFTDropRate_ws["dType"], "sheet_name": sheet4_name, "sheet": self.TFTDropRate_df}
             self.df_queue.append(TFTDropRate_df_struct)
         if not self.TFTStageRound_df.empty:
             TFTStageRound_ws: dict[str, Any] = self.worksheet_metadata["TFTStageRound"]
             sheet5_name: str = TFTStageRound_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTStageRound_ws["sheet_name_without_version"]
-            TFTStageRound_df_struct: dict[str, Any] = {"id": TFTStageRound_ws["id"], "dType": TFTStageRound_ws["dType"], "sheet_name": sheet5_name, "sheet": self.TFTStageRound_df}
+            TFTStageRound_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTStageRound_ws["dType"]), "dType": TFTStageRound_ws["dType"], "sheet_name": sheet5_name, "sheet": self.TFTStageRound_df}
             self.df_queue.append(TFTStageRound_df_struct)
         if not self.TFTRound_df.empty:
             TFTRound_ws: dict[str, Any] = self.worksheet_metadata["TFTRound"]
             sheet6_name: str = TFTRound_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTRound_ws["sheet_name_without_version"]
-            TFTRound_df_struct: dict[str, Any] = {"id": TFTRound_ws["id"], "dType": TFTRound_ws["dType"], "sheet_name": sheet6_name, "sheet": self.TFTRound_df}
+            TFTRound_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTRound_ws["dType"]), "dType": TFTRound_ws["dType"], "sheet_name": sheet6_name, "sheet": self.TFTRound_df}
             self.df_queue.append(TFTRound_df_struct)
         if not self.TFTPortal_df.empty:
             TFTPortal_ws: dict[str, Any] = self.worksheet_metadata["TFTPortal"]
             sheet7_name: str = TFTPortal_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTPortal_ws["sheet_name_without_version"]
-            TFTPortal_df_struct: dict[str, Any] = {"id": TFTPortal_ws["id"], "dType": TFTPortal_ws["dType"], "sheet_name": sheet7_name, "sheet": self.TFTPortal_df}
+            TFTPortal_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTPortal_ws["dType"]), "dType": TFTPortal_ws["dType"], "sheet_name": sheet7_name, "sheet": self.TFTPortal_df}
             self.df_queue.append(TFTPortal_df_struct)
         if not self.TFTEncounterDistribution_df.empty:
             TFTEncounterDistribution_ws: dict[str, Any] = self.worksheet_metadata["TFTEncounterDistribution"]
             sheet8_name: str = TFTEncounterDistribution_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTEncounterDistribution_ws["sheet_name_without_version"]
-            TFTEncounterDistribution_df_struct: dict[str, Any] = {"id": TFTEncounterDistribution_ws["id"], "dType": TFTEncounterDistribution_ws["dType"], "sheet_name": sheet8_name, "sheet": self.TFTEncounterDistribution_df}
+            TFTEncounterDistribution_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTEncounterDistribution_ws["dType"]), "dType": TFTEncounterDistribution_ws["dType"], "sheet_name": sheet8_name, "sheet": self.TFTEncounterDistribution_df}
             self.df_queue.append(TFTEncounterDistribution_df_struct)
         if not self.TFTEncounter_df.empty:
             TFTEncounter_ws: dict[str, Any] = self.worksheet_metadata["TFTEncounter"]
             sheet9_name: str = TFTEncounter_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTEncounter_ws["sheet_name_without_version"]
-            TFTEncounter_df_struct: dict[str, Any] = {"id": TFTEncounter_ws["id"], "dType": TFTEncounter_ws["dType"], "sheet_name": sheet9_name, "sheet": self.TFTEncounter_df}
+            TFTEncounter_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTEncounter_ws["dType"]), "dType": TFTEncounter_ws["dType"], "sheet_name": sheet9_name, "sheet": self.TFTEncounter_df}
             self.df_queue.append(TFTEncounter_df_struct)
         if not self.TFTUnitProperty_df.empty:
             TFTUnitProperty_ws: dict[str, Any] = self.worksheet_metadata["TFTUnitProperty"]
             sheet10_name: str = TFTUnitProperty_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTUnitProperty_ws["sheet_name_without_version"]
-            TFTUnitProperty_df_struct: dict[str, Any] = {"id": TFTUnitProperty_ws["id"], "dType": TFTUnitProperty_ws["dType"], "sheet_name": sheet10_name, "sheet": self.TFTUnitProperty_df}
+            TFTUnitProperty_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTUnitProperty_ws["dType"]), "dType": TFTUnitProperty_ws["dType"], "sheet_name": sheet10_name, "sheet": self.TFTUnitProperty_df}
             self.df_queue.append(TFTUnitProperty_df_struct)
         if not self.TFTCharacterRole_df.empty:
             TFTCharacterRole_ws: dict[str, Any] = self.worksheet_metadata["TFTCharacterRole"]
             sheet11_name: str = TFTCharacterRole_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTCharacterRole_ws["sheet_name_without_version"]
-            TFTCharacterRole_df_struct: dict[str, Any] = {"id": TFTCharacterRole_ws["id"], "dType": TFTCharacterRole_ws["dType"], "sheet_name": sheet11_name, "sheet": self.TFTCharacterRole_df}
+            TFTCharacterRole_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTCharacterRole_ws["dType"]), "dType": TFTCharacterRole_ws["dType"], "sheet_name": sheet11_name, "sheet": self.TFTCharacterRole_df}
             self.df_queue.append(TFTCharacterRole_df_struct)
         if not self.TFTItemList_df.empty:
             TFTItemList_ws: dict[str, Any] = self.worksheet_metadata["TFTItemList"]
             sheet12_name: str = TFTItemList_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTItemList_ws["sheet_name_without_version"]
-            TFTItemList_df_struct: dict[str, Any] = {"id": TFTItemList_ws["id"], "dType": TFTItemList_ws["dType"], "sheet_name": sheet12_name, "sheet": self.TFTItemList_df}
+            TFTItemList_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTItemList_ws["dType"]), "dType": TFTItemList_ws["dType"], "sheet_name": sheet12_name, "sheet": self.TFTItemList_df}
             self.df_queue.append(TFTItemList_df_struct)
         if not self.TFTItem_df.empty:
             TFTItem_ws: dict[str, Any] = self.worksheet_metadata["TFTItem"]
             sheet13_name: str = TFTItem_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTItem_ws["sheet_name_without_version"]
-            TFTItem_df_struct: dict[str, Any] = {"id": TFTItem_ws["id"], "dType": TFTItem_ws["dType"], "sheet_name": sheet13_name, "sheet": self.TFTItem_df}
+            TFTItem_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTItem_ws["dType"]), "dType": TFTItem_ws["dType"], "sheet_name": sheet13_name, "sheet": self.TFTItem_df}
             self.df_queue.append(TFTItem_df_struct)
         if not self.TFTTraitList_df.empty:
             TFTTraitList_ws: dict[str, Any] = self.worksheet_metadata["TFTTraitList"]
             sheet14_name: str = TFTTraitList_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTTraitList_ws["sheet_name_without_version"]
-            TFTTraitList_df_struct: dict[str, Any] = {"id": TFTTraitList_ws["id"], "dType": TFTTraitList_ws["dType"], "sheet_name": sheet14_name, "sheet": self.TFTTraitList_df}
+            TFTTraitList_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTTraitList_ws["dType"]), "dType": TFTTraitList_ws["dType"], "sheet_name": sheet14_name, "sheet": self.TFTTraitList_df}
             self.df_queue.append(TFTTraitList_df_struct)
         if not self.TFTTrait_df.empty:
             TFTTrait_ws: dict[str, Any] = self.worksheet_metadata["TFTTrait"]
             sheet15_name: str = TFTTrait_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTTrait_ws["sheet_name_without_version"]
-            TFTTrait_df_struct: dict[str, Any] = {"id": TFTTrait_ws["id"], "dType": TFTTrait_ws["dType"], "sheet_name": sheet15_name, "sheet": self.TFTTrait_df}
+            TFTTrait_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTTrait_ws["dType"]), "dType": TFTTrait_ws["dType"], "sheet_name": sheet15_name, "sheet": self.TFTTrait_df}
             self.df_queue.append(TFTTrait_df_struct)
         if not self.TFTPVENPC_df.empty:
             TFTPVENPC_ws: dict[str, Any] = self.worksheet_metadata["TFTPVENPC"]
             sheet16_name: str = TFTPVENPC_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTPVENPC_ws["sheet_name_without_version"]
-            TFTPVENPC_df_struct: dict[str, Any] = {"id": TFTPVENPC_ws["id"], "dType": TFTPVENPC_ws["dType"], "sheet_name": sheet16_name, "sheet": self.TFTPVENPC_df}
+            TFTPVENPC_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTPVENPC_ws["dType"]), "dType": TFTPVENPC_ws["dType"], "sheet_name": sheet16_name, "sheet": self.TFTPVENPC_df}
             self.df_queue.append(TFTPVENPC_df_struct)
         if not self.TFTScript_df.empty:
             TFTScript_ws: dict[str, Any] = self.worksheet_metadata["TFTScript"]
             sheet17_name: str = TFTScript_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTScript_ws["sheet_name_without_version"]
-            TFTScript_df_struct: dict[str, Any] = {"id": TFTScript_ws["id"], "dType": TFTScript_ws["dType"], "sheet_name": sheet17_name, "sheet": self.TFTScript_df}
+            TFTScript_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTScript_ws["dType"]), "dType": TFTScript_ws["dType"], "sheet_name": sheet17_name, "sheet": self.TFTScript_df}
             self.df_queue.append(TFTScript_df_struct)
         if not self.TFTAnnouncement_df.empty:
             TFTAnnouncement_ws: dict[str, Any] = self.worksheet_metadata["TFTAnnouncement"]
             sheet18_name: str = TFTAnnouncement_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTAnnouncement_ws["sheet_name_without_version"]
-            TFTAnnouncement_df_struct: dict[str, Any] = {"id": TFTAnnouncement_ws["id"], "dType": TFTAnnouncement_ws["dType"], "sheet_name": sheet18_name, "sheet": self.TFTAnnouncement_df}
+            TFTAnnouncement_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTAnnouncement_ws["dType"]), "dType": TFTAnnouncement_ws["dType"], "sheet_name": sheet18_name, "sheet": self.TFTAnnouncement_df}
             self.df_queue.append(TFTAnnouncement_df_struct)
     
     def export_tft_data(self, debug: bool = False, path: Optional[str] = None) -> None:
@@ -8828,35 +8920,38 @@ class FontExtractor(LoLDataExtractor):
         return 0
     
     def enqueue_font_dataframe(self) -> None:
+        '''
+        将字体数据框追加到数据提取器基类的数据框队列尾部。<br>Append font dataframes into the end of `LoLDataExtractor.df_queue`.
+        '''
         if not self.fontDesc_df.empty:
             fontDesc_ws: dict[str, Any] = self.worksheet_metadata["FontDescription"]
             sheet1_name: str = fontDesc_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else fontDesc_ws["sheet_name_without_version"]
-            fontDesc_df_struct: dict[str, Any] = {"id": fontDesc_ws["id"], "dType": fontDesc_ws["dType"], "sheet_name": sheet1_name, "sheet": self.fontDesc_df}
+            fontDesc_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(fontDesc_ws["dType"]), "dType": fontDesc_ws["dType"], "sheet_name": sheet1_name, "sheet": self.fontDesc_df}
             self.df_queue.append(fontDesc_df_struct)
         if not self.fontType_df.empty:
             fontType_ws: dict[str, Any] = self.worksheet_metadata["FontType"]
             sheet1_name: str = fontType_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else fontType_ws["sheet_name_without_version"]
-            fontType_df_struct: dict[str, Any] = {"id": fontType_ws["id"], "dType": fontType_ws["dType"], "sheet_name": sheet1_name, "sheet": self.fontType_df}
+            fontType_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(fontType_ws["dType"]), "dType": fontType_ws["dType"], "sheet_name": sheet1_name, "sheet": self.fontType_df}
             self.df_queue.append(fontType_df_struct)
         if not self.fontResolution_df.empty:
             fontResolution_ws: dict[str, Any] = self.worksheet_metadata["FontResolution"]
             sheet1_name: str = fontResolution_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else fontResolution_ws["sheet_name_without_version"]
-            fontResolution_df_struct: dict[str, Any] = {"id": fontResolution_ws["id"], "dType": fontResolution_ws["dType"], "sheet_name": sheet1_name, "sheet": self.fontResolution_df}
+            fontResolution_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(fontResolution_ws["dType"]), "dType": fontResolution_ws["dType"], "sheet_name": sheet1_name, "sheet": self.fontResolution_df}
             self.df_queue.append(fontResolution_df_struct)
         if not self.fontStyle_df.empty:
             fontStyle_ws: dict[str, Any] = self.worksheet_metadata["FontStyle"]
             sheet1_name: str = fontStyle_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else fontStyle_ws["sheet_name_without_version"]
-            fontStyle_df_struct: dict[str, Any] = {"id": fontStyle_ws["id"], "dType": fontStyle_ws["dType"], "sheet_name": sheet1_name, "sheet": self.fontStyle_df}
+            fontStyle_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(fontStyle_ws["dType"]), "dType": fontStyle_ws["dType"], "sheet_name": sheet1_name, "sheet": self.fontStyle_df}
             self.df_queue.append(fontStyle_df_struct)
         if not self.font_CSSStyle_df.empty:
             font_CSSStyle_ws: dict[str, Any] = self.worksheet_metadata["FontCSSStyle"]
             sheet1_name: str = font_CSSStyle_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else font_CSSStyle_ws["sheet_name_without_version"]
-            font_CSSStyle_df_struct: dict[str, Any] = {"id": font_CSSStyle_ws["id"], "dType": font_CSSStyle_ws["dType"], "sheet_name": sheet1_name, "sheet": self.font_CSSStyle_df}
+            font_CSSStyle_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(font_CSSStyle_ws["dType"]), "dType": font_CSSStyle_ws["dType"], "sheet_name": sheet1_name, "sheet": self.font_CSSStyle_df}
             self.df_queue.append(font_CSSStyle_df_struct)
         if not self.font_CSSIcon_df.empty:
             font_CSSIcon_ws: dict[str, Any] = self.worksheet_metadata["InlineIcon"]
             sheet1_name: str = font_CSSIcon_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else font_CSSIcon_ws["sheet_name_without_version"]
-            font_CSSIcon_df_struct: dict[str, Any] = {"id": font_CSSIcon_ws["id"], "dType": font_CSSIcon_ws["dType"], "sheet_name": sheet1_name, "sheet": self.font_CSSIcon_df}
+            font_CSSIcon_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(font_CSSIcon_ws["dType"]), "dType": font_CSSIcon_ws["dType"], "sheet_name": sheet1_name, "sheet": self.font_CSSIcon_df}
             self.df_queue.append(font_CSSIcon_df_struct)
     
     def export_font_data(self, debug: bool = False, path: Optional[str] = None) -> None:
@@ -9499,7 +9594,7 @@ if __name__ == "__main__":
                             continue
                         logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\t单类数据导出（Single-type data export）")
                 elif mode == "-1":
-                    df_queue: list[dict[str, Any]] = sorted(extractor.df_queue, key = lambda x: x["id"])
+                    df_queue: list[dict[str, Any]] = sorted(extractor.df_queue, key = lambda x: x["order"])
                     if len(df_queue) > 0:
                         logPrint("正在导出数据……\nExporting data ...", print_time = True)
                         while True:
@@ -9938,7 +10033,7 @@ if __name__ == "__main__":
                         continue
                     logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\t单类数据导出（Single-type data export）")
             elif mode == "-1":
-                df_queue: list[dict[str, Any]] = sorted(extractor.df_queue, key = lambda x: x["id"])
+                df_queue: list[dict[str, Any]] = sorted(extractor.df_queue, key = lambda x: x["order"])
                 if len(df_queue) > 0:
                     logPrint("正在导出数据……\nExporting data ...", print_time = True)
                     while True:
