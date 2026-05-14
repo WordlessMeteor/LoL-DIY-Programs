@@ -23,7 +23,7 @@ from src.core.config.localization import language_ddragon, language_dict
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/05/13
+# 更新（Last update）：     2026/05/14
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -2750,6 +2750,10 @@ class LoLDataExtractor:
         :rtype: str
         '''
         result: str = tooltip.replace("<row>", "").replace("</row>", "") #只有云顶之弈羁绊说明文本中存在<row>标签（<row> tag only exists in a TFT trait tooltip）
+        contLeftBracket_zh_re: re.Pattern[str] = re.compile(r"【(?P<text>[^】\n]*)【")
+        contRightBracket_zh_re: re.Pattern[str] = re.compile(r"】(?P<text>[^【\n]*)】")
+        contLeftBracket_en_re: re.Pattern[str] = re.compile(r"\[(?P<text>[^\]\n]*)\[")
+        contRightBracket_en_re: re.Pattern[str] = re.compile(r"\](?P<text>[^\[\n]*)\]")
         if locale in cls.FULL_WIDTH_LOCALE:
             while "【\n" in result:
                 result = result.replace("【\n", "【")
@@ -2759,8 +2763,12 @@ class LoLDataExtractor:
                 result = result.replace("【 ", "【")
             while " 】" in result:
                 result = result.replace(" 】", "】")
-            while "【【" in result:
-                result = result.replace("【【", "【")
+            while (matchObj := contLeftBracket_zh_re.search(result)):
+                start, end = matchObj.span()
+                result = result[:start] + matchObj.group("text") + "【" + result[end:] #在存在嵌套方括号时，保存内层的方括号（When square brackets are nested, the inner layer is saved）
+            while (matchObj := contRightBracket_zh_re.search(result)):
+                start, end = matchObj.span()
+                result = result[:start] + "】" + matchObj.group("text") + result[end:]
             while "】】" in result:
                 result = result.replace("】】", "】")
             while "【】" in result:
@@ -2774,10 +2782,12 @@ class LoLDataExtractor:
                 result = result.replace("[ ", "[")
             while " ]" in result:
                 result = result.replace(" ]", "]")
-            while "[[" in result:
-                result = result.replace("[[", "[")
-            while "]]" in result:
-                result = result.replace("]]", "]")
+            while (matchObj := contLeftBracket_en_re.search(result)):
+                start, end = matchObj.span()
+                result = result[:start] + matchObj.group("text") + "[" + result[end:]
+            while (matchObj := contRightBracket_en_re.search(result)):
+                start, end = matchObj.span()
+                result = result[:start] + "]" + matchObj.group("text") + result[end:]
             while "[]" in result:
                 result = result.replace("[]", "")
         while "()" in result:
@@ -10338,8 +10348,8 @@ if __name__ == "__main__":
         ##地图（Map）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
         #     map22_bin = json.load(fp)
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
-        #     map30_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
+            map30_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
         #     map33_bin = json.load(fp)
         ##装备（Item）
@@ -10357,8 +10367,8 @@ if __name__ == "__main__":
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
         #     kiwi_bin = json.load(fp)
         ##整合后的数据（Merged data）
-        with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
-            champions_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
+        #     champions_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/characters_bin.json", "r", encoding = "utf-8") as fp:
         #     characters_bin = json.load(fp)
         
@@ -10398,16 +10408,8 @@ if __name__ == "__main__":
         print("说明文本测试样例：")
         tests: list[dict[str, Any]] = [
             {
-                "tooltip": "{{Spell_ViPassive_Tooltip}}<br><br><rules>这个技能有@ShieldCooldown@秒的冷却时间，每当蔚触发<spellName>爆弹重拳</spellName>时，剩余的冷却时间就会减少@CDReductionOn3Hit@秒。</rules>",
-                "binData": champions_bin["Characters/Vi/Spells/ViPassiveAbility/ViPassive"]["mSpell"]
-            },
-            {
-                "tooltip": "<rules>命中的首个敌方英雄会使护盾生命值提升@FirstChampShieldMultiplier*100@%，命中的所有后续敌方英雄都会使护盾生命值提升@SecondChampShieldMultiplier*100@%。<br>这个技能的冷却时间和施放时间可通过攻击速度来缩短。<br>对小兵的最小总伤害为<scaleLevel>@MinimumDamageMinions@</scaleLevel>。</rules>",
-                "binData": champions_bin["Characters/Yone/Spells/YoneWAbility/YoneW"]["mSpell"]
-            },
-            {
-                "tooltip": "亚恒在用一次攻击或技能命中一个敌方英雄时，会获得一层<keyword>果决</keyword>(最大@MaxStacks@层)。他每层获得<physicalDamage>@PercentBonusADCalc@攻击力提升</physicalDamage>。<br><br>当叠满<keyword>果决</keyword>时，亚恒使已提供的<physicalDamage>攻击力</physicalDamage>翻倍，并且如果他即将阵亡，那么他会转而进入持续@ReviveDuration@秒的凝滞状态然后带着<healing>他的@RevivePercentCalc@最大生命值</healing>复活。<br><br>亚恒的复活有@ReviveCooldownCalc@秒冷却时间。<br>",
-                "binData": champions_bin["{4c6e6c43}"]["mSpell"]
+                "tooltip": "为你的战队投票，选择与【恶魔】结盟。<br><br>与【恶魔】结盟，会在一个<keywordMajor>【猎人】战队被淘汰</keywordMajor>时提供一个<keywordMajor>%i:AugmentLevel%强化符文等级</keywordMajor>。",
+                "binData": map30_bin["{4c901a13}"]["mSpell"]
             },
         ]
         for i in range(len(tests)):
