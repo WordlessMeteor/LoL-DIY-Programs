@@ -23,7 +23,7 @@ from src.core.dataframes.gameflow import sort_ChampSelect_players
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/04/12
+# 更新（Last update）：     2026/05/14
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -3470,6 +3470,8 @@ async def spectate_compat(connection: Connection) -> None: #带有旧接口兼�
                             break
                         elif response["httpStatus"] == 400 and "Attempting to spectate player but not in game" in response["message"]:
                             logPrint("该玩家未在游戏中，或者您输入的观战密钥不正确。\nThis player isn't in a game currently, or the spectatorKey isn't correct.")
+                        elif response["httpStatus"] == 400 and response["message"] == 'Failed to set launch spectator mode: {"message":"Error response for POST /lol-gameflow/v2/spectate/launch: LEAGUE_EDGE_CLIENT_AUTH_HEADERS_NOT_AVAILABLE","failureCode_int":400,"url":"/lol-gameflow/v2/spectate/launch","method":"POST","error":"LEAGUE_EDGE_CLIENT_AUTH_HEADERS_NOT_AVAILABLE"}':
+                            logPrint("认证令牌不可用。请检查您的登录状态和服务器维护状态。\nAuth token not available. Please check your login status and server mainteinance status.")
                         elif response["httpStatus"] == 500 and "Couldn't find service in service discovery using ServerLocationEndpointFilter" in response["message"]:
                             logPrint("观战服务不可用。\nSpectator service unavailable.")
                         else:
