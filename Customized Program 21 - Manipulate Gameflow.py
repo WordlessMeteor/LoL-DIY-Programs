@@ -30,7 +30,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/05/14
+# 更新（Last update）：     2026/05/15
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -4057,7 +4057,7 @@ async def toggle_party_publicity(connection: Connection) -> None:
             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
         logPrint("请选择一个操作：\nPlease select a operation:\n%s1\t让小队仅能通过邀请来进入（Make party invite-only）\n%s2\t将小队公开给好友（Open party to friends）" %("☆" if lobby_information["partyType"] == "open" else "", "☆" if lobby_information["partyType"] == "closed" else ""))
 
-async def find_match(connection: Connection) -> None:
+async def find_match(connection: Connection) -> bool:
     '''
     在所有小队成员准备就绪后，寻找对局。<br>Find match after all members are ready.
     
@@ -4065,6 +4065,10 @@ async def find_match(connection: Connection) -> None:
     
     :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
     :type connection: Connection
+    :return: 是否成功加入阵容匹配队列。<br>Whether the user has successfully joined the matchmaking queue.
+    
+        在成功加入阵容匹配队列时，程序会返回主页。<br>If it succeeds, the program will return to the home page.
+    :rtype: bool
     '''
     lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
     response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/lobby/matchmaking/search")).json()
@@ -4076,8 +4080,10 @@ async def find_match(connection: Connection) -> None:
         gameflow_phase = await get_gameflow_phase(connection)
         if gameflow_phase in ["Matchmaking", "ReadyCheck"]:
             logPrint("您已加入寻找对局的队列。\nYou joined the matchmaking queue.")
+            return True
         else:
             logPrint("加入寻找对局队列失败。\nFailed to join the matchmaking queue.")
+    return False
 
 async def manage_party(connection: Connection) -> bool:
     '''
@@ -4180,7 +4186,9 @@ async def manage_party(connection: Connection) -> bool:
         elif suboption[0] == "5":
             gameflow_phase = await get_gameflow_phase(connection)
             if gameflow_phase == "Lobby":
-                await find_match(connection)
+                return_home: bool = await find_match(connection)
+                if return_home:
+                    return True
             else:
                 logPrint("您目前不在房间内，或者正处于队列中或英雄选择阶段。\nYou're currently not in a party/lobby, in queue or during a champ select stage.")
         else:   
@@ -5024,7 +5032,6 @@ async def exit_lobby(connection: Connection) -> bool:
         在成功离开房间时，程序会返回主页。<br>If it succeeds, the program will return to home page.
     :rtype: bool
     '''
-    return_home: bool = False
     response: Optional[dict[str, Any]] = await (await connection.request("DELETE", "/lol-lobby/v2/lobby")).json()
     logPrint(response)
     if isinstance(response, dict) and "errorCode" in response:
@@ -5034,12 +5041,12 @@ async def exit_lobby(connection: Connection) -> bool:
         gameflow_phase = await get_gameflow_phase(connection)
         if gameflow_phase == "None":
             logPrint("您已成功退出房间。\nYou've exited the lobby successfully.")
-            return_home = True
+            return True
         elif gameflow_phase == "Lobby":
             logPrint("退出房间失败。请稍后通过客户端确认游戏状态。\nExit failed. Please check your gameflow phase in the League Client later.")
         else:
             logPrint("您的游戏状态发生异常。\nAn error occurred to your gameflow phase.")
-    return return_home
+    return False
 
 async def output_lobby_information(connection: Connection) -> None:
     '''
@@ -5564,12 +5571,16 @@ async def lobby_simulation(connection: Connection) -> str:
 #-----------------------------------------------------------------------------
 # 队列阶段模拟（In-queue stage simulation）
 #-----------------------------------------------------------------------------
-async def quit_queue(connection: Connection) -> None:
+async def quit_queue(connection: Connection) -> bool:
     '''
     退出寻找对局的队列。<br>Leave the queue of finding match.
     
     :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
     :type connection: Connection
+    :return: 是否成功退出阵容匹配队列回到房间。<br>Whether the user has successfully quited the matchmaking queue and returned to the lobby.
+    
+        在成功退出阵容匹配队列并回到房间时，程序会返回主页。<br>If it succeeds, the program will return to home page.
+    :rtype: bool
     '''
     response: Optional[dict[str, Any]] = await (await connection.request("DELETE", "/lol-lobby/v2/lobby/matchmaking/search")).json()
     logPrint(response)
@@ -5583,8 +5594,10 @@ async def quit_queue(connection: Connection) -> None:
         gameflow_phase = await get_gameflow_phase(connection)
         if gameflow_phase == "Lobby":
             logPrint("退出队列成功。您已返回房间。\nQueue exit succeeded. You returned to the lobby.")
+            return True
         else:
             logPrint("服务器接收到了退出队列请求，但您的状态似乎还没有更新。\nThe server received your queue exit request, but it seems your gameflow phase hasn't been updated yet.")
+    return False
 
 async def output_matchmaking_information(connection: Connection) -> None:
     '''
@@ -5676,7 +5689,9 @@ async def inQueue_simulation(connection: Connection) -> str:
         elif option[0] == "5":
             gameflow_phase: str = await get_gameflow_phase(connection)
             if gameflow_phase == "Matchmaking":
-                await quit_queue(connection)
+                return_home: bool = await quit_queue(connection)
+                if return_home:
+                    break
             else:
                 logPrint("您目前不在队列中，或者已经找到对局。\nYou're currently not in a matchmaking queue, or a match is found.")
         elif option[0] == "6":
@@ -8041,12 +8056,16 @@ def output_honor_votes(honor_ballot: dict[str, Any]) -> str:
             s += f"- +{votes_fromRollover} Unused votes"
     return s
 
-async def skip_honor_vote(connection: Connection) -> None:
+async def skip_honor_vote(connection: Connection) -> bool:
     '''
     跳过赞誉阶段。<br>Skip the honor vote phase.
     
     :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
     :type connection: Connection
+    :return: 是否跳过赞誉阶段返回大厅。<br>Whether the user has skipped the honor vote phase and returned to the home hub.
+    
+        在跳过赞誉阶段并返回大厅时，程序会返回主页。<br>If it succeeds, the program will return to home page.
+    :rtype: bool
     '''
     response: Optional[dict[str, Any]] = await (await connection.request("DELETE", "/lol-honor-v2/v1/ballot")).json()
     logPrint(response)
@@ -8057,8 +8076,10 @@ async def skip_honor_vote(connection: Connection) -> None:
         gameflow_phase = await get_gameflow_phase(connection)
         if gameflow_phase == "EndOfGame":
             logPrint("您已跳过赞誉阶段。\nYou skipped the honor phase.")
+            return True
         else:
             logPrint("跳过赞誉阶段失败。\nSkipping honor phase failed.")
+    return False
 
 async def output_honor_ballot(connection: Connection) -> None:
     '''
@@ -8152,7 +8173,9 @@ async def preEndOfGame_simulation(connection: Connection) -> str:
         elif option[0] == "3":
             gameflow_phase: str = await get_gameflow_phase(connection)
             if gameflow_phase == "PreEndOfGame":
-                await skip_honor_vote(connection)
+                return_home: bool = await skip_honor_vote(connection)
+                if return_home:
+                    break
             else:
                 logPrint("赞誉阶段已过。\nThe honor phase has passed.")
         elif option[0] == "4":
@@ -8448,7 +8471,6 @@ async def play_again(connection: Connection) -> bool:
         如果成功发送请求，程序会返回主页。<br>If it succeeds, the program will return to home page.
     :rtype: bool
     '''
-    return_home: bool = False
     response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/play-again")).json()
     logPrint(response)
     if isinstance(response, dict) and "errorCode" in response:
@@ -8463,10 +8485,10 @@ async def play_again(connection: Connection) -> bool:
         gameflow_phase = await get_gameflow_phase(connection)
         if gameflow_phase in ["None", "Lobby"]:
             logPrint("已成功发送请求。\nRequest success.")
-            return_home = True
+            return True
         else:
             logPrint("服务器接收到了再来一局的请求，但您的状态似乎发生了异常。\nThe server received your play-again request, but it seems that an error has occurred to your gameflow phase.")
-    return return_home
+    return False
 
 async def dismiss_endOfGame(connection: Connection) -> bool:
     '''
@@ -8479,7 +8501,6 @@ async def dismiss_endOfGame(connection: Connection) -> bool:
         如果成功发送请求，程序会返回主页。<br>If it succeeds, the program will return to home page.
     :rtype: bool
     '''
-    return_home: bool = False
     response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-end-of-game/v1/state/dismiss-stats")).json() #这个接口比下面注释起来的接口更有效一些（This endpoint is more effective than the following commented one）
     # response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/play-again-decline")).json()
     logPrint(response)
@@ -8492,10 +8513,10 @@ async def dismiss_endOfGame(connection: Connection) -> bool:
         gameflow_phase = await get_gameflow_phase(connection)
         if gameflow_phase == "None":
             logPrint("已成功发送请求。\nRequest success.")
-            return_home = True
+            return True
         else:
             logPrint("服务器接收到了返回大厅的请求，但您的状态似乎发生了异常。\nThe server received your dismiss-stats request, but it seems that an error has occurred to your gameflow phase.")
-    return return_home
+    return False
 
 async def recall_honor_vote(connection: Connection) -> None:
     '''
