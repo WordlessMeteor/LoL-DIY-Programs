@@ -23,7 +23,7 @@ from src.core.config.localization import language_ddragon, language_dict
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/05/14
+# 更新（Last update）：     2026/05/16
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -9513,6 +9513,17 @@ if __name__ == "__main__":
         integrate_str: str = logInput()
         integrate: bool = bool(integrate_str)
         
+        #设置自动化操作（Set automatic operations）
+        logPrint('''是否启用一键式导出？（输入任意非空字符串以禁用，否则启用。启用时，用户在第一个版本按下“-1”清空队列时，后续版本将只会整理和导出第一个版本获取过的数据。）\nDo you want to enable one-click export? (Submit any non-empty string to disable it, otherwise enable it. If it's enabled, when the user submits "-1" to empty the dataframe queue, the subsequent versions will only organize and export data of the same types as of the first version.)''')
+        one_click_str: str = logInput()
+        one_click: bool = not bool(one_click_str)
+        preset_data_options: list[int] = [] #保留第一个版本的导出数据类型（Reserve data types to export in the first version）
+        preset_export_settings: dict[str, bool] = {"reserve_CSS": False, "reserve_variable": False} #保留第一个版本的设置（Reserve settings in the first version）
+        if one_click:
+            logPrint("你看，他们像柱子一样！\nColumn like you see 'em.")
+        else:
+            logPrint("已禁用一键式导出。您将需要手动设置每个版本要导出的数据类型。\nOne-click has been disabled. You will need to manually set data types for each version.")
+        
         for i in range(len(versions)):
             version: str = versions[i]
             logPrint(f"[%d/%d]开始处理%s版本的游戏数据。\nStart to process game data of Version %s." %(i + 1, len(versions), version, version))
@@ -9543,13 +9554,31 @@ if __name__ == "__main__":
             if not extractor.shared_ready:
                 logPrint("共享数据获取失败。将忽略该数据。\nShared data capture failure! The program will ignore them.")
                 # continue
+            #自动化设置（Automation settings）
+            if one_click and i >= 1:
+                extractor.set_tooltipTransform_strategy(reserve_CSS = preset_export_settings["reserve_CSS"])
+                extractor.reserve_variable = preset_export_settings["reserve_variable"]
             #初始化计数器（Initialize counter）
             nDataOptions: int = 0
             nDataOption_iter: int = 0
+            step: int = 1
             #设置要提取的数据类型（Set the type of data to extract）
             while True:
                 logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t角色（Characters）\n6\t装备（Items）\n7\t强化符文（Augments）\n8\t锻造器（Anvils）\n9\t斗魂竞技场回合阶段（Arena Round Phase）\n10\t场景英雄（Cameo）\n11\t荣誉嘉宾（Guests of Honor）\n12\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n13\t字体（Fonts）\nall\t所有（All）\n-1\t导出所有数据框并清空队列（Export all dataframes and clear queue）")
-                mode: str = logInput()
+                if one_click and i >= 1:
+                    if step == 1:
+                        mode: str = str(preset_data_options)
+                    elif step == 2:
+                        mode = "-1"
+                    elif step == 3:
+                        mode = "0"
+                    else:
+                        logPrint("异常步骤！\nStep error!")
+                        break
+                    logPrint(mode)
+                    step += 1
+                else:
+                    mode: str = logInput()
                 if mode == "":
                     continue
                 elif mode == "-2":
@@ -9582,6 +9611,8 @@ if __name__ == "__main__":
                                 logPrint("说明文本将移除所有CSS标签。\nCSS tags will be removed from the tooltips.")
                             else:
                                 logPrint("说明文本将保留原始CSS标签。\nCSS tags will be reserved in the tooltips.")
+                            if one_click and i == 0:
+                                preset_export_settings["reserve_CSS"] = reserve_CSS
                         elif option[0] == "3":
                             logPrint('是否在数值替换的同时保留原变量？（输入任意非空字符串以将转换后的变量写成“[{变量名}] = {值}”的形式，否则只保留值。）\nDo you want to reserve the original variable when variable substitution is being performed? (Input any non-empty string to transform the variable into the form "[{Var_name}] = {Value}", or null to reserve the value only.)')
                             reserve_variable_str: str = logInput()
@@ -9591,6 +9622,8 @@ if __name__ == "__main__":
                                 logPrint("说明文本在完成变量代换后将同时显示变量名和值。\nBoth the name and the value of variables will appear in the tooltip after variable substitution.")
                             else:
                                 logPrint("说明文本在完成变量代换后将只显示值。\nOnly the value of variables will appear in the tooltip after variable substitution.")
+                            if one_click and i == 0:
+                                preset_export_settings["reserve_variable"] = reserve_variable
                         elif option[0] == "4":
                             logPrint("是否导出数据到Excel中？（输入任意非空字符串以导出，否则不导出。）\nDo you want to export data to Excel? (Submit any non-empty string to export, or null to refuse exporting.)")
                             export_str: str = logInput()
@@ -9658,6 +9691,8 @@ if __name__ == "__main__":
                         logPrint("没有等待导出的数据。\nNo data waiting for export.")
                 elif mode[0] == "0":
                     extractor.clear_cache()
+                    if one_click and i == 0:
+                        preset_data_options = sorted(set(preset_data_options))
                     break
                 else:
                     data_options: list[int] = []
@@ -9679,6 +9714,8 @@ if __name__ == "__main__":
                                 data_options = [_ for _ in tmp if _ >= 1 and _ <= 13]
                             else:
                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                    if one_click and i == 0:
+                        preset_data_options.extend(data_options)
                     nDataOptions += len(data_options)
                     for j in range(len(data_options)):
                         nDataOption_iter += 1
