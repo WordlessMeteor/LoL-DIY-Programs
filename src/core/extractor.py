@@ -5908,9 +5908,12 @@ class AugmentExtractor(LoLDataExtractor):
                     elif i == 16 or i == 17: #强化符文列表本地化信息（Augment list localized text）
                         augmentNames: list[str] = []
                         for augment_key in value["augments"]:
-                            tooltip_key = map12_bin_whole[augment_key]["NameTra"]
-                            strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 16 else strtable_lol_default
-                            augmentNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
+                            if augment_key in map12_bin_whole:
+                                tooltip_key = map12_bin_whole[augment_key]["NameTra"]
+                                strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 16 else strtable_lol_default
+                                augmentNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
+                            else:
+                                augmentNames.append("")
                         to_append = augmentNames
                     elif i <= 23: #根指令对象（`{96b4b430}_object`）
                         rootSpell_key: str = value["{96b4b430}"]
