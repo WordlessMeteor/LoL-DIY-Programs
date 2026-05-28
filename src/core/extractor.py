@@ -23,7 +23,7 @@ from src.core.config.localization import language_ddragon, language_dict
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/05/19
+# 更新（Last update）：     2026/05/28
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -1574,8 +1574,8 @@ class LoLDataExtractor:
         '''
         mStatFormula_dict_zh: dict[int, str] = {0: "", 1: "基础", 2: "额外"} #0代表总（0 stands for total）
         mStatFormula_dict_en: dict[int, str] = {0: "", 1: "basic ", 2: "bonus "}
-        mStat_dict_zh: dict[int, str] = {0: "法术强度", 1: "护甲", 2: "攻击力", 4: "攻击速度", 6: "魔法抗性", 7: "移动速度", 8: "暴击几率", 9: "暴击伤害", 10: "冷却缩减", 11: "技能急速", 12: "生命值", 14: "当前生命值百分比", 18: "生命偷取", 22: "固定法术穿透", 29: "穿甲", 31: "体型", 34: "治疗和护盾强度"}
-        mStat_dict_en: dict[int, str] = {0: "Ability Power", 1: "Armor", 2: "Attack Damage", 4: "Attack Speed", 6: "Magic Resistance", 7: "Movement Speed", 8: "Critical Strike Chance", 9: "Crit Damage", 10: "Cooldown Reduction", 11: "Ability Haste", 12: "Health", 14: "Current Health Percent", 18: "Life Steal", 22: "Magic Penetration Flat", 29: "Lethality", 31: "Size", 34: "Heal and Shield Power"}
+        mStat_dict_zh: dict[int, str] = {0: "法术强度", 1: "护甲", 2: "攻击力", 4: "攻击速度", 6: "魔法抗性", 7: "移动速度", 8: "暴击几率", 9: "暴击伤害", 10: "冷却缩减", 11: "技能急速", 12: "生命值", 14: "当前生命值百分比", 18: "生命偷取", 22: "固定法术穿透", 23: "百分比法术穿透", 29: "穿甲", 31: "体型", 34: "治疗和护盾强度"}
+        mStat_dict_en: dict[int, str] = {0: "Ability Power", 1: "Armor", 2: "Attack Damage", 4: "Attack Speed", 6: "Magic Resistance", 7: "Movement Speed", 8: "Critical Strike Chance", 9: "Crit Damage", 10: "Cooldown Reduction", 11: "Ability Haste", 12: "Health", 14: "Current Health Percent", 18: "Life Steal", 22: "Magic Penetration Flat", 23: "Magic Penetration Percent", 29: "Lethality", 31: "Size", 34: "Heal and Shield Power"}
         itemEpicness_dict_zh: dict[int, str] = {0: "无", 1: "初始", 2: "基础", 3: "工资装", 4: "史诗", 5: "传说", 6: "神话", 7: "升级", 8: "锻造器", 9: "棱彩"}
         itemEpicness_dict_en: dict[int, str] = {0: "none", 1: "starter", 2: "basic", 3: "gold income", 4: "epic", 5: "legendary", 6: "mythic", 7: "level up", 8: "anvil", 9: "prismatic"}
         if isinstance(flexibleData, dict): #附加数据处理（Supplemental data processing）
@@ -1647,7 +1647,7 @@ class LoLDataExtractor:
             formulaStr = cls.burnValueList(formulaPart["values"] if "values" in formulaPart else formulaPart["mValues"]) #在25.06版本以前，值列表的键名是mValues（Before Patch 25.06, the value list's key name is "mValues"）
         elif formulaPart_type == "ByCharLevelInterpolationCalculationPart": #线性等级提供增益（Bonus value provided by levels in a linear manner）
             mStartValue: int | float = cls.aRound(formulaPart.get("mStartValue", 0), 5)
-            mEndValue: int | float = cls.aRound(formulaPart["mEndValue"], 5)
+            mEndValue: int | float = cls.aRound(formulaPart.get("mEndValue", 0), 5)
             formulaStr = f"{mStartValue} - {mEndValue} (Level 1 to 18)"
         elif formulaPart_type == "ByItemEpicnessCountCalculationPart":
             coefficient: int | float = cls.aRound(formulaPart.get("Coefficient", 0), 5)
@@ -1986,7 +1986,7 @@ class LoLDataExtractor:
                     if all(map(lambda x: isinstance(x, (int, float)), mEffectAmount)):
                         normalValue = str(cls.aRound(mEffectAmount[mEffectAmount_index], 5))
                     elif all(map(lambda x: isinstance(x, dict), mEffectAmount)):
-                        normalValue = cls.burnValueList(mEffectAmount[mEffectAmount_index]["value"])
+                        normalValue = cls.burnValueList(mEffectAmount[mEffectAmount_index]["value"]) if "value" in mEffectAmount[mEffectAmount_index] else "0"
                     else:
                         skip = True
                 else:
@@ -2363,7 +2363,7 @@ class LoLDataExtractor:
             otherBinDataPrefix_elements: list[str] = otherBinDataPrefix.split(".")
             otherBinData_category: str = otherBinDataPrefix_elements[0]
             otherBinData_mName: str = otherBinDataPrefix_elements[1] if len(otherBinDataPrefix_elements) > 1 else ""
-            otherBinData_varIndex: int = int(otherBinDataPrefix_elements[2]) if len(otherBinDataPrefix_elements) > 2 else -1 #因为这个参数，导致本函数族又多了一个参数（Thanks to this variable, this function family added another variable）
+            otherBinData_varIndex: int = -1 if len(otherBinDataPrefix_elements) <= 2 else 1 if otherBinDataPrefix_elements[2] == "" else int(otherBinDataPrefix_elements[2]) #因为这个参数，导致本函数族又多了一个参数（Thanks to this variable, this function family added another variable）
             otherBinData_var: str = var.replace(matchObj.group(), "")
             if otherBinData_category.lower() == "spell":
                 if otherBinData_mName in cls.mSpells:
@@ -2648,28 +2648,31 @@ class LoLDataExtractor:
         sTooltipForm: str = r"\{\{\s*\w*@f\d+@\w*\s*\}\}"
         pStats: re.Pattern[str] = re.compile(sStats)
         pTooltipForm: re.Pattern[str] = re.compile(sTooltipForm)
-        while (matchObj := pTooltipForm.search(result)):
+        start_pos: int = 0
+        while (matchObj := pTooltipForm.search(result, pos = start_pos)):
             start, end = matchObj.span()
             tooltipForm_key: str = matchObj.group()
             tooltipForm: str = tooltipForm_key.lstrip("{").rstrip("}").strip()
             matchObj1 = pStats.search(tooltipForm)
             strtable_key_static_part1: str = tooltipForm[:matchObj1.start()]
             strtable_key_static_part2: str = tooltipForm[matchObj1.end():]
-            strtable_form_key: str = strtable_key_static_part1 + r"\d+" + strtable_key_static_part2
-            pStrtable_form_key: re.Pattern[str] = re.compile(strtable_form_key.lower()) #注意字符串常量池中的键都是小写（Note that keys in stringtable are all in lower form）
-            tooltip_form_keys: list[str] = []
-            for key in strtable_locale["entries"].keys():
-                if pStrtable_form_key.fullmatch(key):
-                    tooltip_form_key = key.replace(strtable_key_static_part1.lower(), strtable_key_static_part1).replace(strtable_key_static_part2.lower(), strtable_key_static_part2)
-                    tooltip_form_keys.append(tooltip_form_key)
-            tooltip_form_keys.sort()
-            tooltip_form_results: list[str] = list(map(lambda x: "{{%s}} (form: %s)" % (x, x), tooltip_form_keys))
-            if tooltipForm_key == result or (start == 0 or result[start - 1] == "\n") and (end == len(result) or result[end + 1] == "\n"):
-                separator: str = "\n||\n"
+            tooltip_form_values: list[str] = []
+            for i in range(99): #原先是通过将“@fn”替换为“\d+”从字符串常量池中识别所有匹配的键，进而确定不同形态的值，但是字符串常量池中的键可能是未解析的hash值！（Originally, we identified all matched keys from stringtable by replacing "@fn" with "\d+", and then obtained the values of different forms. However, the keys in stringtable may be unhashed values!）
+                strtable_form_key: str = strtable_key_static_part1 + str(i) + strtable_key_static_part2
+                strtable_form_value: str = cls.get_strtable_value(strtable_locale, strtable_form_key, default = "")
+                if strtable_form_value != "":
+                    tooltip_form_values.append("%s (form: %s)" %(strtable_form_value, i))
+                elif i >= 10:
+                    break
+            if len(tooltip_form_values) > 0:
+                if tooltipForm_key == result or (start == 0 or result[start - 1] == "\n") and (end == len(result) or result[end + 1] == "\n"):
+                    separator: str = "\n||\n"
+                else:
+                    separator = " || "
+                tooltip_form_str: str = separator.join(tooltip_form_values)
+                result = result.replace(tooltipForm_key, tooltip_form_str)
             else:
-                separator = " || "
-            tooltip_form_result_burn: str = separator.join(tooltip_form_results) #因为前面判定整个说明文本被匹配了，所以这里不需要讨论分隔符（Since we determined that the whole tooltip is matched, there's no need to discuss the separator here）
-            result = result.replace(tooltipForm_key, tooltip_form_result_burn)
+                start_pos = matchObj.end()
         #下面对其它嵌套变量进行可能的转换。典型示例：海克斯大乱斗强化符文套装【掷骰狂人】（In the following, transform the tooltips with other nested variables. A typical example: ARAM: Mayhem augment set High Roller）
         sTooltipNestedVarOther_var: str = r"@\w+@"
         sTooltipNestedVarOther: str = r"\{\{\s*\w*" + sTooltipNestedVarOther_var + r"\w*\s*\}\}"
@@ -4887,9 +4890,9 @@ class ChampionExtractor(LoLDataExtractor):
                                 if tmp_key in tmp_ptr:
                                     tmp_ptr = tmp_ptr[tmp_key]
                                 else:
-                                    if i in {6, 20, 39, 48, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 78, 79, 80, 81, 82, 83, 85, 86, 87, 89, 90, 91, 93, 94, 95, 97, 98, 99, 100, 101, 102, 103, 105, 106, 107, 113, 114, 115, 116, 117, 118, 119, 121, 131, 132, 133, 141, 142, 146, 161, 163, 167, 171, 172, 176, 177, 179, 181, 195, 214, 221, 222, 235, 236, 237, 310}:
+                                    if i in {6, 20, 39, 48, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 78, 79, 80, 81, 82, 83, 85, 86, 87, 89, 90, 91, 93, 94, 95, 97, 98, 99, 100, 101, 102, 103, 105, 106, 107, 113, 114, 115, 116, 117, 118, 119, 121, 131, 132, 133, 141, 142, 146, 161, 163, 167, 171, 172, 176, 177, 179, 181, 195, 214, 221, 222, 235, 236, 237, 314}:
                                         to_append = False
-                                    elif i in {76, 77, 84, 88, 96, 109, 112, 134, 140, 144, 150, 243, 320, 321, 322}:
+                                    elif i in {76, 77, 84, 88, 96, 109, 112, 134, 140, 144, 150, 243, 324, 325, 326}:
                                         to_append = tmp_key == subkeyList[-2] #如果遍历到某个逻辑值键的上一级就停止，且该逻辑值键的默认值为真，仍应将其置为假，以表明该逻辑值键所在的命名场景不存在（If `tmp_key` traverses through `subkeyList` and stopped at the parent key of a boolean key whose default value is True, the result to append should be set as False, to indicate that the namespace background of this boolean key doesn't exist）
                                     else:
                                         to_append = ""
@@ -4922,7 +4925,7 @@ class ChampionExtractor(LoLDataExtractor):
         champion_df = pandas.concat([pandas.DataFrame([champion_header])[champion_df.columns], champion_df], ignore_index = True)
         self.champion_df = champion_df
         ##技能指令（Spell）
-        champion_spell_statistics_output_order: list[int] = [0, 11, 12, 1, 10, 247, 264, 265, 3, 2, 7, 8, 9, 6, 4, 5, 24, 13, 14, 15, 25, 101, 116, 218, 65, 219, 44, 30, 39, 66, 47, 61, 62, 63, 29, 64, 67, 26, 27, 28, 31, 217, 32, 33, 220, 196, 122, 123, 56, 57, 58, 93, 124, 125, 42, 43, 197, 126, 127, 128, 95, 96, 45, 46, 49, 50, 51, 52, 48, 22, 23, 97, 102, 16, 17, 54, 19, 18, 20, 21, 38, 53, 55, 59, 60, 86, 78, 79, 89, 90, 70, 69, 75, 107, 72, 73, 74, 91, 94, 68, 71, 233, 81, 76, 77, 92, 84, 85, 80, 82, 83, 87, 105, 115, 88, 235, 236, 237, 103, 118, 117, 119, 121, 232, 221, 222, 223, 224, 225, 226, 227, 34, 35, 36, 98, 231, 100, 114, 104, 205, 206, 106, 109, 108, 110, 113, 111, 112, 120, 129, 208, 99, 209, 210, 211, 212, 213, 216, 228, 229, 230, 234, 238, 240, 239, 300, 301, 241, 242, 243, 244, 258, 259, 248, 253, 280, 282, 281, 283, 256, 292, 294, 293, 295, 251, 274, 275, 252, 276, 278, 277, 279, 254, 284, 286, 285, 287, 255, 288, 290, 289, 291, 257, 296, 298, 297, 299, 245, 260, 261, 246, 262, 263, 249, 266, 268, 267, 269, 250, 270, 272, 271, 273, 302, 303, 304, 305, 306, 307, 308, 309, 310, 207, 40, 37, 41, 311, 312, 314, 315, 324, 316, 329, 330, 313, 325, 327, 326, 328, 317, 331, 333, 332, 334, 318, 335, 337, 336, 338, 319, 320, 321, 322, 323, 198, 199, 200, 201, 202, 203, 204, 130, 174, 134, 132, 135, 136, 131, 133, 214, 215, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 175, 182, 176, 177, 178, 179, 180, 181, 192, 183, 184, 185, 186, 187, 188, 189, 190, 191, 193, 194, 195, 339]
+        champion_spell_statistics_output_order: list[int] = [0, 11, 12, 1, 10, 247, 268, 269, 3, 2, 7, 8, 9, 6, 4, 5, 24, 13, 14, 15, 25, 101, 116, 218, 65, 219, 44, 30, 39, 66, 47, 61, 62, 63, 29, 64, 67, 26, 27, 28, 31, 217, 32, 33, 220, 196, 122, 123, 56, 57, 58, 93, 124, 125, 42, 43, 197, 126, 127, 128, 95, 96, 45, 46, 49, 50, 51, 52, 48, 22, 23, 97, 102, 16, 17, 54, 19, 18, 20, 21, 38, 53, 55, 59, 60, 86, 78, 79, 89, 90, 70, 69, 75, 107, 72, 73, 74, 91, 94, 68, 71, 233, 81, 76, 77, 92, 84, 85, 80, 82, 83, 87, 105, 115, 88, 235, 236, 237, 103, 118, 117, 119, 121, 232, 221, 222, 223, 224, 225, 226, 227, 34, 35, 36, 98, 231, 100, 114, 104, 205, 206, 106, 109, 108, 110, 113, 111, 112, 120, 129, 208, 99, 209, 210, 211, 212, 213, 216, 228, 229, 230, 234, 238, 240, 239, 304, 305, 241, 242, 243, 244, 258, 259, 248, 253, 284, 286, 285, 287, 256, 296, 298, 297, 299, 251, 278, 279, 252, 280, 282, 281, 283, 254, 288, 290, 289, 291, 255, 292, 294, 293, 295, 257, 300, 302, 301, 303, 245, 260, 262, 261, 263, 246, 264, 266, 265, 267, 249, 270, 272, 271, 273, 250, 274, 276, 275, 277, 306, 307, 308, 309, 310, 311, 312, 313, 314, 207, 40, 37, 41, 315, 316, 318, 319, 328, 320, 333, 334, 317, 329, 331, 330, 332, 321, 335, 337, 336, 338, 322, 339, 341, 340, 342, 323, 324, 325, 326, 327, 198, 199, 200, 201, 202, 203, 204, 130, 174, 134, 132, 135, 136, 131, 133, 214, 215, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 175, 182, 176, 177, 178, 179, 180, 181, 192, 183, 184, 185, 186, 187, 188, 189, 190, 191, 193, 194, 195, 343]
         champion_spell_data_organized: dict[str, list[Any]] = {champion_spell_header_keys[i]: champion_spell_data_json[champion_spell_header_keys[i]] for i in champion_spell_statistics_output_order}
         champion_spell_df: pandas.DataFrame = pandas.DataFrame(data = champion_spell_data_organized)
         logPrint("正在排序英雄技能数据框……\nOrganizing champion spell dataframe ...")
@@ -5648,8 +5651,8 @@ class AugmentExtractor(LoLDataExtractor):
         augmentModifier_data_json: dict[str, list[Any]] = copy.deepcopy(augmentModifier_data)
         
         #数据整理核心部分（Data organization core part）
-        AugmentDisplayTags_zh: dict[int, str] = {0: "己方", 1: "伤害", 2: "综合", 3: "复原力", 4: "速度", 5: "功能", 6: "属性锻造器", 7: "经济"} #通过字符串常量池的“cherry_augmentdisplaytag_...”类键得到（Obtained by "cherry_augmentdisplaytag_..." keys）
-        AugmentDisplayTags_en: dict[int, str] = {0: "Ally", 1: "Damage", 2: "General", 3: "Resilience", 4: "Speed", 5: "Utility", 6: "Stat Anvil", 7: "Economy"}
+        AugmentDisplayTags_zh: dict[int, str] = {0: "己方", 1: "伤害", 2: "综合", 3: "复原力", 4: "速度", 5: "功能", 6: "属性锻造器", 7: "经济", 8: "任务", 9: "任务线"} #通过字符串常量池的“cherry_augmentdisplaytag_...”类键得到（Obtained by "cherry_augmentdisplaytag_..." keys）
+        AugmentDisplayTags_en: dict[int, str] = {0: "Ally", 1: "Damage", 2: "General", 3: "Resilience", 4: "Speed", 5: "Utility", 6: "Stat Anvil", 7: "Economy", 8: "Quest", 9: "Questline"}
         AugmentDisplayTags: dict[int, str] = AugmentDisplayTags_zh if self.locale in self.ZH_LOCALE else AugmentDisplayTags_en
         augment_rarities_zh: dict[int, str] = {0: "白银", 1: "黄金", 2: "棱彩", 3: "超凡", 4: "晶耀"}
         augment_rarities_en: dict[int, str] = {0: "Silver", 1: "Gold", 2: "Prismatic", 3: "Unique", 4: "SheenGlow"}
@@ -5843,7 +5846,7 @@ class AugmentExtractor(LoLDataExtractor):
                             else:
                                 to_append = tooltip_raw
                         elif i == 47: #强化符文显示标签内容（`AugmentDisplayTags_content`）
-                            to_append = list(map(lambda x: AugmentDisplayTags[x], value["AugmentDisplayTags"]))
+                            to_append = list(map(lambda x: AugmentDisplayTags[x], value["AugmentDisplayTags"])) if "AugmentDisplayTags" in value else ""
                         elif i == 48: #位阶（`rarityValue`）
                             to_append = augment_rarities[value.get("rarity", 0)]
                         elif i == 49: #根指令对象（`RootSpellObject`）
@@ -9499,7 +9502,7 @@ if __name__ == "__main__":
         if language_code == "":
             return 1
 
-        #设置版本（Set the version)
+        #设置版本（Set the version）
         versions, session = set_version(session = session)
         if len(versions) == 0:
             return 2
@@ -9529,7 +9532,7 @@ if __name__ == "__main__":
         
         for i in range(len(versions)):
             version: str = versions[i]
-            logPrint(f"[%d/%d]开始处理%s版本的游戏数据。\nStart to process game data of Version %s." %(i + 1, len(versions), version, version))
+            logPrint("[%d/%d]开始处理%s版本的游戏数据。\nStart to process game data of Version %s." %(i + 1, len(versions), version, version))
             extractor = LoLDataExtractor(version, language_code, session = session)
             if integrate:
                 extractor.encapsulate()
@@ -9653,7 +9656,7 @@ if __name__ == "__main__":
                                         df_struct: dict[str, Any] = df_queue[j]
                                         df: pandas.DataFrame = df_struct["sheet"]
                                         if df_struct["dType"] == "TFTSet":
-                                            df = df.drop(labels = ["BotSkillData SkillAxes", "VfxResourceResolver resourceMap"], axis = 1)
+                                            df = df.drop(labels = ["BotSkillData SkillAxes", "VfxResourceResolver resourceMap", "{235a8995} bankUnits"], axis = 1)
                                         sheet_name: str = df_struct["sheet_name"]
                                         logPrint("[%d/%d]%s" %(j + 1, len(df_queue), sheet_name), end = "\r", print_time = True)
                                         addDefaultStyle(df).to_excel(excel_writer = writer, sheet_name = sheet_name[:31])
@@ -10386,15 +10389,15 @@ if __name__ == "__main__":
         with open(tftstringtable_en_path, "r", encoding = "utf-8") as fp:
             tftstringtable_en = json.load(fp)
         ##地图（Map）
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
-        #     map22_bin = json.load(fp)
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
-            map30_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
+            map22_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
+        #     map30_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
         #     map33_bin = json.load(fp)
         ##装备（Item）
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
-        #     items_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
+            items_bin = json.load(fp)
         ##共享数据（Shared data）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/shared.cdtb.bin.json", "r", encoding = "utf-8") as fp:
         #     shared_bin = json.load(fp)
@@ -10404,11 +10407,11 @@ if __name__ == "__main__":
         ##强化符文和荣誉嘉宾（Augment and Guest of Honor）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
         #     cherry_bin = json.load(fp)
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
-        #     kiwi_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
+            kiwi_bin = json.load(fp)
         ##整合后的数据（Merged data）
-        # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
-        #     champions_bin = json.load(fp)
+        with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
+            champions_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/characters_bin.json", "r", encoding = "utf-8") as fp:
         #     characters_bin = json.load(fp)
         
@@ -10419,13 +10422,13 @@ if __name__ == "__main__":
         # for (key, value) in characters_bin.items():
         #     if key != "__linked" and value["__type"] == "SpellObject":
         #         LoLDataExtractor.mSpells[value["mScriptName"]] = value
-        # for (key, value) in map22_bin.items():
-        #     if key != "__linked" and value["__type"] == "TftUnitPropertyDefinition":
-        #         LoLDataExtractor.TFTUnitPropertyMap[value["name"]] = value
-        #     elif key != "__linked" and value["__type"] == "TftTraitData":
-        #         LoLDataExtractor.TFTTraitMap[value["mName"]] = value
-        #     elif key != "__linked" and value["__type"] == "ScriptDataObject":
-        #         LoLDataExtractor.TFTScriptDataMap[value["mName"]] = value
+        for (key, value) in map22_bin.items():
+            if key != "__linked" and value["__type"] == "TftUnitPropertyDefinition":
+                LoLDataExtractor.TFTUnitPropertyMap[value["name"]] = value
+            elif key != "__linked" and value["__type"] == "TftTraitData":
+                LoLDataExtractor.TFTTraitMap[value["mName"]] = value
+            elif key != "__linked" and value["__type"] == "ScriptDataObject":
+                LoLDataExtractor.TFTScriptDataMap[value["mName"]] = value
         
         #总结数据结构（Summarize the data structure）
         # keyDict: dict[str, dict[str, int]] = getBinaryKeys(map33_bin, isBin = True, keyPaths = None, objectTypes = "AugmentData")[1]
@@ -10448,8 +10451,20 @@ if __name__ == "__main__":
         print("说明文本测试样例：")
         tests: list[dict[str, Any]] = [
             {
-                "tooltip": "为你的战队投票，选择与【恶魔】结盟。<br><br>与【恶魔】结盟，会在一个<keywordMajor>【猎人】战队被淘汰</keywordMajor>时提供一个<keywordMajor>%i:AugmentLevel%强化符文等级</keywordMajor>。",
-                "binData": map30_bin["{4c901a13}"]["mSpell"]
+                "tooltip": "{{Augment_ARAM_QQQuest_Tooltip@f6@}}",
+                "binData": kiwi_bin["{8df5909d}"]["mSpell"]
+            },
+            {
+                "tooltip": "{{ game_spell_Kayn_R_Damage_Amount_@f1@ }}",
+                "binData": champions_bin["Characters/Kayn/Spells/KaynRAbility/KaynR"]
+            },
+            {
+                "tooltip": "<passive>献祭</passive><br>承受或造成伤害后，<keywordMajor>灼烧</keywordMajor>附近的敌人们，每秒造成<trueDamage>@DPS@真实伤害</trueDamage>，持续@AuraDuration@秒。<br><br><passive>荒弃</passive><br>击杀一个敌人时会在其周围造成<trueDamage>@ExplosionDamage@真实伤害</trueDamage>。",
+                "binData": items_bin["Items/223069"]
+            },
+            {
+                "tooltip": "携带者拥有固定的@TFTTrait.TFTEvent5YR_Maestro.:JhinAttackSpeed@攻击速度，并且每@TFTTrait.TFTEvent5YR_Maestro.:BonusAttackSpeed@%额外攻击速度会转化为@TFTTrait.TFTEvent5YR_Maestro.:BonusAttackDamage@%物理加成。<br><br>在召唤4支盛大终章步枪之后，它们会开始以与携带者相同的频率开火，造成@TFTTrait.TFTEvent5YR_Maestro.:RifleADScalar*100@% %i:scaleAD% + @TFTTrait.TFTEvent5YR_Maestro.:RifleAPScalar*100@% %i:scaleAP%物理伤害。<br><br>每第4次齐射是<tftEvent5YRHarmonic>谐和齐射</tftEvent5YRHarmonic>，并且造成相当于携带者及其步枪自上一次【谐和齐射】算起的@TFTUnitProperty.item:TFTEvent5YR_Maestro_HarmonicDamage_BatonTooltip*100@%已造成伤害。",
+                "binData": map22_bin["{0cbedae6}"]
             },
         ]
         for i in range(len(tests)):
