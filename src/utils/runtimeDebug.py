@@ -151,6 +151,7 @@ async def send_SGP_commands(connection: Connection, log: Optional[LogManager] = 
     logInput = log.logInput
     logPrint = log.logPrint
     session: SGPSession = SGPSession()
+    session.setLog(log)
     await session.init(connection)
     logPrint("请依次输入方法、统一资源标识符、参数、请求主体和请求头（如有），以空格为分隔符：\nPlease enter the method, URI, parameters, request body and request header (if needed), split by space:")
     while True:

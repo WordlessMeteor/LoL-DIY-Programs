@@ -30,7 +30,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/05/15
+# 更新（Last update）：     2026/05/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -8685,6 +8685,7 @@ async def connect(connection: Connection) -> None:
     log = LogManager(os.path.join(log_folder, currentTime + ".log"), mode = "a+", encoding = "utf-8")
     logInput = log.logInput
     logPrint = log.logPrint
+    sgpSession.setLog(log)
     print("声明：该脚本只作为辅助客户端的工具。您也许在客户端无法正常响应时可以使用该脚本。\nDeclaration: This program is only regarded as an auxillary tool. It may be useful when the League Client doesn't respond as expected.")
     data_resources_prepared: bool = False
     exit_program: bool = False

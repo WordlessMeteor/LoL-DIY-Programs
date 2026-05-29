@@ -22,7 +22,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/05/11
+# 更新（Last update）：     2026/05/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -483,7 +483,7 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
     if matchIds_not_found == None:
         matchIds_not_found = set()
     #变量和会话初始化（Variable and session initialization）
-    session: SGPSession = SGPSession()
+    session: SGPSession = SGPSession() #因为此处的日志文件需要对齐，不应该将原始异常提示输出到日志中，所以这里不指定日志对象（Because the log file here needs to be aligned, the original error information shouldn't be output into the log, so the log object is not specified here）
     await session.init(connection)
     session.session.trust_env = False #英雄联盟请求无需走代理（League of Legends requests don't need a proxy）
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()

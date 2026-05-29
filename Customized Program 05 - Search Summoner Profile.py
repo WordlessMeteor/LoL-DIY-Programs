@@ -38,7 +38,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/05/11
+# 更新（Last update）：     2026/05/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2782,6 +2782,7 @@ async def connect(connection: Connection) -> None:
     log = LogManager(os.path.join(log_folder, currentTime + ".log"), mode = "a+", encoding = "utf-8")
     logInput = log.logInput
     logPrint = log.logPrint
+    sgpSession.setLog(log)
     await sgpSession.init(connection)
     await print_summoner_info(connection)
     await save_platform_info(connection)

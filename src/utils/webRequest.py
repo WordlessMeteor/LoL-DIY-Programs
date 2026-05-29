@@ -184,14 +184,14 @@ class SGPSession:
     def __repr__(self) -> str:
         return (f'SGPSession("{self.userInfoToken}")')
     
-    def setLog(self, log: LogManager) -> None:
+    def setLog(self, log: Optional[LogManager]) -> None:
         '''
         设置日志文件流。<br>Set the log file iostream.
         
         :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
-        :type log: LogManager
+        :type log: LogManager | None
         '''
-        self.log = log
+        self.log = log or LogManager()
     
     async def update_userInfo_token(self, connection: Connection) -> None:
         '''
