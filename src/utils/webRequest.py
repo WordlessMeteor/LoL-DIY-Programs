@@ -144,13 +144,12 @@ def requestUrl(method: str, url: str, retry: int = 5, session: Optional[requests
                 if count > retry:
                     break
                 logPrint(e, verbose = verbose)
-                if isinstance(e, requests.exceptions.HTTPError):
-                    if e.response.status_code in {403, 404}: #DataDragon数据库的数据不存在的状态码是403（The Http status for files not found in DataDragon database is 403）
-                        return (source, e.response.status_code, session)
+                if isinstance(e, requests.exceptions.HTTPError) and e.response.status_code == 404: #如果文件未找到，就不用再试了（If the file isn't found, there's no need to try again）
+                    return (source, e.response.status_code, session)
                 else:
                     logPrint(f"请求失败！正在尝试第{count}次重新获取数据！\nRequest failed! Trying to recapture the data with url: {url}. Time(s) tried: {count}", write_time = False, verbose = verbose)
             else:
-                return (source, source.status_code, session)
+                break
     return (source, source.status_code, session)
 
 class SGPSession:
