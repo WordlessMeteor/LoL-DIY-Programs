@@ -142,7 +142,7 @@ async def get_matchIds_sgp(connection: Connection, sgpSession: SGPSession, puuid
             # logPrint("正在获取第%d/%d批对局序号……\nFetching matchId Batch %d / %d ..." %(i + 1, math.ceil(count / batch), i + 1, math.ceil(count / batch)))
             while True:
                 error_count += 1
-                matchIds_slice: list[str] | dict[str, Any] = (await sgpSession.request(connection, "GET", match_history_uri)).json()
+                matchIds_slice: list[str] | dict[str, Any] = (await sgpSession.request(connection, "GET", match_history_uri, verbose = verbose)).json()
                 if error_count > retry:
                     logPrint("对局序号获取失败！请等待官方修复对局记录服务！\nMatchId capture failure! Please wait for Tencent to fix the match history service!", verbose = verbose)
                     stop = True
@@ -222,7 +222,7 @@ async def get_matchSummary_sgp(connection: Connection, sgpSession: SGPSession, p
             logPrint("正在获取第%d/%d批对局记录……\nFetching match history batch %d / %d ..." %(i + 1, math.ceil(count / batch_size), i + 1, math.ceil(count / batch_size)), verbose = verbose)
             while True:
                 error_count += 1
-                matchSummary_slice: dict[str, list[dict[str, Any]]] = (await sgpSession.request(connection, "GET", match_history_uri)).json()
+                matchSummary_slice: dict[str, list[dict[str, Any]]] = (await sgpSession.request(connection, "GET", match_history_uri, verbose = verbose)).json()
                 if error_count > retry:
                     logPrint("对局记录获取失败！请等待官方修复对局记录服务！\nMatch history capture failure! Please wait for Tencent to fix the match history service!", verbose = verbose)
                     stop = True
@@ -301,7 +301,7 @@ async def get_matchDetails_sgp(connection: Connection, sgpSession: SGPSession, p
             logPrint("正在获取第%d/%d批对局时间轴……\nFetching match details batch %d / %d ..." %(i + 1, math.ceil(count / batch_size), i + 1, math.ceil(count / batch_size)))
             while True:
                 error_count += 1
-                matchDetails_slice: dict[str, list[dict[str, Any]]] = (await sgpSession.request(connection, "GET", match_history_uri)).json()
+                matchDetails_slice: dict[str, list[dict[str, Any]]] = (await sgpSession.request(connection, "GET", match_history_uri, verbose = verbose)).json()
                 if error_count > retry:
                     logPrint("对局时间轴获取失败！请等待官方修复对局记录服务！\nMatch details capture failure! Please wait for Tencent to fix the match history service!", verbose = verbose)
                     stop = True
@@ -562,7 +562,7 @@ async def get_game_summary_sgp(connection: Connection, sgpSession: SGPSession, m
         count: int = 0
         while True:
             count += 1
-            game_summary = (await sgpSession.request(connection, "GET", f"/match-history-query/v1/products/lol/{match_id}/SUMMARY")).json()
+            game_summary = (await sgpSession.request(connection, "GET", f"/match-history-query/v1/products/lol/{match_id}/SUMMARY", verbose = verbose)).json()
             #尝试修复错误（Try to fix the error）
             if "errorCode" in game_summary:
                 logPrint(game_summary, verbose = verbose)
@@ -594,7 +594,7 @@ async def get_game_summary_sgp(connection: Connection, sgpSession: SGPSession, m
         count: int = 0
         while True:
             count += 1
-            game_summary = (await sgpSession.request(connection, "GET", f"/match-history-query/v1/products/tft/{match_id}/SUMMARY")).json()
+            game_summary = (await sgpSession.request(connection, "GET", f"/match-history-query/v1/products/tft/{match_id}/SUMMARY", verbose = verbose)).json()
             #尝试修复错误（Try to fix the error）
             if "errorCode" in game_summary:
                 logPrint(game_summary, verbose = verbose)
@@ -654,7 +654,7 @@ async def get_game_timeline_sgp(connection: Connection, sgpSession: SGPSession, 
         count: int = 0
         while True:
             count += 1
-            game_timeline = (await sgpSession.request(connection, "GET", f"/match-history-query/v1/products/lol/{match_id}/DETAILS")).json()
+            game_timeline = (await sgpSession.request(connection, "GET", f"/match-history-query/v1/products/lol/{match_id}/DETAILS", verbose = verbose)).json()
             #尝试修复错误（Try to fix the error）
             if "errorCode" in game_timeline:
                 logPrint(game_timeline, verbose = verbose)
@@ -684,7 +684,7 @@ async def get_game_timeline_sgp(connection: Connection, sgpSession: SGPSession, 
         count: int = 0
         while True:
             count += 1
-            game_timeline = (await sgpSession.request(connection, "GET", f"/match-history-query/v1/products/tft/{match_id}/DETAILS")).json()
+            game_timeline = (await sgpSession.request(connection, "GET", f"/match-history-query/v1/products/tft/{match_id}/DETAILS", verbose = verbose)).json()
             #尝试修复错误（Try to fix the error）
             if "errorCode" in game_timeline:
                 logPrint(game_timeline, verbose = verbose)
