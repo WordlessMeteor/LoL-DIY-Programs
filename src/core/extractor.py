@@ -23,7 +23,7 @@ from src.core.config.localization import language_ddragon, language_dict
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/05/29
+# 更新（Last update）：     2026/05/30
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -408,6 +408,8 @@ class LoLDataExtractor:
     ZH_LOCALE: set[str] = {"zh_CN", "zh_MY", "zh_TW"} #使用中文提示语的语言文化代码（Language codes that use Chinese prompts）
     FULL_WIDTH_LOCALE: set[str] = {"ja_JP", "ko_KR", "zh_CN", "zh_MY", "zh_TW"} #使用全角标点符号的语言文化代码（Language codes that use full-width punctuation marks）
     #定义类属性，作为类内临时使用的全局变量（Define class attributes as temporarily used global variables within the class）
+    bin_hashtable: dict[str, str] = {} #缓存二进制描述数据中所有字符串的散列表。键是每个字符串的散列值，值是每个字符串（Cache the hashtable of all strings in the binary description data. Each key is the hash value of a string, and each value is the string）
+    bin_hash_ready: bool = False #二进制描述数据中的字符串散列表是否已经准备就绪（Whether the string hashtable for binary description data is ready）
     calculatedVariables: dict[str, dict[Literal["value", "__type"], str | dict[str, str]]] = {} #缓存同一个说明文本中计算过的变量。切换到下一个说明文本时清空（Cache the variables that have been calculated before while transforming a tooltip. When another tooltip is to transform, this variable is cleaned）
     mSpells: dict[str, Any] = {} #收录某个二进制描述数据中所有的技能指令对象。键是每个技能指令对象的mScriptName键的值，值是每个技能指令对象（Collect all SpellObjects in binary description data. Each key is the value of the `mScriptName` key of a SpellObject, and its value is this SpellObject）
     # mItems: dict[str, Any] = {} #收录装备二进制描述数据中所有的装备对象。键是每个装备数据对象的装备序号，值是每个装备数据对象（Collect all ItemData objects in item binary description data. Each key is the value of `itemID` key of an ItemData object, and each value is this ItemData object）
@@ -766,7 +768,7 @@ class LoLDataExtractor:
             os.makedirs(self.folder)
         else:
             logPrint("尚未指定文件保存目录！\nExport directory not specified yet!")
-            
+    
     def set_dir(self, folder: str) -> str: #手动指定保存目录。对外使用（Manually specify the export directory. For outside use）
         '''
         手动设置工作簿的保存目录。<br>Manually set the export directory of the workbook.
@@ -797,13 +799,77 @@ class LoLDataExtractor:
         '''
         self.sheet_naming_fold = True
         return self.sheet_naming_fold
-        
+    
     def decapsulate(self) -> bool: #不同版本的数据保存到不同工作簿中（Export for each workbook per patch）
         '''
         将本类的sheet_naming_fold属性置为假，即不同版本的数据保存为不同工作簿。工作簿默认情况下带有版本号。<br>Set the `sheet_naming_fold` attribute of this class to False, that is, data of different patches are saved as different workbooks. The name of the workbook contains the patch number by default.
         '''
         self.sheet_naming_fold = False
         return self.sheet_naming_fold
+    
+    @classmethod
+    def init_bin_hash_readiness(cls) -> None:
+        '''
+        将二进制条目散列表准备就绪状态初始化为未就绪。<br>Initialize the readiness of the binary entry hash table as not ready.
+        '''
+        cls.bin_hashtable_ready = False
+    
+    def get_bin_hashes(self) -> None: #在线加载——供用户使用（Online loading - For user use）
+        '''
+        在线加载用于解析二进制描述数据中的字符串的散列表。<br>Load the hashtable for parsing strings in binary description data online.
+        '''
+        bin_hash_urls: list[str] = [
+            "https://raw.communitydragon.org/data/hashes/lol/hashes.binentries.txt",
+            "https://raw.communitydragon.org/data/hashes/lol/hashes.binfields.txt",
+            "https://raw.communitydragon.org/data/hashes/lol/hashes.binhashes.txt",
+            "https://raw.communitydragon.org/data/hashes/lol/hashes.bintypes.txt"
+        ]
+        for i in range(len(bin_hash_urls)):
+            bin_hash_url: str = bin_hash_urls[i]
+            if bin_hash_url in self.__class__.data_cache["online"]:
+                self.__class__.bin_hashtable.update(self.__class__.data_cache["online"][bin_hash_url])
+            else:
+                source, status, self.session = requestUrl("GET", bin_hash_url, session = self.session, log = self.log) #之所以将这个函数设计成一个对象方法而不是类方法或者静态方法，是因为它需要调用对象的会话和日志管理对象（The reason why this function is designed as an object method instead of a class method or static method is that it needs to call the session and log manager of the object）
+                if status != 200:
+                    if status == -1:
+                        logPrint("二进制条目散列表获取失败！请检查系统网络状况和代理设置。程序将跳过散列表的获取。\nBinary entry hash table capture failure! Please check the system network condition and proxy configuration. The program will skip the hash table retrieval.")
+                    elif status == 404:
+                        logPrint("二进制条目散列表获取失败！请检查以下链接的可用性。程序将跳过散列表的获取。\nBinary entry hash table capture failure! Please check the URL availability. The program will skip the hash table retrieval.\n%s" %(bin_hash_url))
+                    self.init_bin_hash_readiness()
+                    return
+                bin_hash_data: dict[str, str] = {"{" + line.split(" ")[0] + "}": line.split(" ")[1] for line in source.text.strip("\n").splitlines()}
+                self.__class__.bin_hashtable.update(bin_hash_data)
+                self.__class__.data_cache["online"][bin_hash_url] = bin_hash_data
+        else:
+            self.__class__.bin_hash_ready = True
+    
+    def read_bin_hashes(self, bin_hash_paths: list[str]) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
+        '''
+        离线读取用于解析二进制描述数据中的字符串的散列表。<br>Load the hashtable for parsing strings in binary description data offline.
+        
+        :param bin_hash_paths: 二进制条目散列表文件路径列表。一般来说包含以下文件：<br>List of paths of the binary entry hash table files, which generally include the following files:
+        
+            - hashes.binentries.txt
+            - hashes.binfields.txt
+            - hashes.binhashes.txt
+            - hashes.bintypes.txt
+        :type bin_hash_paths: list[str]
+        '''
+        logPrint = self.log.logPrint
+        #检查路径是否都存在（Check if all paths exist）
+        paths_not_found: list[str] = [path for path in bin_hash_paths if not os.path.exists(path)]
+        if len(paths_not_found) > 0:
+            logPrint("以下路径不存在：\nThe following path(s) do(es)n't exist:")
+            for path in paths_not_found:
+                logPrint(path)
+            self.init_bin_hash_readiness()
+            return
+        for bin_hash_path in bin_hash_paths:
+            with open(bin_hash_path, "r") as fp:
+                bin_hash_data: dict[str, str] = {"{" + line.split(" ")[0] + "}": line.split(" ")[1] for line in fp.read().strip("\n").splitlines()}
+                self.__class__.bin_hashtable.update(bin_hash_data)
+        else:
+            self.__class__.bin_hash_ready = True
     
     @classmethod
     def clear_cache(cls) -> None: #清空缓存（Clear data cache）
@@ -821,6 +887,14 @@ class LoLDataExtractor:
         cls.data_cache["local"].clear()
         cls.merged_data_cache.clear()
         cls.df_queue.clear()
+    
+    @classmethod
+    def clear_bin_hashes(cls) -> None: #清空二进制条目散列表（Clear the binary entry hash table）
+        '''
+        清空二进制条目散列表。一般情况下不需要调用此方法，因为每个hash值都是由字符串计算得到的，一定是正确的。<br>Clear the binary entry hash table. Basically, this method doesn't need to be called, because each hash value is calculated from a string, and thus must be correct.
+        '''
+        cls.bin_hashtable.clear()
+        cls.init_bin_hash_readiness()
     
     #获取版本数据框（Obtain version dataframe）
     def init_patch(self) -> None:
@@ -938,7 +1012,7 @@ class LoLDataExtractor:
         with open(path, "r", encoding = "utf-8") as fp:
             self.files_exported = fp.read().splitlines()
         self.fileExportList_ready = True
-
+    
     #获取共有数据（Get common data）
     def get_shared_data(self) -> None: ##在线加载——供用户使用（Online loading - For user use）
         '''
@@ -958,7 +1032,7 @@ class LoLDataExtractor:
                 time.sleep(3)
                 self.init_strtable_readiness()
                 return
-            self.shared_bin = source.json()
+            self.shared_bin = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][shared_bin_url] = self.shared_bin
         self.shared_ready = True
     
@@ -977,7 +1051,7 @@ class LoLDataExtractor:
             self.shared_bin = self.__class__.data_cache["local"][shared_bin_path]
         else:
             with open(shared_bin_path, "r", encoding = "utf-8") as fp:
-                self.shared_bin = json.load(fp)
+                self.shared_bin = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][shared_bin_path] = self.shared_bin
         self.shared_ready = True
     
@@ -1216,7 +1290,7 @@ class LoLDataExtractor:
                     self.mainstringtable_default = json.load(fp)
                 self.__class__.data_cache["local"][mainstringtable_default_path] = self.mainstringtable_default
             self.strtables_ready["default"] = True
-
+    
     @classmethod
     def compute_rsthash(cls, s: str, version: int) -> str: #感谢CommunityDragon社群的Le poussin和Haru提供的支持（Thanks to the help from Le poussin and Haru in CommunityDragon discord server）
         '''
@@ -1242,6 +1316,21 @@ class LoLDataExtractor:
             hash_int = ((hash_int ^ b) * 0x01000193) % 0x100000000
         result: str = format(hash_int, "08x")
         return "{" + result + "}"
+    
+    @classmethod
+    def hash2str(cls, s: str) -> str:
+        '''
+        解析一个二进制描述数据中的hash字符串，返回其原始字符串。<br>Resolve a hash string in binary description data and return its original string.
+        
+        如果传入的字符串不是一个hash值，则直接返回该字符串。<br>If the passed string isn't a hash value, return it directly.
+        
+        :param s: 要解析的字符串。<br>The string to resolve.
+        :type s: str
+        :return: s: 解析后的字符串。<br>The resolved string.
+        :rtype: str
+        '''
+        binhash_re: re.Pattern[str] = re.compile(r"\{\w{8}\}")
+        return cls.bin_hashtable.get(s, s) if binhash_re.fullmatch(s) else s
     
     @staticmethod
     def aGet(d: Any, keys: Iterable[Any], default: Any = None) -> Any: #字典进阶get方法（An advanced version of `get` method of a dictionary）
@@ -1311,16 +1400,52 @@ class LoLDataExtractor:
             keys.append(cls.compute_rsthash(key.lower(), strtable["version"]))
         return cls.aGet(strtable["entries"], keys = keys, default = default)
     
+    @classmethod
+    def resolve_bin_hash(cls, data: Any) -> Any:
+        '''
+        通过一个递归算法，尝试将一段二进制描述数据中所有hash值解析为原始字符串。<br>Using a recursive algorithm, this function tries resolving all hash values in a piece of binary description data into original strings.
+        
+        :param data: 任意数据类型。在递归起点，这个参数应该是一段二进制描述数据。在递归过程中，这个参数可以是任意类型。<br>Any data type. At the beginning of recursion, this parameter should be a piece of binary description data. During the recursion, this parameter can be of any type.
+        :type data: Any
+        :return: 字符串解析后的二进制描述数据。<br>String-resolved binary description data.
+        
+            原始设计（Initial design）：
+            
+            一个二元组，仅用于递归时传递信息。
+        
+            第一个元素表示`data`是不是一个字符串，从而判断是否需要解析hash值。在递归调用时，如果一个元素不是字符串，那么容器中追加第二个结果；如果一个元素是字符串，那么容器中追加解析后的字符串。<br>The first element indicates whether `data` is a string, which is used to determine whether hash resolution is needed. When an element in recursion isn't a string, the second returned value will be appended into the container; when it is, the resolved string will be appended into the container.
+            
+            第二个元素是`data`作为一个容器时，以该容器为起点调用本函数后得到的结果。<br>When `data` is a container, the second element is the result obtained after calling this function with that container as a starting point.
+        :rtype: tuple[bool, Any]
+        '''
+        if not cls.bin_hash_ready: #当散列表尚未准备就绪时，直接返回原始数据，以避免函数进行没有意义的递归调用（When the hash table isn't ready, return the original data directly to avoid meaningless recursive calls）
+            return data
+        if isinstance(data, dict):
+            new_dict: dict[str, Any] = {} #通过新字典保持原始键值对顺序。Json中字典的键一定是字符串（Keep the original order of the key-value pairs by a new dictionary. In a json, a key of a dictionary must be a string）
+            for (key, value) in data.items():
+                key_resolve: str = cls.hash2str(key)
+                new_data = cls.resolve_bin_hash(value)
+                new_dict[key_resolve] = new_data
+            return new_dict
+        elif isinstance(data, list):
+            new_list: list[Any] = [] #即使列表支持直接修改一个索引的元素，但是为了区分新数据和老数据，后续返回时还是返回新数据，避免在递归完成后，用户在修改新数据时意外修改原始数据（Althouth a list supports directly changing the element at a certain index, to distinguish the old and new data, the new data are still returned, in case after the recursion is finished, the original data would be changed by accident when the user had intended to change the new data）
+            for i in range(len(data)):
+                element: Any = data[i]
+                new_data = cls.resolve_bin_hash(element)
+                new_list.append(new_data)
+            return new_list
+        else:
+            return cls.hash2str(data) if isinstance(data, str) else data #从此处返回递归的上一层时，`data`将变成`new_data`直接添加到新容器中（When the recurson returns to the upper layer from here, `data` will be directly added into the new container as `new_data`）
+    
     #定义说明文本转换函数族（Define tooltip transformation function family）
     @classmethod
-    def normalizeBinData(cls, binData: dict[str, Any]):
+    def normalizeBinData(cls, binData: dict[str, Any]) -> dict[str, Any]:
         '''
         将二进制描述数据进行标准化。往往涉及以下处理：<br>Normalize a binary description, involving the following operations:
         
             - 键名小写。<br>Lower-cased keys.
             - 键值对拷贝，但键转化为hash形式。<br>Copied key-value pairs, but keys transformed into hash form.
             - 部分键值对的适当处理，以便引用。<br>Proper handling of some key-value pairs for reference.
-        
         :param binData: 待处理的二进制描述数据。<br>The binary description to process.
         :type binData: dict[str, Any]
         '''
@@ -1492,7 +1617,7 @@ class LoLDataExtractor:
                 tooltip = cls.tooltipPreparation(tooltip, locale)
             tooltip = cls.variableSubstitute(tooltip, binData, locale, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVars = None, flexibleData = flexibleData)
         return tooltip
-
+    
     @classmethod
     def aRound(cls, num: float, digits: int = 0) -> int | float: #高级保留小数函数（Advanced version of `round` function）
         '''
@@ -1508,7 +1633,7 @@ class LoLDataExtractor:
         tmp: float | int = round(num, digits)
         result = int(tmp) if abs(tmp - int(tmp)) < 1e-6 else tmp
         return result
-
+    
     @classmethod
     def cdRound(cls, division: str, digits: int = 0) -> str: #连除式保留小数函数（`round` function for a continuous division）
         '''
@@ -1533,7 +1658,7 @@ class LoLDataExtractor:
                 return "/".join(list(map(str, rounded_list)))
             else:
                 return division
-
+    
     @classmethod
     def burnValueList(cls, values: list[float], digits: int = 5) -> str:
         '''
@@ -1547,7 +1672,7 @@ class LoLDataExtractor:
         :rtype: str
         '''
         return str(cls.aRound(values[0], digits = digits)) if len(set(values)) == 1 else "/".join(list(map(lambda x: str(cls.aRound(x, digits = digits)), values)))
-
+    
     @classmethod
     def leafletCalculation(cls, binData: dict[str, Any], formulaPart: dict[str, Any], var_prefix: str, locale: str, enableModeOverride: bool = False, rowIndex: int = -1, reservedVars: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str:
         '''
@@ -1686,7 +1811,7 @@ class LoLDataExtractor:
             mBonusStatForEfficiency: float = cls.aRound(formulaPart["mBonusStatForEfficiency"], 5)
             formulaStr += " × " + str(mBonusStatForEfficiency)
         elif formulaPart_type == "{2b25a73a}": #仅用于【注魔】（Only applies to Juiced）
-            formulaStr = cls.variableCalculation(binData, formulaPart["{137cf12a}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            formulaStr = cls.variableCalculation(binData, formulaPart["DataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             formulaStr += " × " + ("最大法力值" if useCHSPrompt else "max Mana")
         elif formulaPart_type == "{4ce08984}": #仅用于不落魔锋 亚恒的【不落之志】（Only applies to ZaahenPassive）
             #下面假设所有与等级相关的值列表的所有元素相同。这样，`burnValueList`方法应当只返回一个值（We assume all elements in the value list of a level-related key are equal. In that case, `burnValueList` method should return a single value）
@@ -1798,7 +1923,7 @@ class LoLDataExtractor:
         else: #异常处理（Exception handling）
             formulaStr = "φ"
         return formulaStr
-
+    
     @classmethod
     def subpartCalculation(cls, binData: dict[str, Any], subpart_formula: dict[str, Any], var_prefix: str, locale: str, enableModeOverride: bool = False, rowIndex: int = -1, reservedVars: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str:
         '''
@@ -1861,7 +1986,7 @@ class LoLDataExtractor:
             operator = "+"
         result: str = "(" + f" {operator} ".join(subpart_formula_strs) + ")"
         return result
-
+    
     @classmethod
     def variableModeOverrideCalculation(cls, binData: dict[str, Any], var: str) -> dict[str, str]: #处理在DataValuesModeOverride有记录的变量。不支持云顶之弈（Handle variables which exist in `DataValuesModeOverride` key's value. Doesn't support TFT）
         '''
@@ -1896,7 +2021,7 @@ class LoLDataExtractor:
             for (gameModeName, value) in var_modeValues.items():
                 result[gameModeName] = str(cls.aRound(value, 5))
         return result
-
+    
     @classmethod
     def variableModeOverrideStrToStruct(cls, s: str) -> dict[str, str]:
         '''
@@ -1930,7 +2055,7 @@ class LoLDataExtractor:
                 else:
                     modeOverridenValueDict["default"] = value
         return modeOverridenValueDict
-
+    
     @classmethod
     def variableCalculation(cls, binData: dict[str, Any], var: str, var_prefix: str, locale: str, initial_call: bool = False, enableModeOverride: bool = False, rowIndex: int = -1, reservedVars: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str:
         r'''
@@ -2223,7 +2348,7 @@ class LoLDataExtractor:
         elif "__type" in binData and binData["__type"] == "TftTraitData" and "InnateTraitSets" in binData and "constants" in binData["InnateTraitSets"][0] and "{df085b93}" in binData["InnateTraitSets"][0]["constants"] and var_hash in binData["InnateTraitSets"][0]["constants"]["{df085b93}"]: #上一行判断语句的hash写法（The above condition rewritten by `var_hash`）
             normalValue = cls.variableCalculation(binData["InnateTraitSets"][0], var_hash, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             #将进入云顶之弈通用常数分支（This call is expected to enter the TFT general constants branch）
-        elif "__type" in binData and binData["__type"] == "TftTraitData" and "mConditionalTraitSets" in binData and (any(var in list(traitSet["constants"]["{df085b93}"].keys()) for traitSet in binData["mConditionalTraitSets"] if "constants" in traitSet and "{df085b93}" in traitSet["constants"]) or any(var in list(traitSet.keys()) for traitSet in binData["mConditionalTraitSets"])): #引用云顶之弈羁绊数据：条件羁绊效果。示例：（Cited TFT trait data: Conditional trait data values. Examples: ）@TFTTrait.TFT15_MechanicTrait_DreadNote.1:MinUnits@; TFT14_AnimaSquad ({22205c29})
+        elif "__type" in binData and binData["__type"] == "TftTraitData" and "mConditionalTraitSets" in binData and (any(var in list(traitSet["constants"]["{df085b93}"].keys()) for traitSet in binData["mConditionalTraitSets"] if "constants" in traitSet and "{df085b93}" in traitSet["constants"]) or any(var in list(traitSet.keys()) for traitSet in binData["mConditionalTraitSets"])): #引用云顶之弈羁绊数据：条件羁绊效果。示例：（Cited TFT trait data: Conditional trait data values. Examples: ）@TFTTrait.TFT15_MechanicTrait_DreadNote.1:MinUnits@; TFT14_AnimaSquad (Maps/Shipping/Map22/Sets/TFTSet14/Traits/TFT14_AnimaSquad)
             if rowIndex >= 0 and rowIndex < len(binData["mConditionalTraitSets"]):
                 normalValue = cls.variableCalculation(binData["mConditionalTraitSets"][rowIndex], var, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
                 #将进入云顶之弈通用常数分支（This call is expected to enter the TFT general constants branch）
@@ -2415,7 +2540,7 @@ class LoLDataExtractor:
         #得出最终结果（Get the final result）
         result = " || ".join(list(modeOverrideValueDict_raw.values()))
         return result
-
+    
     @classmethod
     def variableSubstitute(cls, tooltip: str, binData: dict[str, Any], locale: str, enableModeOverride: bool = False, reserve_variable: bool = False, reservedVars: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None): #将双@包围的表达式转换成具体数值（Convert expressions enclosed in double @ into specific stats）
         '''
@@ -2549,7 +2674,7 @@ class LoLDataExtractor:
             end_index: int = matchStruct["end"]
             tooltip = tooltip[:start_index] + matchStruct["result"] + tooltip[end_index:]
         return tooltip
-
+    
     @classmethod
     def nestedVariableSubstitute(cls, tooltip: str, strtable_locale: dict[str, int | dict[str, str]], binData: dict[str, Any], enableModeOverride: bool = False) -> tuple[str, dict[str, list[str]]]: #将嵌套变量转换成具体数值（Convert nested variables into specific stats）
         '''
@@ -2701,7 +2826,7 @@ class LoLDataExtractor:
             else:
                 start_pos = matchObj.end()
         return (result, reservedVars_list)
-
+    
     @classmethod
     def tooltipPreparation(cls, tooltip: str, locale: str) -> str: #说明文本预处理（Tooltip preparation）
         '''
@@ -2739,7 +2864,7 @@ class LoLDataExtractor:
         while result.endswith("<br>"):
             result = result.rstrip("<br>")
         return result
-
+    
     @classmethod
     def tooltipPostProcessing(cls, tooltip: str, locale: str) -> str: #说明文本后处理（Tooltip post-processing）
         '''
@@ -2800,7 +2925,7 @@ class LoLDataExtractor:
             lines[i] = lines[i].strip() #消除行首和行尾的空格（Eliminate spaces at the start and end of a line）
         result = "\n".join(lines)
         return result
-
+    
     @classmethod
     def tooltipTransform(cls, tooltip: str, strtable_locale: dict[str, int | dict[str, str]], binData: dict[str, Any], locale: str, enableModeOverride: bool = True, reserve_variable: bool = False, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str: #将原始提示转化为带数值的提示（Transform the raw tooltip into the one with detailed stats）
         '''
@@ -2941,7 +3066,7 @@ class LoLDataExtractor:
             result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, reserve_CSS = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, flexibleData = flexibleData)
         result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, reserve_CSS = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, flexibleData = flexibleData)
         return result
-
+    
     def set_tooltipTransform_strategy(self, reserve_CSS: bool = True) -> bool: #确定说明文本转换策略（Determine tooltip transformation strategy）
         '''
         决定转换说明文本时是否保持原样式。<br>Determine whether to retain the original style in the raw tooltips.
@@ -3005,7 +3130,7 @@ class MapExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.map11_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+                self.map11_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][map11_bin_url] = self.map11_bin #在对一个MapExtractor对象的data_cache进行修改时，由于字典的引用传递，其父LoLDataExtractor对象的data_cache会同步此更改（While modifying `data_cache` of a MapExtractor object, due to the pass-by-reference of a dictionary, the modification will be synchronized in `data_cache` of its parent `LoLDataExtractor` object）
         self.maps_ready[11] = True
         #嚎哭深渊（Howling Abyss）
@@ -3024,7 +3149,7 @@ class MapExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.map12_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+                self.map12_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][map12_bin_url] = self.map12_bin
         self.maps_ready[12] = True
         #百合与莲花的神庙（Temple of Lily and Lotus）
@@ -3043,7 +3168,7 @@ class MapExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.map21_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+                self.map21_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][map21_bin_url] = self.map21_bin
         self.maps_ready[21] = True
         #聚点危机（Convergence）
@@ -3062,7 +3187,7 @@ class MapExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.map22_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+                self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][map22_bin_url] = self.map22_bin
         self.maps_ready[22] = True
         #怒火角斗场（Rings of Wrath）
@@ -3081,7 +3206,7 @@ class MapExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.map30_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+                self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.maps_ready[30] = True
         #最终都市（Final City）
@@ -3100,7 +3225,7 @@ class MapExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.map33_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+                self.map33_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][map33_bin_url] = self.map33_bin
         self.maps_ready[33] = True
         #班德尔之森（The Bandlewood）
@@ -3119,7 +3244,7 @@ class MapExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.map35_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+                self.map35_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][map35_bin_url] = self.map35_bin
         self.maps_ready[35] = True
     
@@ -3153,7 +3278,7 @@ class MapExtractor(LoLDataExtractor):
             self.map11_bin = self.__class__.data_cache["local"][map11_bin_path]
         else:
             with open(map11_bin_path, "r", encoding = "utf-8") as fp:
-                self.map11_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.map11_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][map11_bin_path] = self.map11_bin
         self.maps_ready[11] = True
         #嚎哭深渊（Howling Abyss）
@@ -3162,7 +3287,7 @@ class MapExtractor(LoLDataExtractor):
             self.map12_bin = self.__class__.data_cache["local"][map12_bin_path]
         else:
             with open(map12_bin_path, "r", encoding = "utf-8") as fp:
-                self.map12_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.map12_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][map12_bin_path] = self.map12_bin
         self.maps_ready[12] = True
         #百合与莲花的神庙（Temple of Lily and Lotus）
@@ -3171,7 +3296,7 @@ class MapExtractor(LoLDataExtractor):
             self.map21_bin = self.__class__.data_cache["local"][map21_bin_path]
         else:
             with open(map21_bin_path, "r", encoding = "utf-8") as fp:
-                self.map21_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.map21_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][map21_bin_path] = self.map21_bin
         self.maps_ready[21] = True
         #聚点危机（Convergence）
@@ -3180,7 +3305,7 @@ class MapExtractor(LoLDataExtractor):
             self.map22_bin = self.__class__.data_cache["local"][map22_bin_path]
         else:
             with open(map22_bin_path, "r", encoding = "utf-8") as fp:
-                self.map22_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][map22_bin_path] = self.map22_bin
         self.maps_ready[22] = True
         #怒火角斗场（Rings of Wrath）
@@ -3189,7 +3314,7 @@ class MapExtractor(LoLDataExtractor):
             self.map30_bin = self.__class__.data_cache["local"][map30_bin_path]
         else:
             with open(map30_bin_path, "r", encoding = "utf-8") as fp:
-                self.map30_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
         self.maps_ready[30] = True
         #最终都市（Final City）
@@ -3198,7 +3323,7 @@ class MapExtractor(LoLDataExtractor):
             self.map33_bin = self.__class__.data_cache["local"][map33_bin_path]
         else:
             with open(map33_bin_path, "r", encoding = "utf-8") as fp:
-                self.map33_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.map33_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][map33_bin_path] = self.map33_bin
         self.maps_ready[33] = True
         #班德尔之森（The Bandlewood）
@@ -3207,10 +3332,10 @@ class MapExtractor(LoLDataExtractor):
             self.map35_bin = self.__class__.data_cache["local"][map35_bin_path]
         else:
             with open(map35_bin_path, "r", encoding = "utf-8") as fp:
-                self.map35_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.map35_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][map35_bin_path] = self.map35_bin
         self.maps_ready[35] = True
-        
+    
     def build_map_dataframe(self, debug: bool = False, paths: Optional[list[str]] = None) -> int:
         '''
         构建地图数据框。<br>Build map dataframe.
@@ -3282,7 +3407,7 @@ class MapExtractor(LoLDataExtractor):
         #离线加载各英雄数据（Load all maps' binary data offline）
         # logPrint("正在读取各英雄数据……\nReading all map data ...", print_time = True)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/自定义脚本/英雄联盟自定义房间创建/maps_bin.json", "r", encoding = "utf-8") as fp:
-        #     maps_bin = json.load(fp)
+        #     maps_bin = self.resolve_bin_hash(json.load(fp))
         
         #定义数据结构（Define the data structure）
         logPrint("正在构建地图数据框……\nBuilding the map dataframe ...", print_time = True)
@@ -3546,7 +3671,7 @@ class CheatExtractor(LoLDataExtractor):
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.cheats_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+            self.cheats_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][cheats_bin_url] = self.cheats_bin
         self.cheats_ready = True
     
@@ -3567,7 +3692,7 @@ class CheatExtractor(LoLDataExtractor):
             self.cheats_bin = self.__class__.data_cache["local"][cheats_bin_path]
         else:
             with open(cheats_bin_path, "r", encoding = "utf-8") as fp:
-                self.cheats_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.cheats_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][cheats_bin_path] = self.cheats_bin
         self.cheats_ready = True
     
@@ -3769,7 +3894,7 @@ class PerkExtractor(LoLDataExtractor):
         self.perk_ready: bool = False
         self.perkstyle_df: pandas.DataFrame = pandas.DataFrame()
         self.perk_df: pandas.DataFrame = pandas.DataFrame()
-        
+    
     def init_data_readiness(self) -> None:
         '''
         初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
@@ -3794,7 +3919,7 @@ class PerkExtractor(LoLDataExtractor):
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.perks_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+            self.perks_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][perks_bin_url] = self.perks_bin
         self.perk_ready = True
     
@@ -3815,7 +3940,7 @@ class PerkExtractor(LoLDataExtractor):
             self.perks_bin = self.__class__.data_cache["local"][perks_bin_path]
         else:
             with open(perks_bin_path, "r", encoding = "utf-8") as fp:
-                self.perks_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.perks_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][perks_bin_path] = self.perks_bin
         self.perk_ready = True
     
@@ -4200,7 +4325,7 @@ class ChampionExtractor(LoLDataExtractor):
                                 self.init_data_readiness()
                                 return
                         else:
-                            self.map22_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+                            self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
                         self.__class__.data_cache["online"][map22_bin_url] = self.map22_bin
                     self.characters_ready["map22"] = True
                     ##角色列表（Character list）
@@ -4237,7 +4362,7 @@ class ChampionExtractor(LoLDataExtractor):
                                     time.sleep(3)
                                 self.init_data_readiness()
                                 return
-                            character_binary: dict[str, list[str] | dict[str, Any]] = source.json()
+                            character_binary: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
                             self.__class__.data_cache["online"][character_binary_url] = character_binary
                         self.champions_bin_dict[characterName] = character_binary
                         logPrint("[%d/%d]已加载角色（Character loaded）：%s" %(i + 1, len(characterNames), characterName), print_time = True, verbose = verbose)
@@ -4262,7 +4387,7 @@ class ChampionExtractor(LoLDataExtractor):
                                 self.init_data_readiness()
                                 return
                         else:
-                            self.map22_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+                            self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
                         self.__class__.data_cache["online"][map22_bin_url] = self.map22_bin
                     self.characters_ready["map22"] = True
                     ##角色文件夹（Character folders）
@@ -4337,7 +4462,7 @@ class ChampionExtractor(LoLDataExtractor):
                                             time.sleep(3)
                                         self.init_data_readiness()
                                         return
-                                character_binary: dict[str, list[str] | dict[str, Any]] = source.json()
+                                character_binary: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
                                 self.__class__.data_cache["online"][character_binary_url] = character_binary
                             self.champions_bin_dict[characterName] = character_binary
                             # logPrint("[%d/%d]已加载角色（Character loaded）：%s" %(i + 1, len(characterNames), characterName), print_time = True, verbose = verbose)
@@ -4388,7 +4513,7 @@ class ChampionExtractor(LoLDataExtractor):
                                 time.sleep(3)
                                 self.init_data_readiness()
                                 break
-                            champion_binary: dict[str, list[str] | dict[str, Any]] = source.json()
+                            champion_binary: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
                             self.__class__.data_cache["online"][champion_binary_url] = champion_binary
                         self.champions_bin_dict[champion["alias"]] = champion_binary
                         logPrint("[%d/%d]已加载英雄（Champion loaded）：%s" %(i + 1, len(champion_summary), champion["alias"]), print_time = True, verbose = verbose)
@@ -4433,7 +4558,7 @@ class ChampionExtractor(LoLDataExtractor):
                 else:
                     if os.path.exists(map22_bin_path):
                         with open(map22_bin_path, "r", encoding = "utf-8") as fp:
-                            self.map22_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                            self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
                         self.__class__.data_cache["local"][map22_bin_path] = self.map22_bin
                     else:
                         self.map22_bin: dict[str, list[str] | dict[str, Any]] = {} #早期没有云顶之弈模式（In early days, TFT wasn't invented）
@@ -4475,7 +4600,7 @@ class ChampionExtractor(LoLDataExtractor):
                         else:
                             try:
                                 with open(character_binary_path, "r", encoding = "utf-8") as fp:
-                                    character_binary: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                                    character_binary: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
                             except json.decoder.JSONDecodeError:
                                 if len(character_bin_paths) > 1 and j < len(character_bin_paths) - 1: #正常情况下，每个characterName应只对应一个本地路径。此部分只是为了效仿在线加载部分的代码，并且以防万一（Normally, each `characterName` corresponds to one local path. This part is only designed to fit the code style in online loading part, plus just in case a format mistake would happen）
                                     logPrint("本地文件格式不正确。程序将使用备用地址。\nLocal file format invalid! The program will use another path.")
@@ -4516,7 +4641,7 @@ class ChampionExtractor(LoLDataExtractor):
                             champion_binary = self.__class__.data_cache["local"][champion_binary_path]
                         else:
                             with open(champion_binary_path, "r", encoding = "utf-8") as fp:
-                                champion_binary: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                                champion_binary: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
                             self.__class__.data_cache["local"][champion_binary_path] = champion_binary
                         self.champions_bin_dict[champion["alias"]] = champion_binary
                         # logPrint("[%d/%d]已加载英雄（Champion loaded）：%s" %(i + 1, len(champion_summary), champion["alias"]), print_time = True, verbose = verbose)
@@ -4597,7 +4722,7 @@ class ChampionExtractor(LoLDataExtractor):
         #离线加载各英雄数据（Load all champions' binary data offline）
         # logPrint("正在读取各英雄数据……\nReading all champion data ...", print_time = True)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/自定义脚本/英雄联盟自定义房间创建/champions_bin.json", "r", encoding = "utf-8") as fp:
-        #     champions_bin = json.load(fp)
+        #     champions_bin = self.resolve_bin_hash(json.load(fp))
 
         #提取指令字典。主要用于来自其它指令数据的变量的转换（Extract spell dictionary. Mainly used for transformation of variables from other spells）
         self.init_mSpells()
@@ -5053,7 +5178,7 @@ class ItemExtractor(LoLDataExtractor):
         self.item_df: pandas.DataFrame = pandas.DataFrame()
         self.itemGroup_df: pandas.DataFrame = pandas.DataFrame()
         self.itemModifier_df: pandas.DataFrame = pandas.DataFrame()
-        
+    
     def init_data_readiness(self) -> None:
         '''
         初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
@@ -5078,7 +5203,7 @@ class ItemExtractor(LoLDataExtractor):
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.items_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+            self.items_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][items_bin_url] = self.items_bin
         self.item_ready = True
     
@@ -5099,7 +5224,7 @@ class ItemExtractor(LoLDataExtractor):
             self.items_bin = self.__class__.data_cache["local"][items_bin_path]
         else:
             with open(items_bin_path, "r", encoding = "utf-8") as fp:
-                self.items_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.items_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][items_bin_path] = self.items_bin
         self.item_ready = True
     
@@ -5410,7 +5535,7 @@ class AugmentExtractor(LoLDataExtractor):
         self.KiwiAugment_df: pandas.DataFrame = pandas.DataFrame()
         self.KiwiAugmentSet_df: pandas.DataFrame = pandas.DataFrame()
         self.augmentModifier_df: pandas.DataFrame = pandas.DataFrame()
-        
+    
     def init_data_readiness(self) -> None:
         '''
         初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
@@ -5439,7 +5564,7 @@ class AugmentExtractor(LoLDataExtractor):
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.map30_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.augments_ready["map30"] = True
         #斗魂竞技场模式（Arena mode）
@@ -5458,7 +5583,7 @@ class AugmentExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.cherry_bin = source.json()
+                self.cherry_bin = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][cherry_bin_url] = self.cherry_bin
         self.augments_ready["cherry"] = True
         #最终都市地图（Final City map）
@@ -5477,7 +5602,7 @@ class AugmentExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.map33_bin = source.json()
+                self.map33_bin = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][map33_bin_url] = self.map33_bin
         self.augments_ready["map33"] = True
         #嚎哭深渊地图（Howling Abyss map）
@@ -5496,7 +5621,7 @@ class AugmentExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.map12_bin = source.json()
+                self.map12_bin = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][map12_bin_url] = self.map12_bin
         self.augments_ready["map12"] = True
         #海克斯大乱斗模式（ARAM: Mayhem mode）
@@ -5518,7 +5643,7 @@ class AugmentExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.kiwi_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+                self.kiwi_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][kiwi_bin_url] = self.kiwi_bin
         self.augments_ready["kiwi"] = True
     
@@ -5550,7 +5675,7 @@ class AugmentExtractor(LoLDataExtractor):
             self.map30_bin = self.__class__.data_cache["local"][map30_bin_path]
         else:
             with open(map30_bin_path, "r", encoding = "utf-8") as fp:
-                self.map30_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
         self.augments_ready["map30"] = True
         #斗魂竞技场模式（Arena mode）
@@ -5559,7 +5684,7 @@ class AugmentExtractor(LoLDataExtractor):
             self.cherry_bin = self.__class__.data_cache["local"][cherry_bin_path]
         else:
             with open(cherry_bin_path, "r", encoding = "utf-8") as fp:
-                self.cherry_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.cherry_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][cherry_bin_path] = self.cherry_bin
         self.augments_ready["cherry"] = True
         #最终都市地图（Final City map）
@@ -5568,7 +5693,7 @@ class AugmentExtractor(LoLDataExtractor):
             self.map33_bin = self.__class__.data_cache["local"][map33_bin_path]
         else:
             with open(map33_bin_path, "r", encoding = "utf-8") as fp:
-                self.map33_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.map33_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][map33_bin_path] = self.map33_bin
         self.augments_ready["map33"] = True
         #嚎哭深渊地图（Howling Abyss map）
@@ -5577,7 +5702,7 @@ class AugmentExtractor(LoLDataExtractor):
             self.map12_bin = self.__class__.data_cache["local"][map12_bin_path]
         else:
             with open(map12_bin_path, "r", encoding = "utf-8") as fp:
-                self.map12_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.map12_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][map12_bin_path] = self.map12_bin
         self.augments_ready["map12"] = True
         #海克斯大乱斗模式（ARAM: Mayhem mode）
@@ -5586,7 +5711,7 @@ class AugmentExtractor(LoLDataExtractor):
             self.kiwi_bin = self.__class__.data_cache["local"][kiwi_bin_path]
         else:
             with open(kiwi_bin_path, "r", encoding = "utf-8") as fp:
-                self.kiwi_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.kiwi_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][kiwi_bin_path] = self.kiwi_bin
         self.augments_ready["kiwi"] = True
     
@@ -6133,7 +6258,7 @@ class AnvilExtractor(LoLDataExtractor):
         self.anvils_ready: dict[str, bool] = {"map30": False, "kiwi": False}
         self.CherryAnvil_df: pandas.DataFrame = pandas.DataFrame()
         self.KiwiAnvil_df: pandas.DataFrame = pandas.DataFrame()
-        
+    
     def init_data_readiness(self) -> None:
         '''
         初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
@@ -6161,7 +6286,7 @@ class AnvilExtractor(LoLDataExtractor):
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.map30_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.anvils_ready["map30"] = True
         if Patch(self.patch_number) >= Patch("16.2"):
@@ -6181,7 +6306,7 @@ class AnvilExtractor(LoLDataExtractor):
                         self.init_data_readiness()
                         return
                 else:
-                    self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+                    self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
                 self.__class__.data_cache["online"][map12_bin_url] = self.KiwiAnvils_bin
         else:
             #海克斯大乱斗模式（ARAM: Mayhem mode）
@@ -6198,7 +6323,7 @@ class AnvilExtractor(LoLDataExtractor):
                     time.sleep(3)
                     self.init_data_readiness()
                     return
-                self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+                self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
                 self.__class__.data_cache["online"][kiwi_bin_url] = self.KiwiAnvils_bin
         self.anvils_ready["kiwi"] = True
     
@@ -6227,7 +6352,7 @@ class AnvilExtractor(LoLDataExtractor):
             self.map30_bin = self.__class__.data_cache["local"][map30_bin_path]
         else:
             with open(map30_bin_path, "r", encoding = "utf-8") as fp:
-                self.map30_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
         self.anvils_ready["map30"] = True
         #海克斯大乱斗锻造器（ARAM: Mayhem anvils）
@@ -6236,7 +6361,7 @@ class AnvilExtractor(LoLDataExtractor):
             self.KiwiAnvils_bin = self.__class__.data_cache["local"][KiwiAnvils_bin_path]
         else:
             with open(KiwiAnvils_bin_path, "r", encoding = "utf-8") as fp:
-                self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][KiwiAnvils_bin_path] = self.KiwiAnvils_bin
         self.anvils_ready["kiwi"] = True
     
@@ -6518,7 +6643,7 @@ class CherryRoundExtractor(LoLDataExtractor):
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.map30_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.map30_ready = True
     
@@ -6539,7 +6664,7 @@ class CherryRoundExtractor(LoLDataExtractor):
             self.map30_bin = self.__class__.data_cache["local"][map30_bin_path]
         else:
             with open(map30_bin_path, "r", encoding = "utf-8") as fp:
-                self.map30_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
         self.map30_ready = True
     
@@ -6767,7 +6892,7 @@ class CameoExtractor(LoLDataExtractor):
         self.__dict__.update(extractor.__dict__)
         self.cameo_ready: bool = False
         self.cameo_df: pandas.DataFrame = pandas.DataFrame()
-        
+    
     def init_data_readiness(self) -> None:
         '''
         初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
@@ -6794,7 +6919,7 @@ class CameoExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.map30_bin = source.json()
+                self.map30_bin = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.cameo_ready = True
     
@@ -6815,7 +6940,7 @@ class CameoExtractor(LoLDataExtractor):
             self.map30_bin = self.__class__.data_cache["local"][map30_bin_path]
         else:
             with open(map30_bin_path, "r", encoding = "utf-8") as fp:
-                self.map30_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
         self.cameo_ready = True
     
@@ -6961,7 +7086,7 @@ class GoHExtractor(LoLDataExtractor):
         self.__dict__.update(extractor.__dict__)
         self.GoH_ready: dict[str, bool] = {"map30": False, "cherry": False}
         self.GoH_df: pandas.DataFrame = pandas.DataFrame()
-        
+    
     def init_data_readiness(self) -> None:
         '''
         初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
@@ -6987,7 +7112,7 @@ class GoHExtractor(LoLDataExtractor):
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.map30_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.GoH_ready["map30"] = True
         #斗魂竞技场模式（Arena mode）
@@ -7006,7 +7131,7 @@ class GoHExtractor(LoLDataExtractor):
                     self.init_data_readiness()
                     return
             else:
-                self.cherry_bin = source.json()
+                self.cherry_bin = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][cherry_bin_url] = self.cherry_bin
         self.GoH_ready["cherry"] = True
     
@@ -7035,7 +7160,7 @@ class GoHExtractor(LoLDataExtractor):
             self.map30_bin = self.__class__.data_cache["local"][map30_bin_path]
         else:
             with open(map30_bin_path, "r", encoding = "utf-8") as fp:
-                self.map30_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
         self.GoH_ready["map30"] = True
         #斗魂竞技场模式（Arena mode）
@@ -7044,7 +7169,7 @@ class GoHExtractor(LoLDataExtractor):
             self.cherry_bin = self.__class__.data_cache["local"][cherry_bin_path]
         else:
             with open(cherry_bin_path, "r", encoding = "utf-8") as fp:
-                self.cherry_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.cherry_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][cherry_bin_path] = self.cherry_bin
         self.GoH_ready["cherry"] = True
     
@@ -7291,7 +7416,7 @@ class TFTExtractor(LoLDataExtractor):
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.map22_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+            self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][map22_bin_url] = self.map22_bin
         self.map22_ready = True
 
@@ -7312,7 +7437,7 @@ class TFTExtractor(LoLDataExtractor):
             self.map22_bin = self.__class__.data_cache["local"][map22_bin_path]
         else:
             with open(map22_bin_path, "r", encoding = "utf-8") as fp:
-                self.map22_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][map22_bin_path] = self.map22_bin
         self.map22_ready = True
 
@@ -8704,7 +8829,7 @@ class FontExtractor(LoLDataExtractor):
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.fonts_bin: dict[str, list[str] | dict[str, Any]] = source.json()
+            self.fonts_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
             self.__class__.data_cache["online"][fonts_bin_url] = self.fonts_bin
         self.font_ready = True
 
@@ -8725,7 +8850,7 @@ class FontExtractor(LoLDataExtractor):
             self.fonts_bin = self.__class__.data_cache["local"][fonts_bin_path]
         else:
             with open(fonts_bin_path, "r", encoding = "utf-8") as fp:
-                self.fonts_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+                self.fonts_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
             self.__class__.data_cache["local"][fonts_bin_path] = self.fonts_bin
         self.font_ready = True
 
@@ -9545,6 +9670,10 @@ if __name__ == "__main__":
                 extractor.encapsulate()
             else:
                 extractor.decapsulate()
+            #加载二进制描述数据的字符串散列表（Load the string hashtable for binary description data）
+            if i == 0: #字符串散列表是静态的，适用于所有版本，只需加载一次即可（The string hashtable is static and applicable to all versions, so it only needs to be loaded once）
+                logPrint("正在加载二进制描述数据的字符串散列表……\nLoading the string hashtable for binary description data ...", print_time = True)
+                extractor.get_bin_hashes()
             #加载版本数据（Load version data）
             logPrint(f"正在加载完整的游戏版本号……\nLoading the complete version number ...", print_time = True)
             extractor.get_version()
@@ -9909,8 +10038,17 @@ if __name__ == "__main__":
             extractor.encapsulate()
         else:
             extractor.decapsulate()
+        #加载二进制描述数据的字符串散列表（Load the string hashtable for binary description data）
+        logPrint("正在加载二进制描述数据的字符串散列表……\nLoading the string hashtable for binary description data ...", print_time = True)
+        bin_hash_paths: list[str] = [
+            "C:/Users/19250/AppData/Local/cdragon/data/hashes/lol/hashes.binentries.txt",
+            "C:/Users/19250/AppData/Local/cdragon/data/hashes/lol/hashes.binfields.txt",
+            "C:/Users/19250/AppData/Local/cdragon/data/hashes/lol/hashes.binhashes.txt",
+            "C:/Users/19250/AppData/Local/cdragon/data/hashes/lol/hashes.bintypes.txt",
+        ]
+        extractor.read_bin_hashes(bin_hash_paths = bin_hash_paths)
         #加载版本数据（Load version data）
-        logPrint(f"正在加载完整的游戏版本号……\nLoading the complete version number ...")
+        logPrint(f"正在加载完整的游戏版本号……\nLoading the complete version number ...", print_time = True)
         if dir_type == "extract":
             game_version_path: str = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text/Game/content-metadata.json"
         else:
@@ -10381,7 +10519,16 @@ if __name__ == "__main__":
         :return: 状态码。总是0。<br>Status code. Always return 0.
         :rtype: int
         '''
+        locale: str = "zh_CN"
         #数据资源（Data resource）
+        ##二进制条目散列表（Binary entry hash table）
+        bin_hash_paths: list[str] = [
+            "C:/Users/19250/AppData/Local/cdragon/data/hashes/lol/hashes.binentries.txt",
+            "C:/Users/19250/AppData/Local/cdragon/data/hashes/lol/hashes.binfields.txt",
+            "C:/Users/19250/AppData/Local/cdragon/data/hashes/lol/hashes.binhashes.txt",
+            "C:/Users/19250/AppData/Local/cdragon/data/hashes/lol/hashes.bintypes.txt",
+        ]
+        LoLDataExtractor("", locale).read_bin_hashes(bin_hash_paths = bin_hash_paths)
         ##字符串常量池（Stringtable）
         lolstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/lol.stringtable.json"
         with open(lolstringtable_zh_path, "r", encoding = "utf-8") as fp:
@@ -10397,30 +10544,30 @@ if __name__ == "__main__":
             tftstringtable_en = json.load(fp)
         ##地图（Map）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
-        #     map22_bin = json.load(fp)
+        #     map22_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
-        #     map30_bin = json.load(fp)
+        #     map30_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
-        #     map33_bin = json.load(fp)
+        #     map33_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
         ##装备（Item）
         with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
-            items_bin = json.load(fp)
+            items_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
         ##共享数据（Shared data）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/shared.cdtb.bin.json", "r", encoding = "utf-8") as fp:
-        #     shared_bin = json.load(fp)
+        #     shared_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
         ##符文（Perk）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/perks.cdtb.bin.json", "r", encoding = "utf-8") as fp:
-        #     perks_bin = json.load(fp)
+        #     perks_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
         ##强化符文和荣誉嘉宾（Augment and Guest of Honor）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
-        #     cherry_bin = json.load(fp)
+        #     cherry_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
-        #     kiwi_bin = json.load(fp)
+        #     kiwi_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
         ##整合后的数据（Merged data）
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
-        #     champions_bin = json.load(fp)
+        #     champions_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/characters_bin.json", "r", encoding = "utf-8") as fp:
-        #     characters_bin = json.load(fp)
+        #     characters_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
         
         #数据准备（Data preparation）
         # for (key, value) in shared_bin.items():
@@ -10454,7 +10601,6 @@ if __name__ == "__main__":
         # print(LoLDataExtractor.get_strtable_value(lolstringtable_zh, mDisplayName_key, default = "获取失败。"))
         
         #说明文本转换（Tooltip transformation）
-        locale: str = "zh_CN"
         print("说明文本测试样例：")
         tests: list[dict[str, Any]] = [
             {
