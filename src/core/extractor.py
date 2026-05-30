@@ -2140,6 +2140,7 @@ class LoLDataExtractor:
                         meleeValue = str(cls.aRound(eval(meleeValue.replace(" × ", " * ")), 5))
                 except:
                     pass
+                meleeValue = TooltipOperand.object_to_contDivision(meleeValue)
                 rangedMultiple = cls.leafletCalculation(binData, stats["mRangedMultiplier"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
                 rangedValue: str = f"({meleeValue}) × ({rangedMultiple})"
                 rangedValue = TooltipOperand.contDivision_to_object(rangedValue)
@@ -2150,7 +2151,6 @@ class LoLDataExtractor:
                         rangedValue = str(cls.aRound(eval(rangedValue.replace(" × ", " * ")), 5))
                 except:
                     pass
-                meleeValue = TooltipOperand.object_to_contDivision(meleeValue)
                 rangedValue = TooltipOperand.object_to_contDivision(rangedValue)
                 normalValue = f"{meleeValue} (melee) | {rangedValue} (ranged)"
             else:
@@ -10396,8 +10396,8 @@ if __name__ == "__main__":
         with open(tftstringtable_en_path, "r", encoding = "utf-8") as fp:
             tftstringtable_en = json.load(fp)
         ##地图（Map）
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
-            map22_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
+        #     map22_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
         #     map30_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
@@ -10414,11 +10414,11 @@ if __name__ == "__main__":
         ##强化符文和荣誉嘉宾（Augment and Guest of Honor）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
         #     cherry_bin = json.load(fp)
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
-            kiwi_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
+        #     kiwi_bin = json.load(fp)
         ##整合后的数据（Merged data）
-        with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
-            champions_bin = json.load(fp)
+        # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
+        #     champions_bin = json.load(fp)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/characters_bin.json", "r", encoding = "utf-8") as fp:
         #     characters_bin = json.load(fp)
         
@@ -10429,13 +10429,13 @@ if __name__ == "__main__":
         # for (key, value) in characters_bin.items():
         #     if key != "__linked" and value["__type"] == "SpellObject":
         #         LoLDataExtractor.mSpells[value["mScriptName"]] = value
-        for (key, value) in map22_bin.items():
-            if key != "__linked" and value["__type"] == "TftUnitPropertyDefinition":
-                LoLDataExtractor.TFTUnitPropertyMap[value["name"]] = value
-            elif key != "__linked" and value["__type"] == "TftTraitData":
-                LoLDataExtractor.TFTTraitMap[value["mName"]] = value
-            elif key != "__linked" and value["__type"] == "ScriptDataObject":
-                LoLDataExtractor.TFTScriptDataMap[value["mName"]] = value
+        # for (key, value) in map22_bin.items():
+        #     if key != "__linked" and value["__type"] == "TftUnitPropertyDefinition":
+        #         LoLDataExtractor.TFTUnitPropertyMap[value["name"]] = value
+        #     elif key != "__linked" and value["__type"] == "TftTraitData":
+        #         LoLDataExtractor.TFTTraitMap[value["mName"]] = value
+        #     elif key != "__linked" and value["__type"] == "ScriptDataObject":
+        #         LoLDataExtractor.TFTScriptDataMap[value["mName"]] = value
         
         #总结数据结构（Summarize the data structure）
         # keyDict: dict[str, dict[str, int]] = getBinaryKeys(map33_bin, isBin = True, keyPaths = None, objectTypes = "AugmentData")[1]
@@ -10458,20 +10458,8 @@ if __name__ == "__main__":
         print("说明文本测试样例：")
         tests: list[dict[str, Any]] = [
             {
-                "tooltip": "{{Augment_ARAM_QQQuest_Tooltip@f6@}}",
-                "binData": kiwi_bin["{8df5909d}"]["mSpell"]
-            },
-            {
-                "tooltip": "{{ game_spell_Kayn_R_Damage_Amount_@f1@ }}",
-                "binData": champions_bin["Characters/Kayn/Spells/KaynRAbility/KaynR"]
-            },
-            {
-                "tooltip": "<passive>献祭</passive><br>承受或造成伤害后，<keywordMajor>灼烧</keywordMajor>附近的敌人们，每秒造成<trueDamage>@DPS@真实伤害</trueDamage>，持续@AuraDuration@秒。<br><br><passive>荒弃</passive><br>击杀一个敌人时会在其周围造成<trueDamage>@ExplosionDamage@真实伤害</trueDamage>。",
-                "binData": items_bin["Items/223069"]
-            },
-            {
-                "tooltip": "携带者拥有固定的@TFTTrait.TFTEvent5YR_Maestro.:JhinAttackSpeed@攻击速度，并且每@TFTTrait.TFTEvent5YR_Maestro.:BonusAttackSpeed@%额外攻击速度会转化为@TFTTrait.TFTEvent5YR_Maestro.:BonusAttackDamage@%物理加成。<br><br>在召唤4支盛大终章步枪之后，它们会开始以与携带者相同的频率开火，造成@TFTTrait.TFTEvent5YR_Maestro.:RifleADScalar*100@% %i:scaleAD% + @TFTTrait.TFTEvent5YR_Maestro.:RifleAPScalar*100@% %i:scaleAP%物理伤害。<br><br>每第4次齐射是<tftEvent5YRHarmonic>谐和齐射</tftEvent5YRHarmonic>，并且造成相当于携带者及其步枪自上一次【谐和齐射】算起的@TFTUnitProperty.item:TFTEvent5YR_Maestro_HarmonicDamage_BatonTooltip*100@%已造成伤害。",
-                "binData": map22_bin["{0cbedae6}"]
+                "tooltip": "<titleLeft><itemName@ItemActiveness@>海妖杀手</itemName@ItemActiveness@></titleLeft><titleRight>{{ Item_Gold_Value_Sell }} <rules>(@SellBackModifier*100@%)</rules></titleRight><subtitleLeft>{{ Item_BriefIcon_@ItemActiveness@ }}持续伤害</subtitleLeft><subtitleRight></subtitleRight><mainText><section><attention>%i:scaleAD%@FlatPhysicalDamageMod@</attention>攻击力<br><attention>%i:scaleAS%@PercentAttackSpeedMod*100@%</attention>攻击速度<br><attention>%i:scaleMS%@PercentMovementSpeedMod*100@%</attention>移动速度@ExtendedStats@</section><section><passive>放倒它</passive><br>每第三次攻击造成<physicalDamage>@DamageAmount@额外物理伤害</physicalDamage>{{ Item_Keyword_OnHit }}，基于目标的已损失生命值至多提升至<physicalDamage>@MaximumDamage@</physicalDamage>。</section><section></section><section><flavorText></flavorText></section></mainText><postScriptLeft>已对英雄造成的伤害：<attention>@f2@</attention></postScriptLeft>",
+                "binData": items_bin["Items/6672"]
             },
         ]
         for i in range(len(tests)):
