@@ -419,7 +419,7 @@ class LoLDataExtractor:
     Spell_tooltip_map: dict[str, Any] = {} #收录角色二进制描述数据中所有技能说明文本对应的技能指令对象。键是技能说明文本键，值是每个技能指令对象（Collect all SpellObjects that has spell tooltip key in character binary description data. Each key is a value of `keyTooltip`, and each value is the corresponding SpellObject）
     data_cache: dict[str, dict[str, Any]] = {"online": {}, "local": {}} #每个链接或路径指向的Json对象的缓存（Caches of Json objects directed by each URL or path）
     merged_data_cache: dict[str, Any] = {} #每个变量名代表的变量的缓存。在设计初衷上，这个数据结构只缓存那些获取较为麻烦的合并后的数据字典（Caches of the variables that the name keys represent. By design, this data structure only caches those data dictionaries hard to obtain）
-    df_queue: list[dict[str, Any]] = [] #要导出的数据框队列。每个元素是一个字典，包含“id”“dType”“sheet_name”和“sheet”键。每次导出以及切换版本时清空（Dataframe queue to export. Each element is a dictionary that contains "id", "sheet_name", and "sheet" keys. Cleared when exporting or switching versions）
+    df_queue: list[dict[str, Any]] = [] #要导出的数据框队列。每个元素是一个字典，包含“id”“dType”“sheet_name”“sheet”和“T”键。每次导出以及切换版本时清空（Dataframe queue to export. Each element is a dictionary that contains "id", "sheet_name", "sheet" and "T" keys. Cleared when exporting or switching versions）
     worksheet_metadata: dict[str, dict[str, Any]] = {
         "Map": {
             "dType": "Map",
@@ -3566,14 +3566,13 @@ class MapExtractor(LoLDataExtractor):
         map_statistics_output_order += list(map(lambda x: map_header_keys.index(x), map_header_transformed_tmp))
         del map_header_transformed_tmp
         ###附加说明表头排序（Sort the supplemental header）
-
+        
         ##创建数据框（Create the dataframe）
         map_data_organized: dict[str, list[Any]] = {map_header_keys[i]: map_data_json[map_header_keys[i]] for i in map_statistics_output_order}
         map_df: pandas.DataFrame = pandas.DataFrame(data = map_data_organized)
         logPrint("正在优化地图数据框的逻辑值显示……\nOptimizing boolean value display of the map dataframe ...")
         optimize_bool_display(map_df)
         map_df = pandas.concat([pandas.DataFrame([map_header])[map_df.columns], map_df], ignore_index = True)
-        map_df = map_df.transpose() #行列转置（Row-column transpose）
         self.map_df = map_df
         return 0
     
@@ -3584,7 +3583,7 @@ class MapExtractor(LoLDataExtractor):
         if not self.map_df.empty:
             map_ws: dict[str, Any] = self.worksheet_metadata["Map"]
             sheet1_name: str = map_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else map_ws["sheet_name_without_version"]
-            map_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(map_ws["dType"]), "dType": map_ws["dType"], "sheet_name": sheet1_name, "sheet": self.map_df}
+            map_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(map_ws["dType"]), "dType": map_ws["dType"], "sheet_name": sheet1_name, "sheet": self.map_df, "T": True}
             self.df_queue.append(map_df_struct)
     
     def export_map_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
@@ -3622,7 +3621,7 @@ class MapExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    addDefaultStyle(self.map_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(self.map_df.transpose()).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
             except PermissionError:
@@ -9791,11 +9790,15 @@ if __name__ == "__main__":
                                     for j in range(len(df_queue)):
                                         df_struct: dict[str, Any] = df_queue[j]
                                         df: pandas.DataFrame = df_struct["sheet"]
-                                        if df_struct["dType"] == "TFTSet":
-                                            df = df.drop(labels = ["BotSkillData SkillAxes", "VfxResourceResolver resourceMap", "{235a8995} bankUnits"], axis = 1)
                                         sheet_name: str = df_struct["sheet_name"]
-                                        logPrint("[%d/%d]%s" %(j + 1, len(df_queue), sheet_name), end = "\r", print_time = True)
-                                        addDefaultStyle(df).to_excel(excel_writer = writer, sheet_name = sheet_name[:31])
+                                        export_note: str = " (Skipped.)" if len(df) == 1 else ""
+                                        logPrint("[%d/%d]%s%s" %(j + 1, len(df_queue), sheet_name, export_note), end = "\r", print_time = True)
+                                        if len(df) > 1: #只导出非空数据框。每个数据框有一行中文表头（Only non-empty dataframes are exported. Each dataframe has a Chinese header）
+                                            columns_to_drop: list[str] = [column for column in df.columns if df[column].astype(str).str.len().max() > 32767] #存储单元格长度超过Excel限制的列（Store columns with cell length exceeding Excel limit）
+                                            df = df.drop(labels = columns_to_drop, axis = 1)
+                                            if df_struct.get("T", False):
+                                                df = df.transpose()
+                                            addDefaultStyle(df).to_excel(excel_writer = writer, sheet_name = sheet_name[:31])
                                     else:
                                         logPrint("已完成。 | Done.")
                             except PermissionError:
@@ -10243,11 +10246,15 @@ if __name__ == "__main__":
                                 for j in range(len(df_queue)):
                                     df_struct: dict[str, Any] = df_queue[j]
                                     df: pandas.DataFrame = df_struct["sheet"]
-                                    if df_struct["dType"] == "TFTSet":
-                                        df = df.drop(labels = ["BotSkillData SkillAxes", "VfxResourceResolver resourceMap"], axis = 1)
                                     sheet_name: str = df_struct["sheet_name"]
-                                    logPrint("[%d/%d]%s" %(j + 1, len(df_queue), sheet_name), end = "\r", print_time = True)
-                                    addDefaultStyle(df).to_excel(excel_writer = writer, sheet_name = sheet_name[:31])
+                                    export_note: str = " (Skipped.)" if len(df) == 1 else ""
+                                    logPrint("[%d/%d]%s%s" %(j + 1, len(df_queue), sheet_name, export_note), end = "\r", print_time = True)
+                                    if len(df) > 1:
+                                        columns_to_drop: list[str] = [column for column in df.columns if df[column].astype(str).str.len().max() > 32767]
+                                        df = df.drop(labels = columns_to_drop, axis = 1)
+                                        if df_struct.get("T", False):
+                                            df = df.transpose()
+                                        addDefaultStyle(df).to_excel(excel_writer = writer, sheet_name = sheet_name[:31])
                                 else:
                                     logPrint("已完成。 | Done.")
                         except PermissionError:
