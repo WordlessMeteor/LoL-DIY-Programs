@@ -418,6 +418,8 @@ class LoLDataExtractor:
     deep_resolve_hash: bool = False #是否在解析二进制描述数据中的字符串时进行深度解析。深度解析会对字符串重新计算hash值，然后从二进制条目散列表中查找是否存在hash值，从而确保不同版本的字符串保持一致（Whether to perform deep resolution when parsing strings in binary description data. Deep resolution will recalculate the hash value of a string, and then look up whether this hash value exists in the binary entry hashtable, thus ensuring the consistency of strings across different versions）
     optimize_tooltip_layout: bool = True #是否对说明文本的布局进行优化。决定变量代换时使用tooltipTransform还是tooltipSubstitute方法（Whether to optimize the layout of tooltips. Determines which one of `tooltipTransform` and `tooltipSubstitute` is used during variable substitution）
     reserve_variable: bool = False #是否在变量代换时保留变量名。如果保留，则说明文本会同时带有变量名和值。这个属性应只在本基类中声明（Whether to reserve the variable during its substitution. If reserve, then the tooltip will have both name and value of the variable. This attribute should only be declared in this base class）
+    levelScaling_cap: int = 18 #等级计算的上限（The upper limit for level scaling calculations）
+    #定义说明文本转换过程的缓存容器（Define cache containers for tooltip transformation）
     calculatedVariables: dict[str, dict[Literal["value", "__type"], str | dict[str, str]]] = {} #缓存同一个说明文本中计算过的变量。切换到下一个说明文本时清空（Cache the variables that have been calculated before while transforming a tooltip. When another tooltip is to transform, this variable is cleaned）
     mSpells: dict[str, Any] = {} #收录某个二进制描述数据中所有的技能指令对象。键是每个技能指令对象的mScriptName键的值，值是每个技能指令对象（Collect all SpellObjects in binary description data. Each key is the value of the `mScriptName` key of a SpellObject, and its value is this SpellObject）
     # mItems: dict[str, Any] = {} #收录装备二进制描述数据中所有的装备对象。键是每个装备数据对象的装备序号，值是每个装备数据对象（Collect all ItemData objects in item binary description data. Each key is the value of `itemID` key of an ItemData object, and each value is this ItemData object）
@@ -427,6 +429,7 @@ class LoLDataExtractor:
     Spell_tooltip_map: dict[str, Any] = {} #收录角色二进制描述数据中所有技能说明文本对应的技能指令对象。键是技能说明文本键，值是每个技能指令对象（Collect all SpellObjects that has spell tooltip key in character binary description data. Each key is a value of `keyTooltip`, and each value is the corresponding SpellObject）
     data_cache: dict[str, dict[str, Any]] = {"online": {}, "local": {}} #每个链接或路径指向的Json对象的缓存（Caches of Json objects directed by each URL or path）
     merged_data_cache: dict[str, Any] = {} #每个变量名代表的变量的缓存。在设计初衷上，这个数据结构只缓存那些获取较为麻烦的合并后的数据字典（Caches of the variables that the name keys represent. By design, this data structure only caches those data dictionaries hard to obtain）
+    #定义数据导出相关属性（Define data export related attributes）
     df_queue: list[dict[str, Any]] = [] #要导出的数据框队列。每个元素是一个字典，包含“id”“dType”“sheet_name”“sheet”和“T”键。每次导出以及切换版本时清空（Dataframe queue to export. Each element is a dictionary that contains "id", "sheet_name", "sheet" and "T" keys. Cleared when exporting or switching versions）
     worksheet_metadata: dict[str, dict[str, Any]] = {
         "Map": {
@@ -945,6 +948,23 @@ class LoLDataExtractor:
         :type reserve_variable: bool
         '''
         cls.reserve_variable = reserve_variable
+    
+    @classmethod
+    def set_levelScaling_cap(cls, cap: int) -> None:
+        '''
+        设置等级计算的等级上限。<br>Set the level cap for level scaling calculations.
+        
+        :param cap: 等级上限。不同模式的等级上限如下：<br>Level cap. Level caps in different modes are as follows:
+            <pre>
+            **gameMode**         **游戏模式**               **gameMode**          **Level cap**<br>
+            CLASSIC      召唤师峡谷经典模式     Summoner's Rift Classic      18/20<br>
+            URF              无限火力                    URF                   30<br>
+            CHERRY          斗魂竞技场                  Arena                  40<br>
+            STRAWBERRY       无尽狂潮                   Swarm                  99
+            </pre>
+        :type cap: int
+        '''
+        cls.levelScaling_cap = cap
     
     #获取版本数据框（Obtain version dataframe）
     def init_patch(self) -> None:
@@ -1824,7 +1844,7 @@ class LoLDataExtractor:
                 mLevel_i_Value: int | float = mLevel1Value
                 i: int = 1 #等级（Level）
                 j: int = 0 #断点列表下标（Breakpoint list index）
-                while i <= 18:
+                while i <= cls.levelScaling_cap:
                     if i < formulaPart["mBreakpoints"][0].get("mLevel", 1):
                         mLevel_i_Value = mLevel1Value + (i - 1) * mInitialBonusPerLevel
                     else:
@@ -1839,18 +1859,21 @@ class LoLDataExtractor:
                     levelValues.append(mLevel_i_Value)
                     i += 1
                 levelValues = list(map(lambda x: cls.aRound(x, 5), levelValues))
-                formulaStr = "/".join(list(map(str, levelValues))) + " (Level 1 to 18)"
+                formulaStr = "/".join(list(map(str, levelValues))) + " (Level 1 to %d)" %cls.levelScaling_cap
             elif mBonusPerLevelAtAndAfter == 0:
                 formulaStr = str(mLevel1Value)
             else:
-                mLevel18Value = mLevel1Value + 17 * mBonusPerLevelAtAndAfter
-                formulaStr = "%s - %s (Level 1 to 18)" %(cls.aRound(mLevel1Value, 5), cls.aRound(mLevel18Value, 5))
+                mLevel_end_Value = mLevel1Value + (cls.levelScaling_cap - 1) * mBonusPerLevelAtAndAfter
+                formulaStr = "%s - %s (Level 1 to %d)" %(cls.aRound(mLevel1Value, 5), cls.aRound(mLevel_end_Value, 5), cls.levelScaling_cap)
         elif formulaPart_type == "ByCharLevelFormulaCalculationPart": #公式等级提供增益（Bonus value provided by levels following a formula）
-            formulaStr = cls.burnValueList(formulaPart["values"] if "values" in formulaPart else formulaPart["mValues"]) #在25.06版本以前，值列表的键名是mValues（Before Patch 25.06, the value list's key name is "mValues"）
+            mValues: list[int | float] = formulaPart["values"] if "values" in formulaPart else formulaPart["mValues"]
+            formulaStr = cls.burnValueList(mValues) + " (Level 1 to %d)" %(len(mValues)) #在25.06版本以前，值列表的键名是mValues（Before Patch 25.06, the value list's key name is "mValues"）
         elif formulaPart_type == "ByCharLevelInterpolationCalculationPart": #线性等级提供增益（Bonus value provided by levels in a linear manner）
-            mStartValue: int | float = cls.aRound(formulaPart.get("mStartValue", 0), 5)
-            mEndValue: int | float = cls.aRound(formulaPart.get("mEndValue", 0), 5)
-            formulaStr = f"{mStartValue} - {mEndValue} (Level 1 to 18)"
+            mScalePastDefaultMaxLevel: bool = formulaPart.get("mScalePastDefaultMaxLevel", True) #表示数值是否可超过18级（Represents whether the value can exceed Level 18）
+            mLevel1Value: int | float = cls.aRound(formulaPart.get("mStartValue", 0), 5)
+            mLevel18Value: int | float = cls.aRound(formulaPart.get("mEndValue", 0), 5)
+            mLevel_end_Value: int | float = mLevel18Value if cls.levelScaling_cap > 18 and not mScalePastDefaultMaxLevel else cls.aRound(mLevel1Value + (cls.levelScaling_cap - 1) * (mLevel18Value - mLevel1Value) / 17, 5)
+            formulaStr = f"{mLevel1Value} - {mLevel_end_Value} (Level 1 to {cls.levelScaling_cap})"
         elif formulaPart_type == "ByItemEpicnessCountCalculationPart":
             coefficient: int | float = cls.aRound(formulaPart.get("Coefficient", 0), 5)
             itemEpicness_desc: str = itemEpicness_dict_zh[formulaPart["epicness"]] if useCHSPrompt else itemEpicness_dict_en[formulaPart["epicness"]]
@@ -1906,7 +1929,7 @@ class LoLDataExtractor:
                 mLevel_i_Value_modeSplitDict_float: dict[str, float] = mLevel1Value_modeSplitDict_float.copy()
                 i: int = 1 #等级（Level）
                 j: int = 0 #断点列表下标（Breakpoint list index）
-                while i <= 18:
+                while i <= cls.levelScaling_cap:
                     if i < formulaPart["{9823b29a}"][0].get("level", 1):
                         #梳理当前等级的所有模式分化（Sort out all modes at current level）
                         modes: list[str] = list(mLevel1Value_modeSplitDict_float.keys())
@@ -1978,23 +2001,27 @@ class LoLDataExtractor:
                 ##再对所有模式设置值（Next, set values for all modes）
                 for mode in modes:
                     mLevel1Value = levelValues_modeSplitDict_dict[mode][1]
-                    mLevel18Value = mLevel1Value + 17 * mBonusPerLevel_modeSplitDict_float.get(mode, 0)
-                    levelValues_modeSplitDict_dict[mode][18] = mLevel18Value
+                    mLevel_end_Value = mLevel1Value + (cls.levelScaling_cap - 1) * mBonusPerLevel_modeSplitDict_float.get(mode, 0)
+                    levelValues_modeSplitDict_dict[mode][cls.levelScaling_cap] = mLevel_end_Value
                 levelValues_modeSplitList: list[str] = []
                 for mode in levelValues_modeSplitDict_dict:
                     mLevel1Value = levelValues_modeSplitDict_dict[mode][1]
-                    mLevel18Value = levelValues_modeSplitDict_dict[mode][18]
-                    levelValues_modeBurn: str = "%s - %s" %(cls.aRound(mLevel1Value, 5), cls.aRound(mLevel18Value, 5)) + ("" if mode == "default" else f" (mode: {mode})")
+                    mLevel_end_Value = levelValues_modeSplitDict_dict[mode][cls.levelScaling_cap]
+                    levelValues_modeBurn: str = "%s - %s" %(cls.aRound(mLevel1Value, 5), cls.aRound(mLevel_end_Value, 5)) + ("" if mode == "default" else f" (mode: {mode})")
                     levelValues_modeSplitList.append(levelValues_modeBurn)
                 formulaStr = " || ".join(levelValues_modeSplitList)
+            formulaStr += " (Level 1 to %d)" %cls.levelScaling_cap #由于变量代换过程可能会使用`variableModeOverrideStrToStruct`方法计算模式重载等级增长数值，所以需要把等级的提示放到模式的提示的后面，防止正则表达式无法识别模式重载的数值（Since the variable substitution process may use `variableModeOverrideStrToStruct` method to calculate the mode overridden level scaling values, the level prompt needs to be placed after the mode prompt, otherwise the regex won't be able to recognize the mode overridden values）
         elif formulaPart_type == "{b22609db}": #仅用于刀锋舞者 艾瑞莉娅的【艾欧尼亚热诚】（Only applies to IreliaPassive）
             mLevel1ValueStr: str = cls.variableCalculation(binData, formulaPart["{91d404a5}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             mValuePerLevelStr: str = cls.variableCalculation(binData, formulaPart["{b2cd0eb0}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             formulaStr = f"{mLevel1ValueStr} + {mValuePerLevelStr} × Level"
         elif formulaPart_type == "{ee18a47b}": #用于兽灵行者 乌迪尔的【狂暴爪击】（Applies to UdyrQ）
-            mLevel1ValueStr = cls.variableCalculation(binData, formulaPart["{0589a59c}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            mLevel1ValueStr: str = cls.variableCalculation(binData, formulaPart["{0589a59c}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            mLevel1Value: int | float = cls.aRound(float(mLevel1ValueStr), 5)
             mLevel18ValueStr: str = cls.variableCalculation(binData, formulaPart["{0b65bc23}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
-            formulaStr = f"{mLevel1ValueStr} - {mLevel18ValueStr} (Level 1 to 18)"
+            mLevel18Value: int | float = cls.aRound(float(mLevel18ValueStr), 5)
+            mLevel_end_Value: int | float = cls.aRound(mLevel1Value + (cls.levelScaling_cap - 1) * (mLevel18Value - mLevel1Value) / 17, 5)
+            formulaStr = f"{mLevel1Value} - {mLevel_end_Value} (Level 1 to {cls.levelScaling_cap})"
         elif formulaPart_type == "{f3cbe7b2}": #mSpellCalculationKey来自mItemCalculations键的情形。在装备中仅用于夺萃之镰和无终恨意（The case where the value of `mSpellCalculationKey` is a key of the value of `mItemCalculations`. In items, this only applies to Essence Reaver and Unending Despair）
             formulaStr = cls.variableCalculation(binData, formulaPart["mSpellCalculationKey"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
         else: #异常处理（Exception handling）
@@ -9797,6 +9824,10 @@ if __name__ == "__main__":
         LoLDataExtractor.set_variable_reserve_strategy(False)
         logPrint('''说明文本变量代换过程默认不保留变量名。如果需要保留，请在选择数据类型的步骤输入“-2”以调整变量代换选项。\nVariable names aren't retained during the variable substitution process of tooltips by default. If you want to retain them, please input "-2" in the data type selection step to set the variable name retention option.''')
         
+        #设置等级计算的等级上限（Set the level cap for level scaling calculations）
+        LoLDataExtractor.set_levelScaling_cap(18)
+        logPrint('等级计算的等级上限默认为18级。如果需要调整，请在选择数据类型的步骤输入“-2”以调整等级上限。\nThe level cap for level scaling calculations is 18 by default. If you want to adjust it, please input "-2" in the data type selection step to adjust the level cap.')
+        
         for i in range(len(versions)):
             version: str = versions[i]
             logPrint("[%d/%d]开始处理%s版本的游戏数据。\nStart to process game data of Version %s." %(i + 1, len(versions), version, version))
@@ -9855,7 +9886,7 @@ if __name__ == "__main__":
                 if mode == "":
                     continue
                 elif mode == "-2":
-                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\thash值解析深度（Hash value resolution depth）\n5\t单类数据导出（Single-type data export）")
+                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\thash值解析深度（Hash value resolution depth）\n5\t等级计算上限（Level scaling cap）\n6\t单类数据导出（Single-type data export）")
                     while True:
                         option = logInput()
                         if option == "":
@@ -9909,6 +9940,13 @@ if __name__ == "__main__":
                             else:
                                 logPrint("已禁用hash值深度解析模式。\nDisabled deep resolution mode of hash value.")
                         elif option[0] == "5":
+                            logPrint(f"请设置等级计算的等级上限。输入空字符串以取消更改。\nPlease set the level cap for level scaling calculations. Submit an empty string to cancel the change.\n当前等级上限（Current level cap）：{extractor.levelScaling_cap}")
+                            levelScaling_cap_str: int = logInput()
+                            if levelScaling_cap_str.isdigit():
+                                levelScaling_cap: int = int(levelScaling_cap_str)
+                                extractor.set_levelScaling_cap(levelScaling_cap)
+                                logPrint("等级上限已修改。\nLevel cap changed.")
+                        elif option[0] == "6":
                             logPrint("是否导出数据到Excel中？（输入任意非空字符串以导出，否则不导出。）\nDo you want to export data to Excel? (Submit any non-empty string to export, or null to refuse exporting.)")
                             export_str: str = logInput()
                             export = bool(export_str)
@@ -9919,7 +9957,7 @@ if __name__ == "__main__":
                         else:
                             logPrint("您的输入有误！请重新输入。\nERROR input. Please try again.")
                             continue
-                        logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\thash值解析深度（Hash value resolution depth）\n5\t单类数据导出（Single-type data export）")
+                        logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\thash值解析深度（Hash value resolution depth）\n5\t等级计算上限（Level scaling cap）\n6\t单类数据导出（Single-type data export）")
                 elif mode == "-1":
                     df_queue: list[dict[str, Any]] = sorted(extractor.df_queue, key = lambda x: x["order"])
                     if len(df_queue) > 0:
@@ -10185,6 +10223,10 @@ if __name__ == "__main__":
         LoLDataExtractor.set_variable_reserve_strategy(False)
         # logPrint('''说明文本变量代换过程默认不保留变量名。如果需要保留，请在选择数据类型的步骤输入“-2”以调整变量代换选项。\nVariable names aren't retained during the variable substitution process of tooltips by default. If you want to retain them, please input "-2" in the data type selection step to set the variable name retention option.''')
         
+        #设置等级计算的等级上限（Set the level cap for level scaling calculations）
+        LoLDataExtractor.set_levelScaling_cap(18)
+        # logPrint('等级计算的等级上限默认为18级。如果需要调整，请在选择数据类型的步骤输入“-2”以调整等级上限。\nThe level cap for level scaling calculations is 18 by default. If you want to adjust it, please input "-2" in the data type selection step to adjust the level cap.')
+        
         #设置工作表集成（Determine whether to integrate sheets in different patches into one workbook）
         logPrint("是否将不同版本的工作表集成到一个工作簿中？（输入任意非空字符串以确认集成，否则分不同版本保存。）\nDo you want to integrate sheets of different versions into a single workbook? (Input any non-empty string to confirm integration, or null to save data into multiple workbooks of the different version.)")
         integrate_str: str = logInput()
@@ -10324,7 +10366,7 @@ if __name__ == "__main__":
                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     logPrint("请选择草稿选项：\nPlease select a draft option:\n0\t退出调试（Quit debug）\n1\t启动子环境（Start a sub-environment）")
             elif mode == "-2":
-                logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\thash值解析深度（Hash value resolution depth）\n5\t单类数据导出（Single-type data export）")
+                logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\thash值解析深度（Hash value resolution depth）\n5\t等级计算上限（Level scaling cap）\n6\t单类数据导出（Single-type data export）")
                 while True:
                     option = logInput()
                     if option == "":
@@ -10389,6 +10431,13 @@ if __name__ == "__main__":
                         else:
                             logPrint("已禁用hash值深度解析模式。\nDisabled deep resolution mode of hash value.")
                     elif option[0] == "5":
+                        logPrint(f"请设置等级计算的等级上限。输入空字符串以取消更改。\nPlease set the level cap for level scaling calculations. Submit an empty string to cancel the change.\n当前等级上限（Current level cap）：{extractor.levelScaling_cap}")
+                        levelScaling_cap_str: int = logInput()
+                        if levelScaling_cap_str.isdigit():
+                            levelScaling_cap: int = int(levelScaling_cap_str)
+                            extractor.set_levelScaling_cap(levelScaling_cap)
+                            logPrint("等级上限已修改。\nLevel cap changed.")
+                    elif option[0] == "6":
                         logPrint("是否导出数据到Excel中？（输入任意非空字符串以导出，否则不导出。）\nDo you want to export data to Excel? (Submit any non-empty string to export, or null to refuse exporting.)")
                         export_str: str = logInput()
                         export = bool(export_str)
@@ -10399,7 +10448,7 @@ if __name__ == "__main__":
                     else:
                         logPrint("您的输入有误！请重新输入。\nERROR input. Please try again.")
                         continue
-                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\thash值解析深度（Hash value resolution depth）\n5\t单类数据导出（Single-type data export）")
+                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\thash值解析深度（Hash value resolution depth）\n5\t等级计算上限（Level scaling cap）\n6\t单类数据导出（Single-type data export）")
             elif mode == "-1":
                 df_queue: list[dict[str, Any]] = sorted(extractor.df_queue, key = lambda x: x["order"])
                 if len(df_queue) > 0:
