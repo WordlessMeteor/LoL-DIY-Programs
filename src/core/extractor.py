@@ -23,13 +23,13 @@ from src.core.config.localization import language_ddragon, language_dict
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/05/30
+# 更新（Last update）：     2026/05/31
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
 
 #定义异质性检验函数（Define heterogeneity verification function）
-def verifyDictHeterogeneity(dict_list: list[dict[str, Any]]) -> tuple[pandas.DataFrame, pandas.DataFrame, pandas.DataFrame, pandas.DataFrame]:
+def verifyDictHeterogeneity(dict_list: list[dict[str, Any]]) -> tuple[pandas.DataFrame, pandas.DataFrame, pandas.DataFrame, pandas.DataFrame, pandas.DataFrame]:
     '''
     检查不同的字典中是否存在键相同但值不同的键值对。<br>Check if there're any key-value pairs among dictionaries, where keys are the same but values are not.
     
@@ -37,34 +37,39 @@ def verifyDictHeterogeneity(dict_list: list[dict[str, Any]]) -> tuple[pandas.Dat
     
     :param dict_list: 由字典组成的列表。<br>A list of dictionaries.
     :type dict_list: list[dict[str, Any]]
-    :return: 不同字典的键值覆盖情况。由以下四个表格组成：<br>Key-value pair overlay situation between different dictionaries. Composed of the following four dataframes:
+    :return: 不同字典的键值覆盖情况。由以下五个表格组成：<br>Key-value pair overlay situation between different dictionaries. Composed of the following five dataframes:
     
         1. 重合键矩阵。每个单元格代表两个字典中的共享键的**集合**。<br>Overlapped key matrix. Each cell represents the **set** of shared keys between this pair of dictionaries.
         2. 重合键数量矩阵。每个单元格代表两个字典中的共享键的**数量**。<br>Overlapped key count matrix. Each cell represents the **number** of shared keys between this pair of dictionaries.
         3. 逻辑矩阵。每个单元格代表两个字典**是否满足**但凡相同的键的值都相同这一命题。<br>Logical matrix. Each cell represents whether this pair of dictionaries **follow the proposition that** the values of each shared key is the same.
         4. 差异矩阵。每个单元格代表两个字典中值不同的共享键的集合。<br>Diff matrix. Each cell represents the set of keys whose values are different between this pair of dictionaries.
-    :rtype: tuple[pandas.DataFrame, pandas.DataFrame, pandas.DataFrame, pandas.DataFrame]
+        5. 差异键数量矩阵。每个单元格代表两个字典中值不同的共享键的**数量**。<br>Diff key count matrix. Each cell represents the **number** of keys whose values are different between this pair of dictionaries.
+    :rtype: tuple[pandas.DataFrame, pandas.DataFrame, pandas.DataFrame, pandas.DataFrame, pandas.DataFrame]
     '''
     matrix: list[list[set[str]]] = []
     count_matrix: list[list[int]] = []
     bool_matrix: list[list[int]] = []
     diff_matrix: list[list[list[str]]] = []
+    diff_count_matrix: list[list[int]] = []
     for i in range(len(dict_list)):
         matrix.append([])
         count_matrix.append([])
         bool_matrix.append([])
         diff_matrix.append([])
+        diff_count_matrix.append([])
         for j in range(len(dict_list)):
             common_keys: set[str] = set(dict_list[i].keys()) & set(dict_list[j].keys())
             matrix[i].append(common_keys)
             count_matrix[i].append(len(common_keys))
             bool_matrix[i].append(all(map(lambda x: dict_list[i][x] == dict_list[j][x], common_keys)))
             diff_matrix[i].append([key for key in sorted(common_keys) if dict_list[i][key] != dict_list[j][key]])
+            diff_count_matrix[i].append(len(diff_matrix[i][j]))
     overlay_table: pandas.DataFrame = pandas.DataFrame(matrix)
     overlay_count_table: pandas.DataFrame = pandas.DataFrame(count_matrix)
     overlay_identical_table: pandas.DataFrame = pandas.DataFrame(bool_matrix)
     overlay_difference_table: pandas.DataFrame = pandas.DataFrame(diff_matrix)
-    return overlay_table, overlay_count_table, overlay_identical_table, overlay_difference_table
+    overlay_diffCount_table: pandas.DataFrame = pandas.DataFrame(diff_count_matrix)
+    return overlay_table, overlay_count_table, overlay_identical_table, overlay_difference_table, overlay_diffCount_table
 
 #定义键汇总函数族（Define the key summary function family）
 def syncListOrder(src: list[Any], ref: list[Any]) -> None:
@@ -410,6 +415,7 @@ class LoLDataExtractor:
     #定义类属性，作为类内临时使用的全局变量（Define class attributes as temporarily used global variables within the class）
     bin_hashtable: dict[str, str] = {} #缓存二进制描述数据中所有字符串的散列表。键是每个字符串的散列值，值是每个字符串（Cache the hashtable of all strings in the binary description data. Each key is the hash value of a string, and each value is the string）
     bin_hash_ready: bool = False #二进制描述数据中的字符串散列表是否已经准备就绪（Whether the string hashtable for binary description data is ready）
+    deep_resolve_hash: bool = False #是否在解析二进制描述数据中的字符串时进行深度解析。深度解析会对字符串重新计算hash值，然后从二进制条目散列表中查找是否存在hash值，从而确保不同版本的字符串保持一致（Whether to perform deep resolution when parsing strings in binary description data. Deep resolution will recalculate the hash value of a string, and then look up whether this hash value exists in the binary entry hashtable, thus ensuring the consistency of strings across different versions）
     calculatedVariables: dict[str, dict[Literal["value", "__type"], str | dict[str, str]]] = {} #缓存同一个说明文本中计算过的变量。切换到下一个说明文本时清空（Cache the variables that have been calculated before while transforming a tooltip. When another tooltip is to transform, this variable is cleaned）
     mSpells: dict[str, Any] = {} #收录某个二进制描述数据中所有的技能指令对象。键是每个技能指令对象的mScriptName键的值，值是每个技能指令对象（Collect all SpellObjects in binary description data. Each key is the value of the `mScriptName` key of a SpellObject, and its value is this SpellObject）
     # mItems: dict[str, Any] = {} #收录装备二进制描述数据中所有的装备对象。键是每个装备数据对象的装备序号，值是每个装备数据对象（Collect all ItemData objects in item binary description data. Each key is the value of `itemID` key of an ItemData object, and each value is this ItemData object）
@@ -823,7 +829,7 @@ class LoLDataExtractor:
             "https://raw.communitydragon.org/data/hashes/lol/hashes.binfields.txt",
             "https://raw.communitydragon.org/data/hashes/lol/hashes.binhashes.txt",
             "https://raw.communitydragon.org/data/hashes/lol/hashes.bintypes.txt"
-        ]
+        ] #顺序会影响重合hash值最终的字符串大小写。对深度解析模式影响较大（The order will affect the capitalization of the string for hash values that appear in multiple files. It has a bigger impact on deep resolution mode）
         for i in range(len(bin_hash_urls)):
             bin_hash_url: str = bin_hash_urls[i]
             if bin_hash_url in self.__class__.data_cache["online"]:
@@ -853,6 +859,8 @@ class LoLDataExtractor:
             - hashes.binfields.txt
             - hashes.binhashes.txt
             - hashes.bintypes.txt
+            
+            顺序会影响重合hash值最终的字符串大小写。对深度解析模式影响较大。<br>The order will affect the final capitalization of the string for hash values that appear in multiple files. It has a bigger impact on deep resolution mode.
         :type bin_hash_paths: list[str]
         '''
         logPrint = self.log.logPrint
@@ -865,9 +873,13 @@ class LoLDataExtractor:
             self.init_bin_hash_readiness()
             return
         for bin_hash_path in bin_hash_paths:
-            with open(bin_hash_path, "r") as fp:
-                bin_hash_data: dict[str, str] = {"{" + line.split(" ")[0] + "}": line.split(" ")[1] for line in fp.read().strip("\n").splitlines()}
+            if bin_hash_path in self.__class__.data_cache["local"]:
+                self.__class__.bin_hashtable.update(self.__class__.data_cache["local"][bin_hash_path])
+            else:
+                with open(bin_hash_path, "r") as fp:
+                    bin_hash_data: dict[str, str] = {"{" + line.split(" ")[0] + "}": line.split(" ")[1] for line in fp.read().strip("\n").splitlines()}
                 self.__class__.bin_hashtable.update(bin_hash_data)
+                self.__class__.data_cache["local"][bin_hash_path] = bin_hash_data
         else:
             self.__class__.bin_hash_ready = True
     
@@ -895,6 +907,17 @@ class LoLDataExtractor:
         '''
         cls.bin_hashtable.clear()
         cls.init_bin_hash_readiness()
+    
+    #类属性设置方法（Class attribute setting methods）
+    @classmethod
+    def set_resolution_depth(cls, deep: bool) -> None:
+        '''
+        设置二进制描述数据中的hash值解析深度。<br>Set the resolution depth for hash values in binary description data.
+        
+        :param deep: 是否启用深度解析模式。<br>Whether to enable deep resolution mode.
+        :type deep: bool
+        '''
+        cls.deep_resolve_hash = deep
     
     #获取版本数据框（Obtain version dataframe）
     def init_patch(self) -> None:
@@ -1318,19 +1341,40 @@ class LoLDataExtractor:
         return "{" + result + "}"
     
     @classmethod
-    def hash2str(cls, s: str) -> str:
+    def hash2str(cls, s: str, deep: Optional[bool] = None) -> str: #将deep设置成`Optional[bool]`类型有两个应用场景：`deep`为`None`的情形适用于本脚本在运行时实时修改类属性来调整解析深度；`deep`为逻辑值的情形适用于被其它模块调用。不过这样可能会引起一致性风险（There're two application scenarios: the one where `deep` is `None` is suitable for adjusting the resolution depth by modifying the class property in real time when the script is running; the one where `deep` is a boolean value is suitable for being called by other modules. However, this might introduce consistency risks）
         '''
         解析一个二进制描述数据中的hash字符串，返回其原始字符串。<br>Resolve a hash string in binary description data and return its original string.
         
-        如果传入的字符串不是一个hash值，则直接返回该字符串。<br>If the passed string isn't a hash value, return it directly.
+        通过修改数据提取基类的`deep_resolve_hash`属性，或者指定`deep`参数，以选择解析模式。<br>Choose the resolution mode by modifying the `deep_resolve_hash` property of the data extractor base class or specifying `deep` parameter.
+        
+        在深度解析模式下，如果传入的字符串不是一个hash值，则计算该字符串的hash值是否出现在二进制条目散列表中。如果出现，则使用散列表中的字符串，否则直接返回该字符串。<br>Under deep resolution mode, if the passed string isn't a hash value, compute its hash and check if it exists in the binary hash table. If it does, use the corresponding string; otherwise, return the original string.
+        
+        在浅度解析模式下，如果传入的字符串不是一个hash值，则直接返回该字符串。<br>Under shallow resolution mode, if the passed string isn't a hash value, return it directly.
+        
+        深度解析模式可以解决同一个hash值对应的字符串的大小写问题，但是会显著增加解析时间。<br>Deep resolution mode can solve the case sensitivity problem of strings corresponding to the same hash value, but it significantly increases the resolution time.
         
         :param s: 要解析的字符串。<br>The string to resolve.
         :type s: str
+        :param deep: 是否使用深度解析模式。如果未指定，则使用数据提取基类的`deep_resolve_hash`属性。<br>Whether to use deep resolution mode. If not specified, the function will use the `deep_resolve_hash` property of the class instead.
+        :type deep: bool | None
         :return: s: 解析后的字符串。<br>The resolved string.
         :rtype: str
         '''
+        if deep == None:
+            deep = cls.deep_resolve_hash
         binhash_re: re.Pattern[str] = re.compile(r"\{\w{8}\}")
-        return cls.bin_hashtable.get(s, s) if binhash_re.fullmatch(s) else s
+        if deep:
+            # return cls.bin_hashtable.get(s, s) if binhash_re.fullmatch(s) else cls.bin_hashtable[cls.compute_binhash(s)] if cls.compute_binhash(s) in cls.bin_hashtable else s
+            if binhash_re.fullmatch(s):
+                return cls.bin_hashtable.get(s, s)
+            else:
+                bin_hash: str = cls.compute_binhash(s)
+                if bin_hash in cls.bin_hashtable:
+                    return cls.bin_hashtable[bin_hash]
+                else:
+                    return s
+        else:
+            return cls.bin_hashtable.get(s, s) if binhash_re.fullmatch(s) else s
     
     @staticmethod
     def aGet(d: Any, keys: Iterable[Any], default: Any = None) -> Any: #字典进阶get方法（An advanced version of `get` method of a dictionary）
@@ -1401,41 +1445,45 @@ class LoLDataExtractor:
         return cls.aGet(strtable["entries"], keys = keys, default = default)
     
     @classmethod
-    def resolve_bin_hash(cls, data: Any) -> Any:
+    def resolve_bin_hash(cls, data: Any, deep: Optional[bool] = None) -> Any:
         '''
         通过一个递归算法，尝试将一段二进制描述数据中所有hash值解析为原始字符串。<br>Using a recursive algorithm, this function tries resolving all hash values in a piece of binary description data into original strings.
         
         :param data: 任意数据类型。在递归起点，这个参数应该是一段二进制描述数据。在递归过程中，这个参数可以是任意类型。<br>Any data type. At the beginning of recursion, this parameter should be a piece of binary description data. During the recursion, this parameter can be of any type.
         :type data: Any
+        :param deep: 是否使用深度解析模式。如果未指定，则使用数据提取基类的`deep_resolve_hash`属性。<br>Whether to use deep resolution mode. If not specified, the function will use the `deep_resolve_hash` property of the class instead.
+        :type deep: bool | None
         :return: 字符串解析后的二进制描述数据。<br>String-resolved binary description data.
         
             原始设计（Initial design）：
             
-            一个二元组，仅用于递归时传递信息。
+            一个二元组，仅用于递归时传递信息。<br>A two-tuple only used for passing information during recursion.
         
             第一个元素表示`data`是不是一个字符串，从而判断是否需要解析hash值。在递归调用时，如果一个元素不是字符串，那么容器中追加第二个结果；如果一个元素是字符串，那么容器中追加解析后的字符串。<br>The first element indicates whether `data` is a string, which is used to determine whether hash resolution is needed. When an element in recursion isn't a string, the second returned value will be appended into the container; when it is, the resolved string will be appended into the container.
             
             第二个元素是`data`作为一个容器时，以该容器为起点调用本函数后得到的结果。<br>When `data` is a container, the second element is the result obtained after calling this function with that container as a starting point.
         :rtype: tuple[bool, Any]
         '''
+        if deep == None:
+            deep = cls.deep_resolve_hash
         if not cls.bin_hash_ready: #当散列表尚未准备就绪时，直接返回原始数据，以避免函数进行没有意义的递归调用（When the hash table isn't ready, return the original data directly to avoid meaningless recursive calls）
             return data
         if isinstance(data, dict):
             new_dict: dict[str, Any] = {} #通过新字典保持原始键值对顺序。Json中字典的键一定是字符串（Keep the original order of the key-value pairs by a new dictionary. In a json, a key of a dictionary must be a string）
             for (key, value) in data.items():
-                key_resolve: str = cls.hash2str(key)
-                new_data = cls.resolve_bin_hash(value)
+                key_resolve: str = cls.hash2str(key, deep = deep)
+                new_data = cls.resolve_bin_hash(value, deep = deep)
                 new_dict[key_resolve] = new_data
             return new_dict
         elif isinstance(data, list):
             new_list: list[Any] = [] #即使列表支持直接修改一个索引的元素，但是为了区分新数据和老数据，后续返回时还是返回新数据，避免在递归完成后，用户在修改新数据时意外修改原始数据（Althouth a list supports directly changing the element at a certain index, to distinguish the old and new data, the new data are still returned, in case after the recursion is finished, the original data would be changed by accident when the user had intended to change the new data）
             for i in range(len(data)):
                 element: Any = data[i]
-                new_data = cls.resolve_bin_hash(element)
+                new_data = cls.resolve_bin_hash(element, deep = deep)
                 new_list.append(new_data)
             return new_list
         else:
-            return cls.hash2str(data) if isinstance(data, str) else data #从此处返回递归的上一层时，`data`将变成`new_data`直接添加到新容器中（When the recurson returns to the upper layer from here, `data` will be directly added into the new container as `new_data`）
+            return cls.hash2str(data, deep = deep) if isinstance(data, str) else data #从此处返回递归的上一层时，`data`将变成`new_data`直接添加到新容器中（When the recurson returns to the upper layer from here, `data` will be directly added into the new container as `new_data`）
     
     #定义说明文本转换函数族（Define tooltip transformation function family）
     @classmethod
@@ -6718,8 +6766,9 @@ class CherryRoundExtractor(LoLDataExtractor):
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
         for (key1, value) in self.map30_bin.items():
             if key1 != "__linked" and value["__type"] == "LoLModesRoundsListData":
-                for round_index in range(len(value["Rounds"])):
-                    roundKey: str = value["Rounds"][round_index]
+                rounds: list[dict[str, Any]] = value["rounds"] if "rounds" in value else value["Rounds"] #“{b7b53758}”在“hashes.binfields.txt”中对应到“Rounds”，在“hashes.binhashes.txt”中对应到“rounds”（"rounds" corresponds to "Rounds" in "hashes.binfields.txt", while corresponds to "rounds" in "hashes.binhashes.txt"）
+                for round_index in range(len(rounds)):
+                    roundKey: str = rounds[round_index]
                     for i in range(len(CherryRoundList_header_keys)):
                         key: str = CherryRoundList_header_keys[i]
                         if i == 0: #方案主键（`key`）
@@ -9642,6 +9691,10 @@ if __name__ == "__main__":
         export: bool = False
         logPrint('数据将只用来构建数据框，而不会导出。如果需要导出，请在选择数据类型的步骤输入“-2”以设置导出选项。\nData will only be used to build dataframes but not be exported. If you want to export data, please input "-2" in the data type selection step to set export options.')
         
+        #设置hash值解析深度（Set the hash resolution depth）
+        LoLDataExtractor.set_resolution_depth(False)
+        logPrint('程序默认只解析hash值。如果需要统一不同版本间的字符串大小写，请在选择数据类型的步骤输入“-2”以设置hash值解析深度。\nThe program only resolves hash values by default. If you want to unify the string cases among different versions, please input "-2" in the data type selection step to set the hash resolution depth.')
+        
         #设置工作表集成（Determine whether to integrate sheets in different patches into one workbook）
         logPrint("是否将不同版本的工作表集成到一个工作簿中？（输入任意非空字符串以确认集成，否则分不同版本保存。）\nDo you want to integrate sheets of different versions into a single workbook? (Input any non-empty string to confirm integration, or null to save data into multiple workbooks of the different version.)")
         integrate_str: str = logInput()
@@ -9723,7 +9776,7 @@ if __name__ == "__main__":
                 if mode == "":
                     continue
                 elif mode == "-2":
-                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\t单类数据导出（Single-type data export）")
+                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\thash值解析深度（Hash value resolution depth）\n5\t单类数据导出（Single-type data export）")
                     while True:
                         option = logInput()
                         if option == "":
@@ -9766,6 +9819,21 @@ if __name__ == "__main__":
                             if one_click and i == 0:
                                 preset_export_settings["reserve_variable"] = reserve_variable
                         elif option[0] == "4":
+                            logPrint("是否启用hash值深度解析模式？（输入任意非空字符串以重新计算一段二进制描述数据中所有字符串的hash值并寻找其原始字符串以统一大小写，否则只对数据中已有的hash值进行解析。）\nDo you want to enable the deep resolution mode of hash value? (Input any non-empty string to recompute the hash values of all strings in a piece of binary description data and find their original strings to unify the cases, or null to only resolve the hash values already in the data.)")
+                            deep_resolve_hash_str: str = logInput()
+                            deep_resolve_hash: bool = bool(deep_resolve_hash_str)
+                            if deep_resolve_hash != LoLDataExtractor.deep_resolve_hash:
+                                extractor.set_resolution_depth(deep_resolve_hash) #修改对象的类属性可以应用到其它对象，因此不需要在`preset_settings`中保存这个设置（Modifying the class attribute of the object can be applied to other objects, so there's no need to save this setting in `preset_settings`）
+                                extractor.clear_cache()
+                                logPrint("已清空缓存。\nCache cleared.")
+                                if one_click and i == 0:
+                                    preset_data_options.clear()
+                                    logPrint("已清空应用到后续版本的数据类型设置。\nCleared types of data to be exported for subsequent versions.")
+                            if deep_resolve_hash:
+                                logPrint("已启用hash值深度解析模式。\nEnabled deep resolution mode of hash value.")
+                            else:
+                                logPrint("已禁用hash值深度解析模式。\nDisabled deep resolution mode of hash value.")
+                        elif option[0] == "5":
                             logPrint("是否导出数据到Excel中？（输入任意非空字符串以导出，否则不导出。）\nDo you want to export data to Excel? (Submit any non-empty string to export, or null to refuse exporting.)")
                             export_str: str = logInput()
                             export = bool(export_str)
@@ -9776,7 +9844,7 @@ if __name__ == "__main__":
                         else:
                             logPrint("您的输入有误！请重新输入。\nERROR input. Please try again.")
                             continue
-                        logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\t单类数据导出（Single-type data export）")
+                        logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\thash值解析深度（Hash value resolution depth）\n5\t单类数据导出（Single-type data export）")
                 elif mode == "-1":
                     df_queue: list[dict[str, Any]] = sorted(extractor.df_queue, key = lambda x: x["order"])
                     if len(df_queue) > 0:
@@ -10030,6 +10098,10 @@ if __name__ == "__main__":
         export: bool = False
         # logPrint('数据将只用来构建数据框，而不会导出。如果需要导出，请在选择数据类型的步骤输入“-2”以设置导出选项。\nData will only be used to build dataframes but not be exported. If you want to export data, please input "-2" in the data type selection step to set export options.')
         
+        #设置hash值解析深度（Set the hash resolution depth）
+        LoLDataExtractor.set_resolution_depth(False)
+        # logPrint('程序默认只解析hash值。如果需要统一不同版本间的字符串大小写，请在选择数据类型的步骤输入“-2”以设置hash值解析深度。\nThe program only resolves hash values by default. If you want to unify the string cases among different versions, please input "-2" in the data type selection step to set the hash resolution depth.')
+        
         #设置工作表集成（Determine whether to integrate sheets in different patches into one workbook）
         logPrint("是否将不同版本的工作表集成到一个工作簿中？（输入任意非空字符串以确认集成，否则分不同版本保存。）\nDo you want to integrate sheets of different versions into a single workbook? (Input any non-empty string to confirm integration, or null to save data into multiple workbooks of the different version.)")
         integrate_str: str = logInput()
@@ -10169,7 +10241,7 @@ if __name__ == "__main__":
                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     logPrint("请选择草稿选项：\nPlease select a draft option:\n0\t退出调试（Quit debug）\n1\t启动子环境（Start a sub-environment）")
             elif mode == "-2":
-                logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\t单类数据导出（Single-type data export）")
+                logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\thash值解析深度（Hash value resolution depth）\n5\t单类数据导出（Single-type data export）")
                 while True:
                     option = logInput()
                     if option == "":
@@ -10222,6 +10294,18 @@ if __name__ == "__main__":
                         else:
                             logPrint("说明文本在完成变量代换后将只显示值。\nOnly the value of variables will appear in the tooltip after variable substitution.")
                     elif option[0] == "4":
+                        logPrint("是否启用hash值深度解析模式？（输入任意非空字符串以重新计算一段二进制描述数据中所有字符串的hash值并寻找其原始字符串以统一大小写，否则只对数据中已有的hash值进行解析。）\nDo you want to enable the deep resolution mode of hash value? (Input any non-empty string to recompute the hash values of all strings in a piece of binary description data and find their original strings to unify the cases, or null to only resolve the hash values already in the data.)")
+                        deep_resolve_hash_str: str = logInput()
+                        deep_resolve_hash: bool = bool(deep_resolve_hash_str)
+                        if deep_resolve_hash != LoLDataExtractor.deep_resolve_hash:
+                            extractor.set_resolution_depth(deep_resolve_hash)
+                            extractor.clear_cache()
+                            logPrint("已清空缓存。\nCache cleared.")
+                        if deep_resolve_hash:
+                            logPrint("已启用hash值深度解析模式。\nEnabled deep resolution mode of hash value.")
+                        else:
+                            logPrint("已禁用hash值深度解析模式。\nDisabled deep resolution mode of hash value.")
+                    elif option[0] == "5":
                         logPrint("是否导出数据到Excel中？（输入任意非空字符串以导出，否则不导出。）\nDo you want to export data to Excel? (Submit any non-empty string to export, or null to refuse exporting.)")
                         export_str: str = logInput()
                         export = bool(export_str)
@@ -10232,7 +10316,7 @@ if __name__ == "__main__":
                     else:
                         logPrint("您的输入有误！请重新输入。\nERROR input. Please try again.")
                         continue
-                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\t单类数据导出（Single-type data export）")
+                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\thash值解析深度（Hash value resolution depth）\n5\t单类数据导出（Single-type data export）")
             elif mode == "-1":
                 df_queue: list[dict[str, Any]] = sorted(extractor.df_queue, key = lambda x: x["order"])
                 if len(df_queue) > 0:
