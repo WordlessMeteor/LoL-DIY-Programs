@@ -9854,7 +9854,7 @@ if __name__ == "__main__":
         for i in range(len(versions)):
             version: str = versions[i]
             logPrint("[%d/%d]开始处理%s版本的游戏数据。\nStart to process game data of Version %s." %(i + 1, len(versions), version, version))
-            extractor = LoLDataExtractor(version, language_code, session = session)
+            extractor = LoLDataExtractor(version, language_code, session = session, log = log)
             if integrate:
                 extractor.encapsulate()
             else:
@@ -10256,7 +10256,7 @@ if __name__ == "__main__":
         integrate: bool = bool(integrate_str)
         
         logPrint(f"开始处理%s版本的游戏数据。\nStart to process game data of Version %s." %(version, version))
-        extractor = LoLDataExtractor(version, locale)
+        extractor = LoLDataExtractor(version, locale, log = log)
         if integrate:
             extractor.encapsulate()
         else:
