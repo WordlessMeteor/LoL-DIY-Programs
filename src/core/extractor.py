@@ -416,6 +416,8 @@ class LoLDataExtractor:
     bin_hashtable: dict[str, str] = {} #缓存二进制描述数据中所有字符串的散列表。键是每个字符串的散列值，值是每个字符串（Cache the hashtable of all strings in the binary description data. Each key is the hash value of a string, and each value is the string）
     bin_hash_ready: bool = False #二进制描述数据中的字符串散列表是否已经准备就绪（Whether the string hashtable for binary description data is ready）
     deep_resolve_hash: bool = False #是否在解析二进制描述数据中的字符串时进行深度解析。深度解析会对字符串重新计算hash值，然后从二进制条目散列表中查找是否存在hash值，从而确保不同版本的字符串保持一致（Whether to perform deep resolution when parsing strings in binary description data. Deep resolution will recalculate the hash value of a string, and then look up whether this hash value exists in the binary entry hashtable, thus ensuring the consistency of strings across different versions）
+    optimize_tooltip_layout: bool = True #是否对说明文本的布局进行优化。决定变量代换时使用tooltipTransform还是tooltipSubstitute方法（Whether to optimize the layout of tooltips. Determines which one of `tooltipTransform` and `tooltipSubstitute` is used during variable substitution）
+    reserve_variable: bool = False #是否在变量代换时保留变量名。如果保留，则说明文本会同时带有变量名和值。这个属性应只在本基类中声明（Whether to reserve the variable during its substitution. If reserve, then the tooltip will have both name and value of the variable. This attribute should only be declared in this base class）
     calculatedVariables: dict[str, dict[Literal["value", "__type"], str | dict[str, str]]] = {} #缓存同一个说明文本中计算过的变量。切换到下一个说明文本时清空（Cache the variables that have been calculated before while transforming a tooltip. When another tooltip is to transform, this variable is cleaned）
     mSpells: dict[str, Any] = {} #收录某个二进制描述数据中所有的技能指令对象。键是每个技能指令对象的mScriptName键的值，值是每个技能指令对象（Collect all SpellObjects in binary description data. Each key is the value of the `mScriptName` key of a SpellObject, and its value is this SpellObject）
     # mItems: dict[str, Any] = {} #收录装备二进制描述数据中所有的装备对象。键是每个装备数据对象的装备序号，值是每个装备数据对象（Collect all ItemData objects in item binary description data. Each key is the value of `itemID` key of an ItemData object, and each value is this ItemData object）
@@ -756,9 +758,6 @@ class LoLDataExtractor:
         self.tftstringtable_default: dict[str, int | dict[str, str]] = {"entries": {}, "version": 5}
         self.mainstringtable_target: dict[str, int | dict[str, str]] = {"entries": {}, "version": 5}
         self.mainstringtable_default: dict[str, int | dict[str, str]] = {"entries": {}, "version": 5}
-        self.optimize_tooltip_layout: bool = True #是否对说明文本的布局进行优化。决定变量代换时使用tooltipTransform还是tooltipSubstitute方法（Whether to optimize the layout of tooltips. Determines which one of `tooltipTransform` and `tooltipSubstitute` is used during variable substitution）
-        self.tooltipConvert: Callable[[str, dict[str, int | dict[str, str]], dict[str, Any], str, bool, bool, dict[str, dict[str, Any] | Any] | None], str] = self.tooltipTransform #说明文本转换方法（Tooltip transformation method）
-        self.reserve_variable: bool = False #是否在变量代换时保留变量名。如果保留，则说明文本会同时带有变量名和值。这个属性应只在本基类中声明（Whether to reserve the variable during its substitution. If reserve, then the tooltip will have both name and value of the variable. This attribute should only be declared in this base class）
     
     def make_dir(self) -> None: #基于对象创建保存目录。对外使用（Create the export directory based on the object. For outside use）
         '''
@@ -918,6 +917,34 @@ class LoLDataExtractor:
         :type deep: bool
         '''
         cls.deep_resolve_hash = deep
+    
+    @classmethod
+    def set_tooltip_layout(cls, reserve_CSS: bool) -> None:
+        '''
+        决定转换说明文本时是否保持原样式。<br>Determine whether to retain the original style in the raw tooltips.
+        
+        要顺利转换说明文本，在程序运行时必须要执行一次该方法。<br>To transform tooltips, this method must be called once during the program execution.
+
+        :param reserve_CSS: 是否保留CSS样式。<br>Whether to retain CSS styles.
+        :type reserve_CSS: bool
+        :return: 是否优化说明文本布局。<br>Whether to optimize the tooltip layout.
+        :rtype: bool
+        '''
+        cls.optimize_tooltip_layout = not reserve_CSS
+        if reserve_CSS:
+            cls.tooltipConvert: Callable[[str, dict[str, int | dict[str, str]], dict[str, Any], str, bool, bool, dict[str, dict[str, Any] | Any] | None], str] = cls.tooltipSubstitute #说明文本转换方法（Tooltip transformation method）
+        else:
+            cls.tooltipConvert = cls.tooltipTransform
+    
+    @classmethod
+    def set_variable_reserve_strategy(cls, reserve_variable: bool) -> None:
+        '''
+        设置对说明文本进行变量代换时是否保留原变量。<br>Set whether to reserve the original variables when doing variable substitution for tooltips.
+        
+        :param reserve_variable: 是否保留原变量。<br>Whether to reserve the original variables.
+        :type reserve_variable: bool
+        '''
+        cls.reserve_variable = reserve_variable
     
     #获取版本数据框（Obtain version dataframe）
     def init_patch(self) -> None:
@@ -3116,22 +3143,6 @@ class LoLDataExtractor:
             result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, reserve_CSS = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, flexibleData = flexibleData)
         result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, reserve_CSS = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, flexibleData = flexibleData)
         return result
-    
-    def set_tooltipTransform_strategy(self, reserve_CSS: bool = True) -> bool: #确定说明文本转换策略（Determine tooltip transformation strategy）
-        '''
-        决定转换说明文本时是否保持原样式。<br>Determine whether to retain the original style in the raw tooltips.
-
-        :param reserve_CSS: 是否保留CSS样式。<br>Whether to retain CSS styles.
-        :type reserve_CSS: bool
-        :return: 是否优化说明文本布局。<br>Whether to optimize the tooltip layout.
-        :rtype: bool
-        '''
-        self.optimize_tooltip_layout = not reserve_CSS
-        if reserve_CSS:
-            self.tooltipConvert = self.__class__.tooltipSubstitute
-        else:
-            self.tooltipConvert = self.__class__.tooltipTransform
-        return self.optimize_tooltip_layout
 
 class MapExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -9744,14 +9755,6 @@ if __name__ == "__main__":
         if len(versions) == 0:
             return 2
         
-        #设置默认导出行为（Set the default export behavior）
-        export: bool = False
-        logPrint('数据将只用来构建数据框，而不会导出。如果需要导出，请在选择数据类型的步骤输入“-2”以设置导出选项。\nData will only be used to build dataframes but not be exported. If you want to export data, please input "-2" in the data type selection step to set export options.')
-        
-        #设置hash值解析深度（Set the hash resolution depth）
-        LoLDataExtractor.set_resolution_depth(False)
-        logPrint('程序默认只解析hash值。如果需要统一不同版本间的字符串大小写，请在选择数据类型的步骤输入“-2”以设置hash值解析深度。\nThe program only resolves hash values by default. If you want to unify the string cases among different versions, please input "-2" in the data type selection step to set the hash resolution depth.')
-        
         #设置工作表集成（Determine whether to integrate sheets in different patches into one workbook）
         logPrint("是否将不同版本的工作表集成到一个工作簿中？（输入任意非空字符串以确认集成，否则分不同版本保存。）\nDo you want to integrate sheets of different versions into a single workbook? (Input any non-empty string to confirm integration, or null to save data into multiple workbooks of the different version.)")
         integrate_str: str = logInput()
@@ -9763,13 +9766,28 @@ if __name__ == "__main__":
             one_click_str: str = logInput()
             one_click: bool = not bool(one_click_str)
             preset_data_options: list[int] = [] #保留第一个版本的导出数据类型（Reserve data types to export in the first version）
-            preset_export_settings: dict[str, bool] = {"reserve_CSS": False, "reserve_variable": False} #保留第一个版本的设置（Reserve settings in the first version）
             if one_click:
                 logPrint("你看，他们像柱子一样！\nColumn like you see 'em.")
             else:
                 logPrint("已禁用一键式导出。您将需要手动设置每个版本要导出的数据类型。\nOne-click has been disabled. You will need to manually set data types for each version.")
         else:
             one_click = False
+        
+        #设置默认导出行为（Set the default export behavior）
+        export: bool = False
+        logPrint('数据将只用来构建数据框，而不会导出。如果需要导出，请在选择数据类型的步骤输入“-2”以设置导出选项。\nData will only be used to build dataframes but not be exported. If you want to export data, please input "-2" in the data type selection step to set export options.')
+        
+        #设置hash值解析深度（Set the hash resolution depth）
+        LoLDataExtractor.set_resolution_depth(False)
+        logPrint('程序默认只解析hash值。如果需要统一不同版本间的字符串大小写，请在选择数据类型的步骤输入“-2”以设置hash值解析深度。\nThe program only resolves hash values by default. If you want to unify the string cases among different versions, please input "-2" in the data type selection step to set the hash resolution depth.')
+        
+        #设置样式保留行为（Set CSS retention behavior）
+        LoLDataExtractor.set_tooltip_layout(False)
+        logPrint('''说明文本变量代换过程默认不保留CSS样式。如果需要保留，请在选择数据类型的步骤输入“-2”以调整样式选项。\nCSS styles aren't retained during the variable substitution process of tooltips by default. If you want to retain them, please input "-2" in the data type selection step to set the CSS retention option.''')
+        
+        #设置变量代换过程中的变量名保留行为（Set the variable name retention behavior in the variable substitution process）
+        LoLDataExtractor.set_variable_reserve_strategy(False)
+        logPrint('''说明文本变量代换过程默认不保留变量名。如果需要保留，请在选择数据类型的步骤输入“-2”以调整变量代换选项。\nVariable names aren't retained during the variable substitution process of tooltips by default. If you want to retain them, please input "-2" in the data type selection step to set the variable name retention option.''')
         
         for i in range(len(versions)):
             version: str = versions[i]
@@ -9805,10 +9823,6 @@ if __name__ == "__main__":
             if not extractor.shared_ready:
                 logPrint("共享数据获取失败。将忽略该数据。\nShared data capture failure! The program will ignore them.")
                 # continue
-            #自动化设置（Automation settings）
-            if one_click and i >= 1:
-                extractor.set_tooltipTransform_strategy(reserve_CSS = preset_export_settings["reserve_CSS"])
-                extractor.reserve_variable = preset_export_settings["reserve_variable"]
             #初始化计数器（Initialize counter）
             nDataOptions: int = 0
             nDataOption_iter: int = 0
@@ -9857,24 +9871,20 @@ if __name__ == "__main__":
                             logPrint("是否保留说明文本的原始样式？（输入任意非空字符串以保留原始CSS样式；否则移除所有CSS样式，用统一的标点符号进行强调。）\nDo you want to reserve the original style of tooltips? (Input any non-empty string to reserve the original CSS style; otherwise, remove all CSS styles and use the unified punctuation marks for emphasis.)")
                             reserve_CSS_str: str = logInput()
                             reserve_CSS: bool = bool(reserve_CSS_str)
-                            optimize_layout: bool = extractor.set_tooltipTransform_strategy(reserve_CSS = reserve_CSS)
-                            if optimize_layout:
-                                logPrint("说明文本将移除所有CSS标签。\nCSS tags will be removed from the tooltips.")
-                            else:
+                            extractor.set_tooltip_layout(reserve_CSS = reserve_CSS)
+                            if reserve_CSS:
                                 logPrint("说明文本将保留原始CSS标签。\nCSS tags will be reserved in the tooltips.")
-                            if one_click and i == 0:
-                                preset_export_settings["reserve_CSS"] = reserve_CSS
+                            else:
+                                logPrint("说明文本将移除所有CSS标签。\nCSS tags will be removed from the tooltips.")
                         elif option[0] == "3":
                             logPrint('是否在数值替换的同时保留原变量？（输入任意非空字符串以将转换后的变量写成“[{变量名}] = {值}”的形式，否则只保留值。）\nDo you want to reserve the original variable when variable substitution is being performed? (Input any non-empty string to transform the variable into the form "[{Var_name}] = {Value}", or null to reserve the value only.)')
                             reserve_variable_str: str = logInput()
                             reserve_variable: bool = bool(reserve_variable_str)
-                            extractor.reserve_variable = reserve_variable
+                            extractor.set_variable_reserve_strategy(reserve_variable)
                             if reserve_variable:
                                 logPrint("说明文本在完成变量代换后将同时显示变量名和值。\nBoth the name and the value of variables will appear in the tooltip after variable substitution.")
                             else:
                                 logPrint("说明文本在完成变量代换后将只显示值。\nOnly the value of variables will appear in the tooltip after variable substitution.")
-                            if one_click and i == 0:
-                                preset_export_settings["reserve_variable"] = reserve_variable
                         elif option[0] == "4":
                             logPrint("是否启用hash值深度解析模式？（输入任意非空字符串以重新计算一段二进制描述数据中所有字符串的hash值并寻找其原始字符串以统一大小写，否则只对数据中已有的hash值进行解析。）\nDo you want to enable the deep resolution mode of hash value? (Input any non-empty string to recompute the hash values of all strings in a piece of binary description data and find their original strings to unify the cases, or null to only resolve the hash values already in the data.)")
                             deep_resolve_hash_str: str = logInput()
@@ -10159,6 +10169,14 @@ if __name__ == "__main__":
         LoLDataExtractor.set_resolution_depth(False)
         # logPrint('程序默认只解析hash值。如果需要统一不同版本间的字符串大小写，请在选择数据类型的步骤输入“-2”以设置hash值解析深度。\nThe program only resolves hash values by default. If you want to unify the string cases among different versions, please input "-2" in the data type selection step to set the hash resolution depth.')
         
+        #设置样式保留行为（Set CSS retention behavior）
+        LoLDataExtractor.set_tooltip_layout(False)
+        # logPrint('''说明文本变量代换过程默认不保留CSS样式。如果需要保留，请在选择数据类型的步骤输入“-2”以调整样式选项。\nCSS styles aren't retained during the variable substitution process of tooltips by default. If you want to retain them, please input "-2" in the data type selection step to set the CSS retention option.''')
+        
+        #设置变量代换过程中的变量名保留行为（Set the variable name retention behavior in the variable substitution process）
+        LoLDataExtractor.set_variable_reserve_strategy(False)
+        # logPrint('''说明文本变量代换过程默认不保留变量名。如果需要保留，请在选择数据类型的步骤输入“-2”以调整变量代换选项。\nVariable names aren't retained during the variable substitution process of tooltips by default. If you want to retain them, please input "-2" in the data type selection step to set the variable name retention option.''')
+        
         #设置工作表集成（Determine whether to integrate sheets in different patches into one workbook）
         logPrint("是否将不同版本的工作表集成到一个工作簿中？（输入任意非空字符串以确认集成，否则分不同版本保存。）\nDo you want to integrate sheets of different versions into a single workbook? (Input any non-empty string to confirm integration, or null to save data into multiple workbooks of the different version.)")
         integrate_str: str = logInput()
@@ -10336,16 +10354,16 @@ if __name__ == "__main__":
                         logPrint("是否保留说明文本的原始样式？（输入任意非空字符串以保留原始CSS样式；否则移除所有CSS样式，用统一的标点符号进行强调。）\nDo you want to reserve the original style of tooltips? (Input any non-empty string to reserve the original CSS style; otherwise, remove all CSS styles and use the unified punctuation marks for emphasis.)")
                         reserve_CSS_str: str = logInput()
                         reserve_CSS: bool = bool(reserve_CSS_str)
-                        optimize_layout: bool = extractor.set_tooltipTransform_strategy(reserve_CSS = reserve_CSS)
-                        if optimize_layout:
-                            logPrint("说明文本将移除所有CSS标签。\nCSS tags will be removed from the tooltips.")
-                        else:
+                        extractor.set_tooltip_layout(reserve_CSS = reserve_CSS)
+                        if reserve_CSS:
                             logPrint("说明文本将保留原始CSS标签。\nCSS tags will be reserved in the tooltips.")
+                        else:
+                            logPrint("说明文本将移除所有CSS标签。\nCSS tags will be removed from the tooltips.")
                     elif option[0] == "3":
                         logPrint('是否在数值替换的同时保留原变量？（输入任意非空字符串以将转换后的变量写成“[{变量名}] = {值}”的形式，否则只保留值。）\nDo you want to reserve the original variable when variable substitution is being performed? (Input any non-empty string to transform the variable into the form "[{Var_name}] = {Value}", or null to reserve the value only.)')
                         reserve_variable_str: str = logInput()
                         reserve_variable: bool = bool(reserve_variable_str)
-                        extractor.reserve_variable = reserve_variable
+                        extractor.set_variable_reserve_strategy(reserve_variable = reserve_variable)
                         if reserve_variable:
                             logPrint("说明文本在完成变量代换后将同时显示变量名和值。\nBoth the name and the value of variables will appear in the tooltip after variable substitution.")
                         else:
