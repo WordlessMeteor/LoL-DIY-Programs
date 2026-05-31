@@ -10,7 +10,7 @@ Sub FreezeAndFilterGameDataSheets()
                 Or ws.Name = "角色技能（Character Spells）" Or Right$(ws.Name, 16) = "CharacterSpells" _
                 Or ws.Name = "装备（Items）" Or Right$(ws.Name, 5) = "Items" Or ws.Name = "装备分组（Item Groups）" Or Right$(ws.Name, 10) = "ItemGroups" Or ws.Name = "装备修饰（Item Modifiers）" Or Right$(ws.Name, 13) = "ItemModifiers" _
                 Or ws.Name = "斗魂竞技场强化符文（Cherry Augments）" Or Right$(ws.Name, 14) = "CherryAugments" Or ws.Name = "无尽狂潮强化（Swarm Augments）" Or Right$(ws.Name, 13) = "SwarmAugments" _
-                Or ws.Name = "海克斯大乱斗强化符文（Kiwi Augments）" Or Right$(ws.Name, 12) = "KiwiAugments" Or ws.Name = "海克斯大乱斗强化符文套装（Kiwi Augment Set）" Or Right$(ws.Name, 14) = "KiwiAugmentSet" _
+                Or ws.Name = "海克斯大乱斗强化符文（Kiwi Augments）" Or Right$(ws.Name, 12) = "KiwiAugments" Or ws.Name = "海克斯大乱斗强化符文套装（Kiwi Augment Set）" Or Right$(ws.Name, 14) = "KiwiAugmentSet" Or ws.Name = "强化符文修饰（Augment Modifiers）" or Right$(ws.Name, 16) = "AugmentModifiers" _
                 Or ws.Name = "斗魂竞技场锻造器（Cherry Anvils）" Or Right$(ws.Name, 12) = "CherryAnvils" Or ws.Name = "海克斯大乱斗锻造器（Kiwi Anvils）" Or Right$(ws.Name, 10) = "KiwiAnvils" _
                 Or ws.Name = "斗魂竞技场回合列表（Cherry Round List）" Or Right$(ws.Name, 15) = "CherryRoundList" Or ws.Name = "斗魂竞技场回合（Cherry Round）" Or Right$(ws.Name, 11) = "CherryRound" Or ws.Name = "斗魂竞技场阶段（Cherry Phase）" Or Right$(ws.Name, 11) = "CherryPhase" _
                 Or ws.Name = "斗魂竞技场场景英雄（Cherry Cameos）" Or Right$(ws.Name, 12) = "CherryCameos" Or ws.Name = "斗魂竞技场荣誉嘉宾（Cherry Guests）" Or Right$(ws.Name, 12) = "CherryGuests" _
