@@ -23,7 +23,7 @@ from src.core.config.localization import language_ddragon, language_dict
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/05/31
+# 更新（Last update）：     2026/06/01
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -2016,12 +2016,35 @@ class LoLDataExtractor:
             mValuePerLevelStr: str = cls.variableCalculation(binData, formulaPart["{b2cd0eb0}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             formulaStr = f"{mLevel1ValueStr} + {mValuePerLevelStr} × Level"
         elif formulaPart_type == "{ee18a47b}": #用于兽灵行者 乌迪尔的【狂暴爪击】（Applies to UdyrQ）
+            #重构模式分化字典（Reconstruct the mode division dictionary）
             mLevel1ValueStr: str = cls.variableCalculation(binData, formulaPart["{0589a59c}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
-            mLevel1Value: int | float = cls.aRound(float(mLevel1ValueStr), 5)
+            mLevel1Value_modeSplitDict_str: dict[str, str] = cls.variableModeOverrideStrToStruct(mLevel1ValueStr)
+            mLevel1Value_modeSplitDict_float: dict[str, float] = {key: float(value) for (key, value) in mLevel1Value_modeSplitDict_str.items()}
             mLevel18ValueStr: str = cls.variableCalculation(binData, formulaPart["{0b65bc23}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
-            mLevel18Value: int | float = cls.aRound(float(mLevel18ValueStr), 5)
-            mLevel_end_Value: int | float = cls.aRound(mLevel1Value + (cls.levelScaling_cap - 1) * (mLevel18Value - mLevel1Value) / 17, 5)
-            formulaStr = f"{mLevel1Value} - {mLevel_end_Value} (Level 1 to {cls.levelScaling_cap})"
+            mLevel18Value_modeSplitDict_str: dict[str, str] = cls.variableModeOverrideStrToStruct(mLevel18ValueStr)
+            mLevel18Value_modeSplitDict_float: dict[str, float] = {key: float(value) for (key, value) in mLevel18Value_modeSplitDict_str.items()}
+            #汇总模式键（Summarize mode keys）
+            modes: list[str] = list(mLevel1Value_modeSplitDict_float.keys())
+            for mode in mLevel18Value_modeSplitDict_float:
+                if not mode in modes:
+                    modes.append(mode)
+            #同步模式键（Sychronize mode keys）
+            for mode in mLevel1Value_modeSplitDict_float:
+                if not mode in modes:
+                    mLevel1Value_modeSplitDict_float[mode] = mLevel1Value_modeSplitDict_float["default"]
+            for mode in mLevel18Value_modeSplitDict_float:
+                if not mode in modes:
+                    mLevel1Value_modeSplitDict_float[mode] = mLevel1Value_modeSplitDict_float["default"]
+            #计算增量（Calculate increments）
+            mBonusPerLevel_modeSplitDict_float: dict[str, float] = {mode: (mLevel18Value_modeSplitDict_float[mode] - mLevel1Value_modeSplitDict_float[mode]) / 17 for mode in modes}
+            #计算终止值（Calculate ending values）
+            mLevel_end_Value_modeSplitDict_float: dict[str, float] = {mode: mLevel1Value_modeSplitDict_float[mode] + (cls.levelScaling_cap - 1) * mBonusPerLevel_modeSplitDict_float[mode] for mode in modes}
+            mLevel_end_Value_modeSplitList: list[str] = []
+            for (mode, mLevel_end_Value) in mLevel_end_Value_modeSplitDict_float.items():
+                mLevel_end_Value_modeBurn: str = str(cls.aRound(mLevel_end_Value, 5)) + ("" if mode == "default" else f" (mode: {mode})")
+                mLevel_end_Value_modeSplitList.append(mLevel_end_Value_modeBurn)
+            mLevel_end_ValueStr: str = " || ".join(mLevel_end_Value_modeSplitList)
+            formulaStr = f"{mLevel1ValueStr} - {mLevel_end_ValueStr} (Level 1 to {cls.levelScaling_cap})"
         elif formulaPart_type == "{f3cbe7b2}": #mSpellCalculationKey来自mItemCalculations键的情形。在装备中仅用于夺萃之镰和无终恨意（The case where the value of `mSpellCalculationKey` is a key of the value of `mItemCalculations`. In items, this only applies to Essence Reaver and Unending Despair）
             formulaStr = cls.variableCalculation(binData, formulaPart["mSpellCalculationKey"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
         else: #异常处理（Exception handling）
