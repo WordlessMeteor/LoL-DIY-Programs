@@ -9510,7 +9510,15 @@ if __name__ == "__main__":
     parser.add_argument("--sfx", help = "启用音频库单元hash计算调试（Enable bank unit hash calculation debugging）", action = "store_true")
     args = parser.parse_args()
     
-    log: LogManager = LogManager()
+    cwd: str = os.getcwd().replace("\\", "/")
+    if cwd.endswith("src/core"): #允许用户直接双击脚本（Users are allowed to double click this program）
+        os.chdir("../..")
+    elif cwd.endswith("src"):
+        os.chdir("..")
+    log_folder: str = "日志（Logs）/游戏数据提取脚本/"
+    os.makedirs(log_folder, exist_ok = True)
+    currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())
+    log: LogManager = LogManager(os.path.join(log_folder, currentTime + ".log"), mode = "a+", encoding = "utf-8")
     logInput = log.logInput
     logPrint = log.logPrint
     #定义语言设置过程（Define the process of setting language）
