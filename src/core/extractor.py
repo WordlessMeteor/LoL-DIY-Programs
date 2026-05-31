@@ -10021,8 +10021,10 @@ if __name__ == "__main__":
                                         df_struct: dict[str, Any] = df_queue[j]
                                         df: pandas.DataFrame = df_struct["sheet"]
                                         sheet_name: str = df_struct["sheet_name"]
-                                        logPrint("[%d/%d]%s" %(j + 1, len(df_queue), sheet_name), end = "\r", print_time = True)
-                                        extractor.version_df.to_excel(excel_writer = writer, sheet_name = sheet_name[:31], header = None, index = False, startcol = 0, startrow = 0)
+                                        export_note: str = " (Skipped.)" if len(df) == 1 else ""
+                                        logPrint("[%d/%d]%s%s" %(j + 1, len(df_queue), sheet_name, export_note), end = "\r", print_time = True)
+                                        if len(df) > 1:
+                                            extractor.version_df.to_excel(excel_writer = writer, sheet_name = sheet_name[:31], header = None, index = False, startcol = 0, startrow = 0)
                                     else:
                                         logPrint("已完成。 | Done.")
                             except PermissionError:
@@ -10512,8 +10514,10 @@ if __name__ == "__main__":
                                     df_struct: dict[str, Any] = df_queue[j]
                                     df: pandas.DataFrame = df_struct["sheet"]
                                     sheet_name: str = df_struct["sheet_name"]
-                                    logPrint("[%d/%d]%s" %(j + 1, len(df_queue), sheet_name), end = "\r", print_time = True)
-                                    extractor.version_df.to_excel(excel_writer = writer, sheet_name = sheet_name[:31], header = None, index = False, startcol = 0, startrow = 0)
+                                    export_note: str = " (Skipped.)" if len(df) == 1 else ""
+                                    logPrint("[%d/%d]%s%s" %(j + 1, len(df_queue), sheet_name, export_note), end = "\r", print_time = True)
+                                    if len(df) > 1:
+                                        extractor.version_df.to_excel(excel_writer = writer, sheet_name = sheet_name[:31], header = None, index = False, startcol = 0, startrow = 0)
                                 else:
                                     logPrint("已完成。 | Done.")
                         except PermissionError:
