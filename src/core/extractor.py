@@ -837,10 +837,10 @@ class LoLDataExtractor:
             else:
                 source, status, self.session = requestUrl("GET", bin_hash_url, session = self.session, log = self.log) #之所以将这个函数设计成一个对象方法而不是类方法或者静态方法，是因为它需要调用对象的会话和日志管理对象（The reason why this function is designed as an object method instead of a class method or static method is that it needs to call the session and log manager of the object）
                 if status != 200:
-                    if status == -1:
-                        logPrint("二进制条目散列表获取失败！请检查系统网络状况和代理设置。程序将跳过散列表的获取。\nBinary entry hash table capture failure! Please check the system network condition and proxy configuration. The program will skip the hash table retrieval.")
-                    elif status == 404:
+                    if status == 404:
                         logPrint("二进制条目散列表获取失败！请检查以下链接的可用性。程序将跳过散列表的获取。\nBinary entry hash table capture failure! Please check the URL availability. The program will skip the hash table retrieval.\n%s" %(bin_hash_url))
+                    else:
+                        logPrint("二进制条目散列表获取失败！请检查系统网络状况和代理设置。程序将跳过散列表的获取。\nBinary entry hash table capture failure! Please check the system network condition and proxy configuration. The program will skip the hash table retrieval.")
                     self.init_bin_hash_readiness()
                     return
                 bin_hash_data: dict[str, str] = {"{" + line.split(" ")[0] + "}": line.split(" ")[1] for line in source.text.strip("\n").splitlines()}
@@ -964,10 +964,10 @@ class LoLDataExtractor:
         game_version_url: str = f"https://raw.communitydragon.org/{self.version}/compat-version-metadata.json"
         source, status, self.session = requestUrl("GET", game_version_url, session = self.session, log = self.log)
         if status != 200:
-            if status == -1:
-                logPrint("游戏版本获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nGame version capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
-            elif status == 404:
+            if status == 404:
                 logPrint("游戏版本获取失败！请检查以下链接的可用性。程序即将退出此版本。\nGame version capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(game_version_url))
+            else:
+                logPrint("游戏版本获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nGame version capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
             time.sleep(3)
             self.init_patch()
             return
@@ -1012,10 +1012,10 @@ class LoLDataExtractor:
         file_exported_url: str = f"https://raw.communitydragon.org/{self.version}/cdragon/files.exported.txt"
         source, status, self.session = requestUrl("GET", file_exported_url, session = self.session, log = self.log)
         if status != 200:
-            if status == -1:
-                logPrint("文件导出列表获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nFile export list capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
-            elif status == 404:
+            if status == 404:
                 logPrint("文件导出列表获取失败！请检查以下链接的可用性。程序即将退出此版本。\nFile export list capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(file_exported_url))
+            else:
+                logPrint("文件导出列表获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nFile export list capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
             time.sleep(3)
             self.init_fileExportList_readiness()
             return
@@ -1048,14 +1048,15 @@ class LoLDataExtractor:
         else:
             source, status, self.session = requestUrl("GET", shared_bin_url, session = self.session, log = self.log)
             if status != 200:
-                if status == -1:
-                    logPrint("共享数据获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nShared data capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
-                elif status == 404:
+                if status == 404:
                     logPrint("共享数据获取失败！请检查以下链接的可用性。程序即将退出此版本。\nShared data capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(shared_bin_url))
+                else:
+                    logPrint("共享数据获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nShared data capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
                 time.sleep(3)
                 self.init_strtable_readiness()
                 return
-            self.shared_bin = self.resolve_bin_hash(source.json())
+            self.shared_bin = source.json()
+            self.shared_bin = self.resolve_bin_hash(self.shared_bin)
             self.__class__.data_cache["online"][shared_bin_url] = self.shared_bin
         self.shared_ready = True
     
@@ -1074,7 +1075,8 @@ class LoLDataExtractor:
             self.shared_bin = self.__class__.data_cache["local"][shared_bin_path]
         else:
             with open(shared_bin_path, "r", encoding = "utf-8") as fp:
-                self.shared_bin = self.resolve_bin_hash(json.load(fp))
+                self.shared_bin = json.load(fp)
+            self.shared_bin = self.resolve_bin_hash(self.shared_bin)
             self.__class__.data_cache["local"][shared_bin_path] = self.shared_bin
         self.shared_ready = True
     
@@ -1137,10 +1139,10 @@ class LoLDataExtractor:
             else:
                 source, status, self.session = requestUrl("GET", mainstringtable_target_url, session = self.session, log = self.log)
                 if status != 200:
-                    if status == -1:
-                        logPrint("目标语言的字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nStringtable in target language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
-                    elif status == 404:
+                    if status == 404:
                         logPrint("目标语言的字符串常量池获取失败！请检查以下链接的可用性。程序即将退出此版本。\nStringtable in target language capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(mainstringtable_target_url))
+                    else:
+                        logPrint("目标语言的字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nStringtable in target language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
                     time.sleep(3)
                     self.init_strtable_readiness()
                     return
@@ -1153,10 +1155,10 @@ class LoLDataExtractor:
             else:
                 source, status, self.session = requestUrl("GET", mainstringtable_default_url, session = self.session, log = self.log)
                 if status != 200:
-                    if status == -1:
-                        logPrint("默认语言的字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nStringtable in default language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
-                    elif status == 404:
+                    if status == 404:
                         logPrint("默认语言的字符串常量池获取失败！请检查以下链接的可用性。程序即将退出此版本。\nStringtable in default language capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(mainstringtable_default_url))
+                    else:
+                        logPrint("默认语言的字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nStringtable in default language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
                     time.sleep(3)
                     self.init_strtable_readiness()
                     return
@@ -1175,10 +1177,10 @@ class LoLDataExtractor:
             else:
                 source, status, self.session = requestUrl("GET", lolstringtable_target_url, session = self.session, log = self.log)
                 if status != 200:
-                    if status == -1:
-                        logPrint("目标语言的英雄联盟字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nLoL stringtable in target language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
-                    elif status == 404:
+                    if status == 404:
                         logPrint("目标语言的英雄联盟字符串常量池获取失败！请检查以下链接的可用性。程序即将退出此版本。\nLoL stringtable in target language capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(lolstringtable_target_url))
+                    else:
+                        logPrint("目标语言的英雄联盟字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nLoL stringtable in target language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
                     time.sleep(3)
                     self.init_strtable_readiness()
                     return
@@ -1191,10 +1193,10 @@ class LoLDataExtractor:
             else:
                 source, status, self.session = requestUrl("GET", lolstringtable_default_url, session = self.session, log = self.log)
                 if status != 200:
-                    if status == -1:
-                        logPrint("默认语言的英雄联盟字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nLoL stringtable in default language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
-                    elif status == 404:
+                    if status == 404:
                         logPrint("默认语言的英雄联盟字符串常量池获取失败！请检查以下链接的可用性。程序即将退出此版本。\nLoL stringtable in default language capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(lolstringtable_default_url))
+                    else:
+                        logPrint("默认语言的英雄联盟字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nLoL stringtable in default language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
                     time.sleep(3)
                     self.init_strtable_readiness()
                     return
@@ -1207,10 +1209,10 @@ class LoLDataExtractor:
             else:
                 source, status, self.session = requestUrl("GET", tftstringtable_target_url, session = self.session, log = self.log)
                 if status != 200:
-                    if status == -1:
-                        logPrint("目标语言的云顶之弈字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nTFT stringtable in target language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
-                    elif status == 404:
+                    if status == 404:
                         logPrint("目标语言的云顶之弈字符串常量池获取失败！请检查以下链接的可用性。程序即将退出此版本。\nTFT stringtable in target language capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(tftstringtable_target_url))
+                    else:
+                        logPrint("目标语言的云顶之弈字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nTFT stringtable in target language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
                     time.sleep(3)
                     self.init_strtable_readiness()
                     return
@@ -1223,10 +1225,10 @@ class LoLDataExtractor:
             else:
                 source, status, self.session = requestUrl("GET", tftstringtable_default_url, session = self.session, log = self.log)
                 if status != 200:
-                    if status == -1:
-                        logPrint("默认语言的云顶之弈字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nTFT stringtable in default language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
-                    elif status == 404:
+                    if status == 404:
                         logPrint("默认语言的云顶之弈字符串常量池获取失败！请检查以下链接的可用性。程序即将退出此版本。\nTFT stringtable in default language capture failure! Please check the URL availability. The program will quit this version soon.\n%s" %(tftstringtable_default_url))
+                    else:
+                        logPrint("默认语言的云顶之弈字符串常量池获取失败！请检查系统网络状况和代理设置。程序即将退出此版本。\nTFT stringtable in default language capture failure! Please check the system network condition and proxy configuration. The program will quit this version soon.")
                     time.sleep(3)
                     self.init_strtable_readiness()
                     return
@@ -3165,134 +3167,141 @@ class MapExtractor(LoLDataExtractor):
         #召唤师峡谷（Summoner's Rift）
         map11_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map11/map11.bin.json"
         if map11_bin_url in self.__class__.data_cache["online"]:
-            self.map11_bin = self.__class__.data_cache["online"][map11_bin_url]
+            self.map11_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map11_bin_url]
         else:
             source, status, self.session = requestUrl("GET", map11_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == 404:
                     logPrint("召唤师峡谷地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nSummoner's Rift map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map11_bin_url))
-                    self.map11_bin: dict[str, list[str] | dict[str, Any]] = {}
+                    self.map11_bin = {}
                 else:
                     logPrint("召唤师峡谷地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nSummoner's Rift map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
             else:
-                self.map11_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+                self.map11_bin = source.json()
+                self.map11_bin = self.resolve_bin_hash(self.map11_bin)
             self.__class__.data_cache["online"][map11_bin_url] = self.map11_bin #在对一个MapExtractor对象的data_cache进行修改时，由于字典的引用传递，其父LoLDataExtractor对象的data_cache会同步此更改（While modifying `data_cache` of a MapExtractor object, due to the pass-by-reference of a dictionary, the modification will be synchronized in `data_cache` of its parent `LoLDataExtractor` object）
         self.maps_ready[11] = True
         #嚎哭深渊（Howling Abyss）
         map12_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map12/map12.bin.json"
         if map12_bin_url in self.__class__.data_cache["online"]:
-            self.map12_bin = self.__class__.data_cache["online"][map12_bin_url]
+            self.map12_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map12_bin_url]
         else:
             source, status, self.session = requestUrl("GET", map12_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == 404:
                     logPrint("嚎哭深渊地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nHowling Abyss map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map12_bin_url))
-                    self.map12_bin: dict[str, list[str] | dict[str, Any]] = {}
+                    self.map12_bin = {}
                 else:
                     logPrint("嚎哭深渊地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
             else:
-                self.map12_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+                self.map12_bin = source.json()
+                self.map12_bin = self.resolve_bin_hash(self.map12_bin)
             self.__class__.data_cache["online"][map12_bin_url] = self.map12_bin
         self.maps_ready[12] = True
         #百合与莲花的神庙（Temple of Lily and Lotus）
         map21_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map21/map21.bin.json"
         if map21_bin_url in self.__class__.data_cache["online"]:
-            self.map21_bin = self.__class__.data_cache["online"][map21_bin_url]
+            self.map21_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map21_bin_url]
         else:
             source, status, self.session = requestUrl("GET", map21_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == 404:
                     logPrint("百合与莲花的神庙地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nTemple of Lily and Lotus map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map21_bin_url))
-                    self.map21_bin: dict[str, list[str] | dict[str, Any]] = {}
+                    self.map21_bin = {}
                 else:
                     logPrint("百合与莲花的神庙地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nTemple of Lily and Lotus map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
             else:
-                self.map21_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+                self.map21_bin = source.json()
+                self.map21_bin = self.resolve_bin_hash(self.map21_bin)
             self.__class__.data_cache["online"][map21_bin_url] = self.map21_bin
         self.maps_ready[21] = True
         #聚点危机（Convergence）
         map22_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map22/map22.bin.json"
         if map22_bin_url in self.__class__.data_cache["online"]:
-            self.map22_bin = self.__class__.data_cache["online"][map22_bin_url]
+            self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map22_bin_url]
         else:
             source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == 404:
                     logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nConvergence map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map22_bin_url))
-                    self.map22_bin: dict[str, list[str] | dict[str, Any]] = {}
+                    self.map22_bin = {}
                 else:
                     logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
             else:
-                self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+                self.map22_bin = source.json()
+                self.map22_bin = self.resolve_bin_hash(self.map22_bin)
             self.__class__.data_cache["online"][map22_bin_url] = self.map22_bin
         self.maps_ready[22] = True
         #怒火角斗场（Rings of Wrath）
         map30_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map30/map30.bin.json"
         if map30_bin_url in self.__class__.data_cache["online"]:
-            self.map30_bin = self.__class__.data_cache["online"][map30_bin_url]
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map30_bin_url]
         else:
             source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == 404:
                     logPrint("怒火角斗场地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nRings of Wrath map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map30_bin_url))
-                    self.map30_bin: dict[str, list[str] | dict[str, Any]] = {}
+                    self.map30_bin = {}
                 else:
                     logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
             else:
-                self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+                self.map30_bin = source.json()
+                self.map30_bin = self.resolve_bin_hash(self.map30_bin)
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.maps_ready[30] = True
         #最终都市（Final City）
         map33_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map33/map33.bin.json"
         if map33_bin_url in self.__class__.data_cache["online"]:
-            self.map33_bin = self.__class__.data_cache["online"][map33_bin_url]
+            self.map33_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map33_bin_url]
         else:
             source, status, self.session = requestUrl("GET", map33_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == 404:
                     logPrint("最终都市地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nFinal City map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map33_bin_url))
-                    self.map33_bin: dict[str, list[str] | dict[str, Any]] = {}
+                    self.map33_bin = {}
                 else:
                     logPrint("最终都市地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nFinal City map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
             else:
-                self.map33_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+                self.map33_bin = source.json()
+                self.map33_bin = self.resolve_bin_hash(self.map33_bin)
             self.__class__.data_cache["online"][map33_bin_url] = self.map33_bin
         self.maps_ready[33] = True
         #班德尔之森（The Bandlewood）
         map35_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map35/map35.bin.json"
         if map35_bin_url in self.__class__.data_cache["online"]:
-            self.map35_bin = self.__class__.data_cache["online"][map35_bin_url]
+            self.map35_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map35_bin_url]
         else:
             source, status, self.session = requestUrl("GET", map35_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == 404:
                     logPrint("班德尔之森地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nThe Bandlewoods map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map35_bin_url))
-                    self.map35_bin: dict[str, list[str] | dict[str, Any]] = {}
+                    self.map35_bin = {}
                 else:
                     logPrint("班德尔之森地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nThe Bandlewoods map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
             else:
-                self.map35_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+                self.map35_bin = source.json()
+                self.map35_bin = self.resolve_bin_hash(self.map35_bin)
             self.__class__.data_cache["online"][map35_bin_url] = self.map35_bin
         self.maps_ready[35] = True
     
@@ -3323,64 +3332,71 @@ class MapExtractor(LoLDataExtractor):
         #召唤师峡谷（Summoner's Rift）
         map11_bin_path: str = paths[0]
         if map11_bin_path in self.__class__.data_cache["local"]:
-            self.map11_bin = self.__class__.data_cache["local"][map11_bin_path]
+            self.map11_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map11_bin_path]
         else:
             with open(map11_bin_path, "r", encoding = "utf-8") as fp:
-                self.map11_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.map11_bin = json.load(fp)
+            self.map11_bin = self.resolve_bin_hash(self.map11_bin)
             self.__class__.data_cache["local"][map11_bin_path] = self.map11_bin
         self.maps_ready[11] = True
         #嚎哭深渊（Howling Abyss）
         map12_bin_path: str = paths[1]
         if map12_bin_path in self.__class__.data_cache["local"]:
-            self.map12_bin = self.__class__.data_cache["local"][map12_bin_path]
+            self.map12_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map12_bin_path]
         else:
             with open(map12_bin_path, "r", encoding = "utf-8") as fp:
-                self.map12_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.map12_bin = json.load(fp)
+            self.map12_bin = self.resolve_bin_hash(self.map12_bin)
             self.__class__.data_cache["local"][map12_bin_path] = self.map12_bin
         self.maps_ready[12] = True
         #百合与莲花的神庙（Temple of Lily and Lotus）
         map21_bin_path: str = paths[2]
         if map21_bin_path in self.__class__.data_cache["local"]:
-            self.map21_bin = self.__class__.data_cache["local"][map21_bin_path]
+            self.map21_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map21_bin_path]
         else:
             with open(map21_bin_path, "r", encoding = "utf-8") as fp:
-                self.map21_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.map21_bin = json.load(fp)
+            self.map21_bin = self.resolve_bin_hash(self.map21_bin)
             self.__class__.data_cache["local"][map21_bin_path] = self.map21_bin
         self.maps_ready[21] = True
         #聚点危机（Convergence）
         map22_bin_path: str = paths[3]
         if map22_bin_path in self.__class__.data_cache["local"]:
-            self.map22_bin = self.__class__.data_cache["local"][map22_bin_path]
+            self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map22_bin_path]
         else:
             with open(map22_bin_path, "r", encoding = "utf-8") as fp:
-                self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.map22_bin = json.load(fp)
+            self.map22_bin = self.resolve_bin_hash(self.map22_bin)
             self.__class__.data_cache["local"][map22_bin_path] = self.map22_bin
         self.maps_ready[22] = True
         #怒火角斗场（Rings of Wrath）
         map30_bin_path: str = paths[4]
         if map30_bin_path in self.__class__.data_cache["local"]:
-            self.map30_bin = self.__class__.data_cache["local"][map30_bin_path]
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map30_bin_path]
         else:
             with open(map30_bin_path, "r", encoding = "utf-8") as fp:
-                self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.map30_bin = json.load(fp)
+            self.map30_bin = self.resolve_bin_hash(self.map30_bin)
             self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
         self.maps_ready[30] = True
         #最终都市（Final City）
         map33_bin_path: str = paths[5]
         if map33_bin_path in self.__class__.data_cache["local"]:
-            self.map33_bin = self.__class__.data_cache["local"][map33_bin_path]
+            self.map33_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map33_bin_path]
         else:
             with open(map33_bin_path, "r", encoding = "utf-8") as fp:
-                self.map33_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.map33_bin = json.load(fp)
+            self.map33_bin = self.resolve_bin_hash(self.map33_bin)
             self.__class__.data_cache["local"][map33_bin_path] = self.map33_bin
         self.maps_ready[33] = True
         #班德尔之森（The Bandlewood）
         map35_bin_path: str = paths[6]
         if map35_bin_path in self.__class__.data_cache["local"]:
-            self.map35_bin = self.__class__.data_cache["local"][map35_bin_path]
+            self.map35_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map35_bin_path]
         else:
             with open(map35_bin_path, "r", encoding = "utf-8") as fp:
-                self.map35_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.map35_bin = json.load(fp)
+            self.map35_bin = self.resolve_bin_hash(self.map35_bin)
             self.__class__.data_cache["local"][map35_bin_path] = self.map35_bin
         self.maps_ready[35] = True
     
@@ -3455,7 +3471,8 @@ class MapExtractor(LoLDataExtractor):
         #离线加载各英雄数据（Load all maps' binary data offline）
         # logPrint("正在读取各英雄数据……\nReading all map data ...", print_time = True)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/自定义脚本/英雄联盟自定义房间创建/maps_bin.json", "r", encoding = "utf-8") as fp:
-        #     maps_bin = self.resolve_bin_hash(json.load(fp))
+        #     maps_bin = json.load(fp)
+        # maps_bin = self.resolve_bin_hash(maps_bin)
         
         #定义数据结构（Define the data structure）
         logPrint("正在构建地图数据框……\nBuilding the map dataframe ...", print_time = True)
@@ -3707,18 +3724,19 @@ class CheatExtractor(LoLDataExtractor):
         logPrint = self.log.logPrint
         cheats_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/cheats.cdtb.bin.json"
         if cheats_bin_url in self.__class__.data_cache["online"]:
-            self.cheats_bin = self.__class__.data_cache["online"][cheats_bin_url]
+            self.cheats_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][cheats_bin_url]
         else:
             source, status, self.session = requestUrl("GET", cheats_bin_url, session = self.session, log = self.log)
             if status != 200:
-                if status == -1:
-                    logPrint('作弊指令信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCheat data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.')
-                elif status == 404:
+                if status == 404:
                     logPrint('作弊指令信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nCheat data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s' %(cheats_bin_url))
+                else:
+                    logPrint('作弊指令信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCheat data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.')
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.cheats_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+            self.cheats_bin = source.json()
+            self.cheats_bin = self.resolve_bin_hash(self.cheats_bin)
             self.__class__.data_cache["online"][cheats_bin_url] = self.cheats_bin
         self.cheats_ready = True
     
@@ -3736,10 +3754,11 @@ class CheatExtractor(LoLDataExtractor):
             return
         cheats_bin_path: str = path
         if cheats_bin_path in self.__class__.data_cache["local"]:
-            self.cheats_bin = self.__class__.data_cache["local"][cheats_bin_path]
+            self.cheats_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][cheats_bin_path]
         else:
             with open(cheats_bin_path, "r", encoding = "utf-8") as fp:
-                self.cheats_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.cheats_bin = json.load(fp)
+            self.cheats_bin = self.resolve_bin_hash(self.cheats_bin)
             self.__class__.data_cache["local"][cheats_bin_path] = self.cheats_bin
         self.cheats_ready = True
     
@@ -3955,18 +3974,19 @@ class PerkExtractor(LoLDataExtractor):
         logPrint = self.log.logPrint
         perks_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/perks.cdtb.bin.json"
         if perks_bin_url in self.__class__.data_cache["online"]:
-            self.perks_bin = self.__class__.data_cache["online"][perks_bin_url]
+            self.perks_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][perks_bin_url]
         else:
             source, status, self.session = requestUrl("GET", perks_bin_url, session = self.session, log = self.log)
             if status != 200:
-                if status == -1:
-                    logPrint("符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nPerk data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
-                elif status == 404:
+                if status == 404:
                     logPrint("符文信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nPerk data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(perks_bin_url))
+                else:
+                    logPrint("符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nPerk data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.perks_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+            self.perks_bin = source.json()
+            self.perks_bin = self.resolve_bin_hash(self.perks_bin)
             self.__class__.data_cache["online"][perks_bin_url] = self.perks_bin
         self.perk_ready = True
     
@@ -3984,10 +4004,11 @@ class PerkExtractor(LoLDataExtractor):
             return
         perks_bin_path: str = path
         if perks_bin_path in self.__class__.data_cache["local"]:
-            self.perks_bin = self.__class__.data_cache["local"][perks_bin_path]
+            self.perks_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][perks_bin_path]
         else:
             with open(perks_bin_path, "r", encoding = "utf-8") as fp:
-                self.perks_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.perks_bin = json.load(fp)
+            self.perks_bin = self.resolve_bin_hash(self.perks_bin)
             self.__class__.data_cache["local"][perks_bin_path] = self.perks_bin
         self.perk_ready = True
     
@@ -4359,20 +4380,21 @@ class ChampionExtractor(LoLDataExtractor):
                     ##聚点危机地图（Convergence map）
                     map22_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map22/map22.bin.json" #云顶之弈的小小英雄和羁绊信息（TFT champion and trait data）
                     if map22_bin_url in self.__class__.data_cache["online"]:
-                        self.map22_bin = self.__class__.data_cache["online"][map22_bin_url]
+                        self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map22_bin_url]
                     else:
                         source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session, log = self.log)
                         if status != 200:
                             if status == 404:
                                 logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nConvergence map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map22_bin_url))
-                                self.map22_bin: dict[str, list[str] | dict[str, Any]] = {}
+                                self.map22_bin = {}
                             else:
                                 logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                                 time.sleep(3)
                                 self.init_data_readiness()
                                 return
                         else:
-                            self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+                            self.map22_bin = source.json()
+                            self.map22_bin = self.resolve_bin_hash(self.map22_bin)
                         self.__class__.data_cache["online"][map22_bin_url] = self.map22_bin
                     self.characters_ready["map22"] = True
                     ##角色列表（Character list）
@@ -4397,19 +4419,20 @@ class ChampionExtractor(LoLDataExtractor):
                         # logPrint("[%d/%d]正在加载角色%s的信息…… | Loading character %s%s information ..." %(i + 1, len(characterNames), characterName, characterName, "s'" if characterName.endswith("s") else "'s"), print_time = True, verbose = verbose)
                         character_binary_url: str = character_binary_urls1[characterName]
                         if character_binary_url in self.__class__.data_cache["online"]:
-                            character_binary = self.__class__.data_cache["online"][character_binary_url]
+                            character_binary: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][character_binary_url]
                         else:
                             source, status, self.session = requestUrl("GET", character_binary_url, session = self.session, log = self.log)
                             if status != 200:
                                 if status == 404:
                                     logPrint(f"未找到角色{characterName}的信息。程序将跳过该角色。\nCharacter {characterName} data not found. The program will skip this character.")
                                     continue
-                                elif status == -1:
+                                else:
                                     logPrint("角色信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                                     time.sleep(3)
                                 self.init_data_readiness()
                                 return
-                            character_binary: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+                            character_binary = source.json()
+                            character_binary = self.resolve_bin_hash(character_binary)
                             self.__class__.data_cache["online"][character_binary_url] = character_binary
                         self.champions_bin_dict[characterName] = character_binary
                         logPrint("[%d/%d]已加载角色（Character loaded）：%s" %(i + 1, len(characterNames), characterName), print_time = True, verbose = verbose)
@@ -4421,20 +4444,21 @@ class ChampionExtractor(LoLDataExtractor):
                     ##聚点危机地图（Convergence map）
                     map22_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map22/map22.bin.json" #云顶之弈的小小英雄和羁绊信息（TFT champion and trait data）
                     if map22_bin_url in self.__class__.data_cache["online"]:
-                        self.map22_bin = self.__class__.data_cache["online"][map22_bin_url]
+                        self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map22_bin_url]
                     else:
                         source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session, log = self.log)
                         if status != 200:
                             if status == 404:
                                 logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nConvergence map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map22_bin_url))
-                                self.map22_bin: dict[str, list[str] | dict[str, Any]] = {}
+                                self.map22_bin = {}
                             else:
                                 logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                                 time.sleep(3)
                                 self.init_data_readiness()
                                 return
                         else:
-                            self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+                            self.map22_bin = source.json()
+                            self.map22_bin = self.resolve_bin_hash(self.map22_bin)
                         self.__class__.data_cache["online"][map22_bin_url] = self.map22_bin
                     self.characters_ready["map22"] = True
                     ##角色文件夹（Character folders）
@@ -4444,10 +4468,10 @@ class ChampionExtractor(LoLDataExtractor):
                     else:
                         source, status, self.session = requestUrl("GET", characterList_url1, session = self.session, log = self.log)
                         if status != 200:
-                            if status == -1:
-                                logPrint("第一批角色列表获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCharacter List 1 capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
-                            elif status == 404:
+                            if status == 404:
                                 logPrint("第一批角色列表获取失败！请检查以下链接的可用性。程序即将返回上一层。\nCharacter List 1 capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(characterList_url1))
+                            else:
+                                logPrint("第一批角色列表获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCharacter List 1 capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                             time.sleep(3)
                             self.init_data_readiness()
                             return
@@ -4460,10 +4484,10 @@ class ChampionExtractor(LoLDataExtractor):
                     else:
                         source, status, self.session = requestUrl("GET", characterList_url2, session = self.session, log = self.log)
                         if status != 200:
-                            if status == -1:
-                                logPrint("第二批角色列表获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCharacter List 2 capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
-                            elif status == 404:
+                            if status == 404:
                                 logPrint("第二批角色列表获取失败！请检查以下链接的可用性。程序即将返回上一层。\nCharacter List 2 capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(characterList_url2))
+                            else:
+                                logPrint("第二批角色列表获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nCharacter List 2 capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                             time.sleep(3)
                             self.init_data_readiness()
                             return
@@ -4492,7 +4516,7 @@ class ChampionExtractor(LoLDataExtractor):
                         for j in range(len(character_bin_urls)):
                             character_binary_url = character_bin_urls[j]
                             if character_binary_url in self.__class__.data_cache["online"]:
-                                character_binary = self.__class__.data_cache["online"][character_binary_url]
+                                character_binary: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][character_binary_url]
                             else:
                                 logPrint("[%d/%d][%d/%d]正在加载链接（Fetching url）： %s" %(i + 1, len(characterNames), j + 1, len(character_bin_urls), character_binary_url), write_time = False, verbose = verbose)
                                 source, status, self.session = requestUrl("GET", character_binary_url, session = self.session, log = self.log)
@@ -4509,7 +4533,8 @@ class ChampionExtractor(LoLDataExtractor):
                                             time.sleep(3)
                                         self.init_data_readiness()
                                         return
-                                character_binary: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+                                character_binary = source.json()
+                                character_binary = self.resolve_bin_hash(character_binary)
                                 self.__class__.data_cache["online"][character_binary_url] = character_binary
                             self.champions_bin_dict[characterName] = character_binary
                             # logPrint("[%d/%d]已加载角色（Character loaded）：%s" %(i + 1, len(characterNames), characterName), print_time = True, verbose = verbose)
@@ -4529,10 +4554,10 @@ class ChampionExtractor(LoLDataExtractor):
                 else:
                     source, status, self.session = requestUrl("GET", champion_summary_url, session = self.session, log = self.log)
                     if status != 200:
-                        if status == -1:
-                            logPrint("英雄概要信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion summary data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
-                        elif status == 404:
+                        if status == 404:
                             logPrint("英雄概要信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nChampion summary data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(champion_summary_url))
+                        else:
+                            logPrint("英雄概要信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion summary data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                         time.sleep(3)
                         self.init_data_readiness()
                         return
@@ -4549,18 +4574,19 @@ class ChampionExtractor(LoLDataExtractor):
                     else:
                         champion_binary_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/characters/{alias}/{alias}.bin.json"
                         if champion_binary_url in self.__class__.data_cache["online"]:
-                            champion_binary = self.__class__.data_cache["online"][champion_binary_url]
+                            champion_binary: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][champion_binary_url]
                         else:
                             source, status, self.session = requestUrl("GET", champion_binary_url, session = self.session, log = self.log)
                             if status != 200:
-                                if status == -1:
-                                    logPrint("英雄信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
-                                elif status == 404:
+                                if status == 404:
                                     logPrint("英雄信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nChampion data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(champion_binary_url))
+                                else:
+                                    logPrint("英雄信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                                 time.sleep(3)
                                 self.init_data_readiness()
                                 break
-                            champion_binary: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+                            champion_binary = source.json()
+                            champion_binary = self.resolve_bin_hash(champion_binary)
                             self.__class__.data_cache["online"][champion_binary_url] = champion_binary
                         self.champions_bin_dict[champion["alias"]] = champion_binary
                         logPrint("[%d/%d]已加载英雄（Champion loaded）：%s" %(i + 1, len(champion_summary), champion["alias"]), print_time = True, verbose = verbose)
@@ -4601,14 +4627,15 @@ class ChampionExtractor(LoLDataExtractor):
                 ##聚点危机地图（Convergence map）
                 map22_bin_path: str = paths[0]
                 if map22_bin_path in self.__class__.data_cache["local"]:
-                    self.map22_bin = self.__class__.data_cache["local"][map22_bin_path]
+                    self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map22_bin_path]
                 else:
                     if os.path.exists(map22_bin_path):
                         with open(map22_bin_path, "r", encoding = "utf-8") as fp:
-                            self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                            self.map22_bin = json.load(fp)
+                        self.map22_bin = self.resolve_bin_hash(self.map22_bin)
                         self.__class__.data_cache["local"][map22_bin_path] = self.map22_bin
                     else:
-                        self.map22_bin: dict[str, list[str] | dict[str, Any]] = {} #早期没有云顶之弈模式（In early days, TFT wasn't invented）
+                        self.map22_bin = {} #早期没有云顶之弈模式（In early days, TFT wasn't invented）
                 self.characters_ready["map22"] = True
                 ##角色文件夹（Character folders）
                 characterList_folder1: str = paths[1]
@@ -4641,13 +4668,13 @@ class ChampionExtractor(LoLDataExtractor):
                     for j in range(len(character_bin_paths)):
                         character_binary_path = character_bin_paths[j]
                         if character_binary_path in self.__class__.data_cache["local"]:
-                            character_binary = self.__class__.data_cache["local"][character_binary_path]
+                            character_binary: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][character_binary_path]
                             self.champions_bin_dict[characterName] = character_binary
                             break
                         else:
                             try:
                                 with open(character_binary_path, "r", encoding = "utf-8") as fp:
-                                    character_binary: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                                    character_binary = json.load(fp)
                             except json.decoder.JSONDecodeError:
                                 if len(character_bin_paths) > 1 and j < len(character_bin_paths) - 1: #正常情况下，每个characterName应只对应一个本地路径。此部分只是为了效仿在线加载部分的代码，并且以防万一（Normally, each `characterName` corresponds to one local path. This part is only designed to fit the code style in online loading part, plus just in case a format mistake would happen）
                                     logPrint("本地文件格式不正确。程序将使用备用地址。\nLocal file format invalid! The program will use another path.")
@@ -4655,6 +4682,7 @@ class ChampionExtractor(LoLDataExtractor):
                                     logPrint("本地文件格式不正确。程序将跳过该文件。\nLocal file format invalid! The program will skip this file.")
                                 continue
                             else:
+                                character_binary = self.resolve_bin_hash(character_binary)
                                 self.__class__.data_cache["local"][character_binary_path] = character_binary
                                 self.champions_bin_dict[characterName] = character_binary
                                 break
@@ -4685,10 +4713,11 @@ class ChampionExtractor(LoLDataExtractor):
                     else:
                         champion_binary_path: str = os.path.join(paths[1], f"{alias}/{alias}.bin.json").replace("\\", "/")
                         if champion_binary_path in self.__class__.data_cache["local"]:
-                            champion_binary = self.__class__.data_cache["local"][champion_binary_path]
+                            champion_binary: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][champion_binary_path]
                         else:
                             with open(champion_binary_path, "r", encoding = "utf-8") as fp:
-                                champion_binary: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                                champion_binary = json.load(fp)
+                            champion_binary = self.resolve_bin_hash(champion_binary)
                             self.__class__.data_cache["local"][champion_binary_path] = champion_binary
                         self.champions_bin_dict[champion["alias"]] = champion_binary
                         # logPrint("[%d/%d]已加载英雄（Champion loaded）：%s" %(i + 1, len(champion_summary), champion["alias"]), print_time = True, verbose = verbose)
@@ -4769,7 +4798,8 @@ class ChampionExtractor(LoLDataExtractor):
         #离线加载各英雄数据（Load all champions' binary data offline）
         # logPrint("正在读取各英雄数据……\nReading all champion data ...", print_time = True)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/自定义脚本/英雄联盟自定义房间创建/champions_bin.json", "r", encoding = "utf-8") as fp:
-        #     champions_bin = self.resolve_bin_hash(json.load(fp))
+        #     champions_bin = json.load(fp)
+        # champions_bin = self.resolve_bin_hash(champions_bin)
 
         #提取指令字典。主要用于来自其它指令数据的变量的转换（Extract spell dictionary. Mainly used for transformation of variables from other spells）
         self.init_mSpells()
@@ -5239,18 +5269,19 @@ class ItemExtractor(LoLDataExtractor):
         logPrint = self.log.logPrint
         items_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/items.cdtb.bin.json"
         if items_bin_url in self.__class__.data_cache["online"]:
-            self.items_bin = self.__class__.data_cache["online"][items_bin_url]
+            self.items_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][items_bin_url]
         else:
             source, status, self.session = requestUrl("GET", items_bin_url, session = self.session, log = self.log)
             if status != 200:
-                if status == -1:
-                    logPrint("装备信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nItem data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
-                elif status == 404:
+                if status == 404:
                     logPrint("装备信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nItem data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(items_bin_url))
+                else:
+                    logPrint("装备信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nItem data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.items_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+            self.items_bin = source.json()
+            self.items_bin = self.resolve_bin_hash(self.items_bin)
             self.__class__.data_cache["online"][items_bin_url] = self.items_bin
         self.item_ready = True
     
@@ -5268,10 +5299,11 @@ class ItemExtractor(LoLDataExtractor):
             return
         items_bin_path: str = path
         if items_bin_path in self.__class__.data_cache["local"]:
-            self.items_bin = self.__class__.data_cache["local"][items_bin_path]
+            self.items_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][items_bin_path]
         else:
             with open(items_bin_path, "r", encoding = "utf-8") as fp:
-                self.items_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.items_bin = json.load(fp)
+            self.items_bin = self.resolve_bin_hash(self.items_bin)
             self.__class__.data_cache["local"][items_bin_path] = self.items_bin
         self.item_ready = True
     
@@ -5600,75 +5632,79 @@ class AugmentExtractor(LoLDataExtractor):
         #怒火角斗场地图（Rings of Wrath map）
         map30_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map30/map30.bin.json"
         if map30_bin_url in self.__class__.data_cache["online"]:
-            self.map30_bin = self.__class__.data_cache["online"][map30_bin_url]
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map30_bin_url]
         else:
             source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session, log = self.log)
             if status != 200:
-                if status == -1:
-                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
-                elif status == 404:
+                if status == 404:
                     logPrint("怒火角斗场地图信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(map30_bin_url))
+                else:
+                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+            self.map30_bin = source.json()
+            self.map30_bin = self.resolve_bin_hash(self.map30_bin)
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.augments_ready["map30"] = True
         #斗魂竞技场模式（Arena mode）
         cherry_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/cherry.bin.json"
         if cherry_bin_url in self.__class__.data_cache["online"]:
-            self.cherry_bin = self.__class__.data_cache["online"][cherry_bin_url]
+            self.cherry_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][cherry_bin_url]
         else:
             source, status, self.session = requestUrl("GET", cherry_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == 404:
                     logPrint("斗魂竞技场强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nArena augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(cherry_bin_url))
-                    self.cherry_bin: dict[str, list[str] | dict[str, Any]] = {}
+                    self.cherry_bin = {}
                 else:
                     logPrint('斗魂竞技场强化符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nArena augment data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.')
                     time.sleep()
                     self.init_data_readiness()
                     return
             else:
-                self.cherry_bin = self.resolve_bin_hash(source.json())
+                self.cherry_bin = source.json()
+                self.cherry_bin = self.resolve_bin_hash(self.cherry_bin)
             self.__class__.data_cache["online"][cherry_bin_url] = self.cherry_bin
         self.augments_ready["cherry"] = True
         #最终都市地图（Final City map）
         map33_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map33/map33.bin.json"
         if map33_bin_url in self.__class__.data_cache["online"]:
-            self.map33_bin = self.__class__.data_cache["online"][map33_bin_url]
+            self.map33_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map33_bin_url]
         else:
             source, status, self.session = requestUrl("GET", map33_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == 404:
                     logPrint("最终都市地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nFinal City map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map33_bin_url))
-                    self.map33_bin: dict[str, list[str] | dict[str, Any]] = {}
+                    self.map33_bin = {}
                 else:
                     logPrint("最终都市地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nFinal City map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
             else:
-                self.map33_bin = self.resolve_bin_hash(source.json())
+                self.map33_bin = source.json()
+                self.map33_bin = self.resolve_bin_hash(self.map33_bin)
             self.__class__.data_cache["online"][map33_bin_url] = self.map33_bin
         self.augments_ready["map33"] = True
         #嚎哭深渊地图（Howling Abyss map）
         map12_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map12/map12.bin.json"
         if map12_bin_url in self.__class__.data_cache["online"]:
-            self.map12_bin = self.__class__.data_cache["online"][map12_bin_url]
+            self.map12_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map12_bin_url]
         else:
             source, status, self.session = requestUrl("GET", map12_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == 404:
                     logPrint("嚎哭深渊地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nHowling Abyss map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map12_bin_url))
-                    self.map12_bin: dict[str, list[str] | dict[str, Any]] = {}
+                    self.map12_bin = {}
                 else:
                     logPrint("嚎哭深渊地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
             else:
-                self.map12_bin = self.resolve_bin_hash(source.json())
+                self.map12_bin = source.json()
+                self.map12_bin = self.resolve_bin_hash(self.map12_bin)
             self.__class__.data_cache["online"][map12_bin_url] = self.map12_bin
         self.augments_ready["map12"] = True
         #海克斯大乱斗模式（ARAM: Mayhem mode）
@@ -5677,20 +5713,21 @@ class AugmentExtractor(LoLDataExtractor):
         else:
             kiwi_bin_url = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/augments.bin.json"
         if kiwi_bin_url in self.__class__.data_cache["online"]:
-            self.kiwi_bin = self.__class__.data_cache["online"][kiwi_bin_url]
+            self.kiwi_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][kiwi_bin_url]
         else:
             source, status, self.session = requestUrl("GET", kiwi_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == 404:
                     logPrint("海克斯大乱斗强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nARAM: Mayhem augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(kiwi_bin_url))
-                    self.kiwi_bin: dict[str, list[str] | dict[str, Any]] = {}
+                    self.kiwi_bin = {}
                 else:
                     logPrint('海克斯大乱斗强化符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nARAM: Mayhem augment data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.')
                     time.sleep()
                     self.init_data_readiness()
                     return
             else:
-                self.kiwi_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+                self.kiwi_bin = source.json()
+                self.kiwi_bin = self.resolve_bin_hash(self.kiwi_bin)
             self.__class__.data_cache["online"][kiwi_bin_url] = self.kiwi_bin
         self.augments_ready["kiwi"] = True
     
@@ -5719,46 +5756,51 @@ class AugmentExtractor(LoLDataExtractor):
         #怒火角斗场地图（Rings of Wrath map）
         map30_bin_path: str = paths[0]
         if map30_bin_path in self.__class__.data_cache["local"]:
-            self.map30_bin = self.__class__.data_cache["local"][map30_bin_path]
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map30_bin_path]
         else:
             with open(map30_bin_path, "r", encoding = "utf-8") as fp:
-                self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.map30_bin = json.load(fp)
+            self.map30_bin = self.resolve_bin_hash(self.map30_bin)
             self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
         self.augments_ready["map30"] = True
         #斗魂竞技场模式（Arena mode）
         cherry_bin_path: str = paths[1]
         if cherry_bin_path in self.__class__.data_cache["local"]:
-            self.cherry_bin = self.__class__.data_cache["local"][cherry_bin_path]
+            self.cherry_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][cherry_bin_path]
         else:
             with open(cherry_bin_path, "r", encoding = "utf-8") as fp:
-                self.cherry_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.cherry_bin = json.load(fp)
+            self.cherry_bin = self.resolve_bin_hash(self.cherry_bin)
             self.__class__.data_cache["local"][cherry_bin_path] = self.cherry_bin
         self.augments_ready["cherry"] = True
         #最终都市地图（Final City map）
         map33_bin_path: str = paths[2]
         if map33_bin_path in self.__class__.data_cache["local"]:
-            self.map33_bin = self.__class__.data_cache["local"][map33_bin_path]
+            self.map33_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map33_bin_path]
         else:
             with open(map33_bin_path, "r", encoding = "utf-8") as fp:
-                self.map33_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.map33_bin = json.load(fp)
+            self.map33_bin = self.resolve_bin_hash(self.map33_bin)
             self.__class__.data_cache["local"][map33_bin_path] = self.map33_bin
         self.augments_ready["map33"] = True
         #嚎哭深渊地图（Howling Abyss map）
         map12_bin_path: str = paths[3]
         if map12_bin_path in self.__class__.data_cache["local"]:
-            self.map12_bin = self.__class__.data_cache["local"][map12_bin_path]
+            self.map12_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map12_bin_path]
         else:
             with open(map12_bin_path, "r", encoding = "utf-8") as fp:
-                self.map12_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.map12_bin = json.load(fp)
+            self.map12_bin = self.resolve_bin_hash(self.map12_bin)
             self.__class__.data_cache["local"][map12_bin_path] = self.map12_bin
         self.augments_ready["map12"] = True
         #海克斯大乱斗模式（ARAM: Mayhem mode）
         kiwi_bin_path: str = paths[4]
         if kiwi_bin_path in self.__class__.data_cache["local"]:
-            self.kiwi_bin = self.__class__.data_cache["local"][kiwi_bin_path]
+            self.kiwi_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][kiwi_bin_path]
         else:
             with open(kiwi_bin_path, "r", encoding = "utf-8") as fp:
-                self.kiwi_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.kiwi_bin = json.load(fp)
+            self.kiwi_bin = self.resolve_bin_hash(self.kiwi_bin)
             self.__class__.data_cache["local"][kiwi_bin_path] = self.kiwi_bin
         self.augments_ready["kiwi"] = True
     
@@ -6322,55 +6364,60 @@ class AnvilExtractor(LoLDataExtractor):
         #怒火角斗场地图（Rings of Wrath map）
         map30_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map30/map30.bin.json"
         if map30_bin_url in self.__class__.data_cache["online"]:
-            self.map30_bin = self.__class__.data_cache["online"][map30_bin_url]
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map30_bin_url]
         else:
             source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session, log = self.log)
             if status != 200:
-                if status == -1:
-                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
-                elif status == 404:
+                if status == 404:
                     logPrint("怒火角斗场地图信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(map30_bin_url))
+                else:
+                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+            self.map30_bin = source.json()
+            self.map30_bin = self.resolve_bin_hash(self.map30_bin)
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.anvils_ready["map30"] = True
         if Patch(self.patch_number) >= Patch("16.2"):
             #嚎哭深渊地图（Howling Abyss map）
             map12_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map12/map12.bin.json"
             if map12_bin_url in self.__class__.data_cache["online"]:
-                self.KiwiAnvils_bin = self.__class__.data_cache["online"][map12_bin_url]
+                self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map12_bin_url]
             else:
                 source, status, self.session = requestUrl("GET", map12_bin_url, session = self.session, log = self.log)
                 if status != 200:
                     if status == 404:
                         logPrint("嚎哭深渊地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
-                        self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = {}
+                        self.KiwiAnvils_bin = {}
                     else:
                         logPrint("嚎哭深渊地图信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(map12_bin_url))
                         time.sleep()
                         self.init_data_readiness()
                         return
                 else:
-                    self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+                    self.KiwiAnvils_bin = source.json()
+                    self.KiwiAnvils_bin = self.resolve_bin_hash(self.KiwiAnvils_bin)
                 self.__class__.data_cache["online"][map12_bin_url] = self.KiwiAnvils_bin
         else:
             #海克斯大乱斗模式（ARAM: Mayhem mode）
             kiwi_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/augments.bin.json"
             if kiwi_bin_url in self.__class__.data_cache["online"]:
-                self.KiwiAnvils_bin = self.__class__.data_cache["online"][kiwi_bin_url]
+                self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][kiwi_bin_url]
             else:
                 source, status, self.session = requestUrl("GET", kiwi_bin_url, session = self.session, log = self.log)
                 if status != 200:
-                    if status == -1:
+                    if status == 404:
                         logPrint("海克斯大乱斗强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nARAM: Mayhem augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(kiwi_bin_url))
-                    elif status == 404:
+                        self.KiwiAnvils_bin = {}
+                    else:
                         logPrint('海克斯大乱斗强化符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nARAM: Mayhem augment data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.')
-                    time.sleep(3)
-                    self.init_data_readiness()
-                    return
-                self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+                        time.sleep(3)
+                        self.init_data_readiness()
+                        return
+                else:
+                    self.KiwiAnvils_bin = source.json()
+                    self.KiwiAnvils_bin = self.resolve_bin_hash(self.KiwiAnvils_bin)
                 self.__class__.data_cache["online"][kiwi_bin_url] = self.KiwiAnvils_bin
         self.anvils_ready["kiwi"] = True
     
@@ -6396,19 +6443,21 @@ class AnvilExtractor(LoLDataExtractor):
         #怒火角斗场地图（Rings of Wrath map）
         map30_bin_path: str = paths[0]
         if map30_bin_path in self.__class__.data_cache["local"]:
-            self.map30_bin = self.__class__.data_cache["local"][map30_bin_path]
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map30_bin_path]
         else:
             with open(map30_bin_path, "r", encoding = "utf-8") as fp:
-                self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.map30_bin = json.load(fp)
+            self.map30_bin = self.resolve_bin_hash(self.map30_bin)
             self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
         self.anvils_ready["map30"] = True
         #海克斯大乱斗锻造器（ARAM: Mayhem anvils）
         KiwiAnvils_bin_path: str = paths[1]
         if KiwiAnvils_bin_path in self.__class__.data_cache["local"]:
-            self.KiwiAnvils_bin = self.__class__.data_cache["local"][KiwiAnvils_bin_path]
+            self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][KiwiAnvils_bin_path]
         else:
             with open(KiwiAnvils_bin_path, "r", encoding = "utf-8") as fp:
-                self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.KiwiAnvils_bin = json.load(fp)
+            self.KiwiAnvils_bin = self.resolve_bin_hash(self.KiwiAnvils_bin)
             self.__class__.data_cache["local"][KiwiAnvils_bin_path] = self.KiwiAnvils_bin
         self.anvils_ready["kiwi"] = True
     
@@ -6679,7 +6728,7 @@ class CherryRoundExtractor(LoLDataExtractor):
         logPrint = self.log.logPrint
         map30_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map30/map30.bin.json"
         if map30_bin_url in self.__class__.data_cache["online"]:
-            self.map30_bin = self.__class__.data_cache["online"][map30_bin_url]
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map30_bin_url]
         else:
             source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session, log = self.log)
             if status != 200:
@@ -6690,7 +6739,8 @@ class CherryRoundExtractor(LoLDataExtractor):
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+            self.map30_bin = source.json()
+            self.map30_bin = self.resolve_bin_hash(self.map30_bin)
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.map30_ready = True
     
@@ -6708,10 +6758,11 @@ class CherryRoundExtractor(LoLDataExtractor):
             return
         map30_bin_path: str = path
         if map30_bin_path in self.__class__.data_cache["local"]:
-            self.map30_bin = self.__class__.data_cache["local"][map30_bin_path]
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map30_bin_path]
         else:
             with open(map30_bin_path, "r", encoding = "utf-8") as fp:
-                self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.map30_bin = json.load(fp)
+            self.map30_bin = self.resolve_bin_hash(self.map30_bin)
             self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
         self.map30_ready = True
     
@@ -6954,20 +7005,19 @@ class CameoExtractor(LoLDataExtractor):
         logPrint = self.log.logPrint
         map30_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map30/map30.bin.json"
         if map30_bin_url in self.__class__.data_cache["online"]:
-            self.map30_bin = self.__class__.data_cache["online"][map30_bin_url]
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map30_bin_url]
         else:
             source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == 404:
-                    logPrint("斗魂竞技场场景英雄信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nArena cameo data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map30_bin_url))
-                    self.map30_bin: dict[str, list[str] | dict[str, Any]] = {}
+                    logPrint("斗魂竞技场场景英雄信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nArena cameo data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(map30_bin_url))
                 else:
                     logPrint('斗魂竞技场场景英雄信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nArena cameo data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.')
-                    time.sleep()
-                    self.init_data_readiness()
-                    return
-            else:
-                self.map30_bin = self.resolve_bin_hash(source.json())
+                time.sleep(3)
+                self.init_data_readiness()
+                return
+            self.map30_bin = source.json()
+            self.map30_bin = self.resolve_bin_hash(self.map30_bin)
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.cameo_ready = True
     
@@ -6985,10 +7035,11 @@ class CameoExtractor(LoLDataExtractor):
             return
         map30_bin_path: str = path
         if map30_bin_path in self.__class__.data_cache["local"]:
-            self.map30_bin = self.__class__.data_cache["local"][map30_bin_path]
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map30_bin_path]
         else:
             with open(map30_bin_path, "r", encoding = "utf-8") as fp:
-                self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.map30_bin = json.load(fp)
+            self.map30_bin = self.resolve_bin_hash(self.map30_bin)
             self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
         self.cameo_ready = True
     
@@ -7149,37 +7200,37 @@ class GoHExtractor(LoLDataExtractor):
         #怒火角斗场地图（Rings of Wrath map）
         map30_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map30/map30.bin.json"
         if map30_bin_url in self.__class__.data_cache["online"]:
-            self.map30_bin = self.__class__.data_cache["online"][map30_bin_url]
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map30_bin_url]
         else:
             source, status, self.session = requestUrl("GET", map30_bin_url, session = self.session, log = self.log)
             if status != 200:
-                if status == -1:
-                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
-                elif status == 404:
+                if status == 404:
                     logPrint("怒火角斗场地图信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(map30_bin_url))
+                else:
+                    logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+            self.map30_bin = source.json()
+            self.map30_bin = self.resolve_bin_hash(self.map30_bin)
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.GoH_ready["map30"] = True
         #斗魂竞技场模式（Arena mode）
         cherry_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/cherry.bin.json"
         if cherry_bin_url in self.__class__.data_cache["online"]:
-            self.cherry_bin = self.__class__.data_cache["online"][cherry_bin_url]
+            self.cherry_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][cherry_bin_url]
         else:
             source, status, self.session = requestUrl("GET", cherry_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == 404:
-                    logPrint("斗魂竞技场模式专属信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nArena mode specific data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(cherry_bin_url))
-                    self.cherry_bin: dict[str, list[str] | dict[str, Any]] = {}
+                    logPrint("斗魂竞技场模式专属信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nArena mode specific data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(cherry_bin_url))
                 else:
                     logPrint('斗魂竞技场模式专属信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nArena mode specific data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.')
-                    time.sleep()
-                    self.init_data_readiness()
-                    return
-            else:
-                self.cherry_bin = self.resolve_bin_hash(source.json())
+                time.sleep(3)
+                self.init_data_readiness()
+                return
+            self.cherry_bin = source.json()
+            self.cherry_bin = self.resolve_bin_hash(self.cherry_bin)
             self.__class__.data_cache["online"][cherry_bin_url] = self.cherry_bin
         self.GoH_ready["cherry"] = True
     
@@ -7205,19 +7256,21 @@ class GoHExtractor(LoLDataExtractor):
         #怒火角斗场地图（Rings of Wrath map）
         map30_bin_path: str = paths[0]
         if map30_bin_path in self.__class__.data_cache["local"]:
-            self.map30_bin = self.__class__.data_cache["local"][map30_bin_path]
+            self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map30_bin_path]
         else:
             with open(map30_bin_path, "r", encoding = "utf-8") as fp:
-                self.map30_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.map30_bin = json.load(fp)
+            self.map30_bin = self.resolve_bin_hash(self.map30_bin)
             self.__class__.data_cache["local"][map30_bin_path] = self.map30_bin
         self.GoH_ready["map30"] = True
         #斗魂竞技场模式（Arena mode）
         cherry_bin_path: str = paths[1]
         if cherry_bin_path in self.__class__.data_cache["local"]:
-            self.cherry_bin = self.__class__.data_cache["local"][cherry_bin_path]
+            self.cherry_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][cherry_bin_path]
         else:
             with open(cherry_bin_path, "r", encoding = "utf-8") as fp:
-                self.cherry_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.cherry_bin = json.load(fp)
+            self.cherry_bin = self.resolve_bin_hash(self.cherry_bin)
             self.__class__.data_cache["local"][cherry_bin_path] = self.cherry_bin
         self.GoH_ready["cherry"] = True
     
@@ -7453,18 +7506,19 @@ class TFTExtractor(LoLDataExtractor):
         logPrint = self.log.logPrint
         map22_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map22/map22.bin.json"
         if map22_bin_url in self.__class__.data_cache["online"]:
-            self.map22_bin = self.__class__.data_cache["online"][map22_bin_url]
+            self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map22_bin_url]
         else:
             source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session, log = self.log)
             if status != 200:
-                if status == -1:
-                    logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
-                elif status == 404:
+                if status == 404:
                     logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nConvergence map data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(map22_bin_url))
+                else:
+                    logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+            self.map22_bin = source.json()
+            self.map22_bin = self.resolve_bin_hash(self.map22_bin)
             self.__class__.data_cache["online"][map22_bin_url] = self.map22_bin
         self.map22_ready = True
 
@@ -7482,10 +7536,11 @@ class TFTExtractor(LoLDataExtractor):
             return
         map22_bin_path: str = path
         if map22_bin_path in self.__class__.data_cache["local"]:
-            self.map22_bin = self.__class__.data_cache["local"][map22_bin_path]
+            self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map22_bin_path]
         else:
             with open(map22_bin_path, "r", encoding = "utf-8") as fp:
-                self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.map22_bin = json.load(fp)
+            self.map22_bin = self.resolve_bin_hash(self.map22_bin)
             self.__class__.data_cache["local"][map22_bin_path] = self.map22_bin
         self.map22_ready = True
 
@@ -8866,18 +8921,19 @@ class FontExtractor(LoLDataExtractor):
         logPrint = self.log.logPrint
         fonts_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/ux/fonts.cdtb.bin.json"
         if fonts_bin_url in self.__class__.data_cache["online"]:
-            self.fonts_bin = self.__class__.data_cache["online"][fonts_bin_url]
+            self.fonts_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][fonts_bin_url]
         else:
             source, status, self.session = requestUrl("GET", fonts_bin_url, session = self.session, log = self.log)
             if status != 200:
-                if status == -1:
-                    logPrint("字体信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nFont data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
-                elif status == 404:
+                if status == 404:
                     logPrint("字体信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nFont data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(fonts_bin_url))
+                else:
+                    logPrint("字体信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nFont data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                 time.sleep(3)
                 self.init_data_readiness()
                 return
-            self.fonts_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(source.json())
+            self.fonts_bin = source.json()
+            self.fonts_bin = self.resolve_bin_hash(self.fonts_bin)
             self.__class__.data_cache["online"][fonts_bin_url] = self.fonts_bin
         self.font_ready = True
 
@@ -8895,10 +8951,11 @@ class FontExtractor(LoLDataExtractor):
             return
         fonts_bin_path: str = path
         if fonts_bin_path in self.__class__.data_cache["local"]:
-            self.fonts_bin = self.__class__.data_cache["local"][fonts_bin_path]
+            self.fonts_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][fonts_bin_path]
         else:
             with open(fonts_bin_path, "r", encoding = "utf-8") as fp:
-                self.fonts_bin: dict[str, list[str] | dict[str, Any]] = self.resolve_bin_hash(json.load(fp))
+                self.fonts_bin = json.load(fp)
+            self.fonts_bin = self.resolve_bin_hash(self.fonts_bin)
             self.__class__.data_cache["local"][fonts_bin_path] = self.fonts_bin
         self.font_ready = True
 
@@ -10635,30 +10692,40 @@ if __name__ == "__main__":
             tftstringtable_en = json.load(fp)
         ##地图（Map）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
-        #     map22_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
+        #     map22_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # map22_bin = LoLDataExtractor.resolve_bin_hash(map22_bin)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
-        #     map30_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
+        #     map30_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # map30_bin = LoLDataExtractor.resolve_bin_hash(map30_bin)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map33/map33.bin.json", "r", encoding = "utf-8") as fp:
-        #     map33_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
+        #     map33_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # map33_bin = LoLDataExtractor.resolve_bin_hash(map33_bin)
         ##装备（Item）
         with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
-            items_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
+            items_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        items_bin = LoLDataExtractor.resolve_bin_hash(items_bin)
         ##共享数据（Shared data）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/shared.cdtb.bin.json", "r", encoding = "utf-8") as fp:
-        #     shared_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
+        #     shared_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # shared_bin = LoLDataExtractor.resolve_bin_hash(shared_bin)
         ##符文（Perk）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/perks.cdtb.bin.json", "r", encoding = "utf-8") as fp:
-        #     perks_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
+        #     perks_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # perks_bin = LoLDataExtractor.resolve_bin_hash(perks_bin)
         ##强化符文和荣誉嘉宾（Augment and Guest of Honor）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
-        #     cherry_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
+        #     cherry_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # cherry_bin = LoLDataExtractor.resolve_bin_hash(cherry_bin)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
-        #     kiwi_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
+        #     kiwi_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # kiwi_bin = LoLDataExtractor.resolve_bin_hash(kiwi_bin)
         ##整合后的数据（Merged data）
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
-        #     champions_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
+        #     champions_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # champions_bin = LoLDataExtractor.resolve_bin_hash(champions_bin)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/characters_bin.json", "r", encoding = "utf-8") as fp:
-        #     characters_bin = LoLDataExtractor.resolve_bin_hash(json.load(fp))
+        #     characters_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # characters_bin = LoLDataExtractor.resolve_bin_hash(characters_bin)
         
         #数据准备（Data preparation）
         # for (key, value) in shared_bin.items():
