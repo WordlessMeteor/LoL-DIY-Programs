@@ -38,7 +38,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/05/29
+# 更新（Last update）：     2026/06/01
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1439,12 +1439,12 @@ async def sort_ranked_ladders(connection: Connection, puuid: str) -> pandas.Data
                 while not standing_summoner["info_got"] and standing_summoner["body"]["httpStatus"] != 404 and standing_summoner_recapture < 3:
                     logPrint(standing_summoner["message"])
                     standing_summoner_recapture += 1
-                    logPrint("顶级%s%s玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of top %s %s player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d" %(queueTypes[ladder["queueType"]], tiers_all[ladder["tier"]], standing["puuid"], standing_summoner_recapture, queueTypes[ladder["queueType"]], tiers_all[ladder["tier"]], standing["puuid"], standing_summoner_recapture))
+                    logPrint("顶级%s%s玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of top %s %s player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d" %(queueTypes[ladder["queueType"]], tiers_all[ladder["tier"]], standing["puuid"], standing_summoner_recapture, ladder["queueType"], ladder["tier"], standing["puuid"], standing_summoner_recapture))
                     standing_summoner = await get_info(connection, standing["puuid"])
                 info_got = standing_summoner["info_got"]
                 if not info_got:
                     logPrint(standing_summoner["message"])
-                    logPrint("顶级%s%s玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of top %s %s player (puuid: %s) capture failed!" %(queueTypes[ladder["queueType"]], tiers_all[ladder["tier"]], standing["puuid"], queueTypes[ladder["queueType"]], tiers_all[ladder["tier"]], standing["puuid"]))
+                    logPrint("顶级%s%s玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of top %s %s player (puuid: %s) capture failed!" %(queueTypes[ladder["queueType"]], tiers_all[ladder["tier"]], standing["puuid"], ladder["queueType"], ladder["tier"], standing["puuid"]))
                 for l in range(len(ladder_header_keys)):
                     key = ladder_header_keys[l]
                     if l == 0:
