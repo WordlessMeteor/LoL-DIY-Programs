@@ -1620,7 +1620,8 @@ objectiveTypes: dict[str, str] = {
 rewardGroupStrategies: dict[str, str] = {
     "": "",
     "ALL_GROUPS": "所有分组",
-    "SELECT_GROUPS": "选定分组"
+    "SELECT_GROUPS": "选定分组",
+    "OBJECTIVE_GROUPS": "目标分组"
 }
 rewardTypes: dict[str, str] = {
     "BLUE_ESSENCE": "蓝色精萃",
@@ -2420,7 +2421,8 @@ honorType_tooltip_bodies: dict[str, str] = {
 # rewardGroupStrategies: dict[str, str] = {
 #     "": "",
 #     "ALL_GROUPS": "ALL_GROUPS",
-#     "SELECT_GROUPS": "SELECT_GROUPS"
+#     "SELECT_GROUPS": "SELECT_GROUPS",
+#     "OBJECTIVE_GROUPS": "OBJECTIVE_GROUPS"
 # }
 # rewardTypes: dict[str, str] = {
 #     "BLUE_ESSENCE": "Blue Essence",
