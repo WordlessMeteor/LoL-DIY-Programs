@@ -21,7 +21,7 @@ from src.core.dataframes.champions import sort_champion_summary
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/27
+# 更新（Last update）：     2026/06/01
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2182,6 +2182,9 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
             version: str = logInput()
             if version == "":
                 versions_sort: list[str] = ["pbe"]
+                break
+            elif version == "both":
+                versions_sort = ["latest", "pbe"]
                 break
             elif version == "all":
                 versions_sort = patches_cdragon

@@ -1,7 +1,7 @@
 import argparse, copy, json, os, pandas, re, requests, sys, time, warnings
 from pathlib import Path
 from urllib.parse import urljoin
-from xxhash import xxh3_64_intdigest
+from xxhash import xxh3_64_intdigest, xxh64_intdigest
 from openpyxl import load_workbook, Workbook
 from typing import Any, Callable, Iterable, Literal, Optional
 wd: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")).replace("\\", "/")
@@ -413,8 +413,13 @@ class LoLDataExtractor:
     ZH_LOCALE: set[str] = {"zh_CN", "zh_MY", "zh_TW"} #使用中文提示语的语言文化代码（Language codes that use Chinese prompts）
     FULL_WIDTH_LOCALE: set[str] = {"ja_JP", "ko_KR", "zh_CN", "zh_MY", "zh_TW"} #使用全角标点符号的语言文化代码（Language codes that use full-width punctuation marks）
     #定义类属性，作为类内临时使用的全局变量（Define class attributes as temporarily used global variables within the class）
-    bin_hashtable: dict[str, str] = {} #缓存二进制描述数据中所有字符串的散列表。键是每个字符串的散列值，值是每个字符串（Cache the hashtable of all strings in the binary description data. Each key is the hash value of a string, and each value is the string）
-    bin_hash_ready: bool = False #二进制描述数据中的字符串散列表是否已经准备就绪（Whether the string hashtable for binary description data is ready）
+    bin_hashtable_entry: dict[str, str] = {} #缓存二进制描述数据中所有主键的散列表。键是每个主键的散列值，值是每个主键（Cache the hashtable of all primary keys in the binary description data. Each key is the hash value of a primary key, and each value is a primary key）
+    bin_hashtable_type: dict[str, str] = {} #缓存二进制描述数据中所有对象类型的散列表。键是每个对象类型的散列值，值是每个对象类型（Cache the hashtable of all object types in the binary description data. Each key is the hash value of an object type, and each value is an object type）
+    bin_hashtable_field: dict[str, str] = {} #缓存二进制描述数据中所有字段（键值对的键）的散列表。键是每个字段的散列值，值是每个字段【Cache the hashtable of all fields (the keys in key-value pairs) in the binary description data. Each key is the hash value of a field, and each value is a field】
+    bin_hashtable_value: dict[str, str] = {} #缓存二进制描述数据中所有字符串值（键值对的值）的散列表。键是每个字符串值的散列值，值是每个字符串值【Cache the hashtable of all string values (the values in key-value pairs) in the binary description data. Each key is the hash value of a string value, and each value is a string value】
+    # bin_hashtable_gamePath: dict[str, str] = {} #缓存二进制描述数据中所有路径字符串的散列表。键是每个路径字符串的散列值，值是每个路径字符串（Cache the hashtable of all path strings in the binary description data. Each key is the hash value of a path string, and each value is a path string）
+    bin_hashtable_merged: dict[str, str] = {} #缓存二进制描述数据中所有字符串的散列表。键是每个字符串的散列值，值是每个字符串（Cache the hashtable of all strings in the binary description data. Each key is the hash value of a string, and each value is the string）
+    bin_hash_ready: dict[str, bool] = {"entry": False, "type": False, "field": False, "hash": False, "gamePath": False} #二进制描述数据中的字符串散列表是否已经准备就绪（Whether the string hashtable for binary description data is ready）
     deep_resolve_hash: bool = False #是否在解析二进制描述数据中的字符串时进行深度解析。深度解析会对字符串重新计算hash值，然后从二进制条目散列表中查找是否存在hash值，从而确保不同版本的字符串保持一致（Whether to perform deep resolution when parsing strings in binary description data. Deep resolution will recalculate the hash value of a string, and then look up whether this hash value exists in the binary entry hashtable, thus ensuring the consistency of strings across different versions）
     optimize_tooltip_layout: bool = True #是否对说明文本的布局进行优化。决定变量代换时使用tooltipTransform还是tooltipSubstitute方法（Whether to optimize the layout of tooltips. Determines which one of `tooltipTransform` and `tooltipSubstitute` is used during variable substitution）
     reserve_variable: bool = False #是否在变量代换时保留变量名。如果保留，则说明文本会同时带有变量名和值。这个属性应只在本基类中声明（Whether to reserve the variable during its substitution. If reserve, then the tooltip will have both name and value of the variable. This attribute should only be declared in this base class）
@@ -815,41 +820,117 @@ class LoLDataExtractor:
         self.sheet_naming_fold = False
         return self.sheet_naming_fold
     
+    #获取二进制条目散列表（Get binary entry hashtable）
     @classmethod
     def init_bin_hash_readiness(cls) -> None:
         '''
         将二进制条目散列表准备就绪状态初始化为未就绪。<br>Initialize the readiness of the binary entry hash table as not ready.
         '''
-        cls.bin_hashtable_ready = False
+        cls.bin_hash_ready = {hashType: False for hashType in cls.bin_hash_ready}
     
+    @staticmethod
+    def parse_hashes(hash_text: str) -> dict[str, str]:
+        '''
+        将从网页或者本地文件获取的散列表文本解析成字典。<br>Parse the hashtable text obtained from a webpage or a local file into a dictionary.
+        
+        :param hash_text: 通过网络请求获取的或者从本地文件读取的散列表文本。<br>Hash table text obtained from a web request or read from a local file.
+        :type hash_text: str
+        :return: 解析后的散列表。<br>The parsed hashtable.
+        :rtype: dict[str, str]
+        '''
+        return {"{" + line.split(" ")[0] + "}": line.split(" ")[1] for line in hash_text.strip("\n").splitlines()}
+
     def get_bin_hashes(self) -> None: #在线加载——供用户使用（Online loading - For user use）
         '''
         在线加载用于解析二进制描述数据中的字符串的散列表。<br>Load the hashtable for parsing strings in binary description data online.
         '''
-        bin_hash_urls: list[str] = [
-            "https://raw.communitydragon.org/data/hashes/lol/hashes.binentries.txt",
-            "https://raw.communitydragon.org/data/hashes/lol/hashes.binfields.txt",
-            "https://raw.communitydragon.org/data/hashes/lol/hashes.binhashes.txt",
-            "https://raw.communitydragon.org/data/hashes/lol/hashes.bintypes.txt"
-        ] #顺序会影响重合hash值最终的字符串大小写。对深度解析模式影响较大（The order will affect the capitalization of the string for hash values that appear in multiple files. It has a bigger impact on deep resolution mode）
-        for i in range(len(bin_hash_urls)):
-            bin_hash_url: str = bin_hash_urls[i]
-            if bin_hash_url in self.__class__.data_cache["online"]:
-                self.__class__.bin_hashtable.update(self.__class__.data_cache["online"][bin_hash_url])
-            else:
-                source, status, self.session = requestUrl("GET", bin_hash_url, session = self.session, log = self.log) #之所以将这个函数设计成一个对象方法而不是类方法或者静态方法，是因为它需要调用对象的会话和日志管理对象（The reason why this function is designed as an object method instead of a class method or static method is that it needs to call the session and log manager of the object）
-                if status != 200:
-                    if status == 404:
-                        logPrint("二进制条目散列表获取失败！请检查以下链接的可用性。程序将跳过散列表的获取。\nBinary entry hash table capture failure! Please check the URL availability. The program will skip the hash table retrieval.\n%s" %(bin_hash_url))
-                    else:
-                        logPrint("二进制条目散列表获取失败！请检查系统网络状况和代理设置。程序将跳过散列表的获取。\nBinary entry hash table capture failure! Please check the system network condition and proxy configuration. The program will skip the hash table retrieval.")
-                    self.init_bin_hash_readiness()
-                    return
-                bin_hash_data: dict[str, str] = {"{" + line.split(" ")[0] + "}": line.split(" ")[1] for line in source.text.strip("\n").splitlines()}
-                self.__class__.bin_hashtable.update(bin_hash_data)
-                self.__class__.data_cache["online"][bin_hash_url] = bin_hash_data
+        #主键散列表（Primary key hashtable）
+        bin_hash_entry_url: str = "https://raw.communitydragon.org/data/hashes/lol/hashes.binentries.txt"
+        if bin_hash_entry_url in self.__class__.data_cache["online"]:
+            self.__class__.bin_hashtable_entry = self.__class__.data_cache["online"][bin_hash_entry_url]
         else:
-            self.__class__.bin_hash_ready = True
+            source, status, self.session = requestUrl("GET", bin_hash_entry_url, session = self.session, log = self.log) #之所以将这个函数设计成一个对象方法而不是类方法或者静态方法，是因为它需要调用对象的会话和日志管理对象（The reason why this function is designed as an object method instead of a class method or static method is that it needs to call the session and log manager of the object）
+            if status != 200:
+                if status == 404:
+                    logPrint("主键散列表获取失败！请检查以下链接的可用性。程序将跳过该散列表的获取。\nPrimary key hash table capture failure! Please check the URL availability. The program will skip the hash table retrieval.\n%s" %(bin_hash_entry_url))
+                else:
+                    logPrint("主键散列表获取失败！请检查系统网络状况和代理设置。程序将跳过该散列表的获取。\nPrimary key hash table capture failure! Please check the system network condition and proxy configuration. The program will skip the hash table retrieval.")
+                self.__class__.bin_hashtable_entry = {}
+            else:
+                self.__class__.bin_hashtable_entry = self.parse_hashes(source.text)
+            self.__class__.data_cache["online"][bin_hash_entry_url] = self.__class__.bin_hashtable_entry
+        self.__class__.bin_hashtable_merged.update(self.__class__.bin_hashtable_entry)
+        self.__class__.bin_hash_ready["entry"] = True
+        #字段散列表（Field hashtable）
+        bin_hash_field_url: str = "https://raw.communitydragon.org/data/hashes/lol/hashes.binfields.txt"
+        if bin_hash_field_url in self.__class__.data_cache["online"]:
+            self.__class__.bin_hashtable_field = self.__class__.data_cache["online"][bin_hash_field_url]
+        else:
+            source, status, self.session = requestUrl("GET", bin_hash_field_url, session = self.session, log = self.log) #之所以将这个函数设计成一个对象方法而不是类方法或者静态方法，是因为它需要调用对象的会话和日志管理对象（The reason why this function is designed as an object method instead of a class method or static method is that it needs to call the session and log manager of the object）
+            if status != 200:
+                if status == 404:
+                    logPrint("字段散列表获取失败！请检查以下链接的可用性。程序将跳过该散列表的获取。\nField hash table capture failure! Please check the URL availability. The program will skip the hash table retrieval.\n%s" %(bin_hash_field_url))
+                else:
+                    logPrint("字段散列表获取失败！请检查系统网络状况和代理设置。程序将跳过该散列表的获取。\nField hash table capture failure! Please check the system network condition and proxy configuration. The program will skip the hash table retrieval.")
+                self.__class__.bin_hashtable_field = {}
+            else:
+                self.__class__.bin_hashtable_field = self.parse_hashes(source.text)
+            self.__class__.data_cache["online"][bin_hash_field_url] = self.__class__.bin_hashtable_field
+        self.__class__.bin_hashtable_merged.update(self.__class__.bin_hashtable_field)
+        self.__class__.bin_hash_ready["field"] = True
+        #通用值散列表（Generic value hashtable）
+        bin_hash_value_url: str = "https://raw.communitydragon.org/data/hashes/lol/hashes.binhashes.txt"
+        if bin_hash_value_url in self.__class__.data_cache["online"]:
+            self.__class__.bin_hashtable_value = self.__class__.data_cache["online"][bin_hash_value_url]
+        else:
+            source, status, self.session = requestUrl("GET", bin_hash_value_url, session = self.session, log = self.log) #之所以将这个函数设计成一个对象方法而不是类方法或者静态方法，是因为它需要调用对象的会话和日志管理对象（The reason why this function is designed as an object method instead of a class method or static method is that it needs to call the session and log manager of the object）
+            if status != 200:
+                if status == 404:
+                    logPrint("通用值散列表获取失败！请检查以下链接的可用性。程序将跳过该散列表的获取。\nGeneric value hash table capture failure! Please check the URL availability. The program will skip the hash table retrieval.\n%s" %(bin_hash_value_url))
+                else:
+                    logPrint("通用值散列表获取失败！请检查系统网络状况和代理设置。程序将跳过该散列表的获取。\nGeneric value hash table capture failure! Please check the system network condition and proxy configuration. The program will skip the hash table retrieval.")
+                self.__class__.bin_hashtable_value = {}
+            else:
+                self.__class__.bin_hashtable_value = self.parse_hashes(source.text)
+            self.__class__.data_cache["online"][bin_hash_value_url] = self.__class__.bin_hashtable_value
+        self.__class__.bin_hashtable_merged.update(self.__class__.bin_hashtable_value)
+        self.__class__.bin_hash_ready["hash"] = True
+        #对象类型散列表（Object type hashtable）
+        bin_hash_type_url: str = "https://raw.communitydragon.org/data/hashes/lol/hashes.bintypes.txt"
+        if bin_hash_type_url in self.__class__.data_cache["online"]:
+            self.__class__.bin_hashtable_type = self.__class__.data_cache["online"][bin_hash_type_url]
+        else:
+            source, status, self.session = requestUrl("GET", bin_hash_type_url, session = self.session, log = self.log) #之所以将这个函数设计成一个对象方法而不是类方法或者静态方法，是因为它需要调用对象的会话和日志管理对象（The reason why this function is designed as an object method instead of a class method or static method is that it needs to call the session and log manager of the object）
+            if status != 200:
+                if status == 404:
+                    logPrint("对象类型散列表获取失败！请检查以下链接的可用性。程序将跳过该散列表的获取。\nObject type hash table capture failure! Please check the URL availability. The program will skip the hash table retrieval.\n%s" %(bin_hash_type_url))
+                else:
+                    logPrint("对象类型散列表获取失败！请检查系统网络状况和代理设置。程序将跳过该散列表的获取。\nObject type hash table capture failure! Please check the system network condition and proxy configuration. The program will skip the hash table retrieval.")
+                self.__class__.bin_hashtable_type = {}
+            else:
+                self.__class__.bin_hashtable_type = self.parse_hashes(source.text)
+            self.__class__.data_cache["online"][bin_hash_type_url] = self.__class__.bin_hashtable_type
+        self.__class__.bin_hashtable_merged.update(self.__class__.bin_hashtable_type)
+        self.__class__.bin_hash_ready["type"] = True
+        #游戏路径散列表（Game path hashtable）
+        # bin_hash_gamePath_url: str = "https://raw.communitydragon.org/data/hashes/lol/hashes.game.txt"
+        # if bin_hash_gamePath_url in self.__class__.data_cache["online"]:
+        #     self.__class__.bin_hashtable_gamePath = self.__class__.data_cache["online"][bin_hash_gamePath_url]
+        # else:
+        #     source, status, self.session = requestUrl("GET", bin_hash_gamePath_url, session = self.session, log = self.log) #之所以将这个函数设计成一个对象方法而不是类方法或者静态方法，是因为它需要调用对象的会话和日志管理对象（The reason why this function is designed as an object method instead of a class method or static method is that it needs to call the session and log manager of the object）
+        #     if status != 200:
+        #         if status == 404:
+        #             logPrint("游戏路径散列表获取失败！请检查以下链接的可用性。程序将跳过该散列表的获取。\nGame path hash table capture failure! Please check the URL availability. The program will skip the hash table retrieval.\n%s" %(bin_hash_gamePath_url))
+        #         else:
+        #             logPrint("游戏路径散列表获取失败！请检查系统网络状况和代理设置。程序将跳过该散列表的获取。\nGame path hash table capture failure! Please check the system network condition and proxy configuration. The program will skip the hash table retrieval.")
+        #         self.__class__.bin_hashtable_gamePath = {}
+        #     else:
+        #         self.__class__.bin_hashtable_gamePath = self.parse_hashes(source.text)
+        #     self.__class__.data_cache["online"][bin_hash_gamePath_url] = self.__class__.bin_hashtable_gamePath
+        # self.__class__.bin_hashtable_merged.update(self.__class__.bin_hashtable_gamePath) #因为游戏路径的加密算法和其它字符串不同，所以游戏路径计算得到的hash值和其它字符串计算得到的hash值必然不一样，所以不用担心合并的问题（Because the encryption algorithm for game paths is different from that for other strings, the hash values calculated for game paths must be different from those calculated for other strings, so no worries about merging issues）
+        # self.__class__.bin_hash_ready["gamePath"] = True
+        #汇总散列表（Merge hashtables）
+        # self.__class__.bin_hashtable_merged = {**self.__class__.bin_hashtable_entry, **self.__class__.bin_hashtable_field, **self.__class__.bin_hashtable_value, **self.__class__.bin_hashtable_type, **self.__class__.bin_hashtable_gamePath} #字典解包（Dictionary unpacking）
     
     def read_bin_hashes(self, bin_hash_paths: list[str]) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
         '''
@@ -862,7 +943,7 @@ class LoLDataExtractor:
             - hashes.binhashes.txt
             - hashes.bintypes.txt
             
-            顺序会影响重合hash值最终的字符串大小写。对深度解析模式影响较大。<br>The order will affect the final capitalization of the string for hash values that appear in multiple files. It has a bigger impact on deep resolution mode.
+            顺序会影响重合hash值在总散列表中最终的字符串大小写。对深度解析模式影响较大。<br>The order will affect the final capitalization of the string for hash values that appear in multiple files in the merged hashtable. It has a bigger impact on deep resolution mode.
         :type bin_hash_paths: list[str]
         '''
         logPrint = self.log.logPrint
@@ -874,17 +955,60 @@ class LoLDataExtractor:
                 logPrint(path)
             self.init_bin_hash_readiness()
             return
-        for bin_hash_path in bin_hash_paths:
-            if bin_hash_path in self.__class__.data_cache["local"]:
-                self.__class__.bin_hashtable.update(self.__class__.data_cache["local"][bin_hash_path])
-            else:
-                with open(bin_hash_path, "r") as fp:
-                    bin_hash_data: dict[str, str] = {"{" + line.split(" ")[0] + "}": line.split(" ")[1] for line in fp.read().strip("\n").splitlines()}
-                self.__class__.bin_hashtable.update(bin_hash_data)
-                self.__class__.data_cache["local"][bin_hash_path] = bin_hash_data
+        #主键散列表（Primary key hashtable）
+        bin_hash_entry_path: str = bin_hash_paths[0]
+        if bin_hash_entry_path in self.__class__.data_cache["local"]:
+            self.__class__.bin_hashtable_entry = self.__class__.data_cache["local"][bin_hash_entry_path]
         else:
-            self.__class__.bin_hash_ready = True
+            with open(bin_hash_entry_path, "r") as fp:
+                self.__class__.bin_hashtable_entry = self.parse_hashes(fp.read())
+            self.__class__.data_cache["local"][bin_hash_entry_path] = self.__class__.bin_hashtable_entry
+        self.__class__.bin_hashtable_merged.update(self.__class__.bin_hashtable_entry)
+        self.__class__.bin_hash_ready["entry"] = True
+        #字段散列表（Field hashtable）
+        bin_hash_field_path: str = bin_hash_paths[1]
+        if bin_hash_field_path in self.__class__.data_cache["local"]:
+            self.__class__.bin_hashtable_field = self.__class__.data_cache["local"][bin_hash_field_path]
+        else:
+            with open(bin_hash_field_path, "r") as fp:
+                self.__class__.bin_hashtable_field = self.parse_hashes(fp.read())
+            self.__class__.data_cache["local"][bin_hash_field_path] = self.__class__.bin_hashtable_field
+        self.__class__.bin_hashtable_merged.update(self.__class__.bin_hashtable_field)
+        self.__class__.bin_hash_ready["field"] = True
+        #通用值散列表（Generic value hashtable）
+        bin_hash_value_path: str = bin_hash_paths[2]
+        if bin_hash_value_path in self.__class__.data_cache["local"]:
+            self.__class__.bin_hashtable_value = self.__class__.data_cache["local"][bin_hash_value_path]
+        else:
+            with open(bin_hash_value_path, "r") as fp:
+                self.__class__.bin_hashtable_value = self.parse_hashes(fp.read())
+            self.__class__.data_cache["local"][bin_hash_value_path] = self.__class__.bin_hashtable_value
+        self.__class__.bin_hashtable_merged.update(self.__class__.bin_hashtable_value)
+        self.__class__.bin_hash_ready["hash"] = True
+        #对象类型散列表（Object type hashtable）
+        bin_hash_type_path: str = bin_hash_paths[3]
+        if bin_hash_type_path in self.__class__.data_cache["local"]:
+            self.__class__.bin_hashtable_type = self.__class__.data_cache["local"][bin_hash_type_path]
+        else:
+            with open(bin_hash_type_path, "r") as fp:
+                self.__class__.bin_hashtable_type = self.parse_hashes(fp.read())
+            self.__class__.data_cache["local"][bin_hash_type_path] = self.__class__.bin_hashtable_type
+        self.__class__.bin_hashtable_merged.update(self.__class__.bin_hashtable_type)
+        self.__class__.bin_hash_ready["type"] = True
+        #游戏路径散列表（Game path hashtable）
+        # bin_hash_gamePath_path: str = bin_hash_paths[4]
+        # if bin_hash_gamePath_path in self.__class__.data_cache["local"]:
+        #     self.__class__.bin_hashtable_gamePath = self.__class__.data_cache["local"][bin_hash_gamePath_path]
+        # else:
+        #     with open(bin_hash_gamePath_path, "r") as fp:
+        #         self.__class__.bin_hashtable_gamePath = self.parse_hashes(fp.read())
+        #     self.__class__.data_cache["local"][bin_hash_gamePath_path] = self.__class__.bin_hashtable_gamePath
+        # self.__class__.bin_hashtable_merged.update(self.__class__.bin_hashtable_gamePath)
+        # self.__class__.bin_hash_ready["gamePath"] = True
+        #汇总散列表（Merge hashtables）
+        # self.__class__.bin_hashtable_merged = {**self.__class__.bin_hashtable_entry, **self.__class__.bin_hashtable_field, **self.__class__.bin_hashtable_value, **self.__class__.bin_hashtable_type, **self.__class__.bin_hashtable_gamePath} #字典解包（Dictionary unpacking）
     
+    #清理（Clear）
     @classmethod
     def clear_cache(cls) -> None: #清空缓存（Clear data cache）
         '''
@@ -907,7 +1031,12 @@ class LoLDataExtractor:
         '''
         清空二进制条目散列表。一般情况下不需要调用此方法，因为每个hash值都是由字符串计算得到的，一定是正确的。<br>Clear the binary entry hash table. Basically, this method doesn't need to be called, because each hash value is calculated from a string, and thus must be correct.
         '''
-        cls.bin_hashtable.clear()
+        cls.bin_hashtable_entry.clear()
+        cls.bin_hashtable_field.clear()
+        cls.bin_hashtable_value.clear()
+        cls.bin_hashtable_type.clear()
+        # cls.bin_hashtable_gamePath.clear()
+        cls.bin_hashtable_merged.clear()
         cls.init_bin_hash_readiness()
     
     #类属性设置方法（Class attribute setting methods）
@@ -1363,10 +1492,17 @@ class LoLDataExtractor:
                 self.__class__.data_cache["local"][mainstringtable_default_path] = self.mainstringtable_default
             self.strtables_ready["default"] = True
     
-    @classmethod
-    def compute_rsthash(cls, s: str, version: int) -> str: #感谢CommunityDragon社群的Le poussin和Haru提供的支持（Thanks to the help from Le poussin and Haru in CommunityDragon discord server）
+    @staticmethod
+    def compute_rsthash(s: str, version: int) -> str: #感谢CommunityDragon社群的Le poussin和Haru提供的支持（Thanks to the help from Le poussin and Haru in CommunityDragon discord server）
         '''
         计算某个字符串键的hash值。<br>Compute the hash value of a string key.
+        
+        :param s: 要计算hash值的字符串键。<br>The string key to compute the hash value.
+        :type s: str
+        :param version: 字符串常量池版本。<br>Stringtable version.
+        :type version: int
+        :return: 字符串键的hash值。<br>The hash value of the string key.
+        :rtype: str
         '''
         hash_int: int = xxh3_64_intdigest(s.lower())
         if version == 5:
@@ -1377,10 +1513,15 @@ class LoLDataExtractor:
         result: str = format(low_bits, "010x")
         return "{" + result + "}"
     
-    @classmethod
-    def compute_binhash(cls, s: str) -> str: #改编自cdtb.binfile.compute_binhash函数（Adapted from `cdtb.binfile.compute_binhash`）
+    @staticmethod
+    def compute_binhash(s: str) -> str: #改编自cdtb.binfile.compute_binhash函数（Adapted from `cdtb.binfile.compute_binhash`）
         '''
         使用FNV-1a算法计算某个出现在二进制描述文件中的字符串的hash值。<br>Compute the hash value of a string appearing in some binary description file using FNV-1a algorithm.
+        
+        :param s: 要计算hash值的字符串。<br>The string to compute the hash value.
+        :type s: str
+        :return: 字符串的hash值。<br>The hash value of the string.
+        :rtype: str
         '''
         basis: int = 0x811c9dc5 #偏移基准（Offset basis）
         hash_int: int = basis
@@ -1389,8 +1530,22 @@ class LoLDataExtractor:
         result: str = format(hash_int, "08x")
         return "{" + result + "}"
     
+    @staticmethod
+    def compute_pathhash(s: str) -> str:
+        '''
+        使用XXH64算法计算某个出现在二进制描述文件或者插件json文件中的路径字符串的hash值。<br>Compute the hash value of a path string appearing in some binary description file or some plugins json file using XXH64 algorithm.
+        
+        :param s: 要计算hash值的路径字符串。<br>The path string to compute the hash value.
+        :type s: str
+        :return: 路径字符串的hash值。<br>The hash value of the path string.
+        :rtype: str
+        '''
+        hash_int: int = xxh64_intdigest(s.lower())
+        result: str = format(hash_int, "016x")
+        return "{" + result + "}"
+    
     @classmethod
-    def hash2str(cls, s: str, deep: Optional[bool] = None) -> str: #将deep设置成`Optional[bool]`类型有两个应用场景：`deep`为`None`的情形适用于本脚本在运行时实时修改类属性来调整解析深度；`deep`为逻辑值的情形适用于被其它模块调用。不过这样可能会引起一致性风险（There're two application scenarios: the one where `deep` is `None` is suitable for adjusting the resolution depth by modifying the class property in real time when the script is running; the one where `deep` is a boolean value is suitable for being called by other modules. However, this might introduce consistency risks）
+    def hash2str(cls, s: str, deep: Optional[bool] = None, hashType: Optional[str] = None) -> str: #将deep设置成`Optional[bool]`类型有两个应用场景：`deep`为`None`的情形适用于本脚本在运行时实时修改类属性来调整解析深度；`deep`为逻辑值的情形适用于被其它模块调用。不过这样可能会引起一致性风险（There're two application scenarios: the one where `deep` is `None` is suitable for adjusting the resolution depth by modifying the class property in real time when the script is running; the one where `deep` is a boolean value is suitable for being called by other modules. However, this might introduce consistency risks）
         '''
         解析一个二进制描述数据中的hash字符串，返回其原始字符串。<br>Resolve a hash string in binary description data and return its original string.
         
@@ -1405,26 +1560,80 @@ class LoLDataExtractor:
         :param s: 要解析的字符串。<br>The string to resolve.
         :type s: str
         :param deep: 是否使用深度解析模式。如果未指定，则使用数据提取基类的`deep_resolve_hash`属性。<br>Whether to use deep resolution mode. If not specified, the function will use the `deep_resolve_hash` property of the class instead.
+        
+            注：深度解析模式目前无法解析路径字符串，因为它们需要用到“hashes.game.txt”。它的hash算法是。<br>Note: Currently the deep resolution mode can't resolve stringtable and path-related strings, because they require "hashes.game.txt", which has a different algorithm from other hash tables.
         :type deep: bool | None
+        :param hashType: 散列表文件类型。有以下取值：<br>Hash table file type, which has the following values:
+        
+            1. "entry": 条目。也就是本程序常说的主键。<br>Entry, which is the primary key commonly mentioned in this program.
+            2. "type": 对象类型，作为“__type”键的值。<br>Object type, which is the value of the "__type" key.
+            3. "field": 每个字典以及嵌套字典的键值对中的键。<br>The key of the key-value pair in each dictionary and nested dictionary.
+            4. "hash": 每个字典以及嵌套字典的键值对中的字符串hash值。<br>The string hash value of the key-value pair in each dictionary and nested dictionary.
+            5. "gamePath": .wad.client文件的路径字符串hash值。<br>The path string hash value of files in .wad.client files.
+            
+            如果未指定，则使用合并后的全局散列表。注意，这可能会导致大小写与期望不符。<br>If not specified, the merged global hash table will be used. Note that this might cause the case to be inconsistent with expectation.
+        :type hashType: Literal["entry", "type", "field", "hash", "gamePath"] | None
         :return: s: 解析后的字符串。<br>The resolved string.
         :rtype: str
         '''
+        #参数预处理（Parameter preprocessing）
         if deep == None:
             deep = cls.deep_resolve_hash
+        #变量准备（Variable preparation）
+        if hashType == "entry":
+            bin_hashtable: dict[str, str] = cls.bin_hashtable_entry
+        elif hashType == "type":
+            bin_hashtable = cls.bin_hashtable_type
+        elif hashType == "field":
+            bin_hashtable = cls.bin_hashtable_field
+        elif hashType == "hash":
+            bin_hashtable = cls.bin_hashtable_value
+        # elif hashType == "gamePath":
+        #     bin_hashtable = cls.bin_hashtable_gamePath
+        else:
+            bin_hashtable = cls.bin_hashtable_merged
+        #函数主体（Function body）
         binhash_re: re.Pattern[str] = re.compile(r"\{\w{8}\}")
+        pathhash_re: re.Pattern[str] = re.compile(r"\{\w{16}\}")
+        hash_re: re.Pattern[str] = pathhash_re if hashType == "gamePath" else binhash_re
         if deep:
-            # return cls.bin_hashtable.get(s, s) if binhash_re.fullmatch(s) else cls.bin_hashtable[cls.compute_binhash(s)] if cls.compute_binhash(s) in cls.bin_hashtable else s
-            if binhash_re.fullmatch(s):
-                return cls.bin_hashtable.get(s, s)
+            if hash_re.fullmatch(s):
+                return bin_hashtable.get(s, s)
             else:
-                bin_hash: str = cls.compute_binhash(s)
-                if bin_hash in cls.bin_hashtable:
-                    return cls.bin_hashtable[bin_hash]
+                bin_hash: str = cls.compute_pathhash(s) if hashType == "gamePath" else cls.compute_binhash(s)
+                if bin_hash in bin_hashtable:
+                    return bin_hashtable[bin_hash]
                 else:
                     return s
         else:
-            return cls.bin_hashtable.get(s, s) if binhash_re.fullmatch(s) else s
+            return bin_hashtable.get(s, s) if hash_re.fullmatch(s) else s
     
+    @classmethod
+    def str2hash_bin(cls, s: str) -> str: #`hash2str`方法FNV-1a算法部分的逆运算（The inverse operation of the FNV-1a algorithm part of `hash2str` method）
+        '''
+        使用FNV-1a算法计算某个出现在二进制描述文件中的字符串的hash值。如果这个字符串已经是hash值，则直接返回该hash值。<br>Compute the hash value of a string appearing in some binary description file using FNV-1a algorithm. If the string is already a hash value, return it directly.
+        
+        :param s: 要计算hash值的字符串。<br>The string to compute the hash value.
+        :type s: str
+        :return: 字符串的hash值。<br>The hash value of the string.
+        :rtype: str
+        '''
+        binhash_re: re.Pattern[str] = re.compile(r"\{\w{8}\}")
+        return s if binhash_re.fullmatch(s) else cls.compute_binhash(s)
+    
+    @classmethod
+    def str2hash_path(cls, s: str) -> str: #`hash2str`方法XXH64算法部分的逆运算（The inverse operation of the XXH64 algorithm part of `hash2str` method）
+        '''
+        使用XXH64算法计算某个出现在二进制描述文件或者插件json文件中的字符串的hash值。如果这个字符串已经是hash值，则直接返回该hash值。<br>Compute the hash value of a string appearing in some binary description file or plugins json file using XXH64 algorithm. If the string is already a hash value, return it directly.
+        
+        :param s: 要计算hash值的字符串。<br>The string to compute the hash value.
+        :type s: str
+        :return: 字符串的hash值。<br>The hash value of the string.
+        :rtype: str
+        '''
+        pathhash_re: re.Pattern[str] = re.compile(r"\{\w{16}\}")
+        return s if pathhash_re.fullmatch(s) else cls.compute_pathhash(s)
+
     @staticmethod
     def aGet(d: Any, keys: Iterable[Any], default: Any = None) -> Any: #字典进阶get方法（An advanced version of `get` method of a dictionary）
         '''
@@ -1494,7 +1703,7 @@ class LoLDataExtractor:
         return cls.aGet(strtable["entries"], keys = keys, default = default)
     
     @classmethod
-    def resolve_bin_hash(cls, data: Any, deep: Optional[bool] = None) -> Any:
+    def resolve_bin_hash(cls, data: Any, deep: Optional[bool] = None, initial_call: bool = True, primary_fields: Optional[list[str]] = None) -> Any:
         '''
         通过一个递归算法，尝试将一段二进制描述数据中所有hash值解析为原始字符串。<br>Using a recursive algorithm, this function tries resolving all hash values in a piece of binary description data into original strings.
         
@@ -1502,6 +1711,18 @@ class LoLDataExtractor:
         :type data: Any
         :param deep: 是否使用深度解析模式。如果未指定，则使用数据提取基类的`deep_resolve_hash`属性。<br>Whether to use deep resolution mode. If not specified, the function will use the `deep_resolve_hash` property of the class instead.
         :type deep: bool | None
+        :param initial_call: 本次函数调用是否位于调用堆栈中本次函数的第一次调用。决定字典的键使用什么散列表。默认为假。<br>Whether this function call is the first call to this function in the call stack, which determines which hash table to use for the keys of a dictionary. False by default.
+        
+            在第一次调用时，字典的键将使用主键散列表。<br>At the first call, the key of the dictionary will use the primary key hash table.
+            
+            **用户在调用此函数时必须指定该参数为真。除非用户只是从一段二进制描述数据中截取了一段不含主键的子集。<br>Users must specify this parameter as true when calling this function, unless only a subset of the binary description data without primary keys is being processed.**
+        :type initial_call: bool
+        :param primary_fields: 第一次调用此函数时，字典的键列表。决定字典的值使用什么散列表。仅用于递归调用，不作为用户接口。<br>The key list of the dictionary at the first call to this function, which determines which hash table to use for the values of the dictionary. Only used for recursive calls, not as a user interface.
+        
+            如果后续调用过程中发现一个字符串的hash值出现在这个列表中，则表明其字段在bin中是一个链接型字段，指向的是一个主键，使用主键散列表；否则使用通用值散列表。<br>During subsequent calls, if the hash value of a string is found in this list, then in the bin file, its field is a link field pointing to a primary key, and the value uses the primary key hash table; otherwise, the generic value hash table will be used.
+            
+            但是一个链接型字段可能会指向其它文件中的主键，因此这个判断并不完全可靠。这种情况下，这类hash值会使用通用值散列表。<br>However, a link field may point to a primary key in another file, so this judgment isn't completely reliable. In this case, the hash value will use the generic value hash table.
+        :type primary_fields: list[str] | None
         :return: 字符串解析后的二进制描述数据。<br>String-resolved binary description data.
         
             原始设计（Initial design）：
@@ -1513,26 +1734,36 @@ class LoLDataExtractor:
             第二个元素是`data`作为一个容器时，以该容器为起点调用本函数后得到的结果。<br>When `data` is a container, the second element is the result obtained after calling this function with that container as a starting point.
         :rtype: tuple[bool, Any]
         '''
+        #参数预处理（Parameter preprocessing）
         if deep == None:
             deep = cls.deep_resolve_hash
-        if not cls.bin_hash_ready: #当散列表尚未准备就绪时，直接返回原始数据，以避免函数进行没有意义的递归调用（When the hash table isn't ready, return the original data directly to avoid meaningless recursive calls）
+        if primary_fields == None:
+            primary_fields = list(map(cls.str2hash_bin, data.keys())) if initial_call and isinstance(data, dict) else [] #在首次调用时，准备主键列表，用于判断一个字符串值是否是一个链接（At the first call, prepare a primary key list for judging whether a string value is a link）
+        #异常处理（Exception handling）
+        if not all(cls.bin_hash_ready[key] for key in ["entry", "type", "field", "hash"]): #当散列表尚未准备就绪时，直接返回原始数据，以避免函数进行没有意义的递归调用（When the hash table isn't ready, return the original data directly to avoid meaningless recursive calls）
             return data
+        #函数主体（Function body）
         if isinstance(data, dict):
             new_dict: dict[str, Any] = {} #通过新字典保持原始键值对顺序。Json中字典的键一定是字符串（Keep the original order of the key-value pairs by a new dictionary. In a json, a key of a dictionary must be a string）
             for (key, value) in data.items():
-                key_resolve: str = cls.hash2str(key, deep = deep)
-                new_data = cls.resolve_bin_hash(value, deep = deep)
-                new_dict[key_resolve] = new_data
+                if key == "__type": #对象类型字段是CDTB库将.bin文件转化为.bin.json时手动添加的，所以这个键不需要求hash值（The object type field is manually added when CDTB library converts .bin files into .bin.json files, so this key doesn't need to compute its hash value）
+                    value_resolve: str = cls.hash2str(value, deep = deep, hashType = "type")
+                    new_dict["__type"] = value_resolve
+                else:
+                    key_resolve: str = cls.hash2str(key, deep = deep, hashType = "entry" if initial_call else "field") #第一次调用时使用主键散列表。后续调用时使用字段散列表（At the first call, the primary key hash table is used. At subsequent calls, the field hash table is used）
+                    new_data = cls.resolve_bin_hash(value, deep = deep, initial_call = False, primary_fields = primary_fields) #在递归调用时，初次调用参数一定为假，所以没有必要写出来（During the recursive call, the `initial_call` parameter is definitely false, so there's no need to write it out）
+                    new_dict[key_resolve] = new_data
             return new_dict
         elif isinstance(data, list):
             new_list: list[Any] = [] #即使列表支持直接修改一个索引的元素，但是为了区分新数据和老数据，后续返回时还是返回新数据，避免在递归完成后，用户在修改新数据时意外修改原始数据（Althouth a list supports directly changing the element at a certain index, to distinguish the old and new data, the new data are still returned, in case after the recursion is finished, the original data would be changed by accident when the user had intended to change the new data）
             for i in range(len(data)):
                 element: Any = data[i]
-                new_data = cls.resolve_bin_hash(element, deep = deep)
+                new_data = cls.resolve_bin_hash(element, deep = deep, initial_call = False, primary_fields = primary_fields)
                 new_list.append(new_data)
             return new_list
         else:
-            return cls.hash2str(data, deep = deep) if isinstance(data, str) else data #从此处返回递归的上一层时，`data`将变成`new_data`直接添加到新容器中（When the recurson returns to the upper layer from here, `data` will be directly added into the new container as `new_data`）
+            #从一些图册二进制描述文件来看，深度解析模式会导致其主键路径的大小写丢失。因此本类虽然在很多地方埋下了游戏路径散列表的伏笔，但实际上并没有使用它，而是将其注释起来。如果需要使用，只需要取消相关注释，并在下一行的“entry”前添加`"gamePath" if data.lower() in cls.bin_hashtable_gamePath.values()`（From some atlas binary description files, the deep resolution mode will cause the case of the primary key - path strings to be lost. So although there are many hints of the game path hash table in this class, it isn't actually used, and is commented out instead. If you want to use this hash table, you only need to uncomment relevant code and add `"gamePath" if data.lower() in cls.bin_hashtable_gamePath.values()` in front of "entry" at the next line）
+            return cls.hash2str(data, deep = deep, hashType = "entry" if cls.str2hash_bin(data) in primary_fields else "hash") if isinstance(data, str) else data #从此处返回递归的上一层时，`data`将变成`new_data`直接添加到新容器中（When the recurson returns to the upper layer from here, `data` will be directly added into the new container as `new_data`）
     
     #定义说明文本转换函数族（Define tooltip transformation function family）
     @classmethod
@@ -1911,7 +2142,7 @@ class LoLDataExtractor:
             mBonusStatForEfficiency: float = cls.aRound(formulaPart["mBonusStatForEfficiency"], 5)
             formulaStr += " × " + str(mBonusStatForEfficiency)
         elif formulaPart_type == "{2b25a73a}": #仅用于【注魔】（Only applies to Juiced）
-            formulaStr = cls.variableCalculation(binData, formulaPart["DataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            formulaStr = cls.variableCalculation(binData, formulaPart["{137cf12a}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             formulaStr += " × " + ("最大法力值" if useCHSPrompt else "max Mana")
         elif formulaPart_type == "{4ce08984}": #仅用于不落魔锋 亚恒的【不落之志】（Only applies to ZaahenPassive）
             #下面假设所有与等级相关的值列表的所有元素相同。这样，`burnValueList`方法应当只返回一个值（We assume all elements in the value list of a level-related key are equal. In that case, `burnValueList` method should return a single value）
@@ -9623,6 +9854,9 @@ if __name__ == "__main__":
             version: str = logInput()
             if version == "":
                 versions: list[str] = ["pbe"]
+                break
+            elif version == "both":
+                versions = ["latest", "pbe"]
                 break
             elif version == "all":
                 versions = patches_cdragon
