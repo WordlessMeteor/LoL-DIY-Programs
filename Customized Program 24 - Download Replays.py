@@ -6,13 +6,14 @@ from src.utils.webRequest import SGPSession
 from src.utils.format import format_df
 from src.core.config.localization import gamemaps, gamemodes, gameTypes_history
 from src.core.dataframes.matchHistory import get_game_summary_sgp, get_game_timeline_sgp
+from src.core.process.replay import download_replay
 
 #=============================================================================
 # * 声明（Declaration）
 #=============================================================================
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
-# 更新（Last update）：     2026/04/29
+# 更新（Last update）：     2026/06/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -171,7 +172,7 @@ def sort_match_metadata(data: dict[str, Any], product: str, info_type: Literal["
             result["tags"] = json.dumps(tags, ensure_ascii = False)
     return result
 
-async def download_replay(connection: Connection, matchId: int) -> None:
+async def replayDownloader(connection: Connection, matchId: int) -> None:
     '''
     下载一场回放。<br>Download a replay.
     
@@ -231,36 +232,24 @@ async def download_replay(connection: Connection, matchId: int) -> None:
         product = "LoL"
     elif product.lower() == "tft":
         product = "TFT"
-    source: requests.Response = await sgpSession.request(connection, "GET", f"/match-history-query/v3/product/{product}/matchId/{match_id}/infoType/replay")
-    try:
-        response: Any = source.json()
-    except requests.exceptions.JSONDecodeError: #sgpSession.request方法中已经输出过相应的信息了，这里不需要再输出一次（Corresponding information has been output in `sgpSession.request` method, so here it doesn't need to be output once more）
-        content: bytes = source.content
-        try:
-            text: str = content.decode()
-        except UnicodeDecodeError:
-            with open(rofl_path, "wb") as fp:
-                fp.write(content)
-            print(f"已下载回放（Downloaded replay）： {rofl_path}")
-            if summary_got:
-                metadata: dict[str, Any] = sort_match_metadata(game_summary, product, "summary")
-            elif timeline_got:
-                metadata = sort_match_metadata(game_timeline, product, "details")
-            else:
-                metadata = {}
-            if len(metadata) > 0:
-                metadata_organized: dict[str, list[Any]] = {key: [replay_metadata_header[key], value] for (key, value) in metadata.items()}
-                metaDf: pandas.DataFrame = pandas.DataFrame(metadata_organized, index = ["中文", "Value"])
-                metaDf = metaDf.transpose()
-                print(f"回放元数据（Replay metadata）：")
-                print(format_df(metaDf, print_index = True, reserve_index = True)[0], end = "\n\n")
+    replay_downloaded, replay_download_message = await download_replay(connection, sgpSession, match_id, rofl_path, product = product)
+    if replay_downloaded:
+        print(f"已下载回放（Downloaded replay）： {rofl_path}")
+        if summary_got:
+            metadata: dict[str, Any] = sort_match_metadata(game_summary, product, "summary")
+        elif timeline_got:
+            metadata = sort_match_metadata(game_timeline, product, "details")
         else:
-            print("下载失败。\nDownload failed.")
-            print(f"响应内容（Response content）：\n{text}")
-    except AttributeError: #AttributeError: 'NoneType' object has no attribute 'json'
-        print("请求失败。\nRequest failed.")
+            metadata = {}
+        if len(metadata) > 0:
+            metadata_organized: dict[str, list[Any]] = {key: [replay_metadata_header[key], value] for (key, value) in metadata.items()}
+            metaDf: pandas.DataFrame = pandas.DataFrame(metadata_organized, index = ["中文", "Value"])
+            metaDf = metaDf.transpose()
+            print(f"回放元数据（Replay metadata）：")
+            print(format_df(metaDf, print_index = True, reserve_index = True)[0], end = "\n\n")
     else:
-        print(response)
+        print(replay_download_message)
+        print("下载失败。\nDownload failed.")
 
 async def set_replay_folder(connection: Connection) -> str:
     '''
@@ -333,7 +322,7 @@ async def connect(connection: Connection) -> None:
                     break
                 elif matchId_str.isdecimal():
                     matchId: int = int(matchId_str)
-                    await download_replay(connection, matchId)
+                    await replayDownloader(connection, matchId)
                 else:
                     print("请输入一个正整数。\nPlease input a positive integer.")
                 print('请输入要下载的对局的序号：（输入“0”以返回上一层。）\nPlease input the gameId of the match you want to download: (Submit "0" to return to the last step.)')

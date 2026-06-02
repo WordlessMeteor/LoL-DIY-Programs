@@ -10,6 +10,7 @@ from src.utils.summoner import print_summoner_info, get_info, get_info_name
 from src.core.config.const import TEST_GAME_SUMMARY
 from src.core.config.servers import set_platform_folder
 from src.core.dataframes.matchHistory import get_matchSummary_sgp, get_matchDetails_sgp, get_game_summary_sgp, get_game_timeline_sgp
+from src.core.process.replay import download_replay
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--begin", help = "指定对局序号范围的下标（Specify the lower limit of matchId range）", action = "store", type = int, default = 0)
@@ -135,6 +136,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     if func_str == "":
         print("未指定条件函数。将保存所有有效的对局概要和时间轴。\nNo condition function specified. All valid match summary and timeline will be saved.")
         func: Callable[[dict[str, Any]], bool] = lambda x: "metadata" in x and "json" in x
+        func_specified: bool = False
     else:
         try:
             func = eval(f"lambda game_summary: {func_str}")
@@ -148,7 +150,9 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
                 print("判断条件函数运行出错！\nAn error occurred when testing the condition judgment function!")
                 return -1
             else:
-                if not isinstance(tmp, bool):
+                if isinstance(tmp, bool):
+                    func_specified = True
+                else:
                     print("判断条件函数返回类型错误！\nCondition judgment function return type mismatch!")
                     return -1
     #变量和会话初始化（Variable and session initialization）
@@ -189,7 +193,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     matches_found: list[int] = []
     json_folder: str = os.path.join(set_platform_folder(region, platformId), "1. MatchIDs").replace("\\", "/")
     os.makedirs(json_folder, exist_ok = True)
-    saved_matchIds: set[int] = set(map(lambda x: int(x.split("-")[-1].split()[0]), [_ for _ in os.listdir(json_folder) if _.startswith(f"Match Information ({product}) - ") and "(SGP)" in _]))
+    saved_matchIds: set[int] = set(map(lambda x: int(x.split("-")[-1].split()[0]), [_ for _ in os.listdir(json_folder) if _.startswith("Match Information " if product == "" else f"Match Information ({product}) - ") and "(SGP)" in _]))
     downloaded_matches: set[int] = set(map(lambda x: int(os.path.splitext(os.path.basename(x))[0].split("-")[1]), [_ for _ in os.listdir(replay_folder) if _.startswith(f"{platformId}-") and os.path.splitext(_)[1] == ".rofl"]))
     #遍历对局序号（Traverse matchIds）
     gameCount: int = end_matchId - start_matchId + 1
@@ -199,6 +203,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
             break
         currentProcess: int = matchId - start_matchId + 1
         match_id: str = f"{platformId}_{matchId}"
+        #保存对局概要和时间轴（Save match summary and timeline）
         status, game_summary = await get_game_summary_sgp(connection, session, match_id, checkLoL = checkLoL, checkTFT = checkTFT, skipTFT = skipTFT)
         if status != 200:
             logPrint(f"【获取失败】[{currentProcess}/{gameCount}]对局{matchId}概要获取失败！\nMatch {matchId} summary capture failure!", print_time = True)
@@ -219,25 +224,19 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
                             with open(os.path.join(json_folder, json2name), "w", encoding = "utf-8") as fp:
                                 json.dump(game_timeline, fp, indent = 4, ensure_ascii = False)
                     saved_matchIds.add(matchId)
-                #下面下载回放（The following code download the replay）
-                if save_rofl and not matchId in downloaded_matches:
-                    rofl_name: str = f"{platformId}-{matchId}.rofl"
-                    rofl_path: str = os.path.join(replay_folder, rofl_name).replace("\\", "/")
-                    source: requests.Response = await session.request(connection, "GET", f"/match-history-query/v3/product/{product}/matchId/{match_id}/infoType/replay", verbose = True)
-                    try:
-                        response: Any = source.json()
-                    except requests.exceptions.JSONDecodeError:
-                        content: bytes = source.content
-                        try:
-                            text: str = content.decode()
-                        except UnicodeDecodeError:
-                            with open(rofl_path, "wb") as fp:
-                                fp.write(content)
-                            downloaded_matches.add(matchId)
-                    except AttributeError: #AttributeError: 'NoneType' object has no attribute 'json'
-                        pass
             else:
                 logPrint(f"【跳过对局】[{currentProcess}/{gameCount}]对局{matchId}不符合条件。\nMatch {matchId} doesn't meet the requirements.", print_time = True)
+        #下载回放（Download replay）
+        if status == 200 and func(game_summary) or not func_specified: #当对局概要正常获取且对局符合条件，或者用户没有指定任何条件时，尝试下载该对局的回放（When the game summary is fetched successfully and this match meets the condition, or the user doesn't specify any condition, the program tries downloading the replay）
+            if save_rofl and not matchId in downloaded_matches:
+                rofl_name: str = f"{platformId}-{matchId}.rofl"
+                rofl_path: str = os.path.join(replay_folder, rofl_name).replace("\\", "/")
+                replay_downloaded, replay_download_message = await download_replay(connection, session, match_id, rofl_path)
+                if replay_downloaded:
+                    downloaded_matches.add(matchId)
+                    logPrint(f"【下载回放】已下载回放（Downloaded replay）： {rofl_path}")
+                else:
+                    logPrint(f"【回放异常】{replay_download_message}")
     #保存数据到本地文件（Saved data to a local file）
     print(matches_found)
     print("[%s]" %(time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())), end = "")
@@ -397,19 +396,12 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
                     if save_rofl and not matchId in downloaded_matches:
                         rofl_name: str = f"{platformId}-{matchId}.rofl"
                         rofl_path: str = os.path.join(replay_folder, rofl_name).replace("\\", "/")
-                        source: requests.Response = await session.request(connection, "GET", f"/match-history-query/v3/product/{product}/matchId/{match_id}/infoType/replay", verbose = True)
-                        try:
-                            response: Any = source.json()
-                        except requests.exceptions.JSONDecodeError:
-                            content: bytes = source.content
-                            try:
-                                text: str = content.decode()
-                            except UnicodeDecodeError:
-                                with open(rofl_path, "wb") as fp:
-                                    fp.write(content)
-                                downloaded_matches.add(matchId)
-                        except AttributeError: #AttributeError: 'NoneType' object has no attribute 'json'
-                            pass
+                        replay_downloaded, replay_download_message = await download_replay(connection, session, match_id, rofl_path)
+                        if replay_downloaded:
+                            downloaded_matches.add(matchId)
+                            logPrint(f"【下载回放】已下载回放（Downloaded replay）： {rofl_path}")
+                        else:
+                            logPrint(f"【回放异常】{replay_download_message}")
                 else:
                     logPrint(f"【跳过对局】[{traversed_player_count}][{found_match_count}]对局{matchId}不符合条件。\nMatch {matchId} doesn't meet the requirements.")
         else:
