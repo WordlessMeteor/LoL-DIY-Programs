@@ -229,17 +229,17 @@ def eliminate_empty_fields(df: pandas.DataFrame, header: Optional[int | list[int
     elif isinstance(header, int):
         header = [header]
     if na_values == None:
-        na_values = {numpy.nan}
+        na_values = [numpy.nan]
     elif isinstance(na_values, Iterable):
-        na_values = set(na_values)
+        na_values = list(na_values)
     else:
-        na_values = {na_values}
-    empty_values: set[Any] = {0, ""} | na_values
-    record_indices: list[int] = sorted(set(range(len(df))) - set(header))
+        na_values = [na_values]
+    empty_values: list[Any] = [0, ""] + list(na_values)
+    record_indices: list[int] = sorted(set(df.index.to_list()) - set(header))
     #筛选空列（Filter for empty columns）
     fields_to_drop: list[str] = []
     for field in df.columns:
-        if any(all(map(lambda x: x == _, df[field][record_indices])) for _ in empty_values):
+        if all(map(lambda x: x in empty_values, df[field][record_indices])):
             fields_to_drop.append(field)
     #消除空列（Eliminate empty columns）
     return df.drop(fields_to_drop, axis = 1)
@@ -258,7 +258,7 @@ def addDefaultStyle(df: pandas.DataFrame) -> pandas.io.formats.style.Styler: #�
     :return: 添加样式后的数据框。<br>A dataframe added with styles.
     :rtype: pandas.io.formats.style.Styler
     '''
-    return df.style.map_index(lambda v: "text-align:center; font-weight:bold; border: 1px solid black", axis = 0).map_index(lambda v: "text-align:center; font-weight:bold; border: 1px solid black", axis = 1)
+    return df.style if df.empty else df.style.map_index(lambda v: "text-align:center; font-weight:bold; border: 1px solid black", axis = 0).map_index(lambda v: "text-align:center; font-weight:bold; border: 1px solid black", axis = 1)
 
 def lcuTime(timestamp: float) -> str: #根据对局时间轴的时间戳返回对局时间（Return the time according to the timestamp in match timeline）
     '''
