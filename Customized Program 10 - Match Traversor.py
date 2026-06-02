@@ -1,6 +1,6 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-import argparse, json, keyboard, os, random, requests, time
+import argparse, datetime, json, keyboard, os, random, requests, time
 from typing import Any, Callable, Iterable, Optional
 from typing_extensions import Literal
 from src.utils.logger import LogManager
@@ -22,7 +22,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/05/29
+# 更新（Last update）：     2026/06/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -670,19 +670,82 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
 #在这里自定义用于对局遍历函数的判断条件函数模板（Define the custom condition judgment function templates for `index_traverse_match` function hereafter）
 ##示例（Examples）
 def isKiwiMatch(game_summary: dict[str, Any]) -> bool:
+    '''
+    判断一场对局是不是海克斯大乱斗。<br>Judge whether a match is an ARAM: Mayhem game.
+
+    :param game_summary: 对局概要信息。通过以下SGP接口得到：<br>Match summary information, obtained through the following SGP endpoint:
+
+        - `GET /match-history-query/v1/products/{product}/{match_id}/SUMMARY`
+    :type game_summary: dict[str, Any]
+    :return: 该对局是否是海克斯大乱斗。<br>Whether the match is an ARAM: Mayhem game.
+    :rtype: bool
+    '''
     return game_summary["metadata"]["product"] == "LoL" and game_summary["json"]["gameMode"] == "KIWI"
 
 def isKiwiPentaMatch(game_summary: dict[str, Any]) -> bool:
+    '''
+    判断一场对局是不是出现五杀的海克斯大乱斗。<br>Judge whether a match is an ARAM: Mayhem game with at least a penta kill.
+
+    :param game_summary: 对局概要信息。通过以下SGP接口得到：<br>Match summary information, obtained through the following SGP endpoint:
+
+        - `GET /match-history-query/v1/products/{product}/{match_id}/SUMMARY`
+    :type game_summary: dict[str, Any]
+    :return: 该对局是否是出现五杀的海克斯大乱斗。<br>Whether the match is an ARAM: Mayhem game with at least a penta kill.
+    :rtype: bool
+    '''
     return game_summary["metadata"]["product"] == "LoL" and bool(game_summary["json"]) and game_summary["json"]["queueId"] == 2400 and any(map(lambda participant: bool(participant["pentaKills"]), game_summary["json"]["participants"]))
+
+filter_function_example: str = 'isKiwiMatch(game_summary) ⇔ game_summary["metadata"]["product"] == "LoL" and game_summary["json"]["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\nisKiwiPentaMatch(game_summary) ⇔ game_summary["metadata"]["product"] == "LoL" and bool(game_summary["json"]) and game_summary["json"]["queueId"] == 2400 and any(map(lambda participant: bool(participant["pentaKills"]), game_summary["json"]["participants"])) #判断对局是否是海克斯大乱斗五杀局（Judge whether a match is an ARAM: Mayhem game with at least a penta kill）'
 
 #在这里自定义用于二分查找对局函数的阈值函数模板（Define the custom threshold function templates for `binary_search_match` function hereafter）
 ##调试（Debug）
 def gameId_compare(game_summary: dict[str, Any], gameId: int) -> bool:
+    '''
+    判断一场对局的对局序号是否大于等于指定的对局序号。<br>Judge whether the matchId of a match is greater than or equal to the specified matchId.
+
+    :param game_summary: 对局概要信息。通过以下SGP接口得到：<br>Match summary information, obtained through the following SGP endpoint:
+
+        - `GET /match-history-query/v1/products/{product}/{match_id}/SUMMARY`
+    :type game_summary: dict[str, Any]
+    :param gameId: 指定的对局序号。<br>The specified matchId.
+    :type gameId: int
+    :return: 该对局的对局序号是否大于等于指定的对局序号。<br>Whether the matchId of the match is greater than or equal to the specified matchId.
+    :rtype: bool
+    '''
     return game_summary["json"]["gameId"] >= gameId
 
 ##示例（Examples）
 def first_match_after_mainteinance(game_summary: dict[str, Any], patch: str) -> bool:
+    '''
+    判断一场对局是不是某个版本的第一场对局。<br>Judge whether a match is the first one of a patch.
+
+    :param game_summary: 对局概要信息。通过以下SGP接口得到：<br>Match summary information, obtained through the following SGP endpoint:
+
+        - `GET /match-history-query/v1/products/{product}/{match_id}/SUMMARY`
+    :type game_summary: dict[str, Any]
+    :param patch: 版本号，形如“13.11”。<br>Patch number, in the form of "13.11".
+    :type patch: str
+    :return: 该对局是否是某个版本的第一场对局。<br>Whether the match is the first one of a patch.
+    :rtype: bool
+    '''
     return game_summary["json"].get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_summary["json"]["gameVersion"]) >= Patch(patch)
+
+def gameCreation_compare(game_summary: dict[str, Any], time_str: str) -> bool:
+    '''
+    判断一场对局的创建时间是否在指定时间之后。<br>Judge whether the creation time of a match is after the specified time.
+
+    :param game_summary: 对局概要信息。通过以下SGP接口得到：<br>Match summary information, obtained through the following SGP endpoint:
+
+        - `GET /match-history-query/v1/products/{product}/{match_id}/SUMMARY`
+    :type game_summary: dict[str, Any]
+    :param time_str: 当前时区的指定时间，形如“1970-01-01 08:00:00”。<br>The specified time in the current time zone, in the form of "1970-01-01 08:00:00".
+    :type time_str: str
+    :return: 该对局的创建时间（“gameCreation”键的值）是否在指定时间之后。<br>Whether the creation time of the match (the value of the "gameCreation" key) is after the specified time.
+    :rtype: bool
+    '''
+    return game_summary["json"]["gameCreation"] >= int(datetime.datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S").timestamp() * 1000)
+
+threshold_function_example: str = 'gameId_compare(game_summary, 8502294282) ⇔ game_summary["json"]["gameId"] >= 8502294282 #获取对局序号在8502294282之后的下一场可用对局（Get the next available match after Match 8502294282）\nfirst_match_after_mainteinance(game_summary, "16.5") ⇔ game_summary["json"].get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_summary["json"]["gameVersion"]) >= Patch("16.5") #查找当前大区在26.05版本的第一场对局（Check the first match in Patch 26.05 on the current server）\ngameCreation_compare(game_summary, "1970-01-01 08:00:00") ⇔ game_summary["json"]["gameCreation"] >= int(datetime.datetime.strptime("1970-01-01 08:00:00", "%Y-%m-%d %H:%M:%S").timestamp() * 1000) #查找创建时间在当前时区的指定时间之后的对局（Check matches created after a specified time of the current time zone）'
 
 def define_function() -> tuple[str, Optional[Callable[[dict[str, Any]], bool]]]:
     '''
@@ -734,7 +797,7 @@ async def index_traversal_main(connection: Connection) -> None: #按序遍历对
             if start_matchId == -1 and end_matchId == -1:
                 step -= 2
         elif step == 2:
-            print('第二步：请输入一个筛选对局的函数。该函数应当返回逻辑值。\nStep 2: Please input a function to filter matches. This function should return a boolean value.\n示例（Example）：\ngame_summary["metadata"]["product"] == "LoL" and game_summary["json"]["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\n输入空字符串以放弃筛选，转而保留所有对局的信息。\nSumbit an empty string to give up filtering and save all matches instead.')
+            print(f'第二步：请输入一个筛选对局的函数。该函数应当返回逻辑值。\nStep 2: Please input a function to filter matches. This function should return a boolean value.\n示例（Example）：\n{filter_function_example}\n输入空字符串以放弃筛选，转而保留所有对局的信息。\nSumbit an empty string to give up filtering and save all matches instead.')
             func_str, func = define_function()
         elif step == 3:
             print("第三步：请选择一个产品。\nStep 3: Please select a product.\n0\t返回第一步（Return to the first step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）\n%s3\t全部（Both）" %("☆" if func == None else "!"))
@@ -820,7 +883,7 @@ async def history_traversal_main(connection: Connection) -> None: #从对局记�
                     else:
                         print(start_info["message"])
         elif step == 2:
-            print('第二步：请输入一个筛选对局的函数。该函数应当返回逻辑值。\nStep 2: Please input a function to filter matches. This function should return a boolean value.\n示例（Example）：\ngame_summary["metadata"]["product"] == "LoL" and game_summary["json"]["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\n输入空字符串以放弃筛选，转而保留所有对局的信息。\nSumbit an empty string to give up filtering and save all matches instead.')
+            print(f'第二步：请输入一个筛选对局的函数。该函数应当返回逻辑值。\nStep 2: Please input a function to filter matches. This function should return a boolean value.\n示例（Example）：\n{filter_function_example}\n输入空字符串以放弃筛选，转而保留所有对局的信息。\nSumbit an empty string to give up filtering and save all matches instead.')
             func_str, func = define_function()
         elif step == 3:
             print('第三步：请选择一个产品。\nStep 3: Please select a product.\n0\t返回第一步（Return to the first step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）')
@@ -888,7 +951,7 @@ async def binary_search_main(connection: Connection) -> None: #类二分搜索�
             if not threshold_function_definition_hint_printed:
                 print("阈值函数f：存在唯一的对局序号x₀ ∈ [a, b]，使得对于任意的x < x₀，f(x)为假，且对于任意的x ≥ x₀，f(x)为真。\nThreshold function f: There exists a unique matchId x₀ ∈ [a, b] such that for any x < x₀, f(x) is false, and for any x ≥ x₀, f(x) is true.")
                 threshold_function_definition_hint_printed = True
-            print('第二步：请输入一个阈值函数。该函数应当返回逻辑值。\nStep 2: Please input a threshold function. This function should return a boolean value.\n示例（Example）：\ngame_summary["json"]["gameId"] >= 8502294282 #获取对局序号在8502294282之后的下一场可用对局（Get the next available match after Match 8502294282）\ngame_summary["json"].get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_summary["json"]["gameVersion"]) >= Patch("16.5") #查找当前大区在26.05版本的第一场对局（Check the first match in Patch 26.05 on the current server）\n输入空字符串以返回上一步。\nSumbit an empty string to return to the last step.')
+            print(f'第二步：请输入一个阈值函数。该函数应当返回逻辑值。\nStep 2: Please input a threshold function. This function should return a boolean value.\n示例（Example）：\n{threshold_function_example}\n输入空字符串以返回上一步。\nSumbit an empty string to return to the last step.')
             func_str, func = define_function()
             if func == None:
                 step -= 2
