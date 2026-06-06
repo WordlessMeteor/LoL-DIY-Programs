@@ -23,7 +23,7 @@ from src.core.dataframes.gameflow import sort_ChampSelect_players
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/05/29
+# 更新（Last update）：     2026/06/06
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -220,7 +220,7 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
                 if friend["lol"] == {}:
                     to_append = ""
                 else:
-                    if i in {33, 35, 37, 38, 39, 40, 46, 47, 48, 49, 51, 52, 56, 59, 60, 61, 64, 65}: #正整数被转化为字符串的值的键（Keys whose values are originally integers but transformed into strings）
+                    if i in {33, 35, 37, 38, 39, 40, 46, 47, 48, 49, 51, 52, 56, 59, 60, 61, 65}: #正整数被转化为字符串的值的键（Keys whose values are originally integers but transformed into strings）
                         to_append = "" if not key in lol or lol[key] == "" else int(lol[key])
                     elif i == 34: #成就等级（`challengeCrystalLevel`）
                         to_append = "" if not key in lol else challengeCrystalLevels[lol[key]]
