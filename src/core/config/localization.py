@@ -1312,6 +1312,7 @@ inventoryType_dict: dict[str, str] = {
     "BOOST": "加成道具",
     "BUNDLES": "道具包",
     "CHAMPION": "英雄",
+    "CHAMPION_PERMANENT": "永久英雄",
     "CHAMPION_SKIN": "皮肤",
     "CHERRY_BOON": "斗魂竞技场赛季旅程奖励",
     "COMPANION": "小小英雄",
@@ -1583,6 +1584,7 @@ availabilities: dict[str, str] = {
 ##目标和任务（Objective and mission）
 celebrationTypes: dict[str, str] = {
     "NONE": "无",
+    "FULLSCREEN": "全屏",
     "TOAST": "浮标",
     "VIGNETTE": "花饰",
     "VIGNETTE_LARGE_REWARDS_ONLY": "高等奖励专用花饰",
@@ -1681,7 +1683,7 @@ objectivesTypes: dict[str, str] = {
     "kNonPooledObjectives": "非池化目标",
     "kPooledObjectives": "池化目标"
 }
-categoryTypes: dict[str, str] = {
+lolObjectiveCategoryTypes: dict[str, str] = {
     "kNonPass": "非通行证",
     "kEventHubConfiguration": "事件通行证",
     "kTFTPassData": "云顶之弈通行证"
@@ -1694,10 +1696,11 @@ objectiveCategoryFilter_dict: dict[str, str] = {
     "kNone": "无",
     "kNPE": "新玩家"
 }
-tftPassTypes: dict[str, str] = {
+eventPassTypes: dict[str, str] = {
     "kUnknown": "无",
     "kBattlePass": "战斗通行证",
-    "kEventPass": "事件通行证"
+    "kEventPass": "事件通行证",
+    "kSeasonPass": "赛季通行证"
 }
 ##符文（Perk）
 slotTypes: dict[str, str] = {
@@ -1728,7 +1731,45 @@ honorType_tooltip_bodies: dict[str, str] = {
     "SHOTCALLER": "战术大师，掌控全局",
     "HEART": "核心战力，统治战场"
 }
-
+##事件通行证（Event pass）
+rewardTag_dict: dict[str, str] = {
+    "Multiple": "多重",
+    "Choice": "选项",
+    "Instant": "即时",
+    "Free": "免费",
+    "Rare": "稀有"
+}
+lolEventHubRewardTrackItemStates: dict[str, str] = {
+    "Selected": "已选择",
+    "Unselected": "未选择",
+    "Unlocked": "已解锁",
+    "Locked": "未解锁"
+}
+lolEventHubOfferCategories: dict[str, str] = {
+    "Currencies": "货币",
+    "Tft": "云顶之弈",
+    "Loot": "战利品",
+    "Borders": "边框",
+    "Skins": "皮肤",
+    "Chromas": "炫彩",
+    "Featured": "精选"
+}
+cardSizes: dict[str, str] = {
+    "kDefault": "默认",
+    "kLarge": "大"
+}
+lolEventHubRewardTrackItemHeaderTypes: dict[str, str] = {
+    "NONE": "无",
+    "FREE": "免费",
+    "PREMIUM": "高级",
+}
+lolEventHubOfferStates: dict[str, str] = {
+    "kPurchasing": "购买",
+    "kUnrevealed": "未显示",
+    "kUnavailable": "不可用",
+    "kAvailable": "可用",
+    "kOwned": "已拥有"
+}
 
 #定义英文常量字典（Define English constant dictionaries）
 ##生涯（Profile）
@@ -2119,6 +2160,7 @@ honorType_tooltip_bodies: dict[str, str] = {
 #     "BOOST": "Boost",
 #     "BUNDLES": "Bundle",
 #     "CHAMPION": "Champion",
+#     "CHAMPION_PERMANENT": "Champion Permanent",
 #     "CHAMPION_SKIN": "Champion Skin",
 #     "CHERRY_BOON": "Arena season journey",
 #     "COMPANION": "Companion",
@@ -2389,6 +2431,7 @@ honorType_tooltip_bodies: dict[str, str] = {
 ##目标和任务（Objective and mission）
 # celebrationTypes: dict[str, str] = {
 #     "NONE": "NONE",
+#     "FULLSCREEN": "FULLSCREEN",
 #     "TOAST": "Toast",
 #     "VIGNETTE": "VIGNETTE",
 #     "VIGNETTE_LARGE_REWARDS_ONLY": "VIGNETTE_LARGE_REWARDS_ONLY",
@@ -2486,7 +2529,7 @@ honorType_tooltip_bodies: dict[str, str] = {
 #     "kNonPooledObjectives": "kNonPooledObjectives",
 #     "kPooledObjectives": "kPooledObjectives"
 # }
-# categoryTypes: dict[str, str] = {
+# lolObjectiveCategoryTypes: dict[str, str] = {
 #     "kNonPass": "kNonPass",
 #     "kEventHubConfiguration": "kEventHubConfiguration",
 #     "kTFTPassData": "kTFTPassData"
@@ -2499,9 +2542,10 @@ honorType_tooltip_bodies: dict[str, str] = {
 #     "kNone": "kNone",
 #     "kNPE": "kNPE"
 # }
-# tftPassTypes: dict[str, str] = {
+# eventPassTypes: dict[str, str] = {
 #     "kUnknown": "kUnknown",
-#     "kBattlePass": "kBattlePass"
+#     "kBattlePass": "kBattlePass",
+#     "kSeasonPass": "kSeasonPass"
 # }
 ##符文（Perk）
 # slotTypes: dict[str, str] = {
@@ -2531,4 +2575,43 @@ honorType_tooltip_bodies: dict[str, str] = {
 #     "COOL": "Tilt-proof, chill",
 #     "SHOTCALLER": "Leadership, strategy",
 #     "HEART": "Team player, friendly"
+# }
+##通行证奖励（Pass reward）
+# rewardTag_dict: dict[str, str] = {
+#     "Multiple": "Multiple",
+#     "Choice": "Choice",
+#     "Instant": "即时",
+#     "Free": "免费",
+#     "Rare": "稀有"
+# }
+# lolEventHubRewardTrackItemStates: dict[str, str] = {
+#     "Selected": "Selected",
+#     "Unselected": "Unselected",
+#     "Unlocked": "Unlocked",
+#     "Locked": "Locked"
+# }
+# lolEventHubOfferCategories: dict[str, str] = {
+#     "Currencies": "Currency",
+#     "Tft": "TFT",
+#     "Loot": "Loot",
+#     "Borders": "Border",
+#     "Skins": "Skin",
+#     "Chromas": "Chroma",
+#     "Featured": "Featured"
+# }
+# cardSizes: dict[str, str] = {
+#     "kDefault": "default",
+#     "kLarge": "large"
+# }
+# lolEventHubRewardTrackItemHeaderTypes: dict[str, str] = {
+#     "NONE": "NONE",
+#     "FREE": "FREE",
+#     "PREMIUM": "PREMIUM",
+# }
+# lolEventHubOfferStates: dict[str, str] = {
+#     "kPurchasing": "kPurchasing",
+#     "kUnrevealed": "kUnrevealed",
+#     "kUnavailable": "kUnavailable",
+#     "kAvailable": "kAvailable",
+#     "kOwned": "kOwned"
 # }

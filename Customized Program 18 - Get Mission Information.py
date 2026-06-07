@@ -8,7 +8,7 @@ from src.utils.format import getISOTime, optimize_bool_display, format_df, addDe
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.config.headers import mission_header, objective_group_header, objective_category_header
-from src.core.config.localization import celebrationTypes, clientNotifyLevels, displayTypes, missionTypes, metadataMissionTypes, objectiveStatus_dict, objectiveTypes, rewardGroupStrategies, rewardTypes, missionStatus_dict, gameTypes_mission, objectivesTypes, categoryTypes, lolEventHubTypes, objectiveCategoryFilter_dict, tftPassTypes
+from src.core.config.localization import celebrationTypes, clientNotifyLevels, displayTypes, missionTypes, metadataMissionTypes, objectiveStatus_dict, objectiveTypes, rewardGroupStrategies, rewardTypes, missionStatus_dict, gameTypes_mission, objectivesTypes, lolObjectiveCategoryTypes, lolEventHubTypes, objectiveCategoryFilter_dict, eventPassTypes
 
 #=============================================================================
 # * 声明（Declaration）
@@ -16,7 +16,7 @@ from src.core.config.localization import celebrationTypes, clientNotifyLevels, d
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/29
+# 更新（Last update）：     2026/06/07
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -29,7 +29,7 @@ from src.core.config.localization import celebrationTypes, clientNotifyLevels, d
 connector: Connector = Connector()
 
 #-----------------------------------------------------------------------------
-# 获取英雄联盟中的所有游戏类型信息（Get all game types' information in League of Legends）
+# 获取任务信息（Get mission information in League of Legends）
 #-----------------------------------------------------------------------------
 async def get_mission_info(connection: Connection) -> None:
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
@@ -149,13 +149,13 @@ async def get_mission_info(connection: Connection) -> None:
                     to_append: Any = gameTypes_mission[objective["gameType"]]
                 else:
                     if i == 3: #类型（`categoryType`）
-                        to_append = categoryTypes[objectiveCategory["categoryType"]]
+                        to_append = lolObjectiveCategoryTypes[objectiveCategory["categoryType"]]
                     elif i == 6: #英雄联盟活动专题类型（`lolEventHubType`）
                         to_append = lolEventHubTypes[objectiveCategory["lolEventHubType"]]
                     elif i == 7: #大类（`objectiveCategoryFilter`）
                         to_append = objectiveCategoryFilter_dict[objectiveCategory["objectiveCategoryFilter"]]
                     elif i == 11: #云顶之弈通行证类型（`tftPassType`）
-                        to_append = tftPassTypes[objectiveCategory["tftPassType"]]
+                        to_append = eventPassTypes[objectiveCategory["tftPassType"]]
                     elif i >= 12: #时间类键（Time-type keys）
                         subkey_dict: dict[int, str] = {12: "endDate", 13: "progressEndDate", 14: "startDate"}
                         timeStr: str = getISOTime(objectiveCategory[subkey_dict[i]] / 1000)
