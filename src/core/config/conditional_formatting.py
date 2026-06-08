@@ -349,6 +349,12 @@ def addFormat_LoLPlayer_summary_wb(worksheet: Worksheet, LoLPlayer_summary_df: p
         rangeStrs.append(rangeStr)
     for rangeStr in rangeStrs:
         worksheet.conditional_formatting.add(rangeStr, percent_dataBarRule_lol)
+    #斗魂竞技场队伍排名颜色设置（Arena subteamPlacement color）
+    col_idx = LoLPlayer_summary_df.columns.to_list().index("subteamPlacement") + 2
+    col_letter = get_column_letter(col_idx)
+    rangeStr = "%s3:%s%d" %(col_letter, col_letter, len(LoLPlayer_summary_df) + 1)
+    firstPlace_formulaRule_lol: Rule = FormulaRule(formula = ["$%s3=1" %(col_letter)], stopIfTrue = False, fill = PatternFill(start_color = "FFC000", end_color = "FFC000", fill_type = "solid"))
+    worksheet.conditional_formatting.add(rangeStr, firstPlace_formulaRule_lol)
     #位次颜色（Order color）
     rangeStrs = []
     rangeTuples: list[tuple[str, str]] = []

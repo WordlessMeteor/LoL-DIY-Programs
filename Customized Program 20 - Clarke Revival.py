@@ -49,7 +49,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/06/02
+# 更新（Last update）：     2026/06/08
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -928,10 +928,10 @@ async def Clarke_revival(connection: Connection) -> None:
         else:
             args.queues = []
             search_LoL = search_TFT = True
-        LoLGame_stat_fields_summary: list[str] = ["queueId", "gameModeName", "champion_name", "K/D/A", "CS", "gameDuration", "win/lose", "KP_percent", "goldEarned", "KDA", "totalDamageDealtToChampions", "totalDamageTaken", "totalHeal", "KP_order", "goldEarned_order", "KDA_order", "totalDamageDealtToChampions_order", "totalDamageTaken_order", "totalHeal_order"]
+        LoLGame_stat_fields_summary: list[str] = ["gameIndex", "queueId", "gameModeName", "champion_name", "K/D/A", "CS", "gameDuration", "win/lose", "subteamPlacement", "KP_percent", "goldEarned", "KDA", "totalDamageDealtToChampions", "totalDamageTaken", "totalHeal", "KP_order", "goldEarned_order", "KDA_order", "totalDamageDealtToChampions_order", "totalDamageTaken_order", "totalHeal_order"]
         LoLPlayer_stat_summary_dfs.append(pandas.concat([pandas.DataFrame(data = {"ally?": "是否队友？", "summonerName": "召唤师名"}, index = [0]), pandas.DataFrame(data = LoLGame_stat_header, index = [0]).loc[:, LoLGame_stat_fields_summary]], axis = 1))
         #LoLGame_stat_fields_details_to_print: list[str] = ["gameIndex", "gameCreationDate", "gameModeName", "champion_name", "champion_alias", "K/D/A", "KDA", "win/lose"]
-        TFTGame_stat_fields_summary: list[str] = ["queue_id", "gameModeName", "last_round_format", "total_damage_to_players", "players_eliminated", "placement"]
+        TFTGame_stat_fields_summary: list[str] = ["gameIndex", "queue_id", "gameModeName", "last_round_format", "total_damage_to_players", "players_eliminated", "placement"]
         TFTPlayer_stat_summary_dfs.append(pandas.concat([pandas.DataFrame(data = {"ally?": "是否队友？", "summonerName": "召唤师名"}, index = [0]), pandas.DataFrame(data = TFTGame_stat_header, index = [0]).loc[:, TFTGame_stat_fields_summary]], axis = 1))
         #TFTGame_stat_fields_details_to_print: list[str] = ["gameIndex", "game_datetime", "gameModeName", "companion name", "last_round", "placement"]
         for i in range(len(fetched_players)):
