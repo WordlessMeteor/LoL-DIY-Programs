@@ -1,4 +1,5 @@
 @echo off
+chcp 936 & @REM 将代码页设置为中文（Set the code page as Chinese）
 echo 对局信息文件将被永久删除。该操作不可逆！是否继续？
 echo Match information files will be deleted permanently. This operation is irreversible! Do you really want to continue?
 setlocal enabledelayedexpansion & @REM 延迟扩展（Delayed expansion）
