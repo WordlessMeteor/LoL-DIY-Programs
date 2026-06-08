@@ -1,6 +1,6 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-import argparse, copy, json, numpy, os, pandas, pickle, psutil, pyperclip, random, re, requests, shutil, subprocess, time, traceback, urllib3, unicodedata, uuid
+import argparse, copy, json, keyboard, os, pandas, pickle, psutil, pyperclip, random, re, requests, shutil, subprocess, time, traceback, urllib3, unicodedata, uuid
 from urllib.parse import quote, unquote, urljoin
 from typing import Any, Optional
 from src.utils.logger import aInput, LogManager
@@ -30,7 +30,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/05/29
+# 更新（Last update）：     2026/06/08
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1136,6 +1136,101 @@ async def display_current_info(connection: Connection) -> None:
     '''
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     logPrint(json.dumps(current_info, indent = 4, ensure_ascii = False), write_time = False)
+
+def select_collection_item(inventoryType: str) -> tuple[bool, int]:
+    '''
+    选择一个特定道具类型的藏品。<br>Select a collection item of certain inventoryType.
+    
+    :param inventoryType: 道具类型。<br>InventoryType.
+    :type inventoryType: str
+    :return: 一个二元组。<br>A 2-tuple.
+    
+        - 第一个元素是用户是否作出选择。如果用户输入“0”，则放弃选择。提示：当用户输入“-1”时，视为选择“0”。<br>The first element is whether the user has made a decision. If the user submits "0", it means the user cancels the selection. Hint: When the user inputs "-1", the program considers the user has selected "0".
+        - 第二个元素是筛选后的数据框行号。<br>The second element is the row index of the filtered dataframe.
+    :rtype: tuple[bool, int]
+    '''
+    inventoryTypeNames_zh: dict[str, str] = {"EMOTE": "表情", "WARD_SKIN": "饰品", "SUMMONER_ICON": "召唤师图标", "NEXUS_FINISHER": "终结特效", "REGALIA_BANNER": "旗帜", "REGALIA_CREST": "徽章", "TOURNAMENT_TROPHY": "冠军杯赛奖杯", "COMPANION": "小小英雄", "TFT_DAMAGE_SKIN": "进攻特效", "TFT_MAP_SKIN": "棋盘皮肤", "TFT_ZOOM_SKIN": "传送门"}
+    inventoryTypeNames_en: dict[str, str] = {"EMOTE": "emote", "WARD_SKIN": "ward skin", "SUMMONER_ICON": "summoner icon", "NEXUS_FINISHER": "nexus finisher", "REGALIA_BANNER": "banner", "REGALIA_CREST": "crest", "TOURNAMENT_TROPHY": "tournament trophy", "COMPANION": "tactician", "TFT_DAMAGE_SKIN": "boom", "TFT_MAP_SKIN": "arena skin", "TFT_ZOOM_SKIN": "portal"}
+    inventoryTypeName_zh: str = inventoryTypeNames_zh[inventoryType]
+    inventoryTypeName_en: str = inventoryTypeNames_en[inventoryType]
+    logPrint('请选择您想要使用的%s：（输入“-1”以初始化当前选择。）\nPlease select %s %s to use: (Submit "-1" to initialize the current choice.)' %(inventoryTypeName_zh, "an" if inventoryType == "EMOTE" or inventoryType == "TFT_MAP_SKIN" else "a", inventoryTypeName_en))
+    collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
+    collection_df_fields_to_print: list[str] = ["inventoryType", "itemId", "name", "ownershipType"]
+    print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
+    log.write(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+    while True:
+        index_got: bool = False
+        item_index_str: str = logInput()
+        if item_index_str == "":
+            continue
+        elif item_index_str == "0":
+            item_index: int = 0
+            index_got = False
+            break
+        elif item_index_str == "-1" or item_index_str in list(map(str, range(1, len(collection_df_selected)))):
+            item_index = int(item_index_str)
+            index_got = True
+            break
+        else:
+            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+    return (index_got, item_index)
+
+async def initialize_summoner_icon(connection: Connection, profileIconId: Optional[int] = None, repeat: bool = False, interval: float = 0.5) -> None: #在国服，头盔老铁头像会一直被替换为另外一个默认头像（In Tencent servers, Helmet Bro is continuously replaced by another summoner icon by default）
+    '''
+    更换当前召唤师的图标。<br>Change the current summoner's icon.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param profileIconId: 召唤师图标序号。如果留空，则在函数内部询问。<br>Summoner icon id. If left empty, the function will ask the user to select one.
+    :type profileIconId: int
+    :param repeat: 是否重复调用更换召唤师图标的接口。默认为假。<br>Whether to repeatedly call the endpoint to change the summoner icon. False by default.
+
+        在选择重复调用时，按Esc键以中断循环退出程序。<br>When the user chooses to repeat, he/she may press Esc to break the loop and exit the program.
+    :type repeat: bool
+    :param interval: 重复调用接口的间隔，单位为秒。<br>The interval of calling the endpoint repeatedly, in seconds. 0.5 seconds by default.
+    :type interval: float
+    '''
+    if profileIconId == None:
+        profileIconId = -1 #初始化召唤师图标序号（Initialize summoner icon id）
+        index_got, item_index = select_collection_item("SUMMONER_ICON")
+        collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == "SUMMONER_ICON"]], ignore_index = True)
+        if index_got:
+            profileIconId: int = 0 if item_index == -1 else collection_df_selected["itemId"][item_index]
+    else:
+        index_got = True
+    if index_got:
+        body: dict[str, int] = {"profileIconId": profileIconId}
+        count: int = 0 #循环次数。当用户选择单次调用且该计数器的值为1时，退出循环（Loop count. When the user chooses to call the endpoint once and this counter equals 1, the program will break the loop）
+        while count < 1 or repeat:
+            count += 1
+            if repeat:
+                logPrint(f"[{count}]", end = "\r")
+                if keyboard.is_pressed("esc"):
+                    logPrint("您已退出循环。\nYou've broken the loop.")
+                    break
+            response: dict[str, Any] = await (await connection.request("PUT", "/lol-summoner/v1/current-summoner/icon", data = body)).json()
+            message: str = (json.dumps(response, ensure_ascii = False) + "\n") if "errorCode" in response else ""
+            if "errorCode" in response:
+                if response["httpStatus"] == 401 and "Requested summoner profile icon is not free or owned by the player" in response["message"]:
+                    message += "您尚未拥有该召唤师图标。\nYou don't own this summoner icon."
+                elif response["httpStatus"] == 400 and "invalid profileIconId" in response["message"]:
+                    message += "您选择的召唤师图标不存在。\nThe selected summoner icon doesn't exist."
+                else:
+                    message += "未知错误！\nUnknown error!"
+            else:
+                if response["profileIconId"] == profileIconId:
+                    if profileIconId in summonerIcons:
+                        if "title" in summonerIcons[profileIconId]:
+                            title: str = summonerIcons[profileIconId]["title"]
+                            message += f"召唤师图标已更换为{title}。\nSummoner icon has been changed to {title}."
+                        else:
+                            message += f"召唤师图标序号已更换为{profileIconId}。\nSummoner icon id has been change to {profileIconId}."
+                    else:
+                        message += f"警告：本地数据不存在序号为{profileIconId}的召唤师图标。\nWarning: The summoner icon with id {profileIconId} doesn't exist in the local data assets."
+                else:
+                    message += "召唤师图标切换失败。\nSummoner icon change failed."
+            if not repeat:
+                logPrint(message)
 
 def select_report_categories(gameflow_phase: str, summoner_name: str = "") -> list[str]:
     '''
@@ -2869,7 +2964,7 @@ async def gameflow_phase_transition(connection: Connection) -> str:
         elif option[0] == "6":
             await report_player_matchHistory(connection)
         elif option[0] == "7":
-            logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n3\t扩展对局记录（Expand match history）\n4\t循环测试房间创建（Test lobby creation iteratively）\n5\t调试游戏状态（Debug a gameflow phase）''')
+            logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t初始化召唤师图标（Initialize summoner icon）\n3\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n4\t扩展对局记录（Expand match history）\n5\t循环测试房间创建（Test lobby creation iteratively）\n6\t调试游戏状态（Debug a gameflow phase）''')
             while True:
                 suboption: str = logInput()
                 if suboption == "":
@@ -2879,17 +2974,19 @@ async def gameflow_phase_transition(connection: Connection) -> str:
                 elif suboption[0] == "1":
                     await display_current_info(connection)
                 elif suboption[0] == "2":
-                    await toggle_nonfriend_game_invite(connection)
+                    await initialize_summoner_icon(connection, profileIconId = 29)
                 elif suboption[0] == "3":
-                    await expand_match_history(connection)
+                    await toggle_nonfriend_game_invite(connection)
                 elif suboption[0] == "4":
-                    await create_queue_lobby(connection, loop_test = True)
+                    await expand_match_history(connection)
                 elif suboption[0] == "5":
+                    await create_queue_lobby(connection, loop_test = True)
+                elif suboption[0] == "6":
                     return await debug_gameflow_phase(connection)
                 else:
                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     continue
-                logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n3\t扩展对局记录（Expand match history）\n4\t循环测试房间创建（Test lobby creation iteratively）\n5\t调试游戏状态（Debug a gameflow phase）''')
+                logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t初始化召唤师图标（Initialize summoner icon）\n3\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n4\t扩展对局记录（Expand match history）\n5\t循环测试房间创建（Test lobby creation iteratively）\n6\t调试游戏状态（Debug a gameflow phase）''')
         elif option[0] == "8":
             await manage_ux(connection)
     return "" #返回值为空字符串，表示未调试游戏状态（An empty string returned means the user isn't debugging any gameflow phase）
@@ -3929,33 +4026,12 @@ async def configure_TFTParty_loadout(connection: Connection) -> None:
                 break
             elif loadout_option[0] in list(map(str, range(1, 5))):
                 inventoryTypes: dict[str, str] = {"1": "COMPANION", "2": "TFT_DAMAGE_SKIN", "3": "TFT_MAP_SKIN", "4": "TFT_ZOOM_SKIN"}
-                inventoryTypeNames_zh: dict[str, str] = {"COMPANION": "小小英雄", "TFT_DAMAGE_SKIN": "进攻特效", "TFT_MAP_SKIN": "棋盘皮肤", "TFT_ZOOM_SKIN": "传送门"}
-                inventoryTypeNames_en: dict[str, str] = {"COMPANION": "tactician", "TFT_DAMAGE_SKIN": "boom", "TFT_MAP_SKIN": "arena skin", "TFT_ZOOM_SKIN": "portal"}
                 inventoryType: str = inventoryTypes[loadout_option[0]]
-                inventoryTypeName_zh: str = inventoryTypeNames_zh[inventoryType]
-                inventoryTypeName_en: str = inventoryTypeNames_en[inventoryType]
                 collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
                 if len(collection_df_selected) == 1:
                     logPrint("您目前没有%s的使用权。\nYou don't have permission to use any %s." %(inventoryTypeName_zh, inventoryTypeName_en))
                 else:
-                    logPrint('请选择您想要使用的%s：（输入“-1”以初始化当前选择。）\nPlease select %s %s to use: (Submit "-1" to initialize the current choice.)' %(inventoryTypeName_zh, "an" if inventoryType == "TFT_MAP_SKIN" else "a", inventoryTypeName_en))
-                    print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
-                    log.write(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                    while True:
-                        index_got = False
-                        item_index_str: str = logInput()
-                        if item_index_str == "":
-                            continue
-                        elif item_index_str == "0":
-                            item_index: int = 0
-                            index_got = False
-                            break
-                        elif item_index_str == "-1" or item_index_str in list(map(str, range(1, len(collection_df_selected)))):
-                            item_index = int(item_index_str)
-                            index_got = True
-                            break
-                        else:
-                            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+                    index_got, item_index = select_collection_item(inventoryType)
                     if index_got:
                         contentId: str = "" if item_index == -1 else collection_df_selected["uuid"][item_index]
                         itemId: int = 0 if item_index == -1 else collection_df_selected["itemId"][item_index]
@@ -5531,7 +5607,7 @@ async def lobby_simulation(connection: Connection) -> str:
         elif option == "10":
             await report_player_matchHistory(connection)
         elif option == "11":
-            logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n3\t扩展对局记录（Expand match history）\n4\t循环测试房间创建（Test lobby creation iteratively）\n5\t调试游戏状态（Debug a gameflow phase）\n6\t输出并复制小队编号（Output and copy the partyId）''')
+            logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t初始化召唤师图标（Initialize summoner icon）\n3\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n4\t扩展对局记录（Expand match history）\n5\t循环测试房间创建（Test lobby creation iteratively）\n6\t调试游戏状态（Debug a gameflow phase）\n7\t输出并复制小队编号（Output and copy the partyId）''')
             while True:
                 suboption: str = logInput()
                 if suboption == "":
@@ -5541,14 +5617,16 @@ async def lobby_simulation(connection: Connection) -> str:
                 elif suboption[0] == "1":
                     await display_current_info(connection)
                 elif suboption[0] == "2":
-                    await toggle_nonfriend_game_invite(connection)
+                    await initialize_summoner_icon(connection, profileIconId = 29)
                 elif suboption[0] == "3":
-                    await expand_match_history(connection)
+                    await toggle_nonfriend_game_invite(connection)
                 elif suboption[0] == "4":
-                    await create_queue_lobby(connection, loop_test = True)
+                    await expand_match_history(connection)
                 elif suboption[0] == "5":
-                    return await debug_gameflow_phase(connection)
+                    await create_queue_lobby(connection, loop_test = True)
                 elif suboption[0] == "6":
+                    return await debug_gameflow_phase(connection)
+                elif suboption[0] == "7":
                     currentParty: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
                     partyId: str = currentParty["currentParty"]["partyId"]
                     logPrint(f"当前小队编号（Current partyId）： {partyId}")
@@ -5563,7 +5641,7 @@ async def lobby_simulation(connection: Connection) -> str:
                 else:
                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     continue
-                logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n3\t扩展对局记录（Expand match history）\n4\t循环测试房间创建（Test lobby creation iteratively）\n5\t调试游戏状态（Debug a gameflow phase）\n6\t输出并复制小队编号（Output and copy the partyId）''')
+                logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t初始化召唤师图标（Initialize summoner icon）\n3\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n4\t扩展对局记录（Expand match history）\n5\t循环测试房间创建（Test lobby creation iteratively）\n6\t调试游戏状态（Debug a gameflow phase）\n7\t输出并复制小队编号（Output and copy the partyId）''')
         elif option == "12":
             await manage_ux(connection)
     return ""
@@ -5697,7 +5775,7 @@ async def inQueue_simulation(connection: Connection) -> str:
         elif option[0] == "6":
             await report_player_matchHistory(connection)
         elif option[0] == "7":
-            logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n3\t扩展对局记录（Expand match history）\n4\t调试游戏状态（Debug a gameflow phase）''')
+            logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t初始化召唤师图标（Initialize summoner icon）\n3\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n4\t扩展对局记录（Expand match history）\n5\t调试游戏状态（Debug a gameflow phase）''')
             while True:
                 suboption: str = logInput()
                 if suboption == "":
@@ -5707,15 +5785,17 @@ async def inQueue_simulation(connection: Connection) -> str:
                 elif suboption[0] == "1":
                     await display_current_info(connection)
                 elif suboption[0] == "2":
-                    await toggle_nonfriend_game_invite(connection)
+                    await initialize_summoner_icon(connection, profileIconId = 29)
                 elif suboption[0] == "3":
-                    await expand_match_history(connection)
+                    await toggle_nonfriend_game_invite(connection)
                 elif suboption[0] == "4":
+                    await expand_match_history(connection)
+                elif suboption[0] == "5":
                     return await debug_gameflow_phase(connection)
                 else:
                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     continue
-                logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n3\t扩展对局记录（Expand match history）\n4\t调试游戏状态（Debug a gameflow phase）''')
+                logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t初始化召唤师图标（Initialize summoner icon）\n3\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n4\t扩展对局记录（Expand match history）\n5\t调试游戏状态（Debug a gameflow phase）''')
         elif option[0] == "8":
             await manage_ux(connection)
     return ""
@@ -6591,26 +6671,8 @@ async def change_emote_wheel(connection: Connection, loadoutId: str, loadoutName
         else:
             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
             continue
-        logPrint('请选择您想要使用的表情：（输入“-1”以初始化当前选择。）\nPlease select an emote to use: (Submit "-1" to initialize the current choice.)')
         collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == "EMOTE"]], ignore_index = True)
-        collection_df_fields_to_print: list[str] = ["inventoryType", "itemId", "name", "ownershipType"]
-        print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
-        log.write(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-        while True:
-            index_got: bool = False
-            item_index_str: str = logInput()
-            if item_index_str == "":
-                continue
-            elif item_index_str == "0":
-                item_index: int = 0
-                index_got = False
-                break
-            elif item_index_str == "-1" or item_index_str in list(map(str, range(1, len(collection_df_selected)))):
-                item_index = int(item_index_str)
-                index_got = True
-                break
-            else:
-                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+        index_got, item_index = select_collection_item("EMOTE")
         if index_got:
             contentId: str = "" if item_index == -1 else collection_df_selected["uuid"][item_index]
             itemId: int = 0 if item_index == -1 else collection_df_selected["itemId"][item_index]
@@ -6660,27 +6722,8 @@ async def change_emote_reaction(connection: Connection, loadoutId: str, loadoutN
         else:
             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
             continue
-        logPrint('请选择您想要使用的表情：（输入“-1”以初始化当前选择。）\nPlease select an emote to use: (Submit "-1" to initialize the current choice.)')
         collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == "EMOTE"]], ignore_index = True)
-        collection_df_fields_to_print: list[str] = ["inventoryType", "itemId", "name", "ownershipType"]
-        print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
-        log.write(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0])
-        while True:
-            index_got: bool = False
-            item_index_str: str = logInput()
-            if item_index_str == "":
-                continue
-            elif item_index_str == "0":
-                item_index: int = 0
-                index_got = False
-                break
-            elif item_index_str == "-1" or item_index_str in list(map(str, range(1, len(collection_df_selected)))):
-                item_index = int(item_index_str)
-                index_got = True
-                break
-            else:
-                logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                continue
+        index_got, item_index = select_collection_item("EMOTE")
         if index_got:
             contentId: str = "" if item_index == -1 else collection_df_selected["uuid"][item_index]
             itemId: int = 0 if item_index == -1 else collection_df_selected["itemId"][item_index]
@@ -6715,30 +6758,8 @@ async def change_champSelect_loadout(connection: Connection, inventoryType: str,
     :param loadoutName: 赛前配置名称。用于维持原名称。<br>Loadout name. Used to maintain the original name.
     :type loadoutName: str
     '''
-    inventoryTypeNames_zh: dict[str, str] = {"WARD_SKIN": "饰品", "SUMMONER_ICON": "召唤师图标", "NEXUS_FINISHER": "终结特效", "REGALIA_BANNER": "旗帜", "REGALIA_CREST": "徽章", "TOURNAMENT_TROPHY": "冠军杯赛奖杯"}
-    inventoryTypeNames_en: dict[str, str] = {"WARD_SKIN": "ward skin", "SUMMONER_ICON": "summoner icon", "NEXUS_FINISHER": "nexus finisher", "REGALIA_BANNER": "banner", "REGALIA_CREST": "crest", "TOURNAMENT_TROPHY": "tournament trophy"}
-    inventoryTypeName_zh: str = inventoryTypeNames_zh[inventoryType]
-    inventoryTypeName_en: str = inventoryTypeNames_en[inventoryType]
-    logPrint('请选择您想要使用的%s：（输入“-1”以初始化当前选择。）\nPlease select a %s to use: (Submit "-1" to initialize the current choice.)' %(inventoryTypeName_zh, inventoryTypeName_en))
     collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
-    collection_df_fields_to_print: list[str] = ["inventoryType", "itemId", "name", "ownershipType"]
-    print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
-    log.write(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-    while True:
-        index_got: bool = False
-        item_index_str: str = logInput()
-        if item_index_str == "":
-            continue
-        elif item_index_str == "0":
-            item_index: int = 0
-            index_got = False
-            break
-        elif item_index_str == "-1" or item_index_str in list(map(str, range(1, len(collection_df_selected)))):
-            item_index: int = int(item_index_str)
-            index_got = True
-            break
-        else:
-            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+    index_got, item_index = select_collection_item(inventoryType)
     if index_got:
         contentId: str = "" if item_index == -1 else collection_df_selected["uuid"][item_index]
         itemId: int = 0 if item_index == -1 else collection_df_selected["itemId"][item_index]
