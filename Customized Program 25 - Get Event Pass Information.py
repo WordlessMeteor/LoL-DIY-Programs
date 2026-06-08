@@ -1,12 +1,13 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-import json, os, pandas, time
+import json, os, pandas, re, time
+from openpyxl import load_workbook, Workbook
 from src.utils.summoner import print_summoner_info, get_info_name
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.config.headers import event_info_header, event_narrative_header, event_pass_chapter_header, event_pass_bundle_header, event_reward_item_header, token_bundle_header, tokenShop_categoryOffer_header
 from src.core.config.localization import inventoryType_dict, subInventoryTypes, eventPassTypes, rewardTag_dict, lolEventHubRewardTrackItemStates, cardSizes, celebrationTypes, lolEventHubRewardTrackItemHeaderTypes, lolEventHubOfferCategories, lolEventHubOfferStates
 from src.utils.format import getISOTime, addDefaultStyle
-from src.utils.excel_workbook import create_workbook_win32
+from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from typing import Any
 
 #=============================================================================
@@ -450,6 +451,7 @@ async def organize_pass_information(connection: Connection) -> None:
     #保存文件（Save file）
     print("开始导出到工作簿。\nBegin to export to the workbook.\n")
     excel_name: str = "Event Pass - %s.xlsx" %displayName
+    excel_name_sorted: str = "Event Pass - %s (sorted).xlsx" %displayName
     currentTime: str = time.strftime("%Y-%m-%d %H-%M", time.localtime(time.time()))
     wbPath: str = os.path.join(folder, excel_name).replace("\\", "/")
     os.makedirs(folder, exist_ok = True)
@@ -471,7 +473,7 @@ async def organize_pass_information(connection: Connection) -> None:
                 if len(token_bundle_df) > 1:
                     addDefaultStyle(token_bundle_df).to_excel(excel_writer = writer, sheet_name = f"TokenBundle - {currentTime}")
                 if len(tokenShop_categoryOffer_df) > 1:
-                    addDefaultStyle(tokenShop_categoryOffer_df).to_excel(excel_writer = writer, sheet_name = f"CategoryOffer - {currentTime}")
+                    addDefaultStyle(tokenShop_categoryOffer_df).to_excel(excel_writer = writer, sheet_name = f"OfferCat - {currentTime}") #全名（Full name）： OfferCategory
             with pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "overlay") as writer:
                 addDefaultStyle(version_df).to_excel(excel_writer = writer, sheet_name = f"Info - {currentTime}", header = None, index = False, startcol = 0, startrow = 0)
                 if len(event_narrative_df) > 1:
@@ -485,13 +487,51 @@ async def organize_pass_information(connection: Connection) -> None:
                 if len(token_bundle_df) > 1:
                     addDefaultStyle(version_df).to_excel(excel_writer = writer, sheet_name = f"TokenBundle - {currentTime}", header = None, index = False, startcol = 0, startrow = 0)
                 if len(tokenShop_categoryOffer_df) > 1:
-                    addDefaultStyle(version_df).to_excel(excel_writer = writer, sheet_name = f"CategoryOffer - {currentTime}", header = None, index = False, startcol = 0, startrow = 0)
+                    addDefaultStyle(version_df).to_excel(excel_writer = writer, sheet_name = f"OfferCat - {currentTime}", header = None, index = False, startcol = 0, startrow = 0)
         except PermissionError:
             print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
             input()
         else:
             print('事件通行证信息已保存为“%s”！\nEvent pass information is saved as "%s"!' %(wbPath, wbPath))
             break
+    if workbook_exist:
+        print("警告：由于该文件已存在，本次导出已追加新工作表到工作簿的末尾。这可能导致工作表顺序的错乱。是否需要对工作表进行排序？（输入任意键排序，否则不排序）\nWarning: Because the excel workbook has existed, new sheets are appended to the last of the original sheet list. This may result in the disarrangement of worksheet order. Do you want to sort the sheets? (Input anything to sort the sheets, or null to skip sorting)")
+        sort: bool = bool(input())
+        if sort:
+            print("正在读取刚刚创建的工作表……\nLoading the workbook just created ...")
+            while True:
+                try:
+                    wb: Workbook = load_workbook(wbPath)
+                except FileNotFoundError:
+                    print('商品藏品信息工作簿读取失败！请确保“%s”文件夹内含有名为“%s”的工作簿。如果需要退出程序，请输入“0”。\nERROR reading the Catalog and Collections workbook! Please make sure the workbook "%s" is in the folder "%s". If you want to exit the program, please submit "0".' %(folder, excel_name, excel_name, folder))
+                    store_reload: str = input()
+                    if store_reload == "0":
+                        break
+                else:
+                    sheetnames: list[str] = wb.sheetnames #第一次获取原工作簿的工作表名称列表（The first time to get the sheet name list of the original workbook）
+                    print("请选择排序方式：\nPlease select an ordering pattern:\n☆1\t时间优先（Time in priority）\n2\t类别优先（Type in priority）")
+                    op: str = input()
+                    print("正在创建顺序工作表列表……\nCreating the ordered sheet list ...")
+                    date_re: re.Pattern[str] = re.compile(r"\d{4}-\d{2}-\d{2} \d{2}-\d{2}") #设置正则表达式识别日期（Define a regular expression to identify a date pattern）
+                    dOrder: list[str] = ["Info", "Narrative", "PassChapter", "PassBundle", "RewardItem", "TokenBundle", "OfferCat"] #存储数据类型的排列顺序（Store the order of data types）
+                    dOrder_type_map: dict[str, int] = {_: dOrder.index(_) for _ in dOrder} #定义数据类型权重字典，用于排序数据类型（Define a data type weight dictionary to order the data types）
+                    sheetname_date_list: list[str] = list(map(lambda x: date_re.search(x).group(), sheetnames)) #从工作表名称提取日期信息形成列表（Extract the dates from the sheetnames to form a list）
+                    sheetname_type_list: list[str] = list(map(lambda x: x.split()[0], sheetnames)) #从工作表名称提取数据类型信息形成列表（Extract the data types from the sheetnames to form a list）
+                    sheetname_type_weight_list: list[int] = list(map(lambda x: dOrder_type_map.get(x, len(dOrder) + 1), sheetname_type_list)) #将数据类型列表转换为数据类型权重列表（Transform the data type list into the data type weight list）
+                    sheetname_tmpDf: pandas.DataFrame = pandas.DataFrame(data = [sheetnames, sheetname_date_list, sheetname_type_list, sheetname_type_weight_list]).transpose() #创建一个四列数据框，各列分别是完整工作表名、日期信息、数据类型信息和大区信息（Create a 4-column dataframe whose columns are the complete sheetname, date, data type and platformId）
+                    if op == "" or op[0] != "2": #按照时间优先的原则对工作表进行排序，时间相同则商品工作表在前，藏品工作表在后（Sort the sheets by time in priority. If the times are the same, then the store sheet is arranged in front of the collection sheet）
+                        sheetnames_sorted: list[str] = sheetname_tmpDf.sort_values(by = [1, 3], ascending = True).iloc[:, 0].tolist() #将工作表名按照第一关键字——日期信息正序排列，第二关键字——数据类型权重正序排列（Order the sheetnames according to the ascending order of the first keyword - date and the ascending order of the second keyword - data type weight）
+                    else:
+                        sheetnames_sorted: list[str] = sheetname_tmpDf.sort_values(by = [3, 1], ascending = True).iloc[:, 0].tolist() #将工作表名按照第一关键字——数据类型权重正序排列，第二关键字——日期信息正序排列（Order the sheetnames according to the ascending order of the first keyword - data type weight and the ascending order of the second keyword - date）
+                    #下面排列所有工作表（The following code arrange all sheets）
+                    print("正在排序……\nOrdering ...")
+                    sort_worksheet(wb, sheetnames_sorted)
+                    print('正在保存中……\nSaving the ordered workbook ...')
+                    wb.save(os.path.join(folder, excel_name_sorted))
+                    print('排序完成！排好序的工作簿已保存为“%s”。请按任意键退出。\nOrdering finished! The ordered workbook is saved as "%s". Press any key to exit ...\n' %(excel_name_sorted, excel_name_sorted))
+                    wb.close()
+                    input()
+                    break
 
 #-----------------------------------------------------------------------------
 # websocket

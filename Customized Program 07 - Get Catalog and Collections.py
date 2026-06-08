@@ -15,7 +15,7 @@ from src.core.config.localization import inventoryType_dict, ownershipTypes, sub
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/29
+# 更新（Last update）：     2026/06/08
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -600,10 +600,10 @@ async def fetch_store(connection: Connection) -> None:
                         break
                 else:
                     sheetnames: list[str] = wb.sheetnames #第一次获取原工作簿的工作表名称列表（The first time to get the sheet name list of the original workbook）
-                    print("请选择排序方式：\nPlease select an ordering pattern:\n1\t时间优先（默认）【Time in priority (by default)】\n2\t类别优先（Type in priority）")
+                    print("请选择排序方式：\nPlease select an ordering pattern:\n☆1\t时间优先（Time in priority）\n2\t类别优先（Type in priority）")
                     op: str = input()
                     print("正在创建顺序工作表列表……\nCreating the ordered sheet list ...")
-                    date_re: re.Pattern[str] = re.compile(r"\d{4}-\d{2}-\d{2}") #设置正则表达式识别
+                    date_re: re.Pattern[str] = re.compile(r"\d{4}-\d{2}-\d{2}") #设置正则表达式识别日期（Define a regular expression to identify a date pattern）
                     if op == "" or op[0] != "2": #按照时间优先的原则对工作表进行排序，时间相同则商品工作表在前，藏品工作表在后（Sort the sheets by time in priority. If the times are the same, then the store sheet is arranged in front of the collection sheet）
                         sheetname_date_list: list[str] = list(map(lambda x: date_re.search(x).group(), sheetnames)) #从工作表名称提取日期信息形成列表（Extract the dates from the sheetnames to form a list）
                         sheetname_type_list: list[str] = list(map(lambda x: x.split()[0], sheetnames)) #从工作表名称提取数据类型信息形成列表（Extract the data types from the sheetnames to form a list）
