@@ -181,7 +181,7 @@ async def organize_pass_information(connection: Connection) -> None:
             else:
                 if i == 25: #游戏模式名称（`gameModeName`）
                     queueId: int = eventInfo["queueId"]
-                    to_append = "自定义" if queueId == 0 else gameQueues[queueId]["name"]
+                    to_append = "" if queueId == 0 else gameQueues[queueId]["name"]
                 elif i == 26: #上次未领取奖励时间（`dateOfLastUnclaimedReward`）
                     timeOfLastUnclaimedReward: int = eventInfo["timeOfLastUnclaimedReward"]
                     to_append = getISOTime(timeOfLastUnclaimedReward) if timeOfLastUnclaimedReward == 0 else ""
