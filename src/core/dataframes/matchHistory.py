@@ -3974,10 +3974,10 @@ def generate_LoLGameInfo_records_sgp(LoLGame_summary_data: dict[str, list[Any]],
         elif i <= 236:
             if i <= 42: #玩家得分键（Player score keys）
                 to_append = stats[key] if key in stats else stats[decapitalize(key)] if decapitalize(key) in stats else ""
+            elif i in {50, 68, 76, 150, 180, 181, 182}: #可变逻辑值键（Mutable boolean keys）
+                to_append = stats.get(key, False)
             elif i == 57: #购买消耗品（`consumablePurchased`）
                 to_append = stats["consumablesPurchased"] if "consumablesPurchased" in stats else stats["consumablePurchased"] if "consumablePurchased" in stats else ""
-            elif i == 68: #具备通行证进度资格（`eligibleForProgression`）
-                to_append = stats.get("eligibleForProgression", False)
             elif i in {82, 125, 152}: #角色定位（`individualPosition`, `positionAssignedByMatchmaking` and `teamPosition`）
                 to_append = positions[stats[key]] if key in stats else ""
             elif i == 96: #分路（`lane`）
