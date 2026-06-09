@@ -14,7 +14,7 @@ from src.utils.webRequest import requestUrl
 from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, pyobj2json, capitalize, decapitalize
 from src.utils.runtimeDebug import subscope
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
-from src.core.config.headers import map_header_l10n, cheatset_header, cheat_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, augmentModifier_header, CherryAnvil_header, GoH_header, cameo_header, CherryRoundList_header, CherryRound_header, CherryPhase_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header, fontDesc_header, fontType_header, fontResolution_header, fontStyle_header, font_CSSStyle_header, font_CSSIcon_header
+from src.core.config.headers import map_header_l10n, cheatset_header, cheat_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, KiwiQuestline_header, augmentModifier_header, CherryAnvil_header, GoH_header, cameo_header, CherryRoundList_header, CherryRound_header, CherryPhase_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header, fontDesc_header, fontType_header, fontResolution_header, fontStyle_header, font_CSSStyle_header, font_CSSIcon_header
 from src.core.config.localization import language_ddragon, language_dict
 
 #=============================================================================
@@ -517,6 +517,11 @@ class LoLDataExtractor:
             "sheet_name_without_version": "海克斯大乱斗强化符文套装（Kiwi Augment Set）",
             "sheet_name_with_version": "{version} KiwiAugmentSet"
         },
+        "KiwiQuestline": {
+            "dType": "KiwiQuestline",
+            "sheet_name_without_version": "海克斯大乱斗任务线（Kiwi Questlines）",
+            "sheet_name_with_version": "{version} KiwiQuestlines"
+        },
         "AugmentModifier": {
             "dType": "AugmentModifier",
             "sheet_name_without_version": "强化符文修饰（Augment Modifiers）",
@@ -695,6 +700,7 @@ class LoLDataExtractor:
         "SwarmAugment",
         "KiwiAugment",
         "KiwiAugmentSet",
+        "KiwiQuestline",
         "AugmentModifier",
         "CherryAnvil",
         "KiwiAnvil",
@@ -5402,7 +5408,7 @@ class ChampionExtractor(LoLDataExtractor):
         #数据框构建和排序（Build the dataframe and sort the keys and values）
         ##英雄（Champion）
         if self.useAllCharacter:
-            if Patch(self.patch_number) < Patch("16.5"):
+            if Patch(self.patch_number) < Patch("16.5"): #26.05版本调整了所有基础属性键（All base stat keys are adjusted in Patch 26.05）
                 champion_statistics_output_order: list[int] = [0, 1, 2, 62, 133, 134, 3, 61, 222, 80, 230, 246, 247, 73, 84, 19, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 20, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 64, 135, 136, 8, 9, 21, 22, 23, 24, 26, 28, 33, 35, 34, 30, 10, 11, 32, 27, 25, 29, 37, 91, 79, 232, 223, 220, 221, 240, 226, 231, 229, 225, 228, 233, 237, 216, 234, 235, 238, 239, 211, 212, 217, 218, 214, 215, 219, 224, 213, 241, 242, 243, 244, 245, 227, 236, 86, 88, 42, 43, 85, 12, 14, 15, 16, 17, 13, 18, 69, 70, 71, 72, 38, 44, 66, 57, 58, 39, 202, 203, 204, 205, 206, 207, 208, 40, 41, 50, 36, 65, 63, 68, 31, 83, 4, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 7, 167, 168, 169, 170, 51, 123, 124, 52, 54, 89, 55, 118, 53, 125, 127, 126, 128, 90, 56, 49, 78, 81, 82, 45, 46, 137, 138, 119, 120, 121, 122, 47, 48, 67, 5, 6, 157, 158, 161, 162, 159, 163, 165, 164, 166, 160, 77, 209, 210, 59, 129, 130, 60, 131, 132, 74, 75, 76, 87, 92, 104, 106, 117, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 105, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 139, 140, 141, 142, 143]
             else:
                 champion_statistics_output_order = [0, 1, 2, 62, 133, 134, 3, 61, 244, 80, 252, 268, 269, 73, 84, 19, 186, 198, 199, 200, 201, 191, 192, 193, 194, 195, 196, 197, 20, 202, 221, 222, 223, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 64, 135, 136, 144, 145, 148, 149, 150, 151, 152, 153, 156, 158, 157, 154, 146, 147, 155, 27, 25, 29, 37, 91, 79, 254, 245, 242, 243, 262, 248, 253, 251, 247, 250, 255, 259, 238, 256, 257, 260, 261, 233, 234, 239, 240, 236, 237, 241, 246, 235, 263, 264, 265, 266, 267, 249, 258, 86, 88, 42, 43, 85, 12, 14, 15, 16, 17, 13, 18, 69, 70, 71, 72, 38, 44, 66, 57, 58, 39, 224, 225, 226, 227, 228, 229, 230, 40, 41, 50, 36, 65, 63, 68, 31, 83, 4, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 7, 182, 183, 184, 185, 51, 123, 124, 52, 54, 89, 55, 118, 53, 125, 127, 126, 128, 90, 56, 49, 78, 81, 82, 45, 46, 137, 138, 119, 120, 121, 122, 47, 48, 67, 5, 6, 172, 173, 176, 177, 174, 178, 180, 179, 181, 175, 77, 231, 232, 59, 129, 130, 60, 131, 132, 74, 75, 76, 87, 92, 104, 106, 117]
@@ -5905,6 +5911,7 @@ class AugmentExtractor(LoLDataExtractor):
         self.SwarmAugment_df: pandas.DataFrame = pandas.DataFrame()
         self.KiwiAugment_df: pandas.DataFrame = pandas.DataFrame()
         self.KiwiAugmentSet_df: pandas.DataFrame = pandas.DataFrame()
+        self.KiwiQuestline_df: pandas.DataFrame = pandas.DataFrame()
         self.augmentModifier_df: pandas.DataFrame = pandas.DataFrame()
     
     def init_data_readiness(self) -> None:
@@ -6152,6 +6159,9 @@ class AugmentExtractor(LoLDataExtractor):
         KiwiAugmentSet_header_keys: list[str] = list(KiwiAugmentSet_header.keys())
         KiwiAugmentSet_data: dict[str, list[Any]] = {key: [] for key in KiwiAugmentSet_header_keys}
         KiwiAugmentSet_data_json: dict[str, list[Any]] = copy.deepcopy(KiwiAugmentSet_data)
+        KiwiQuestline_header_keys: list[str] = list(KiwiQuestline_header.keys())
+        KiwiQuestline_data: dict[str, list[Any]] = {key: [] for key in KiwiQuestline_header_keys}
+        KiwiQuestline_data_json: dict[str, list[Any]] = copy.deepcopy(KiwiQuestline_data)
         augmentModifier_header_keys: list[str] = list(augmentModifier_header.keys())
         augmentModifier_data: dict[str, list[Any]] = {key: [] for key in augmentModifier_header_keys}
         augmentModifier_data_json: dict[str, list[Any]] = copy.deepcopy(augmentModifier_data)
@@ -6298,11 +6308,15 @@ class AugmentExtractor(LoLDataExtractor):
         ##海克斯大乱斗强化符文（ARAM: Mayhem augments）
         self.init_mSpells()
         augmentSet_map: dict[str, list[str]] = {}
+        augmentKey_questline_map: dict[str, str] = {}
         for (key, value) in map12_bin_whole.items():
             if key != "__linked":
                 if value["__type"] == "SpellObject": #提取指令字典（Extract spell dictionary）
                     self.__class__.mSpells[value["mScriptName"]] = value
-                elif value["__type"] == "{27bc6378}": #整理从强化符文到强化符文套装的映射（Build a map from augment to its belong sets）
+                elif value["__type"] == "AugmentData": #整理从任务线到强化符文的映射（Build a map from questline to the corresponding augment）
+                    if "{3ed971bd}" in value and "{09d0cf3d}" in value["{3ed971bd}"]:
+                        augmentKey_questline_map[value["{3ed971bd}"]["{09d0cf3d}"]] = key
+                elif value["__type"] == "{27bc6378}": #整理从强化符文到强化符文套装的映射（Build a map from augment to its belonging sets）
                     for augment_key in value["augments"]:
                         if not augment_key in augmentSet_map:
                             augmentSet_map[augment_key] = []
@@ -6311,79 +6325,119 @@ class AugmentExtractor(LoLDataExtractor):
             if key1 != "__linked" and value["__type"] == "AugmentData": #强化符文（Augment）
                 for i in range(len(KiwiAugment_header_keys)):
                     key: str = KiwiAugment_header_keys[i]
-                    if i == 0: #主键（`Key`）
-                        to_append: Any = key1
-                    elif i <= 50:
-                        if i <= 20:
-                            if i == 2: #可用性（`Enabled`）
-                                to_append = self.aGet(value, ["Enabled", "enabled"], default = True)
+                    if i <= 56:
+                        if i == 0: #主键（`Key`）
+                            to_append: Any = key1
+                        elif i <= 52:
+                            if i <= 22:
+                                if i == 2: #可用性（`Enabled`）
+                                    to_append = self.aGet(value, ["Enabled", "enabled"], default = True)
+                                else:
+                                    tmp_ptr: Any = value
+                                    subkeyList: list[str] = key.split()
+                                    for tmp_key in subkeyList:
+                                        if tmp_key in tmp_ptr:
+                                            tmp_ptr = tmp_ptr[tmp_key]
+                                        else:
+                                            if i == 18 or i == 22:
+                                                to_append = value.get(key, False)
+                                            else:
+                                                to_append = value.get(key, "")
+                                            break
+                                    else:
+                                        to_append = tmp_ptr
+                            elif i <= 48: #字符串常量（String constants）
+                                subkey2: str = pStrConst.search(key).group()
+                                subkey1: str = key.replace(subkey2, "")
+                                useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                                locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
+                                strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                                tooltip_key: str = KiwiAugment_data[subkey1][-1]
+                                tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                if subkey2.endswith("_burn"):
+                                    spellKey: str = value["RootSpell"]
+                                    if spellKey in map12_bin_whole:
+                                        mSpell: Optional[dict[str, Any]] = map12_bin_whole[spellKey]["mSpell"]
+                                    else:
+                                        mSpell: Optional[dict[str, Any]] = None
+                                    if mSpell == None:
+                                        to_append = ""
+                                    else:
+                                        self.__class__.calculatedVariables.clear()
+                                        tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                        to_append = tooltip_burn
+                                else:
+                                    to_append = tooltip_raw
+                            elif i == 49: #强化符文显示标签内容（`AugmentDisplayTags_content`）
+                                to_append = list(map(lambda x: AugmentDisplayTags[x], value["AugmentDisplayTags"])) if "AugmentDisplayTags" in value else ""
+                            elif i == 50: #位阶（`rarityValue`）
+                                to_append = augment_rarities[value.get("rarity", 0)]
+                            elif i == 51: #根指令对象（`RootSpellObject`）
+                                to_append = map12_bin_whole.get(value["RootSpell"], "")
+                            else: #其它指令对象（`{40c7b66f}_Object`）
+                                to_append = list(map(lambda x: map12_bin_whole.get(x, ""), value.get("{40c7b66f}", [])))
+                                if to_append == []:
+                                    to_append = ""
+                        elif i <= 55: #强化符文套装相关键（Augment set related keys）
+                            if key1 in augmentSet_map:
+                                if i == 53: #强化符文套装列表（`augmentSet`）
+                                    to_append = augmentSet_map[key1]
+                                else: #强化符文套装本地化名称（Augment set localized names）
+                                    augmentSets: list[str] = augmentSet_map[key1]
+                                    augmentSetNames: list[str] = []
+                                    for augmentSet_key in augmentSets:
+                                        tooltip_key = map12_bin_whole[augmentSet_key]["{0746ade9}"]
+                                        strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 54 else strtable_lol_default
+                                        augmentSetNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
+                                    to_append = augmentSetNames
                             else:
-                                tmp_ptr: Any = value
-                                subkeyList: list[str] = key.split()
+                                to_append = ""
+                        else: #资源解析器映射字典（`ResourceResolver resourceMap`）
+                            if "ResourceResolver" in value and "resourceMap" in map12_bin_whole[value["ResourceResolver"]]:
+                                to_append = map12_bin_whole[value["ResourceResolver"]]["resourceMap"]
+                            else:
+                                to_append = ""
+                    else: #任务线相关键（Questline-related keys）
+                        if "{3ed971bd}" in value and "{09d0cf3d}" in value["{3ed971bd}"] and (questline_key := value["{3ed971bd}"]["{09d0cf3d}"]) in map12_bin_whole:
+                            questline: dict[str, Any] = map12_bin_whole[questline_key]
+                            if i <= 64:
+                                tmp_ptr: Any = questline
+                                subkeyList: list[str] = key.split()[1:]
                                 for tmp_key in subkeyList:
                                     if tmp_key in tmp_ptr:
                                         tmp_ptr = tmp_ptr[tmp_key]
                                     else:
-                                        if i == 2: #可用性（`Enabled`）
-                                            to_append = value.get(key, True)
-                                        elif i == 18: #{ed593c9c}
+                                        if i == 62: #`questline {ee2e0dbc}`
                                             to_append = value.get(key, False)
                                         else:
                                             to_append = value.get(key, "")
                                         break
                                 else:
                                     to_append = tmp_ptr
-                        elif i <= 46: #字符串常量（String constants）
-                            subkey2: str = pStrConst.search(key).group()
-                            subkey1: str = key.replace(subkey2, "")
-                            useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                            locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
-                            strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
-                            tooltip_key: str = KiwiAugment_data[subkey1][-1]
-                            tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
-                            if subkey2.endswith("_burn"):
-                                spellKey: str = value["RootSpell"]
-                                if spellKey in map12_bin_whole:
-                                    mSpell: Optional[dict[str, Any]] = map12_bin_whole[spellKey]["mSpell"]
+                            else: #字符串常量（String constants）
+                                subkey2: str = pStrConst.search(key).group()
+                                subkey1: str = key.replace(subkey2, "")
+                                useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                                locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
+                                strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                                tooltip_key: str = KiwiAugment_data[subkey1][-1]
+                                tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                if subkey2.endswith("_burn"):
+                                    spellKey: str = value["RootSpell"]
+                                    if spellKey in map12_bin_whole:
+                                        mSpell: Optional[dict[str, Any]] = map12_bin_whole[spellKey]["mSpell"]
+                                    else:
+                                        mSpell: Optional[dict[str, Any]] = None
+                                    if mSpell == None:
+                                        to_append = ""
+                                    else:
+                                        self.__class__.calculatedVariables.clear()
+                                        tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                        to_append = tooltip_burn
                                 else:
-                                    mSpell: Optional[dict[str, Any]] = None
-                                if mSpell == None:
-                                    to_append = ""
-                                else:
-                                    self.__class__.calculatedVariables.clear()
-                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
-                                    to_append = tooltip_burn
-                            else:
-                                to_append = tooltip_raw
-                        elif i == 47: #强化符文显示标签内容（`AugmentDisplayTags_content`）
-                            to_append = list(map(lambda x: AugmentDisplayTags[x], value["AugmentDisplayTags"])) if "AugmentDisplayTags" in value else ""
-                        elif i == 48: #位阶（`rarityValue`）
-                            to_append = augment_rarities[value.get("rarity", 0)]
-                        elif i == 49: #根指令对象（`RootSpellObject`）
-                            to_append = map12_bin_whole.get(value["RootSpell"], "")
-                        else: #其它指令对象（`{40c7b66f}_Object`）
-                            to_append = list(map(lambda x: map12_bin_whole.get(x, ""), value.get("{40c7b66f}", [])))
-                            if to_append == []:
-                                to_append = ""
-                    elif i <= 53: #强化符文套装相关键（Augment set related keys）
-                        if key1 in augmentSet_map:
-                            if i == 51: #强化符文套装列表（`augmentSet`）
-                                to_append = augmentSet_map[key1]
-                            else: #强化符文套装本地化名称（Augment set localized names）
-                                augmentSets: list[str] = augmentSet_map[key1]
-                                augmentSetNames: list[str] = []
-                                for augmentSet_key in augmentSets:
-                                    tooltip_key = map12_bin_whole[augmentSet_key]["{0746ade9}"]
-                                    strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 52 else strtable_lol_default
-                                    augmentSetNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
-                                to_append = augmentSetNames
+                                    to_append = tooltip_raw
                         else:
-                            to_append = ""
-                    else:
-                        if "ResourceResolver" in value and "resourceMap" in map12_bin_whole[value["ResourceResolver"]]:
-                            to_append = map12_bin_whole[value["ResourceResolver"]]["resourceMap"]
-                        else:
-                            to_append = ""
+                            to_append = False if i == 62 else ""
                     KiwiAugment_data[key].append(to_append)
                     KiwiAugment_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "{27bc6378}": #强化符文套装（Augment set）
@@ -6470,7 +6524,79 @@ class AugmentExtractor(LoLDataExtractor):
                             to_append = ""
                     KiwiAugmentSet_data[key].append(to_append)
                     KiwiAugmentSet_data_json[key].append(pyobj2json(to_append))
-        KiwiAugment_statistics_output_order: list[int] = [0, 1, 19, 2, 3, 21, 22, 17, 48, 16, 47, 51, 52, 53, 8, 9, 18, 4, 23, 24, 25, 26, 5, 27, 28, 29, 30, 10, 31, 32, 33, 34, 11, 35, 36, 37, 38, 12, 39, 40, 41, 42, 13, 43, 44, 45, 46, 6, 49, 7, 50, 20, 54, 14, 15]
+            elif key1 != "__linked" and value["__type"] == "{8d31b69b}": #任务线（Questline）
+                for milestone_index in range(len(value["Milestones"])):
+                    milestone: dict[str, Any] = value["Milestones"][milestone_index]
+                    for i in range(len(KiwiQuestline_header_keys)):
+                        key: str = KiwiQuestline_header_keys[i]
+                        if i <= 13:
+                            if i == 0: #主键（`key`）
+                                to_append: Any = key1
+                            elif i <= 7:
+                                tmp_ptr: Any = value
+                                subkeyList: list[str] = key.split()
+                                for tmp_key in subkeyList:
+                                    if tmp_key in tmp_ptr:
+                                        tmp_ptr = tmp_ptr[tmp_key]
+                                    else:
+                                        if i == 6: #`{ee2e0dbc}`
+                                            to_append = value.get(key, False)
+                                        else:
+                                            to_append = value.get(key, "")
+                                        break
+                                else:
+                                    to_append = tmp_ptr
+                            else:
+                                subkey2: str = pStrConst.search(key).group()
+                                subkey1: str = key.replace(subkey2, "")
+                                useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                                locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
+                                strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                                tooltip_key: str = KiwiQuestline_data[subkey1][-1]
+                                tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                if subkey2.endswith("_burn"):
+                                    if key1 in augmentKey_questline_map:
+                                        spellKey: str = map12_bin_whole[augmentKey_questline_map[key1]]["RootSpell"]
+                                        mSpell: dict[str, Any] = map12_bin_whole[spellKey]["mSpell"]
+                                    else:
+                                        mSpell = {}
+                                    self.__class__.calculatedVariables.clear()
+                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                    to_append = tooltip_burn
+                                else:
+                                    to_append = tooltip_raw
+                        elif i <= 20:
+                            if i == 14: #里程序号（`Milestone_index`）
+                                to_append = milestone_index
+                            elif i <= 16:
+                                to_append = milestone[key.split()[1]]
+                            else:
+                                subkey2: str = pStrConst.search(key).group()
+                                subkey1: str = key.replace(subkey2, "")
+                                useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                                locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
+                                strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                                tooltip_key: str = KiwiQuestline_data[subkey1][-1]
+                                tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                if subkey2.endswith("_burn"):
+                                    if key1 in augmentKey_questline_map:
+                                        spellKey: str = map12_bin_whole[augmentKey_questline_map[key1]]["RootSpell"]
+                                        mSpell: dict[str, Any] = map12_bin_whole[spellKey]["mSpell"]
+                                    else:
+                                        mSpell = {}
+                                    self.__class__.calculatedVariables.clear()
+                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                    to_append = tooltip_burn
+                                else:
+                                    to_append = tooltip_raw
+                        else:
+                            if key1 in augmentKey_questline_map:
+                                to_append = map12_bin_whole[augmentKey_questline_map[key1]]["AugmentPlatformId"]
+                            else:
+                                to_append = 0
+                        KiwiQuestline_data[key].append(to_append)
+                        KiwiQuestline_data_json[key].append(pyobj2json(to_append))
+        KiwiAugment_statistics_output_order: list[int] = [0, 1, 19, 2, 3, 23, 24, 17, 50, 16, 49, 53, 54, 55, 57, 58, 8, 9, 18, 22, 62, 4, 25, 26, 27, 28, 5, 29, 30, 31, 32, 10, 33, 34, 35, 36, 11, 37, 38, 39, 40, 60, 67, 68, 69, 70, 12, 41, 42, 43, 44, 13, 45, 46, 47, 48, 6, 51, 7, 52, 21, 64, 20, 56, 14, 15, 61]
         KiwiAugment_data_organized: dict[str, list[Any]] = {KiwiAugment_header_keys[i]: KiwiAugment_data_json[KiwiAugment_header_keys[i]] for i in KiwiAugment_statistics_output_order}
         KiwiAugment_df: pandas.DataFrame = pandas.DataFrame(data = KiwiAugment_data_organized)
         KiwiAugment_df = KiwiAugment_df.sort_values(by = "AugmentPlatformId", ascending = True, ignore_index = True)
@@ -6483,6 +6609,12 @@ class AugmentExtractor(LoLDataExtractor):
         KiwiAugmentSet_df: pandas.DataFrame = pandas.DataFrame(data = KiwiAugmentSet_data_organized)
         KiwiAugmentSet_df = pandas.concat([pandas.DataFrame([KiwiAugmentSet_header])[KiwiAugmentSet_df.columns], KiwiAugmentSet_df], ignore_index = True)
         self.KiwiAugmentSet_df = KiwiAugmentSet_df
+        KiwiQuestline_statistics_output_order: list[int] = [0, 21, 2, 3, 8, 9, 14, 15, 16, 17, 18, 19, 20]
+        KiwiQuestline_data_organized: dict[str, list[Any]] = {KiwiQuestline_header_keys[i]: KiwiQuestline_data_json[KiwiQuestline_header_keys[i]] for i in KiwiQuestline_statistics_output_order}
+        KiwiQuestline_df: pandas.DataFrame = pandas.DataFrame(data = KiwiQuestline_data_organized)
+        KiwiQuestline_df = KiwiQuestline_df.sort_values(by = ["augment AugmentPlatformId", "Milestone_index"], ascending = True, ignore_index = True)
+        KiwiQuestline_df = pandas.concat([pandas.DataFrame([KiwiQuestline_header])[KiwiQuestline_df.columns], KiwiQuestline_df], ignore_index = True)
+        self.KiwiQuestline_df = KiwiQuestline_df
         ##强化符文修饰（Augment modifiers）
         for (key1, value) in (self.map12_bin | self.map30_bin).items():
             if key1 != "__linked" and value["__type"] == "{23433cc1}":
@@ -6546,12 +6678,17 @@ class AugmentExtractor(LoLDataExtractor):
             sheet4_name: str = KiwiAugmentSet_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else KiwiAugmentSet_ws["sheet_name_without_version"]
             KiwiAugmentSet_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(KiwiAugmentSet_ws["dType"]), "dType": KiwiAugmentSet_ws["dType"], "sheet_name": sheet4_name, "sheet": self.KiwiAugmentSet_df}
             self.df_queue.append(KiwiAugmentSet_df_struct)
+        if not self.KiwiQuestline_df.empty:
+            KiwiQuestline_ws: dict[str, Any] = self.worksheet_metadata["KiwiQuestline"]
+            sheet5_name: str = KiwiQuestline_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else KiwiQuestline_ws["sheet_name_without_version"]
+            KiwiQuestline_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(KiwiQuestline_ws["dType"]), "dType": KiwiQuestline_ws["dType"], "sheet_name": sheet5_name, "sheet": self.KiwiQuestline_df}
+            self.df_queue.append(KiwiQuestline_df_struct)
         if not self.augmentModifier_df.empty:
             augmentModifier_ws: dict[str, Any] = self.worksheet_metadata["AugmentModifier"]
-            sheet5_name: str = augmentModifier_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else augmentModifier_ws["sheet_name_without_version"]
-            augmentModifier_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(augmentModifier_ws["dType"]), "dType": augmentModifier_ws["dType"], "sheet_name": sheet5_name, "sheet": self.augmentModifier_df}
+            sheet6_name: str = augmentModifier_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else augmentModifier_ws["sheet_name_without_version"]
+            augmentModifier_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(augmentModifier_ws["dType"]), "dType": augmentModifier_ws["dType"], "sheet_name": sheet6_name, "sheet": self.augmentModifier_df}
             self.df_queue.append(augmentModifier_df_struct)
-
+    
     def export_augment_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
         '''
         导出强化符文数据到工作簿中。产生以下工作表：<br>Export augment data to a workbook. The following worksheets are added:
@@ -6597,7 +6734,8 @@ class AugmentExtractor(LoLDataExtractor):
         sheet2_name: str = self.worksheet_metadata["SwarmAugment"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["SwarmAugment"]["sheet_name_without_version"]
         sheet3_name: str = self.worksheet_metadata["KiwiAugment"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["KiwiAugment"]["sheet_name_without_version"]
         sheet4_name: str = self.worksheet_metadata["KiwiAugmentSet"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["KiwiAugmentSet"]["sheet_name_without_version"]
-        sheet5_name: str = self.worksheet_metadata["AugmentModifier"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["AugmentModifier"]["sheet_name_without_version"]
+        sheet5_name: str = self.worksheet_metadata["KiwiQuestline"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["KiwiQuestline"]["sheet_name_without_version"]
+        sheet6_name: str = self.worksheet_metadata["AugmentModifier"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["AugmentModifier"]["sheet_name_without_version"]
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
@@ -6608,7 +6746,9 @@ class AugmentExtractor(LoLDataExtractor):
                         addDefaultStyle(self.KiwiAugment_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
                     if not self.KiwiAugmentSet_df.empty:
                         addDefaultStyle(self.KiwiAugmentSet_df).to_excel(excel_writer = writer, sheet_name = sheet4_name)
-                    addDefaultStyle(self.augmentModifier_df).to_excel(excel_writer = writer, sheet_name = sheet5_name)
+                    if not self.KiwiQuestline_df.empty:
+                        addDefaultStyle(self.KiwiQuestline_df).to_excel(excel_writer = writer, sheet_name = sheet5_name)
+                    addDefaultStyle(self.augmentModifier_df).to_excel(excel_writer = writer, sheet_name = sheet6_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
                     if not self.SwarmAugment_df.empty:
@@ -6617,7 +6757,9 @@ class AugmentExtractor(LoLDataExtractor):
                         self.version_df.to_excel(excel_writer = writer, sheet_name = sheet3_name, header = None, index = False, startcol = 0, startrow = 0)
                     if not self.KiwiAugmentSet_df.empty:
                         self.version_df.to_excel(excel_writer = writer, sheet_name = sheet4_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.augmentModifier_df.to_excel(excel_writer = writer, sheet_name = sheet5_name, header = None, index = False, startcol = 0, startrow = 0)
+                    if not self.KiwiQuestline_df.empty:
+                        self.version_df.to_excel(excel_writer = writer, sheet_name = sheet5_name, header = None, index = False, startcol = 0, startrow = 0)
+                    self.augmentModifier_df.to_excel(excel_writer = writer, sheet_name = sheet6_name, header = None, index = False, startcol = 0, startrow = 0)
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
                 cont = logInput()
@@ -9981,6 +10123,7 @@ if __name__ == "__main__":
                 "SwarmAugments",
                 "KiwiAugments",
                 "KiwiAugmentSet",
+                "KiwiQuestline",
                 "CherryAnvils",
                 "KiwiAnvils",
                 "CherryRoundList",

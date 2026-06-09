@@ -6272,6 +6272,8 @@ KiwiAugment_header: dict[str, str] = {
     "{ed593c9c}": "不占用栏位",
     "AugmentPlatformId": "强化符文序号",
     "ResourceResolver": "资源解析器主键",
+    "{3ed971bd} {09d0cf3d}": "任务线主键",
+    "{e3a02eac}": "技能重载",
     "NameTra_content_zh": "名称（中文）",
     "NameTra_content_en": "名称（英文）",
     "DescriptionTra_content_zh": "简介（中文）",
@@ -6305,7 +6307,21 @@ KiwiAugment_header: dict[str, str] = {
     "augmentSet": "强化符文套装列表",
     "augmentSet_contents_zh": "强化符文套装（中文）",
     "augmentSet_contents_en": "强化符文套装（英文）",
-    "ResourceResolver resourceMap": "资源解析器映射字典"
+    "ResourceResolver resourceMap": "资源解析器映射字典",
+    "questline {bc1b3d88}": "",
+    "questline QuestName": "任务线代码",
+    "questline {4796bf5f}": "任务线名称键",
+    "questline {c88f1a9b}": "任务完成描述键",
+    "questline {06b06978} texturePath": "任务栏位图标纹理路径",
+    "questline {ee2e0dbc}": "",
+    "questline Milestones": "任务线里程信息",
+    "questline {09d67381}": "相关强化符文",
+    "questline {4796bf5f}_content_zh": "任务线对应强化符文名称（中文）",
+    "questline {4796bf5f}_content_en": "任务线对应强化符文名称（英文）",
+    "questline {c88f1a9b}_content_zh": "任务完成描述（中文）",
+    "questline {c88f1a9b}_content_zh_burn": "任务完成描述（中文/数值转换）",
+    "questline {c88f1a9b}_content_en": "任务完成描述（英文）",
+    "questline {c88f1a9b}_content_en_burn": "任务完成描述（英文/数值转换）"
 }
 KiwiAugmentSet_header: dict[str, str] = {
     "key": "主键",
@@ -6334,6 +6350,30 @@ KiwiAugmentSet_header: dict[str, str] = {
     "{96b4b430}_object keyTooltip_content_en_burn": "套装说明文本（英文/数值转换）",
     "{40c7b66f}_Object": "其它指令对象",
     "{01d14504} resourceMap": "资源解析器映射字典"
+}
+KiwiQuestline_header: dict[str, str] = {
+    "key": "主键",
+    "{bc1b3d88}": "",
+    "QuestName": "任务代码",
+    "{4796bf5f}": "任务线名称键",
+    "{c88f1a9b}": "任务完成描述键",
+    "{06b06978} texturePath": "任务栏位图标纹理路径",
+    "{ee2e0dbc}": "",
+    "{09d67381}": "相关强化符文",
+    "{4796bf5f}_content_zh": "任务线名称（中文）",
+    "{4796bf5f}_content_en": "任务线名称（英文）",
+    "{c88f1a9b}_content_zh": "任务完成描述（中文）",
+    "{c88f1a9b}_content_zh_burn": "任务完成描述（中文/数值转换）",
+    "{c88f1a9b}_content_en": "任务完成描述（英文）",
+    "{c88f1a9b}_content_en_burn": "任务完成描述（英文/数值转换）",
+    "Milestone_index": "里程序号",
+    "Milestone {7fec0982}": "里程点",
+    "Milestone {03d6a5a2}": "里程说明文本键",
+    "Milestone {03d6a5a2}_content_zh": "里程说明文本（中文）",
+    "Milestone {03d6a5a2}_content_zh_burn": "里程说明文本（中文/数值转换）",
+    "Milestone {03d6a5a2}_content_en": "里程说明文本（英文）",
+    "Milestone {03d6a5a2}_content_en_burn": "里程说明文本（英文/数值转换）",
+    "augment AugmentPlatformId": "强化符文序号"
 }
 augmentModifier_header: dict[str, str] = {
     "key": "主键",
