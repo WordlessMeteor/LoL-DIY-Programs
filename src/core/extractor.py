@@ -2067,10 +2067,10 @@ class LoLDataExtractor:
         elif formulaPart_type == "BuffCounterByCoefficientCalculationPart": #在装备中，仅用于飞升护符、榨血睥睨和先机鞋（In items, this only applies to Talisman Ascension, Leeching Leer and the upgraded boots granted by Feats of Strength）
             mCoefficient: float = formulaPart["mCoefficient"]
             partCalc = cls.aRound(mCoefficient, 5)
-            formulaStr = str(partCalc) + " × stack of " + formulaPart["mBuffName"]
+            formulaStr = str(partCalc) + " × stack of buff: " + formulaPart["mBuffName"]
         elif formulaPart_type == "BuffCounterByNamedDataValueCalculationPart": #仅用于游戏内动态数值的显示，如【终极轮盘】中的【盛宴】提供的攻击距离（Only applies to in-game dynamic stat display, e.g. attack range granted by [Feast] in [Ultimate Roulette]）
             partCalc = cls.variableCalculation(binData, formulaPart["mDataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
-            formulaStr = partCalc + " × stack of " + formulaPart["mBuffName"]
+            formulaStr = partCalc + " × stack of buff: " + formulaPart["mBuffName"]
         elif formulaPart_type == "ByCharLevelBreakpointsCalculationPart": #阶梯式等级提供增益（Bonus value provided by levels in a step function manner）
             mLevel1Value: int | float = formulaPart.get("mLevel1Value", 0)
             mInitialBonusPerLevel: int | float = formulaPart.get("mInitialBonusPerLevel", 0) #每级增加的数值。从2级开始加（The value to increment reaching each level. It takes effect from Level 2）
@@ -2128,7 +2128,7 @@ class LoLDataExtractor:
         elif formulaPart_type == "PercentageOfBuffNameElapsed":
             mCoefficient = formulaPart["Coefficient"]
             partCalc = cls.aRound(mCoefficient, 5)
-            formulaStr = str(partCalc) + " × stack of " + formulaPart["buffName"]
+            formulaStr = str(partCalc) + " × stack of buff: " + formulaPart["buffName"]
         elif formulaPart_type == "StatByCoefficientCalculationPart":
             partCalc = cls.aRound(formulaPart["mCoefficient"], 5)
             stat_header: str = mStatFormula_dict_zh[formulaPart.get("mStatFormula", 0)] if useCHSPrompt else mStatFormula_dict_en[formulaPart.get("mStatFormula", 0)]
