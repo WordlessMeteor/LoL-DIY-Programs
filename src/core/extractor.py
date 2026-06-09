@@ -5966,7 +5966,7 @@ class AugmentExtractor(LoLDataExtractor):
                     self.cherry_bin = {}
                 else:
                     logPrint('斗魂竞技场强化符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nArena augment data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.')
-                    time.sleep()
+                    time.sleep(3)
                     self.init_data_readiness()
                     return
             else:
@@ -6029,7 +6029,7 @@ class AugmentExtractor(LoLDataExtractor):
                     self.kiwi_bin = {}
                 else:
                     logPrint('海克斯大乱斗强化符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nARAM: Mayhem augment data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.')
-                    time.sleep()
+                    time.sleep(3)
                     self.init_data_readiness()
                     return
             else:
@@ -6856,7 +6856,7 @@ class AnvilExtractor(LoLDataExtractor):
                         self.KiwiAnvils_bin = {}
                     else:
                         logPrint("嚎哭深渊地图信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(map12_bin_url))
-                        time.sleep()
+                        time.sleep(3)
                         self.init_data_readiness()
                         return
                 else:
