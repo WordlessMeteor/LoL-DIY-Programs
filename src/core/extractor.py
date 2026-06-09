@@ -23,7 +23,7 @@ from src.core.config.localization import language_ddragon, language_dict
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/06/01
+# 更新（Last update）：     2026/06/09
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -1070,7 +1070,7 @@ class LoLDataExtractor:
         '''
         cls.optimize_tooltip_layout = not reserve_CSS
         if reserve_CSS:
-            cls.tooltipConvert: Callable[[str, dict[str, int | dict[str, str]], dict[str, Any], str, bool, bool, dict[str, dict[str, Any] | Any] | None], str] = cls.tooltipSubstitute #说明文本转换方法（Tooltip transformation method）
+            cls.tooltipConvert: Callable[[str, dict[str, int | dict[str, str]], dict[str, Any], str, bool, bool, Optional[dict[str, str]], Optional[dict[str, dict[str, Any] | Any]]], str] = cls.tooltipSubstitute #说明文本转换方法（Tooltip transformation method）
         else:
             cls.tooltipConvert = cls.tooltipTransform
     
@@ -3291,9 +3291,11 @@ class LoLDataExtractor:
         return result
     
     @classmethod
-    def tooltipTransform(cls, tooltip: str, strtable_locale: dict[str, int | dict[str, str]], binData: dict[str, Any], locale: str, enableModeOverride: bool = True, reserve_variable: bool = False, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str: #将原始提示转化为带数值的提示（Transform the raw tooltip into the one with detailed stats）
+    def tooltipTransform(cls, tooltip: str, strtable_locale: dict[str, int | dict[str, str]], binData: dict[str, Any], locale: str, enableModeOverride: bool = True, reserve_variable: bool = False, reservedVars: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str: #将原始提示转化为带数值的提示（Transform the raw tooltip into the one with detailed stats）
         '''
         将原始说明文本进行排版优化，并转换为带具体数值的说明文本。<br>Optimized the raw tooltip's layout and transform it into the one with detailed stats.
+        
+        这个方法是说明文本去格式化和变量代换的起点。<br>This method acts as the starting point of tooltip deformatting and variable substitution.
         
         :param tooltip: 原始说明文本。<br>Raw tooltip.
         :type tooltip: str
@@ -3307,6 +3309,8 @@ class LoLDataExtractor:
         :type enableModeOverride: bool
         :param reserve_variable: 是否将变量代换后的结果写成“[{变量名}] = {值}”的形式。默认为假。<br>Whether to write the result after variable substitution in the form of "[{Var_name}] = {Value}". False by default.
         :type reserve_variable: bool
+        :param reservedVars: 在变量代换起始，预先设置变量值。<br>At the beginning of variable substitution, set variables' values in advance.
+        :type reservedVars: dict[str, str] | None
         :param flexibleData: 附加数据。<br>Supplemental data.
         :type flexibleData: dict[str, dict[str, Any] | Any] | None
         :return: 转换后的说明文本。<br>Transformed tooltip.
@@ -3359,13 +3363,13 @@ class LoLDataExtractor:
                 result = cls.tooltipStringtableIteration(section, strtable_locale, locale, deep = False, binData = binData, enableModeOverride = False, reserve_variable = reserve_variable, reservedVarsList = None, flexibleData = flexibleData) #将双花括号包围的变量替换为实际说明文本（Replace the variables enclosed in two pairs of curly brackets with the actual tooltips）
                 result = cls.tooltipPreparation(result, locale)
                 #下面开始执行复杂的变量代换过程（In the following, a complex variable substitution is performed）
-                result = cls.variableSubstitute(result, binData, locale, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVars = None, flexibleData = flexibleData)
+                result = cls.variableSubstitute(result, binData, locale, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVars = reservedVars, flexibleData = flexibleData)
                 while True:
                     result1, gameModeReservedVars_list = cls.nestedVariableSubstitute(result, strtable_locale, binData, enableModeOverride = enableModeOverride)
                     if result1 == result: #该条件成立，相当于在上一次执行tooltipStringtableIteration后，不会产生进一步的嵌套变量（If this condition holds, it means that after the last execution of `tooltipStringtableIteration`, no further nested variables will be produced）
                         break
                     result = result1
-                    result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, flexibleData = flexibleData) #因为一个reservedVars产生的闹剧。这是程序员的问题。你可以尝试转换一下spell_ornnp_tooltipextended键的说明文本（A farce due to `reservedVars`. Thanks to the programmer however. Try transforming the tooltip of `spell_ornnp_tooltipextended` key）
+                    result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, flexibleData = flexibleData) #尝试转换一下“spell_ornnp_tooltipextended”键的说明文本（Try transforming the tooltip of "spell_ornnp_tooltipextended" key）
                 result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, flexibleData = flexibleData) #在退出以上循环后，需要再次转换说明文本中新产生的变量（After exiting the above loop, it's necessary to transform the newly produced variables in the tooltip）
                 #后处理（Post-processing）
                 result = cls.tooltipPostProcessing(result, locale)
@@ -3396,9 +3400,11 @@ class LoLDataExtractor:
         return tooltip_text
     
     @classmethod
-    def tooltipSubstitute(cls, tooltip: str, strtable_locale: dict[str, int | dict[str, str]], binData: dict[str, Any], locale: str, enableModeOverride: bool = True, reserve_variable: bool = False, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str: #在最大程度保留原始说明文本格式的基础上，只进行变量代换（On the basis of maximizing the retention of the original tooltip format, only perform variable substitution）
+    def tooltipSubstitute(cls, tooltip: str, strtable_locale: dict[str, int | dict[str, str]], binData: dict[str, Any], locale: str, enableModeOverride: bool = True, reserve_variable: bool = False, reservedVars: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str: #在最大程度保留原始说明文本格式的基础上，只进行变量代换（On the basis of maximizing the retention of the original tooltip format, only perform variable substitution）
         '''
         在保留原始说明文本中的CSS标签和修饰符的基础上，只进行变量代换。<br>Perform variable substitution only. The original CSS tags and descriptors in the tooltip are retained.
+        
+        这个方法是说明文本变量代换的起点。<br>This method acts as the starting point of tooltip variable substitution.
         
         :param tooltip: 原始说明文本。<br>Raw tooltip.
         :type tooltip: str
@@ -3412,6 +3418,8 @@ class LoLDataExtractor:
         :type enableModeOverride: bool
         :param reserve_variable: 是否将变量代换后的结果写成“[{变量名}] = {值}”的形式。默认为假。<br>Whether to write the result after variable substitution in the form of "[{Var_name}] = {Value}". False by default.
         :type reserve_variable: bool
+        :param reservedVars: 在变量代换起始，预先设置变量值。<br>At the beginning of variable substitution, set variables' values in advance.
+        :type reservedVars: dict[str, str] | None
         :param flexibleData: 附加数据。<br>Supplemental data.
         :type flexibleData: dict[str, dict[str, Any] | Any] | None
         :return: 变量代换后的说明文本。<br>Tooltip after variable substitution.
@@ -3421,7 +3429,7 @@ class LoLDataExtractor:
         binData = cls.normalizeBinData(binData)
         result = cls.tooltipStringtableIteration(tooltip, strtable_locale, locale, deep = False, reserve_CSS = True, binData = binData, enableModeOverride = False, reserve_variable = reserve_variable, reservedVarsList = None, flexibleData = flexibleData)
         #变量代换（Variable substitution）
-        result = cls.variableSubstitute(result, binData, locale, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVars = None, flexibleData = flexibleData)
+        result = cls.variableSubstitute(result, binData, locale, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVars = reservedVars, flexibleData = flexibleData)
         while True:
             result1, gameModeReservedVars_list = cls.nestedVariableSubstitute(result, strtable_locale, binData, enableModeOverride = enableModeOverride)
             if result1 == result: #该条件成立，相当于在上一次执行tooltipStringtableIteration后，不会产生进一步的嵌套变量（If this condition holds, it means that after the last execution of `tooltipStringtableIteration`, no further nested variables will be produced）
@@ -6360,11 +6368,19 @@ class AugmentExtractor(LoLDataExtractor):
                                         mSpell: Optional[dict[str, Any]] = map12_bin_whole[spellKey]["mSpell"]
                                     else:
                                         mSpell: Optional[dict[str, Any]] = None
+                                    if "{3ed971bd}" in value and "{09d0cf3d}" in value["{3ed971bd}"] and (questline_key := value["{3ed971bd}"]["{09d0cf3d}"]) in map12_bin_whole:
+                                        questline: dict[str, Any] = map12_bin_whole[questline_key]
+                                        if i >= 25 and i <= 40: #对于简介和详细信息，获取初始任务需求和层级（For descriptions and tooltips, get the initial quest requirement and tier）
+                                            reservedVars: Optional[dict[str, str]] = {"QuestRequirement": str(questline["Milestones"][0]["{7fec0982}"]), "QuestTier": "0"}
+                                        else:
+                                            reservedVars = None
+                                    else:
+                                        reservedVars = None
                                     if mSpell == None:
                                         to_append = ""
                                     else:
                                         self.__class__.calculatedVariables.clear()
-                                        tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                        tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, reservedVars = reservedVars, flexibleData = {"mStat_dict_override_version": self.version})
                                         to_append = tooltip_burn
                                 else:
                                     to_append = tooltip_raw
@@ -6428,11 +6444,19 @@ class AugmentExtractor(LoLDataExtractor):
                                         mSpell: Optional[dict[str, Any]] = map12_bin_whole[spellKey]["mSpell"]
                                     else:
                                         mSpell: Optional[dict[str, Any]] = None
+                                    if "{3ed971bd}" in value and "{09d0cf3d}" in value["{3ed971bd}"] and (questline_key := value["{3ed971bd}"]["{09d0cf3d}"]) in map12_bin_whole:
+                                        questline: dict[str, Any] = map12_bin_whole[questline_key]
+                                        if i >= 67: #对于任务完成描述，获取最大层级（For quest-finished descriptions, get the maximum tier）
+                                            reservedVars: Optional[dict[str, str]] = {"QuestTier": str(len(questline["Milestones"]))}
+                                        else:
+                                            reservedVars = None
+                                    else:
+                                        reservedVars = None
                                     if mSpell == None:
                                         to_append = ""
                                     else:
                                         self.__class__.calculatedVariables.clear()
-                                        tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                        tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, reservedVars = reservedVars, flexibleData = {"mStat_dict_override_version": self.version})
                                         to_append = tooltip_burn
                                 else:
                                     to_append = tooltip_raw
@@ -6525,8 +6549,14 @@ class AugmentExtractor(LoLDataExtractor):
                     KiwiAugmentSet_data[key].append(to_append)
                     KiwiAugmentSet_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "{8d31b69b}": #任务线（Questline）
-                for milestone_index in range(len(value["Milestones"])):
-                    milestone: dict[str, Any] = value["Milestones"][milestone_index]
+                milestones: list[dict[str, Any]] = value["Milestones"]
+                for milestone_index in range(len(milestones)):
+                    milestone: dict[str, Any] = milestones[milestone_index]
+                    #下面设置一些用于说明文本转换的变量（Prepare some preset variables used for tooltip transformation）
+                    current_questPoint: int = milestone["{7fec0982}"]
+                    previous_questPoint: int = 0 if milestone_index == 0 else milestones[milestone_index - 1]["{7fec0982}"]
+                    questPoint_diff: int = current_questPoint - previous_questPoint
+                    reservedVars: Optional[dict[str, str]] = {"QuestRequirement": str(questPoint_diff), "QuestTier": str(milestone_index)}
                     for i in range(len(KiwiQuestline_header_keys)):
                         key: str = KiwiQuestline_header_keys[i]
                         if i <= 13:
@@ -6561,7 +6591,7 @@ class AugmentExtractor(LoLDataExtractor):
                                     else:
                                         mSpell = {}
                                     self.__class__.calculatedVariables.clear()
-                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, reservedVars = reservedVars, flexibleData = {"mStat_dict_override_version": self.version})
                                     to_append = tooltip_burn
                                 else:
                                     to_append = tooltip_raw
@@ -6585,7 +6615,7 @@ class AugmentExtractor(LoLDataExtractor):
                                     else:
                                         mSpell = {}
                                     self.__class__.calculatedVariables.clear()
-                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, reservedVars = reservedVars, flexibleData = {"mStat_dict_override_version": self.version})
                                     to_append = tooltip_burn
                                 else:
                                     to_append = tooltip_raw
@@ -11180,9 +11210,9 @@ if __name__ == "__main__":
         #     map33_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # map33_bin = LoLDataExtractor.resolve_bin_hash(map33_bin)
         ##装备（Item）
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
-            items_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
-        items_bin = LoLDataExtractor.resolve_bin_hash(items_bin)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
+        #     items_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # items_bin = LoLDataExtractor.resolve_bin_hash(items_bin)
         ##共享数据（Shared data）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/shared.cdtb.bin.json", "r", encoding = "utf-8") as fp:
         #     shared_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
@@ -11195,9 +11225,9 @@ if __name__ == "__main__":
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
         #     cherry_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # cherry_bin = LoLDataExtractor.resolve_bin_hash(cherry_bin)
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
-        #     kiwi_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
-        # kiwi_bin = LoLDataExtractor.resolve_bin_hash(kiwi_bin)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
+            kiwi_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        kiwi_bin = LoLDataExtractor.resolve_bin_hash(kiwi_bin)
         ##整合后的数据（Merged data）
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
         #     champions_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
@@ -11223,7 +11253,7 @@ if __name__ == "__main__":
         
         #总结数据结构（Summarize the data structure）
         # keyDict: dict[str, dict[str, int]] = getBinaryKeys(map33_bin, isBin = True, keyPaths = None, objectTypes = "AugmentData")[1]
-        # print(json.dumps(keyDict, indent = 4, ensure_ascii = False))
+        # logPrint(json.dumps(keyDict, indent = 4, ensure_ascii = False))
         # import pyperclip
         # s: str = ""
         # for key in keyDict["{fa33a427}"]:
@@ -11231,41 +11261,43 @@ if __name__ == "__main__":
         # pyperclip.copy(s)
         
         #输出键的hash值（Output hash value of a key）
-        # print(LoLDataExtractor.compute_rsthash("Spell_TFT17_PykeSpell_Name", 5))
+        # logPrint(LoLDataExtractor.compute_rsthash("Spell_TFT17_PykeSpell_Name", 5))
         
         #键对应（Key map）
         # mDisplayName_key = "Item_2523_Name"
-        # print(LoLDataExtractor.get_strtable_value(lolstringtable_zh, mDisplayName_key, default = "获取失败。"))
+        # logPrint(LoLDataExtractor.get_strtable_value(lolstringtable_zh, mDisplayName_key, default = "获取失败。"))
         
         #说明文本转换（Tooltip transformation）
-        print("说明文本测试样例：")
+        logPrint("说明文本测试样例：")
         tests: list[dict[str, Any]] = [
             {
-                "tooltip": "<titleLeft><itemName@ItemActiveness@>海妖杀手</itemName@ItemActiveness@></titleLeft><titleRight>{{ Item_Gold_Value_Sell }} <rules>(@SellBackModifier*100@%)</rules></titleRight><subtitleLeft>{{ Item_BriefIcon_@ItemActiveness@ }}持续伤害</subtitleLeft><subtitleRight></subtitleRight><mainText><section><attention>%i:scaleAD%@FlatPhysicalDamageMod@</attention>攻击力<br><attention>%i:scaleAS%@PercentAttackSpeedMod*100@%</attention>攻击速度<br><attention>%i:scaleMS%@PercentMovementSpeedMod*100@%</attention>移动速度@ExtendedStats@</section><section><passive>放倒它</passive><br>每第三次攻击造成<physicalDamage>@DamageAmount@额外物理伤害</physicalDamage>{{ Item_Keyword_OnHit }}，基于目标的已损失生命值至多提升至<physicalDamage>@MaximumDamage@</physicalDamage>。</section><section></section><section><flavorText></flavorText></section></mainText><postScriptLeft>已对英雄造成的伤害：<attention>@f2@</attention></postScriptLeft>",
-                "binData": items_bin["Items/6672"]
+                "tooltip": "【{{SpellName}}】技能的每次施放发射@QuestTier@个额外飞弹。<br><br><font color='#F0C200'>任务：</font>用【{{SpellName}}】技能命中敌方英雄@QuestRequirement@次<br><br><font color='#F0C200'>奖励：</font>在你施放【{{SpellName}}】技能时额外发射1个飞弹。<br><br>命中的敌人数：@QuestProgress@/@QuestRequirement@<br>已获得的额外飞弹数：@QuestTier@<br><br><flavorText>你弹无虚发。即使虚发，也不虚发。</flavorText>",
+                "binData": kiwi_bin["{2518130d}"],
+                "reservedVars": {"QuestTier": "1", "QuestRequirement": str(250 - 50)}
             },
         ]
         for i in range(len(tests)):
             LoLDataExtractor.calculatedVariables.clear()
-            print("*" * 20)
-            print("样例%d：" %(i + 1))
+            logPrint("*" * 20)
+            logPrint("样例%d：" %(i + 1))
             tooltip_raw: str = tests[i]["tooltip"]
-            print("原始说明文本：\n" + tooltip_raw)
+            logPrint("原始说明文本：\n" + tooltip_raw)
             binData: dict[str, Any] = tests[i]["binData"]
-            print("----")
-            print("转换文本：")
-            print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reserve_variable = False))
-            # print(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reserve_variable = True))
-            # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reserve_variable = False))
-            # print(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reserve_variable = True))
-            # print(modeOverrideTooltipTransform(champions_bin, objectType = "SpellObject", keyPaths = "mSpell|DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
+            reservedVars: Optional[dict[str, str]] = tests[i].get("reservedVars")
+            logPrint("----")
+            logPrint("转换文本：")
+            logPrint(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = False))
+            # logPrint(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = True))
+            # logPrint(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = False))
+            # logPrint(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = True))
+            # logPrint(modeOverrideTooltipTransform(champions_bin, objectType = "SpellObject", keyPaths = "mSpell|DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
         else:
-            print("*" * 20)
+            logPrint("*" * 20)
         
         return 0
 
     def bankUnit_test() -> int:
-        print('请输入需要计算FNV-1 hash值的字符串。输入“-1”以退出程序。\nPlease input the string you want to calculate the FNV-1 hash value for. Submit "-1" to exit the program.')
+        logPrint('请输入需要计算FNV-1 hash值的字符串。输入“-1”以退出程序。\nPlease input the string you want to calculate the FNV-1 hash value for. Submit "-1" to exit the program.')
         while True:
             event_name: str = logInput("> ")
             if event_name == "-1":
