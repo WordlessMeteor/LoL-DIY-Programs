@@ -6596,7 +6596,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 to_append = 0
                         KiwiQuestline_data[key].append(to_append)
                         KiwiQuestline_data_json[key].append(pyobj2json(to_append))
-        KiwiAugment_statistics_output_order: list[int] = [0, 1, 19, 2, 3, 23, 24, 17, 50, 16, 49, 53, 54, 55, 57, 58, 8, 9, 18, 22, 62, 4, 25, 26, 27, 28, 5, 29, 30, 31, 32, 10, 33, 34, 35, 36, 11, 37, 38, 39, 40, 60, 67, 68, 69, 70, 12, 41, 42, 43, 44, 13, 45, 46, 47, 48, 6, 51, 7, 52, 21, 64, 20, 56, 14, 15, 61]
+        KiwiAugment_statistics_output_order: list[int] = [0, 1, 19, 2, 3, 23, 24, 17, 50, 16, 49, 53, 54, 55, 57, 58, 8, 9, 18, 22, 62, 4, 25, 26, 27, 28, 5, 29, 30, 31, 32, 10, 33, 34, 35, 36, 11, 37, 38, 39, 40, 60, 67, 68, 69, 70, 6, 51, 7, 52, 21, 64, 20, 56, 14, 15, 61]
         KiwiAugment_data_organized: dict[str, list[Any]] = {KiwiAugment_header_keys[i]: KiwiAugment_data_json[KiwiAugment_header_keys[i]] for i in KiwiAugment_statistics_output_order}
         KiwiAugment_df: pandas.DataFrame = pandas.DataFrame(data = KiwiAugment_data_organized)
         KiwiAugment_df = KiwiAugment_df.sort_values(by = "AugmentPlatformId", ascending = True, ignore_index = True)

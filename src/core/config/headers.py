@@ -6315,7 +6315,7 @@ KiwiAugment_header: dict[str, str] = {
     "questline {06b06978} texturePath": "任务栏位图标纹理路径",
     "questline {ee2e0dbc}": "",
     "questline Milestones": "任务线里程信息",
-    "questline {09d67381}": "相关强化符文",
+    "questline {09d67381}": "任务线相关强化符文",
     "questline {4796bf5f}_content_zh": "任务线对应强化符文名称（中文）",
     "questline {4796bf5f}_content_en": "任务线对应强化符文名称（英文）",
     "questline {c88f1a9b}_content_zh": "任务完成描述（中文）",
