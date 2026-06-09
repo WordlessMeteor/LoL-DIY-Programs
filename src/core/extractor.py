@@ -1014,6 +1014,91 @@ class LoLDataExtractor:
         #汇总散列表（Merge hashtables）
         # self.__class__.bin_hashtable_merged = {**self.__class__.bin_hashtable_entry, **self.__class__.bin_hashtable_field, **self.__class__.bin_hashtable_value, **self.__class__.bin_hashtable_type, **self.__class__.bin_hashtable_gamePath} #字典解包（Dictionary unpacking）
     
+    @classmethod
+    def get_df_queue_index(cls, dType: str) -> int:
+        '''
+        根据传入的数据类型确定一个数据框在数据框队列中的索引。<br>Determine the index of a dataframe in the dataframe queue according to the data type parameter.
+        
+        :param dType: 数据类型。<br>Data type.
+        
+            所有可用的数据类型见本类的`worksheet_dType_orderedList`属性。<br>Refer to the `worksheet_dType_orderedList` attribute of this class for all available data types.
+        :type dType: str
+        :return: 该类数据框在数据框队列中的索引。<br>The index of the dataframe type in the dataframe queue.
+        
+            如果该类型在数据框队列中不存在，则返回-1。<br>If this type doesn't exist in the dataframe queue, then return -1.
+        :rtype: str
+        '''
+        df_queue_types: list[str] = list(map(lambda x: x["dType"], cls.df_queue))
+        if dType in df_queue_types:
+            return df_queue_types.index(dType)
+        else:
+            return -1
+    
+    @classmethod
+    def enqueue_df(cls, worksheet_metadata: dict[str, Any], overwrite_on_exist: bool = True, log: Optional[LogManager] = None) -> int:
+        '''
+        将一个数据框加入队列，如果不存在相同类型的数据框的话。<br>Enqueue a dataframe into `df_queue`, if there's not any other dataframe of the same data type.
+        
+        :param worksheet_metadata: 工作表元数据。包括以下字段：<br>Worksheet metadata, which contains the following fields.
+        
+            - order: 排列位次。<br>Arrangement position.
+            - dType: 数据类型。<br>Data type.
+            - sheet_name: 工作表名称。<br>Sheet name.
+            - sheet: 数据框。<br>Dataframe.
+            - T: （可选）数据框是否转置。<br>(Optional) Whether the dataframe is transposed.
+        :type worksheet_metadata: dict[str, Any]
+        :param overwrite_on_exist: 当同类型数据框已存在时，是否覆盖该数据框。默认为否。<br>Whether the function should overwrite the dataframe which has the same type and already exists in the queue. False by default.
+        :type overwrite_on_exist: bool
+        :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
+        :type log: LogManager
+        :return: 状态码。<br>Status code.
+        
+            - 0: 入队成功。<br>Enqueue success.
+            - 1: 同类数据框已存在。旧数据框已被覆盖。<br>A dataframe of the same type already exists. The old dataframe is overwriten.
+            - 2: 同类数据框已存在。旧数据框已被保留。<br>A dataframe of the same type already exists. The old dataframe is reserved.
+            - 3: 参数格式有误。<br>Invalid parameter format.
+        :rtype: int
+        '''
+        if log == None:
+            log = LogManager()
+        logPrint = log.logPrint
+        if isinstance(worksheet_metadata, dict) and all(key in worksheet_metadata for key in ["order", "dType", "sheet_name", "sheet"]) and all(map(lambda x: isinstance(worksheet_metadata[x], int), ["order"])) and all(map(lambda x: isinstance(worksheet_metadata[x], str), ["dType", "sheet_name"])) and all(map(lambda x: isinstance(worksheet_metadata[x], pandas.DataFrame), ["sheet"])):
+            dType_index: int = cls.get_df_queue_index(worksheet_metadata["dType"])
+            if dType_index == -1: #表明该类别尚未添加到队列中（Indicates no dataframe of this type has been added into the queue）
+                cls.df_queue.append(worksheet_metadata)
+                return 0
+            else:
+                if overwrite_on_exist:
+                    cls.df_queue[dType_index] = worksheet_metadata
+                    logPrint("已存在类型为%s的工作表：%s。旧数据框已被覆盖。\nA sheet of type %s already exists: %s. The old dataframe has been overwritten." %(worksheet_metadata["dType"], worksheet_metadata["sheet_name"], worksheet_metadata["dType"], worksheet_metadata["sheet_name"]))
+                    return 1
+                else:
+                    logPrint("已存在类型为%s的工作表：%s。新数据框未被添加到队列中。\nA sheet of type %s already exists: %s. The new dataframe isn't added into the queue." %(worksheet_metadata["dType"], worksheet_metadata["sheet_name"], worksheet_metadata["dType"], worksheet_metadata["sheet_name"]))
+                    return 2
+        else:
+            return 3
+    
+    @classmethod
+    def dequeue_df(cls, dType: str) -> bool:
+        '''
+        从数据框队列中移除某个数据类型的数据框。<br>Remove the dataframe of `dType` from the dataframe queue.
+        
+        根据本类的数据框入队方法可知，本类的数据框队列只允许同时容纳每种类型的数据框一个。<br>According to the `enqueue_df` method of this class, `df_queue` allows at most one dataframe of each type.
+        
+        :param dType: 数据类型。<br>Data type.
+        
+            所有可用的数据类型见本类的`worksheet_dType_orderedList`属性。<br>Refer to the `worksheet_dType_orderedList` attribute of this class for all available data types.
+        :type dType: str
+        :return: 该类数据框是否移除成功。<br>Whether the dataframe of this type has been removed successfully.
+        :rtype: bool
+        '''
+        dType_index: int = cls.get_df_queue_index(dType)
+        if dType_index == -1:
+            return False
+        else:
+            cls.df_queue.pop(dType_index)
+            return True
+    
     #清理（Clear）
     @classmethod
     def clear_cache(cls) -> None: #清空缓存（Clear data cache）
@@ -3955,7 +4040,7 @@ class MapExtractor(LoLDataExtractor):
             map_ws: dict[str, Any] = self.worksheet_metadata["Map"]
             sheet1_name: str = map_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else map_ws["sheet_name_without_version"]
             map_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(map_ws["dType"]), "dType": map_ws["dType"], "sheet_name": sheet1_name, "sheet": self.map_df, "T": True}
-            self.df_queue.append(map_df_struct)
+            self.enqueue_df(map_df_struct, overwrite_on_exist = True, log = self.log)
     
     def export_map_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
         '''
@@ -4196,12 +4281,12 @@ class CheatExtractor(LoLDataExtractor):
             cheatset_ws: dict[str, Any] = self.worksheet_metadata["CheatSet"]
             sheet1_name: str = cheatset_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else cheatset_ws["sheet_name_without_version"]
             cheatset_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(cheatset_ws["dType"]), "dType": cheatset_ws["dType"], "sheet_name": sheet1_name, "sheet": self.cheatset_df}
-            self.df_queue.append(cheatset_df_struct)
+            self.enqueue_df(cheatset_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.cheat_df.empty:
             cheat_ws: dict[str, Any] = self.worksheet_metadata["Cheat"]
             sheet2_name: str = cheat_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else cheat_ws["sheet_name_without_version"]
             cheat_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(cheat_ws["dType"]), "dType": cheat_ws["dType"], "sheet_name": sheet2_name, "sheet": self.cheat_df}
-            self.df_queue.append(cheat_df_struct)
+            self.enqueue_df(cheat_df_struct, overwrite_on_exist = True, log = self.log)
     
     def export_cheat_data(self, debug: bool = False, path: Optional[str] = None) -> None:
         '''
@@ -4559,12 +4644,12 @@ class PerkExtractor(LoLDataExtractor):
             perkstyle_ws: dict[str, Any] = self.worksheet_metadata["PerkStyle"]
             sheet1_name: str = perkstyle_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else perkstyle_ws["sheet_name_without_version"]
             perkstyle_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(perkstyle_ws["dType"]), "dType": perkstyle_ws["dType"], "sheet_name": sheet1_name, "sheet": self.perkstyle_df}
-            self.df_queue.append(perkstyle_df_struct)
+            self.enqueue_df(perkstyle_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.perk_df.empty:
             perk_ws: dict[str, Any] = self.worksheet_metadata["Perk"]
             sheet2_name: str = perk_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else perk_ws["sheet_name_without_version"]
             perk_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(perk_ws["dType"]), "dType": perk_ws["dType"], "sheet_name": sheet2_name, "sheet": self.perk_df}
-            self.df_queue.append(perk_df_struct)
+            self.enqueue_df(perk_df_struct, overwrite_on_exist = True, log = self.log)
     
     def export_perk_data(self, debug: bool = False, path: Optional[str] = None) -> None:
         '''
@@ -5470,12 +5555,12 @@ class ChampionExtractor(LoLDataExtractor):
             champion_ws: dict[str, Any] = self.worksheet_metadata["Character"] if self.useAllCharacter else self.worksheet_metadata["Champion"]
             sheet1_name: str = champion_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else champion_ws["sheet_name_without_version"]
             champion_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(champion_ws["dType"]), "dType": champion_ws["dType"], "sheet_name": sheet1_name, "sheet": self.champion_df}
-            self.df_queue.append(champion_df_struct)
+            self.enqueue_df(champion_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.champion_spell_df.empty:
             champion_spell_ws: dict[str, Any] = self.worksheet_metadata["CharacterSpell"] if self.useAllCharacter else self.worksheet_metadata["ChampionSpell"]
             sheet2_name: str = champion_spell_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else champion_spell_ws["sheet_name_without_version"]
             champion_spell_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(champion_spell_ws["dType"]), "dType": champion_spell_ws["dType"], "sheet_name": sheet2_name, "sheet": self.champion_spell_df}
-            self.df_queue.append(champion_spell_df_struct)
+            self.enqueue_df(champion_spell_df_struct, overwrite_on_exist = True, log = self.log)
     
     def export_champion_data(self, debug: bool = False, paths: Optional[list[str]] = None, verbose: bool = True) -> None:
         '''
@@ -5838,17 +5923,17 @@ class ItemExtractor(LoLDataExtractor):
             item_ws: dict[str, Any] = self.worksheet_metadata["Item"]
             sheet1_name: str = item_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else item_ws["sheet_name_without_version"]
             item_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(item_ws["dType"]), "dType": item_ws["dType"], "sheet_name": sheet1_name, "sheet": self.item_df}
-            self.df_queue.append(item_df_struct)
+            self.enqueue_df(item_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.itemGroup_df.empty:
             itemGroup_ws: dict[str, Any] = self.worksheet_metadata["ItemGroup"]
             sheet2_name: str = itemGroup_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else itemGroup_ws["sheet_name_without_version"]
             itemGroup_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(itemGroup_ws["dType"]), "dType": itemGroup_ws["dType"], "sheet_name": sheet2_name, "sheet": self.itemGroup_df}
-            self.df_queue.append(itemGroup_df_struct)
+            self.enqueue_df(itemGroup_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.itemModifier_df.empty:
             itemModifier_ws: dict[str, Any] = self.worksheet_metadata["ItemModifier"]
             sheet3_name: str = itemModifier_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else itemModifier_ws["sheet_name_without_version"]
             itemModifier_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(itemModifier_ws["dType"]), "dType": itemModifier_ws["dType"], "sheet_name": sheet3_name, "sheet": self.itemModifier_df}
-            self.df_queue.append(itemModifier_df_struct)
+            self.enqueue_df(itemModifier_df_struct, overwrite_on_exist = True, log = self.log)
 
     def export_item_data(self, debug: bool = False, path: Optional[str] = None) -> None:
         '''
@@ -6692,32 +6777,32 @@ class AugmentExtractor(LoLDataExtractor):
             CherryAugment_ws: dict[str, Any] = self.worksheet_metadata["CherryAugment"]
             sheet1_name: str = CherryAugment_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else CherryAugment_ws["sheet_name_without_version"]
             CherryAugment_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(CherryAugment_ws["dType"]), "dType": CherryAugment_ws["dType"], "sheet_name": sheet1_name, "sheet": self.CherryAugment_df}
-            self.df_queue.append(CherryAugment_df_struct)
+            self.enqueue_df(CherryAugment_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.SwarmAugment_df.empty:
             SwarmAugment_ws: dict[str, Any] = self.worksheet_metadata["SwarmAugment"]
             sheet2_name: str = SwarmAugment_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else SwarmAugment_ws["sheet_name_without_version"]
             SwarmAugment_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(SwarmAugment_ws["dType"]), "dType": SwarmAugment_ws["dType"], "sheet_name": sheet2_name, "sheet": self.SwarmAugment_df}
-            self.df_queue.append(SwarmAugment_df_struct)
+            self.enqueue_df(SwarmAugment_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.KiwiAugment_df.empty:
             KiwiAugment_ws: dict[str, Any] = self.worksheet_metadata["KiwiAugment"]
             sheet3_name: str = KiwiAugment_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else KiwiAugment_ws["sheet_name_without_version"]
             KiwiAugment_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(KiwiAugment_ws["dType"]), "dType": KiwiAugment_ws["dType"], "sheet_name": sheet3_name, "sheet": self.KiwiAugment_df}
-            self.df_queue.append(KiwiAugment_df_struct)
+            self.enqueue_df(KiwiAugment_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.KiwiAugmentSet_df.empty:
             KiwiAugmentSet_ws: dict[str, Any] = self.worksheet_metadata["KiwiAugmentSet"]
             sheet4_name: str = KiwiAugmentSet_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else KiwiAugmentSet_ws["sheet_name_without_version"]
             KiwiAugmentSet_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(KiwiAugmentSet_ws["dType"]), "dType": KiwiAugmentSet_ws["dType"], "sheet_name": sheet4_name, "sheet": self.KiwiAugmentSet_df}
-            self.df_queue.append(KiwiAugmentSet_df_struct)
+            self.enqueue_df(KiwiAugmentSet_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.KiwiQuestline_df.empty:
             KiwiQuestline_ws: dict[str, Any] = self.worksheet_metadata["KiwiQuestline"]
             sheet5_name: str = KiwiQuestline_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else KiwiQuestline_ws["sheet_name_without_version"]
             KiwiQuestline_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(KiwiQuestline_ws["dType"]), "dType": KiwiQuestline_ws["dType"], "sheet_name": sheet5_name, "sheet": self.KiwiQuestline_df}
-            self.df_queue.append(KiwiQuestline_df_struct)
+            self.enqueue_df(KiwiQuestline_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.augmentModifier_df.empty:
             augmentModifier_ws: dict[str, Any] = self.worksheet_metadata["AugmentModifier"]
             sheet6_name: str = augmentModifier_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else augmentModifier_ws["sheet_name_without_version"]
             augmentModifier_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(augmentModifier_ws["dType"]), "dType": augmentModifier_ws["dType"], "sheet_name": sheet6_name, "sheet": self.augmentModifier_df}
-            self.df_queue.append(augmentModifier_df_struct)
+            self.enqueue_df(augmentModifier_df_struct, overwrite_on_exist = True, log = self.log)
     
     def export_augment_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
         '''
@@ -7104,12 +7189,12 @@ class AnvilExtractor(LoLDataExtractor):
             CherryAnvil_ws: dict[str, Any] = self.worksheet_metadata["CherryAnvil"]
             sheet1_name: str = CherryAnvil_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else CherryAnvil_ws["sheet_name_without_version"]
             CherryAnvil_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(CherryAnvil_ws["dType"]), "dType": CherryAnvil_ws["dType"], "sheet_name": sheet1_name, "sheet": self.CherryAnvil_df}
-            self.df_queue.append(CherryAnvil_df_struct)
+            self.enqueue_df(CherryAnvil_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.KiwiAnvil_df.empty:
             KiwiAnvil_ws: dict[str, Any] = self.worksheet_metadata["KiwiAnvil"]
             sheet2_name: str = KiwiAnvil_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else KiwiAnvil_ws["sheet_name_without_version"]
             KiwiAnvil_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(KiwiAnvil_ws["dType"]), "dType": KiwiAnvil_ws["dType"], "sheet_name": sheet2_name, "sheet": self.KiwiAnvil_df}
-            self.df_queue.append(KiwiAnvil_df_struct)
+            self.enqueue_df(KiwiAnvil_df_struct, overwrite_on_exist = True, log = self.log)
     
     def export_anvil_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
         '''
@@ -7377,17 +7462,17 @@ class CherryRoundExtractor(LoLDataExtractor):
             CherryRoundList_ws: dict[str, Any] = self.worksheet_metadata["CherryRoundList"]
             sheet1_name: str = CherryRoundList_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else CherryRoundList_ws["sheet_name_without_version"]
             CherryRoundList_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(CherryRoundList_ws["dType"]), "dType": CherryRoundList_ws["dType"], "sheet_name": sheet1_name, "sheet": self.CherryRoundList_df}
-            self.df_queue.append(CherryRoundList_df_struct)
+            self.enqueue_df(CherryRoundList_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.CherryRound_df.empty:
             CherryRound_ws: dict[str, Any] = self.worksheet_metadata["CherryRound"]
             sheet2_name: str = CherryRound_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else CherryRound_ws["sheet_name_without_version"]
             CherryRound_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(CherryRound_ws["dType"]), "dType": CherryRound_ws["dType"], "sheet_name": sheet2_name, "sheet": self.CherryRound_df}
-            self.df_queue.append(CherryRound_df_struct)
+            self.enqueue_df(CherryRound_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.CherryPhase_df.empty:
             CherryPhase_ws: dict[str, Any] = self.worksheet_metadata["CherryPhase"]
             sheet3_name: str = CherryPhase_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else CherryPhase_ws["sheet_name_without_version"]
             CherryPhase_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(CherryPhase_ws["dType"]), "dType": CherryPhase_ws["dType"], "sheet_name": sheet3_name, "sheet": self.CherryPhase_df}
-            self.df_queue.append(CherryPhase_df_struct)
+            self.enqueue_df(CherryPhase_df_struct, overwrite_on_exist = True, log = self.log)
     
     def export_CherryRound_data(self, debug: bool = False, path: Optional[str] = None) -> None:
         '''
@@ -7589,7 +7674,7 @@ class CameoExtractor(LoLDataExtractor):
             cameo_ws: dict[str, Any] = self.worksheet_metadata["CherryCameo"]
             sheet1_name: str = cameo_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else cameo_ws["sheet_name_without_version"]
             cameo_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(cameo_ws["dType"]), "dType": cameo_ws["dType"], "sheet_name": sheet1_name, "sheet": self.cameo_df}
-            self.df_queue.append(cameo_df_struct)
+            self.enqueue_df(cameo_df_struct, overwrite_on_exist = True, log = self.log)
     
     def export_cameo_data(self, debug: bool = False, path: Optional[str] = None) -> None:
         '''
@@ -7876,7 +7961,7 @@ class GoHExtractor(LoLDataExtractor):
             GoH_ws: dict[str, Any] = self.worksheet_metadata["CherryGoH"]
             sheet1_name: str = GoH_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else GoH_ws["sheet_name_without_version"]
             GoH_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(GoH_ws["dType"]), "dType": GoH_ws["dType"], "sheet_name": sheet1_name, "sheet": self.GoH_df}
-            self.df_queue.append(GoH_df_struct)
+            self.enqueue_df(GoH_df_struct, overwrite_on_exist = True, log = self.log)
     
     def export_GoH_data(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
         '''
@@ -9153,92 +9238,92 @@ class TFTExtractor(LoLDataExtractor):
             TFTSet_ws: dict[str, Any] = self.worksheet_metadata["TFTSet"]
             sheet1_name: str = TFTSet_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTSet_ws["sheet_name_without_version"]
             TFTSet_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTSet_ws["dType"]), "dType": TFTSet_ws["dType"], "sheet_name": sheet1_name, "sheet": self.TFTSet_df}
-            self.df_queue.append(TFTSet_df_struct)
+            self.enqueue_df(TFTSet_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.TFTShop_df.empty:
             TFTShop_ws: dict[str, Any] = self.worksheet_metadata["TFTShop"]
             sheet2_name: str = TFTShop_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTShop_ws["sheet_name_without_version"]
             TFTShop_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTShop_ws["dType"]), "dType": TFTShop_ws["dType"], "sheet_name": sheet2_name, "sheet": self.TFTShop_df}
-            self.df_queue.append(TFTShop_df_struct)
+            self.enqueue_df(TFTShop_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.TFTShopContent_df.empty:
             TFTShopContent_ws: dict[str, Any] = self.worksheet_metadata["TFTShopContent"]
             sheet3_name: str = TFTShopContent_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTShopContent_ws["sheet_name_without_version"]
             TFTShopContent_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTShopContent_ws["dType"]), "dType": TFTShopContent_ws["dType"], "sheet_name": sheet3_name, "sheet": self.TFTShopContent_df}
-            self.df_queue.append(TFTShopContent_df_struct)
+            self.enqueue_df(TFTShopContent_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.TFTDropRate_df.empty:
             TFTDropRate_ws: dict[str, Any] = self.worksheet_metadata["TFTDropRate"]
             sheet4_name: str = TFTDropRate_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTDropRate_ws["sheet_name_without_version"]
             TFTDropRate_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTDropRate_ws["dType"]), "dType": TFTDropRate_ws["dType"], "sheet_name": sheet4_name, "sheet": self.TFTDropRate_df}
-            self.df_queue.append(TFTDropRate_df_struct)
+            self.enqueue_df(TFTDropRate_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.TFTStageRound_df.empty:
             TFTStageRound_ws: dict[str, Any] = self.worksheet_metadata["TFTStageRound"]
             sheet5_name: str = TFTStageRound_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTStageRound_ws["sheet_name_without_version"]
             TFTStageRound_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTStageRound_ws["dType"]), "dType": TFTStageRound_ws["dType"], "sheet_name": sheet5_name, "sheet": self.TFTStageRound_df}
-            self.df_queue.append(TFTStageRound_df_struct)
+            self.enqueue_df(TFTStageRound_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.TFTRound_df.empty:
             TFTRound_ws: dict[str, Any] = self.worksheet_metadata["TFTRound"]
             sheet6_name: str = TFTRound_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTRound_ws["sheet_name_without_version"]
             TFTRound_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTRound_ws["dType"]), "dType": TFTRound_ws["dType"], "sheet_name": sheet6_name, "sheet": self.TFTRound_df}
-            self.df_queue.append(TFTRound_df_struct)
+            self.enqueue_df(TFTRound_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.TFTPortal_df.empty:
             TFTPortal_ws: dict[str, Any] = self.worksheet_metadata["TFTPortal"]
             sheet7_name: str = TFTPortal_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTPortal_ws["sheet_name_without_version"]
             TFTPortal_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTPortal_ws["dType"]), "dType": TFTPortal_ws["dType"], "sheet_name": sheet7_name, "sheet": self.TFTPortal_df}
-            self.df_queue.append(TFTPortal_df_struct)
+            self.enqueue_df(TFTPortal_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.TFTEncounterDistribution_df.empty:
             TFTEncounterDistribution_ws: dict[str, Any] = self.worksheet_metadata["TFTEncounterDistribution"]
             sheet8_name: str = TFTEncounterDistribution_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTEncounterDistribution_ws["sheet_name_without_version"]
             TFTEncounterDistribution_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTEncounterDistribution_ws["dType"]), "dType": TFTEncounterDistribution_ws["dType"], "sheet_name": sheet8_name, "sheet": self.TFTEncounterDistribution_df}
-            self.df_queue.append(TFTEncounterDistribution_df_struct)
+            self.enqueue_df(TFTEncounterDistribution_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.TFTEncounter_df.empty:
             TFTEncounter_ws: dict[str, Any] = self.worksheet_metadata["TFTEncounter"]
             sheet9_name: str = TFTEncounter_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTEncounter_ws["sheet_name_without_version"]
             TFTEncounter_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTEncounter_ws["dType"]), "dType": TFTEncounter_ws["dType"], "sheet_name": sheet9_name, "sheet": self.TFTEncounter_df}
-            self.df_queue.append(TFTEncounter_df_struct)
+            self.enqueue_df(TFTEncounter_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.TFTUnitProperty_df.empty:
             TFTUnitProperty_ws: dict[str, Any] = self.worksheet_metadata["TFTUnitProperty"]
             sheet10_name: str = TFTUnitProperty_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTUnitProperty_ws["sheet_name_without_version"]
             TFTUnitProperty_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTUnitProperty_ws["dType"]), "dType": TFTUnitProperty_ws["dType"], "sheet_name": sheet10_name, "sheet": self.TFTUnitProperty_df}
-            self.df_queue.append(TFTUnitProperty_df_struct)
+            self.enqueue_df(TFTUnitProperty_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.TFTCharacterRole_df.empty:
             TFTCharacterRole_ws: dict[str, Any] = self.worksheet_metadata["TFTCharacterRole"]
             sheet11_name: str = TFTCharacterRole_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTCharacterRole_ws["sheet_name_without_version"]
             TFTCharacterRole_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTCharacterRole_ws["dType"]), "dType": TFTCharacterRole_ws["dType"], "sheet_name": sheet11_name, "sheet": self.TFTCharacterRole_df}
-            self.df_queue.append(TFTCharacterRole_df_struct)
+            self.enqueue_df(TFTCharacterRole_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.TFTItemList_df.empty:
             TFTItemList_ws: dict[str, Any] = self.worksheet_metadata["TFTItemList"]
             sheet12_name: str = TFTItemList_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTItemList_ws["sheet_name_without_version"]
             TFTItemList_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTItemList_ws["dType"]), "dType": TFTItemList_ws["dType"], "sheet_name": sheet12_name, "sheet": self.TFTItemList_df}
-            self.df_queue.append(TFTItemList_df_struct)
+            self.enqueue_df(TFTItemList_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.TFTItem_df.empty:
             TFTItem_ws: dict[str, Any] = self.worksheet_metadata["TFTItem"]
             sheet13_name: str = TFTItem_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTItem_ws["sheet_name_without_version"]
             TFTItem_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTItem_ws["dType"]), "dType": TFTItem_ws["dType"], "sheet_name": sheet13_name, "sheet": self.TFTItem_df}
-            self.df_queue.append(TFTItem_df_struct)
+            self.enqueue_df(TFTItem_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.TFTTraitList_df.empty:
             TFTTraitList_ws: dict[str, Any] = self.worksheet_metadata["TFTTraitList"]
             sheet14_name: str = TFTTraitList_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTTraitList_ws["sheet_name_without_version"]
             TFTTraitList_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTTraitList_ws["dType"]), "dType": TFTTraitList_ws["dType"], "sheet_name": sheet14_name, "sheet": self.TFTTraitList_df}
-            self.df_queue.append(TFTTraitList_df_struct)
+            self.enqueue_df(TFTTraitList_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.TFTTrait_df.empty:
             TFTTrait_ws: dict[str, Any] = self.worksheet_metadata["TFTTrait"]
             sheet15_name: str = TFTTrait_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTTrait_ws["sheet_name_without_version"]
             TFTTrait_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTTrait_ws["dType"]), "dType": TFTTrait_ws["dType"], "sheet_name": sheet15_name, "sheet": self.TFTTrait_df}
-            self.df_queue.append(TFTTrait_df_struct)
+            self.enqueue_df(TFTTrait_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.TFTPVENPC_df.empty:
             TFTPVENPC_ws: dict[str, Any] = self.worksheet_metadata["TFTPVENPC"]
             sheet16_name: str = TFTPVENPC_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTPVENPC_ws["sheet_name_without_version"]
             TFTPVENPC_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTPVENPC_ws["dType"]), "dType": TFTPVENPC_ws["dType"], "sheet_name": sheet16_name, "sheet": self.TFTPVENPC_df}
-            self.df_queue.append(TFTPVENPC_df_struct)
+            self.enqueue_df(TFTPVENPC_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.TFTScript_df.empty:
             TFTScript_ws: dict[str, Any] = self.worksheet_metadata["TFTScript"]
             sheet17_name: str = TFTScript_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTScript_ws["sheet_name_without_version"]
             TFTScript_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTScript_ws["dType"]), "dType": TFTScript_ws["dType"], "sheet_name": sheet17_name, "sheet": self.TFTScript_df}
-            self.df_queue.append(TFTScript_df_struct)
+            self.enqueue_df(TFTScript_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.TFTAnnouncement_df.empty:
             TFTAnnouncement_ws: dict[str, Any] = self.worksheet_metadata["TFTAnnouncement"]
             sheet18_name: str = TFTAnnouncement_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else TFTAnnouncement_ws["sheet_name_without_version"]
             TFTAnnouncement_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(TFTAnnouncement_ws["dType"]), "dType": TFTAnnouncement_ws["dType"], "sheet_name": sheet18_name, "sheet": self.TFTAnnouncement_df}
-            self.df_queue.append(TFTAnnouncement_df_struct)
+            self.enqueue_df(TFTAnnouncement_df_struct, overwrite_on_exist = True, log = self.log)
     
     def export_tft_data(self, debug: bool = False, path: Optional[str] = None) -> None:
         '''
@@ -9641,32 +9726,32 @@ class FontExtractor(LoLDataExtractor):
             fontDesc_ws: dict[str, Any] = self.worksheet_metadata["FontDescription"]
             sheet1_name: str = fontDesc_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else fontDesc_ws["sheet_name_without_version"]
             fontDesc_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(fontDesc_ws["dType"]), "dType": fontDesc_ws["dType"], "sheet_name": sheet1_name, "sheet": self.fontDesc_df}
-            self.df_queue.append(fontDesc_df_struct)
+            self.enqueue_df(fontDesc_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.fontType_df.empty:
             fontType_ws: dict[str, Any] = self.worksheet_metadata["FontType"]
             sheet1_name: str = fontType_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else fontType_ws["sheet_name_without_version"]
             fontType_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(fontType_ws["dType"]), "dType": fontType_ws["dType"], "sheet_name": sheet1_name, "sheet": self.fontType_df}
-            self.df_queue.append(fontType_df_struct)
+            self.enqueue_df(fontType_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.fontResolution_df.empty:
             fontResolution_ws: dict[str, Any] = self.worksheet_metadata["FontResolution"]
             sheet1_name: str = fontResolution_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else fontResolution_ws["sheet_name_without_version"]
             fontResolution_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(fontResolution_ws["dType"]), "dType": fontResolution_ws["dType"], "sheet_name": sheet1_name, "sheet": self.fontResolution_df}
-            self.df_queue.append(fontResolution_df_struct)
+            self.enqueue_df(fontResolution_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.fontStyle_df.empty:
             fontStyle_ws: dict[str, Any] = self.worksheet_metadata["FontStyle"]
             sheet1_name: str = fontStyle_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else fontStyle_ws["sheet_name_without_version"]
             fontStyle_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(fontStyle_ws["dType"]), "dType": fontStyle_ws["dType"], "sheet_name": sheet1_name, "sheet": self.fontStyle_df}
-            self.df_queue.append(fontStyle_df_struct)
+            self.enqueue_df(fontStyle_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.font_CSSStyle_df.empty:
             font_CSSStyle_ws: dict[str, Any] = self.worksheet_metadata["FontCSSStyle"]
             sheet1_name: str = font_CSSStyle_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else font_CSSStyle_ws["sheet_name_without_version"]
             font_CSSStyle_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(font_CSSStyle_ws["dType"]), "dType": font_CSSStyle_ws["dType"], "sheet_name": sheet1_name, "sheet": self.font_CSSStyle_df}
-            self.df_queue.append(font_CSSStyle_df_struct)
+            self.enqueue_df(font_CSSStyle_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.font_CSSIcon_df.empty:
             font_CSSIcon_ws: dict[str, Any] = self.worksheet_metadata["InlineIcon"]
             sheet1_name: str = font_CSSIcon_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else font_CSSIcon_ws["sheet_name_without_version"]
             font_CSSIcon_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(font_CSSIcon_ws["dType"]), "dType": font_CSSIcon_ws["dType"], "sheet_name": sheet1_name, "sheet": self.font_CSSIcon_df}
-            self.df_queue.append(font_CSSIcon_df_struct)
+            self.enqueue_df(font_CSSIcon_df_struct, overwrite_on_exist = True, log = self.log)
     
     def export_font_data(self, debug: bool = False, path: Optional[str] = None) -> None:
         '''
