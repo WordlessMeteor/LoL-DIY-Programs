@@ -23,7 +23,7 @@ from src.core.dataframes.gameflow import sort_ChampSelect_players
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/06/06
+# 更新（Last update）：     2026/06/09
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -181,7 +181,7 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
     #数据整理核心部分（Data assignment - core part）
     for friend in friends:
         lol: dict[str, Any] = friend["lol"]
-        if "spectatingTargetPuuid" in lol:
+        if "spectatingTargetPuuid" in lol and bool(lol["spectatingTargetPuuid"]): #当多名好友都在观战时，其中一个人的被观战者玩家通用唯一识别码为空字符串（When there's more than one friend spectating, the spectated puuid of one friend is an empty string）
             spectatingTarget_info: dict[str, list[Any]] = await get_info(connection, lol["spectatingTargetPuuid"])
             while not spectatingTarget_info["info_got"] and spectatingTarget_info["body"]["httpStatus"] != 404 and spectatingTarget_info_recapture < 3:
                 logPrint(spectatingTarget_info["message"])
@@ -341,7 +341,7 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
                         else:
                             to_append = ""
                     elif i == 110 or i == 111: #被观战者玩家相关键（Spectating target related keys）
-                        if "spectatingTargetPuuid" in lol:
+                        if "spectatingTargetPuuid" in lol and bool(lol["spectatingTargetPuuid"]):
                             to_append = spectatingTarget_info_body["gameName" if i == 110 else "tagLine"]
                         else:
                             to_append = ""
