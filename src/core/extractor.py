@@ -23,7 +23,7 @@ from src.core.config.localization import language_ddragon, language_dict
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/06/09
+# 更新（Last update）：     2026/06/10
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -6320,7 +6320,7 @@ class AugmentExtractor(LoLDataExtractor):
                         else:
                             to_append = tooltip_raw
                     elif i == 46: #强化符文显示标签内容（`AugmentDisplayTags_content`）
-                        to_append = list(map(lambda x: AugmentDisplayTags[x], value["AugmentDisplayTags"]))
+                        to_append = list(map(lambda x: AugmentDisplayTags[x], value["AugmentDisplayTags"])) if "AugmentDisplayTags" in value else ""
                     elif i == 47: #位阶（`rarityValue`）
                         to_append = augment_rarities[value.get("rarity", 0)]
                     elif i == 48: #根指令对象（`RootSpellObject`）
@@ -7106,10 +7106,7 @@ class AnvilExtractor(LoLDataExtractor):
                         else:
                             to_append = tooltip_raw
                     elif i == 24: #锻造器显示标签内容（`AugmentDisplayTags_content`）
-                        if "AugmentDisplayTags" in value:
-                            to_append = list(map(lambda x: AugmentDisplayTags[x], value["AugmentDisplayTags"]))
-                        else:
-                            to_append = ""
+                        to_append = list(map(lambda x: AugmentDisplayTags[x], value["AugmentDisplayTags"])) if "AugmentDisplayTags" in value else ""
                     elif i == 25: #锻造器位阶（`anvilRarities`）
                         to_append = list(map(lambda x: anvil_rarities[x], value["AnvilTypes"]))
                     else: #根指令对象（`RootSpellObject`）
@@ -7162,10 +7159,7 @@ class AnvilExtractor(LoLDataExtractor):
                         else:
                             to_append = tooltip_raw
                     elif i == 24: #锻造器显示标签内容（`AugmentDisplayTags_content`）
-                        if "AugmentDisplayTags" in value:
-                            to_append = list(map(lambda x: AugmentDisplayTags[x], value["AugmentDisplayTags"]))
-                        else:
-                            to_append = ""
+                        to_append = list(map(lambda x: AugmentDisplayTags[x], value["AugmentDisplayTags"])) if "AugmentDisplayTags" in value else ""
                     elif i == 25: #锻造器位阶（`anvilRarities`）
                         to_append = list(map(lambda x: anvil_rarities[x], value["AnvilTypes"]))
                     else: #根指令对象（`RootSpellObject`）
