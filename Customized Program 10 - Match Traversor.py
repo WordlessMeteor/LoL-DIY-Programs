@@ -1,6 +1,6 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-import argparse, datetime, json, keyboard, os, random, requests, time
+import argparse, datetime, json, keyboard, os, random, time
 from typing import Any, Callable, Iterable, Optional
 from typing_extensions import Literal
 from src.utils.logger import LogManager
@@ -23,7 +23,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/06/02
+# 更新（Last update）：     2026/06/10
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -135,7 +135,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
         return -1
     if func_str == "":
         print("未指定条件函数。将保存所有有效的对局概要和时间轴。\nNo condition function specified. All valid match summary and timeline will be saved.")
-        func: Callable[[dict[str, Any]], bool] = lambda x: "metadata" in x and "json" in x
+        func: Callable[[dict[str, Any]], bool] = lambda x: "endOfGameResult" in x
         func_specified: bool = False
     else:
         try:
@@ -145,7 +145,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
             return -1
         else:
             try:
-                tmp = func(TEST_GAME_SUMMARY) #校验函数是否能如期运行（Check whether the function can run as expected）
+                tmp = func(TEST_GAME_SUMMARY["json"]) #校验函数是否能如期运行（Check whether the function can run as expected）
             except:
                 print("判断条件函数运行出错！\nAn error occurred when testing the condition judgment function!")
                 return -1
@@ -204,22 +204,22 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
         currentProcess: int = matchId - start_matchId + 1
         match_id: str = f"{platformId}_{matchId}"
         #保存对局概要和时间轴（Save match summary and timeline）
-        status, game_summary = await get_game_summary_sgp(connection, session, match_id, checkLoL = checkLoL, checkTFT = checkTFT, skipTFT = skipTFT)
+        status, game_summary = await get_game_summary_sgp(connection, session, match_id, checkLoL = checkLoL, checkTFT = checkTFT, skipTFT = skipTFT, endpoint_version = 3)
         if status != 200:
             logPrint(f"【获取失败】[{currentProcess}/{gameCount}]对局{matchId}概要获取失败！\nMatch {matchId} summary capture failure!", print_time = True)
         else:
             if func(game_summary):
                 matches_found.append(matchId)
                 logPrint(f"【找到对局】[{currentProcess}/{gameCount}]对局{matchId}符合条件。已将其加入列表。\nMatch {matchId} fits the requirements and has been added to the found match list!", print_time = True)
-                #下面将json文件保存到对局文件夹中（The following code save the json files into the match folder）
+                #下面将json文件保存到对局文件夹中。强烈建议不要在使用v3接口时执行此操作。（The following code save the json files into the match folder. It's strongly recommended that users not perform this operation when the v3 endpoint is used）
                 if save_json and not matchId in saved_matchIds:
-                    match_product: str = game_summary["metadata"]["product"]
+                    match_product: str = "TFT" if game_summary["mapId"] == 22 else "LoL"
                     json1name: str = f"Match Information ({match_product}) - {platformId}-{matchId} (SGP).json"
                     with open(os.path.join(json_folder, json1name), "w", encoding = "utf-8") as fp:
                         json.dump(game_summary, fp, indent = 4, ensure_ascii = False)
                     if match_product == "LoL":
                         json2name: str = f"Match Timeline ({match_product}) - {platformId}-{matchId} (SGP).json"
-                        status, game_timeline = await get_game_timeline_sgp(connection, session, match_id, checkLoL = checkLoL, checkTFT = checkTFT)
+                        status, game_timeline = await get_game_timeline_sgp(connection, session, match_id, checkLoL = checkLoL, checkTFT = checkTFT, endpoint_version = 3)
                         if status == 200:
                             with open(os.path.join(json_folder, json2name), "w", encoding = "utf-8") as fp:
                                 json.dump(game_timeline, fp, indent = 4, ensure_ascii = False)
@@ -276,7 +276,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     #参数预处理（Parameter preprocess）
     if func_str == "":
         print("未指定条件函数。将保存所有有效的对局概要和时间轴。\nNo condition function specified. All valid match summary and timeline will be saved.")
-        func: Callable[[dict[str, Any]], bool] = lambda x: "metadata" in x and "json" in x
+        func: Callable[[dict[str, Any]], bool] = lambda x: "endOfGameResult" in x
     else:
         try:
             func = eval(f"lambda game_summary: {func_str}")
@@ -285,7 +285,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
             return -1
         else:
             try:
-                tmp = func(TEST_GAME_SUMMARY) #校验函数是否能如期运行（Check whether the function can run as expected）
+                tmp = func(TEST_GAME_SUMMARY["json"]) #校验函数是否能如期运行（Check whether the function can run as expected）
             except:
                 print("判断条件函数运行出错！\nAn error occurred when testing the condition judgment function!")
                 return -1
@@ -464,7 +464,7 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
             return -1
         else:
             try:
-                tmp = func(TEST_GAME_SUMMARY) #校验函数是否能如期运行（Check whether the function can run as expected）
+                tmp = func(TEST_GAME_SUMMARY["json"]) #校验函数是否能如期运行（Check whether the function can run as expected）
             except:
                 print("阈值函数运行出错！\nAn error occurred when testing the threshold function!")
                 return -1
@@ -478,6 +478,7 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
     session: SGPSession = SGPSession() #因为此处的日志文件需要对齐，不应该将原始异常提示输出到日志中，所以这里不指定日志对象（Because the log file here needs to be aligned, the original error information shouldn't be output into the log, so the log object is not specified here）
     await session.init(connection)
     session.session.trust_env = False #英雄联盟请求无需走代理（League of Legends requests don't need a proxy）
+    session.verbose = False #去除v3接口的异常提示（Remove the error information thrown by v3 endpoint）
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
     platformId: str = current_party["platformId"]
     skipTFT: bool = not (product == "TFT")
@@ -497,7 +498,7 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
     while True:
         print(start_matchId, end = "\r")
         match_id: str = f"{platformId}_{start_matchId}"
-        status, game_summary = await get_game_summary_sgp(connection, session, match_id, skipTFT = skipTFT, verbose = False)
+        status, game_summary = await get_game_summary_sgp(connection, session, match_id, skipTFT = skipTFT, endpoint_version = 3, verbose = False)
         if status == 404:
             start_matchId -= 1
         else:
@@ -511,7 +512,7 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
     while True:
         print(end_matchId, end = "\r")
         match_id: str = f"{platformId}_{end_matchId}"
-        status, game_summary = await get_game_summary_sgp(connection, session, match_id, skipTFT = skipTFT, verbose = False)
+        status, game_summary = await get_game_summary_sgp(connection, session, match_id, skipTFT = skipTFT, endpoint_version = 3, verbose = False)
         if status == 404:
             end_matchId += 1
         else:
@@ -557,7 +558,7 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
     #         logPrint("{0:<30}".format("Match not found."), "×", sep = " | ", write_time = False)
     #     else:
     #         match_id = f"{platformId}_{middle}"
-    #         status, game_summary = await get_game_summary_sgp(connection, session, match_id, skipTFT = skipTFT, verbose = False)
+    #         status, game_summary = await get_game_summary_sgp(connection, session, match_id, skipTFT = skipTFT, endpoint_version = 3, verbose = False)
     #         if status == 404:
     #             matchIds_not_found.add(middle)
     #             offset += 10 ** power
@@ -618,7 +619,7 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
                 continue
         else:
             match_id = f"{platformId}_{middle}"
-            status, game_summary = await get_game_summary_sgp(connection, session, match_id, skipTFT = skipTFT, verbose = False)
+            status, game_summary = await get_game_summary_sgp(connection, session, match_id, skipTFT = skipTFT, endpoint_version = 3, verbose = False)
             if status == 404:
                 matchIds_not_found.add(middle)
                 offset_range.remove(offset)
@@ -672,7 +673,7 @@ def isKiwiMatch(game_summary: dict[str, Any]) -> bool:
     :return: 该对局是否是海克斯大乱斗。<br>Whether the match is an ARAM: Mayhem game.
     :rtype: bool
     '''
-    return game_summary["metadata"]["product"] == "LoL" and game_summary["json"]["gameMode"] == "KIWI"
+    return "gameMode" in game_summary and game_summary["gameMode"] == "KIWI"
 
 def isKiwiPentaMatch(game_summary: dict[str, Any]) -> bool:
     '''
@@ -685,9 +686,9 @@ def isKiwiPentaMatch(game_summary: dict[str, Any]) -> bool:
     :return: 该对局是否是出现五杀的海克斯大乱斗。<br>Whether the match is an ARAM: Mayhem game with at least a penta kill.
     :rtype: bool
     '''
-    return game_summary["metadata"]["product"] == "LoL" and bool(game_summary["json"]) and game_summary["json"]["queueId"] == 2400 and any(map(lambda participant: bool(participant["pentaKills"]), game_summary["json"]["participants"]))
+    return bool(game_summary) and game_summary["queueId"] == 2400 and any(map(lambda participant: bool(participant["pentaKills"]), game_summary["participants"]))
 
-filter_function_example: str = 'isKiwiMatch(game_summary) ⇔ game_summary["metadata"]["product"] == "LoL" and game_summary["json"]["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\nisKiwiPentaMatch(game_summary) ⇔ game_summary["metadata"]["product"] == "LoL" and bool(game_summary["json"]) and game_summary["json"]["queueId"] == 2400 and any(map(lambda participant: bool(participant["pentaKills"]), game_summary["json"]["participants"])) #判断对局是否是海克斯大乱斗五杀局（Judge whether a match is an ARAM: Mayhem game with at least a penta kill）'
+filter_function_example: str = 'isKiwiMatch(game_summary) ⇔ "gameMode" in game_summary and game_summary["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\nisKiwiPentaMatch(game_summary) ⇔ bool(game_summary) and game_summary["queueId"] == 2400 and any(map(lambda participant: bool(participant["pentaKills"]), game_summary["participants"])) #判断对局是否是海克斯大乱斗五杀局（Judge whether a match is an ARAM: Mayhem game with at least a penta kill）'
 
 #在这里自定义用于二分查找对局函数的阈值函数模板（Define the custom threshold function templates for `binary_search_match` function hereafter）
 ##调试（Debug）
@@ -704,7 +705,7 @@ def gameId_compare(game_summary: dict[str, Any], gameId: int) -> bool:
     :return: 该对局的对局序号是否大于等于指定的对局序号。<br>Whether the matchId of the match is greater than or equal to the specified matchId.
     :rtype: bool
     '''
-    return game_summary["json"]["gameId"] >= gameId
+    return game_summary["gameId"] >= gameId
 
 ##示例（Examples）
 def first_match_after_mainteinance(game_summary: dict[str, Any], patch: str) -> bool:
@@ -720,7 +721,7 @@ def first_match_after_mainteinance(game_summary: dict[str, Any], patch: str) -> 
     :return: 该对局是否是某个版本的第一场对局。<br>Whether the match is the first one of a patch.
     :rtype: bool
     '''
-    return game_summary["json"].get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_summary["json"]["gameVersion"]) >= Patch(patch)
+    return game_summary.get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_summary["gameVersion"]) >= Patch(patch)
 
 def gameCreation_compare(game_summary: dict[str, Any], time_str: str) -> bool:
     '''
@@ -735,9 +736,9 @@ def gameCreation_compare(game_summary: dict[str, Any], time_str: str) -> bool:
     :return: 该对局的创建时间（“gameCreation”键的值）是否在指定时间之后。<br>Whether the creation time of the match (the value of the "gameCreation" key) is after the specified time.
     :rtype: bool
     '''
-    return game_summary["json"]["gameCreation"] >= int(datetime.datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S").timestamp() * 1000)
+    return game_summary["gameCreation"] >= int(datetime.datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S").timestamp() * 1000)
 
-threshold_function_example: str = 'gameId_compare(game_summary, 8502294282) ⇔ game_summary["json"]["gameId"] >= 8502294282 #获取对局序号在8502294282之后的下一场可用对局（Get the next available match after Match 8502294282）\nfirst_match_after_mainteinance(game_summary, "16.5") ⇔ game_summary["json"].get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_summary["json"]["gameVersion"]) >= Patch("16.5") #查找当前大区在26.05版本的第一场对局（Check the first match in Patch 26.05 on the current server）\ngameCreation_compare(game_summary, "1970-01-01 08:00:00") ⇔ game_summary["json"]["gameCreation"] >= int(datetime.datetime.strptime("1970-01-01 08:00:00", "%Y-%m-%d %H:%M:%S").timestamp() * 1000) #查找创建时间在当前时区的指定时间之后的对局（Check matches created after a specified time of the current time zone）'
+threshold_function_example: str = 'gameId_compare(game_summary, 8502294282) ⇔ game_summary["gameId"] >= 8502294282 #获取对局序号在8502294282之后的下一场可用对局（Get the next available match after Match 8502294282）\nfirst_match_after_mainteinance(game_summary, "16.5") ⇔ game_summary.get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_summary["gameVersion"]) >= Patch("16.5") #查找当前大区在26.05版本的第一场对局（Check the first match in Patch 26.05 on the current server）\ngameCreation_compare(game_summary, "1970-01-01 08:00:00") ⇔ game_summary["gameCreation"] >= int(datetime.datetime.strptime("1970-01-01 08:00:00", "%Y-%m-%d %H:%M:%S").timestamp() * 1000) #查找创建时间在当前时区的指定时间之后的对局（Check matches created after a specified time of the current time zone）'
 
 def define_function() -> tuple[str, Optional[Callable[[dict[str, Any]], bool]]]:
     '''
@@ -760,7 +761,7 @@ def define_function() -> tuple[str, Optional[Callable[[dict[str, Any]], bool]]]:
                 print("您的输入有误！请重新输入。\nERROR input! Please try again.")
             else:
                 try:
-                    tmp = func(TEST_GAME_SUMMARY) #校验函数是否能如期运行（Check whether the function can run as expected）
+                    tmp = func(TEST_GAME_SUMMARY["json"]) #校验函数是否能如期运行（Check whether the function can run as expected）
                 except:
                     print("函数运行出错！请重新输入。\nAn error occurred when testing the function! Please try again.")
                 else:
@@ -778,7 +779,7 @@ async def index_traversal_main(connection: Connection) -> None: #按序遍历对
     func_str: str = "" #函数字符串（Function string）
     func: Optional[Callable[[dict[str, Any]], bool]] = None #函数对象（Function object）
     product: str = "" #产品（Product）
-    save_json: bool = True #是否保存对局信息（Whether to save match information）
+    save_json: bool = False #是否保存对局信息（Whether to save match information）
     save_rofl: bool = False #是否尝试下载回放（Whether to try downloading replays）
     while True:
         if step == 0:
@@ -812,11 +813,11 @@ async def index_traversal_main(connection: Connection) -> None: #按序遍历对
                 else:
                     print("您的输入有误！请重新输入。\nERROR input! Please try again.")
         elif step == 4:
-            print("第四步：是否保存对局信息？\nStep 4: Whether to save match information?\n☆1\t是（Yes）\n2\t否（No）")
+            print("第四步：是否保存对局信息？\nStep 4: Whether to save match information?\n!1\t是（Yes）\n☆2\t否（No）")
             while True:
                 save_json_str: str = input()
                 if save_json_str == "":
-                    save_json_str = "1"
+                    save_json_str = "2"
                 if save_json_str[0] == "0":
                     step -= 2
                     break

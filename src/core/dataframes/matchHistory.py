@@ -517,7 +517,7 @@ async def get_TFTHistory(connection: Connection, puuid: str, begin: int = 0, cou
             break
     return (TFTHistory_get, TFTHistory)
 
-async def get_game_summary_sgp(connection: Connection, sgpSession: SGPSession, match_id: str, checkLoL: bool = True, checkTFT: bool = True, skipTFT: bool = False, retry: int = 3, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[int, dict[str, Any]]:
+async def get_game_summary_sgp(connection: Connection, sgpSession: SGPSession, match_id: str, checkLoL: bool = True, checkTFT: bool = True, skipTFT: bool = False, retry: int = 3, endpoint_version: int = 1, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[int, dict[str, Any]]:
     '''
     获取一场对局的概要。<br>Get the summary of a match.
     
@@ -545,6 +545,11 @@ async def get_game_summary_sgp(connection: Connection, sgpSession: SGPSession, m
     :type skipTFT: bool
     :param retry: 最大尝试次数。默认为3次。<br>Maximum number of attempts. 3 by default.
     :type retry: int
+    :param endpoint_version: 接口版本。有以下取值。<br>Endpoint version, which can be one of the following values:
+    
+        - （☆）1: GET /match-history-query/v1/products/lol/{match_id}/SUMMARY
+        - 3: GET /match-history-query/v3/product/lol/matchId/{match_id}/infoType/summary
+    :type endpoint_version: int
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -554,6 +559,14 @@ async def get_game_summary_sgp(connection: Connection, sgpSession: SGPSession, m
     '''
     if log == None:
         log = LogManager()
+    if endpoint_version != 3:
+        endpoint_version = 1
+    if endpoint_version == 1:
+        game_summary_endpoint_lol: str = f"/match-history-query/v1/products/lol/{match_id}/SUMMARY"
+        game_summary_endpoint_tft: str = f"/match-history-query/v1/products/tft/{match_id}/SUMMARY"
+    else:
+        game_summary_endpoint_lol: str = f"/match-history-query/v3/product/lol/matchId/{match_id}/infoType/summary"
+        game_summary_endpoint_tft: str = f"/match-history-query/v3/product/tft/matchId/{match_id}/infoType/summary"
     logPrint = log.logPrint
     status: int = -1
     game_summary: dict[str, Any] = {}
@@ -562,66 +575,85 @@ async def get_game_summary_sgp(connection: Connection, sgpSession: SGPSession, m
         count: int = 0
         while True:
             count += 1
-            game_summary = (await sgpSession.request(connection, "GET", f"/match-history-query/v1/products/lol/{match_id}/SUMMARY", verbose = verbose)).json()
-            #尝试修复错误（Try to fix the error）
-            if "errorCode" in game_summary:
-                logPrint(game_summary, verbose = verbose)
-                status = game_summary["httpStatus"]
-                if count > retry:
-                    logPrint(f"英雄联盟对局{match_id}概要获取失败！\nLoL match {match_id} summary capture failure!", verbose = verbose)
+            source: requests.Response = await sgpSession.request(connection, "GET", game_summary_endpoint_lol, verbose = verbose)
+            try:
+                game_summary = source.json()
+            except requests.exceptions.JSONDecodeError:
+                status = source.status_code
+                if status == 404: #在使用v3接口时，如果对局未找到，那么会返回一段XML文档（When v3 endpoint is used, if the match isn't found, then an XML document is returned）
+                    logPrint(f"未找到序号为{match_id}的英雄联盟回放文件！\nLoL match file with matchId {match_id} not found!", verbose = verbose)
+                    checkTFT = True
                     break
-                if status == 404:
-                    if game_summary["errorCode"] == "RESOURCE_NOT_FOUND" and game_summary["message"] == "match file not found" or game_summary == {"httpStatus": 404, "errorCode": "NOT_FOUND", "message": "Not Found", "implementationDetails": "match file not found"}:
-                        logPrint(f"未找到序号为{match_id}的英雄联盟回放文件！\nLoL match file with matchId {match_id} not found!", verbose = verbose)
-                        checkTFT = True
-                        break
                 logPrint(f"正在第{count}次尝试获取英雄联盟对局{match_id}概要……\nTimes trying to capture LoL Match {match_id}: No. {count} ...", verbose = verbose)
-            elif "status" in game_summary and isinstance(game_summary["status"], dict) and all(_ in ["message", "status_code"] for _ in game_summary["status"]):
-                logPrint(game_summary, verbose = verbose)
-                status = game_summary["status"]["status_code"]
-                if count > retry:
-                    logPrint(f"英雄联盟对局{match_id}概要获取失败！\nLoL match {match_id} summary capture failure!", verbose = verbose)
-                    break
-                if status == 503:
-                    if game_summary["status"]["message"] == "Service Unavailable - Connection retries limit exceeded. Response timed out.":
-                        logPrint("访问频繁。尝试重新获取数据……\nConnection retries limit exceeded! Trying to recapture the match data ...", verbose = verbose)
             else:
-                status = 200
-                checkTFT = False
-                break
+                #尝试修复错误（Try to fix the error）
+                if "errorCode" in game_summary:
+                    logPrint(game_summary, verbose = verbose)
+                    status = game_summary["httpStatus"]
+                    if count > retry:
+                        logPrint(f"英雄联盟对局{match_id}概要获取失败！\nLoL match {match_id} summary capture failure!", verbose = verbose)
+                        break
+                    if status == 404:
+                        if game_summary["errorCode"] == "RESOURCE_NOT_FOUND" and game_summary["message"] == "match file not found" or game_summary == {"httpStatus": 404, "errorCode": "NOT_FOUND", "message": "Not Found", "implementationDetails": "match file not found"}:
+                            logPrint(f"未找到序号为{match_id}的英雄联盟回放文件！\nLoL match file with matchId {match_id} not found!", verbose = verbose)
+                            checkTFT = True
+                            break
+                    logPrint(f"正在第{count}次尝试获取英雄联盟对局{match_id}概要……\nTimes trying to capture LoL Match {match_id}: No. {count} ...", verbose = verbose)
+                elif "status" in game_summary and isinstance(game_summary["status"], dict) and all(_ in ["message", "status_code"] for _ in game_summary["status"]):
+                    logPrint(game_summary, verbose = verbose)
+                    status = game_summary["status"]["status_code"]
+                    if count > retry:
+                        logPrint(f"英雄联盟对局{match_id}概要获取失败！\nLoL match {match_id} summary capture failure!", verbose = verbose)
+                        break
+                    if status == 503:
+                        if game_summary["status"]["message"] == "Service Unavailable - Connection retries limit exceeded. Response timed out.":
+                            logPrint("访问频繁。尝试重新获取数据……\nConnection retries limit exceeded! Trying to recapture the match data ...", verbose = verbose)
+                else:
+                    status = 200
+                    checkTFT = False
+                    break
     #检查云顶之弈对局（Check TFT match）
     if not skipTFT and checkTFT:
         count: int = 0
         while True:
             count += 1
-            game_summary = (await sgpSession.request(connection, "GET", f"/match-history-query/v1/products/tft/{match_id}/SUMMARY", verbose = verbose)).json()
-            #尝试修复错误（Try to fix the error）
-            if "errorCode" in game_summary:
-                logPrint(game_summary, verbose = verbose)
-                status = game_summary["httpStatus"]
-                if count > retry:
-                    logPrint(f"云顶之弈对局{match_id}概要获取失败！\nTFT match {match_id} summary capture failure!", verbose = verbose)
-                    break
+            source: requests.Response = await sgpSession.request(connection, "GET", game_summary_endpoint_tft, verbose = verbose)
+            try:
+                game_summary = source.json()
+            except requests.exceptions.JSONDecodeError:
+                status = source.status_code
                 if status == 404:
-                    if game_summary["errorCode"] == "RESOURCE_NOT_FOUND" and game_summary["message"] == "match file not found" or game_summary == {"httpStatus": 404, "errorCode": "NOT_FOUND", "message": "Not Found", "implementationDetails": "match file not found"}:
-                        logPrint(f"未找到序号为{match_id}的云顶之弈回放文件！\nTFT match file with matchId {match_id} not found!", verbose = verbose)
-                        break
-                logPrint(f"正在第{count}次尝试获取云顶之弈对局{match_id}概要……\nTimes trying to capture TFT Match {match_id}: No. {count} ...", verbose = verbose)
-            elif "status" in game_summary and isinstance(game_summary["status"], dict) and all(_ in ["message", "status_code"] for _ in game_summary["status"]):
-                logPrint(game_summary, verbose = verbose)
-                status = game_summary["status"]["status_code"]
-                if count > retry:
-                    logPrint(f"云顶之弈对局{match_id}概要获取失败！\nTFT match {match_id} summary capture failure!", verbose = verbose)
+                    logPrint(f"未找到序号为{match_id}的云顶之弈回放文件！\nTFT match file with matchId {match_id} not found!", verbose = verbose)
                     break
-                if status == 503:
-                    if game_summary["status"]["message"] == "Service Unavailable - Connection retries limit exceeded. Response timed out.":
-                        logPrint("访问频繁。尝试重新获取数据……\nConnection retries limit exceeded! Trying to recapture the match data ...", verbose = verbose)
+                logPrint(f"正在第{count}次尝试获取云顶之弈对局{match_id}概要……\nTimes trying to capture TFT Match {match_id}: No. {count} ...", verbose = verbose)
             else:
-                status = 200
-                break
+                #尝试修复错误（Try to fix the error）
+                if "errorCode" in game_summary:
+                    logPrint(game_summary, verbose = verbose)
+                    status = game_summary["httpStatus"]
+                    if count > retry:
+                        logPrint(f"云顶之弈对局{match_id}概要获取失败！\nTFT match {match_id} summary capture failure!", verbose = verbose)
+                        break
+                    if status == 404:
+                        if game_summary["errorCode"] == "RESOURCE_NOT_FOUND" and game_summary["message"] == "match file not found" or game_summary == {"httpStatus": 404, "errorCode": "NOT_FOUND", "message": "Not Found", "implementationDetails": "match file not found"}:
+                            logPrint(f"未找到序号为{match_id}的云顶之弈回放文件！\nTFT match file with matchId {match_id} not found!", verbose = verbose)
+                            break
+                    logPrint(f"正在第{count}次尝试获取云顶之弈对局{match_id}概要……\nTimes trying to capture TFT Match {match_id}: No. {count} ...", verbose = verbose)
+                elif "status" in game_summary and isinstance(game_summary["status"], dict) and all(_ in ["message", "status_code"] for _ in game_summary["status"]):
+                    logPrint(game_summary, verbose = verbose)
+                    status = game_summary["status"]["status_code"]
+                    if count > retry:
+                        logPrint(f"云顶之弈对局{match_id}概要获取失败！\nTFT match {match_id} summary capture failure!", verbose = verbose)
+                        break
+                    if status == 503:
+                        if game_summary["status"]["message"] == "Service Unavailable - Connection retries limit exceeded. Response timed out.":
+                            logPrint("访问频繁。尝试重新获取数据……\nConnection retries limit exceeded! Trying to recapture the match data ...", verbose = verbose)
+                else:
+                    status = 200
+                    break
     return (status, game_summary)
 
-async def get_game_timeline_sgp(connection: Connection, sgpSession: SGPSession, match_id: str, checkLoL: bool = True, checkTFT: bool = False, retry: int = 3, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[int, dict[str, Any]]:
+async def get_game_timeline_sgp(connection: Connection, sgpSession: SGPSession, match_id: str, checkLoL: bool = True, checkTFT: bool = False, retry: int = 3, endpoint_version: int = 1, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[int, dict[str, Any]]:
     '''
     获取一场对局的时间轴。<br>Get the timeline of a match.
     
@@ -637,6 +669,11 @@ async def get_game_timeline_sgp(connection: Connection, sgpSession: SGPSession, 
     :type checkTFT: bool
     :param retry: 最大尝试次数。默认为3次。<br>Maximum number of attempts. 3 by default.
     :type retry: int
+    :param endpoint_version: 接口版本。有以下取值。<br>Endpoint version, which can be one of the following values:
+    
+        - （☆）1: GET /match-history-query/v1/products/lol/{match_id}/SUMMARY
+        - 3: GET /match-history-query/v3/product/lol/matchId/{match_id}/infoType/summary
+    :type endpoint_version: int
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -646,6 +683,14 @@ async def get_game_timeline_sgp(connection: Connection, sgpSession: SGPSession, 
     '''
     if log == None:
         log = LogManager()
+    if endpoint_version != 3:
+        endpoint_version = 1
+    if endpoint_version == 1:
+        game_timeline_endpoint_lol: str = f"/match-history-query/v1/products/lol/{match_id}/DETAILS"
+        game_timeline_endpoint_tft: str = f"/match-history-query/v1/products/tft/{match_id}/DETAILS"
+    else:
+        game_timeline_endpoint_lol: str = f"/match-history-query/v3/product/lol/matchId/{match_id}/infoType/details"
+        game_timeline_endpoint_tft: str = f"/match-history-query/v3/product/tft/matchId/{match_id}/infoType/details"
     logPrint = log.logPrint
     status: int = -1
     game_timeline: dict[str, Any] = {}
@@ -654,61 +699,79 @@ async def get_game_timeline_sgp(connection: Connection, sgpSession: SGPSession, 
         count: int = 0
         while True:
             count += 1
-            game_timeline = (await sgpSession.request(connection, "GET", f"/match-history-query/v1/products/lol/{match_id}/DETAILS", verbose = verbose)).json()
-            #尝试修复错误（Try to fix the error）
-            if "errorCode" in game_timeline:
-                logPrint(game_timeline, verbose = verbose)
-                status = game_timeline["httpStatus"]
-                if count > retry:
-                    logPrint(f"英雄联盟对局{match_id}时间轴获取失败！\nLoL match {match_id} timeline capture failure!", verbose = verbose)
-                    break
+            source: requests.Response = await sgpSession.request(connection, "GET", game_timeline_endpoint_lol, verbose = verbose)
+            try:
+                game_timeline = source.json()
+            except requests.exceptions.JSONDecodeError:
+                status = source.status_code
                 if status == 404:
-                    if game_timeline["errorCode"] == "RESOURCE_NOT_FOUND" and game_timeline["message"] == "match file not found" or game_timeline == {"httpStatus": 404, "errorCode": "NOT_FOUND", "message": "Not Found", "implementationDetails": "match file not found"}:
-                        logPrint(f"未找到序号为{match_id}的英雄联盟回放文件！\nLoL match file with matchId {match_id} not found!", verbose = verbose)
-                        break
-                logPrint(f"正在第{count}次尝试获取英雄联盟对局{match_id}时间轴……\nTimes trying to capture LoL Match {match_id}: No. {count} ...", verbose = verbose)
-            elif "status" in game_timeline and isinstance(game_timeline["status"], dict) and all(_ in ["message", "status_code"] for _ in game_timeline["status"]):
-                logPrint(game_timeline, verbose = verbose)
-                status = game_timeline["status"]["status_code"]
-                if count > retry:
-                    logPrint(f"英雄联盟对局{match_id}时间轴获取失败！\nLoL match {match_id} information capture failure!", verbose = verbose)
+                    logPrint(f"未找到序号为{match_id}的英雄联盟回放文件！\nLoL match file with matchId {match_id} not found!", verbose = verbose)
                     break
-                if status == 503:
-                    if game_timeline["status"]["message"] == "Service Unavailable - Connection retries limit exceeded. Response timed out.":
-                        logPrint("访问频繁。尝试重新获取数据……\nConnection retries limit exceeded! Trying to recapture the match data ...", verbose = verbose)
+                logPrint(f"正在第{count}次尝试获取英雄联盟对局{match_id}时间轴……\nTimes trying to capture LoL Match {match_id}: No. {count} ...", verbose = verbose)
             else:
-                status = 200
-                break
+                #尝试修复错误（Try to fix the error）
+                if "errorCode" in game_timeline:
+                    logPrint(game_timeline, verbose = verbose)
+                    status = game_timeline["httpStatus"]
+                    if count > retry:
+                        logPrint(f"英雄联盟对局{match_id}时间轴获取失败！\nLoL match {match_id} timeline capture failure!", verbose = verbose)
+                        break
+                    if status == 404:
+                        if game_timeline["errorCode"] == "RESOURCE_NOT_FOUND" and game_timeline["message"] == "match file not found" or game_timeline == {"httpStatus": 404, "errorCode": "NOT_FOUND", "message": "Not Found", "implementationDetails": "match file not found"}:
+                            logPrint(f"未找到序号为{match_id}的英雄联盟回放文件！\nLoL match file with matchId {match_id} not found!", verbose = verbose)
+                            break
+                    logPrint(f"正在第{count}次尝试获取英雄联盟对局{match_id}时间轴……\nTimes trying to capture LoL Match {match_id}: No. {count} ...", verbose = verbose)
+                elif "status" in game_timeline and isinstance(game_timeline["status"], dict) and all(_ in ["message", "status_code"] for _ in game_timeline["status"]):
+                    logPrint(game_timeline, verbose = verbose)
+                    status = game_timeline["status"]["status_code"]
+                    if count > retry:
+                        logPrint(f"英雄联盟对局{match_id}时间轴获取失败！\nLoL match {match_id} information capture failure!", verbose = verbose)
+                        break
+                    if status == 503:
+                        if game_timeline["status"]["message"] == "Service Unavailable - Connection retries limit exceeded. Response timed out.":
+                            logPrint("访问频繁。尝试重新获取数据……\nConnection retries limit exceeded! Trying to recapture the match data ...", verbose = verbose)
+                else:
+                    status = 200
+                    break
     #检查云顶之弈对局（Check TFT match）
     if checkTFT:
         count: int = 0
         while True:
             count += 1
-            game_timeline = (await sgpSession.request(connection, "GET", f"/match-history-query/v1/products/tft/{match_id}/DETAILS", verbose = verbose)).json()
-            #尝试修复错误（Try to fix the error）
-            if "errorCode" in game_timeline:
-                logPrint(game_timeline, verbose = verbose)
-                status = game_timeline["httpStatus"]
-                if count > retry:
-                    logPrint(f"云顶之弈对局{match_id}概要获取失败！\nTFT match {match_id} summary capture failure!", verbose = verbose) #DETAILS接口返回的内容实际上和SUMMARY接口是一样的（The DETAILS endpoint returns the semantically same content as the SUMMARY endpoint）
-                    break
+            source: requests.Response = await sgpSession.request(connection, "GET", game_timeline_endpoint_tft, verbose = verbose)
+            try:
+                game_timeline = source.json()
+            except requests.exceptions.JSONDecodeError:
+                status = source.status_code
                 if status == 404:
-                    if game_timeline["errorCode"] == "RESOURCE_NOT_FOUND" and game_timeline["message"] == "match file not found" or game_timeline == {"httpStatus": 404, "errorCode": "NOT_FOUND", "message": "Not Found", "implementationDetails": "match file not found"}:
-                        logPrint(f"未找到序号为{match_id}的云顶之弈回放文件！\nTFT match file with matchId {match_id} not found!", verbose = verbose)
-                        break
-                logPrint(f"正在第{count}次尝试获取云顶之弈对局{match_id}概要……\nTimes trying to capture TFT Match {match_id}: No. {count} ...", verbose = verbose)
-            elif "status" in game_timeline and isinstance(game_timeline["status"], dict) and all(_ in ["message", "status_code"] for _ in game_timeline["status"]):
-                logPrint(game_timeline, verbose = verbose)
-                status = game_timeline["status"]["status_code"]
-                if count > retry:
-                    logPrint(f"云顶之弈对局{match_id}概要获取失败！\nTFT match {match_id} summary capture failure!", verbose = verbose)
+                    logPrint(f"未找到序号为{match_id}的云顶之弈回放文件！\nTFT match file with matchId {match_id} not found!", verbose = verbose)
                     break
-                if status == 503:
-                    if game_timeline["status"]["message"] == "Service Unavailable - Connection retries limit exceeded. Response timed out.":
-                        logPrint("访问频繁。尝试重新获取数据……\nConnection retries limit exceeded! Trying to recapture the match data ...", verbose = verbose)
+                logPrint(f"正在第{count}次尝试获取云顶之弈对局{match_id}概要……\nTimes trying to capture TFT Match {match_id}: No. {count} ...", verbose = verbose)
             else:
-                status = 200
-                break
+                #尝试修复错误（Try to fix the error）
+                if "errorCode" in game_timeline:
+                    logPrint(game_timeline, verbose = verbose)
+                    status = game_timeline["httpStatus"]
+                    if count > retry:
+                        logPrint(f"云顶之弈对局{match_id}概要获取失败！\nTFT match {match_id} summary capture failure!", verbose = verbose) #DETAILS接口返回的内容实际上和SUMMARY接口是一样的（The DETAILS endpoint returns the semantically same content as the SUMMARY endpoint）
+                        break
+                    if status == 404:
+                        if game_timeline["errorCode"] == "RESOURCE_NOT_FOUND" and game_timeline["message"] == "match file not found" or game_timeline == {"httpStatus": 404, "errorCode": "NOT_FOUND", "message": "Not Found", "implementationDetails": "match file not found"}:
+                            logPrint(f"未找到序号为{match_id}的云顶之弈回放文件！\nTFT match file with matchId {match_id} not found!", verbose = verbose)
+                            break
+                    logPrint(f"正在第{count}次尝试获取云顶之弈对局{match_id}概要……\nTimes trying to capture TFT Match {match_id}: No. {count} ...", verbose = verbose)
+                elif "status" in game_timeline and isinstance(game_timeline["status"], dict) and all(_ in ["message", "status_code"] for _ in game_timeline["status"]):
+                    logPrint(game_timeline, verbose = verbose)
+                    status = game_timeline["status"]["status_code"]
+                    if count > retry:
+                        logPrint(f"云顶之弈对局{match_id}概要获取失败！\nTFT match {match_id} summary capture failure!", verbose = verbose)
+                        break
+                    if status == 503:
+                        if game_timeline["status"]["message"] == "Service Unavailable - Connection retries limit exceeded. Response timed out.":
+                            logPrint("访问频繁。尝试重新获取数据……\nConnection retries limit exceeded! Trying to recapture the match data ...", verbose = verbose)
+                else:
+                    status = 200
+                    break
     return (status, game_timeline)
 
 async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int], puuid: str | list[str], queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, LoLGame_summary_cache: Optional[dict[int, dict[str, Any]]] = None, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]]]: #参数顺序遵循一个原则：首先是连接信息和数据字典，然后是数据资源字典，最后是一些附加参数（The order of parameters follow a principle: first connection and the data dictionary, then data resource dictionaries and finally some supplemental parameters）
