@@ -6501,14 +6501,14 @@ class AugmentExtractor(LoLDataExtractor):
                     else: #任务线相关键（Questline-related keys）
                         if "{3ed971bd}" in value and "{09d0cf3d}" in value["{3ed971bd}"] and (questline_key := value["{3ed971bd}"]["{09d0cf3d}"]) in map12_bin_whole:
                             questline: dict[str, Any] = map12_bin_whole[questline_key]
-                            if i <= 64:
+                            if i <= 65:
                                 tmp_ptr: Any = questline
                                 subkeyList: list[str] = key.split()[1:]
                                 for tmp_key in subkeyList:
                                     if tmp_key in tmp_ptr:
                                         tmp_ptr = tmp_ptr[tmp_key]
                                     else:
-                                        if i == 62: #`questline {ee2e0dbc}`
+                                        if i == 62 or i == 65:
                                             to_append = value.get(key, False)
                                         else:
                                             to_append = value.get(key, "")
@@ -6531,7 +6531,7 @@ class AugmentExtractor(LoLDataExtractor):
                                         mSpell: Optional[dict[str, Any]] = None
                                     if "{3ed971bd}" in value and "{09d0cf3d}" in value["{3ed971bd}"] and (questline_key := value["{3ed971bd}"]["{09d0cf3d}"]) in map12_bin_whole:
                                         questline: dict[str, Any] = map12_bin_whole[questline_key]
-                                        if i >= 67: #对于任务完成描述，获取最大层级（For quest-finished descriptions, get the maximum tier）
+                                        if i >= 68: #对于任务完成描述，获取最大层级（For quest-finished descriptions, get the maximum tier）
                                             reservedVars: Optional[dict[str, str]] = {"QuestTier": str(len(questline["Milestones"]))}
                                         else:
                                             reservedVars = None
@@ -6546,7 +6546,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 else:
                                     to_append = tooltip_raw
                         else:
-                            to_append = False if i == 62 else ""
+                            to_append = False if i == 62 or i == 65 else ""
                     KiwiAugment_data[key].append(to_append)
                     KiwiAugment_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "{27bc6378}": #强化符文套装（Augment set）
@@ -6644,17 +6644,17 @@ class AugmentExtractor(LoLDataExtractor):
                     reservedVars: Optional[dict[str, str]] = {"QuestRequirement": str(questPoint_diff), "QuestTier": str(milestone_index)}
                     for i in range(len(KiwiQuestline_header_keys)):
                         key: str = KiwiQuestline_header_keys[i]
-                        if i <= 13:
+                        if i <= 14:
                             if i == 0: #主键（`key`）
                                 to_append: Any = key1
-                            elif i <= 7:
+                            elif i <= 8:
                                 tmp_ptr: Any = value
                                 subkeyList: list[str] = key.split()
                                 for tmp_key in subkeyList:
                                     if tmp_key in tmp_ptr:
                                         tmp_ptr = tmp_ptr[tmp_key]
                                     else:
-                                        if i == 6: #`{ee2e0dbc}`
+                                        if i == 6 or i == 8:
                                             to_append = value.get(key, False)
                                         else:
                                             to_append = value.get(key, "")
@@ -6680,10 +6680,10 @@ class AugmentExtractor(LoLDataExtractor):
                                     to_append = tooltip_burn
                                 else:
                                     to_append = tooltip_raw
-                        elif i <= 20:
-                            if i == 14: #里程序号（`Milestone_index`）
+                        elif i <= 21:
+                            if i == 15: #里程序号（`Milestone_index`）
                                 to_append = milestone_index
-                            elif i <= 16:
+                            elif i <= 17:
                                 to_append = milestone[key.split()[1]]
                             else:
                                 subkey2: str = pStrConst.search(key).group()
@@ -6711,7 +6711,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 to_append = 0
                         KiwiQuestline_data[key].append(to_append)
                         KiwiQuestline_data_json[key].append(pyobj2json(to_append))
-        KiwiAugment_statistics_output_order: list[int] = [0, 1, 19, 2, 3, 23, 24, 17, 50, 16, 49, 53, 54, 55, 57, 58, 8, 9, 18, 22, 62, 4, 25, 26, 27, 28, 5, 29, 30, 31, 32, 10, 33, 34, 35, 36, 11, 37, 38, 39, 40, 60, 67, 68, 69, 70, 6, 51, 7, 52, 21, 64, 20, 56, 14, 15, 61]
+        KiwiAugment_statistics_output_order: list[int] = [0, 1, 19, 2, 3, 23, 24, 17, 50, 16, 49, 53, 54, 55, 57, 58, 8, 9, 18, 22, 62, 65, 4, 25, 26, 27, 28, 5, 29, 30, 31, 32, 10, 33, 34, 35, 36, 11, 37, 38, 39, 40, 60, 68, 69, 70, 71, 6, 51, 7, 52, 21, 64, 20, 56, 14, 15, 61]
         KiwiAugment_data_organized: dict[str, list[Any]] = {KiwiAugment_header_keys[i]: KiwiAugment_data_json[KiwiAugment_header_keys[i]] for i in KiwiAugment_statistics_output_order}
         KiwiAugment_df: pandas.DataFrame = pandas.DataFrame(data = KiwiAugment_data_organized)
         KiwiAugment_df = KiwiAugment_df.sort_values(by = "AugmentPlatformId", ascending = True, ignore_index = True)
@@ -6724,7 +6724,7 @@ class AugmentExtractor(LoLDataExtractor):
         KiwiAugmentSet_df: pandas.DataFrame = pandas.DataFrame(data = KiwiAugmentSet_data_organized)
         KiwiAugmentSet_df = pandas.concat([pandas.DataFrame([KiwiAugmentSet_header])[KiwiAugmentSet_df.columns], KiwiAugmentSet_df], ignore_index = True)
         self.KiwiAugmentSet_df = KiwiAugmentSet_df
-        KiwiQuestline_statistics_output_order: list[int] = [0, 21, 2, 3, 8, 9, 14, 15, 16, 17, 18, 19, 20]
+        KiwiQuestline_statistics_output_order: list[int] = [0, 22, 2, 3, 9, 10, 15, 16, 17, 18, 19, 20, 21]
         KiwiQuestline_data_organized: dict[str, list[Any]] = {KiwiQuestline_header_keys[i]: KiwiQuestline_data_json[KiwiQuestline_header_keys[i]] for i in KiwiQuestline_statistics_output_order}
         KiwiQuestline_df: pandas.DataFrame = pandas.DataFrame(data = KiwiQuestline_data_organized)
         KiwiQuestline_df = KiwiQuestline_df.sort_values(by = ["augment AugmentPlatformId", "Milestone_index"], ascending = True, ignore_index = True)
