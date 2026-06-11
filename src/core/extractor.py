@@ -23,7 +23,7 @@ from src.core.config.localization import language_ddragon, language_dict
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/06/10
+# 更新（Last update）：     2026/06/11
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -7864,7 +7864,7 @@ class GoHExtractor(LoLDataExtractor):
         ##首先从怒火角斗场地图数据中提取所有荣誉嘉宾信息（First, extract all GoH data from map30 data）
         GoH_map30: dict[tuple[str, str], dict[str, dict[str, Any]]] = {}
         for (key, value) in self.map30_bin.items():
-            if key != "__linked" and value["__type"] == "{fe44baa3}":
+            if key != "__linked" and (value["__type"] == "{fe44baa3}" or value["__type"] == "{8b331b12}"): #在测试服16.13.786.2007版本，怒火角斗场地图二进制描述文件中的荣誉嘉宾数据类型变更（In PBE Patch 16.13.786.2007, GoH data type in Rings of Wrath's binary description file is changed）
                 GoH_key: str = value["name"]
                 GoH_value: dict[str, Any] = copy.deepcopy(value)
                 GoH_value["key"] = key
@@ -7888,7 +7888,7 @@ class GoHExtractor(LoLDataExtractor):
         for key1 in GoH_keys:
             for i in range(len(GoH_header_keys)):
                 key: str = GoH_header_keys[i]
-                if i <= 6: #怒火角斗场地图——{fe44baa3}（Rings of Wrath: {fe44baa3}）
+                if i <= 6: #怒火角斗场地图——{8b331b12}（Rings of Wrath: {8b331b12}）
                     if key1 in GoH_map30:
                         if i == 0: #主键1（`key1`）
                             to_append: Any = GoH_map30[key1]["key"]
