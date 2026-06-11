@@ -18,5 +18,6 @@ cache/*
 离线数据（Offline Data）/ddragon/*
 离线数据（Offline Data）/versions.json
 #不开源脚本（Non-open-source programs）
+src/utils/annotate.py
 Customized Program 14 - Vie An Open Lobby's Seat.py
 Customized Program 15 - Create Any Manual OneForAll Game.py
