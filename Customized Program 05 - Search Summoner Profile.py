@@ -40,7 +40,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/06/09
+# 更新（Last update）：     2026/06/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -974,7 +974,7 @@ def prepare_data_resources(platformId: str, locale: str) -> tuple[bool, bool]:
         CherryAugments_initial = {int(CherryAugment_iter["id"]): CherryAugment_iter for CherryAugment_iter in CherryAugment_initial} #CherryAugments为嵌套字典，键为斗魂竞技场强化符文在LCU API上的表达形式，值为斗魂竞技场强化符文信息字典。一个键值对的实例如右：（Variable `CherryAugments` is a nested dictionary, whose keys are LCU API representation of Arena augments and values are Arena augment information dictionaries. An example of the key-value pairs is shown as follows: ）{205: {"nameTRA": "物理转魔法", "augmentSmallIconPath": "/lol-game-data/assets/ASSETS/UX/Cherry/Augments/Icons/ADAPt_small.png", "rarity": "kSilver"}}
     return (switch_language, False)
 
-async def load_smurf(connection: Connection, infos: Optional[dict[str, dict[str, Any]]] = None) -> list[dict[str, Any]]:
+async def load_smurf(connection: Connection, current_puuid: str, infos: Optional[dict[str, dict[str, Any]]] = None) -> list[dict[str, Any]]:
     '''
     读取小号信息。<br>Load smurf information.
     
@@ -982,6 +982,8 @@ async def load_smurf(connection: Connection, infos: Optional[dict[str, dict[str,
     
     :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
     :type connection: Connection
+    :param current_puuid: 主召唤师的玩家通用唯一识别码。<br>The main summoner's puuid.
+    :type current_puuid: str
     :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
     :type infos: dict[str, dict[str, Any]]
     :return: 小号信息列表。<br>A list of smurfs.
@@ -989,7 +991,6 @@ async def load_smurf(connection: Connection, infos: Optional[dict[str, dict[str,
     '''
     if infos == None:
         infos = {}
-    current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     smurfs: list[dict[str, Any]] = []
     logPrint("是否导入其它账号？（输入任意非空字符串以导入，否则不导入。）\nImport other accounts? (Submit any non-empty string to import, or null to refuse importing.)")
     smurfMode_str: str = logInput()
@@ -1023,10 +1024,10 @@ async def load_smurf(connection: Connection, infos: Optional[dict[str, dict[str,
                     if isinstance(smurf_local, dict) and all(map(lambda x: x in valid_platformIds, smurf_local.keys())) and all(map(lambda x: isinstance(x, dict), smurf_local.values())) and all(len(smurf_local_iter) == 0 or all(map(lambda x: isinstance(x, str) and verify_uuid(x), smurf_local_iter.keys())) and all(map(lambda x: isinstance(x, list) and all(map(lambda y: isinstance(y, str) and verify_uuid(y), x)), smurf_local_iter.values())) for smurf_local_iter in smurf_local.values()): #格式的严格校验（A serious verification of the format）
                         smurf_file_read = True
                         if platformId in smurf_local:
-                            if current_info["puuid"] in smurf_local[platformId]: #一定要注意，在本脚本中，`current_puuid`和`current_info["puuid"]`不是一回事（Pay attention that `current_puuid` and `current_info["puuid"]` aren't the same thing in this program）
+                            if current_puuid in smurf_local[platformId]:
                                 count: int = 0 #标识小号的序号（Number the smurfs）
                                 valid_puuid_count: int = 0 #记录能查询到玩家的玩家通用唯一识别码的数量（Record the number of puuids that can correspond to players）
-                                for smurf_puuid in smurf_local[platformId][current_info["puuid"]]:
+                                for smurf_puuid in smurf_local[platformId][current_puuid]:
                                     count += 1
                                     logPrint(f"{count}.\t{smurf_puuid}")
                                     info: dict[str, Any] = await get_info(connection, smurf_puuid)
@@ -1071,13 +1072,13 @@ async def load_smurf(connection: Connection, infos: Optional[dict[str, dict[str,
                     logPrint("已清空小号。\nSmurfs cleared.")
                 elif smurfName == "":
                     continue
-                elif smurfName in {"current-summoner", get_info_name(current_info), current_info["puuid"], str(current_info["summonerId"])}:
-                    logPrint("您不能把主账号作为小号！请添加其它账号。\nYou're not allowed to add your main account as a smurf account! Please try another account.")
                 else:
                     info: dict[str, Any] = await get_info(connection, smurfName)
                     if info["info_got"]:
                         info_body: dict[str, Any] = info["body"]
-                        if info_body["puuid"] in list(map(lambda x: x["puuid"], smurfs)):
+                        if info_body["puuid"] == current_puuid:
+                            logPrint("您不能把主账号作为小号！请添加其它账号。\nYou're not allowed to add your main account as a smurf account! Please try another account.")
+                        elif info_body["puuid"] in list(map(lambda x: x["puuid"], smurfs)):
                             logPrint("您已经输入过该玩家了。\nYou've entered this player.")
                         else:
                             logPrint(info_body)
@@ -1095,11 +1096,11 @@ async def load_smurf(connection: Connection, infos: Optional[dict[str, dict[str,
         if save_smurf:
             if smurf_file_read:
                 if platformId in smurf_local:
-                    smurf_local[platformId][current_info["puuid"]] = list(map(lambda x: x["puuid"], smurfs)) #之所以考虑用玩家通用唯一识别码，而不用召唤师名或者召唤师序号作为小号信息存储介质的原因有两个方面的考量：从对人类友好的角度上，召唤师名的确更胜一筹，但是缺少唯一性。在调用get_info函数时，两个召唤师名如果只是差几个空格，就很有可能指向同一个召唤师。这样，上面和下面的代码在识别召唤师信息是否添加过时，就不太好实现；从存储格式的角度上来考虑，玩家通用唯一识别码服从通用唯一识别码的格式，相对比较统一，而且是全球统一的，这样在校验数据文件格式时比较方便。而召唤师序号只是整数，而且不同召唤师序号存在长短不一的情况，这样校验起来不够充分（The reason why I consider using puuid as the smurf data storing media, instead of the summoner name or summonerId, has two considerations. On the one hand, in terms of being human-friendly, a summoner name does far outweigh the puuid or summonerId. However, it lacks uniformity. When `get_info` function is called, if two parameters differ only in several spaces, the result might directs to a same summoner. In that case, it's not easy to implement the code to identify whether a summoner's information has been added to the list before, within the context. On the other hand, in terms of the format, a puuid obeys the format of uuids, so it's relatively general, let alone being "universally unqiue", which makes it convenient to verify the format of the smurf data file. Nevertheless, summonerId is just an integer, and different summonerIds may be of different lengths, so it's not sufficient to determine a summoner by summonerId）
+                    smurf_local[platformId][current_puuid] = list(map(lambda x: x["puuid"], smurfs)) #之所以考虑用玩家通用唯一识别码，而不用召唤师名或者召唤师序号作为小号信息存储介质的原因有两个方面的考量：从对人类友好的角度上，召唤师名的确更胜一筹，但是缺少唯一性。在调用get_info函数时，两个召唤师名如果只是差几个空格，就很有可能指向同一个召唤师。这样，上面和下面的代码在识别召唤师信息是否添加过时，就不太好实现；从存储格式的角度上来考虑，玩家通用唯一识别码服从通用唯一识别码的格式，相对比较统一，而且是全球统一的，这样在校验数据文件格式时比较方便。而召唤师序号只是整数，而且不同召唤师序号存在长短不一的情况，这样校验起来不够充分（The reason why I consider using puuid as the smurf data storing media, instead of the summoner name or summonerId, has two considerations. On the one hand, in terms of being human-friendly, a summoner name does far outweigh the puuid or summonerId. However, it lacks uniformity. When `get_info` function is called, if two parameters differ only in several spaces, the result might directs to a same summoner. In that case, it's not easy to implement the code to identify whether a summoner's information has been added to the list before, within the context. On the other hand, in terms of the format, a puuid obeys the format of uuids, so it's relatively general, let alone being "universally unqiue", which makes it convenient to verify the format of the smurf data file. Nevertheless, summonerId is just an integer, and different summonerIds may be of different lengths, so it's not sufficient to determine a summoner by summonerId）
                 else:
-                    smurf_local[platformId] = {current_info["puuid"]: list(map(lambda x: x["puuid"], smurfs))}
+                    smurf_local[platformId] = {current_puuid: list(map(lambda x: x["puuid"], smurfs))}
             else:
-                smurf_local: dict[str, dict[str, list[str]]] = {platformId: {current_info["puuid"]: list(map(lambda x: x["puuid"], smurfs))}}
+                smurf_local: dict[str, dict[str, list[str]]] = {platformId: {current_puuid: list(map(lambda x: x["puuid"], smurfs))}}
             with open(smurf_file, "w", encoding = "utf-8") as fp:
                 json.dump(smurf_local, fp, indent = 4, ensure_ascii = False)
             logPrint(f"小号信息已保存到“{smurf_file}”中。\nSmurf information has been saved into {smurf_file}.")
@@ -1813,7 +1814,7 @@ async def search_profile(connection: Connection) -> None:
             return
         else:
             logPrint("语言选项输入错误！请重新输入：\nERROR input of language option! Please try again:")
-    # current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
+    # current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json() #一定要注意，在本脚本中，`current_puuid`和`current_info["puuid"]`不是一回事（Pay attention that `current_puuid` and `current_info["puuid"]` aren't the same thing in this program）
     #获取在线游戏模式数据（Get online game mode data）
     gameQueues_initial: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
     gameQueues: dict[int, dict[str, Any]] = {queue["id"]: queue for queue in gameQueues_initial}
@@ -1884,7 +1885,7 @@ async def search_profile(connection: Connection) -> None:
                         logPrint(f"在获取玩家{displayName}的生涯公开性时出现了一个问题。\nThere's an issue about player {displayName}'s profile privacy.")
                     break
         #处理小号（Handle the smurfs）
-        smurfs: list[dict[str, Any]] = await load_smurf(connection, infos = infos)
+        smurfs: list[dict[str, Any]] = await load_smurf(connection, current_puuid = current_puuid, infos = infos)
         #整理账号信息（Organize accounts）
         AllAccounts: list[dict[str, Any]] = [main_info_body] + smurfs
         current_puuid_list: list[str] = list(map(lambda x: x["puuid"], AllAccounts))
