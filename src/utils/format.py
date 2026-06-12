@@ -273,15 +273,13 @@ def lcuTime(timestamp: float) -> str: #根据对局时间轴的时间戳返回�
     sec: float = timestamp % 60
     return "%d:%02d" %(min, sec)
 
-def getISOTime(timestamp: float, tz: datetime.timezone = datetime.timezone.utc) -> str:
+def getISOTime(timestamp: float) -> str:
     '''
     将LCU API中的世界时间转化为ISO 8601的时间。<br>Transform the world timestamp in data returned by LCU API into a time string in ISO 8601 form.
     
     :param timestamp: 时间戳，以秒为单位。<br>Timestamp in seconds.
     :type timestamp: float
-    :param tz: 时区。默认是UTC时间。<br>Time zone. UTC by default.
-    :type tz: datetime.timezone
-    :return: 形如“1970-01-01T08:00:00.0Z”的时间字符串。<br>A time string in a form like "1970-01-01T08:00:00.0Z".
+    :return: 形如“1970-01-01T00:00:00.0Z”的UCT时间字符串。<br>A UTC time string in a form like "1970-01-01T00:00:00.0Z".
     :rtype: str
     '''
     dt: datetime.datetime = datetime.datetime.fromtimestamp(timestamp, tz = datetime.timezone.utc)
