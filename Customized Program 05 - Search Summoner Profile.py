@@ -1413,7 +1413,7 @@ async def sort_ranked_data(connection: Connection, puuid: str) -> pandas.DataFra
     ranked_df = pandas.concat([pandas.DataFrame([ranked_header])[ranked_df.columns], ranked_df], ignore_index = True)
     return ranked_df
 
-async def sort_ranked_ladders(connection: Connection, puuid: str) -> pandas.DataFrame:
+async def sort_ranked_ladders(connection: Connection, puuid: str, fetch_summoner_info: bool = True) -> pandas.DataFrame:
     '''
     将一名玩家的排位天梯信息整理成一张表格。<br>Organize a player's ranked ladder data into a table.
     
@@ -1421,11 +1421,13 @@ async def sort_ranked_ladders(connection: Connection, puuid: str) -> pandas.Data
     :type connection: Connection
     :param puuid: 要查询的召唤师的玩家通用唯一识别码。<br>The puuid of the player to query.
     :type puuid: str
+    :param fetch_summoner_info: 是否获取每名天梯玩家的召唤师信息。默认为真。<br>Whether to get the summoner information of each apex player. True by default.
+    :type fetch_summoner_info: bool
     :return: 排位天梯数据框。<br>Ranked ladder dataframe.
     :rtype: pandas.DataFrame
     '''
     ladders: list[dict[str, Any]] = await (await connection.request("GET", f"/lol-ranked/v1/league-ladders/{puuid}")).json()
-    # ladder_summoner_infos: dict[str, dict[str, Any]] = await get_infos(connection, puuids = [standing["puuid"] for ladder in ladders for division in ladder["divisions"] for standing in division["standings"]])
+    # ladder_summoner_infos: dict[str, dict[str, Any]] = await get_infos(connection, puuids = [standing["puuid"] for ladder in ladders for division in ladder["divisions"] for standing in division["standings"]]) if fetch_summoner_info else {}
     ladder_header_keys: list[str] = list(ladder_header.keys())
     ladder_data: dict[str, list[Any]] = {key: [] for key in ladder_header_keys}
     for i in range(len(ladders)):
@@ -1435,19 +1437,24 @@ async def sort_ranked_ladders(connection: Connection, puuid: str) -> pandas.Data
             division: dict[str, Any] = ladder["divisions"][j]
             for k in range(len(division["standings"])):
                 standing: dict[str, Any] = division["standings"][k]
-                # info_got = standing["puuid"] in ladder_summoner_infos
-                # standing_summoner = ladder_summoner_infos.get(standing["puuid"], {})
-                standing_summoner_recapture: int = 0
-                standing_summoner: dict[str, Any] = await get_info(connection, standing["puuid"])
-                while not standing_summoner["info_got"] and standing_summoner["body"]["httpStatus"] != 404 and standing_summoner_recapture < 3:
-                    logPrint(standing_summoner["message"])
-                    standing_summoner_recapture += 1
-                    logPrint("顶级%s%s玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of top %s %s player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d" %(queueTypes[ladder["queueType"]], tiers_all[ladder["tier"]], standing["puuid"], standing_summoner_recapture, ladder["queueType"], ladder["tier"], standing["puuid"], standing_summoner_recapture))
-                    standing_summoner = await get_info(connection, standing["puuid"])
-                info_got = standing_summoner["info_got"]
-                if not info_got:
-                    logPrint(standing_summoner["message"])
-                    logPrint("顶级%s%s玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of top %s %s player (puuid: %s) capture failed!" %(queueTypes[ladder["queueType"]], tiers_all[ladder["tier"]], standing["puuid"], ladder["queueType"], ladder["tier"], standing["puuid"]))
+                #准备召唤师信息（Prepare summoner information）
+                if fetch_summoner_info:
+                    # info_got: bool = standing["puuid"] in ladder_summoner_infos
+                    # standing_summoner: dict[str, Any] = ladder_summoner_infos.get(standing["puuid"], {})
+                    standing_summoner_recapture: int = 0
+                    standing_summoner: dict[str, Any] = await get_info(connection, standing["puuid"])
+                    while not standing_summoner["info_got"] and standing_summoner["body"]["httpStatus"] != 404 and standing_summoner_recapture < 3:
+                        logPrint(standing_summoner["message"])
+                        standing_summoner_recapture += 1
+                        logPrint("顶级%s%s玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of top %s %s player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d" %(queueTypes[ladder["queueType"]], tiers_all[ladder["tier"]], standing["puuid"], standing_summoner_recapture, ladder["queueType"], ladder["tier"], standing["puuid"], standing_summoner_recapture))
+                        standing_summoner = await get_info(connection, standing["puuid"])
+                    info_got: bool = standing_summoner["info_got"]
+                    if not info_got:
+                        logPrint(standing_summoner["message"])
+                        logPrint("顶级%s%s玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of top %s %s player (puuid: %s) capture failed!" %(queueTypes[ladder["queueType"]], tiers_all[ladder["tier"]], standing["puuid"], ladder["queueType"], ladder["tier"], standing["puuid"]))
+                else:
+                    info_got = False
+                #整理数据（Organize data）
                 for l in range(len(ladder_header_keys)):
                     key = ladder_header_keys[l]
                     if l == 0:
@@ -1462,7 +1469,7 @@ async def sort_ranked_ladders(connection: Connection, puuid: str) -> pandas.Data
                     elif l <= 22:
                         to_append = standing_summoner["body"][key] if info_got else ""
                     else:
-                        to_append = "☆" if info_got and standing_summoner["body"]["puuid"] == puuid else ""
+                        to_append = "☆" if standing["puuid"] == puuid else ""
                     ladder_data[key].append(to_append)
                 logPrint("[%d/%d][%d/%d][%d/%d]%s\t%s" %(i + 1, len(ladders), j + 1, len(ladder["divisions"]), k + 1, len(division["standings"]), standing["puuid"], get_info_name(standing_summoner["body"])) if info_got else "", end = "\r")
         else:
@@ -2059,15 +2066,12 @@ async def search_profile(connection: Connection) -> None:
             for division in ladder["divisions"]:
                 standings_count += len(division["standings"])
         if standings_count > 1000:
-            logPrint(f"即将整理{standings_count}名玩家的信息。是否继续？（输入任意键继续，否则不整理）\nInformation of {standings_count} player(s) is going to be organized. Do you want to continue? (Submit any non-empty string to continue or null to refuse)")
-            ladder_sort_str: str = logInput()
-            ladder_sort: bool = bool(ladder_sort_str)
+            logPrint(f"即将获取{standings_count}名玩家的召唤师信息。是否继续？（输入任意非空字符串继续，否则跳过召唤师信息的获取。）\nSummoner information of {standings_count} players is going to be fetched. Do you want to continue? (Submit any non-empty string to continue or null to skip getting summoner information.)")
+            ladder_fetch_summoner_info_str: str = logInput()
+            ladder_fetch_summoner_info: bool = bool(logInput())
         else:
-            ladder_sort = True
-        if ladder_sort:
-            ladder_df: pandas.DataFrame = await sort_ranked_ladders(connection, current_puuid)
-        else:
-            ladder_df = pandas.DataFrame()
+            ladder_fetch_summoner_info = True
+        ladder_df: pandas.DataFrame = await sort_ranked_ladders(connection, current_puuid, fetch_summoner_info = ladder_fetch_summoner_info)
         ladder_htmltable: str = ladder_df.to_html(escape = False)
         
         #初始化对局记录相关变量（Initialize match history related variables）
@@ -2869,9 +2873,8 @@ async def search_profile(connection: Connection) -> None:
                         logPrint("召唤师生涯导出完成！\nSummoner profile exported!\n")
                         addDefaultStyle(ranked_df).to_excel(excel_writer = writer, sheet_name = "Rank")
                         logPrint("召唤师排位数据导出完成！\nSummoner ranked data exported!\n")
-                        if ladder_sort:
-                            addDefaultStyle(ladder_df).to_excel(excel_writer = writer, sheet_name = "Ladders")
-                            logPrint("召唤师排位天梯数据导出完成！\nSummoner league ladder data exported!\n")
+                        addDefaultStyle(ladder_df).to_excel(excel_writer = writer, sheet_name = "Ladders")
+                        logPrint("召唤师排位天梯数据导出完成！\nSummoner league ladder data exported!\n")
                         addDefaultStyle(mastery_df).to_excel(excel_writer = writer, sheet_name = "Champion Mastery")
                         logPrint("召唤师英雄成就导出完成！\nSummoner champion mastery exported!\n")
                         addDefaultStyle(recent_LoLPlayer_df).to_excel(excel_writer = writer, sheet_name = "Recently Played Summoners (LoL)")
