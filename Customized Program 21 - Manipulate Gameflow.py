@@ -1195,7 +1195,7 @@ async def initialize_summoner_icon(connection: Connection, profileIconId: Option
         index_got, item_index = select_collection_item("SUMMONER_ICON")
         collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == "SUMMONER_ICON"]], ignore_index = True)
         if index_got:
-            profileIconId: int = 0 if item_index == -1 else collection_df_selected["itemId"][item_index]
+            profileIconId: int = 29 if item_index == -1 else collection_df_selected["itemId"][item_index]
     else:
         index_got = True
     if index_got:
