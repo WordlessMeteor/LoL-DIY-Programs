@@ -1,8 +1,9 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-import argparse, os, pandas, requests, time, json
+import argparse, datetime, os, pandas, requests, time, json
 from urllib.parse import urljoin
 from openpyxl import load_workbook, Workbook
+import matplotlib.pyplot as plt
 from typing import Any, Optional
 from src.utils.summoner import print_summoner_info, get_info, get_infos, get_info_name
 from src.utils.logger import LogManager
@@ -11,6 +12,7 @@ from src.utils.patch import Patch
 from src.utils.webRequest import requestUrl, SGPSession
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from src.core.config.headers import profile_header, mastery_header, ranked_header, ladder_header
+from src.core.config.headers import TFTGame_summary_header as TFTGame_stat_header
 from src.core.config.localization import language_ddragon, language_dict, language_cdragon, tiers, tiers_all, ratedTiers, challengeCategories, challengeCrystalLevels, titleAcquisitionTypes, queueTypes
 from src.core.config.servers import valid_platformIds, set_platform_folder, set_summonerInfo_folder, save_platform_info
 from src.core.config.conditional_formatting import addFormat_LoLHistory_wb, addFormat_LoLGame_summary_wb, addFormat_LoLGame_summary_wb_transpose
@@ -38,7 +40,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/06/03
+# 更新（Last update）：     2026/06/09
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1472,6 +1474,306 @@ async def sort_ranked_ladders(connection: Connection, puuid: str) -> pandas.Data
     ladder_df = pandas.concat([pandas.DataFrame([ladder_header])[ladder_df.columns], ladder_df], ignore_index = True)
     return ladder_df
 
+def analyze_recently_played_summoners(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame, gameQueues: dict[int, dict[str, Any]], displayName: str, export_folder: str) -> None:
+    '''
+    生成近期一起玩过的玩家图表和元数据工作簿。<br>Generate graphs and a metadata workbook of recently played summoners.
+    
+    :param search_LoL: 是否搜索过英雄联盟对局记录。<br>Whether LoL match history has been searched.
+    :type search_LoL: bool
+    :param search_TFT: 是否搜索过云顶之弈对局记录。<br>Whether TFT match history has been searched.
+    :type search_TFT: bool
+    :param recent_LoLPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_LoLPlayer_df: pandas.DataFrame
+    :param recent_TFTPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
+    :type recent_TFTPlayer_df: pandas.DataFrame
+    :param gameQueues: 整理后的队列数据资源。键是队列序号，值是游戏模式信息字典。<br>Organized queue data resource. Each key is a queueId, and each value is a game mode information dictionary.
+    
+        原始队列数据资源可以通过以下LCU接口获取：<br>The raw queue data resource can be obtained through the following LCU endpoint:
+        - `GET /lol-game-queues/v1/queues`
+    :type gameQueues: dict[int, dict[str, Any]]
+    :param displayName: 用于图表和工作簿命名的召唤师名称。<br>The summoner name used as a part of the workbook's and graph's name.
+    :type displayName: str
+    :param export_folder: 图表和工作簿的导出目录。<br>The export directory of the graphs and workbooks.
+    :type export_folder: str
+    '''
+    recent_players_metadata: dict[str, dict[str, Any]] = {} #这里另外设置元数据是为了整理出用于可视化的数据（Here the metadata is designed to sort out data for visualization）
+    if search_LoL:
+        #logPrint("用于可视化的元数据创建进度（Creating process of metadata for visualization）：")
+        for i in range(1, len(recent_LoLPlayer_df)): #第0行是中文表头，所以要从第1行开始（The 0th line contains the Chinese headers, so the iteration should start from the first line）
+            puuid_iter: str = recent_LoLPlayer_df["puuid"][i]
+            if use_sgp:
+                summonerName_iter: str = recent_LoLPlayer_df["riotIdGameName"][i] + "#" + recent_LoLPlayer_df["riotIdTagline"][i]
+            else:
+                summonerName_iter: str = recent_LoLPlayer_df["gameName"][i] + "#" + recent_LoLPlayer_df["tagLine"][i]
+            if summonerName_iter == "#":
+                summonerName_iter = puuid_iter
+            matchId_iter: int = recent_LoLPlayer_df["gameId"][i]
+            LoLGameCreation_iter: float = datetime.datetime.fromisoformat(recent_LoLPlayer_df["gameCreationDate"][i].replace("Z", "+00:00")).timestamp()
+            LoLGameDuration_iter: float = recent_LoLPlayer_df["gameDuration"][i]
+            isPvP_iter: bool = True if recent_LoLPlayer_df["queueId"][i] in gameQueues and gameQueues[recent_LoLPlayer_df["queueId"][i]]["category"] == "PvP" else False #添加是否玩家对战的信息，以便单独统计一同进行玩家对战的总时间。下同（Added the information whether a match is PvP, so that the total time of only PvP matches can be calculated. So do the following two variables）
+            isPvE_iter: bool = True if recent_LoLPlayer_df["queueId"][i] in gameQueues and gameQueues[recent_LoLPlayer_df["queueId"][i]]["category"] == "VersusAi" else False
+            isCustom_iter: bool = True if recent_LoLPlayer_df["queueId"][i] in gameQueues and gameQueues[recent_LoLPlayer_df["queueId"][i]]["category"] == "Custom" else False
+            if not puuid_iter in recent_players_metadata:
+                recent_players_metadata[puuid_iter] = {}
+                recent_players_metadata[puuid_iter]["name"] = summonerName_iter #该语句不会在else部分出现。这是考虑到如果召唤师改过名字，那么呈现在频数直方图上的横轴的召唤师名应当是最新的（This statement won't appear in the else-part, considering if a summoner has changed its name, then the summonerName near the horizontal axis of the frequency histogram should be latest）
+                recent_players_metadata[puuid_iter]["puuid"] = puuid_iter
+                recent_players_metadata[puuid_iter]["gameCount"] = 1
+                recent_players_metadata[puuid_iter]["matches"] = [matchId_iter]
+                recent_players_metadata[puuid_iter]["createTimestamps"] = [LoLGameCreation_iter]
+                recent_players_metadata[puuid_iter]["durations"] = [LoLGameDuration_iter]
+                recent_players_metadata[puuid_iter]["isPvP"] = [isPvP_iter]
+                recent_players_metadata[puuid_iter]["isPvE"] = [isPvE_iter]
+                recent_players_metadata[puuid_iter]["isCustom"] = [isCustom_iter]
+                recent_players_metadata[puuid_iter]["PvPCount"] = int(isPvP_iter)
+                recent_players_metadata[puuid_iter]["PvECount"] = int(isPvE_iter)
+                recent_players_metadata[puuid_iter]["CustomCount"] = int(isCustom_iter)
+                recent_players_metadata[puuid_iter]["totalTime"] = LoLGameDuration_iter
+                recent_players_metadata[puuid_iter]["totalPvPTime"] = LoLGameDuration_iter * isPvP_iter
+                recent_players_metadata[puuid_iter]["totalPvETime"] = LoLGameDuration_iter * isPvE_iter
+                recent_players_metadata[puuid_iter]["totalCustomTime"] = LoLGameDuration_iter * isCustom_iter
+            else:
+                recent_players_metadata[puuid_iter]["gameCount"] += 1
+                recent_players_metadata[puuid_iter]["matches"].append(matchId_iter)
+                recent_players_metadata[puuid_iter]["createTimestamps"].append(LoLGameCreation_iter)
+                recent_players_metadata[puuid_iter]["durations"].append(LoLGameDuration_iter)
+                recent_players_metadata[puuid_iter]["isPvP"].append(isPvP_iter)
+                recent_players_metadata[puuid_iter]["isPvE"].append(isPvE_iter)
+                recent_players_metadata[puuid_iter]["isCustom"].append(isCustom_iter)
+                recent_players_metadata[puuid_iter]["PvPCount"] += isPvP_iter
+                recent_players_metadata[puuid_iter]["PvECount"] += isPvE_iter
+                recent_players_metadata[puuid_iter]["CustomCount"] += isCustom_iter
+                recent_players_metadata[puuid_iter]["totalTime"] += LoLGameDuration_iter
+                recent_players_metadata[puuid_iter]["totalPvPTime"] += LoLGameDuration_iter * isPvP_iter
+                recent_players_metadata[puuid_iter]["totalPvETime"] += LoLGameDuration_iter * isPvE_iter
+                recent_players_metadata[puuid_iter]["totalCustomTime"] += LoLGameDuration_iter * isCustom_iter
+            #logPrint("[%d/%d]%d\t%s\t%s" %(i, len(recent_LoLPlayer_df) - 1, matchId_iter, puuid_iter, summonerName_iter), end = "\r")
+    if search_TFT:
+        #logPrint("用于可视化的元数据创建进度（Creating process of metadata for visualization）：")
+        for i in range(1, len(recent_TFTPlayer_df)):
+            puuid_iter = recent_TFTPlayer_df["puuid"][i]
+            summonerName_iter = recent_TFTPlayer_df["riotIdGameName"][i] + "#" + recent_TFTPlayer_df["riotIdTagline"][i]
+            if summonerName_iter == "#":
+                summonerName_iter = puuid_iter
+            matchId_iter = recent_TFTPlayer_df["game_id"][i]
+            TFTGameCreation_iter: float = datetime.datetime.fromisoformat(recent_TFTPlayer_df["gameCreationDate"][i].replace("Z", "+00:00")).timestamp()
+            TFTGameDuration_iter: float = recent_TFTPlayer_df["time_eliminated"][i]
+            isPvP_iter = True if recent_TFTPlayer_df["queue_id"][i] in gameQueues and gameQueues[recent_TFTPlayer_df["queue_id"][i]]["category"] == "PvP" else False
+            isPvE_iter = True if recent_TFTPlayer_df["queue_id"][i] in gameQueues and gameQueues[recent_TFTPlayer_df["queue_id"][i]]["category"] == "VersusAi" else False
+            isCustom_iter = True if recent_TFTPlayer_df["queue_id"][i] in gameQueues and gameQueues[recent_TFTPlayer_df["queue_id"][i]]["category"] == "Custom" else False
+            if not puuid_iter in recent_players_metadata:
+                recent_players_metadata[puuid_iter] = {}
+                recent_players_metadata[puuid_iter]["name"] = summonerName_iter
+                recent_players_metadata[puuid_iter]["puuid"] = puuid_iter
+                recent_players_metadata[puuid_iter]["gameCount"] = 1
+                recent_players_metadata[puuid_iter]["matches"] = [matchId_iter]
+                recent_players_metadata[puuid_iter]["createTimestamps"] = [TFTGameCreation_iter]
+                recent_players_metadata[puuid_iter]["durations"] = [TFTGameDuration_iter]
+                recent_players_metadata[puuid_iter]["isPvP"] = [isPvP_iter]
+                recent_players_metadata[puuid_iter]["isPvE"] = [isPvE_iter]
+                recent_players_metadata[puuid_iter]["isCustom"] = [isCustom_iter]
+                recent_players_metadata[puuid_iter]["PvPCount"] = int(isPvP_iter)
+                recent_players_metadata[puuid_iter]["PvECount"] = int(isPvE_iter)
+                recent_players_metadata[puuid_iter]["CustomCount"] = int(isCustom_iter)
+                recent_players_metadata[puuid_iter]["totalTime"] = TFTGameDuration_iter
+                recent_players_metadata[puuid_iter]["totalPvPTime"] = TFTGameDuration_iter * isPvP_iter
+                recent_players_metadata[puuid_iter]["totalPvETime"] = TFTGameDuration_iter * isPvE_iter
+                recent_players_metadata[puuid_iter]["totalCustomTime"] = TFTGameDuration_iter * isCustom_iter
+            else:
+                recent_players_metadata[puuid_iter]["gameCount"] += 1
+                recent_players_metadata[puuid_iter]["matches"].append(matchId_iter)
+                recent_players_metadata[puuid_iter]["createTimestamps"].append(TFTGameCreation_iter)
+                recent_players_metadata[puuid_iter]["durations"].append(TFTGameDuration_iter)
+                recent_players_metadata[puuid_iter]["isPvP"].append(isPvP_iter)
+                recent_players_metadata[puuid_iter]["isPvE"].append(isPvE_iter)
+                recent_players_metadata[puuid_iter]["isCustom"].append(isCustom_iter)
+                recent_players_metadata[puuid_iter]["PvPCount"] += isPvP_iter
+                recent_players_metadata[puuid_iter]["PvECount"] += isPvE_iter
+                recent_players_metadata[puuid_iter]["CustomCount"] += isCustom_iter
+                recent_players_metadata[puuid_iter]["totalTime"] += TFTGameDuration_iter
+                recent_players_metadata[puuid_iter]["totalPvPTime"] += TFTGameDuration_iter * isPvP_iter
+                recent_players_metadata[puuid_iter]["totalPvETime"] += TFTGameDuration_iter * isPvE_iter
+                recent_players_metadata[puuid_iter]["totalCustomTime"] += TFTGameDuration_iter * isCustom_iter
+            #logPrint("[%d/%d]%d\t%s\t%s" %(i, len(recent_TFTPlayer_df) - 1, matchId_iter, puuid_iter, summonerName_iter), end = "\r")
+    #进一步计算游玩热度——陪伴得分（Further calculate the company score）
+    lambda_decay: float = 0.002 #时间衰减系数（Time decay coefficient）
+    scale_factor: int = 100 #缩放因子（Scale factor）
+    maxDuration: int = max(map(lambda x: max(x["durations"]), recent_players_metadata.values()))
+    for puuid_iter in recent_players_metadata:
+        recent_player: dict[str, Any] = recent_players_metadata[puuid_iter]
+        sumRecency: float = 0
+        sumPvPRecency: float = 0
+        sumPvERecency: float = 0
+        sumCustomRecency: float = 0
+        #声明：以下算法由DeepSeek-V3.2模型生成（Declaration: The following algorithm is generated by DeepSeek-V3.2 model）
+        #算法（Algorithm）：热度分数（Company score） = 100 × Σ[wi × (di / Tmax) × exp(-λ × (Tnow - ti))]，其中（where）
+        #wi：游戏模式权重（Weight of game modes）
+        #di：第i场对局的持续时间（Duration of the i-th game）
+        #Tmax：最大持续时间（Max duration among all matches）
+        #λ：时间衰减系数（Time decay coefficient）
+        #Tnow：当前时间戳（Current unix timestamp）
+        #ti：第i场对局的创建时间戳（Unix create timestamp of the i-th match）
+        for i in range(recent_player["gameCount"]):
+            total_weight: float = 1.5 if recent_player["isPvP"] else 1 if recent_player["isPvE"] else 0.5 #根据需要自行修改（Modify on demand）
+            # delta: float = scale_factor * (recent_player["durations"][i] / maxDuration) * math.exp(-lambda_decay * (time.time() - recent_player["createTimestamps"][i]))
+            delta: float = recent_player["durations"][i] / (time.time() - recent_player["createTimestamps"][i])
+            sumRecency += delta * total_weight
+            sumPvPRecency += delta * recent_player["isPvP"][i]
+            sumPvERecency += delta * recent_player["isPvE"][i]
+            sumCustomRecency += delta * recent_player["isCustom"][i]
+        recent_player["totalRecency"] = sumRecency * 1000 #后来添加的修饰因子（Later added modifier）
+        recent_player["totalPvPRecency"] = sumPvPRecency * 1000
+        recent_player["totalPvERecency"] = sumPvERecency * 1000
+        recent_player["totalCustomRecency"] = sumCustomRecency * 1000
+    #pyperclip.copy(json.dumps(recent_players_metadata, ensure_ascii = False))
+    json01name: str = "Recently Played Summoners - %s.json" %displayName
+    json01path: str = os.path.join(export_folder, json01name).replace("\\", "/")
+    while True:
+        try:
+            with open(json01path, "w", encoding = "utf-8") as jsonfile:
+                jsonfile.write(json.dumps(recent_players_metadata, indent = 4, ensure_ascii = False))
+        except FileNotFoundError:
+            os.makedirs(export_folder, exist_ok = True)
+        except UnicodeEncodeError:
+            logPrint("近期一起玩过的玩家元数据文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nRecently played summoner metadata text generation failure! Please check if the summoner name includes any abnormal characters!\n")
+            break
+        else:
+            break
+    recent_players_metadata_list: list[dict[str, Any]] = sorted(recent_players_metadata.values(), key = lambda x: x["gameCount"], reverse = True)
+    recent_players_metadata_header: dict[str, str] = {"name": "召唤师名", "puuid": "玩家通用唯一识别码", "gameCount": "共同作战局数", "matches": "共同对局序号", "durations": "对局持续时间列表", "isPvP": "玩家对战逻辑值列表", "isPvE": "人机对战逻辑值列表", "isCustom": "自定义对战逻辑值列表", "PvPCount": "玩家对战局数", "PvECount": "人机对战局数", "CustomCount": "自定义对战局数", "totalTime": "共同作战时长（秒）", "totalPvPTime": "共同玩家对战时长（秒）", "totalPvETime": "共同人机对战时长（秒）", "totalCustomTime": "共同自定义对战时长（秒）"}
+    recent_players_metadata_header_keys: list[str] = list(recent_players_metadata_header.keys())
+    recent_players_metadata_statistics_output_order: list[int] = [0, 1, 3, 2, 8, 9, 10, 11, 12, 13, 14]
+    recent_players_metadata_organized: dict[str, list[Any]] = {recent_players_metadata_header_keys[i]: list(map(lambda x: x[recent_players_metadata_header_keys[i]], recent_players_metadata_list)) for i in recent_players_metadata_statistics_output_order}
+    recent_players_metaDf: pandas.DataFrame = pandas.concat([pandas.DataFrame(data = recent_players_metadata_organized)])
+    recent_players_metaDf = pandas.concat([pandas.DataFrame([recent_players_metadata_header])[recent_players_metaDf.columns], recent_players_metaDf], ignore_index = True)
+    #默认导出玩家对局数量统计表（Export recent played summoner count table by default）
+    wb01Name: str = f"Recently Played Summoner Count - {displayName}.xlsx"
+    wb01Path: str = os.path.join(export_folder, wb01Name).replace("\\", "/")
+    if not os.path.exists(wb01Path):
+        wb01CreateFlag: bool = create_workbook_win32(os.path.abspath(wb01Path), log = log)
+    os.makedirs(export_folder, exist_ok = True)
+    while True:
+        try:
+            with (pandas.ExcelWriter(path = wb01Path, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb01Path) else pandas.ExcelWriter(path = wb01Path)) as writer:
+                addDefaultStyle(recent_players_metaDf).to_excel(excel_writer = writer)
+        except PermissionError:
+            logPrint("近期一起玩过的玩家对局数量统计表导出失败！请检查文件的权限以及是否被占用！按回车键重试，或者输入任意非空字符串以放弃导出。\nRecently played summoner count table export failure! Please check the permission and if the file is occupied! Press Enter to try again, or submit any non-empty string to give up exporting.")
+            gameCount_export_str = logInput()
+            gameCount_export = not bool(gameCount_export_str)
+            if not gameCount_export:
+                break
+        else:
+            break
+    
+    #针对元数据中记录的每个玩家的累计游戏时长和游戏对局数输出条形图（Output the bar chart of each summoner's total time and game counts in the metadata）
+    totalTime: dict[str, float] = {}
+    PvPTime: dict[str, float] = {}
+    PvETime: dict[str, float] = {}
+    CustomTime: dict[str, float] = {}
+    totalCount: dict[str, int] = {}
+    PvPCount: dict[str, int] = {}
+    PvECount: dict[str, int] = {}
+    CustomCount: dict[str, int] = {}
+    totalRecency: dict[str, float] = {}
+    PvPRecency: dict[str, float] = {}
+    PvERecency: dict[str, float] = {}
+    CustomRecency: dict[str, float] = {}
+    for player in recent_players_metadata.values():
+        totalTime[player["name"]] = player["totalTime"]
+        PvPTime[player["name"]] = player["totalPvPTime"]
+        PvETime[player["name"]] = player["totalPvETime"]
+        CustomTime[player["name"]] = player["totalCustomTime"]
+        totalCount[player["name"]] = player["gameCount"]
+        PvPCount[player["name"]] = player["PvPCount"]
+        PvECount[player["name"]] = player["PvECount"]
+        CustomCount[player["name"]] = player["CustomCount"]
+        totalRecency[player["name"]] = player["totalRecency"]
+        PvPRecency[player["name"]] = player["totalPvPRecency"]
+        PvERecency[player["name"]] = player["totalPvERecency"]
+        CustomRecency[player["name"]] = player["totalCustomRecency"]
+    totalTime_sorted: list[tuple[str, float]] = sorted(totalTime.items(), key = lambda x: x[1], reverse = True)
+    PvPTime_sorted: list[tuple[str, float]] = sorted(PvPTime.items(), key = lambda x: x[1], reverse = True)
+    PvETime_sorted: list[tuple[str, float]] = sorted(PvETime.items(), key = lambda x: x[1], reverse = True)
+    CustomTime_sorted: list[tuple[str, float]] = sorted(CustomTime.items(), key = lambda x: x[1], reverse = True)
+    totalCount_sorted: list[tuple[str, int]] = sorted(totalCount.items(), key = lambda x: x[1], reverse = True)
+    PvPCount_sorted: list[tuple[str, int]] = sorted(PvPCount.items(), key = lambda x: x[1], reverse = True)
+    PvECount_sorted: list[tuple[str, int]] = sorted(PvECount.items(), key = lambda x: x[1], reverse = True)
+    CustomCount_sorted: list[tuple[str, int]] = sorted(CustomCount.items(), key = lambda x: x[1], reverse = True)
+    totalRecency_sorted: list[tuple[str, float]] = sorted(totalRecency.items(), key = lambda x: x[1], reverse = True)
+    PvPRecency_sorted: list[tuple[str, float]] = sorted(PvPRecency.items(), key = lambda x: x[1], reverse = True)
+    PvERecency_sorted: list[tuple[str, float]] = sorted(PvERecency.items(), key = lambda x: x[1], reverse = True)
+    CustomRecency_sorted: list[tuple[str, float]] = sorted(CustomRecency.items(), key = lambda x: x[1], reverse = True)
+    logPrint("您希望条形图中显示游戏时长最长的前几名玩家？（默认为前20名）\nHow many players of the longest game time do you want to display in the bar chart? (20 by default)")
+    while True:
+        try:
+            topN_str: str = logInput()
+            if topN_str == "":
+                topN: int = 20
+                break
+            else:
+                topN = int(topN_str)
+        except ValueError:
+            logPrint("请输入整数！\nPlease input an integer!")
+        else:
+            if topN < 0:
+                logPrint("请输入自然数！\nPlease input a non-negative integer!")
+            else:
+                break
+    if topN > 0:
+        topN = min(topN, len(set(recent_LoLPlayer_df["puuid"][1:])) + len(set(recent_TFTPlayer_df["puuid"][1:])))
+        plt.rcParams["font.sans-serif"] = ["Microsoft YaHei"] #设置默认字体为微软雅黑（Set the default font Microsoft YaHei）
+        valuefont: dict[str, str | int] = {"family": "Times New Roman", "weight": "normal", "size": 9} #指定柱上显示的数据的字体格式（Determines the font of the values above the bars）
+        chart_data: list[tuple[list[tuple[str, Any]], str, str, str, int]] = [
+            (totalTime_sorted, "总游戏时间\nGame Time: All Modes", "游戏时长（秒）\ntotalGameTime (s)", "Time_total", 0),
+            (PvPTime_sorted, "玩家对战时间\nGame Time: PvP", "游戏时长（秒）\ntotalGameTime (s)", "Time_PvP", 0),
+            (PvETime_sorted, "人机对战时间\nGame Time: PvE", "游戏时长（秒）\ntotalGameTime (s)", "Time_PvE", 0),
+            (CustomTime_sorted, "自定义对战时间\nGame Time: Custom", "游戏时长（秒）\ntotalGameTime (s)", "Time_Custom", 0),
+            (totalCount_sorted, "总游戏对局数\nGame Count: All Modes", "对局数\ntotalGameCount", "Count_total", 0),
+            (PvPCount_sorted, "玩家对战局数\nGame Count: PvP", "对局数\ntotalGameCount", "Count_PvP", 0),
+            (PvECount_sorted, "人机对战局数\nGame Count: PvE", "对局数\ntotalGameCount", "Count_PvE", 0),
+            (CustomCount_sorted, "自定义对战局数\nGame Count: Custom", "对局数\ntotalGameCount", "Count_Custom", 0),
+            (totalRecency_sorted, "总游玩热度\nRecency: All Modes", "陪伴得分\ncompanion score", "Recency_total", 0),
+            (PvPRecency_sorted, "玩家对战热度\nRecency: PvP", "陪伴得分\ncompanion score", "Recency_PvP", 0),
+            (PvERecency_sorted, "人机对战热度\nRecency: PvE", "陪伴得分\ncompanion score", "Recency_PvE", 0),
+            (CustomRecency_sorted, "自定义对战热度\nRecency: Custom", "陪伴得分\ncompanion score", "Recency_Custom", 0)
+        ]
+        logPrint("您想要将所有图表合并为一张图表，还是分别生成？（输入任意非空字符串以分别生成，否则合并为一张图表。）\nDo you want to merge all charts into one, or generate them separately? (Input any non-empty string to generate them separately, or null to merge them into one chart.)")
+        separate_str: str = logInput()
+        separate: bool = bool(separate_str)
+        if separate:
+            for data, title, ylabel, file_suffix, ndigits in chart_data:
+                plt.figure(figsize = (max(topN / 2, 6), 12))
+                players: list[str] = [data[j][0] for j in range(topN)]
+                values: list[int | float] = [data[j][1] for j in range(topN)]
+                plt.bar(players, values)
+                plt.xticks(rotation = 45, ha = "right")
+                plt.ylabel(ylabel)
+                plt.yticks(fontproperties = "Calibri", size = 12)
+                for player, playtime in data[:topN]:
+                    plt.text(player, round(playtime, ndigits), round(playtime, ndigits), ha = "center", va = "bottom", fontdict = valuefont)
+                plt.title(title)
+                plt.savefig(os.path.join(export_folder, "Recently Played Summoners - %s - %s.png" % (displayName, file_suffix)), bbox_inches = "tight")
+                plt.clf()
+        else:
+            fig, axes = plt.subplots(nrows = 3, ncols = 4, figsize = (max(topN * 2, 10), 24))
+            axes = axes.flatten()
+            for i, (data, title, ylabel, file_suffix, ndigits) in enumerate(chart_data):
+                ax = axes[i]
+                players = [data[j][0] for j in range(topN)]
+                values = [data[j][1] for j in range(topN)]
+                bars = ax.bar(players, values)
+                ax.set_title(title)
+                ax.set_ylabel(ylabel)
+                ax.set_xticks(range(len(players)))
+                ax.set_xticklabels(players, rotation = 45, ha = "right")
+                ax.tick_params(axis = "y", labelsize = 12)
+                for label in ax.get_yticklabels():
+                    label.set_fontfamily("Calibri")
+                for player, playtime in data[:topN]:
+                    ax.text(player, round(playtime, ndigits), round(playtime, ndigits), ha = "center", va = "bottom", fontdict = valuefont)
+            plt.tight_layout(pad = 3.0)
+            plt.savefig(os.path.join(export_folder, "Recently Played Summoners - %s.png" %displayName))
+        plt.close("all")
+
 async def search_profile(connection: Connection) -> None:
     # logPrint("是否将部分数据框用于网页展示？（输入任意键展示，否则不生成网页）\nDo you want to display some dataframes in a webpage? (Input anything to display them in a web, or null to skip generating the web.)")
     # web_display = logInput()
@@ -1768,10 +2070,22 @@ async def search_profile(connection: Connection) -> None:
         ladder_htmltable: str = ladder_df.to_html(escape = False)
         
         #初始化对局记录相关变量（Initialize match history related variables）
-        game_leaderboard_dfs: dict[int, pandas.DataFrame] = {}
-        game_summary_dfs: dict[int, pandas.DataFrame] = {}
-        game_timeline_dfs: dict[int, pandas.DataFrame] = {}
-        game_event_dfs: dict[int, pandas.DataFrame] = {}
+        scan_lol: bool = False #用于将扫描获取的历史记录保存为后缀为“ - Scan”的工作表，防止后续【一键查询】时会把【本地重查】辛辛苦苦得到的对局记录覆盖掉。这样也有利于手动重整，即每次【一键查询】后，可手动将新增的对局记录加到后缀为“ - Scan”的工作表中（Determines whether to save the match histories to a sheet postfixxed with " - Scan", in case the subsequent [One-Key Query] overwrites the match histories fetched and organized hard by [Local Recheck]. It also helps manual arrangement. That is, after each [One-Key Query], the user may manually add the new match histories to the sheet postfixxed with " - Scan"）
+        scan_tft: bool = False
+        LoLHistory_df_all: pandas.DataFrame = pandas.DataFrame() #英雄联盟对局记录数据框（LoL match history dataframe）
+        TFTHistory_df_all: pandas.DataFrame = pandas.DataFrame() #云顶之弈对局记录数据框（TFT match history dataframe）
+        game_leaderboard_dfs: dict[int, pandas.DataFrame] = {} #对局排行榜数据框字典（Match leaderboard dataframe dictionary）
+        game_summary_dfs: dict[int, pandas.DataFrame] = {} #对局概要数据框字典（Match summary dataframe dictionary）
+        game_timeline_dfs: dict[int, pandas.DataFrame] = {} #对局时间轴数据框字典（Match timeline dataframe dictionary）
+        game_event_dfs: dict[int, pandas.DataFrame] = {} #对局事件数据框字典（Match event dataframe dictionary）
+        LoLGame_stat_df_export: bool = False #是否导出英雄联盟战绩（Whether to export LoL game stats）
+        # TFTGame_stat_df_export: bool = False #云顶之弈战绩就是云顶之弈对局记录（TFT game stat dataframe is exactly the TFT match history dataframe）
+        LoLGame_stat_df: pandas.DataFrame = pandas.DataFrame() #英雄联盟对局战绩数据框（LoL match stats dataframe）
+        LoLGame_stat_self_df: pandas.DataFrame = pandas.DataFrame() #玩家英雄联盟战绩数据框（Player LoL stats dataframe）
+        recent_LoLPlayer_df: pandas.DataFrame = pandas.DataFrame() #近期一起玩过的英雄联盟召唤师数据框（Recently played LoL summoner dataframe）
+        TFTGame_stat_df: pandas.DataFrame = pandas.DataFrame() #云顶之弈对局战绩数据框（TFT match stats dataframe）
+        TFTGame_stat_self_df: pandas.DataFrame = pandas.DataFrame() #玩家云顶之弈战绩数据框（Player TFT stats dataframe）
+        recent_TFTPlayer_df: pandas.DataFrame = pandas.DataFrame() #近期一起玩过的云顶之弈召唤师数据框（Recently played TFT summoner dataframe）
         info_exist_error: dict[int, bool] = {} #当获取对局记录反复出现异常时，为了保证第二次没有获取到的报错信息在导出时不会覆盖上一次使用该程序时导出的正确工作表，设置该列表。列表中的某个元素为True，代表对应的对局记录将能正常导出。由于对局概要往往比对局时间轴更受关注，这里只以LoLGame_summary的完整性作为exist_error的追加依据（When the match history service encounters errors frequently, to make sure the error information won't overlay the normally captured match summary in the last time using this program, this list is declared here. When some element in this list is True, the corresponding match summary / timeline can be exported as usual. Because the LoLGame_summary is basically more focused on than LoLGame_timeline, True/False is appended to exist_error only based on the integrity of LoLGame_summary）
         timeline_exist_error: dict[int, bool] = {}
         main_player_included: dict[int, bool] = {} #当通过列表来查询对局记录时，有可能某场对局并不包含该召唤师（When searching the match history using a list, maybe the summoner isn't present in some match）
@@ -1859,7 +2173,6 @@ async def search_profile(connection: Connection) -> None:
             LoLMatchIDs: list[int] = [] #代表实际需要查询的对局序号（Represents the matchIds for query）
             LoLMatches_not_found: list[int] = [] #在扫描模式下，当从本地文件获取的对局从API重新获取出现异常时，处理策略是输出异常信息并跳过该对局，而不是将其直接从对局序号列表中去除，因为这样会使循环乱套。而后面的info_exist_error、timeline_exist_error、main_player_included和match_reserve_strategy只会在该对局正常获取时才会统计。所以一旦出现数据获取失败的对局，在最后导出数据时，“if match_reserve_strategy[i]:”语句会出现“IndexError: list index out of range”报错（Under scan mode, when an exception occurred during crawling matches with LoLMatchIDs obtained from local files from API, the strategy is to print the exception and skip this match, instead of directly removing them from the matchId list, for the removal will disturb the loop. However, the variables info_exist_error, timeline_exist_error, main_player_included and match_reserve_strategy only work when the matches are crawled from the database as expected. So once a match fails to be captured, during xlsx file export at the end of the program, an "IndexError: list index out of range" exception will emerge from the statement "if match_reserve_strategy[i]:"）
             error_LoLMatchIDs: list[int] = [] #记录实际存在但未如期获取的对局序号（Records the LoL matchIDs that really exist but fail to be fetched）
-            scan_lol: bool = False #用于将扫描获取的历史记录保存为后缀为“ - Scan”的工作表，防止后续【一键查询】时会把【本地重查】辛辛苦苦得到的对局记录覆盖掉。这样也有利于手动重整，即每次【一键查询】后，可手动将新增的对局记录加到后缀为“ - Scan”的工作表中（Determines whether to save the match histories to a sheet postfixxed with " - Scan", in case the subsequent [One-Key Query] overwrites the match histories fetched and organized hard by [Local Recheck]. It also helps manual arrangement. That is, after each [One-Key Query], the user may manually add the new match histories to the sheet postfixxed with " - Scan"）
             old_LoLMatch_detected = len(saved_LoLMatchIDs) > 0 #是否检测到旧对局（Whether any old match is detected）
             update_unsaved_only: bool = False #决定在批量查询时是否只保存未保存过的对局（Decides whether to only save the unsaved matches during searching in batches）
             while True:
@@ -1867,8 +2180,6 @@ async def search_profile(connection: Connection) -> None:
                 if matchId_str == "":
                     continue
                 elif matchId_str == "0":
-                    LoLGame_stat_df: pandas.DataFrame = pandas.DataFrame()
-                    LoLGame_stat_df_export: bool = False #是否导出英雄联盟战绩（Whether to export LoL game stats）
                     LoLMatchIDs = []
                     break
                 else:
@@ -1940,8 +2251,6 @@ async def search_profile(connection: Connection) -> None:
                             sort_gameInfo_sync_str: str = logInput()
                             sort_gameInfo_sync: bool = bool(sort_gameInfo_sync_str)
                             if not sort_gameInfo_sync:
-                                LoLGame_stat_df = pandas.DataFrame()
-                                LoLGame_stat_df_export = False
                                 break
                     else:
                         try:
@@ -2110,9 +2419,9 @@ async def search_profile(connection: Connection) -> None:
                             # with open(os.path.join(match_folder, pkl7name), "wb") as IntObj6:
                             #     pickle.dump(LoLGame_summary, IntObj6)
                         if use_sgp:
-                            LoLGame_summary_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments = sort_LoLGame_summary_sgp(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = current_puuid_list, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, log = log)
+                            LoLGame_summary_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments = sort_LoLGame_summary_sgp(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = current_puuid_list, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, save_self = True, save_other = True, log = log)
                         else:
-                            LoLGame_summary_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments = sort_LoLGame_summary(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = current_puuid_list, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, log = log)
+                            LoLGame_summary_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments = sort_LoLGame_summary(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = current_puuid_list, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, save_self = True, save_other = True, log = log)
                     
                         #社交排行榜（Social leaderboard）
                         if args.export_leaderboard:
@@ -2175,8 +2484,10 @@ async def search_profile(connection: Connection) -> None:
                 LoLGame_stat_data_organized: dict[str, list[Any]] = {LoLGame_stat_header_keys[i]: LoLGame_stat_data[LoLGame_stat_header_keys[i]] for i in LoLGame_stat_statistics_output_order}
                 LoLGame_stat_df: pandas.DataFrame = pandas.DataFrame(data = LoLGame_stat_data_organized)
                 optimize_bool_display(LoLGame_stat_df)
-                LoLGame_stat_df = pandas.concat([pandas.DataFrame([LoLGame_stat_header])[LoLGame_stat_df.columns], LoLGame_stat_df], ignore_index = True)
                 LoLGame_stat_df_export = True
+                
+                LoLGame_stat_self_df = pandas.concat([pandas.DataFrame([LoLGame_stat_header])[LoLGame_stat_df.columns], LoLGame_stat_df[LoLGame_stat_df["puuid"].isin(current_puuid_list)]], ignore_index = True)
+                recent_LoLPlayer_df = pandas.concat([pandas.DataFrame([LoLGame_stat_header])[LoLGame_stat_df.columns], LoLGame_stat_df[~(LoLGame_stat_df["puuid"].isin(current_puuid_list))]], ignore_index = True)
                 
                 if len(LoLMatches_not_found) > 0:
                     logPrint("警告：以下%d场对局不存在。\nWarning: The following %d match(es) aren't found." %(len(LoLMatches_not_found), len(LoLMatches_not_found)))
@@ -2259,7 +2570,6 @@ async def search_profile(connection: Connection) -> None:
             TFTGameIDs: list[int] = TFTHistory_df_all["game_id"][1:].to_list()
             TFTMatches_not_found: list[int] = []
             error_TFTMatchIDs: list[int] = []
-            scan_tft: bool = False
             old_TFTMatch_detected: bool = len(saved_TFTMatchIDs) > 0
             update_unsaved_only: bool = False
             TFTMatchIDs: list[int] = []
@@ -2362,6 +2672,8 @@ async def search_profile(connection: Connection) -> None:
                 logPrint("是否输出每场对局的文本文档？（输入任意键不输出，否则默认输出）\nExport text files of each match? (Input anything to cancel, or null to export by default)")
                 save_all_json_str: str = logInput()
                 save_all_json: bool = not bool(save_all_json_str)
+                TFTGame_stat_header_keys: list[str] = list(TFTGame_stat_header.keys())
+                TFTGame_stat_data: dict[str, list[Any]] = {key: [] for key in TFTGame_stat_header_keys}
                 for matchId in TFTMatchIDs:
                     match_id: str = f"{platformId}_{matchId}"
                     TFTGame_summary_export: bool = not (old_TFTMatch_detected and update_unsaved_only and matchId in saved_TFTMatchIDs)
@@ -2470,7 +2782,7 @@ async def search_profile(connection: Connection) -> None:
                                 # with open(os.path.join(match_folder, pkl9name), "wb") as IntObj8:
                                 #     pickle.dump(TFTGame_summary, IntObj8)
                             
-                            TFTGame_summary_df, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits = await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = TFTMatchIDs.index(matchId), current_puuid = current_puuid,useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, useInfoDict = True, infos = infos, sortStats = False, log = log)
+                            TFTGame_summary_df, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits = await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = TFTMatchIDs.index(matchId), current_puuid = current_puuid, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, useInfoDict = True, infos = infos, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, save_self = True, save_other = True, log = log)
                             
                             #社交排行榜（Social leaderboard）
                             if args.export_leaderboard:
@@ -2495,7 +2807,15 @@ async def search_profile(connection: Connection) -> None:
                         game_leaderboard_dfs[matchId] = TFTGame_leaderboard_df.copy(deep = True)
                     if TFTGame_summary_export:
                         game_summary_dfs[matchId] = TFTGame_summary_df.copy(deep = True)
-            
+                
+                TFTGame_stat_statistics_output_order: list[int] = [0, 19, 46, 47, 43, 5, 14, 15, 16, 6, 10, 18, 7, 13, 11, 12, 307, 305, 40, 55, 33, 34, 35, 38, 52, 53, 49, 36, 50, 42, 54, 41, 39, 44, 45, 23, 24, 25, 150, 148, 149, 203, 206, 209, 155, 153, 154, 212, 215, 218, 160, 158, 159, 221, 224, 227, 165, 163, 164, 230, 233, 236, 170, 168, 169, 239, 242, 245, 175, 173, 174, 248, 251, 254, 180, 178, 179, 257, 260, 263, 185, 183, 184, 266, 269, 272, 190, 188, 189, 275, 278, 281, 195, 193, 194, 284, 287, 290, 200, 198, 199, 293, 296, 299, 61, 57, 58, 59, 60, 68, 64, 65, 66, 67, 75, 71, 72, 73, 74, 82, 78, 79, 80, 81, 89, 85, 86, 87, 88, 96, 92, 93, 94, 95, 103, 99, 100, 101, 102, 110, 106, 107, 108, 109, 117, 113, 114, 115, 116, 124, 120, 121, 122, 123, 131, 127, 128, 129, 130, 138, 134, 135, 136, 137, 145, 141, 142, 143, 144]
+                TFTGame_stat_data_organized: dict[str, list[Any]] = {TFTGame_stat_header_keys[i]: TFTGame_stat_data[TFTGame_stat_header_keys[i]] for i in TFTGame_stat_statistics_output_order}
+                TFTGame_stat_df: pandas.DataFrame = pandas.DataFrame(data = TFTGame_stat_data_organized)
+                optimize_bool_display(TFTGame_stat_df)
+                
+                TFTGame_stat_self_df = pandas.concat([pandas.DataFrame([TFTGame_stat_header])[TFTGame_stat_df.columns], TFTGame_stat_df[TFTGame_stat_df["puuid"].isin(current_puuid_list)]], ignore_index = True)
+                recent_TFTPlayer_df = pandas.concat([pandas.DataFrame([TFTGame_stat_header])[TFTGame_stat_df.columns], TFTGame_stat_df[~(TFTGame_stat_df["puuid"].isin(current_puuid_list))]], ignore_index = True)
+                
                 if len(TFTMatches_not_found) > 0:
                     logPrint("警告：以下%d场对局不存在。\nWarning: The following %d match(es) aren't found." %(len(TFTMatches_not_found), len(TFTMatches_not_found)))
                     logPrint(TFTMatches_not_found)
@@ -2508,6 +2828,8 @@ async def search_profile(connection: Connection) -> None:
                 for match_to_remove in matches_to_remove:
                     TFTMatchIDs.remove(match_to_remove)
         
+        analyze_recently_played_summoners(search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df, gameQueues, displayName, folder)
+        
         #计算每场对局要保存的工作表数量（Calculate the number of sheets to be saved for each match）
         matchIDs: list[int] = list(game_summary_dfs.keys())
         matchIDs.sort()
@@ -2518,18 +2840,6 @@ async def search_profile(connection: Connection) -> None:
                 sheetNumber[matchIDs[i]] = 0
             else:
                 sheetNumber[matchIDs[i]] = (1 - info_exist_error[matchIDs[i]]) + 2 * (1 - timeline_exist_error[matchIDs[i]])
-        
-        #设置占位工作表（Set up placeholder sheets）
-        recent_players_df: pandas.DataFrame = pandas.DataFrame() #起到占位作用，保证在使用自定义脚本11时生成的近期一起玩过的玩家数据一定是工作簿的第5和6张工作表（Act as a placeholder to ensure the recent played summoner data from Customized Program 11 are in the fifth and sixth sheets in the workbook)
-        if not search_LoL:
-            LoLHistory_df_all = pandas.DataFrame() #起到占位作用，保证在使用本脚本时生成的英雄联盟对局记录一定是工作簿的第7张工作表（Act as a placeholder to ensure the LoL match history data from this program when running [One-Key Query] are in the seventh sheet in the workbook)
-            LoLGame_stat_df = pandas.DataFrame() #起到占位作用，保证在使用本脚本时生成的英雄联盟对局数据一定是工作簿的第8或9张工作表（Act as a placeholder to ensure the LoL game stats data from this program when running [One-Key Query] are in the eighth or ninth sheet in the workbook)
-            LoLGame_stat_df_export = False
-        if not search_TFT:
-            TFTHistory_df_all = pandas.DataFrame() #起到占位作用，保证在使用本脚本时生成的云顶之弈对局记录一定是工作簿的第8、9或10张工作表（Act as a placeholder to ensure the TFT match history data from this program when running [One-Key Query] are in the eighth, ninth or tenth sheet in the workbook)
-
-        #with open("infos.json", "w", encoding = "utf-8") as fp:
-            #json.dump(infos, fp, indent = 4, ensure_ascii = False)
         
         #导出数据（Export data）
         logPrint("是否导出以上召唤师数据至Excel中？（输入任意键导出，否则不导出）\nDo you want to export the above data into Excel? (Press any key to export or null to refuse exporting)")
@@ -2563,10 +2873,15 @@ async def search_profile(connection: Connection) -> None:
                             logPrint("召唤师排位天梯数据导出完成！\nSummoner league ladder data exported!\n")
                         addDefaultStyle(mastery_df).to_excel(excel_writer = writer, sheet_name = "Champion Mastery")
                         logPrint("召唤师英雄成就导出完成！\nSummoner champion mastery exported!\n")
-                        if not workbook_exist or wbCreateFlag:
-                            pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "Recently Played Summoners (LoL)")
-                            pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "Recently Played Summoners (TFT)")
-                            logPrint("已创建近期一起玩过的玩家的空白数据表！\nCreated an empty sheet for recently played summoners!\n")
+                        addDefaultStyle(recent_LoLPlayer_df).to_excel(excel_writer = writer, sheet_name = "Recently Played Summoners (LoL)")
+                        worksheet = writer.sheets["Recently Played Summoners (LoL)"]
+                        worksheet.conditional_formatting.rules = [] #读取时清空原规则（Clear original rules when reading）
+                        if len(recent_LoLPlayer_df) > 1:
+                            max_numPlayersPerTeam_lol = 5 if len(recent_LoLPlayer_df) <= 1 else max(map(lambda x: 5 if x == 0 or not x in gameQueues else 2 if gameQueues[x]["gameMode"] == "CHERRY" else gameQueues[x]["numPlayersPerTeam"], recent_LoLPlayer_df["queueId"][1:])) #自定义对局的队伍规模视为5；斗魂竞技场的队伍规模虽然在API中记录为16，但这里应该考虑的是子阵营（The team size of any custom game is regarded as 5; although the team size of an Arena game is recorded as in LCU API, the subteam has more reference value）
+                            addFormat_LoLGame_summary_wb(worksheet, recent_LoLPlayer_df, numColorScale_order = max_numPlayersPerTeam_lol)
+                            logPrint("近期一起玩过的英雄联盟玩家数据导出完成！\nRecently played summoner data (LoL) exported!\n")
+                        addDefaultStyle(recent_TFTPlayer_df).to_excel(excel_writer = writer, sheet_name = "Recently Played Summoners (TFT)")
+                        logPrint("近期一起玩过的云顶之弈玩家数据导出完成！\nRecently played summoner data (TFT) exported!\n")
                         if search_LoL:
                             if scan_lol:
                                 if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
@@ -2581,7 +2896,7 @@ async def search_profile(connection: Connection) -> None:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Scan")
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Manual")
                                 worksheet = writer.sheets["LoL Match History"]
-                            worksheet.conditional_formatting.rules = [] #读取时清空原规则（Clear original rules when reading）
+                            worksheet.conditional_formatting.rules = []
                             if len(LoLHistory_df_all) > 1:
                                 addFormat_LoLHistory_wb(worksheet, LoLHistory_df_all)
                             logPrint("召唤师英雄联盟对局记录导出完成！\nSummoner LoL match history exported!\n")
@@ -2589,20 +2904,20 @@ async def search_profile(connection: Connection) -> None:
                                 if scan_lol:
                                     if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats")
-                                    addDefaultStyle(LoLGame_stat_df).to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Scan")
+                                    addDefaultStyle(LoLGame_stat_self_df).to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Scan")
                                     if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Manual")
                                     worksheet = writer.sheets["LoL Match Stats - Scan"]
                                 else:
-                                    addDefaultStyle(LoLGame_stat_df).to_excel(excel_writer = writer, sheet_name = "LoL Match Stats")
+                                    addDefaultStyle(LoLGame_stat_self_df).to_excel(excel_writer = writer, sheet_name = "LoL Match Stats")
                                     if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Scan")
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Manual")
                                     worksheet = writer.sheets["LoL Match Stats"]
                                 worksheet.conditional_formatting.rules = []
-                                if len(LoLGame_stat_df) > 1:
-                                    max_numPlayersPerTeam_lol = 5 if len(LoLGame_stat_df) <= 1 else max(map(lambda x: 5 if x == 0 or not x in gameQueues else 2 if gameQueues[x]["gameMode"] == "CHERRY" else gameQueues[x]["numPlayersPerTeam"], LoLGame_stat_df["queueId"][1:])) #自定义对局的队伍规模视为5；斗魂竞技场的队伍规模虽然在API中记录为16，但这里应该考虑的是子阵营（The team size of any custom game is regarded as 5; although the team size of an Arena game is recorded as in LCU API, the subteam has more reference value）
-                                    addFormat_LoLGame_summary_wb(worksheet, LoLGame_stat_df, numColorScale_order = max_numPlayersPerTeam_lol)
+                                if len(LoLGame_stat_self_df) > 1:
+                                    max_numPlayersPerTeam_lol = 5 if len(LoLGame_stat_self_df) <= 1 else max(map(lambda x: 5 if x == 0 or not x in gameQueues else 2 if gameQueues[x]["gameMode"] == "CHERRY" else gameQueues[x]["numPlayersPerTeam"], LoLGame_stat_self_df["queueId"][1:]))
+                                    addFormat_LoLGame_summary_wb(worksheet, LoLGame_stat_self_df, numColorScale_order = max_numPlayersPerTeam_lol)
                                 logPrint("召唤师英雄联盟战绩导出完成！\nSummoner LoL game stats exported!\n")
                             elif (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
                                 pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats")

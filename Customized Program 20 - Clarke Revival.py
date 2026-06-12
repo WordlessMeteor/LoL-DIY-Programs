@@ -49,7 +49,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/06/08
+# 更新（Last update）：     2026/06/09
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -321,9 +321,9 @@ async def search_player_match_stats_lol(connection: Connection, puuid: str, begI
                 if status == 200:
                     #下一行语句的关键是sortStats和LoLGame_stats_data参数（The key point of the following statement is `sortStats` and `LoLGame_stats_data` parameters）
                     if lol_sgp:
-                        LoLGame_summary_df: pandas.DataFrame = sort_LoLGame_summary_sgp(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = i + 1, current_puuid = puuid, useAllVersions = False, unmapped_keys = unmapped_keys, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, log = log, verbose = verbose)[0]
+                        LoLGame_summary_df: pandas.DataFrame = sort_LoLGame_summary_sgp(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = i + 1, current_puuid = puuid, useAllVersions = False, unmapped_keys = unmapped_keys, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, save_self = True, save_other = False, log = log, verbose = verbose)[0]
                     else:
-                        LoLGame_summary_df = sort_LoLGame_summary(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = i + 1, current_puuid = puuid, useAllVersions = False, unmapped_keys = unmapped_keys, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, log = log, verbose = verbose)[0]
+                        LoLGame_summary_df = sort_LoLGame_summary(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = i + 1, current_puuid = puuid, useAllVersions = False, unmapped_keys = unmapped_keys, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, save_self = True, save_other = False, log = log, verbose = verbose)[0]
                     logPrint("[%d/%d]%d" %(i + 1, len(games), matchId), verbose = verbose)
                 else:
                     logPrint("[%d/%d]%d (Match not found)" %(i + 1, len(games), matchId), verbose = verbose)
@@ -374,7 +374,7 @@ async def search_player_match_stats_tft(connection: Connection, puuid: str, begi
                 TFTGame_summary: dict[str, Any] = TFTHistory["games"][i]
                 if TFTGame_summary.get("json"):
                     #下一行语句的关键是sortStats和TFTGame_stats_data参数（The key point of the following statement is `sortStats` and `TFTGame_stats_data` parameters）
-                    TFTGame_summary_df: pandas.DataFrame = (await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, current_puuid = puuid, save_self = True, useAllVersions = False, unmapped_keys = unmapped_keys, useInfoDict = False, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, log = log, verbose = verbose))[0]
+                    TFTGame_summary_df: pandas.DataFrame = (await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, current_puuid = puuid, useAllVersions = False, unmapped_keys = unmapped_keys, useInfoDict = False, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, save_self = True, save_other = False, log = log, verbose = verbose))[0]
                     logPrint("[%d/%d]%d" %(i + 1, len(TFTHistory["games"]), matchId), verbose = verbose)
                 else:
                     logPrint("[%d/%d]%d (Exceptional match neglected)" %(i + 1, len(TFTHistory["games"]), matchId), verbose = verbose)
@@ -382,7 +382,7 @@ async def search_player_match_stats_tft(connection: Connection, puuid: str, begi
                 # status, TFTGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, checkLoL = False, log = log, verbose = verbose)
                 # if status == 200:
                 #     if TFTGame_summary.get("json"):
-                #         TFTGame_summary_df: pandas.DataFrame = (await sort_TFTGame_summary(connection, TFTHistory["games"][i], queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, current_puuid = puuid, save_self = True, useAllVersions = False, unmapped_keys = unmapped_keys, useInfoDict = False, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, log = log, verbose = verbose))[0]
+                #         TFTGame_summary_df: pandas.DataFrame = (await sort_TFTGame_summary(connection, TFTHistory["games"][i], queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, current_puuid = puuid, useAllVersions = False, unmapped_keys = unmapped_keys, useInfoDict = False, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, save_self = True, save_other = False, log = log, verbose = verbose))[0]
                 #         logPrint("[%d/%d]%d" %(i + 1, len(TFTHistory["games"]), matchId), verbose = verbose)
                 #     else:
                 #         logPrint("[%d/%d]%d (Exceptional match neglected)" %(i + 1, len(TFTHistory["games"]), matchId), verbose = verbose)

@@ -1,7 +1,6 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-import argparse, datetime, json, math, os, pandas, requests, time, traceback
-import matplotlib.pyplot as plt
+import argparse, json, os, pandas, requests, time, traceback
 from typing import Any, Optional
 from src.utils.summoner import print_summoner_info, get_info, get_info_name
 from src.utils.logger import LogManager
@@ -30,7 +29,7 @@ use_sgp: bool = args.lol_api == "sgp"
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/06/02
+# 更新（Last update）：     2026/06/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1003,7 +1002,7 @@ async def prepare_lcu_plugins(connection: Connection) -> None:
                 if not tier["id"] in championSkins: #圣堂皮肤和终极皮肤中的系列与主皮肤存在重复的序号（There're redundant ids between the tier and the parent ultimate skin）
                     championSkins[tier["id"]] = tier
 
-async def load_smurf(connection: Connection, selfDetect: bool, infos: Optional[dict[str, dict[str, Any]]] = None) -> list[dict[str, Any]]:
+async def load_smurf(connection: Connection, infos: Optional[dict[str, dict[str, Any]]] = None) -> list[dict[str, Any]]:
     '''
     读取小号信息。<br>Load smurf information.
     
@@ -1100,7 +1099,7 @@ async def load_smurf(connection: Connection, selfDetect: bool, infos: Optional[d
                     logPrint("已清空小号。\nSmurfs cleared.")
                 elif smurfName == "":
                     continue
-                elif smurfName in {"current-summoner", get_info_name(current_info), current_info["puuid"], str(current_info["summonerId"])} and selfDetect:
+                elif smurfName in {"current-summoner", get_info_name(current_info), current_info["puuid"], str(current_info["summonerId"])}:
                     logPrint("您不能把主账号作为小号！请添加其它账号。\nYou're not allowed to add your main account as a smurf account! Please try another account.")
                 else:
                     info: dict[str, Any] = await get_info(connection, smurfName)
@@ -1133,335 +1132,6 @@ async def load_smurf(connection: Connection, selfDetect: bool, infos: Optional[d
                 json.dump(smurf_local, fp, indent = 4, ensure_ascii = False)
             logPrint(f"小号信息已保存到“{smurf_file}”中。\nSmurf information has been saved into {smurf_file}.")
     return smurfs
-
-def generate_mode(search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame, gameQueues: dict[int, dict[str, Any]], displayName: str, export_folder: str) -> int:
-    '''
-    生成模式，生成近期一起玩过的玩家图表和工作簿。<br>Generate mode, which generates graphs and workbooks of recently played summoners.
-    
-    :param search_LoL: 是否搜索过英雄联盟对局记录。<br>Whether LoL match history has been searched.
-    :type search_LoL: bool
-    :param search_TFT: 是否搜索过云顶之弈对局记录。<br>Whether TFT match history has been searched.
-    :type search_TFT: bool
-    :param recent_LoLPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
-    :type recent_LoLPlayer_df: pandas.DataFrame
-    :param recent_TFTPlayer_df: 近期一起玩过的英雄联盟玩家数据框。<br>Recently played LoL summoner dataframe.
-    :type recent_TFTPlayer_df: pandas.DataFrame
-    :param gameQueues: 整理后的队列数据资源。键是队列序号，值是游戏模式信息字典。<br>Organized queue data resource. Each key is a queueId, and each value is a game mode information dictionary.
-    
-        原始队列数据资源可以通过以下LCU接口获取：<br>The raw queue data resource can be obtained through the following LCU endpoint:
-        - `GET /lol-game-queues/v1/queues`
-    :type gameQueues: dict[int, dict[str, Any]]
-    :param displayName: 用于图表和工作簿命名的召唤师名称。<br>The summoner name used as a part of the workbook's and graph's name.
-    :type displayName: str
-    :param export_folder: 图表和工作簿的导出目录。<br>The export directory of the graphs and workbooks.
-    :return: 状态码。在正常退出函数的情况下，总是返回0。<br>Status code. When this function is exited as normal, 0 is always returned.
-    :rtype: int
-    '''
-    recent_players_metadata: dict[str, dict[str, Any]] = {} #这里另外设置元数据是为了整理出用于可视化的数据（Here the metadata is designed to sort out data for visualization）
-    if search_LoL:
-        #logPrint("用于可视化的元数据创建进度（Creating process of metadata for visualization）：")
-        for i in range(1, len(recent_LoLPlayer_df)): #第0行是中文表头，所以要从第1行开始（The 0th line contains the Chinese headers, so the iteration should start from the first line）
-            puuid_iter: str = recent_LoLPlayer_df["puuid"][i]
-            if use_sgp:
-                summonerName_iter: str = recent_LoLPlayer_df["riotIdGameName"][i] + "#" + recent_LoLPlayer_df["riotIdTagline"][i]
-            else:
-                summonerName_iter: str = recent_LoLPlayer_df["gameName"][i] + "#" + recent_LoLPlayer_df["tagLine"][i]
-            if summonerName_iter == "#":
-                summonerName_iter = puuid_iter
-            matchId_iter: int = recent_LoLPlayer_df["gameId"][i]
-            LoLGameCreation_iter: float = datetime.datetime.fromisoformat(recent_LoLPlayer_df["gameCreationDate"][i].replace("Z", "+00:00")).timestamp()
-            LoLGameDuration_iter: float = recent_LoLPlayer_df["gameDuration"][i]
-            isPvP_iter: bool = True if recent_LoLPlayer_df["queueId"][i] in gameQueues and gameQueues[recent_LoLPlayer_df["queueId"][i]]["category"] == "PvP" else False #添加是否玩家对战的信息，以便单独统计一同进行玩家对战的总时间。下同（Added the information whether a match is PvP, so that the total time of only PvP matches can be calculated. So do the following two variables）
-            isPvE_iter: bool = True if recent_LoLPlayer_df["queueId"][i] in gameQueues and gameQueues[recent_LoLPlayer_df["queueId"][i]]["category"] == "VersusAi" else False
-            isCustom_iter: bool = True if recent_LoLPlayer_df["queueId"][i] in gameQueues and gameQueues[recent_LoLPlayer_df["queueId"][i]]["category"] == "Custom" else False
-            if not puuid_iter in recent_players_metadata:
-                recent_players_metadata[puuid_iter] = {}
-                recent_players_metadata[puuid_iter]["name"] = summonerName_iter #该语句不会在else部分出现。这是考虑到如果召唤师改过名字，那么呈现在频数直方图上的横轴的召唤师名应当是最新的（This statement won't appear in the else-part, considering if a summoner has changed its name, then the summonerName near the horizontal axis of the frequency histogram should be latest）
-                recent_players_metadata[puuid_iter]["puuid"] = puuid_iter
-                recent_players_metadata[puuid_iter]["gameCount"] = 1
-                recent_players_metadata[puuid_iter]["matches"] = [matchId_iter]
-                recent_players_metadata[puuid_iter]["createTimestamps"] = [LoLGameCreation_iter]
-                recent_players_metadata[puuid_iter]["durations"] = [LoLGameDuration_iter]
-                recent_players_metadata[puuid_iter]["isPvP"] = [isPvP_iter]
-                recent_players_metadata[puuid_iter]["isPvE"] = [isPvE_iter]
-                recent_players_metadata[puuid_iter]["isCustom"] = [isCustom_iter]
-                recent_players_metadata[puuid_iter]["PvPCount"] = int(isPvP_iter)
-                recent_players_metadata[puuid_iter]["PvECount"] = int(isPvE_iter)
-                recent_players_metadata[puuid_iter]["CustomCount"] = int(isCustom_iter)
-                recent_players_metadata[puuid_iter]["totalTime"] = LoLGameDuration_iter
-                recent_players_metadata[puuid_iter]["totalPvPTime"] = LoLGameDuration_iter * isPvP_iter
-                recent_players_metadata[puuid_iter]["totalPvETime"] = LoLGameDuration_iter * isPvE_iter
-                recent_players_metadata[puuid_iter]["totalCustomTime"] = LoLGameDuration_iter * isCustom_iter
-            else:
-                recent_players_metadata[puuid_iter]["gameCount"] += 1
-                recent_players_metadata[puuid_iter]["matches"].append(matchId_iter)
-                recent_players_metadata[puuid_iter]["createTimestamps"].append(LoLGameCreation_iter)
-                recent_players_metadata[puuid_iter]["durations"].append(LoLGameDuration_iter)
-                recent_players_metadata[puuid_iter]["isPvP"].append(isPvP_iter)
-                recent_players_metadata[puuid_iter]["isPvE"].append(isPvE_iter)
-                recent_players_metadata[puuid_iter]["isCustom"].append(isCustom_iter)
-                recent_players_metadata[puuid_iter]["PvPCount"] += isPvP_iter
-                recent_players_metadata[puuid_iter]["PvECount"] += isPvE_iter
-                recent_players_metadata[puuid_iter]["CustomCount"] += isCustom_iter
-                recent_players_metadata[puuid_iter]["totalTime"] += LoLGameDuration_iter
-                recent_players_metadata[puuid_iter]["totalPvPTime"] += LoLGameDuration_iter * isPvP_iter
-                recent_players_metadata[puuid_iter]["totalPvETime"] += LoLGameDuration_iter * isPvE_iter
-                recent_players_metadata[puuid_iter]["totalCustomTime"] += LoLGameDuration_iter * isCustom_iter
-            #logPrint("[%d/%d]%d\t%s\t%s" %(i, len(recent_LoLPlayer_df) - 1, matchId_iter, puuid_iter, summonerName_iter), end = "\r")
-    if search_TFT:
-        #logPrint("用于可视化的元数据创建进度（Creating process of metadata for visualization）：")
-        for i in range(1, len(recent_TFTPlayer_df)):
-            puuid_iter = recent_TFTPlayer_df["puuid"][i]
-            summonerName_iter = recent_TFTPlayer_df["riotIdGameName"][i] + "#" + recent_TFTPlayer_df["riotIdTagline"][i]
-            if summonerName_iter == "#":
-                summonerName_iter = puuid_iter
-            matchId_iter = recent_TFTPlayer_df["game_id"][i]
-            TFTGameCreation_iter: float = datetime.datetime.fromisoformat(recent_TFTPlayer_df["gameCreationDate"][i].replace("Z", "+00:00")).timestamp()
-            TFTGameDuration_iter: float = recent_TFTPlayer_df["time_eliminated"][i]
-            isPvP_iter = True if recent_TFTPlayer_df["queue_id"][i] in gameQueues and gameQueues[recent_TFTPlayer_df["queue_id"][i]]["category"] == "PvP" else False
-            isPvE_iter = True if recent_TFTPlayer_df["queue_id"][i] in gameQueues and gameQueues[recent_TFTPlayer_df["queue_id"][i]]["category"] == "VersusAi" else False
-            isCustom_iter = True if recent_TFTPlayer_df["queue_id"][i] in gameQueues and gameQueues[recent_TFTPlayer_df["queue_id"][i]]["category"] == "Custom" else False
-            if not puuid_iter in recent_players_metadata:
-                recent_players_metadata[puuid_iter] = {}
-                recent_players_metadata[puuid_iter]["name"] = summonerName_iter
-                recent_players_metadata[puuid_iter]["puuid"] = puuid_iter
-                recent_players_metadata[puuid_iter]["gameCount"] = 1
-                recent_players_metadata[puuid_iter]["matches"] = [matchId_iter]
-                recent_players_metadata[puuid_iter]["createTimestamps"] = [TFTGameCreation_iter]
-                recent_players_metadata[puuid_iter]["durations"] = [TFTGameDuration_iter]
-                recent_players_metadata[puuid_iter]["isPvP"] = [isPvP_iter]
-                recent_players_metadata[puuid_iter]["isPvE"] = [isPvE_iter]
-                recent_players_metadata[puuid_iter]["isCustom"] = [isCustom_iter]
-                recent_players_metadata[puuid_iter]["PvPCount"] = int(isPvP_iter)
-                recent_players_metadata[puuid_iter]["PvECount"] = int(isPvE_iter)
-                recent_players_metadata[puuid_iter]["CustomCount"] = int(isCustom_iter)
-                recent_players_metadata[puuid_iter]["totalTime"] = TFTGameDuration_iter
-                recent_players_metadata[puuid_iter]["totalPvPTime"] = TFTGameDuration_iter * isPvP_iter
-                recent_players_metadata[puuid_iter]["totalPvETime"] = TFTGameDuration_iter * isPvE_iter
-                recent_players_metadata[puuid_iter]["totalCustomTime"] = TFTGameDuration_iter * isCustom_iter
-            else:
-                recent_players_metadata[puuid_iter]["gameCount"] += 1
-                recent_players_metadata[puuid_iter]["matches"].append(matchId_iter)
-                recent_players_metadata[puuid_iter]["createTimestamps"].append(TFTGameCreation_iter)
-                recent_players_metadata[puuid_iter]["durations"].append(TFTGameDuration_iter)
-                recent_players_metadata[puuid_iter]["isPvP"].append(isPvP_iter)
-                recent_players_metadata[puuid_iter]["isPvE"].append(isPvE_iter)
-                recent_players_metadata[puuid_iter]["isCustom"].append(isCustom_iter)
-                recent_players_metadata[puuid_iter]["PvPCount"] += isPvP_iter
-                recent_players_metadata[puuid_iter]["PvECount"] += isPvE_iter
-                recent_players_metadata[puuid_iter]["CustomCount"] += isCustom_iter
-                recent_players_metadata[puuid_iter]["totalTime"] += TFTGameDuration_iter
-                recent_players_metadata[puuid_iter]["totalPvPTime"] += TFTGameDuration_iter * isPvP_iter
-                recent_players_metadata[puuid_iter]["totalPvETime"] += TFTGameDuration_iter * isPvE_iter
-                recent_players_metadata[puuid_iter]["totalCustomTime"] += TFTGameDuration_iter * isCustom_iter
-            #logPrint("[%d/%d]%d\t%s\t%s" %(i, len(recent_TFTPlayer_df) - 1, matchId_iter, puuid_iter, summonerName_iter), end = "\r")
-    #进一步计算游玩热度——陪伴得分（Further calculate the company score）
-    lambda_decay: float = 0.002 #时间衰减系数（Time decay coefficient）
-    scale_factor: int = 100 #缩放因子（Scale factor）
-    maxDuration: int = max(map(lambda x: max(x["durations"]), recent_players_metadata.values()))
-    for puuid_iter in recent_players_metadata:
-        recent_player: dict[str, Any] = recent_players_metadata[puuid_iter]
-        sumRecency: float = 0
-        sumPvPRecency: float = 0
-        sumPvERecency: float = 0
-        sumCustomRecency: float = 0
-        #声明：以下算法由DeepSeek-V3.2模型生成（Declaration: The following algorithm is generated by DeepSeek-V3.2 model）
-        #算法（Algorithm）：热度分数（Company score） = 100 × Σ[wi × (di / Tmax) × exp(-λ × (Tnow - ti))]，其中（where）
-        #wi：游戏模式权重（Weight of game modes）
-        #di：第i场对局的持续时间（Duration of the i-th game）
-        #Tmax：最大持续时间（Max duration among all matches）
-        #λ：时间衰减系数（Time decay coefficient）
-        #Tnow：当前时间戳（Current unix timestamp）
-        #ti：第i场对局的创建时间戳（Unix create timestamp of the i-th match）
-        for i in range(recent_player["gameCount"]):
-            total_weight: float = 1.5 if recent_player["isPvP"] else 1 if recent_player["isPvE"] else 0.5 #根据需要自行修改（Modify on demand）
-            # delta: float = scale_factor * (recent_player["durations"][i] / maxDuration) * math.exp(-lambda_decay * (time.time() - recent_player["createTimestamps"][i]))
-            delta: float = recent_player["durations"][i] / (time.time() - recent_player["createTimestamps"][i])
-            sumRecency += delta * total_weight
-            sumPvPRecency += delta * recent_player["isPvP"][i]
-            sumPvERecency += delta * recent_player["isPvE"][i]
-            sumCustomRecency += delta * recent_player["isCustom"][i]
-        recent_player["totalRecency"] = sumRecency * 1000 #后来添加的修饰因子（Later added modifier）
-        recent_player["totalPvPRecency"] = sumPvPRecency * 1000
-        recent_player["totalPvERecency"] = sumPvERecency * 1000
-        recent_player["totalCustomRecency"] = sumCustomRecency * 1000
-    #pyperclip.copy(json.dumps(recent_players_metadata, ensure_ascii = False))
-    json01name: str = "Recently Played Summoners - %s.json" %displayName
-    json01path: str = os.path.join(export_folder, json01name).replace("\\", "/")
-    while True:
-        try:
-            with open(json01path, "w", encoding = "utf-8") as jsonfile:
-                jsonfile.write(json.dumps(recent_players_metadata, indent = 4, ensure_ascii = False))
-        except FileNotFoundError:
-            os.makedirs(export_folder, exist_ok = True)
-        except UnicodeEncodeError:
-            logPrint("近期一起玩过的玩家元数据文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nRecently played summoner metadata text generation failure! Please check if the summoner name includes any abnormal characters!\n")
-            break
-        else:
-            break
-    recent_players_metadata_list: list[dict[str, Any]] = sorted(recent_players_metadata.values(), key = lambda x: x["gameCount"], reverse = True)
-    recent_players_metadata_header: dict[str, str] = {"name": "召唤师名", "puuid": "玩家通用唯一识别码", "gameCount": "共同作战局数", "matches": "共同对局序号", "durations": "对局持续时间列表", "isPvP": "玩家对战逻辑值列表", "isPvE": "人机对战逻辑值列表", "isCustom": "自定义对战逻辑值列表", "PvPCount": "玩家对战局数", "PvECount": "人机对战局数", "CustomCount": "自定义对战局数", "totalTime": "共同作战时长（秒）", "totalPvPTime": "共同玩家对战时长（秒）", "totalPvETime": "共同人机对战时长（秒）", "totalCustomTime": "共同自定义对战时长（秒）"}
-    recent_players_metadata_header_keys: list[str] = list(recent_players_metadata_header.keys())
-    recent_players_metadata_statistics_output_order: list[int] = [0, 1, 3, 2, 8, 9, 10, 11, 12, 13, 14]
-    recent_players_metadata_organized: dict[str, list[Any]] = {recent_players_metadata_header_keys[i]: list(map(lambda x: x[recent_players_metadata_header_keys[i]], recent_players_metadata_list)) for i in recent_players_metadata_statistics_output_order}
-    recent_players_metaDf: pandas.DataFrame = pandas.concat([pandas.DataFrame(data = recent_players_metadata_organized)])
-    recent_players_metaDf = pandas.concat([pandas.DataFrame([recent_players_metadata_header])[recent_players_metaDf.columns], recent_players_metaDf], ignore_index = True)
-    #默认导出玩家对局数量统计表（Export recent played summoner count table by default）
-    wb01Name: str = f"Recently Played Summoner Count - {displayName}.xlsx"
-    wb01Path: str = os.path.join(export_folder, wb01Name).replace("\\", "/")
-    if not os.path.exists(wb01Path):
-        wb01CreateFlag: bool = create_workbook_win32(os.path.abspath(wb01Path), log = log)
-    os.makedirs(export_folder, exist_ok = True)
-    while True:
-        try:
-            with (pandas.ExcelWriter(path = wb01Path, mode = "a", if_sheet_exists = "replace") if os.path.exists(wb01Path) else pandas.ExcelWriter(path = wb01Path)) as writer:
-                addDefaultStyle(recent_players_metaDf).to_excel(excel_writer = writer)
-        except PermissionError:
-            logPrint("近期一起玩过的玩家对局数量统计表导出失败！请检查文件的权限以及是否被占用！按回车键重试，或者输入任意非空字符串以放弃导出。\nRecently played summoner count table export failure! Please check the permission and if the file is occupied! Press Enter to try again, or submit any non-empty string to give up exporting.")
-            gameCount_export_str = logInput()
-            gameCount_export = not bool(gameCount_export_str)
-            if not gameCount_export:
-                break
-        else:
-            break
-    
-    #针对元数据中记录的每个玩家的累计游戏时长和游戏对局数输出条形图（Output the bar chart of each summoner's total time and game counts in the metadata）
-    totalTime: dict[str, float] = {}
-    PvPTime: dict[str, float] = {}
-    PvETime: dict[str, float] = {}
-    CustomTime: dict[str, float] = {}
-    totalCount: dict[str, int] = {}
-    PvPCount: dict[str, int] = {}
-    PvECount: dict[str, int] = {}
-    CustomCount: dict[str, int] = {}
-    totalRecency: dict[str, float] = {}
-    PvPRecency: dict[str, float] = {}
-    PvERecency: dict[str, float] = {}
-    CustomRecency: dict[str, float] = {}
-    for player in recent_players_metadata.values():
-        totalTime[player["name"]] = player["totalTime"]
-        PvPTime[player["name"]] = player["totalPvPTime"]
-        PvETime[player["name"]] = player["totalPvETime"]
-        CustomTime[player["name"]] = player["totalCustomTime"]
-        totalCount[player["name"]] = player["gameCount"]
-        PvPCount[player["name"]] = player["PvPCount"]
-        PvECount[player["name"]] = player["PvECount"]
-        CustomCount[player["name"]] = player["CustomCount"]
-        totalRecency[player["name"]] = player["totalRecency"]
-        PvPRecency[player["name"]] = player["totalPvPRecency"]
-        PvERecency[player["name"]] = player["totalPvERecency"]
-        CustomRecency[player["name"]] = player["totalCustomRecency"]
-    totalTime_sorted: list[tuple[str, float]] = sorted(totalTime.items(), key = lambda x: x[1], reverse = True)
-    PvPTime_sorted: list[tuple[str, float]] = sorted(PvPTime.items(), key = lambda x: x[1], reverse = True)
-    PvETime_sorted: list[tuple[str, float]] = sorted(PvETime.items(), key = lambda x: x[1], reverse = True)
-    CustomTime_sorted: list[tuple[str, float]] = sorted(CustomTime.items(), key = lambda x: x[1], reverse = True)
-    totalCount_sorted: list[tuple[str, int]] = sorted(totalCount.items(), key = lambda x: x[1], reverse = True)
-    PvPCount_sorted: list[tuple[str, int]] = sorted(PvPCount.items(), key = lambda x: x[1], reverse = True)
-    PvECount_sorted: list[tuple[str, int]] = sorted(PvECount.items(), key = lambda x: x[1], reverse = True)
-    CustomCount_sorted: list[tuple[str, int]] = sorted(CustomCount.items(), key = lambda x: x[1], reverse = True)
-    totalRecency_sorted: list[tuple[str, float]] = sorted(totalRecency.items(), key = lambda x: x[1], reverse = True)
-    PvPRecency_sorted: list[tuple[str, float]] = sorted(PvPRecency.items(), key = lambda x: x[1], reverse = True)
-    PvERecency_sorted: list[tuple[str, float]] = sorted(PvERecency.items(), key = lambda x: x[1], reverse = True)
-    CustomRecency_sorted: list[tuple[str, float]] = sorted(CustomRecency.items(), key = lambda x: x[1], reverse = True)
-    logPrint("您希望条形图中显示游戏时长最长的前几名玩家？（默认为前20名）\nHow many players of the longest game time do you want to display in the bar chart? (20 by default)")
-    while True:
-        try:
-            topN_str: str = logInput()
-            if topN_str == "":
-                topN: int = 20
-                break
-            else:
-                topN = int(topN_str)
-        except ValueError:
-            logPrint("请输入整数！\nPlease input an integer!")
-        else:
-            if topN < 0:
-                logPrint("请输入自然数！\nPlease input a non-negative integer!")
-            else:
-                break
-    if topN > 0:
-        topN = min(topN, len(set(recent_LoLPlayer_df["puuid"][1:])) + len(set(recent_TFTPlayer_df["puuid"][1:])))
-        plt.rcParams["font.sans-serif"] = ["Microsoft YaHei"] #设置默认字体为微软雅黑（Set the default font Microsoft YaHei）
-        valuefont: dict[str, str | int] = {"family": "Times New Roman", "weight": "normal", "size": 9} #指定柱上显示的数据的字体格式（Determines the font of the values above the bars）
-        chart_data: list[tuple[list[tuple[str, Any]], str, str, str, int]] = [
-            (totalTime_sorted, "总游戏时间\nGame Time: All Modes", "游戏时长（秒）\ntotalGameTime (s)", "Time_total", 0),
-            (PvPTime_sorted, "玩家对战时间\nGame Time: PvP", "游戏时长（秒）\ntotalGameTime (s)", "Time_PvP", 0),
-            (PvETime_sorted, "人机对战时间\nGame Time: PvE", "游戏时长（秒）\ntotalGameTime (s)", "Time_PvE", 0),
-            (CustomTime_sorted, "自定义对战时间\nGame Time: Custom", "游戏时长（秒）\ntotalGameTime (s)", "Time_Custom", 0),
-            (totalCount_sorted, "总游戏对局数\nGame Count: All Modes", "对局数\ntotalGameCount", "Count_total", 0),
-            (PvPCount_sorted, "玩家对战局数\nGame Count: PvP", "对局数\ntotalGameCount", "Count_PvP", 0),
-            (PvECount_sorted, "人机对战局数\nGame Count: PvE", "对局数\ntotalGameCount", "Count_PvE", 0),
-            (CustomCount_sorted, "自定义对战局数\nGame Count: Custom", "对局数\ntotalGameCount", "Count_Custom", 0),
-            (totalRecency_sorted, "总游玩热度\nRecency: All Modes", "陪伴得分\ncompanion score", "Recency_total", 0),
-            (PvPRecency_sorted, "玩家对战热度\nRecency: PvP", "陪伴得分\ncompanion score", "Recency_PvP", 0),
-            (PvERecency_sorted, "人机对战热度\nRecency: PvE", "陪伴得分\ncompanion score", "Recency_PvE", 0),
-            (CustomRecency_sorted, "自定义对战热度\nRecency: Custom", "陪伴得分\ncompanion score", "Recency_Custom", 0)
-        ]
-        logPrint("您想要将所有图表合并为一张图表，还是分别生成？（输入任意非空字符串以分别生成，否则合并为一张图表。）\nDo you want to merge all charts into one, or generate them separately? (Input any non-empty string to generate them separately, or null to merge them into one chart.)")
-        separate_str: str = logInput()
-        separate: bool = bool(separate_str)
-        if separate:
-            for data, title, ylabel, file_suffix, ndigits in chart_data:
-                plt.figure(figsize = (max(topN / 2, 6), 12))
-                players: list[str] = [data[j][0] for j in range(topN)]
-                values: list[int | float] = [data[j][1] for j in range(topN)]
-                plt.bar(players, values)
-                plt.xticks(rotation = 45, ha = "right")
-                plt.ylabel(ylabel)
-                plt.yticks(fontproperties = "Calibri", size = 12)
-                for player, playtime in data[:topN]:
-                    plt.text(player, round(playtime, ndigits), round(playtime, ndigits), ha = "center", va = "bottom", fontdict = valuefont)
-                plt.title(title)
-                plt.savefig(os.path.join(export_folder, "Recently Played Summoners - %s - %s.png" % (displayName, file_suffix)), bbox_inches = "tight")
-                plt.clf()
-        else:
-            fig, axes = plt.subplots(nrows = 3, ncols = 4, figsize = (max(topN * 2, 10), 24))
-            axes = axes.flatten()
-            for i, (data, title, ylabel, file_suffix, ndigits) in enumerate(chart_data):
-                ax = axes[i]
-                players = [data[j][0] for j in range(topN)]
-                values = [data[j][1] for j in range(topN)]
-                bars = ax.bar(players, values)
-                ax.set_title(title)
-                ax.set_ylabel(ylabel)
-                ax.set_xticks(range(len(players)))
-                ax.set_xticklabels(players, rotation = 45, ha = "right")
-                ax.tick_params(axis = "y", labelsize = 12)
-                for label in ax.get_yticklabels():
-                    label.set_fontfamily("Calibri")
-                for player, playtime in data[:topN]:
-                    ax.text(player, round(playtime, ndigits), round(playtime, ndigits), ha = "center", va = "bottom", fontdict = valuefont)
-            plt.tight_layout(pad = 3.0)
-            plt.savefig(os.path.join(export_folder, "Recently Played Summoners - %s.png" %displayName))
-        plt.close("all")
-    logPrint("是否导出以上近期一起玩过的玩家数据？（输入任意键导出，否则不导出）\nDo you want to export the above recently played summoner data? (Input anything to export or null to refuse exporting)")
-    export_str: str = logInput()
-    export: bool = bool(export_str)
-    if export:
-        wb02Name: str = f"Summoner Profile - {displayName}.xlsx"
-        wb02Path: str = os.path.join(export_folder, wb02Name).replace("\\", "/")
-        if not os.path.exists(wb02Path):
-            wb02CreateFlag: bool = create_workbook_win32(os.path.abspath(wb02Path), sheet1_name = "Recently Played Summoners (LoL)" if search_LoL else "Recently Played Summoners (TFT)")
-        while True:
-            try:
-                with (pandas.ExcelWriter(path = wb02Path, engine = "openpyxl", mode = "a", if_sheet_exists = "replace") if os.path.exists(wb02Path) else pandas.ExcelWriter(path = wb02Path, engine = "openpyxl")) as writer:
-                    if search_LoL:
-                        addDefaultStyle(recent_LoLPlayer_df).to_excel(excel_writer = writer, sheet_name = "Recently Played Summoners (LoL)")
-                        worksheet = writer.sheets["Recently Played Summoners (LoL)"]
-                        worksheet.conditional_formatting.rules = [] #读取时清空原规则（Clear original rules when reading）
-                        if len(recent_LoLPlayer_df) > 1:
-                            max_numPlayersPerTeam_lol = 5 if len(recent_LoLPlayer_df) <= 1 else max(map(lambda x: 5 if x == 0 or not x in gameQueues else 2 if gameQueues[x]["gameMode"] == "CHERRY" else gameQueues[x]["numPlayersPerTeam"], recent_LoLPlayer_df["queueId"][1:])) #自定义对局的队伍规模视为5；斗魂竞技场的队伍规模虽然在API中记录为16，但这里应该考虑的是子阵营（The team size of any custom game is regarded as 5; although the team size of an Arena game is recorded as in LCU API, the subteam has more reference value）
-                            addFormat_LoLGame_summary_wb(worksheet, recent_LoLPlayer_df, numColorScale_order = max_numPlayersPerTeam_lol)
-                        logPrint("近期一起玩过的英雄联盟玩家数据导出完成！\nRecently played summoner data (LoL) exported!\n")
-                    if search_TFT:
-                        addDefaultStyle(recent_TFTPlayer_df).to_excel(excel_writer = writer, sheet_name = "Recently Played Summoners (TFT)")
-                        logPrint("近期一起玩过的云顶之弈玩家数据导出完成！\nRecently played summoner data (TFT) exported!\n")
-            except PermissionError:
-                logPrint("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
-                logInput()
-            else:
-                break
-    return 0
 
 async def detect_mode(connection: Connection, search_LoL: bool, search_TFT: bool, recent_LoLPlayer_df: pandas.DataFrame, recent_TFTPlayer_df: pandas.DataFrame, language_code: str, infos: Optional[dict[str, dict[str, Any]]] = None) -> bool:
     '''
@@ -3089,25 +2759,8 @@ async def search_recent_players(connection: Connection) -> None:
     LoLGame_summary_cache_lcu: dict[int, dict[str, Any]] = {}
     LoLGame_summary_cache_sgp: dict[int, dict[str, Any]] = {}
     TFTGame_summary_cache_sgp: dict[int, dict[str, Any]] = {}
-    logPrint("请选择本脚本的使用模式：\nPlease select a mode for use:\n1\t生成模式（Generate Mode）\n2\t检测模式（Detect Mode）")
-    detectMode: bool = False
-    mode: str = logInput()
-    if mode == "" or mode[0] != "1":
-        detectMode = True
-    smurf_asked: bool = False #在检测模式时，询问用户是否导入其它账号。当用户从检测模式切换到生成模式时，该变量会置为假（Under Detect Mode, the program asks if the user wants to import other accounts. When the user switch from Detect Mode to Generate Mode, this variable is set False）
-    smurfs: list[dict[str, Any]] = []
-    switch_mode: bool = False #模式转换变量定义（Definition of the mode transfer variable）
     #然后获取历史记录（Next, fetch the history）
     while True:
-        infos: dict[str, dict[str, Any]] = {} #存储程序运行过程中遇到的玩家信息，防止后续程序反复获取已经获取过的玩家信息（Store the summoner information fetched during the program execution, in case the program would keep capturing the summoner information already fetched before）
-        #通过小号模式导入其它自己玩过的账号（Import other accounts that the user has played by Smurf Mode）
-        detectMode: bool = not detectMode if switch_mode else detectMode
-        selfDetect: bool = detectMode #标记检测模式是否检测自己（Marks whether Detect Mode detects the user itself）
-        switch_mode = False #模式转换变量初始化（Initialization of the mode transfer variable）
-        if not smurf_asked:
-            smurfs = await load_smurf(connection, selfDetect, infos = infos)
-            smurf_asked = True
-        smurfMode: bool = len(smurfs) > 0
         #初始化所有数据资源（Initialize all data resources）
         logPrint("\n正在初始化所有数据资源……\nInitializing all data resources ...\n")
         patches: list[str] = patches_initial.copy()
@@ -3126,164 +2779,144 @@ async def search_recent_players(connection: Connection) -> None:
         CherryAugments: dict[int, dict[str, Any]] = CherryAugments_initial.copy()
         current_versions = {"summonerIcon": URLPatch, "spell": URLPatch, "LoLChampion": URLPatch, "LoLItem": URLPatch, "summonerIcon": URLPatch, "perk": URLPatch, "perkstyle": URLPatch, "TFTAugment": URLPatch, "TFTChampion": URLPatch, "TFTItem": URLPatch, "TFTCompanion": URLPatch, "TFTTrait": URLPatch, "CherryAugment": URLPatch}
         unmapped_keys = {"summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "TFTAugment": set(), "TFTChampion": set(), "TFTItem": set(), "TFTCompanion": set(), "TFTTrait": set(), "CherryAugment": set()}
-        if not detectMode:
-            logPrint('请输入要查询的召唤师名称，退出请输入“0”，切换成检测模式请输入“3”：\nPlease input the summoner name to be searched. Submit "0" to exit. Submit "3" to switch to Detect Mode.')
-            summoner_name: str = logInput()
-        else: #检测模式一律把玩家通用唯一识别码传入summoner_name变量（In Detect Mode, puuid is always passed to the variable `summoner_name`）
-            members_to_detect: list[dict[str, Any]] = [current_info]
-            gameflow_phase: str = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
-            if gameflow_phase in {"Lobby", "Matchmaking", "ReadyCheck", "ChampSelect", "InProgress", "Reconnect"}:
-                if gameflow_phase in {"Lobby", "Matchmaking", "ReadyCheck"}:
-                    lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
-                    for member in lobby_information["members"]:
-                        if not member["puuid"] in {current_info["puuid"], "", BOT_UUID}:
-                            member_info_recapture: int = 0
-                            if member["puuid"] in infos:
-                                member_info_body: dict[str, Any] = infos[member["puuid"]]
+        infos: dict[str, dict[str, Any]] = {} #存储程序运行过程中遇到的玩家信息，防止后续程序反复获取已经获取过的玩家信息（Store the summoner information fetched during the program execution, in case the program would keep capturing the summoner information already fetched before）
+        #如果检测到正在与他人交互，程序会提供选项，用户可通过输入选项的序号来直接选择某个召唤师（If the user is interacting with someone, the program will offer options, so that the user select one of those summoners by supplying the option index）
+        members_to_detect: list[dict[str, Any]] = [current_info]
+        gameflow_phase: str = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
+        if gameflow_phase in {"Lobby", "Matchmaking", "ReadyCheck", "ChampSelect", "InProgress", "Reconnect"}:
+            if gameflow_phase in {"Lobby", "Matchmaking", "ReadyCheck"}:
+                lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+                for member in lobby_information["members"]:
+                    if not member["puuid"] in {current_info["puuid"], "", BOT_UUID}:
+                        member_info_recapture: int = 0
+                        if member["puuid"] in infos:
+                            member_info_body: dict[str, Any] = infos[member["puuid"]]
+                        else:
+                            member_info: dict[str, Any] = await get_info(connection, member["puuid"])
+                            while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
+                                logPrint(member_info["message"])
+                                member_info_recapture += 1
+                                logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of a member (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(member["puuid"], member_info_recapture, member["puuid"], member_info_recapture))
+                                member_info = await get_info(connection, member["puuid"])
+                            if member_info["info_got"]:
+                                member_info_body = member_info["body"]
+                                infos[member["puuid"]] = member_info_body
                             else:
-                                member_info: dict[str, Any] = await get_info(connection, member["puuid"])
-                                while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
-                                    logPrint(member_info["message"])
-                                    member_info_recapture += 1
-                                    logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of a member (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(member["puuid"], member_info_recapture, member["puuid"], member_info_recapture))
-                                    member_info = await get_info(connection, member["puuid"])
-                                if member_info["info_got"]:
-                                    member_info_body = member_info["body"]
-                                    infos[member["puuid"]] = member_info_body
-                                else:
-                                    logPrint(member_info["message"])
-                                    logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！将忽略该名成员。\nInformation of a member (puuid: %s) capture failed! The program will ignore this member.")
-                                    continue
-                            members_to_detect.append(member_info_body)
-                    if len(members_to_detect) > 1:
-                        logPrint("检测到您正在房间内。是否检测其他玩家的近期一起玩过的玩家？（输入下方其他玩家对应的编号以查询其他玩家，或者直接按回车键以查询用户本人。）\nThe program detected that you're currently in a lobby. Do you want to detect recently played summoners of another player? (Submit the number corresponding to another player below to search for his/her recently player summoners, or press Enter directly to search for recently played summoners of the user itself.)")
-                elif gameflow_phase == "ChampSelect":
-                    champ_select_session: dict[str, Any] = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
-                    for ally in champ_select_session["myTeam"]:
-                        if not ally["puuid"] in {current_info["puuid"], "", BOT_UUID} and (ally["nameVisibilityType"] == "VISIBLE" or ally["nameVisibilityType"] == ""):
-                            ally_info_recapture: int = 0
-                            if ally["puuid"] in infos:
-                                ally_info_body: dict[str, Any] = infos[ally["puuid"]]
+                                logPrint(member_info["message"])
+                                logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！将忽略该名成员。\nInformation of a member (puuid: %s) capture failed! The program will ignore this member.")
+                                continue
+                        members_to_detect.append(member_info_body)
+            elif gameflow_phase == "ChampSelect":
+                champ_select_session: dict[str, Any] = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
+                for ally in champ_select_session["myTeam"]:
+                    if not ally["puuid"] in {current_info["puuid"], "", BOT_UUID} and (ally["nameVisibilityType"] == "VISIBLE" or ally["nameVisibilityType"] == ""):
+                        ally_info_recapture: int = 0
+                        if ally["puuid"] in infos:
+                            ally_info_body: dict[str, Any] = infos[ally["puuid"]]
+                        else:
+                            ally_info: dict[str, Any] = await get_info(connection, ally["puuid"])
+                            while not ally_info["info_got"] and ally_info["body"]["httpStatus"] != 404 and ally_info_recapture < 3:
+                                logPrint(ally_info["message"])
+                                ally_info_recapture += 1
+                                logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
+                                ally_info = await get_info(connection, ally["puuid"])
+                            if ally_info["info_got"]:
+                                ally_info_body = ally_info["body"]
+                                infos[ally["puuid"]] = ally_info_body
                             else:
-                                ally_info: dict[str, Any] = await get_info(connection, ally["puuid"])
-                                while not ally_info["info_got"] and ally_info["body"]["httpStatus"] != 404 and ally_info_recapture < 3:
-                                    logPrint(ally_info["message"])
-                                    ally_info_recapture += 1
-                                    logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
-                                    ally_info = await get_info(connection, ally["puuid"])
-                                if ally_info["info_got"]:
-                                    ally_info_body = ally_info["body"]
-                                    infos[ally["puuid"]] = ally_info_body
-                                else:
-                                    logPrint(ally_info["message"])
-                                    logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
-                                    continue
-                            members_to_detect.append(ally_info_body)
-                    if champ_select_session["theirTeam"]:
-                        for enemy in champ_select_session["theirTeam"]:
-                            if not enemy["puuid"] in {current_info["puuid"], "", BOT_UUID} and (enemy["nameVisibilityType"] == "VISIBLE" or enemy["nameVisibilityType"] == ""):
-                                enemy_info_recapture: int = 0
-                                if enemy["puuid"] in infos:
-                                    enemy_info_body: dict[str, Any] = infos[enemy["puuid"]]
-                                else:
-                                    enemy_info: dict[str, Any] = await get_info(connection, enemy["puuid"])
-                                    while not enemy_info["info_got"] and enemy_info["body"]["httpStatus"] != 404 and enemy_info_recapture < 3:
-                                        logPrint(enemy_info["message"])
-                                        enemy_info_recapture += 1
-                                        logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an enemy (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(enemy["puuid"], enemy_info_recapture, enemy["puuid"], enemy_info_recapture))
-                                        enemy_info = await get_info(connection, enemy["puuid"])
-                                    if enemy_info["info_got"]:
-                                        enemy_info_body = enemy_info["body"]
-                                        infos[enemy["puuid"]] = enemy_info_body
-                                    else:
-                                        logPrint(enemy_info["message"])
-                                        logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！将忽略该名对手。\nInformation of an enemy (puuid: %s) capture failed! The program will ignore this enemy.")
-                                        continue
-                                members_to_detect.append(enemy_info_body)
-                    if len(members_to_detect) > 1:
-                        logPrint("检测到您正在英雄选择阶段。是否检测其他玩家的近期一起玩过的玩家？（输入下方其他玩家对应的编号以查询其他玩家，或者直接按回车键以查询用户本人。）\nThe program detected that you're currently during champ select stage. Do you want to detect recently played summoners of another player? (Submit the number corresponding to another player below to search for his/her recently player summoners, or press Enter directly to search for recently played summoners of the user itself.)")
-                else:
-                    gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
-                    gameData: dict[str, Any] = gameflow_session["gameData"]
-                    for player in gameData["teamOne"] + gameData["teamTwo"]:
-                        if "puuid" in player and player["puuid"] != current_info["puuid"]: #电脑玩家没有玩家通用唯一识别码（Bot players don't have puuids）
-                            player_info_recapture: int = 0
-                            if player["puuid"] in infos:
-                                player_info_body: dict[str, Any] = infos[player["puuid"]]
+                                logPrint(ally_info["message"])
+                                logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
+                                continue
+                        members_to_detect.append(ally_info_body)
+                if champ_select_session["theirTeam"]:
+                    for enemy in champ_select_session["theirTeam"]:
+                        if not enemy["puuid"] in {current_info["puuid"], "", BOT_UUID} and (enemy["nameVisibilityType"] == "VISIBLE" or enemy["nameVisibilityType"] == ""):
+                            enemy_info_recapture: int = 0
+                            if enemy["puuid"] in infos:
+                                enemy_info_body: dict[str, Any] = infos[enemy["puuid"]]
                             else:
-                                player_info: dict[str, Any] = await get_info(connection, player["puuid"])
-                                while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
-                                    logPrint(player_info["message"])
-                                    player_info_recapture += 1
-                                    logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(player["puuid"], player_info_recapture, player["puuid"], player_info_recapture))
-                                    player_info = await get_info(connection, player["puuid"])
-                                if player_info["info_got"]:
-                                    player_info_body = player_info["body"]
-                                    infos[player_info_body["puuid"]] = player_info_body
+                                enemy_info: dict[str, Any] = await get_info(connection, enemy["puuid"])
+                                while not enemy_info["info_got"] and enemy_info["body"]["httpStatus"] != 404 and enemy_info_recapture < 3:
+                                    logPrint(enemy_info["message"])
+                                    enemy_info_recapture += 1
+                                    logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an enemy (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(enemy["puuid"], enemy_info_recapture, enemy["puuid"], enemy_info_recapture))
+                                    enemy_info = await get_info(connection, enemy["puuid"])
+                                if enemy_info["info_got"]:
+                                    enemy_info_body = enemy_info["body"]
+                                    infos[enemy["puuid"]] = enemy_info_body
                                 else:
-                                    logPrint(player_info["message"])
-                                    logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an player (puuid: %s) capture failed! The program will ignore this player.")
+                                    logPrint(enemy_info["message"])
+                                    logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！将忽略该名对手。\nInformation of an enemy (puuid: %s) capture failed! The program will ignore this enemy.")
                                     continue
-                            members_to_detect.append(player_info_body)
-                    if len(members_to_detect) > 1:
-                        logPrint("检测到您正在游戏中。是否检测其他玩家的近期一起玩过的玩家？（输入下方其他玩家对应的编号以查询其他玩家，或者直接按回车键以查询用户本人。）\nThe program detected that you're currently in a game. Do you want to detect recently played summoners of another player? (Submit the number corresponding to another player below to search for his/her recently player summoners, or press Enter directly to search for recently played summoners of the user itself.)")
-            if len(members_to_detect) > 1:
-                for i in range(len(members_to_detect)):
-                    member_info_body = members_to_detect[i]
-                    logPrint("%d\t%s\t%s" %(i, member_info_body["puuid"], get_info_name(member_info_body)))
-                memberId: str = logInput()
-                if memberId != "" and memberId in list(map(str, range(1, len(members_to_detect)))):
-                    selfDetect = False
-                    summoner_name = members_to_detect[int(memberId)]["puuid"]
-                elif memberId == "0":
-                    continue
-                else:
-                    selfDetect = True
-                    summoner_name = "current-summoner"
+                            members_to_detect.append(enemy_info_body)
             else:
-                selfDetect = True
-                summoner_name = "current-summoner"
+                gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
+                gameData: dict[str, Any] = gameflow_session["gameData"]
+                for player in gameData["teamOne"] + gameData["teamTwo"]:
+                    if "puuid" in player and player["puuid"] != current_info["puuid"]: #电脑玩家没有玩家通用唯一识别码（Bot players don't have puuids）
+                        player_info_recapture: int = 0
+                        if player["puuid"] in infos:
+                            player_info_body: dict[str, Any] = infos[player["puuid"]]
+                        else:
+                            player_info: dict[str, Any] = await get_info(connection, player["puuid"])
+                            while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
+                                logPrint(player_info["message"])
+                                player_info_recapture += 1
+                                logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(player["puuid"], player_info_recapture, player["puuid"], player_info_recapture))
+                                player_info = await get_info(connection, player["puuid"])
+                            if player_info["info_got"]:
+                                player_info_body = player_info["body"]
+                                infos[player_info_body["puuid"]] = player_info_body
+                            else:
+                                logPrint(player_info["message"])
+                                logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an player (puuid: %s) capture failed! The program will ignore this player.")
+                                continue
+                        members_to_detect.append(player_info_body)
+        #处理主召唤师（Handle the main summoner）
+        if len(members_to_detect) > 1:
+            if gameflow_phase in {"Lobby", "Matchmaking", "ReadyCheck"}:
+                gameflow_desc_zh: str = "房间内"
+                gameflow_desc_en: str = "in a lobby"
+            elif gameflow_phase == "ChampSelect":
+                gameflow_desc_zh = "英雄选择阶段"
+                gameflow_desc_en = "in champ select"
+            else:
+                gameflow_desc_zh = "游戏中"
+                gameflow_desc_en = "in a game"
+            logPrint(f'''检测到您正在{gameflow_desc_zh}。是否检测其他玩家的近期一起玩过的玩家？（输入下方其他玩家对应的编号以查询其他玩家，或者直接按回车键以查询用户本人。输入“0”以退出程序。）\nThe program detected that you're currently {gameflow_desc_en}. Do you want to detect recently played summoners of another player? (Submit the number corresponding to another player below to search for his/her recently player summoners, or press Enter directly to search for recently played summoners of the user itself. Submit "0" to exit the program.)''')
+            for i in range(len(members_to_detect)):
+                member_info_body = members_to_detect[i]
+                logPrint("%d\t%s\t%s" %(i, member_info_body["puuid"], get_info_name(member_info_body)))
+            memberId: str = logInput()
+            if memberId == "0":
+                break
+            elif memberId in list(map(str, range(1, len(members_to_detect)))):
+                summoner_name: str = members_to_detect[int(memberId)]["puuid"]
+            else:
+                summoner_name = memberId
+        else:
+            logPrint('请输入要查询的召唤师名称，退出请输入“0”。\nPlease input the summoner name to query. Submit "0" to exit.')
+            summoner_name: str = logInput()
         if summoner_name == "0":
             break
-        elif summoner_name == "3":
-            switch_mode = True
-            continue
-        elif summoner_name == "":
-            logPrint("请输入非空字符串！\nPlease input a string instead of null!")
-            continue
         else:
-            main_info: dict[str, Any] = await get_info(connection, summoner_name)
+            main_info: dict[str, Any] = await get_info(connection, summoner_name or "current-summoner") #当没有检测到用户与其它召唤师的交互，且用户直接按下回车时，表示查询自己的战绩（When no summoner is detected to be interacting with the user, and the user directly pressed Enter, the program will query the match history of the user itself）
             if not main_info["info_got"]:
                 logPrint(main_info["message"])
                 continue
             else:
                 main_info_body: dict[str, Any] = main_info["body"]
-        displayName: str = get_info_name(main_info_body) #用于扫描模式定位到某召唤师（Determines the directory which contains the summoner's data）
-        current_summonerId: int = main_info_body["summonerId"] #用于排除房间邀请信息中的自己（Defined to exclude the user itself from the lobby invitations）
-        current_puuid: str = main_info_body["puuid"] #用于核验对局是否包含该召唤师。此外，还用于扫描模式从对局的所有玩家信息中定位到该玩家（For use of checking whether the searched matches include this summoner. In addition, it's used for localization of this player from all players in a match in "scan" mode）
-        current_summonerName: str = main_info_body["displayName"] if main_info_body["gameName"] == "" and main_info_body["tagLine"] == "" else main_info_body["gameName"] + "#" + main_info_body["tagLine"] #作用同上，用于模糊定位，主要应用于玩家通用唯一识别码发生变动的大区且在名称编号引入后注册的主召唤师的对局记录扫描模式（Acts as the same role as the above variable for a rough localization. It's mainly designed for Scan Mode on players that signed up after tagLine was introduced on servers that changed the players' puuids）
-        infos[current_puuid] = main_info_body
-        #下面检测本地已保存的召唤师信息是否包含已改名的召唤师（Detect whether the local summoner information contain any summoner that has changed its name）
-        folderNames: list[str] = os.listdir(platform_folder)
-        if len(folderNames) > 0:
-            logPrint("正在检查该召唤师是否改过名（Checking if this summoner has changed the name）：")
-            for i in range(len(folderNames)):
-                logPrint("[%d/%d]%s" %(i + 1, len(folderNames), folderNames[i]), end = "\r")
-                folderName: str = folderNames[i]
-                json02name: str = f"Summoner Profile - {folderName}.json"
-                json02path: str = os.path.join(platform_folder, folderName, json02name).replace("\\", "/")
-                if os.path.exists(json02path):
-                    try:
-                        with open(json02path, "r", encoding = "utf-8") as jsonfile01:
-                            test_info_body: dict[str, Any] = json.load(jsonfile01)
-                    except:
-                        pass
-                    else:
-                        if isinstance(test_info_body, dict) and "puuid" in test_info_body and test_info_body["puuid"] == current_puuid:
-                            test_displayName = get_info_name(test_info_body)
-                            if test_displayName != displayName:
-                                logPrint(f"警告：检测到同大区下该召唤师存在其它显示名：\nWarning: Another displayName of this summoner is detected in this server:\n{test_displayName}")
-                                break
+                displayName: str = get_info_name(main_info_body) #用于扫描模式定位到某召唤师（Determines the directory which contains the summoner's data）
+                current_summonerId: int = main_info_body["summonerId"] #用于排除房间邀请信息中的自己（Defined to exclude the user itself from the lobby invitations）
+                current_puuid: str = main_info_body["puuid"] #用于核验对局是否包含该召唤师。此外，还用于扫描模式从对局的所有玩家信息中定位到该玩家（For use of checking whether the searched matches include this summoner. In addition, it's used for localization of this player from all players in a match in "scan" mode）
+                current_summonerName: str = main_info_body["displayName"] if main_info_body["gameName"] == "" and main_info_body["tagLine"] == "" else main_info_body["gameName"] + "#" + main_info_body["tagLine"] #作用同上，用于模糊定位，主要应用于玩家通用唯一识别码发生变动的大区且在名称编号引入后注册的主召唤师的对局记录扫描模式（Acts as the same role as the above variable for a rough localization. It's mainly designed for Scan Mode on players that signed up after tagLine was introduced on servers that changed the players' puuids）
+                infos[current_puuid] = main_info_body
+        #处理小号（Handle the smurfs）
+        smurfs: list[dict[str, Any]] = await load_smurf(connection, infos = infos)
+        #整理账号信息（Organize accounts）
+        AllAccounts = [main_info_body] + smurfs
+        current_puuid_list: list[str] = list(map(lambda x: x["puuid"], AllAccounts))
+        current_summonerName_list: list[str] = list(map(get_info_name, AllAccounts))
         #下面设置扫描模式的扫描目录（The following code determines the scanning directory for scan mode）
         folder: str = set_summonerInfo_folder(region, platformId, main_info_body)
         saved_LoLMatchIDs: list[int] = []
@@ -3313,10 +2946,6 @@ async def search_recent_players(connection: Connection) -> None:
                 if not (isinstance(saved_TFTMatchIDs, list) and all(map(lambda x: isinstance(x, int), saved_TFTMatchIDs))):
                     logPrint("已存储的云顶之弈对局数据格式错误！\nSaved TFT match data format error!")
         
-        #整理账号信息（Organize accounts）
-        AllAccounts = [main_info_body] + smurfs
-        current_puuid_list: list[str] = list(map(lambda x: x["puuid"], AllAccounts))
-        current_summonerName_list: list[str] = list(map(get_info_name, AllAccounts))
         #下面获取最近一起玩过的英雄联盟玩家的信息（The following code captures the recently played LoL players' information）
         logPrint("是否查询英雄联盟对局记录？（输入任意键查询，否则不查询）\nSearch LoL matches? (Input anything to search or null to skip searching LoL matches)")
         search_LoL_str: str = logInput()
@@ -3620,28 +3249,11 @@ async def search_recent_players(connection: Connection) -> None:
             TFTGamePlayed = False
         
         if search_LoL and LoLGamePlayed or search_TFT and TFTGamePlayed:
-            if not detectMode:
-                status: int = generate_mode(search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df, gameQueues, displayName, folder)
-            else:
-                logPrint("近期一起玩过的玩家数据已加载完成！\nRecently played summoner data loaded successfully!")
-                while True:
-                    update: bool = await detect_mode(connection, search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df, language_code, infos)
-                    if update:
-                        break
-        # with open("infos.json", "w", encoding = "utf-8") as fp:
-        #     json.dump(infos, fp, indent = 4, ensure_ascii = False)
-        if detectMode:
-            logPrint("是否从检测模式切换到生成模式？（输入任意键切换，否则不切换）\nDo you want to switch from Detect Mode to Generate Mode? (Submit anything to switch, or null to refuse switching)")
-        else:
-            logPrint("是否从生成模式切换到检测模式？（输入任意键切换，否则不切换）\nDo you want to switch from Detect Mode to Generate Mode? (Submit anything to switch, or null to refuse switching)")
-        switch_mode_str: str = logInput()
-        switch_mode = bool(switch_mode_str)
-        if not detectMode:
-            logPrint("是否更换小号信息？（输入任意非空字符串以重置小号信息，否则保存现有的小号信息。）\nDo you want to change the smurf information? (Submit any non-empty string to reset smurfs, or null to reserve the current information.)")
-            clear_smurf_str: str = logInput()
-            clear_smurf: bool = bool(clear_smurf_str)
-            if clear_smurf:
-                smurf_asked = False
+            logPrint("近期一起玩过的玩家数据已加载完成！\nRecently played summoner data loaded successfully!")
+            while True:
+                update: bool = await detect_mode(connection, search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df, language_code, infos)
+                if update:
+                    break
 
 #-----------------------------------------------------------------------------
 # websocket

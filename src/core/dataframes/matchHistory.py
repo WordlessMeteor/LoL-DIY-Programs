@@ -885,7 +885,7 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
         session = requests.Session()
     if log == None:
         log = LogManager()
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     logPrint = log.logPrint
     puuidList: list[str] = [puuid] if isinstance(puuid, str) else puuid
     LoLHistory_header_keys: list[str] = list(LoLHistory_header.keys())
@@ -1294,7 +1294,7 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
         session = requests.Session()
     if log == None:
         log = LogManager()
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     logPrint = log.logPrint
     puuidList: list[str] = [puuid] if isinstance(puuid, str) else puuid
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
@@ -1739,7 +1739,7 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
         session = requests.Session()
     if log == None:
         log = LogManager()
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     ##注意到infos没有做类似处理。因此，一旦出现不同函数调用间共享了infos参数……这是好事啊！（Note that `infos` parameter isn't processed in this manner. Hence, once it's shared between different function calls ... well, that's exactly what I want）
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
     platformId: str = current_party["platformId"]
@@ -2126,7 +2126,7 @@ def generate_LoLHistory_records(LoLHistory_data: dict[str, list[Any]], LoLGame_s
         unmapped_keys = {"queue": set(), "summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "CherryAugment": set()}
     if log == None:
         log = LogManager()
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     logPrint = log.logPrint
     matchId: int = LoLGame_summary["gameId"]
     version: str = LoLGame_summary["gameVersion"]
@@ -2405,7 +2405,7 @@ def generate_LoLHistory_records_sgp(LoLHistory_data: dict[str, list[Any]], LoLGa
         unmapped_keys = {"queue": set(), "summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "CherryAugment": set()}
     if log == None:
         log = LogManager()
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     logPrint = log.logPrint
     LoLHistory_header_keys: list[str] = list(LoLHistory_header.keys())
     if participantIndex == -1: #对局数据记录存在异常时的处理（Exception of match data recording exception）
@@ -2756,7 +2756,7 @@ def sort_LoLHistory(LoLHistory: dict[str, Any], queues: dict[int, dict[str, Any]
         session = requests.Session()
     if log == None:
         log = LogManager()
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     logPrint = log.logPrint
     LoLHistory_header_keys: list[str] = list(LoLHistory_header.keys())
     LoLHistory_data: dict[str, list[Any]] = {key: [] for key in LoLHistory_header_keys}
@@ -3137,7 +3137,7 @@ def sort_LoLHistory_sgp(LoLHistory: dict[str, Any], current_puuid: str | list[st
         session = requests.Session()
     if log == None:
         log = LogManager()
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     logPrint = log.logPrint
     puuidList: list[str] = [current_puuid] if isinstance(current_puuid, str) else current_puuid
     LoL_main_player_indices: list[int] = []
@@ -3427,7 +3427,7 @@ def sort_LoLHistory_sgp(LoLHistory: dict[str, Any], current_puuid: str | list[st
     #LoLHistory_df.apply(lambda x: pandas.Series([-3], index = ["K/D/A"]))
     return (LoLHistory_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments)
 
-def generate_LoLGameInfo_records(LoLGame_summary_data: dict[str, list[Any]], LoLGame_summary: dict[str, Any], participantIndex: int, queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], gameIndex: int = 1, current_puuid: str | list[str] = "", bans: Optional[list[dict[str, int]]] = None, legacy_banData_appended: Optional[dict[int, bool]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> dict[str, list[Any]]:
+def generate_LoLGameSummary_records(LoLGame_summary_data: dict[str, list[Any]], LoLGame_summary: dict[str, Any], participantIndex: int, queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], gameIndex: int = 1, current_puuid: str | list[str] = "", bans: Optional[list[dict[str, int]]] = None, legacy_banData_appended: Optional[dict[int, bool]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> dict[str, list[Any]]:
     '''
     向英雄联盟对局概要数据中追加记录。<br>Append records to LoL match summary data.
     
@@ -3534,7 +3534,7 @@ def generate_LoLGameInfo_records(LoLGame_summary_data: dict[str, list[Any]], LoL
         unmapped_keys = {"queue": set(), "summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "CherryAugment": set()}
     if log == None:
         log = LogManager()
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     logPrint = log.logPrint
     puuidList: list[str] = [current_puuid] if isinstance(current_puuid, str) else current_puuid
     matchId: int = LoLGame_summary["gameId"]
@@ -3844,7 +3844,7 @@ def generate_LoLGameInfo_records(LoLGame_summary_data: dict[str, list[Any]], LoL
         LoLGame_summary_data[key].append(to_append)
     return LoLGame_summary_data
 
-def generate_LoLGameInfo_records_sgp(LoLGame_summary_data: dict[str, list[Any]], LoLGame_summary: dict[str, Any], participantIndex: int, queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], gameIndex: int = 1, current_puuid: str | list[str] = "", bans: Optional[list[dict[str, int]]] = None, legacy_banData_appended: Optional[dict[int, bool]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> dict[str, list[Any]]:
+def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any]], LoLGame_summary: dict[str, Any], participantIndex: int, queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], gameIndex: int = 1, current_puuid: str | list[str] = "", bans: Optional[list[dict[str, int]]] = None, legacy_banData_appended: Optional[dict[int, bool]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> dict[str, list[Any]]:
     '''
     向英雄联盟对局概要数据中追加记录。<br>Append records to LoL match summary data.
     
@@ -3951,7 +3951,7 @@ def generate_LoLGameInfo_records_sgp(LoLGame_summary_data: dict[str, list[Any]],
         unmapped_keys = {"queue": set(), "summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "CherryAugment": set()}
     if log == None:
         log = LogManager()
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     logPrint = log.logPrint
     puuidList: list[str] = [current_puuid] if isinstance(current_puuid, str) else current_puuid
     LoLGame_summary_json: dict[str, Any] = LoLGame_summary["json"]
@@ -4443,7 +4443,7 @@ def generate_LoLGameInfo_records_sgp(LoLGame_summary_data: dict[str, list[Any]],
         LoLGame_summary_data[key].append(to_append)
     return LoLGame_summary_data
 
-def sort_LoLGame_summary(LoLGame_summary: dict[str, Any], queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], gameIndex: int = 1, current_puuid: str | list[str] = "", useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, session: Optional[requests.Session] = None, sortStats: bool = False, LoLGame_stat_data: Optional[dict[str, list[Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]]]:
+def sort_LoLGame_summary(LoLGame_summary: dict[str, Any], queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], gameIndex: int = 1, current_puuid: str | list[str] = "", useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, session: Optional[requests.Session] = None, sortStats: bool = False, LoLGame_stat_data: Optional[dict[str, list[Any]]] = None, save_self: bool = True, save_other: bool = True, save_bot: bool = False, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]]]:
     '''
     将英雄联盟对局概要中的玩家信息整理成一张表格。<br>Organize player information in a LoL match summary into a dataframe.
     
@@ -4538,6 +4538,12 @@ def sort_LoLGame_summary(LoLGame_summary: dict[str, Any], queues: dict[int, dict
     :type sortStats: bool
     :param LoLGame_stat_data: 玩家战绩数据。相比对局概要数据，添加了对局元数据信息。<br>Player stat data, which additionally organize the match metadata compared with match summary.
     :type LoLGame_stat_data: dict[str, list[Any]]
+    :param save_self: 在汇总玩家战绩时，是否保存主召唤师的数据。默认为真。<br>Whether to save the data of the main summoner when the program is summarizing player stats. True by default.
+    :type save_self: bool
+    :param save_other: 在汇总玩家战绩时，是否保存主召唤师以外的玩家数据。默认为真。<br>Whether to save the data of players except the main summoner when the program is summarizing player stats. True by default.
+    :type save_other: bool
+    :param save_bot: 在汇总玩家战绩时，是否保存电脑玩家的数据。默认为假。<br>Whether to save the data of bot players when the program is summarizing player stats. False by default.
+    :type save_bot: bool
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -4555,10 +4561,10 @@ def sort_LoLGame_summary(LoLGame_summary: dict[str, Any], queues: dict[int, dict
     if session == None:
         session = requests.Session()
     if LoLGame_stat_data == None:
-        LoLGame_stat_data = {}
+        LoLGame_stat_data = {key: [] for key in LoLGame_summary_header.keys()}
     if log == None:
         log = LogManager()
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     logPrint = log.logPrint
     puuidList: list[str] = [current_puuid] if isinstance(current_puuid, str) else current_puuid
     version: str = LoLGame_summary["gameVersion"]
@@ -4840,8 +4846,9 @@ def sort_LoLGame_summary(LoLGame_summary: dict[str, Any], queues: dict[int, dict
     LoLGame_summary_header_keys: list[str] = list(LoLGame_summary_header.keys())
     LoLGame_summary_data: dict[str, list[Any]] = {key: [] for key in LoLGame_summary_header} #这里将对局的数据放在一个字典中，键为统计量，值为由所有玩家的数据组成的列表（Here the whole match data are stored in a dictionary whose keys are statistics and values are lists composed of corresponding data of all players）
     for i in range(len(LoLGame_summary["participantIdentities"])): #对于对局概要而言，每个玩家对应一条记录（For match summary, each record represents a player）
-        generate_LoLGameInfo_records(LoLGame_summary_data, LoLGame_summary, i, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = gameIndex, current_puuid = puuidList, bans = bans, legacy_banData_appended = legacy_banData_appended, unmapped_keys = unmapped_keys, log = log, verbose = verbose)
-        if sortStats and LoLGame_summary["participantIdentities"][i]["player"]["puuid"] in puuidList: #这个if语句块是适配查战绩脚本而做的修改（This if-block is a modification made to adapt to Customized Program 05）
+        participant_puuid: str = LoLGame_summary["participantIdentities"][i]["player"]["puuid"]
+        generate_LoLGameSummary_records(LoLGame_summary_data, LoLGame_summary, i, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = gameIndex, current_puuid = puuidList, bans = bans, legacy_banData_appended = legacy_banData_appended, unmapped_keys = unmapped_keys, log = log, verbose = verbose)
+        if sortStats and not (not save_bot and participant_puuid == BOT_UUID or not save_self and participant_puuid in puuidList or not save_other and not participant_puuid in puuidList): #这个if语句块是适配查战绩脚本而做的修改（This if-block is a modification made to adapt to Customized Program 05）
             for j in range(len(LoLGame_summary_header_keys)):
                 key: str = LoLGame_summary_header_keys[j]
                 LoLGame_stat_data[key].append(LoLGame_summary_data[key][-1]) #直接添加最近一次追加的数据，以简化代码（Directly append the recently appended data to simplify the code）
@@ -4853,7 +4860,7 @@ def sort_LoLGame_summary(LoLGame_summary: dict[str, Any], queues: dict[int, dict
     LoLGame_summary_df = pandas.concat([pandas.DataFrame([LoLGame_summary_header])[LoLGame_summary_df.columns], LoLGame_summary_df], ignore_index = True)
     return (LoLGame_summary_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments)
 
-def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], gameIndex: int = 1, current_puuid: str | list[str] = "", useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, session: Optional[requests.Session] = None, sortStats: bool = False, LoLGame_stat_data: Optional[dict[str, list[Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]]]:
+def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], gameIndex: int = 1, current_puuid: str | list[str] = "", useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, session: Optional[requests.Session] = None, sortStats: bool = False, LoLGame_stat_data: Optional[dict[str, list[Any]]] = None, save_self: bool = True, save_other: bool = True, save_bot: bool = False, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]]]:
     '''
     将英雄联盟对局概要中的玩家信息整理成一张表格。<br>Organize player information in a match summary into a dataframe.
     
@@ -4948,6 +4955,12 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
     :type sortStats: bool
     :param LoLGame_stat_data: 玩家战绩数据。相比对局概要数据，添加了对局元数据信息。<br>Player stat data, which additionally organize the match metadata compared with match summary.
     :type LoLGame_stat_data: dict[str, list[Any]]
+    :param save_self: 在汇总玩家战绩时，是否保存主召唤师的数据。默认为真。<br>Whether to save the data of the main summoner when the program is summarizing player stats. True by default.
+    :type save_self: bool
+    :param save_other: 在汇总玩家战绩时，是否保存主召唤师以外的玩家数据。默认为真。<br>Whether to save the data of players except the main summoner when the program is summarizing player stats. True by default.
+    :type save_other: bool
+    :param save_bot: 在汇总玩家战绩时，是否保存电脑玩家的数据。默认为假。<br>Whether to save the data of bot players when the program is summarizing player stats. False by default.
+    :type save_bot: bool
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -4965,10 +4978,10 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
     if session == None:
         session = requests.Session()
     if LoLGame_stat_data == None:
-        LoLGame_stat_data = {}
+        LoLGame_stat_data = {key: [] for key in LoLGame_summary_sgp_header.keys()}
     if log == None:
         log = LogManager()
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     logPrint = log.logPrint
     puuidList: list[str] = [current_puuid] if isinstance(current_puuid, str) else current_puuid
     LoLGame_summary_header: dict[str, str] = LoLGame_summary_sgp_header #通过在函数内指定同名变量，使得其不再使用全局变量，并减少以下代码的修改（By specifying the variable with the same name, this variable is no longer the global one, and meanwhile the following code doesn't need changing much）
@@ -5272,8 +5285,9 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
                     break
         #下面开始整理数据（Organize data）
         for i in range(len(LoLGame_summary_json["participants"])): #对于对局概要而言，每个玩家对应一条记录（For match summary, each record represents a player）
-            generate_LoLGameInfo_records_sgp(LoLGame_summary_data, LoLGame_summary, i, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = gameIndex, current_puuid = puuidList, bans = bans, legacy_banData_appended = legacy_banData_appended, unmapped_keys = unmapped_keys, log = log, verbose = verbose)
-            if sortStats and LoLGame_summary_json["participants"][i]["puuid"] in puuidList: #这个if语句块是适配查战绩脚本而做的修改（This if-block is a modification made to adapt to Customized Program 05）
+            participant_puuid: str = LoLGame_summary_json["participants"][i]["puuid"]
+            generate_LoLGameSummary_records_sgp(LoLGame_summary_data, LoLGame_summary, i, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = gameIndex, current_puuid = puuidList, bans = bans, legacy_banData_appended = legacy_banData_appended, unmapped_keys = unmapped_keys, log = log, verbose = verbose)
+            if sortStats and not (not save_bot and participant_puuid == BOT_UUID or not save_self and participant_puuid in puuidList or not save_other and not participant_puuid in puuidList): #这个if语句块是适配查战绩脚本而做的修改（This if-block is a modification made to adapt to Customized Program 05）
                 for j in range(len(LoLGame_summary_header_keys)):
                     key: str = LoLGame_summary_header_keys[j]
                     LoLGame_stat_data[key].append(LoLGame_summary_data[key][-1]) #直接添加最近一次追加的数据，以简化代码（Directly append the recently appended data to simplify the code）
@@ -5406,7 +5420,7 @@ async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], que
         session = requests.Session()
     if log == None:
         log = LogManager()
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     logPrint = log.logPrint
     puuidList: list[str] = [puuid] if isinstance(puuid, str) else puuid
     error_LoLMatchIDs: list[int] = [] #记录实际存在但未如期获取的对局序号（Records the LoL matches that really exist but fail to be fetched）
@@ -5703,8 +5717,9 @@ async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], que
                             break
                 #下面开始整理数据（Organize data）
                 for i in range(len(LoLGame_summary["participants"])):
-                    if not (not save_bot and LoLGame_summary["participantIdentities"][i]["player"]["puuid"] == BOT_UUID or not save_self and LoLGame_summary["participantIdentities"][i]["player"]["puuid"] in puuidList or not save_other and not LoLGame_summary["participantIdentities"][i]["player"]["puuid"] in puuidList):
-                        generate_LoLGameInfo_records(LoLGame_stat_data, LoLGame_summary, i, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = puuidList, bans = bans, legacy_banData_appended = legacy_banData_appended, unmapped_keys = unmapped_keys, log = log, verbose = verbose)
+                    participant_puuid: str = LoLGame_summary["participantIdentities"][i]["player"]["puuid"]
+                    if not (not save_bot and participant_puuid == BOT_UUID or not save_self and participant_puuid in puuidList or not save_other and not participant_puuid in puuidList):
+                        generate_LoLGameSummary_records(LoLGame_stat_data, LoLGame_summary, i, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = puuidList, bans = bans, legacy_banData_appended = legacy_banData_appended, unmapped_keys = unmapped_keys, log = log, verbose = verbose)
                 if excluded_reserve:
                     logPrint("[%d/%d]对局%d不包含主玩家。已保留该对局。\nMatch %d doesn't contain the main player but is reserved." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, matchId), print_time = True, verbose = verbose)
                 else:
@@ -5853,7 +5868,7 @@ async def sort_LoLGame_stats_sgp(connection: Connection, sgpSession: SGPSession,
         session = requests.Session()
     if log == None:
         log = LogManager()
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     logPrint = log.logPrint
     puuidList: list[str] = [puuid] if isinstance(puuid, str) else puuid
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
@@ -6191,8 +6206,9 @@ async def sort_LoLGame_stats_sgp(connection: Connection, sgpSession: SGPSession,
                             break
                 #下面开始整理数据（Organize data）
                 for i in range(len(LoLGame_summary_json["participants"])):
-                    if not (not save_bot and LoLGame_summary_json["participants"][i]["puuid"] == BOT_UUID or not save_self and LoLGame_summary_json["participants"][i]["puuid"] in puuidList or not save_other and not LoLGame_summary_json["participants"][i]["puuid"] in puuidList):
-                        generate_LoLGameInfo_records_sgp(LoLGame_stat_data, LoLGame_summary, i, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = puuidList, bans = bans, legacy_banData_appended = legacy_banData_appended, unmapped_keys = unmapped_keys, log = log, verbose = verbose)
+                    participant_puuid: str = LoLGame_summary_json["participants"][i]["puuid"]
+                    if not (not save_bot and participant_puuid == BOT_UUID or not save_self and participant_puuid in puuidList or not save_other and not participant_puuid in puuidList):
+                        generate_LoLGameSummary_records_sgp(LoLGame_stat_data, LoLGame_summary, i, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = puuidList, bans = bans, legacy_banData_appended = legacy_banData_appended, unmapped_keys = unmapped_keys, log = log, verbose = verbose)
                 if excluded_reserve:
                     logPrint("[%d/%d]对局%d不包含主玩家。已保留该对局。\nMatch %d doesn't contain the main player but is reserved." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, matchId), print_time = True, verbose = verbose)
                 else:
@@ -7044,7 +7060,7 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
         infos = {}
     if log == None:
         log = LogManager()
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     logPrint = log.logPrint
     version_re: re.Pattern[str] = re.compile(r"\d+\.\d+\.\d+\.\d+")
     TFTHistory_header_keys: list[str] = list(TFTHistory_header.keys())
@@ -7380,7 +7396,7 @@ async def sort_TFTHistory(connection: Connection, TFTHistory: dict[str, Any], cu
         current_versions = {"TFTAugment": "", "TFTChampion": "", "TFTItem": "", "TFTCompanion": "", "TFTTrait": ""}
     if unmapped_keys == None:
         unmapped_keys = {"TFTAugment": set(), "TFTChampion": set(), "TFTItem": set(), "TFTCompanion": set(), "TFTTrait": set()}
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     logPrint = log.logPrint
     puuidList: list[str] = [current_puuid] if isinstance(current_puuid, str) else current_puuid
     TFTHistoryList: list[dict[str, Any]] = TFTHistory["games"]
@@ -7660,7 +7676,7 @@ async def sort_TFTHistory(connection: Connection, TFTHistory: dict[str, Any], cu
     TFTHistory_df = pandas.concat([pandas.DataFrame([TFTHistory_header])[TFTHistory_df.columns], TFTHistory_df], ignore_index = True)
     return (TFTHistory_df, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits)
 
-async def generate_TFTGameInfo_records(connection: Connection, TFTGame_summary_data: dict[str, list[Any]], TFTGame_summary: dict[str, Any], participantIndex: int, queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], gameIndex: int = 1, current_puuid: str | list[str] = "", unmapped_keys: Optional[dict[str, set[Any]]] = None, useInfoDict: bool = False, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> dict[str, list[Any]]: #这里传入的玩家通用唯一识别码参数仅用于辨别双人作战模式中的队友（Here the puuid parameter is only used to distinguish the ally from others in Double Up mode）
+async def generate_TFTGameSummary_records(connection: Connection, TFTGame_summary_data: dict[str, list[Any]], TFTGame_summary: dict[str, Any], participantIndex: int, queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], gameIndex: int = 1, current_puuid: str | list[str] = "", unmapped_keys: Optional[dict[str, set[Any]]] = None, useInfoDict: bool = False, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> dict[str, list[Any]]: #这里传入的玩家通用唯一识别码参数仅用于辨别双人作战模式中的队友（Here the puuid parameter is only used to distinguish the ally from others in Double Up mode）
     '''
     向云顶之弈对局概要数据中追加记录。<br>Append records to TFT match summary data.
     
@@ -7743,7 +7759,7 @@ async def generate_TFTGameInfo_records(connection: Connection, TFTGame_summary_d
         infos = {}
     if log == None:
         log = LogManager()
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     logPrint = log.logPrint
     puuidList: list[str] = [current_puuid] if isinstance(current_puuid, str) else current_puuid
     version_re: re.Pattern[str] = re.compile(r"\d+\.\d+\.\d+\.\d+")
@@ -7983,7 +7999,7 @@ async def generate_TFTGameInfo_records(connection: Connection, TFTGame_summary_d
         TFTGame_summary_data[key].append(to_append)
     return TFTGame_summary_data
 
-async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str, Any], queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], gameIndex: int = 1, current_puuid: str | list[str] = "", save_self: bool = True, useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[Any]]] = None, session: Optional[requests.Session] = None, useInfoDict: bool = False, infos: Optional[dict[str, dict[str, Any]]] = None, sortStats: bool = False, TFTGame_stat_data: Optional[dict[str, list[Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]: #本函数体中涉及召唤师信息的获取，因此需要定义为协程（This function body involves getting summoner information, so this function is defined as an async function）
+async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str, Any], queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], gameIndex: int = 1, current_puuid: str | list[str] = "", useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[Any]]] = None, session: Optional[requests.Session] = None, useInfoDict: bool = False, infos: Optional[dict[str, dict[str, Any]]] = None, sortStats: bool = False, TFTGame_stat_data: Optional[dict[str, list[Any]]] = None, save_self: bool = True, save_other: bool = True, save_bot: bool = False, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]: #本函数体中涉及召唤师信息的获取，因此需要定义为协程（This function body involves getting summoner information, so this function is defined as an async function）
     '''
     将云顶之弈对局概要中的玩家信息整理成一张表格。<br>Organize player information in a TFT match summary into a dataframe.
     
@@ -8042,8 +8058,6 @@ async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str
     :type gameIndex: int
     :param current_puuid: 主召唤师的玩家通用唯一识别码。可以是单一值，也可以是一个列表。这个参数只用于确定敌友阵营。<br>The main summoner's puuid. Both a single value and a list are supported. This parameter is only used to determine the enemy and ally teams.
     :type current_puuid: str | list[str]
-    :param save_self: 是否保存主召唤师的数据。默认为真。<br>Whether to save the data of the main summoner. True by default.
-    :type save_self: bool
     :param useAllVersions: 是否为数据资源异常处理执行版本回溯。默认为假。<br>Whether to perform version backtracking for data resource exception handling. False by default.
     :type useAllVersions: bool
     :param versionList: 适用于CommunityDragon数据库的版本对象列表。<br>A list of Patch objects compatible with CommunityDragon database versioning.
@@ -8064,6 +8078,12 @@ async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str
     :type sortStats: bool
     :param TFTGame_stat_data: 玩家战绩数据。相比对局概要数据，添加了对局元数据信息。<br>Player stat data, which additionally organize the match metadata compared with match summary.
     :type TFTGame_stat_data: dict[str, list[Any]]
+    :param save_self: 在汇总玩家战绩时，是否保存主召唤师的数据。默认为真。<br>Whether to save the data of the main summoner when the program is summarizing player stats. True by default.
+    :type save_self: bool
+    :param save_other: 在汇总玩家战绩时，是否保存主召唤师以外的玩家数据。默认为真。<br>Whether to save the data of players except the main summoner when the program is summarizing player stats. True by default.
+    :type save_other: bool
+    :param save_bot: 在汇总玩家战绩时，是否保存电脑玩家的数据。默认为假。<br>Whether to save the data of bot players when the program is summarizing player stats. False by default.
+    :type save_bot: bool
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -8086,7 +8106,7 @@ async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str
         TFTGame_stat_data = {}
     if log == None:
         log = LogManager()
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     logPrint = log.logPrint
     puuidList: list[str] = [current_puuid] if isinstance(current_puuid, str) else current_puuid
     version_re: re.Pattern[str] = re.compile(r"\d+\.\d+\.\d+\.\d+")
@@ -8333,12 +8353,12 @@ async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str
                     break
         #下面开始整理数据（Organize data）
         for i in range(len(TFTGame_summary_json["participants"])):
-            if save_self or TFTGame_summary_json["participants"][i]["puuid"] in puuidList:
-                await generate_TFTGameInfo_records(connection, TFTGame_summary_data, TFTGame_summary, i, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = gameIndex, current_puuid = puuidList, unmapped_keys = unmapped_keys, useInfoDict = useInfoDict, infos = infos, log = log, verbose = verbose)
-                if sortStats and TFTGame_summary_json["participants"][i]["puuid"] in puuidList: #这个if语句块是适配自定义脚本20而做的修改（This if-block is a modification made to adapt to Customized Program 20）
-                    for j in range(len(TFTGame_summary_header_keys)):
-                        key: str = TFTGame_summary_header_keys[j]
-                        TFTGame_stat_data[key].append(TFTGame_summary_data[key][-1]) #直接添加最近一次追加的数据，以简化代码（Directly append the recently appended data to simplify the code）
+            participant_puuid: str = TFTGame_summary_json["participants"][i]["puuid"]
+            await generate_TFTGameSummary_records(connection, TFTGame_summary_data, TFTGame_summary, i, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = gameIndex, current_puuid = puuidList, unmapped_keys = unmapped_keys, useInfoDict = useInfoDict, infos = infos, log = log, verbose = verbose)
+            if sortStats and not (not save_bot and participant_puuid == BOT_UUID or not save_self and participant_puuid in puuidList or not save_other and not participant_puuid in puuidList): #这个if语句块是适配自定义脚本20而做的修改（This if-block is a modification made to adapt to Customized Program 20）
+                for j in range(len(TFTGame_summary_header_keys)):
+                    key: str = TFTGame_summary_header_keys[j]
+                    TFTGame_stat_data[key].append(TFTGame_summary_data[key][-1]) #直接添加最近一次追加的数据，以简化代码（Directly append the recently appended data to simplify the code）
     #数据框列序整理（Dataframe column ordering）
     TFTGame_summary_statistics_output_order: list[int] = [40, 19, 55, 46, 47, 43, 33, 34, 35, 38, 52, 53, 49, 36, 50, 42, 54, 41, 39, 44, 45, 23, 24, 25, 150, 148, 149, 203, 206, 209, 155, 153, 154, 212, 215, 218, 160, 158, 159, 221, 224, 227, 165, 163, 164, 230, 233, 236, 170, 168, 169, 239, 242, 245, 175, 173, 174, 248, 251, 254, 180, 178, 179, 257, 260, 263, 185, 183, 184, 266, 269, 272, 190, 188, 189, 275, 278, 281, 195, 193, 194, 284, 287, 290, 200, 198, 199, 293, 296, 299, 61, 57, 58, 59, 60, 68, 64, 65, 66, 67, 75, 71, 72, 73, 74, 82, 78, 79, 80, 81, 89, 85, 86, 87, 88, 96, 92, 93, 94, 95, 103, 99, 100, 101, 102, 110, 106, 107, 108, 109, 117, 113, 114, 115, 116, 124, 120, 121, 122, 123, 131, 127, 128, 129, 130, 138, 134, 135, 136, 137, 145, 141, 142, 143, 144]
     TFTGame_summary_data_organized: dict[str, list[Any]] = {TFTGame_summary_header_keys[i]: TFTGame_summary_data[TFTGame_summary_header_keys[i]] for i in TFTGame_summary_statistics_output_order}
@@ -8454,7 +8474,7 @@ async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFT
         infos = {}
     if log == None:
         log = LogManager()
-    #常量准备（Parameter preparation）
+    #常量准备（Constant preparation）
     logPrint = log.logPrint
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
     platformId: str = current_party["platformId"]
@@ -8720,8 +8740,9 @@ async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFT
                                             break
                                 break
                     for i in range(len(TFTGame_summary_json["participants"])):
-                        if not (not save_bot and TFTGame_summary_json["participants"][i]["puuid"] == BOT_UUID or not save_self and TFTGame_summary_json["participants"][i]["puuid"] in puuidList or not save_other and not TFTGame_summary_json["participants"][i]["puuid"] in puuidList):
-                            await generate_TFTGameInfo_records(connection, TFTGame_stat_data, TFTGame_summary, i, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = TFTMatchIDs.index(matchId) + 1, current_puuid = puuidList, unmapped_keys = unmapped_keys, useInfoDict = useInfoDict, infos = infos, log = log, verbose = verbose)
+                        participant_puuid: str = TFTGame_summary_json["participants"][i]["puuid"]
+                        if not (not save_bot and participant_puuid == BOT_UUID or not save_self and participant_puuid in puuidList or not save_other and not participant_puuid in puuidList):
+                            await generate_TFTGameSummary_records(connection, TFTGame_stat_data, TFTGame_summary, i, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = TFTMatchIDs.index(matchId) + 1, current_puuid = puuidList, unmapped_keys = unmapped_keys, useInfoDict = useInfoDict, infos = infos, log = log, verbose = verbose)
                     if excluded_reserve:
                         logPrint("[%d/%d]对局%d不包含主玩家。已保留该对局。\nMatch %d doesn't contain the main player but is reserved." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), matchId, matchId), print_time = True, verbose = verbose)
                     else:
