@@ -934,39 +934,40 @@ async def Clarke_revival(connection: Connection) -> None:
         TFTGame_stat_fields_summary: list[str] = ["gameIndex", "queue_id", "gameModeName", "last_round_format", "total_damage_to_players", "players_eliminated", "placement"]
         TFTPlayer_stat_summary_dfs.append(pandas.concat([pandas.DataFrame(data = {"ally?": "是否队友？", "summonerName": "召唤师名"}, index = [0]), pandas.DataFrame(data = TFTGame_stat_header, index = [0]).loc[:, TFTGame_stat_fields_summary]], axis = 1))
         #TFTGame_stat_fields_details_to_print: list[str] = ["gameIndex", "game_datetime", "gameModeName", "companion name", "last_round", "placement"]
-        for i in range(len(fetched_players)):
-            player: dict[str, Any] = fetched_players[i]
-            player_summonerName: str = get_info_name(player)
-            if search_LoL:
-                logPrint("[%d/%d]" %((search_LoL + search_TFT) * i + 1, (search_LoL + search_TFT) * len(fetched_players)), end = "")
-                logPrint(f"正在加载{player_summonerName}的最近{count}场英雄联盟对局记录……\nLoading the recent {count} LoL match(es) of {player_summonerName} ...")
-                LoLGame_stat_df: pandas.DataFrame = await search_player_match_stats_lol(connection, player["puuid"], begIndex = 0, endIndex = count - 1, lol_sgp = use_sgp, log = log, verbose = print_detail)
-                #logPrint(f"{player_summonerName}的最近{count}场英雄联盟对局记录获取完成。\nThe recent {count} LoL match(es) of {player_summonerName} have/has been loaded.")
-                if queue_select:
-                    LoLGame_stat_indices_queueSelected: list[int] = [0] + list(LoLGame_stat_df[LoLGame_stat_df["queueId"].isin(queueIds)].index)
-                    LoLGame_stat_df = LoLGame_stat_df.loc[LoLGame_stat_indices_queueSelected, :]
-                if args.save_early:
-                    LoLGame_stat_indices_timeSelected: list[int] = [0] + list(LoLGame_stat_df.loc[1:, :][LoLGame_stat_df.loc[1:, :]["gameCreation"] <= current_timestamp_millis].index)
-                    LoLGame_stat_df = LoLGame_stat_df.loc[LoLGame_stat_indices_timeSelected, :]
-                #logPrint(LoLGame_stat_df, write_time = False)
-                LoLPlayer_stat_details_dfs[player_summonerName] = LoLGame_stat_df.copy(deep = True)
-                LoLPlayer_stat_summary_df: pandas.DataFrame = pandas.concat([pandas.DataFrame(data = {"ally?": ["是否队友？"] + ["" if teamOneOnly else "√" if ally_bool_dict[player["puuid"]] else ""] * (len(LoLGame_stat_df) - 1), "summonerName": ["召唤师名"] + [player_summonerName] * (len(LoLGame_stat_df) - 1)}, index = LoLGame_stat_df.index), LoLGame_stat_df.loc[:, LoLGame_stat_fields_summary]], axis = 1)
-                LoLPlayer_stat_summary_dfs.append(LoLPlayer_stat_summary_df.loc[1:, :])
-            if search_TFT:
-                logPrint("[%d/%d]" %((search_LoL + search_TFT) * i + 1 + search_LoL, (search_LoL + search_TFT) * len(fetched_players)), end = "")
-                logPrint(f"正在加载{player_summonerName}的最近{count}场云顶之弈对局记录……\nLoading the recent {count} TFT match(es) of {player_summonerName} ...")
-                TFTGame_stat_df: pandas.DataFrame = await search_player_match_stats_tft(connection, player["puuid"], begin = 0, count = count - 1, log = log, verbose = print_detail)
-                #logPrint(f"{player_summonerName}的最近{count}场云顶之弈对局记录获取完成。\nThe recent {count} TFT match(es) of {player_summonerName} have/has been loaded.")
-                if queue_select:
-                    TFTGame_stat_indices_queueSelected: list[int] = [0] + list(TFTGame_stat_df[TFTGame_stat_df["queue_id"].isin(queueIds)].index)
-                    TFTGame_stat_df = TFTGame_stat_df.loc[TFTGame_stat_indices_queueSelected, :]
-                if args.save_early:
-                    TFTGame_stat_indices_timeSelected: list[int] = [0] + list(TFTGame_stat_df.loc[1:, :][TFTGame_stat_df.loc[1:, :]["gameCreation"] <= current_timestamp_millis].index)
-                    TFTGame_stat_df = TFTGame_stat_df.loc[TFTGame_stat_indices_timeSelected, :]
-                #logPrint(TFTGame_stat_df, write_time = False)
-                TFTPlayer_stat_details_dfs[player_summonerName] = TFTGame_stat_df.copy(deep = True)
-                TFTPlayer_stat_summary_df: pandas.DataFrame = pandas.concat([pandas.DataFrame(data = {"ally?": ["是否队友？"] + ["" if teamOneOnly else "√" if ally_bool_dict[player["puuid"]] else ""] * (len(TFTGame_stat_df) - 1), "summonerName": ["召唤师名"] + [player_summonerName] * (len(TFTGame_stat_df) - 1)}, index = TFTGame_stat_df.index), TFTGame_stat_df.loc[:, TFTGame_stat_fields_summary]], axis = 1)
-                TFTPlayer_stat_summary_dfs.append(TFTPlayer_stat_summary_df.loc[1:, :])
+        if count > 0:
+            for i in range(len(fetched_players)):
+                player: dict[str, Any] = fetched_players[i]
+                player_summonerName: str = get_info_name(player)
+                if search_LoL:
+                    logPrint("[%d/%d]" %((search_LoL + search_TFT) * i + 1, (search_LoL + search_TFT) * len(fetched_players)), end = "")
+                    logPrint(f"正在加载{player_summonerName}的最近{count}场英雄联盟对局记录……\nLoading the recent {count} LoL match(es) of {player_summonerName} ...")
+                    LoLGame_stat_df: pandas.DataFrame = await search_player_match_stats_lol(connection, player["puuid"], begIndex = 0, endIndex = count - 1, lol_sgp = use_sgp, log = log, verbose = print_detail)
+                    #logPrint(f"{player_summonerName}的最近{count}场英雄联盟对局记录获取完成。\nThe recent {count} LoL match(es) of {player_summonerName} have/has been loaded.")
+                    if queue_select:
+                        LoLGame_stat_indices_queueSelected: list[int] = [0] + list(LoLGame_stat_df[LoLGame_stat_df["queueId"].isin(queueIds)].index)
+                        LoLGame_stat_df = LoLGame_stat_df.loc[LoLGame_stat_indices_queueSelected, :]
+                    if args.save_early:
+                        LoLGame_stat_indices_timeSelected: list[int] = [0] + list(LoLGame_stat_df.loc[1:, :][LoLGame_stat_df.loc[1:, :]["gameCreation"] <= current_timestamp_millis].index)
+                        LoLGame_stat_df = LoLGame_stat_df.loc[LoLGame_stat_indices_timeSelected, :]
+                    #logPrint(LoLGame_stat_df, write_time = False)
+                    LoLPlayer_stat_details_dfs[player_summonerName] = LoLGame_stat_df.copy(deep = True)
+                    LoLPlayer_stat_summary_df: pandas.DataFrame = pandas.concat([pandas.DataFrame(data = {"ally?": ["是否队友？"] + ["" if teamOneOnly else "√" if ally_bool_dict[player["puuid"]] else ""] * (len(LoLGame_stat_df) - 1), "summonerName": ["召唤师名"] + [player_summonerName] * (len(LoLGame_stat_df) - 1)}, index = LoLGame_stat_df.index), LoLGame_stat_df.loc[:, LoLGame_stat_fields_summary]], axis = 1)
+                    LoLPlayer_stat_summary_dfs.append(LoLPlayer_stat_summary_df.loc[1:, :])
+                if search_TFT:
+                    logPrint("[%d/%d]" %((search_LoL + search_TFT) * i + 1 + search_LoL, (search_LoL + search_TFT) * len(fetched_players)), end = "")
+                    logPrint(f"正在加载{player_summonerName}的最近{count}场云顶之弈对局记录……\nLoading the recent {count} TFT match(es) of {player_summonerName} ...")
+                    TFTGame_stat_df: pandas.DataFrame = await search_player_match_stats_tft(connection, player["puuid"], begin = 0, count = count - 1, log = log, verbose = print_detail)
+                    #logPrint(f"{player_summonerName}的最近{count}场云顶之弈对局记录获取完成。\nThe recent {count} TFT match(es) of {player_summonerName} have/has been loaded.")
+                    if queue_select:
+                        TFTGame_stat_indices_queueSelected: list[int] = [0] + list(TFTGame_stat_df[TFTGame_stat_df["queue_id"].isin(queueIds)].index)
+                        TFTGame_stat_df = TFTGame_stat_df.loc[TFTGame_stat_indices_queueSelected, :]
+                    if args.save_early:
+                        TFTGame_stat_indices_timeSelected: list[int] = [0] + list(TFTGame_stat_df.loc[1:, :][TFTGame_stat_df.loc[1:, :]["gameCreation"] <= current_timestamp_millis].index)
+                        TFTGame_stat_df = TFTGame_stat_df.loc[TFTGame_stat_indices_timeSelected, :]
+                    #logPrint(TFTGame_stat_df, write_time = False)
+                    TFTPlayer_stat_details_dfs[player_summonerName] = TFTGame_stat_df.copy(deep = True)
+                    TFTPlayer_stat_summary_df: pandas.DataFrame = pandas.concat([pandas.DataFrame(data = {"ally?": ["是否队友？"] + ["" if teamOneOnly else "√" if ally_bool_dict[player["puuid"]] else ""] * (len(TFTGame_stat_df) - 1), "summonerName": ["召唤师名"] + [player_summonerName] * (len(TFTGame_stat_df) - 1)}, index = TFTGame_stat_df.index), TFTGame_stat_df.loc[:, TFTGame_stat_fields_summary]], axis = 1)
+                    TFTPlayer_stat_summary_dfs.append(TFTPlayer_stat_summary_df.loc[1:, :])
         sheet_headers: dict[str, str] = {get_info_name(player): "" if isSpectating or teamOneOnly else "Ally - " if ally_bool_dict[player["puuid"]] else "Enemy - " for player in fetched_players}
         LoLPlayer_summary_df: pandas.DataFrame = pandas.DataFrame()
         TFTPlayer_summary_df: pandas.DataFrame = pandas.DataFrame()
@@ -1011,37 +1012,38 @@ async def Clarke_revival(connection: Connection) -> None:
                         logPrint(f"对局{gameId}的玩家数据已导出。\nPlayer stats in Match {gameId} have been exported.", verbose = print_detail)
                     addDefaultStyle(game_leaderboard_df).to_excel(excel_writer = writer, sheet_name = "Game Leaderboard")
                     logPrint("玩家排位信息已汇总。\nGame leaderboard has been summarized.", verbose = print_detail)
-                    if search_LoL:
-                        addDefaultStyle(LoLPlayer_summary_df).to_excel(excel_writer = writer, sheet_name = "Player Summary (LoL)")
-                        worksheet = writer.sheets["Player Summary (LoL)"]
-                        worksheet.conditional_formatting.rules = [] #读取时清空原规则（Clear original rules when reading）
-                        if len(LoLPlayer_summary_df) > 1:
-                            max_numPlayersPerTeam_lol = 5 if len(LoLPlayer_summary_df) <= 1 else max(map(lambda x: 5 if x == 0 else 2 if gameQueues[x]["gameMode"] == "CHERRY" else gameQueues[x]["numPlayersPerTeam"], LoLPlayer_summary_df["queueId"][1:]))
-                            addFormat_LoLPlayer_summary_wb(worksheet, LoLPlayer_summary_df, numColorScale_order = max_numPlayersPerTeam_lol)
-                        logPrint("英雄联盟战绩已汇总。\nLoL game stats have been summarized.", verbose = print_detail)
-                    if search_TFT:
-                        addDefaultStyle(TFTPlayer_summary_df).to_excel(excel_writer = writer, sheet_name = "Player Summary (TFT)")
-                        logPrint("云顶之弈战绩已汇总。\nTFT game stats have been summarized.", verbose = print_detail)
-                    if search_LoL:
-                        for summonerName in LoLPlayer_stat_details_dfs:
-                            LoLPlayer_stat_details_df = LoLPlayer_stat_details_dfs[summonerName]
-                            if len(LoLPlayer_stat_details_df) > 1:
-                                addDefaultStyle(LoLPlayer_stat_details_df).to_excel(excel_writer = writer, sheet_name = "%s%s (LoL)" %(sheet_headers[summonerName], summonerName))
-                                worksheet = writer.sheets["%s%s (LoL)" %(sheet_headers[summonerName], summonerName)]
-                                worksheet.conditional_formatting.rules = [] #读取时清空原规则（Clear original rules when reading）
-                                max_numPlayersPerTeam_lol = 5 if len(LoLPlayer_stat_details_df) <= 1 else max(map(lambda x: 5 if x == 0 else 2 if gameQueues[x]["gameMode"] == "CHERRY" else gameQueues[x]["numPlayersPerTeam"], LoLPlayer_stat_details_df["queueId"][1:]))
-                                addFormat_LoLGame_summary_wb(worksheet, LoLPlayer_stat_details_df, numColorScale_order = max_numPlayersPerTeam_lol)
-                                logPrint(f"{summonerName}的英雄联盟详细战绩已导出。\n{summonerName}'s detailed LoL game stats have been exported.", verbose = print_detail)
-                            else:
-                                logPrint(f"{summonerName}从5月1日起就没有进行过任何英雄联盟对局。\n{summonerName} hasn't played LoL game yet since May 1st.", verbose = print_detail)
-                    if search_TFT:
-                        for summonerName in TFTPlayer_stat_details_dfs:
-                            TFTPlayer_stat_details_df = TFTPlayer_stat_details_dfs[summonerName]
-                            if len(TFTPlayer_stat_details_df) > 1:
-                                addDefaultStyle(TFTPlayer_stat_details_df).to_excel(excel_writer = writer, sheet_name = "%s%s (TFT)" %(sheet_headers[summonerName], summonerName))
-                                logPrint(f"{summonerName}的云顶之弈详细战绩已导出。\n{summonerName}'s detailed TFT game stats have been exported.", verbose = print_detail)
-                            else:
-                                logPrint(f"{summonerName}从5月1日起就没有进行过任何云顶之弈对局。\n{summonerName} hasn't played TFT game yet since May 1st.", verbose = print_detail)
+                    if count > 0:
+                        if search_LoL:
+                            addDefaultStyle(LoLPlayer_summary_df).to_excel(excel_writer = writer, sheet_name = "Player Summary (LoL)")
+                            worksheet = writer.sheets["Player Summary (LoL)"]
+                            worksheet.conditional_formatting.rules = [] #读取时清空原规则（Clear original rules when reading）
+                            if len(LoLPlayer_summary_df) > 1:
+                                max_numPlayersPerTeam_lol = 5 if len(LoLPlayer_summary_df) <= 1 else max(map(lambda x: 5 if x == 0 else 2 if gameQueues[x]["gameMode"] == "CHERRY" else gameQueues[x]["numPlayersPerTeam"], LoLPlayer_summary_df["queueId"][1:]))
+                                addFormat_LoLPlayer_summary_wb(worksheet, LoLPlayer_summary_df, numColorScale_order = max_numPlayersPerTeam_lol)
+                            logPrint("英雄联盟战绩已汇总。\nLoL game stats have been summarized.", verbose = print_detail)
+                        if search_TFT:
+                            addDefaultStyle(TFTPlayer_summary_df).to_excel(excel_writer = writer, sheet_name = "Player Summary (TFT)")
+                            logPrint("云顶之弈战绩已汇总。\nTFT game stats have been summarized.", verbose = print_detail)
+                        if search_LoL:
+                            for summonerName in LoLPlayer_stat_details_dfs:
+                                LoLPlayer_stat_details_df = LoLPlayer_stat_details_dfs[summonerName]
+                                if len(LoLPlayer_stat_details_df) > 1:
+                                    addDefaultStyle(LoLPlayer_stat_details_df).to_excel(excel_writer = writer, sheet_name = "%s%s (LoL)" %(sheet_headers[summonerName], summonerName))
+                                    worksheet = writer.sheets["%s%s (LoL)" %(sheet_headers[summonerName], summonerName)]
+                                    worksheet.conditional_formatting.rules = [] #读取时清空原规则（Clear original rules when reading）
+                                    max_numPlayersPerTeam_lol = 5 if len(LoLPlayer_stat_details_df) <= 1 else max(map(lambda x: 5 if x == 0 else 2 if gameQueues[x]["gameMode"] == "CHERRY" else gameQueues[x]["numPlayersPerTeam"], LoLPlayer_stat_details_df["queueId"][1:]))
+                                    addFormat_LoLGame_summary_wb(worksheet, LoLPlayer_stat_details_df, numColorScale_order = max_numPlayersPerTeam_lol)
+                                    logPrint(f"{summonerName}的英雄联盟详细战绩已导出。\n{summonerName}'s detailed LoL game stats have been exported.", verbose = print_detail)
+                                else:
+                                    logPrint(f"{summonerName}从5月1日起就没有进行过任何英雄联盟对局。\n{summonerName} hasn't played LoL game yet since May 1st.", verbose = print_detail)
+                        if search_TFT:
+                            for summonerName in TFTPlayer_stat_details_dfs:
+                                TFTPlayer_stat_details_df = TFTPlayer_stat_details_dfs[summonerName]
+                                if len(TFTPlayer_stat_details_df) > 1:
+                                    addDefaultStyle(TFTPlayer_stat_details_df).to_excel(excel_writer = writer, sheet_name = "%s%s (TFT)" %(sheet_headers[summonerName], summonerName))
+                                    logPrint(f"{summonerName}的云顶之弈详细战绩已导出。\n{summonerName}'s detailed TFT game stats have been exported.", verbose = print_detail)
+                                else:
+                                    logPrint(f"{summonerName}从5月1日起就没有进行过任何云顶之弈对局。\n{summonerName} hasn't played TFT game yet since May 1st.", verbose = print_detail)
                 if gameflow_phase == "ChampSelect":
                     logPrint(f'英雄选择阶段的玩家战绩已导出。请查看同目录下的“{excel_name}”。\nPlayer game stats during champ select have been exported. Please check "{excel_name}" under the same folder.')
                 else:
