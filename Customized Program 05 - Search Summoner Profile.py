@@ -2102,7 +2102,9 @@ async def search_profile(connection: Connection) -> None:
         logPrint("是否查询英雄联盟对局记录？（输入任意键查询，否则不查询）\nSearch LoL matches? (Input anything to search or null to skip searching LoL matches)")
         search_LoL_str: str = logInput()
         search_LoL: bool = bool(search_LoL_str)
-        LoLGamePlayed: bool = False
+        LoLMatchIDs: list[int] = [] #代表实际需要查询的对局序号（Represents the matchIds for query）
+        old_LoLMatch_detected: bool = False #是否检测到旧对局（Whether any old match is detected）
+        update_unsaved_only_lol: bool = False #决定在批量查询时是否只保存未保存过的对局（Decides whether to only save the unsaved matches during searching in batches）
         if search_LoL:
             LoLHistory_dfs: list[pandas.DataFrame] = []
             for i in range(len(AllAccounts)):
@@ -2147,8 +2149,8 @@ async def search_profile(connection: Connection) -> None:
                             LoLGame_timeline_cache_sgp[matchId] = game
                 if LoLHistory_get:
                     LoLGameCount: int = len(LoLHistory_sgp["games"]) if use_sgp else LoLHistory_lcu["games"]["gameCount"]
-                    LoLGamePlayed: bool = LoLGameCount != 0 #标记该玩家是否进行过英雄联盟对局（Mark whether this summoner has played any LoL game）
-                    if LoLGamePlayed:
+                    LoLGamePlayed_singleSummoner: bool = LoLGameCount != 0 #标记该玩家是否进行过英雄联盟对局（Mark whether this summoner has played any LoL game）
+                    if LoLGamePlayed_singleSummoner:
                         logPrint(f"玩家{info_summonerName}共进行{LoLGameCount}场英雄联盟对局。\nPlayer {info_summonerName} has played {LoLGameCount} LoL matches.\n")
                     else:
                         logPrint(f"玩家{info_summonerName}从5月1日起就没有进行过任何英雄联盟对局。\nPlayer {info_summonerName} hasn't played any LoL game yet since May 1st.")
@@ -2157,7 +2159,7 @@ async def search_profile(connection: Connection) -> None:
                     else:
                         LoLHistory_df = (sort_LoLHistory(LoLHistory_lcu, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, log = log))[0]
                     LoLHistory_dfs.append(LoLHistory_df)
-                    if LoLGamePlayed:
+                    if LoLGamePlayed_singleSummoner:
                         logPrint(LoLHistory_df[:min(21, LoLGameCount + 1)], write_time = False)
             LoLHistory_df_all: pandas.DataFrame = pandas.concat([LoLHistory_dfs[0].iloc[:1]] + list(map(lambda x: x.iloc[1:], LoLHistory_dfs)), ignore_index = True) #需要注意数据框的中文表头占用了一行（Note that the Chinese header takes up a record）
             #对局序号去重（Drop duplicates from gameIds）
@@ -2175,11 +2177,7 @@ async def search_profile(connection: Connection) -> None:
             
             logPrint('请输入要查询的英雄联盟对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出英雄联盟对局查询请输入“0”：\nPlease enter the LoL match ID to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to quit searching for LoL matches.')
             LoLGameIDs: list[int] = LoLHistory_df_all["gameId"][1:].to_list() #代表对局记录中的所有对局序号（Represents all matchIds in the match history）
-            LoLMatchIDs: list[int] = [] #代表实际需要查询的对局序号（Represents the matchIds for query）
-            LoLMatches_not_found: list[int] = [] #在扫描模式下，当从本地文件获取的对局从API重新获取出现异常时，处理策略是输出异常信息并跳过该对局，而不是将其直接从对局序号列表中去除，因为这样会使循环乱套。而后面的info_exist_error、timeline_exist_error、main_player_included和match_reserve_strategy只会在该对局正常获取时才会统计。所以一旦出现数据获取失败的对局，在最后导出数据时，“if match_reserve_strategy[i]:”语句会出现“IndexError: list index out of range”报错（Under scan mode, when an exception occurred during crawling matches with LoLMatchIDs obtained from local files from API, the strategy is to print the exception and skip this match, instead of directly removing them from the matchId list, for the removal will disturb the loop. However, the variables info_exist_error, timeline_exist_error, main_player_included and match_reserve_strategy only work when the matches are crawled from the database as expected. So once a match fails to be captured, during xlsx file export at the end of the program, an "IndexError: list index out of range" exception will emerge from the statement "if match_reserve_strategy[i]:"）
-            error_LoLMatchIDs: list[int] = [] #记录实际存在但未如期获取的对局序号（Records the LoL matchIDs that really exist but fail to be fetched）
-            old_LoLMatch_detected = len(saved_LoLMatchIDs) > 0 #是否检测到旧对局（Whether any old match is detected）
-            update_unsaved_only: bool = False #决定在批量查询时是否只保存未保存过的对局（Decides whether to only save the unsaved matches during searching in batches）
+            old_LoLMatch_detected = len(saved_LoLMatchIDs) > 0
             while True:
                 matchId_str: str = logInput()
                 if matchId_str == "":
@@ -2193,9 +2191,9 @@ async def search_profile(connection: Connection) -> None:
                             latest_LoLMatchID: int = max(saved_LoLMatchIDs) #需要注意，对局序号最大的对局未必是最近进行的对局。而这种情况并不会引起数据的丢失。相反，最近进行的对局会被重新保存一次，从数据完整性的角度上讲无关紧要（Note that the match with the greatest matchId doesn't mean it's the latest match. Nevertheless, when this situation happens, there won't be any data loss. Conversely, the latest match will be saved again, which doesn't matter in terms of data integrity）
                             latest_LoLMatchID_index: int = LoLGameIDs.index(latest_LoLMatchID) if latest_LoLMatchID in LoLGameIDs else 2000
                             logPrint("检测到您以前曾经查询过该召唤师的英雄联盟对局记录。是否只保存该召唤师信息文件夹中不包含的英雄联盟对局？（输入空字符串以只保存未保存过文本文档的对局，否则自行指定对局索引上下限）\nThe program detected that you've searched for this summoner's LoL match history before. Do you want to only save the LoL matches not present in the current summoner folder? (Enter an empty string to saved only the matches whose json files haven't been saved, or any non-empty string to specify the begIndex and endIndex of the matches by yourself)\n即将使用的对局索引下界和上界（The match begIndex and endIndex to be used）：0 %d" %latest_LoLMatchID_index)
-                            update_unsaved_only_str: str = logInput()
-                            update_unsaved_only: bool = not bool(update_unsaved_only_str)
-                        if old_LoLMatch_detected and update_unsaved_only:
+                            update_unsaved_only_lol_str: str = logInput()
+                            update_unsaved_only_lol: bool = not bool(update_unsaved_only_lol_str)
+                        if old_LoLMatch_detected and update_unsaved_only_lol:
                             LoLMatchIDs = LoLGameIDs[:]
                         else:
                             begIndex: int = 0
@@ -2276,244 +2274,260 @@ async def search_profile(connection: Connection) -> None:
                                 logPrint("您输入的对局序号集无效！请重新输入。\nInvalid matchId set! Please try again.")
                                 continue
                     break
-            if len(LoLMatchIDs) > 0:
-                queues = queues_initial.copy()
-                spells = spells_initial.copy()
-                LoLChampions = LoLChampions_initial.copy()
-                LoLItems = LoLItems_initial.copy()
-                summonerIcons = summonerIcons_initial.copy()
-                perks = perks_initial.copy()
-                perkstyles = perkstyles_initial.copy()
-                CherryAugments = CherryAugments_initial.copy()
-                current_versions["queue"] = current_versions["summonerIcon"] = current_versions["spell"] = current_versions["LoLChampion"] = current_versions["LoLItem"] = current_versions["perk"] = current_versions["perkstyle"] = current_versions["CherryAugment"] = URLPatch
-                unmapped_keys["queue"], unmapped_keys["summonerIcon"], unmapped_keys["spell"], unmapped_keys["LoLChampion"], unmapped_keys["LoLItem"], unmapped_keys["perk"], unmapped_keys["perkstyle"], unmapped_keys["CherryAugment"] = set(), set(), set(), set(), set(), set(), set(), set()
-                logPrint("是否输出每场对局的文本文档？（输入任意键不输出，否则默认输出）\nExport text files of each match? (Input anything to refuse exporting, or null to export by default)")
-                save_all_json_str: str = logInput()
-                save_all_json: bool = not bool(save_all_json_str)
-                LoLGame_stat_header_keys: list[str] = list(LoLGame_stat_header.keys())
-                LoLGame_stat_data: dict[str, list[Any]] = {key: [] for key in LoLGame_stat_header_keys} #将主召唤师的信息单独导出到一个工作表中（Export the game stats of the main summoner into a single sheet）
-                for matchId in LoLMatchIDs:
-                    match_id: str = f"{platformId}_{matchId}"
-                    LoLGame_summary_export: bool = not (old_LoLMatch_detected and update_unsaved_only and matchId in saved_LoLMatchIDs) #标记是否导出对局概要。如果是在批量查询全部对局的情况下仅保存本地没有的对局，且该对局已在本地，则不保存本场对局（Marks whether to export the match summary. If the user submits "3" to search matches in batch and selected to update the matches that don't exist locally, while the current match already exists, then the program won't export this match）
-                    LoLGame_leaderboard_export: bool = args.export_leaderboard #标记是否导出对局排行榜。仅可通过命令行变量指定（Marks whether to export the match leaderboard. Can only be specified by the command line argument）
-                    LoLGame_timeline_export: bool = LoLGame_summary_export #标记是否导出对局时间轴。时间轴的整理依赖于概要，因此目前认为这两者的值相同（Marks whether to export the match timeline. Timeline data organization is based on the match summary, so its value is set the same as the above）
-                    #LoLGame_event_export: bool = LoLGame_timeline_export #标记是否导出对局事件信息。由于事件信息源于时间轴，因此这两者的值在任何情形下是相同的（Marks whether to export the match events. Because events are extracted from the timeline, these two values should be the same under any circumstance）
-                    info_text_saved = timeline_text_saved = False #标记对局概要和时间轴的文本文档是否保存（Marks whether the json files of match summary and timeline are saved）
-                    isLoL[matchId] = False #这里可以使用（This assignment can be replaced by）：`isLoL[matchId] = isTFT[matchId] = False`
-                    
-                    #获取数据（Get data）
-                    ##信息/概要（Information / Summary） #即使不导出对局概要，对局概要也要用来制作玩家战绩表，因此仍然要获取对局概要。如果不需要加载多的对局，用户需要在前面指定对局上下限来控制LoLMatchIDs（Although the user doesn't want to export the match summary, it's still needed for match stats table, so match summary is always necessary. If the user doesn't want to load extra matches, he/she needs to control `LoLMatchIDs` by specifying the begIndex and the endIndex above）
-                    if use_sgp:
-                        if matchId in LoLGame_summary_cache_sgp:
-                            LoLGame_summary: dict[str, Any] = LoLGame_summary_cache_sgp[matchId]
-                            status: int = 200
-                        else:
-                            status, LoLGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, skipTFT = True, log = log)
-                            if status == 200:
-                                LoLGame_summary_cache_sgp[matchId] = LoLGame_summary
+        #整理英雄联盟对局信息（Organize LoL match information）
+        LoLGamePlayed: bool = len(LoLMatchIDs) > 0
+        if LoLGamePlayed:
+            LoLMatches_not_found: list[int] = [] #在扫描模式下，当从本地文件获取的对局从API重新获取出现异常时，处理策略是输出异常信息并跳过该对局，而不是将其直接从对局序号列表中去除，因为这样会使循环乱套。而后面的info_exist_error、timeline_exist_error、main_player_included和match_reserve_strategy只会在该对局正常获取时才会统计。所以一旦出现数据获取失败的对局，在最后导出数据时，“if match_reserve_strategy[i]:”语句会出现“IndexError: list index out of range”报错（Under scan mode, when an exception occurred during crawling matches with LoLMatchIDs obtained from local files from API, the strategy is to print the exception and skip this match, instead of directly removing them from the matchId list, for the removal will disturb the loop. However, the variables info_exist_error, timeline_exist_error, main_player_included and match_reserve_strategy only work when the matches are crawled from the database as expected. So once a match fails to be captured, during xlsx file export at the end of the program, an "IndexError: list index out of range" exception will emerge from the statement "if match_reserve_strategy[i]:"）
+            error_LoLMatchIDs: list[int] = [] #记录实际存在但未如期获取的对局序号（Records the LoL matchIDs that really exist but fail to be fetched）
+            queues = queues_initial.copy()
+            spells = spells_initial.copy()
+            LoLChampions = LoLChampions_initial.copy()
+            LoLItems = LoLItems_initial.copy()
+            summonerIcons = summonerIcons_initial.copy()
+            perks = perks_initial.copy()
+            perkstyles = perkstyles_initial.copy()
+            CherryAugments = CherryAugments_initial.copy()
+            current_versions["queue"] = current_versions["summonerIcon"] = current_versions["spell"] = current_versions["LoLChampion"] = current_versions["LoLItem"] = current_versions["perk"] = current_versions["perkstyle"] = current_versions["CherryAugment"] = URLPatch
+            unmapped_keys["queue"], unmapped_keys["summonerIcon"], unmapped_keys["spell"], unmapped_keys["LoLChampion"], unmapped_keys["LoLItem"], unmapped_keys["perk"], unmapped_keys["perkstyle"], unmapped_keys["CherryAugment"] = set(), set(), set(), set(), set(), set(), set(), set()
+            logPrint("是否输出每场对局的文本文档？（输入任意键不输出，否则默认输出）\nExport text files of each match? (Input anything to refuse exporting, or null to export by default)")
+            save_all_json_str: str = logInput()
+            save_all_json: bool = not bool(save_all_json_str)
+            LoLGame_stat_header_keys: list[str] = list(LoLGame_stat_header.keys())
+            LoLGame_stat_data: dict[str, list[Any]] = {key: [] for key in LoLGame_stat_header_keys} #将主召唤师的信息单独导出到一个工作表中（Export the game stats of the main summoner into a single sheet）
+            for matchId in LoLMatchIDs:
+                match_id: str = f"{platformId}_{matchId}"
+                LoLGame_summary_export: bool = not (old_LoLMatch_detected and update_unsaved_only_lol and matchId in saved_LoLMatchIDs) #标记是否导出对局概要。如果是在批量查询全部对局的情况下仅保存本地没有的对局，且该对局已在本地，则不保存本场对局（Marks whether to export the match summary. If the user submits "3" to search matches in batch and selected to update the matches that don't exist locally, while the current match already exists, then the program won't export this match）
+                LoLGame_leaderboard_export: bool = args.export_leaderboard #标记是否导出对局排行榜。仅可通过命令行变量指定（Marks whether to export the match leaderboard. Can only be specified by the command line argument）
+                LoLGame_timeline_export: bool = LoLGame_summary_export #标记是否导出对局时间轴。时间轴的整理依赖于概要，因此目前认为这两者的值相同（Marks whether to export the match timeline. Timeline data organization is based on the match summary, so its value is set the same as the above）
+                #LoLGame_event_export: bool = LoLGame_timeline_export #标记是否导出对局事件信息。由于事件信息源于时间轴，因此这两者的值在任何情形下是相同的（Marks whether to export the match events. Because events are extracted from the timeline, these two values should be the same under any circumstance）
+                info_text_saved = timeline_text_saved = False #标记对局概要和时间轴的文本文档是否保存（Marks whether the json files of match summary and timeline are saved）
+                isLoL[matchId] = False #这里可以使用（This assignment can be replaced by）：`isLoL[matchId] = isTFT[matchId] = False`
+                
+                #获取数据（Get data）
+                ##信息/概要（Information / Summary） #即使不导出对局概要，对局概要也要用来制作玩家战绩表，因此仍然要获取对局概要。如果不需要加载多的对局，用户需要在前面指定对局上下限来控制LoLMatchIDs（Although the user doesn't want to export the match summary, it's still needed for match stats table, so match summary is always necessary. If the user doesn't want to load extra matches, he/she needs to control `LoLMatchIDs` by specifying the begIndex and the endIndex above）
+                if use_sgp:
+                    if matchId in LoLGame_summary_cache_sgp:
+                        LoLGame_summary: dict[str, Any] = LoLGame_summary_cache_sgp[matchId]
+                        status: int = 200
                     else:
-                        if matchId in LoLGame_summary_cache_lcu:
-                            LoLGame_summary = LoLGame_summary_cache_lcu[matchId]
-                            status = 200
+                        status, LoLGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, skipTFT = True, log = log)
+                        if status == 200:
+                            LoLGame_summary_cache_sgp[matchId] = LoLGame_summary
+                else:
+                    if matchId in LoLGame_summary_cache_lcu:
+                        LoLGame_summary = LoLGame_summary_cache_lcu[matchId]
+                        status = 200
+                    else:
+                        status, LoLGame_summary = await get_LoLGame_summary(connection, matchId, log = log)
+                        if status == 200:
+                            LoLGame_summary_cache_lcu[matchId] = LoLGame_summary
+                if status == 200 and (not use_sgp or "json" in LoLGame_summary and bool(LoLGame_summary["json"])):
+                    info_exist_error[matchId] = False
+                    isLoL[matchId] = True
+                    isTFT[matchId] = False #这里假设不可能有一场英雄联盟对局和一场云顶之弈对局共用一个对局序号。这个假设显然是成立的（Here we assume there can't be a LoL match and a TFT match sharing the same matchId. This assumption obviously holds）
+                    save_one_json = LoLGame_summary_export #决定是否保存单场对局的文本文档。match_reserve_strategy变量决定的是是否将不包含主召唤师的对局记录导出到Excel中。由于保存文本文档的同时往往意味着需要导出到Excel中，因此这两者总是相同的。当然也有例外，如他人的对局时（Decides whether to save this match into a json file. The variable match_reserve_strategy decides whether to export the matches which don't include the main summoner into Excel. Because saving the text file always means to export data into Excel, these two variables are usually equal. Exceptions are another one's matches）
+                    if use_sgp:
+                        participant_puuid: list[str] = list(map(lambda x: x["puuid"], LoLGame_summary["json"]["participants"]))
+                        #participant_summonerName: list[str] = list(map(lambda x: x["summonerName"], LoLGame_summary["json"]["participants"])) #这个变量已弃用（This variable is deprecated）
+                        participant_gameName: list[str] = list(map(lambda x: "%s#%s" %(x.get("riotIdGameName", x.get("riotIdName", "")), x.get("riotIdTagline", "")), LoLGame_summary["json"]["participants"]))
+                    else:
+                        participant_puuid: list[str] = list(map(lambda x: x["player"]["puuid"], LoLGame_summary["participantIdentities"]))
+                        #participant_summonerName: list[str] = list(map(lambda x: x["player"]["summonerName"], LoLGame_summary["participantIdentities"])) #这个变量已弃用（This variable is deprecated）
+                        participant_gameName: list[str] = list(map(lambda x: "%s#%s" %(x["player"]["gameName"], x["player"]["tagLine"]), LoLGame_summary["participantIdentities"]))
+                    if len(set(current_puuid_list) & set(participant_puuid)) > 0: #之所以使用玩家通用唯一识别码，而不是用召唤师名称来识别对局是否包含主玩家，是因为该玩家可能使用过改名卡。这里也没有选择帐户序号，这是因为保存在对局中的各玩家的帐户序号竟然是0！（The reason why the puuid instead of the displayName or summonerName is used to identify whether the matches contain the main player is that the player may have used name changing card. AccountId isn't chosen here, because all players' accountIds saved in the match fetched from 127 API is 0, to my surprise!）
+                        main_player_included[matchId] = True
+                        match_reserve_strategy[matchId] = True
+                    elif len(set(current_summonerName_list) & set(participant_gameName)) > 0: #在玩家通用唯一识别码发生变动的大区，要识别变动之前的对局是否包含主玩家，最好的办法是依据显示名。因为在引入名称编号后，显示名就固定下来，没有办法变动了，玩家只能通过改名卡修改玩家名称和名称编号。也就是说，显示名可视为玩家的另一种“身份识别码”。对于在引入名称编号后注册的玩家，其显示名是空字符串，所以在模糊定位时用玩家名称代替（On servers that changed the players' puuids once, to identify whether the matches before this change include this player, the best strategy is to refer to the displayName. This is because after tagLine is introduced, displayName is locked and there's no way of changing it. What the player can change through the Summmoner Name Change is gameName and tagLine. That is to say, displayName may be regarded as another ID of a player. For those who signed up after tagLine was introduced, their displayNames are empty strings. So gameName is taken for the rough localization）
+                        main_player_included[matchId] = True
+                        match_reserve_strategy[matchId] = True
+                        if not puuid_change_warning_printed:
+                            logPrint("警告：该大区的玩家通用唯一识别码曾发生变动！请检查保存的各对局是否属于该玩家。\nWarning: The puuids of players on this server have been changed! Please check if the saved matches really belong to this player.")
+                            puuid_change_warning_printed = True
+                    else:
+                        main_player_included[matchId] = False
+                        save_one_json = args.reserve_text #由于从文本文件中可以提取该召唤师的对局序号，所以需要保证保留下来的文本文件都包含该召唤师。因此，如果一场对局不包含该召唤师，就不应该把这场对局保存下来，除非用户出于特殊目的需要保留文本文件（Because a summoner's matchIDs can be extracted from the saved json files, it needs to be guaranteed that all saved json files belong to this summoner. Therefore, if a match doesn't include this summoner, then it shouldn't be saved into json files, unless the user must save it with special purposes）
+                        if args.reserve:
+                            match_reserve: bool = True
+                            logPrint("[%d/%d]对局%d不包含该玩家！已保持该对局。\nMatch %d doesn't include the current player but is reserved." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, matchId))
                         else:
-                            status, LoLGame_summary = await get_LoLGame_summary(connection, matchId, log = log)
-                            if status == 200:
-                                LoLGame_summary_cache_lcu[matchId] = LoLGame_summary
-                    if status == 200 and (not use_sgp or "json" in LoLGame_summary and bool(LoLGame_summary["json"])):
-                        info_exist_error[matchId] = False
-                        isLoL[matchId] = True
-                        isTFT[matchId] = False #这里假设不可能有一场英雄联盟对局和一场云顶之弈对局共用一个对局序号。这个假设显然是成立的（Here we assume there can't be a LoL match and a TFT match sharing the same matchId. This assumption obviously holds）
-                        save_one_json = LoLGame_summary_export #决定是否保存单场对局的文本文档。match_reserve_strategy变量决定的是是否将不包含主召唤师的对局记录导出到Excel中。由于保存文本文档的同时往往意味着需要导出到Excel中，因此这两者总是相同的。当然也有例外，如他人的对局时（Decides whether to save this match into a json file. The variable match_reserve_strategy decides whether to export the matches which don't include the main summoner into Excel. Because saving the text file always means to export data into Excel, these two variables are usually equal. Exceptions are another one's matches）
-                        if use_sgp:
-                            participant_puuid: list[str] = list(map(lambda x: x["puuid"], LoLGame_summary["json"]["participants"]))
-                            #participant_summonerName: list[str] = list(map(lambda x: x["summonerName"], LoLGame_summary["json"]["participants"])) #这个变量已弃用（This variable is deprecated）
-                            participant_gameName: list[str] = list(map(lambda x: "%s#%s" %(x.get("riotIdGameName", x.get("riotIdName", "")), x.get("riotIdTagline", "")), LoLGame_summary["json"]["participants"]))
-                        else:
-                            participant_puuid: list[str] = list(map(lambda x: x["player"]["puuid"], LoLGame_summary["participantIdentities"]))
-                            #participant_summonerName: list[str] = list(map(lambda x: x["player"]["summonerName"], LoLGame_summary["participantIdentities"])) #这个变量已弃用（This variable is deprecated）
-                            participant_gameName: list[str] = list(map(lambda x: "%s#%s" %(x["player"]["gameName"], x["player"]["tagLine"]), LoLGame_summary["participantIdentities"]))
-                        if len(set(current_puuid_list) & set(participant_puuid)) > 0: #之所以使用玩家通用唯一识别码，而不是用召唤师名称来识别对局是否包含主玩家，是因为该玩家可能使用过改名卡。这里也没有选择帐户序号，这是因为保存在对局中的各玩家的帐户序号竟然是0！（The reason why the puuid instead of the displayName or summonerName is used to identify whether the matches contain the main player is that the player may have used name changing card. AccountId isn't chosen here, because all players' accountIds saved in the match fetched from 127 API is 0, to my surprise!）
-                            main_player_included[matchId] = True
-                            match_reserve_strategy[matchId] = True
-                        elif len(set(current_summonerName_list) & set(participant_gameName)) > 0: #在玩家通用唯一识别码发生变动的大区，要识别变动之前的对局是否包含主玩家，最好的办法是依据显示名。因为在引入名称编号后，显示名就固定下来，没有办法变动了，玩家只能通过改名卡修改玩家名称和名称编号。也就是说，显示名可视为玩家的另一种“身份识别码”。对于在引入名称编号后注册的玩家，其显示名是空字符串，所以在模糊定位时用玩家名称代替（On servers that changed the players' puuids once, to identify whether the matches before this change include this player, the best strategy is to refer to the displayName. This is because after tagLine is introduced, displayName is locked and there's no way of changing it. What the player can change through the Summmoner Name Change is gameName and tagLine. That is to say, displayName may be regarded as another ID of a player. For those who signed up after tagLine was introduced, their displayNames are empty strings. So gameName is taken for the rough localization）
-                            main_player_included[matchId] = True
-                            match_reserve_strategy[matchId] = True
-                            if not puuid_change_warning_printed:
-                                logPrint("警告：该大区的玩家通用唯一识别码曾发生变动！请检查保存的各对局是否属于该玩家。\nWarning: The puuids of players on this server have been changed! Please check if the saved matches really belong to this player.")
-                                puuid_change_warning_printed = True
-                        else:
-                            main_player_included[matchId] = False
-                            save_one_json = args.reserve_text #由于从文本文件中可以提取该召唤师的对局序号，所以需要保证保留下来的文本文件都包含该召唤师。因此，如果一场对局不包含该召唤师，就不应该把这场对局保存下来，除非用户出于特殊目的需要保留文本文件（Because a summoner's matchIDs can be extracted from the saved json files, it needs to be guaranteed that all saved json files belong to this summoner. Therefore, if a match doesn't include this summoner, then it shouldn't be saved into json files, unless the user must save it with special purposes）
-                            if args.reserve:
-                                match_reserve: bool = True
+                            if not match_notbelonging_warning_printed:
+                                logPrint("警告：对局%d不包含该玩家！是否仍要保持该对局？（输入任意键以保留该对局，否则舍弃该对局）\nWarning: The Match %d doesn't include the current player! Continue? (Input any nonempty string to reserve this match, or null to abandon it.)\n注意：此改动对于后续情形也生效。\nNote: This decision takes effect in similar situations later." %(matchId, matchId))
+                                match_reserve_str: str = logInput()
+                                match_reserve = bool(match_reserve_str)
+                                match_notbelonging_warning_printed = True
+                            elif match_reserve:
                                 logPrint("[%d/%d]对局%d不包含该玩家！已保持该对局。\nMatch %d doesn't include the current player but is reserved." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, matchId))
                             else:
-                                if not match_notbelonging_warning_printed:
-                                    logPrint("警告：对局%d不包含该玩家！是否仍要保持该对局？（输入任意键以保留该对局，否则舍弃该对局）\nWarning: The Match %d doesn't include the current player! Continue? (Input any nonempty string to reserve this match, or null to abandon it.)\n注意：此改动对于后续情形也生效。\nNote: This decision takes effect in similar situations later." %(matchId, matchId))
-                                    match_reserve_str: str = logInput()
-                                    match_reserve = bool(match_reserve_str)
-                                    match_notbelonging_warning_printed = True
-                                elif match_reserve:
-                                    logPrint("[%d/%d]对局%d不包含该玩家！已保持该对局。\nMatch %d doesn't include the current player but is reserved." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, matchId))
-                                else:
-                                    logPrint("[%d/%d]对局%d不包含该玩家！已舍弃该对局。\nMatch %d doesn't include the current player and is decrepated." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, matchId))
-                            match_reserve_strategy[matchId] = match_reserve
+                                logPrint("[%d/%d]对局%d不包含该玩家！已舍弃该对局。\nMatch %d doesn't include the current player and is decrepated." %(LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, matchId))
+                        match_reserve_strategy[matchId] = match_reserve
+                else:
+                    LoLGame_summary_export = False
+                    LoLGame_leaderboard_export = False
+                    info_exist_error[matchId] = True
+                    save_one_json: bool = False
+                ##时间轴/详细信息（Timeline / Details）
+                if LoLGame_timeline_export:
+                    if use_sgp:
+                        if matchId in LoLGame_timeline_cache_sgp:
+                            LoLGame_timeline: dict[str, Any] = LoLGame_timeline_cache_sgp[matchId]
+                            status: int = 200
+                        else:
+                            status, LoLGame_timeline = await get_game_timeline_sgp(connection, sgpSession, match_id, checkTFT = False, log = log)
+                            if status == 200:
+                                LoLGame_timeline_cache_sgp[matchId] = LoLGame_timeline
                     else:
-                        LoLGame_summary_export = False
-                        LoLGame_leaderboard_export = False
-                        info_exist_error[matchId] = True
-                        save_one_json: bool = False
-                    ##时间轴/详细信息（Timeline / Details）
-                    if LoLGame_timeline_export:
+                        if matchId in LoLGame_timeline_cache_lcu:
+                            LoLGame_timeline = LoLGame_timeline_cache_lcu[matchId]
+                            status: int = 200
+                        else:
+                            status, LoLGame_timeline = await get_LoLGame_timeline(connection, matchId, log = log)
+                            if status == 200:
+                                LoLGame_timeline_cache_lcu[matchId] = LoLGame_timeline
+                    if "errorCode" in LoLGame_timeline:
+                        LoLGame_timeline_export = False
+                        timeline_exist_error[matchId] = True
+                    elif "errorCode" in LoLGame_summary:
+                        LoLGame_timeline_export = False
+                        timeline_exist_error[matchId] = False
+                    else: #在整理时间轴数据时，需要使用`LoLGame_summary`中的一些数据（While organizing the timeline data, some data in `LoLGame_summary` are needed）
+                        timeline_exist_error[matchId] = False
+                else:
+                    LoLGame_timeline = {}
+                
+                #提示（Prompt）
+                process_header: str = "保存进度（Saving process）" if save_all_json and save_one_json else "加载进度（Loading process）"
+                if LoLGame_timeline_export:
+                    timeline_note: str = ""
+                else:
+                    if old_LoLMatch_detected and update_unsaved_only_lol:
+                        timeline_note = " (Match timeline skipped)"
+                    elif save_all_json:
+                        timeline_note = " (Exceptional match bypassed)"
+                    else:
+                        timeline_note = ""
+                logPrint("%s：%d/%d\t对局序号（MatchID）： %d%s" %(process_header, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, timeline_note), print_time = True)
+                
+                #导出数据（Export data）
+                ##信息/概要（Information / Summary）
+                if status == 200 and (not use_sgp or "json" in LoLGame_summary):
+                    if save_all_json and save_one_json:
+                        json10name: str = f"Match Summary (LoL) - {platformId}-{matchId} (SGP).json" if use_sgp else f"Match Summary (LoL) - {platformId}-{matchId}.json"
+                        os.makedirs(match_folder, exist_ok = True)
+                        try:
+                            with open(os.path.join(match_folder, json10name), "w", encoding = "utf-8") as jsonfile10: #如果有两个人存在于同一场对局中，那么保存第二个人的对局概要时，将重新写一遍这个文件（If two players exist in one match, then to save the second player's match summary, the same json file will be written twice）
+                                jsonfile10.write(json.dumps(LoLGame_summary, indent = 4, ensure_ascii = False))
+                        except UnicodeEncodeError:
+                            logPrint("对局%d概要文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nMatch %d summary text generation failure! Please check if the summoner name includes any abnormal characters!" %(matchId, matchId))
+                        else:
+                            info_text_saved = True
+                            LoLMatches_exported.append(matchId)
+                        # currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
+                        # pkl7name = f"Intermediate Object - Match Summary (LoL) - {platformId}-{matchId}.pkl"
+                        # with open(os.path.join(match_folder, pkl7name), "wb") as IntObj6:
+                        #     pickle.dump(LoLGame_summary, IntObj6)
+                    if use_sgp:
+                        LoLGame_summary_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments = sort_LoLGame_summary_sgp(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = current_puuid_list, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, save_self = True, save_other = True, log = log)
+                    else:
+                        LoLGame_summary_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments = sort_LoLGame_summary(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = current_puuid_list, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, save_self = True, save_other = True, log = log)
+                
+                    #社交排行榜（Social leaderboard）
+                    if args.export_leaderboard:
                         if use_sgp:
-                            if matchId in LoLGame_timeline_cache_sgp:
-                                LoLGame_timeline: dict[str, Any] = LoLGame_timeline_cache_sgp[matchId]
-                                status: int = 200
-                            else:
-                                status, LoLGame_timeline = await get_game_timeline_sgp(connection, sgpSession, match_id, checkTFT = False, log = log)
-                                if status == 200:
-                                    LoLGame_timeline_cache_sgp[matchId] = LoLGame_timeline
+                            participant_puuid: list[str] = list(map(lambda x: x["puuid"], LoLGame_summary["json"]["participants"]))
                         else:
-                            if matchId in LoLGame_timeline_cache_lcu:
-                                LoLGame_timeline = LoLGame_timeline_cache_lcu[matchId]
-                                status: int = 200
-                            else:
-                                status, LoLGame_timeline = await get_LoLGame_timeline(connection, matchId, log = log)
-                                if status == 200:
-                                    LoLGame_timeline_cache_lcu[matchId] = LoLGame_timeline
-                        if "errorCode" in LoLGame_timeline:
-                            LoLGame_timeline_export = False
-                            timeline_exist_error[matchId] = True
-                        elif "errorCode" in LoLGame_summary:
-                            LoLGame_timeline_export = False
-                            timeline_exist_error[matchId] = False
-                        else: #在整理时间轴数据时，需要使用`LoLGame_summary`中的一些数据（While organizing the timeline data, some data in `LoLGame_summary` are needed）
-                            timeline_exist_error[matchId] = False
+                            participant_puuid: list[str] = list(map(lambda x: x["player"]["puuid"], LoLGame_summary["participantIdentities"]))
+                        LoLGame_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = participant_puuid, log = log)
                     else:
-                        LoLGame_timeline = {}
-                    
-                    #提示（Prompt）
-                    process_header: str = "保存进度（Saving process）" if save_all_json and save_one_json else "加载进度（Loading process）"
-                    if LoLGame_timeline_export:
-                        timeline_note: str = ""
+                        LoLGame_leaderboard_df = pandas.DataFrame()
+                else:
+                    if status == 404: #由于时间轴的整理依赖于概要，仅根据对局概要的获取情况来判断对局是否存在即可（Because organizing timeline relies on the summary, the status of getting the match summary is enough for judging whether a match file exists）
+                        LoLMatches_not_found.append(matchId)
                     else:
-                        if old_LoLMatch_detected and update_unsaved_only:
-                            timeline_note = " (Match timeline skipped)"
-                        elif save_all_json:
-                            timeline_note = " (Exceptional match bypassed)"
-                        else:
-                            timeline_note = ""
-                    logPrint("%s：%d/%d\t对局序号（MatchID）： %d%s" %(process_header, LoLMatchIDs.index(matchId) + 1, len(LoLMatchIDs), matchId, timeline_note), print_time = True)
-                    
-                    #导出数据（Export data）
-                    ##信息/概要（Information / Summary）
-                    if status == 200 and (not use_sgp or "json" in LoLGame_summary):
-                        if save_all_json and save_one_json:
-                            json10name: str = f"Match Summary (LoL) - {platformId}-{matchId} (SGP).json" if use_sgp else f"Match Summary (LoL) - {platformId}-{matchId}.json"
+                        error_LoLMatchIDs.append(matchId)
+                    LoLGame_summary_error: dict[str, list[str]] = {"项目": list(error_header.values()), "items": list(error_header.keys()), "值": [LoLGame_summary.get(key, "") for key in error_header_keys]}
+                    LoLGame_summary_df: pandas.DataFrame = pandas.DataFrame(data = LoLGame_summary_error)
+                    LoLGame_leaderboard_df = pandas.DataFrame()
+                
+                ##时间轴/详细信息（Timeline / Details）
+                LoLGame_timeline_df: pandas.DataFrame = pandas.DataFrame()
+                LoLGame_event_df: pandas.DataFrame = pandas.DataFrame()
+                if LoLGame_timeline_export:
+                    if "errorCode" in LoLGame_timeline:
+                        LoLGame_timeline_error: dict[str, list[Any]] = {"项目": list(error_header.values()), "items": list(error_header.keys()), "值": [LoLGame_timeline.get(key, "") for key in error_header_keys]}
+                        LoLGame_timeline_df = pandas.DataFrame(data = LoLGame_timeline_error)
+                        LoLGame_event_df = pandas.DataFrame(data = LoLGame_timeline_error)
+                    elif not "errorCode" in LoLGame_summary:
+                        if save_all_json and save_one_json: #时间轴的单场文本文档保存策略继承了对局概要的单场文本文档保存策略（`save_one_json` of match timeline inherits from that of match summary）
+                            json11name: str = f"Match Timeline (LoL) - {platformId}-{matchId} (SGP).json" if use_sgp else f"Match Timeline (LoL) - {platformId}-{matchId}.json"
                             os.makedirs(match_folder, exist_ok = True)
                             try:
-                                with open(os.path.join(match_folder, json10name), "w", encoding = "utf-8") as jsonfile10: #如果有两个人存在于同一场对局中，那么保存第二个人的对局概要时，将重新写一遍这个文件（If two players exist in one match, then to save the second player's match summary, the same json file will be written twice）
-                                    jsonfile10.write(json.dumps(LoLGame_summary, indent = 4, ensure_ascii = False))
+                                with open(os.path.join(match_folder, json11name), "w", encoding = "utf-8") as jsonfile11:
+                                    jsonfile11.write(json.dumps(LoLGame_timeline, indent = 4, ensure_ascii = False))
                             except UnicodeEncodeError:
-                                logPrint("对局%d概要文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nMatch %d summary text generation failure! Please check if the summoner name includes any abnormal characters!" %(matchId, matchId))
+                                logPrint("对局%d时间轴文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nMatch %d timeline text generation failure! Please check if the summoner name includes any abnormal characters!" %(matchId, matchId))
                             else:
-                                info_text_saved = True
-                                LoLMatches_exported.append(matchId)
-                            # currentTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
-                            # pkl7name = f"Intermediate Object - Match Summary (LoL) - {platformId}-{matchId}.pkl"
-                            # with open(os.path.join(match_folder, pkl7name), "wb") as IntObj6:
-                            #     pickle.dump(LoLGame_summary, IntObj6)
+                                timeline_text_saved = True
+                            # currentTime: str = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
+                            # pkl8name: str = f"Intermediate Object - Match Timeline (LoL) - {platformId}-{matchId}.pkl"
+                            # with open(os.path.join(match_folder, pkl8name), "wb") as IntObj7:
+                            #     pickle.dump(LoLGame_timeline, IntObj7)
                         if use_sgp:
-                            LoLGame_summary_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments = sort_LoLGame_summary_sgp(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = current_puuid_list, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, save_self = True, save_other = True, log = log)
+                            LoLGame_timeline_df, LoLGame_event_df, LoLItems = await sort_LoLGame_timeline_sgp(connection, LoLGame_timeline, LoLGame_summary, LoLChampions, LoLItems, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, useInfoDict = True, infos = infos, log = log)
                         else:
-                            LoLGame_summary_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments = sort_LoLGame_summary(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = current_puuid_list, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, save_self = True, save_other = True, log = log)
-                    
-                        #社交排行榜（Social leaderboard）
-                        if args.export_leaderboard:
-                            if use_sgp:
-                                participant_puuid: list[str] = list(map(lambda x: x["puuid"], LoLGame_summary["json"]["participants"]))
-                            else:
-                                participant_puuid: list[str] = list(map(lambda x: x["player"]["puuid"], LoLGame_summary["participantIdentities"]))
-                            LoLGame_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = participant_puuid, log = log)
-                        else:
-                            LoLGame_leaderboard_df = pandas.DataFrame()
-                    else:
-                        if status == 404: #由于时间轴的整理依赖于概要，仅根据对局概要的获取情况来判断对局是否存在即可（Because organizing timeline relies on the summary, the status of getting the match summary is enough for judging whether a match file exists）
-                            LoLMatches_not_found.append(matchId)
-                        else:
-                            error_LoLMatchIDs.append(matchId)
-                        LoLGame_summary_error: dict[str, list[str]] = {"项目": list(error_header.values()), "items": list(error_header.keys()), "值": [LoLGame_summary.get(key, "") for key in error_header_keys]}
-                        LoLGame_summary_df: pandas.DataFrame = pandas.DataFrame(data = LoLGame_summary_error)
-                        LoLGame_leaderboard_df = pandas.DataFrame()
-                    
-                    ##时间轴/详细信息（Timeline / Details）
-                    LoLGame_timeline_df: pandas.DataFrame = pandas.DataFrame()
-                    LoLGame_event_df: pandas.DataFrame = pandas.DataFrame()
-                    if LoLGame_timeline_export:
-                        if "errorCode" in LoLGame_timeline:
-                            LoLGame_timeline_error: dict[str, list[Any]] = {"项目": list(error_header.values()), "items": list(error_header.keys()), "值": [LoLGame_timeline.get(key, "") for key in error_header_keys]}
-                            LoLGame_timeline_df = pandas.DataFrame(data = LoLGame_timeline_error)
-                            LoLGame_event_df = pandas.DataFrame(data = LoLGame_timeline_error)
-                        elif not "errorCode" in LoLGame_summary:
-                            if save_all_json and save_one_json: #时间轴的单场文本文档保存策略继承了对局概要的单场文本文档保存策略（`save_one_json` of match timeline inherits from that of match summary）
-                                json11name: str = f"Match Timeline (LoL) - {platformId}-{matchId} (SGP).json" if use_sgp else f"Match Timeline (LoL) - {platformId}-{matchId}.json"
-                                os.makedirs(match_folder, exist_ok = True)
-                                try:
-                                    with open(os.path.join(match_folder, json11name), "w", encoding = "utf-8") as jsonfile11:
-                                        jsonfile11.write(json.dumps(LoLGame_timeline, indent = 4, ensure_ascii = False))
-                                except UnicodeEncodeError:
-                                    logPrint("对局%d时间轴文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nMatch %d timeline text generation failure! Please check if the summoner name includes any abnormal characters!" %(matchId, matchId))
-                                else:
-                                    timeline_text_saved = True
-                                # currentTime: str = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
-                                # pkl8name: str = f"Intermediate Object - Match Timeline (LoL) - {platformId}-{matchId}.pkl"
-                                # with open(os.path.join(match_folder, pkl8name), "wb") as IntObj7:
-                                #     pickle.dump(LoLGame_timeline, IntObj7)
-                            if use_sgp:
-                                LoLGame_timeline_df, LoLGame_event_df, LoLItems = await sort_LoLGame_timeline_sgp(connection, LoLGame_timeline, LoLGame_summary, LoLChampions, LoLItems, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, useInfoDict = True, infos = infos, log = log)
-                            else:
-                                LoLGame_timeline_df, LoLGame_event_df, LoLItems = sort_LoLGame_timeline(LoLGame_timeline, LoLGame_summary, LoLChampions, LoLItems, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, log = log)
-                    
-                    if LoLGame_leaderboard_export:
-                        game_leaderboard_dfs[matchId] = LoLGame_leaderboard_df.copy(deep = True)
-                    if LoLGame_summary_export:
-                        game_summary_dfs[matchId] = LoLGame_summary_df.copy(deep = True) #这里添加的LoLGame_summary_df会在下一次循环中发生改变，这是数据框类型的特性。因此这里采用深复制，将原有内容克隆到另外一个地址，这样能保证每次添加的是不同的对局概要（The added LoLGame_summary_df will be modified next time in the loop, which belongs to the characteristics of DataFrame data type. Therefore a deep copy is used here to clone the original content to another address, so that each time the appended content is different）
-                    if LoLGame_timeline_export: #即使这里显示是导出的，由于后面取对局序号时是按照对局概要来取的，所以如果对局概要获取异常而对局时间轴获取正常，最终对局时间轴也不会导出到Excel中（Although it seems that a timeline dataframe is to be exported, because the final matchIDs are obtained from `game_summary_dfs`, if the program fails to get match summary but succeeds to get match timeline, the timeline information won't be exported into Excel）
-                        game_timeline_dfs[matchId] = LoLGame_timeline_df.copy(deep = True)
-                        game_event_dfs[matchId] = LoLGame_event_df.copy(deep = True)
+                            LoLGame_timeline_df, LoLGame_event_df, LoLItems = sort_LoLGame_timeline(LoLGame_timeline, LoLGame_summary, LoLChampions, LoLItems, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, log = log)
                 
-                if use_sgp:
-                    LoLGame_stat_statistics_output_order: list[int] = [0, 112, 148, 131, 132, 146, 128, 147, 68, 21, 16, 13, 25, 26, 11, 18, 22, 14, 29, 15, 20, 30, 19, 24, 227, 218, 628, 184, 54, 625, 626, 96, 133, 125, 82, 152, 135, 52, 51, 55, 223, 224, 186, 187, 188, 189, 190, 191, 192, 221, 200, 212, 201, 213, 202, 214, 203, 215, 204, 216, 205, 217, 95, 64, 45, 229, 230, 231, 234, 235, 98, 94, 99, 49, 72, 71, 74, 73, 66, 167, 129, 113, 174, 153, 164, 157, 115, 102, 169, 156, 114, 101, 168, 97, 61, 60, 58, 59, 161, 162, 166, 158, 159, 116, 103, 170, 62, 176, 179, 178, 136, 177, 65, 79, 232, 80, 233, 93, 57, 163, 105, 155, 160, 171, 172, 83, 84, 106, 108, 173, 85, 107, 67, 47, 109, 110, 100, 48, 56, 78, 130, 127, 111, 43, 44, 104, 69, 70, 175, 63, 46, 81, 154, 165, 137, 139, 141, 142, 228, 144, 145, 602, 616, 608, 604, 609, 605, 610, 606, 611, 607, 620, 618, 621, 619, 598, 596, 597, 50, 149, 150, 75, 76, 77, 182, 181, 180, 236, 117, 143, 672, 658, 643, 728, 674, 671, 675, 647, 660, 715, 692, 687, 721, 701, 712, 705, 689, 678, 717, 704, 688, 677, 716, 673, 655, 654, 652, 653, 709, 710, 714, 706, 707, 690, 679, 718, 656, 723, 726, 725, 694, 724, 659, 665, 666, 670, 651, 711, 681, 703, 708, 729, 719, 720, 668, 669, 682, 683, 661, 645, 684, 685, 676, 646, 650, 664, 693, 691, 686, 641, 642, 680, 662, 663, 722, 657, 644, 667, 702, 713, 695, 696, 697, 698, 727, 699, 700, 802, 750, 749, 773, 759, 744, 830, 831, 833, 775, 772, 776, 748, 761, 817, 793, 788, 823, 803, 814, 807, 790, 779, 819, 806, 789, 778, 818, 774, 756, 755, 753, 754, 811, 812, 816, 808, 809, 791, 780, 820, 757, 825, 828, 827, 795, 826, 760, 766, 767, 834, 771, 752, 813, 782, 810, 805, 832, 821, 822, 769, 770, 762, 746, 785, 786, 783, 784, 777, 747, 751, 765, 794, 792, 787, 742, 743, 781, 763, 764, 824, 758, 745, 768, 804, 815, 796, 797, 798, 799, 829, 800, 801, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 381, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 382, 283, 284, 285, 383, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 384, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 385, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521, 522, 523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537, 538, 539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560, 561, 562, 563, 564, 565, 566, 237]
-                else:
-                    LoLGame_stat_statistics_output_order = [0, 16, 26, 20, 27, 25, 24, 31, 5, 3, 13, 4, 11, 6, 14, 10, 15, 9, 42, 214, 231, 35, 36, 226, 227, 229, 230, 46, 38, 39, 160, 161, 162, 163, 164, 165, 166, 215, 196, 208, 197, 209, 198, 210, 199, 211, 200, 212, 201, 213, 74, 51, 43, 217, 218, 219, 222, 223, 47, 144, 145, 76, 73, 77, 55, 54, 59, 58, 57, 56, 52, 148, 133, 86, 153, 138, 146, 140, 114, 80, 150, 139, 113, 79, 149, 75, 49, 48, 142, 147, 141, 115, 81, 151, 50, 154, 157, 156, 135, 155, 63, 220, 64, 221, 143, 82, 84, 83, 152, 65, 78, 192, 194, 180, 174, 181, 175, 182, 176, 183, 177, 184, 178, 185, 179, 44, 53, 137, 45, 60, 61, 62, 158, 224, 136, 243, 237, 232, 290, 233, 277, 245, 242, 246, 238, 280, 269, 255, 285, 271, 278, 273, 257, 249, 282, 272, 256, 248, 281, 244, 235, 234, 275, 279, 274, 258, 250, 283, 236, 286, 289, 288, 270, 287, 239, 240, 276, 251, 253, 252, 291, 284, 241, 247, 293, 304, 298, 292, 351, 352, 354, 294, 338, 306, 303, 307, 299, 341, 330, 316, 346, 332, 339, 334, 318, 310, 343, 333, 317, 309, 342, 305, 296, 295, 336, 340, 335, 319, 311, 344, 297, 347, 350, 349, 331, 348, 300, 301, 355, 337, 312, 313, 314, 353, 345, 302, 308]
-                LoLGame_stat_data_organized: dict[str, list[Any]] = {LoLGame_stat_header_keys[i]: LoLGame_stat_data[LoLGame_stat_header_keys[i]] for i in LoLGame_stat_statistics_output_order}
-                LoLGame_stat_df: pandas.DataFrame = pandas.DataFrame(data = LoLGame_stat_data_organized)
-                optimize_bool_display(LoLGame_stat_df)
-                LoLGame_stat_df_export = True
-                
-                LoLGame_stat_self_df = pandas.concat([pandas.DataFrame([LoLGame_stat_header])[LoLGame_stat_df.columns], LoLGame_stat_df[LoLGame_stat_df["puuid"].isin(current_puuid_list)]], ignore_index = True)
-                recent_LoLPlayer_df = pandas.concat([pandas.DataFrame([LoLGame_stat_header])[LoLGame_stat_df.columns], LoLGame_stat_df[~(LoLGame_stat_df["puuid"].isin(current_puuid_list))]], ignore_index = True)
-                
-                if len(LoLMatches_not_found) > 0:
-                    logPrint("警告：以下%d场对局不存在。\nWarning: The following %d match(es) aren't found." %(len(LoLMatches_not_found), len(LoLMatches_not_found)))
-                    logPrint(LoLMatches_not_found)
-                if len(error_LoLMatchIDs) > 0:
-                    logPrint("警告：以下%d场对局获取失败。\nWarning: The following %d match(es) fail to be fetched." %(len(error_LoLMatchIDs), len(error_LoLMatchIDs)))
-                    logPrint(error_LoLMatchIDs)
-                if LoLGamePlayed and save_all_json:
-                    logPrint('对局序号列表已保存在“%s”文件夹下。\nMatchId list is saved in the folder "%s".\n' %(folder, folder))
-                matches_to_remove: list[int] = LoLMatches_not_found + error_LoLMatchIDs
-                for match_to_remove in matches_to_remove: #在去除获取异常的对局后，需要在对局序号列表中将这些对局也一并移除（After removing matches that fail to be captured, we need to remove them in matchId list, too）
-                    if match_to_remove in LoLMatchIDs:
-                        LoLMatchIDs.remove(match_to_remove)
+                if LoLGame_leaderboard_export:
+                    game_leaderboard_dfs[matchId] = LoLGame_leaderboard_df.copy(deep = True)
+                if LoLGame_summary_export:
+                    game_summary_dfs[matchId] = LoLGame_summary_df.copy(deep = True) #这里添加的LoLGame_summary_df会在下一次循环中发生改变，这是数据框类型的特性。因此这里采用深复制，将原有内容克隆到另外一个地址，这样能保证每次添加的是不同的对局概要（The added LoLGame_summary_df will be modified next time in the loop, which belongs to the characteristics of DataFrame data type. Therefore a deep copy is used here to clone the original content to another address, so that each time the appended content is different）
+                if LoLGame_timeline_export: #即使这里显示是导出的，由于后面取对局序号时是按照对局概要来取的，所以如果对局概要获取异常而对局时间轴获取正常，最终对局时间轴也不会导出到Excel中（Although it seems that a timeline dataframe is to be exported, because the final matchIDs are obtained from `game_summary_dfs`, if the program fails to get match summary but succeeds to get match timeline, the timeline information won't be exported into Excel）
+                    game_timeline_dfs[matchId] = LoLGame_timeline_df.copy(deep = True)
+                    game_event_dfs[matchId] = LoLGame_event_df.copy(deep = True)
+            
+            if use_sgp:
+                LoLGame_stat_statistics_output_order: list[int] = [0, 112, 148, 131, 132, 146, 128, 147, 68, 21, 16, 13, 25, 26, 11, 18, 22, 14, 29, 15, 20, 30, 19, 24, 227, 218, 628, 184, 54, 625, 626, 96, 133, 125, 82, 152, 135, 52, 51, 55, 223, 224, 186, 187, 188, 189, 190, 191, 192, 221, 200, 212, 201, 213, 202, 214, 203, 215, 204, 216, 205, 217, 95, 64, 45, 229, 230, 231, 234, 235, 98, 94, 99, 49, 72, 71, 74, 73, 66, 167, 129, 113, 174, 153, 164, 157, 115, 102, 169, 156, 114, 101, 168, 97, 61, 60, 58, 59, 161, 162, 166, 158, 159, 116, 103, 170, 62, 176, 179, 178, 136, 177, 65, 79, 232, 80, 233, 93, 57, 163, 105, 155, 160, 171, 172, 83, 84, 106, 108, 173, 85, 107, 67, 47, 109, 110, 100, 48, 56, 78, 130, 127, 111, 43, 44, 104, 69, 70, 175, 63, 46, 81, 154, 165, 137, 139, 141, 142, 228, 144, 145, 602, 616, 608, 604, 609, 605, 610, 606, 611, 607, 620, 618, 621, 619, 598, 596, 597, 50, 149, 150, 75, 76, 77, 182, 181, 180, 236, 117, 143, 672, 658, 643, 728, 674, 671, 675, 647, 660, 715, 692, 687, 721, 701, 712, 705, 689, 678, 717, 704, 688, 677, 716, 673, 655, 654, 652, 653, 709, 710, 714, 706, 707, 690, 679, 718, 656, 723, 726, 725, 694, 724, 659, 665, 666, 670, 651, 711, 681, 703, 708, 729, 719, 720, 668, 669, 682, 683, 661, 645, 684, 685, 676, 646, 650, 664, 693, 691, 686, 641, 642, 680, 662, 663, 722, 657, 644, 667, 702, 713, 695, 696, 697, 698, 727, 699, 700, 802, 750, 749, 773, 759, 744, 830, 831, 833, 775, 772, 776, 748, 761, 817, 793, 788, 823, 803, 814, 807, 790, 779, 819, 806, 789, 778, 818, 774, 756, 755, 753, 754, 811, 812, 816, 808, 809, 791, 780, 820, 757, 825, 828, 827, 795, 826, 760, 766, 767, 834, 771, 752, 813, 782, 810, 805, 832, 821, 822, 769, 770, 762, 746, 785, 786, 783, 784, 777, 747, 751, 765, 794, 792, 787, 742, 743, 781, 763, 764, 824, 758, 745, 768, 804, 815, 796, 797, 798, 799, 829, 800, 801, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 381, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 382, 283, 284, 285, 383, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 384, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 385, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521, 522, 523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537, 538, 539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560, 561, 562, 563, 564, 565, 566, 237]
+            else:
+                LoLGame_stat_statistics_output_order = [0, 16, 26, 20, 27, 25, 24, 31, 5, 3, 13, 4, 11, 6, 14, 10, 15, 9, 42, 214, 231, 35, 36, 226, 227, 229, 230, 46, 38, 39, 160, 161, 162, 163, 164, 165, 166, 215, 196, 208, 197, 209, 198, 210, 199, 211, 200, 212, 201, 213, 74, 51, 43, 217, 218, 219, 222, 223, 47, 144, 145, 76, 73, 77, 55, 54, 59, 58, 57, 56, 52, 148, 133, 86, 153, 138, 146, 140, 114, 80, 150, 139, 113, 79, 149, 75, 49, 48, 142, 147, 141, 115, 81, 151, 50, 154, 157, 156, 135, 155, 63, 220, 64, 221, 143, 82, 84, 83, 152, 65, 78, 192, 194, 180, 174, 181, 175, 182, 176, 183, 177, 184, 178, 185, 179, 44, 53, 137, 45, 60, 61, 62, 158, 224, 136, 243, 237, 232, 290, 233, 277, 245, 242, 246, 238, 280, 269, 255, 285, 271, 278, 273, 257, 249, 282, 272, 256, 248, 281, 244, 235, 234, 275, 279, 274, 258, 250, 283, 236, 286, 289, 288, 270, 287, 239, 240, 276, 251, 253, 252, 291, 284, 241, 247, 293, 304, 298, 292, 351, 352, 354, 294, 338, 306, 303, 307, 299, 341, 330, 316, 346, 332, 339, 334, 318, 310, 343, 333, 317, 309, 342, 305, 296, 295, 336, 340, 335, 319, 311, 344, 297, 347, 350, 349, 331, 348, 300, 301, 355, 337, 312, 313, 314, 353, 345, 302, 308]
+            LoLGame_stat_data_organized: dict[str, list[Any]] = {LoLGame_stat_header_keys[i]: LoLGame_stat_data[LoLGame_stat_header_keys[i]] for i in LoLGame_stat_statistics_output_order}
+            LoLGame_stat_df: pandas.DataFrame = pandas.DataFrame(data = LoLGame_stat_data_organized)
+            optimize_bool_display(LoLGame_stat_df)
+            LoLGame_stat_df_export = True
+            
+            LoLGame_stat_self_df = pandas.concat([pandas.DataFrame([LoLGame_stat_header])[LoLGame_stat_df.columns], LoLGame_stat_df[LoLGame_stat_df["puuid"].isin(current_puuid_list)]], ignore_index = True)
+            recent_LoLPlayer_df = pandas.concat([pandas.DataFrame([LoLGame_stat_header])[LoLGame_stat_df.columns], LoLGame_stat_df[~(LoLGame_stat_df["puuid"].isin(current_puuid_list))]], ignore_index = True)
+            
+            if len(LoLMatches_not_found) > 0:
+                logPrint("警告：以下%d场对局不存在。\nWarning: The following %d match(es) aren't found." %(len(LoLMatches_not_found), len(LoLMatches_not_found)))
+                logPrint(LoLMatches_not_found)
+            if len(error_LoLMatchIDs) > 0:
+                logPrint("警告：以下%d场对局获取失败。\nWarning: The following %d match(es) fail to be fetched." %(len(error_LoLMatchIDs), len(error_LoLMatchIDs)))
+                logPrint(error_LoLMatchIDs)
+            if save_all_json:
+                logPrint('对局序号列表已保存在“%s”文件夹下。\nMatchId list is saved in the folder "%s".\n' %(folder, folder))
+            matches_to_remove: list[int] = LoLMatches_not_found + error_LoLMatchIDs
+            for match_to_remove in matches_to_remove: #在去除获取异常的对局后，需要在对局序号列表中将这些对局也一并移除（After removing matches that fail to be captured, we need to remove them in matchId list, too）
+                if match_to_remove in LoLMatchIDs:
+                    LoLMatchIDs.remove(match_to_remove)
+        else:
+            if use_sgp:
+                LoLGame_summary_header_keys: list[str] = list(LoLGame_stat_header.keys())
+                recent_LoLPlayer_statistics_output_order: list[int] = [0, 112, 148, 131, 132, 146, 128, 147, 68, 21, 16, 13, 25, 26, 11, 18, 22, 14, 29, 15, 20, 30, 19, 24, 227, 218, 628, 184, 54, 625, 626, 96, 133, 125, 82, 152, 135, 52, 51, 55, 223, 224, 186, 187, 188, 189, 190, 191, 192, 221, 200, 212, 201, 213, 202, 214, 203, 215, 204, 216, 205, 217, 95, 64, 45, 229, 230, 231, 234, 235, 98, 94, 99, 49, 72, 71, 74, 73, 66, 167, 129, 113, 174, 153, 164, 157, 115, 102, 169, 156, 114, 101, 168, 97, 61, 60, 58, 59, 161, 162, 166, 158, 159, 116, 103, 170, 62, 176, 179, 178, 136, 177, 65, 79, 232, 80, 233, 93, 57, 163, 105, 155, 160, 171, 172, 83, 84, 106, 108, 173, 85, 107, 67, 47, 109, 110, 100, 48, 56, 78, 130, 127, 111, 43, 44, 104, 69, 70, 175, 63, 46, 81, 154, 165, 137, 139, 141, 142, 228, 144, 145, 602, 616, 608, 604, 609, 605, 610, 606, 611, 607, 620, 618, 621, 619, 598, 596, 597, 50, 149, 150, 75, 76, 77, 182, 181, 180, 236, 117, 143, 672, 658, 643, 728, 674, 671, 675, 647, 660, 715, 692, 687, 721, 701, 712, 705, 689, 678, 717, 704, 688, 677, 716, 673, 655, 654, 652, 653, 709, 710, 714, 706, 707, 690, 679, 718, 656, 723, 726, 725, 694, 724, 659, 665, 666, 670, 651, 711, 681, 703, 708, 729, 719, 720, 668, 669, 682, 683, 661, 645, 684, 685, 676, 646, 650, 664, 693, 691, 686, 641, 642, 680, 662, 663, 722, 657, 644, 667, 702, 713, 695, 696, 697, 698, 727, 699, 700, 802, 750, 749, 773, 759, 744, 830, 831, 833, 775, 772, 776, 748, 761, 817, 793, 788, 823, 803, 814, 807, 790, 779, 819, 806, 789, 778, 818, 774, 756, 755, 753, 754, 811, 812, 816, 808, 809, 791, 780, 820, 757, 825, 828, 827, 795, 826, 760, 766, 767, 834, 771, 752, 813, 782, 810, 805, 832, 821, 822, 769, 770, 762, 746, 785, 786, 783, 784, 777, 747, 751, 765, 794, 792, 787, 742, 743, 781, 763, 764, 824, 758, 745, 768, 804, 815, 796, 797, 798, 799, 829, 800, 801, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 381, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 382, 283, 284, 285, 383, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 384, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 385, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521, 522, 523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537, 538, 539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560, 561, 562, 563, 564, 565, 566, 237]
+                recent_LoLPlayer_data_organized: dict[str, list[Any]] = {LoLGame_summary_header_keys[i]: [LoLGame_stat_header[LoLGame_summary_header_keys[i]]] for i in recent_LoLPlayer_statistics_output_order}
+            else:
+                LoLGame_summary_header_keys: list[str] = list(LoLGame_stat_header.keys())
+                recent_LoLPlayer_statistics_output_order: list[int] = [0, 16, 26, 20, 27, 25, 24, 31, 5, 3, 13, 4, 11, 6, 14, 10, 15, 9, 42, 214, 231, 35, 36, 226, 227, 229, 230, 46, 38, 39, 160, 161, 162, 163, 164, 165, 166, 215, 196, 208, 197, 209, 198, 210, 199, 211, 200, 212, 201, 213, 74, 51, 43, 217, 218, 219, 222, 223, 47, 144, 145, 76, 73, 77, 55, 54, 59, 58, 57, 56, 52, 148, 133, 86, 153, 138, 146, 140, 114, 80, 150, 139, 113, 79, 149, 75, 49, 48, 142, 147, 141, 115, 81, 151, 50, 154, 157, 156, 135, 155, 63, 220, 64, 221, 143, 82, 84, 83, 152, 65, 78, 192, 194, 180, 174, 181, 175, 182, 176, 183, 177, 184, 178, 185, 179, 44, 53, 137, 45, 60, 61, 62, 158, 224, 136, 243, 237, 232, 290, 233, 277, 245, 242, 246, 238, 280, 269, 255, 285, 271, 278, 273, 257, 249, 282, 272, 256, 248, 281, 244, 235, 234, 275, 279, 274, 258, 250, 283, 236, 286, 289, 288, 270, 287, 239, 240, 276, 251, 253, 252, 291, 284, 241, 247, 293, 304, 298, 292, 351, 352, 354, 294, 338, 306, 303, 307, 299, 341, 330, 316, 346, 332, 339, 334, 318, 310, 343, 333, 317, 309, 342, 305, 296, 295, 336, 340, 335, 319, 311, 344, 297, 347, 350, 349, 331, 348, 300, 301, 355, 337, 312, 313, 314, 353, 345, 302, 308]
+                recent_LoLPlayer_data_organized: dict[str, list[Any]] = {LoLGame_summary_header_keys[i]: [LoLGame_stat_header[LoLGame_summary_header_keys[i]]] for i in recent_LoLPlayer_statistics_output_order}
+            recent_LoLPlayer_df: pandas.DataFrame = pandas.DataFrame(data = recent_LoLPlayer_data_organized)
         
         #整理云顶之弈对局记录（Organize TFT match history）
         logPrint("是否查询云顶之弈对局记录？（输入任意键查询，否则不查询）\nSearch TFT matches? (Input anything to search or null to export data or switch for another summoner)")
         search_TFT_str: str = logInput()
         search_TFT: bool = bool(search_TFT_str)
+        TFTMatchIDs: list[int] = []
+        old_TFTMatch_detected: bool = len(saved_TFTMatchIDs) > 0
+        update_unsaved_only_tft: bool = False
         if search_TFT:
             TFTHistory_dfs: list[pandas.DataFrame] = []
-            TFTHistory_dict: dict[int, dict[str, Any]] = {}
             for i in range(len(AllAccounts)):
                 queues = queues_initial.copy()
                 TFTAugments = TFTAugments_initial.copy()
@@ -2523,7 +2537,6 @@ async def search_profile(connection: Connection) -> None:
                 TFTTraits = TFTTraits_initial.copy()
                 current_versions["queue"] = current_versions["TFTAugment"] = current_versions["TFTChampion"] = current_versions["TFTItem"] = current_versions["TFTCompanion"] = current_versions["TFTTrait"] = URLPatch
                 unmapped_keys["queue"], unmapped_keys["TFTAugment"], unmapped_keys["TFTChampion"], unmapped_keys["TFTItem"], unmapped_keys["TFTCompanion"], unmapped_keys["TFTTrait"] = set(), set(), set(), set(), set(), set()
-                info_body: dict[str, Any] = AllAccounts[i]
                 info_puuid: str = current_puuid_list[i]
                 info_summonerName: str = current_summonerName_list[i]
                 logPrint("[%d/%d]正在获取客户端内玩家%s的云顶之弈对局记录……\nGetting TFT match history of player %s in the client ..." %(i + 1, len(AllAccounts), info_summonerName, info_summonerName))
@@ -2547,14 +2560,14 @@ async def search_profile(connection: Connection) -> None:
                     if not matchId in TFTGame_summary_cache_sgp: #由于云顶之弈的对局记录包含所有玩家的信息，所以如果多个玩家的对局记录包含同一场对局，则这些对局的信息一定是相同的（Because TFT match history includes all players' information, if a match is included in multiple players' match histories, then information of the matches recorded in different players' match histories must be the same）
                         TFTGame_summary_cache_sgp[matchId] = game
                 if TFTHistory_get:
-                    TFTGamePlayed: bool = (TFTGameCount := len(TFTHistory["games"])) > 0 #标记该玩家是否进行过云顶之弈对局（Mark whether this summoner has played any TFT game）
-                    if TFTGamePlayed:
+                    TFTGamePlayed_singleSummoner: bool = (TFTGameCount := len(TFTHistory["games"])) > 0 #标记该玩家是否进行过云顶之弈对局（Mark whether this summoner has played any TFT game）
+                    if TFTGamePlayed_singleSummoner:
                         logPrint(f"玩家{info_summonerName}共进行{TFTGameCount}场云顶之弈对局。\nPlayer {info_summonerName} has played {TFTGameCount} TFT matches.\n")
                     else:
                         logPrint(f"玩家{info_summonerName}从5月1日起就没有进行过任何云顶之弈对局。\nPlayer {info_summonerName} hasn't played any TFT game yet since May 1st.")
                     TFTHistory_df: pandas.DataFrame = (await sort_TFTHistory(connection, TFTHistory, info_puuid, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, useInfoDict = True, infos = infos, log = log))[0]
                     TFTHistory_dfs.append(TFTHistory_df)
-                    if TFTGamePlayed:
+                    if TFTGamePlayed_singleSummoner:
                         logPrint(TFTHistory_df[:min(21, TFTGameCount + 1)], write_time = False)
             #由于云顶之弈的对局记录包含所有玩家的信息，所以这里考虑先整合所有账号的对局记录，再对总对局记录进行整理。如果先整理再整合，后续排序时玩家顺序的信息会丢失，因为在这种情形下根据对局序号排序，而数据框中不包含玩家序号键，无法按照玩家序号进行升序排列（Because TFT match history includes all players' information, here the program first merges all accounts' match history, and then sort out the aggregate match history. Otherwise, if the program first organize the match history respectively and then merge the result dataframe, the participantId order may be lost during the subsequent ordering, for gameId is taken to arrange the aggregate dataframe, but the key `participantId` isn't in the dataframe, and therefore the dataframe can't be arranged in the ascending order of participantId）
             # TFTHistory_all: dict[str, str | list[dict[str, Any]]] = {"active_puuid": "", "games": list(map(lambda x: TFTGame_summary_cache_sgp[x], TFTGameIDs))}
@@ -2573,11 +2586,7 @@ async def search_profile(connection: Connection) -> None:
             
             logPrint('请输入要查询的云顶之弈对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出云顶之弈对局查询请输入“0”：\nPlease enter the TFT match ID to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to quit searching for TFT matches.')
             TFTGameIDs: list[int] = TFTHistory_df_all["game_id"][1:].to_list()
-            TFTMatches_not_found: list[int] = []
-            error_TFTMatchIDs: list[int] = []
             old_TFTMatch_detected: bool = len(saved_TFTMatchIDs) > 0
-            update_unsaved_only: bool = False
-            TFTMatchIDs: list[int] = []
             while True:
                 matchId_str: str = logInput()
                 if matchId_str == "":
@@ -2591,9 +2600,9 @@ async def search_profile(connection: Connection) -> None:
                             latest_TFTMatchID: int = max(saved_TFTMatchIDs)
                             latest_TFTMatchID_index: int = TFTGameIDs.index(latest_TFTMatchID) if latest_TFTMatchID in TFTGameIDs else 500
                             logPrint("检测到您以前曾经查询过该召唤师的云顶之弈对局记录。是否只保存该召唤师信息文件夹中不包含的云顶之弈对局？（输入空字符串以只保存未保存过文本文档的对局，否则自行指定对局索引上下限）\nThe program detected that you've searched for this summoner's TFT match history before. Do you want to only save the TFT matches not present in the current summoner folder? (Enter an empty string to saved only the matches whose json files haven't been saved, or any non-empty string to specify the begIndex and endIndex of the matches by yourself)\n即将使用的起始索引和总对局数（The beginning index and total game count to be used）：0 %d" %latest_TFTMatchID_index)
-                            update_unsaved_only_str: str = logInput()
-                            update_unsaved_only: bool = not bool(update_unsaved_only_str)
-                        if old_TFTMatch_detected and update_unsaved_only:
+                            update_unsaved_only_tft_str: str = logInput()
+                            update_unsaved_only_tft: bool = not bool(update_unsaved_only_tft_str)
+                        if old_TFTMatch_detected and update_unsaved_only_tft:
                             TFTMatchIDs = TFTGameIDs[:]
                         else:
                             begIndex: int = 0
@@ -2665,175 +2674,185 @@ async def search_profile(connection: Connection) -> None:
                             logPrint("您的输入存在语法错误。请重新输入！\nSyntax ERROR detected in this input! Please try again!")
                             continue
                     break
-            if len(TFTMatchIDs) > 0:
-                queues = queues_initial.copy()
-                TFTAugments = TFTAugments_initial.copy()
-                TFTChampions = TFTChampions_initial.copy()
-                TFTItems = TFTItems_initial.copy()
-                TFTCompanions = TFTCompanions_initial.copy()
-                TFTTraits = TFTTraits_initial.copy()
-                current_versions["queue"] = current_versions["TFTAugment"] = current_versions["TFTChampion"] = current_versions["TFTItem"] = current_versions["TFTCompanion"] = current_versions["TFTTrait"] = URLPatch
-                unmapped_keys["queue"], unmapped_keys["TFTAugment"], unmapped_keys["TFTChampion"], unmapped_keys["TFTItem"], unmapped_keys["TFTCompanion"], unmapped_keys["TFTTrait"] = set(), set(), set(), set(), set(), set()
-                logPrint("是否输出每场对局的文本文档？（输入任意键不输出，否则默认输出）\nExport text files of each match? (Input anything to cancel, or null to export by default)")
-                save_all_json_str: str = logInput()
-                save_all_json: bool = not bool(save_all_json_str)
-                TFTGame_stat_header_keys: list[str] = list(TFTGame_stat_header.keys())
-                TFTGame_stat_data: dict[str, list[Any]] = {key: [] for key in TFTGame_stat_header_keys}
-                for matchId in TFTMatchIDs:
-                    match_id: str = f"{platformId}_{matchId}"
-                    TFTGame_summary_export: bool = not (old_TFTMatch_detected and update_unsaved_only and matchId in saved_TFTMatchIDs)
-                    TFTGame_leaderboard_export: bool = args.export_leaderboard
-                    info_text_saved: bool = False
-                    isTFT[matchId] = False #前面部分对局即使添加到此字典中，其值也是False（Even if some matches are added into this dictionary previously, their values are still False）
-                    
-                    if TFTGame_summary_export: #这里和英雄联盟对局概要的区别是，在整理英雄联盟对局概要的同时会梳理出英雄联盟战绩汇总表，而整理云顶之弈对局概要时没有其它操作。所以如果一个云顶之弈对局概要文本文档不需要保存和导出，那么直接不加载就可以了（Here the difference from the case of LoL match summary is that the program summarizes the LoL match stats table while organizing LoL match summary, while the program does nothing else while organizing TFT match summaries. Therefore, if a TFT match summary json file isn't saved and exported, then it's better not load it）
-                        #获取数据（Get data）
-                        if matchId in TFTGame_summary_cache_sgp:
-                            TFTGame_summary: dict[str, Any] = TFTGame_summary_cache_sgp[matchId]
-                            status: int = 200
-                        else:
-                            status, TFTGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, checkLoL = False, checkTFT = True, log = log) #通过LCU API和SGP API获取到的云顶之弈对局记录和对局概要是相同的（TFT match history and TFT game summary obtained through LCU API and SGP API are the same）
-                            if status == 200:
-                                TFTGame_summary_cache_sgp[matchId] = TFTGame_summary
-                        if status == 200 and "json" in TFTGame_summary and bool(TFTGame_summary["json"]):
-                            isTFT[matchId] = True
-                            info_exist_error[matchId] = False
-                            save_one_json: bool = TFTGame_summary_export
-                            participant_puuid: list[str] = []
-                            participant_gameName: list[str] = []
-                            for participant in TFTGame_summary["json"]["participants"]:
-                                participant_puuid.append(participant["puuid"])
-                                if participant["puuid"] != "00000000-0000-0000-0000-000000000000":
-                                    if "riotIdGameName" in participant and "riotIdTagline" in participant:
-                                        TFTPlayer_summonerName: str = "%s#%s" %(participant["riotIdGameName"], participant["riotIdTagline"])
-                                    else:
-                                        if participant["puuid"] in infos:
-                                            TFTPlayer_info_body = infos[participant["puuid"]]
-                                            TFTPlayer_summonerName = get_info_name(TFTPlayer_info_body)
-                                            TFTPlayer_info_got: bool = True
-                                        else:
-                                            TFTPlayer_info_recapture = 0
-                                            TFTPlayer_info = await get_info(connection, participant["puuid"])
-                                            while not TFTPlayer_info["info_got"] and TFTPlayer_info["body"]["httpStatus"] != 404 and TFTPlayer_info_recapture < 3:
-                                                logPrint(TFTPlayer_info["message"])
-                                                TFTPlayer_info_recapture += 1
-                                                logPrint("对局%d玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of player (puuid: %s) in Match %d capture failed! Recapturing this player's information ... Times tried: %d." %(TFTGame_summary["json"]["game_id"], participant["puuid"], TFTPlayer_info_recapture, participant["puuid"], TFTGame_summary["json"]["game_id"], TFTPlayer_info_recapture))
-                                                TFTPlayer_info = await get_info(connection, participant["puuid"])
-                                            if TFTPlayer_info["info_got"]:
-                                                TFTPlayer_info_body = TFTPlayer_info["body"]
-                                                infos[participant["puuid"]] = TFTPlayer_info_body
-                                                TFTPlayer_summonerName = get_info_name(TFTPlayer_info_body)
-                                            else:
-                                                logPrint(TFTPlayer_info["message"])
-                                                logPrint("对局%d玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of player (puuid: %s) in Match %d capture failed!" %(TFTGame_summary["json"]["game_id"], participant["puuid"], participant["puuid"], TFTGame_summary["json"]["game_id"]))
-                                                TFTPlayer_summonerName = participant["puuid"] 
-                                            TFTPlayer_info_got = TFTPlayer_info["info_got"]
+        #整理云顶之弈对局信息（Organize TFT match information）
+        TFTGamePlayed: bool = len(TFTMatchIDs) > 0
+        if TFTGamePlayed:
+            TFTMatches_not_found: list[int] = []
+            error_TFTMatchIDs: list[int] = []
+            queues = queues_initial.copy()
+            TFTAugments = TFTAugments_initial.copy()
+            TFTChampions = TFTChampions_initial.copy()
+            TFTItems = TFTItems_initial.copy()
+            TFTCompanions = TFTCompanions_initial.copy()
+            TFTTraits = TFTTraits_initial.copy()
+            current_versions["queue"] = current_versions["TFTAugment"] = current_versions["TFTChampion"] = current_versions["TFTItem"] = current_versions["TFTCompanion"] = current_versions["TFTTrait"] = URLPatch
+            unmapped_keys["queue"], unmapped_keys["TFTAugment"], unmapped_keys["TFTChampion"], unmapped_keys["TFTItem"], unmapped_keys["TFTCompanion"], unmapped_keys["TFTTrait"] = set(), set(), set(), set(), set(), set()
+            logPrint("是否输出每场对局的文本文档？（输入任意键不输出，否则默认输出）\nExport text files of each match? (Input anything to cancel, or null to export by default)")
+            save_all_json_str: str = logInput()
+            save_all_json: bool = not bool(save_all_json_str)
+            TFTGame_stat_header_keys: list[str] = list(TFTGame_stat_header.keys())
+            TFTGame_stat_data: dict[str, list[Any]] = {key: [] for key in TFTGame_stat_header_keys}
+            for matchId in TFTMatchIDs:
+                match_id: str = f"{platformId}_{matchId}"
+                TFTGame_summary_export: bool = not (old_TFTMatch_detected and update_unsaved_only_tft and matchId in saved_TFTMatchIDs)
+                TFTGame_leaderboard_export: bool = args.export_leaderboard
+                info_text_saved: bool = False
+                isTFT[matchId] = False #前面部分对局即使添加到此字典中，其值也是False（Even if some matches are added into this dictionary previously, their values are still False）
+                
+                if TFTGame_summary_export: #这里和英雄联盟对局概要的区别是，在整理英雄联盟对局概要的同时会梳理出英雄联盟战绩汇总表，而整理云顶之弈对局概要时没有其它操作。所以如果一个云顶之弈对局概要文本文档不需要保存和导出，那么直接不加载就可以了（Here the difference from the case of LoL match summary is that the program summarizes the LoL match stats table while organizing LoL match summary, while the program does nothing else while organizing TFT match summaries. Therefore, if a TFT match summary json file isn't saved and exported, then it's better not load it）
+                    #获取数据（Get data）
+                    if matchId in TFTGame_summary_cache_sgp:
+                        TFTGame_summary: dict[str, Any] = TFTGame_summary_cache_sgp[matchId]
+                        status: int = 200
+                    else:
+                        status, TFTGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, checkLoL = False, checkTFT = True, log = log) #通过LCU API和SGP API获取到的云顶之弈对局记录和对局概要是相同的（TFT match history and TFT game summary obtained through LCU API and SGP API are the same）
+                        if status == 200:
+                            TFTGame_summary_cache_sgp[matchId] = TFTGame_summary
+                    if status == 200 and "json" in TFTGame_summary and bool(TFTGame_summary["json"]):
+                        isTFT[matchId] = True
+                        info_exist_error[matchId] = False
+                        save_one_json: bool = TFTGame_summary_export
+                        participant_puuid: list[str] = []
+                        participant_gameName: list[str] = []
+                        for participant in TFTGame_summary["json"]["participants"]:
+                            participant_puuid.append(participant["puuid"])
+                            if participant["puuid"] != "00000000-0000-0000-0000-000000000000":
+                                if "riotIdGameName" in participant and "riotIdTagline" in participant:
+                                    TFTPlayer_summonerName: str = "%s#%s" %(participant["riotIdGameName"], participant["riotIdTagline"])
                                 else:
-                                    TFTPlayer_summonerName = participant["puuid"] #注意到新玩家的召唤师名是空字符串（Note that a new player's summoner name would also be an empty string）
-                                participant_gameName.append(TFTPlayer_summonerName)
-                            if len(set(current_puuid_list) & set(participant_puuid)) > 0:
-                                main_player_included[matchId] = True
-                                match_reserve_strategy[matchId] = True
-                            elif len(set(current_summonerName_list) & set(participant_gameName)) > 0:
-                                main_player_included[matchId] = True
-                                match_reserve_strategy[matchId] = True
-                                if not puuid_change_warning_printed:
-                                    logPrint("警告：该大区的玩家通用唯一识别码曾发生变动！请检查保存的各对局是否属于该玩家。\nWarning: The puuids of players on this server have been changed! Please check if the saved matches really belong to this player.")
-                                    puuid_change_warning_printed = True
+                                    if participant["puuid"] in infos:
+                                        TFTPlayer_info_body = infos[participant["puuid"]]
+                                        TFTPlayer_summonerName = get_info_name(TFTPlayer_info_body)
+                                        TFTPlayer_info_got: bool = True
+                                    else:
+                                        TFTPlayer_info_recapture = 0
+                                        TFTPlayer_info = await get_info(connection, participant["puuid"])
+                                        while not TFTPlayer_info["info_got"] and TFTPlayer_info["body"]["httpStatus"] != 404 and TFTPlayer_info_recapture < 3:
+                                            logPrint(TFTPlayer_info["message"])
+                                            TFTPlayer_info_recapture += 1
+                                            logPrint("对局%d玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of player (puuid: %s) in Match %d capture failed! Recapturing this player's information ... Times tried: %d." %(TFTGame_summary["json"]["game_id"], participant["puuid"], TFTPlayer_info_recapture, participant["puuid"], TFTGame_summary["json"]["game_id"], TFTPlayer_info_recapture))
+                                            TFTPlayer_info = await get_info(connection, participant["puuid"])
+                                        if TFTPlayer_info["info_got"]:
+                                            TFTPlayer_info_body = TFTPlayer_info["body"]
+                                            infos[participant["puuid"]] = TFTPlayer_info_body
+                                            TFTPlayer_summonerName = get_info_name(TFTPlayer_info_body)
+                                        else:
+                                            logPrint(TFTPlayer_info["message"])
+                                            logPrint("对局%d玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of player (puuid: %s) in Match %d capture failed!" %(TFTGame_summary["json"]["game_id"], participant["puuid"], participant["puuid"], TFTGame_summary["json"]["game_id"]))
+                                            TFTPlayer_summonerName = participant["puuid"] 
+                                        TFTPlayer_info_got = TFTPlayer_info["info_got"]
                             else:
-                                main_player_included[matchId] = False
-                                save_one_json: bool = args.reserve_text #由于从文本文件中可以提取该召唤师的对局序号，所以需要保证保留下来的文本文件都包含该召唤师。因此，如果一场对局不包含该召唤师，就不应该把这场对局保存下来，除非用户出于特殊目的需要保留文本文件（Because a summoner's matchIDs can be extracted from the saved json files, it needs to be guaranteed that all saved json files belong to this summoner. Therefore, if a match doesn't include this summoner, then it shouldn't be saved into json files, unless the user must save it with special purposes）
-                                if args.reserve:
-                                    match_reserve: bool = True
+                                TFTPlayer_summonerName = participant["puuid"] #注意到新玩家的召唤师名是空字符串（Note that a new player's summoner name would also be an empty string）
+                            participant_gameName.append(TFTPlayer_summonerName)
+                        if len(set(current_puuid_list) & set(participant_puuid)) > 0:
+                            main_player_included[matchId] = True
+                            match_reserve_strategy[matchId] = True
+                        elif len(set(current_summonerName_list) & set(participant_gameName)) > 0:
+                            main_player_included[matchId] = True
+                            match_reserve_strategy[matchId] = True
+                            if not puuid_change_warning_printed:
+                                logPrint("警告：该大区的玩家通用唯一识别码曾发生变动！请检查保存的各对局是否属于该玩家。\nWarning: The puuids of players on this server have been changed! Please check if the saved matches really belong to this player.")
+                                puuid_change_warning_printed = True
+                        else:
+                            main_player_included[matchId] = False
+                            save_one_json: bool = args.reserve_text #由于从文本文件中可以提取该召唤师的对局序号，所以需要保证保留下来的文本文件都包含该召唤师。因此，如果一场对局不包含该召唤师，就不应该把这场对局保存下来，除非用户出于特殊目的需要保留文本文件（Because a summoner's matchIDs can be extracted from the saved json files, it needs to be guaranteed that all saved json files belong to this summoner. Therefore, if a match doesn't include this summoner, then it shouldn't be saved into json files, unless the user must save it with special purposes）
+                            if args.reserve:
+                                match_reserve: bool = True
+                                logPrint("[%d/%d]对局%d不包含该玩家！已保持该对局。\nMatch %d doesn't include the current player but is reserved." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), matchId, matchId))
+                            else:
+                                if not match_notbelonging_warning_printed:
+                                    logPrint("警告：对局%d不包含该玩家！是否仍要保持该对局？（输入任意键以保留该对局，否则舍弃该对局）\nWarning: The Match %d doesn't include the current player! Continue? (Input any nonempty string to reserve this match, or null to abandon it.)\n注意：此改动对于后续情形也生效。\nNote: This decision takes effect in similar situations later." %(matchId, matchId))
+                                    match_reserve_str: str = logInput()
+                                    match_reserve = bool(match_reserve_str)
+                                    match_notbelonging_warning_printed = True
+                                elif match_reserve:
                                     logPrint("[%d/%d]对局%d不包含该玩家！已保持该对局。\nMatch %d doesn't include the current player but is reserved." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), matchId, matchId))
                                 else:
-                                    if not match_notbelonging_warning_printed:
-                                        logPrint("警告：对局%d不包含该玩家！是否仍要保持该对局？（输入任意键以保留该对局，否则舍弃该对局）\nWarning: The Match %d doesn't include the current player! Continue? (Input any nonempty string to reserve this match, or null to abandon it.)\n注意：此改动对于后续情形也生效。\nNote: This decision takes effect in similar situations later." %(matchId, matchId))
-                                        match_reserve_str: str = logInput()
-                                        match_reserve = bool(match_reserve_str)
-                                        match_notbelonging_warning_printed = True
-                                    elif match_reserve:
-                                        logPrint("[%d/%d]对局%d不包含该玩家！已保持该对局。\nMatch %d doesn't include the current player but is reserved." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), matchId, matchId))
-                                    else:
-                                        logPrint("[%d/%d]对局%d不包含该玩家！已舍弃该对局。\nMatch %d doesn't include the current player and is decrepated." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), matchId, matchId))
-                                match_reserve_strategy[matchId] = match_reserve
-                        else:
-                            TFTGame_summary_export: bool = False
-                            TFTGame_leaderboard_export: bool = False
-                            participant_puuid = []
-                            info_exist_error[matchId] = True
-                            save_one_json = False
-                        
-                        #提示（Prompt）
-                        info_note: str = "" if "json" in TFTGame_summary and bool(TFTGame_summary["json"]) else " (Match data deleted from API!)"
-                        process_header: str = "保存进度（Saving process）" if save_all_json and TFTGame_summary_export and save_one_json else "加载进度（Loading process）"
-                        logPrint("%s：%d/%d\t对局序号（MatchID）： %d%s" %(process_header, TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), matchId, info_note), print_time = True)
-                        
-                        #导出数据（Export data）
-                        if "json" in TFTGame_summary and bool(TFTGame_summary["json"]):
-                            if save_all_json and save_one_json:
-                                json12name: str = f"Match Summary (TFT) - {platformId}-{matchId}.json"
-                                os.makedirs(match_folder, exist_ok = True)
-                                try:
-                                    with open(os.path.join(match_folder, json12name), "w", encoding = "utf-8") as jsonfile12:
-                                        jsonfile12.write(json.dumps(TFTGame_summary, indent = 4, ensure_ascii = False))
-                                except UnicodeDecodeError:
-                                    logPrint("对局%d概要文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nMatch %d summary text generation failure! Please check if the summoner name includes any abnormal characters!" %(matchId, matchId))
-                                else:
-                                    info_text_saved = True
-                                    TFTMatches_exported.append(matchId)
-                                # currentTime: str = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
-                                # pkl9name: str = f"Intermediate Object - Match Summary (TFT) - {platformId}-{matchId}.pkl"
-                                # with open(os.path.join(match_folder, pkl9name), "wb") as IntObj8:
-                                #     pickle.dump(TFTGame_summary, IntObj8)
-                            
-                            TFTGame_summary_df, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits = await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = TFTMatchIDs.index(matchId), current_puuid = current_puuid, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, useInfoDict = True, infos = infos, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, save_self = True, save_other = True, log = log)
-                            
-                            #社交排行榜（Social leaderboard）
-                            if args.export_leaderboard:
-                                TFTGame_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = participant_puuid, log = log)
-                            else:
-                                TFTGame_leaderboard_df = pandas.DataFrame()
-                        else:
-                            TFTMatches_not_found.append(matchId)
-                            TFTGame_summary_error: dict[str, list[str]] = {"项目": list(error_header.values()), "items": list(error_header.keys()), "值": [TFTGame_summary.get(key, "") for key in error_header_keys]}
-                            TFTGame_summary_df: pandas.DataFrame = pandas.DataFrame(data = TFTGame_summary_error)
-                            TFTGame_leaderboard_df = pandas.DataFrame()
-                        #注意到对于对局出现异常的情况，英雄联盟对局概要数据框的构建方式和云顶之弈有所不同。这是因为当云顶之弈对局概要获取异常时，往往是其“json”键为空或者无“json”键，而没有详细报错信息（Note that when an error occurs to a match, the method of creating the LoL match summary dataframe is different from that of creating the TFT match summary dataframe. This is because when a TFT match summary fails to be loaded, either its "json" value is null, or its "json" key is missing, without a detailed error information）
-                    else: #为了简化输出，跳过导出的对局概要不再输出提示（To simplify output, skipped match summary won't have prompts）
-                        info_note: str = " (Match summary skipped)"
-                        TFTGame_summary_df: pandas.DataFrame = pandas.DataFrame()
-                        TFTGame_leaderboard_df = pandas.DataFrame()
+                                    logPrint("[%d/%d]对局%d不包含该玩家！已舍弃该对局。\nMatch %d doesn't include the current player and is decrepated." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), matchId, matchId))
+                            match_reserve_strategy[matchId] = match_reserve
+                    else:
+                        TFTGame_summary_export: bool = False
+                        TFTGame_leaderboard_export: bool = False
+                        participant_puuid = []
+                        info_exist_error[matchId] = True
+                        save_one_json = False
                     
-                    #云顶之弈无时间轴（TFT games don't have timeline）
-                    timeline_exist_error[matchId] = True #云顶之弈对局中没有时间轴信息，因此每个云顶之弈对局的时间轴标记为异常获取（There's no timeline information in each TFT match, so each TFT match's timeline is labeled as "error" captured）
+                    #提示（Prompt）
+                    info_note: str = "" if "json" in TFTGame_summary and bool(TFTGame_summary["json"]) else " (Match data deleted from API!)"
+                    process_header: str = "保存进度（Saving process）" if save_all_json and TFTGame_summary_export and save_one_json else "加载进度（Loading process）"
+                    logPrint("%s：%d/%d\t对局序号（MatchID）： %d%s" %(process_header, TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), matchId, info_note), print_time = True)
+                    
+                    #导出数据（Export data）
+                    if "json" in TFTGame_summary and bool(TFTGame_summary["json"]):
+                        if save_all_json and save_one_json:
+                            json12name: str = f"Match Summary (TFT) - {platformId}-{matchId}.json"
+                            os.makedirs(match_folder, exist_ok = True)
+                            try:
+                                with open(os.path.join(match_folder, json12name), "w", encoding = "utf-8") as jsonfile12:
+                                    jsonfile12.write(json.dumps(TFTGame_summary, indent = 4, ensure_ascii = False))
+                            except UnicodeDecodeError:
+                                logPrint("对局%d概要文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nMatch %d summary text generation failure! Please check if the summoner name includes any abnormal characters!" %(matchId, matchId))
+                            else:
+                                info_text_saved = True
+                                TFTMatches_exported.append(matchId)
+                            # currentTime: str = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
+                            # pkl9name: str = f"Intermediate Object - Match Summary (TFT) - {platformId}-{matchId}.pkl"
+                            # with open(os.path.join(match_folder, pkl9name), "wb") as IntObj8:
+                            #     pickle.dump(TFTGame_summary, IntObj8)
+                        
+                        TFTGame_summary_df, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits = await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = TFTMatchIDs.index(matchId), current_puuid = current_puuid, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, useInfoDict = True, infos = infos, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, save_self = True, save_other = True, log = log)
+                        
+                        #社交排行榜（Social leaderboard）
+                        if args.export_leaderboard:
+                            TFTGame_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = participant_puuid, log = log)
+                        else:
+                            TFTGame_leaderboard_df = pandas.DataFrame()
+                    else:
+                        TFTMatches_not_found.append(matchId)
+                        TFTGame_summary_error: dict[str, list[str]] = {"项目": list(error_header.values()), "items": list(error_header.keys()), "值": [TFTGame_summary.get(key, "") for key in error_header_keys]}
+                        TFTGame_summary_df: pandas.DataFrame = pandas.DataFrame(data = TFTGame_summary_error)
+                        TFTGame_leaderboard_df = pandas.DataFrame()
+                    #注意到对于对局出现异常的情况，英雄联盟对局概要数据框的构建方式和云顶之弈有所不同。这是因为当云顶之弈对局概要获取异常时，往往是其“json”键为空或者无“json”键，而没有详细报错信息（Note that when an error occurs to a match, the method of creating the LoL match summary dataframe is different from that of creating the TFT match summary dataframe. This is because when a TFT match summary fails to be loaded, either its "json" value is null, or its "json" key is missing, without a detailed error information）
+                else: #为了简化输出，跳过导出的对局概要不再输出提示（To simplify output, skipped match summary won't have prompts）
+                    info_note: str = " (Match summary skipped)"
+                    TFTGame_summary_df: pandas.DataFrame = pandas.DataFrame()
+                    TFTGame_leaderboard_df = pandas.DataFrame()
+                
+                #云顶之弈无时间轴（TFT games don't have timeline）
+                timeline_exist_error[matchId] = True #云顶之弈对局中没有时间轴信息，因此每个云顶之弈对局的时间轴标记为异常获取（There's no timeline information in each TFT match, so each TFT match's timeline is labeled as "error" captured）
 
-                    if TFTGame_leaderboard_export:
-                        game_leaderboard_dfs[matchId] = TFTGame_leaderboard_df.copy(deep = True)
-                    if TFTGame_summary_export:
-                        game_summary_dfs[matchId] = TFTGame_summary_df.copy(deep = True)
-                
-                TFTGame_stat_statistics_output_order: list[int] = [0, 19, 46, 47, 43, 5, 14, 15, 16, 6, 10, 18, 7, 13, 11, 12, 307, 305, 40, 55, 33, 34, 35, 38, 52, 53, 49, 36, 50, 42, 54, 41, 39, 44, 45, 23, 24, 25, 150, 148, 149, 203, 206, 209, 155, 153, 154, 212, 215, 218, 160, 158, 159, 221, 224, 227, 165, 163, 164, 230, 233, 236, 170, 168, 169, 239, 242, 245, 175, 173, 174, 248, 251, 254, 180, 178, 179, 257, 260, 263, 185, 183, 184, 266, 269, 272, 190, 188, 189, 275, 278, 281, 195, 193, 194, 284, 287, 290, 200, 198, 199, 293, 296, 299, 61, 57, 58, 59, 60, 68, 64, 65, 66, 67, 75, 71, 72, 73, 74, 82, 78, 79, 80, 81, 89, 85, 86, 87, 88, 96, 92, 93, 94, 95, 103, 99, 100, 101, 102, 110, 106, 107, 108, 109, 117, 113, 114, 115, 116, 124, 120, 121, 122, 123, 131, 127, 128, 129, 130, 138, 134, 135, 136, 137, 145, 141, 142, 143, 144]
-                TFTGame_stat_data_organized: dict[str, list[Any]] = {TFTGame_stat_header_keys[i]: TFTGame_stat_data[TFTGame_stat_header_keys[i]] for i in TFTGame_stat_statistics_output_order}
-                TFTGame_stat_df: pandas.DataFrame = pandas.DataFrame(data = TFTGame_stat_data_organized)
-                optimize_bool_display(TFTGame_stat_df)
-                
-                TFTGame_stat_self_df = pandas.concat([pandas.DataFrame([TFTGame_stat_header])[TFTGame_stat_df.columns], TFTGame_stat_df[TFTGame_stat_df["puuid"].isin(current_puuid_list)]], ignore_index = True)
-                recent_TFTPlayer_df = pandas.concat([pandas.DataFrame([TFTGame_stat_header])[TFTGame_stat_df.columns], TFTGame_stat_df[~(TFTGame_stat_df["puuid"].isin(current_puuid_list))]], ignore_index = True)
-                
-                if len(TFTMatches_not_found) > 0:
-                    logPrint("警告：以下%d场对局不存在。\nWarning: The following %d match(es) aren't found." %(len(TFTMatches_not_found), len(TFTMatches_not_found)))
-                    logPrint(TFTMatches_not_found)
-                if len(error_TFTMatchIDs) > 0:
-                    logPrint("警告：以下%d场对局获取失败。\nWarning: The following %d match(es) fail to be fetched." %(len(error_TFTMatchIDs), len(error_TFTMatchIDs)))
-                    logPrint(error_TFTMatchIDs)
-                if len(TFTGameIDs) > 0 and save_all_json:
-                    logPrint('对局序号列表已保存在“%s”文件夹下。\nMatchId list is saved in the folder "%s".\n' %(folder, folder))
-                matches_to_remove: list[int] = TFTMatches_not_found + error_TFTMatchIDs
-                for match_to_remove in matches_to_remove:
-                    TFTMatchIDs.remove(match_to_remove)
+                if TFTGame_leaderboard_export:
+                    game_leaderboard_dfs[matchId] = TFTGame_leaderboard_df.copy(deep = True)
+                if TFTGame_summary_export:
+                    game_summary_dfs[matchId] = TFTGame_summary_df.copy(deep = True)
+            
+            TFTGame_stat_statistics_output_order: list[int] = [0, 19, 46, 47, 43, 5, 14, 15, 16, 6, 10, 18, 7, 13, 11, 12, 307, 305, 40, 55, 33, 34, 35, 38, 52, 53, 49, 36, 50, 42, 54, 41, 39, 44, 45, 23, 24, 25, 150, 148, 149, 203, 206, 209, 155, 153, 154, 212, 215, 218, 160, 158, 159, 221, 224, 227, 165, 163, 164, 230, 233, 236, 170, 168, 169, 239, 242, 245, 175, 173, 174, 248, 251, 254, 180, 178, 179, 257, 260, 263, 185, 183, 184, 266, 269, 272, 190, 188, 189, 275, 278, 281, 195, 193, 194, 284, 287, 290, 200, 198, 199, 293, 296, 299, 61, 57, 58, 59, 60, 68, 64, 65, 66, 67, 75, 71, 72, 73, 74, 82, 78, 79, 80, 81, 89, 85, 86, 87, 88, 96, 92, 93, 94, 95, 103, 99, 100, 101, 102, 110, 106, 107, 108, 109, 117, 113, 114, 115, 116, 124, 120, 121, 122, 123, 131, 127, 128, 129, 130, 138, 134, 135, 136, 137, 145, 141, 142, 143, 144]
+            TFTGame_stat_data_organized: dict[str, list[Any]] = {TFTGame_stat_header_keys[i]: TFTGame_stat_data[TFTGame_stat_header_keys[i]] for i in TFTGame_stat_statistics_output_order}
+            TFTGame_stat_df: pandas.DataFrame = pandas.DataFrame(data = TFTGame_stat_data_organized)
+            optimize_bool_display(TFTGame_stat_df)
+            
+            TFTGame_stat_self_df = pandas.concat([pandas.DataFrame([TFTGame_stat_header])[TFTGame_stat_df.columns], TFTGame_stat_df[TFTGame_stat_df["puuid"].isin(current_puuid_list)]], ignore_index = True)
+            recent_TFTPlayer_df = pandas.concat([pandas.DataFrame([TFTGame_stat_header])[TFTGame_stat_df.columns], TFTGame_stat_df[~(TFTGame_stat_df["puuid"].isin(current_puuid_list))]], ignore_index = True)
+            
+            if len(TFTMatches_not_found) > 0:
+                logPrint("警告：以下%d场对局不存在。\nWarning: The following %d match(es) aren't found." %(len(TFTMatches_not_found), len(TFTMatches_not_found)))
+                logPrint(TFTMatches_not_found)
+            if len(error_TFTMatchIDs) > 0:
+                logPrint("警告：以下%d场对局获取失败。\nWarning: The following %d match(es) fail to be fetched." %(len(error_TFTMatchIDs), len(error_TFTMatchIDs)))
+                logPrint(error_TFTMatchIDs)
+            if save_all_json:
+                logPrint('对局序号列表已保存在“%s”文件夹下。\nMatchId list is saved in the folder "%s".\n' %(folder, folder))
+            matches_to_remove: list[int] = TFTMatches_not_found + error_TFTMatchIDs
+            for match_to_remove in matches_to_remove:
+                TFTMatchIDs.remove(match_to_remove)
+        else:
+            TFTGame_stat_header_keys: list[str] = list(TFTGame_stat_header.keys())
+            recent_TFTPlayer_statistics_output_order: list[int] = [0, 19, 46, 47, 43, 5, 14, 15, 16, 6, 10, 18, 7, 13, 11, 12, 307, 305, 40, 55, 33, 34, 35, 38, 52, 53, 49, 36, 50, 42, 54, 41, 39, 44, 45, 23, 24, 25, 150, 148, 149, 203, 206, 209, 155, 153, 154, 212, 215, 218, 160, 158, 159, 221, 224, 227, 165, 163, 164, 230, 233, 236, 170, 168, 169, 239, 242, 245, 175, 173, 174, 248, 251, 254, 180, 178, 179, 257, 260, 263, 185, 183, 184, 266, 269, 272, 190, 188, 189, 275, 278, 281, 195, 193, 194, 284, 287, 290, 200, 198, 199, 293, 296, 299, 61, 57, 58, 59, 60, 68, 64, 65, 66, 67, 75, 71, 72, 73, 74, 82, 78, 79, 80, 81, 89, 85, 86, 87, 88, 96, 92, 93, 94, 95, 103, 99, 100, 101, 102, 110, 106, 107, 108, 109, 117, 113, 114, 115, 116, 124, 120, 121, 122, 123, 131, 127, 128, 129, 130, 138, 134, 135, 136, 137, 145, 141, 142, 143, 144]
+            recent_TFTPlayer_data_organized: dict[str, list[Any]] = {TFTGame_stat_header_keys[i]: [TFTGame_stat_header[TFTGame_stat_header_keys[i]]] for i in recent_TFTPlayer_statistics_output_order}
+            recent_TFTPlayer_df: pandas.DataFrame = pandas.DataFrame(data = recent_TFTPlayer_data_organized)
         
-        analyze_recently_played_summoners(search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df, gameQueues, displayName, folder)
+        if search_LoL and LoLGamePlayed or search_TFT and TFTGamePlayed:
+            analyze_recently_played_summoners(search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df, gameQueues, displayName, folder)
         
         #计算每场对局要保存的工作表数量（Calculate the number of sheets to be saved for each match）
         matchIDs: list[int] = list(game_summary_dfs.keys())
