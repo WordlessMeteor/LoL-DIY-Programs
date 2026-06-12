@@ -49,7 +49,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/06/09
+# 更新（Last update）：     2026/06/13
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -831,7 +831,7 @@ async def Clarke_revival(connection: Connection) -> None:
         unmapped_keys: dict[str, set[Any]] = {"summonerIcon": set(), "regaliaBanner": set(), "LoLChampion": set()}
         player_info_df: pandas.DataFrame = await sort_summoner_info(connection, fetched_puuids, summonerIcons, LoLChampions, regaliaBanners, unmapped_keys = unmapped_keys, log = log, verbose = print_detail)
         game_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = fetched_puuids)
-        logPrint("请输入您想要查询的对局数量，默认为最近20场。最大%d场。\nPlease enter the number of matches you want to search, 20 by default and %d at maximum." %(1000 if use_sgp else 200, 1000 if use_sgp else 200))
+        logPrint("请输入您想要查询的对局数量，默认为最近%d场。最大%d场。\nPlease enter the number of matches you want to search, %d by default and %d at maximum." %(args.count, 1000 if use_sgp else 200, args.count, 1000 if use_sgp else 200))
         while True:
             count_str: str = logInput()
             if count_str == "":
@@ -843,10 +843,10 @@ async def Clarke_revival(connection: Connection) -> None:
                 except ValueError:
                     logPrint("请输入一个整数！\nPlease enter an integer!")
                 else:
-                    if count > 0:
-                        break
+                    if count < 0:
+                        logPrint("请输入一个自然数！\nPlease enter a non-negative integer!")
                     else:
-                        logPrint("请输入一个正整数！\nPlease enter a positive integer!")
+                        break
         gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
         queue_df: pandas.DataFrame = sort_queue_data(gameQueues_source)
         queue_df_fields_to_print: list[str] = ["id", "name", "mapId", "category", "pickMode"]
