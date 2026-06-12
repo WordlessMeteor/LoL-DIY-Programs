@@ -7,7 +7,7 @@ if not wd in sys.path:
 from src.utils.logger import LogManager
 from src.utils.format import format_df
 
-def filter_df(queryStr: str, df_query: pandas.DataFrame, df_initial: pandas.DataFrame, search_func: Callable[[str, pandas.DataFrame], list[int]], resetStr: str = "00", fields_to_print: Optional[list[str]] = None, log: Optional[LogManager] = None) -> pandas.DataFrame:
+def filter_df(queryStr: str, df_query: pandas.DataFrame, df_initial: pandas.DataFrame, search_func: Callable[[str, pandas.DataFrame], list[int]], resetStr: str = "00", headerRows: Optional[int | list[int]] = None, fields_to_print: Optional[list[str]] = None, log: Optional[LogManager] = None) -> pandas.DataFrame:
     '''
     筛选一个数据框中包含某个关键字的记录。<br>Filter records that contain a keyword in a dataframe.
     
@@ -25,6 +25,10 @@ def filter_df(queryStr: str, df_query: pandas.DataFrame, df_initial: pandas.Data
     :type search_func: Callable[[str, pandas.DataFrame], list[int]]
     :param resetStr: 重置关键字。用于将当前检索的数据表重置为初始状态。默认为“00”。<br>Reset keyword. Used to reset the current query dataframe as the initial status. "00" by default.
     :type resetStr: str
+    :param headerRows: 表头行索引。检索时将自动跳过表头。<br>Header row indices. Headers are skipped during query.
+    
+        可以是一个正整数，也可以是正整数组成的列表。如果未指定，则检索所有行。<br>This parameter can be either a positive integer or a list of positive integers. If unspecified, all rows will be queried.
+    :type headerRows: int | list[int] | None
     :param fields_to_print: 要打印的列。如果未指定，则打印检索数据表中的所有列。<br>Columns to print. If unspecified, the function will print all columns in the query dataframe.
     :type fields_to_print: list[str]
     :param log: 日志管理对象。如果不传入，则只使用传统的输入输出功能。<br>A LogManager object. If unspecified, the input and output works as how `input` and `output` functions work.
@@ -35,25 +39,32 @@ def filter_df(queryStr: str, df_query: pandas.DataFrame, df_initial: pandas.Data
     #参数预处理（Parameter preprocess）
     if log == None:
         log = LogManager()
-    logPrint = log.logPrint
-    #定义常量（Define a constant）
+    if headerRows == None:
+        headerRows = []
+    elif isinstance(headerRows, int):
+        headerRows = [headerRows]
     if fields_to_print == None:
         fields_to_print = df_query.columns.to_list()
+    logPrint = log.logPrint
+    #定义常量（Define a constant）
+    dataRows: list[int] = sorted(set(df_query.index.to_list()) - set(headerRows))
     #处理输入（Handle input）
     if queryStr == resetStr:
         resultRows = []
     else:
-        resultRows: list[int] = search_func(queryStr, df_query)
+        resultRows: list[int] = search_func(queryStr, df_query.loc[dataRows, :]) #检索时跳过表头（Header is skipped during query）
     if len(resultRows) == 0:
         if queryStr == "00":
-            logPrint("已重制筛选。\nFilter conditions have been reset.")
+            logPrint("已重置筛选。\nFilter conditions have been reset.")
             df_query = df_initial
         else:
             logPrint("未找到匹配的记录。请重新输入。\nNo matching record found. Please try again.")
     else:
-        df_query = df_query.loc[[0] + resultRows, :]
+        df_query = df_query.loc[headerRows + resultRows, :]
         df_query_to_print: pandas.DataFrame = df_query.loc[:, fields_to_print]
-        logPrint("已找到以下记录：\nFound the following record(s):")
-        print(format_df(df_query_to_print)[0])
-        log.write(format_df(df_query_to_print, width_exceed_ask = False, direct_print = False)[0] + "\n")
+        if len(resultRows) > 1:
+            logPrint("已找到以下%d条记录：\nFound the following %d records:" %(len(resultRows), len(resultRows)))
+            print(format_df(df_query_to_print, print_index = True, reserve_index = True)[0])
+            log.write(format_df(df_query_to_print, width_exceed_ask = False, direct_print = False, print_index = True, reserve_index = True)[0] + "\n")
+        #精确匹配的部分交给外部程序处理（The exact match part is up to the external program）
     return df_query

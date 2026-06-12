@@ -18,6 +18,7 @@ from src.core.dataframes.gameflow import get_gameflow_phase, get_champ_select_se
 from src.core.dataframes.champions import test_bot, sort_inventory_champions, filter_champion
 from src.core.dataframes.gameMode import check_available_queue
 from src.core.dataframes.matchHistory import get_game_summary_sgp, sort_LoLGame_summary_sgp, sort_TFTGame_summary
+from src.core.dataframes.filter import filter_df
 
 urllib3.disable_warnings() #忽略访问游戏数据时产生的警告（Neglect warnings produced when the program is accessing the in-game data）
 parser = argparse.ArgumentParser()
@@ -30,7 +31,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/06/08
+# 更新（Last update）：     2026/06/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1137,6 +1138,27 @@ async def display_current_info(connection: Connection) -> None:
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     logPrint(json.dumps(current_info, indent = 4, ensure_ascii = False), write_time = False)
 
+def search_collection_item(name_queryStr: str, collection_df: pandas.DataFrame) -> list[int]:
+    '''
+    从藏品数据框中检索一个关键字，返回它所在的行号列表。<br>Query a string in the collection dataframe and return a list of indices where this string is at.
+    
+    该藏品数据框需要是已经筛选过道具类型的。<br>This `collection_df` should have been filtered by `inventoryType`.
+    
+    仅用于藏品道具选择函数。<br>Only used by `select_collection_item` function.
+    
+    :param name_queryStr: 道具名称检索字符串。<br>A query string of an item's name.
+    :type name_queryStr: str
+    :param collection_df: 藏品数据框。<br>A collection dataframe.
+    :type collection_df: pandas.DataFrame
+    :return: 该字符串在藏品数据框的“名称”列中出现的行号列表。<br>A list of row indices of the collection dataframe where this string appears in Column "name".
+    :rtype: list[int]
+    '''
+    stacked_str: pandas.Series[str] = collection_df.loc[:, ["name"]].stack()
+    mask_str: pandas.Series[bool] = stacked_str.str.contains(name_queryStr.lower())
+    query_positions: list[tuple[int, str]] = stacked_str[mask_str].index.to_list()
+    resultRows: list[int] = sorted(set(map(lambda x: x[0], query_positions)))
+    return resultRows
+
 def select_collection_item(inventoryType: str) -> tuple[bool, int]:
     '''
     选择一个特定道具类型的藏品。<br>Select a collection item of certain inventoryType.
@@ -1153,11 +1175,13 @@ def select_collection_item(inventoryType: str) -> tuple[bool, int]:
     inventoryTypeNames_en: dict[str, str] = {"EMOTE": "emote", "WARD_SKIN": "ward skin", "SUMMONER_ICON": "summoner icon", "NEXUS_FINISHER": "nexus finisher", "REGALIA_BANNER": "banner", "REGALIA_CREST": "crest", "TOURNAMENT_TROPHY": "tournament trophy", "COMPANION": "tactician", "TFT_DAMAGE_SKIN": "boom", "TFT_MAP_SKIN": "arena skin", "TFT_ZOOM_SKIN": "portal"}
     inventoryTypeName_zh: str = inventoryTypeNames_zh[inventoryType]
     inventoryTypeName_en: str = inventoryTypeNames_en[inventoryType]
-    logPrint('请选择您想要使用的%s：（输入“-1”以初始化当前选择。）\nPlease select %s %s to use: (Submit "-1" to initialize the current choice.)' %(inventoryTypeName_zh, "an" if inventoryType == "EMOTE" or inventoryType == "TFT_MAP_SKIN" else "a", inventoryTypeName_en))
+    logPrint('请选择您想要使用的%s：（输入“-1”以初始化当前选择。输入“00”以清空筛选器。）\nPlease select %s %s to use: (Submit "-1" to initialize the current choice. Submit "00" to clear filter.)' %(inventoryTypeName_zh, "an" if inventoryType == "EMOTE" or inventoryType == "TFT_MAP_SKIN" else "a", inventoryTypeName_en))
     collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
     collection_df_fields_to_print: list[str] = ["inventoryType", "itemId", "name", "ownershipType"]
-    print(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], print_index = True)[0])
-    log.write(format_df(collection_df_selected.loc[:, collection_df_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
+    collection_df_selected_query_initial: pandas.DataFrame = collection_df_selected.loc[:, collection_df_fields_to_print] #代表初始值（Represent the initial value）
+    collection_df_selected_query: pandas.DataFrame = collection_df_selected_query_initial
+    print(format_df(collection_df_selected_query, print_index = True)[0])
+    log.write(format_df(collection_df_selected_query, width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
     while True:
         index_got: bool = False
         item_index_str: str = logInput()
@@ -1167,12 +1191,18 @@ def select_collection_item(inventoryType: str) -> tuple[bool, int]:
             item_index: int = 0
             index_got = False
             break
-        elif item_index_str == "-1" or item_index_str in list(map(str, range(1, len(collection_df_selected)))):
+        elif item_index_str == "-1" or item_index_str in collection_df_selected_query.index.to_list()[1:]: #筛选后的数据框带有中文表头行，在条件判断时需要排除这一行（The filter dataframe has a Chinese header, which should be eliminated when the program is doing the condition judgment）
             item_index = int(item_index_str)
             index_got = True
             break
         else:
-            logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            collection_df_selected_query = filter_df(item_index_str, collection_df_selected_query, collection_df_selected_query_initial, search_collection_item, headerRows = 0, log = log)
+            if len(collection_df_selected_query) == 2:
+                item_index = collection_df_selected_query.index.to_list()[1]
+                index_got = True
+                break
+            elif len(collection_df_selected_query) == 1:
+                logPrint(f"未找到符合条件的{inventoryTypeName_zh}。请重新输入。\nNo match {inventoryTypeName_en} is found. Please try again.")
     return (index_got, item_index)
 
 async def initialize_summoner_icon(connection: Connection, profileIconId: Optional[int] = None, repeat: bool = False, interval: float = 0.5) -> None: #在国服，头盔老铁头像会一直被替换为另外一个默认头像（In Tencent servers, Helmet Bro is continuously replaced by another summoner icon by default）
