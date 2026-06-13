@@ -13,7 +13,7 @@ from src.core.process.replay import download_replay
 #=============================================================================
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
-# 更新（Last update）：     2026/06/02
+# 更新（Last update）：     2026/06/13
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -48,10 +48,10 @@ def sort_match_metadata(data: dict[str, Any], product: str, info_type: Literal["
     :param data: 对局信息。可以是对局概要或者时间轴。<br>Match information, which may be match summary or timeline.
     
         对局概要可以通过以下SGP接口获取：<br>Match summary can be obtained through the following SGP endpoint:
-        - `GET /match-history-query/v1/products/{product}/{match_id}/SUMMARY`
+        - `GET /match-history-query/v3/product/{product}/matchId/{match_id}/summary`
         
         对局时间轴可以通过以下SGP接口获取：<br>Match timeline can be obtained through the following SGP endpoint:
-        - `GET /match-history-query/v1/products/{product}/{match_id}/DETAILS`
+        - `GET /match-history-query/v3/product/{product}/matchId/{match_id}/details`
     :type data: dict[str, Any]
     :param product: 游戏产品名。有以下取值：<br>Game product name, which has the following values:
     
@@ -66,110 +66,78 @@ def sort_match_metadata(data: dict[str, Any], product: str, info_type: Literal["
     :return: 元数据。<br>Metadata.
     :rtype: dict[str, Any]
     '''
-    result: dict[str, Any] = {"gameId": int(data["metadata"]["match_id"].split("_")[1])}
+    result: dict[str, Any] = {"gameId": data["gameId"]}
     if product == "LoL":
         if info_type == "summary":
-            if data.get("json"):
-                #对局版本（Game version）
-                gameVersion: str = data["json"]["gameVersion"]
-                result["gameVersion"] = gameVersion
-                #游戏模式（Game mode）
-                queueId: int = data["json"]["queueId"]
-                if queueId in gameQueues:
-                    gameModeName: str = gameQueues[queueId]["name"]
+            #对局版本（Game version）
+            gameVersion: str = data["gameVersion"]
+            result["gameVersion"] = gameVersion
+            #游戏模式（Game mode）
+            queueId: int = data["queueId"]
+            if queueId in gameQueues:
+                gameModeName: str = gameQueues[queueId]["name"]
+            else:
+                gameModeName = gamemodes[data["gameMode"]]["zh_CN"]
+            result["gameModeName"] = gameModeName
+            #地图序号（MapId）
+            mapId: int = data["mapId"]
+            mapName: str = "%s（%s）" %(gamemaps[mapId]["zh_CN"], gamemaps[mapId]["en_US"])
+            if mapId == 12:
+                if "mapskin_ha_crepe" in data["gameModeMutators"]:
+                    mapName = "进步之桥（Bridge of Progress）"
+                elif "mapskin_map12_bloom" in data["gameModeMutators"]:
+                    mapName = "莲华栈桥（Koeshin's Crossing）"
+                elif "mapskin_ha_bilgewater" in data["gameModeMutators"]:
+                    mapName = "屠夫之桥（Butcher's Bridge）"
                 else:
-                    gameModeName = gamemodes[data["json"]["gameMode"]]["zh_CN"]
-                result["gameModeName"] = gameModeName
-                #地图序号（MapId）
-                mapId: int = data["json"]["mapId"]
-                mapName: str = "%s（%s）" %(gamemaps[mapId]["zh_CN"], gamemaps[mapId]["en_US"])
-                if mapId == 12:
-                    if "mapskin_ha_crepe" in data["json"]["gameModeMutators"]:
-                        mapName = "进步之桥（Bridge of Progress）"
-                    elif "mapskin_map12_bloom" in data["json"]["gameModeMutators"]:
-                        mapName = "莲华栈桥（Koeshin's Crossing）"
-                    elif "mapskin_ha_bilgewater" in data["json"]["gameModeMutators"]:
-                        mapName = "屠夫之桥（Butcher's Bridge）"
-                    else:
-                        mapName = "嚎哭深渊（Howling Abyss）"
-                result["map"] = mapName
-                #游戏类型（Game type）
-                gameType: str = gameTypes_history[data["json"]["gameType"]]
-                result["gameType"] = gameType
-                #对局创建时间戳（Game creation）
-                gameCreation: int = data["json"]["gameCreation"]
-                gameCreationTime: str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(gameCreation / 1000))
-                result["gameCreationDate"] = gameCreationTime
-                #持续时间（Game duration）
-                gameDuration: int | float = data["json"]["gameDuration"]
-                gameDuration_norm: str = "%d:%02d" %(gameDuration // 60, gameDuration % 60)
-                result["gameDuration"] = gameDuration_norm
-            else:
-                #对局结束时间戳（Game end timestamp）
-                gameEnd: int = int(data["metadata"]["timestamp"])
-                gameEndTime: str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(gameEnd / 1000))
-                result["gameEndTime"] = gameEndTime
-            #标签（Tags）
-            tags: list[str] = data["metadata"]["tags"]
-            result["tags"] = json.dumps(tags, ensure_ascii = False)
+                    mapName = "嚎哭深渊（Howling Abyss）"
+            result["map"] = mapName
+            #游戏类型（Game type）
+            gameType: str = gameTypes_history[data["gameType"]]
+            result["gameType"] = gameType
+            #对局创建时间戳（Game creation）
+            gameCreation: int = data["gameCreation"]
+            gameCreationTime: str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(gameCreation / 1000))
+            result["gameCreationDate"] = gameCreationTime
+            #持续时间（Game duration）
+            gameDuration: int | float = data["gameDuration"]
+            gameDuration_norm: str = "%d:%02d" %(gameDuration // 60, gameDuration % 60)
+            result["gameDuration"] = gameDuration_norm
         elif info_type == "details":
-            if data.get("json"):
-                #对局结束时间戳（Game end timestamp）
-                gameEnd = data["json"]["frames"][-1]["events"][-1]["realTimestamp"] #正常对局的最后一个记录帧的最后一个事件必定是“GAME_END”（The last event of the last participant frame of a normal game must be "GAME_END"）
-                gameEndTime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(gameEnd / 1000))
-                result["gameEndTime"] = gameEndTime
-                #持续时间（Game duration）
-                gameDuration = data["json"]["frames"][-1]["events"][-1]["timestamp"] / 1000
-                gameDuration_norm = "%d:%02d" %(gameDuration // 60, gameDuration % 60)
-                result["gameDuration"] = gameDuration_norm
-            else:
-                #对局结束时间戳（Game end timestamp）
-                gameEnd = int(data["metadata"]["timestamp"])
-                gameEndTime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(gameEnd / 1000))
-                result["gameEndTime"] = gameEndTime
-            #标签（Tags）
-            tags: list[str] = data["metadata"]["tags"]
-            result["tags"] = json.dumps(tags, ensure_ascii = False)
+            #对局结束时间戳（Game end timestamp）
+            gameEnd = data["frames"][-1]["events"][-1]["realTimestamp"] #正常对局的最后一个记录帧的最后一个事件必定是“GAME_END”（The last event of the last participant frame of a normal game must be "GAME_END"）
+            gameEndTime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(gameEnd / 1000))
+            result["gameEndTime"] = gameEndTime
+            #持续时间（Game duration）
+            gameDuration = data["frames"][-1]["events"][-1]["timestamp"] / 1000
+            gameDuration_norm = "%d:%02d" %(gameDuration // 60, gameDuration % 60)
+            result["gameDuration"] = gameDuration_norm
     else:
         if info_type == "summary":
-            if data.get("json"):
-                #对局版本（Game version）
-                gameVersion: str = data["json"]["game_version"]
-                result["gameVersion"] = gameVersion
-                #游戏模式（Game mode）
-                queueId: int = data["json"]["queue_id"]
-                if queueId in gameQueues:
-                    gameModeName: str = gameQueues[queueId]["name"]
-                else:
-                    gameModeName = "云顶之弈"
-                result["gameModeName"] = gameModeName
-                #地图序号（MapId）
-                result["map"] = "聚点危机（Convergence）"
-                #游戏类型（Game type）
-                gameType: str = data["json"]["tft_game_type"]
-                result["gameType"] = gameType
-                if "gameCreation" in data["json"]:
-                    #对局创建时间戳（Game creation）
-                    gameCreation: int = data["json"]["gameCreation"]
-                    gameCreationTime: str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(gameCreation / 1000))
-                    result["gameCreationDate"] = gameCreationTime
-                else:
-                    #对局结束时间戳（Game end timestamp）
-                    gameEnd: int = int(data["metadata"]["game_datetime"])
-                    gameEndTime: str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(gameEnd / 1000))
-                    result["gameEndTime"] = gameEndTime
-                #持续时间（Game duration）
-                gameDuration: int | float = data["json"]["game_length"]
-                gameDuration_norm: str = "%d:%02d" %(gameDuration // 60, gameDuration % 60)
-                result["gameDuration"] = gameDuration_norm
+            #对局版本（Game version）
+            gameVersion: str = data["game_version"]
+            result["gameVersion"] = gameVersion
+            #游戏模式（Game mode）
+            queueId: int = data["queue_id"]
+            if queueId in gameQueues:
+                gameModeName: str = gameQueues[queueId]["name"]
             else:
-                #对局结束时间戳（Game end timestamp）
-                gameEnd = int(data["metadata"]["timestamp"])
-                gameEndTime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(gameEnd / 1000))
-                result["gameEndTime"] = gameEndTime
-            #标签（Tags）
-            tags: list[str] = data["metadata"]["tags"]
-            result["tags"] = json.dumps(tags, ensure_ascii = False)
+                gameModeName = "云顶之弈"
+            result["gameModeName"] = gameModeName
+            #地图序号（MapId）
+            result["map"] = "聚点危机（Convergence）"
+            #游戏类型（Game type）
+            gameType: str = data["tft_game_type"]
+            result["gameType"] = gameType
+            if "gameCreation" in data:
+                #对局创建时间戳（Game creation）
+                gameCreation: int = data["gameCreation"]
+                gameCreationTime: str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(gameCreation / 1000))
+                result["gameCreationDate"] = gameCreationTime
+            #持续时间（Game duration）
+            gameDuration: int | float = data["game_length"]
+            gameDuration_norm: str = "%d:%02d" %(gameDuration // 60, gameDuration % 60)
+            result["gameDuration"] = gameDuration_norm
     return result
 
 async def replayDownloader(connection: Connection, matchId: int) -> None:
@@ -200,33 +168,31 @@ async def replayDownloader(connection: Connection, matchId: int) -> None:
     timeline_got: bool = False #指示是否获取到对局时间轴。仅当对局概要获取失败时，这个变量才有可能为真（Indicates whether match timeline is fetched. Only when match summary failed to be fetched may this variable become True）
     game_summary: dict[str, Any] = {}
     game_timeline: dict[str, Any] = {}
-    status, game_summary = await get_game_summary_sgp(connection, sgpSession, match_id, skipTFT = True)
+    status, game_summary = await get_game_summary_sgp(connection, sgpSession, match_id, skipTFT = True, endpoint_version = 3)
     if status == 200:
         summary_got = True
-        product: str = game_summary["metadata"]["product"]
+        product: str = "TFT" if game_summary["mapId"] == 22 else "LoL"
     else: #黑色玫瑰大区对局序号为8595461971的对局的概要损坏，但是时间轴正常。这是一把瑞天帝（The summary of match HN10-8595461971 is corrupted, but the timeline is fine. This is a match of Ryze, the god）
-        status, game_timeline = await get_game_timeline_sgp(connection, sgpSession, match_id, checkTFT = False)
+        product = "LoL" #如果正常获取时间轴信息，则该对局一定是一场英雄联盟对局，因为云顶之弈对局没有时间轴；如果时间轴信息获取失败，那么在无法获取对局产品名的情况下，默认设置为英雄联盟（If the timeline information is successfully fetched, then this match must be a LoL match, because TFT games don't have timeline data. If the timeline information fails to be fetched, then the product can't be determined and thus set as the default value - LoL）
+        status, game_timeline = await get_game_timeline_sgp(connection, sgpSession, match_id, checkTFT = False, endpoint_version = 3)
         if status == 200:
             timeline_got = True
-            product = game_timeline["metadata"]["product"]
-        else:
-            product = "LoL"
-    if product == "":
-        print("无法确定对局产品名。请手动指定。\nCan't determine the product of the match. Please specify it manually.\n0\t返回上一层（Return to the last step）\n☆1\t英雄联盟（LoL）\n!2\t云顶之弈（TFT）")
-        while True:
-            choice: str = input()
-            if choice == "":
-                choice = "1"
-            if choice[0] == "0":
-                return
-            elif choice[0] == "1":
-                product = "LoL"
-                break
-            elif choice[0] == "2":
-                product = "TFT"
-                break
-            else:
-                print("您的输入有误！请重新输入。\nERROR input! Please try again.")
+    # if product == "":
+    #     print("无法确定对局产品名。请手动指定。\nCan't determine the product of the match. Please specify it manually.\n0\t返回上一层（Return to the last step）\n☆1\t英雄联盟（LoL）\n!2\t云顶之弈（TFT）")
+    #     while True:
+    #         choice: str = input()
+    #         if choice == "":
+    #             choice = "1"
+    #         if choice[0] == "0":
+    #             return
+    #         elif choice[0] == "1":
+    #             product = "LoL"
+    #             break
+    #         elif choice[0] == "2":
+    #             product = "TFT"
+    #             break
+    #         else:
+    #             print("您的输入有误！请重新输入。\nERROR input! Please try again.")
     #发送请求并处理响应（Send the request and handle the response）
     if product.lower() == "lol":
         product = "LoL"
