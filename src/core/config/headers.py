@@ -2762,6 +2762,7 @@ inGame_player_header: dict[str, str] = {
     "teamOwner": "队伍拥有者",
     "teamParticipantId": "阵营参与者序号",
     "teamId": "阵营代号",
+    "team_color": "阵营",
     "champion name": "英雄名称",
     "champion alias": "英雄代号",
     "lastSelectedSkin contentId": "上次选用皮肤商品编号",
