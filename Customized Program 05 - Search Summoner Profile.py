@@ -2068,7 +2068,7 @@ async def search_profile(connection: Connection) -> None:
         if standings_count > 1000:
             logPrint(f"即将获取{standings_count}名玩家的召唤师信息。是否继续？（输入任意非空字符串继续，否则跳过召唤师信息的获取。）\nSummoner information of {standings_count} players is going to be fetched. Do you want to continue? (Submit any non-empty string to continue or null to skip getting summoner information.)")
             ladder_fetch_summoner_info_str: str = logInput()
-            ladder_fetch_summoner_info: bool = bool(logInput())
+            ladder_fetch_summoner_info: bool = bool(ladder_fetch_summoner_info_str)
         else:
             ladder_fetch_summoner_info = True
         ladder_df: pandas.DataFrame = await sort_ranked_ladders(connection, current_puuid, fetch_summoner_info = ladder_fetch_summoner_info)
