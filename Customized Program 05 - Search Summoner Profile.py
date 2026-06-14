@@ -13,7 +13,7 @@ from src.utils.webRequest import requestUrl, SGPSession
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from src.core.config.headers import profile_header, mastery_header, ranked_header, ladder_header
 from src.core.config.headers import TFTGame_summary_header as TFTGame_stat_header
-from src.core.config.localization import language_ddragon, language_dict, language_cdragon, tiers, tiers_all, ratedTiers, challengeCategories, challengeCrystalLevels, titleAcquisitionTypes, queueTypes
+from src.core.config.localization import language_ddragon, language_dict, language_cdragon, tiers, tiers_all, ratedTiers, challengeCategories, challengeCrystalLevels, titleAcquisitionTypes, queueTypes_ranked
 from src.core.config.servers import valid_platformIds, set_platform_folder, set_summonerInfo_folder, save_platform_info
 from src.core.config.conditional_formatting import addFormat_LoLHistory_wb, addFormat_LoLGame_summary_wb, addFormat_LoLGame_summary_wb_transpose
 from src.core.dataframes.ranked import sort_game_leaderboard
@@ -40,7 +40,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/06/12
+# 更新（Last update）：     2026/06/14
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1395,7 +1395,7 @@ async def sort_ranked_data(connection: Connection, puuid: str) -> pandas.DataFra
             elif j in {2, 8, 10, 16}: #段位相关键（Tier-related keys）
                 to_append = tiers[queue[key]]
             elif j == 13: #对局类型（`queueType`）
-                to_append = queueTypes[queue[key]]
+                to_append = queueTypes_ranked[queue[key]]
             elif j == 15: #云顶之弈狂暴模式段位（`ratedTier`）
                 to_append = ratedTiers[queue[key]]
             elif j == 19 or j == 20:
@@ -1432,7 +1432,7 @@ async def sort_ranked_ladders(connection: Connection, puuid: str, fetch_summoner
     ladder_data: dict[str, list[Any]] = {key: [] for key in ladder_header_keys}
     for i in range(len(ladders)):
         ladder: dict[str, Any] = ladders[i]
-        logPrint("顶级%s%s玩家信息整理进度（Top %s %s player information organization process）：" %(queueTypes[ladder["queueType"]], tiers_all[ladder["tier"]], ladder["queueType"], ladder["tier"]))
+        logPrint("顶级%s%s玩家信息整理进度（Top %s %s player information organization process）：" %(queueTypes_ranked[ladder["queueType"]], tiers_all[ladder["tier"]], ladder["queueType"], ladder["tier"]))
         for j in range(len(ladder["divisions"])):
             division: dict[str, Any] = ladder["divisions"][j]
             for k in range(len(division["standings"])):
@@ -1446,19 +1446,19 @@ async def sort_ranked_ladders(connection: Connection, puuid: str, fetch_summoner
                     while not standing_summoner["info_got"] and standing_summoner["body"]["httpStatus"] != 404 and standing_summoner_recapture < 3:
                         logPrint(standing_summoner["message"])
                         standing_summoner_recapture += 1
-                        logPrint("顶级%s%s玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of top %s %s player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d" %(queueTypes[ladder["queueType"]], tiers_all[ladder["tier"]], standing["puuid"], standing_summoner_recapture, ladder["queueType"], ladder["tier"], standing["puuid"], standing_summoner_recapture))
+                        logPrint("顶级%s%s玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of top %s %s player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d" %(queueTypes_ranked[ladder["queueType"]], tiers_all[ladder["tier"]], standing["puuid"], standing_summoner_recapture, ladder["queueType"], ladder["tier"], standing["puuid"], standing_summoner_recapture))
                         standing_summoner = await get_info(connection, standing["puuid"])
                     info_got: bool = standing_summoner["info_got"]
                     if not info_got:
                         logPrint(standing_summoner["message"])
-                        logPrint("顶级%s%s玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of top %s %s player (puuid: %s) capture failed!" %(queueTypes[ladder["queueType"]], tiers_all[ladder["tier"]], standing["puuid"], ladder["queueType"], ladder["tier"], standing["puuid"]))
+                        logPrint("顶级%s%s玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of top %s %s player (puuid: %s) capture failed!" %(queueTypes_ranked[ladder["queueType"]], tiers_all[ladder["tier"]], standing["puuid"], ladder["queueType"], ladder["tier"], standing["puuid"]))
                 else:
                     info_got = False
                 #整理数据（Organize data）
                 for l in range(len(ladder_header_keys)):
                     key = ladder_header_keys[l]
                     if l == 0:
-                        to_append: Any = queueTypes[ladder["queueType"]]
+                        to_append: Any = queueTypes_ranked[ladder["queueType"]]
                     elif l <= 20:
                         if l == 1 or l == 12:
                             to_append = "" if standing[key] == "NA" else standing[key]

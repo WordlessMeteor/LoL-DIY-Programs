@@ -266,6 +266,10 @@ gamemodes: dict[str, dict[str, str]] = {
         "zh_CN": "新手教程 最终部分",
         "en_US": "Tutorial Capstone"
     },
+    "CAP_5x5": {
+        "zh_CN": "新手教程 最终部分",
+        "en_US": "Tutorial Capstone"
+    },
     "CHERRY": {
         "zh_CN": "斗魂竞技场",
         "en_US": "Arena"
@@ -330,6 +334,10 @@ gamemodes: dict[str, dict[str, str]] = {
         "zh_CN": "魄罗大乱斗",
         "en_US": "Legend of the Poro King"
     },
+    "KIWI": {
+        "zh_CN": "海克斯大乱斗",
+        "en_US": "ARAM: Mayhem"
+    },
     "LNY23_TFT": {
         "zh_CN": "云顶之弈 (恭喜发财)",
         "en_US": "Choncc's Treasure"
@@ -353,6 +361,10 @@ gamemodes: dict[str, dict[str, str]] = {
     "NORMAL": {
         "zh_CN": "匹配模式",
         "en_US": "Normal"
+    },
+    "NORMAL_1x1": {
+        "zh_CN": "匹配模式 1v1",
+        "en_US": "Normal 1v1"
     },
     "NORMAL_3x3": {
         "zh_CN": "匹配模式 3v3",
@@ -425,6 +437,10 @@ gamemodes: dict[str, dict[str, str]] = {
     "RANKED_PREMADE-3x3": {
         "zh_CN": "排位赛 预组队 3v3",
         "en_US": "Ranked Premade 3v3"
+    },
+    "RANKED_SOLO_1x1": {
+        "zh_CN": "排位赛 单排/双排 1v1",
+        "en_US": "Ranked Solo/Duo 1v1"
     },
     "RANKED_SOLO_5x5": {
         "zh_CN": "排位赛 单排/双排",
@@ -522,6 +538,14 @@ gamemodes: dict[str, dict[str, str]] = {
         "zh_CN": "快速模式",
         "en_US": "Swiftplay"
     },
+    "TEAM_BUILDER_BLIND-5x5": {
+        "zh_CN": "阵容匹配 自选 5v5",
+        "en_US": "Team Builder Blind 5v5"
+    },
+    "TEAM_BUILDER_DRAFT_UNRANKED_1x1": {
+        "zh_CN": "阵容匹配 征召 1v1",
+        "en_US": "Team Builder Draft 1v1"
+    },
     "TFT": {
         "zh_CN": "云顶之弈（匹配模式）",
         "en_US": "Normal (TFT)"
@@ -566,7 +590,7 @@ gamemodes: dict[str, dict[str, str]] = {
         "zh_CN": "无限乱斗 冠军杯赛",
         "en_US": "URF Clash"
     }
-} #来源（Source）：/lol-platform-config/v1/namespaces/DisabledChampions
+} #来源（Source）：/lol-platform-config/v1/namespaces/DisabledChampions; /lol-platform-config/v1/namespaces/ChampionMasteryConfig
 gamemaps: dict[int, dict[str, str]] = {
     1: {
         "zh_CN": "召唤师峡谷 夏季怀旧版",
@@ -917,49 +941,16 @@ attackTypes: dict[str, str] = {
     "ranged": "远程"
 }
 ##游戏模式（Game mode）
-# queueTypes: dict[str, str] = {
-#     "ARAM_BOT": "极地大乱斗 人机对战",
-#     "ARAM_CLASH": "极地大乱斗 冠军杯赛",
-#     "ARAM_UNRANKED_1x1": "极地大乱斗1v1",
-#     "ARAM_UNRANKED_5x5": "极地大乱斗5v5",
-#     "BOT": "人机对战",
-#     "CHERRY": "斗魂竞技场",
-#     "CHERRY_UNRANKED": "斗魂竞技场 匹配模式",
-#     "CHONCC_TREASURE_TFT": "云顶之弈（恭喜发财）",
-#     "CLASH": "冠军杯赛",
-#     "FIVE_YEAR_ANNIVERSARY_TFT": "云顶之弈 5周年时光机",
-#     "LNY23_TFT": "云顶之弈（恭喜发财）",
-#     "LNY24_TFT": "云顶之弈 （第3.5赛季回归：再战星海）",
-#     "NEXUSBLITZ": "极限闪击",
-#     "NORMAL": "匹配模式",
-#     "NORMAL_TFT": "云顶之弈 匹配模式",
-#     "ONEFORALL": "克隆大作战",
-#     "RANKED_FLEX_SR": "灵活 5V5",
-#     "RANKED_SOLO_5x5": "单人/双人",
-#     "RANKED_TFT": "云顶之弈 排位赛",
-#     "RANKED_TFT_DOUBLE_UP": "双人作战",
-#     "RANKED_TFT_PAIRS": "2V0",
-#     "RANKED_TFT_TURBO": "狂暴模式",
-#     "RIOTSCRIPT_BOT": "人机对战",
-#     "SF_TFT": "云顶之弈（斗魂锦标赛）",
-#     "STRAWBERRY": "无尽狂潮",
-#     "TURBO_TFT": "云顶之弈 狂暴模式 自定义",
-#     "TUTORIAL_MODULE_1": "新手教程 第一部分",
-#     "TUTORIAL_MODULE_2": "新手教程 第二部分",
-#     "TUTORIAL_MODULE_3": "新手教程 第三部分",
-#     "TUTORIAL_TFT": "云顶之弈 新手教程",
-#     "ULTBOOK": "终极魔典",
-#     "URF": "无限火力"
-# }
-queueTypes: dict[str, str] = {
+queueTypes_ranked: dict[str, str] = {
     "RANKED_SOLO_5x5": "单人/双人",
     "RANKED_FLEX_SR": "灵活 5V5",
     "RANKED_TFT": "云顶之弈",
     "RANKED_TFT_PAIRS": "2V0", #仅美测服可用（Only available on PBE）
     "RANKED_TFT_DOUBLE_UP": "双人作战",
     "RANKED_TFT_TURBO": "狂暴模式",
-    "CHERRY": "斗魂竞技场"
-}
+    "CHERRY": "斗魂竞技场",
+    "RANKED_PREMADE_5x5": "5V5"
+} #仅用于排位战区显示（Only designed for ranked league display）
 categories: dict[str, str] = {
     "Custom": "自定义对局",
     "PvP": "玩家对战",
@@ -1810,14 +1801,15 @@ lolEventHubOfferStates: dict[str, str] = {
 #     "kMixed": "Mixed"
 # }
 ##游戏模式（Game mode）
-# queueTypes: dict[str, str] = {
+# queueTypes_ranked: dict[str, str] = {
 #     "RANKED_SOLO_5x5": "Ranked Solo/Duo",
 #     "RANKED_FLEX_SR": "Ranked Flex",
 #     "RANKED_TFT": "Ranked TFT",
 #     "RANKED_TFT_PAIRS": "2V0",
 #     "RANKED_TFT_DOUBLE_UP": "Double Up",
 #     "RANKED_TFT_TURBO": "Hyper Roll",
-#     "CHERRY": "Arena"
+#     "CHERRY": "Arena",
+#     "RANKED_PREMADE_5x5": "5V5"
 # }
 # categories: dict[str, str] = {
 #     "Custom": "Custom",

@@ -9,7 +9,7 @@ from src.utils.logger import LogManager
 from src.utils.summoner import get_info
 from src.utils.format import optimize_bool_display
 from src.core.config.headers import game_leaderboard_header
-from src.core.config.localization import queueTypes, tiers, ratedTiers
+from src.core.config.localization import queueTypes_ranked, tiers, ratedTiers
 
 async def sort_game_leaderboard(connection: Connection, queueTypes_list: Optional[list[str]] = None, puuids: Optional[list[str]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
     '''
@@ -66,7 +66,7 @@ async def sort_game_leaderboard(connection: Connection, queueTypes_list: Optiona
                         if i == 4: #分级（`division`）
                             to_append = "" if participant_leaderboard["division"] == "NA" else participant_leaderboard["division"]
                         elif i == 11: #战区（`queueType`）
-                            to_append = queueTypes[participant_leaderboard["queueType"]]
+                            to_append = queueTypes_ranked[participant_leaderboard["queueType"]]
                         elif i == 13: #段位（`ratedTier`）
                             to_append = ratedTiers[participant_leaderboard["ratedTier"]]
                         elif i == 14: #段位（`tier`）
