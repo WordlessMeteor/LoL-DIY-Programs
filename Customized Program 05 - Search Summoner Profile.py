@@ -1471,7 +1471,7 @@ async def sort_ranked_ladders(connection: Connection, puuid: str, fetch_summoner
                     else:
                         to_append = "☆" if standing["puuid"] == puuid else ""
                     ladder_data[key].append(to_append)
-                logPrint("[%d/%d][%d/%d][%d/%d]%s\t%s" %(i + 1, len(ladders), j + 1, len(ladder["divisions"]), k + 1, len(division["standings"]), standing["puuid"], get_info_name(standing_summoner["body"])) if info_got else "", end = "\r")
+                logPrint("[%d/%d][%d/%d][%d/%d]%s\t%s" %(i + 1, len(ladders), j + 1, len(ladder["divisions"]), k + 1, len(division["standings"]), standing["puuid"], get_info_name(standing_summoner["body"]) if info_got else ""), end = "\r")
         else:
             logPrint("已完成。 | Done.")
     ladder_statistics_output_order: list[int] = [0, 9, 11, 10, 17, 15, 18, 21, 22, 19, 1, 4, 3, 14, 8, 7, 6, 20, 5, 13, 12, 2, 16, 23]
