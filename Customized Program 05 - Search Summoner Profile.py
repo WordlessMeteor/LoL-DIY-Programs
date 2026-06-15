@@ -40,7 +40,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/06/14
+# 更新（Last update）：     2026/06/15
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2502,8 +2502,6 @@ async def search_profile(connection: Connection) -> None:
             if len(error_LoLMatchIDs) > 0:
                 logPrint("警告：以下%d场对局获取失败。\nWarning: The following %d match(es) fail to be fetched." %(len(error_LoLMatchIDs), len(error_LoLMatchIDs)))
                 logPrint(error_LoLMatchIDs)
-            if save_all_json:
-                logPrint('对局序号列表已保存在“%s”文件夹下。\nMatchId list is saved in the folder "%s".\n' %(folder, folder))
             matches_to_remove: list[int] = LoLMatches_not_found + error_LoLMatchIDs
             for match_to_remove in matches_to_remove: #在去除获取异常的对局后，需要在对局序号列表中将这些对局也一并移除（After removing matches that fail to be captured, we need to remove them in matchId list, too）
                 if match_to_remove in LoLMatchIDs:
@@ -2840,8 +2838,6 @@ async def search_profile(connection: Connection) -> None:
             if len(error_TFTMatchIDs) > 0:
                 logPrint("警告：以下%d场对局获取失败。\nWarning: The following %d match(es) fail to be fetched." %(len(error_TFTMatchIDs), len(error_TFTMatchIDs)))
                 logPrint(error_TFTMatchIDs)
-            if save_all_json:
-                logPrint('对局序号列表已保存在“%s”文件夹下。\nMatchId list is saved in the folder "%s".\n' %(folder, folder))
             matches_to_remove: list[int] = TFTMatches_not_found + error_TFTMatchIDs
             for match_to_remove in matches_to_remove:
                 TFTMatchIDs.remove(match_to_remove)
