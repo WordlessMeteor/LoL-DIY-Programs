@@ -108,7 +108,7 @@ async def get_matchIds_sgp(connection: Connection, sgpSession: SGPSession, puuid
     
         - AND: 且/交
         - OR: 或/并
-    :type tagsQueryType: list[str]
+    :type tagsQueryType: Literal["AND", "OR"]
     :param retry: 最大尝试次数。默认为5次。<br>Maximum number of attempts. 5 by default.
     :type retry: int
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
@@ -188,7 +188,7 @@ async def get_matchSummary_sgp(connection: Connection, sgpSession: SGPSession, p
     
         - AND: 且/交
         - OR: 或/并
-    :type tagsQueryType: list[str]
+    :type tagsQueryType: Literal["AND", "OR"]
     :param retry: 最大尝试次数。默认为5次。<br>Maximum number of attempts. 5 by default.
     :type retry: int
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
@@ -267,7 +267,7 @@ async def get_matchDetails_sgp(connection: Connection, sgpSession: SGPSession, p
     
         - AND: 且/交
         - OR: 或/并
-    :type tagsQueryType: list[str]
+    :type tagsQueryType: Literal["AND", "OR"]
     :param retry: 最大尝试次数。默认为5次。<br>Maximum number of attempts. 5 by default.
     :type retry: int
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.

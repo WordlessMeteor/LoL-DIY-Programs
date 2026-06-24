@@ -845,7 +845,7 @@ class LoLDataExtractor:
         :rtype: dict[str, str]
         '''
         return {"{" + line.split(" ")[0] + "}": line.split(" ")[1] for line in hash_text.strip("\n").splitlines()}
-
+    
     def get_bin_hashes(self) -> None: #在线加载——供用户使用（Online loading - For user use）
         '''
         在线加载用于解析二进制描述数据中的字符串的散列表。<br>Load the hashtable for parsing strings in binary description data online.
@@ -11301,12 +11301,12 @@ if __name__ == "__main__":
         #     perks_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # perks_bin = LoLDataExtractor.resolve_bin_hash(perks_bin)
         ##强化符文和荣誉嘉宾（Augment and Guest of Honor）
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
-        #     cherry_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
-        # cherry_bin = LoLDataExtractor.resolve_bin_hash(cherry_bin)
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
-            kiwi_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
-        kiwi_bin = LoLDataExtractor.resolve_bin_hash(kiwi_bin)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
+            cherry_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        cherry_bin = LoLDataExtractor.resolve_bin_hash(cherry_bin)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
+        #     kiwi_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # kiwi_bin = LoLDataExtractor.resolve_bin_hash(kiwi_bin)
         ##整合后的数据（Merged data）
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
         #     champions_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
@@ -11350,9 +11350,9 @@ if __name__ == "__main__":
         logPrint("说明文本测试样例：")
         tests: list[dict[str, Any]] = [
             {
-                "tooltip": "【{{SpellName}}】技能的每次施放发射@QuestTier@个额外飞弹。<br><br><font color='#F0C200'>任务：</font>用【{{SpellName}}】技能命中敌方英雄@QuestRequirement@次<br><br><font color='#F0C200'>奖励：</font>在你施放【{{SpellName}}】技能时额外发射1个飞弹。<br><br>命中的敌人数：@QuestProgress@/@QuestRequirement@<br>已获得的额外飞弹数：@QuestTier@<br><br><flavorText>你弹无虚发。即使虚发，也不虚发。</flavorText>",
-                "binData": kiwi_bin["{2518130d}"],
-                "reservedVars": {"QuestTier": "1", "QuestRequirement": str(250 - 50)}
+                "tooltip": "@TrueDamagePercSplit@",
+                "binData": cherry_bin["{5f69dfc1}"]["mSpell"],
+                "reservedVars": None
             },
         ]
         for i in range(len(tests)):
