@@ -40,7 +40,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/06/15
+# 更新（Last update）：     2026/06/28
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2697,124 +2697,119 @@ async def search_profile(connection: Connection) -> None:
                 info_text_saved: bool = False
                 isTFT[matchId] = False #前面部分对局即使添加到此字典中，其值也是False（Even if some matches are added into this dictionary previously, their values are still False）
                 
-                if TFTGame_summary_export: #这里和英雄联盟对局概要的区别是，在整理英雄联盟对局概要的同时会梳理出英雄联盟战绩汇总表，而整理云顶之弈对局概要时没有其它操作。所以如果一个云顶之弈对局概要文本文档不需要保存和导出，那么直接不加载就可以了（Here the difference from the case of LoL match summary is that the program summarizes the LoL match stats table while organizing LoL match summary, while the program does nothing else while organizing TFT match summaries. Therefore, if a TFT match summary json file isn't saved and exported, then it's better not load it）
-                    #获取数据（Get data）
-                    if matchId in TFTGame_summary_cache_sgp:
-                        TFTGame_summary: dict[str, Any] = TFTGame_summary_cache_sgp[matchId]
-                        status: int = 200
-                    else:
-                        status, TFTGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, checkLoL = False, checkTFT = True, log = log) #通过LCU API和SGP API获取到的云顶之弈对局记录和对局概要是相同的（TFT match history and TFT game summary obtained through LCU API and SGP API are the same）
-                        if status == 200:
-                            TFTGame_summary_cache_sgp[matchId] = TFTGame_summary
-                    if status == 200 and "json" in TFTGame_summary and bool(TFTGame_summary["json"]):
-                        isTFT[matchId] = True
-                        info_exist_error[matchId] = False
-                        save_one_json: bool = TFTGame_summary_export
-                        participant_puuid: list[str] = []
-                        participant_gameName: list[str] = []
-                        for participant in TFTGame_summary["json"]["participants"]:
-                            participant_puuid.append(participant["puuid"])
-                            if participant["puuid"] != "00000000-0000-0000-0000-000000000000":
-                                if "riotIdGameName" in participant and "riotIdTagline" in participant:
-                                    TFTPlayer_summonerName: str = "%s#%s" %(participant["riotIdGameName"], participant["riotIdTagline"])
-                                else:
-                                    if participant["puuid"] in infos:
-                                        TFTPlayer_info_body = infos[participant["puuid"]]
-                                        TFTPlayer_summonerName = get_info_name(TFTPlayer_info_body)
-                                        TFTPlayer_info_got: bool = True
-                                    else:
-                                        TFTPlayer_info_recapture = 0
-                                        TFTPlayer_info = await get_info(connection, participant["puuid"])
-                                        while not TFTPlayer_info["info_got"] and TFTPlayer_info["body"]["httpStatus"] != 404 and TFTPlayer_info_recapture < 3:
-                                            logPrint(TFTPlayer_info["message"])
-                                            TFTPlayer_info_recapture += 1
-                                            logPrint("对局%d玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of player (puuid: %s) in Match %d capture failed! Recapturing this player's information ... Times tried: %d." %(TFTGame_summary["json"]["game_id"], participant["puuid"], TFTPlayer_info_recapture, participant["puuid"], TFTGame_summary["json"]["game_id"], TFTPlayer_info_recapture))
-                                            TFTPlayer_info = await get_info(connection, participant["puuid"])
-                                        if TFTPlayer_info["info_got"]:
-                                            TFTPlayer_info_body = TFTPlayer_info["body"]
-                                            infos[participant["puuid"]] = TFTPlayer_info_body
-                                            TFTPlayer_summonerName = get_info_name(TFTPlayer_info_body)
-                                        else:
-                                            logPrint(TFTPlayer_info["message"])
-                                            logPrint("对局%d玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of player (puuid: %s) in Match %d capture failed!" %(TFTGame_summary["json"]["game_id"], participant["puuid"], participant["puuid"], TFTGame_summary["json"]["game_id"]))
-                                            TFTPlayer_summonerName = participant["puuid"] 
-                                        TFTPlayer_info_got = TFTPlayer_info["info_got"]
+                #获取数据（Get data）
+                if matchId in TFTGame_summary_cache_sgp:
+                    TFTGame_summary: dict[str, Any] = TFTGame_summary_cache_sgp[matchId]
+                    status: int = 200
+                else:
+                    status, TFTGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, checkLoL = False, checkTFT = True, log = log) #通过LCU API和SGP API获取到的云顶之弈对局记录和对局概要是相同的（TFT match history and TFT game summary obtained through LCU API and SGP API are the same）
+                    if status == 200:
+                        TFTGame_summary_cache_sgp[matchId] = TFTGame_summary
+                if status == 200 and "json" in TFTGame_summary and bool(TFTGame_summary["json"]):
+                    isTFT[matchId] = True
+                    info_exist_error[matchId] = False
+                    save_one_json: bool = TFTGame_summary_export
+                    participant_puuid: list[str] = []
+                    participant_gameName: list[str] = []
+                    for participant in TFTGame_summary["json"]["participants"]:
+                        participant_puuid.append(participant["puuid"])
+                        if participant["puuid"] != "00000000-0000-0000-0000-000000000000":
+                            if "riotIdGameName" in participant and "riotIdTagline" in participant:
+                                TFTPlayer_summonerName: str = "%s#%s" %(participant["riotIdGameName"], participant["riotIdTagline"])
                             else:
-                                TFTPlayer_summonerName = participant["puuid"] #注意到新玩家的召唤师名是空字符串（Note that a new player's summoner name would also be an empty string）
-                            participant_gameName.append(TFTPlayer_summonerName)
-                        if len(set(current_puuid_list) & set(participant_puuid)) > 0:
-                            main_player_included[matchId] = True
-                            match_reserve_strategy[matchId] = True
-                        elif len(set(current_summonerName_list) & set(participant_gameName)) > 0:
-                            main_player_included[matchId] = True
-                            match_reserve_strategy[matchId] = True
-                            if not puuid_change_warning_printed:
-                                logPrint("警告：该大区的玩家通用唯一识别码曾发生变动！请检查保存的各对局是否属于该玩家。\nWarning: The puuids of players on this server have been changed! Please check if the saved matches really belong to this player.")
-                                puuid_change_warning_printed = True
+                                if participant["puuid"] in infos:
+                                    TFTPlayer_info_body = infos[participant["puuid"]]
+                                    TFTPlayer_summonerName = get_info_name(TFTPlayer_info_body)
+                                    TFTPlayer_info_got: bool = True
+                                else:
+                                    TFTPlayer_info_recapture = 0
+                                    TFTPlayer_info = await get_info(connection, participant["puuid"])
+                                    while not TFTPlayer_info["info_got"] and TFTPlayer_info["body"]["httpStatus"] != 404 and TFTPlayer_info_recapture < 3:
+                                        logPrint(TFTPlayer_info["message"])
+                                        TFTPlayer_info_recapture += 1
+                                        logPrint("对局%d玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of player (puuid: %s) in Match %d capture failed! Recapturing this player's information ... Times tried: %d." %(TFTGame_summary["json"]["game_id"], participant["puuid"], TFTPlayer_info_recapture, participant["puuid"], TFTGame_summary["json"]["game_id"], TFTPlayer_info_recapture))
+                                        TFTPlayer_info = await get_info(connection, participant["puuid"])
+                                    if TFTPlayer_info["info_got"]:
+                                        TFTPlayer_info_body = TFTPlayer_info["body"]
+                                        infos[participant["puuid"]] = TFTPlayer_info_body
+                                        TFTPlayer_summonerName = get_info_name(TFTPlayer_info_body)
+                                    else:
+                                        logPrint(TFTPlayer_info["message"])
+                                        logPrint("对局%d玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of player (puuid: %s) in Match %d capture failed!" %(TFTGame_summary["json"]["game_id"], participant["puuid"], participant["puuid"], TFTGame_summary["json"]["game_id"]))
+                                        TFTPlayer_summonerName = participant["puuid"] 
+                                    TFTPlayer_info_got = TFTPlayer_info["info_got"]
                         else:
-                            main_player_included[matchId] = False
-                            save_one_json: bool = args.reserve_text #由于从文本文件中可以提取该召唤师的对局序号，所以需要保证保留下来的文本文件都包含该召唤师。因此，如果一场对局不包含该召唤师，就不应该把这场对局保存下来，除非用户出于特殊目的需要保留文本文件（Because a summoner's matchIDs can be extracted from the saved json files, it needs to be guaranteed that all saved json files belong to this summoner. Therefore, if a match doesn't include this summoner, then it shouldn't be saved into json files, unless the user must save it with special purposes）
-                            if args.reserve:
-                                match_reserve: bool = True
+                            TFTPlayer_summonerName = participant["puuid"] #注意到新玩家的召唤师名是空字符串（Note that a new player's summoner name would also be an empty string）
+                        participant_gameName.append(TFTPlayer_summonerName)
+                    if len(set(current_puuid_list) & set(participant_puuid)) > 0:
+                        main_player_included[matchId] = True
+                        match_reserve_strategy[matchId] = True
+                    elif len(set(current_summonerName_list) & set(participant_gameName)) > 0:
+                        main_player_included[matchId] = True
+                        match_reserve_strategy[matchId] = True
+                        if not puuid_change_warning_printed:
+                            logPrint("警告：该大区的玩家通用唯一识别码曾发生变动！请检查保存的各对局是否属于该玩家。\nWarning: The puuids of players on this server have been changed! Please check if the saved matches really belong to this player.")
+                            puuid_change_warning_printed = True
+                    else:
+                        main_player_included[matchId] = False
+                        save_one_json: bool = args.reserve_text #由于从文本文件中可以提取该召唤师的对局序号，所以需要保证保留下来的文本文件都包含该召唤师。因此，如果一场对局不包含该召唤师，就不应该把这场对局保存下来，除非用户出于特殊目的需要保留文本文件（Because a summoner's matchIDs can be extracted from the saved json files, it needs to be guaranteed that all saved json files belong to this summoner. Therefore, if a match doesn't include this summoner, then it shouldn't be saved into json files, unless the user must save it with special purposes）
+                        if args.reserve:
+                            match_reserve: bool = True
+                            logPrint("[%d/%d]对局%d不包含该玩家！已保持该对局。\nMatch %d doesn't include the current player but is reserved." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), matchId, matchId))
+                        else:
+                            if not match_notbelonging_warning_printed:
+                                logPrint("警告：对局%d不包含该玩家！是否仍要保持该对局？（输入任意键以保留该对局，否则舍弃该对局）\nWarning: The Match %d doesn't include the current player! Continue? (Input any nonempty string to reserve this match, or null to abandon it.)\n注意：此改动对于后续情形也生效。\nNote: This decision takes effect in similar situations later." %(matchId, matchId))
+                                match_reserve_str: str = logInput()
+                                match_reserve = bool(match_reserve_str)
+                                match_notbelonging_warning_printed = True
+                            elif match_reserve:
                                 logPrint("[%d/%d]对局%d不包含该玩家！已保持该对局。\nMatch %d doesn't include the current player but is reserved." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), matchId, matchId))
                             else:
-                                if not match_notbelonging_warning_printed:
-                                    logPrint("警告：对局%d不包含该玩家！是否仍要保持该对局？（输入任意键以保留该对局，否则舍弃该对局）\nWarning: The Match %d doesn't include the current player! Continue? (Input any nonempty string to reserve this match, or null to abandon it.)\n注意：此改动对于后续情形也生效。\nNote: This decision takes effect in similar situations later." %(matchId, matchId))
-                                    match_reserve_str: str = logInput()
-                                    match_reserve = bool(match_reserve_str)
-                                    match_notbelonging_warning_printed = True
-                                elif match_reserve:
-                                    logPrint("[%d/%d]对局%d不包含该玩家！已保持该对局。\nMatch %d doesn't include the current player but is reserved." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), matchId, matchId))
-                                else:
-                                    logPrint("[%d/%d]对局%d不包含该玩家！已舍弃该对局。\nMatch %d doesn't include the current player and is decrepated." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), matchId, matchId))
-                            match_reserve_strategy[matchId] = match_reserve
-                    else:
-                        TFTGame_summary_export: bool = False
-                        TFTGame_leaderboard_export: bool = False
-                        participant_puuid = []
-                        info_exist_error[matchId] = True
-                        save_one_json = False
-                    
-                    #提示（Prompt）
-                    info_note: str = "" if "json" in TFTGame_summary and bool(TFTGame_summary["json"]) else " (Match data deleted from API!)"
-                    process_header: str = "保存进度（Saving process）" if save_all_json and TFTGame_summary_export and save_one_json else "加载进度（Loading process）"
-                    logPrint("%s：%d/%d\t对局序号（MatchID）： %d%s" %(process_header, TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), matchId, info_note), print_time = True)
-                    
-                    #导出数据（Export data）
-                    if "json" in TFTGame_summary and bool(TFTGame_summary["json"]):
-                        if save_all_json and save_one_json:
-                            json12name: str = f"Match Summary (TFT) - {platformId}-{matchId}.json"
-                            os.makedirs(match_folder, exist_ok = True)
-                            try:
-                                with open(os.path.join(match_folder, json12name), "w", encoding = "utf-8") as jsonfile12:
-                                    jsonfile12.write(json.dumps(TFTGame_summary, indent = 4, ensure_ascii = False))
-                            except UnicodeDecodeError:
-                                logPrint("对局%d概要文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nMatch %d summary text generation failure! Please check if the summoner name includes any abnormal characters!" %(matchId, matchId))
-                            else:
-                                info_text_saved = True
-                                TFTMatches_exported.append(matchId)
-                            # currentTime: str = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
-                            # pkl9name: str = f"Intermediate Object - Match Summary (TFT) - {platformId}-{matchId}.pkl"
-                            # with open(os.path.join(match_folder, pkl9name), "wb") as IntObj8:
-                            #     pickle.dump(TFTGame_summary, IntObj8)
-                        
-                        TFTGame_summary_df, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits = await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = TFTMatchIDs.index(matchId), current_puuid = current_puuid, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, useInfoDict = True, infos = infos, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, save_self = True, save_other = True, log = log)
-                        
-                        #社交排行榜（Social leaderboard）
-                        if args.export_leaderboard:
-                            TFTGame_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = participant_puuid, log = log)
+                                logPrint("[%d/%d]对局%d不包含该玩家！已舍弃该对局。\nMatch %d doesn't include the current player and is decrepated." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), matchId, matchId))
+                        match_reserve_strategy[matchId] = match_reserve
+                else:
+                    TFTGame_summary_export: bool = False
+                    TFTGame_leaderboard_export: bool = False
+                    participant_puuid = []
+                    info_exist_error[matchId] = True
+                    save_one_json = False
+                
+                #提示（Prompt）
+                info_note: str = "" if "json" in TFTGame_summary and bool(TFTGame_summary["json"]) else " (Match data deleted from API!)"
+                process_header: str = "保存进度（Saving process）" if save_all_json and TFTGame_summary_export and save_one_json else "加载进度（Loading process）"
+                logPrint("%s：%d/%d\t对局序号（MatchID）： %d%s" %(process_header, TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), matchId, info_note), print_time = True)
+                
+                #导出数据（Export data）
+                if "json" in TFTGame_summary and bool(TFTGame_summary["json"]):
+                    if save_all_json and save_one_json:
+                        json12name: str = f"Match Summary (TFT) - {platformId}-{matchId}.json"
+                        os.makedirs(match_folder, exist_ok = True)
+                        try:
+                            with open(os.path.join(match_folder, json12name), "w", encoding = "utf-8") as jsonfile12:
+                                jsonfile12.write(json.dumps(TFTGame_summary, indent = 4, ensure_ascii = False))
+                        except UnicodeDecodeError:
+                            logPrint("对局%d概要文本文档生成失败！请检查召唤师名称是否包含不常用字符！\nMatch %d summary text generation failure! Please check if the summoner name includes any abnormal characters!" %(matchId, matchId))
                         else:
-                            TFTGame_leaderboard_df = pandas.DataFrame()
+                            info_text_saved = True
+                            TFTMatches_exported.append(matchId)
+                        # currentTime: str = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
+                        # pkl9name: str = f"Intermediate Object - Match Summary (TFT) - {platformId}-{matchId}.pkl"
+                        # with open(os.path.join(match_folder, pkl9name), "wb") as IntObj8:
+                        #     pickle.dump(TFTGame_summary, IntObj8)
+                    
+                    TFTGame_summary_df, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits = await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = TFTMatchIDs.index(matchId), current_puuid = current_puuid, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, useInfoDict = True, infos = infos, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, save_self = True, save_other = True, log = log)
+                    
+                    #社交排行榜（Social leaderboard）
+                    if args.export_leaderboard:
+                        TFTGame_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = participant_puuid, log = log)
                     else:
-                        TFTMatches_not_found.append(matchId)
-                        TFTGame_summary_error: dict[str, list[str]] = {"项目": list(error_header.values()), "items": list(error_header.keys()), "值": [TFTGame_summary.get(key, "") for key in error_header_keys]}
-                        TFTGame_summary_df: pandas.DataFrame = pandas.DataFrame(data = TFTGame_summary_error)
                         TFTGame_leaderboard_df = pandas.DataFrame()
-                    #注意到对于对局出现异常的情况，英雄联盟对局概要数据框的构建方式和云顶之弈有所不同。这是因为当云顶之弈对局概要获取异常时，往往是其“json”键为空或者无“json”键，而没有详细报错信息（Note that when an error occurs to a match, the method of creating the LoL match summary dataframe is different from that of creating the TFT match summary dataframe. This is because when a TFT match summary fails to be loaded, either its "json" value is null, or its "json" key is missing, without a detailed error information）
-                else: #为了简化输出，跳过导出的对局概要不再输出提示（To simplify output, skipped match summary won't have prompts）
-                    info_note: str = " (Match summary skipped)"
-                    TFTGame_summary_df: pandas.DataFrame = pandas.DataFrame()
+                else:
+                    TFTMatches_not_found.append(matchId)
+                    TFTGame_summary_error: dict[str, list[str]] = {"项目": list(error_header.values()), "items": list(error_header.keys()), "值": [TFTGame_summary.get(key, "") for key in error_header_keys]}
+                    TFTGame_summary_df: pandas.DataFrame = pandas.DataFrame(data = TFTGame_summary_error)
                     TFTGame_leaderboard_df = pandas.DataFrame()
+                #注意到对于对局出现异常的情况，英雄联盟对局概要数据框的构建方式和云顶之弈有所不同。这是因为当云顶之弈对局概要获取异常时，往往是其“json”键为空或者无“json”键，而没有详细报错信息（Note that when an error occurs to a match, the method of creating the LoL match summary dataframe is different from that of creating the TFT match summary dataframe. This is because when a TFT match summary fails to be loaded, either its "json" value is null, or its "json" key is missing, without a detailed error information）
                 
                 #云顶之弈无时间轴（TFT games don't have timeline）
                 timeline_exist_error[matchId] = True #云顶之弈对局中没有时间轴信息，因此每个云顶之弈对局的时间轴标记为异常获取（There's no timeline information in each TFT match, so each TFT match's timeline is labeled as "error" captured）
