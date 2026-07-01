@@ -10,7 +10,7 @@ from src.utils.summoner import print_summoner_info, get_info, get_info_name
 from src.core.config.const import TEST_GAME_SUMMARY
 from src.core.config.servers import set_platform_folder
 from src.core.dataframes.matchHistory import get_matchSummary_sgp, get_matchDetails_sgp, get_game_summary_sgp, get_game_timeline_sgp
-from src.core.process.replay import download_replay
+from src.core.process.replay import download_replay_sgp
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--begin", help = "指定对局序号范围的下标（Specify the lower limit of matchId range）", action = "store", type = int, default = 0)
@@ -23,7 +23,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/06/10
+# 更新（Last update）：     2026/07/01
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -231,7 +231,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
             if save_rofl and not matchId in downloaded_matches:
                 rofl_name: str = f"{platformId}-{matchId}.rofl"
                 rofl_path: str = os.path.join(replay_folder, rofl_name).replace("\\", "/")
-                replay_downloaded, replay_download_message = await download_replay(connection, session, match_id, rofl_path)
+                replay_downloaded, replay_download_message = await download_replay_sgp(connection, session, match_id, rofl_path)
                 if replay_downloaded:
                     downloaded_matches.add(matchId)
                     logPrint(f"【下载回放】已下载回放（Downloaded replay）： {rofl_path}")
@@ -396,7 +396,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
                     if save_rofl and not matchId in downloaded_matches:
                         rofl_name: str = f"{platformId}-{matchId}.rofl"
                         rofl_path: str = os.path.join(replay_folder, rofl_name).replace("\\", "/")
-                        replay_downloaded, replay_download_message = await download_replay(connection, session, match_id, rofl_path)
+                        replay_downloaded, replay_download_message = await download_replay_sgp(connection, session, match_id, rofl_path)
                         if replay_downloaded:
                             downloaded_matches.add(matchId)
                             logPrint(f"【下载回放】已下载回放（Downloaded replay）： {rofl_path}")

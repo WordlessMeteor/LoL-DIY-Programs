@@ -1,19 +1,19 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-import json, os, pandas, requests, time
+import os, pandas, time
 from typing import Any, Literal, Optional
 from src.utils.webRequest import SGPSession
 from src.utils.format import format_df
 from src.core.config.localization import gamemaps, gamemodes, gameTypes_history
 from src.core.dataframes.matchHistory import get_game_summary_sgp, get_game_timeline_sgp
-from src.core.process.replay import download_replay
+from src.core.process.replay import download_replay_lcu, download_replay_sgp, watch_replay
 
 #=============================================================================
 # * 声明（Declaration）
 #=============================================================================
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
-# 更新（Last update）：     2026/06/13
+# 更新（Last update）：     2026/07/01
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -25,6 +25,7 @@ from src.core.process.replay import download_replay
 
 sgpSession: SGPSession = SGPSession()
 gameQueues: dict[int, dict[str, Any]] = {}
+use_sgp: bool = False
 connector: Connector = Connector()
 
 #-----------------------------------------------------------------------------
@@ -140,7 +141,7 @@ def sort_match_metadata(data: dict[str, Any], product: str, info_type: Literal["
             result["gameDuration"] = gameDuration_norm
     return result
 
-async def replayDownloader(connection: Connection, matchId: int) -> None:
+async def replayDownloader(connection: Connection, matchId: int, use_sgp: bool) -> None:
     '''
     下载一场回放。<br>Download a replay.
     
@@ -152,6 +153,12 @@ async def replayDownloader(connection: Connection, matchId: int) -> None:
     
         仅可下载英雄联盟对局的回放。<br>Only the replay of a LoL match can be downloaded.
     :type matchId: int
+    :param use_sgp: 是否使用SGP接口下载回放。<br>Whether to use SGP API to download the replay.
+
+        当该参数为真时，使用SGP接口下载回放。下载完成时会输出对局元数据，但是联盟客户端内不会更新回放状态。用户需要调用相应的LCU API或者重启客户端来更新该对局的状态。<br>When the parameter is set as True, the function uses SGP API to download the replay. When download is finished, game metadata will be output, but the replay status in the League Client won't be updated. The user needs to call the corresponding LCU API or restart the client to update the status.
+
+        当该参数为假时，使用LCU接口下载回放。此时不会输出任何提示，但当下载成功时，联盟客户端内会更新回放状态，从而使得用户可以调用播放回放的接口。<br>When the parameter is set as False, the function uses LCU API to download the replay. In that case, no prompts will be given. However, when the download is finished, the replay status in the League Client will be updated, so that the user may call the LCU endpoint to play the replay.
+    :type use_sgp: bool
     '''
     #准备常量（Prepare constants）
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
@@ -198,24 +205,28 @@ async def replayDownloader(connection: Connection, matchId: int) -> None:
         product = "LoL"
     elif product.lower() == "tft":
         product = "TFT"
-    replay_downloaded, replay_download_message = await download_replay(connection, sgpSession, match_id, rofl_path, product = product)
-    if replay_downloaded:
-        print(f"已下载回放（Downloaded replay）： {rofl_path}")
-        if summary_got:
-            metadata: dict[str, Any] = sort_match_metadata(game_summary, product, "summary")
-        elif timeline_got:
-            metadata = sort_match_metadata(game_timeline, product, "details")
+    if use_sgp:
+        replay_downloaded, replay_download_message = await download_replay_sgp(connection, sgpSession, match_id, rofl_path, product = product)
+        if replay_downloaded:
+            print(f"已下载回放（Downloaded replay）： {rofl_path}")
+            if summary_got:
+                metadata: dict[str, Any] = sort_match_metadata(game_summary, product, "summary")
+            elif timeline_got:
+                metadata = sort_match_metadata(game_timeline, product, "details")
+            else:
+                metadata = {}
+            if len(metadata) > 0:
+                metadata_organized: dict[str, list[Any]] = {key: [replay_metadata_header[key], value] for (key, value) in metadata.items()}
+                metaDf: pandas.DataFrame = pandas.DataFrame(metadata_organized, index = ["中文", "Value"])
+                metaDf = metaDf.transpose()
+                print(f"回放元数据（Replay metadata）：")
+                print(format_df(metaDf, print_index = True, reserve_index = True)[0], end = "\n\n")
         else:
-            metadata = {}
-        if len(metadata) > 0:
-            metadata_organized: dict[str, list[Any]] = {key: [replay_metadata_header[key], value] for (key, value) in metadata.items()}
-            metaDf: pandas.DataFrame = pandas.DataFrame(metadata_organized, index = ["中文", "Value"])
-            metaDf = metaDf.transpose()
-            print(f"回放元数据（Replay metadata）：")
-            print(format_df(metaDf, print_index = True, reserve_index = True)[0], end = "\n\n")
+            print(replay_download_message)
+            print("下载失败。\nDownload failed.")
     else:
-        print(replay_download_message)
-        print("下载失败。\nDownload failed.")
+        await download_replay_lcu(connection, matchId)
+        print("已发送下载回放的请求。\nThe request to download the replay has been sent.")
 
 async def set_replay_folder(connection: Connection) -> str:
     '''
@@ -265,11 +276,12 @@ async def set_replay_folder(connection: Connection) -> str:
 #-----------------------------------------------------------------------------
 @connector.ready
 async def connect(connection: Connection) -> None:
-    global sgpSession
+    global sgpSession, use_sgp
     await prepare_data_resources(connection)
     await sgpSession.init(connection)
     sgpSession.verbose = False
-    print("请选择一个操作：\nPlease select an operation:\n0\t退出程序（Exit the program）\n1\t设置回放位置（Set replays location）\n2\t下载回放（Download replay）")
+    print('''程序将默认使用LCU API下载回放。下载完成后，您可以在客户端内观察到该对局的状态为“播放”。如果您的网络或者计算机性能较差，推荐切换到SGP API。\nThis program uses LCU API to download replays by default. After download is finished, you can see that the match status in the League Client becomes "Play". If your network or device performance is slow, it's recommended that you switch to SGP API instead.\n''')
+    print("请选择一个操作：\nPlease select an operation:\n0\t退出程序（Exit the program）\n1\t设置回放位置（Set replays location）\n2\t设置接口类型（Set endpoint type）\n3\t下载回放（Download replay）\n4\t观看回放（Watch replay）")
     while True:
         option: str = input()
         if option == "":
@@ -279,6 +291,24 @@ async def connect(connection: Connection) -> None:
         elif option[0] == "1":
             await set_replay_folder(connection)
         elif option[0] == "2":
+            print('请选择接口类型：（输入“0”以取消操作并返回上一层。）\nPlease select an endpoint type: (Submit "0" to cancel the operation and return to the last step.)\n1\tLCU API\n2\tSGP API')
+            while True:
+                endpoint_str: str = input()
+                if endpoint_str == "":
+                    continue
+                elif endpoint_str[0] == "0":
+                    break
+                elif endpoint_str[0] == "1":
+                    use_sgp = False
+                    print('''您已选择使用LCU API下载回放。下载完成后，客户端内的对局下载按钮将变成“播放”。\nYou've selected LCU API. When the download is finished, the game download button in the League Client will become "play".''')
+                    break
+                elif endpoint_str[0] == "2":
+                    use_sgp = True
+                    print('''您已选择使用SGP API下载回放。您将收到更加丰富的下载提示，但是您需要重启客户端以更新回放状态。\nYou've selected SGP API. You'll receive more detailed download notifications, but you need to restart the League Client to update the replay status.''')
+                    break
+                else:
+                    continue
+        elif option[0] == "3":
             print('请输入要下载的对局的序号：（输入“0”以返回上一层。）\nPlease input the gameId of the match you want to download: (Submit "0" to return to the last step.)')
             while True:
                 matchId_str: str = input()
@@ -288,13 +318,28 @@ async def connect(connection: Connection) -> None:
                     break
                 elif matchId_str.isdecimal():
                     matchId: int = int(matchId_str)
-                    await replayDownloader(connection, matchId)
+                    await replayDownloader(connection, matchId, use_sgp)
                 else:
                     print("请输入一个正整数。\nPlease input a positive integer.")
                 print('请输入要下载的对局的序号：（输入“0”以返回上一层。）\nPlease input the gameId of the match you want to download: (Submit "0" to return to the last step.)')
+        elif option[0] == "4":
+            print('请输入要观看的对局的序号：（输入“0”以返回上一层。）\nPlease input the gameId of the match you want to watch: (Submit "0" to return to the last step.)')
+            while True:
+                matchId_str: str = input()
+                if matchId_str == "":
+                    continue
+                elif matchId_str[0] == "0":
+                    break
+                elif matchId_str.isdecimal():
+                    matchId: int = int(matchId_str)
+                    message: str = await watch_replay(connection, matchId)
+                    print(message)
+                else:
+                    print("请输入一个正整数。\nPlease input a positive integer.")
+                print('请输入要观看的对局的序号：（输入“0”以返回上一层。）\nPlease input the gameId of the match you want to watch: (Submit "0" to return to the last step.)')
         else:
             print("您的输入有误！请重新输入。\nERROR input! Please try again.")
-        print("请选择一个操作：\nPlease select an operation:\n0\t退出程序（Exit the program）\n1\t设置回放位置（Set replays location）\n2\t下载回放（Download replay）")
+        print("请选择一个操作：\nPlease select an operation:\n0\t退出程序（Exit the program）\n1\t设置回放位置（Set replays location）\n2\t设置接口类型（Set endpoint type）\n3\t下载回放（Download replay）\n4\t观看回放（Watch replay）")
 
 #-----------------------------------------------------------------------------
 # Main
