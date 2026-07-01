@@ -193,12 +193,12 @@ def sort_inventory_champions(LoLChampions: dict[int, dict[str, Any]], recommende
             count += 1
         for j in range(len(LoLChampion_header_keys)):
             key = LoLChampion_header_keys[j]
-            if j <= 17:
+            if j <= 19:
                 if j == 7: #禁用队列（`disabledQueues`）
                     to_append = champion["disabledQueues"]
                     if to_append == []:
                         to_append = ""
-                elif j == 17: #购买日期（`purchased`）
+                elif j == 19: #购买日期（`purchased`）
                     if champion["purchased"] == 0:
                         to_append: Any = ""
                     else:
@@ -208,11 +208,11 @@ def sort_inventory_champions(LoLChampions: dict[int, dict[str, Any]], recommende
                             to_append = ""
                 else:
                     to_append = champion[key]
-            elif j <= 26: #拥有权子键（`ownership`'s subkeys）
-                if j <= 20:
+            elif j <= 28: #拥有权子键（`ownership`'s subkeys）
+                if j <= 22:
                     to_append = champion["ownership"][key.split(": ")[1]]
                 else:
-                    if j == 25 or j == 26:
+                    if j == 27 or j == 28:
                         if champion["ownership"]["rental"][key.split(": ")[2].replace("Time", "Date")] == 0:
                             to_append = ""
                         else:
@@ -222,16 +222,16 @@ def sort_inventory_champions(LoLChampions: dict[int, dict[str, Any]], recommende
                                 to_append = ""
                     else:
                         to_append = champion["ownership"]["rental"][key.split(": ")[2]]
-            elif j <= 32: #角色定位相关键（Role related keys）
+            elif j <= 34: #角色定位相关键（Role related keys）
                 to_append = key.split(": ")[1] in champion["roles"]
-            elif j <= 35: #战略信息子键（`tacticalInfo`'s subkeys）
-                if j == 33: #战略信息：伤害【表明英雄的伤害类型的倾向（物理伤害、魔法伤害或者混合伤害）】（`tacticalInfo: damageType`）
+            elif j <= 37: #战略信息子键（`tacticalInfo`'s subkeys）
+                if j == 35: #战略信息：伤害【表明英雄的伤害类型的倾向（物理伤害、魔法伤害或者混合伤害）】（`tacticalInfo: damageType`）
                     to_append = damageTypes[champion["tacticalInfo"][key.split(": ")[1]]]
                 else:
                     to_append = champion["tacticalInfo"][key.split(": ")[1]]
-            elif j <= 37: #被动技能子键（`passive`'s subkeys）
+            elif j <= 39: #被动技能子键（`passive`'s subkeys）
                 to_append = champion["passive"][key.split(": ")[1]]
-            elif j <= 45: #技能相关键（Spell related keys）
+            elif j <= 47: #技能相关键（Spell related keys）
                 spell_index: int = int(key[5:6]) - 1
                 if spell_index < len(champion["spells"]):
                     to_append = champion["spells"][spell_index][key.split(": ")[1]]
@@ -246,7 +246,7 @@ def sort_inventory_champions(LoLChampions: dict[int, dict[str, Any]], recommende
                     to_append = False
             LoLChampion_data[key].append(to_append)
             LoLChampion_data_json[key].append(pyobj2json(to_append))
-    LoLChampion_statistics_output_order: list[int] = [9, 11, 16, 1, 10, 5, 27, 28, 29, 30, 31, 32, 46, 47, 48, 49, 50, 33, 35, 34, 19, 17, 18, 20, 8, 23, 26, 25, 24, 13, 7, 14, 3, 4, 15, 6, 2, 37, 39, 41, 43, 45]
+    LoLChampion_statistics_output_order: list[int] = [9, 11, 18, 1, 10, 5, 29, 30, 31, 32, 33, 34, 48, 49, 50, 51, 52, 35, 37, 36, 21, 19, 20, 22, 8, 25, 28, 27, 26, 13, 7, 16, 3, 4, 17, 6, 2, 39, 41, 43, 45, 47]
     LoLChampion_data_organized: dict[str, list[Any]] = {LoLChampion_header_keys[i]: LoLChampion_data[LoLChampion_header_keys[i]] for i in LoLChampion_statistics_output_order}
     LoLChampion_df: pandas.DataFrame = pandas.DataFrame(data = LoLChampion_data_organized)
     # logPrint("正在优化逻辑值显示……\nOptimizing the display of boolean values ...", verbose = verbose)

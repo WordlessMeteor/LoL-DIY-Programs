@@ -2937,6 +2937,8 @@ LoLChampion_inventory_header: dict[str, str] = {
     "name": "称号",
     "purchased": "购买时间戳",
     "rankedPlayEnabled": "取得排位许可",
+    "relatedPrimeContentId": "相关订阅商品编号",
+    "relatedPrimeItemId": "相关订阅道具序号",
     "squarePortraitPath": "方格头像路径",
     "stingerSfxPath": "锁定音效路径",
     "title": "名称",
