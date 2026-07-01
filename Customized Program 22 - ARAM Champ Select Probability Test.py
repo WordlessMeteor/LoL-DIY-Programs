@@ -28,7 +28,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/29
+# 更新（Last update）：     2026/07/01
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -384,6 +384,8 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
     :param champion_frequency_dict: 欲补充的英雄出现次数频数统计字典。如果不传入该参数，函数将自动初始化该参数。<br>The champion occurrence frequency distribution dictionary to supplement. If this parameter isn't passed into any value, the function will automatically initialize this parameter.
     :type champion_frequency_dict: dict[int, int]
     :return: 目标英雄序号和在这个过程中随机到的所有英雄的频数统计数据框。<br>The target championId and all champions' frequency distribution dataframe during this process.<br>频数统计数据请以较为流畅的设备为准。<br>Please refer to the result from the device that runs most smoothly.
+
+        当目标英雄序号为-2时，表示更换候选英雄序号列表。<br>When the target championId is -2, it means that the candidate championId list has been changed.
     :rtype: tuple[int, pandas.DataFrame]
     '''
     #参数预处理和变量初始化（Parameter preprocess and variable initialization）
@@ -1185,7 +1187,7 @@ async def RotateBlindPickCustomAARAM(connection: Connection, premade: bool = Fal
             if len(freq_df) > 1:
                 logPrint("本次试验过程的英雄出现次数频数统计情况如下：\nThe champion occurrence frequency distribution during this test is as follows:")
                 logPrint(format_df(freq_df)[0], write_time = False)
-            if not isCrowd and not picked_championId in {-1, -2}: #以上picked_championId返回的是完成测试时房主选用的英雄，而在多选模式中指定的候选英雄在替补英雄池中被发现时，不再执行后续的为房主选最高优先级的英雄这个动作，所以逻辑上讲，picked_championId不适用于本部分（The above `picked_championId` returns the champion selected by the lobby owner, but in crowd mode, when a candidate champion is found in the bench, the program no longer performs such an action that helps the lobby owner to select the pickable candidate champion with the highest priority. So, logically speaking, `picked_championId` doesn't apply to this part）
+            if not isCrowd and not picked_championId in {-1, -2}: #以上picked_championId返回的是完成测试时房主选用的英雄，而在多选模式中指定的候选英雄在替补英雄池中被发现时，不再执行后续的为房主选最高优先级的英雄这个动作，所以逻辑上讲，在多选模式下，picked_championId不适用于本部分（The above `picked_championId` returns the champion selected by the lobby owner, but in crowd mode, when a candidate champion is found in the bench, the program no longer performs such an action that helps the lobby owner to select the pickable candidate champion with the highest priority. So, logically speaking, under crowd mode, `picked_championId` doesn't apply to this part）
                 current_candidate_championIds.remove(picked_championId)
             if len(current_candidate_championIds) == 0:
                 logPrint("测试完成。按回车键退出。\nTest finished. Press Enter to exit.")
@@ -1201,6 +1203,7 @@ async def RotateBlindPickCustomAARAM(connection: Connection, premade: bool = Fal
                             enemy_candidate_championId_options = GetCandidateChampionChoices()
                     else:
                         self_candidate_championIds = GetCandidateChampions()
+                        current_candidate_championIds = self_candidate_championIds #既然重新指定，那就不需要再执行上述复杂的判断了（Since the user re-specifies the candidate championId list, there's no need to perform the above complex judgment）
                 logPrint('按回车键以开启下一场测试，或者输入“0”以退出测试序列。\nPress Enter to start the next test, or submit "0" to quit the test sequence.')
                 while True:
                     quit: bool = False
