@@ -56,7 +56,7 @@ async def get_LoLHistory(connection: Connection, puuid: str, begIndex: int = 0, 
             if LoLHistory["httpStatus"] == 400:
                 if "Error getting match list for summoner" in LoLHistory["message"]:
                     LoLHistory_url: str = "%s/lol-match-history/v1/products/lol/%s/matches?begIndex=0&endIndex=200" %(connection.address, puuid)
-                    logPrint("请打开以下网址，输入如下所示的用户名和密码，打开后在命令行中按回车键继续（Please open the following website, type in the username and password accordingly and press Enter to continue）：\n网址（URL）：\t\t%s\n用户名（Username）：\triot\n密码（Password）：\t%s\n或者输入空格分隔的两个自然数以重新指定对局索引下限和上限。\nOr submit two nonnegative integers split by space to respecify the begIndex and endIndex." %(LoLHistory_url, connection.auth_key))
+                    logPrint("请打开以下网址，输入如下所示的用户名和密码，打开后在命令行中按回车键继续。\nPlease open the following website, type in the username and password accordingly and press Enter to continue.\n网址（URL）：\t\t%s\n用户名（Username）：\triot\n密码（Password）：\t%s\n或者输入空格分隔的两个自然数以重新指定对局索引下限和上限。\nOr submit two nonnegative integers split by space to respecify the begIndex and endIndex." %(LoLHistory_url, connection.auth_key))
                     cont: str = logInput()
                     if cont == "":
                         continue
@@ -492,7 +492,7 @@ async def get_TFTHistory(connection: Connection, puuid: str, begin: int = 0, cou
             if TFTHistory["httpStatus"] == 400: #以下接口固定返回异常信息（The following endpoint always returns an error）：/lol-match-history/v1/products/tft/current-summoner/matches?begin=0&count=500
                 if "Error getting match list for summoner" in TFTHistory["message"]:
                     TFTHistory_url = "%s/lol-match-history/v1/products/tft/%s/matches?begin=0&count=200" %(connection.address, puuid)
-                    logPrint("请打开以下网址，输入如下所示的用户名和密码，打开后在命令行中按回车键继续，或输入任意字符以切换召唤师（Please open the following website, type in the username and password accordingly and press Enter to continue or input anything to switch to another summoner）：\n网址（URL）：\t\t%s\n用户名（Username）：\triot\n密码（Password）：\t%s\n或者输入空格分隔的两个自然数以重新指定对局索引下限和对局数。\nOr submit two nonnegative integers split by space to respecify the begin and count." %(TFTHistory_url, connection.auth_key))
+                    logPrint("请打开以下网址，输入如下所示的用户名和密码，打开后在命令行中按回车键继续，或输入任意字符以切换召唤师。\nPlease open the following website, type in the username and password accordingly and press Enter to continue or input anything to switch to another summoner.\n网址（URL）：\t\t%s\n用户名（Username）：\triot\n密码（Password）：\t%s\n或者输入空格分隔的两个自然数以重新指定对局索引下限和对局数。\nOr submit two nonnegative integers split by space to respecify the begin and count." %(TFTHistory_url, connection.auth_key))
                     cont = logInput()
                     if cont == "":
                         continue
