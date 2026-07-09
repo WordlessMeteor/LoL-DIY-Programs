@@ -30,7 +30,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/07/01
+# 更新（Last update）：     2026/07/10
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -7770,6 +7770,7 @@ def access_game_client() -> None:
     '''
     访问游戏客户端接口的总函数。用户只有在启动游戏后才能访问该接口。<br>A general function to access Game Client API. Only after the user starts a game is he/she allowed to access it.
     '''
+    global gameClientApi_cert_not_specified_warning_printed
     allgamedata: dict[str, Any] = {}
     allgamedata_fetched: bool = False
     if args.cert_path == "":
@@ -7907,7 +7908,7 @@ async def inGame_simulation(connection: Connection) -> str:
     :return: 游戏状态调试字符串。默认为空字符串。<br>Gameflow phase debug string. An empty string will be returned by default.
     :rtype: str
     '''
-    global gameClientApi_port_warning_printed, gameClientApi_cert_not_specified_warning_printed
+    global gameClientApi_port_warning_printed
     while True:
         logPrint("请选择一个操作：\nPlease select an operation:\n1\t查看英雄信息（Check champion information）\n2\t访问游戏客户端接口（Access game client API）\n3\t输出游戏会话（Output the gameflow session）\n4\t向好友发送密语（Chat with friends）\n5\t举报一名玩家（Report a player）\n6\t其它（Others）\n7\t客户端任务管理（Manage the League Client task）")
         option: str = logInput()
