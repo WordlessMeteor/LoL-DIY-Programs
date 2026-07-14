@@ -326,6 +326,18 @@ gamemodes: dict[str, dict[str, str]] = {
         "zh_CN": "六杀争夺战 扭曲丛林",
         "en_US": "Hexakill Twisted Treeline"
     },
+    "JADE": {
+        "zh_CN": "英雄联盟经典模式",
+        "en_US": "League Classic"
+    },
+    "JADE_BOT": {
+        "zh_CN": "英雄联盟经典模式 人机对战",
+        "en_US": "League Classic Co-op vs. AI"
+    },
+    "JADE_RANKED_SOLO_5x5": {
+        "zh_CN": "英雄联盟经典模式 排位赛 单排/双排",
+        "en_US": "League Classic Ranked Solo / Duo"
+    },
     "KINGPORO": {
         "zh_CN": "魄罗大乱斗",
         "en_US": "Legend of the Poro King"
@@ -337,6 +349,10 @@ gamemodes: dict[str, dict[str, str]] = {
     "KIWI": {
         "zh_CN": "海克斯大乱斗",
         "en_US": "ARAM: Mayhem"
+    },
+    "KIWI_JADE": {
+        "zh_CN": "海克斯大乱斗 怀旧版",
+        "en_US": "ARAM: Mayhem (Jade)"
     },
     "LNY23_TFT": {
         "zh_CN": "云顶之弈 (恭喜发财)",
@@ -675,6 +691,10 @@ gamemaps: dict[int, dict[str, str]] = {
     90: {
         "zh_CN": "第五赛季季前赛测试地图",
         "en_US": "Pre-Season 5 Testing Map"
+    },
+    453: {
+        "zh_CN": "经典召唤师峡谷",
+        "en_US": "Classic Summoner's Rift"
     }
 }
 ARAMmaps: dict[str, dict[str, str]] = {
@@ -969,7 +989,8 @@ gameSelectModeGroups: dict[str, str] = {
     "kARAM": "极地大乱斗",
     "kAlternativeLeagueGameModes": "轮换模式",
     "kSummonersRift": "召唤师峡谷",
-    "kTeamfightTactics": "云顶之弈"
+    "kTeamfightTactics": "云顶之弈",
+    "kJade": "英雄联盟经典"
 }
 banModes: dict[str, str] = {
     "": "待定",
@@ -1829,7 +1850,8 @@ lolEventHubOfferStates: dict[str, str] = {
 #     "kARAM": "ARAM",
 #     "kAlternativeLeagueGameModes": "Alternate League Modes",
 #     "kSummonersRift": "Summoner's Rift",
-#     "kTeamfightTactics": "Teamfight Tactics"
+#     "kTeamfightTactics": "Teamfight Tactics",
+#     "kJade": "Jade"
 # }
 # banModes: dict[str, str] = {
 #     "": "",

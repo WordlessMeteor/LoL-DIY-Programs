@@ -72,8 +72,8 @@ async def check_available_queue(connection: Connection) -> pandas.DataFrame: #�
     :rtype: pandas.DataFrame
     '''
     gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
-    map_CN: dict[int, str] = {8: "水晶之痕", 10: "扭曲丛林", 11: "召唤师峡谷", 12: "随机地图", 14: "屠夫之桥", 16: "星界废墟", 18: "瓦洛兰城市公园", 19: "第43区", 20: "飞船坠落点", 21: "百合与莲花的神庙", 22: "聚点危机", 30: "怒火角斗场", 33: "最终都市", 35: "班德尔之森"}
-    map_EN: dict[int, str] = {8: "Crystal Scar", 10: "Twisted Treeline", 11: "Summoner's Rift", 12: "Random Map", 14: "Butcher's Bridge", 16: "Cosmic Ruins", 18: "Valoran City Park", 19: "Substructure 43", 20: "Crash Site", 21: "Temple of Lily and Lotus", 22: "Convergence", 30: "Rings of Wrath", 33: "Final City", 35: "The Bandlewood"}
+    map_CN: dict[int, str] = {8: "水晶之痕", 10: "扭曲丛林", 11: "召唤师峡谷", 12: "随机地图", 14: "屠夫之桥", 16: "星界废墟", 18: "瓦洛兰城市公园", 19: "第43区", 20: "飞船坠落点", 21: "百合与莲花的神庙", 22: "聚点危机", 30: "怒火角斗场", 33: "最终都市", 35: "班德尔之森", 453: "经典召唤师峡谷"}
+    map_EN: dict[int, str] = {8: "Crystal Scar", 10: "Twisted Treeline", 11: "Summoner's Rift", 12: "Random Map", 14: "Butcher's Bridge", 16: "Cosmic Ruins", 18: "Valoran City Park", 19: "Substructure 43", 20: "Crash Site", 21: "Temple of Lily and Lotus", 22: "Convergence", 30: "Rings of Wrath", 33: "Final City", 35: "The Bandlewood", 453: "Classic Summoner's Rift"}
     pickmode_CN: dict[str, str] = {"AllRandomPickStrategy": "全随机模式", "SimulPickStrategy": "自选模式", "TeamBuilderDraftPickStrategy": "征召模式", "OneTeamVotePickStrategy": "投票", "TournamentPickStrategy": "竞技征召模式", "QuickplayPickStrategy": "快速匹配", "": "待定"}
     pickmode_EN: dict[str, str] = {"AllRandomPickStrategy": "All Random", "SimulPickStrategy": "Blind Pick", "TeamBuilderDraftPickStrategy": "Draft Mode", "OneTeamVotePickStrategy": "Vote", "TournamentPickStrategy": "Tournament Draft", "QuickplayPickStrategy": "Quickplay", "": "Pending"}
     available_queues: dict[int, dict[str, Any]] = {}

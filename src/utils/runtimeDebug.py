@@ -307,4 +307,4 @@ async def send_commands(connection: Connection, log: Optional[LogManager] = None
         else:
             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
             continue
-        logPrint('请选择要调试的接口类型：（输入“0”以退出程序）\nPlease select a type of API to debug: (Submit "0" to exit the program)\n1\tLCU API\n2\tSGP API')
+        logPrint('请选择要调试的接口类型：（输入“0”以退出）\nPlease select a type of API to debug: (Submit "0" to exit.)\n1\tLCU API\n2\tSGP API')
