@@ -240,7 +240,7 @@ def sort_inventory_champions(LoLChampions: dict[int, dict[str, Any]], recommende
             else:
                 if champion["id"] == -1:
                     to_append = False
-                elif key.split(": ")[1] in recommended_position_for_champion[str(champion["id"])]["recommendedPositions"]:
+                elif str(champion["id"]) in recommended_position_for_champion and key.split(": ")[1] in recommended_position_for_champion[str(champion["id"])]["recommendedPositions"]:
                     to_append = True
                 else:
                     to_append = False
