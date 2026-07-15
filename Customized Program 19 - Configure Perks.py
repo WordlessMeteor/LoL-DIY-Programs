@@ -17,7 +17,7 @@ from src.core.dataframes.champions import sort_inventory_champions, filter_champ
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/12
+# 更新（Last update）：     2026/07/15
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -418,7 +418,7 @@ def specify_recommend_perkPage_parameters() -> tuple[int, int, str, int]:
         elif step == 1:
             logPrint("第一步：请选择一个英雄：\nStep 1: Please select a champion:")
             LoLChampion_df: pandas.DataFrame = sort_inventory_champions(LoLChampions, recommended_position_for_champion)[0]
-            LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict.get(x, []), LoLChampion_df["id"][1:]))
+            LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict[x] if x in champion_colloq_dict and champion_colloq_dict[x] != None else [], LoLChampion_df["id"][1:]))
             LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
             LoLChampion_df_query_initial: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print + ["colloq"]] #代表初始值（Represent the initial value）
             LoLChampion_df_query: pandas.DataFrame = LoLChampion_df_query_initial #代表查询过程中的值（Represent the value during a query）
