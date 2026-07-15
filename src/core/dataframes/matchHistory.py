@@ -3747,7 +3747,7 @@ def generate_LoLGameSummary_records(LoLGame_summary_data: dict[str, list[Any]], 
             if bans == []: #修改说明：以前判断禁用数据是否为空是通过禁用模式进行的，如果禁用模式是经典策略就记录禁用信息，否则直接追加空值到列表中。但是在终极魔典中，先前版本记录禁用信息，后来却不记录了。因此，这里判断禁用数据是否为空，直接通过判断bans是否为空【Modification note: To judge whether the ban information of a match is empty, banMode (teams\bans) is used: if banMode is StandardBanStrategy, record the ban information; otherwise, append empty values to the list (by player_count times). But in Ultbook, ban information is recorded in previous versions but not anymore recorded later. Therefore, to judge whether the ban information is empty, whether the variable bans is empty is directly checked】
                 to_append = ""
             else:
-                if LoLGame_summary["queueId"] == 0:
+                if LoLGame_summary["queueId"] == 0 or LoLGame_summary["gameMode"] == "JADE":
                     if LoLGame_summary["participants"][participantIndex]["teamId"] == 100:
                         if not legacy_banData_appended[100]:
                             if i == 225:
@@ -3764,7 +3764,8 @@ def generate_LoLGameSummary_records(LoLGame_summary_data: dict[str, list[Any]], 
                                             logPrint("【%d. %s】对局%d（对局版本：%s）英雄信息（%d）获取失败！将采用原始数据！\n[%d. %s] Champion information (%d) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, matchId, version, championId, i, key, championId, matchId, version), verbose = verbose)
                                         championNames.append(championId if i == 226 else "")
                                 to_append = championNames
-                            legacy_banData_appended[100] = True
+                            if i == 228:
+                                legacy_banData_appended[100] = True
                         else:
                             to_append = ""
                     elif LoLGame_summary["participants"][participantIndex]["teamId"] == 200:
@@ -3783,7 +3784,8 @@ def generate_LoLGameSummary_records(LoLGame_summary_data: dict[str, list[Any]], 
                                             logPrint("【%d. %s】对局%d（对局版本：%s）英雄信息（%d）获取失败！将采用原始数据！\n[%d. %s] Champion information (%d) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, matchId, version, championId, i, key, championId, matchId, version), verbose = verbose)
                                         championNames.append(championId if i == 226 else "")
                                 to_append = championNames
-                            legacy_banData_appended[200] = True
+                            if i == 228:
+                                legacy_banData_appended[200] = True
                         else:
                             to_append = ""
                     else:
@@ -4328,7 +4330,7 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
             if bans == []: #修改说明：以前判断禁用数据是否为空是通过禁用模式进行的，如果禁用模式是经典策略就记录禁用信息，否则直接追加空值到列表中。但是在终极魔典中，先前版本记录禁用信息，后来却不记录了。因此，这里判断禁用数据是否为空，直接通过判断bans是否为空【Modification note: To judge whether the ban information of a match is empty, banMode (teams\bans) is used: if banMode is StandardBanStrategy, record the ban information; otherwise, append empty values to the list (by player_count times). But in Ultbook, ban information is recorded in previous versions but not anymore recorded later. Therefore, to judge whether the ban information is empty, whether the variable bans is empty is directly checked】
                 to_append = ""
             else:
-                if LoLGame_summary_json["queueId"] == 0:
+                if LoLGame_summary_json["queueId"] == 0 or LoLGame_summary_json["gameMode"] == "JADE":
                     if stats["teamId"] == 100:
                         if not legacy_banData_appended[100]:
                             if i == 624:
@@ -4345,7 +4347,8 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                                             logPrint("【%d. %s】对局%d（对局版本：%s）英雄信息（%d）获取失败！将采用原始数据！\n[%d. %s] Champion information (%d) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, matchId, version, championId, i, key, championId, matchId, version), verbose = verbose)
                                         championNames.append(championId if i == 625 else "")
                                 to_append = championNames
-                            legacy_banData_appended[100] = True
+                            if i == 627:
+                                legacy_banData_appended[100] = True
                         else:
                             to_append = ""
                     elif stats["teamId"] == 200:
@@ -4364,7 +4367,8 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                                             logPrint("【%d. %s】对局%d（对局版本：%s）英雄信息（%d）获取失败！将采用原始数据！\n[%d. %s] Champion information (%d) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, matchId, version, championId, i, key, championId, matchId, version), verbose = verbose)
                                         championNames.append(championId if i == 625 else "")
                                 to_append = championNames
-                            legacy_banData_appended[200] = True
+                            if i == 627:
+                                legacy_banData_appended[200] = True
                         else:
                             to_append = ""
                     else:

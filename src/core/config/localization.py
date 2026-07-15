@@ -1202,6 +1202,7 @@ wardTypes: dict[str, str] = {
     "CONTROL_WARD": "控制守卫",
     "SIGHT_WARD": "洞察之石",
     "UNDEFINED": "未知",
+    "VISION_WARD": "真视守卫",
     "YELLOW_TRINKET": "侦察守卫",
     "TEEMO_MUSHROOM": "蘑菇"
 }
@@ -2071,6 +2072,7 @@ lolEventHubOfferStates: dict[str, str] = {
 #     "SIGHT_WARD": "Sightstone",
 #     "TEEMO_MUSHROOM": "Mushroom",
 #     "UNDEFINED": "Unknown",
+#     "VISION_WARD": "Vision Ward",
 #     "YELLOW_TRINKET": "Stealth Ward",
 # }
 # eventTypes_liveclient: dict[str, str] = {
