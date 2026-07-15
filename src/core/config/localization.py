@@ -969,7 +969,8 @@ queueTypes_ranked: dict[str, str] = {
     "RANKED_TFT_DOUBLE_UP": "双人作战",
     "RANKED_TFT_TURBO": "狂暴模式",
     "CHERRY": "斗魂竞技场",
-    "RANKED_PREMADE_5x5": "5V5"
+    "RANKED_PREMADE_5x5": "5V5",
+    "JADE_RANKED_SOLO_5x5": "经典模式 5V5"
 } #仅用于排位战区显示（Only designed for ranked league display）
 categories: dict[str, str] = {
     "Custom": "自定义对局",
