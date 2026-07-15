@@ -4476,7 +4476,7 @@ async def add_bot(connection: Connection) -> None:
             candidatePositions: list[str] = ["TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"]
             recommended_lanes: dict[str, bool] = {}
             for position_iter in candidatePositions:
-                recommended_lanes[position_iter] = position_iter in recommended_position_for_champion[str(championId)]["recommendedPositions"]
+                recommended_lanes[position_iter] = position_iter in recommended_position_for_champion[str(championId)]["recommendedPositions"] if str(championId) in recommended_position_for_champion else []
             logPrint("第四步：请选择电脑玩家分路。\nStep 4: Please select a position for this bot player.\n%s1\t上路（Top）\n%s2\t打野（Jungle）\n%s3\t中路（Middle）\n%s4\t下路（Bottom）\n%s5\t辅助（Support）" %("☆" if recommended_lanes["TOP"] else "", "☆" if recommended_lanes["JUNGLE"] else "", "☆" if recommended_lanes["MIDDLE"] else "", "☆" if recommended_lanes["BOTTOM"] else "", "☆" if recommended_lanes["UTILITY"] else "", ))
             while True:
                 position_index_str: str = logInput()
@@ -4521,12 +4521,16 @@ async def add_bot(connection: Connection) -> None:
                 logPrint("您输入的英雄没有电脑模型。\nThe champion you pick doesn't have a bot enabled.")
             elif f"championId associated with selected bot could not be loaded. [championId={championId}]" in response["message"]:
                 logPrint("英雄序号无效。\nInvalid championId.")
-            elif response["message"] == "{botDifficulty} is not a valid LolLobbyLobbyBotDifficulty enumeration value for 'botDifficulty'":
+            elif response["message"] == f"{botDifficulty} is not a valid LolLobbyLobbyBotDifficulty enumeration value for 'botDifficulty'":
                 logPrint("难度无效。\nInvalid botDifficulty.")
             elif "Server.Processing, com.riotgames.platform.game.TeamFullException" in response["message"]:
                 logPrint("%s人数已满。\n%s team is already full." %("蓝方" if teamId == "100" else "红方", "Blue" if teamId == "100" else "Red"))
             elif "com.riotgames.platform.messaging.UnexpectedServiceException : You must be the owner of the game to add a bot" in response["message"]:
                 logPrint("您不是小队拥有者，无法进行此操作。\nYou're not the lobby owner and thus can't perform this operation.")
+            elif response["message"] == "NO_BOTS_CONFIGURED_FOR_MAP":
+                logPrint("当前地图未部署电脑玩家。\nNo bots are configured for the current map.")
+            elif response["message"] == "INVALID_REQUEST":
+                logPrint("请求无效。\nInvalid request.")
             else:
                 logPrint("未知错误。\nUnknown error.")
         else:
