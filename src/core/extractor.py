@@ -3826,7 +3826,7 @@ class MapExtractor(LoLDataExtractor):
         #检验不同地图数据的异质性（Verify the heterogeneity among different maps' data）
         # map_name_list: list[str] = ["召唤师峡谷", "随机地图", "百合与莲花的神庙", "聚点危机", "怒火角斗场", "最终都市", "班德尔之森"]
         # map_bin_list: list[dict[str, list[str] | dict[str, Any]]] = [map11_bin, map12_bin, map21_bin, map22_bin, map30_bin, map33_bin, map35_bin]
-        # overlay_table, overlay_count_table, overlay_identical_table, overlay_difference_table = verifyDictHeterogeneity(map_bin_list)
+        # overlay_table, overlay_count_table, overlay_identical_table, overlay_difference_table, overlay_diffCount_table = verifyDictHeterogeneity(map_bin_list)
         # for i in range(len(map_bin_list) - 1):
         #     for j in range(i + 1, len(map_bin_list)):
         #         if not overlay_identical_table.loc[i, j]:
@@ -5999,7 +5999,7 @@ class AugmentExtractor(LoLDataExtractor):
         :type extractor: LoLDataExtractor
         '''
         self.__dict__.update(extractor.__dict__)
-        self.augments_ready: dict[str, bool] = {"map30": False, "cherry": False, "map33": False, "map12": False, "kiwi": False}
+        self.augments_ready: dict[str, bool] = {"map30": False, "cherry": False, "map33": False, "map12": False, "kiwi": False, "kiwi_jade": False}
         self.CherryAugment_df: pandas.DataFrame = pandas.DataFrame()
         self.SwarmAugment_df: pandas.DataFrame = pandas.DataFrame()
         self.KiwiAugment_df: pandas.DataFrame = pandas.DataFrame()
@@ -6122,6 +6122,26 @@ class AugmentExtractor(LoLDataExtractor):
                 self.kiwi_bin = self.resolve_bin_hash(self.kiwi_bin)
             self.__class__.data_cache["online"][kiwi_bin_url] = self.kiwi_bin
         self.augments_ready["kiwi"] = True
+        #海克斯大乱斗经典模式（ARAM: Mayhem Classic-ish mode）
+        kiwi_jade_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/unknown/410b3796f165ef3e.bin.json" #目前CommunityDragon数据库尚未解析该hash值的实际字符串。后续将跟进CommunityDragon数据库的更新，用实际的路径字符串代替（Currently the CommunityDragon database hasn't yet parsed the actual string of this hash value. The actual path string will be used to replace it in the future as the CommunityDragon database is updated）
+        if kiwi_jade_bin_url in self.__class__.data_cache["online"]:
+            self.kiwi_jade_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][kiwi_jade_bin_url]
+        else:
+            source, status, self.session = requestUrl("GET", kiwi_jade_bin_url, session = self.session, log = self.log)
+            if status != 200:
+                if status == 404:
+                    logPrint("海克斯大乱斗经典模式强化符文信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nARAM: Mayhem Classic-ish mode augment data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(kiwi_jade_bin_url))
+                    self.kiwi_jade_bin = {}
+                else:
+                    logPrint('海克斯大乱斗经典模式强化符文信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nARAM: Mayhem Classic-ish mode augment data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.')
+                    time.sleep(3)
+                    self.init_data_readiness()
+                    return
+            else:
+                self.kiwi_jade_bin = source.json()
+                self.kiwi_jade_bin = self.resolve_bin_hash(self.kiwi_jade_bin)
+            self.__class__.data_cache["online"][kiwi_jade_bin_url] = self.kiwi_jade_bin
+        self.augments_ready["kiwi_jade"] = True
     
     def read_augment_data(self, paths: list[str]) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
         '''
@@ -6134,6 +6154,7 @@ class AugmentExtractor(LoLDataExtractor):
             - 最终都市地图（Final City map）
             - 嚎哭深渊地图（Howling Abyss map）
             - 海克斯大乱斗模式专属信息（ARAM: Mayhem mode specific data）
+            - 海克斯大乱斗经典模式专属信息（ARAM: Mayhem Classic-ish mode specific data）
         :type paths: list[str]
         '''
         logPrint = self.log.logPrint
@@ -6195,6 +6216,16 @@ class AugmentExtractor(LoLDataExtractor):
             self.kiwi_bin = self.resolve_bin_hash(self.kiwi_bin)
             self.__class__.data_cache["local"][kiwi_bin_path] = self.kiwi_bin
         self.augments_ready["kiwi"] = True
+        #海克斯大乱斗经典模式（ARAM: Mayhem Classic-ish mode）
+        kiwi_jade_bin_path: str = paths[5]
+        if kiwi_jade_bin_path in self.__class__.data_cache["local"]:
+            self.kiwi_jade_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][kiwi_jade_bin_path]
+        else:
+            with open(kiwi_jade_bin_path, "r", encoding = "utf-8") as fp:
+                self.kiwi_jade_bin = json.load(fp)
+            self.kiwi_jade_bin = self.resolve_bin_hash(self.kiwi_jade_bin)
+            self.__class__.data_cache["local"][kiwi_jade_bin_path] = self.kiwi_jade_bin
+        self.augments_ready["kiwi_jade"] = True
     
     def build_augment_dataframe(self, debug: bool = False, paths: Optional[list[str]] = None) -> int:
         '''
@@ -6209,6 +6240,7 @@ class AugmentExtractor(LoLDataExtractor):
             - 最终都市地图（Final City map）
             - 嚎哭深渊地图（Howling Abyss map）
             - 海克斯大乱斗模式专属信息（ARAM: Mayhem mode specific data）
+            - 海克斯大乱斗经典模式专属信息（ARAM: Mayhem Classic-ish mode specific data）
         
             仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
         :type paths: list[str]
@@ -6234,8 +6266,12 @@ class AugmentExtractor(LoLDataExtractor):
             if not self.augments_ready["map30"]:
                 logPrint("强化符文数据尚未准备就绪！\nAugment data not prepared!")
                 return 2
+        #检验海克斯大乱斗不同数据的异质性（Verify the heterogeneity of different data in ARAM: Mayhem mode）
+        # bin_list: list[dict[str, list[str] | dict[str, Any]]] = [self.map12_bin, self.kiwi_bin, self.kiwi_jade_bin]
+        # overlay_table, overlay_count_table, overlay_identical_table, overlay_difference_table, overlay_diffCount_table = verifyDictHeterogeneity(bin_list)
+        #经过检验，`overlay_count_table`中所有单元格的值都是True，所以可以放心合并这些二进制描述数据（After verification, all cells in `overlay_count_table` are True, so these binary description data can be merged safely）
         #合并数据（Merge data）
-        map12_bin_whole: dict[str, list[str] | dict[str, Any]] = self.map12_bin | self.kiwi_bin #合并海克斯大乱斗模式的强化符文数据（Merge the augment data in ARAM: Mayhem mode）
+        map12_bin_whole: dict[str, list[str] | dict[str, Any]] = self.map12_bin | self.kiwi_bin | self.kiwi_jade_bin #合并海克斯大乱斗模式的强化符文数据（Merge the augment data in ARAM: Mayhem mode）
         map30_bin_whole: dict[str, list[str] | dict[str, Any]] = self.map30_bin | self.cherry_bin #合并斗魂竞技场模式的强化符文数据（Merge the augment data in Arena mode）
         
         #定义数据结构（Define the data structure）
@@ -6260,8 +6296,8 @@ class AugmentExtractor(LoLDataExtractor):
         augmentModifier_data_json: dict[str, list[Any]] = copy.deepcopy(augmentModifier_data)
         
         #数据整理核心部分（Data organization core part）
-        AugmentDisplayTags_zh: dict[int, str] = {0: "己方", 1: "伤害", 2: "综合", 3: "复原力", 4: "速度", 5: "功能", 6: "属性锻造器", 7: "经济", 8: "任务", 9: "任务线"} #通过字符串常量池的“cherry_augmentdisplaytag_...”类键得到（Obtained by "cherry_augmentdisplaytag_..." keys）
-        AugmentDisplayTags_en: dict[int, str] = {0: "Ally", 1: "Damage", 2: "General", 3: "Resilience", 4: "Speed", 5: "Utility", 6: "Stat Anvil", 7: "Economy", 8: "Quest", 9: "Questline"}
+        AugmentDisplayTags_zh: dict[int, str] = {0: "己方", 1: "伤害", 2: "综合", 3: "复原力", 4: "速度", 5: "功能", 6: "属性锻造器", 7: "经济", 8: "任务", 9: "任务线", 10: "经典"} #通过字符串常量池的“cherry_augmentdisplaytag_...”类键得到（Obtained by "cherry_augmentdisplaytag_..." keys）
+        AugmentDisplayTags_en: dict[int, str] = {0: "Ally", 1: "Damage", 2: "General", 3: "Resilience", 4: "Speed", 5: "Utility", 6: "Stat Anvil", 7: "Economy", 8: "Quest", 9: "Questline", 10: "Classic-ish"}
         AugmentDisplayTags: dict[int, str] = AugmentDisplayTags_zh if self.locale in self.ZH_LOCALE else AugmentDisplayTags_en
         augment_rarities_zh: dict[int, str] = {0: "白银", 1: "黄金", 2: "棱彩", 3: "超凡", 4: "晶耀"}
         augment_rarities_en: dict[int, str] = {0: "Silver", 1: "Gold", 2: "Prismatic", 3: "Unique", 4: "SheenGlow"}
@@ -11155,7 +11191,8 @@ if __name__ == "__main__":
                                 extract_game_dir / "maps/modespecificdata/cherry.bin.json",
                                 extract_game_dir / "data/maps/shipping/map33/map33.bin.json",
                                 extract_game_dir / "data/maps/shipping/map12/map12.bin.json",
-                                extract_game_dir / "maps/modespecificdata/kiwi.bin.json"
+                                extract_game_dir / "maps/modespecificdata/kiwi.bin.json",
+                                extract_game_dir / "maps/modespecificdata/kiwi_jade.bin.json"
                             ]
                         else:
                             augment_paths = [
@@ -11163,7 +11200,8 @@ if __name__ == "__main__":
                                 repo_game_dir / "maps/modespecificdata/cherry.bin.json",
                                 repo_game_dir / "data/maps/shipping/map33/map33.bin.json",
                                 repo_game_dir / "data/maps/shipping/map12/map12.bin.json",
-                                repo_game_dir / "maps/modespecificdata/kiwi.bin.json"
+                                repo_game_dir / "maps/modespecificdata/kiwi.bin.json",
+                                repo_game_dir / "maps/modespecificdata/kiwi_jade.bin.json"
                             ]
                         augmentExtractor.build_augment_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), augment_paths)))
                         augmentExtractor.enqueue_augment_dataframe()
