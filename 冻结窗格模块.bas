@@ -45,9 +45,6 @@ Sub FreezeAndFilterGameDataSheets()
                     Or ws.Name = "云顶之弈商店（TFT Shop）" Or Right$(ws.Name, 7) = "TFTShop" _
                     Or ws.Name = "云顶之弈传送门（TFT Portal）" Or Right$(ws.Name, 9) = "TFTPortal" Then
                 ws.Range("H3").Select '冻结前两行和前七列（Freeze the first two rows and seven columns）
-            ElseIf ws.Name = "英雄技能（Champion Spells）" Or Right$(ws.Name, 14) = "ChampionSpells" _
-                    Or ws.Name = "角色技能（Character Spells）" Or Right$(ws.Name, 15) = "CharacterSpells" Then
-                ws.Range("J3").Select '冻结前两行和前九列（Freeze the first two rows and nine columns）
             ElseIf ws.Name = "指令（Cheat）" Or Right$(ws.Name, 5) = "Cheat" _
                     Or ws.Name = "装备（Items）" Or Right$(ws.Name, 5) = "Items" _
                     Or ws.Name = "海克斯大乱斗强化符文套装（Kiwi Augment Set）" Or Right$(ws.Name, 14) = "KiwiAugmentSet" _
@@ -56,6 +53,8 @@ Sub FreezeAndFilterGameDataSheets()
                     Or ws.Name = "云顶之弈羁绊（TFT Traits）" Or Right$(ws.Name, 9) = "TFTTraits" Then
                 ws.Range("G3").Select '冻结前两行和前六列（Freeze the first two rows and six columns）
             ElseIf ws.Name = "召唤师技能（Summoner Spells）" Or Right$(ws.Name, 14) = "SummonerSpells" _
+                    Or ws.Name = "英雄技能（Champion Spells）" Or Right$(ws.Name, 14) = "ChampionSpells" _
+                    Or ws.Name = "角色技能（Character Spells）" Or Right$(ws.Name, 15) = "CharacterSpells" _
                     Or ws.Name = "云顶之弈赛季（TFT Set）" Or Right$(ws.Name, 6) = "TFTSet" _
                     Or ws.Name = "云顶之弈装备（TFT Items）" Or Right$(ws.Name, 8) = "TFTItems" _
                     Or ws.Name = "斗魂竞技场强化符文（Cherry Augments）" Or Right$(ws.Name, 7) = "CherryAugments" _

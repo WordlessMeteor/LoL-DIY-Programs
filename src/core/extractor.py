@@ -3530,10 +3530,10 @@ class LoLDataExtractor:
         result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, reserve_CSS = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, flexibleData = flexibleData)
         return result
     
-    #下面定义特定数据对象类的记录添加方法。这类方法对应的表头是通过调查全英雄联盟所有二进制描述文件中该对象类型的数据的所有键/条目得到的。这类表头只增不删，开发者可以通过修改输出顺序列表或者调用清除空列函数，将弃用的字段从数据框和工作表中移除（Define the addition method of records of specific object types. The corresponding headers are obtained by inspecting all keys / entries in data of this object type in all binary description files in League of Legends. This kind of headers are always supplemented but never deleted. Developers may remove those deprecated fields from dataframes and worksheets by modifying the output order list or calling `eliminate_empty_fields` function）
-    def add_spell_record(self, data_ref: dict[str, list[Any]], field: str, key: str, value: dict[str, Any]) -> Any: #这里之所以将`data_ref`设置为整个字典，而不是值列表，是因为对于说明文本转换的字段来说，需要用到前面追加的结果。使用字段字符串而不是字段索引来作为一个函数参数，是为了方便代码的撰写，因为不排除未来有可能会在`spell_header_keys`中间某个地方插入新的字段，而不是追加到这个列表的前部或者末尾。这样的话，连续性就打破了，所以索引的优势就体现不出来了（Here the reason why `data_ref` is set to the whole dictionary instead of the value list is that for the fields of tooltip transformation, the previously appended results are needed. `field` instead of some `index` is used as a paramter of this function, so that code writing is more convenient. After all, chances are that some new fields will be inserted into some middle place of `spell_header_keys`, rather than being appended to the beginning or end of this list. In that case, the continuity would be broken, and thus the advantage of indices wouldn't be evident）
+    #下面定义特定数据对象类的记录生成方法。这类方法对应的表头是通过调查全英雄联盟所有二进制描述文件中该对象类型的数据的所有键/条目得到的。这类表头只增不删，开发者可以通过修改输出顺序列表或者调用清除空列函数，将弃用的字段从数据框和工作表中移除（Define the generation method for records of specific object types. The corresponding headers are obtained by inspecting all keys / entries in data of this object type in all binary description files in League of Legends. This kind of headers are always supplemented but never deleted. Developers may remove those deprecated fields from dataframes and worksheets by modifying the output order list or calling `eliminate_empty_fields` function）
+    def generate_spell_record(self, data_ref: dict[str, list[Any]], field: str, key: str, value: dict[str, Any]) -> Any: #这里之所以将`data_ref`设置为整个字典，而不是值列表，是因为对于说明文本转换的字段来说，需要用到前面追加的结果。使用字段字符串而不是字段索引来作为一个函数参数，是为了方便代码的撰写，因为不排除未来有可能会在`spell_header_keys`中间某个地方插入新的字段，而不是追加到这个列表的前部或者末尾。这样的话，连续性就打破了，所以索引的优势就体现不出来了（Here the reason why `data_ref` is set to the whole dictionary instead of the value list is that for the fields of tooltip transformation, the previously appended results are needed. `field` instead of some `index` is used as a paramter of this function, so that code writing is more convenient. After all, chances are that some new fields will be inserted into some middle place of `spell_header_keys`, rather than being appended to the beginning or end of this list. In that case, the continuity would be broken, and thus the advantage of indices wouldn't be evident）
         '''
-        向涉及法术数据的字典的值列表追加一个字段的数据。<br>Append the data of a field into the value list of the dictionary that involves spell data.
+        生成一个法术字段的值。<br>Generate the value of a spell field.
 
         :param data_ref: 待追加值的字典的引用。<br>Reference to the dictionary to be appended with values.
         :type data_ref: dict[str, list[Any]]
@@ -3544,7 +3544,7 @@ class LoLDataExtractor:
         :param value: 一个法术对象的值。<br>A `SpellObject`'s value.
         :type value: dict[str, Any]
         :return: 待追加的值。<br>Value to be appended.
-
+        
             之所以要显式返回这个值，是为了方便在形如`_data_json`的字典中追加文本化的值。文本化指的是通过调用`pyobj2json`方法，将列表和字典转化为JSON字符串的形式。<br>The reason why this value is explicitly returned is to facilitate the appending of textualized values in dictionaries like `_data_json`. Textualization refers to the conversion of lists and dictionaries into JSON strings by calling the `pyobj2json` method.
         :rtype: Any
         '''
@@ -3598,7 +3598,6 @@ class LoLDataExtractor:
                         break
                 else: #在成功遍历到目标值后才会执行以下部分（Only when the target value is fetched will this part be executed）
                     to_append = tmp_ptr
-            data_ref[field].append(to_append)
         return to_append
 
 class MapExtractor(LoLDataExtractor):
@@ -4788,16 +4787,16 @@ class SummonerSpellExtractor(LoLDataExtractor):
         :type extractor: LoLDataExtractor
         '''
         self.__dict__.update(extractor.__dict__)
-        self.spell_ready: bool = True #共享数据已经在基类中获取过了，所以在通过基类初始化子类时，默认将这个属性设置为真（Shared data has already been obtained in the `LoLDataExtractor` base class, so when an object of this class is initialized, this attribute is set as True by default）
-        self.spell_df: pandas.DataFrame = pandas.DataFrame()
+        self.summonerSpell_ready: bool = True #共享数据已经在基类中获取过了，所以在通过基类初始化子类时，默认将这个属性设置为真（Shared data has already been obtained in the `LoLDataExtractor` base class, so when an object of this class is initialized, this attribute is set as True by default）
+        self.summonerSpell_df: pandas.DataFrame = pandas.DataFrame()
     
     def init_data_readiness(self) -> None:
         '''
         初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
         '''
-        self.spell_ready = False
+        self.summonerSpell_ready = False
     
-    def get_spell_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
+    def get_summonerSpell_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
         '''
         在线获取召唤师技能二进制描述数据。<br>Get binary description data of summoner spells online.
         '''
@@ -4818,9 +4817,9 @@ class SummonerSpellExtractor(LoLDataExtractor):
             self.shared_bin = source.json()
             self.shared_bin = self.resolve_bin_hash(self.shared_bin)
             self.__class__.data_cache["online"][shared_bin_url] = self.shared_bin
-        self.spell_ready = True
+        self.summonerSpell_ready = True
     
-    def read_spell_data(self, path: str) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
+    def read_summonerSpell_data(self, path: str) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
         '''
         离线获取召唤师技能二进制描述数据。<br>Get binary description data of summoner spells offline.
 
@@ -4840,9 +4839,9 @@ class SummonerSpellExtractor(LoLDataExtractor):
                 self.shared_bin = json.load(fp)
             self.shared_bin = self.resolve_bin_hash(self.shared_bin)
             self.__class__.data_cache["local"][spells_bin_path] = self.shared_bin
-        self.spell_ready = True
+        self.summonerSpell_ready = True
 
-    def build_spell_dataframe(self, debug: bool = False, path: Optional[str] = None) -> int:
+    def build_summonerSpell_dataframe(self, debug: bool = False, path: Optional[str] = None) -> int:
         '''
         构建召唤师技能数据框。<br>Build summoner spell dataframe.
 
@@ -4860,7 +4859,7 @@ class SummonerSpellExtractor(LoLDataExtractor):
         :rtype: int
         '''
         logPrint = self.log.logPrint
-        if not self.spell_ready:
+        if not self.summonerSpell_ready:
             #获取召唤师技能信息（Get summoner spell information）
             logPrint("正在读取召唤师技能数据……\nReading summoner spell data ...", print_time = True)
             if debug:
@@ -4868,10 +4867,10 @@ class SummonerSpellExtractor(LoLDataExtractor):
                     logPrint("尚未指定本地文件路径！\nLocal path not specified yet!")
                     return 1
                 else:
-                    self.read_spell_data(path = path)
+                    self.read_summonerSpell_data(path = path)
             else:
-                self.get_spell_data()
-            if not self.spell_ready:
+                self.get_summonerSpell_data()
+            if not self.summonerSpell_ready:
                 logPrint("召唤师技能数据尚未准备就绪！\nSummoner spell data not prepared!")
                 return 2
         
@@ -4880,41 +4879,42 @@ class SummonerSpellExtractor(LoLDataExtractor):
 
         #定义数据结构（Define the data structure）
         logPrint("正在构建召唤师技能数据框……\nBuilding the summoner spell dataframes ...", print_time = True)
-        spell_header_keys: list[str] = list(spell_header.keys())
-        spell_data: dict[str, list[Any]] = {key: [] for key in spell_header_keys}
-        spell_data_json: dict[str, list[Any]] = copy.deepcopy(spell_data)
+        summonerSpell_header_keys: list[str] = list(spell_header.keys())
+        summonerSpell_data: dict[str, list[Any]] = {key: [] for key in summonerSpell_header_keys}
+        summonerSpell_data_json: dict[str, list[Any]] = copy.deepcopy(summonerSpell_data)
         
         #数据整理核心部分（Data organization core part）
         pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
         for (key1, value) in summonerSpell_bin.items():
-            for i in range(len(spell_header_keys)):
-                key: str = spell_header_keys[i]
-                to_append: Any = self.add_spell_record(spell_data, key, key1, value)
-                spell_data_json[key].append(pyobj2json(to_append))
+            for i in range(len(summonerSpell_header_keys)):
+                key: str = summonerSpell_header_keys[i]
+                to_append: Any = self.generate_spell_record(summonerSpell_data, key, key1, value)
+                summonerSpell_data[key].append(to_append)
+                summonerSpell_data_json[key].append(pyobj2json(to_append))
         
         #数据框构建和排序（Build the dataframe and sort the keys and values）
-        spell_statistics_output_order: list[int] = [0, 1, 11, 12, 261, 283, 284, 10, 13, 4, 2, 3, 16, 5, 6, 7, 17, 98, 113, 227, 229, 230, 62, 228, 39, 40, 41, 22, 32, 63, 44, 58, 59, 60, 21, 61, 64, 18, 19, 20, 23, 226, 24, 25, 231, 199, 119, 126, 127, 120, 53, 54, 55, 90, 121, 122, 35, 38, 200, 123, 124, 125, 92, 93, 42, 43, 46, 47, 48, 49, 45, 14, 15, 94, 99, 8, 9, 51, 31, 50, 52, 56, 57, 36, 37, 83, 75, 76, 86, 87, 67, 66, 72, 104, 69, 70, 71, 88, 91, 65, 68, 247, 78, 73, 74, 89, 81, 82, 77, 79, 80, 84, 102, 112, 85, 249, 250, 251, 100, 115, 114, 116, 118, 246, 232, 233, 234, 235, 236, 237, 238, 26, 27, 28, 29, 95, 245, 97, 111, 101, 210, 211, 103, 106, 105, 107, 110, 108, 109, 117, 128, 215, 96, 216, 218, 217, 221, 222, 225, 239, 243, 244, 248, 252, 254, 253, 321, 322, 255, 256, 257, 258, 273, 274, 262, 267, 299, 301, 300, 302, 270, 311, 313, 312, 314, 265, 293, 294, 266, 295, 297, 296, 298, 268, 303, 305, 304, 306, 269, 307, 309, 308, 310, 271, 315, 317, 316, 318, 272, 319, 320, 259, 275, 277, 276, 278, 260, 279, 281, 280, 282, 263, 285, 287, 286, 288, 264, 289, 291, 290, 292, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 213, 33, 30, 34, 333, 334, 336, 337, 348, 338, 339, 353, 354, 335, 349, 351, 350, 352, 341, 359, 361, 360, 362, 342, 363, 365, 364, 366, 340, 355, 356, 357, 358, 343, 344, 345, 346, 347, 201, 202, 203, 204, 205, 206, 207, 208, 209, 129, 177, 133, 131, 134, 135, 130, 132, 223, 224, 136, 137, 139, 140, 141, 142, 143, 144, 138, 145, 146, 147, 148, 149, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 175, 150, 176, 166, 167, 168, 169, 170, 171, 172, 173, 174, 178, 185, 179, 180, 181, 182, 183, 184, 195, 186, 187, 188, 189, 190, 191, 192, 193, 194, 196, 197, 198, 219, 220, 212, 214, 240, 241, 242, 367, 368, 369, 370, 371]
-        spell_data_organized: dict[str, list[Any]] = {spell_header_keys[i]: spell_data_json[spell_header_keys[i]] for i in spell_statistics_output_order}
-        spell_df: pandas.DataFrame = pandas.DataFrame(data = spell_data_organized)
+        summonerSpell_statistics_output_order: list[int] = [0, 1, 11, 12, 261, 283, 284, 10, 13, 3, 4, 2, 16, 5, 6, 7, 17, 98, 113, 227, 229, 230, 62, 228, 39, 40, 41, 22, 32, 63, 44, 58, 59, 60, 21, 61, 64, 18, 19, 20, 23, 226, 24, 25, 231, 199, 119, 126, 127, 120, 53, 54, 55, 90, 121, 122, 35, 38, 200, 123, 124, 125, 92, 93, 42, 43, 46, 47, 48, 49, 45, 14, 15, 94, 99, 8, 9, 51, 31, 50, 52, 56, 57, 36, 37, 83, 75, 76, 86, 87, 67, 66, 72, 104, 69, 70, 71, 88, 91, 65, 68, 247, 78, 73, 74, 89, 81, 82, 77, 79, 80, 84, 102, 112, 85, 249, 250, 251, 100, 115, 114, 116, 118, 246, 232, 233, 234, 235, 236, 237, 238, 26, 27, 28, 29, 95, 245, 97, 111, 101, 210, 211, 103, 106, 105, 107, 110, 108, 109, 117, 128, 215, 96, 216, 218, 217, 221, 222, 225, 239, 243, 244, 248, 252, 254, 253, 321, 322, 255, 256, 257, 258, 273, 274, 262, 267, 299, 301, 300, 302, 270, 311, 313, 312, 314, 265, 293, 294, 266, 295, 297, 296, 298, 268, 303, 305, 304, 306, 269, 307, 309, 308, 310, 271, 315, 317, 316, 318, 272, 319, 320, 259, 275, 277, 276, 278, 260, 279, 281, 280, 282, 263, 285, 287, 286, 288, 264, 289, 291, 290, 292, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 213, 33, 30, 34, 333, 334, 336, 337, 348, 338, 339, 353, 354, 335, 349, 351, 350, 352, 341, 359, 361, 360, 362, 342, 363, 365, 364, 366, 340, 355, 356, 357, 358, 343, 344, 345, 346, 347, 201, 202, 203, 204, 205, 206, 207, 208, 209, 129, 177, 133, 131, 134, 135, 130, 132, 223, 224, 136, 137, 139, 140, 141, 142, 143, 144, 138, 145, 146, 147, 148, 149, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 175, 150, 176, 166, 167, 168, 169, 170, 171, 172, 173, 174, 178, 185, 179, 180, 181, 182, 183, 184, 195, 186, 187, 188, 189, 190, 191, 192, 193, 194, 196, 197, 198, 219, 220, 212, 214, 240, 241, 242, 367, 368, 369, 370, 371]
+        summonerSpell_data_organized: dict[str, list[Any]] = {summonerSpell_header_keys[i]: summonerSpell_data_json[summonerSpell_header_keys[i]] for i in summonerSpell_statistics_output_order}
+        summonerSpell_df: pandas.DataFrame = pandas.DataFrame(data = summonerSpell_data_organized)
         logPrint("正在优化召唤师技能数据框的逻辑值显示……\nOptimizing boolean value display of the summoner spell dataframe ...")
-        optimize_bool_display(spell_df)
-        spell_df = pandas.concat([pandas.DataFrame([spell_header])[spell_df.columns], spell_df], ignore_index = True)
-        self.spell_df = spell_df
+        optimize_bool_display(summonerSpell_df)
+        summonerSpell_df = pandas.concat([pandas.DataFrame([spell_header])[summonerSpell_df.columns], summonerSpell_df], ignore_index = True)
+        self.summonerSpell_df = summonerSpell_df
         return 0
     
-    def enqueue_spell_dataframe(self) -> None:
+    def enqueue_summonerSpell_dataframe(self) -> None:
         '''
         将召唤师技能数据框追加到数据提取器基类的数据框队列尾部。<br>Append summoner spell dataframes into the end of `LoLDataExtractor.df_queue`.
         '''
-        if not self.spell_df.empty:
-            spell_ws: dict[str, Any] = self.worksheet_metadata["SummonerSpell"]
-            sheet1_name: str = spell_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else spell_ws["sheet_name_without_version"]
-            spell_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(spell_ws["dType"]), "dType": spell_ws["dType"], "sheet_name": sheet1_name, "sheet": self.spell_df}
-            self.enqueue_df(spell_df_struct, overwrite_on_exist = True, log = self.log)
+        if not self.summonerSpell_df.empty:
+            summonerSpell_ws: dict[str, Any] = self.worksheet_metadata["SummonerSpell"]
+            sheet1_name: str = summonerSpell_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else summonerSpell_ws["sheet_name_without_version"]
+            summonerSpell_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(summonerSpell_ws["dType"]), "dType": summonerSpell_ws["dType"], "sheet_name": sheet1_name, "sheet": self.summonerSpell_df}
+            self.enqueue_df(summonerSpell_df_struct, overwrite_on_exist = True, log = self.log)
 
-    def export_spell_data(self, debug: bool = False, path: Optional[str] = None) -> None:
+    def export_summonerSpell_data(self, debug: bool = False, path: Optional[str] = None) -> None:
         '''
         导出召唤师技能数据到工作簿中。产生以下工作表：<br>Export summoner spell data to a workbook. The following worksheets are added:
         - 召唤师技能（Summoner Spells）
@@ -4934,8 +4934,8 @@ class SummonerSpellExtractor(LoLDataExtractor):
         if self.patch == "" and self.sheet_naming_fold:
             logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
             return
-        if self.spell_df.empty:
-            status: int = self.build_spell_dataframe(debug = debug, path = path)
+        if self.summonerSpell_df.empty:
+            status: int = self.build_summonerSpell_dataframe(debug = debug, path = path)
             if status != 0:
                 logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
                 logInput()
@@ -4949,7 +4949,7 @@ class SummonerSpellExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    addDefaultStyle(self.spell_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(self.summonerSpell_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
             except PermissionError:
@@ -5390,7 +5390,7 @@ class ChampionExtractor(LoLDataExtractor):
             当仅使用英雄数据时，`paths`由以下部分组成：<br>When only champions' data are used, `paths` is a list composed of the following content:
             - 英雄概要文件路径（Champion summary file path）
             - 角色文件夹路径（Character folder path）： game/data/characters
-        
+            
             仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
         :type paths: list[str]
         :param verbose: 是否打印过程性信息。默认为是。<br>Whether to print the progress. True by default.
@@ -5423,11 +5423,11 @@ class ChampionExtractor(LoLDataExtractor):
             if not self.useAllCharacter and not self.champions_ready["champion_binary"]:
                 logPrint("英雄数据尚未准备就绪！\nChampion data not prepared!")
                 return 2
-
+        
         #检验不同英雄数据的异质性（Verify the heterogeneity among different champions' data）
         # overlay_table, overlay_count_table, overlay_identical_table, overlay_difference_table = verifyDictHeterogeneity(list(champions_bin_dict.values()))
         # print(all(overlay_identical_table.iloc[i, j] for i in range(overlay_identical_table.shape[0]) for j in range(overlay_identical_table.shape[1]))) #返回真则表明所有重合键的值都相同，意味着可以放心合并数据（True returned means all common keys' values are the same, so feel free to merge any champion's data）
-
+        
         #合并所有英雄数据，形成单个字典（Merge all champion data into a dictionary into a single dictionary）
         champions_bin: dict[str, list[str] | dict[str, Any]] = {}
         for alias in self.champions_bin_dict:
@@ -5437,14 +5437,14 @@ class ChampionExtractor(LoLDataExtractor):
                     if not "spells" in value and "spellNames" in value: #14.15版本的角色记录对象的没有“spells”键（In v14.15, the CharacterRecord objects don't contain "spells" key）
                         value["spells"] = list(map(lambda x: "Characters/%s/Spells/%s" %(value["mCharacterName"], x), value["spellNames"]))
             champions_bin |= champion_bin
-
+        
         #将整合后的英雄数据保存到本地（Save merged champion data to local）
         # folder: str = os.path.expanduser("~/Desktop")
         # file_path: str = "C:/Users/19250/Documents/Workspace/JupyterLab/自定义脚本/英雄联盟自定义房间创建/champions_bin_v1415.json" #供开发者调试（For developer debug use）
         # file_path: str = os.path.join(folder, "champions_bin.json").replace("\\", "/") #供用户调试（For user debug use）
         # with open(file_path, "w", encoding = "utf-8") as fp:
         #     json.dump(champions_bin, fp, indent = 4, ensure_ascii = False)
-
+        
         #离线加载各英雄数据（Load all champions' binary data offline）
         # logPrint("正在读取各英雄数据……\nReading all champion data ...", print_time = True)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/自定义脚本/英雄联盟自定义房间创建/champions_bin.json", "r", encoding = "utf-8") as fp:
@@ -5656,18 +5656,16 @@ class ChampionExtractor(LoLDataExtractor):
             elif key1 != "__linked" and value["__type"] == "SpellObject":
                 for i in range(len(champion_spell_header_keys)):
                     key: str = champion_spell_header_keys[i]
-                    if i <= 10: #主键衍生键（`key`-derivated keys）
-                        if i == 0: #主键（`key`）
-                            to_append: Any = key1
-                        elif i == 1: #英雄文件夹（`championFolder`）
+                    if i <= 9: #主键衍生键（`key`-derivated keys）
+                        if i == 0: #英雄文件夹（`championFolder`）
                             try:
                                 championFolder = key1.split("/")[1]
                             except IndexError:
                                 championFolder = ""
                             to_append = championFolder
-                        elif i == 2: #根技能（`isRootSpell`）
+                        elif i == 1: #根技能（`isRootSpell`）
                             to_append = key1 in rootSpell_ability_map
-                        elif i == 10: #技能热键（`spellHotKey`）
+                        elif i == 9: #技能热键（`spellHotKey`）
                             if len(key1.split("/")) > 1: #形如（Looks like）：Characters/Aphelios/Spells/ApheliosQ_ClientTooltipWrapper
                                 championFolder = key1.split("/")[1]
                                 CharacterRecordRoot_key: str = f"Characters/{championFolder}/CharacterRecords/Root"
@@ -5704,53 +5702,17 @@ class ChampionExtractor(LoLDataExtractor):
                                 if subkey in rootAbility:
                                     to_append = rootAbility[subkey]
                                 else:
-                                    if i == 6: #所属技能的持续时间可控制（`rootAbility_mLifetimeManuallyManaged`）
+                                    if i == 5: #所属技能的持续时间可控制（`rootAbility_mLifetimeManuallyManaged`）
                                         to_append = False
                                     else:
                                         to_append = ""
                             else:
-                                if i == 6: #所属技能的持续时间可控制（`rootAbility_mLifetimeManuallyManaged`）
+                                if i == 5: #所属技能的持续时间可控制（`rootAbility_mLifetimeManuallyManaged`）
                                     to_append = False
                                 else:
                                     to_append = ""
                     else:
-                        subkeyList: list[str] = key.split()
-                        if "mSpell" in value and pStrConst.search(key):
-                            subkey2: str = pStrConst.search(key).group()
-                            subkey1: str = key.replace(subkey2, "")
-                            useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                            locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
-                            strtable_locale_lol: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
-                            strtable_locale_tft: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
-                            tooltip_key: str = champion_spell_data[subkey1][-1]
-                            use_lol_strtable: bool = True
-                            tooltip_raw: str = self.get_strtable_value(strtable_locale_lol, tooltip_key, default = "")
-                            if tooltip_raw == "":
-                                tooltip_raw = self.get_strtable_value(strtable_locale_tft, tooltip_key, default = "")
-                                if tooltip_raw != "":
-                                    use_lol_strtable = False
-                            if subkey2.endswith("_burn"):
-                                self.__class__.calculatedVariables.clear()
-                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale_lol if use_lol_strtable else strtable_locale_tft, value["mSpell"], locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
-                                to_append = tooltip_burn
-                            else:
-                                to_append = tooltip_raw
-                        else:
-                            tmp_ptr = value
-                            for j in range(len(subkeyList)):
-                                tmp_key = subkeyList[j]
-                                if tmp_key in tmp_ptr:
-                                    tmp_ptr = tmp_ptr[tmp_key]
-                                else:
-                                    if i in {6, 20, 39, 48, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 78, 79, 80, 81, 82, 83, 85, 86, 87, 89, 90, 91, 93, 94, 95, 97, 98, 99, 100, 101, 102, 103, 105, 106, 107, 113, 114, 115, 116, 117, 118, 119, 121, 131, 132, 133, 141, 142, 146, 161, 163, 167, 171, 172, 176, 177, 179, 181, 195, 214, 221, 222, 235, 236, 237, 314}:
-                                        to_append = False
-                                    elif i in {76, 77, 84, 88, 96, 109, 112, 134, 140, 144, 150, 243, 324, 325, 326}:
-                                        to_append = tmp_key == subkeyList[-2] #如果遍历到某个逻辑值键的上一级就停止，且该逻辑值键的默认值为真，仍应将其置为假，以表明该逻辑值键所在的命名场景不存在（If `tmp_key` traverses through `subkeyList` and stopped at the parent key of a boolean key whose default value is True, the result to append should be set as False, to indicate that the namespace background of this boolean key doesn't exist）
-                                    else:
-                                        to_append = ""
-                                    break
-                            else: #在成功遍历到目标值后才会执行以下部分（Only when the target value is fetched will this part be executed）
-                                to_append = tmp_ptr
+                        to_append = self.generate_spell_record(champion_spell_data, key, key1, value)
                     champion_spell_data[key].append(to_append)
                     champion_spell_data_json[key].append(pyobj2json(to_append))
             #     logPrint("[%d/%d]已整理指令对象（Organized spell object）： %s" %(count, len(champions_bin.items()), key1), print_time = True)
@@ -5776,8 +5738,8 @@ class ChampionExtractor(LoLDataExtractor):
         optimize_bool_display(champion_df)
         champion_df = pandas.concat([pandas.DataFrame([champion_header])[champion_df.columns], champion_df], ignore_index = True)
         self.champion_df = champion_df
-        ##技能指令（Spell）
-        champion_spell_statistics_output_order: list[int] = [0, 11, 12, 1, 10, 247, 268, 269, 3, 2, 7, 8, 9, 6, 4, 5, 24, 13, 14, 15, 25, 101, 116, 218, 65, 219, 44, 30, 39, 66, 47, 61, 62, 63, 29, 64, 67, 26, 27, 28, 31, 217, 32, 33, 220, 196, 122, 123, 56, 57, 58, 93, 124, 125, 42, 43, 197, 126, 127, 128, 95, 96, 45, 46, 49, 50, 51, 52, 48, 22, 23, 97, 102, 16, 17, 54, 19, 18, 20, 21, 38, 53, 55, 59, 60, 86, 78, 79, 89, 90, 70, 69, 75, 107, 72, 73, 74, 91, 94, 68, 71, 233, 81, 76, 77, 92, 84, 85, 80, 82, 83, 87, 105, 115, 88, 235, 236, 237, 103, 118, 117, 119, 121, 232, 221, 222, 223, 224, 225, 226, 227, 34, 35, 36, 98, 231, 100, 114, 104, 205, 206, 106, 109, 108, 110, 113, 111, 112, 120, 129, 208, 99, 209, 210, 211, 212, 213, 216, 228, 229, 230, 234, 238, 240, 239, 304, 305, 241, 242, 243, 244, 258, 259, 248, 253, 284, 286, 285, 287, 256, 296, 298, 297, 299, 251, 278, 279, 252, 280, 282, 281, 283, 254, 288, 290, 289, 291, 255, 292, 294, 293, 295, 257, 300, 302, 301, 303, 245, 260, 262, 261, 263, 246, 264, 266, 265, 267, 249, 270, 272, 271, 273, 250, 274, 276, 275, 277, 306, 307, 308, 309, 310, 311, 312, 313, 314, 207, 40, 37, 41, 315, 316, 318, 319, 328, 320, 333, 334, 317, 329, 331, 330, 332, 321, 335, 337, 336, 338, 322, 339, 341, 340, 342, 323, 324, 325, 326, 327, 198, 199, 200, 201, 202, 203, 204, 130, 174, 134, 132, 135, 136, 131, 133, 214, 215, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 175, 182, 176, 177, 178, 179, 180, 181, 192, 183, 184, 185, 186, 187, 188, 189, 190, 191, 193, 194, 195, 343]
+        ##法术（Spell）
+        champion_spell_statistics_output_order: list[int] = [10, 11, 0, 9, 271, 293, 294, 2, 1, 6, 7, 8, 5, 3, 4, 13, 14, 12, 26, 15, 16, 17, 27, 108, 123, 237, 239, 240, 72, 238, 49, 50, 51, 32, 42, 73, 54, 68, 69, 70, 31, 71, 74, 28, 29, 30, 33, 236, 34, 35, 241, 209, 129, 136, 137, 130, 63, 64, 65, 100, 131, 132, 45, 48, 210, 133, 134, 135, 102, 103, 52, 53, 56, 57, 58, 59, 55, 24, 25, 104, 109, 18, 19, 61, 21, 20, 22, 23, 41, 60, 62, 66, 67, 46, 47, 93, 85, 86, 96, 97, 77, 76, 82, 114, 79, 80, 81, 98, 101, 75, 78, 257, 88, 83, 84, 99, 91, 92, 87, 89, 90, 94, 112, 122, 95, 259, 260, 261, 110, 125, 124, 126, 128, 256, 242, 243, 244, 245, 246, 247, 248, 36, 37, 38, 39, 105, 255, 107, 121, 111, 220, 221, 113, 116, 115, 117, 120, 118, 119, 127, 138, 225, 106, 226, 228, 227, 231, 232, 235, 249, 253, 254, 258, 262, 264, 263, 331, 332, 265, 266, 267, 268, 283, 284, 272, 277, 309, 311, 310, 312, 280, 321, 323, 322, 324, 275, 303, 304, 276, 305, 307, 306, 308, 278, 313, 315, 314, 316, 279, 317, 319, 318, 320, 281, 325, 327, 326, 328, 282, 329, 330, 269, 285, 287, 286, 288, 270, 289, 291, 290, 292, 273, 295, 297, 296, 298, 274, 299, 301, 300, 302, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 223, 43, 40, 44, 343, 344, 346, 347, 358, 348, 349, 363, 364, 345, 359, 361, 360, 362, 351, 369, 371, 370, 372, 352, 373, 375, 374, 376, 350, 365, 366, 367, 368, 353, 354, 355, 356, 357, 211, 212, 213, 214, 215, 216, 217, 218, 219, 139, 187, 143, 141, 144, 145, 140, 142, 233, 234, 146, 147, 149, 150, 151, 152, 153, 154, 148, 155, 156, 157, 158, 159, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 185, 160, 186, 176, 177, 178, 179, 180, 181, 182, 183, 184, 188, 195, 189, 190, 191, 192, 193, 194, 205, 196, 197, 198, 199, 200, 201, 202, 203, 204, 206, 207, 208, 229, 230, 222, 224, 250, 251, 252, 377, 378, 379, 380, 381]
         champion_spell_data_organized: dict[str, list[Any]] = {champion_spell_header_keys[i]: champion_spell_data_json[champion_spell_header_keys[i]] for i in champion_spell_statistics_output_order}
         champion_spell_df: pandas.DataFrame = pandas.DataFrame(data = champion_spell_data_organized)
         logPrint("正在排序英雄技能数据框……\nOrganizing champion spell dataframe ...")
@@ -5844,7 +5806,7 @@ class ChampionExtractor(LoLDataExtractor):
             当仅使用英雄数据时，`paths`由以下部分组成：<br>When only champions' data are used, `paths` is a list composed of the following content:
             - 英雄概要文件路径（Champion summary file path）
             - 角色文件夹路径（Character folder path）： game/data/characters
-        
+
             仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
         :type paths: list[str]
         :param verbose: 是否打印过程性信息。默认为是。<br>Whether to print the progress. True by default.
@@ -10873,10 +10835,10 @@ if __name__ == "__main__":
                         elif dOption == 3:
                             logPrint("[%d/%d][%d/%d]正在整理召唤师技能数据……\nOrganizing summoner spell data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             summonerSpellExtractor: SummonerSpellExtractor = SummonerSpellExtractor(extractor)
-                            summonerSpellExtractor.build_spell_dataframe()
-                            summonerSpellExtractor.enqueue_spell_dataframe()
+                            summonerSpellExtractor.build_summonerSpell_dataframe()
+                            summonerSpellExtractor.enqueue_summonerSpell_dataframe()
                             if export:
-                                summonerSpellExtractor.export_spell_data()
+                                summonerSpellExtractor.export_summonerSpell_data()
                         elif dOption == 4:
                             logPrint("[%d/%d][%d/%d]正在整理符文数据……\nOrganizing perk data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             perkExtractor: PerkExtractor = PerkExtractor(extractor)
@@ -11399,10 +11361,10 @@ if __name__ == "__main__":
                             summonerSpell_path: Path = extract_game_dir / "shared.cdtb.bin.json"
                         else:
                             summonerSpell_path = repo_game_dir / "shared.cdtb.bin.json"
-                        summonerSpellExtractor.build_spell_dataframe(debug = True, path = summonerSpell_path.as_posix())
-                        summonerSpellExtractor.enqueue_spell_dataframe()
+                        summonerSpellExtractor.build_summonerSpell_dataframe(debug = True, path = summonerSpell_path.as_posix())
+                        summonerSpellExtractor.enqueue_summonerSpell_dataframe()
                         if export:
-                            summonerSpellExtractor.export_spell_data()
+                            summonerSpellExtractor.export_summonerSpell_data()
                     elif dOption == 4:
                         logPrint("[%d/%d]正在调试符文数据……\nDebugging perk data ..." %(nDataOption_iter, nDataOptions))
                         perkExtractor: PerkExtractor = PerkExtractor(extractor)
