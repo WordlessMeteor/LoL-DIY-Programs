@@ -14,7 +14,7 @@ from src.utils.webRequest import requestUrl
 from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, pyobj2json, capitalize, decapitalize
 from src.utils.runtimeDebug import subscope
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
-from src.core.config.headers import spell_header, map_header_l10n, cheatset_header, cheat_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, KiwiQuestline_header, augmentModifier_header, CherryAnvil_header, GoH_header, cameo_header, CherryRoundList_header, CherryRound_header, CherryPhase_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header, fontDesc_header, fontType_header, fontResolution_header, fontStyle_header, font_CSSStyle_header, font_CSSIcon_header
+from src.core.config.headers import spell_header, map_header_l10n, cheatset_header, cheat_header, summonerSpell_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, KiwiQuestline_header, augmentModifier_header, CherryAnvil_header, GoH_header, cameo_header, CherryRoundList_header, CherryRound_header, CherryPhase_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header, fontDesc_header, fontType_header, fontResolution_header, fontStyle_header, font_CSSStyle_header, font_CSSIcon_header
 from src.core.config.localization import language_ddragon, language_dict
 
 #=============================================================================
@@ -4879,7 +4879,7 @@ class SummonerSpellExtractor(LoLDataExtractor):
 
         #定义数据结构（Define the data structure）
         logPrint("正在构建召唤师技能数据框……\nBuilding the summoner spell dataframes ...", print_time = True)
-        summonerSpell_header_keys: list[str] = list(spell_header.keys())
+        summonerSpell_header_keys: list[str] = list(summonerSpell_header.keys())
         summonerSpell_data: dict[str, list[Any]] = {key: [] for key in summonerSpell_header_keys}
         summonerSpell_data_json: dict[str, list[Any]] = copy.deepcopy(summonerSpell_data)
         
@@ -4900,7 +4900,7 @@ class SummonerSpellExtractor(LoLDataExtractor):
         summonerSpell_df: pandas.DataFrame = pandas.DataFrame(data = summonerSpell_data_organized)
         logPrint("正在优化召唤师技能数据框的逻辑值显示……\nOptimizing boolean value display of the summoner spell dataframe ...")
         optimize_bool_display(summonerSpell_df)
-        summonerSpell_df = pandas.concat([pandas.DataFrame([spell_header])[summonerSpell_df.columns], summonerSpell_df], ignore_index = True)
+        summonerSpell_df = pandas.concat([pandas.DataFrame([summonerSpell_header])[summonerSpell_df.columns], summonerSpell_df], ignore_index = True)
         self.summonerSpell_df = summonerSpell_df
         return 0
     
