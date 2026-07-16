@@ -21,7 +21,7 @@ from src.core.dataframes.champions import sort_champion_summary
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/06/01
+# 更新（Last update）：     2026/07/16
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -113,6 +113,7 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
     map30_bin_url: str = "https://raw.communitydragon.org/pbe/game/data/maps/shipping/map30/map30.bin.json"
     map33_bin_url: str = "https://raw.communitydragon.org/pbe/game/data/maps/shipping/map33/map33.bin.json"
     map35_bin_url: str = "https://raw.communitydragon.org/pbe/game/data/maps/shipping/map35/map35.bin.json"
+    map453_bin_url: str = "https://raw.communitydragon.org/pbe/game/unknown/579b4182be3270f4.bin.json"
     items_bin_url: str = "https://raw.communitydragon.org/pbe/game/items.cdtb.bin.json"
     source, status, session = requestUrl("GET", map11_bin_url, session = session, log = log)
     if status != 200:
@@ -191,6 +192,17 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
         return ({}, False, "")
     else:
         map35_bin = source.json()
+    source, status, session = requestUrl("GET", map453_bin_url, session = session, log = log)
+    if status != 200:
+        if status == 404:
+            logPrint("经典召唤师峡谷地图信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nClassic Summoner's Rift map data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(map453_bin_url))
+            map453_bin: dict[str, list[str] | dict[str, Any]] = {}
+        else:
+            logPrint("经典召唤师峡谷地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nClass Summoner's Rift map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
+            time.sleep(3)
+        return ({}, False, "")
+    else:
+        map453_bin = source.json()
     source, status, session = requestUrl("GET", items_bin_url, session = session, log = log)
     if status != 200:
         if status == 404:
@@ -212,6 +224,7 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
     # map30_bin_path: str = os.path.join(cdragon_folder, "pbe/game/data/maps/shipping/map30/map30.bin.json").replace("\\", "/")
     # map33_bin_path: str = os.path.join(cdragon_folder, "pbe/game/data/maps/shipping/map33/map33.bin.json").replace("\\", "/")
     # map35_bin_path: str = os.path.join(cdragon_folder, "pbe/game/data/maps/shipping/map35/map35.bin.json").replace("\\", "/")
+    # map453_bin_path: str = os.path.join(cdragon_folder, "pbe/game/unknown/579b4182be3270f4.bin.json").replace("\\", "/")
     # items_bin_path: str = os.path.join(cdragon_folder, "pbe/game/items.cdtb.bin.json")
     ###提取目录（Extracted directory）
     # extract_folder: str = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text1/Game/DATA/FINAL/"
@@ -222,6 +235,7 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
     # map30_bin_path: str = os.path.join(extract_folder, "data/maps/shipping/map30/map30.bin.json").replace("\\", "/")
     # map33_bin_path: str = os.path.join(extract_folder, "data/maps/shipping/map33/map33.bin.json").replace("\\", "/")
     # map35_bin_path: str = os.path.join(extract_folder, "data/maps/shipping/map35/map35.bin.json").replace("\\", "/")
+    # map453_bin_path: str = os.path.join(extract_folder, "unknown/579b4182be3270f4.bin.json").replace("\\", "/")
     # items_bin_path: str = os.path.join(extract_folder, "items.cdtb.bin.json").replace("\\", "/")
     # with open(map11_bin_path, "r", encoding = "utf-8") as fp:
     #     map11_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
@@ -237,22 +251,230 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
     #     map33_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
     # with open(map35_bin_path, "r", encoding = "utf-8") as fp:
     #     map35_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+    # with open(map453_bin_path, "r", encoding = "utf-8") as fp:
+    #     map453_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
     # with open(items_bin_path, "r", encoding = "utf-8") as fp:
     #     items_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
     #构建不同模式的全装备列表（Build the full item list for different modes）
     logPrint("正在构建各模式的全装备列表……\nBuilding full item list for different modes ...", print_time = True)
-    maps_bin: list[dict[str, list[str] | dict[str, Any]]] = [map11_bin, map12_bin, map21_bin, map22_bin, map30_bin, map33_bin, map35_bin]
+    maps_bin: list[dict[str, list[str] | dict[str, Any]]] = [map11_bin, map12_bin, map21_bin, map22_bin, map30_bin, map33_bin, map35_bin, map453_bin]
     itemKey_itemId_map: dict[int, str] = {} #构建从装备序号到装备数据的映射（Build a map from the itemId to the corresponding item data）
     exclusive_itemIds: set[int] = set() #构建一个装备序号集合，用来存储没有在任何地图的任何模式中出现的装备序号（Create a set of itemIds to store items that don't appear in any mode of any map）
     for (key, value) in items_bin.items():
         if key != "__linked" and value["__type"] == "ItemData":
             itemKey_itemId_map[value["itemID"]] = key
             exclusive_itemIds.add(value["itemID"])
-    gameModeNames: dict[str, dict[str, str]] = {"Maps/Shipping/Map11/Modes/ARSR": {"zh_CN": "峡谷大乱斗", "en_US": "ARSR", "bilingual": "峡谷大乱斗（ARSR）"}, "Maps/Shipping/Map11/Modes/ASSASSINATE": {"zh_CN": "红月决", "en_US": "Blood Moon", "bilingual": "红月决（Blood Moon）"}, "Maps/Shipping/Map11/Modes/CLASSIC": {"zh_CN": "召唤师峡谷经典模式", "en_US": "Summoner's Rift Normal", "bilingual": "召唤师峡谷经典模式（Summoner's Rift Normal）"}, "Maps/Shipping/Map11/Modes/DOOMBOTSTEEMO": {"zh_CN": "末日人工智能", "en_US": "Doom Bots of Doom", "bilingual": "末日人工智能（Doom Bots of Doom）"}, "Maps/Shipping/Map11/Modes/ONEFORALL": {"zh_CN": "克隆大作战", "en_US": "One For All", "bilingual": "克隆大作战（One For All）"}, "Maps/Shipping/Map11/Modes/PRACTICETOOL": {"zh_CN": "训练模式", "en_US": "Practice Tool", "bilingual": "训练模式（Practice Tool）"}, "Maps/Shipping/Map11/Modes/RUBY": {"zh_CN": "末日人工智能", "en_US": "Doom Bots", "bilingual": "末日人工智能（Doom Bots）"}, "Maps/Shipping/Map11/Modes/RUBY_TRIAL_1": {"zh_CN": "末日人工智能：维迦的诅咒！", "en_US": "Doom Bots: Veigar's Curse!", "bilingual": "末日人工智能：维迦的诅咒！（Doom Bots: Veigar's Curse!）"}, "Maps/Shipping/Map11/Modes/RUBY_TRIAL_2": {"zh_CN": "末日人工智能：维迦的邪咒！", "en_US": "Doom Bots: Veigar's Evil", "bilingual": "末日人工智能：维迦的邪咒！（Doom Bots: Veigar's Evil）"}, "Maps/Shipping/Map11/Modes/RUBY_TRIAL_3": {"zh_CN": "末日人工智能：维迦的末日厄咒！", "en_US": "Doom Bots: Veigar's Doom!", "bilingual": "末日人工智能：维迦的末日厄咒！（Doom Bots: Veigar's Doom!）"}, "Maps/Shipping/Map11/Modes/SNOWURF": {"zh_CN": "冰雪无限火力", "en_US": "Snow ARURF", "bilingual": "冰雪无限火力（Snow ARURF）"}, "Maps/Shipping/Map11/Modes/SWIFTPLAY": {"zh_CN": "快速模式", "en_US": "Swiftplay", "bilingual": "快速模式（Swiftplay）"}, "Maps/Shipping/Map11/Modes/TUTORIAL": {"zh_CN": "新手教程 召唤师峡谷", "en_US": "Tutorial: Summoner's Rift", "bilingual": "新手教程 召唤师峡谷（Tutorial: Summoner's Rift）"}, "Maps/Shipping/Map11/Modes/TUTORIAL_MODULE_1": {"zh_CN": "新手教程 第一部分", "en_US": "Tutorial Part 1", "bilingual": "新手教程 第一部分（Tutorial Part 1）"}, "Maps/Shipping/Map11/Modes/TUTORIAL_MODULE_2": {"zh_CN": "新手教程 第二部分", "en_US": "Tutorial Part 2", "bilingual": "新手教程 第二部分（Tutorial Part 2）"}, "Maps/Shipping/Map11/Modes/TUTORIAL_MODULE_3": {"zh_CN": "新手教程 第三部分", "en_US": "Tutorial Part 3", "bilingual": "新手教程 第三部分（Tutorial Part 3）"}, "Maps/Shipping/Map11/Modes/ULTBOOK": {"zh_CN": "终极魔典", "en_US": "Ultimate Spellbook", "bilingual": "终极魔典（Ultimate Spellbook）"}, "Maps/Shipping/Map11/Modes/URF": {"zh_CN": "无限火力", "en_US": "URF", "bilingual": "无限火力（URF）"}, "Maps/Shipping/Map11/Modes/WASD": {"zh_CN": "WASD", "en_US": "WASD", "bilingual": "WASD"}, "Maps/Shipping/Map12/Modes/ARAM": {"zh_CN": "极地大乱斗", "en_US": "ARAM", "bilingual": "极地大乱斗（ARAM）"}, "Maps/Shipping/Map12/Modes/FIRSTBLOOD": {"zh_CN": "大对决", "en_US": "Showdown", "bilingual": "大对决（Showdown）"}, "Maps/Shipping/Map12/Modes/KINGPORO": {"zh_CN": "魄罗大乱斗", "en_US": "Legend of the Poro King", "bilingual": "魄罗大乱斗（Legend of the Poro King）"}, "Maps/Shipping/Map12/Modes/KIWI": {"zh_CN": "海克斯大乱斗", "en_US": "ARAM: Mayhem", "bilingual": "海克斯大乱斗（ARAM: Mayhem）"}, "Maps/Shipping/Map12/Modes/TUTORIAL": {"zh_CN": "新手教程 嚎哭深渊", "en_US": "Tutorial: Howling Abyss", "bilingual": "新手教程 嚎哭深渊（Tutorial: Howling Abyss）"}, "Maps/Shipping/Map21/Modes/NEXUSBLITZ": {"zh_CN": "极限闪击", "en_US": "Nexus Blitz", "bilingual": "极限闪击（Nexus Blitz）"}, "Maps/Shipping/Map22/Modes/TFT": {"zh_CN": "云顶之弈", "en_US": "TFT", "bilingual": "云顶之弈（TFT）"}, "Maps/Shipping/Map30/Modes/CHERRY": {"zh_CN": "斗魂竞技场", "en_US": "Arena", "bilingual": "斗魂竞技场（Arena）"}, "Maps/Shipping/Map33/Modes/STRAWBERRY": {"zh_CN": "无尽狂潮", "en_US": "Swarm", "bilingual": "无尽狂潮（Swarm）"}, "Maps/Shipping/Map35/Modes/BRAWL": {"zh_CN": "神木之门", "en_US": "Brawl", "bilingual": "神木之门（Brawl）"}, "{8d691c1c}": {"zh_CN": "{44334b59}", "en_US": "{44334b59}", "bilingual": "{44334b59}"}, "{c706490e}": {"zh_CN": "{6462680f}", "en_US": "{6462680f}", "bilingual": "{6462680f}"}} #之所以使用地图二进制数据的主键而不是其值字典的mModeName值，是因为召唤师峡谷和嚎哭深渊的地图二进制数据的新手教程的主键不一致，但是其值字典的mModeName值一致（The reason why the key of the binary data of maps is used instead of the `mModeName` value of this key's value dictionary is that the keys of TUTORIAL of the binary data of the maps 11 and 12 are different, but the `mModeName` values are the same）
-    gameModes_ordered: list[str] = ["Maps/Shipping/Map11/Modes/CLASSIC", "Maps/Shipping/Map11/Modes/SWIFTPLAY", "Maps/Shipping/Map11/Modes/ARSR", "Maps/Shipping/Map11/Modes/URF", "Maps/Shipping/Map11/Modes/SNOWURF", "Maps/Shipping/Map11/Modes/ONEFORALL", "Maps/Shipping/Map11/Modes/ASSASSINATE", "Maps/Shipping/Map11/Modes/ULTBOOK", "Maps/Shipping/Map11/Modes/PRACTICETOOL", "Maps/Shipping/Map11/Modes/RUBY", "Maps/Shipping/Map11/Modes/RUBY_TRIAL_1", "Maps/Shipping/Map11/Modes/RUBY_TRIAL_2", "Maps/Shipping/Map11/Modes/RUBY_TRIAL_3", "Maps/Shipping/Map11/Modes/DOOMBOTSTEEMO", "Maps/Shipping/Map11/Modes/TUTORIAL", "Maps/Shipping/Map11/Modes/TUTORIAL_MODULE_1", "Maps/Shipping/Map11/Modes/TUTORIAL_MODULE_2", "Maps/Shipping/Map11/Modes/TUTORIAL_MODULE_3", "Maps/Shipping/Map11/Modes/WASD", "Maps/Shipping/Map12/Modes/ARAM", "Maps/Shipping/Map12/Modes/KIWI", "Maps/Shipping/Map12/Modes/FIRSTBLOOD", "Maps/Shipping/Map12/Modes/KINGPORO", "Maps/Shipping/Map12/Modes/TUTORIAL", "Maps/Shipping/Map21/Modes/NEXUSBLITZ", "Maps/Shipping/Map22/Modes/TFT", "Maps/Shipping/Map30/Modes/CHERRY", "Maps/Shipping/Map33/Modes/STRAWBERRY", "Maps/Shipping/Map35/Modes/BRAWL", "{8d691c1c}", "{c706490e}"] #综合考虑发布时间和受欢迎程度排序（Ordered according to release date and popularity）
+    gameModeNames: dict[str, dict[str, str]] = {
+        "Maps/Shipping/Map11/Modes/ARSR": {
+            "zh_CN": "峡谷大乱斗",
+            "en_US": "ARSR",
+            "bilingual": "峡谷大乱斗（ARSR）"
+        },
+        "Maps/Shipping/Map11/Modes/ASSASSINATE": {
+            "zh_CN": "红月决",
+            "en_US": "Blood Moon",
+            "bilingual": "红月决（Blood Moon）"
+        },
+        "Maps/Shipping/Map11/Modes/CLASSIC": {
+            "zh_CN": "召唤师峡谷经典模式",
+            "en_US": "Summoner's Rift Normal",
+            "bilingual": "召唤师峡谷经典模式（Summoner's Rift Normal）"
+        },
+        "Maps/Shipping/Map11/Modes/DOOMBOTSTEEMO": {
+            "zh_CN": "末日人工智能",
+            "en_US": "Doom Bots of Doom",
+            "bilingual": "末日人工智能（Doom Bots of Doom）"
+        },
+        "Maps/Shipping/Map11/Modes/ONEFORALL": {
+            "zh_CN": "克隆大作战",
+            "en_US": "One For All",
+            "bilingual": "克隆大作战（One For All）"
+        },
+        "Maps/Shipping/Map11/Modes/PRACTICETOOL": {
+            "zh_CN": "训练模式",
+            "en_US": "Practice Tool",
+            "bilingual": "训练模式（Practice Tool）"
+        },
+        "Maps/Shipping/Map11/Modes/RUBY": {
+            "zh_CN": "末日人工智能",
+            "en_US": "Doom Bots",
+            "bilingual": "末日人工智能（Doom Bots）"
+        },
+        "Maps/Shipping/Map11/Modes/RUBY_TRIAL_1": {
+            "zh_CN": "末日人工智能：维迦的诅咒！",
+            "en_US": "Doom Bots: Veigar's Curse!",
+            "bilingual": "末日人工智能：维迦的诅咒！（Doom Bots: Veigar's Curse!）"
+        },
+        "Maps/Shipping/Map11/Modes/RUBY_TRIAL_2": {
+            "zh_CN": "末日人工智能：维迦的邪咒！",
+            "en_US": "Doom Bots: Veigar's Evil",
+            "bilingual": "末日人工智能：维迦的邪咒！（Doom Bots: Veigar's Evil）"
+        },
+        "Maps/Shipping/Map11/Modes/RUBY_TRIAL_3": {
+            "zh_CN": "末日人工智能：维迦的末日厄咒！",
+            "en_US": "Doom Bots: Veigar's Doom!",
+            "bilingual": "末日人工智能：维迦的末日厄咒！（Doom Bots: Veigar's Doom!）"
+        },
+        "Maps/Shipping/Map11/Modes/SNOWURF": {
+            "zh_CN": "冰雪无限火力",
+            "en_US": "Snow ARURF",
+            "bilingual": "冰雪无限火力（Snow ARURF）"
+        },
+        "Maps/Shipping/Map11/Modes/SWIFTPLAY": {
+            "zh_CN": "快速模式",
+            "en_US": "Swiftplay",
+            "bilingual": "快速模式（Swiftplay）"
+        },
+        "Maps/Shipping/Map11/Modes/TUTORIAL": {
+            "zh_CN": "新手教程 召唤师峡谷",
+            "en_US": "Tutorial: Summoner's Rift",
+            "bilingual": "新手教程 召唤师峡谷（Tutorial: Summoner's Rift）"
+        },
+        "Maps/Shipping/Map11/Modes/TUTORIAL_MODULE_1": {
+            "zh_CN": "新手教程 第一部分",
+            "en_US": "Tutorial Part 1",
+            "bilingual": "新手教程 第一部分（Tutorial Part 1）"
+        },
+        "Maps/Shipping/Map11/Modes/TUTORIAL_MODULE_2": {
+            "zh_CN": "新手教程 第二部分",
+            "en_US": "Tutorial Part 2",
+            "bilingual": "新手教程 第二部分（Tutorial Part 2）"
+        },
+        "Maps/Shipping/Map11/Modes/TUTORIAL_MODULE_3": {
+            "zh_CN": "新手教程 第三部分",
+            "en_US": "Tutorial Part 3",
+            "bilingual": "新手教程 第三部分（Tutorial Part 3）"
+        },
+        "Maps/Shipping/Map11/Modes/ULTBOOK": {
+            "zh_CN": "终极魔典",
+            "en_US": "Ultimate Spellbook",
+            "bilingual": "终极魔典（Ultimate Spellbook）"
+        },
+        "Maps/Shipping/Map11/Modes/URF": {
+            "zh_CN": "无限火力",
+            "en_US": "URF",
+            "bilingual": "无限火力（URF）"
+        },
+        "Maps/Shipping/Map11/Modes/WASD": {
+            "zh_CN": "WASD",
+            "en_US": "WASD",
+            "bilingual": "WASD"
+        },
+        "Maps/Shipping/Map12/Modes/ARAM": {
+            "zh_CN": "极地大乱斗",
+            "en_US": "ARAM",
+            "bilingual": "极地大乱斗（ARAM）"
+        },
+        "Maps/Shipping/Map12/Modes/FIRSTBLOOD": {
+            "zh_CN": "大对决",
+            "en_US": "Showdown",
+            "bilingual": "大对决（Showdown）"
+        },
+        "Maps/Shipping/Map12/Modes/KINGPORO": {
+            "zh_CN": "魄罗大乱斗",
+            "en_US": "Legend of the Poro King",
+            "bilingual": "魄罗大乱斗（Legend of the Poro King）"
+        },
+        "Maps/Shipping/Map12/Modes/KIWI": {
+            "zh_CN": "海克斯大乱斗",
+            "en_US": "ARAM: Mayhem",
+            "bilingual": "海克斯大乱斗（ARAM: Mayhem）"
+        },
+        "Maps/Shipping/Map12/Modes/KIWI_JADE": {
+            "zh_CN": "海克斯大乱斗 怀旧版",
+            "en_US": "ARAM: Mayhem (Jade)",
+            "bilingual": "海克斯大乱斗 怀旧版【ARAM: Mayhem (Jade)】"
+        },
+        "Maps/Shipping/Map12/Modes/TUTORIAL": {
+            "zh_CN": "新手教程 嚎哭深渊",
+            "en_US": "Tutorial: Howling Abyss",
+            "bilingual": "新手教程 嚎哭深渊（Tutorial: Howling Abyss）"
+        },
+        "Maps/Shipping/Map21/Modes/NEXUSBLITZ": {
+            "zh_CN": "极限闪击",
+            "en_US": "Nexus Blitz",
+            "bilingual": "极限闪击（Nexus Blitz）"
+        },
+        "Maps/Shipping/Map22/Modes/TFT": {
+            "zh_CN": "云顶之弈",
+            "en_US": "TFT",
+            "bilingual": "云顶之弈（TFT）"
+        },
+        "Maps/Shipping/Map30/Modes/CHERRY": {
+            "zh_CN": "斗魂竞技场",
+            "en_US": "Arena",
+            "bilingual": "斗魂竞技场（Arena）"
+        },
+        "Maps/Shipping/Map33/Modes/STRAWBERRY": {
+            "zh_CN": "无尽狂潮",
+            "en_US": "Swarm",
+            "bilingual": "无尽狂潮（Swarm）"
+        },
+        "Maps/Shipping/Map35/Modes/BRAWL": {
+            "zh_CN": "神木之门",
+            "en_US": "Brawl",
+            "bilingual": "神木之门（Brawl）"
+        },
+        "{8d691c1c}": {
+            "zh_CN": "{44334b59}",
+            "en_US": "{44334b59}",
+            "bilingual": "{44334b59}"
+        },
+        "{c706490e}": {
+            "zh_CN": "{6462680f}",
+            "en_US": "{6462680f}",
+            "bilingual": "{6462680f}"
+        },
+        "Maps/Shipping/Map453/Modes/BASELINESR": {
+            "zh_CN": "{20426d6f}",
+            "en_US": "{20426d6f}",
+            "bilingual": "{20426d6f}"
+        },
+        "Maps/Shipping/Map453/Modes/JADE": {
+            "zh_CN": "英雄联盟经典模式",
+            "en_US": "League Classic",
+            "bilingual": "英雄联盟经典模式（League Classic）"
+        }
+    } #之所以使用地图二进制数据的主键而不是其值字典的mModeName值，是因为召唤师峡谷和嚎哭深渊的地图二进制数据的新手教程的主键不一致，但是其值字典的mModeName值一致（The reason why the key of the binary data of maps is used instead of the `mModeName` value of this key's value dictionary is that the keys of TUTORIAL of the binary data of the maps 11 and 12 are different, but the `mModeName` values are the same）
+    gameModes_ordered: list[str] = [
+        "Maps/Shipping/Map11/Modes/CLASSIC",
+        "Maps/Shipping/Map11/Modes/SWIFTPLAY",
+        "Maps/Shipping/Map11/Modes/ARSR",
+        "Maps/Shipping/Map11/Modes/URF",
+        "Maps/Shipping/Map11/Modes/SNOWURF",
+        "Maps/Shipping/Map11/Modes/ONEFORALL",
+        "Maps/Shipping/Map11/Modes/ASSASSINATE",
+        "Maps/Shipping/Map11/Modes/ULTBOOK",
+        "Maps/Shipping/Map11/Modes/PRACTICETOOL",
+        "Maps/Shipping/Map11/Modes/RUBY",
+        "Maps/Shipping/Map11/Modes/RUBY_TRIAL_1",
+        "Maps/Shipping/Map11/Modes/RUBY_TRIAL_2",
+        "Maps/Shipping/Map11/Modes/RUBY_TRIAL_3",
+        "Maps/Shipping/Map11/Modes/DOOMBOTSTEEMO",
+        "Maps/Shipping/Map11/Modes/TUTORIAL",
+        "Maps/Shipping/Map11/Modes/TUTORIAL_MODULE_1",
+        "Maps/Shipping/Map11/Modes/TUTORIAL_MODULE_2",
+        "Maps/Shipping/Map11/Modes/TUTORIAL_MODULE_3",
+        "Maps/Shipping/Map11/Modes/WASD",
+        "Maps/Shipping/Map12/Modes/ARAM",
+        "Maps/Shipping/Map12/Modes/KIWI",
+        "Maps/Shipping/Map12/Modes/KIWI_JADE",
+        "Maps/Shipping/Map12/Modes/FIRSTBLOOD",
+        "Maps/Shipping/Map12/Modes/KINGPORO",
+        "Maps/Shipping/Map12/Modes/TUTORIAL",
+        "Maps/Shipping/Map21/Modes/NEXUSBLITZ",
+        "Maps/Shipping/Map22/Modes/TFT",
+        "Maps/Shipping/Map30/Modes/CHERRY",
+        "Maps/Shipping/Map33/Modes/STRAWBERRY",
+        "Maps/Shipping/Map35/Modes/BRAWL",
+        "Maps/Shipping/Map453/Modes/JADE",
+        "Maps/Shipping/Map453/Modes/BASELINESR",
+        "{8d691c1c}",
+        "{c706490e}"
+    ] #综合考虑发布时间和受欢迎程度排序（Ordered according to release date and popularity）
     itemPage: dict[str, Any] = {
         "associatedChampions": [],
-        "associatedMaps": [11, 12, 21, 22, 30, 33, 35],
+        "associatedMaps": [11, 12, 21, 22, 30, 33, 35, 453],
         "blocks": [],
         "map": "any",
         "mode": "any",
@@ -345,7 +567,7 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
     filepath: str = os.path.join(documents_dir, "测试装备.json").replace("\\", "/")
     with open(filepath, "w", encoding = "utf-8") as fp:
         json.dump(itemPage, fp, indent = 4, ensure_ascii = False)
-    logPrint("测试装备配装方案已保存到%s。\nTest item set has been saved to %s." %(filepath, filepath), start = "\n", print_time = True)
+    logPrint("测试装备配装方案已保存到%s。\nTest item set has been saved to %s." %(filepath, filepath), print_time = True)
     return (itemPage, True, filepath)
 
 class ItemSet:
