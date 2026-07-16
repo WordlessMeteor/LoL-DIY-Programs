@@ -409,9 +409,9 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
             "bilingual": "海克斯大乱斗（ARAM: Mayhem）"
         },
         "Maps/Shipping/Map12/Modes/KIWI_JADE": {
-            "zh_CN": "海克斯大乱斗 怀旧版",
-            "en_US": "ARAM: Mayhem (Jade)",
-            "bilingual": "海克斯大乱斗 怀旧版【ARAM: Mayhem (Jade)】"
+            "zh_CN": "海克斯大乱斗 经典模式版",
+            "en_US": "ARAM: Mayhem Classic-ish",
+            "bilingual": "海克斯大乱斗 经典模式版（ARAM: Mayhem Classic-ish）"
         },
         "Maps/Shipping/Map12/Modes/TUTORIAL": {
             "zh_CN": "新手教程 嚎哭深渊",

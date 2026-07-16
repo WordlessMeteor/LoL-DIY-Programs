@@ -351,8 +351,8 @@ gamemodes: dict[str, dict[str, str]] = {
         "en_US": "ARAM: Mayhem"
     },
     "KIWI_JADE": {
-        "zh_CN": "海克斯大乱斗 怀旧版",
-        "en_US": "ARAM: Mayhem (Jade)"
+        "zh_CN": "海克斯大乱斗 经典模式版",
+        "en_US": "ARAM: Mayhem Classic-ish"
     },
     "LNY23_TFT": {
         "zh_CN": "云顶之弈 (恭喜发财)",
