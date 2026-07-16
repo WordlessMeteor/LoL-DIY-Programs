@@ -11,7 +11,7 @@ if not wd in sys.path:
 from src.utils.logger import LogManager
 from src.utils.patch import Patch, get_cdragon_patchList
 from src.utils.webRequest import requestUrl
-from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, pyobj2json, capitalize, decapitalize
+from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, eliminate_empty_fields, pyobj2json, capitalize, decapitalize
 from src.utils.runtimeDebug import subscope
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from src.core.config.headers import spell_header, map_header_l10n, cheatset_header, cheat_header, summonerSpell_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, KiwiQuestline_header, augmentModifier_header, CherryAnvil_header, GoH_header, cameo_header, CherryRoundList_header, CherryRound_header, CherryPhase_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header, fontDesc_header, fontType_header, fontResolution_header, fontStyle_header, font_CSSStyle_header, font_CSSIcon_header
@@ -424,6 +424,7 @@ class LoLDataExtractor:
     optimize_tooltip_layout: bool = True #是否对说明文本的布局进行优化。决定变量代换时使用tooltipTransform还是tooltipSubstitute方法（Whether to optimize the layout of tooltips. Determines which one of `tooltipTransform` and `tooltipSubstitute` is used during variable substitution）
     reserve_variable: bool = False #是否在变量代换时保留变量名。如果保留，则说明文本会同时带有变量名和值。这个属性应只在本基类中声明（Whether to reserve the variable during its substitution. If reserve, then the tooltip will have both name and value of the variable. This attribute should only be declared in this base class）
     levelScaling_cap: int = 18 #等级计算的上限（The upper limit for level scaling calculations）
+    dense_export: bool = False #是否密集导出。在密集导出时，移除所有空列。在稀疏导出时，保持所有空列（Whether to export in a dense manner. Dense export means all empty fields will be removed, and the opposite for sparse export）
     #定义说明文本转换过程的缓存容器（Define cache containers for tooltip transformation）
     calculatedVariables: dict[str, dict[Literal["value", "__type"], str | dict[str, str]]] = {} #缓存同一个说明文本中计算过的变量。切换到下一个说明文本时清空（Cache the variables that have been calculated before while transforming a tooltip. When another tooltip is to transform, this variable is cleaned）
     mSpells: dict[str, Any] = {} #收录某个二进制描述数据中所有的技能指令对象。键是每个技能指令对象的mScriptName键的值，值是每个技能指令对象（Collect all SpellObjects in binary description data. Each key is the value of the `mScriptName` key of a SpellObject, and its value is this SpellObject）
@@ -1191,6 +1192,18 @@ class LoLDataExtractor:
         :type cap: int
         '''
         cls.levelScaling_cap = cap
+    
+    @classmethod
+    def set_export_density(cls, dense: bool) -> None:
+        '''
+        设置数据框导出密度。<br>Set the dataframe export density.
+        
+        密集导出将移除数据框的所有空列。稀疏导出将保留数据框的所有空列。<br>Dense export removes all empty fields from dataframes, while sparse export reserves all empty fields of dataframes.
+        
+        :param dense: 是否密集导出。<br>Whether to export dataframes in a dense manner.
+        :type dense: bool
+        '''
+        cls.dense_export = dense
     
     #获取版本数据框（Obtain version dataframe）
     def init_patch(self) -> None:
@@ -4177,6 +4190,10 @@ class MapExtractor(LoLDataExtractor):
                 logInput()
                 return
         #导出数据（Export data）
+        if self.dense_export:
+            map_df: pandas.DataFrame = eliminate_empty_fields(self.map_df)
+        else:
+            map_df = self.map_df
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
@@ -4185,7 +4202,7 @@ class MapExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    addDefaultStyle(self.map_df.transpose()).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(map_df.transpose()).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
             except PermissionError:
@@ -4424,6 +4441,12 @@ class CheatExtractor(LoLDataExtractor):
                 logInput()
                 return
         #导出数据（Export data）
+        if self.dense_export:
+            cheatset_df: pandas.DataFrame = eliminate_empty_fields(self.cheatset_df)
+            cheat_df: pandas.DataFrame = eliminate_empty_fields(self.cheat_df)
+        else:
+            cheatset_df = self.cheatset_df
+            cheat_df = self.cheat_df
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
@@ -4433,8 +4456,8 @@ class CheatExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    addDefaultStyle(self.cheatset_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                    addDefaultStyle(self.cheat_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                    addDefaultStyle(cheatset_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(cheat_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
@@ -4787,6 +4810,12 @@ class PerkExtractor(LoLDataExtractor):
                 logInput()
                 return
         #导出数据（Export data）
+        if self.dense_export:
+            perkstyle_df: pandas.DataFrame = eliminate_empty_fields(self.perkstyle_df)
+            perk_df: pandas.DataFrame = eliminate_empty_fields(self.perk_df)
+        else:
+            perkstyle_df = self.perkstyle_df
+            perk_df = self.perk_df
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
@@ -4796,8 +4825,8 @@ class PerkExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    addDefaultStyle(self.perkstyle_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                    addDefaultStyle(self.perk_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                    addDefaultStyle(perkstyle_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(perk_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
@@ -4973,6 +5002,10 @@ class SummonerSpellExtractor(LoLDataExtractor):
                 logInput()
                 return
         #导出数据（Export data）
+        if self.dense_export:
+            summonerSpell_df: pandas.DataFrame = eliminate_empty_fields(self.summonerSpell_df)
+        else:
+            summonerSpell_df = self.summonerSpell_df
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
@@ -4981,7 +5014,7 @@ class SummonerSpellExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    addDefaultStyle(self.summonerSpell_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(summonerSpell_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
             except PermissionError:
@@ -5859,6 +5892,12 @@ class ChampionExtractor(LoLDataExtractor):
                 logInput()
                 return
         #导出数据（Export data）
+        if self.dense_export:
+            champion_df: pandas.DataFrame = eliminate_empty_fields(self.champion_df)
+            champion_spell_df: pandas.DataFrame = eliminate_empty_fields(self.champion_spell_df)
+        else:
+            champion_df = self.champion_df
+            champion_spell_df = self.champion_spell_df
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
@@ -5872,8 +5911,8 @@ class ChampionExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    addDefaultStyle(self.champion_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                    addDefaultStyle(self.champion_spell_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                    addDefaultStyle(champion_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(champion_spell_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A1 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
@@ -6217,6 +6256,14 @@ class ItemExtractor(LoLDataExtractor):
                 logInput()
                 return
         #导出数据（Export data）
+        if self.dense_export:
+            item_df: pandas.DataFrame = eliminate_empty_fields(self.item_df)
+            itemGroup_df: pandas.DataFrame = eliminate_empty_fields(self.itemGroup_df)
+            itemModifier_df: pandas.DataFrame = eliminate_empty_fields(self.itemModifier_df)
+        else:
+            item_df = self.item_df
+            itemGroup_df = self.itemGroup_df
+            itemModifier_df = self.itemModifier_df
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
@@ -6227,9 +6274,9 @@ class ItemExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    addDefaultStyle(self.item_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                    addDefaultStyle(self.itemGroup_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
-                    addDefaultStyle(self.itemModifier_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
+                    addDefaultStyle(item_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(itemGroup_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                    addDefaultStyle(itemModifier_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
@@ -7136,6 +7183,20 @@ class AugmentExtractor(LoLDataExtractor):
                 logInput()
                 return
         #导出数据（Export data）
+        if self.dense_export:
+            CherryAugment_df: pandas.DataFrame = eliminate_empty_fields(self.CherryAugment_df)
+            SwarmAugment_df: pandas.DataFrame = eliminate_empty_fields(self.SwarmAugment_df)
+            KiwiAugment_df: pandas.DataFrame = eliminate_empty_fields(self.KiwiAugment_df)
+            KiwiAugmentSet_df: pandas.DataFrame = eliminate_empty_fields(self.KiwiAugmentSet_df)
+            KiwiQuestline_df: pandas.DataFrame = eliminate_empty_fields(self.KiwiQuestline_df)
+            augmentModifier_df: pandas.DataFrame = eliminate_empty_fields(self.augmentModifier_df)
+        else:
+            CherryAugment_df = self.CherryAugment_df
+            SwarmAugment_df = self.SwarmAugment_df
+            KiwiAugment_df = self.KiwiAugment_df
+            KiwiAugmentSet_df = self.KiwiAugmentSet_df
+            KiwiQuestline_df = self.KiwiQuestline_df
+            augmentModifier_df = self.augmentModifier_df
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
@@ -7149,16 +7210,16 @@ class AugmentExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    addDefaultStyle(self.CherryAugment_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                    if not self.SwarmAugment_df.empty:
-                        addDefaultStyle(self.SwarmAugment_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
-                    if not self.KiwiAugment_df.empty:
-                        addDefaultStyle(self.KiwiAugment_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
-                    if not self.KiwiAugmentSet_df.empty:
-                        addDefaultStyle(self.KiwiAugmentSet_df).to_excel(excel_writer = writer, sheet_name = sheet4_name)
-                    if not self.KiwiQuestline_df.empty:
-                        addDefaultStyle(self.KiwiQuestline_df).to_excel(excel_writer = writer, sheet_name = sheet5_name)
-                    addDefaultStyle(self.augmentModifier_df).to_excel(excel_writer = writer, sheet_name = sheet6_name)
+                    addDefaultStyle(CherryAugment_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    if not SwarmAugment_df.empty:
+                        addDefaultStyle(SwarmAugment_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                    if not KiwiAugment_df.empty:
+                        addDefaultStyle(KiwiAugment_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
+                    if not KiwiAugmentSet_df.empty:
+                        addDefaultStyle(KiwiAugmentSet_df).to_excel(excel_writer = writer, sheet_name = sheet4_name)
+                    if not KiwiQuestline_df.empty:
+                        addDefaultStyle(KiwiQuestline_df).to_excel(excel_writer = writer, sheet_name = sheet5_name)
+                    addDefaultStyle(augmentModifier_df).to_excel(excel_writer = writer, sheet_name = sheet6_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
                     if not self.SwarmAugment_df.empty:
@@ -7516,6 +7577,12 @@ class AnvilExtractor(LoLDataExtractor):
                 logInput()
                 return
         #导出数据（Export data）
+        if self.dense_export:
+            CherryAnvil_df: pandas.DataFrame = eliminate_empty_fields(self.CherryAnvil_df)
+            KiwiAnvil_df: pandas.DataFrame = eliminate_empty_fields(self.KiwiAnvil_df)
+        else:
+            CherryAnvil_df = self.CherryAnvil_df
+            KiwiAnvil_df = self.KiwiAnvil_df
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
@@ -7525,8 +7592,8 @@ class AnvilExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    addDefaultStyle(self.CherryAnvil_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                    addDefaultStyle(self.KiwiAnvil_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                    addDefaultStyle(CherryAnvil_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(KiwiAnvil_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
@@ -7792,6 +7859,14 @@ class CherryRoundExtractor(LoLDataExtractor):
                 logInput()
                 return
         #导出数据（Export data）
+        if self.dense_export:
+            CherryRoundList_df: pandas.DataFrame = eliminate_empty_fields(self.CherryRoundList_df)
+            CherryRound_df: pandas.DataFrame = eliminate_empty_fields(self.CherryRound_df)
+            CherryPhase_df: pandas.DataFrame = eliminate_empty_fields(self.CherryPhase_df)
+        else:
+            CherryRoundList_df = self.CherryRoundList_df
+            CherryRound_df = self.CherryRound_df
+            CherryPhase_df = self.CherryPhase_df
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
@@ -7802,9 +7877,9 @@ class CherryRoundExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    addDefaultStyle(self.CherryRoundList_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                    addDefaultStyle(self.CherryRound_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
-                    addDefaultStyle(self.CherryPhase_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
+                    addDefaultStyle(CherryRoundList_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(CherryRound_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                    addDefaultStyle(CherryPhase_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
@@ -7992,6 +8067,10 @@ class CameoExtractor(LoLDataExtractor):
                 logInput()
                 return
         #导出数据（Export data）
+        if self.dense_export:
+            cameo_df: pandas.DataFrame = eliminate_empty_fields(self.cameo_df)
+        else:
+            cameo_df = self.cameo_df
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
@@ -8000,7 +8079,7 @@ class CameoExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    addDefaultStyle(self.cameo_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(cameo_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
             except PermissionError:
@@ -8282,6 +8361,10 @@ class GoHExtractor(LoLDataExtractor):
                 logInput()
                 return
         #导出数据（Export data）
+        if self.dense_export:
+            GoH_df: pandas.DataFrame = eliminate_empty_fields(self.GoH_df)
+        else:
+            GoH_df = self.GoH_df
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
@@ -8290,7 +8373,7 @@ class GoHExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    addDefaultStyle(self.GoH_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(GoH_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
             except PermissionError:
@@ -9658,6 +9741,44 @@ class TFTExtractor(LoLDataExtractor):
                 logInput()
                 return
         #导出数据（Export data）
+        if dense_export:
+            TFTSet_df: pandas.DataFrame = eliminate_empty_fields(self.TFTSet_df)
+            TFTShop_df: pandas.DataFrame = eliminate_empty_fields(self.TFTShop_df)
+            TFTShopContent_df: pandas.DataFrame = eliminate_empty_fields(self.TFTShopContent_df)
+            TFTDropRate_df: pandas.DataFrame = eliminate_empty_fields(self.TFTDropRate_df)
+            TFTStageRound_df: pandas.DataFrame = eliminate_empty_fields(self.TFTStageRound_df)
+            TFTRound_df: pandas.DataFrame = eliminate_empty_fields(self.TFTRound_df)
+            TFTPortal_df: pandas.DataFrame = eliminate_empty_fields(self.TFTPortal_df)
+            TFTEncounterDistribution_df: pandas.DataFrame = eliminate_empty_fields(self.TFTEncounterDistribution_df)
+            TFTEncounter_df: pandas.DataFrame = eliminate_empty_fields(self.TFTEncounter_df)
+            TFTUnitProperty_df: pandas.DataFrame = eliminate_empty_fields(self.TFTUnitProperty_df)
+            TFTCharacterRole_df: pandas.DataFrame = eliminate_empty_fields(self.TFTCharacterRole_df)
+            TFTItemList_df: pandas.DataFrame = eliminate_empty_fields(self.TFTItemList_df)
+            TFTItem_df: pandas.DataFrame = eliminate_empty_fields(self.TFTItem_df)
+            TFTTraitList_df: pandas.DataFrame = eliminate_empty_fields(self.TFTTraitList_df)
+            TFTTrait_df: pandas.DataFrame = eliminate_empty_fields(self.TFTTrait_df)
+            TFTPVENPC_df: pandas.DataFrame = eliminate_empty_fields(self.TFTPVENPC_df)
+            TFTScript_df: pandas.DataFrame = eliminate_empty_fields(self.TFTScript_df)
+        else:
+            TFTAnnouncement_df = self.TFTAnnouncement_df
+            TFTSet_df = self.TFTSet_df
+            TFTShop_df = self.TFTShop_df
+            TFTShopContent_df = self.TFTShopContent_df
+            TFTDropRate_df = self.TFTDropRate_df
+            TFTStageRound_df = self.TFTStageRound_df
+            TFTRound_df = self.TFTRound_df
+            TFTPortal_df = self.TFTPortal_df
+            TFTEncounterDistribution_df = self.TFTEncounterDistribution_df
+            TFTEncounter_df = self.TFTEncounter_df
+            TFTUnitProperty_df = self.TFTUnitProperty_df
+            TFTCharacterRole_df = self.TFTCharacterRole_df
+            TFTItemList_df = self.TFTItemList_df
+            TFTItem_df = self.TFTItem_df
+            TFTTraitList_df = self.TFTTraitList_df
+            TFTTrait_df = self.TFTTrait_df
+            TFTPVENPC_df = self.TFTPVENPC_df
+            TFTScript_df = self.TFTScript_df
+            TFTAnnouncement_df = self.TFTAnnouncement_df
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
@@ -9683,24 +9804,24 @@ class TFTExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    addDefaultStyle(self.TFTSet_df.drop(labels = ["BotSkillData SkillAxes", "VfxResourceResolver resourceMap"], axis = 1)).to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                    addDefaultStyle(self.TFTShop_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
-                    addDefaultStyle(self.TFTShopContent_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
-                    addDefaultStyle(self.TFTDropRate_df).to_excel(excel_writer = writer, sheet_name = sheet4_name)
-                    addDefaultStyle(self.TFTStageRound_df).to_excel(excel_writer = writer, sheet_name = sheet5_name)
-                    addDefaultStyle(self.TFTRound_df).to_excel(excel_writer = writer, sheet_name = sheet6_name)
-                    addDefaultStyle(self.TFTPortal_df).to_excel(excel_writer = writer, sheet_name = sheet7_name)
-                    addDefaultStyle(self.TFTEncounterDistribution_df).to_excel(excel_writer = writer, sheet_name = sheet8_name[:31])
-                    addDefaultStyle(self.TFTEncounter_df).to_excel(excel_writer = writer, sheet_name = sheet9_name)
-                    addDefaultStyle(self.TFTUnitProperty_df).to_excel(excel_writer = writer, sheet_name = sheet10_name)
-                    addDefaultStyle(self.TFTCharacterRole_df).to_excel(excel_writer = writer, sheet_name = sheet11_name)
-                    addDefaultStyle(self.TFTItemList_df).to_excel(excel_writer = writer, sheet_name = sheet12_name)
-                    addDefaultStyle(self.TFTItem_df).to_excel(excel_writer = writer, sheet_name = sheet13_name)
-                    addDefaultStyle(self.TFTTraitList_df).to_excel(excel_writer = writer, sheet_name = sheet14_name)
-                    addDefaultStyle(self.TFTTrait_df).to_excel(excel_writer = writer, sheet_name = sheet15_name)
-                    addDefaultStyle(self.TFTPVENPC_df).to_excel(excel_writer = writer, sheet_name = sheet16_name)
-                    addDefaultStyle(self.TFTScript_df).to_excel(excel_writer = writer, sheet_name = sheet17_name)
-                    addDefaultStyle(self.TFTAnnouncement_df).to_excel(excel_writer = writer, sheet_name = sheet18_name)
+                    addDefaultStyle(TFTSet_df.drop(labels = ["BotSkillData SkillAxes", "VfxResourceResolver resourceMap"], axis = 1)).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(TFTShop_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                    addDefaultStyle(TFTShopContent_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
+                    addDefaultStyle(TFTDropRate_df).to_excel(excel_writer = writer, sheet_name = sheet4_name)
+                    addDefaultStyle(TFTStageRound_df).to_excel(excel_writer = writer, sheet_name = sheet5_name)
+                    addDefaultStyle(TFTRound_df).to_excel(excel_writer = writer, sheet_name = sheet6_name)
+                    addDefaultStyle(TFTPortal_df).to_excel(excel_writer = writer, sheet_name = sheet7_name)
+                    addDefaultStyle(TFTEncounterDistribution_df).to_excel(excel_writer = writer, sheet_name = sheet8_name[:31])
+                    addDefaultStyle(TFTEncounter_df).to_excel(excel_writer = writer, sheet_name = sheet9_name)
+                    addDefaultStyle(TFTUnitProperty_df).to_excel(excel_writer = writer, sheet_name = sheet10_name)
+                    addDefaultStyle(TFTCharacterRole_df).to_excel(excel_writer = writer, sheet_name = sheet11_name)
+                    addDefaultStyle(TFTItemList_df).to_excel(excel_writer = writer, sheet_name = sheet12_name)
+                    addDefaultStyle(TFTItem_df).to_excel(excel_writer = writer, sheet_name = sheet13_name)
+                    addDefaultStyle(TFTTraitList_df).to_excel(excel_writer = writer, sheet_name = sheet14_name)
+                    addDefaultStyle(TFTTrait_df).to_excel(excel_writer = writer, sheet_name = sheet15_name)
+                    addDefaultStyle(TFTPVENPC_df).to_excel(excel_writer = writer, sheet_name = sheet16_name)
+                    addDefaultStyle(TFTScript_df).to_excel(excel_writer = writer, sheet_name = sheet17_name)
+                    addDefaultStyle(TFTAnnouncement_df).to_excel(excel_writer = writer, sheet_name = sheet18_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
@@ -10074,6 +10195,20 @@ class FontExtractor(LoLDataExtractor):
                 logInput()
                 return
         #导出数据（Export data）
+        if self.dense_export:
+            fontDesc_df: pandas.DataFrame = eliminate_empty_fields(self.fontDesc_df)
+            fontType_df: pandas.DataFrame = eliminate_empty_fields(self.fontType_df)
+            fontResolution_df: pandas.DataFrame = eliminate_empty_fields(self.fontResolution_df)
+            fontStyle_df: pandas.DataFrame = eliminate_empty_fields(self.fontStyle_df)
+            font_CSSStyle_df: pandas.DataFrame = eliminate_empty_fields(self.font_CSSStyle_df)
+        else:
+            font_CSSIcon_df = self.font_CSSIcon_df
+            fontDesc_df = self.fontDesc_df
+            fontType_df = self.fontType_df
+            fontResolution_df = self.fontResolution_df
+            fontStyle_df = self.fontStyle_df
+            font_CSSStyle_df = self.font_CSSStyle_df
+            font_CSSIcon_df = self.font_CSSIcon_df
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
@@ -10087,12 +10222,12 @@ class FontExtractor(LoLDataExtractor):
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
-                    addDefaultStyle(self.fontDesc_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                    addDefaultStyle(self.fontType_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
-                    addDefaultStyle(self.fontResolution_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
-                    addDefaultStyle(self.fontStyle_df).to_excel(excel_writer = writer, sheet_name = sheet4_name)
-                    addDefaultStyle(self.font_CSSStyle_df).to_excel(excel_writer = writer, sheet_name = sheet5_name)
-                    addDefaultStyle(self.font_CSSIcon_df).to_excel(excel_writer = writer, sheet_name = sheet6_name)
+                    addDefaultStyle(fontDesc_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                    addDefaultStyle(fontType_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
+                    addDefaultStyle(fontResolution_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
+                    addDefaultStyle(fontStyle_df).to_excel(excel_writer = writer, sheet_name = sheet4_name)
+                    addDefaultStyle(font_CSSStyle_df).to_excel(excel_writer = writer, sheet_name = sheet5_name)
+                    addDefaultStyle(font_CSSIcon_df).to_excel(excel_writer = writer, sheet_name = sheet6_name)
                 with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
                     self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
@@ -10637,6 +10772,10 @@ if __name__ == "__main__":
         LoLDataExtractor.set_levelScaling_cap(18)
         logPrint('等级计算的等级上限默认为18级。如果需要调整，请在选择数据类型的步骤输入“-2”以调整等级上限。\nThe level cap for level scaling calculations is 18 by default. If you want to adjust it, please input "-2" in the data type selection step to adjust the level cap.')
         
+        #设置数据框导出密度（Set dataframe export density）
+        LoLDataExtractor.set_export_density(False)
+        logPrint('程序默认保留所有数据框的可导出的列。如果需要消除空字段，请在选择数据类型的步骤输入“-2”以设置导出密度。\nThe program reserves all dataframe columns that can be exported. If you want to remove empty fields, please input "-2" in the data type selection step to set the export density.')
+        
         for i in range(len(versions)):
             version: str = versions[i]
             logPrint("[%d/%d]开始处理%s版本的游戏数据。\nStart to process game data of Version %s." %(i + 1, len(versions), version, version))
@@ -10695,7 +10834,7 @@ if __name__ == "__main__":
                 if mode == "":
                     continue
                 elif mode == "-2":
-                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\thash值解析深度（Hash value resolution depth）\n5\t等级计算上限（Level scaling cap）\n6\t单类数据导出（Single-type data export）")
+                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t单类数据导出（Single-type data export）\n2\t切换语言（Switch language）\n3\t说明文本样式（Tooltip style）\n4\t变量替换样式（Variable substitution style）\n5\thash值解析深度（Hash value resolution depth）\n6\t等级计算上限（Level scaling cap）\n7\t切换数据框导出密度（Switch dataframe export density）")
                     while True:
                         option = logInput()
                         if option == "":
@@ -10705,6 +10844,14 @@ if __name__ == "__main__":
                         elif option[0] == "0":
                             break
                         elif option[0] == "1":
+                            logPrint("是否导出数据到Excel中？（输入任意非空字符串以导出，否则不导出。）\nDo you want to export data to Excel? (Submit any non-empty string to export, or null to refuse exporting.)")
+                            export_str: str = logInput()
+                            export = bool(export_str)
+                            if export:
+                                logPrint("数据将导出到Excel工作簿中。\nData will be exported to an Excel workbook.")
+                            else:
+                                logPrint("数据将只用来构建数据框，而不会导出。\nData will only be used to build dataframes but not be exported.")
+                        elif option[0] == "2":
                             old_locale: str = language_code
                             language_code = set_locale(initial_launch = False, old_locale = old_locale)
                             if language_code != old_locale:
@@ -10715,7 +10862,7 @@ if __name__ == "__main__":
                                 extractor.get_strtable()
                                 if not (extractor.strtable_organize_manner == 1 and extractor.strtables_ready["lol_target"] and extractor.strtables_ready["lol_default"] and extractor.strtables_ready["tft_target"] and extractor.strtables_ready["tft_default"]) and not (extractor.strtable_organize_manner == 2 and extractor.strtables_ready["target"] and extractor.strtables_ready["default"]):
                                     continue
-                        elif option[0] == "2":
+                        elif option[0] == "3":
                             logPrint("是否保留说明文本的原始样式？（输入任意非空字符串以保留原始CSS样式；否则移除所有CSS样式，用统一的标点符号进行强调。）\nDo you want to reserve the original style of tooltips? (Input any non-empty string to reserve the original CSS style; otherwise, remove all CSS styles and use the unified punctuation marks for emphasis.)")
                             reserve_CSS_str: str = logInput()
                             reserve_CSS: bool = bool(reserve_CSS_str)
@@ -10724,7 +10871,7 @@ if __name__ == "__main__":
                                 logPrint("说明文本将保留原始CSS标签。\nCSS tags will be reserved in the tooltips.")
                             else:
                                 logPrint("说明文本将移除所有CSS标签。\nCSS tags will be removed from the tooltips.")
-                        elif option[0] == "3":
+                        elif option[0] == "4":
                             logPrint('是否在数值替换的同时保留原变量？（输入任意非空字符串以将转换后的变量写成“[{变量名}] = {值}”的形式，否则只保留值。）\nDo you want to reserve the original variable when variable substitution is being performed? (Input any non-empty string to transform the variable into the form "[{Var_name}] = {Value}", or null to reserve the value only.)')
                             reserve_variable_str: str = logInput()
                             reserve_variable: bool = bool(reserve_variable_str)
@@ -10733,7 +10880,7 @@ if __name__ == "__main__":
                                 logPrint("说明文本在完成变量代换后将同时显示变量名和值。\nBoth the name and the value of variables will appear in the tooltip after variable substitution.")
                             else:
                                 logPrint("说明文本在完成变量代换后将只显示值。\nOnly the value of variables will appear in the tooltip after variable substitution.")
-                        elif option[0] == "4":
+                        elif option[0] == "5":
                             logPrint("是否启用hash值深度解析模式？（输入任意非空字符串以重新计算一段二进制描述数据中所有字符串的hash值并寻找其原始字符串以统一大小写，否则只对数据中已有的hash值进行解析。）\nDo you want to enable the deep resolution mode of hash value? (Input any non-empty string to recompute the hash values of all strings in a piece of binary description data and find their original strings to unify the cases, or null to only resolve the hash values already in the data.)")
                             deep_resolve_hash_str: str = logInput()
                             deep_resolve_hash: bool = bool(deep_resolve_hash_str)
@@ -10748,25 +10895,26 @@ if __name__ == "__main__":
                                 logPrint("已启用hash值深度解析模式。\nEnabled deep resolution mode of hash value.")
                             else:
                                 logPrint("已禁用hash值深度解析模式。\nDisabled deep resolution mode of hash value.")
-                        elif option[0] == "5":
+                        elif option[0] == "6":
                             logPrint(f"请设置等级计算的等级上限。输入空字符串以取消更改。\nPlease set the level cap for level scaling calculations. Submit an empty string to cancel the change.\n当前等级上限（Current level cap）：{extractor.levelScaling_cap}")
                             levelScaling_cap_str: int = logInput()
                             if levelScaling_cap_str.isdigit():
                                 levelScaling_cap: int = int(levelScaling_cap_str)
                                 extractor.set_levelScaling_cap(levelScaling_cap)
                                 logPrint("等级上限已修改。\nLevel cap changed.")
-                        elif option[0] == "6":
-                            logPrint("是否导出数据到Excel中？（输入任意非空字符串以导出，否则不导出。）\nDo you want to export data to Excel? (Submit any non-empty string to export, or null to refuse exporting.)")
-                            export_str: str = logInput()
-                            export = bool(export_str)
-                            if export:
-                                logPrint("数据将导出到Excel工作簿中。\nData will be exported to an Excel workbook.")
+                        elif option[0] == "7":
+                            logPrint("是否启用密集导出？（输入任意非空字符串以密集导出，从而消除空字段；否则保留所有可导出的字段。）\nDo you want to enable dense export? (Submit any non-empty string to export dataframes in a dense manner to remove all empty fields, or null to reserve all fields that can be exported.)")
+                            dense_export_str: str = logInput()
+                            dense_export: bool = bool(dense_export_str)
+                            extractor.set_export_density(dense_export)
+                            if dense_export:
+                                logPrint("数据框在导出前将消除空字段。\nEmpty fields will be removed before dataframes are exported.")
                             else:
-                                logPrint("数据将只用来构建数据框，而不会导出。\nData will only be used to build dataframes but not be exported.")
+                                logPrint("数据框的所有可用字段将保留。\nAll available fields will be reserved when dataframes are exported.")
                         else:
                             logPrint("您的输入有误！请重新输入。\nERROR input. Please try again.")
                             continue
-                        logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\thash值解析深度（Hash value resolution depth）\n5\t等级计算上限（Level scaling cap）\n6\t单类数据导出（Single-type data export）")
+                        logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t单类数据导出（Single-type data export）\n2\t切换语言（Switch language）\n3\t说明文本样式（Tooltip style）\n4\t变量替换样式（Variable substitution style）\n5\thash值解析深度（Hash value resolution depth）\n6\t等级计算上限（Level scaling cap）\n7\t切换数据框导出密度（Switch dataframe export density）")
                 elif mode == "-1":
                     df_queue: list[dict[str, Any]] = sorted(extractor.df_queue, key = lambda x: x["order"])
                     if len(df_queue) > 0:
@@ -10786,6 +10934,8 @@ if __name__ == "__main__":
                                         if len(df) > 1: #只导出非空数据框。每个数据框有一行中文表头（Only non-empty dataframes are exported. Each dataframe has a Chinese header）
                                             columns_to_drop: list[str] = [column for column in df.columns if df[column].astype(str).str.len().max() > 32767] #存储单元格长度超过Excel限制的列（Store columns with cell length exceeding Excel limit）
                                             df = df.drop(labels = columns_to_drop, axis = 1)
+                                            if extractor.dense_export:
+                                                df = eliminate_empty_fields(df)
                                             if df_struct.get("T", False):
                                                 df = df.transpose()
                                             addDefaultStyle(df).to_excel(excel_writer = writer, sheet_name = sheet_name[:31])
@@ -11045,6 +11195,10 @@ if __name__ == "__main__":
         LoLDataExtractor.set_levelScaling_cap(18)
         # logPrint('等级计算的等级上限默认为18级。如果需要调整，请在选择数据类型的步骤输入“-2”以调整等级上限。\nThe level cap for level scaling calculations is 18 by default. If you want to adjust it, please input "-2" in the data type selection step to adjust the level cap.')
         
+        #设置数据框导出密度（Set dataframe export density）
+        LoLDataExtractor.set_export_density(False)
+        # logPrint('程序默认保留所有数据框的可导出的列。如果需要消除空字段，请在选择数据类型的步骤输入“-2”以设置导出密度。\nThe program reserves all dataframe columns that can be exported. If you want to remove empty fields, please input "-2" in the data type selection step to set the export density.')
+        
         #设置工作表集成（Determine whether to integrate sheets in different patches into one workbook）
         logPrint("是否将不同版本的工作表集成到一个工作簿中？（输入任意非空字符串以确认集成，否则分不同版本保存。）\nDo you want to integrate sheets of different versions into a single workbook? (Input any non-empty string to confirm integration, or null to save data into multiple workbooks of the different version.)")
         integrate_str: str = logInput()
@@ -11186,7 +11340,7 @@ if __name__ == "__main__":
                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     logPrint("请选择草稿选项：\nPlease select a draft option:\n0\t退出调试（Quit debug）\n1\t启动子环境（Start a sub-environment）")
             elif mode == "-2":
-                logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\thash值解析深度（Hash value resolution depth）\n5\t等级计算上限（Level scaling cap）\n6\t单类数据导出（Single-type data export）")
+                logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t单类数据导出（Single-type data export）\n2\t切换语言（Switch language）\n3\t说明文本样式（Tooltip style）\n4\t变量替换样式（Variable substitution style）\n5\thash值解析深度（Hash value resolution depth）\n6\t等级计算上限（Level scaling cap）\n7\t切换数据框导出密度（Switch dataframe export density）")
                 while True:
                     option = logInput()
                     if option == "":
@@ -11196,6 +11350,14 @@ if __name__ == "__main__":
                     elif option[0] == "0":
                         break
                     elif option[0] == "1":
+                        logPrint("是否导出数据到Excel中？（输入任意非空字符串以导出，否则不导出。）\nDo you want to export data to Excel? (Submit any non-empty string to export, or null to refuse exporting.)")
+                        export_str: str = logInput()
+                        export = bool(export_str)
+                        if export:
+                            logPrint("数据将导出到Excel工作簿中。\nData will be exported to an Excel workbook.")
+                        else:
+                            logPrint("数据将只用来构建数据框，而不会导出。\nData will only be used to build dataframes but not be exported.")
+                    elif option[0] == "2":
                         old_locale: str = locale
                         locale = set_locale(initial_launch = False, old_locale = old_locale)
                         if locale != old_locale:
@@ -11220,7 +11382,7 @@ if __name__ == "__main__":
                             extractor.read_strtable(strtable_paths = list(map(lambda x: x.as_posix(), strtable_paths)))
                             if not (extractor.strtable_organize_manner == 1 and extractor.strtables_ready["lol_target"] and extractor.strtables_ready["lol_default"] and extractor.strtables_ready["tft_target"] and extractor.strtables_ready["tft_default"]) and not (extractor.strtable_organize_manner == 2 and extractor.strtables_ready["target"] and extractor.strtables_ready["default"]):
                                 return 0
-                    elif option[0] == "2":
+                    elif option[0] == "3":
                         logPrint("是否保留说明文本的原始样式？（输入任意非空字符串以保留原始CSS样式；否则移除所有CSS样式，用统一的标点符号进行强调。）\nDo you want to reserve the original style of tooltips? (Input any non-empty string to reserve the original CSS style; otherwise, remove all CSS styles and use the unified punctuation marks for emphasis.)")
                         reserve_CSS_str: str = logInput()
                         reserve_CSS: bool = bool(reserve_CSS_str)
@@ -11229,7 +11391,7 @@ if __name__ == "__main__":
                             logPrint("说明文本将保留原始CSS标签。\nCSS tags will be reserved in the tooltips.")
                         else:
                             logPrint("说明文本将移除所有CSS标签。\nCSS tags will be removed from the tooltips.")
-                    elif option[0] == "3":
+                    elif option[0] == "4":
                         logPrint('是否在数值替换的同时保留原变量？（输入任意非空字符串以将转换后的变量写成“[{变量名}] = {值}”的形式，否则只保留值。）\nDo you want to reserve the original variable when variable substitution is being performed? (Input any non-empty string to transform the variable into the form "[{Var_name}] = {Value}", or null to reserve the value only.)')
                         reserve_variable_str: str = logInput()
                         reserve_variable: bool = bool(reserve_variable_str)
@@ -11238,7 +11400,7 @@ if __name__ == "__main__":
                             logPrint("说明文本在完成变量代换后将同时显示变量名和值。\nBoth the name and the value of variables will appear in the tooltip after variable substitution.")
                         else:
                             logPrint("说明文本在完成变量代换后将只显示值。\nOnly the value of variables will appear in the tooltip after variable substitution.")
-                    elif option[0] == "4":
+                    elif option[0] == "5":
                         logPrint("是否启用hash值深度解析模式？（输入任意非空字符串以重新计算一段二进制描述数据中所有字符串的hash值并寻找其原始字符串以统一大小写，否则只对数据中已有的hash值进行解析。）\nDo you want to enable the deep resolution mode of hash value? (Input any non-empty string to recompute the hash values of all strings in a piece of binary description data and find their original strings to unify the cases, or null to only resolve the hash values already in the data.)")
                         deep_resolve_hash_str: str = logInput()
                         deep_resolve_hash: bool = bool(deep_resolve_hash_str)
@@ -11250,25 +11412,26 @@ if __name__ == "__main__":
                             logPrint("已启用hash值深度解析模式。\nEnabled deep resolution mode of hash value.")
                         else:
                             logPrint("已禁用hash值深度解析模式。\nDisabled deep resolution mode of hash value.")
-                    elif option[0] == "5":
+                    elif option[0] == "6":
                         logPrint(f"请设置等级计算的等级上限。输入空字符串以取消更改。\nPlease set the level cap for level scaling calculations. Submit an empty string to cancel the change.\n当前等级上限（Current level cap）：{extractor.levelScaling_cap}")
                         levelScaling_cap_str: int = logInput()
                         if levelScaling_cap_str.isdigit():
                             levelScaling_cap: int = int(levelScaling_cap_str)
                             extractor.set_levelScaling_cap(levelScaling_cap)
                             logPrint("等级上限已修改。\nLevel cap changed.")
-                    elif option[0] == "6":
-                        logPrint("是否导出数据到Excel中？（输入任意非空字符串以导出，否则不导出。）\nDo you want to export data to Excel? (Submit any non-empty string to export, or null to refuse exporting.)")
-                        export_str: str = logInput()
-                        export = bool(export_str)
-                        if export:
-                            logPrint("数据将导出到Excel工作簿中。\nData will be exported to an Excel workbook.")
+                    elif option[0] == "7":
+                        logPrint("是否启用密集导出？（输入任意非空字符串以密集导出，从而消除空字段；否则保留所有可导出的字段。）\nDo you want to enable dense export? (Submit any non-empty string to export dataframes in a dense manner to remove all empty fields, or null to reserve all fields that can be exported.)")
+                        dense_export_str: str = logInput()
+                        dense_export: bool = bool(dense_export_str)
+                        extractor.set_export_density(dense_export)
+                        if dense_export:
+                            logPrint("数据框在导出前将消除空字段。\nEmpty fields will be removed before dataframes are exported.")
                         else:
-                            logPrint("数据将只用来构建数据框，而不会导出。\nData will only be used to build dataframes but not be exported.")
+                            logPrint("数据框的所有可用字段将保留。\nAll available fields will be reserved when dataframes are exported.")
                     else:
                         logPrint("您的输入有误！请重新输入。\nERROR input. Please try again.")
                         continue
-                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t切换语言（Switch language）\n2\t说明文本样式（Tooltip style）\n3\t变量替换样式（Variable substitution style）\n4\thash值解析深度（Hash value resolution depth）\n5\t等级计算上限（Level scaling cap）\n6\t单类数据导出（Single-type data export）")
+                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t单类数据导出（Single-type data export）\n2\t切换语言（Switch language）\n3\t说明文本样式（Tooltip style）\n4\t变量替换样式（Variable substitution style）\n5\thash值解析深度（Hash value resolution depth）\n6\t等级计算上限（Level scaling cap）\n7\t切换数据框导出密度（Switch dataframe export density）")
             elif mode == "-1":
                 df_queue: list[dict[str, Any]] = sorted(extractor.df_queue, key = lambda x: x["order"])
                 if len(df_queue) > 0:
@@ -11288,6 +11451,8 @@ if __name__ == "__main__":
                                     if len(df) > 1:
                                         columns_to_drop: list[str] = [column for column in df.columns if df[column].astype(str).str.len().max() > 32767]
                                         df = df.drop(labels = columns_to_drop, axis = 1)
+                                        if extractor.dense_export:
+                                            df = eliminate_empty_fields(df)
                                         if df_struct.get("T", False):
                                             df = df.transpose()
                                         addDefaultStyle(df).to_excel(excel_writer = writer, sheet_name = sheet_name[:31])
