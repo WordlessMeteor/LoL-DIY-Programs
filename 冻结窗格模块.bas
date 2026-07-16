@@ -5,6 +5,7 @@ Sub FreezeAndFilterGameDataSheets()
     For Each ws In ThisWorkbook.Worksheets
         If ws.Name = "指令集（CheatSet）" Or Right$(ws.Name, 8) = "CheatSet" Or ws.Name = "指令（Cheat）" Or Right$(ws.Name, 11) = "Cheat" _
                 Or ws.Name = "符文系（PerkStyles）" Or Right$(ws.Name, 10) = "PerkStyles" Or ws.Name = "符文（Perks）" Or Right$(ws.Name, 5) = "Perks" _
+                Or ws.Name = "召唤师技能（Summoner Spells）" Or Right$(ws.Name, 14) = "SummonerSpells" _
                 Or ws.Name = "英雄（Champions）" Or Right$(ws.Name, 9) = "Champions" _
                 Or ws.Name = "英雄技能（Champion Spells）" Or Right$(ws.Name, 14) = "ChampionSpells" Or ws.Name = "角色（Characters）" Or Right$(ws.Name, 10) = "Characters" _
                 Or ws.Name = "角色技能（Character Spells）" Or Right$(ws.Name, 16) = "CharacterSpells" _
@@ -54,7 +55,8 @@ Sub FreezeAndFilterGameDataSheets()
                     Or ws.Name = "云顶之弈角色定位（TFT Character Role）" Or Right$(ws.Name, 16) = "TFTCharacterRole" _
                     Or ws.Name = "云顶之弈羁绊（TFT Traits）" Or Right$(ws.Name, 9) = "TFTTraits" Then
                 ws.Range("G3").Select '冻结前两行和前六列（Freeze the first two rows and six columns）
-            ElseIf ws.Name = "云顶之弈赛季（TFT Set）" Or Right$(ws.Name, 6) = "TFTSet" _
+            ElseIf ws.Name = "召唤师技能（Summoner Spells）" Or Right$(ws.Name, 14) = "SummonerSpells" _
+                    Or ws.Name = "云顶之弈赛季（TFT Set）" Or Right$(ws.Name, 6) = "TFTSet" _
                     Or ws.Name = "云顶之弈装备（TFT Items）" Or Right$(ws.Name, 8) = "TFTItems" _
                     Or ws.Name = "斗魂竞技场强化符文（Cherry Augments）" Or Right$(ws.Name, 7) = "CherryAugments" _
                     Or ws.Name = "海克斯大乱斗强化符文（Kiwi Augments）" Or Right$(ws.Name, 7) = "KiwiAugments" _

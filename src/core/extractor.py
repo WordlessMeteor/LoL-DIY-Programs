@@ -14,7 +14,7 @@ from src.utils.webRequest import requestUrl
 from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, pyobj2json, capitalize, decapitalize
 from src.utils.runtimeDebug import subscope
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
-from src.core.config.headers import map_header_l10n, cheatset_header, cheat_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, KiwiQuestline_header, augmentModifier_header, CherryAnvil_header, GoH_header, cameo_header, CherryRoundList_header, CherryRound_header, CherryPhase_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header, fontDesc_header, fontType_header, fontResolution_header, fontStyle_header, font_CSSStyle_header, font_CSSIcon_header
+from src.core.config.headers import spell_header, map_header_l10n, cheatset_header, cheat_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, KiwiQuestline_header, augmentModifier_header, CherryAnvil_header, GoH_header, cameo_header, CherryRoundList_header, CherryRound_header, CherryPhase_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header, fontDesc_header, fontType_header, fontResolution_header, fontStyle_header, font_CSSStyle_header, font_CSSIcon_header
 from src.core.config.localization import language_ddragon, language_dict
 
 #=============================================================================
@@ -23,7 +23,7 @@ from src.core.config.localization import language_ddragon, language_dict
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/07/07
+# 更新（Last update）：     2026/07/16
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -452,6 +452,11 @@ class LoLDataExtractor:
             "sheet_name_without_version": "指令（Cheat）",
             "sheet_name_with_version": "{version} Cheat"
         },
+        "SummonerSpell": {
+            "dType": "SummonerSpell",
+            "sheet_name_without_version": "召唤师技能（Summoner Spells）",
+            "sheet_name_with_version": "{version} SummonerSpells"
+        },
         "PerkStyle": {
             "dType": "PerkStyle",
             "sheet_name_without_version": "符文系（PerkStyles）",
@@ -687,6 +692,7 @@ class LoLDataExtractor:
         "Map",
         "CheatSet",
         "Cheat",
+        "SummonerSpell",
         "PerkStyle",
         "Perk",
         "Champion",
@@ -3523,6 +3529,77 @@ class LoLDataExtractor:
             result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, reserve_CSS = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, flexibleData = flexibleData)
         result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, reserve_CSS = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, flexibleData = flexibleData)
         return result
+    
+    #下面定义特定数据对象类的记录添加方法。这类方法对应的表头是通过调查全英雄联盟所有二进制描述文件中该对象类型的数据的所有键/条目得到的。这类表头只增不删，开发者可以通过修改输出顺序列表或者调用清除空列函数，将弃用的字段从数据框和工作表中移除（Define the addition method of records of specific object types. The corresponding headers are obtained by inspecting all keys / entries in data of this object type in all binary description files in League of Legends. This kind of headers are always supplemented but never deleted. Developers may remove those deprecated fields from dataframes and worksheets by modifying the output order list or calling `eliminate_empty_fields` function）
+    def add_spell_record(self, data_ref: dict[str, list[Any]], field: str, key: str, value: dict[str, Any]) -> Any: #这里之所以将`data_ref`设置为整个字典，而不是值列表，是因为对于说明文本转换的字段来说，需要用到前面追加的结果。使用字段字符串而不是字段索引来作为一个函数参数，是为了方便代码的撰写，因为不排除未来有可能会在`spell_header_keys`中间某个地方插入新的字段，而不是追加到这个列表的前部或者末尾。这样的话，连续性就打破了，所以索引的优势就体现不出来了（Here the reason why `data_ref` is set to the whole dictionary instead of the value list is that for the fields of tooltip transformation, the previously appended results are needed. `field` instead of some `index` is used as a paramter of this function, so that code writing is more convenient. After all, chances are that some new fields will be inserted into some middle place of `spell_header_keys`, rather than being appended to the beginning or end of this list. In that case, the continuity would be broken, and thus the advantage of indices wouldn't be evident）
+        '''
+        向涉及法术数据的字典的值列表追加一个字段的数据。<br>Append the data of a field into the value list of the dictionary that involves spell data.
+
+        :param data_ref: 待追加值的字典的引用。<br>Reference to the dictionary to be appended with values.
+        :type data_ref: dict[str, list[Any]]
+        :param field: 字段。<br>Field.
+        :type field: str
+        :param key: 一个法术对象的键。<br>A `SpellObject`'s key.
+        :type key: str
+        :param value: 一个法术对象的值。<br>A `SpellObject`'s value.
+        :type value: dict[str, Any]
+        :return: 待追加的值。<br>Value to be appended.
+
+            之所以要显式返回这个值，是为了方便在形如`_data_json`的字典中追加文本化的值。文本化指的是通过调用`pyobj2json`方法，将列表和字典转化为JSON字符串的形式。<br>The reason why this value is explicitly returned is to facilitate the appending of textualized values in dictionaries like `_data_json`. Textualization refers to the conversion of lists and dictionaries into JSON strings by calling the `pyobj2json` method.
+        :rtype: Any
+        '''
+        mSpell: Optional[dict[str, Any]] = value.get("mSpell")
+        if mSpell == None:
+            mSpell = {}
+        spell_header_keys: list[str] = list(spell_header.keys())
+        i: int = spell_header_keys.index(field) #当字段在`spell_header`中不存在时，抛出异常并终止程序（When the field doesn't exist in `spell_header`, throw an exception and cancel the program）
+        #数据整理核心部分（Data organization core part）
+        strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
+        strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
+        strtable_tft_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.tftstringtable_target
+        strtable_tft_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.tftstringtable_default
+        pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
+        if i == 0: #主键（`key`）
+            to_append: Any = key
+        else:
+            subkeyList: list[str] = field.split()
+            if "mSpell" in value and pStrConst.search(field):
+                subkey2: str = pStrConst.search(field).group()
+                subkey1: str = field.replace(subkey2, "")
+                useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
+                strtable_locale_lol: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                strtable_locale_tft: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
+                tooltip_key: str = data_ref[subkey1][-1]
+                use_lol_strtable: bool = True
+                tooltip_raw: str = self.get_strtable_value(strtable_locale_lol, tooltip_key, default = "")
+                if tooltip_raw == "":
+                    tooltip_raw = self.get_strtable_value(strtable_locale_tft, tooltip_key, default = "")
+                    if tooltip_raw != "":
+                        use_lol_strtable = False
+                if subkey2.endswith("_burn"):
+                    self.__class__.calculatedVariables.clear()
+                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale_lol if use_lol_strtable else strtable_locale_tft, value["mSpell"], locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                    to_append = tooltip_burn
+                else:
+                    to_append = tooltip_raw
+            else:
+                tmp_ptr = value
+                for tmp_key in subkeyList:
+                    if tmp_key in tmp_ptr:
+                        tmp_ptr = tmp_ptr[tmp_key]
+                    else:
+                        if i in {12, 32, 45, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 75, 76, 77, 78, 79, 80, 82, 83, 84, 86, 87, 88, 90, 91, 92, 94, 95, 96, 97, 98, 99, 100, 102, 103, 104, 110, 111, 112, 113, 114, 115, 116, 118, 130, 131, 132, 141, 142, 146, 162, 164, 168, 172, 173, 179, 180, 182, 184, 198, 223, 232, 233, 249, 250, 251, 330, 332}:
+                            to_append = False
+                        elif i in {73, 74, 81, 85, 93, 106, 109, 133, 140, 144, 151, 257, 338, 344, 345, 346}:
+                            to_append = tmp_key == subkeyList[-2] #如果遍历到某个逻辑值键的上一级就停止，且该逻辑值键的默认值为真，仍应将其置为假，以表明该逻辑值键所在的命名背景不存在（If `tmp_key` traverses through `subkeyList` and stopped at the parent key of a boolean key whose default value is True, the result to append should be set as False, to indicate that the namespace background of this boolean key doesn't exist）
+                        else:
+                            to_append = ""
+                        break
+                else: #在成功遍历到目标值后才会执行以下部分（Only when the target value is fetched will this part be executed）
+                    to_append = tmp_ptr
+            data_ref[field].append(to_append)
+        return to_append
 
 class MapExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -4700,6 +4777,188 @@ class PerkExtractor(LoLDataExtractor):
                     break
             else:
                 logPrint(f"符文数据已导出到{self.wbPath}。\nPerk data have been exported to {self.wbPath}.", print_time = True)
+                break
+
+class SummonerSpellExtractor(LoLDataExtractor):
+    def __init__(self, extractor: LoLDataExtractor) -> None:
+        '''
+        初始化一个召唤师技能提取器对象。<br>Initialize a SummonerSpellExtractor object.
+        
+        :param extractor: 父类对象。用于继承其属性。<br>Parent object. Pass it to inherit its attributes.
+        :type extractor: LoLDataExtractor
+        '''
+        self.__dict__.update(extractor.__dict__)
+        self.spell_ready: bool = True #共享数据已经在基类中获取过了，所以在通过基类初始化子类时，默认将这个属性设置为真（Shared data has already been obtained in the `LoLDataExtractor` base class, so when an object of this class is initialized, this attribute is set as True by default）
+        self.spell_df: pandas.DataFrame = pandas.DataFrame()
+    
+    def init_data_readiness(self) -> None:
+        '''
+        初始化数据就绪状态。当数据未就绪时，无法构建要导出到工作簿中的数据框。<br>Initialize the data ready status. When data are not ready, dataframes to be exported can't be built.
+        '''
+        self.spell_ready = False
+    
+    def get_spell_data(self) -> None: #在线加载——供用户使用（Online loading - For user use）
+        '''
+        在线获取召唤师技能二进制描述数据。<br>Get binary description data of summoner spells online.
+        '''
+        logPrint = self.log.logPrint
+        shared_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/shared.cdtb.bin.json"
+        if shared_bin_url in self.__class__.data_cache["online"]:
+            self.shared_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][shared_bin_url]
+        else:
+            source, status, self.session = requestUrl("GET", shared_bin_url, session = self.session, log = self.log)
+            if status != 200:
+                if status == 404:
+                    logPrint("共享数据获取失败！请检查以下链接的可用性。程序即将返回上一层。\nShared data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(shared_bin_url))
+                else:
+                    logPrint("共享数据获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nShared data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
+                time.sleep(3)
+                self.init_data_readiness()
+                return
+            self.shared_bin = source.json()
+            self.shared_bin = self.resolve_bin_hash(self.shared_bin)
+            self.__class__.data_cache["online"][shared_bin_url] = self.shared_bin
+        self.spell_ready = True
+    
+    def read_spell_data(self, path: str) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
+        '''
+        离线获取召唤师技能二进制描述数据。<br>Get binary description data of summoner spells offline.
+
+        :param path: 召唤师技能二进制描述文件的本地路径。<br>A local path of summoner spell binary description file.
+        :type path: str
+        '''
+        logPrint = self.log.logPrint
+        if not os.path.exists(path):
+            logPrint(f"以下路径不存在：\nThe following path doesn't exist:\n{path}")
+            self.init_data_readiness()
+            return
+        spells_bin_path: str = path
+        if spells_bin_path in self.__class__.data_cache["local"]:
+            self.shared_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][spells_bin_path]
+        else:
+            with open(spells_bin_path, "r", encoding = "utf-8") as fp:
+                self.shared_bin = json.load(fp)
+            self.shared_bin = self.resolve_bin_hash(self.shared_bin)
+            self.__class__.data_cache["local"][spells_bin_path] = self.shared_bin
+        self.spell_ready = True
+
+    def build_spell_dataframe(self, debug: bool = False, path: Optional[str] = None) -> int:
+        '''
+        构建召唤师技能数据框。<br>Build summoner spell dataframe.
+
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 召唤师技能二进制描述文件的本地路径。<br>A local path of summoner spell binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        :return: 状态码。<br>Status code.
+        
+            - 0: 成功。<br>Success.
+            - 1: 未指定本地文件路径。<br>Local path not specified.
+            - 2: 数据未准备就绪。<br>Data not ready.
+        :rtype: int
+        '''
+        logPrint = self.log.logPrint
+        if not self.spell_ready:
+            #获取召唤师技能信息（Get summoner spell information）
+            logPrint("正在读取召唤师技能数据……\nReading summoner spell data ...", print_time = True)
+            if debug:
+                if path == None:
+                    logPrint("尚未指定本地文件路径！\nLocal path not specified yet!")
+                    return 1
+                else:
+                    self.read_spell_data(path = path)
+            else:
+                self.get_spell_data()
+            if not self.spell_ready:
+                logPrint("召唤师技能数据尚未准备就绪！\nSummoner spell data not prepared!")
+                return 2
+        
+        #提取召唤师技能数据（Extract summoner spell data）
+        summonerSpell_bin: dict[str, dict[str, Any]] = {key: value for (key, value) in self.shared_bin.items() if key != "__linked" and value["__type"] == "SpellObject" and "mSpell" in value and "mPlatformSpellInfo" in value["mSpell"]}
+
+        #定义数据结构（Define the data structure）
+        logPrint("正在构建召唤师技能数据框……\nBuilding the summoner spell dataframes ...", print_time = True)
+        spell_header_keys: list[str] = list(spell_header.keys())
+        spell_data: dict[str, list[Any]] = {key: [] for key in spell_header_keys}
+        spell_data_json: dict[str, list[Any]] = copy.deepcopy(spell_data)
+        
+        #数据整理核心部分（Data organization core part）
+        pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
+        strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
+        strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
+        for (key1, value) in summonerSpell_bin.items():
+            for i in range(len(spell_header_keys)):
+                key: str = spell_header_keys[i]
+                to_append: Any = self.add_spell_record(spell_data, key, key1, value)
+                spell_data_json[key].append(pyobj2json(to_append))
+        
+        #数据框构建和排序（Build the dataframe and sort the keys and values）
+        spell_statistics_output_order: list[int] = [0, 1, 11, 12, 261, 283, 284, 10, 13, 4, 2, 3, 16, 5, 6, 7, 17, 98, 113, 227, 229, 230, 62, 228, 39, 40, 41, 22, 32, 63, 44, 58, 59, 60, 21, 61, 64, 18, 19, 20, 23, 226, 24, 25, 231, 199, 119, 126, 127, 120, 53, 54, 55, 90, 121, 122, 35, 38, 200, 123, 124, 125, 92, 93, 42, 43, 46, 47, 48, 49, 45, 14, 15, 94, 99, 8, 9, 51, 31, 50, 52, 56, 57, 36, 37, 83, 75, 76, 86, 87, 67, 66, 72, 104, 69, 70, 71, 88, 91, 65, 68, 247, 78, 73, 74, 89, 81, 82, 77, 79, 80, 84, 102, 112, 85, 249, 250, 251, 100, 115, 114, 116, 118, 246, 232, 233, 234, 235, 236, 237, 238, 26, 27, 28, 29, 95, 245, 97, 111, 101, 210, 211, 103, 106, 105, 107, 110, 108, 109, 117, 128, 215, 96, 216, 218, 217, 221, 222, 225, 239, 243, 244, 248, 252, 254, 253, 321, 322, 255, 256, 257, 258, 273, 274, 262, 267, 299, 301, 300, 302, 270, 311, 313, 312, 314, 265, 293, 294, 266, 295, 297, 296, 298, 268, 303, 305, 304, 306, 269, 307, 309, 308, 310, 271, 315, 317, 316, 318, 272, 319, 320, 259, 275, 277, 276, 278, 260, 279, 281, 280, 282, 263, 285, 287, 286, 288, 264, 289, 291, 290, 292, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 213, 33, 30, 34, 333, 334, 336, 337, 348, 338, 339, 353, 354, 335, 349, 351, 350, 352, 341, 359, 361, 360, 362, 342, 363, 365, 364, 366, 340, 355, 356, 357, 358, 343, 344, 345, 346, 347, 201, 202, 203, 204, 205, 206, 207, 208, 209, 129, 177, 133, 131, 134, 135, 130, 132, 223, 224, 136, 137, 139, 140, 141, 142, 143, 144, 138, 145, 146, 147, 148, 149, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 175, 150, 176, 166, 167, 168, 169, 170, 171, 172, 173, 174, 178, 185, 179, 180, 181, 182, 183, 184, 195, 186, 187, 188, 189, 190, 191, 192, 193, 194, 196, 197, 198, 219, 220, 212, 214, 240, 241, 242, 367, 368, 369, 370, 371]
+        spell_data_organized: dict[str, list[Any]] = {spell_header_keys[i]: spell_data_json[spell_header_keys[i]] for i in spell_statistics_output_order}
+        spell_df: pandas.DataFrame = pandas.DataFrame(data = spell_data_organized)
+        logPrint("正在优化召唤师技能数据框的逻辑值显示……\nOptimizing boolean value display of the summoner spell dataframe ...")
+        optimize_bool_display(spell_df)
+        spell_df = pandas.concat([pandas.DataFrame([spell_header])[spell_df.columns], spell_df], ignore_index = True)
+        self.spell_df = spell_df
+        return 0
+    
+    def enqueue_spell_dataframe(self) -> None:
+        '''
+        将召唤师技能数据框追加到数据提取器基类的数据框队列尾部。<br>Append summoner spell dataframes into the end of `LoLDataExtractor.df_queue`.
+        '''
+        if not self.spell_df.empty:
+            spell_ws: dict[str, Any] = self.worksheet_metadata["SummonerSpell"]
+            sheet1_name: str = spell_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else spell_ws["sheet_name_without_version"]
+            spell_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(spell_ws["dType"]), "dType": spell_ws["dType"], "sheet_name": sheet1_name, "sheet": self.spell_df}
+            self.enqueue_df(spell_df_struct, overwrite_on_exist = True, log = self.log)
+
+    def export_spell_data(self, debug: bool = False, path: Optional[str] = None) -> None:
+        '''
+        导出召唤师技能数据到工作簿中。产生以下工作表：<br>Export summoner spell data to a workbook. The following worksheets are added:
+        - 召唤师技能（Summoner Spells）
+
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 共享二进制描述文件的本地路径。<br>A local path of shared binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        '''
+        logInput = self.log.logInput
+        logPrint = self.log.logPrint
+        if self.wbPath == "":
+            logPrint("尚未指定文件保存路径。\nPath of exported file not specified.")
+            return
+        if self.patch == "" and self.sheet_naming_fold:
+            logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
+            return
+        if self.spell_df.empty:
+            status: int = self.build_spell_dataframe(debug = debug, path = path)
+            if status != 0:
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
+                logInput()
+                return
+        #导出数据（Export data）
+        logPrint("正在导出数据……\nExporting data ...", print_time = True)
+        if not os.path.exists(self.wbPath):
+            wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
+        workbook_exist: bool = os.path.exists(self.wbPath)
+        sheet1_name: str = self.worksheet_metadata["SummonerSpell"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["SummonerSpell"]["sheet_name_without_version"]
+        while True:
+            try:
+                with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
+                    addDefaultStyle(self.spell_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
+                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
+                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
+            except PermissionError:
+                logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
+                cont = logInput()
+                if cont != "" and cont[0] == "0":
+                    break
+            else:
+                logPrint(f"召唤师技能数据已导出到{self.wbPath}。\nSummoner spell data have been exported to {self.wbPath}.", print_time = True)
                 break
 
 class ChampionExtractor(LoLDataExtractor):
@@ -10210,6 +10469,7 @@ if __name__ == "__main__":
                 "地图（Map）",
                 "指令集（CheatSet）",
                 "指令（Cheat）",
+                "召唤师技能（Summoner Spells）",
                 "符文系（PerkStyles）",
                 "符文（Perks）",
                 "英雄（Champions）",
@@ -10257,6 +10517,7 @@ if __name__ == "__main__":
                 "Map",
                 "CheatSet",
                 "Cheat",
+                "SummonerSpells",
                 "PerkStyles",
                 "Perks",
                 "Champions",
@@ -10415,7 +10676,7 @@ if __name__ == "__main__":
             step: int = 1
             #设置要提取的数据类型（Set the type of data to extract）
             while True:
-                logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t角色（Characters）\n6\t装备（Items）\n7\t强化符文（Augments）\n8\t锻造器（Anvils）\n9\t斗魂竞技场回合阶段（Arena Round Phase）\n10\t场景英雄（Cameo）\n11\t荣誉嘉宾（Guests of Honor）\n12\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n13\t字体（Fonts）\nall\t所有（All）\n-1\t导出所有数据框并清空队列（Export all dataframes and clear queue）")
+                logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t召唤师技能（Summoner Spells）\n4\t符文（Perks）\n5\t英雄（Champions）\n6\t角色（Characters）\n7\t装备（Items）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t斗魂竞技场回合阶段（Arena Round Phase）\n11\t场景英雄（Cameo）\n12\t荣誉嘉宾（Guests of Honor）\n13\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n14\t字体（Fonts）\nall\t所有（All）\n-1\t导出所有数据框并清空队列（Export all dataframes and clear queue）")
                 if one_click and i >= 1:
                     if step == 1:
                         mode: str = str(preset_data_options)
@@ -10572,7 +10833,7 @@ if __name__ == "__main__":
                 else:
                     data_options: list[int] = []
                     if mode == "all":
-                        data_options = list(range(1, 14))
+                        data_options = list(range(1, 15))
                     else:
                         try:
                             tmp = eval(mode)
@@ -10581,12 +10842,12 @@ if __name__ == "__main__":
                             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                         else:
                             if isinstance(tmp, int):
-                                if tmp >= 1 and tmp <= 13:
+                                if tmp >= 1 and tmp <= 14:
                                     data_options = [tmp]
                                 else:
                                     logPrint("您输入的正整数不在合法范围内。请重新输入。\nThe integer you input doesn't fall within a legal range. Please try again.")
                             elif isinstance(tmp, Iterable) and all(map(lambda x: isinstance(x, int), tmp)):
-                                data_options = [_ for _ in tmp if _ >= 1 and _ <= 13]
+                                data_options = [_ for _ in tmp if _ >= 1 and _ <= 14]
                             else:
                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     if one_click and i == 0:
@@ -10610,13 +10871,20 @@ if __name__ == "__main__":
                             if export:
                                 cheatExtractor.export_cheat_data()
                         elif dOption == 3:
+                            logPrint("[%d/%d][%d/%d]正在整理召唤师技能数据……\nOrganizing summoner spell data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
+                            summonerSpellExtractor: SummonerSpellExtractor = SummonerSpellExtractor(extractor)
+                            summonerSpellExtractor.build_spell_dataframe()
+                            summonerSpellExtractor.enqueue_spell_dataframe()
+                            if export:
+                                summonerSpellExtractor.export_spell_data()
+                        elif dOption == 4:
                             logPrint("[%d/%d][%d/%d]正在整理符文数据……\nOrganizing perk data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             perkExtractor: PerkExtractor = PerkExtractor(extractor)
                             perkExtractor.build_perk_dataframe()
                             perkExtractor.enqueue_perk_dataframe()
                             if export:
                                 perkExtractor.export_perk_data()
-                        elif dOption == 4:
+                        elif dOption == 5:
                             logPrint("[%d/%d][%d/%d]正在整理英雄数据……\nOrganizing champion data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             championExtractor1: ChampionExtractor = ChampionExtractor(extractor)
                             championExtractor1.set_mode(False)
@@ -10624,7 +10892,7 @@ if __name__ == "__main__":
                             championExtractor1.enqueue_champion_dataframe()
                             if export:
                                 championExtractor1.export_champion_data()
-                        elif dOption == 5:
+                        elif dOption == 6:
                             logPrint("[%d/%d][%d/%d]正在整理角色数据……\nOrganizing character data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             championExtractor2: ChampionExtractor = ChampionExtractor(extractor)
                             championExtractor2.set_mode(True)
@@ -10632,56 +10900,56 @@ if __name__ == "__main__":
                             championExtractor2.enqueue_champion_dataframe()
                             if export:
                                 championExtractor2.export_champion_data()
-                        elif dOption == 6:
+                        elif dOption == 7:
                             logPrint("[%d/%d][%d/%d]正在整理装备数据……\nOrganizing item data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             itemExtractor: ItemExtractor = ItemExtractor(extractor)
                             itemExtractor.build_item_dataframe()
                             itemExtractor.enqueue_item_dataframe()
                             if export:
                                 itemExtractor.export_item_data()
-                        elif dOption == 7:
+                        elif dOption == 8:
                             logPrint("[%d/%d][%d/%d]正在整理强化符文数据……\nOrganizing augment data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             augmentExtractor: AugmentExtractor = AugmentExtractor(extractor)
                             augmentExtractor.build_augment_dataframe()
                             augmentExtractor.enqueue_augment_dataframe()
                             if export:
                                 augmentExtractor.export_augment_data()
-                        elif dOption == 8:
+                        elif dOption == 9:
                             logPrint("[%d/%d][%d/%d]正在整理锻造器数据……\nOrganizing anvil data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             anvilExtractor: AnvilExtractor = AnvilExtractor(extractor)
                             anvilExtractor.build_anvil_dataframe()
                             anvilExtractor.enqueue_anvil_dataframe()
                             if export:
                                 anvilExtractor.export_anvil_data()
-                        elif dOption == 9:
+                        elif dOption == 10:
                             logPrint("[%d/%d][%d/%d]正在整理斗魂竞技场回合数据……\nOrganizing Arena round data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             cherryRoundExtractor: CherryRoundExtractor = CherryRoundExtractor(extractor)
                             cherryRoundExtractor.build_CherryRound_dataframe()
                             cherryRoundExtractor.enqueue_CherryRound_dataframe()
                             if export:
                                 cherryRoundExtractor.export_CherryRound_data()
-                        elif dOption == 10:
+                        elif dOption == 11:
                             logPrint("[%d/%d][%d/%d]正在整理场景英雄数据……\nOrganizing Cameo data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             cameoExtractor: CameoExtractor = CameoExtractor(extractor)
                             cameoExtractor.build_cameo_dataframe()
                             cameoExtractor.enqueue_cameo_dataframe()
                             if export:
                                 cameoExtractor.export_cameo_data()
-                        elif dOption == 11:
+                        elif dOption == 12:
                             logPrint("[%d/%d][%d/%d]正在整理荣誉嘉宾数据……\nOrganizing Guest of Honor data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             gohExtractor: GoHExtractor = GoHExtractor(extractor)
                             gohExtractor.build_GoH_dataframe()
                             gohExtractor.enqueue_GoH_dataframe()
                             if export:
                                 gohExtractor.export_GoH_data()
-                        elif dOption == 12:
+                        elif dOption == 13:
                             logPrint("[%d/%d][%d/%d]正在整理云顶之弈数据……\nOrganizing TFT data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             tftExtractor: TFTExtractor = TFTExtractor(extractor)
                             tftExtractor.build_tft_dataframe()
                             tftExtractor.enqueue_tft_dataframe()
                             if export:
                                 tftExtractor.export_tft_data()
-                        elif dOption == 13:
+                        elif dOption == 14:
                             logPrint("[%d/%d][%d/%d]正在整理字体数据……\nOrganizing font data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             fontExtractor: FontExtractor = FontExtractor(extractor)
                             fontExtractor.build_font_dataframe()
@@ -10845,7 +11113,7 @@ if __name__ == "__main__":
         nDataOption_iter: int = 0
         #设置要提取的数据类型（Set the type of data to extract）
         while True:
-            logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-3\t调试（Debug）\n-2\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t符文（Perks）\n4\t英雄（Champions）\n5\t角色（Characters）\n6\t装备（Items）\n7\t强化符文（Augments）\n8\t锻造器（Anvils）\n9\t斗魂竞技场回合阶段（Arena Round Phase）\n10\t场景英雄（Cameo）\n11\t荣誉嘉宾（Guests of Honor）\n12\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n13\t字体（Fonts）\nall\t所有（All）\n-1\t导出所有数据框并清空队列（Export all dataframes and clear queue）")
+            logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-3\t调试（Debug）\n-2\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t召唤师技能（Summoner Spells）\n4\t符文（Perks）\n5\t英雄（Champions）\n6\t角色（Characters）\n7\t装备（Items）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t斗魂竞技场回合阶段（Arena Round Phase）\n11\t场景英雄（Cameo）\n12\t荣誉嘉宾（Guests of Honor）\n13\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n14\t字体（Fonts）\nall\t所有（All）\n-1\t导出所有数据框并清空队列（Export all dataframes and clear queue）")
             mode: str = logInput()
             if mode == "":
                 continue
@@ -10889,6 +11157,8 @@ if __name__ == "__main__":
                             scope["cheatExtractor"] = cheatExtractor
                         if "perkExtractor" in dir():
                             scope["perkExtractor"] = perkExtractor
+                        if "summonerSpellExtractor" in dir():
+                            scope["summonerSpellExtractor"] = summonerSpellExtractor
                         if "championExtractor1" in dir():
                             scope["championExtractor"] = championExtractor1
                         if "championExtractor2" in dir():
@@ -11063,7 +11333,7 @@ if __name__ == "__main__":
             else:
                 data_options: list[int] = []
                 if mode == "all":
-                    data_options = list(range(1, 14))
+                    data_options = list(range(1, 15))
                 else:
                     try:
                         tmp = eval(mode)
@@ -11072,12 +11342,12 @@ if __name__ == "__main__":
                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     else:
                         if isinstance(tmp, int):
-                            if tmp >= 1 and tmp <= 13:
+                            if tmp >= 1 and tmp <= 14:
                                 data_options = [tmp]
                             else:
                                 logPrint("您输入的正整数不在合法范围内。请重新输入。\nThe integer you input doesn't fall within a legal range. Please try again.")
                         elif isinstance(tmp, Iterable) and all(map(lambda x: isinstance(x, int), tmp)):
-                            data_options = [_ for _ in tmp if _ >= 1 and _ <= 13]
+                            data_options = [_ for _ in tmp if _ >= 1 and _ <= 14]
                         else:
                             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                 nDataOptions += len(data_options)
@@ -11123,6 +11393,17 @@ if __name__ == "__main__":
                         if export:
                             cheatExtractor.export_cheat_data()
                     elif dOption == 3:
+                        logPrint("[%d/%d]正在调试召唤师技能数据……\nDebugging summoner spell data ..." %(nDataOption_iter, nDataOptions))
+                        summonerSpellExtractor: SummonerSpellExtractor = SummonerSpellExtractor(extractor)
+                        if dir_type == "extract":
+                            summonerSpell_path: Path = extract_game_dir / "shared.cdtb.bin.json"
+                        else:
+                            summonerSpell_path = repo_game_dir / "shared.cdtb.bin.json"
+                        summonerSpellExtractor.build_spell_dataframe(debug = True, path = summonerSpell_path.as_posix())
+                        summonerSpellExtractor.enqueue_spell_dataframe()
+                        if export:
+                            summonerSpellExtractor.export_spell_data()
+                    elif dOption == 4:
                         logPrint("[%d/%d]正在调试符文数据……\nDebugging perk data ..." %(nDataOption_iter, nDataOptions))
                         perkExtractor: PerkExtractor = PerkExtractor(extractor)
                         if dir_type == "extract":
@@ -11133,7 +11414,7 @@ if __name__ == "__main__":
                         perkExtractor.enqueue_perk_dataframe()
                         if export:
                             perkExtractor.export_perk_data()
-                    elif dOption == 4:
+                    elif dOption == 5:
                         logPrint("[%d/%d]正在调试英雄数据……\nDebugging champion data ..." %(nDataOption_iter, nDataOptions))
                         championExtractor1: ChampionExtractor = ChampionExtractor(extractor)
                         championExtractor1.set_mode(False)
@@ -11151,7 +11432,7 @@ if __name__ == "__main__":
                         championExtractor1.enqueue_champion_dataframe()
                         if export:
                             championExtractor1.export_champion_data()
-                    elif dOption == 5:
+                    elif dOption == 6:
                         logPrint("[%d/%d]正在调试角色数据……\nDebugging character data ..." %(nDataOption_iter, nDataOptions))
                         championExtractor2: ChampionExtractor = ChampionExtractor(extractor)
                         championExtractor2.set_mode(True)
@@ -11171,7 +11452,7 @@ if __name__ == "__main__":
                         championExtractor2.enqueue_champion_dataframe()
                         if export:
                             championExtractor2.export_champion_data()
-                    elif dOption == 6:
+                    elif dOption == 7:
                         logPrint("[%d/%d]正在调试装备数据……\nDebugging item data ..." %(nDataOption_iter, nDataOptions))
                         itemExtractor: ItemExtractor = ItemExtractor(extractor)
                         if dir_type == "extract":
@@ -11182,7 +11463,7 @@ if __name__ == "__main__":
                         itemExtractor.enqueue_item_dataframe()
                         if export:
                             itemExtractor.export_item_data()
-                    elif dOption == 7:
+                    elif dOption == 8:
                         logPrint("[%d/%d]正在调试强化符文数据……\nDebugging augment data ..." %(nDataOption_iter, nDataOptions))
                         augmentExtractor: AugmentExtractor = AugmentExtractor(extractor)
                         if dir_type == "extract":
@@ -11207,7 +11488,7 @@ if __name__ == "__main__":
                         augmentExtractor.enqueue_augment_dataframe()
                         if export:
                             augmentExtractor.export_augment_data()
-                    elif dOption == 8:
+                    elif dOption == 9:
                         logPrint("[%d/%d]正在调试锻造器数据……\nDebugging anvil data ..." %(nDataOption_iter, nDataOptions))
                         anvilExtractor: AnvilExtractor = AnvilExtractor(extractor)
                         if dir_type == "extract":
@@ -11224,7 +11505,7 @@ if __name__ == "__main__":
                         anvilExtractor.enqueue_anvil_dataframe()
                         if export:
                             anvilExtractor.export_anvil_data()
-                    elif dOption == 9:
+                    elif dOption == 10:
                         logPrint("[%d/%d]正在调试斗魂竞技场回合数据……\nDebugging Arena round data ..." %(nDataOption_iter, nDataOptions))
                         cherryRoundExtractor: CherryRoundExtractor = CherryRoundExtractor(extractor)
                         if dir_type == "extract":
@@ -11235,7 +11516,7 @@ if __name__ == "__main__":
                         cherryRoundExtractor.enqueue_CherryRound_dataframe()
                         if export:
                             cherryRoundExtractor.export_CherryRound_data()
-                    elif dOption == 10:
+                    elif dOption == 11:
                         logPrint("[%d/%d]正在调试场景英雄数据……\nDebugging Cameo data ..." %(nDataOption_iter, nDataOptions))
                         cameoExtractor: CameoExtractor = CameoExtractor(extractor)
                         if dir_type == "extract":
@@ -11246,7 +11527,7 @@ if __name__ == "__main__":
                         cameoExtractor.enqueue_cameo_dataframe()
                         if export:
                             cameoExtractor.export_cameo_data()
-                    elif dOption == 11:
+                    elif dOption == 12:
                         logPrint("[%d/%d]正在调试荣誉嘉宾数据……\nDebugging Guest of Honor data ..." %(nDataOption_iter, nDataOptions))
                         gohExtractor: GoHExtractor = GoHExtractor(extractor)
                         if dir_type == "extract":
@@ -11263,7 +11544,7 @@ if __name__ == "__main__":
                         gohExtractor.enqueue_GoH_dataframe()
                         if export:
                             gohExtractor.export_GoH_data()
-                    elif dOption == 12:
+                    elif dOption == 13:
                         logPrint("[%d/%d]正在调试云顶之弈数据……\nDebugging TFT data ..." %(nDataOption_iter, nDataOptions))
                         tftExtractor: TFTExtractor = TFTExtractor(extractor)
                         if dir_type == "extract":
@@ -11274,7 +11555,7 @@ if __name__ == "__main__":
                         tftExtractor.enqueue_tft_dataframe()
                         if export:
                             tftExtractor.export_tft_data()
-                    elif dOption == 13:
+                    elif dOption == 14:
                         logPrint("[%d/%d]正在调试字体数据……\nDebugging font data ..." %(nDataOption_iter, nDataOptions))
                         fontExtractor: FontExtractor = FontExtractor(extractor)
                         if dir_type == "extract":
