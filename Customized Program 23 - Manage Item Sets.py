@@ -21,7 +21,7 @@ from src.core.dataframes.champions import sort_champion_summary
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/16
+# 更新（Last update）：     2026/07/17
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -255,6 +255,29 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
     #     map453_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
     # with open(items_bin_path, "r", encoding = "utf-8") as fp:
     #     items_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+    #定义一个获取装备序号的函数（Define a function that gets itemId）
+    def get_itemId(items_bin: dict[str, list[str] | dict[str, Any]], key: str) -> int:
+        '''
+        根据给定的装备二进制描述数据和一个装备主键，返回这个装备的序号。<br>According to given item binary description data and an item key, return this item's ID.
+
+        :param items_bin: 装备二进制描述数据。通过以下链接得到：<br>Item binary description data, which can be obtained through the following link:
+
+            - https://raw.communitydragon.org/pbe/game/items.cdtb.bin.json
+        :type items_bin: dict[str, list[str] | dict[str, Any]]
+        :param key: 要查询的装备主键。<br>The item key to query.
+        :type key: str
+        :return: 装备序号。如果未找到，则返回0。<br>ItemId. If no item is found, then 0 is returned.
+        :rtype: int
+        '''
+        binhash_re: re.Pattern[str] = re.compile(r"\{\w{8}\}")
+        if key in items_bin: #装备主键可直接在装备二进制描述数据中找到的情形（The case where the item key can be directly found in the item binary description data）
+            return items_bin[key]["itemID"]
+        elif binhash_re.fullmatch(key) and key in item_key_hash_map: #装备主键在地图二进制描述数据中是散列值，在装备二进制描述数据中是原始字符串的情形。此处`item_key_hash_map`是全局变量，只需构建一次。如果放在函数内，反复构建成为决速步骤（The case the item key is a hash value in the map binary description data but an original string in the item binary description data. Here `item_key_hash_map` is a global variable, which only needs to be constructed once. If it's put into this function, the repeated constructions of it becomes a rate-determining step）
+            return items_bin[item_key_hash_map[key]]["itemID"]
+        elif not binhash_re.fullmatch(key) and (key_hash := LoLDataExtractor.compute_binhash(key)) in items_bin: #装备主键在地图二进制描述数据中是原始字符串，在装备二进制描述数据中是散列值的情形（The case the item key is an original string in the map binary description data but a hash value in the item binary description data）
+            return items_bin[key_hash]["itemID"]
+        else:
+            return 0
     #构建不同模式的全装备列表（Build the full item list for different modes）
     logPrint("正在构建各模式的全装备列表……\nBuilding full item list for different modes ...", print_time = True)
     maps_bin: list[dict[str, list[str] | dict[str, Any]]] = [map11_bin, map12_bin, map21_bin, map22_bin, map30_bin, map33_bin, map35_bin, map453_bin]
@@ -264,6 +287,11 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
         if key != "__linked" and value["__type"] == "ItemData":
             itemKey_itemId_map[value["itemID"]] = key
             exclusive_itemIds.add(value["itemID"])
+    binhash_re: re.Pattern[str] = re.compile(r"\{\w{8}\}")
+    items_bin_keys: list[str] = list(items_bin.keys())
+    if "__linked" in items_bin_keys: #这个条件一般情况下都是真（Basically this condition is True）
+        items_bin_keys.remove("__linked")
+    item_key_hash_map: dict[str, str] = {LoLDataExtractor.compute_binhash(key): key for key in items_bin.keys() if not binhash_re.fullmatch(key)} #构建从装备主键的散列值到原始字符串的映射（Build a map from an item key's hash value to its original string）
     gameModeNames: dict[str, dict[str, str]] = {
         "Maps/Shipping/Map11/Modes/ARSR": {
             "zh_CN": "峡谷大乱斗",
@@ -495,12 +523,16 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
                     gameModeItemIds: list[int] = []
                     if "itemLists" in value:
                         for itemList_key in value["itemLists"]:
-                            gameModeItemIds += [items_bin[_]["itemID"] for _ in map_bin[itemList_key]["mItems"] if _ in items_bin]
+                            for item_key in map_bin[itemList_key]["mItems"]:
+                                if (itemId := get_itemId(items_bin, item_key)) != 0:
+                                    gameModeItemIds.append(itemId)
                     if "Configs" in value:
                         for config_key in value["Configs"]:
                             if config_key in map_bin and map_bin[config_key]["__type"] == "{3d900309}":
                                 for itemList_key in map_bin[config_key]["itemLists"].values():
-                                    gameModeItemIds += [items_bin[_]["itemID"] for _ in map_bin[itemList_key]["mItems"] if _ in items_bin]
+                                    for item_key in map_bin[itemList_key]["mItems"]:
+                                        if (itemId := get_itemId(items_bin, item_key)) != 0:
+                                            gameModeItemIds.append(itemId)
                     gameModeItemIds = sorted(set(gameModeItemIds)) #依据装备序号去重（Remove redundancy according to itemId）
                     exclusive_itemIds -= set(gameModeItemIds)
                     for i in range(len(gameModeItemIds)):
