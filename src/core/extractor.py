@@ -3610,7 +3610,7 @@ class MapExtractor(LoLDataExtractor):
         '''
         self.__dict__.update(extractor.__dict__)
         #self.extractor: LoLDataExtractor = extractor #主要应用于子类对象调用和修改父类对象的属性（Mainly designed for a child object to call and modify the attribute of a parent object）
-        self.maps_ready: dict[int, bool] = {mapId: False for mapId in [11, 12, 21, 22, 30, 33, 35]}
+        self.maps_ready: dict[int, bool] = {mapId: False for mapId in [11, 12, 21, 22, 30, 33, 35, 453]}
         self.map_df: pandas.DataFrame = pandas.DataFrame()
     
     def init_data_readiness(self) -> None:
@@ -3629,6 +3629,7 @@ class MapExtractor(LoLDataExtractor):
         - 怒火角斗场（Rings of Wrath）
         - 最终都市（Final City）
         - 班德尔之森（The Bandlewoods）
+        - 经典召唤师峡谷（Classic Summoner's Rift）
         '''
         logPrint = self.log.logPrint
         #召唤师峡谷（Summoner's Rift）
@@ -3771,6 +3772,26 @@ class MapExtractor(LoLDataExtractor):
                 self.map35_bin = self.resolve_bin_hash(self.map35_bin)
             self.__class__.data_cache["online"][map35_bin_url] = self.map35_bin
         self.maps_ready[35] = True
+        #经典召唤师峡谷（Classic Summoner's Rift）
+        map453_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/unknown/579b4182be3270f4.bin.json"
+        if map453_bin_url in self.__class__.data_cache["online"]:
+            self.map453_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map453_bin_url]
+        else:
+            source, status, self.session = requestUrl("GET", map453_bin_url, session = self.session, log = self.log)
+            if status != 200:
+                if status == 404:
+                    logPrint("经典召唤师峡谷地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nClassic Summoner's Rift map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map453_bin_url))
+                    self.map453_bin = {}
+                else:
+                    logPrint("经典召唤师峡谷地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nClassic Summoner's Rift map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
+                    time.sleep(3)
+                    self.init_data_readiness()
+                    return
+            else:
+                self.map453_bin = source.json()
+                self.map453_bin = self.resolve_bin_hash(self.map453_bin)
+            self.__class__.data_cache["online"][map453_bin_url] = self.map453_bin
+        self.maps_ready[453] = True
     
     def read_map_data(self, paths: list[str]) -> None: #离线读取——供开发者使用（Offline reading - For developer use）
         '''
@@ -3785,6 +3806,7 @@ class MapExtractor(LoLDataExtractor):
             - 30: 怒火角斗场（Rings of Wrath）
             - 33: 最终都市（Final City）
             - 35: 班德尔之森（The Bandlewoods）
+            - 453: 经典召唤师峡谷（Classic Summoner's Rift）
         :type paths: list[str]
         '''
         logPrint = self.log.logPrint
@@ -3866,6 +3888,16 @@ class MapExtractor(LoLDataExtractor):
             self.map35_bin = self.resolve_bin_hash(self.map35_bin)
             self.__class__.data_cache["local"][map35_bin_path] = self.map35_bin
         self.maps_ready[35] = True
+        #经典召唤师峡谷（Classic Summoner's Rift）
+        map453_bin_path: str = paths[7]
+        if map453_bin_path in self.__class__.data_cache["local"]:
+            self.map453_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map453_bin_path]
+        else:
+            with open(map453_bin_path, "r", encoding = "utf-8") as fp:
+                self.map453_bin = json.load(fp)
+            self.map453_bin = self.resolve_bin_hash(self.map453_bin)
+            self.__class__.data_cache["local"][map453_bin_path] = self.map453_bin
+        self.maps_ready[453] = True
     
     def build_map_dataframe(self, debug: bool = False, paths: Optional[list[str]] = None) -> int:
         '''
@@ -3900,8 +3932,8 @@ class MapExtractor(LoLDataExtractor):
                 logPrint("地图数据尚未准备就绪！\nMap data not prepared!")
                 return 2
         #检验不同地图数据的异质性（Verify the heterogeneity among different maps' data）
-        # map_name_list: list[str] = ["召唤师峡谷", "随机地图", "百合与莲花的神庙", "聚点危机", "怒火角斗场", "最终都市", "班德尔之森"]
-        # map_bin_list: list[dict[str, list[str] | dict[str, Any]]] = [map11_bin, map12_bin, map21_bin, map22_bin, map30_bin, map33_bin, map35_bin]
+        # map_name_list: list[str] = ["召唤师峡谷", "随机地图", "百合与莲花的神庙", "聚点危机", "怒火角斗场", "最终都市", "班德尔之森", "经典召唤师峡谷"]
+        # map_bin_list: list[dict[str, list[str] | dict[str, Any]]] = [map11_bin, map12_bin, map21_bin, map22_bin, map30_bin, map33_bin, map35_bin, map453_bin]
         # overlay_table, overlay_count_table, overlay_identical_table, overlay_difference_table, overlay_diffCount_table = verifyDictHeterogeneity(map_bin_list)
         # for i in range(len(map_bin_list) - 1):
         #     for j in range(i + 1, len(map_bin_list)):
@@ -3926,7 +3958,7 @@ class MapExtractor(LoLDataExtractor):
         #一方面，小小英雄与游戏模式地图数据对象无关；另一方面，将这些差异hash值作为主键在地图二进制描述数据中查询时，发现其描述与嚎哭深渊符合一一对应关系。因此下面在导出各地图的游戏模式地图数据对象时，认为所有地图的二进制描述数据之间两两没有不一致的键值对（键相同但值不同的键值对）【On the one hand, companions seem to have nothing to do the GameModeMapData object. On the other hand, searching for the difference hash keys in the map binary description data shows that the description of each hash value follows a one-to-one correspondence with the resolved value in Howling Abyss' companion list. Therefore, when exporting the GameModeMapData object of all maps, this program assumes there's not any inconsistent key-value pairs (with the same key but different values) between each pair of maps】
 
         #合并所有地图数据，形成单个字典（Merge all map data into a dictionary into a single dictionary）
-        maps_bin: dict[str, list[str] | dict[str, Any]] = self.map11_bin | self.map21_bin | self.map22_bin | self.map30_bin | self.map33_bin | self.map35_bin | self.map12_bin
+        maps_bin: dict[str, list[str] | dict[str, Any]] = self.map11_bin | self.map21_bin | self.map22_bin | self.map30_bin | self.map33_bin | self.map35_bin | self.map12_bin | self.map453_bin
 
         #将整合后的英雄数据保存到本地（Save merged map data to local）
         # folder: str = os.path.expanduser("~/Desktop")
@@ -11327,7 +11359,8 @@ if __name__ == "__main__":
                                 extract_game_dir / "data/maps/shipping/map22/map22.bin.json",
                                 extract_game_dir / "data/maps/shipping/map30/map30.bin.json",
                                 extract_game_dir / "data/maps/shipping/map33/map33.bin.json",
-                                extract_game_dir / "data/maps/shipping/map35/map35.bin.json"
+                                extract_game_dir / "data/maps/shipping/map35/map35.bin.json",
+                                extract_game_dir / "unknown/579b4182be3270f4.bin.json"
                             ]
                         else:
                             map_paths = [
@@ -11337,7 +11370,8 @@ if __name__ == "__main__":
                                 repo_game_dir / "data/maps/shipping/map22/map22.bin.json",
                                 repo_game_dir / "data/maps/shipping/map30/map30.bin.json",
                                 repo_game_dir / "data/maps/shipping/map33/map33.bin.json",
-                                repo_game_dir / "data/maps/shipping/map35/map35.bin.json"
+                                repo_game_dir / "data/maps/shipping/map35/map35.bin.json",
+                                repo_game_dir / "unknown/579b4182be3270f4.bin.json"
                             ]
                         mapExtractor.build_map_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), map_paths)))
                         mapExtractor.enqueue_map_dataframe()
