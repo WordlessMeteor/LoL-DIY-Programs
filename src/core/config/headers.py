@@ -6298,6 +6298,8 @@ SwarmAugment_header: dict[str, str] = {
     "RootSpellObject": "根指令对象"
 }
 KiwiAugment_header: dict[str, str] = {
+    "isCurrent": "存在于当前版本",
+    "isClassic": "存在于怀旧版本",
     "key": "主键",
     "AugmentNameId": "强化符文代码",
     "Enabled": "可用性",

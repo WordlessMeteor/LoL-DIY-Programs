@@ -6709,12 +6709,16 @@ class AugmentExtractor(LoLDataExtractor):
             if key1 != "__linked" and value["__type"] == "AugmentData": #强化符文（Augment）
                 for i in range(len(KiwiAugment_header_keys)):
                     key: str = KiwiAugment_header_keys[i]
-                    if i <= 56:
-                        if i == 0: #主键（`Key`）
+                    if i == 0: #存在于当前版本（`isCurrent`）
+                        to_append = key1 in self.map12_bin or key1 in self.kiwi_bin
+                    elif i == 1: #存在于怀旧版本（`isClassic`）
+                        to_append = key1 in self.kiwi_jade_bin
+                    elif i <= 58:
+                        if i == 2: #主键（`Key`）
                             to_append: Any = key1
-                        elif i <= 52:
-                            if i <= 22:
-                                if i == 2: #可用性（`Enabled`）
+                        elif i <= 54:
+                            if i <= 24:
+                                if i == 4: #可用性（`Enabled`）
                                     to_append = self.aGet(value, ["Enabled", "enabled"], default = True)
                                 else:
                                     tmp_ptr: Any = value
@@ -6723,14 +6727,14 @@ class AugmentExtractor(LoLDataExtractor):
                                         if tmp_key in tmp_ptr:
                                             tmp_ptr = tmp_ptr[tmp_key]
                                         else:
-                                            if i == 18 or i == 22:
+                                            if i == 20 or i == 24:
                                                 to_append = value.get(key, False)
                                             else:
                                                 to_append = value.get(key, "")
                                             break
                                     else:
                                         to_append = tmp_ptr
-                            elif i <= 48: #字符串常量（String constants）
+                            elif i <= 50: #字符串常量（String constants）
                                 subkey2: str = pStrConst.search(key).group()
                                 subkey1: str = key.replace(subkey2, "")
                                 useTargetLocale: bool = subkey2.split("_")[2] == "zh"
@@ -6746,7 +6750,7 @@ class AugmentExtractor(LoLDataExtractor):
                                         mSpell: Optional[dict[str, Any]] = None
                                     if "{3ed971bd}" in value and "{09d0cf3d}" in value["{3ed971bd}"] and (questline_key := value["{3ed971bd}"]["{09d0cf3d}"]) in map12_bin_whole:
                                         questline: dict[str, Any] = map12_bin_whole[questline_key]
-                                        if i >= 25 and i <= 40: #对于简介和详细信息，获取初始任务需求和层级（For descriptions and tooltips, get the initial quest requirement and tier）
+                                        if i >= 27 and i <= 42: #对于简介和详细信息，获取初始任务需求和层级（For descriptions and tooltips, get the initial quest requirement and tier）
                                             reservedVars: Optional[dict[str, str]] = {"QuestRequirement": str(questline["Milestones"][0]["{7fec0982}"]), "QuestTier": "0"}
                                         else:
                                             reservedVars = None
@@ -6760,26 +6764,26 @@ class AugmentExtractor(LoLDataExtractor):
                                         to_append = tooltip_burn
                                 else:
                                     to_append = tooltip_raw
-                            elif i == 49: #强化符文显示标签内容（`AugmentDisplayTags_content`）
+                            elif i == 51: #强化符文显示标签内容（`AugmentDisplayTags_content`）
                                 to_append = list(map(lambda x: AugmentDisplayTags[x], value["AugmentDisplayTags"])) if "AugmentDisplayTags" in value else ""
-                            elif i == 50: #位阶（`rarityValue`）
+                            elif i == 52: #位阶（`rarityValue`）
                                 to_append = augment_rarities[value.get("rarity", 0)]
-                            elif i == 51: #根指令对象（`RootSpellObject`）
+                            elif i == 53: #根指令对象（`RootSpellObject`）
                                 to_append = map12_bin_whole.get(value["RootSpell"], "")
                             else: #其它指令对象（`{40c7b66f}_Object`）
                                 to_append = list(map(lambda x: map12_bin_whole.get(x, ""), value.get("{40c7b66f}", [])))
                                 if to_append == []:
                                     to_append = ""
-                        elif i <= 55: #强化符文套装相关键（Augment set related keys）
+                        elif i <= 57: #强化符文套装相关键（Augment set related keys）
                             if key1 in augmentSet_map:
-                                if i == 53: #强化符文套装列表（`augmentSet`）
+                                if i == 55: #强化符文套装列表（`augmentSet`）
                                     to_append = augmentSet_map[key1]
                                 else: #强化符文套装本地化名称（Augment set localized names）
                                     augmentSets: list[str] = augmentSet_map[key1]
                                     augmentSetNames: list[str] = []
                                     for augmentSet_key in augmentSets:
                                         tooltip_key = map12_bin_whole[augmentSet_key]["{0746ade9}"]
-                                        strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 54 else strtable_lol_default
+                                        strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 56 else strtable_lol_default
                                         augmentSetNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
                                     to_append = augmentSetNames
                             else:
@@ -6792,14 +6796,14 @@ class AugmentExtractor(LoLDataExtractor):
                     else: #任务线相关键（Questline-related keys）
                         if "{3ed971bd}" in value and "{09d0cf3d}" in value["{3ed971bd}"] and (questline_key := value["{3ed971bd}"]["{09d0cf3d}"]) in map12_bin_whole:
                             questline: dict[str, Any] = map12_bin_whole[questline_key]
-                            if i <= 65:
+                            if i <= 67:
                                 tmp_ptr: Any = questline
                                 subkeyList: list[str] = key.split()[1:]
                                 for tmp_key in subkeyList:
                                     if tmp_key in tmp_ptr:
                                         tmp_ptr = tmp_ptr[tmp_key]
                                     else:
-                                        if i == 62 or i == 65:
+                                        if i == 64 or i == 67:
                                             to_append = value.get(key, False)
                                         else:
                                             to_append = value.get(key, "")
@@ -6822,7 +6826,7 @@ class AugmentExtractor(LoLDataExtractor):
                                         mSpell: Optional[dict[str, Any]] = None
                                     if "{3ed971bd}" in value and "{09d0cf3d}" in value["{3ed971bd}"] and (questline_key := value["{3ed971bd}"]["{09d0cf3d}"]) in map12_bin_whole:
                                         questline: dict[str, Any] = map12_bin_whole[questline_key]
-                                        if i >= 68: #对于任务完成描述，获取最大层级（For quest-finished descriptions, get the maximum tier）
+                                        if i >= 70: #对于任务完成描述，获取最大层级（For quest-finished descriptions, get the maximum tier）
                                             reservedVars: Optional[dict[str, str]] = {"QuestTier": str(len(questline["Milestones"]))}
                                         else:
                                             reservedVars = None
@@ -6837,7 +6841,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 else:
                                     to_append = tooltip_raw
                         else:
-                            to_append = False if i == 62 or i == 65 else ""
+                            to_append = False if i == 64 or i == 67 else ""
                     KiwiAugment_data[key].append(to_append)
                     KiwiAugment_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "{27bc6378}": #强化符文套装（Augment set）
@@ -7002,7 +7006,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 to_append = 0
                         KiwiQuestline_data[key].append(to_append)
                         KiwiQuestline_data_json[key].append(pyobj2json(to_append))
-        KiwiAugment_statistics_output_order: list[int] = [0, 1, 19, 2, 3, 23, 24, 17, 50, 16, 49, 53, 54, 55, 57, 58, 8, 9, 18, 22, 62, 65, 4, 25, 26, 27, 28, 5, 29, 30, 31, 32, 10, 33, 34, 35, 36, 11, 37, 38, 39, 40, 60, 68, 69, 70, 71, 6, 51, 7, 52, 21, 64, 20, 56, 14, 15, 61]
+        KiwiAugment_statistics_output_order: list[int] = [2, 3, 21, 4, 5, 25, 26, 0, 1, 19, 52, 18, 51, 55, 56, 57, 59, 60, 10, 11, 20, 24, 64, 67, 6, 27, 28, 29, 30, 7, 31, 32, 33, 34, 12, 35, 36, 37, 38, 13, 39, 40, 41, 42, 62, 70, 71, 72, 73, 8, 53, 9, 54, 23, 66, 22, 58, 16, 17, 63]
         KiwiAugment_data_organized: dict[str, list[Any]] = {KiwiAugment_header_keys[i]: KiwiAugment_data_json[KiwiAugment_header_keys[i]] for i in KiwiAugment_statistics_output_order}
         KiwiAugment_df: pandas.DataFrame = pandas.DataFrame(data = KiwiAugment_data_organized)
         KiwiAugment_df = KiwiAugment_df.sort_values(by = "AugmentPlatformId", ascending = True, ignore_index = True)
@@ -10153,7 +10157,10 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], objectType: str, keyPa
         {b0cea932}          末日人工智能：维迦的诅咒！（Doom Bots - Veigar's Curse!）<br>
         {afcea79f}          末日人工智能：维迦的邪咒！（Doom Bots - Veigar's Evil!）<br>
         {aecea60c}          末日人工智能：维迦的末日厄咒！（Doom Bots - Veigar's Doom!）<br>
-        {9cf6bf22}          WASD
+        {9cf6bf22}          WASD<br>
+        {ad33a648}          KIWI_JADE<br>
+        {5358c483}          BASELINESR<br>
+        {20426d6f}          JADE
         </pre>
     :type gameModeName: str
     :param strtable: 字符串常量池。<br>Stringtable.
@@ -11469,7 +11476,7 @@ if __name__ == "__main__":
                                 extract_game_dir / "data/maps/shipping/map33/map33.bin.json",
                                 extract_game_dir / "data/maps/shipping/map12/map12.bin.json",
                                 extract_game_dir / "maps/modespecificdata/kiwi.bin.json",
-                                extract_game_dir / "maps/modespecificdata/kiwi_jade.bin.json"
+                                extract_game_dir / "unknown/410b3796f165ef3e.bin.json"
                             ]
                         else:
                             augment_paths = [
@@ -11478,7 +11485,7 @@ if __name__ == "__main__":
                                 repo_game_dir / "data/maps/shipping/map33/map33.bin.json",
                                 repo_game_dir / "data/maps/shipping/map12/map12.bin.json",
                                 repo_game_dir / "maps/modespecificdata/kiwi.bin.json",
-                                repo_game_dir / "maps/modespecificdata/kiwi_jade.bin.json"
+                                repo_game_dir / "unknown/410b3796f165ef3e.bin.json"
                             ]
                         augmentExtractor.build_augment_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), augment_paths)))
                         augmentExtractor.enqueue_augment_dataframe()
