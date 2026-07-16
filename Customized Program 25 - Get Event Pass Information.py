@@ -137,7 +137,9 @@ async def organize_pass_information(connection: Connection) -> None:
         eventInfo: dict[str, Any] = event["eventInfo"] #`GET /lol-event-hub/v1/events/{eventId}/info`
         chapters: dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/chapters")).json()
         event_details_data: dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/event-details-data")).json()
-        is_grace_period: bool = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/is-grace-period")).json()
+        is_grace_period: bool | dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/is-grace-period")).json()
+        if is_grace_period == {"errorCode": "RPC_ERROR", "httpStatus": 404, "implementationDetails": {}, "message": f"Event {eventId} does not have GracePeriod data"}:
+            is_grace_period = False
         narratives: list[dict[str, Any]] | dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/narrative")).json()
         objectives_banner: dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/objectives-banner")).json()
         pass_background_data: dict[str, str] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/pass-background-data")).json()

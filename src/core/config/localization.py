@@ -1720,7 +1720,9 @@ objectiveCategoryFilter_dict: dict[str, str] = {
 }
 eventPassTypes: dict[str, str] = {
     "kUnknown": "无",
+    "kActivityCenterMilestones": "活动中心里程碑",
     "kBattlePass": "战斗通行证",
+    "kDemaciaPass": "经典模式通行证",
     "kEventPass": "事件通行证",
     "kSeasonPass": "赛季通行证"
 }
@@ -2577,7 +2579,10 @@ lolEventHubOfferStates: dict[str, str] = {
 # }
 # eventPassTypes: dict[str, str] = {
 #     "kUnknown": "kUnknown",
+#     "kActivityCenterMilestones": "kActivityCenterMilestones",
 #     "kBattlePass": "kBattlePass",
+#     "kDemaciaPass": "kDemaciaPass",
+#     "kEventPass": "kEventPass",
 #     "kSeasonPass": "kSeasonPass"
 # }
 ##符文（Perk）
