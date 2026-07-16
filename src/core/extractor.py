@@ -3,6 +3,7 @@ from pathlib import Path
 from urllib.parse import urljoin
 from xxhash import xxh3_64_intdigest, xxh64_intdigest
 from openpyxl import load_workbook, Workbook
+from openpyxl.worksheet.worksheet import Worksheet
 from typing import Any, Callable, Iterable, Literal, Optional
 wd: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")).replace("\\", "/")
 os.chdir(wd)
@@ -4203,8 +4204,11 @@ class MapExtractor(LoLDataExtractor):
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
                     addDefaultStyle(map_df.transpose()).to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
+                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name, sheet4_name, sheet5_name, sheet6_name]:
+                        if sheet_name in writer.sheets:
+                            worksheet: Worksheet = writer.sheets[sheet_name]
+                            if worksheet.calculate_dimension() != "A1:A1":
+                                worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
                 cont = logInput()
@@ -4458,9 +4462,11 @@ class CheatExtractor(LoLDataExtractor):
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
                     addDefaultStyle(cheatset_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                     addDefaultStyle(cheat_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
-                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
+                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name, sheet4_name, sheet5_name, sheet6_name]:
+                        if sheet_name in writer.sheets:
+                            worksheet: Worksheet = writer.sheets[sheet_name]
+                            if worksheet.calculate_dimension() != "A1:A1":
+                                worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
                 cont = logInput()
@@ -4827,9 +4833,11 @@ class PerkExtractor(LoLDataExtractor):
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
                     addDefaultStyle(perkstyle_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                     addDefaultStyle(perk_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
-                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
+                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name, sheet4_name, sheet5_name, sheet6_name]:
+                        if sheet_name in writer.sheets:
+                            worksheet: Worksheet = writer.sheets[sheet_name]
+                            if worksheet.calculate_dimension() != "A1:A1":
+                                worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
                 cont = logInput()
@@ -5015,8 +5023,11 @@ class SummonerSpellExtractor(LoLDataExtractor):
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
                     addDefaultStyle(summonerSpell_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
+                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name, sheet4_name, sheet5_name, sheet6_name]:
+                        if sheet_name in writer.sheets:
+                            worksheet: Worksheet = writer.sheets[sheet_name]
+                            if worksheet.calculate_dimension() != "A1:A1":
+                                worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
                 cont = logInput()
@@ -5913,9 +5924,11 @@ class ChampionExtractor(LoLDataExtractor):
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
                     addDefaultStyle(champion_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                     addDefaultStyle(champion_spell_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
-                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A1 cell with the data version）
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
+                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name, sheet4_name, sheet5_name, sheet6_name]:
+                        if sheet_name in writer.sheets:
+                            worksheet: Worksheet = writer.sheets[sheet_name]
+                            if worksheet.calculate_dimension() != "A1:A1":
+                                worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
                 cont = logInput()
@@ -6277,10 +6290,11 @@ class ItemExtractor(LoLDataExtractor):
                     addDefaultStyle(item_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                     addDefaultStyle(itemGroup_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
                     addDefaultStyle(itemModifier_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
-                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet3_name, header = None, index = False, startcol = 0, startrow = 0)
+                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name, sheet4_name, sheet5_name, sheet6_name]:
+                        if sheet_name in writer.sheets:
+                            worksheet: Worksheet = writer.sheets[sheet_name]
+                            if worksheet.calculate_dimension() != "A1:A1":
+                                worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
                 cont = logInput()
@@ -7220,17 +7234,11 @@ class AugmentExtractor(LoLDataExtractor):
                     if not KiwiQuestline_df.empty:
                         addDefaultStyle(KiwiQuestline_df).to_excel(excel_writer = writer, sheet_name = sheet5_name)
                     addDefaultStyle(augmentModifier_df).to_excel(excel_writer = writer, sheet_name = sheet6_name)
-                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
-                    if not self.SwarmAugment_df.empty:
-                        self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
-                    if not self.KiwiAugment_df.empty:
-                        self.version_df.to_excel(excel_writer = writer, sheet_name = sheet3_name, header = None, index = False, startcol = 0, startrow = 0)
-                    if not self.KiwiAugmentSet_df.empty:
-                        self.version_df.to_excel(excel_writer = writer, sheet_name = sheet4_name, header = None, index = False, startcol = 0, startrow = 0)
-                    if not self.KiwiQuestline_df.empty:
-                        self.version_df.to_excel(excel_writer = writer, sheet_name = sheet5_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.augmentModifier_df.to_excel(excel_writer = writer, sheet_name = sheet6_name, header = None, index = False, startcol = 0, startrow = 0)
+                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name, sheet4_name, sheet5_name, sheet6_name]:
+                        if sheet_name in writer.sheets:
+                            worksheet: Worksheet = writer.sheets[sheet_name]
+                            if worksheet.calculate_dimension() != "A1:A1":
+                                worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
                 cont = logInput()
@@ -7594,9 +7602,11 @@ class AnvilExtractor(LoLDataExtractor):
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
                     addDefaultStyle(CherryAnvil_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                     addDefaultStyle(KiwiAnvil_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
-                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
+                    for sheet_name in [sheet1_name, sheet2_name]:
+                        if sheet_name in writer.sheets:
+                            worksheet: Worksheet = writer.sheets[sheet_name]
+                            if worksheet.calculate_dimension() != "A1:A1":
+                                worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
                 cont = logInput()
@@ -7880,10 +7890,11 @@ class CherryRoundExtractor(LoLDataExtractor):
                     addDefaultStyle(CherryRoundList_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                     addDefaultStyle(CherryRound_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
                     addDefaultStyle(CherryPhase_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
-                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet3_name, header = None, index = False, startcol = 0, startrow = 0)
+                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name]:
+                        if sheet_name in writer.sheets:
+                            worksheet: Worksheet = writer.sheets[sheet_name]
+                            if worksheet.calculate_dimension() != "A1:A1":
+                                worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
                 cont = logInput()
@@ -8080,8 +8091,11 @@ class CameoExtractor(LoLDataExtractor):
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
                     addDefaultStyle(cameo_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
+                    for sheet_name in [sheet1_name]:
+                        if sheet_name in writer.sheets:
+                            worksheet: Worksheet = writer.sheets[sheet_name]
+                            if worksheet.calculate_dimension() != "A1:A1":
+                                worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
                 cont = logInput()
@@ -8374,8 +8388,11 @@ class GoHExtractor(LoLDataExtractor):
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
                     addDefaultStyle(GoH_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
+                    for sheet_name in [sheet1_name]:
+                        if sheet_name in writer.sheets:
+                            worksheet: Worksheet = writer.sheets[sheet_name]
+                            if worksheet.calculate_dimension() != "A1:A1":
+                                worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
                 cont = logInput()
@@ -9822,25 +9839,11 @@ class TFTExtractor(LoLDataExtractor):
                     addDefaultStyle(TFTPVENPC_df).to_excel(excel_writer = writer, sheet_name = sheet16_name)
                     addDefaultStyle(TFTScript_df).to_excel(excel_writer = writer, sheet_name = sheet17_name)
                     addDefaultStyle(TFTAnnouncement_df).to_excel(excel_writer = writer, sheet_name = sheet18_name)
-                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet3_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet4_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet5_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet6_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet7_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet8_name[:31], header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet9_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet10_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet11_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet12_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet13_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet14_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet15_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet16_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet17_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet18_name, header = None, index = False, startcol = 0, startrow = 0)
+                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name, sheet4_name, sheet5_name, sheet6_name, sheet7_name, sheet8_name[:31], sheet9_name, sheet10_name, sheet11_name, sheet12_name, sheet13_name, sheet14_name, sheet15_name, sheet16_name, sheet17_name, sheet18_name]:
+                        if sheet_name in writer.sheets:
+                            worksheet: Worksheet = writer.sheets[sheet_name]
+                            if worksheet.calculate_dimension() != "A1:A1":
+                                worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
                 cont = logInput()
@@ -10228,13 +10231,11 @@ class FontExtractor(LoLDataExtractor):
                     addDefaultStyle(fontStyle_df).to_excel(excel_writer = writer, sheet_name = sheet4_name)
                     addDefaultStyle(font_CSSStyle_df).to_excel(excel_writer = writer, sheet_name = sheet5_name)
                     addDefaultStyle(font_CSSIcon_df).to_excel(excel_writer = writer, sheet_name = sheet6_name)
-                with pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet1_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet2_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet3_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet4_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet5_name, header = None, index = False, startcol = 0, startrow = 0)
-                    self.version_df.to_excel(excel_writer = writer, sheet_name = sheet6_name, header = None, index = False, startcol = 0, startrow = 0)
+                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name, sheet4_name, sheet5_name, sheet6_name]:
+                        if sheet_name in writer.sheets:
+                            worksheet: Worksheet = writer.sheets[sheet_name]
+                            if worksheet.calculate_dimension() != "A1:A1":
+                                worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
                 cont = logInput()
@@ -10939,6 +10940,9 @@ if __name__ == "__main__":
                                             if df_struct.get("T", False):
                                                 df = df.transpose()
                                             addDefaultStyle(df).to_excel(excel_writer = writer, sheet_name = sheet_name[:31])
+                                            worksheet: Worksheet = writer.sheets[sheet_name[:31]]
+                                            if worksheet.calculate_dimension() != "A1:A1":
+                                                worksheet.cell(row = 1, column = 1, value = extractor.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                                     else:
                                         logPrint("已完成。 | Done.")
                             except PermissionError:
@@ -10948,29 +10952,6 @@ if __name__ == "__main__":
                                     break
                             else:
                                 logPrint(f"数据已导出到{extractor.wbPath}。\nData have been exported to {extractor.wbPath}.", print_time = True)
-                                break
-                        logPrint("正在为每个工作表追加版本号……\nAppending patch number to each worksheet ...", print_time = True)
-                        while True:
-                            try:
-                                with pandas.ExcelWriter(extractor.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
-                                    for j in range(len(df_queue)):
-                                        df_struct: dict[str, Any] = df_queue[j]
-                                        df: pandas.DataFrame = df_struct["sheet"]
-                                        sheet_name: str = df_struct["sheet_name"]
-                                        export_note: str = " (Skipped.)" if len(df) == 1 else ""
-                                        logPrint("[%d/%d]%s%s" %(j + 1, len(df_queue), sheet_name, export_note), end = "\r", print_time = True)
-                                        if len(df) > 1:
-                                            extractor.version_df.to_excel(excel_writer = writer, sheet_name = sheet_name[:31], header = None, index = False, startcol = 0, startrow = 0)
-                                    else:
-                                        logPrint("已完成。 | Done.")
-                            except PermissionError:
-                                logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                                cont = logInput()
-                                if cont != "" and cont[0] == "0":
-                                    break
-                            # except FileNotFoundError: #如果前面放弃导出，则接下来可能会进入此步骤……其实不可能（If the user quits exporting previously, then the program may execute this step ... Actually it's impossible）
-                            #     break
-                            else:
                                 break
                         del df_queue
                         extractor.df_queue.clear()
@@ -11456,6 +11437,9 @@ if __name__ == "__main__":
                                         if df_struct.get("T", False):
                                             df = df.transpose()
                                         addDefaultStyle(df).to_excel(excel_writer = writer, sheet_name = sheet_name[:31])
+                                        worksheet: Worksheet = writer.sheets[sheet_name[:31]]
+                                        if worksheet.calculate_dimension() != "A1:A1":
+                                            worksheet.cell(row = 1, column = 1, value = extractor.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
                                 else:
                                     logPrint("已完成。 | Done.")
                         except PermissionError:
@@ -11465,29 +11449,6 @@ if __name__ == "__main__":
                                 break
                         else:
                             logPrint(f"数据已导出到{extractor.wbPath}。\nData have been exported to {extractor.wbPath}.", print_time = True)
-                            break
-                    logPrint("正在为每个工作表追加版本号……\nAppending patch number to each worksheet ...", print_time = True)
-                    while True:
-                        try:
-                            with pandas.ExcelWriter(extractor.wbPath, mode = "a", if_sheet_exists = "overlay") as writer: #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
-                                for j in range(len(df_queue)):
-                                    df_struct: dict[str, Any] = df_queue[j]
-                                    df: pandas.DataFrame = df_struct["sheet"]
-                                    sheet_name: str = df_struct["sheet_name"]
-                                    export_note: str = " (Skipped.)" if len(df) == 1 else ""
-                                    logPrint("[%d/%d]%s%s" %(j + 1, len(df_queue), sheet_name, export_note), end = "\r", print_time = True)
-                                    if len(df) > 1:
-                                        extractor.version_df.to_excel(excel_writer = writer, sheet_name = sheet_name[:31], header = None, index = False, startcol = 0, startrow = 0)
-                                else:
-                                    logPrint("已完成。 | Done.")
-                        except PermissionError:
-                            logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                            cont = logInput()
-                            if cont != "" and cont[0] == "0":
-                                break
-                        # except FileNotFoundError: #如果前面放弃导出，则接下来可能会进入此步骤……其实不可能（If the user quits exporting previously, then the program may execute this step ... Actually it's impossible）
-                        #     break
-                        else:
                             break
                     del df_queue
                     extractor.df_queue.clear()

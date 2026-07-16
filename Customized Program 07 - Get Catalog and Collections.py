@@ -3,6 +3,7 @@ from lcu_driver.connection import Connection
 import copy, os, json, time, pandas, re, requests
 from openpyxl import load_workbook, Workbook
 from typing import Any
+from openpyxl.worksheet.worksheet import Worksheet
 from src.utils.summoner import print_summoner_info, get_info_name
 from src.utils.format import getISOTime, addDefaultStyle, optimize_bool_display, pyobj2json
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
@@ -15,7 +16,7 @@ from src.core.config.localization import inventoryType_dict, ownershipTypes, sub
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/06/08
+# 更新（Last update）：     2026/07/16
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -537,7 +538,6 @@ async def fetch_store(connection: Connection) -> None:
     store_df: pandas.DataFrame = sort_store_items(store, locale, collection_hashtable, hashtable_dicts)
     collection_df: pandas.DataFrame = sort_collection_items(collection, collection_hashtable, hashtable_dicts)
     version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
-    version_df: pandas.DataFrame = pandas.DataFrame({"Patch": [version]})
     #保存文件（Save file）
     print("开始导出到工作簿。\nBegin to export to the workbook.\n")
     excel_name: str = f"Store - {platformId}.xlsx"
@@ -549,16 +549,11 @@ async def fetch_store(connection: Connection) -> None:
     while True:
         try:
             if workbook1_exist:
-                with pandas.ExcelWriter(path = wb1Path, mode = "a", if_sheet_exists = "replace") as writer:
+                with (pandas.ExcelWriter(path = wb1Path, mode = "a", if_sheet_exists = "replace") if workbook1_exist else pandas.ExcelWriter(path = wb1Path)) as writer:
                     currentTime: str = time.strftime("%Y-%m-%d", time.localtime(time.time()))
                     addDefaultStyle(store_df).to_excel(excel_writer = writer, sheet_name = f"Store - {currentTime}_{platformId}_{locale}")
-                with pandas.ExcelWriter(path = wb1Path, mode = "a", if_sheet_exists = "overlay") as writer:
-                    version_df.to_excel(excel_writer = writer, sheet_name = f"Store - {currentTime}_{platformId}_{locale}", header = None, index = False, startcol = 0, startrow = 0)
-            else:
-                with pandas.ExcelWriter(path = wb1Path) as writer:
-                    currentTime: str = time.strftime("%Y-%m-%d", time.localtime(time.time()))
-                    addDefaultStyle(store_df).to_excel(excel_writer = writer, sheet_name = f"Store - {currentTime}_{platformId}_{locale}")
-                    version_df.to_excel(excel_writer = writer, sheet_name = f"Store - {currentTime}_{platformId}_{locale}", header = None, index = False, startcol = 0, startrow = 0)
+                    worksheet: Worksheet = writer.sheets[f"Store - {currentTime}_{platformId}_{locale}"]
+                    worksheet.cell(row = 1, column = 1, value = version)
         except PermissionError:
             print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
             input()
@@ -578,6 +573,9 @@ async def fetch_store(connection: Connection) -> None:
                 currentTime: str = time.strftime("%Y-%m-%d", time.localtime(time.time()))
                 addDefaultStyle(catalog_df).to_excel(excel_writer = writer, sheet_name = f"Catalog - {currentTime}_{platformId}_{locale}")
                 addDefaultStyle(collection_df).to_excel(excel_writer = writer, sheet_name = f"Collections - {currentTime}_{platformId}")
+                for sheet_name in [f"Catalog - {currentTime}_{platformId}_{locale}", f"Collections - {currentTime}_{platformId}"]:
+                    worksheet: Worksheet = writer.sheets[sheet_name]
+                    worksheet.cell(row = 1, column = 1, value = version)
         except PermissionError:
             print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
             input()

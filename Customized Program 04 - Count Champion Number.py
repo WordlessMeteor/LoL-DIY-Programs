@@ -2,6 +2,7 @@ from lcu_driver.connection import Connection
 import json, keyboard, os, pandas, requests, time
 from urllib.parse import urljoin
 from typing import Any
+from openpyxl.worksheet.worksheet import Worksheet
 from src.utils.patch import get_cdragon_patchList
 from src.utils.webRequest import requestUrl
 from src.utils.format import format_df, addDefaultStyle
@@ -17,7 +18,7 @@ from src.core.dataframes.champions import test_bot, sort_ddragon_champions, sort
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/27
+# 更新（Last update）：     2026/07/16
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -360,8 +361,8 @@ async def count_champions(connection: Connection) -> None:
                 try:
                     with (pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = wbPath)) as writer:
                         addDefaultStyle(LoLChampion_df).to_excel(excel_writer = writer, sheet_name = sheet_name)
-                    with pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "overlay") as writer:
-                        version_df.to_excel(excel_writer = writer, sheet_name = sheet_name, header = None, index = False, startcol = 0, startrow = 0)
+                        worksheet: Worksheet = writer.sheets[sheet_name]
+                        worksheet.cell(row = 1, column = 1, value = version)
                 except PermissionError:
                     print("无写入权限！请确保文件未被打开且非只读状态！按回车键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press Enter to try again.")
                     input()
@@ -425,8 +426,8 @@ def main():
                         try:
                             with (pandas.ExcelWriter(path = "available-bots.xlsx", mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = "available-bots.xlsx")) as writer:
                                 addDefaultStyle(LoLChampion_df).to_excel(excel_writer = writer, sheet_name = "Sheet3")
-                            with pandas.ExcelWriter(path = "available-bots.xlsx", mode = "a", if_sheet_exists = "overlay") as writer:
-                                version_df.to_excel(excel_writer = writer, sheet_name = "Sheet3", header = None, index = False, startcol = 0, startrow = 0)
+                                worksheet: Worksheet = writer.sheets["Sheet3"]
+                                worksheet.cell(row = 1, column = 1, value = version)
                         except PermissionError:
                             print("无写入权限！请确保文件未被打开且非只读状态！按回车键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press Enter to try again.")
                             input()
@@ -447,8 +448,8 @@ def main():
                         try:
                             with (pandas.ExcelWriter(path = "available-bots.xlsx", mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = "available-bots.xlsx")) as writer:
                                 addDefaultStyle(LoLChampion_df).to_excel(excel_writer = writer, sheet_name = "Sheet3")
-                            with pandas.ExcelWriter(path = "available-bots.xlsx", mode = "a", if_sheet_exists = "overlay") as writer:
-                                version_df.to_excel(excel_writer = writer, sheet_name = "Sheet3", header = None, index = False, startcol = 0, startrow = 0)
+                                worksheet: Worksheet = writer.sheets["Sheet3"]
+                                worksheet.cell(row = 1, column = 1, value = version)
                         except PermissionError:
                             print("无写入权限！请确保文件未被打开且非只读状态！按回车键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press Enter to try again.")
                             input()

@@ -9,6 +9,7 @@ from src.core.config.localization import inventoryType_dict, subInventoryTypes, 
 from src.utils.format import getISOTime, addDefaultStyle
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from typing import Any
+from openpyxl.worksheet.worksheet import Worksheet
 
 #=============================================================================
 # * 声明（Declaration）
@@ -16,7 +17,7 @@ from typing import Any
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/06/08
+# 更新（Last update）：     2026/07/16
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -447,7 +448,6 @@ async def organize_pass_information(connection: Connection) -> None:
     tokenShop_categoryOffer_df = pandas.concat([pandas.DataFrame([tokenShop_categoryOffer_header])[tokenShop_categoryOffer_df.columns], tokenShop_categoryOffer_df], ignore_index = True)
     ##版本（Version）
     version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
-    version_df: pandas.DataFrame = pandas.DataFrame({"Patch": [version]})
     #保存文件（Save file）
     print("开始导出到工作簿。\nBegin to export to the workbook.\n")
     excel_name: str = "Event Pass - %s.xlsx" %displayName
@@ -474,20 +474,11 @@ async def organize_pass_information(connection: Connection) -> None:
                     addDefaultStyle(token_bundle_df).to_excel(excel_writer = writer, sheet_name = f"TokenBundle - {currentTime}")
                 if len(tokenShop_categoryOffer_df) > 1:
                     addDefaultStyle(tokenShop_categoryOffer_df).to_excel(excel_writer = writer, sheet_name = f"OfferCat - {currentTime}") #全名（Full name）： OfferCategory
-            with pandas.ExcelWriter(path = wbPath, mode = "a", if_sheet_exists = "overlay") as writer:
-                addDefaultStyle(version_df).to_excel(excel_writer = writer, sheet_name = f"Info - {currentTime}", header = None, index = False, startcol = 0, startrow = 0)
-                if len(event_narrative_df) > 1:
-                    addDefaultStyle(version_df).to_excel(excel_writer = writer, sheet_name = f"Narrative - {currentTime}", header = None, index = False, startcol = 0, startrow = 0)
-                if len(event_pass_chapter_df) > 1:
-                    addDefaultStyle(version_df).to_excel(excel_writer = writer, sheet_name = f"PassChapter - {currentTime}", header = None, index = False, startcol = 0, startrow = 0)
-                if len(event_pass_bundle_df) > 1:
-                    addDefaultStyle(version_df).to_excel(excel_writer = writer, sheet_name = f"PassBundle - {currentTime}", header = None, index = False, startcol = 0, startrow = 0)
-                if len(event_reward_item_df) > 1:
-                    addDefaultStyle(version_df).to_excel(excel_writer = writer, sheet_name = f"RewardItem - {currentTime}", header = None, index = False, startcol = 0, startrow = 0)
-                if len(token_bundle_df) > 1:
-                    addDefaultStyle(version_df).to_excel(excel_writer = writer, sheet_name = f"TokenBundle - {currentTime}", header = None, index = False, startcol = 0, startrow = 0)
-                if len(tokenShop_categoryOffer_df) > 1:
-                    addDefaultStyle(version_df).to_excel(excel_writer = writer, sheet_name = f"OfferCat - {currentTime}", header = None, index = False, startcol = 0, startrow = 0)
+                for sheet_name in [f"Info - {currentTime}", f"Narrative - {currentTime}", f"PassChapter - {currentTime}", f"PassBundle - {currentTime}", f"RewardItem - {currentTime}", f"TokenBundle - {currentTime}", f"OfferCat - {currentTime}"]:
+                    if sheet_name in writer.sheets:
+                        worksheet: Worksheet = writer.sheets[sheet_name]
+                        if worksheet.calculate_dimension() != "A1:A1":
+                            worksheet.cell(row = 1, column = 1, value = version) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
         except PermissionError:
             print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
             input()

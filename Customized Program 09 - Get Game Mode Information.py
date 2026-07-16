@@ -2,6 +2,7 @@ from lcu_driver import Connector
 from lcu_driver.connection import Connection
 import os, pandas, time
 from typing import Any
+from openpyxl.worksheet.worksheet import Worksheet
 from src.utils.format import format_df, addDefaultStyle
 from src.utils.summoner import print_summoner_info
 from src.utils.excel_workbook import create_workbook_win32
@@ -13,7 +14,7 @@ from src.core.dataframes.gameMode import sort_queue_data, check_available_queue
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/04/29
+# 更新（Last update）：     2026/07/16
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -52,10 +53,11 @@ async def gamemode(connection: Connection) -> None: #导出游戏模式信息到
     workbook_exist: bool = os.path.exists(excel_name)
     while True:
         try:
-            with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "overlay") if workbook_exist else pandas.ExcelWriter(path = excel_name)) as writer:
+            with (pandas.ExcelWriter(path = excel_name, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(path = excel_name)) as writer:
                 currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(time.time()))
                 addDefaultStyle(queue_df).to_excel(excel_writer = writer, sheet_name = f"{currentTime} {platformId} {locale}")
-                version_df.to_excel(excel_writer = writer, sheet_name = f"{currentTime} {platformId} {locale}", header = None, index = False, startcol = 0, startrow = 0)
+                worksheet: Worksheet = writer.sheets[f"{currentTime} {platformId} {locale}"]
+                worksheet.cell(row = 1, column = 1, value = version)
         except PermissionError:
             print("无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试。\nPermission denied! Please ensure the file isn't opened right now or read-only! Press any key to try again.")
             if input().startswith("0"):
