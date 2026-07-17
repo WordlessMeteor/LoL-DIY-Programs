@@ -24,7 +24,7 @@ from src.core.config.localization import language_ddragon, language_dict
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/07/16
+# 更新（Last update）：     2026/07/17
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -3643,7 +3643,7 @@ class MapExtractor(LoLDataExtractor):
         - 怒火角斗场（Rings of Wrath）
         - 最终都市（Final City）
         - 班德尔之森（The Bandlewoods）
-        - 经典召唤师峡谷（Classic Summoner's Rift）
+        - 经典召唤师峡谷（Classic Rift）
         '''
         logPrint = self.log.logPrint
         #召唤师峡谷（Summoner's Rift）
@@ -3786,7 +3786,7 @@ class MapExtractor(LoLDataExtractor):
                 self.map35_bin = self.resolve_bin_hash(self.map35_bin)
             self.__class__.data_cache["online"][map35_bin_url] = self.map35_bin
         self.maps_ready[35] = True
-        #经典召唤师峡谷（Classic Summoner's Rift）
+        #经典召唤师峡谷（Classic Rift）
         map453_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/unknown/579b4182be3270f4.bin.json"
         if map453_bin_url in self.__class__.data_cache["online"]:
             self.map453_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map453_bin_url]
@@ -3794,10 +3794,10 @@ class MapExtractor(LoLDataExtractor):
             source, status, self.session = requestUrl("GET", map453_bin_url, session = self.session, log = self.log)
             if status != 200:
                 if status == 404:
-                    logPrint("经典召唤师峡谷地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nClassic Summoner's Rift map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map453_bin_url))
+                    logPrint("经典召唤师峡谷地图信息获取失败！请检查以下链接的可用性。程序将跳过该地图。\nClassic Rift map data capture failure! Please check the URL availability. The program will skip this map.\n%s" %(map453_bin_url))
                     self.map453_bin = {}
                 else:
-                    logPrint("经典召唤师峡谷地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nClassic Summoner's Rift map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
+                    logPrint("经典召唤师峡谷地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nClassic Rift map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
                     time.sleep(3)
                     self.init_data_readiness()
                     return
@@ -3820,7 +3820,7 @@ class MapExtractor(LoLDataExtractor):
             - 30: 怒火角斗场（Rings of Wrath）
             - 33: 最终都市（Final City）
             - 35: 班德尔之森（The Bandlewoods）
-            - 453: 经典召唤师峡谷（Classic Summoner's Rift）
+            - 453: 经典召唤师峡谷（Classic Rift）
         :type paths: list[str]
         '''
         logPrint = self.log.logPrint
@@ -3902,7 +3902,7 @@ class MapExtractor(LoLDataExtractor):
             self.map35_bin = self.resolve_bin_hash(self.map35_bin)
             self.__class__.data_cache["local"][map35_bin_path] = self.map35_bin
         self.maps_ready[35] = True
-        #经典召唤师峡谷（Classic Summoner's Rift）
+        #经典召唤师峡谷（Classic Rift）
         map453_bin_path: str = paths[7]
         if map453_bin_path in self.__class__.data_cache["local"]:
             self.map453_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map453_bin_path]

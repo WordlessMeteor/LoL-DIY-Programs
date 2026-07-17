@@ -608,6 +608,10 @@ gamemodes: dict[str, dict[str, str]] = {
     }
 } #来源（Source）：/lol-platform-config/v1/namespaces/DisabledChampions; /lol-platform-config/v1/namespaces/ChampionMasteryConfig
 gamemaps: dict[int, dict[str, str]] = {
+    0: {
+        "zh_CN": "测试地图0",
+        "en_US": "Test Map 0"
+    },
     1: {
         "zh_CN": "召唤师峡谷 夏季怀旧版",
         "en_US": "Summoner's Rift Original Summoner Variant"
@@ -694,7 +698,15 @@ gamemaps: dict[int, dict[str, str]] = {
     },
     453: {
         "zh_CN": "经典召唤师峡谷",
-        "en_US": "Classic Summoner's Rift"
+        "en_US": "Classic Rift"
+    },
+    601: {
+        "zh_CN": "测试地图601",
+        "en_US": "Test Map 601"
+    },
+    911: {
+        "zh_CN": "测试地图911",
+        "en_US": "Test Map 911"
     }
 }
 ARAMmaps: dict[str, dict[str, str]] = {
@@ -715,7 +727,7 @@ ARAMmaps: dict[str, dict[str, str]] = {
         "en_US": "Bridge of Progress"
     },
     "MapSkin_Map12_Jade": {
-        "zh_CN": "LCU_Map12_Name_Jade",
+        "zh_CN": "召唤师峡谷？",
         "en_US": "SR?"
     }
 }

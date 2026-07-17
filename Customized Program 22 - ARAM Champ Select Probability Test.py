@@ -73,24 +73,163 @@ async def create_lobby(connection: Connection, queueId: int = 0, isCustom: bool 
     '''
     对房间创建接口的封装，支持所有可用参数。<br>An encapsulation of the lobby creation endpoint, which supports all available parameters.
     
-    :param queueId: 队列序号，默认取值为0，通过`GET /lol-game-queues/v1/queues`接口获取。<br>QueueId, 0 by default, obtained through `GET /lol-game-queues/v1/queues` endpoint.
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param queueId: 队列序号，默认取值为0。通过`GET /lol-game-queues/v1/queues`接口获取。<br>QueueId, 0 by default. Obtained through `GET /lol-game-queues/v1/queues` endpoint.
     :type queueId: int
+    :param isCustom: （已弃用）是否为传统自定义房间。默认为真。<br>(Deprecated) Whether the lobby is a legacy custom lobby. True by default.
+        
+        在正式服25.18版本之前，所有自定义房间的队列序号都是0，该参数则是用来区别自定义房间和阵容匹配的房间。<br>Before Live Patch 25.18, the queueId of all custom lobbies is 0, while this parameter is designed to distinguish a custom lobby and a matched lobby.
+        
+        从正式服25.18版本开始，自定义房间的底层架构迎来更新，所有房间都赋予了一个队列序号。<br>Since Live Patch 25.18, the architecture of custom lobby has been updated, so that each lobby has been assigned with a unqiue queueId. 
+        
+        从那时起，创建自定义房间的请求主体完全依赖于队列序号，这个参数用不到了。<br>Since then, the request body to create a custom lobby is completely up to queueId, and this parameter is no longer used.
     :param lobbyName: 对局名，默认为空，此时采用客户端语言的默认配置。<br>Lobby name, an empty string by default, when client's default value if an empty string is passed.
     :type lobbyName: str
     :param lobbyPassword: 密码，默认为空。<br>Password, an empty string by default.
     :type lobbyPassword: str
+    :param mapId: （已弃用）地图序号。默认为11（召唤师峡谷）。<br>(Deprecated) Map ID. 11 (Summoner's Rift) by default.
+    
+        从正式服25.18版本开始，所有队列序号都有唯一确定的地图序号，包括自定义模式。因此这个参数用不到了。<br>Since Live Patch 25.18, each queueId has a unique mapId, including the custom modes. Therefore, this parameter is no longer used.
+        
+        所有可用于创建传统自定义房间的地图序号如下：<br>All available map IDs to create a legacy custom lobby are as follows:
+        - 1: 召唤师峡谷 夏季怀旧版（Summoner's Rift Original Summoner Variant）
+        - 2: 召唤师峡谷 万圣节怀旧版【Summoner's Rift Original Autumn (Harrowing) Variant】
+        - 3: 试炼之地（The Proving Grounds）
+        - 4: 熔岩大厅（Magma Chamber）
+        - 7: 召唤师峡谷（Summoner's Rift）
+        - 8: 水晶之痕（Crystal Scar）
+        - 10: 扭曲丛林（Twisted Treeline）
+        - 11: 召唤师峡谷（Summoner's Rift）
+        - 12: 嚎哭深渊（Howling Abyss）
+        - 13: 召唤师峡谷（Summoner's Rift）
+        - 14: 屠夫之桥（Butcher's Bridge）
+        - 16: 星界废墟（Cosmic Ruins）
+        - 18: 瓦洛兰城市公园（Valoran City Park）
+        - 19: 第43区（Substructure 43）
+        - 20: 飞船坠落点（Crash Site）
+        - 21: 百合与莲花的神庙（Temple of Lily and Lotus）
+        - 22: 聚点危机（Convergence）
+        - 23
+        - 30: 怒火角斗场（Rings of Wrath）
+        - 33: 最终都市（又名“终末市”）（Final City）
+        - 35: 班德尔之森（The Bandlewoods）
+        - 90: 第五赛季季前赛测试地图（Pre-Season 5 Testing Map）
+        - 121
+        - 133
+        - 453: 经典召唤师峡谷（Classic Rift）
+    :type mapId: int
     :param aramMapMutator: 极地大乱斗地图，默认为屠夫之桥。有以下取值：<br>ARAM map, Butcher's Bridge by default. It may be one of the following values:
         
         - NONE: 嚎哭深渊（Howling Abyss）
         - MapSkin_HA_Crepe: 进步之桥（Bridge of Progress）
         - MapSkin_Map12_Bloom: 莲华栈桥（Koeshin's Crossing）
-        - MapSkin_HA_Bilgewater: 屠夫之桥（Butcher's Bridge）
+        - MapSkin_HA_Bilgewater: （☆）屠夫之桥（Butcher's Bridge）
         - MapSkin_Map12_Jade: LCU_Map12_Name_Jade（SR?）
     :type aramMapMutator: str
-    :param spectatorPolicy: 观战策略，默认为AllAllowed，固定取值为LobbyAllowed、FriendsAllowed、AllAllowed和NotAllowed。<br>Spectator policy, "AllAllowed" by default, which has fixed values: "LobbyAllowed" "FriendsAllowed" "AllAllowed" and "NotAllowed".
+    :param gameMode: （已弃用）游戏模式。默认为训练模式。<br>(Deprecated) Game mode. Practice Tool by default.
+        
+        从正式服25.18版本开始，所有队列序号都有唯一确定的游戏模式，包括自定义模式。因此这个参数用不到了。<br>Since Live Patch 25.18, each queueId has a unique gameMode, including the custom modes. Therefore, this parameter is no longer used.
+        
+        所有可用于创建传统自定义房间的游戏模式如下：<br>All available game modes to create a legacy custom lobby are as follows:
+        - ARAM: 嚎哭深渊经典对战（ARAM）
+        - ARSR: 峡谷大乱斗（ARSR）
+        - ASCENSION: 飞升争夺战（Ascension）
+        - ASSASSINATE: 红月决（Blood Moon）
+        - BILGEWATER: 佣兵大作战（Black Marker Brawlers）
+        - BRAWL: 神木之门（Brawl）
+        - CHERRY: 斗魂竞技场（Arena）
+        - CLASSIC: 召唤师峡谷经典对战（Summoner's Rift classic）
+        - CHONCC_TREASURE_TFT: 云顶之弈（恭喜发财）（Choncc's Treasure）
+        - COUNTER_PICK: 互选征召赛（Nemesis Draft）
+        - DARKSTAR: 死兆星：奇点（Darkstart: Singularity）
+        - DOOMBOTSTEEMO: 末日人工智能（Doom Bots）
+        - FIRSTBLOOD: 大对决（Showdown）
+        - FIVE_YEAR_ANNIVERSARY_TFT: 5周年时光机（Pengu's Party）
+        - GAMEMODEX: 极限闪击（Nexus Blitz）
+        - HAWTHORN
+        - HEXAKILL: 六杀争夺战（Hexakill）
+        - JADE: 英雄联盟经典模式（League Classic）
+        - KINGPORO: 魄罗大乱斗（Legend of the Poro King）
+        - KIWI: 海克斯大乱斗（ARAM: Mayhem）
+        - KIWI_JADE: 海克斯大乱斗 经典模式版（ARAM: Mayhem Classic-ish）
+        - LNY23_TFT: 云顶之弈（恭喜发财）（Choncc's Treasure）
+        - LNY24_TFT: 云顶之弈（恭喜发财）（Choncc's Treasure）
+        - LNY25_TFT: 云顶之弈（恭喜发财）（Choncc's Treasure）
+        - MAKO_CLASSIC
+        - NEXUSBLITZ: 极限闪击（Nexus Blitz）
+        - ODIN: 统治战场（Dominion）
+        - ODYSSEY: 奥德赛（Odyssey）
+        - OneForAll: 克隆大作战（One for All）
+        - PRACTICETOOL: 训练模式（Practice Tool）
+        - PROJECT: 超频行动（Overcharge）
+        - PROMETHIUM_TFT: 敖兴之峰（Ao Shin's Ascent）
+        - PVE_PUZZLE_TFT: 发条鸟的试炼（Tocker's Trials）
+        - RUBY: 末日人工智能（Doom Bots）
+        - RUBY_TRIAL_1: 末日人工智能 - 维迦的诅咒！（DOOM BOTS - VEIGAR'S CURSE!）
+        - RUBY_TRIAL_2: 末日人工智能 - 维迦的邪咒！（DOOM BOTS - VEIGAR'S EVIL!）
+        - RUBY_TRIAL_3: 末日人工智能 - 维迦的末日厄咒！（DOOM BOTS - VEIGAR'S DOOM!）
+        - SET_REVIVAL_TFT: 云顶之弈回归赛季（TFT Revival）
+        - SET_REVIVAL_5_5_TFT: 云顶之弈（英雄之黎明重现）（Revival: Dawn of Heroes）
+        - SF_TFT: 云顶之弈（斗魂锦标赛）【Teamfight Tactics (Soul Brawl)】
+        - SIEGE: 枢纽攻防战（Nexus Siege）
+        - SNOWURF: 冰雪无限火力（Snow ARURF）
+        - STARGUARDIAN: 怪兽入侵（Invasion）
+        - STRAWBERRY: 无尽狂潮（Swarm）
+        - SWIFTPLAY: 快速模式（Swiftplay）
+        - TFT: 云顶之弈（Teamfight Tactics）
+        - TURBO_TFT: 云顶之弈（狂暴模式）【Teamfight Tactics (Hyper Roll)】
+        - TUTORIAL: 新手教程（Tutorial）
+        - UTLBOOK: 终极魔典（Ultimate Spellbook）
+        - URF: 无限火力（Ultra Rapid Fire）
+        - WIPMODEWIP
+    :type gameMode: str
+    :param mutatorId: （已弃用）游戏类型序号。默认为1（自选模式）。<br>(Deprecated) Game type config ID. 1 (Blind Pick) by default.
+        
+        从正式服25.18版本开始，所有队列序号都有唯一确定的游戏类型，包括自定义模式。因此这个参数用不到了。<br>Since Live Patch 25.18, each queueId has a unique game type, including the custom modes. Therefore, this parameter is no longer used.
+        
+        所有可用于创建传统自定义房间的游戏类型序号如下：（部分游戏类型是通过参数、部分网页及大模型推测得出，可能不正确。）<br>All available game modes to create a legacy custom lobby are as follows: (Some game types are guessed according to parameters, some websites and LLM, so they might not be correct.)
+        - 1: 自选模式（自定义）【Blind Pick (custom)】
+        - 2: 征召模式（自定义）【Draft Mode (custom)】
+        - 3: 轮选模式【Draft Noban (custom)】
+        - 4: 全随机模式（自定义）【All Random (custom)】
+        - 5: 同选模式【Simultaneous Pick (custom)】
+        - 6: 竞技征召模式（自定义）【Tournament Draft (custom)】
+        - 7: 计时征召【Timed Draft (custom)】
+        - 10: 基础教程（Basic Tutorial）
+        - 11: 进阶教程（Advanced Tutorial）
+        - 12: 最终教程（Capstone Tutorial）
+        - 13: 盲选随机【Blind Random (custom)】
+        - 14: 克隆选择（自定义）【All for one (custom)】
+        - 15: 全队克隆【All for one (cross-team)】
+        - 16: 自选征召模式（自定义）【Blind Draft Pick (custom)】
+        - 17: 互选征召（自定义）【Nemesis Draft (custom)】
+        - 18: 征召模式（Draft Pick）
+        - 19: 自选模式（Blind Pick）
+        - 20: 自选征召（Blind Draft Pick）
+        - 21: 全随机模式（All Random）
+        - 22: 克隆选择（All for one）
+        - 23: 快速匹配（Quickplay）
+    :type mutatorId: int
+    :param spectatorPolicy: 观战策略，默认为“所有人”。有以下取值：<br>Spectator policy, "All" by default. It may be one of the following values:
+    
+        - LobbyAllowed: 允许房间内玩家（Lobby Only）
+        - FriendsAllowed: 只允许好友（Friends List Only）
+        - AllAllowed: （☆）所有人（All）
+        - NotAllowed: 无（None）
     :type spectatorPolicy: str
     :param teamSize: 队伍规模，默认为5。<br>Team size, 5 by default.
     :type teamSize: int
+    :param maxPlayerCount: （已弃用）最大人类玩家数量。默认为0。<br>(Deprecated) Max number of human players. 0 by default.
+        
+        在2021年8月17日之前，训练模式房间的`maxPlayerCount`的值是0。之后，测试服只允许训练模式有一名人类玩家，此时`maxPlayerCount`的值是1。直到25.S1.1版本，多人训练模式正式开放，训练模式房间的`maxPlayerCount`的值又变回0。<br>Before Aug. 17th, 2021, a Practice lobby's `maxPlayerCount` value is 0. After that day, PBE only allowed one human player in Practice Tool, when the value of `maxPlayerCount` became 1. Not until Patch 25.S1.1 was multi-player Practice Tool officially released, when the value of `maxPlayerCount` became 0 again.
+        
+        但是，在创建房间的请求主体中修改这个字段的值，并不会改变房间信息中的该属性。<br>However, changing this field's value in the request body of lobby creation endpoint doesn't change this field's value in the lobby information.
+    :type maxPlayerCount: int
+    :param gameServerRegion: 服务器地区。默认为空字符串。<br>The region of the server where the game is. An empty string by default.
+        
+        创建房间一定是位于固定服务器上的。因此这个参数用不到了。<br>A lobby must be created on a specific server. Therefore, this parameter is no longer used.
+    :type gameServerRegion: str
     :param spectatorDelayEnabled: 观战延迟，默认为假。指定为真时为添加延迟。<br>Spectator delay, `False` by default. If it's specified as `True`, delay will be added.
     :type spectatorDelayEnabled: bool
     :param hidePublicly: 从公开的房间列表中隐藏，默认为假。指定为真时隐藏。<br>Hide from public lobby list, `False` by default. If it's specified as `True`, the lobby will be hidden from other players.

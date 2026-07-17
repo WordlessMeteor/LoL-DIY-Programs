@@ -195,10 +195,10 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
     source, status, session = requestUrl("GET", map453_bin_url, session = session, log = log)
     if status != 200:
         if status == 404:
-            logPrint("经典召唤师峡谷地图信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nClassic Summoner's Rift map data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(map453_bin_url))
+            logPrint("经典召唤师峡谷地图信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nClassic Rift map data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(map453_bin_url))
             map453_bin: dict[str, list[str] | dict[str, Any]] = {}
         else:
-            logPrint("经典召唤师峡谷地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nClass Summoner's Rift map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
+            logPrint("经典召唤师峡谷地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nClassic Rift map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
             time.sleep(3)
         return ({}, False, "")
     else:
@@ -454,9 +454,9 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
             "bilingual": "{6462680f}"
         },
         "Maps/Shipping/Map453/Modes/BASELINESR": {
-            "zh_CN": "{20426d6f}",
-            "en_US": "{20426d6f}",
-            "bilingual": "{20426d6f}"
+            "zh_CN": "英雄联盟经典模式",
+            "en_US": "League Classic",
+            "bilingual": "英雄联盟经典模式（League Classic）"
         },
         "Maps/Shipping/Map453/Modes/JADE": {
             "zh_CN": "英雄联盟经典模式",
