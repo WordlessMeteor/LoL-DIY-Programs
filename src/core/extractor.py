@@ -24,7 +24,7 @@ from src.core.config.localization import language_ddragon, language_dict
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/07/17
+# 更新（Last update）：     2026/07/18
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -3787,7 +3787,7 @@ class MapExtractor(LoLDataExtractor):
             self.__class__.data_cache["online"][map35_bin_url] = self.map35_bin
         self.maps_ready[35] = True
         #经典召唤师峡谷（Classic Rift）
-        map453_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/unknown/579b4182be3270f4.bin.json"
+        map453_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map453/map453.bin.json"
         if map453_bin_url in self.__class__.data_cache["online"]:
             self.map453_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map453_bin_url]
         else:
@@ -6437,7 +6437,7 @@ class AugmentExtractor(LoLDataExtractor):
             self.__class__.data_cache["online"][kiwi_bin_url] = self.kiwi_bin
         self.augments_ready["kiwi"] = True
         #海克斯大乱斗经典模式（ARAM: Mayhem Classic-ish mode）
-        kiwi_jade_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/unknown/410b3796f165ef3e.bin.json" #目前CommunityDragon数据库尚未解析该hash值的实际字符串。后续将跟进CommunityDragon数据库的更新，用实际的路径字符串代替（Currently the CommunityDragon database hasn't yet parsed the actual string of this hash value. The actual path string will be used to replace it in the future as the CommunityDragon database is updated）
+        kiwi_jade_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/kiwi_jade.bin.json"
         if kiwi_jade_bin_url in self.__class__.data_cache["online"]:
             self.kiwi_jade_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][kiwi_jade_bin_url]
         else:
@@ -11493,7 +11493,7 @@ if __name__ == "__main__":
                                 extract_game_dir / "data/maps/shipping/map30/map30.bin.json",
                                 extract_game_dir / "data/maps/shipping/map33/map33.bin.json",
                                 extract_game_dir / "data/maps/shipping/map35/map35.bin.json",
-                                extract_game_dir / "unknown/579b4182be3270f4.bin.json"
+                                extract_game_dir / "data/maps/shipping/map453/map453.bin.json"
                             ]
                         else:
                             map_paths = [
@@ -11504,7 +11504,7 @@ if __name__ == "__main__":
                                 repo_game_dir / "data/maps/shipping/map30/map30.bin.json",
                                 repo_game_dir / "data/maps/shipping/map33/map33.bin.json",
                                 repo_game_dir / "data/maps/shipping/map35/map35.bin.json",
-                                repo_game_dir / "unknown/579b4182be3270f4.bin.json"
+                                repo_game_dir / "data/maps/shipping/map453/map453.bin.json"
                             ]
                         mapExtractor.build_map_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), map_paths)))
                         mapExtractor.enqueue_map_dataframe()
@@ -11602,7 +11602,7 @@ if __name__ == "__main__":
                                 extract_game_dir / "data/maps/shipping/map33/map33.bin.json",
                                 extract_game_dir / "data/maps/shipping/map12/map12.bin.json",
                                 extract_game_dir / "maps/modespecificdata/kiwi.bin.json",
-                                extract_game_dir / "unknown/410b3796f165ef3e.bin.json"
+                                extract_game_dir / "maps/modespecificdata/kiwi_jade.bin.json"
                             ]
                         else:
                             augment_paths = [
@@ -11611,7 +11611,7 @@ if __name__ == "__main__":
                                 repo_game_dir / "data/maps/shipping/map33/map33.bin.json",
                                 repo_game_dir / "data/maps/shipping/map12/map12.bin.json",
                                 repo_game_dir / "maps/modespecificdata/kiwi.bin.json",
-                                repo_game_dir / "unknown/410b3796f165ef3e.bin.json"
+                                repo_game_dir / "maps/modespecificdata/kiwi_jade.bin.json"
                             ]
                         augmentExtractor.build_augment_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), augment_paths)))
                         augmentExtractor.enqueue_augment_dataframe()
