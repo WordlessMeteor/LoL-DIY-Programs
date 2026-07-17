@@ -10778,8 +10778,8 @@ if __name__ == "__main__":
         logPrint('等级计算的等级上限默认为18级。如果需要调整，请在选择数据类型的步骤输入“-2”以调整等级上限。\nThe level cap for level scaling calculations is 18 by default. If you want to adjust it, please input "-2" in the data type selection step to adjust the level cap.')
         
         #设置数据框导出密度（Set dataframe export density）
-        LoLDataExtractor.set_export_density(False)
-        logPrint('程序默认保留所有数据框的可导出的列。如果需要消除空字段，请在选择数据类型的步骤输入“-2”以设置导出密度。\nThe program reserves all dataframe columns that can be exported. If you want to remove empty fields, please input "-2" in the data type selection step to set the export density.')
+        LoLDataExtractor.set_export_density(True)
+        logPrint('程序默认消除空字段。如果需要保留所有数据框的可导出的列，请在选择数据类型的步骤输入“-2”以设置导出密度。\nThe program removes empty fields. If you want to reserve all dataframe columns that can be exported, please input "-2" in the data type selection step to set the export density.')
         
         for i in range(len(versions)):
             version: str = versions[i]
@@ -11181,8 +11181,8 @@ if __name__ == "__main__":
         # logPrint('等级计算的等级上限默认为18级。如果需要调整，请在选择数据类型的步骤输入“-2”以调整等级上限。\nThe level cap for level scaling calculations is 18 by default. If you want to adjust it, please input "-2" in the data type selection step to adjust the level cap.')
         
         #设置数据框导出密度（Set dataframe export density）
-        LoLDataExtractor.set_export_density(False)
-        # logPrint('程序默认保留所有数据框的可导出的列。如果需要消除空字段，请在选择数据类型的步骤输入“-2”以设置导出密度。\nThe program reserves all dataframe columns that can be exported. If you want to remove empty fields, please input "-2" in the data type selection step to set the export density.')
+        LoLDataExtractor.set_export_density(True)
+        # logPrint('程序默认消除空字段。如果需要保留所有数据框的可导出的列，请在选择数据类型的步骤输入“-2”以设置导出密度。\nThe program removes empty fields. If you want to reserve all dataframe columns that can be exported, please input "-2" in the data type selection step to set the export density.')
         
         #设置工作表集成（Determine whether to integrate sheets in different patches into one workbook）
         logPrint("是否将不同版本的工作表集成到一个工作簿中？（输入任意非空字符串以确认集成，否则分不同版本保存。）\nDo you want to integrate sheets of different versions into a single workbook? (Input any non-empty string to confirm integration, or null to save data into multiple workbooks of the different version.)")
