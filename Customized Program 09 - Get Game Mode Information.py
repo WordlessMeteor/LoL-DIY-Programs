@@ -14,7 +14,7 @@ from src.core.dataframes.gameMode import sort_queue_data, check_available_queue
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/16
+# 更新（Last update）：     2026/07/18
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -45,8 +45,8 @@ async def gamemode(connection: Connection) -> None: #导出游戏模式信息到
     platformId: str = current_party["platformId"]
     #locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     locale: str = client_info["--locale"]
-    version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
-    version_df: pandas.DataFrame = pandas.DataFrame({"Patch": [version]})
+    common_data: dict[str, Any] = await (await connection.request("GET", "/telemetry/v1/common-data")).json()
+    version: str = common_data["common.application_version"]
     excel_name: str = "游戏队列信息.xlsx"
     if not os.path.exists(excel_name):
         wbCreateFlag: bool = create_workbook_win32(os.path.abspath(excel_name))

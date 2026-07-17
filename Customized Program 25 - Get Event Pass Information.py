@@ -17,7 +17,7 @@ from openpyxl.worksheet.worksheet import Worksheet
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/16
+# 更新（Last update）：     2026/07/18
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -104,6 +104,8 @@ async def organize_pass_information(connection: Connection) -> None:
         except IndexError:
             pass
     region: str = client_info["--region"]
+    common_data: dict[str, Any] = await (await connection.request("GET", "/telemetry/v1/common-data")).json()
+    version: str = common_data["common.application_version"]
     #设置输出路径（Set the output directory）
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     displayName: str = get_info_name(current_info)
@@ -448,8 +450,6 @@ async def organize_pass_information(connection: Connection) -> None:
     tokenShop_categoryOffer_data_organized: dict[str, list[Any]] = {tokenShop_categoryOffer_header_keys[i]: tokenShop_categoryOffer_data[tokenShop_categoryOffer_header_keys[i]] for i in tokenShop_categoryOffer_statistics_output_order}
     tokenShop_categoryOffer_df: pandas.DataFrame = pandas.DataFrame(data = tokenShop_categoryOffer_data_organized)
     tokenShop_categoryOffer_df = pandas.concat([pandas.DataFrame([tokenShop_categoryOffer_header])[tokenShop_categoryOffer_df.columns], tokenShop_categoryOffer_df], ignore_index = True)
-    ##版本（Version）
-    version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
     #保存文件（Save file）
     print("开始导出到工作簿。\nBegin to export to the workbook.\n")
     excel_name: str = "Event Pass - %s.xlsx" %displayName

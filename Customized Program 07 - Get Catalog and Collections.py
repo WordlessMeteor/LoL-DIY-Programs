@@ -16,7 +16,7 @@ from src.core.config.localization import inventoryType_dict, ownershipTypes, sub
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/16
+# 更新（Last update）：     2026/07/18
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -509,6 +509,8 @@ async def fetch_store(connection: Connection) -> None:
     locale: str = client_info["--locale"]
     platform_folder: str = set_platform_folder(region, platformId)
     folder: str = set_summonerInfo_folder(region, platformId, current_info)
+    common_data: dict[str, Any] = await (await connection.request("GET", "/telemetry/v1/common-data")).json()
+    version: str = common_data["common.application_version"]
     #下面准备数据资源（The following code prepare the data resource）
     print("正在加载数据资源……\nLoading data resources ...")
     await prepare_data_resources(connection)
@@ -537,7 +539,6 @@ async def fetch_store(connection: Connection) -> None:
     catalog_df: pandas.DataFrame = sort_catalog_items(catalogList, hashtable_dicts)
     store_df: pandas.DataFrame = sort_store_items(store, locale, collection_hashtable, hashtable_dicts)
     collection_df: pandas.DataFrame = sort_collection_items(collection, collection_hashtable, hashtable_dicts)
-    version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
     #保存文件（Save file）
     print("开始导出到工作簿。\nBegin to export to the workbook.\n")
     excel_name: str = f"Store - {platformId}.xlsx"

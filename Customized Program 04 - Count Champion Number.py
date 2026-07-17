@@ -18,7 +18,7 @@ from src.core.dataframes.champions import test_bot, sort_ddragon_champions, sort
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/16
+# 更新（Last update）：     2026/07/18
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -288,6 +288,8 @@ async def get_plugin_champions(connection: Connection) -> list[dict[str, Any]]: 
 async def count_champions(connection: Connection) -> None:
     current_summoner: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     recommended_position_for_champion: dict[str, dict[str, Any]] = await (await connection.request("GET", "/lol-perks/v1/recommended-champion-positions")).json()
+    common_data: dict[str, Any] = await (await connection.request("GET", "/telemetry/v1/common-data")).json()
+    version: str = common_data["common.application_version"]
     print("请选择英雄数据类型：\nPlease a champion data type:\n1\t个人所有（Personal inventory）\n2\t插件（Plugins）")
     while True:
         data_type: str = input()
@@ -342,8 +344,6 @@ async def count_champions(connection: Connection) -> None:
         else:
             print("您的输入有误！请重新输入。\nERROR input! Please try again.")
             continue
-        version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
-        version_df: pandas.DataFrame = pandas.DataFrame({"Patch": [version]})
         #下面按照程序需求对数据资源进行一定的整理（The following code organize the data resource according to the program's need）
         if champion_got:
             count: int = 0
