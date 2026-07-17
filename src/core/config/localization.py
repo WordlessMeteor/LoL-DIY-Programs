@@ -713,6 +713,10 @@ ARAMmaps: dict[str, dict[str, str]] = {
     "MapSkin_HA_Crepe": {
         "zh_CN": "进步之桥",
         "en_US": "Bridge of Progress"
+    },
+    "MapSkin_Map12_Jade": {
+        "zh_CN": "LCU_Map12_Name_Jade",
+        "en_US": "SR?"
     }
 }
 gameTypes_config: dict[str, dict[str, str]] = {

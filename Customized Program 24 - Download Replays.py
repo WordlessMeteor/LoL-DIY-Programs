@@ -13,7 +13,7 @@ from src.core.process.replay import download_replay_lcu, download_replay_sgp, wa
 #=============================================================================
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
-# 更新（Last update）：     2026/07/01
+# 更新（Last update）：     2026/07/17
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -90,6 +90,8 @@ def sort_match_metadata(data: dict[str, Any], product: str, info_type: Literal["
                     mapName = "莲华栈桥（Koeshin's Crossing）"
                 elif "mapskin_ha_bilgewater" in data["gameModeMutators"]:
                     mapName = "屠夫之桥（Butcher's Bridge）"
+                elif "mapskin_map12_jade" in data["gameModeMutators"]:
+                    mapName = "LCU_Map12_Name_Jade（SR?）"
                 else:
                     mapName = "嚎哭深渊（Howling Abyss）"
             result["map"] = mapName

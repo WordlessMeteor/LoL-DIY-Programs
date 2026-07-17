@@ -15,7 +15,7 @@ parser.add_argument("-q", "--queueId", help = "通过队列序号指定要创建
 # parser.add_argument("-c", "--is-custom", help = "是否创建自定义房间（Whether to create a custom lobby）", action = "store_true")
 parser.add_argument("-n", "--lobby-name", help = "指定一个自定义房间名称（Specify the lobby name）", action = "store", type = str, default = None)
 parser.add_argument("-s", "--lobby-password", help = "指定自定义房间的密码（Specify the lobby password）", action = "store", type = str, default = "")
-parser.add_argument("-m", "--aram-map-mutator", help = "指定一个大乱斗地图（Specify the map of ARAM）", action = "store", type = str, choices = ["NONE", "MapSkin_Map12_Bloom", "MapSkin_HA_Bilgewater", "MapSkin_HA_Crepe"], default = "MapSkin_HA_Bilgewater")
+parser.add_argument("-m", "--aram-map-mutator", help = "指定一个大乱斗地图（Specify the map of ARAM）", action = "store", type = str, choices = ["NONE", "MapSkin_Map12_Bloom", "MapSkin_HA_Bilgewater", "MapSkin_HA_Crepe", "MapSkin_Map12_Jade"], default = "MapSkin_HA_Bilgewater")
 parser.add_argument("-sp", "--spectator-policy", help = "指定观战策略（Specify a spectate policy）", action = "store", type = str, choices = ["LobbyAllowed", "FriendsAllowed", "AllAllowed", "NotAllowed"], default = "AllAllowed")
 parser.add_argument("-ts", "--team-size", help = "指定队伍规模（Specify the team size）", action = "store", type = int, default = 5)
 parser.add_argument("--enable-spectator-delay", help = "是否启用观战延迟（Whether to enable spectator delay）", action = "store_true")
@@ -28,7 +28,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/01
+# 更新（Last update）：     2026/07/17
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -69,7 +69,7 @@ async def prepare_data_resources(connection: Connection) -> None:
 #-----------------------------------------------------------------------------
 # 创建房间（Create a lobby）
 #-----------------------------------------------------------------------------
-async def create_lobby(connection: Connection, queueId: int = 0, isCustom: bool = True, lobbyName: Optional[str] = None, lobbyPassword: str = "", mapId: int = 11, aramMapMutator: Literal["NONE", "MapSkin_Map12_Bloom", "MapSkin_HA_Bilgewater", "MapSkin_HA_Crepe"] = "MapSkin_HA_Bilgewater", gameMode: str = "PRACTICETOOL", mutatorId: int = 1, spectatorPolicy: Literal["LobbyAllowed", "FriendsAllowed", "AllAllowed", "NotAllowed"] = "AllAllowed", teamSize: int = 5, maxPlayerCount: int = 0, gameServerRegion: str = "", spectatorDelayEnabled: bool = False, hidePublicly: bool = False) -> dict[str, Any]:
+async def create_lobby(connection: Connection, queueId: int = 0, isCustom: bool = True, lobbyName: Optional[str] = None, lobbyPassword: str = "", mapId: int = 11, aramMapMutator: Literal["NONE", "MapSkin_Map12_Bloom", "MapSkin_HA_Bilgewater", "MapSkin_HA_Crepe", "MapSkin_Map12_Jade"] = "MapSkin_HA_Bilgewater", gameMode: str = "PRACTICETOOL", mutatorId: int = 1, spectatorPolicy: Literal["LobbyAllowed", "FriendsAllowed", "AllAllowed", "NotAllowed"] = "AllAllowed", teamSize: int = 5, maxPlayerCount: int = 0, gameServerRegion: str = "", spectatorDelayEnabled: bool = False, hidePublicly: bool = False) -> dict[str, Any]:
     '''
     对房间创建接口的封装，支持所有可用参数。<br>An encapsulation of the lobby creation endpoint, which supports all available parameters.
     
@@ -85,14 +85,15 @@ async def create_lobby(connection: Connection, queueId: int = 0, isCustom: bool 
         - MapSkin_HA_Crepe: 进步之桥（Bridge of Progress）
         - MapSkin_Map12_Bloom: 莲华栈桥（Koeshin's Crossing）
         - MapSkin_HA_Bilgewater: 屠夫之桥（Butcher's Bridge）
+        - MapSkin_Map12_Jade: LCU_Map12_Name_Jade（SR?）
     :type aramMapMutator: str
-    :param spectatorPolicy: 观战策略，默认为AllAllowed，固定取值为LobbyAllowed、FriendsAllowed、AllAllowed和NotAllowed（Spectator policy, "AllAllowed" by default, which has fixed values: "LobbyAllowed" "FriendsAllowed" "AllAllowed" and "NotAllowed"）
+    :param spectatorPolicy: 观战策略，默认为AllAllowed，固定取值为LobbyAllowed、FriendsAllowed、AllAllowed和NotAllowed。<br>Spectator policy, "AllAllowed" by default, which has fixed values: "LobbyAllowed" "FriendsAllowed" "AllAllowed" and "NotAllowed".
     :type spectatorPolicy: str
-    :param teamSize: 队伍规模，默认为5（Team size, 5 by default）
+    :param teamSize: 队伍规模，默认为5。<br>Team size, 5 by default.
     :type teamSize: int
-    :param spectatorDelayEnabled: 观战延迟，默认为假。指定为真时为添加延迟（Spectator delay, `False` by default. If it's specified as `True`, delay will be added）
+    :param spectatorDelayEnabled: 观战延迟，默认为假。指定为真时为添加延迟。<br>Spectator delay, `False` by default. If it's specified as `True`, delay will be added.
     :type spectatorDelayEnabled: bool
-    :param hidePublicly: 从公开的房间列表中隐藏，默认为假。指定为真时隐藏（Hide from public lobby list, `False` by default. If it's specified as `True`, the lobby will be hidden from other players）
+    :param hidePublicly: 从公开的房间列表中隐藏，默认为假。指定为真时隐藏。<br>Hide from public lobby list, `False` by default. If it's specified as `True`, the lobby will be hidden from other players.
     :return: 建房请求的响应主体。<br>The response body of the request to create a lobby.
     :rtype: dict[str, Any]
     '''
