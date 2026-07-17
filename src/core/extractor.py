@@ -6610,7 +6610,7 @@ class AugmentExtractor(LoLDataExtractor):
         augmentModifier_data_json: dict[str, list[Any]] = copy.deepcopy(augmentModifier_data)
         
         #数据整理核心部分（Data organization core part）
-        AugmentDisplayTags_zh: dict[int, str] = {0: "己方", 1: "伤害", 2: "综合", 3: "复原力", 4: "速度", 5: "功能", 6: "属性锻造器", 7: "经济", 8: "任务", 9: "任务线", 10: "经典"} #通过字符串常量池的“cherry_augmentdisplaytag_...”类键得到（Obtained by "cherry_augmentdisplaytag_..." keys）
+        AugmentDisplayTags_zh: dict[int, str] = {0: "己方", 1: "伤害", 2: "综合", 3: "复原力", 4: "速度", 5: "功能", 6: "属性锻造器", 7: "经济", 8: "任务", 9: "任务线", 10: "经典模式版"} #通过字符串常量池的“cherry_augmentdisplaytag_...”类键得到（Obtained by "cherry_augmentdisplaytag_..." keys）
         AugmentDisplayTags_en: dict[int, str] = {0: "Ally", 1: "Damage", 2: "General", 3: "Resilience", 4: "Speed", 5: "Utility", 6: "Stat Anvil", 7: "Economy", 8: "Quest", 9: "Questline", 10: "Classic-ish"}
         AugmentDisplayTags: dict[int, str] = AugmentDisplayTags_zh if self.locale in self.ZH_LOCALE else AugmentDisplayTags_en
         augment_rarities_zh: dict[int, str] = {0: "白银", 1: "黄金", 2: "棱彩", 3: "超凡", 4: "晶耀"}
