@@ -6642,6 +6642,8 @@ class AugmentExtractor(LoLDataExtractor):
                                 else:
                                     if i == 18: #{ed593c9c}
                                         to_append = False
+                                    elif i == 19: #强化符文序号（`AugmentPlatformId`）
+                                        to_append = -1
                                     else:
                                         to_append = ""
                                     break
@@ -6714,7 +6716,7 @@ class AugmentExtractor(LoLDataExtractor):
                     if i == 0: #主键（`Key`）
                         to_append: Any = key1
                     elif i <= 10:
-                        to_append = value.get(key, "")
+                        to_append = value.get(key, -1 if i == 10 else "")
                     elif i <= 20: #字符串常量（String constants）
                         subkey2: str = pStrConst.search(key).group()
                         subkey1: str = key.replace(subkey2, "")
@@ -6790,6 +6792,8 @@ class AugmentExtractor(LoLDataExtractor):
                                         else:
                                             if i == 20 or i == 24:
                                                 to_append = value.get(key, False)
+                                            elif i == 21: #强化符文序号（`AugmentPlatformId`）
+                                                to_append = -1
                                             else:
                                                 to_append = value.get(key, "")
                                             break
