@@ -208,9 +208,9 @@ def format_df(df: pandas.DataFrame, width_exceed_ask: bool = True, direct_print:
         print("排列方式参数错误！请传入字符串。\nAlignment parameter ERROR! Please pass a string instead.")
     return (result, maxLens)
 
-def eliminate_empty_fields(df: pandas.DataFrame, header: Optional[int | list[int]] = 0, na_values: Any | Iterable[Any] = None) -> pandas.DataFrame:
+def eliminate_empty_fields(df: pandas.DataFrame, header: Optional[int | list[int]] = 0, na_values: Any | Iterable[Any] = None, drop_same: bool = False) -> pandas.DataFrame:
     '''
-    移除一个数据框中所有值全为空值的列。空值包括空字符串和0。<br>Remove the columns where each value is an empty value from a dataframe. An empty value includes an empty string and 0.
+    移除一个数据框中所有值全为空值的列。空值是空字符串、0以及用户指定的空值中的任意一个值。<br>Remove the columns where each value is an empty value from a dataframe. An empty value is a value among an empty string, 0 and user-specified empty values.
     
     传入的数据框不得是转置后的。即数据框的列应当代表字段，而不是索引。<br>`df` shouldn't be transposed. That is, the columns of `df` should represent fields instead of indices.
     
@@ -218,8 +218,12 @@ def eliminate_empty_fields(df: pandas.DataFrame, header: Optional[int | list[int
     :type df: pandas.DataFrame
     :param header: 数据区域中作为表头的部分。适用于本存储库中将中文表头作为数据区域第0行的数据框，此时header应指定为`0`或者`[0]`。
     :type header: The header indices in the data area. Applys to the dataframes which takes the 0th line as the Chinese header, when `header` should be specified as `0` or `[0]`.
-    :param na_values: 数据框中的缺失数据。默认为`numpy.nan`。<br>NA values in the dataframe. `numpy.nan` by default.
+    :param na_values: 数据框中的缺失数据。默认为`[0, "", numpy.nan]`。<br>NA values in the dataframe. `[0, "", numpy.nan]` by default.
     :type na_values: Any | Iterable[Any]
+    :param drop_same: 是否消除值相同的字段。默认为假。<br>Whether to eliminate the fields whose values are the same. False by default.
+        
+        谨慎使用这个参数。在相同的值具有意义的情况下，不应将此参数置为真。<br>Watch out for this parameter. When the same value means something, this parameter shouldn't be set as True.
+    :type drop_same: bool
     :return: 消除空字段后的数据框。<br>The dataframe after eliminating empty fields.
     :rtype: pandas.DataFrame
     '''
@@ -229,17 +233,19 @@ def eliminate_empty_fields(df: pandas.DataFrame, header: Optional[int | list[int
     elif isinstance(header, int):
         header = [header]
     if na_values == None:
-        na_values = [numpy.nan]
+        na_values = [0, "", numpy.nan]
     elif isinstance(na_values, Iterable):
         na_values = list(na_values)
     else:
         na_values = [na_values]
-    empty_values: list[Any] = [0, ""] + list(na_values)
+    empty_values: list[Any] = list(na_values)
     record_indices: list[int] = sorted(set(df.index.to_list()) - set(header))
-    #筛选空列（Filter for empty columns）
+    #设置要消除的列（Set columns to drop）
     fields_to_drop: list[str] = []
     for field in df.columns:
-        if all(map(lambda x: x in empty_values, df[field][record_indices])):
+        if all(map(lambda x: x in empty_values, df[field][record_indices])): #筛选空列（Filter for empty columns）
+            fields_to_drop.append(field)
+        elif drop_same and len(set(df[field][record_indices])) == 1: #筛选值相同的列（Filter for columns with completely same values）
             fields_to_drop.append(field)
     #消除空列（Eliminate empty columns）
     return df.drop(fields_to_drop, axis = 1)
