@@ -4204,7 +4204,7 @@ class MapExtractor(LoLDataExtractor):
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
                     addDefaultStyle(map_df.transpose()).to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name, sheet4_name, sheet5_name, sheet6_name]:
+                    for sheet_name in [sheet1_name]:
                         if sheet_name in writer.sheets:
                             worksheet: Worksheet = writer.sheets[sheet_name]
                             if worksheet.calculate_dimension() != "A1:A1":
@@ -4462,7 +4462,7 @@ class CheatExtractor(LoLDataExtractor):
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
                     addDefaultStyle(cheatset_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                     addDefaultStyle(cheat_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
-                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name, sheet4_name, sheet5_name, sheet6_name]:
+                    for sheet_name in [sheet1_name, sheet2_name]:
                         if sheet_name in writer.sheets:
                             worksheet: Worksheet = writer.sheets[sheet_name]
                             if worksheet.calculate_dimension() != "A1:A1":
@@ -4833,7 +4833,7 @@ class PerkExtractor(LoLDataExtractor):
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
                     addDefaultStyle(perkstyle_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                     addDefaultStyle(perk_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
-                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name, sheet4_name, sheet5_name, sheet6_name]:
+                    for sheet_name in [sheet1_name, sheet2_name]:
                         if sheet_name in writer.sheets:
                             worksheet: Worksheet = writer.sheets[sheet_name]
                             if worksheet.calculate_dimension() != "A1:A1":
@@ -5023,7 +5023,7 @@ class SummonerSpellExtractor(LoLDataExtractor):
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
                     addDefaultStyle(summonerSpell_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
-                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name, sheet4_name, sheet5_name, sheet6_name]:
+                    for sheet_name in [sheet1_name]:
                         if sheet_name in writer.sheets:
                             worksheet: Worksheet = writer.sheets[sheet_name]
                             if worksheet.calculate_dimension() != "A1:A1":
@@ -5924,7 +5924,7 @@ class ChampionExtractor(LoLDataExtractor):
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
                     addDefaultStyle(champion_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                     addDefaultStyle(champion_spell_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
-                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name, sheet4_name, sheet5_name, sheet6_name]:
+                    for sheet_name in [sheet1_name, sheet2_name]:
                         if sheet_name in writer.sheets:
                             worksheet: Worksheet = writer.sheets[sheet_name]
                             if worksheet.calculate_dimension() != "A1:A1":
@@ -6290,7 +6290,7 @@ class ItemExtractor(LoLDataExtractor):
                     addDefaultStyle(item_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                     addDefaultStyle(itemGroup_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
                     addDefaultStyle(itemModifier_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
-                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name, sheet4_name, sheet5_name, sheet6_name]:
+                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name]:
                         if sheet_name in writer.sheets:
                             worksheet: Worksheet = writer.sheets[sheet_name]
                             if worksheet.calculate_dimension() != "A1:A1":
