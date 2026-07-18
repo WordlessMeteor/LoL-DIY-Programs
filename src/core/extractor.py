@@ -6748,6 +6748,7 @@ class AugmentExtractor(LoLDataExtractor):
         SwarmAugment_statistics_output_order: list[int] = [0, 1, 10, 2, 11, 12, 9, 21, 6, 3, 13, 14, 15, 16, 4, 17, 18, 19, 20, 5, 22, 7, 8]
         SwarmAugment_data_organized: dict[str, list[Any]] = {SwarmAugment_header_keys[i]: SwarmAugment_data_json[SwarmAugment_header_keys[i]] for i in SwarmAugment_statistics_output_order}
         SwarmAugment_df: pandas.DataFrame = pandas.DataFrame(data = SwarmAugment_data_organized)
+        SwarmAugment_df = SwarmAugment_df.sort_values(by = "AugmentPlatformId", ascending = True, ignore_index = True)
         logPrint("正在优化无尽狂潮强化数据框的逻辑值显示……\nOptimizing boolean value display of the Swarm augment dataframe ...")
         optimize_bool_display(SwarmAugment_df)
         SwarmAugment_df = pandas.concat([pandas.DataFrame([SwarmAugment_header])[SwarmAugment_df.columns], SwarmAugment_df], ignore_index = True)
