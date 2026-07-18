@@ -4591,7 +4591,7 @@ def sort_LoLGame_summary(LoLGame_summary: dict[str, Any], queues: dict[int, dict
         bans = LoLGame_summary["teams"][0]["bans"] + LoLGame_summary["teams"][1]["bans"]
         if len(LoLGame_summary["teams"]) > 2:
             logPrint("警告：对局%d中含有%d支阵营。\nWarning: There're %d teams in Match %d." %(matchId, len(LoLGame_summary["teams"]), len(LoLGame_summary["teams"]), matchId), verbose = verbose)
-    if LoLGame_summary["gameMode"] == "CHERRY" and Patch("14.8") < Patch(version):
+    if LoLGame_summary["gameMode"] == "CHERRY" and Patch("14.8") < Patch(version) and LoLGame_summary["queueId"] != 1740: #勇敢斗魂竞技场没有禁用阶段（Bravery Arena doesn't have a ban phase）
         bans_tmp: list[dict[str, int]] = bans[:]
         bans = []
         emptyBan: dict[str, int] = {"championId": -1, "pickTurn": 0} #定义一个初始化禁用字典，用于后续数据框填充空值（Define an initialized banning dictionary so that empty values are appended to the dataframe at certain times subsequently）
@@ -5013,7 +5013,7 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
             bans = LoLGame_summary_json["teams"][0]["bans"] + LoLGame_summary_json["teams"][1]["bans"]
             if len(LoLGame_summary_json["teams"]) > 2:
                 logPrint("警告：对局%d中含有%d支阵营。\nWarning: There're %d teams in Match %d." %(matchId, len(LoLGame_summary_json["teams"]), len(LoLGame_summary_json["teams"]), matchId), verbose = verbose)
-        if LoLGame_summary_json["gameMode"] == "CHERRY" and Patch("14.8") < Patch(version):
+        if LoLGame_summary_json["gameMode"] == "CHERRY" and Patch("14.8") < Patch(version) and LoLGame_summary_json["queueId"] != 1740: #勇敢斗魂竞技场没有禁用阶段（Bravery Arena doesn't have a ban phase）
             bans_tmp: list[dict[str, int]] = bans[:]
             bans = []
             emptyBan: dict[str, int] = {"championId": -1, "pickTurn": 0} #定义一个初始化禁用字典，用于后续数据框填充空值（Define an initialized banning dictionary so that empty values are appended to the dataframe at certain times subsequently）
@@ -5464,7 +5464,7 @@ async def sort_LoLGame_stats(connection: Connection, LoLMatchIDs: list[int], que
                 bans = LoLGame_summary["teams"][0]["bans"] + LoLGame_summary["teams"][1]["bans"]
                 if len(LoLGame_summary["teams"]) > 2:
                     logPrint("警告：对局%d中含有%d支阵营。\nWarning: There're %d teams in Match %d." %(matchId, len(LoLGame_summary["teams"]), len(LoLGame_summary["teams"]), matchId), verbose = verbose)
-            if LoLGame_summary["gameMode"] == "CHERRY" and Patch("14.8") < Patch(version):
+            if LoLGame_summary["gameMode"] == "CHERRY" and Patch("14.8") < Patch(version) and LoLGame_summary["queueId"] != 1740: #勇敢斗魂竞技场没有禁用阶段（Bravery Arena doesn't have a ban phase）
                 bans_tmp: list[dict[str, int]] = bans[:]
                 bans = []
                 emptyBan: dict[str, int] = {"championId": -1, "pickTurn": 0} #定义一个初始化禁用字典，用于后续数据框填充空值（Define an initialized banning dictionary so that empty values are appended to the dataframe at certain times subsequently）
@@ -5914,7 +5914,7 @@ async def sort_LoLGame_stats_sgp(connection: Connection, sgpSession: SGPSession,
                 bans = LoLGame_summary_json["teams"][0]["bans"] + LoLGame_summary_json["teams"][1]["bans"]
                 if len(LoLGame_summary_json["teams"]) > 2:
                     logPrint("警告：对局%d中含有%d支阵营。\nWarning: There're %d teams in Match %d." %(matchId, len(LoLGame_summary_json["teams"]), len(LoLGame_summary_json["teams"]), matchId), verbose = verbose)
-            if LoLGame_summary_json["gameMode"] == "CHERRY" and Patch("14.8") < Patch(version):
+            if LoLGame_summary_json["gameMode"] == "CHERRY" and Patch("14.8") < Patch(version) and LoLGame_summary_json["queueId"] != 1740: #勇敢斗魂竞技场没有禁用阶段（Bravery Arena doesn't have a ban phase）
                 bans_tmp: list[dict[str, int]] = bans[:]
                 bans = []
                 emptyBan: dict[str, int] = {"championId": -1, "pickTurn": 0} #定义一个初始化禁用字典，用于后续数据框填充空值（Define an initialized banning dictionary so that empty values are appended to the dataframe at certain times subsequently）
