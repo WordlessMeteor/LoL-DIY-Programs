@@ -40,7 +40,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/06/28
+# 更新（Last update）：     2026/07/18
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2104,7 +2104,7 @@ async def search_profile(connection: Connection) -> None:
         search_LoL: bool = bool(search_LoL_str)
         LoLMatchIDs: list[int] = [] #代表实际需要查询的对局序号（Represents the matchIds for query）
         old_LoLMatch_detected: bool = False #是否检测到旧对局（Whether any old match is detected）
-        update_unsaved_only_lol: bool = False #决定在批量查询时是否只保存未保存过的对局（Decides whether to only save the unsaved matches during searching in batches）
+        update_unsaved_only_lol: bool = False #决定在批量查询时是否只保存未保存过的对局（Decides whether to only save the unsaved matches during searching in batch）
         if search_LoL:
             LoLHistory_dfs: list[pandas.DataFrame] = []
             for i in range(len(AllAccounts)):
@@ -2175,7 +2175,7 @@ async def search_profile(connection: Connection) -> None:
             LoLHistory_df_all = pandas.concat([LoLHistory_df_all.iloc[:1], LoLHistory_df_all.iloc[1:].sort_values(by = "gameCreationDate", ascending = False)], ignore_index = True) #这里弃用了根据对局序号排序（Here gameId isn't used to sort the values）
             #警告：在按照对局创建日期排序后，通过SGP API获取的异常对局由于其时间戳是0，将被放到对局记录的最底部（Warning: After ordering by game creation date, those abnormal matches are put at the bottom because their game creation timestamps are 0）
             
-            logPrint('请输入要查询的英雄联盟对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出英雄联盟对局查询请输入“0”：\nPlease enter the LoL match ID to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to quit searching for LoL matches.')
+            logPrint('请输入要查询的英雄联盟对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出英雄联盟对局查询请输入“0”：\nPlease enter the LoL match ID to check. Submit a list containing matchIDs to search in batch. Submit "3" to search the currently stored history in batch. Submit "0" to quit searching for LoL matches.')
             LoLGameIDs: list[int] = LoLHistory_df_all["gameId"][1:].to_list() #代表对局记录中的所有对局序号（Represents all matchIds in the match history）
             old_LoLMatch_detected = len(saved_LoLMatchIDs) > 0
             while True:
@@ -2231,7 +2231,7 @@ async def search_profile(connection: Connection) -> None:
                             recapture: bool = bool(recapture_str)
                             if recapture:
                                 LoLMatchIDs = [] #如果没有这句语句，那么当重新输入对局序号列表时，从本地文件中检测到的对局数量相比上次检测数的基础上会多出本地文件中包含的对局的数量（Without this assignment, when reinputting the matchId list, the number of matches detected from the local files will become more than that of the last time's check）
-                                logPrint('请输入要查询的英雄联盟对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出英雄联盟对局查询请输入“0”：\nPlease enter the LoL match ID to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to quit searching for LoL matches.')
+                                logPrint('请输入要查询的英雄联盟对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出英雄联盟对局查询请输入“0”：\nPlease enter the LoL match ID to check. Submit a list containing matchIDs to search in batch. Submit "3" to search the currently stored history in batch. Submit "0" to quit searching for LoL matches.')
                                 continue
                             scan_lol = True #不应直接放到matchID == "scan"语句下，因为有可能历史记录不是扫描获取的，而是一开始就获取的。比如“尚未保存过该玩家的数据”，或者提示“检测到若干场对局。是否继续”选择了否（This statement shouldn't follow closely after the statement `matchId == "scan"`, because the match history might be obtained in the beginning instead of by scanning. Cases are that a summoner's data has never been saved locally, and that the user inputs something in face of the hint "Detected some matches. Continue?"）
                             queues = queues_initial.copy()
@@ -2582,7 +2582,7 @@ async def search_profile(connection: Connection) -> None:
             TFTHistory_df_all = TFTHistory_df_all.reset_index(drop = True)
             TFTHistory_df_all = pandas.concat([TFTHistory_df_all.iloc[:1], TFTHistory_df_all.iloc[1:].sort_values(by = "gameCreationDate", ascending = False)], ignore_index = True) #这里弃用了根据对局序号排序（Here gameId isn't used to sort the values）
             
-            logPrint('请输入要查询的云顶之弈对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出云顶之弈对局查询请输入“0”：\nPlease enter the TFT match ID to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to quit searching for TFT matches.')
+            logPrint('请输入要查询的云顶之弈对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出云顶之弈对局查询请输入“0”：\nPlease enter the TFT match ID to check. Submit a list containing matchIDs to search in batch. Submit "3" to search the currently stored history in batch. Submit "0" to quit searching for TFT matches.')
             TFTGameIDs: list[int] = TFTHistory_df_all["game_id"][1:].to_list()
             old_TFTMatch_detected: bool = len(saved_TFTMatchIDs) > 0
             while True:
@@ -2638,7 +2638,7 @@ async def search_profile(connection: Connection) -> None:
                             recapture: bool = bool(recapture_str)
                             if recapture:
                                 TFTMatchIDs = []
-                                logPrint('请输入要查询的云顶之弈对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出云顶之弈对局查询请输入“0”：\nPlease enter the TFT match ID to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to quit searching for TFT matches.')
+                                logPrint('请输入要查询的云顶之弈对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出云顶之弈对局查询请输入“0”：\nPlease enter the TFT match ID to check. Submit a list containing matchIDs to search in batch. Submit "3" to search the currently stored history in batch. Submit "0" to quit searching for TFT matches.')
                                 continue
                             scan_tft = True
                             TFTAugments = TFTAugments_initial.copy()

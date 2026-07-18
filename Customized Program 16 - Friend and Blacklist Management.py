@@ -23,7 +23,7 @@ from src.core.dataframes.gameflow import sort_ChampSelect_players
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/06/09
+# 更新（Last update）：     2026/07/18
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1578,7 +1578,7 @@ async def manage_friend_request(connection: Connection) -> None:
             friend_request_fields_to_print: list[str] = ["gameName", "tagLine", "direction", "icon title"]
             print(format_df(friend_request_df.loc[1:, friend_request_fields_to_print], print_header = True, print_index = True, start_index = 1)[0])
             log.write(format_df(friend_request_df.loc[1:, friend_request_fields_to_print], print_header = True, width_exceed_ask = False, direct_print = False, print_index = True, start_index = 1)[0] + "\n")
-            logPrint("请选择好友请求处理模式：\nPlease select a mode to handle friend requests:\n0\t返回上一层（Return to the last step）\n1\t单个处理（Single）\n2\t批量处理（In batches）\n3\t全部处理（All）")
+            logPrint("请选择好友请求处理模式：\nPlease select a mode to handle friend requests:\n0\t返回上一层（Return to the last step）\n1\t单个处理（Single）\n2\t批量处理（In batch）\n3\t全部处理（All）")
             while True:
                 index_got: bool = False
                 mode: str = logInput()
@@ -1721,7 +1721,7 @@ async def manage_friend_request(connection: Connection) -> None:
                     friend_request_fields_to_print = ["gameName", "tagLine", "direction", "icon title"]
                     print(format_df(friend_request_df.loc[1:, friend_request_fields_to_print], print_header = True, print_index = True, start_index = 1)[0])
                     log.write(format_df(friend_request_df.loc[1:, friend_request_fields_to_print], width_exceed_ask = False, direct_print = False, print_header = True, print_index = True, start_index = 1)[0] + "\n")
-                    logPrint("请选择好友请求处理模式：\nPlease select a mode to handle friend requests:\n0\t返回上一层（Return to the last step）\n1\t单个处理（Single）\n2\t批量处理（In batches）\n3\t全部处理（All）")
+                    logPrint("请选择好友请求处理模式：\nPlease select a mode to handle friend requests:\n0\t返回上一层（Return to the last step）\n1\t单个处理（Single）\n2\t批量处理（In batch）\n3\t全部处理（All）")
 
 async def move_group(connection: Connection) -> None:
     '''
@@ -1741,7 +1741,7 @@ async def move_group(connection: Connection) -> None:
         friend_pids: list[str] = list(map(lambda x: x["pid"], friends))
         friend_hovercard_fields_to_print: list[str] = ["name", "gameName", "gameTag", "groupId", "groupName"]
         friend_hovercard_df: pandas.DataFrame = await output_friend_hovercard_simple(connection, print_index = True, start_index = 1)
-        logPrint("请选择移动模式：\nPlease select a moving mode:\n0\t返回上一层（Return to the last step）\n1\t单个移动（Single）\n2\t批量移动（In batches）\n3\t全部移动（All）")
+        logPrint("请选择移动模式：\nPlease select a moving mode:\n0\t返回上一层（Return to the last step）\n1\t单个移动（Single）\n2\t批量移动（In batch）\n3\t全部移动（All）")
         while True:
             index_got: bool = False
             mode: str = logInput()
@@ -1933,7 +1933,7 @@ async def move_group(connection: Connection) -> None:
                     friend_puuids = list(map(lambda x: x["puuid"], friends))
                     friend_pids = list(map(lambda x: x["pid"], friends))
                     friend_hovercard_df = await output_friend_hovercard_simple(connection, print_index = True, start_index = 1)
-            logPrint("请选择移动模式：\nPlease select a moving mode:\n0\t返回上一层（Return to the last step）\n1\t单个移动（Single）\n2\t批量移动（In batches）\n3\t全部移动（All）")
+            logPrint("请选择移动模式：\nPlease select a moving mode:\n0\t返回上一层（Return to the last step）\n1\t单个移动（Single）\n2\t批量移动（In batch）\n3\t全部移动（All）")
 
 async def edit_friend_note(connection: Connection) -> None:
     '''
@@ -2016,7 +2016,7 @@ async def remove_friend(connection: Connection) -> None:
         friend_pids: list[str] = list(map(lambda x: x["pid"], friends))
         friend_hovercard_fields_to_print: list[str] = ["name", "gameName", "gameTag", "groupId", "groupName"]
         friend_hovercard_df: pandas.DataFrame = await output_friend_hovercard_simple(connection, print_index = True, start_index = 1)
-        logPrint("请选择删除模式：\nPlease select an unfriending mode:\n0\t返回上一层（Return to the last step）\n1\t单个删除（Single）\n2\t批量删除（In batches）\n3\t全部删除（All）")
+        logPrint("请选择删除模式：\nPlease select an unfriending mode:\n0\t返回上一层（Return to the last step）\n1\t单个删除（Single）\n2\t批量删除（In batch）\n3\t全部删除（All）")
         while True:
             index_got: bool = False
             mode: str = logInput()
@@ -2189,7 +2189,7 @@ async def remove_friend(connection: Connection) -> None:
                     friend_puuids = list(map(lambda x: x["puuid"], friends))
                     friend_pids = list(map(lambda x: x["pid"], friends))
                     friend_hovercard_df = await output_friend_hovercard_simple(connection, print_index = True, start_index = 1)
-            logPrint("请选择删除模式：\nPlease select an unfriending mode:\n0\t返回上一层（Return to the last step）\n1\t单个删除（Single）\n2\t批量删除（In batches）\n3\t全部删除（All）")
+            logPrint("请选择删除模式：\nPlease select an unfriending mode:\n0\t返回上一层（Return to the last step）\n1\t单个删除（Single）\n2\t批量删除（In batch）\n3\t全部删除（All）")
 
 async def block_friend(connection: Connection) -> None:
     '''
@@ -2209,7 +2209,7 @@ async def block_friend(connection: Connection) -> None:
         friend_pids: list[str] = list(map(lambda x: x["pid"], friends))
         friend_hovercard_fields_to_print: list[str] = ["name", "gameName", "gameTag", "groupId", "groupName"]
         friend_hovercard_df: pandas.DataFrame = await output_friend_hovercard_simple(connection, print_index = True, start_index = 1)
-        logPrint("请选择拉黑模式：\nPlease select a blocking mode:\n0\t返回上一层（Return to the last step）\n1\t单个拉黑（Single）\n2\t批量拉黑（In batches）\n3\t全部拉黑（All）")
+        logPrint("请选择拉黑模式：\nPlease select a blocking mode:\n0\t返回上一层（Return to the last step）\n1\t单个拉黑（Single）\n2\t批量拉黑（In batch）\n3\t全部拉黑（All）")
         while True:
             index_got: bool = False
             mode: str = logInput()
@@ -2386,7 +2386,7 @@ async def block_friend(connection: Connection) -> None:
                     friend_puuids = list(map(lambda x: x["puuid"], friends))
                     friend_pids = list(map(lambda x: x["pid"], friends))
                     friend_hovercard_df = await output_friend_hovercard_simple(connection, print_index = True, start_index = 1)
-            logPrint("请选择拉黑模式：\nPlease select a blocking mode:\n0\t返回上一层（Return to the last step）\n1\t单个拉黑（Single）\n2\t批量拉黑（In batches）\n3\t全部拉黑（All）")
+            logPrint("请选择拉黑模式：\nPlease select a blocking mode:\n0\t返回上一层（Return to the last step）\n1\t单个拉黑（Single）\n2\t批量拉黑（In batch）\n3\t全部拉黑（All）")
 
 async def manage_friend(connection: Connection) -> None:
     '''
@@ -2434,7 +2434,7 @@ async def invite(connection: Connection) -> None:
         else:
             logPrint("您的好友信息如下：\nYour friends:")
             friend_hovercard_df = await output_friend_hovercard_simple(connection, print_index = True, start_index = 1)
-        logPrint("请选择邀请模式：\nPlease select an inviting mode:\n0\t返回上一层（Return to the last step）\n1\t单个邀请（Single）\n2\t批量邀请（In batches）\n3\t全部在线好友邀请（All available friends）\n4\t按组邀请（By group）")
+        logPrint("请选择邀请模式：\nPlease select an inviting mode:\n0\t返回上一层（Return to the last step）\n1\t单个邀请（Single）\n2\t批量邀请（In batch）\n3\t全部在线好友邀请（All available friends）\n4\t按组邀请（By group）")
         while True:
             invitee_obtained: bool = False
             mode: str = logInput()
@@ -2893,7 +2893,7 @@ async def invite(connection: Connection) -> None:
             else:
                 logPrint("您的好友信息如下：\nYour friends:")
                 friend_hovercard_df = await output_friend_hovercard_simple(connection, print_index = True, start_index = 1)
-            logPrint("请选择邀请模式：\nPlease select an inviting mode:\n0\t返回上一层（Return to the last step）\n1\t单个邀请（Single）\n2\t批量邀请（In batches）\n3\t全部在线好友邀请（All available friends）\n4\t按组邀请（By group）")
+            logPrint("请选择邀请模式：\nPlease select an inviting mode:\n0\t返回上一层（Return to the last step）\n1\t单个邀请（Single）\n2\t批量邀请（In batch）\n3\t全部在线好友邀请（All available friends）\n4\t按组邀请（By group）")
     elif gameflow_phase == "None":
         logPrint("您尚未创建房间。请创建房间后再尝试邀请。\nYou've not created any lobby. Please try again after a lobby is created.")
     else:
@@ -3070,7 +3070,7 @@ async def join_game(connection: Connection) -> None:
                             print(format_df(invid_df.loc[1:, invid_fields_to_print], print_index = True, start_index = 1)[0])
                             log.write(format_df(invid_df.loc[1:, invid_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True, start_index = 1)[0] + "\n")
                     elif method[0] == "2":
-                        logPrint("请选择拒绝模式：\nPlease select a decline mode:\n0\t返回上一层（Return to the last step）\n1\t单个拒绝（Single）\n2\t批量拒绝（In batches）\n3\t全部拒绝（All）")
+                        logPrint("请选择拒绝模式：\nPlease select a decline mode:\n0\t返回上一层（Return to the last step）\n1\t单个拒绝（Single）\n2\t批量拒绝（In batch）\n3\t全部拒绝（All）")
                         while True:
                             index_got = False
                             mode: str = logInput()
@@ -3175,7 +3175,7 @@ async def join_game(connection: Connection) -> None:
                                     invid_fields_to_print = ["fromSummonerName", "time", "gameMode", "mapId", "queue name", "queueId", "state"]
                                     print(format_df(invid_df.loc[1:, invid_fields_to_print], print_index = True, start_index = 1)[0])
                                     log.write(format_df(invid_df.loc[1:, invid_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True, start_index = 1)[0] + "\n")
-                            logPrint("请选择拒绝模式：\nPlease select a decline mode:\n0\t返回上一层（Return to the last step）\n1\t单个拒绝（Single）\n2\t批量拒绝（In batches）\n3\t全部拒绝（All）")
+                            logPrint("请选择拒绝模式：\nPlease select a decline mode:\n0\t返回上一层（Return to the last step）\n1\t单个拒绝（Single）\n2\t批量拒绝（In batch）\n3\t全部拒绝（All）")
                     else:
                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     if return_home:
@@ -3817,7 +3817,7 @@ async def manage_voice_outputSettings(connection: Connection) -> None:
             elif action[0] == "0":
                 break
             elif action[0] == "1":
-                logPrint("请选择静音/解除静音模式：\nPlease select a mute mode:\n0\t返回上一层（Return to the last step）\n1\t单个静音/解除静音（Single）\n2\t批量静音/解除静音（In batches）\n3\t全部静音/解除静音（All）")
+                logPrint("请选择静音/解除静音模式：\nPlease select a mute mode:\n0\t返回上一层（Return to the last step）\n1\t单个静音/解除静音（Single）\n2\t批量静音/解除静音（In batch）\n3\t全部静音/解除静音（All）")
                 while True:
                     index_got: bool = False
                     mode: str = logInput()
@@ -3934,9 +3934,9 @@ async def manage_voice_outputSettings(connection: Connection) -> None:
                         participant_record_fields_to_print = ["gameName", "tagLine", "isMuted", "volume", "isSpeaking", "energy"]
                         print(format_df(participant_record_df.loc[:, participant_record_fields_to_print])[0])
                         log.write(format_df(participant_record_df.loc[:, participant_record_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
-                    logPrint("请选择静音/解除静音模式：\nPlease select a mute mode:\n0\t返回上一层（Return to the last step）\n1\t单个静音/解除静音（Single）\n2\t批量静音/解除静音（In batches）\n3\t全部静音/解除静音（All）")
+                    logPrint("请选择静音/解除静音模式：\nPlease select a mute mode:\n0\t返回上一层（Return to the last step）\n1\t单个静音/解除静音（Single）\n2\t批量静音/解除静音（In batch）\n3\t全部静音/解除静音（All）")
             elif action[0] == "2":
-                logPrint("请选择音量修改模式：\nPlease select a mode to change volume:\n0\t返回上一层（Return to the last step）\n1\t单个修改音量（Single）\n2\t批量修改音量（In batches）\n3\t全部修改音量（All）\n4\t逐个修改音量（One by one）")
+                logPrint("请选择音量修改模式：\nPlease select a mode to change volume:\n0\t返回上一层（Return to the last step）\n1\t单个修改音量（Single）\n2\t批量修改音量（In batch）\n3\t全部修改音量（All）\n4\t逐个修改音量（One by one）")
                 while True:
                     index_got = False
                     volumeChange_indices: list[int] = []
@@ -4108,7 +4108,7 @@ async def manage_voice_outputSettings(connection: Connection) -> None:
                         participant_record_fields_to_print = ["gameName", "tagLine", "isMuted", "volume", "isSpeaking", "energy"]
                         print(format_df(participant_record_df.loc[:, participant_record_fields_to_print])[0])
                         log.write(format_df(participant_record_df.loc[:, participant_record_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
-                    logPrint("请选择音量修改模式：\nPlease select a mode to change volume:\n0\t返回上一层（Return to the last step）\n1\t单个修改音量（Single）\n2\t批量修改音量（In batches）\n3\t全部修改音量（All）\n4\t逐个修改音量（One by one）")
+                    logPrint("请选择音量修改模式：\nPlease select a mode to change volume:\n0\t返回上一层（Return to the last step）\n1\t单个修改音量（Single）\n2\t批量修改音量（In batch）\n3\t全部修改音量（All）\n4\t逐个修改音量（One by one）")
             else:
                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
             logPrint("请选择设置方法：\nPlease select a voice setting:\n0\t返回上一层（Return to the last step）\n1\t静音/解除静音（Mute/Unmute）\n2\t修改音量（Change volume）")
@@ -4186,7 +4186,7 @@ async def mute_champSelect_player(connection: Connection) -> None:
                 champSelect_myTeam_df_to_print: pandas.DataFrame = champSelect_myTeam_df.loc[:, champSelect_player_fields_to_print].reset_index(drop = True)
                 print(format_df(champSelect_myTeam_df.loc[1:, champSelect_player_fields_to_print], print_index = True, start_index = 1)[0])
                 log.write(format_df(champSelect_myTeam_df.loc[1:, champSelect_player_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True, start_index = 1)[0] + "\n")
-                logPrint("请选择静音操作：\nPlease select a mute action:\n0\t返回上一层（Return to the last step）\n1\t单个静音（Single）\n2\t批量静音（In batches）\n3\t全部静音（All）\n4\t解除所有静音（Remove all）")
+                logPrint("请选择静音操作：\nPlease select a mute action:\n0\t返回上一层（Return to the last step）\n1\t单个静音（Single）\n2\t批量静音（In batch）\n3\t全部静音（All）\n4\t解除所有静音（Remove all）")
                 while True:
                     index_got = False
                     action: str = logInput()
@@ -4341,7 +4341,7 @@ async def mute_champSelect_player(connection: Connection) -> None:
                             muted_player_fields_to_print = ["obfuscatedPuuid", "gameName", "tagLine", "puuid", "isPlayerMuted", "isSettingsMuted", "isSystemMuted"]
                             print(format_df(muted_player_df.loc[1:, muted_player_fields_to_print])[0])
                             log.write(format_df(muted_player_df.loc[1:, muted_player_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
-                    logPrint("请选择静音操作：\nPlease select a mute action:\n0\t返回上一层（Return to the last step）\n1\t单个静音（Single）\n2\t批量静音（In batches）\n3\t全部静音（All）\n4\t解除所有静音（Remove all）")
+                    logPrint("请选择静音操作：\nPlease select a mute action:\n0\t返回上一层（Return to the last step）\n1\t单个静音（Single）\n2\t批量静音（In batch）\n3\t全部静音（All）\n4\t解除所有静音（Remove all）")
     else:
         logPrint("提示：以下静音操作仅在英雄选择阶段生效。请确保您目前正在英雄选择阶段。\nHint: The following mute actions only apply in a champ select group chat. Please confirm that you're during champ select.")
 
@@ -4493,7 +4493,7 @@ async def block(connection: Connection) -> None:
             logPrint("黑名单获取失败！\nThe program failed to get the block list!")
     else:
         blocked_puuids: list[str] = set(map(lambda x: x["puuid"], blockList))
-        logPrint("请选择拉黑模式：\nPlease select a blocking mode:\n0\t返回上一层（Return to the last step）\n1\t单个拉黑（Single）\n2\t批量拉黑（In batches）\n3\t从文件中拉黑（From file）")
+        logPrint("请选择拉黑模式：\nPlease select a blocking mode:\n0\t返回上一层（Return to the last step）\n1\t单个拉黑（Single）\n2\t批量拉黑（In batch）\n3\t从文件中拉黑（From file）")
         while True:
             info_got: bool = False
             mode: str = logInput()
@@ -4640,7 +4640,7 @@ async def block(connection: Connection) -> None:
                                 logPrint("您未能成功将%s拉入聊天黑名单。\nYou failed to block %s." %(block_summonerName, block_summonerName))
             blockList = await (await connection.request("GET", "/lol-chat/v1/blocked-players")).json()
             blocked_puuids = set(map(lambda x: x["puuid"], blockList))
-            logPrint("请选择拉黑模式：\nPlease select a blocking mode:\n0\t返回上一层（Return to the last step）\n1\t单个拉黑（Single）\n2\t批量拉黑（In batches）\n3\t从文件中拉黑（From file）")
+            logPrint("请选择拉黑模式：\nPlease select a blocking mode:\n0\t返回上一层（Return to the last step）\n1\t单个拉黑（Single）\n2\t批量拉黑（In batch）\n3\t从文件中拉黑（From file）")
 
 async def detect_blockedPlayer_state(connection: Connection, blockList: list[dict[str, Any]], blockList_df: pandas.DataFrame) -> None:
     '''
@@ -4705,7 +4705,7 @@ async def detect_blockedPlayer_state(connection: Connection, blockList: list[dic
                 if kick:
                     print(format_df(blockList_df_filtered_lobby.loc[:, blockList_fields_to_print], print_index = True)[0])
                     log.write(format_df(blockList_df_filtered_lobby.loc[:, blockList_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-                    logPrint("请选择遣离方式：\nPlease select a kicking mode:\n0\t退出遣离（Quit kicking）\n1\t单个遣离（Single）\n2\t批量遣离（In batches）\n3\t全部遣离（All）")
+                    logPrint("请选择遣离方式：\nPlease select a kicking mode:\n0\t退出遣离（Quit kicking）\n1\t单个遣离（Single）\n2\t批量遣离（In batch）\n3\t全部遣离（All）")
                     while isLeader:
                         index_got: bool = False
                         mode: str = logInput()
@@ -4834,7 +4834,7 @@ async def detect_blockedPlayer_state(connection: Connection, blockList: list[dic
                                     logPrint("小队/房间中发现以下%d名成员在黑名单中：\nFound the following %d blocked member(s) in the lobby:" %(len(blocked_member_puuids), len(blocked_member_puuids)))
                                     blockList_df_filtered_lobby = pandas.concat([blockList_df.iloc[:1], blockList_df[blockList_df["puuid"].isin(blocked_member_puuids)]], ignore_index = True)
                                     logPrint(format_df(blockList_df_filtered_lobby.loc[:, blockList_fields_to_print])[0], write_time = False)
-                        logPrint("请选择遣离方式：\nPlease select a kicking mode:\n0\t退出遣离（Quit kicking）\n1\t单个遣离（Single）\n2\t批量遣离（In batches）\n3\t全部遣离（All）")
+                        logPrint("请选择遣离方式：\nPlease select a kicking mode:\n0\t退出遣离（Quit kicking）\n1\t单个遣离（Single）\n2\t批量遣离（In batch）\n3\t全部遣离（All）")
         elif gameflow_phase == "ChampSelect":
             champ_select_session = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
             team: list[dict[str, Any]] = champ_select_session["myTeam"] + champ_select_session["theirTeam"]
@@ -4894,7 +4894,7 @@ async def unblock(connection: Connection) -> None:
         blockList_fields_to_print: list[str] = ["gameName", "gameTag", "puuid", "icon title"]
         print(format_df(blockList_df.loc[:, blockList_fields_to_print], print_index = True)[0])
         log.write(format_df(blockList_df.loc[:, blockList_fields_to_print], width_exceed_ask = False, direct_print = False, print_index = True)[0] + "\n")
-        logPrint("请选择取消拉黑模式：\nPlease select an unblocking mode:\n0\t返回上一层（Return to the last step）\n1\t单个移出（Single）\n2\t批量移出（In batches）\n3\t全部移出（All）\n4\t从文件中移出（From file）")
+        logPrint("请选择取消拉黑模式：\nPlease select an unblocking mode:\n0\t返回上一层（Return to the last step）\n1\t单个移出（Single）\n2\t批量移出（In batch）\n3\t全部移出（All）\n4\t从文件中移出（From file）")
         while True:
             index_got: bool = False
             mode: str = logInput()
@@ -5129,7 +5129,7 @@ async def unblock(connection: Connection) -> None:
                         blockList_fields_to_print = ["gameName", "gameTag", "puuid", "icon title"]
                         print(format_df(blockList_df.loc[:, blockList_fields_to_print])[0])
                         log.write(format_df(blockList_df.loc[:, blockList_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
-            logPrint("请选择取消拉黑模式：\nPlease select an unblocking mode:\n0\t返回上一层（Return to the last step）\n1\t单个移出（Single）\n2\t批量移出（In batches）\n3\t全部移出（All）\n4\t从文件中移出（From file）")
+            logPrint("请选择取消拉黑模式：\nPlease select an unblocking mode:\n0\t返回上一层（Return to the last step）\n1\t单个移出（Single）\n2\t批量移出（In batch）\n3\t全部移出（All）\n4\t从文件中移出（From file）")
 
 async def blacklist_behavior_simulation(connection: Connection) -> None:
     '''

@@ -10758,8 +10758,8 @@ if __name__ == "__main__":
             one_click = False
         
         #设置默认导出行为（Set the default export behavior）
-        export: bool = False
-        logPrint('数据将只用来构建数据框，而不会导出。如果需要导出，请在选择数据类型的步骤输入“-2”以设置导出选项。\nData will only be used to build dataframes but not be exported. If you want to export data, please input "-2" in the data type selection step to set export options.')
+        single_export: bool = False
+        logPrint('''数据在完成整理后不会立刻导出。如果需要在整理后立刻导出，请在选择数据类型的步骤输入“-2”以设置导出选项。\nData will not be exported immediately after being organized. If you want to export data immediately after they're organized, please input "-2" in the data type selection step to set export options.''')
         
         #设置hash值解析深度（Set the hash resolution depth）
         LoLDataExtractor.set_resolution_depth(False)
@@ -10821,7 +10821,7 @@ if __name__ == "__main__":
             step: int = 1
             #设置要提取的数据类型（Set the type of data to extract）
             while True:
-                logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t召唤师技能（Summoner Spells）\n4\t符文（Perks）\n5\t英雄（Champions）\n6\t角色（Characters）\n7\t装备（Items）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t斗魂竞技场回合阶段（Arena Round Phase）\n11\t场景英雄（Cameo）\n12\t荣誉嘉宾（Guests of Honor）\n13\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n14\t字体（Fonts）\nall\t所有（All）\n-1\t导出所有数据框并清空队列（Export all dataframes and clear queue）")
+                logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t召唤师技能（Summoner Spells）\n4\t符文（Perks）\n5\t英雄（Champions）\n6\t角色（Characters）\n7\t装备（Items）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t斗魂竞技场回合阶段（Arena Round Phase）\n11\t场景英雄（Cameo）\n12\t荣誉嘉宾（Guests of Honor）\n13\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n14\t字体（Fonts）\nall\t所有（All）" + ("" if single_export else "\n-1\t批量导出所有数据框并清空队列（Batch export all dataframes and clear queue）"))
                 if one_click and i >= 1:
                     if step == 1:
                         mode: str = str(preset_data_options)
@@ -10849,13 +10849,14 @@ if __name__ == "__main__":
                         elif option[0] == "0":
                             break
                         elif option[0] == "1":
-                            logPrint("是否导出数据到Excel中？（输入任意非空字符串以导出，否则不导出。）\nDo you want to export data to Excel? (Submit any non-empty string to export, or null to refuse exporting.)")
-                            export_str: str = logInput()
-                            export = bool(export_str)
-                            if export:
-                                logPrint("数据将导出到Excel工作簿中。\nData will be exported to an Excel workbook.")
+                            logPrint('是否选择在整理数据后立刻将其导出到Excel中？（输入任意非空字符串以选择单项导出并清空数据框队列，否则选择批量导出，即在主界面输入“-1”后将数据框队列中的所有数据框一次性导出到Excel工作簿中。）\nDo you want to export data to Excel as soon as data organization finishes? (Submit any non-empty string to select Single Export and clear the dataframe queue, or null to select Batch Export, which means to export all dataframes in the dataframe queue to an Excel workbook at one time after submitting "-1" at the home screen.)')
+                            single_export_str: str = logInput()
+                            single_export = bool(single_export_str)
+                            if single_export:
+                                extractor.df_queue.clear() #避免数据框被重复导出，降低效率（Avoid dataframes of same types from being exported over and over again, which reduces the efficiency）
+                                logPrint("每个类型的数据在整理完成后将直接导出到Excel工作簿中，而不会添加到数据框队列中。数据框队列已清空，且批量导出选项已禁用。\nData of each type will be exported to an Excel workbook directly after data organization finishes, but won't be added into the dataframe queue. The dataframe queue has been cleared, and Batch Export option has been disabled.")
                             else:
-                                logPrint("数据将只用来构建数据框，而不会导出。\nData will only be used to build dataframes but not be exported.")
+                                logPrint('每个类型的数据将只用来构建数据框，而不会立刻导出。您可以输入“-1”以导出队列中的所有数据框。批量导出选项已启用。\nData of each type will only be used to build dataframes but not be exported immediately. You may submit "-1" to export all dataframes in the queue. Batch Export option has been enabled.')
                         elif option[0] == "2":
                             old_locale: str = language_code
                             language_code = set_locale(initial_launch = False, old_locale = old_locale)
@@ -10920,7 +10921,7 @@ if __name__ == "__main__":
                             logPrint("您的输入有误！请重新输入。\nERROR input. Please try again.")
                             continue
                         logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t单类数据导出（Single-type data export）\n2\t切换语言（Switch language）\n3\t说明文本样式（Tooltip style）\n4\t变量替换样式（Variable substitution style）\n5\thash值解析深度（Hash value resolution depth）\n6\t等级计算上限（Level scaling cap）\n7\t切换数据框导出密度（Switch dataframe export density）")
-                elif mode == "-1":
+                elif not single_export and mode == "-1":
                     df_queue: list[dict[str, Any]] = sorted(extractor.df_queue, key = lambda x: x["order"])
                     if len(df_queue) > 0:
                         logPrint("正在导出数据……\nExporting data ...", print_time = True)
@@ -10996,102 +10997,116 @@ if __name__ == "__main__":
                             logPrint("[%d/%d][%d/%d]正在整理地图数据……\nOrganizing map data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             mapExtractor: MapExtractor = MapExtractor(extractor)
                             mapExtractor.build_map_dataframe()
-                            mapExtractor.enqueue_map_dataframe()
-                            if export:
+                            if single_export:
                                 mapExtractor.export_map_data()
+                            else:
+                                mapExtractor.enqueue_map_dataframe()
                         elif dOption == 2:
                             logPrint("[%d/%d][%d/%d]正在整理作弊指令数据……\nOrganizing cheat data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             cheatExtractor: CheatExtractor = CheatExtractor(extractor)
                             cheatExtractor.build_cheat_dataframe()
-                            cheatExtractor.enqueue_cheat_dataframe()
-                            if export:
+                            if single_export:
                                 cheatExtractor.export_cheat_data()
+                            else:
+                                cheatExtractor.enqueue_cheat_dataframe()
                         elif dOption == 3:
                             logPrint("[%d/%d][%d/%d]正在整理召唤师技能数据……\nOrganizing summoner spell data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             summonerSpellExtractor: SummonerSpellExtractor = SummonerSpellExtractor(extractor)
                             summonerSpellExtractor.build_summonerSpell_dataframe()
-                            summonerSpellExtractor.enqueue_summonerSpell_dataframe()
-                            if export:
+                            if single_export:
                                 summonerSpellExtractor.export_summonerSpell_data()
+                            else:
+                                summonerSpellExtractor.enqueue_summonerSpell_dataframe()
                         elif dOption == 4:
                             logPrint("[%d/%d][%d/%d]正在整理符文数据……\nOrganizing perk data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             perkExtractor: PerkExtractor = PerkExtractor(extractor)
                             perkExtractor.build_perk_dataframe()
-                            perkExtractor.enqueue_perk_dataframe()
-                            if export:
+                            if single_export:
                                 perkExtractor.export_perk_data()
+                            else:
+                                perkExtractor.enqueue_perk_dataframe()
                         elif dOption == 5:
                             logPrint("[%d/%d][%d/%d]正在整理英雄数据……\nOrganizing champion data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             championExtractor1: ChampionExtractor = ChampionExtractor(extractor)
                             championExtractor1.set_mode(False)
                             championExtractor1.build_champion_dataframe()
-                            championExtractor1.enqueue_champion_dataframe()
-                            if export:
+                            if single_export:
                                 championExtractor1.export_champion_data()
+                            else:
+                                championExtractor1.enqueue_champion_dataframe()
                         elif dOption == 6:
                             logPrint("[%d/%d][%d/%d]正在整理角色数据……\nOrganizing character data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             championExtractor2: ChampionExtractor = ChampionExtractor(extractor)
                             championExtractor2.set_mode(True)
                             championExtractor2.build_champion_dataframe()
-                            championExtractor2.enqueue_champion_dataframe()
-                            if export:
+                            if single_export:
                                 championExtractor2.export_champion_data()
+                            else:
+                                championExtractor2.enqueue_champion_dataframe()
                         elif dOption == 7:
                             logPrint("[%d/%d][%d/%d]正在整理装备数据……\nOrganizing item data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             itemExtractor: ItemExtractor = ItemExtractor(extractor)
                             itemExtractor.build_item_dataframe()
-                            itemExtractor.enqueue_item_dataframe()
-                            if export:
+                            if single_export:
                                 itemExtractor.export_item_data()
+                            else:
+                                itemExtractor.enqueue_item_dataframe()
                         elif dOption == 8:
                             logPrint("[%d/%d][%d/%d]正在整理强化符文数据……\nOrganizing augment data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             augmentExtractor: AugmentExtractor = AugmentExtractor(extractor)
                             augmentExtractor.build_augment_dataframe()
-                            augmentExtractor.enqueue_augment_dataframe()
-                            if export:
+                            if single_export:
                                 augmentExtractor.export_augment_data()
+                            else:
+                                augmentExtractor.enqueue_augment_dataframe()
                         elif dOption == 9:
                             logPrint("[%d/%d][%d/%d]正在整理锻造器数据……\nOrganizing anvil data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             anvilExtractor: AnvilExtractor = AnvilExtractor(extractor)
                             anvilExtractor.build_anvil_dataframe()
-                            anvilExtractor.enqueue_anvil_dataframe()
-                            if export:
+                            if single_export:
                                 anvilExtractor.export_anvil_data()
+                            else:
+                                anvilExtractor.enqueue_anvil_dataframe()
                         elif dOption == 10:
                             logPrint("[%d/%d][%d/%d]正在整理斗魂竞技场回合数据……\nOrganizing Arena round data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             cherryRoundExtractor: CherryRoundExtractor = CherryRoundExtractor(extractor)
                             cherryRoundExtractor.build_CherryRound_dataframe()
-                            cherryRoundExtractor.enqueue_CherryRound_dataframe()
-                            if export:
+                            if single_export:
                                 cherryRoundExtractor.export_CherryRound_data()
+                            else:
+                                cherryRoundExtractor.enqueue_CherryRound_dataframe()
                         elif dOption == 11:
                             logPrint("[%d/%d][%d/%d]正在整理场景英雄数据……\nOrganizing Cameo data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             cameoExtractor: CameoExtractor = CameoExtractor(extractor)
                             cameoExtractor.build_cameo_dataframe()
-                            cameoExtractor.enqueue_cameo_dataframe()
-                            if export:
+                            if single_export:
                                 cameoExtractor.export_cameo_data()
+                            else:
+                                cameoExtractor.enqueue_cameo_dataframe()
                         elif dOption == 12:
                             logPrint("[%d/%d][%d/%d]正在整理荣誉嘉宾数据……\nOrganizing Guest of Honor data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             gohExtractor: GoHExtractor = GoHExtractor(extractor)
                             gohExtractor.build_GoH_dataframe()
-                            gohExtractor.enqueue_GoH_dataframe()
-                            if export:
+                            if single_export:
                                 gohExtractor.export_GoH_data()
+                            else:
+                                gohExtractor.enqueue_GoH_dataframe()
                         elif dOption == 13:
                             logPrint("[%d/%d][%d/%d]正在整理云顶之弈数据……\nOrganizing TFT data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             tftExtractor: TFTExtractor = TFTExtractor(extractor)
                             tftExtractor.build_tft_dataframe()
-                            tftExtractor.enqueue_tft_dataframe()
-                            if export:
+                            if single_export:
                                 tftExtractor.export_tft_data()
+                            else:
+                                tftExtractor.enqueue_tft_dataframe()
                         elif dOption == 14:
                             logPrint("[%d/%d][%d/%d]正在整理字体数据……\nOrganizing font data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             fontExtractor: FontExtractor = FontExtractor(extractor)
                             fontExtractor.build_font_dataframe()
-                            fontExtractor.enqueue_font_dataframe()
-                            if export:
+                            if single_export:
                                 fontExtractor.export_font_data()
+                            else:
+                                fontExtractor.enqueue_font_dataframe()
         else:
             print("是否排序工作表？（输入任意非空字符串以排序，否则不排序。）\nDo you want to sort the worksheets? (Submit any non-empty string to sort, or null to refuse sorting.)")
             sort_sheet_str: str = logInput()
@@ -11161,8 +11176,8 @@ if __name__ == "__main__":
         version = "pbe"
         
         #设置默认导出行为（Set the default export behavior）
-        export: bool = False
-        # logPrint('数据将只用来构建数据框，而不会导出。如果需要导出，请在选择数据类型的步骤输入“-2”以设置导出选项。\nData will only be used to build dataframes but not be exported. If you want to export data, please input "-2" in the data type selection step to set export options.')
+        single_export: bool = False
+        # logPrint('''数据在完成整理后不会立刻导出。如果需要在整理后立刻导出，请在选择数据类型的步骤输入“-2”以设置导出选项。\nData will not be exported immediately after being organized. If you want to export data immediately after they're organized, please input "-2" in the data type selection step to set export options.''')
         
         #设置hash值解析深度（Set the hash resolution depth）
         LoLDataExtractor.set_resolution_depth(False)
@@ -11253,7 +11268,7 @@ if __name__ == "__main__":
         nDataOption_iter: int = 0
         #设置要提取的数据类型（Set the type of data to extract）
         while True:
-            logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-3\t调试（Debug）\n-2\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t召唤师技能（Summoner Spells）\n4\t符文（Perks）\n5\t英雄（Champions）\n6\t角色（Characters）\n7\t装备（Items）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t斗魂竞技场回合阶段（Arena Round Phase）\n11\t场景英雄（Cameo）\n12\t荣誉嘉宾（Guests of Honor）\n13\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n14\t字体（Fonts）\nall\t所有（All）\n-1\t导出所有数据框并清空队列（Export all dataframes and clear queue）")
+            logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-3\t调试（Debug）\n-2\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t召唤师技能（Summoner Spells）\n4\t符文（Perks）\n5\t英雄（Champions）\n6\t角色（Characters）\n7\t装备（Items）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t斗魂竞技场回合阶段（Arena Round Phase）\n11\t场景英雄（Cameo）\n12\t荣誉嘉宾（Guests of Honor）\n13\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n14\t字体（Fonts）\nall\t所有（All）" + ("" if single_export else "\n-1\t批量导出所有数据框并清空队列（Batch export all dataframes and clear queue）"))
             mode: str = logInput()
             if mode == "":
                 continue
@@ -11335,13 +11350,14 @@ if __name__ == "__main__":
                     elif option[0] == "0":
                         break
                     elif option[0] == "1":
-                        logPrint("是否导出数据到Excel中？（输入任意非空字符串以导出，否则不导出。）\nDo you want to export data to Excel? (Submit any non-empty string to export, or null to refuse exporting.)")
-                        export_str: str = logInput()
-                        export = bool(export_str)
-                        if export:
-                            logPrint("数据将导出到Excel工作簿中。\nData will be exported to an Excel workbook.")
+                        logPrint('是否选择在整理数据后立刻将其导出到Excel中？（输入任意非空字符串以选择单项导出并清空数据框队列，否则选择批量导出，即在主界面输入“-1”后将数据框队列中的所有数据框一次性导出到Excel工作簿中。）\nDo you want to export data to Excel as soon as data organization finishes? (Submit any non-empty string to select Single Export and clear the dataframe queue, or null to select Batch Export, which means to export all dataframes in the dataframe queue to an Excel workbook at one time after submitting "-1" at the home screen.)')
+                        single_export_str: str = logInput()
+                        single_export = bool(single_export_str)
+                        if single_export:
+                            extractor.df_queue.clear() #避免数据框被重复导出，降低效率（Avoid dataframes of same types from being exported over and over again, which reduces the efficiency）
+                            logPrint("每个类型的数据在整理完成后将直接导出到Excel工作簿中，而不会添加到数据框队列中。数据框队列已清空，且批量导出选项已禁用。\nData of each type will be exported to an Excel workbook directly after data organization finishes, but won't be added into the dataframe queue. The dataframe queue has been cleared, and Batch Export option has been disabled.")
                         else:
-                            logPrint("数据将只用来构建数据框，而不会导出。\nData will only be used to build dataframes but not be exported.")
+                            logPrint('每个类型的数据将只用来构建数据框，而不会立刻导出。您可以输入“-1”以导出队列中的所有数据框。批量导出选项已启用。\nData of each type will only be used to build dataframes but not be exported immediately. You may submit "-1" to export all dataframes in the queue. Batch Export option has been enabled.')
                     elif option[0] == "2":
                         old_locale: str = locale
                         locale = set_locale(initial_launch = False, old_locale = old_locale)
@@ -11417,7 +11433,7 @@ if __name__ == "__main__":
                         logPrint("您的输入有误！请重新输入。\nERROR input. Please try again.")
                         continue
                     logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t单类数据导出（Single-type data export）\n2\t切换语言（Switch language）\n3\t说明文本样式（Tooltip style）\n4\t变量替换样式（Variable substitution style）\n5\thash值解析深度（Hash value resolution depth）\n6\t等级计算上限（Level scaling cap）\n7\t切换数据框导出密度（Switch dataframe export density）")
-            elif mode == "-1":
+            elif not single_export and mode == "-1":
                 df_queue: list[dict[str, Any]] = sorted(extractor.df_queue, key = lambda x: x["order"])
                 if len(df_queue) > 0:
                     logPrint("正在导出数据……\nExporting data ...", print_time = True)
@@ -11511,9 +11527,10 @@ if __name__ == "__main__":
                                 repo_game_dir / "data/maps/shipping/map453/map453.bin.json"
                             ]
                         mapExtractor.build_map_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), map_paths)))
-                        mapExtractor.enqueue_map_dataframe()
-                        if export:
+                        if single_export:
                             mapExtractor.export_map_data()
+                        else:
+                            mapExtractor.enqueue_map_dataframe()
                     elif dOption == 2:
                         logPrint("[%d/%d]正在调试作弊指令数据……\nDebugging cheat data ..." %(nDataOption_iter, nDataOptions))
                         cheatExtractor: CheatExtractor = CheatExtractor(extractor)
@@ -11522,9 +11539,10 @@ if __name__ == "__main__":
                         else:
                             cheat_path = repo_game_dir / "cheats.cdtb.bin.json"
                         cheatExtractor.build_cheat_dataframe(debug = True, path = cheat_path.as_posix())
-                        cheatExtractor.enqueue_cheat_dataframe()
-                        if export:
+                        if single_export:
                             cheatExtractor.export_cheat_data()
+                        else:
+                            cheatExtractor.enqueue_cheat_dataframe()
                     elif dOption == 3:
                         logPrint("[%d/%d]正在调试召唤师技能数据……\nDebugging summoner spell data ..." %(nDataOption_iter, nDataOptions))
                         summonerSpellExtractor: SummonerSpellExtractor = SummonerSpellExtractor(extractor)
@@ -11533,9 +11551,10 @@ if __name__ == "__main__":
                         else:
                             summonerSpell_path = repo_game_dir / "shared.cdtb.bin.json"
                         summonerSpellExtractor.build_summonerSpell_dataframe(debug = True, path = summonerSpell_path.as_posix())
-                        summonerSpellExtractor.enqueue_summonerSpell_dataframe()
-                        if export:
+                        if single_export:
                             summonerSpellExtractor.export_summonerSpell_data()
+                        else:
+                            summonerSpellExtractor.enqueue_summonerSpell_dataframe()
                     elif dOption == 4:
                         logPrint("[%d/%d]正在调试符文数据……\nDebugging perk data ..." %(nDataOption_iter, nDataOptions))
                         perkExtractor: PerkExtractor = PerkExtractor(extractor)
@@ -11544,9 +11563,10 @@ if __name__ == "__main__":
                         else:
                             perk_path = repo_game_dir / "perks.cdtb.bin.json"
                         perkExtractor.build_perk_dataframe(debug = True, path = perk_path.as_posix())
-                        perkExtractor.enqueue_perk_dataframe()
-                        if export:
+                        if single_export:
                             perkExtractor.export_perk_data()
+                        else:
+                            perkExtractor.enqueue_perk_dataframe()
                     elif dOption == 5:
                         logPrint("[%d/%d]正在调试英雄数据……\nDebugging champion data ..." %(nDataOption_iter, nDataOptions))
                         championExtractor1: ChampionExtractor = ChampionExtractor(extractor)
@@ -11562,9 +11582,10 @@ if __name__ == "__main__":
                                 repo_game_dir / "data/characters"
                             ]
                         championExtractor1.build_champion_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), champion_paths)))
-                        championExtractor1.enqueue_champion_dataframe()
-                        if export:
+                        if single_export:
                             championExtractor1.export_champion_data()
+                        else:
+                            championExtractor1.enqueue_champion_dataframe()
                     elif dOption == 6:
                         logPrint("[%d/%d]正在调试角色数据……\nDebugging character data ..." %(nDataOption_iter, nDataOptions))
                         championExtractor2: ChampionExtractor = ChampionExtractor(extractor)
@@ -11582,9 +11603,10 @@ if __name__ == "__main__":
                                 repo_game_dir / "characters"
                             ]
                         championExtractor2.build_champion_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), character_paths)))
-                        championExtractor2.enqueue_champion_dataframe()
-                        if export:
+                        if single_export:
                             championExtractor2.export_champion_data()
+                        else:
+                            championExtractor2.enqueue_champion_dataframe()
                     elif dOption == 7:
                         logPrint("[%d/%d]正在调试装备数据……\nDebugging item data ..." %(nDataOption_iter, nDataOptions))
                         itemExtractor: ItemExtractor = ItemExtractor(extractor)
@@ -11593,9 +11615,10 @@ if __name__ == "__main__":
                         else:
                             item_path = repo_game_dir / "items.cdtb.bin.json"
                         itemExtractor.build_item_dataframe(debug = True, path = item_path.as_posix())
-                        itemExtractor.enqueue_item_dataframe()
-                        if export:
+                        if single_export:
                             itemExtractor.export_item_data()
+                        else:
+                            itemExtractor.enqueue_item_dataframe()
                     elif dOption == 8:
                         logPrint("[%d/%d]正在调试强化符文数据……\nDebugging augment data ..." %(nDataOption_iter, nDataOptions))
                         augmentExtractor: AugmentExtractor = AugmentExtractor(extractor)
@@ -11618,9 +11641,10 @@ if __name__ == "__main__":
                                 repo_game_dir / "maps/modespecificdata/kiwi_jade.bin.json"
                             ]
                         augmentExtractor.build_augment_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), augment_paths)))
-                        augmentExtractor.enqueue_augment_dataframe()
-                        if export:
+                        if single_export:
                             augmentExtractor.export_augment_data()
+                        else:
+                            augmentExtractor.enqueue_augment_dataframe()
                     elif dOption == 9:
                         logPrint("[%d/%d]正在调试锻造器数据……\nDebugging anvil data ..." %(nDataOption_iter, nDataOptions))
                         anvilExtractor: AnvilExtractor = AnvilExtractor(extractor)
@@ -11635,9 +11659,10 @@ if __name__ == "__main__":
                                 repo_game_dir / "data/maps/shipping/map12/map12.bin.json"
                             ]
                         anvilExtractor.build_anvil_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), anvil_paths)))
-                        anvilExtractor.enqueue_anvil_dataframe()
-                        if export:
+                        if single_export:
                             anvilExtractor.export_anvil_data()
+                        else:
+                            anvilExtractor.enqueue_anvil_dataframe()
                     elif dOption == 10:
                         logPrint("[%d/%d]正在调试斗魂竞技场回合数据……\nDebugging Arena round data ..." %(nDataOption_iter, nDataOptions))
                         cherryRoundExtractor: CherryRoundExtractor = CherryRoundExtractor(extractor)
@@ -11646,9 +11671,10 @@ if __name__ == "__main__":
                         else:
                             CherryRound_path = repo_game_dir / "data/maps/shipping/map30/map30.bin.json"
                         cherryRoundExtractor.build_CherryRound_dataframe(debug = True, path = CherryRound_path.as_posix())
-                        cherryRoundExtractor.enqueue_CherryRound_dataframe()
-                        if export:
+                        if single_export:
                             cherryRoundExtractor.export_CherryRound_data()
+                        else:
+                            cherryRoundExtractor.enqueue_CherryRound_dataframe()
                     elif dOption == 11:
                         logPrint("[%d/%d]正在调试场景英雄数据……\nDebugging Cameo data ..." %(nDataOption_iter, nDataOptions))
                         cameoExtractor: CameoExtractor = CameoExtractor(extractor)
@@ -11657,9 +11683,10 @@ if __name__ == "__main__":
                         else:
                             cameoPath = repo_game_dir / "data/maps/shipping/map30/map30.bin.json"
                         cameoExtractor.build_cameo_dataframe(debug = True, path = cameoPath.as_posix())
-                        cameoExtractor.enqueue_cameo_dataframe()
-                        if export:
+                        if single_export:
                             cameoExtractor.export_cameo_data()
+                        else:
+                            cameoExtractor.enqueue_cameo_dataframe()
                     elif dOption == 12:
                         logPrint("[%d/%d]正在调试荣誉嘉宾数据……\nDebugging Guest of Honor data ..." %(nDataOption_iter, nDataOptions))
                         gohExtractor: GoHExtractor = GoHExtractor(extractor)
@@ -11674,9 +11701,10 @@ if __name__ == "__main__":
                                 repo_game_dir / "maps/modespecificdata/cherry.bin.json"
                             ]
                         gohExtractor.build_GoH_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), GoHPaths)))
-                        gohExtractor.enqueue_GoH_dataframe()
-                        if export:
+                        if single_export:
                             gohExtractor.export_GoH_data()
+                        else:
+                            gohExtractor.enqueue_GoH_dataframe()
                     elif dOption == 13:
                         logPrint("[%d/%d]正在调试云顶之弈数据……\nDebugging TFT data ..." %(nDataOption_iter, nDataOptions))
                         tftExtractor: TFTExtractor = TFTExtractor(extractor)
@@ -11685,9 +11713,10 @@ if __name__ == "__main__":
                         else:
                             map22_path = repo_game_dir / "data/maps/shipping/map22/map22.bin.json"
                         tftExtractor.build_tft_dataframe(debug = True, path = map22_path.as_posix())
-                        tftExtractor.enqueue_tft_dataframe()
-                        if export:
+                        if single_export:
                             tftExtractor.export_tft_data()
+                        else:
+                            tftExtractor.enqueue_tft_dataframe()
                     elif dOption == 14:
                         logPrint("[%d/%d]正在调试字体数据……\nDebugging font data ..." %(nDataOption_iter, nDataOptions))
                         fontExtractor: FontExtractor = FontExtractor(extractor)
@@ -11696,9 +11725,10 @@ if __name__ == "__main__":
                         else:
                             font_path = repo_game_dir / "ux/fonts.cdtb.bin.json"
                         fontExtractor.build_font_dataframe(debug = True, path = font_path.as_posix())
-                        fontExtractor.enqueue_font_dataframe()
-                        if export:
+                        if single_export:
                             fontExtractor.export_font_data()
+                        else:
+                            fontExtractor.enqueue_font_dataframe()
         return 0
 
     #个性化函数（Personalized function）

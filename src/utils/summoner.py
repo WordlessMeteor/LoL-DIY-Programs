@@ -189,7 +189,7 @@ async def get_info(connection: Connection, name: str, searchType: str | int = "r
 
 async def get_infos(connection: Connection, puuids: Optional[list[str]] = None, batch_size: int = 1500, retry: int = 5) -> dict[str, dict[str, Any]]: #下面的接口非常容易报错。非—常—难—受！（The following endpoint is likely to return an error. Very frustrating）
     '''
-    通过POST /lol-summoner/v2/summoners/puuid接口批量获取多名召唤师的信息。对于天梯等内部数据的信息呈现非常有帮助。<br>Get multiple summoners' information through `POST /lol-summoner/v2/summoners/puuid` endpoint in batches. Especially helpful for internal data transformation like ranked ladders.
+    通过POST /lol-summoner/v2/summoners/puuid接口批量获取多名召唤师的信息。对于天梯等内部数据的信息呈现非常有帮助。<br>Get multiple summoners' information through `POST /lol-summoner/v2/summoners/puuid` endpoint in batch. Especially helpful for internal data transformation like ranked ladders.
     
     :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
     :type connection: Connection

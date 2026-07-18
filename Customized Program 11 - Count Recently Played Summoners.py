@@ -29,7 +29,7 @@ use_sgp: bool = args.lol_api == "sgp"
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/06/12
+# 更新（Last update）：     2026/07/18
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -3007,7 +3007,7 @@ async def search_recent_players(connection: Connection) -> None:
             LoLHistory_df_all = pandas.concat([LoLHistory_df_all.iloc[:1], LoLHistory_df_all.iloc[1:].sort_values(by = "gameCreationDate", ascending = False)], ignore_index = True) #这里弃用了根据对局序号排序（Here gameId isn't used to sort the values）
             
             #下面获取最近一起玩过的英雄联盟玩家的信息（The following code captures the recently played LoL players' information）
-            logPrint('请输入要查询的英雄联盟对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出英雄联盟对局查询请输入“0”：\nPlease enter the LoL match ID to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to quit searching for LoL matches.')
+            logPrint('请输入要查询的英雄联盟对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出英雄联盟对局查询请输入“0”：\nPlease enter the LoL match ID to check. Submit a list containing matchIDs to search in batch. Submit "3" to search the currently stored history in batch. Submit "0" to quit searching for LoL matches.')
             LoLGameIDs: list[int] = LoLHistory_df_all["gameId"][1:].to_list()
             while True:
                 matchId_str: str = logInput()
@@ -3054,7 +3054,7 @@ async def search_recent_players(connection: Connection) -> None:
                             recapture: bool = bool(recapture_str)
                             if recapture:
                                 LoLMatchIDs = [] #如果没有这句语句，那么当重新输入对局序号列表时，从本地文件中检测到的对局数量相比上次检测数的基础上会多出本地文件中包含的对局的数量（Without this assignment, when reinputting the matchId list, the number of matches detected from the local files will become more than that of the last time's check）
-                                logPrint('请输入要查询的英雄联盟对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出英雄联盟对局查询请输入“0”：\nPlease enter the LoL match ID to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to quit searching for LoL matches.')
+                                logPrint('请输入要查询的英雄联盟对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出英雄联盟对局查询请输入“0”：\nPlease enter the LoL match ID to check. Submit a list containing matchIDs to search in batch. Submit "3" to search the currently stored history in batch. Submit "0" to quit searching for LoL matches.')
                                 continue
                             #在沿用查战绩脚本时，后续对局记录重新生成的代码不再需要了。因为这只是查召唤师信息的脚本，不是查对局记录的脚本（When inheritting code from Customized Program 5, the following code to regenerate match history is no longer needed. That's because this program is just designed to search for recently played summoners, rather than sort out match history）
                     else:
@@ -3161,7 +3161,7 @@ async def search_recent_players(connection: Connection) -> None:
             TFTHistory_df_all = pandas.concat([TFTHistory_df_all.iloc[:1], TFTHistory_df_all.iloc[1:].sort_values(by = "gameCreationDate", ascending = False)], ignore_index = True) #这里弃用了根据对局序号排序（Here gameId isn't used to sort the values）
             
             #下面获取最近一起玩过的云顶之弈玩家的信息（The following code captures the recently played TFT players' information）
-            logPrint('请输入要查询的云顶之弈对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出云顶之弈对局查询请输入“0”：\nPlease enter the TFT match ID to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to quit searching for TFT matches.')
+            logPrint('请输入要查询的云顶之弈对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出云顶之弈对局查询请输入“0”：\nPlease enter the TFT match ID to check. Submit a list containing matchIDs to search in batch. Submit "3" to search the currently stored history in batch. Submit "0" to quit searching for TFT matches.')
             TFTGameIDs: list[int] = TFTHistory_df_all["game_id"][1:].to_list()
             while True:
                 matchId_str: str = logInput()
@@ -3208,7 +3208,7 @@ async def search_recent_players(connection: Connection) -> None:
                             recapture: bool = bool(recapture_str)
                             if recapture:
                                 TFTMatchIDs = [] #如果没有这句语句，那么当重新输入对局序号列表时，从本地文件中检测到的对局数量相比上次检测数的基础上会多出本地文件中包含的对局的数量（Without this assignment, when reinputting the matchId list, the number of matches detected from the local files will become more than that of the last time's check）
-                                logPrint('请输入要查询的云顶之弈对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出云顶之弈对局查询请输入“0”：\nPlease enter the TFT match ID to check. Submit a list containing matchIDs to search in batches. Submit "3" to search the currently stored history in batches. Submit "0" to quit searching for TFT matches.')
+                                logPrint('请输入要查询的云顶之弈对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出云顶之弈对局查询请输入“0”：\nPlease enter the TFT match ID to check. Submit a list containing matchIDs to search in batch. Submit "3" to search the currently stored history in batch. Submit "0" to quit searching for TFT matches.')
                                 continue
                             #在沿用查战绩脚本时，后续对局记录重新生成的代码不再需要了。因为这只是查召唤师信息的脚本，不是查对局记录的脚本（When inheritting code from Customized Program 5, the following code to regenerate match history is no longer needed. That's because this program is just designed to search for recently played summoners, rather than organize match history）
                     else:
