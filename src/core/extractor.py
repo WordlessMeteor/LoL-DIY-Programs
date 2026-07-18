@@ -24,7 +24,7 @@ from src.core.config.localization import language_ddragon, language_dict
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/07/18
+# 更新（Last update）：     2026/07/19
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -386,7 +386,7 @@ class TooltipOperand:
         '''
         将一个连除式字符串转化成说明文本运算子字符串。对于通过`eval`函数计算尤其有用。<br>Transform a continuous division into a TooltipOperand object string. Especially useful when calculation is performed through `eval` function.
         
-        另一方面，这个转换可以起到保护连除式的作用。<br>On the other hand, after transformation, the continuous division 
+        另一方面，这个转换可以起到保护连除式的作用。<br>On the other hand, after transformation, the continuous division is protected.
         
         :param s: 一个包含连除式的字符串。<br>A string that contains a continuous division.
         :type s: str
@@ -2434,6 +2434,7 @@ class LoLDataExtractor:
             subparts = []
         #接着对每个副部计算其结果字符串（Next, calculate the result string from each subpart）
         subpart_formula_strs: list[str] = []
+        includeContDivision: bool = False #标记是否涉及连除式的计算（Marks whether the formula involves a continuous division）
         for subpart in subparts:
             if subpart["__type"] in {"ClampSubPartsCalculationPart", "ExponentSubPartsCalculationPart", "SumOfSubPartsCalculationPart", "ProductOfSubPartsCalculationPart", "{8a96ea3c}", "{382277da}"}:
                 subpart_formula_str: str = cls.subpartCalculation(binData, subpart, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
@@ -2444,6 +2445,8 @@ class LoLDataExtractor:
             else:
                 subpart_formula_str = cls.leafletCalculation(binData, subpart, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             subpart_formula_strs.append(subpart_formula_str)
+            if TooltipOperand.pContDivision.search(subpart_formula_str):
+                includeContDivision = True
         #最后连接每个结果字符串（Finally, concatenate all result strings）
         if subpart_formula["__type"] in {"ClampSubPartsCalculationPart", "SumOfSubPartsCalculationPart"}:
             operator: str = "+"
@@ -2454,6 +2457,18 @@ class LoLDataExtractor:
         else:
             operator = "+"
         result: str = "(" + f" {operator} ".join(subpart_formula_strs) + ")"
+        ##尝试将局部计算简化成结果。这里的逻辑是，副部视为一个完整算式中添加了括号的部分，可以预先计算（Try simplifying subpart calculation into the result. The logic is, subpart is considered as a part enclosed within a pair of brackets in the entire expression and thus can be calculated in advance）
+        result = result.replace(" × ", " * ")
+        result = TooltipOperand.contDivision_to_object(result)
+        try:
+            if includeContDivision:
+                result = cls.cdRound(str(eval(result)), 5)
+            else:
+                result = str(cls.aRound(eval(result), 5))
+        except:
+            pass
+        result = TooltipOperand.object_to_contDivision(result)
+        result = result.replace(" * ", " × ")
         return result
     
     @classmethod
@@ -5826,7 +5841,7 @@ class ChampionExtractor(LoLDataExtractor):
                 mAbilities: list[str] = eval(mAbilities_str)
                 for ability_key in mAbilities:
                     if ability_key in champions_bin:
-                        abilityObj = champions_bin[ability_key]
+                        abilityObj: dict[str, Any] = champions_bin[ability_key]
                         if "mChildSpells" in abilityObj:
                             if not abilityObj["mRootSpell"] in abilityObj["mChildSpells"]:
                                 champion_spell_df_keys_ordered.append(abilityObj["mRootSpell"])
@@ -11786,15 +11801,15 @@ if __name__ == "__main__":
         #     perks_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # perks_bin = LoLDataExtractor.resolve_bin_hash(perks_bin)
         ##强化符文和荣誉嘉宾（Augment and Guest of Honor）
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
-            cherry_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
-        cherry_bin = LoLDataExtractor.resolve_bin_hash(cherry_bin)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
+        #     cherry_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # cherry_bin = LoLDataExtractor.resolve_bin_hash(cherry_bin)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
         #     kiwi_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # kiwi_bin = LoLDataExtractor.resolve_bin_hash(kiwi_bin)
         ##整合后的数据（Merged data）
-        # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
-        #     champions_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
+            champions_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # champions_bin = LoLDataExtractor.resolve_bin_hash(champions_bin)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/characters_bin.json", "r", encoding = "utf-8") as fp:
         #     characters_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
@@ -11835,8 +11850,8 @@ if __name__ == "__main__":
         logPrint("说明文本测试样例：")
         tests: list[dict[str, Any]] = [
             {
-                "tooltip": "@TrueDamagePercSplit@",
-                "binData": cherry_bin["{5f69dfc1}"]["mSpell"],
+                "tooltip": "<rules>对野怪的百分比生命值伤害的上限为<magicDamage>@SuperQMonsterMaxDamageTotal@</magicDamage>。</rules>",
+                "binData": champions_bin["Characters/Galio/Spells/GalioQAbility/GalioQ"]["mSpell"],
                 "reservedVars": None
             },
         ]
