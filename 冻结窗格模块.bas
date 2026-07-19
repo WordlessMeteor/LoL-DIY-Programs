@@ -13,7 +13,7 @@ Sub FreezeAndFilterGameDataSheets()
                 Or ws.Name = "斗魂竞技场强化符文（Cherry Augments）" Or Right$(ws.Name, 14) = "CherryAugments" Or ws.Name = "无尽狂潮强化（Swarm Augments）" Or Right$(ws.Name, 13) = "SwarmAugments" _
                 Or ws.Name = "海克斯大乱斗强化符文（Kiwi Augments）" Or Right$(ws.Name, 12) = "KiwiAugments" Or ws.Name = "海克斯大乱斗强化符文套装（Kiwi Augment Set）" Or Right$(ws.Name, 14) = "KiwiAugmentSet" Or ws.Name = "强化符文修饰（Augment Modifiers）" Or Right$(ws.Name, 16) = "AugmentModifiers" Or ws.Name = "海克斯大乱斗任务线（Kiwi Questlines）" Or Right$(ws.Name, 14) = "KiwiQuestlines" _
                 Or ws.Name = "斗魂竞技场锻造器（Cherry Anvils）" Or Right$(ws.Name, 12) = "CherryAnvils" Or ws.Name = "海克斯大乱斗锻造器（Kiwi Anvils）" Or Right$(ws.Name, 10) = "KiwiAnvils" _
-                Or ws.Name = "斗魂竞技场回合列表（Cherry Round List）" Or Right$(ws.Name, 15) = "CherryRoundList" Or ws.Name = "斗魂竞技场回合（Cherry Round）" Or Right$(ws.Name, 11) = "CherryRound" Or ws.Name = "斗魂竞技场阶段（Cherry Phase）" Or Right$(ws.Name, 11) = "CherryPhase" _
+                Or ws.Name = "斗魂竞技场回合列表（Cherry Round List）" Or Right$(ws.Name, 15) = "CherryRoundList" Or ws.Name = "斗魂竞技场回合（Cherry Round）" Or Right$(ws.Name, 11) = "CherryRound" Or ws.Name = "斗魂竞技场阶段（Cherry Phase）" Or Right$(ws.Name, 11) = "CherryPhase" Or ws.Name = "斗魂竞技场回合阶段（Cherry Round Phase）" Or Right$(ws.Name, 16) = "CherryRoundPhase" _
                 Or ws.Name = "斗魂竞技场场景英雄（Cherry Cameos）" Or Right$(ws.Name, 12) = "CherryCameos" Or ws.Name = "斗魂竞技场荣誉嘉宾（Cherry Guests）" Or Right$(ws.Name, 12) = "CherryGuests" _
                 Or ws.Name = "云顶之弈赛季（TFT Set）" Or Right$(ws.Name, 6) = "TFTSet" _
                 Or ws.Name = "云顶之弈商店（TFT Shop）" Or Right$(ws.Name, 7) = "TFTShop" _
@@ -62,6 +62,8 @@ Sub FreezeAndFilterGameDataSheets()
                     Or ws.Name = "斗魂竞技场锻造器（Cherry Anvils）" Or Right$(ws.Name, 7) = "CherryAnvils" _
                     Or ws.Name = "海克斯大乱斗锻造器（Kiwi Anvils）" Or Right$(ws.Name, 7) = "KiwiAnvils" Then
                 ws.Range("I3").Select '冻结前两行和前八列（Freeze the first two rows and eight columns）
+            ElseIf ws.Name = "斗魂竞技场回合阶段（Cherry Round Phase）" Or Right$(ws.Name, 16) = "CherryRoundPhase" Then
+                ws.Range("J3").Select '冻结前两行和前九列（Freeze the first two rows and nine columns）
             ElseIf ws.Name = "斗魂竞技场荣誉嘉宾（Cherry Guests）" Or Right$(ws.Name, 12) = "CherryGuests" Then
                 ws.Range("N3").Select '冻结前两行和前十三列（Freeze the first two rows and thirteen columns）
             Else

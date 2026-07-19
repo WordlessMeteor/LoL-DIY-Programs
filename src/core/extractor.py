@@ -15,7 +15,7 @@ from src.utils.webRequest import requestUrl
 from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, eliminate_empty_fields, pyobj2json, capitalize, decapitalize
 from src.utils.runtimeDebug import subscope
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
-from src.core.config.headers import spell_header, map_header_l10n, cheatset_header, cheat_header, summonerSpell_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, KiwiQuestline_header, augmentModifier_header, CherryAnvil_header, GoH_header, cameo_header, CherryRoundList_header, CherryRound_header, CherryPhase_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header, fontDesc_header, fontType_header, fontResolution_header, fontStyle_header, font_CSSStyle_header, font_CSSIcon_header
+from src.core.config.headers import spell_header, map_header_l10n, cheatset_header, cheat_header, summonerSpell_header, perkstyle_header, perk_header, champion_header, champion_spell_header, item_header, itemGroup_header, itemModifier_header, CherryAugment_header, SwarmAugment_header, KiwiAugment_header, KiwiAugmentSet_header, KiwiQuestline_header, augmentModifier_header, CherryAnvil_header, GoH_header, cameo_header, CherryRoundList_header, CherryRound_header, CherryPhase_header, CherryRoundPhase_header, TFTSet_header, TFTShop_header, TFTShopContent_header, TFTDropRate_header, TFTStageRound_header, TFTRound_header, TFTPortal_header, TFTEncounterDistribution_header, TFTEncounter_header, TFTUnitProperty_header, TFTCharacterRole_header, TFTItemList_header, TFTItem_header, TFTTraitList_header, TFTTrait_header, TFTPVENPC_header, TFTScript_header, TFTAnnouncement_header, fontDesc_header, fontType_header, fontResolution_header, fontStyle_header, font_CSSStyle_header, font_CSSIcon_header
 from src.core.config.localization import language_ddragon, language_dict
 
 #=============================================================================
@@ -559,6 +559,11 @@ class LoLDataExtractor:
             "sheet_name_without_version": "斗魂竞技场阶段（Cherry Phase）",
             "sheet_name_with_version": "{version} CherryPhase"
         },
+        "CherryRoundPhase": {
+            "dType": "CherryRoundPhase",
+            "sheet_name_without_version": "斗魂竞技场回合阶段（Cherry Round Phase）",
+            "sheet_name_with_version": "{version} CherryRoundPhase"
+        },
         "CherryCameo": {
             "dType": "CherryCameo",
             "sheet_name_without_version": "斗魂竞技场场景英雄（Cherry Cameos）",
@@ -715,6 +720,7 @@ class LoLDataExtractor:
         "CherryRoundList",
         "CherryRound",
         "CherryPhase",
+        "CherryRoundPhase",
         "CherryCameo",
         "CherryGoH",
         "TFTSet",
@@ -7673,6 +7679,7 @@ class CherryRoundExtractor(LoLDataExtractor):
         self.CherryRoundList_df: pandas.DataFrame = pandas.DataFrame()
         self.CherryRound_df: pandas.DataFrame = pandas.DataFrame()
         self.CherryPhase_df: pandas.DataFrame = pandas.DataFrame()
+        self.CherryRoundPhase_df: pandas.DataFrame = pandas.DataFrame()
     
     def init_data_readiness(self) -> None:
         '''
@@ -7769,6 +7776,9 @@ class CherryRoundExtractor(LoLDataExtractor):
         CherryPhase_header_keys: list[str] = list(CherryPhase_header.keys())
         CherryPhase_data: dict[str, list[Any]] = {key: [] for key in CherryPhase_header_keys}
         CherryPhase_data_json: dict[str, list[Any]] = copy.deepcopy(CherryPhase_data)
+        CherryRoundPhase_header_keys: list[str] = list(CherryRoundPhase_header.keys())
+        CherryRoundPhase_data: dict[str, list[Any]] = {key: [] for key in CherryRoundPhase_header_keys}
+        CherryRoundPhase_data_json: dict[str, list[Any]] = copy.deepcopy(CherryRoundPhase_data)
         
         #数据整理核心部分（Data organization core part）
         pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
@@ -7776,7 +7786,7 @@ class CherryRoundExtractor(LoLDataExtractor):
         strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
         for (key1, value) in self.map30_bin.items():
             if key1 != "__linked" and value["__type"] == "LoLModesRoundsListData":
-                rounds: list[dict[str, Any]] = value["rounds"] if "rounds" in value else value["Rounds"] #“{b7b53758}”在“hashes.binfields.txt”中对应到“Rounds”，在“hashes.binhashes.txt”中对应到“rounds”（"rounds" corresponds to "Rounds" in "hashes.binfields.txt", while corresponds to "rounds" in "hashes.binhashes.txt"）
+                rounds: list[str] = value["rounds"] if "rounds" in value else value["Rounds"] #“{b7b53758}”在“hashes.binfields.txt”中对应到“Rounds”，在“hashes.binhashes.txt”中对应到“rounds”（"rounds" corresponds to "Rounds" in "hashes.binfields.txt", while corresponds to "rounds" in "hashes.binhashes.txt"）
                 for round_index in range(len(rounds)):
                     roundKey: str = rounds[round_index]
                     for i in range(len(CherryRoundList_header_keys)):
@@ -7806,6 +7816,43 @@ class CherryRoundExtractor(LoLDataExtractor):
                                 to_append = ""
                         CherryRoundList_data[key].append(to_append)
                         CherryRoundList_data_json[key].append(pyobj2json(to_append))
+                    round: dict[str, Any] = self.map30_bin[roundKey]
+                    phases: list[str] = round["Phases"]
+                    for phase_index in range(len(phases)):
+                        phaseKey: str = phases[phase_index]
+                        phase: dict[str, Any] = self.map30_bin[phaseKey]
+                        subPhases: list[dict[str, Any]] = phase["SubPhases"]
+                        for subPhase_index in range(len(subPhases)):
+                            subPhase: dict[str, Any] = subPhases[subPhase_index]
+                            for i in range(len(CherryRoundPhase_header_keys)):
+                                key: str = CherryRoundPhase_header_keys[i]
+                                if i <= 1:
+                                    if i == 0: #方案主键（`key`）
+                                        to_append: Any = key1
+                                    else: ##旗标（`{37e6e53a}`）
+                                        to_append = value["{37e6e53a}"]
+                                elif i <= 3:
+                                    if i == 2: #回合数（`roundNumber`）
+                                        to_append = round_index + 1
+                                    else: #回合主键（`roundKey`）
+                                        to_append = roundKey
+                                elif i <= 12:
+                                    if i == 4: #阶段数（`PhaseNumber`）
+                                        to_append = phase_index + 1
+                                    elif i == 5: #阶段主键（`PhaseKey`）
+                                        to_append = phaseKey
+                                    elif i <= 10:
+                                        to_append = phase.get(key, "")
+                                    else: #显示名（Display name）
+                                        strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 11 else strtable_lol_default
+                                        to_append = self.get_strtable_value(strtable_locale, phase["DisplayNameTra"], default = "")
+                                else:
+                                    if i == 13: #子阶段序号（`subPhase number`）
+                                        to_append = subPhase_index + 1
+                                    else:
+                                        to_append = subPhase.get(key.split()[1], "")
+                                CherryRoundPhase_data[key].append(to_append)
+                                CherryRoundPhase_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "LoLModesRoundData":
                 phaseKeys: list[str] = value["Phases"]
                 for i in range(len(CherryRound_header_keys)):
@@ -7828,8 +7875,8 @@ class CherryRoundExtractor(LoLDataExtractor):
                     CherryRound_data[key].append(to_append)
                     CherryRound_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "LoLModesPhaseData":
-                for subphase_index in range(len(value["SubPhases"])):
-                    subphase: dict[str, Any] = value["SubPhases"][subphase_index]
+                for subPhase_index in range(len(value["SubPhases"])):
+                    subPhase: dict[str, Any] = value["SubPhases"][subPhase_index]
                     for i in range(len(CherryPhase_header_keys)):
                         key: str = CherryPhase_header_keys[i]
                         if i == 0: #主键（`key`）
@@ -7839,12 +7886,12 @@ class CherryRoundExtractor(LoLDataExtractor):
                                 to_append = value.get(key, "")
                             else: #回合阶段本地化名称（Localized round phase names）
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 6 else strtable_lol_default
-                                to_append = self.get_strtable_value(strtable_locale, value["DisplayNameTra"], default = value["DisplayNameTra"])
+                                to_append = self.get_strtable_value(strtable_locale, value["DisplayNameTra"], default = "")
                         else:
                             if i == 8: #阶段序号（`phase number`）
-                                to_append = subphase_index + 1
+                                to_append = subPhase_index + 1
                             else:
-                                to_append = subphase.get(key.split()[1], "")
+                                to_append = subPhase.get(key.split()[1], "")
                         CherryPhase_data[key].append(to_append)
                         CherryPhase_data_json[key].append(pyobj2json(to_append))
         CherryRoundList_statistics_output_order: list[int] = [0, 2, 3, 4, 5]
@@ -7862,6 +7909,11 @@ class CherryRoundExtractor(LoLDataExtractor):
         CherryPhase_df: pandas.DataFrame = pandas.DataFrame(data = CherryPhase_data_organized)
         CherryPhase_df = pandas.concat([pandas.DataFrame([CherryPhase_header])[CherryPhase_df.columns], CherryPhase_df], ignore_index = True)
         self.CherryPhase_df = CherryPhase_df
+        CherryRoundPhase_statistics_output_order: list[int] = [0, 2, 3, 4, 5, 7, 11, 12, 6, 13, 14, 15, 16, 17, 18, 8, 9, 10]
+        CherryRoundPhase_data_organized: dict[str, list[Any]] = {CherryRoundPhase_header_keys[i]: CherryRoundPhase_data_json[CherryRoundPhase_header_keys[i]] for i in CherryRoundPhase_statistics_output_order}
+        CherryRoundPhase_df: pandas.DataFrame = pandas.DataFrame(data = CherryRoundPhase_data_organized)
+        CherryRoundPhase_df = pandas.concat([pandas.DataFrame([CherryRoundPhase_header])[CherryRoundPhase_df.columns], CherryRoundPhase_df], ignore_index = True)
+        self.CherryRoundPhase_df = CherryRoundPhase_df
         return 0
     
     def enqueue_CherryRound_dataframe(self) -> None:
@@ -7883,6 +7935,11 @@ class CherryRoundExtractor(LoLDataExtractor):
             sheet3_name: str = CherryPhase_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else CherryPhase_ws["sheet_name_without_version"]
             CherryPhase_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(CherryPhase_ws["dType"]), "dType": CherryPhase_ws["dType"], "sheet_name": sheet3_name, "sheet": self.CherryPhase_df}
             self.enqueue_df(CherryPhase_df_struct, overwrite_on_exist = True, log = self.log)
+        if not self.CherryRoundPhase_df.empty:
+            CherryRoundPhase_ws: dict[str, Any] = self.worksheet_metadata["CherryRoundPhase"]
+            sheet4_name: str = CherryRoundPhase_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else CherryRoundPhase_ws["sheet_name_without_version"]
+            CherryRoundPhase_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(CherryRoundPhase_ws["dType"]), "dType": CherryRoundPhase_ws["dType"], "sheet_name": sheet4_name, "sheet": self.CherryRoundPhase_df}
+            self.enqueue_df(CherryRoundPhase_df_struct, overwrite_on_exist = True, log = self.log)
     
     def export_CherryRound_data(self, debug: bool = False, path: Optional[str] = None) -> None:
         '''
@@ -7890,6 +7947,7 @@ class CherryRoundExtractor(LoLDataExtractor):
         - 斗魂竞技场回合列表（Cherry Round List）
         - 斗魂竞技场回合（Cherry Round）
         - 斗魂竞技场阶段（Cherry Phase）
+        - 斗魂竞技场回合阶段（Cherry Round Phase）
         
         :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
         :type debug: bool
@@ -7906,7 +7964,7 @@ class CherryRoundExtractor(LoLDataExtractor):
         if self.patch == "" and self.sheet_naming_fold:
             logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
             return
-        if self.CherryRoundList_df.empty or self.CherryRound_df.empty or self.CherryPhase_df.empty:
+        if self.CherryRoundList_df.empty or self.CherryRound_df.empty or self.CherryPhase_df.empty or self.CherryRoundPhase_df.empty:
             status: int = self.build_CherryRound_dataframe(debug = debug, path = path)
             if status != 0:
                 logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
@@ -7917,10 +7975,12 @@ class CherryRoundExtractor(LoLDataExtractor):
             CherryRoundList_df: pandas.DataFrame = eliminate_empty_fields(self.CherryRoundList_df)
             CherryRound_df: pandas.DataFrame = eliminate_empty_fields(self.CherryRound_df)
             CherryPhase_df: pandas.DataFrame = eliminate_empty_fields(self.CherryPhase_df)
+            CherryRoundPhase_df: pandas.DataFrame = eliminate_empty_fields(self.CherryRoundPhase_df)
         else:
             CherryRoundList_df = self.CherryRoundList_df
             CherryRound_df = self.CherryRound_df
             CherryPhase_df = self.CherryPhase_df
+            CherryRoundPhase_df = self.CherryRoundPhase_df
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
         if not os.path.exists(self.wbPath):
             wbCreateFlag: bool = create_workbook_win32(os.path.abspath(self.wbPath))
@@ -7928,12 +7988,14 @@ class CherryRoundExtractor(LoLDataExtractor):
         sheet1_name: str = self.worksheet_metadata["CherryRoundList"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["CherryRoundList"]["sheet_name_without_version"]
         sheet2_name: str = self.worksheet_metadata["CherryRound"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["CherryRound"]["sheet_name_without_version"]
         sheet3_name: str = self.worksheet_metadata["CherryPhase"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["CherryPhase"]["sheet_name_without_version"]
+        sheet4_name: str = self.worksheet_metadata["CherryRoundPhase"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["CherryRoundPhase"]["sheet_name_without_version"]
         while True:
             try:
                 with (pandas.ExcelWriter(self.wbPath, mode = "a", if_sheet_exists = "replace") if workbook_exist else pandas.ExcelWriter(self.wbPath, mode = "w")) as writer:
                     addDefaultStyle(CherryRoundList_df).to_excel(excel_writer = writer, sheet_name = sheet1_name)
                     addDefaultStyle(CherryRound_df).to_excel(excel_writer = writer, sheet_name = sheet2_name)
                     addDefaultStyle(CherryPhase_df).to_excel(excel_writer = writer, sheet_name = sheet3_name)
+                    addDefaultStyle(CherryRoundPhase_df).to_excel(excel_writer = writer, sheet_name = sheet4_name)
                     for sheet_name in [sheet1_name, sheet2_name, sheet3_name]:
                         if sheet_name in writer.sheets:
                             worksheet: Worksheet = writer.sheets[sheet_name]
@@ -10338,9 +10400,9 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], objectType: str, keyPa
         {afcea79f}          末日人工智能：维迦的邪咒！（Doom Bots - Veigar's Evil!）<br>
         {aecea60c}          末日人工智能：维迦的末日厄咒！（Doom Bots - Veigar's Doom!）<br>
         {9cf6bf22}          WASD<br>
-        {ad33a648}          KIWI_JADE<br>
+        {ad33a648}          海克斯大乱斗 经典模式版（ARAM: Mayhem Classic-ish）<br>
         {5358c483}          BASELINESR<br>
-        {20426d6f}          JADE
+        {20426d6f}          英雄联盟经典模式（League Classic）
         </pre>
     :type gameModeName: str
     :param strtable: 字符串常量池。<br>Stringtable.
@@ -10718,6 +10780,7 @@ if __name__ == "__main__":
                 "CherryRoundList",
                 "CherryRound",
                 "CherryPhase",
+                "CherryRoundPhase",
                 "CherryGuests",
                 "TFTSet",
                 "TFTShop",

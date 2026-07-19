@@ -6543,16 +6543,37 @@ CherryPhase_header: dict[str, str] = {
     "type": "回合类型",
     "DisplayNameTra": "显示名键",
     "{7011dd78}": "即将到来的事件缩略图路径",
-    "{44bdfcf8}": "正在发生的事件缩略图",
-    "{bafc35cb}": "已经完成的事件缩略图",
+    "{44bdfcf8}": "正在发生的事件缩略图路径",
+    "{bafc35cb}": "已经完成的事件缩略图路径",
     "DisplayNameTra_content_zh": "显示名（中文）",
     "DisplayNameTra_content_en": "显示名（英文）",
-    "phase number": "阶段序号",
-    "phase type": "阶段类型",
-    "phase duration": "阶段持续时间（秒）",
-    "phase FlashOnTimeRemaining": "第一次闪烁倒计时",
-    "phase SecondFlashOnTimeRemaining": "第二次闪烁倒计时",
-    "phase TimerBarDefaultColor": "时间轴默认颜色方案"
+    "subPhase number": "子阶段序号",
+    "subPhase type": "子阶段类型",
+    "subPhase duration": "子阶段持续时间（秒）",
+    "subPhase FlashOnTimeRemaining": "第一次闪烁倒计时",
+    "subPhase SecondFlashOnTimeRemaining": "第二次闪烁倒计时",
+    "subPhase TimerBarDefaultColor": "时间轴默认颜色方案"
+}
+CherryRoundPhase_header: dict[str, str] = {
+    "key": "方案主键",
+    "{37e6e53a}": "旗标",
+    "roundNumber": "回合数",
+    "roundKey": "回合主键",
+    "PhaseNumber": "阶段数",
+    "PhaseKey": "阶段主键",
+    "type": "回合类型",
+    "DisplayNameTra": "显示名键",
+    "{7011dd78}": "即将到来的事件缩略图路径",
+    "{44bdfcf8}": "正在发生的事件缩略图路径",
+    "{bafc35cb}": "已经完成的事件缩略图路径",
+    "DisplayNameTra_content_zh": "显示名（中文）",
+    "DisplayNameTra_content_en": "显示名（英文）",
+    "subPhase number": "子阶段序号",
+    "subPhase type": "子阶段类型",
+    "subPhase duration": "子阶段持续时间（秒）",
+    "subPhase FlashOnTimeRemaining": "第一次闪烁倒计时",
+    "subPhase SecondFlashOnTimeRemaining": "第二次闪烁倒计时",
+    "subPhase TimerBarDefaultColor": "时间轴默认颜色方案"
 }
 ##云顶之弈（TFT）
 TFTSet_header: dict[str, str] = {
