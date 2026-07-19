@@ -4597,9 +4597,14 @@ class PerkExtractor(LoLDataExtractor):
         #构建从符文序号到符文数据的映射（Build a map from mPerkId to the corresponding perk data）
         perkstyleKey_perkstyleId_map: dict[int, str] = {}
         perkKey_perkId_map: dict[int, str] = {}
+        perkstyle_perkKey_map: dict[str, tuple[str, int]] = {} #键是符文主键，值是由符文系主键和符文系槽位序号组成的二元组（Each key is a perk key, and each value is a two-tuple composed of perkstyle key and slot index）
         for (key, value) in self.perks_bin.items():
             if key != "__linked" and value["__type"] == "PerkStyle":
-                perkstyleKey_perkstyleId_map[value["mPerkStyleId"]] = key #已事先确定所有符文对象中都有mPerkStyleId键（Confirmed in advance that all Perk objects have `mPerkStyleId` key）
+                perkstyleKey_perkstyleId_map[value["mPerkStyleId"]] = key #已事先确定所有符文系对象中都有mPerkStyleId键（Confirmed in advance that all PerkStyle objects have `mPerkStyleId` key）
+                for i in range(len(value["mSlots"])):
+                    slot: dict[str, Any] = value["mSlots"][i]
+                    for perkKey in slot["mPerks"]:
+                        perkstyle_perkKey_map[perkKey] = (key, i)
             elif key != "__linked" and value["__type"] == "Perk":
                 perkKey_perkId_map[value["mPerkId"]] = key #已事先确定所有符文对象中都有mPerkId键（Confirmed in advance that all Perk objects have `mPerkId` key）
         
@@ -4760,10 +4765,26 @@ class PerkExtractor(LoLDataExtractor):
                                 to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
-                    else: #本地化赛后结算描述（Localized `mEndOfGameStatDescriptions`）
+                    elif i <= 38: #本地化赛后结算描述（Localized `mEndOfGameStatDescriptions`）
                         if "mEndOfGameStatDescriptions" in value:
                             strtable_locale = strtable_lol_target if i == 37 else strtable_lol_default
                             to_append = list(map(lambda x: self.get_strtable_value(strtable_locale, x, default = x), value["mEndOfGameStatDescriptions"]))
+                        else:
+                            to_append = ""
+                    else:
+                        if key1 in perkstyle_perkKey_map:
+                            perkstyleKey, slotIndex = perkstyle_perkKey_map[key1]
+                            if i == 39: #所属符文系主键（`belonging_perkstyle_key`）
+                                to_append = perkstyleKey
+                            elif i == 40 or i == 41: #所属符文系显示名（Belonging perkstyle's display name）
+                                subkey2: str = pStrConst.search(key).group()
+                                subkey1: str = key.replace(subkey2, "")
+                                useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                                strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                                tooltip_key: str = self.perks_bin[perkstyleKey]["mDisplayNameLocalizationKey"]
+                                to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                            else: #所属符文系槽位序号（`belonging_perkstyle_slotIndex`）
+                                to_append = slotIndex
                         else:
                             to_append = ""
                     perk_data[key].append(to_append)
@@ -4778,7 +4799,7 @@ class PerkExtractor(LoLDataExtractor):
         optimize_bool_display(perkstyle_df)
         perkstyle_df = pandas.concat([pandas.DataFrame([perkstyle_header])[perkstyle_df.columns], perkstyle_df], ignore_index = True)
         self.perkstyle_df = perkstyle_df
-        perk_statistics_output_order: list[int] = [0, 1, 2, 3, 21, 22, 12, 11, 18, 4, 23, 25, 24, 26, 9, 5, 27, 28, 6, 29, 31, 30, 32, 7, 33, 35, 34, 36, 8, 37, 38, 17, 19, 13, 14, 15, 20, 10, 16]
+        perk_statistics_output_order: list[int] = [0, 1, 2, 3, 21, 22, 40, 41, 42, 12, 11, 18, 4, 23, 25, 24, 26, 9, 5, 27, 28, 6, 29, 31, 30, 32, 7, 33, 35, 34, 36, 8, 37, 38, 17, 19, 13, 14, 15, 20, 10, 16]
         perk_data_organized: dict[str, list[Any]] = {perk_header_keys[i]: perk_data_json[perk_header_keys[i]] for i in perk_statistics_output_order}
         perk_df: pandas.DataFrame = pandas.DataFrame(data = perk_data_organized)
         perk_df = perk_df.sort_values(by = "mPerkId", ascending = True, ignore_index = True)

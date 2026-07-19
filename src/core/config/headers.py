@@ -3889,7 +3889,7 @@ objective_category_header: dict[str, str] = {
     "startTime": "开始时间"
 }
 #符文（Perk）
-perk_header: dict[str, str] = {
+perk_plugin_header: dict[str, str] = {
     "iconPath": "图标路径",
     "id": "符文序号",
     "longDesc": "详细描述",
@@ -5647,7 +5647,11 @@ perk_header: dict[str, str] = {
     "mLongDescLocalizationKey_content_zh_burn": "详细信息（中文/数值转换）",
     "mLongDescLocalizationKey_content_en_burn": "详细信息（英文/数值转换）",
     "mEndOfGameStatDescriptions_contents_zh": "赛后结算描述（中文）",
-    "mEndOfGameStatDescriptions_contents_en": "赛后结算描述（英文）"
+    "mEndOfGameStatDescriptions_contents_en": "赛后结算描述（英文）",
+    "belonging_perkstyle_key": "所属符文系主键",
+    "belonging_perkstyle mDisplayNameLocalizationKey_content_zh": "所属符文系显示名（中文）",
+    "belonging_perkstyle mDisplayNameLocalizationKey_content_en": "所属符文系显示名（英文）",
+    "belonging_perkstyle_slotIndex": "所属符文系槽位序号"
 }
 ##角色（Character）
 champion_header: dict[str, str] = {
