@@ -5579,10 +5579,20 @@ class ChampionExtractor(LoLDataExtractor):
         champion_spell_data_json: dict[str, list[Any]] = copy.deepcopy(champion_spell_data)
         
         #构建从基本指令到技能的映射（Build map from root spells to abilities）
-        rootSpell_ability_map: dict[str, dict[str, Any]] = {}
+        abilityKey_rootSpellKey_map: dict[str, str] = {}
+        abilityKey_childSpellKey_map: dict[str, str] = {}
+        characterRecordKey_abilityKey_map: dict[str, str] = {} #主要用于确认技能热键（Mainly designed to determine a spell's hotkey）
         for (key, value) in champions_bin.items():
-            if key != "__linked" and value["__type"] == "AbilityObject":
-                rootSpell_ability_map[value["mRootSpell"]] = value
+            if key != "__linked" and value["__type"] in {"CharacterRecord", "TFTCharacterRecord"}:
+                if "mAbilities" in value:
+                    for ability_key in value["mAbilities"]:
+                        characterRecordKey_abilityKey_map[ability_key] = key
+            elif key != "__linked" and value["__type"] == "AbilityObject":
+                abilityKey_rootSpellKey_map[value["mRootSpell"]] = key
+                abilityKey_childSpellKey_map[value["mRootSpell"]] = key #部分技能对象的根技能不包含在其子技能列表中，如“Characters/Ambessa/Spells/AmbessaWAbility”（Some ability objects' root spell isn't contained in their child spell list, such as "Characters/Ambessa/Spells/AmbessaWAbility"）
+                if "mChildSpells" in value:
+                    for childSpell_key in value["mChildSpells"]:
+                        abilityKey_childSpellKey_map[childSpell_key] = key
         # logPrint("已构建基本指令到技能的映射关系。\nFinished building the map from root spells to abilities.")
         
         #数据整理核心部分（Data organization core part）
@@ -5768,7 +5778,7 @@ class ChampionExtractor(LoLDataExtractor):
             elif key1 != "__linked" and value["__type"] == "SpellObject":
                 for i in range(len(champion_spell_header_keys)):
                     key: str = champion_spell_header_keys[i]
-                    if i <= 9: #主键衍生键（`key`-derivated keys）
+                    if i <= 7: #主键衍生键（`key`-derivated keys）
                         if i == 0: #英雄文件夹（`championFolder`）
                             try:
                                 championFolder = key1.split("/")[1]
@@ -5776,53 +5786,46 @@ class ChampionExtractor(LoLDataExtractor):
                                 championFolder = ""
                             to_append = championFolder
                         elif i == 1: #根技能（`isRootSpell`）
-                            to_append = key1 in rootSpell_ability_map
-                        elif i == 9: #技能热键（`spellHotKey`）
-                            if len(key1.split("/")) > 1: #形如（Looks like）：Characters/Aphelios/Spells/ApheliosQ_ClientTooltipWrapper
-                                championFolder = key1.split("/")[1]
-                                CharacterRecordRoot_key: str = f"Characters/{championFolder}/CharacterRecords/Root"
-                                if CharacterRecordRoot_key in champions_bin:
+                            to_append = key1 in abilityKey_rootSpellKey_map
+                        elif i <= 6:
+                            subkey = key.split("_")[1]
+                            if key1 in abilityKey_childSpellKey_map:
+                                parentAbility: dict[str, Any] = champions_bin[abilityKey_childSpellKey_map[key1]]
+                                if subkey in parentAbility:
+                                    to_append = parentAbility[subkey]
+                                else:
+                                    if i == 3: #所属技能的持续时间可控制（`rootAbility_mLifetimeManuallyManaged`）
+                                        to_append = False
+                                    else:
+                                        to_append = ""
+                            else:
+                                if i == 3: #所属技能的持续时间可控制（`rootAbility_mLifetimeManuallyManaged`）
+                                    to_append = False
+                                else:
+                                    to_append = ""
+                        else: #技能热键（`spellHotKey`）
+                            if key1 in abilityKey_childSpellKey_map:
+                                ability_key: str = abilityKey_childSpellKey_map[key1]
+                                rootSpell_key: str = champions_bin[ability_key]["mRootSpell"]
+                                if ability_key in characterRecordKey_abilityKey_map:
+                                    CharacterRecordRoot_key: str = characterRecordKey_abilityKey_map[ability_key]
                                     CharacterRecordRoot: dict[str, Any] = champions_bin[CharacterRecordRoot_key]
-                                    if "mCharacterPassiveSpell" in CharacterRecordRoot and CharacterRecordRoot["mCharacterPassiveSpell"] == key1:
+                                    if "mCharacterPassiveSpell" in CharacterRecordRoot and CharacterRecordRoot["mCharacterPassiveSpell"] == rootSpell_key:
                                         to_append = "P"
-                                    elif "spells" in CharacterRecordRoot and CharacterRecordRoot["spells"][0] == key1:
+                                    elif "spells" in CharacterRecordRoot and CharacterRecordRoot["spells"][0] == rootSpell_key:
                                         to_append = "Q"
-                                    elif "spells" in CharacterRecordRoot and CharacterRecordRoot["spells"][1] == key1:
+                                    elif "spells" in CharacterRecordRoot and CharacterRecordRoot["spells"][1] == rootSpell_key:
                                         to_append = "W"
-                                    elif "spells" in CharacterRecordRoot and CharacterRecordRoot["spells"][2] == key1:
+                                    elif "spells" in CharacterRecordRoot and CharacterRecordRoot["spells"][2] == rootSpell_key:
                                         to_append = "E"
-                                    elif "spells" in CharacterRecordRoot and CharacterRecordRoot["spells"][3] == key1: #经检验，所有有“spells”键的角色记录对象的spells键的值列表长度恒为4（After examination, the length of the value list of existing "spells" key of all CharacterRecord objects is always 4）
+                                    elif "spells" in CharacterRecordRoot and CharacterRecordRoot["spells"][3] == rootSpell_key: #经检验，所有有“spells”键的角色记录对象的spells键的值列表长度恒为4（After examination, the length of the value list of existing "spells" key of all CharacterRecord objects is always 4）
                                         to_append = "R"
-                                    # elif "spellNames" in CharacterRecordRoot and "Characters/%s/Spells/%s" %(championFolder, CharacterRecordRoot["spellNames"][0]) == key1: #对于不存在“spells”键的版本而言，前面已经根据角色名称代码和技能名称补充了该键，因此下面这部分实际上是不需要的（For the CharacterRecord objects of those versions which don't contain "spells" key, since this key was supplemented previously according to the character name and the spell name, the following part isn't necessary）
-                                    #     to_append = "Q"
-                                    # elif "spellNames" in CharacterRecordRoot and "Characters/%s/Spells/%s" %(championFolder, CharacterRecordRoot["spellNames"][1]) == key1:
-                                    #     to_append = "W"
-                                    # elif "spellNames" in CharacterRecordRoot and "Characters/%s/Spells/%s" %(championFolder, CharacterRecordRoot["spellNames"][2]) == key1:
-                                    #     to_append = "E"
-                                    # elif "spellNames" in CharacterRecordRoot and "Characters/%s/Spells/%s" %(championFolder, CharacterRecordRoot["spellNames"][3]) == key1:
-                                    #     to_append = "R"
                                     else:
                                         to_append = ""
                                 else:
                                     to_append = ""
                             else:
                                 to_append = ""
-                        else:
-                            subkey = key.split("_")[1]
-                            if key1 in rootSpell_ability_map:
-                                rootAbility = rootSpell_ability_map[key1]
-                                if subkey in rootAbility:
-                                    to_append = rootAbility[subkey]
-                                else:
-                                    if i == 5: #所属技能的持续时间可控制（`rootAbility_mLifetimeManuallyManaged`）
-                                        to_append = False
-                                    else:
-                                        to_append = ""
-                            else:
-                                if i == 5: #所属技能的持续时间可控制（`rootAbility_mLifetimeManuallyManaged`）
-                                    to_append = False
-                                else:
-                                    to_append = ""
                     else:
                         to_append = self.generate_spell_record(champion_spell_data, key, key1, value)
                     champion_spell_data[key].append(to_append)
@@ -5851,7 +5854,7 @@ class ChampionExtractor(LoLDataExtractor):
         champion_df = pandas.concat([pandas.DataFrame([champion_header])[champion_df.columns], champion_df], ignore_index = True)
         self.champion_df = champion_df
         ##法术（Spell）
-        champion_spell_statistics_output_order: list[int] = [10, 11, 0, 9, 271, 293, 294, 2, 1, 6, 7, 8, 5, 3, 4, 13, 14, 12, 26, 15, 16, 17, 27, 108, 123, 237, 239, 240, 72, 238, 49, 50, 51, 32, 42, 73, 54, 68, 69, 70, 31, 71, 74, 28, 29, 30, 33, 236, 34, 35, 241, 209, 129, 136, 137, 130, 63, 64, 65, 100, 131, 132, 45, 48, 210, 133, 134, 135, 102, 103, 52, 53, 56, 57, 58, 59, 55, 24, 25, 104, 109, 18, 19, 61, 21, 20, 22, 23, 41, 60, 62, 66, 67, 46, 47, 93, 85, 86, 96, 97, 77, 76, 82, 114, 79, 80, 81, 98, 101, 75, 78, 257, 88, 83, 84, 99, 91, 92, 87, 89, 90, 94, 112, 122, 95, 259, 260, 261, 110, 125, 124, 126, 128, 256, 242, 243, 244, 245, 246, 247, 248, 36, 37, 38, 39, 105, 255, 107, 121, 111, 220, 221, 113, 116, 115, 117, 120, 118, 119, 127, 138, 225, 106, 226, 228, 227, 231, 232, 235, 249, 253, 254, 258, 262, 264, 263, 331, 332, 265, 266, 267, 268, 283, 284, 272, 277, 309, 311, 310, 312, 280, 321, 323, 322, 324, 275, 303, 304, 276, 305, 307, 306, 308, 278, 313, 315, 314, 316, 279, 317, 319, 318, 320, 281, 325, 327, 326, 328, 282, 329, 330, 269, 285, 287, 286, 288, 270, 289, 291, 290, 292, 273, 295, 297, 296, 298, 274, 299, 301, 300, 302, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 223, 43, 40, 44, 343, 344, 346, 347, 358, 348, 349, 363, 364, 345, 359, 361, 360, 362, 351, 369, 371, 370, 372, 352, 373, 375, 374, 376, 350, 365, 366, 367, 368, 353, 354, 355, 356, 357, 211, 212, 213, 214, 215, 216, 217, 218, 219, 139, 187, 143, 141, 144, 145, 140, 142, 233, 234, 146, 147, 149, 150, 151, 152, 153, 154, 148, 155, 156, 157, 158, 159, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 185, 160, 186, 176, 177, 178, 179, 180, 181, 182, 183, 184, 188, 195, 189, 190, 191, 192, 193, 194, 205, 196, 197, 198, 199, 200, 201, 202, 203, 204, 206, 207, 208, 229, 230, 222, 224, 250, 251, 252, 377, 378, 379, 380, 381]
+        champion_spell_statistics_output_order: list[int] = [8, 9, 0, 7, 269, 291, 292, 2, 1, 4, 5, 6, 3, 11, 12, 10, 24, 13, 14, 15, 25, 106, 121, 235, 237, 238, 70, 236, 47, 48, 49, 30, 40, 71, 52, 66, 67, 68, 29, 69, 72, 26, 27, 28, 31, 234, 32, 33, 239, 207, 127, 134, 135, 128, 61, 62, 63, 98, 129, 130, 43, 46, 208, 131, 132, 133, 100, 101, 50, 51, 54, 55, 56, 57, 53, 22, 23, 102, 107, 16, 17, 59, 19, 18, 20, 21, 39, 58, 60, 64, 65, 44, 45, 91, 83, 84, 94, 95, 75, 74, 80, 112, 77, 78, 79, 96, 99, 73, 76, 255, 86, 81, 82, 97, 89, 90, 85, 87, 88, 92, 110, 120, 93, 257, 258, 259, 108, 123, 122, 124, 126, 254, 240, 241, 242, 243, 244, 245, 246, 34, 35, 36, 37, 103, 253, 105, 119, 109, 218, 219, 111, 114, 113, 115, 118, 116, 117, 125, 136, 223, 104, 224, 226, 225, 229, 230, 233, 247, 251, 252, 256, 260, 262, 261, 329, 330, 263, 264, 265, 266, 281, 282, 270, 275, 307, 309, 308, 310, 278, 319, 321, 320, 322, 273, 301, 302, 274, 303, 305, 304, 306, 276, 311, 313, 312, 314, 277, 315, 317, 316, 318, 279, 323, 325, 324, 326, 280, 327, 328, 267, 283, 285, 284, 286, 268, 287, 289, 288, 290, 271, 293, 295, 294, 296, 272, 297, 299, 298, 300, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 221, 41, 38, 42, 341, 342, 344, 345, 356, 346, 347, 361, 362, 343, 357, 359, 358, 360, 349, 367, 369, 368, 370, 350, 371, 373, 372, 374, 348, 363, 364, 365, 366, 351, 352, 353, 354, 355, 209, 210, 211, 212, 213, 214, 215, 216, 217, 137, 185, 141, 139, 142, 143, 138, 140, 231, 232, 144, 145, 147, 148, 149, 150, 151, 152, 146, 153, 154, 155, 156, 157, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 183, 158, 184, 174, 175, 176, 177, 178, 179, 180, 181, 182, 186, 193, 187, 188, 189, 190, 191, 192, 203, 194, 195, 196, 197, 198, 199, 200, 201, 202, 204, 205, 206, 227, 228, 220, 222, 248, 249, 250, 375, 376, 377, 378, 379]
         champion_spell_data_organized: dict[str, list[Any]] = {champion_spell_header_keys[i]: champion_spell_data_json[champion_spell_header_keys[i]] for i in champion_spell_statistics_output_order}
         champion_spell_df: pandas.DataFrame = pandas.DataFrame(data = champion_spell_data_organized)
         logPrint("正在排序英雄技能数据框……\nOrganizing champion spell dataframe ...")

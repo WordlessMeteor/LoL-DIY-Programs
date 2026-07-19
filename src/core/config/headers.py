@@ -5930,8 +5930,6 @@ champion_spell_header: dict[str, str] = {
     "championFolder": "英雄文件夹",
     "isRootSpell": "根技能",
     "rootAbility_key": "所属技能键",
-    "rootAbility_mRootSpell": "所属技能的基本指令",
-    "rootAbility_mChildSpells": "所属技能的附带指令",
     "rootAbility_mLifetimeManuallyManaged": "所属技能的持续时间可控制",
     "rootAbility_mName": "所属技能名称",
     "rootAbility_mType": "所属技能类型",
