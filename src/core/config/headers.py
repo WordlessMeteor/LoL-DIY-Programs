@@ -5927,7 +5927,7 @@ champion_header: dict[str, str] = {
     "characterToolData description_content_en": "描述（英文）"
 }
 champion_spell_header: dict[str, str] = {
-    "championFolder": "英雄文件夹",
+    "mCharacterName": "角色名称",
     "isRootSpell": "根技能",
     "rootAbility_key": "所属技能键",
     "rootAbility_mLifetimeManuallyManaged": "所属技能的持续时间可控制",

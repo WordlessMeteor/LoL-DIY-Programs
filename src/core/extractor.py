@@ -5779,12 +5779,12 @@ class ChampionExtractor(LoLDataExtractor):
                 for i in range(len(champion_spell_header_keys)):
                     key: str = champion_spell_header_keys[i]
                     if i <= 7: #主键衍生键（`key`-derivated keys）
-                        if i == 0: #英雄文件夹（`championFolder`）
-                            try:
-                                championFolder = key1.split("/")[1]
-                            except IndexError:
-                                championFolder = ""
-                            to_append = championFolder
+                        if i == 0: #角色名称（`mCharacterName`）
+                            if key1 in abilityKey_childSpellKey_map and abilityKey_childSpellKey_map[key1] in characterRecordKey_abilityKey_map:
+                                characterRecord_key: str = characterRecordKey_abilityKey_map[abilityKey_childSpellKey_map[key1]]
+                                to_append = champions_bin[characterRecord_key]["mCharacterName"]
+                            else:
+                                to_append = ""
                         elif i == 1: #根技能（`isRootSpell`）
                             to_append = key1 in abilityKey_rootSpellKey_map
                         elif i <= 6:
@@ -5805,10 +5805,10 @@ class ChampionExtractor(LoLDataExtractor):
                                     to_append = ""
                         else: #技能热键（`spellHotKey`）
                             if key1 in abilityKey_childSpellKey_map:
-                                ability_key: str = abilityKey_childSpellKey_map[key1]
-                                rootSpell_key: str = champions_bin[ability_key]["mRootSpell"]
-                                if ability_key in characterRecordKey_abilityKey_map:
-                                    CharacterRecordRoot_key: str = characterRecordKey_abilityKey_map[ability_key]
+                                parentAbility_key: str = abilityKey_childSpellKey_map[key1]
+                                rootSpell_key: str = champions_bin[parentAbility_key]["mRootSpell"]
+                                if parentAbility_key in characterRecordKey_abilityKey_map:
+                                    CharacterRecordRoot_key: str = characterRecordKey_abilityKey_map[parentAbility_key]
                                     CharacterRecordRoot: dict[str, Any] = champions_bin[CharacterRecordRoot_key]
                                     if "mCharacterPassiveSpell" in CharacterRecordRoot and CharacterRecordRoot["mCharacterPassiveSpell"] == rootSpell_key:
                                         to_append = "P"
