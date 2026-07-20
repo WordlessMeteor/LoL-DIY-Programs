@@ -21,7 +21,7 @@ from src.core.dataframes.champions import sort_champion_summary
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/17
+# 更新（Last update）：     2026/07/20
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -113,7 +113,7 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
     map30_bin_url: str = "https://raw.communitydragon.org/pbe/game/data/maps/shipping/map30/map30.bin.json"
     map33_bin_url: str = "https://raw.communitydragon.org/pbe/game/data/maps/shipping/map33/map33.bin.json"
     map35_bin_url: str = "https://raw.communitydragon.org/pbe/game/data/maps/shipping/map35/map35.bin.json"
-    map453_bin_url: str = "https://raw.communitydragon.org/pbe/game/unknown/579b4182be3270f4.bin.json"
+    map453_bin_url: str = "https://raw.communitydragon.org/pbe/game/data/maps/shipping/map453/map453.bin.json"
     items_bin_url: str = "https://raw.communitydragon.org/pbe/game/items.cdtb.bin.json"
     source, status, session = requestUrl("GET", map11_bin_url, session = session, log = log)
     if status != 200:
@@ -224,7 +224,7 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
     # map30_bin_path: str = os.path.join(cdragon_folder, "pbe/game/data/maps/shipping/map30/map30.bin.json").replace("\\", "/")
     # map33_bin_path: str = os.path.join(cdragon_folder, "pbe/game/data/maps/shipping/map33/map33.bin.json").replace("\\", "/")
     # map35_bin_path: str = os.path.join(cdragon_folder, "pbe/game/data/maps/shipping/map35/map35.bin.json").replace("\\", "/")
-    # map453_bin_path: str = os.path.join(cdragon_folder, "pbe/game/unknown/579b4182be3270f4.bin.json").replace("\\", "/")
+    # map453_bin_path: str = os.path.join(cdragon_folder, "pbe/game/data/maps/shipping/map453/map453.bin.json").replace("\\", "/")
     # items_bin_path: str = os.path.join(cdragon_folder, "pbe/game/items.cdtb.bin.json")
     ###提取目录（Extracted directory）
     # extract_folder: str = "D:/Workspace/LoL-Wad-Extract-Riot/pbe-text1/Game/DATA/FINAL/"
@@ -235,7 +235,7 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
     # map30_bin_path: str = os.path.join(extract_folder, "data/maps/shipping/map30/map30.bin.json").replace("\\", "/")
     # map33_bin_path: str = os.path.join(extract_folder, "data/maps/shipping/map33/map33.bin.json").replace("\\", "/")
     # map35_bin_path: str = os.path.join(extract_folder, "data/maps/shipping/map35/map35.bin.json").replace("\\", "/")
-    # map453_bin_path: str = os.path.join(extract_folder, "unknown/579b4182be3270f4.bin.json").replace("\\", "/")
+    # map453_bin_path: str = os.path.join(extract_folder, "data/maps/shipping/map453/map453.bin.json").replace("\\", "/")
     # items_bin_path: str = os.path.join(extract_folder, "items.cdtb.bin.json").replace("\\", "/")
     # with open(map11_bin_path, "r", encoding = "utf-8") as fp:
     #     map11_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
