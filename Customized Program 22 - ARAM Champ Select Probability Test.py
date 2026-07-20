@@ -28,7 +28,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/17
+# 更新（Last update）：     2026/07/21
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -643,60 +643,65 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                 AllPrepared: bool = False #标记所有成员是否准备就绪（Marks whether all members are prepared）
                 champ_select_session_errored: bool = False #标记英雄选择会话是否出现异常。有点像returned_to_lobby（Mark if the champ select session is errored. Kind of like `returned_to_lobby`）
                 while True:
-                    #第三步：第一阶段：获取可选英雄列表（Step 3: Phase 1: Get the list of pickable champions' ids）
-                    pickable_championIds: list[int] = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/subset-champion-list")).json()
-                    #程序分支——根据海克斯大乱斗至少有一个英雄卡片来判断当前房间是否正确（Program branch - Judge whether the current lobby is correct according to the fact that there's at least a champion card during the champ select stage of ARAM: Mayhem）
-                    if len(pickable_championIds) == 0:
-                        logPrint("英雄选择过程异常！请检查您是否处于海克斯大乱斗房间中。如果游戏模式不正确，请检查程序中的相关参数。\nAn unexpected phenomenon was detected during the champ select stage! Please check if you're currently in an ARAM: Mayhem lobby. If the game mode isn't correct, please check the related parameters in the program.")
-                        time.sleep(3)
-                        return (-1, sort_champion_frequency_table(champion_frequency_dict_singleTest))
-                    else:
-                        #输出对自己可用的所有英雄卡片信息（Output all champion cards available to the user itself）
-                        count += 1
-                        logPrint("第%d次尝试（%d）：当前可用英雄【Times tried: %d - Currently available champions (%d)】： %s" %(count, champ_select_session["gameId"], count, champ_select_session["gameId"], pickable_championIds), print_time = True)
-                        pickable_champion_df: pandas.DataFrame = LoLChampion_df[LoLChampion_df["id"].isin(pickable_championIds)]
-                        pickable_champion_df_fields_to_print: list[str] = ["id", "name", "title", "alias"]
-                        logPrint(format_df(pickable_champion_df.loc[:, pickable_champion_df_fields_to_print])[0], write_time = False)
-                        #第三步：第二阶段：选择一个英雄卡片（Step 3: Phase 2: Select a champion card）
-                        selected_priority: int = len(current_candidate_championIds) #初始化当前选用英雄的优先级（Initialize the priority of the currently selected champion）
-                        for championId in current_candidate_championIds: #在可选英雄列表中出现了候选英雄的情况下，按优先级选择一名候选英雄（When a candidate champion is present in the pickable championId list, select a candidate champion according to priority）
-                            if championId in pickable_championIds:
+                    champ_select_session: dict[str, Any] = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
+                    #程序分支——根据英雄选择阶段是否支持替补英雄池判断当前房间是否正确（Program branch - Judge whether the current lobby is correct according to whether the champ select supports bench）
+                    if champ_select_session["benchEnabled"]:
+                        if champ_select_session["allowSubsetChampionPicks"]:
+                            #第三步：第一阶段：获取可选英雄列表（Step 3: Phase 1: Get the list of pickable champions' ids）
+                            pickable_championIds: list[int] = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/subset-champion-list")).json()
+                            #输出对自己可用的所有英雄卡片信息（Output all champion cards available to the user itself）
+                            count += 1
+                            logPrint("第%d次尝试（%d）：当前可用英雄【Times tried: %d - Currently available champions (%d)】： %s" %(count, champ_select_session["gameId"], count, champ_select_session["gameId"], pickable_championIds), print_time = True)
+                            pickable_champion_df: pandas.DataFrame = LoLChampion_df[LoLChampion_df["id"].isin(pickable_championIds)]
+                            pickable_champion_df_fields_to_print: list[str] = ["id", "name", "title", "alias"]
+                            logPrint(format_df(pickable_champion_df.loc[:, pickable_champion_df_fields_to_print])[0], write_time = False)
+                            #第三步：第二阶段：选择一个英雄卡片（Step 3: Phase 2: Select a champion card）
+                            selected_priority: int = len(current_candidate_championIds) #初始化当前选用英雄的优先级（Initialize the priority of the currently selected champion）
+                            for championId in current_candidate_championIds: #在可选英雄列表中出现了候选英雄的情况下，按优先级选择一名候选英雄（When a candidate champion is present in the pickable championId list, select a candidate champion according to priority）
+                                if championId in pickable_championIds:
+                                    while True:
+                                        champ_select_session = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
+                                        if "errorCode" in champ_select_session:
+                                            champ_select_session_errored = True
+                                            break
+                                        localPlayer = extract_champSelect_player(champ_select_session)
+                                        if localPlayer["championId"] == championId:
+                                            break
+                                        else:
+                                            await secLock(connection, championId = championId)
+                                        if interval != 0:
+                                            time.sleep(interval)
+                                    if not champ_select_session_errored:
+                                        logPrint("您已选择（You selected）：%s %s (%d)" %(LoLChampions[championId]["name"], LoLChampions[championId]["title"], championId), print_time = True)
+                                        selected_priority = current_candidate_championIds.index(championId)
+                                        target_championId = championId
+                                    break
+                            else: #如果可选英雄列表中没有候选英雄，则选择第一个英雄卡片（If there's not any candidate champion in the pickable champion list, then select the first champion card）
                                 while True:
                                     champ_select_session = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
                                     if "errorCode" in champ_select_session:
                                         champ_select_session_errored = True
                                         break
                                     localPlayer = extract_champSelect_player(champ_select_session)
-                                    if localPlayer["championId"] == championId:
+                                    if localPlayer["championId"] == pickable_championIds[0]:
                                         break
                                     else:
-                                        await secLock(connection, championId = championId)
+                                        await secLock(connection, championId = pickable_championIds[0])
                                     if interval != 0:
                                         time.sleep(interval)
-                                if not champ_select_session_errored:
-                                    logPrint("您已选择（You selected）：%s %s (%d)" %(LoLChampions[championId]["name"], LoLChampions[championId]["title"], championId), print_time = True)
-                                    selected_priority = current_candidate_championIds.index(championId)
-                                    target_championId = championId
+                                logPrint("未从您的英雄卡片中找到一名候选英雄。\nThere's not any candidate champion among those champion cards.\n您已选择（You selected）：%s %s (%d)" %(LoLChampions[pickable_championIds[0]]["name"], LoLChampions[pickable_championIds[0]]["title"], pickable_championIds[0]), print_time = True)
+                            if champ_select_session_errored:
                                 break
-                        else: #如果可选英雄列表中没有候选英雄，则选择第一个英雄卡片（If there's not any candidate champion in the pickable champion list, then select the first champion card）
-                            while True:
-                                champ_select_session = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
-                                if "errorCode" in champ_select_session:
-                                    champ_select_session_errored = True
-                                    break
-                                localPlayer = extract_champSelect_player(champ_select_session)
-                                if localPlayer["championId"] == pickable_championIds[0]:
-                                    break
-                                else:
-                                    await secLock(connection, championId = pickable_championIds[0])
-                                if interval != 0:
-                                    time.sleep(interval)
-                            logPrint("未从您的英雄卡片中找到一名候选英雄。\nThere's not any candidate champion among those champion cards.\n您已选择（You selected）：%s %s (%d)" %(LoLChampions[pickable_championIds[0]]["name"], LoLChampions[pickable_championIds[0]]["title"], pickable_championIds[0]), print_time = True)
-                        if champ_select_session_errored:
-                            break
-                        if not isCrowd and selected_priority == 0: #在单选模式下，如果已经拿到最高优先级的候选英雄，就不必执行下一步（Under single mode, if the champion with the highest priority is already got, then there's no need to execute the next step）
-                            break
-                        #偶然发现一个问题：在性能较慢的机器上执行这两个阶段时，性能优良的机器可能已经在执行下一个英雄选择阶段。从而导致一个现象：前面确实选了一个英雄，但是是上一个英雄选择阶段的。结果执行到下面，实际上自己还没有选择英雄，结果导致即使其他成员都选好英雄了，结果却因为自己本次英雄选择阶段还没有选择英雄，导致在人为不干预的情况下，需要等待选英雄倒计时耗尽自动选一名英雄，才视为所有成员选好了英雄（I happened to observe an issue: When a slow machine has finished Phase 2 of Step 3 and is just going to run the third phase, a fast machine may be during the next champ select stage. In that case, a phenomenon will occur: the player using this slow machine indeed picked a champion, but this champion belongs to the last champ select stage. And when this slow machine is going to run Step 5, the player hasn't actually selected a champion. As a result, all players except the player using the slow machine has picked their champions, and thus without human interference, all players will select a champion only after the pick timer runs out）
+                            if not isCrowd and selected_priority == 0: #在单选模式下，如果已经拿到最高优先级的候选英雄，就不必执行下一步（Under single mode, if the champion with the highest priority is already got, then there's no need to execute the next step）
+                                break
+                            #偶然发现一个问题：在性能较慢的机器上执行这两个阶段时，性能优良的机器可能已经在执行下一个英雄选择阶段。从而导致一个现象：前面确实选了一个英雄，但是是上一个英雄选择阶段的。结果执行到下面，实际上自己还没有选择英雄，结果导致即使其他成员都选好英雄了，结果却因为自己本次英雄选择阶段还没有选择英雄，导致在人为不干预的情况下，需要等待选英雄倒计时耗尽自动选一名英雄，才视为所有成员选好了英雄（I happened to observe an issue: When a slow machine has finished Phase 2 of Step 3 and is just going to run the third phase, a fast machine may be during the next champ select stage. In that case, a phenomenon will occur: the player using this slow machine indeed picked a champion, but this champion belongs to the last champ select stage. And when this slow machine is going to run Step 5, the player hasn't actually selected a champion. As a result, all players except the player using the slow machine has picked their champions, and thus without human interference, all players will select a champion only after the pick timer runs out）
+                        else: #海克斯大乱斗 经典模式版的英雄选择阶段没有英雄卡片，是直接选择好英雄的（The champ select stage of ARAM: Mayhem Classic-ish doesn't have champion cards. Champions are selected as soon as the champ select stage starts）
+                            champ_select_session = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
+                            localPlayer = extract_champSelect_player(champ_select_session)
+                            if localPlayer["championId"] in current_candidate_championIds:
+                                selected_priority = current_candidate_championIds.index(localPlayer["championId"])
+                            else:
+                                selected_priority = len(current_candidate_championIds)
                         #第三步：第三阶段：等待所有成员选一名英雄（Step 3: Phase 3: Wait for all members to pick a champion）
                         logPrint("正在等待其他成员选择英雄……\nWaiting for other members to select their champions ...", print_time = True)
                         AllPrepared = False
@@ -722,6 +727,10 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                                 time.sleep(interval)
                         if AllPrepared:
                             break
+                    else:
+                        logPrint("英雄选择过程异常！请检查您是否处于海克斯大乱斗房间中。如果游戏模式不正确，请检查程序中的相关参数。\nAn unexpected phenomenon was detected during the champ select stage! Please check if you're currently in an all-random lobby. If the game mode isn't correct, please check the related parameters in the program.")
+                        time.sleep(3)
+                        return (-1, sort_champion_frequency_table(champion_frequency_dict_singleTest))
                 if champ_select_session_errored:
                     logPrint("英雄选择阶段出现异常。\nAn error occurred to the champ select stage.", print_time = True)
                     continue
@@ -974,45 +983,44 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                 AllPrepared: bool = False #标记所有成员是否准备就绪（Marks whether all members are prepared）
                 returned_to_lobby: bool = False #标记是否在循环的过程中已退出英雄选择阶段而回到房间（Marks whether the lobby owner has quited the champ select stage during this loop running and therefore the user returns to the lobby）
                 while True:
-                    #第一步：第一阶段：获取可选英雄列表（Step 1: Phase 1: Get the list of pickable champions' ids）
-                    pickable_championIds: list[int] = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/subset-champion-list")).json()
-                    #程序分支——根据海克斯大乱斗至少有一个英雄卡片来判断当前房间是否正确（Program branch - Judge whether the current lobby is correct according to the fact that there's at least a champion card during the champ select stage of ARAM: Mayhem）
-                    if len(pickable_championIds) == 0:
-                        logPrint("英雄选择过程异常！请检查您是否处于海克斯大乱斗房间中。如果游戏模式不正确，请检查程序中的相关参数。\nAn unexpected phenomenon was detected during the champ select stage! Please check if you're currently in an ARAM: Mayhem lobby. If the game mode isn't correct, please check the related parameters in the program.")
-                        time.sleep(3)
-                        return (-1, sort_champion_frequency_table(champion_frequency_dict_singleTest))
-                    else:
-                        #输出对自己可用的所有英雄卡片信息（Output all champion cards available to the user itself）
-                        logPrint("当前对局（%d）可用英雄【Currently available champions (%d)】： %s" %(champ_select_session["gameId"], champ_select_session["gameId"], pickable_championIds), print_time = True)
-                        pickable_champion_df: pandas.DataFrame = LoLChampion_df[LoLChampion_df["id"].isin(pickable_championIds)]
-                        pickable_champion_df_fields_to_print: list[str] = ["id", "name", "title", "alias"]
-                        logPrint(format_df(pickable_champion_df.loc[:, pickable_champion_df_fields_to_print])[0], write_time = False)
-                        #第一步：第二阶段：选择最低优先级的英雄卡片，以便高优先级的英雄卡片进入备选英雄池供房主交换（Step 1: Phase 2: Select the first champion card, so that the higher champion cards enter the bench for the lobby owner to swap）
-                        ##注意，对于对手阵营来说，也是执行此策略。只不过后面会多一步：依据槽位序号的顺序从替补英雄池中交换得到从高到低对应优先级的英雄（Note that this is the same for `roleType == 3` case, except that there'll be another step in this case: Swap the champion of corresponding priority from the bench according to the cellId order）
-                        for championId in pickable_championIds:
-                            if not championId in current_candidate_championIds:
-                                break
-                        else: #如果自己的英雄卡片中全是候选英雄，则选择优先级较低的一个英雄卡片（If the current champion cards are all candidate champions, then pick the champion with lowest priority. Here we pick the first one）
-                            for championId in current_candidate_championIds[::-1]:
-                                if championId in pickable_championIds:
+                    champ_select_session: dict[str, Any] = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
+                    #程序分支——根据英雄选择阶段是否支持替补英雄池判断当前房间是否正确（Program branch - Judge whether the current lobby is correct according to whether the champ select supports bench）
+                    if champ_select_session["benchEnabled"]:
+                        if champ_select_session["allowSubsetChampionPicks"]:
+                            #第一步：第一阶段：获取可选英雄列表（Step 1: Phase 1: Get the list of pickable champions' ids）
+                            pickable_championIds: list[int] = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/subset-champion-list")).json()
+                            #输出对自己可用的所有英雄卡片信息（Output all champion cards available to the user itself）
+                            logPrint("当前对局（%d）可用英雄【Currently available champions (%d)】： %s" %(champ_select_session["gameId"], champ_select_session["gameId"], pickable_championIds), print_time = True)
+                            pickable_champion_df: pandas.DataFrame = LoLChampion_df[LoLChampion_df["id"].isin(pickable_championIds)]
+                            pickable_champion_df_fields_to_print: list[str] = ["id", "name", "title", "alias"]
+                            logPrint(format_df(pickable_champion_df.loc[:, pickable_champion_df_fields_to_print])[0], write_time = False)
+                            #第一步：第二阶段：选择最低优先级的英雄卡片，以便高优先级的英雄卡片进入备选英雄池供房主交换（Step 1: Phase 2: Select the first champion card, so that the higher champion cards enter the bench for the lobby owner to swap）
+                            ##注意，对于对手阵营来说，也是执行此策略。只不过后面会多一步：依据槽位序号的顺序从替补英雄池中交换得到从高到低对应优先级的英雄（Note that this is the same for `roleType == 3` case, except that there'll be another step in this case: Swap the champion of corresponding priority from the bench according to the cellId order）
+                            for championId in pickable_championIds:
+                                if not championId in current_candidate_championIds:
                                     break
-                            else: #不可能执行这一部分（This part is impossible）
-                                championId = current_candidate_championIds[0]
-                        returned_to_lobby = False
-                        while True:
-                            localPlayer = await get_champSelect_player(connection)
-                            if localPlayer == {}: #有可能在英雄选择会话来得及更新之前，房主已经退出英雄选择阶段回到房间了（Chances are that before the champ select session updates, the lobby owner has already quited the champ select session and returned to lobby）
-                                returned_to_lobby = True
+                            else: #如果自己的英雄卡片中全是候选英雄，则选择优先级较低的一个英雄卡片（If the current champion cards are all candidate champions, then pick the champion with lowest priority. Here we pick the first one）
+                                for championId in current_candidate_championIds[::-1]:
+                                    if championId in pickable_championIds:
+                                        break
+                                else: #不可能执行这一部分（This part is impossible）
+                                    championId = current_candidate_championIds[0]
+                            returned_to_lobby = False
+                            while True:
+                                localPlayer = await get_champSelect_player(connection)
+                                if localPlayer == {}: #有可能在英雄选择会话来得及更新之前，房主已经退出英雄选择阶段回到房间了（Chances are that before the champ select session updates, the lobby owner has already quited the champ select session and returned to lobby）
+                                    returned_to_lobby = True
+                                    break
+                                elif localPlayer["championId"] == championId: #有可能在发送一次请求后并未成功选择英雄（Chances are that the champion isn't selected after one request）
+                                    break
+                                else:
+                                    await secLock(connection, championId = championId)
+                                if interval != 0:
+                                    time.sleep(interval)
+                            if returned_to_lobby:
                                 break
-                            elif localPlayer["championId"] == championId: #有可能在发送一次请求后并未成功选择英雄（Chances are that the champion isn't selected after one request）
-                                break
-                            else:
-                                await secLock(connection, championId = championId)
-                            if interval != 0:
-                                time.sleep(interval)
-                        if returned_to_lobby:
-                            break
-                        logPrint("您已选择（You selected）：%s %s (%d)" %(LoLChampions[championId]["name"], LoLChampions[championId]["title"], championId), print_time = True)
+                            logPrint("您已选择（You selected）：%s %s (%d)" %(LoLChampions[championId]["name"], LoLChampions[championId]["title"], championId), print_time = True)
+                        #海克斯大乱斗 经典模式版的英雄选择阶段没有英雄卡片，是直接选择好英雄的（The champ select stage of ARAM: Mayhem Classic-ish doesn't have champion cards. Champions are selected as soon as the champ select stage starts）
                         #第一步：第三阶段：等待所有成员选一名英雄（Step 1: Phase 3: Wait for all members to pick a champion）
                         logPrint("正在等待其他成员选择英雄……\nWaiting for other members to select their champions ...", print_time = True)
                         AllPrepared = returned_to_lobby = False
@@ -1038,6 +1046,10 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                                 time.sleep(interval)
                         if AllPrepared or returned_to_lobby:
                             break
+                    else:
+                        logPrint("英雄选择过程异常！请检查您是否处于海克斯大乱斗房间中。如果游戏模式不正确，请检查程序中的相关参数。\nAn unexpected phenomenon was detected during the champ select stage! Please check if you're currently in an all-random lobby. If the game mode isn't correct, please check the related parameters in the program.")
+                        time.sleep(3)
+                        return (-1, sort_champion_frequency_table(champion_frequency_dict_singleTest))
                 if returned_to_lobby: #如果没有全员准备就绪，有两种情形：①房主的程序自动退出英雄选择阶段，接下来将开启下一个英雄选择阶段，此时水友端应当从房间阶段重新开始尝试；②房主手动点击按钮退出英雄选择阶段，该次测试到此为止，此时水友端应当中断此次测试。而从程序上，水友端无法分辨这两种情形。因此，在前面设置了一个热键，允许水友可以自行退出循环而结束测试（If not all members are prepared, there're two cases: ① The lobby owner's program automatically quits the champ select stage, when the next champ select stage will start and the member-side should restart the attempt from the lobby phase; ② The lobby owner manually quits the program and thus ends the current test, when the member-side should cancel this test as well. However, these two cases can't be distinguished for member-side simply by programmatic means. Therefore, some place in front of this part, a hotkey is set for the member to quit the loop and end the test）
                     continue
                 #第二步（仅对手阵营）：按照槽位序号顺序从高到低依次从替补英雄池中替换对应优先级的英雄【Step 2 (Opponent team only): According to the cellId order, swap the champion with corresponding priority from high to low from the bench】
