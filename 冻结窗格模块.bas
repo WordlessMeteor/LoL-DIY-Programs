@@ -33,7 +33,17 @@ Sub FreezeAndFilterGameDataSheets()
             ActiveWindow.FreezePanes = False '取消当前冻结窗格效果（Disable the current pane freezing）
             ActiveWindow.SplitColumn = 0 '取消任何可能的列拆分（Remove any existing column split）
             ActiveWindow.SplitRow = 0 '取消任何可能的行拆分（Remove any existing row split）
-            If ws.Name = "符文系（PerkStyles）" Or Right$(ws.Name, 10) = "PerkStyles" _
+            If ws.Name = "召唤师技能（Summoner Spells）" Or Right$(ws.Name, 14) = "SummonerSpells" _
+                    Or ws.Name = "英雄技能（Champion Spells）" Or Right$(ws.Name, 14) = "ChampionSpells" _
+                    Or ws.Name = "角色技能（Character Spells）" Or Right$(ws.Name, 15) = "CharacterSpells" _
+                    Or ws.Name = "云顶之弈赛季（TFT Set）" Or Right$(ws.Name, 6) = "TFTSet" _
+                    Or ws.Name = "云顶之弈装备（TFT Items）" Or Right$(ws.Name, 8) = "TFTItems" _
+                    Or ws.Name = "斗魂竞技场强化符文（Cherry Augments）" Or Right$(ws.Name, 7) = "CherryAugments" _
+                    Or ws.Name = "海克斯大乱斗强化符文（Kiwi Augments）" Or Right$(ws.Name, 7) = "KiwiAugments" _
+                    Or ws.Name = "斗魂竞技场锻造器（Cherry Anvils）" Or Right$(ws.Name, 7) = "CherryAnvils" _
+                    Or ws.Name = "海克斯大乱斗锻造器（Kiwi Anvils）" Or Right$(ws.Name, 7) = "KiwiAnvils" Then
+                ws.Range("I3").Select '冻结前两行和前八列（Freeze the first two rows and eight columns）
+            ElseIf ws.Name = "符文系（PerkStyles）" Or Right$(ws.Name, 10) = "PerkStyles" _
                     Or ws.Name = "装备修饰（Item Modifiers）" Or Right$(ws.Name, 13) = "ItemModifiers" _
                     Or ws.Name = "符文（Perks）" Or Right$(ws.Name, 5) = "Perks" _
                     Or ws.Name = "英雄（Champions）" Or Right$(ws.Name, 9) = "Champions" _
@@ -52,16 +62,6 @@ Sub FreezeAndFilterGameDataSheets()
                     Or ws.Name = "云顶之弈角色定位（TFT Character Role）" Or Right$(ws.Name, 16) = "TFTCharacterRole" _
                     Or ws.Name = "云顶之弈羁绊（TFT Traits）" Or Right$(ws.Name, 9) = "TFTTraits" Then
                 ws.Range("G3").Select '冻结前两行和前六列（Freeze the first two rows and six columns）
-            ElseIf ws.Name = "召唤师技能（Summoner Spells）" Or Right$(ws.Name, 14) = "SummonerSpells" _
-                    Or ws.Name = "英雄技能（Champion Spells）" Or Right$(ws.Name, 14) = "ChampionSpells" _
-                    Or ws.Name = "角色技能（Character Spells）" Or Right$(ws.Name, 15) = "CharacterSpells" _
-                    Or ws.Name = "云顶之弈赛季（TFT Set）" Or Right$(ws.Name, 6) = "TFTSet" _
-                    Or ws.Name = "云顶之弈装备（TFT Items）" Or Right$(ws.Name, 8) = "TFTItems" _
-                    Or ws.Name = "斗魂竞技场强化符文（Cherry Augments）" Or Right$(ws.Name, 7) = "CherryAugments" _
-                    Or ws.Name = "海克斯大乱斗强化符文（Kiwi Augments）" Or Right$(ws.Name, 7) = "KiwiAugments" _
-                    Or ws.Name = "斗魂竞技场锻造器（Cherry Anvils）" Or Right$(ws.Name, 7) = "CherryAnvils" _
-                    Or ws.Name = "海克斯大乱斗锻造器（Kiwi Anvils）" Or Right$(ws.Name, 7) = "KiwiAnvils" Then
-                ws.Range("I3").Select '冻结前两行和前八列（Freeze the first two rows and eight columns）
             ElseIf ws.Name = "斗魂竞技场回合阶段（Cherry Round Phase）" Or Right$(ws.Name, 16) = "CherryRoundPhase" Then
                 ws.Range("J3").Select '冻结前两行和前九列（Freeze the first two rows and nine columns）
             ElseIf ws.Name = "斗魂竞技场荣誉嘉宾（Cherry Guests）" Or Right$(ws.Name, 12) = "CherryGuests" Then
