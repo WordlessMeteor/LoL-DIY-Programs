@@ -7893,7 +7893,7 @@ class AugmentExtractor(LoLDataExtractor):
         ###设置单元格边框（Set cell border）
         KiwiAugment_df_styled: pandas.io.formats.style.Styler = KiwiAugment_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
         ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:10]
+        center_columns: list[str] = columns_to_export[:9]
         KiwiAugment_df_styled = KiwiAugment_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
         ##获取网页源代码（Get the web source code）
         KiwiAugment_htmltable: str = KiwiAugment_df_styled.to_html(escape = False)
@@ -7964,7 +7964,7 @@ class AugmentExtractor(LoLDataExtractor):
         ###设置单元格边框（Set cell border）
         KiwiJadeAugment_df_styled: pandas.io.formats.style.Styler = KiwiJadeAugment_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
         ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:10]
+        center_columns: list[str] = columns_to_export[:9]
         KiwiJadeAugment_df_styled = KiwiJadeAugment_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
         ##获取网页源代码（Get the web source code）
         KiwiJadeAugment_htmltable: str = KiwiJadeAugment_df_styled.to_html(escape = False)
