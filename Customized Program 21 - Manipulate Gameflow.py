@@ -30,7 +30,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/07/18
+# 更新（Last update）：     2026/07/23
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1928,7 +1928,7 @@ async def create_queue_lobby(connection: Connection, loop_test: bool = False) ->
                 response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-lobby/v1/parties/queue", data = str(queueId))).json()
                 logPrint(response)
             else:
-                lobbyName: str = defaultLobbyName
+                lobbyName: str = ""
                 lobbyPassword: str = ""
                 aramMapMutator: str = "NONE"
                 teamSize: int = 5
@@ -1982,9 +1982,16 @@ async def create_queue_lobby(connection: Connection, loop_test: bool = False) ->
                         elif step == 3:
                             logPrint("请依次输入对局名、队伍规模、密码（可选）：\nPlease enter the lobby's name, team size and password (optional):")
                             logPrint("第三步：对局名：\nStep 3: Lobby Name:")
+                            previousLobbyName: str = "Custom Lobby" #在创建一个阵容匹配的小队时，自定义房间名称就是这个值（When a matchmade party is created, the lobby name is this value）
+                            if not "errorCode" in lobby_information:
+                                previousLobbyName = lobby_information["gameConfig"]["customLobbyName"]
+                            if previousLobbyName == "Custom Lobby":
+                                logPrint("默认（Default）：%s" %(defaultLobbyName))
+                            else:
+                                logPrint("当前（Current）：%s" %(previousLobbyName))
                             lobbyName = logInput()
                             if lobbyName == "":
-                                lobbyName = defaultLobbyName
+                                lobbyName = defaultLobbyName if previousLobbyName == "Custom Lobby" else previousLobbyName
                             elif lobbyName == chr(4):
                                 step -= 2 if isMap12 else 3
                         elif step == 4:
@@ -2227,9 +2234,17 @@ async def create_custom_lobby(connection: Connection) -> int:
         elif step == 6:
             logPrint("请依次输入对局名、队伍规模、密码（可选）：\nPlease enter the lobby's name, team size and password (optional):")
             logPrint("第六步：对局名：\nStep 6: Lobby Name:")
+            previousLobbyName: str = "Custom Lobby"
+            lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
+            if not "errorCode" in lobby_information:
+                previousLobbyName = lobby_information["gameConfig"]["customLobbyName"]
+            if previousLobbyName == "Custom Lobby":
+                logPrint("默认（Default）：%s" %(defaultLobbyName))
+            else:
+                logPrint("当前（Current）：%s" %(previousLobbyName))
             lobbyName = logInput()
             if lobbyName == "":
-                lobbyName = defaultLobbyName
+                lobbyName = defaultLobbyName if previousLobbyName == "Custom Lobby" else previousLobbyName
             elif lobbyName == chr(4):
                 step -= 2
         elif step == 7:
