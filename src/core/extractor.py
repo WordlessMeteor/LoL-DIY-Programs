@@ -24,7 +24,7 @@ from src.core.config.localization import language_ddragon, language_dict
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/07/19
+# 更新（Last update）：     2026/07/22
 #=============================================================================
 
 warnings.simplefilter("error") #在数据提取器基类的变量代换方法中使用`eval`函数对装备说明文本中的变量进行预计算时，会出现大量`<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?`的警告信息。这是因为之前在处理模式分化数值时，会出现形如“@{var}@ (mode: {mode})”的表达式。虽然不可计算，但是在`eval`处理的过程中发出了警告。通过这一条命令，强制本程序不允许任何警告——警告即报错（When `LoLDataExtractor.variableSubstitution` method pre-calculates variables in item tooltips using `eval` function, a lot of warnings like `<string>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?` will pop up. This is because when the program handles mode specific data values earlier, expressions in the form of "@{var}@ (mode: {mode})" exist. Although it can't be calculated, a warning is thrown anyway when `eval` function parses the string. By this command, no warnings are allowed in this program - all warnings will be raised as errors）
@@ -413,6 +413,7 @@ class LoLDataExtractor:
     DEFAULT_LOCALE: str = "en_US"
     ZH_LOCALE: set[str] = {"zh_CN", "zh_MY", "zh_TW"} #使用中文提示语的语言文化代码（Language codes that use Chinese prompts）
     FULL_WIDTH_LOCALE: set[str] = {"ja_JP", "ko_KR", "zh_CN", "zh_MY", "zh_TW"} #使用全角标点符号的语言文化代码（Language codes that use full-width punctuation marks）
+    CELL_BORDER_STYLE: list[dict[str, Any]] = [{"selector": "table", "props": [("border", "1px solid black")]}, {"selector": "th, td", "props": [("border", "1px solid black")]}] #导出到网页中的数据框单元格边框格式（The style of cell borders of a dataframe to be exported to web）
     #定义类属性，作为类内临时使用的全局变量（Define class attributes as temporarily used global variables within the class）
     bin_hashtable_entry: dict[str, str] = {} #缓存二进制描述数据中所有主键的散列表。键是每个主键的散列值，值是每个主键（Cache the hashtable of all primary keys in the binary description data. Each key is the hash value of a primary key, and each value is a primary key）
     bin_hashtable_type: dict[str, str] = {} #缓存二进制描述数据中所有对象类型的散列表。键是每个对象类型的散列值，值是每个对象类型（Cache the hashtable of all object types in the binary description data. Each key is the hash value of an object type, and each value is an object type）
@@ -795,10 +796,10 @@ class LoLDataExtractor:
         '''
         logPrint = self.log.logPrint
         if self.folder != "":
-            os.makedirs(self.folder)
+            os.makedirs(self.folder, exist_ok = True)
         elif self.wbPath != "":
             self.folder = os.path.dirname(self.wbPath)
-            os.makedirs(self.folder)
+            os.makedirs(self.folder, exist_ok = True)
         else:
             logPrint("尚未指定文件保存目录！\nExport directory not specified yet!")
     
@@ -1230,7 +1231,7 @@ class LoLDataExtractor:
         elif not self.locale in language_ddragon:
             logPrint("语言不正确。\nInvalid language.")
         else:
-            self.folder = os.path.expanduser("~/Desktop")
+            self.folder = os.path.expanduser("~/Desktop/LoLGameDataExtract")
             wbContent: str = "游戏数据提取" if self.locale in self.ZH_LOCALE else "GameDataExtract"
             locale: str = self.locale.replace("_", "-")
             version: str = "AllPatches" if self.sheet_naming_fold else self.patch
@@ -3634,6 +3635,33 @@ class LoLDataExtractor:
                 else: #在成功遍历到目标值后才会执行以下部分（Only when the target value is fetched will this part be executed）
                     to_append = tmp_ptr
         return to_append
+    
+    #下面定义将数据框导出为网页的方法（Define the method to export a dataframe into an html file）
+    @classmethod
+    def assetPath2url(cls, version: str, path: str) -> str:
+        '''
+        将从二进制描述数据中获取到的资产路径转换为可访问的网址。<br>Transform an asset path from binary description data into an accessible url.
+        
+        :param version: CommunityDragon数据库的版本文件夹，如“latest”“pbe”等。<br>A version folder in CommunityDragon database, such as "latest", "pbe", etc.
+        :type version: str
+        :param path: 资产路径。<br>An asset path.
+        :type path: str
+        :return: 网址。<br>An url.
+        :rtype: str
+        '''
+        return "https://raw.communitydragon.org/%s/game/%s.png" %(version, os.path.splitext(path)[0].lower())
+    
+    @classmethod
+    def url2image(cls, url: str) -> str:
+        '''
+        将一张图片的网址转变成在网页内可直接预览图片的超文本。<br>Transform a picture's url into a piece of hypertext which can be used to preview the picture directly in the web.
+        
+        :param url: 图片的网址。<br>A picture's url.
+        :type url: str
+        :return: 图片超文本。在网页中可直接显示该图片。<br>The picture's hypertext. The picture can be directly displayed in a web.
+        :rtype: str
+        '''
+        return f'<a href="{url}"><img src={url}></a>'
 
 class MapExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -4208,7 +4236,7 @@ class MapExtractor(LoLDataExtractor):
         if self.map_df.empty:
             status: int = self.build_map_dataframe(debug = debug, paths = paths)
             if status != 0:
-                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
                 logInput()
                 return
         #导出数据（Export data）
@@ -4232,7 +4260,7 @@ class MapExtractor(LoLDataExtractor):
                                 worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                cont = logInput()
+                cont: str = logInput()
                 if cont != "" and cont[0] == "0":
                     break
             else:
@@ -4462,7 +4490,7 @@ class CheatExtractor(LoLDataExtractor):
         if self.cheatset_df.empty or self.cheat_df.empty:
             status: int = self.build_cheat_dataframe(debug = debug, path = path)
             if status != 0:
-                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
                 logInput()
                 return
         #导出数据（Export data）
@@ -4490,7 +4518,7 @@ class CheatExtractor(LoLDataExtractor):
                                 worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                cont = logInput()
+                cont: str = logInput()
                 if cont != "" and cont[0] == "0":
                     break
             else:
@@ -4854,7 +4882,7 @@ class PerkExtractor(LoLDataExtractor):
         if self.perkstyle_df.empty or self.perk_df.empty:
             status: int = self.build_perk_dataframe(debug = debug, path = path)
             if status != 0:
-                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
                 logInput()
                 return
         #导出数据（Export data）
@@ -4882,12 +4910,133 @@ class PerkExtractor(LoLDataExtractor):
                                 worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                cont = logInput()
+                cont: str = logInput()
                 if cont != "" and cont[0] == "0":
                     break
             else:
                 logPrint(f"符文数据已导出到{self.wbPath}。\nPerk data have been exported to {self.wbPath}.", print_time = True)
                 break
+    
+    def to_html(self, debug: bool = False, path: Optional[str] = None) -> None:
+        '''
+        导出符文数据到网页中。产生以下文件：<br>Export perk data into html files. The following files are produced:
+        - 符文系（PerkStyles）
+        - 符文（Perks）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 符文二进制描述文件的本地路径。<br>A local path of perk binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        '''
+        logInput = self.log.logInput
+        logPrint = self.log.logPrint
+        if self.wbPath == "":
+            logPrint("尚未指定文件保存路径。\nPath of exported file not specified.")
+            return
+        if self.patch == "" and self.sheet_naming_fold:
+            logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
+            return
+        if self.perkstyle_df.empty or self.perk_df.empty:
+            status: int = self.build_perk_dataframe(debug = debug, path = path)
+            if status != 0:
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到网页中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
+                logInput()
+                return
+        #符文系（Perkstyle）
+        perkstyle_df_web: pandas.DataFrame = self.perkstyle_df.copy(deep = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        mIconTextureUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.perkstyle_df.loc[1:, "mIconTextureName"].to_list()))
+        perkstyle_df_web.insert(len(perkstyle_df_web.columns), "mIconTextureUrl", ["图标纹理网址"] + mIconTextureUrls)
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "mPerkStyleName",
+            "mPerkStyleId",
+            "mIconTextureUrl",
+            "mDisplayNameLocalizationKey_content_zh",
+            "mDisplayNameLocalizationKey_content_en",
+            "mIsAdvancedStyle",
+            "mTooltipNameLocalizationKey_content_zh",
+            "mTooltipNameLocalizationKey_content_en",
+            "mSlot1 mPerks mDisplayNameLocalizationKey_contents_zh",
+            "mSlot1 mPerks mDisplayNameLocalizationKey_contents_en",
+            "mSlot2 mPerks mDisplayNameLocalizationKey_contents_zh",
+            "mSlot2 mPerks mDisplayNameLocalizationKey_contents_en",
+            "mSlot3 mPerks mDisplayNameLocalizationKey_contents_zh",
+            "mSlot3 mPerks mDisplayNameLocalizationKey_contents_en",
+            "mSlot4 mPerks mDisplayNameLocalizationKey_contents_zh",
+            "mSlot4 mPerks mDisplayNameLocalizationKey_contents_en",
+        ]
+        perkstyle_df_web = perkstyle_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        perkstyle_df_styled: pandas.io.formats.style.Styler = perkstyle_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:6]
+        perkstyle_df_styled = perkstyle_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        perkstyle_htmltable: str = perkstyle_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        perkstyle_htmltable = '<meta charset="UTF-8">\n' + perkstyle_htmltable #以兼容中文的编码来保存（Save with a meta encoding compatible with Chinese）
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"Perkstyle_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(perkstyle_htmltable)
+        #符文（Perk）
+        perk_df_web: pandas.DataFrame = self.perk_df.copy(deep = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        mIconTextureUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.perk_df.loc[1:, "mIconTextureName"].to_list()))
+        perk_df_web.insert(len(perk_df_web.columns), "mIconTextureUrl", ["图标纹理网址"] + mIconTextureUrls)
+        ##排序（Order）
+        ###第一关键字——所属符文系（Primary keyword - belonging perkstyle）
+        belonging_perkstyle_weight_map: dict[str, int] = {self.perkstyle_df["mDisplayNameLocalizationKey_content_zh"][1:][i]: i for i in range(1, len(self.perkstyle_df))}
+        belonging_perkstyle_weight_map[""] = len(self.perkstyle_df)
+        ###第二关键字——槽位序号（Secondary keyword - slot index）
+        slotIndex_weight_map: dict[int | str, int] = {_: _ for _ in set(perk_df_web["belonging_perkstyle_slotIndex"][1:]) if isinstance(_, int)}
+        slotIndex_weight_map[""] = max(slotIndex_weight_map.values()) + 1
+        ###插入关键字权重列（Insert keyword weight columns）
+        belonging_perkstyle_weights: list[int] = list(map(lambda x: belonging_perkstyle_weight_map[x], perk_df_web["belonging_perkstyle mDisplayNameLocalizationKey_content_zh"][1:].to_list()))
+        perk_df_web.insert(len(perk_df_web.columns), "perkstyle_weight", ["符文系权重"] + belonging_perkstyle_weights)
+        slotIndex_weights: list[int] = list(map(lambda x: slotIndex_weight_map[x], perk_df_web["belonging_perkstyle_slotIndex"][1:].to_list()))
+        perk_df_web.insert(len(perk_df_web.columns), "slotIndex_weight", ["槽位序号权重"] + slotIndex_weights)
+        ###排序重组（Sort and recombination）
+        perk_df_web = pandas.concat([perk_df_web.iloc[:1, :], perk_df_web.iloc[1:, :].sort_values(by = ["perkstyle_weight", "slotIndex_weight", "mPerkId"], ascending = True)])
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "mPerkName",
+            "mPerkId",
+            "mIconTextureUrl",
+            "mDisplayNameLocalizationKey_content_zh",
+            "mDisplayNameLocalizationKey_content_en",
+            "belonging_perkstyle mDisplayNameLocalizationKey_content_zh",
+            "belonging_perkstyle mDisplayNameLocalizationKey_content_en",
+            "belonging_perkstyle_slotIndex",
+            "mEnabled",
+            "mStackable",
+            "mDefault",
+            "mTooltipNameLocalizationKey_content_zh_burn",
+            "mTooltipNameLocalizationKey_content_en_burn",
+            "mLongDescLocalizationKey_content_zh_burn",
+            "mLongDescLocalizationKey_content_en_burn",
+            "mEndOfGameStatDescriptions_contents_zh",
+            "mEndOfGameStatDescriptions_contents_en",
+        ]
+        perk_df_web = perk_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        perk_df_styled: pandas.io.formats.style.Styler = perk_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:8]
+        perk_df_styled = perk_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        perk_htmltable: str = perk_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        perk_htmltable = '<meta charset="UTF-8">\n' + perk_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"Perk_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(perk_htmltable)
 
 class SummonerSpellExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -5048,7 +5197,7 @@ class SummonerSpellExtractor(LoLDataExtractor):
         if self.summonerSpell_df.empty:
             status: int = self.build_summonerSpell_dataframe(debug = debug, path = path)
             if status != 0:
-                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
                 logInput()
                 return
         #导出数据（Export data）
@@ -5072,12 +5221,75 @@ class SummonerSpellExtractor(LoLDataExtractor):
                                 worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                cont = logInput()
+                cont: str = logInput()
                 if cont != "" and cont[0] == "0":
                     break
             else:
                 logPrint(f"召唤师技能数据已导出到{self.wbPath}。\nSummoner spell data have been exported to {self.wbPath}.", print_time = True)
                 break
+    
+    def to_html(self, debug: bool = False, path: Optional[str] = None) -> None:
+        '''
+        导出召唤师技能数据到网页中。产生以下文件：<br>Export summoner spell data into an html file. The following file is produced:
+        - 召唤师技能（Summoner spell）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 共享二进制描述文件的本地路径。<br>A local path of shared binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        '''
+        logInput = self.log.logInput
+        logPrint = self.log.logPrint
+        if self.wbPath == "":
+            logPrint("尚未指定文件保存路径。\nPath of exported file not specified.")
+            return
+        if self.patch == "" and self.sheet_naming_fold:
+            logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
+            return
+        if self.summonerSpell_df.empty:
+            status: int = self.build_summonerSpell_dataframe(debug = debug, path = path)
+            if status != 0:
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
+                logInput()
+                return
+        #召唤师技能（Summoner spell）
+        summonerSpell_df_web: pandas.DataFrame = self.summonerSpell_df.copy(deep = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        imgIconUrls: list[str] = list(map(lambda x: "" if x == "" else "<br>".join(list(map(lambda y: self.url2image(self.assetPath2url(self.version, f"DATA/Spells/Icons2D/{y}" if not "/" in y else y)), eval(x)))), self.summonerSpell_df.loc[1:, "mSpell mImgIconName"].to_list()))
+        summonerSpell_df_web.insert(len(summonerSpell_df_web.columns), "mSpell ImgIconUrl", ["缩略图网址列表"] + imgIconUrls)
+        ##保留小数（Round）
+        summonerSpell_df_web.loc[1:, "mSpell Cooldown {0a3e0478}"] = summonerSpell_df_web.loc[1:, "mSpell Cooldown {0a3e0478}"].apply(lambda x: "" if x == "" else self.aRound(x, 5))
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "ObjectName",
+            "mSpell mPlatformSpellInfo mSpellID",
+            "mSpell ImgIconUrl",
+            "mSpell mPlatformSpellInfo mPlatformEnabled",
+            "mSpell mClientData mTooltipData mLocKeys keyName_content_zh_burn",
+            "mSpell mClientData mTooltipData mLocKeys keyName_content_en_burn",
+            "mSpell Cooldown {0a3e0478}",
+            "mSpell mClientData mTooltipData mLocKeys keySummary_content_zh",
+            "mSpell mClientData mTooltipData mLocKeys keySummary_content_en",
+            "mSpell mClientData mTooltipData mLocKeys keyTooltip_content_zh_burn",
+            "mSpell mClientData mTooltipData mLocKeys keyTooltip_content_en_burn"
+        ]
+        summonerSpell_df_web = summonerSpell_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        summonerSpell_df_styled: pandas.io.formats.style.Styler = summonerSpell_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:7]
+        summonerSpell_df_styled = summonerSpell_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        summonerSpell_htmltable: str = summonerSpell_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        summonerSpell_htmltable = '<meta charset="UTF-8">\n' + summonerSpell_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"SummonerSpell_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(summonerSpell_htmltable)
 
 class ChampionExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -5139,33 +5351,50 @@ class ChampionExtractor(LoLDataExtractor):
         :type verbose: bool
         '''
         logPrint = self.log.logPrint
+        #获取所有英雄的名称信息（Get all champions' name information）
+        logPrint("正在读取英雄元数据……\nReading champion metadata ...", print_time = True, verbose = verbose)
+        champion_summary_url: str = "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(self.version, self.language_folder)
+        if champion_summary_url in self.__class__.data_cache["online"]:
+            self.champion_summary = self.__class__.data_cache["online"][champion_summary_url]
+        else:
+            source, status, self.session = requestUrl("GET", champion_summary_url, session = self.session, log = self.log)
+            if status != 200:
+                if status == 404:
+                    logPrint("英雄概要信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nChampion summary data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(champion_summary_url))
+                else:
+                    logPrint("英雄概要信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion summary data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
+                time.sleep(3)
+                self.init_data_readiness()
+                return
+            self.champion_summary: list[dict[str, int | str | list[str]]] = source.json()
+            self.__class__.data_cache["online"][champion_summary_url] = self.champion_summary
+        self.champions_ready["summary"] = True
         if self.useAllCharacter:
+            ##聚点危机地图（Convergence map）
+            map22_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map22/map22.bin.json" #云顶之弈的小小英雄和羁绊信息（TFT champion and trait data）
+            if map22_bin_url in self.__class__.data_cache["online"]:
+                self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map22_bin_url]
+            else:
+                source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session, log = self.log)
+                if status != 200:
+                    if status == 404:
+                        logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nConvergence map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map22_bin_url))
+                        self.map22_bin = {}
+                    else:
+                        logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
+                        time.sleep(3)
+                        self.init_data_readiness()
+                        return
+                else:
+                    self.map22_bin = source.json()
+                    self.map22_bin = self.resolve_bin_hash(self.map22_bin)
+                self.__class__.data_cache["online"][map22_bin_url] = self.map22_bin
+            self.characters_ready["map22"] = True
             if "characters_bin_dict" in self.__class__.merged_data_cache:
                 self.champions_bin_dict = self.__class__.merged_data_cache["characters_bin_dict"]
             else:
                 if self.fileExportList_ready: #当文件导出列表就绪，直接从列表中筛选角色数据网址（When the file export list is ready, directly filter character data URLs from the list）
                     #整理角色列表（Sort out the characters into a list）
-                    ##聚点危机地图（Convergence map）
-                    map22_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map22/map22.bin.json" #云顶之弈的小小英雄和羁绊信息（TFT champion and trait data）
-                    if map22_bin_url in self.__class__.data_cache["online"]:
-                        self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map22_bin_url]
-                    else:
-                        source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session, log = self.log)
-                        if status != 200:
-                            if status == 404:
-                                logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nConvergence map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map22_bin_url))
-                                self.map22_bin = {}
-                            else:
-                                logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
-                                time.sleep(3)
-                                self.init_data_readiness()
-                                return
-                        else:
-                            self.map22_bin = source.json()
-                            self.map22_bin = self.resolve_bin_hash(self.map22_bin)
-                        self.__class__.data_cache["online"][map22_bin_url] = self.map22_bin
-                    self.characters_ready["map22"] = True
-                    ##角色列表（Character list）
                     self.characters_ready["characterList1"] = True #在从文件导出列表中获取角色数据时，相当于角色列表已准备就绪（When the file export list is fetched, the character list must be ready）
                     self.characters_ready["characterList2"] = True
                     logPrint("正在整理角色列表……\nSorting out characters into a list ...", print_time = True, verbose = verbose)
@@ -5209,27 +5438,6 @@ class ChampionExtractor(LoLDataExtractor):
                 else: #当文件导出列表尚未准备就绪时，从两个指定文件夹中获取角色数据（When the file export list isn't ready yet, get character data from two specified folders）
                     #整理角色列表（Sort out the characters into a list）
                     logPrint("正在整理角色列表……\nSorting out characters into a list ...", print_time = True, verbose = verbose)
-                    ##聚点危机地图（Convergence map）
-                    map22_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map22/map22.bin.json" #云顶之弈的小小英雄和羁绊信息（TFT champion and trait data）
-                    if map22_bin_url in self.__class__.data_cache["online"]:
-                        self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][map22_bin_url]
-                    else:
-                        source, status, self.session = requestUrl("GET", map22_bin_url, session = self.session, log = self.log)
-                        if status != 200:
-                            if status == 404:
-                                logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nConvergence map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map22_bin_url))
-                                self.map22_bin = {}
-                            else:
-                                logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
-                                time.sleep(3)
-                                self.init_data_readiness()
-                                return
-                        else:
-                            self.map22_bin = source.json()
-                            self.map22_bin = self.resolve_bin_hash(self.map22_bin)
-                        self.__class__.data_cache["online"][map22_bin_url] = self.map22_bin
-                    self.characters_ready["map22"] = True
-                    ##角色文件夹（Character folders）
                     characterList_url1: str = f"https://raw.communitydragon.org/json/{self.version}/game/data/characters/"
                     if characterList_url1 in self.__class__.data_cache["online"]:
                         characterList1 = self.__class__.data_cache["online"][characterList_url1]
@@ -5314,31 +5522,13 @@ class ChampionExtractor(LoLDataExtractor):
             if "champions_bin_dict" in self.__class__.merged_data_cache:
                 self.champions_bin_dict = self.__class__.merged_data_cache["champions_bin_dict"]
             else:
-                #获取所有英雄的名称信息（Get all champions' name information）
-                logPrint("正在读取英雄元数据……\nReading champion metadata ...", print_time = True, verbose = verbose)
-                champion_summary_url: str = "https://raw.communitydragon.org/%s/plugins/rcp-be-lol-game-data/global/%s/v1/champion-summary.json" %(self.version, self.language_folder)
-                if champion_summary_url in self.__class__.data_cache["online"]:
-                    champion_summary = self.__class__.data_cache["online"][champion_summary_url]
-                else:
-                    source, status, self.session = requestUrl("GET", champion_summary_url, session = self.session, log = self.log)
-                    if status != 200:
-                        if status == 404:
-                            logPrint("英雄概要信息获取失败！请检查以下链接的可用性。程序即将返回上一层。\nChampion summary data capture failure! Please check the URL availability. The program will return to the last step soon.\n%s" %(champion_summary_url))
-                        else:
-                            logPrint("英雄概要信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nChampion summary data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
-                        time.sleep(3)
-                        self.init_data_readiness()
-                        return
-                    champion_summary: list[dict[str, int | str | list[str]]] = source.json()
-                    self.__class__.data_cache["online"][champion_summary_url] = champion_summary
-                self.champions_ready["summary"] = True
                 #读取所有英雄的二进制描述数据（Load all champions' binary description data）
                 logPrint("正在读取各英雄数据……\nReading all champion data ...", print_time = True, verbose = verbose)
-                for i in range(len(champion_summary)):
-                    champion = champion_summary[i]
+                for i in range(len(self.champion_summary)):
+                    champion = self.champion_summary[i]
                     alias: str = champion["alias"].lower()
                     if alias == "none":
-                        logPrint("[%d/%d]已跳过英雄（Champion skipped）：%s" %(i + 1, len(champion_summary), champion["alias"]), print_time = True, verbose = verbose)
+                        logPrint("[%d/%d]已跳过英雄（Champion skipped）：%s" %(i + 1, len(self.champion_summary), champion["alias"]), print_time = True, verbose = verbose)
                     else:
                         champion_binary_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/characters/{alias}/{alias}.bin.json"
                         if champion_binary_url in self.__class__.data_cache["online"]:
@@ -5357,7 +5547,7 @@ class ChampionExtractor(LoLDataExtractor):
                             champion_binary = self.resolve_bin_hash(champion_binary)
                             self.__class__.data_cache["online"][champion_binary_url] = champion_binary
                         self.champions_bin_dict[champion["alias"]] = champion_binary
-                        logPrint("[%d/%d]已加载英雄（Champion loaded）：%s" %(i + 1, len(champion_summary), champion["alias"]), print_time = True, verbose = verbose)
+                        logPrint("[%d/%d]已加载英雄（Champion loaded）：%s" %(i + 1, len(self.champion_summary), champion["alias"]), print_time = True, verbose = verbose)
                 else:
                     self.__class__.merged_data_cache["champions_bin_dict"] = self.champions_bin_dict
             self.champions_ready["champion_binary"] = True #所有英雄的二进制描述数据准备就绪后，执行该语句（After all champions' binary description data are prepared, execute this statement）
@@ -5368,6 +5558,7 @@ class ChampionExtractor(LoLDataExtractor):
         
         :param paths: 当使用所有角色数据时，`paths`由以下部分组成：<br>When all characters' data are used, `paths` is a list composed of the following content:
         
+            - 英雄概要文件路径（Champion summary file path）
             - 聚点危机地图二进制描述文件路径（Convergence map binary description file path）
             - 角色文件夹1路径（Character folder 1 path）： game/data/characters
             - 角色文件夹2路径（Character folder 2 path）： game/characters
@@ -5383,17 +5574,22 @@ class ChampionExtractor(LoLDataExtractor):
         if paths == None:
             logPrint("尚未指定本地文件路径！\nLocal path not specified yet!")
             return
+        #获取所有英雄的名称信息（Get all champions' name information）
+        champion_summary_path = paths[0]
+        if champion_summary_path in self.__class__.data_cache["local"]:
+            self.champion_summary: list[dict[str, int | str | list[str]]] = self.__class__.data_cache["local"][champion_summary_path]
+        else:
+            with open(champion_summary_path, "r", encoding = "utf-8") as fp:
+                self.champion_summary = json.load(fp)
+            self.__class__.data_cache["local"][champion_summary_path] = self.champion_summary
+        self.champions_ready["summary"] = True
         if self.useAllCharacter:
-            if paths[0] in self.__class__.data_cache["local"] and "characters_bin_dict" in self.__class__.merged_data_cache:
-                self.map22_bin = self.__class__.data_cache["local"][paths[0]]
+            if paths[1] in self.__class__.data_cache["local"]:
+                self.map22_bin = self.__class__.data_cache["local"][paths[1]]
                 self.characters_ready["map22"] = True #当目的变量准备就绪时，应标记中间变量准备就绪（When the target variable is prepared, the intermediate variables should also be marked as prepared）
-                self.characters_ready["characterList1"] = True
-                self.characters_ready["characterList2"] = True
-                self.champions_bin_dict = self.__class__.merged_data_cache["characters_bin_dict"]
             else:
-                #整理角色列表（Sort out the characters into a list）
                 ##聚点危机地图（Convergence map）
-                map22_bin_path: str = paths[0]
+                map22_bin_path: str = paths[1]
                 if map22_bin_path in self.__class__.data_cache["local"]:
                     self.map22_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["local"][map22_bin_path]
                 else:
@@ -5405,9 +5601,14 @@ class ChampionExtractor(LoLDataExtractor):
                     else:
                         self.map22_bin = {} #早期没有云顶之弈模式（In early days, TFT wasn't invented）
                 self.characters_ready["map22"] = True
-                ##角色文件夹（Character folders）
-                characterList_folder1: str = paths[1]
-                characterList_folder2: str = paths[2]
+            if "characters_bin_dict" in self.__class__.merged_data_cache:
+                self.characters_ready["characterList1"] = True
+                self.characters_ready["characterList2"] = True
+                self.champions_bin_dict = self.__class__.merged_data_cache["characters_bin_dict"]
+            else:
+                #整理角色列表（Sort out the characters into a list）
+                characterList_folder1: str = paths[2]
+                characterList_folder2: str = paths[3]
                 character_binary_paths: dict[str, list[str]] = {}
                 items1: list[str] = os.listdir(characterList_folder1)
                 for characterName in items1:
@@ -5459,24 +5660,14 @@ class ChampionExtractor(LoLDataExtractor):
             self.characters_ready["character_binary"] = True
         else:
             if "champions_bin_dict" in self.__class__.merged_data_cache:
-                self.champions_ready["summary"] = True
                 self.champions_bin_dict = self.__class__.merged_data_cache["champions_bin_dict"]
             else:
-                #获取所有英雄的名称信息（Get all champions' name information）
-                champion_summary_path = paths[0]
-                if champion_summary_path in self.__class__.data_cache["local"]:
-                    champion_summary = self.__class__.data_cache["local"][champion_summary_path]
-                else:
-                    with open(champion_summary_path, "r", encoding = "utf-8") as fp:
-                        champion_summary: list[dict[str, int | str | list[str]]] = json.load(fp)
-                    self.__class__.data_cache["local"][champion_summary_path] = champion_summary
-                self.champions_ready["summary"] = True
                 #读取所有英雄的二进制描述数据（Load all champions' binary description data）
-                for i in range(len(champion_summary)):
-                    champion = champion_summary[i]
+                for i in range(len(self.champion_summary)):
+                    champion = self.champion_summary[i]
                     alias: str = champion["alias"].lower()
                     if alias == "none":
-                        # logPrint("[%d/%d]已跳过英雄（Champion skipped）：%s" %(i + 1, len(champion_summary), champion["alias"]), print_time = True, verbose = verbose)
+                        # logPrint("[%d/%d]已跳过英雄（Champion skipped）：%s" %(i + 1, len(self.champion_summary), champion["alias"]), print_time = True, verbose = verbose)
                         pass
                     else:
                         champion_binary_path: str = os.path.join(paths[1], f"{alias}/{alias}.bin.json").replace("\\", "/")
@@ -5488,7 +5679,7 @@ class ChampionExtractor(LoLDataExtractor):
                             champion_binary = self.resolve_bin_hash(champion_binary)
                             self.__class__.data_cache["local"][champion_binary_path] = champion_binary
                         self.champions_bin_dict[champion["alias"]] = champion_binary
-                        # logPrint("[%d/%d]已加载英雄（Champion loaded）：%s" %(i + 1, len(champion_summary), champion["alias"]), print_time = True, verbose = verbose)
+                        # logPrint("[%d/%d]已加载英雄（Champion loaded）：%s" %(i + 1, len(self.champion_summary), champion["alias"]), print_time = True, verbose = verbose)
                 else:
                     self.__class__.merged_data_cache["champions_bin_dict"] = self.champions_bin_dict
             self.champions_ready["champion_binary"] = True
@@ -5521,7 +5712,7 @@ class ChampionExtractor(LoLDataExtractor):
         :rtype: int
         '''
         logPrint = self.log.logPrint
-        if self.useAllCharacter and not self.characters_ready["character_binary"] or not self.useAllCharacter and not self.champions_ready["champion_binary"]:
+        if self.useAllCharacter and not self.characters_ready["character_binary"] or not self.useAllCharacter and not self.champions_ready["champion_binary"] or not self.champions_ready["summary"]:
             if self.useAllCharacter:
                 logPrint("正在读取角色数据……\nReading character data ...", print_time = True)
             else:
@@ -5944,7 +6135,7 @@ class ChampionExtractor(LoLDataExtractor):
         if self.champion_df.empty or self.champion_spell_df.empty:
             status: int = self.build_champion_dataframe(debug = debug, paths = paths, verbose = verbose)
             if status != 0:
-                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
                 logInput()
                 return
         #导出数据（Export data）
@@ -5976,12 +6167,129 @@ class ChampionExtractor(LoLDataExtractor):
                                 worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                cont = logInput()
+                cont: str = logInput()
                 if cont != "" and cont[0] == "0":
                     break
             else:
                 logPrint(f"英雄数据已导出到{self.wbPath}。\nChampion data have been exported to {self.wbPath}.", print_time = True)
                 break
+    
+    def to_html(self, debug: bool = False, paths: Optional[list[str]] = None, verbose: bool = True) -> None:
+        '''
+        导出英雄数据到网页中。产生以下文件：<br>Export champion data into an html file. The following file is produced:
+        
+        在导出所有角色数据时，产生以下文件：<br>When all character data are exported, the following files are produced:
+        - 角色（Characters）
+        - 角色技能（Character Spells）
+        
+        在仅导出英雄数据时，产生以下工作表：<br>When only champion data are exported, the following files are produced:
+        - 英雄（Champions）
+        - 英雄技能（Champion Spells）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param paths: 当使用所有角色数据时，`paths`由以下部分组成：<br>When all characters' data are used, `paths` is a list composed of the following content:
+        
+            - 聚点危机地图二进制描述文件路径（Convergence map binary description file path）
+            - 角色文件夹1路径（Character folder 1 path）： game/data/characters
+            - 角色文件夹2路径（Character folder 2 path）： game/characters
+            
+            当仅使用英雄数据时，`paths`由以下部分组成：<br>When only champions' data are used, `paths` is a list composed of the following content:
+            - 英雄概要文件路径（Champion summary file path）
+            - 角色文件夹路径（Character folder path）： game/data/characters
+
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type paths: list[str]
+        :param verbose: 是否打印过程性信息。默认为是。<br>Whether to print the progress. True by default.
+        :type verbose: bool
+        '''
+        logInput = self.log.logInput
+        logPrint = self.log.logPrint
+        if self.wbPath == "":
+            logPrint("尚未指定文件保存路径。\nPath of exported file not specified.")
+            return
+        if self.patch == "" and self.sheet_naming_fold:
+            logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
+            return
+        if self.champion_df.empty or self.champion_spell_df.empty or not self.champions_ready["summary"]: #下面在整理角色信息时需要把英雄放到最前面，所以需要用到概要信息（In the following code, champions are put in the front of the dataframe, so champion summary information is required）
+            status: int = self.build_champion_dataframe(debug = debug, paths = paths, verbose = verbose)
+            if status != 0:
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
+                logInput()
+                return
+        #法术（Spell）
+        champion_spell_df_web: pandas.DataFrame = self.champion_spell_df.copy(deep = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        imgIconUrls: list[str] = list(map(lambda x: "" if x == "" else "<br>".join(list(map(lambda y: self.url2image(self.assetPath2url(self.version, f"DATA/Spells/Icons2D/{y}" if not "/" in y else y)), eval(x)))), self.champion_spell_df.loc[1:, "mSpell mImgIconName"].to_list()))
+        champion_spell_df_web.insert(len(champion_spell_df_web.columns), "mSpell ImgIconUrl", ["缩略图网址列表"] + imgIconUrls)
+        ##保留小数（Round）
+        champion_spell_df_web.loc[1:, "mSpell Cooldown {0a3e0478}"] = champion_spell_df_web.loc[1:, "mSpell Cooldown {0a3e0478}"].apply(lambda x: "" if x == "" else self.aRound(x, 5))
+        ##排序（Order）
+        ###第一关键字——英雄文件夹（Primary keyword - championFolder）
+        championFolder_ordered: list[str] = sorted(set(champion_spell_df_web["mCharacterName"][1:].to_list())) #期望的排序后的英雄文件夹（Expected ordered championFolders）
+        championFolder_champion: list[str] = [] #排序后的英雄文件夹的英雄部分（The champion part of the ordered championFolders）
+        championFolder_TFT: list[str] = [] #排序后的英雄文件夹的弈子部分（The TFT champion part of the ordered championFolders）
+        championFolder_ruby: list[str] = [] #排序后的英雄文件夹的末日人工智能英雄部分（The Doom Bots champion part of the ordered championFolders）
+        championFolder_jade: list[str] = [] #排序后的英雄文件夹的经典英雄部分（The classic champion part of the ordered championFolders）
+        championFolder_empty: list[str] = [] #排序后的英雄文件夹的空字符串部分（The empty string part of the ordered championFolders）
+        championFolder_other: list[str] = [] #排序后的英雄文件夹的其它部分（Other part of the ordered championFolders）
+        for alias in championFolder_ordered:
+            if alias.startswith("TFT"):
+                championFolder_TFT.append(alias)
+            elif alias.startswith("Ruby_"):
+                championFolder_ruby.append(alias)
+            elif alias.startswith("Jade_"):
+                championFolder_jade.append(alias)
+            elif alias in set(map(lambda x: x["alias"], self.champion_summary)):
+                championFolder_champion.append(alias)
+            elif alias == "":
+                championFolder_empty.append(alias)
+            else:
+                championFolder_other.append(alias)
+        championFolder_ordered = championFolder_champion + championFolder_ruby + championFolder_jade + championFolder_TFT + championFolder_other + championFolder_empty
+        championFolder_weight_map: dict[str, int] = {_: championFolder_ordered.index(_) for _ in championFolder_ordered}
+        ###第二关键字——技能热键（Secondary keyword - spellHotKey）
+        spellHotKey_weight_map: dict[str, int] = {"P": 0, "Q": 1, "W": 2, "E": 3, "R": 4, "": 5}
+        ###插入关键字权重列（Insert keyword weight columns）
+        championFolder_weights: list[int] = list(map(lambda x: championFolder_weight_map[x], champion_spell_df_web["mCharacterName"][1:].to_list()))
+        champion_spell_df_web.insert(len(champion_spell_df_web.columns), "championFolder_weight", ["英雄文件夹权重"] + championFolder_weights)
+        spellHotKey_weights: list[int] = list(map(lambda x: spellHotKey_weight_map[x], champion_spell_df_web["spellHotKey"][1:].to_list()))
+        champion_spell_df_web.insert(len(champion_spell_df_web.columns), "spellHotKey_weight", ["技能热键权重"] + spellHotKey_weights)
+        ###排序重组（Sort and recombination）
+        champion_spell_df_web = pandas.concat([champion_spell_df_web.iloc[:1, :], champion_spell_df_web.iloc[1:, :].sort_values(by = ["championFolder_weight", "spellHotKey_weight", "key"], ascending = True)])
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "mCharacterName",
+            "ObjectName",
+            "spellHotKey",
+            "mSpell ImgIconUrl",
+            "mSpell mClientData mTooltipData mLocKeys keyName_content_zh_burn",
+            "mSpell mClientData mTooltipData mLocKeys keyName_content_en_burn",
+            "mSpell {210f9ec0} values",
+            "mSpell Cooldown values",
+            "mSpell mClientData mTooltipData mLocKeys keySummary_content_zh",
+            "mSpell mClientData mTooltipData mLocKeys keySummary_content_en",
+            "mSpell mClientData mTooltipData mLocKeys keyTooltip_content_zh_burn",
+            "mSpell mClientData mTooltipData mLocKeys keyTooltip_content_en_burn",
+            "mSpell mClientData mTooltipData mLocKeys keyTooltipExtendedBelowLine_content_zh_burn",
+            "mSpell mClientData mTooltipData mLocKeys keyTooltipExtendedBelowLine_content_en_burn"
+        ]
+        champion_spell_df_web = champion_spell_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        champion_spell_df_styled: pandas.io.formats.style.Styler = champion_spell_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:8]
+        champion_spell_df_styled = champion_spell_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        champion_spell_htmltable: str = champion_spell_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        champion_spell_htmltable = '<meta charset="UTF-8">\n' + champion_spell_htmltable
+        webContent: str = "CharacterSpell" if self.useAllCharacter else "ChampionSpell"
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"{webContent}_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(champion_spell_htmltable)
 
 class ItemExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -6310,7 +6618,7 @@ class ItemExtractor(LoLDataExtractor):
         if self.item_df.empty:
             status: int = self.build_item_dataframe(debug = debug, path = path)
             if status != 0:
-                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
                 logInput()
                 return
         #导出数据（Export data）
@@ -6342,12 +6650,74 @@ class ItemExtractor(LoLDataExtractor):
                                 worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                cont = logInput()
+                cont: str = logInput()
                 if cont != "" and cont[0] == "0":
                     break
             else:
                 logPrint(f"装备数据已导出到{self.wbPath}。\nItem data have been exported to {self.wbPath}.", print_time = True)
                 break
+    
+    def to_html(self, debug: bool = False, path: Optional[str] = None) -> None:
+        '''
+        导出装备数据到网页中。产生以下文件：<br>Export item data into an html file. The following file is produced:
+        - 装备（Item）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 装备二进制描述文件的本地路径。<br>A local path of item binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        '''
+        logInput = self.log.logInput
+        logPrint = self.log.logPrint
+        if self.wbPath == "":
+            logPrint("尚未指定文件保存路径。\nPath of exported file not specified.")
+            return
+        if self.patch == "" and self.sheet_naming_fold:
+            logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
+            return
+        if self.item_df.empty:
+            status: int = self.build_item_dataframe(debug = debug, path = path)
+            if status != 0:
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
+                logInput()
+                return
+        #召唤师技能（Summoner spell）
+        item_df_web: pandas.DataFrame = self.item_df.copy(deep = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        inventoryIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.item_df.loc[1:, "mItemDataClient inventoryIcon"].to_list()))
+        item_df_web.insert(len(item_df_web.columns), "mItemDataClient inventoryIconUrl", ["装备栏网址"] + inventoryIconUrls)
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "itemID",
+            "mItemDataClient inventoryIconUrl",
+            "mDisplayName_content_zh",
+            "mDisplayName_content_en",
+            "recipeItemNames_content_zh",
+            "recipeItemNames_content_en",
+            "totalPrice",
+            "rarity",
+            "mItemDataClient mShopTooltip_content_zh_burn",
+            "mItemDataClient mShopTooltip_content_en_burn",
+            "mItemDataClient mTooltipData mLocKeys keyTooltipExtendedRules_content_zh_burn",
+            "mItemDataClient mTooltipData mLocKeys keyTooltipExtendedRules_content_en_burn"
+        ]
+        item_df_web = item_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        item_df_styled: pandas.io.formats.style.Styler = item_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:8]
+        item_df_styled = item_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        item_htmltable: str = item_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        item_htmltable = '<meta charset="UTF-8">\n' + item_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"Item_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(item_htmltable)
 
 class AugmentExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -7243,7 +7613,7 @@ class AugmentExtractor(LoLDataExtractor):
         if self.CherryAugment_df.empty: #无尽狂潮和海克斯大乱斗未发布时，应当也能够正确导出强化符文数据（Augment data should be exported properly when Swarm and ARAM: Mayhem weren't released）
             status: int = self.build_augment_dataframe(debug = debug, paths = paths)
             if status != 0:
-                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
                 logInput()
                 return
         #导出数据（Export data）
@@ -7291,12 +7661,190 @@ class AugmentExtractor(LoLDataExtractor):
                                 worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                cont = logInput()
+                cont: str = logInput()
                 if cont != "" and cont[0] == "0":
                     break
             else:
                 logPrint(f"强化符文数据已导出到{self.wbPath}。\nAugment data have been exported to {self.wbPath}.", print_time = True)
                 break
+    
+    def to_html(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
+        '''
+        导出强化符文数据到网页中。产生以下文件：<br>Export augment data into html files. The following files are produced:
+        - 斗魂竞技场强化符文（Cherry Augments）
+        - 无尽狂潮强化符文（Swarm Augments）
+        - 海克斯大乱斗强化符文（Kiwi Augments）
+        - 海克斯大乱斗强化符文套装（Kiwi Augment Set）
+        - 强化符文修饰（Augment Modifiers）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param paths: 强化符文二进制描述文件的本地路径列表，按照以下顺序排列：<br>A local path list of augment binary description files, arranged in the following order:
+        
+            - 怒火角斗场地图（Rings of Wrath map）
+            - 斗魂竞技场模式专属信息（Arena mode specific data）
+            - 最终都市地图（Final City map）
+            - 嚎哭深渊地图（Howling Abyss map）
+            - 海克斯大乱斗模式专属信息（ARAM: Mayhem mode specific data）
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type paths: list[str]
+        '''
+        logInput = self.log.logInput
+        logPrint = self.log.logPrint
+        if self.wbPath == "":
+            logPrint("尚未指定文件保存路径。\nPath of exported file not specified.")
+            return
+        if self.patch == "" and self.sheet_naming_fold:
+            logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
+            return
+        if self.CherryAugment_df.empty:
+            status: int = self.build_augment_dataframe(debug = debug, paths = paths)
+            if status != 0:
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
+                logInput()
+                return
+        #斗魂竞技场强化符文（Arena augment）
+        CherryAugment_df_web: pandas.DataFrame = self.CherryAugment_df.copy(deep = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        AugmentLargeIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.CherryAugment_df.loc[1:, "AugmentLargeIconPath"].to_list()))
+        CherryAugment_df_web.insert(len(CherryAugment_df_web.columns), "AugmentLargeIconUrl", ["强化符文大图标网址"] + AugmentLargeIconUrls)
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "AugmentNameId",
+            "AugmentPlatformId",
+            "AugmentLargeIconUrl",
+            "Enabled",
+            "NameTra_content_zh",
+            "NameTra_content_en",
+            "rarityValue",
+            "RootSpell mSpell DataValues MaxLevel",
+            "AugmentDisplayTags_content",
+            "DescriptionTra_content_zh_burn",
+            "DescriptionTra_content_en_burn",
+            "AugmentTooltipTra_content_zh_burn",
+            "AugmentTooltipTra_content_en_burn",
+            "{791eb92e} {5753a320} {05835d27}_content_zh_burn",
+            "{791eb92e} {5753a320} {05835d27}_content_en_burn"
+        ]
+        CherryAugment_df_web = CherryAugment_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        CherryAugment_df_styled: pandas.io.formats.style.Styler = CherryAugment_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:9]
+        CherryAugment_df_styled = CherryAugment_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        CherryAugment_htmltable: str = CherryAugment_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        CherryAugment_htmltable = '<meta charset="UTF-8">\n' + CherryAugment_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"CherryAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(CherryAugment_htmltable)
+        #无尽狂潮强化符文（Swarm augment）
+        SwarmAugment_df_web: pandas.DataFrame = self.SwarmAugment_df.copy(deep = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        AugmentLargeIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.SwarmAugment_df.loc[1:, "AugmentLargeIconPath"].to_list()))
+        SwarmAugment_df_web.insert(len(SwarmAugment_df_web.columns), "AugmentLargeIconUrl", ["强化符文大图标网址"] + AugmentLargeIconUrls)
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "AugmentNameId",
+            "AugmentPlatformId",
+            "AugmentLargeIconUrl",
+            "NameTra_content_zh",
+            "NameTra_content_en",
+            "rarityValue",
+            "DescriptionTra_content_zh_burn",
+            "DescriptionTra_content_en_burn"
+        ]
+        SwarmAugment_df_web = SwarmAugment_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        SwarmAugment_df_styled: pandas.io.formats.style.Styler = SwarmAugment_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:6]
+        SwarmAugment_df_styled = SwarmAugment_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        SwarmAugment_htmltable: str = SwarmAugment_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        SwarmAugment_htmltable = '<meta charset="UTF-8">\n' + SwarmAugment_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"SwarmAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(SwarmAugment_htmltable)
+        #海克斯大乱斗强化符文（ARAM: Mayhem augment）
+        KiwiAugment_df_web: pandas.DataFrame = self.KiwiAugment_df.copy(deep = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        AugmentLargeIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.KiwiAugment_df.loc[1:, "AugmentLargeIconPath"].to_list()))
+        KiwiAugment_df_web.insert(len(KiwiAugment_df_web.columns), "AugmentLargeIconUrl", ["强化符文大图标网址"] + AugmentLargeIconUrls)
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "AugmentNameId",
+            "AugmentPlatformId",
+            "AugmentLargeIconUrl",
+            "Enabled",
+            "NameTra_content_zh",
+            "NameTra_content_en",
+            "isCurrent",
+            "isClassic",
+            "rarityValue",
+            "AugmentDisplayTags_content",
+            "DescriptionTra_content_zh_burn",
+            "DescriptionTra_content_en_burn",
+            "AugmentTooltipTra_content_zh_burn",
+            "AugmentTooltipTra_content_en_burn",
+            "questline {c88f1a9b}_content_zh_burn",
+            "questline {c88f1a9b}_content_en_burn"
+        ]
+        KiwiAugment_df_web = KiwiAugment_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        KiwiAugment_df_styled: pandas.io.formats.style.Styler = KiwiAugment_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:10]
+        KiwiAugment_df_styled = KiwiAugment_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        KiwiAugment_htmltable: str = KiwiAugment_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        KiwiAugment_htmltable = '<meta charset="UTF-8">\n' + KiwiAugment_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"KiwiAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(KiwiAugment_htmltable)
+        #海克斯大乱斗强化符文套装（ARAM: Mayhem augment set）
+        KiwiAugmentSet_df_web: pandas.DataFrame = self.KiwiAugmentSet_df.copy(deep = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        AugmentSetIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.KiwiAugmentSet_df.loc[1:, "{4217d741}"].to_list()))
+        KiwiAugmentSet_df_web.insert(len(KiwiAugmentSet_df_web.columns), "AugmentSetIconUrl", ["套装缩略图网址"] + AugmentSetIconUrls)
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "{3a942548}",
+            "AugmentSetIconUrl",
+            "{0746ade9}_content_zh",
+            "{0746ade9}_content_en",
+            "{97e82990}_content_zh_burn",
+            "{97e82990}_content_en_burn",
+            "{96b4b430}_object keyTooltip_content_zh_burn",
+            "{96b4b430}_object keyTooltip_content_en_burn",
+            "augments nameTra_contents_zh",
+            "augments nameTra_contents_en"
+        ]
+        KiwiAugmentSet_df_web = KiwiAugmentSet_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        KiwiAugmentSet_df_styled: pandas.io.formats.style.Styler = KiwiAugmentSet_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:4]
+        KiwiAugmentSet_df_styled = KiwiAugmentSet_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        KiwiAugmentSet_htmltable: str = KiwiAugmentSet_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        KiwiAugmentSet_htmltable = '<meta charset="UTF-8">\n' + KiwiAugmentSet_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"KiwiAugmentSet_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(KiwiAugmentSet_htmltable)
 
 class AnvilExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -7631,7 +8179,7 @@ class AnvilExtractor(LoLDataExtractor):
         if self.CherryAnvil_df.empty or self.KiwiAnvil_df.empty:
             status: int = self.build_anvil_dataframe(debug = debug, paths = paths)
             if status != 0:
-                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
                 logInput()
                 return
         #导出数据（Export data）
@@ -7659,12 +8207,108 @@ class AnvilExtractor(LoLDataExtractor):
                                 worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                cont = logInput()
+                cont: str = logInput()
                 if cont != "" and cont[0] == "0":
                     break
             else:
                 logPrint(f"锻造器数据已导出到{self.wbPath}。\nAnvil data have been exported to {self.wbPath}.", print_time = True)
                 break
+    
+    def to_html(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
+        '''
+        导出锻造器数据到网页中。产生以下文件：<br>Export anvil data into html files. The following files are produced:
+        - 斗魂竞技场锻造器（Cherry Anvils）
+        - 海克斯大乱斗锻造器（Kiwi Anvils）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param paths: 锻造器二进制描述文件的本地路径列表，按照以下顺序排列：<br>A local path list of anvil binary description files, arranged in the following order:
+        
+            - 怒火角斗场地图（Rings of Wrath map）
+            - 海克斯大乱斗锻造器（ARAM: Mayhem anvils）
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type paths: list[str]
+        '''
+        logInput = self.log.logInput
+        logPrint = self.log.logPrint
+        if self.wbPath == "":
+            logPrint("尚未指定文件保存路径。\nPath of exported file not specified.")
+            return
+        if self.patch == "" and self.sheet_naming_fold:
+            logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
+            return
+        if self.CherryAnvil_df.empty or self.KiwiAnvil_df.empty:
+            status: int = self.build_anvil_dataframe(debug = debug, paths = paths)
+            if status != 0:
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
+                logInput()
+                return
+        #斗魂竞技场锻造器（Arena anvil）
+        CherryAnvil_df_web: pandas.DataFrame = self.CherryAnvil_df.copy(deep = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        AugmentLargeIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.CherryAnvil_df.loc[1:, "AugmentLargeIconPath"].to_list()))
+        CherryAnvil_df_web.insert(len(CherryAnvil_df_web.columns), "AugmentLargeIconUrl", ["锻造器大图标网址"] + AugmentLargeIconUrls)
+        ##排序（Order）
+        CherryAnvil_df_web = pandas.concat([CherryAnvil_df_web.iloc[:1, :], CherryAnvil_df_web.iloc[1:, :].sort_values(by = "AugmentNameId", ascending = True)])
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "AugmentNameId",
+            "AugmentLargeIconUrl",
+            "Enabled",
+            "NameTra_content_zh",
+            "NameTra_content_en",
+            "anvilRarities",
+            "AugmentDisplayTags_content",
+            "DescriptionTra_content_zh_burn",
+            "DescriptionTra_content_en_burn"
+        ]
+        CherryAnvil_df_web = CherryAnvil_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        CherryAnvil_df_styled: pandas.io.formats.style.Styler = CherryAnvil_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:7]
+        CherryAnvil_df_styled = CherryAnvil_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        CherryAnvil_htmltable: str = CherryAnvil_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        CherryAnvil_htmltable = '<meta charset="UTF-8">\n' + CherryAnvil_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"CherryAnvil_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(CherryAnvil_htmltable)
+        #海克斯大乱斗锻造器（ARAM: Mayhem anvil）
+        KiwiAnvil_df_web: pandas.DataFrame = self.KiwiAnvil_df.copy(deep = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        AugmentLargeIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.KiwiAnvil_df.loc[1:, "AugmentLargeIconPath"].to_list()))
+        KiwiAnvil_df_web.insert(len(KiwiAnvil_df_web.columns), "AugmentLargeIconUrl", ["锻造器大图标网址"] + AugmentLargeIconUrls)
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "AugmentNameId",
+            "AugmentLargeIconUrl",
+            "Enabled",
+            "NameTra_content_zh",
+            "NameTra_content_en",
+            "anvilRarities",
+            "DescriptionTra_content_zh_burn",
+            "DescriptionTra_content_en_burn"
+        ]
+        KiwiAnvil_df_web = KiwiAnvil_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        KiwiAnvil_df_styled: pandas.io.formats.style.Styler = KiwiAnvil_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:6]
+        KiwiAnvil_df_styled = KiwiAnvil_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        KiwiAnvil_htmltable: str = KiwiAnvil_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        KiwiAnvil_htmltable = '<meta charset="UTF-8">\n' + KiwiAnvil_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"KiwiAnvil_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(KiwiAnvil_htmltable)
 
 class CherryRoundExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -7967,7 +8611,7 @@ class CherryRoundExtractor(LoLDataExtractor):
         if self.CherryRoundList_df.empty or self.CherryRound_df.empty or self.CherryPhase_df.empty or self.CherryRoundPhase_df.empty:
             status: int = self.build_CherryRound_dataframe(debug = debug, path = path)
             if status != 0:
-                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
                 logInput()
                 return
         #导出数据（Export data）
@@ -8003,12 +8647,78 @@ class CherryRoundExtractor(LoLDataExtractor):
                                 worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                cont = logInput()
+                cont: str = logInput()
                 if cont != "" and cont[0] == "0":
                     break
             else:
                 logPrint(f"斗魂竞技场回合数据已导出到{self.wbPath}。\nArena round data have been exported to {self.wbPath}.", print_time = True)
                 break
+    
+    def to_html(self, debug: bool = False, path: Optional[str] = None) -> None:
+        '''
+        导出斗魂竞技场回合阶段数据到网页中。产生以下文件：<br>Export Arena round phase data into an html file. The following file is produced:
+        - 斗魂竞技场回合阶段（Arena Round Phase）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 怒火角斗场地图二进制描述文件的本地路径。<br>A local path of Rings of Wrath map binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        '''
+        logInput = self.log.logInput
+        logPrint = self.log.logPrint
+        if self.wbPath == "":
+            logPrint("尚未指定文件保存路径。\nPath of exported file not specified.")
+            return
+        if self.patch == "" and self.sheet_naming_fold:
+            logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
+            return
+        if self.CherryRoundPhase_df.empty:
+            status: int = self.build_CherryRound_dataframe(debug = debug, path = path)
+            if status != 0:
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
+                logInput()
+                return
+        #斗魂竞技场回合阶段（Arena Round Phase）
+        CherryRoundPhase_df_web: pandas.DataFrame = self.CherryRoundPhase_df.copy(deep = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        UpcomingIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.CherryRoundPhase_df.loc[1:, "{7011dd78}"].to_list()))
+        ProgressIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.CherryRoundPhase_df.loc[1:, "{44bdfcf8}"].to_list()))
+        FinishedIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.CherryRoundPhase_df.loc[1:, "{bafc35cb}"].to_list()))
+        CherryRoundPhase_df_web.insert(len(CherryRoundPhase_df_web.columns), "UpcomingIconUrl", ["即将到来的事件缩略图网址"] + UpcomingIconUrls)
+        CherryRoundPhase_df_web.insert(len(CherryRoundPhase_df_web.columns), "ProgressIconUrl", ["正在发生的事件缩略图网址"] + ProgressIconUrls)
+        CherryRoundPhase_df_web.insert(len(CherryRoundPhase_df_web.columns), "FinishedIconUrl", ["已经完成的事件缩略图网址"] + FinishedIconUrls)
+        ##保留小数（Round）
+        CherryRoundPhase_df_web.loc[1:, "subPhase duration"] = CherryRoundPhase_df_web.loc[1:, "subPhase duration"].apply(lambda x: self.aRound(x, 5))
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "key",
+            "roundNumber",
+            "PhaseNumber",
+            "DisplayNameTra_content_zh",
+            "DisplayNameTra_content_en",
+            "subPhase number",
+            "subPhase duration",
+            "UpcomingIconUrl",
+            "ProgressIconUrl",
+            "FinishedIconUrl"
+        ]
+        CherryRoundPhase_df_web = CherryRoundPhase_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        CherryRoundPhase_df_styled: pandas.io.formats.style.Styler = CherryRoundPhase_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:]
+        CherryRoundPhase_df_styled = CherryRoundPhase_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        CherryRoundPhase_htmltable: str = CherryRoundPhase_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        CherryRoundPhase_htmltable = '<meta charset="UTF-8">\n' + CherryRoundPhase_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"CherryRoundPhase_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(CherryRoundPhase_htmltable)
 
 class CameoExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -8180,7 +8890,7 @@ class CameoExtractor(LoLDataExtractor):
         if self.cameo_df.empty:
             status: int = self.build_cameo_dataframe(debug = debug, path = path)
             if status != 0:
-                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
                 logInput()
                 return
         #导出数据（Export data）
@@ -8204,7 +8914,7 @@ class CameoExtractor(LoLDataExtractor):
                                 worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                cont = logInput()
+                cont: str = logInput()
                 if cont != "" and cont[0] == "0":
                     break
             else:
@@ -8477,7 +9187,7 @@ class GoHExtractor(LoLDataExtractor):
         if self.GoH_df.empty:
             status: int = self.build_GoH_dataframe(debug = debug, paths = paths)
             if status != 0:
-                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
                 logInput()
                 return
         #导出数据（Export data）
@@ -8501,12 +9211,75 @@ class GoHExtractor(LoLDataExtractor):
                                 worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                cont = logInput()
+                cont: str = logInput()
                 if cont != "" and cont[0] == "0":
                     break
             else:
                 logPrint(f"荣誉嘉宾数据已导出到{self.wbPath}。\nGoH data have been exported to {self.wbPath}.", print_time = True)
                 break
+    
+    def to_html(self, debug: bool = False, paths: Optional[list[str]] = None) -> None:
+        '''
+        导出荣誉嘉宾数据到网页中。产生以下文件：<br>Export GoH data into an html file. The following file is produced:
+        - 斗魂竞技场荣誉嘉宾（Cherry Guests）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param paths: 荣誉嘉宾二进制描述文件的本地路径列表，按照以下顺序排列。<br>A local path list of GoH binary description files, arranged in the following order:
+        
+            - 怒火角斗场地图（Rings of Wrath map）
+            - 斗魂竞技场模式专属信息（Arena mode specific data）
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        '''
+        logInput = self.log.logInput
+        logPrint = self.log.logPrint
+        if self.wbPath == "":
+            logPrint("尚未指定文件保存路径。\nPath of exported file not specified.")
+            return
+        if self.patch == "" and self.sheet_naming_fold:
+            logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
+            return
+        if self.GoH_df.empty:
+            status: int = self.build_GoH_dataframe(debug = debug, paths = paths)
+            if status != 0:
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
+                logInput()
+                return
+        #斗魂竞技场荣誉嘉宾（Arena GoH）
+        GoH_df_web: pandas.DataFrame = self.GoH_df.copy(deep = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        iconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.GoH_df.loc[1:, "{982aa425}"].to_list()))
+        GoH_df_web.insert(len(GoH_df_web.columns), "iconUrl", ["缩略图网址"] + iconUrls)
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "name",
+            "iconUrl",
+            "Enabled",
+            "{b0f32561}",
+            "{1ff99d7f} title_content_zh",
+            "{1ff99d7f} title_content_en",
+            "{1ff99d7f} {bff2f361}_content_zh",
+            "{1ff99d7f} {bff2f361}_content_en",
+            "{1ff99d7f} {3b7aa707}_content_zh",
+            "{1ff99d7f} {3b7aa707}_content_en",
+        ]
+        GoH_df_web = GoH_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        GoH_df_styled: pandas.io.formats.style.Styler = GoH_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:5]
+        GoH_df_styled = GoH_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        GoH_htmltable: str = GoH_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        GoH_htmltable = '<meta charset="UTF-8">\n' + GoH_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"GoH_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(GoH_htmltable)
 
 class TFTExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -9860,7 +10633,7 @@ class TFTExtractor(LoLDataExtractor):
         if self.TFTSet_df.empty or self.TFTShop_df.empty or self.TFTShopContent_df.empty or self.TFTDropRate_df.empty or self.TFTStageRound_df.empty or self.TFTRound_df.empty or self.TFTPortal_df.empty or self.TFTEncounterDistribution_df.empty or self.TFTEncounter_df.empty or self.TFTUnitProperty_df.empty or self.TFTCharacterRole_df.empty or self.TFTItemList_df.empty or self.TFTItem_df.empty or self.TFTTraitList_df.empty or self.TFTTrait_df.empty or self.TFTPVENPC_df.empty or self.TFTScript_df.empty or self.TFTAnnouncement_df.empty:
             status: int = self.build_tft_dataframe(debug = debug, path = path)
             if status != 0:
-                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
                 logInput()
                 return
         #导出数据（Export data）
@@ -9952,12 +10725,310 @@ class TFTExtractor(LoLDataExtractor):
                                 worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                cont = logInput()
+                cont: str = logInput()
                 if cont != "" and cont[0] == "0":
                     break
             else:
                 logPrint(f"云顶之弈数据已导出到{self.wbPath}。\nTFT data have been exported to {self.wbPath}.", print_time = True)
                 break
+    
+    def to_html(self, debug: bool = False, path: Optional[str] = None) -> None:
+        '''
+        导出云顶之弈数据到网页中。产生以下文件：<br>Export TFT data into html files. The following files are produced:
+        - 云顶之弈商店（TFT Shop）
+        - 云顶之弈回合阶段（TFT Stage Round）
+        - 云顶之弈传送门（TFT Portal）
+        - 云顶之弈角色定位（TFT Character Role）
+        - 云顶之弈装备（TFT Items）
+        - 云顶之弈强化符文（TFT Augments）
+        - 云顶之弈羁绊（TFT Traits）
+        - 云顶之弈通告（TFT Announcement）
+        
+        :param debug: 是否离线读取数据资源。默认为假。<br>Whether to read data resource offline. False by default.
+        :type debug: bool
+        :param path: 聚点危机地图二进制描述文件的本地路径。<br>A local path of Convergence map binary description file.
+        
+            仅在`debug`参数为真时有效。<br>Works only when `debug` is True.
+        :type path: str
+        '''
+        logInput = self.log.logInput
+        logPrint = self.log.logPrint
+        if self.wbPath == "":
+            logPrint("尚未指定文件保存路径。\nPath of exported file not specified.")
+            return
+        if self.patch == "" and self.sheet_naming_fold:
+            logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
+            return
+        if self.TFTSet_df.empty or self.TFTShop_df.empty or self.TFTShopContent_df.empty or self.TFTDropRate_df.empty or self.TFTStageRound_df.empty or self.TFTRound_df.empty or self.TFTPortal_df.empty or self.TFTEncounterDistribution_df.empty or self.TFTEncounter_df.empty or self.TFTUnitProperty_df.empty or self.TFTCharacterRole_df.empty or self.TFTItemList_df.empty or self.TFTItem_df.empty or self.TFTTraitList_df.empty or self.TFTTrait_df.empty or self.TFTPVENPC_df.empty or self.TFTScript_df.empty or self.TFTAnnouncement_df.empty:
+            status: int = self.build_tft_dataframe(debug = debug, path = path)
+            if status != 0:
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
+                logInput()
+                return
+        #云顶之弈商店（TFT Shop）
+        TFTShop_df_web: pandas.DataFrame = self.TFTShop_df.copy(deep = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        AbilityIconUrls: list[str] = list(map(lambda x: "" if x == "" else self.url2image(self.assetPath2url(self.version, x)), self.TFTShop_df.loc[1:, "AbilityIconPath"].to_list()))
+        TeamPlannerPortraitUrls: list[str] = list(map(lambda x: "" if x == "" else self.url2image(self.assetPath2url(self.version, x)), self.TFTShop_df.loc[1:, "TeamPlannerPortraitPath"].to_list()))
+        TFTShop_df_web.insert(len(TFTShop_df_web.columns), "AbilityIconUrl", ["技能图标网址"] + AbilityIconUrls)
+        TFTShop_df_web.insert(len(TFTShop_df_web.columns), "TeamPlannerPortraitUrl", ["用于小队规划器的肖像网址"] + TeamPlannerPortraitUrls)
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "mName",
+            "{4d4e5cf5}",
+            "TeamPlannerPortraitUrl",
+            "AbilityIconUrl",
+            "mDisplayNameTra_content_zh",
+            "mDisplayNameTra_content_en",
+            "mRarity",
+            "BaseCost",
+            "mAbilityNameTra_content_zh",
+            "mAbilityNameTra_content_en",
+            "mDescriptionTra_content_zh_burn",
+            "mDescriptionTra_content_en_burn"
+        ]
+        TFTShop_df_web = TFTShop_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        TFTShop_df_styled: pandas.io.formats.style.Styler = TFTShop_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:7]
+        TFTShop_df_styled = TFTShop_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        TFTShop_htmltable: str = TFTShop_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        TFTShop_htmltable = '<meta charset="UTF-8">\n' + TFTShop_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"TFTShop_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(TFTShop_htmltable)
+        #云顶之弈回合阶段（TFT Stage Round）
+        TFTStageRound_df_web: pandas.DataFrame = pandas.merge(self.TFTStageRound_df, self.TFTRound_df.rename(columns = {"key": "roundKey"}), left_on = "round", right_on = "roundKey", how = "inner")
+        TFTStageRound_df_web.drop("roundKey", axis = 1)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        mIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mIconPath"].to_list()))
+        mRoundUpcomingIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundUpcomingIconPath"].to_list()))
+        mRoundActiveIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundActiveIconPath"].to_list()))
+        mRoundResultNoneIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundResultNoneIconPath"].to_list()))
+        mRoundResultWinIconUrls: list[str] = list(map(lambda x: "" if x == "" else self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundResultWinIconPath"].to_list()))
+        mRoundResultLossIconUrls: list[str] = list(map(lambda x: "" if x == "" else self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundResultLossIconPath"].to_list()))
+        mRoundResultDrawIconUrls: list[str] = list(map(lambda x: "" if x == "" else self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundResultDrawIconPath"].to_list()))
+        TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mIconUrl", ["缩略图网址"] + mIconUrls)
+        TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundUpcomingIconUrl", ["即将到来的回合缩略图网址"] + mRoundUpcomingIconUrls)
+        TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundActiveIconUrl", ["当前回合缩略图网址"] + mRoundActiveIconUrls)
+        TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundResultNoneIconUrl", ["无回合结果缩略图网址"] + mRoundResultNoneIconUrls)
+        TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundResultWinIconUrl", ["回合胜利缩略图网址"] + mRoundResultWinIconUrls)
+        TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundResultLossIconUrl", ["回合失败缩略图网址"] + mRoundResultLossIconUrls)
+        TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundResultDrawIconUrl", ["平局缩略图网址"] + mRoundResultDrawIconUrls)
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "key",
+            "round_burn",
+            "mDisplayNameTra_content_zh",
+            "mDisplayNameTra_content_en",
+            "mDefaultTooltipTra_content_zh",
+            "mDefaultTooltipTra_content_en",
+            "mIconUrl",
+            "mRoundUpcomingIconUrl",
+            "mRoundActiveIconUrl",
+            "mRoundResultNoneIconUrl",
+            "mRoundResultWinIconUrl",
+            "mRoundResultLossIconUrl",
+            "mRoundResultDrawIconUrl",
+        ]
+        TFTStageRound_df_web = TFTStageRound_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        TFTStageRound_df_styled: pandas.io.formats.style.Styler = TFTStageRound_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:4] + columns_to_export[-7:]
+        TFTStageRound_df_styled = TFTStageRound_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        TFTStageRound_htmltable: str = TFTStageRound_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        TFTStageRound_htmltable = '<meta charset="UTF-8">\n' + TFTStageRound_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"TFTStageRound_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(TFTStageRound_htmltable)
+        #云顶之弈传送门（TFT Portal）
+        TFTPortal_df_web: pandas.DataFrame = self.TFTPortal_df.copy(deep = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        iconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.TFTPortal_df.loc[1:, "IconPath"].to_list()))
+        TFTPortal_df_web.insert(len(TFTPortal_df_web.columns), "IconUrl", ["缩略图网址"] + iconUrls)
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "name",
+            "RegionName",
+            "IconUrl",
+            "RegionTra_content_zh",
+            "RegionTra_content_en",
+            "type",
+            "ShortDescriptionTra_content_zh_burn",
+            "ShortDescriptionTra_content_en_burn",
+            "LongDescriptionTra_content_zh_burn",
+            "LongDescriptionTra_content_en_burn"
+        ]
+        TFTPortal_df_web = TFTPortal_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        TFTPortal_df_styled: pandas.io.formats.style.Styler = TFTPortal_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:6]
+        TFTPortal_df_styled = TFTPortal_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        TFTPortal_htmltable: str = TFTPortal_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        TFTPortal_htmltable = '<meta charset="UTF-8">\n' + TFTPortal_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"TFTPortal_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(TFTPortal_htmltable)
+        #云顶之弈装备（TFT Items）
+        TFTItem_df_web: pandas.DataFrame = pandas.concat([self.TFTItem_df.iloc[:1, :], self.TFTItem_df[self.TFTItem_df["IsAugment"] == ""]], ignore_index = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        mIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTItem_df_web.loc[1:, "mIconPath"].to_list()))
+        TFTItem_df_web.insert(len(TFTItem_df_web.columns), "mIconUrl", ["缩略图网址"] + mIconUrls)
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "mName",
+            "mIconUrl",
+            "mDisplayNameTra_content_zh_burn",
+            "mDisplayNameTra_content_en_burn",
+            "mComposition mDisplayNameTra_contents_zh",
+            "mComposition mDisplayNameTra_contents_en",
+            "mAlternativeCompositions mDisplayNameTra_contents_zh",
+            "mAlternativeCompositions mDisplayNameTra_contents_en",
+            "MutuallyExclusiveItems mDisplayNameTra_contents_zh",
+            "MutuallyExclusiveItems mDisplayNameTra_contents_en",
+            "IncompatibleTraits mDisplayNameTra_contents_zh",
+            "IncompatibleTraits mDisplayNameTra_contents_en",
+            "AssociatedTraits mDisplayNameTra_contents_zh",
+            "AssociatedTraits mDisplayNameTra_contents_en",
+            "BonusTrait mDisplayNameTra_content_zh",
+            "BonusTrait mDisplayNameTra_content_en",
+            "mDescriptionNameTra_content_zh_burn",
+            "mDescriptionNameTra_content_en_burn"
+        ]
+        TFTItem_df_web = TFTItem_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        TFTItem_df_styled: pandas.io.formats.style.Styler = TFTItem_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:16]
+        TFTItem_df_styled = TFTItem_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        TFTItem_htmltable: str = TFTItem_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        TFTItem_htmltable = '<meta charset="UTF-8">\n' + TFTItem_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"TFTItem_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(TFTItem_htmltable)
+        #云顶之弈强化符文（TFT Augments）
+        TFTAugment_df_web: pandas.DataFrame = pandas.concat([self.TFTItem_df.iloc[:1, :], self.TFTItem_df[self.TFTItem_df["IsAugment"] == "√"]], ignore_index = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        mIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTAugment_df_web.loc[1:, "mIconPath"].to_list()))
+        TFTAugment_df_web.insert(len(TFTAugment_df_web.columns), "mIconUrl", ["缩略图网址"] + mIconUrls)
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "mName",
+            "mIconUrl",
+            "mDisplayNameTra_content_zh_burn",
+            "mDisplayNameTra_content_en_burn",
+            "mComposition mDisplayNameTra_contents_zh",
+            "mComposition mDisplayNameTra_contents_en",
+            "mAlternativeCompositions mDisplayNameTra_contents_zh",
+            "mAlternativeCompositions mDisplayNameTra_contents_en",
+            "MutuallyExclusiveItems mDisplayNameTra_contents_zh",
+            "MutuallyExclusiveItems mDisplayNameTra_contents_en",
+            "IncompatibleTraits mDisplayNameTra_contents_zh",
+            "IncompatibleTraits mDisplayNameTra_contents_en",
+            "AssociatedTraits mDisplayNameTra_contents_zh",
+            "AssociatedTraits mDisplayNameTra_contents_en",
+            "BonusTrait mDisplayNameTra_content_zh",
+            "BonusTrait mDisplayNameTra_content_en",
+            "mDescriptionNameTra_content_zh_burn",
+            "mDescriptionNameTra_content_en_burn"
+        ]
+        TFTAugment_df_web = TFTAugment_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        TFTAugment_df_styled: pandas.io.formats.style.Styler = TFTAugment_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:16]
+        TFTAugment_df_styled = TFTAugment_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        TFTAugment_htmltable: str = TFTAugment_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        TFTAugment_htmltable = '<meta charset="UTF-8">\n' + TFTAugment_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"TFTAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(TFTAugment_htmltable)
+        #云顶之弈羁绊（TFT Traits）
+        TFTTrait_df_web: pandas.DataFrame = self.TFTTrait_df.copy(deep = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        mIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTTrait_df_web.loc[1:, "mIconPath"].to_list()))
+        TFTTrait_df_web.insert(len(TFTTrait_df_web.columns), "mIconUrl", ["缩略图网址"] + mIconUrls)
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "mName",
+            "mIconUrl",
+            "mDisplayNameTra_content_zh",
+            "mDisplayNameTra_content_en",
+            "TraitType",
+            "{0247448b}_content_zh_burn",
+            "{0247448b}_content_en_burn",
+            "mDescriptionNameTra_content_zh_burn",
+            "mDescriptionNameTra_content_en_burn"
+        ]
+        TFTTrait_df_web = TFTTrait_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        TFTTrait_df_styled: pandas.io.formats.style.Styler = TFTTrait_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:5]
+        TFTTrait_df_styled = TFTTrait_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        TFTTrait_htmltable: str = TFTTrait_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        TFTTrait_htmltable = '<meta charset="UTF-8">\n' + TFTTrait_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"TFTTrait_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(TFTTrait_htmltable)
+        #云顶之弈通告（TFT Annoucements）
+        TFTAnnouncement_df_web: pandas.DataFrame = self.TFTAnnouncement_df.copy(deep = True)
+        ##将图标路径转换为网址（Transform icon paths into urls）
+        mIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTAnnouncement_df_web.loc[1:, "mIconPath"].to_list()))
+        TFTAnnouncement_df_web.insert(len(TFTAnnouncement_df_web.columns), "mIconUrl", ["缩略图网址"] + mIconUrls)
+        ##保留小数（Round）
+        TFTAnnouncement_df_web.loc[1:, "mDuration"] = TFTAnnouncement_df_web.loc[1:, "mDuration"].apply(lambda x: self.aRound(x, 5))
+        TFTAnnouncement_df_web.loc[1:, "mDelay"] = TFTAnnouncement_df_web.loc[1:, "mDelay"].apply(lambda x: "" if x == "" else self.aRound(x, 5))
+        ##设置要导出的行和列（Set the rows and columns to export）
+        columns_to_export: list[str] = [
+            "mIconUrl",
+            "mTitleTra_content_zh",
+            "mTitleTra_content_en",
+            "mDuration",
+            "mDelay"
+        ]
+        TFTAnnouncement_df_web = TFTAnnouncement_df_web.loc[:, columns_to_export]
+        ##样式设置（Style configuration）
+        ###设置单元格边框（Set cell border）
+        TFTAnnouncement_df_styled: pandas.io.formats.style.Styler = TFTAnnouncement_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+        ###设置居中的列（Set centered columns）
+        center_columns: list[str] = columns_to_export[:]
+        TFTAnnouncement_df_styled = TFTAnnouncement_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+        ##获取网页源代码（Get the web source code）
+        TFTAnnouncement_htmltable: str = TFTAnnouncement_df_styled.to_html(escape = False)
+        ##导出为网页（Export to web）
+        TFTAnnouncement_htmltable = '<meta charset="UTF-8">\n' + TFTAnnouncement_htmltable
+        locale: str = self.locale.replace("_", "-")
+        version: str = self.patch
+        with open(os.path.join(self.folder, "preview", f"TFTAnnouncement_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+            fp.write(TFTAnnouncement_htmltable)
 
 class FontExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -10300,7 +11371,7 @@ class FontExtractor(LoLDataExtractor):
         if self.fontDesc_df.empty or self.fontType_df.empty or self.fontResolution_df.empty or self.fontStyle_df.empty or self.font_CSSStyle_df.empty or self.font_CSSIcon_df.empty:
             status: int = self.build_font_dataframe(debug = debug, path = path)
             if status != 0:
-                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was build the dataframe. Press Enter to continue.")
+                logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
                 logInput()
                 return
         #导出数据（Export data）
@@ -10344,7 +11415,7 @@ class FontExtractor(LoLDataExtractor):
                                 worksheet.cell(row = 1, column = 1, value = self.patch) #在A1单元格填充数据所在版本（Fill in A0 cell with the data version）
             except PermissionError:
                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                cont = logInput()
+                cont: str = logInput()
                 if cont != "" and cont[0] == "0":
                     break
             else:
@@ -10861,12 +11932,11 @@ if __name__ == "__main__":
             one_click = False
         
         #设置默认导出行为（Set the default export behavior）
+        wb_export: bool = True
+        web_export: bool = False
+        logPrint('数据将只导出为Excel工作簿。如果需要导出为网页，请在选择数据类型的步骤输入“-2”以设置导出选项。\nData will only be exported to Excel workbooks. If you want to export data into web, please input "-2" in the data type selection step to set export options.')
         single_export: bool = False
-        logPrint('''数据在完成整理后不会立刻导出。如果需要在整理后立刻导出，请在选择数据类型的步骤输入“-2”以设置导出选项。\nData will not be exported immediately after being organized. If you want to export data immediately after they're organized, please input "-2" in the data type selection step to set export options.''')
-        
-        #设置hash值解析深度（Set the hash resolution depth）
-        LoLDataExtractor.set_resolution_depth(False)
-        logPrint('程序默认只解析hash值。如果需要统一不同版本间的字符串大小写，请在选择数据类型的步骤输入“-2”以设置hash值解析深度。\nThe program only resolves hash values by default. If you want to unify the string cases among different versions, please input "-2" in the data type selection step to set the hash resolution depth.')
+        logPrint('''数据在完成整理后不会立刻导出为Excel工作簿。如果需要在整理后立刻导出，请在选择数据类型的步骤输入“-2”以设置导出选项。\nData won't be exported into Excel workbooks immediately after being organized. If you want to export data immediately after they're organized, please input "-2" in the data type selection step to set export options.''')
         
         #设置样式保留行为（Set CSS retention behavior）
         LoLDataExtractor.set_tooltip_layout(False)
@@ -10875,6 +11945,10 @@ if __name__ == "__main__":
         #设置变量代换过程中的变量名保留行为（Set the variable name retention behavior in the variable substitution process）
         LoLDataExtractor.set_variable_reserve_strategy(False)
         logPrint('''说明文本变量代换过程默认不保留变量名。如果需要保留，请在选择数据类型的步骤输入“-2”以调整变量代换选项。\nVariable names aren't retained during the variable substitution process of tooltips by default. If you want to retain them, please input "-2" in the data type selection step to set the variable name retention option.''')
+        
+        #设置hash值解析深度（Set the hash resolution depth）
+        LoLDataExtractor.set_resolution_depth(False)
+        logPrint('程序默认只解析hash值。如果需要统一不同版本间的字符串大小写，请在选择数据类型的步骤输入“-2”以设置hash值解析深度。\nThe program only resolves hash values by default. If you want to unify the string cases among different versions, please input "-2" in the data type selection step to set the hash resolution depth.')
         
         #设置等级计算的等级上限（Set the level cap for level scaling calculations）
         LoLDataExtractor.set_levelScaling_cap(18)
@@ -10902,6 +11976,8 @@ if __name__ == "__main__":
             if extractor.patch == "" or extractor.patch_number == "":
                 continue
             print(f"当前版本号（Current patch）： {extractor.patch}")
+            #创建保存目录（Create saving directory）
+            extractor.make_dir()
             #加载文件导出列表（Load file export list）
             logPrint(f"正在加载文件导出列表……\nLoading the file export list ...", print_time = True)
             extractor.get_exported_files()
@@ -10942,9 +12018,9 @@ if __name__ == "__main__":
                 if mode == "":
                     continue
                 elif mode == "-2":
-                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t单类数据导出（Single-type data export）\n2\t切换语言（Switch language）\n3\t说明文本样式（Tooltip style）\n4\t变量替换样式（Variable substitution style）\n5\thash值解析深度（Hash value resolution depth）\n6\t等级计算上限（Level scaling cap）\n7\t切换数据框导出密度（Switch dataframe export density）")
+                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t导出为工作簿（Export to workbook）\n2\t单类数据导出（Single-type data export）\n3\t导出为网页（Export to web）\n4\t切换语言（Switch language）\n5\t说明文本样式（Tooltip style）\n6\t变量替换样式（Variable substitution style）\n7\thash值解析深度（Hash value resolution depth）\n8\t等级计算上限（Level scaling cap）\n9\t切换数据框导出密度（Switch dataframe export density）")
                     while True:
-                        option = logInput()
+                        option: str = logInput()
                         if option == "":
                             continue
                         elif option == "-1":
@@ -10952,6 +12028,14 @@ if __name__ == "__main__":
                         elif option[0] == "0":
                             break
                         elif option[0] == "1":
+                            logPrint("是否将数据导出为Excel工作簿？（输入任意非空字符串以将数据导出为Excel工作簿，否则不导出。）\nDo you want to export data into Excel workbooks? (Submit any non-empty string to export data into Excel workbooks, or null to refuse.)")
+                            wb_export_str: str = logInput()
+                            wb_export = bool(wb_export_str)
+                            if wb_export:
+                                logPrint("数据将导出为Excel工作簿。\nData will be exported into Excel workbooks.")
+                            else:
+                                logPrint("数据将不会导出为Excel工作簿。\nData won't be exported into Excel workbooks.")
+                        elif option[0] == "2":
                             logPrint('是否选择在整理数据后立刻将其导出到Excel中？（输入任意非空字符串以选择单项导出并清空数据框队列，否则选择批量导出，即在主界面输入“-1”后将数据框队列中的所有数据框一次性导出到Excel工作簿中。）\nDo you want to export data to Excel as soon as data organization finishes? (Submit any non-empty string to select Single Export and clear the dataframe queue, or null to select Batch Export, which means to export all dataframes in the dataframe queue to an Excel workbook at one time after submitting "-1" at the home screen.)')
                             single_export_str: str = logInput()
                             single_export = bool(single_export_str)
@@ -10960,7 +12044,15 @@ if __name__ == "__main__":
                                 logPrint("每个类型的数据在整理完成后将直接导出到Excel工作簿中，而不会添加到数据框队列中。数据框队列已清空，且批量导出选项已禁用。\nData of each type will be exported to an Excel workbook directly after data organization finishes, but won't be added into the dataframe queue. The dataframe queue has been cleared, and Batch Export option has been disabled.")
                             else:
                                 logPrint('每个类型的数据将只用来构建数据框，而不会立刻导出。您可以输入“-1”以导出队列中的所有数据框。批量导出选项已启用。\nData of each type will only be used to build dataframes but not be exported immediately. You may submit "-1" to export all dataframes in the queue. Batch Export option has been enabled.')
-                        elif option[0] == "2":
+                        elif option[0] == "3":
+                            logPrint("是否将数据导出为网页？（输入任意非空字符串以将数据导出为网页，否则不导出。）\nDo you want to export data into web pages? (Submit any non-empty string to export data into web pages, or null to refuse.)")
+                            web_export_str: str = logInput()
+                            web_export = bool(web_export_str)
+                            if web_export:
+                                logPrint("数据将导出为网页。\nData will be exported into web pages.")
+                            else:
+                                logPrint("数据将不会导出为网页。\nData won't be exported into web pages.")
+                        elif option[0] == "4":
                             old_locale: str = language_code
                             language_code = set_locale(initial_launch = False, old_locale = old_locale)
                             if language_code != old_locale:
@@ -10971,7 +12063,7 @@ if __name__ == "__main__":
                                 extractor.get_strtable()
                                 if not (extractor.strtable_organize_manner == 1 and extractor.strtables_ready["lol_target"] and extractor.strtables_ready["lol_default"] and extractor.strtables_ready["tft_target"] and extractor.strtables_ready["tft_default"]) and not (extractor.strtable_organize_manner == 2 and extractor.strtables_ready["target"] and extractor.strtables_ready["default"]):
                                     continue
-                        elif option[0] == "3":
+                        elif option[0] == "5":
                             logPrint("是否保留说明文本的原始样式？（输入任意非空字符串以保留原始CSS样式；否则移除所有CSS样式，用统一的标点符号进行强调。）\nDo you want to reserve the original style of tooltips? (Input any non-empty string to reserve the original CSS style; otherwise, remove all CSS styles and use the unified punctuation marks for emphasis.)")
                             reserve_CSS_str: str = logInput()
                             reserve_CSS: bool = bool(reserve_CSS_str)
@@ -10980,7 +12072,7 @@ if __name__ == "__main__":
                                 logPrint("说明文本将保留原始CSS标签。\nCSS tags will be reserved in the tooltips.")
                             else:
                                 logPrint("说明文本将移除所有CSS标签。\nCSS tags will be removed from the tooltips.")
-                        elif option[0] == "4":
+                        elif option[0] == "6":
                             logPrint('是否在数值替换的同时保留原变量？（输入任意非空字符串以将转换后的变量写成“[{变量名}] = {值}”的形式，否则只保留值。）\nDo you want to reserve the original variable when variable substitution is being performed? (Input any non-empty string to transform the variable into the form "[{Var_name}] = {Value}", or null to reserve the value only.)')
                             reserve_variable_str: str = logInput()
                             reserve_variable: bool = bool(reserve_variable_str)
@@ -10989,7 +12081,7 @@ if __name__ == "__main__":
                                 logPrint("说明文本在完成变量代换后将同时显示变量名和值。\nBoth the name and the value of variables will appear in the tooltip after variable substitution.")
                             else:
                                 logPrint("说明文本在完成变量代换后将只显示值。\nOnly the value of variables will appear in the tooltip after variable substitution.")
-                        elif option[0] == "5":
+                        elif option[0] == "7":
                             logPrint("是否启用hash值深度解析模式？（输入任意非空字符串以重新计算一段二进制描述数据中所有字符串的hash值并寻找其原始字符串以统一大小写，否则只对数据中已有的hash值进行解析。）\nDo you want to enable the deep resolution mode of hash value? (Input any non-empty string to recompute the hash values of all strings in a piece of binary description data and find their original strings to unify the cases, or null to only resolve the hash values already in the data.)")
                             deep_resolve_hash_str: str = logInput()
                             deep_resolve_hash: bool = bool(deep_resolve_hash_str)
@@ -11004,14 +12096,14 @@ if __name__ == "__main__":
                                 logPrint("已启用hash值深度解析模式。\nEnabled deep resolution mode of hash value.")
                             else:
                                 logPrint("已禁用hash值深度解析模式。\nDisabled deep resolution mode of hash value.")
-                        elif option[0] == "6":
+                        elif option[0] == "8":
                             logPrint(f"请设置等级计算的等级上限。输入空字符串以取消更改。\nPlease set the level cap for level scaling calculations. Submit an empty string to cancel the change.\n当前等级上限（Current level cap）：{extractor.levelScaling_cap}")
                             levelScaling_cap_str: int = logInput()
                             if levelScaling_cap_str.isdigit():
                                 levelScaling_cap: int = int(levelScaling_cap_str)
                                 extractor.set_levelScaling_cap(levelScaling_cap)
                                 logPrint("等级上限已修改。\nLevel cap changed.")
-                        elif option[0] == "7":
+                        elif option[0] == "9":
                             logPrint("是否启用密集导出？（输入任意非空字符串以密集导出，从而消除空字段；否则保留所有可导出的字段。）\nDo you want to enable dense export? (Submit any non-empty string to export dataframes in a dense manner to remove all empty fields, or null to reserve all fields that can be exported.)")
                             dense_export_str: str = logInput()
                             dense_export: bool = bool(dense_export_str)
@@ -11023,7 +12115,7 @@ if __name__ == "__main__":
                         else:
                             logPrint("您的输入有误！请重新输入。\nERROR input. Please try again.")
                             continue
-                        logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t单类数据导出（Single-type data export）\n2\t切换语言（Switch language）\n3\t说明文本样式（Tooltip style）\n4\t变量替换样式（Variable substitution style）\n5\thash值解析深度（Hash value resolution depth）\n6\t等级计算上限（Level scaling cap）\n7\t切换数据框导出密度（Switch dataframe export density）")
+                        logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t导出为工作簿（Export to workbook）\n2\t单类数据导出（Single-type data export）\n3\t导出为网页（Export to web）\n4\t切换语言（Switch language）\n5\t说明文本样式（Tooltip style）\n6\t变量替换样式（Variable substitution style）\n7\thash值解析深度（Hash value resolution depth）\n8\t等级计算上限（Level scaling cap）\n9\t切换数据框导出密度（Switch dataframe export density）")
                 elif not single_export and mode == "-1":
                     df_queue: list[dict[str, Any]] = sorted(extractor.df_queue, key = lambda x: x["order"])
                     if len(df_queue) > 0:
@@ -11055,7 +12147,7 @@ if __name__ == "__main__":
                                         logPrint("已完成。 | Done.")
                             except PermissionError:
                                 logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                                cont = logInput()
+                                cont: str = logInput()
                                 if cont != "" and cont[0] == "0":
                                     break
                             else:
@@ -11100,116 +12192,150 @@ if __name__ == "__main__":
                             logPrint("[%d/%d][%d/%d]正在整理地图数据……\nOrganizing map data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             mapExtractor: MapExtractor = MapExtractor(extractor)
                             mapExtractor.build_map_dataframe()
-                            if single_export:
-                                mapExtractor.export_map_data()
-                            else:
-                                mapExtractor.enqueue_map_dataframe()
+                            if wb_export:
+                                if single_export:
+                                    mapExtractor.export_map_data()
+                                else:
+                                    mapExtractor.enqueue_map_dataframe()
                         elif dOption == 2:
                             logPrint("[%d/%d][%d/%d]正在整理作弊指令数据……\nOrganizing cheat data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             cheatExtractor: CheatExtractor = CheatExtractor(extractor)
                             cheatExtractor.build_cheat_dataframe()
-                            if single_export:
-                                cheatExtractor.export_cheat_data()
-                            else:
-                                cheatExtractor.enqueue_cheat_dataframe()
+                            if wb_export:
+                                if single_export:
+                                    cheatExtractor.export_cheat_data()
+                                else:
+                                    cheatExtractor.enqueue_cheat_dataframe()
                         elif dOption == 3:
                             logPrint("[%d/%d][%d/%d]正在整理召唤师技能数据……\nOrganizing summoner spell data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             summonerSpellExtractor: SummonerSpellExtractor = SummonerSpellExtractor(extractor)
                             summonerSpellExtractor.build_summonerSpell_dataframe()
-                            if single_export:
-                                summonerSpellExtractor.export_summonerSpell_data()
-                            else:
-                                summonerSpellExtractor.enqueue_summonerSpell_dataframe()
+                            if wb_export:
+                                if single_export:
+                                    summonerSpellExtractor.export_summonerSpell_data()
+                                else:
+                                    summonerSpellExtractor.enqueue_summonerSpell_dataframe()
+                            if web_export:
+                                summonerSpellExtractor.to_html()
                         elif dOption == 4:
                             logPrint("[%d/%d][%d/%d]正在整理符文数据……\nOrganizing perk data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             perkExtractor: PerkExtractor = PerkExtractor(extractor)
                             perkExtractor.build_perk_dataframe()
-                            if single_export:
-                                perkExtractor.export_perk_data()
-                            else:
-                                perkExtractor.enqueue_perk_dataframe()
+                            if wb_export:
+                                if single_export:
+                                    perkExtractor.export_perk_data()
+                                else:
+                                    perkExtractor.enqueue_perk_dataframe()
+                            if web_export:
+                                perkExtractor.to_html()
                         elif dOption == 5:
                             logPrint("[%d/%d][%d/%d]正在整理英雄数据……\nOrganizing champion data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             championExtractor1: ChampionExtractor = ChampionExtractor(extractor)
                             championExtractor1.set_mode(False)
                             championExtractor1.build_champion_dataframe()
-                            if single_export:
-                                championExtractor1.export_champion_data()
-                            else:
-                                championExtractor1.enqueue_champion_dataframe()
+                            if wb_export:
+                                if single_export:
+                                    championExtractor1.export_champion_data()
+                                else:
+                                    championExtractor1.enqueue_champion_dataframe()
+                            if web_export:
+                                championExtractor1.to_html()
                         elif dOption == 6:
                             logPrint("[%d/%d][%d/%d]正在整理角色数据……\nOrganizing character data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             championExtractor2: ChampionExtractor = ChampionExtractor(extractor)
                             championExtractor2.set_mode(True)
                             championExtractor2.build_champion_dataframe()
-                            if single_export:
-                                championExtractor2.export_champion_data()
-                            else:
-                                championExtractor2.enqueue_champion_dataframe()
+                            if wb_export:
+                                if single_export:
+                                    championExtractor2.export_champion_data()
+                                else:
+                                    championExtractor2.enqueue_champion_dataframe()
+                            if web_export:
+                                championExtractor2.to_html()
                         elif dOption == 7:
                             logPrint("[%d/%d][%d/%d]正在整理装备数据……\nOrganizing item data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             itemExtractor: ItemExtractor = ItemExtractor(extractor)
                             itemExtractor.build_item_dataframe()
-                            if single_export:
-                                itemExtractor.export_item_data()
-                            else:
-                                itemExtractor.enqueue_item_dataframe()
+                            if wb_export:
+                                if single_export:
+                                    itemExtractor.export_item_data()
+                                else:
+                                    itemExtractor.enqueue_item_dataframe()
+                            if web_export:
+                                itemExtractor.to_html()
                         elif dOption == 8:
                             logPrint("[%d/%d][%d/%d]正在整理强化符文数据……\nOrganizing augment data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             augmentExtractor: AugmentExtractor = AugmentExtractor(extractor)
                             augmentExtractor.build_augment_dataframe()
-                            if single_export:
-                                augmentExtractor.export_augment_data()
-                            else:
-                                augmentExtractor.enqueue_augment_dataframe()
+                            if wb_export:
+                                if single_export:
+                                    augmentExtractor.export_augment_data()
+                                else:
+                                    augmentExtractor.enqueue_augment_dataframe()
+                            if web_export:
+                                augmentExtractor.to_html()
                         elif dOption == 9:
                             logPrint("[%d/%d][%d/%d]正在整理锻造器数据……\nOrganizing anvil data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             anvilExtractor: AnvilExtractor = AnvilExtractor(extractor)
                             anvilExtractor.build_anvil_dataframe()
-                            if single_export:
-                                anvilExtractor.export_anvil_data()
-                            else:
-                                anvilExtractor.enqueue_anvil_dataframe()
+                            if wb_export:
+                                if single_export:
+                                    anvilExtractor.export_anvil_data()
+                                else:
+                                    anvilExtractor.enqueue_anvil_dataframe()
+                            if web_export:
+                                anvilExtractor.to_html()
                         elif dOption == 10:
                             logPrint("[%d/%d][%d/%d]正在整理斗魂竞技场回合数据……\nOrganizing Arena round data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             cherryRoundExtractor: CherryRoundExtractor = CherryRoundExtractor(extractor)
                             cherryRoundExtractor.build_CherryRound_dataframe()
-                            if single_export:
-                                cherryRoundExtractor.export_CherryRound_data()
-                            else:
-                                cherryRoundExtractor.enqueue_CherryRound_dataframe()
+                            if wb_export:
+                                if single_export:
+                                    cherryRoundExtractor.export_CherryRound_data()
+                                else:
+                                    cherryRoundExtractor.enqueue_CherryRound_dataframe()
+                            if web_export:
+                                cherryRoundExtractor.to_html()
                         elif dOption == 11:
                             logPrint("[%d/%d][%d/%d]正在整理场景英雄数据……\nOrganizing Cameo data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             cameoExtractor: CameoExtractor = CameoExtractor(extractor)
                             cameoExtractor.build_cameo_dataframe()
-                            if single_export:
-                                cameoExtractor.export_cameo_data()
-                            else:
-                                cameoExtractor.enqueue_cameo_dataframe()
+                            if wb_export:
+                                if single_export:
+                                    cameoExtractor.export_cameo_data()
+                                else:
+                                    cameoExtractor.enqueue_cameo_dataframe()
                         elif dOption == 12:
                             logPrint("[%d/%d][%d/%d]正在整理荣誉嘉宾数据……\nOrganizing Guest of Honor data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             gohExtractor: GoHExtractor = GoHExtractor(extractor)
                             gohExtractor.build_GoH_dataframe()
-                            if single_export:
-                                gohExtractor.export_GoH_data()
-                            else:
-                                gohExtractor.enqueue_GoH_dataframe()
+                            if wb_export:
+                                if single_export:
+                                    gohExtractor.export_GoH_data()
+                                else:
+                                    gohExtractor.enqueue_GoH_dataframe()
+                            if web_export:
+                                gohExtractor.to_html()
                         elif dOption == 13:
                             logPrint("[%d/%d][%d/%d]正在整理云顶之弈数据……\nOrganizing TFT data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             tftExtractor: TFTExtractor = TFTExtractor(extractor)
                             tftExtractor.build_tft_dataframe()
-                            if single_export:
-                                tftExtractor.export_tft_data()
-                            else:
-                                tftExtractor.enqueue_tft_dataframe()
+                            if wb_export:
+                                if single_export:
+                                    tftExtractor.export_tft_data()
+                                else:
+                                    tftExtractor.enqueue_tft_dataframe()
+                            if web_export:
+                                tftExtractor.to_html()
                         elif dOption == 14:
                             logPrint("[%d/%d][%d/%d]正在整理字体数据……\nOrganizing font data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             fontExtractor: FontExtractor = FontExtractor(extractor)
                             fontExtractor.build_font_dataframe()
-                            if single_export:
-                                fontExtractor.export_font_data()
-                            else:
-                                fontExtractor.enqueue_font_dataframe()
+                            if wb_export:
+                                if single_export:
+                                    fontExtractor.export_font_data()
+                                else:
+                                    fontExtractor.enqueue_font_dataframe()
         else:
             print("是否排序工作表？（输入任意非空字符串以排序，否则不排序。）\nDo you want to sort the worksheets? (Submit any non-empty string to sort, or null to refuse sorting.)")
             sort_sheet_str: str = logInput()
@@ -11279,12 +12405,11 @@ if __name__ == "__main__":
         version = "pbe"
         
         #设置默认导出行为（Set the default export behavior）
+        wb_export: bool = True
+        web_export: bool = False
+        # logPrint('数据将只导出为Excel工作簿。如果需要导出为网页，请在选择数据类型的步骤输入“-2”以设置导出选项。\nData will only be exported to Excel workbooks. If you want to export data into web, please input "-2" in the data type selection step to set export options.')
         single_export: bool = False
-        # logPrint('''数据在完成整理后不会立刻导出。如果需要在整理后立刻导出，请在选择数据类型的步骤输入“-2”以设置导出选项。\nData will not be exported immediately after being organized. If you want to export data immediately after they're organized, please input "-2" in the data type selection step to set export options.''')
-        
-        #设置hash值解析深度（Set the hash resolution depth）
-        LoLDataExtractor.set_resolution_depth(False)
-        # logPrint('程序默认只解析hash值。如果需要统一不同版本间的字符串大小写，请在选择数据类型的步骤输入“-2”以设置hash值解析深度。\nThe program only resolves hash values by default. If you want to unify the string cases among different versions, please input "-2" in the data type selection step to set the hash resolution depth.')
+        # logPrint('''数据在完成整理后不会立刻导出为Excel工作簿。如果需要在整理后立刻导出，请在选择数据类型的步骤输入“-2”以设置导出选项。\nData won't be exported into Excel workbooks immediately after being organized. If you want to export data immediately after they're organized, please input "-2" in the data type selection step to set export options.''')
         
         #设置样式保留行为（Set CSS retention behavior）
         LoLDataExtractor.set_tooltip_layout(False)
@@ -11293,6 +12418,10 @@ if __name__ == "__main__":
         #设置变量代换过程中的变量名保留行为（Set the variable name retention behavior in the variable substitution process）
         LoLDataExtractor.set_variable_reserve_strategy(False)
         # logPrint('''说明文本变量代换过程默认不保留变量名。如果需要保留，请在选择数据类型的步骤输入“-2”以调整变量代换选项。\nVariable names aren't retained during the variable substitution process of tooltips by default. If you want to retain them, please input "-2" in the data type selection step to set the variable name retention option.''')
+        
+        #设置hash值解析深度（Set the hash resolution depth）
+        LoLDataExtractor.set_resolution_depth(False)
+        # logPrint('程序默认只解析hash值。如果需要统一不同版本间的字符串大小写，请在选择数据类型的步骤输入“-2”以设置hash值解析深度。\nThe program only resolves hash values by default. If you want to unify the string cases among different versions, please input "-2" in the data type selection step to set the hash resolution depth.')
         
         #设置等级计算的等级上限（Set the level cap for level scaling calculations）
         LoLDataExtractor.set_levelScaling_cap(18)
@@ -11332,6 +12461,8 @@ if __name__ == "__main__":
         if extractor.patch == "" or extractor.patch_number == "":
             return 0
         print(f"当前版本号（Current patch）： {extractor.patch}")
+        #创建保存目录（Create saving directory）
+        extractor.make_dir()
         #加载文件导出列表（Load file export list）
         logPrint(f"正在加载文件导出列表……\nLoading the file export list ...", print_time = True)
         extractor.read_exported_files("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/cdragon/files.exported.txt")
@@ -11443,9 +12574,9 @@ if __name__ == "__main__":
                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     logPrint("请选择草稿选项：\nPlease select a draft option:\n0\t退出调试（Quit debug）\n1\t启动子环境（Start a sub-environment）")
             elif mode == "-2":
-                logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t单类数据导出（Single-type data export）\n2\t切换语言（Switch language）\n3\t说明文本样式（Tooltip style）\n4\t变量替换样式（Variable substitution style）\n5\thash值解析深度（Hash value resolution depth）\n6\t等级计算上限（Level scaling cap）\n7\t切换数据框导出密度（Switch dataframe export density）")
+                logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t导出为工作簿（Export to workbook）\n2\t单类数据导出（Single-type data export）\n3\t导出为网页（Export to web）\n4\t切换语言（Switch language）\n5\t说明文本样式（Tooltip style）\n6\t变量替换样式（Variable substitution style）\n7\thash值解析深度（Hash value resolution depth）\n8\t等级计算上限（Level scaling cap）\n9\t切换数据框导出密度（Switch dataframe export density）")
                 while True:
-                    option = logInput()
+                    option: str = logInput()
                     if option == "":
                         continue
                     elif option == "-1":
@@ -11453,6 +12584,14 @@ if __name__ == "__main__":
                     elif option[0] == "0":
                         break
                     elif option[0] == "1":
+                        logPrint("是否将数据导出为Excel工作簿？（输入任意非空字符串以将数据导出为Excel工作簿，否则不导出。）\nDo you want to export data into Excel workbooks? (Submit any non-empty string to export data into Excel workbooks, or null to refuse.)")
+                        wb_export_str: str = logInput()
+                        wb_export = bool(wb_export_str)
+                        if wb_export:
+                            logPrint("数据将导出为Excel工作簿。\nData will be exported into Excel workbooks.")
+                        else:
+                            logPrint("数据将不会导出为Excel工作簿。\nData won't be exported into Excel workbooks.")
+                    elif option[0] == "2":
                         logPrint('是否选择在整理数据后立刻将其导出到Excel中？（输入任意非空字符串以选择单项导出并清空数据框队列，否则选择批量导出，即在主界面输入“-1”后将数据框队列中的所有数据框一次性导出到Excel工作簿中。）\nDo you want to export data to Excel as soon as data organization finishes? (Submit any non-empty string to select Single Export and clear the dataframe queue, or null to select Batch Export, which means to export all dataframes in the dataframe queue to an Excel workbook at one time after submitting "-1" at the home screen.)')
                         single_export_str: str = logInput()
                         single_export = bool(single_export_str)
@@ -11461,7 +12600,15 @@ if __name__ == "__main__":
                             logPrint("每个类型的数据在整理完成后将直接导出到Excel工作簿中，而不会添加到数据框队列中。数据框队列已清空，且批量导出选项已禁用。\nData of each type will be exported to an Excel workbook directly after data organization finishes, but won't be added into the dataframe queue. The dataframe queue has been cleared, and Batch Export option has been disabled.")
                         else:
                             logPrint('每个类型的数据将只用来构建数据框，而不会立刻导出。您可以输入“-1”以导出队列中的所有数据框。批量导出选项已启用。\nData of each type will only be used to build dataframes but not be exported immediately. You may submit "-1" to export all dataframes in the queue. Batch Export option has been enabled.')
-                    elif option[0] == "2":
+                    elif option[0] == "3":
+                        logPrint("是否将数据导出为网页？（输入任意非空字符串以将数据导出为网页，否则不导出。）\nDo you want to export data into web pages? (Submit any non-empty string to export data into web pages, or null to refuse.)")
+                        web_export_str: str = logInput()
+                        web_export = bool(web_export_str)
+                        if web_export:
+                            logPrint("数据将导出为网页。\nData will be exported into web pages.")
+                        else:
+                            logPrint("数据将不会导出为网页。\nData won't be exported into web pages.")
+                    elif option[0] == "4":
                         old_locale: str = locale
                         locale = set_locale(initial_launch = False, old_locale = old_locale)
                         if locale != old_locale:
@@ -11486,7 +12633,7 @@ if __name__ == "__main__":
                             extractor.read_strtable(strtable_paths = list(map(lambda x: x.as_posix(), strtable_paths)))
                             if not (extractor.strtable_organize_manner == 1 and extractor.strtables_ready["lol_target"] and extractor.strtables_ready["lol_default"] and extractor.strtables_ready["tft_target"] and extractor.strtables_ready["tft_default"]) and not (extractor.strtable_organize_manner == 2 and extractor.strtables_ready["target"] and extractor.strtables_ready["default"]):
                                 return 0
-                    elif option[0] == "3":
+                    elif option[0] == "5":
                         logPrint("是否保留说明文本的原始样式？（输入任意非空字符串以保留原始CSS样式；否则移除所有CSS样式，用统一的标点符号进行强调。）\nDo you want to reserve the original style of tooltips? (Input any non-empty string to reserve the original CSS style; otherwise, remove all CSS styles and use the unified punctuation marks for emphasis.)")
                         reserve_CSS_str: str = logInput()
                         reserve_CSS: bool = bool(reserve_CSS_str)
@@ -11495,7 +12642,7 @@ if __name__ == "__main__":
                             logPrint("说明文本将保留原始CSS标签。\nCSS tags will be reserved in the tooltips.")
                         else:
                             logPrint("说明文本将移除所有CSS标签。\nCSS tags will be removed from the tooltips.")
-                    elif option[0] == "4":
+                    elif option[0] == "6":
                         logPrint('是否在数值替换的同时保留原变量？（输入任意非空字符串以将转换后的变量写成“[{变量名}] = {值}”的形式，否则只保留值。）\nDo you want to reserve the original variable when variable substitution is being performed? (Input any non-empty string to transform the variable into the form "[{Var_name}] = {Value}", or null to reserve the value only.)')
                         reserve_variable_str: str = logInput()
                         reserve_variable: bool = bool(reserve_variable_str)
@@ -11504,7 +12651,7 @@ if __name__ == "__main__":
                             logPrint("说明文本在完成变量代换后将同时显示变量名和值。\nBoth the name and the value of variables will appear in the tooltip after variable substitution.")
                         else:
                             logPrint("说明文本在完成变量代换后将只显示值。\nOnly the value of variables will appear in the tooltip after variable substitution.")
-                    elif option[0] == "5":
+                    elif option[0] == "7":
                         logPrint("是否启用hash值深度解析模式？（输入任意非空字符串以重新计算一段二进制描述数据中所有字符串的hash值并寻找其原始字符串以统一大小写，否则只对数据中已有的hash值进行解析。）\nDo you want to enable the deep resolution mode of hash value? (Input any non-empty string to recompute the hash values of all strings in a piece of binary description data and find their original strings to unify the cases, or null to only resolve the hash values already in the data.)")
                         deep_resolve_hash_str: str = logInput()
                         deep_resolve_hash: bool = bool(deep_resolve_hash_str)
@@ -11516,14 +12663,14 @@ if __name__ == "__main__":
                             logPrint("已启用hash值深度解析模式。\nEnabled deep resolution mode of hash value.")
                         else:
                             logPrint("已禁用hash值深度解析模式。\nDisabled deep resolution mode of hash value.")
-                    elif option[0] == "6":
+                    elif option[0] == "8":
                         logPrint(f"请设置等级计算的等级上限。输入空字符串以取消更改。\nPlease set the level cap for level scaling calculations. Submit an empty string to cancel the change.\n当前等级上限（Current level cap）：{extractor.levelScaling_cap}")
                         levelScaling_cap_str: int = logInput()
                         if levelScaling_cap_str.isdigit():
                             levelScaling_cap: int = int(levelScaling_cap_str)
                             extractor.set_levelScaling_cap(levelScaling_cap)
                             logPrint("等级上限已修改。\nLevel cap changed.")
-                    elif option[0] == "7":
+                    elif option[0] == "9":
                         logPrint("是否启用密集导出？（输入任意非空字符串以密集导出，从而消除空字段；否则保留所有可导出的字段。）\nDo you want to enable dense export? (Submit any non-empty string to export dataframes in a dense manner to remove all empty fields, or null to reserve all fields that can be exported.)")
                         dense_export_str: str = logInput()
                         dense_export: bool = bool(dense_export_str)
@@ -11535,7 +12682,7 @@ if __name__ == "__main__":
                     else:
                         logPrint("您的输入有误！请重新输入。\nERROR input. Please try again.")
                         continue
-                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t单类数据导出（Single-type data export）\n2\t切换语言（Switch language）\n3\t说明文本样式（Tooltip style）\n4\t变量替换样式（Variable substitution style）\n5\thash值解析深度（Hash value resolution depth）\n6\t等级计算上限（Level scaling cap）\n7\t切换数据框导出密度（Switch dataframe export density）")
+                    logPrint("请选择一个配置：\nPlease select an configuration option:\n0\t返回上一层（Return to the last step）\n1\t导出为工作簿（Export to workbook）\n2\t单类数据导出（Single-type data export）\n3\t导出为网页（Export to web）\n4\t切换语言（Switch language）\n5\t说明文本样式（Tooltip style）\n6\t变量替换样式（Variable substitution style）\n7\thash值解析深度（Hash value resolution depth）\n8\t等级计算上限（Level scaling cap）\n9\t切换数据框导出密度（Switch dataframe export density）")
             elif not single_export and mode == "-1":
                 df_queue: list[dict[str, Any]] = sorted(extractor.df_queue, key = lambda x: x["order"])
                 if len(df_queue) > 0:
@@ -11567,7 +12714,7 @@ if __name__ == "__main__":
                                     logPrint("已完成。 | Done.")
                         except PermissionError:
                             logPrint('''无写入权限！请确保文件未被打开且非只读状态！输入任意键以重试，或者输入“0”以放弃导出。\nPermission denied! Please ensure the file isn't opened right now or read-only! Submit any string to try again, or submit "0" to quit exporting.''')
-                            cont = logInput()
+                            cont: str = logInput()
                             if cont != "" and cont[0] == "0":
                                 break
                         else:
@@ -11630,10 +12777,11 @@ if __name__ == "__main__":
                                 repo_game_dir / "data/maps/shipping/map453/map453.bin.json"
                             ]
                         mapExtractor.build_map_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), map_paths)))
-                        if single_export:
-                            mapExtractor.export_map_data()
-                        else:
-                            mapExtractor.enqueue_map_dataframe()
+                        if wb_export:
+                            if single_export:
+                                mapExtractor.export_map_data()
+                            else:
+                                mapExtractor.enqueue_map_dataframe()
                     elif dOption == 2:
                         logPrint("[%d/%d]正在调试作弊指令数据……\nDebugging cheat data ..." %(nDataOption_iter, nDataOptions))
                         cheatExtractor: CheatExtractor = CheatExtractor(extractor)
@@ -11642,10 +12790,11 @@ if __name__ == "__main__":
                         else:
                             cheat_path = repo_game_dir / "cheats.cdtb.bin.json"
                         cheatExtractor.build_cheat_dataframe(debug = True, path = cheat_path.as_posix())
-                        if single_export:
-                            cheatExtractor.export_cheat_data()
-                        else:
-                            cheatExtractor.enqueue_cheat_dataframe()
+                        if wb_export:
+                            if single_export:
+                                cheatExtractor.export_cheat_data()
+                            else:
+                                cheatExtractor.enqueue_cheat_dataframe()
                     elif dOption == 3:
                         logPrint("[%d/%d]正在调试召唤师技能数据……\nDebugging summoner spell data ..." %(nDataOption_iter, nDataOptions))
                         summonerSpellExtractor: SummonerSpellExtractor = SummonerSpellExtractor(extractor)
@@ -11654,10 +12803,13 @@ if __name__ == "__main__":
                         else:
                             summonerSpell_path = repo_game_dir / "shared.cdtb.bin.json"
                         summonerSpellExtractor.build_summonerSpell_dataframe(debug = True, path = summonerSpell_path.as_posix())
-                        if single_export:
-                            summonerSpellExtractor.export_summonerSpell_data()
-                        else:
-                            summonerSpellExtractor.enqueue_summonerSpell_dataframe()
+                        if wb_export:
+                            if single_export:
+                                summonerSpellExtractor.export_summonerSpell_data()
+                            else:
+                                summonerSpellExtractor.enqueue_summonerSpell_dataframe()
+                        if web_export:
+                            summonerSpellExtractor.to_html()
                     elif dOption == 4:
                         logPrint("[%d/%d]正在调试符文数据……\nDebugging perk data ..." %(nDataOption_iter, nDataOptions))
                         perkExtractor: PerkExtractor = PerkExtractor(extractor)
@@ -11666,10 +12818,13 @@ if __name__ == "__main__":
                         else:
                             perk_path = repo_game_dir / "perks.cdtb.bin.json"
                         perkExtractor.build_perk_dataframe(debug = True, path = perk_path.as_posix())
-                        if single_export:
-                            perkExtractor.export_perk_data()
-                        else:
-                            perkExtractor.enqueue_perk_dataframe()
+                        if wb_export:
+                            if single_export:
+                                perkExtractor.export_perk_data()
+                            else:
+                                perkExtractor.enqueue_perk_dataframe()
+                        if web_export:
+                            perkExtractor.to_html()
                     elif dOption == 5:
                         logPrint("[%d/%d]正在调试英雄数据……\nDebugging champion data ..." %(nDataOption_iter, nDataOptions))
                         championExtractor1: ChampionExtractor = ChampionExtractor(extractor)
@@ -11685,31 +12840,39 @@ if __name__ == "__main__":
                                 repo_game_dir / "data/characters"
                             ]
                         championExtractor1.build_champion_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), champion_paths)))
-                        if single_export:
-                            championExtractor1.export_champion_data()
-                        else:
-                            championExtractor1.enqueue_champion_dataframe()
+                        if wb_export:
+                            if single_export:
+                                championExtractor1.export_champion_data()
+                            else:
+                                championExtractor1.enqueue_champion_dataframe()
+                        if web_export:
+                            championExtractor1.to_html()
                     elif dOption == 6:
                         logPrint("[%d/%d]正在调试角色数据……\nDebugging character data ..." %(nDataOption_iter, nDataOptions))
                         championExtractor2: ChampionExtractor = ChampionExtractor(extractor)
                         championExtractor2.set_mode(True)
                         if dir_type == "extract":
                             character_paths: list[Path] = [
+                                extract_plugins_dir / "rcp-be-lol-game-data/global/zh_cn/v1/champion-summary.json",
                                 extract_game_dir / "data/maps/shipping/map22/map22.bin.json",
                                 extract_game_dir / "data/characters",
                                 extract_game_dir / "characters"
                             ]
                         else:
                             character_paths = [
+                                repo_plugins_dir / "rcp-be-lol-game-data/global/zh_cn/v1/champion-summary.json",
                                 repo_game_dir / "data/maps/shipping/map22/map22.bin.json",
                                 repo_game_dir / "data/characters",
                                 repo_game_dir / "characters"
                             ]
                         championExtractor2.build_champion_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), character_paths)))
-                        if single_export:
-                            championExtractor2.export_champion_data()
-                        else:
-                            championExtractor2.enqueue_champion_dataframe()
+                        if wb_export:
+                            if single_export:
+                                championExtractor2.export_champion_data()
+                            else:
+                                championExtractor2.enqueue_champion_dataframe()
+                        if web_export:
+                            championExtractor2.to_html()
                     elif dOption == 7:
                         logPrint("[%d/%d]正在调试装备数据……\nDebugging item data ..." %(nDataOption_iter, nDataOptions))
                         itemExtractor: ItemExtractor = ItemExtractor(extractor)
@@ -11718,10 +12881,13 @@ if __name__ == "__main__":
                         else:
                             item_path = repo_game_dir / "items.cdtb.bin.json"
                         itemExtractor.build_item_dataframe(debug = True, path = item_path.as_posix())
-                        if single_export:
-                            itemExtractor.export_item_data()
-                        else:
-                            itemExtractor.enqueue_item_dataframe()
+                        if wb_export:
+                            if single_export:
+                                itemExtractor.export_item_data()
+                            else:
+                                itemExtractor.enqueue_item_dataframe()
+                        if web_export:
+                            itemExtractor.to_html()
                     elif dOption == 8:
                         logPrint("[%d/%d]正在调试强化符文数据……\nDebugging augment data ..." %(nDataOption_iter, nDataOptions))
                         augmentExtractor: AugmentExtractor = AugmentExtractor(extractor)
@@ -11744,10 +12910,13 @@ if __name__ == "__main__":
                                 repo_game_dir / "maps/modespecificdata/kiwi_jade.bin.json"
                             ]
                         augmentExtractor.build_augment_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), augment_paths)))
-                        if single_export:
-                            augmentExtractor.export_augment_data()
-                        else:
-                            augmentExtractor.enqueue_augment_dataframe()
+                        if wb_export:
+                            if single_export:
+                                augmentExtractor.export_augment_data()
+                            else:
+                                augmentExtractor.enqueue_augment_dataframe()
+                        if web_export:
+                            augmentExtractor.to_html()
                     elif dOption == 9:
                         logPrint("[%d/%d]正在调试锻造器数据……\nDebugging anvil data ..." %(nDataOption_iter, nDataOptions))
                         anvilExtractor: AnvilExtractor = AnvilExtractor(extractor)
@@ -11762,10 +12931,13 @@ if __name__ == "__main__":
                                 repo_game_dir / "data/maps/shipping/map12/map12.bin.json"
                             ]
                         anvilExtractor.build_anvil_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), anvil_paths)))
-                        if single_export:
-                            anvilExtractor.export_anvil_data()
-                        else:
-                            anvilExtractor.enqueue_anvil_dataframe()
+                        if wb_export:
+                            if single_export:
+                                anvilExtractor.export_anvil_data()
+                            else:
+                                anvilExtractor.enqueue_anvil_dataframe()
+                        if web_export:
+                            anvilExtractor.to_html()
                     elif dOption == 10:
                         logPrint("[%d/%d]正在调试斗魂竞技场回合数据……\nDebugging Arena round data ..." %(nDataOption_iter, nDataOptions))
                         cherryRoundExtractor: CherryRoundExtractor = CherryRoundExtractor(extractor)
@@ -11774,10 +12946,13 @@ if __name__ == "__main__":
                         else:
                             CherryRound_path = repo_game_dir / "data/maps/shipping/map30/map30.bin.json"
                         cherryRoundExtractor.build_CherryRound_dataframe(debug = True, path = CherryRound_path.as_posix())
-                        if single_export:
-                            cherryRoundExtractor.export_CherryRound_data()
-                        else:
-                            cherryRoundExtractor.enqueue_CherryRound_dataframe()
+                        if wb_export:
+                            if single_export:
+                                cherryRoundExtractor.export_CherryRound_data()
+                            else:
+                                cherryRoundExtractor.enqueue_CherryRound_dataframe()
+                        if web_export:
+                            cherryRoundExtractor.to_html()
                     elif dOption == 11:
                         logPrint("[%d/%d]正在调试场景英雄数据……\nDebugging Cameo data ..." %(nDataOption_iter, nDataOptions))
                         cameoExtractor: CameoExtractor = CameoExtractor(extractor)
@@ -11786,15 +12961,16 @@ if __name__ == "__main__":
                         else:
                             cameoPath = repo_game_dir / "data/maps/shipping/map30/map30.bin.json"
                         cameoExtractor.build_cameo_dataframe(debug = True, path = cameoPath.as_posix())
-                        if single_export:
-                            cameoExtractor.export_cameo_data()
-                        else:
-                            cameoExtractor.enqueue_cameo_dataframe()
+                        if wb_export:
+                            if single_export:
+                                cameoExtractor.export_cameo_data()
+                            else:
+                                cameoExtractor.enqueue_cameo_dataframe()
                     elif dOption == 12:
                         logPrint("[%d/%d]正在调试荣誉嘉宾数据……\nDebugging Guest of Honor data ..." %(nDataOption_iter, nDataOptions))
                         gohExtractor: GoHExtractor = GoHExtractor(extractor)
                         if dir_type == "extract":
-                            GoHPaths: list[str] = [
+                            GoHPaths: list[Path] = [
                                 extract_game_dir / "data/maps/shipping/map30/map30.bin.json",
                                 extract_game_dir / "maps/modespecificdata/cherry.bin.json"
                             ]
@@ -11804,10 +12980,13 @@ if __name__ == "__main__":
                                 repo_game_dir / "maps/modespecificdata/cherry.bin.json"
                             ]
                         gohExtractor.build_GoH_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), GoHPaths)))
-                        if single_export:
-                            gohExtractor.export_GoH_data()
-                        else:
-                            gohExtractor.enqueue_GoH_dataframe()
+                        if wb_export:
+                            if single_export:
+                                gohExtractor.export_GoH_data()
+                            else:
+                                gohExtractor.enqueue_GoH_dataframe()
+                        if web_export:
+                            gohExtractor.to_html()
                     elif dOption == 13:
                         logPrint("[%d/%d]正在调试云顶之弈数据……\nDebugging TFT data ..." %(nDataOption_iter, nDataOptions))
                         tftExtractor: TFTExtractor = TFTExtractor(extractor)
@@ -11816,10 +12995,13 @@ if __name__ == "__main__":
                         else:
                             map22_path = repo_game_dir / "data/maps/shipping/map22/map22.bin.json"
                         tftExtractor.build_tft_dataframe(debug = True, path = map22_path.as_posix())
-                        if single_export:
-                            tftExtractor.export_tft_data()
-                        else:
-                            tftExtractor.enqueue_tft_dataframe()
+                        if wb_export:
+                            if single_export:
+                                tftExtractor.export_tft_data()
+                            else:
+                                tftExtractor.enqueue_tft_dataframe()
+                        if web_export:
+                            tftExtractor.to_html()
                     elif dOption == 14:
                         logPrint("[%d/%d]正在调试字体数据……\nDebugging font data ..." %(nDataOption_iter, nDataOptions))
                         fontExtractor: FontExtractor = FontExtractor(extractor)
@@ -11828,10 +13010,11 @@ if __name__ == "__main__":
                         else:
                             font_path = repo_game_dir / "ux/fonts.cdtb.bin.json"
                         fontExtractor.build_font_dataframe(debug = True, path = font_path.as_posix())
-                        if single_export:
-                            fontExtractor.export_font_data()
-                        else:
-                            fontExtractor.enqueue_font_dataframe()
+                        if wb_export:
+                            if single_export:
+                                fontExtractor.export_font_data()
+                            else:
+                                fontExtractor.enqueue_font_dataframe()
         return 0
 
     #个性化函数（Personalized function）
