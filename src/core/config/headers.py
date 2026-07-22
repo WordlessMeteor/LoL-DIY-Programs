@@ -6379,7 +6379,7 @@ augmentModifier_header: dict[str, str] = {
     "{629a3429}_content_en_burn": "附加文本（英文/去格式化）"
 }
 ##锻造器（Anvil）
-CherryAnvil_header: dict[str, str] = {
+anvil_header: dict[str, str] = {
     "key": "主键",
     "AugmentNameId": "锻造器代码",
     "Enabled": "可用性",
