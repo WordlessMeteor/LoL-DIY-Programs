@@ -56,6 +56,7 @@ def create_workbook_win32(wbPath: str, excel: Optional[win32.CDispatch] = None, 
         logPrint(e)
         logPrint("工作表名称设置失败。请检查名称是否过或者包含非法字符。将使用默认名称。\nSheet name failed to be set. Please check if the name is too long or contains anyu illegal character. The default name will be used.")
     del worksheet #消除工作表变量以解除其与Python运行环境的关联（Eliminate the worksheet variable to unbind it from Python runtime environment）
+    os.makedirs(os.path.dirname(wbPath), exist_ok = True)
     workbook.SaveAs(wbPath) #保存工作簿。注意这个方法的参数中的路径分隔符必须是反斜杠，不能是正斜杠（Save the workbook. Note that the path separator in the parameter of this method must be a backslash instead of a slash）
     workbook.Close() #关闭工作簿对象（Close the workbook object）
     del workbook #消除工作簿变量以解除其与Python运行环境的关联（Eliminate the workbook variable to unbind it from Python runtime environment）
