@@ -3,15 +3,15 @@ Sub FreezeAndFilterGameDataSheets()
     Dim ws As Worksheet
     Dim lastCol As Long
     For Each ws In ThisWorkbook.Worksheets
-        If ws.Name = "指令集（CheatSet）" Or Right$(ws.Name, 8) = "CheatSet" Or ws.Name = "指令（Cheat）" Or Right$(ws.Name, 11) = "Cheat" _
+        If ws.Name = "指令集（CheatSet）" Or Right$(ws.Name, 8) = "CheatSet" Or ws.Name = "指令（Cheat）" Or Right$(ws.Name, 5) = "Cheat" _
                 Or ws.Name = "符文系（PerkStyles）" Or Right$(ws.Name, 10) = "PerkStyles" Or ws.Name = "符文（Perks）" Or Right$(ws.Name, 5) = "Perks" _
                 Or ws.Name = "召唤师技能（Summoner Spells）" Or Right$(ws.Name, 14) = "SummonerSpells" _
-                Or ws.Name = "英雄（Champions）" Or Right$(ws.Name, 9) = "Champions" _
-                Or ws.Name = "英雄技能（Champion Spells）" Or Right$(ws.Name, 14) = "ChampionSpells" Or ws.Name = "角色（Characters）" Or Right$(ws.Name, 10) = "Characters" _
-                Or ws.Name = "角色技能（Character Spells）" Or Right$(ws.Name, 16) = "CharacterSpells" _
+                Or ws.Name = "英雄（Champions）" Or Right$(ws.Name, 9) = "Champions" Or ws.Name = "英雄技能（Champion Spells）" Or Right$(ws.Name, 14) = "ChampionSpells" Or ws.Name = "角色（Characters）" Or Right$(ws.Name, 10) = "Characters" _
+                Or ws.Name = "角色技能（Character Spells）" Or Right$(ws.Name, 15) = "CharacterSpells" _
                 Or ws.Name = "装备（Items）" Or Right$(ws.Name, 5) = "Items" Or ws.Name = "装备分组（Item Groups）" Or Right$(ws.Name, 10) = "ItemGroups" Or ws.Name = "装备修饰（Item Modifiers）" Or Right$(ws.Name, 13) = "ItemModifiers" _
                 Or ws.Name = "斗魂竞技场强化符文（Cherry Augments）" Or Right$(ws.Name, 14) = "CherryAugments" Or ws.Name = "无尽狂潮强化（Swarm Augments）" Or Right$(ws.Name, 13) = "SwarmAugments" _
                 Or ws.Name = "海克斯大乱斗强化符文（Kiwi Augments）" Or Right$(ws.Name, 12) = "KiwiAugments" Or ws.Name = "海克斯大乱斗强化符文套装（Kiwi Augment Set）" Or Right$(ws.Name, 14) = "KiwiAugmentSet" Or ws.Name = "强化符文修饰（Augment Modifiers）" Or Right$(ws.Name, 16) = "AugmentModifiers" Or ws.Name = "海克斯大乱斗任务线（Kiwi Questlines）" Or Right$(ws.Name, 14) = "KiwiQuestlines" _
+                Or ws.Name = "海克斯大乱斗经典强化符文（KiwiJade Augments）" Or Right$(ws.Name, 16) = "KiwiJadeAugments" _
                 Or ws.Name = "斗魂竞技场锻造器（Cherry Anvils）" Or Right$(ws.Name, 12) = "CherryAnvils" Or ws.Name = "海克斯大乱斗锻造器（Kiwi Anvils）" Or Right$(ws.Name, 10) = "KiwiAnvils" _
                 Or ws.Name = "斗魂竞技场回合列表（Cherry Round List）" Or Right$(ws.Name, 15) = "CherryRoundList" Or ws.Name = "斗魂竞技场回合（Cherry Round）" Or Right$(ws.Name, 11) = "CherryRound" Or ws.Name = "斗魂竞技场阶段（Cherry Phase）" Or Right$(ws.Name, 11) = "CherryPhase" Or ws.Name = "斗魂竞技场回合阶段（Cherry Round Phase）" Or Right$(ws.Name, 16) = "CherryRoundPhase" _
                 Or ws.Name = "斗魂竞技场场景英雄（Cherry Cameos）" Or Right$(ws.Name, 12) = "CherryCameos" Or ws.Name = "斗魂竞技场荣誉嘉宾（Cherry Guests）" Or Right$(ws.Name, 12) = "CherryGuests" _
@@ -38,10 +38,11 @@ Sub FreezeAndFilterGameDataSheets()
                     Or ws.Name = "角色技能（Character Spells）" Or Right$(ws.Name, 15) = "CharacterSpells" _
                     Or ws.Name = "云顶之弈赛季（TFT Set）" Or Right$(ws.Name, 6) = "TFTSet" _
                     Or ws.Name = "云顶之弈装备（TFT Items）" Or Right$(ws.Name, 8) = "TFTItems" _
-                    Or ws.Name = "斗魂竞技场强化符文（Cherry Augments）" Or Right$(ws.Name, 7) = "CherryAugments" _
-                    Or ws.Name = "海克斯大乱斗强化符文（Kiwi Augments）" Or Right$(ws.Name, 7) = "KiwiAugments" _
-                    Or ws.Name = "斗魂竞技场锻造器（Cherry Anvils）" Or Right$(ws.Name, 7) = "CherryAnvils" _
-                    Or ws.Name = "海克斯大乱斗锻造器（Kiwi Anvils）" Or Right$(ws.Name, 7) = "KiwiAnvils" Then
+                    Or ws.Name = "斗魂竞技场强化符文（Cherry Augments）" Or Right$(ws.Name, 14) = "CherryAugments" _
+                    Or ws.Name = "海克斯大乱斗强化符文（Kiwi Augments）" Or Right$(ws.Name, 12) = "KiwiAugments" _
+                    Or ws.Name = "海克斯大乱斗经典强化符文（KiwiJade Augments）" Or Right$(ws.Name, 16) = "KiwiJadeAugments" _
+                    Or ws.Name = "斗魂竞技场锻造器（Cherry Anvils）" Or Right$(ws.Name, 12) = "CherryAnvils" _
+                    Or ws.Name = "海克斯大乱斗锻造器（Kiwi Anvils）" Or Right$(ws.Name, 10) = "KiwiAnvils" Then
                 ws.Range("I3").Select '冻结前两行和前八列（Freeze the first two rows and eight columns）
             ElseIf ws.Name = "符文系（PerkStyles）" Or Right$(ws.Name, 10) = "PerkStyles" _
                     Or ws.Name = "装备修饰（Item Modifiers）" Or Right$(ws.Name, 13) = "ItemModifiers" _

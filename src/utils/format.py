@@ -52,7 +52,8 @@ def optimize_bool_display(df: pandas.DataFrame, onTrue: str = "√", onFalse: st
     :param onFalse: 用于替换逻辑列的单元格为False的字符串。默认为空字符串。<br>The string to replace "False"s in a boolean column. An empty string by default.
     :type onFalse: str
     
-    本方法对原数据框进行原位替换，因此不返回值。<br>This method performs in-vivo substitutions on the original dataframe and thus doesn't return any value.
+    :return: 本方法对原数据框进行原位替换，因此不返回值。<br>This method performs in-vivo substitutions on the original dataframe and thus doesn't return any value.
+    :rtype: None
     '''
     for column in df:
         if df[column].dtype == "bool":
