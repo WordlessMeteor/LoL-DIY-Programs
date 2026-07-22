@@ -778,8 +778,9 @@ class LoLDataExtractor:
         self.patch: str = "" #完整版本号（Complete version）
         self.patch_number: str = "" #完整版本号的数字部分（The digit part of the complete version）
         self.version_df: pandas.DataFrame = pandas.DataFrame() #覆盖每个工作簿A1单元格的版本数据框（Version dataframe that overlays each workbook's A1 cell）
-        self.folder: str = "" #工作簿的保存目录（Directory of the workbook to export into）
+        self.folder: str = "" #主要导出目录（Primary export directory）
         self.wbPath: str = "" #工作簿的路径（Path of the workbook to export）
+        self.webFolder: str = "" #网页文件的导出目录（Export directory of web files）
         self.sheet_naming_fold: bool = False #工作表是否使用适用于在同一个工作簿中展现不同版本数据的命名方式（Whether the sheet uses the naming system that favors displaying data of different versions in a single workbook）
         self.fileExportList_ready: bool = False #标记文件导出列表是否准备就绪（Marks whether the file export list is prepared）
         self.files_exported: list[str] = [] #文件导出列表（File export list）
@@ -794,22 +795,27 @@ class LoLDataExtractor:
         self.mainstringtable_target: dict[str, int | dict[str, str]] = {"entries": {}, "version": 5}
         self.mainstringtable_default: dict[str, int | dict[str, str]] = {"entries": {}, "version": 5}
     
-    def make_dir(self) -> None: #基于对象创建保存目录。对外使用（Create the export directory based on the object. For outside use）
+    def make_dir(self) -> None: #基于对象创建保存目录。对外使用（Create the export directory based on the object. For external use）
         '''
         基于用户传入的文件夹或者通过set_dir方法指定的文件夹新建保存目录。<br>Create the export directory based on the folder passed in by the user or specified by `set_dir` method.
         
         该方法优先使用folder属性指定的目录，其次使用wbPath属性指定的目录。<br>This method uses the directory specified by `folder` attribute first, and then that specified by `wbPath` attribute.
         '''
         logPrint = self.log.logPrint
-        if self.folder != "":
-            os.makedirs(os.path.join(self.folder, "preview"), exist_ok = True)
-        elif self.wbPath != "":
-            self.folder = os.path.dirname(self.wbPath)
-            os.makedirs(os.path.join(self.folder, "preview"), exist_ok = True)
+        #创建主要导出目录（Create the primary export directory）
+        if self.folder == "" and self.wbPath == "":
+            logPrint("尚未指定工作簿保存目录！\nWorkbook export directory not specified yet!")
         else:
-            logPrint("尚未指定文件保存目录！\nExport directory not specified yet!")
+            if self.folder == "":
+                self.folder = os.path.dirname(self.wbPath)
+            os.makedirs(self.folder, exist_ok = True)
+        #创建网页导出目录（Create the web export directory）
+        if self.webFolder != "":
+            os.makedirs(self.webFolder, exist_ok = True)
+        else:
+            logPrint("尚未指定网页保存目录！\nWeb export directory not specified yet!")
     
-    def set_dir(self, folder: str) -> str: #手动指定保存目录。对外使用（Manually specify the export directory. For outside use）
+    def set_dir(self, folder: str) -> str: #手动指定保存目录。对外使用（Manually specify the export directory. For external use）
         '''
         手动设置工作簿的保存目录。<br>Manually set the export directory of the workbook.
         
@@ -821,7 +827,19 @@ class LoLDataExtractor:
         self.folder = folder.replace("\\", "/")
         return self.folder
     
-    def set_path(self, wbPath: str) -> str: #手动指定工作簿路径。对外使用（Manually specify the workbook path. For outside use）
+    def set_webDir(self, folder: str) -> str: #手动指定网页文件保存目录。对外使用（Manually specify the export directory of web files. For external use）
+        '''
+        手动设置网页文件的保存目录。<br>Manually set the export directory of html files.
+        
+        :param folder: 网页文件导出目录。<br>Html file export directory.
+        :type folder: str
+        :return: 目录字符串。反斜杠将被替换为斜杠。<br>Directory string. Backslashes will be replaced by forward slashes.
+        :rtype: str
+        '''
+        self.webFolder = folder.replace("\\", "/")
+        return self.webFolder
+    
+    def set_wbPath(self, wbPath: str) -> str: #手动指定工作簿路径。对外使用（Manually specify the workbook path. For external use）
         '''
         手动设置工作簿的保存路径。<br>Manually set the workbook path.
         
@@ -1227,15 +1245,24 @@ class LoLDataExtractor:
         self.patch = self.patch_number = ""
         self.version_df = pandas.DataFrame()
     
-    def init_path_and_dir(self) -> None | tuple[str, str]: #基于对象的版本号初始化保存目录和工作簿路径（Initialize the export directory and the workbook path based on the patch number of the object）
+    def init_path_and_dir(self) -> int: #基于对象的版本号和语言初始化导出目录和工作簿路径（Initialize the export directory and the workbook path based on the patch number and language of the object）
         '''
-        在指定版本号的情况下，初始化工作簿输出目录及其路径。<br>When the patch number is specified, initialize the export directory and its path of the workbook.
+        在指定版本号的情况下，初始化导出目录及其路径。<br>When the patch number is specified, initialize the export directories and paths
+        
+        :return: 状态码。<br>Status code.
+
+            - 0: 设置完成。<br>Configuration complete.
+            - 1: 版本号未准备就绪。<br>Patch number not ready.
+            - 2: 语言未准备就绪。<br>Language not ready.
+        :rtype: int
         '''
         logPrint = self.log.logPrint
         if self.patch == "":
             logPrint("尚未指定完整版本号！\nPatch number not specified yet!")
+            return 1
         elif not self.locale in language_ddragon:
             logPrint("语言不正确。\nInvalid language.")
+            return 2
         else:
             self.folder = os.path.expanduser("~/Desktop/LoLGameDataExtract")
             wbContent: str = "游戏数据提取" if self.locale in self.ZH_LOCALE else "GameDataExtract"
@@ -1243,7 +1270,8 @@ class LoLDataExtractor:
             version: str = "AllPatches" if self.sheet_naming_fold else self.patch
             wbName: str = f"{wbContent}_{locale}_{version}.xlsx" #工作簿命名结构（Structure of the workbook's name）
             self.wbPath = os.path.join(self.folder, wbName).replace("\\", "/")
-            return (self.folder, self.wbPath)
+            self.webFolder = os.path.join(self.folder, "preview", self.patch_number, self.locale).replace("\\", "/")
+            return 0
     
     def set_language(self, locale: str) -> None:
         '''
@@ -5216,7 +5244,7 @@ class PerkExtractor(LoLDataExtractor):
         perkstyle_htmltable = '<meta charset="UTF-8">\n' + perkstyle_htmltable #以兼容中文的编码来保存（Save with a meta encoding compatible with Chinese）
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"Perkstyle_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"Perkstyle_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(perkstyle_htmltable)
         #符文（Perk）
         perk_df_web: pandas.DataFrame = self.perk_df.copy(deep = True)
@@ -5271,7 +5299,7 @@ class PerkExtractor(LoLDataExtractor):
         perk_htmltable = '<meta charset="UTF-8">\n' + perk_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"Perk_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"Perk_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(perk_htmltable)
 
 class SummonerSpellExtractor(LoLDataExtractor):
@@ -5525,7 +5553,7 @@ class SummonerSpellExtractor(LoLDataExtractor):
         summonerSpell_htmltable = '<meta charset="UTF-8">\n' + summonerSpell_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"SummonerSpell_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"SummonerSpell_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(summonerSpell_htmltable)
 
 class ChampionExtractor(LoLDataExtractor):
@@ -6526,7 +6554,7 @@ class ChampionExtractor(LoLDataExtractor):
         webContent: str = "CharacterSpell" if self.useAllCharacter else "ChampionSpell"
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"{webContent}_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"{webContent}_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(champion_spell_htmltable)
 
 class ItemExtractor(LoLDataExtractor):
@@ -6955,7 +6983,7 @@ class ItemExtractor(LoLDataExtractor):
         item_htmltable = '<meta charset="UTF-8">\n' + item_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"Item_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"Item_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(item_htmltable)
 
 class AugmentExtractor(LoLDataExtractor):
@@ -7803,7 +7831,7 @@ class AugmentExtractor(LoLDataExtractor):
         CherryAugment_htmltable = '<meta charset="UTF-8">\n' + CherryAugment_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"CherryAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"CherryAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(CherryAugment_htmltable)
         #无尽狂潮强化符文（Swarm augment）
         SwarmAugment_df_web: pandas.DataFrame = self.SwarmAugment_df.copy(deep = True)
@@ -7835,7 +7863,7 @@ class AugmentExtractor(LoLDataExtractor):
         SwarmAugment_htmltable = '<meta charset="UTF-8">\n' + SwarmAugment_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"SwarmAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"SwarmAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(SwarmAugment_htmltable)
         #海克斯大乱斗强化符文（ARAM: Mayhem augment）
         KiwiAugment_df_web: pandas.DataFrame = self.KiwiAugment_df.copy(deep = True)
@@ -7874,7 +7902,7 @@ class AugmentExtractor(LoLDataExtractor):
         KiwiAugment_htmltable = '<meta charset="UTF-8">\n' + KiwiAugment_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"KiwiAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"KiwiAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(KiwiAugment_htmltable)
         #海克斯大乱斗强化符文套装（ARAM: Mayhem augment set）
         KiwiAugmentSet_df_web: pandas.DataFrame = self.KiwiAugmentSet_df.copy(deep = True)
@@ -7908,7 +7936,7 @@ class AugmentExtractor(LoLDataExtractor):
         KiwiAugmentSet_htmltable = '<meta charset="UTF-8">\n' + KiwiAugmentSet_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"KiwiAugmentSet_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"KiwiAugmentSet_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(KiwiAugmentSet_htmltable)
         #海克斯大乱斗经典模式版强化符文（ARAM: Mayhem Classic-ish augments）
         KiwiJadeAugment_df_web: pandas.DataFrame = self.KiwiJadeAugment_df.copy(deep = True)
@@ -7945,7 +7973,7 @@ class AugmentExtractor(LoLDataExtractor):
         KiwiJadeAugment_htmltable = '<meta charset="UTF-8">\n' + KiwiJadeAugment_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"KiwiJadeAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"KiwiJadeAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(KiwiJadeAugment_htmltable)
 
 class AnvilExtractor(LoLDataExtractor):
@@ -8301,7 +8329,7 @@ class AnvilExtractor(LoLDataExtractor):
         CherryAnvil_htmltable = '<meta charset="UTF-8">\n' + CherryAnvil_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"CherryAnvil_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"CherryAnvil_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(CherryAnvil_htmltable)
         #海克斯大乱斗锻造器（ARAM: Mayhem anvil）
         KiwiAnvil_df_web: pandas.DataFrame = self.KiwiAnvil_df.copy(deep = True)
@@ -8333,7 +8361,7 @@ class AnvilExtractor(LoLDataExtractor):
         KiwiAnvil_htmltable = '<meta charset="UTF-8">\n' + KiwiAnvil_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"KiwiAnvil_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"KiwiAnvil_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(KiwiAnvil_htmltable)
 
 class CherryRoundExtractor(LoLDataExtractor):
@@ -8744,7 +8772,7 @@ class CherryRoundExtractor(LoLDataExtractor):
         CherryRoundPhase_htmltable = '<meta charset="UTF-8">\n' + CherryRoundPhase_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"CherryRoundPhase_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"CherryRoundPhase_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(CherryRoundPhase_htmltable)
 
 class CameoExtractor(LoLDataExtractor):
@@ -9306,7 +9334,7 @@ class GoHExtractor(LoLDataExtractor):
         GoH_htmltable = '<meta charset="UTF-8">\n' + GoH_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"GoH_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"GoH_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(GoH_htmltable)
 
 class TFTExtractor(LoLDataExtractor):
@@ -10829,7 +10857,7 @@ class TFTExtractor(LoLDataExtractor):
         TFTShop_htmltable = '<meta charset="UTF-8">\n' + TFTShop_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"TFTShop_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"TFTShop_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(TFTShop_htmltable)
         #云顶之弈回合阶段（TFT Stage Round）
         TFTStageRound_df_web: pandas.DataFrame = pandas.merge(self.TFTStageRound_df, self.TFTRound_df.rename(columns = {"key": "roundKey"}), left_on = "round", right_on = "roundKey", how = "inner")
@@ -10879,7 +10907,7 @@ class TFTExtractor(LoLDataExtractor):
         TFTStageRound_htmltable = '<meta charset="UTF-8">\n' + TFTStageRound_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"TFTStageRound_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"TFTStageRound_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(TFTStageRound_htmltable)
         #云顶之弈传送门（TFT Portal）
         TFTPortal_df_web: pandas.DataFrame = self.TFTPortal_df.copy(deep = True)
@@ -10913,7 +10941,7 @@ class TFTExtractor(LoLDataExtractor):
         TFTPortal_htmltable = '<meta charset="UTF-8">\n' + TFTPortal_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"TFTPortal_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"TFTPortal_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(TFTPortal_htmltable)
         #云顶之弈装备（TFT Items）
         TFTItem_df_web: pandas.DataFrame = pandas.concat([self.TFTItem_df.iloc[:1, :], self.TFTItem_df[self.TFTItem_df["IsAugment"] == ""]], ignore_index = True)
@@ -10955,7 +10983,7 @@ class TFTExtractor(LoLDataExtractor):
         TFTItem_htmltable = '<meta charset="UTF-8">\n' + TFTItem_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"TFTItem_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"TFTItem_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(TFTItem_htmltable)
         #云顶之弈强化符文（TFT Augments）
         TFTAugment_df_web: pandas.DataFrame = pandas.concat([self.TFTItem_df.iloc[:1, :], self.TFTItem_df[self.TFTItem_df["IsAugment"] == "√"]], ignore_index = True)
@@ -10997,7 +11025,7 @@ class TFTExtractor(LoLDataExtractor):
         TFTAugment_htmltable = '<meta charset="UTF-8">\n' + TFTAugment_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"TFTAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"TFTAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(TFTAugment_htmltable)
         #云顶之弈羁绊（TFT Traits）
         TFTTrait_df_web: pandas.DataFrame = self.TFTTrait_df.copy(deep = True)
@@ -11030,7 +11058,7 @@ class TFTExtractor(LoLDataExtractor):
         TFTTrait_htmltable = '<meta charset="UTF-8">\n' + TFTTrait_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"TFTTrait_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"TFTTrait_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(TFTTrait_htmltable)
         #云顶之弈通告（TFT Annoucements）
         TFTAnnouncement_df_web: pandas.DataFrame = self.TFTAnnouncement_df.copy(deep = True)
@@ -11062,7 +11090,7 @@ class TFTExtractor(LoLDataExtractor):
         TFTAnnouncement_htmltable = '<meta charset="UTF-8">\n' + TFTAnnouncement_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
-        with open(os.path.join(self.folder, "preview", f"TFTAnnouncement_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+        with open(os.path.join(self.webFolder, f"TFTAnnouncement_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
             fp.write(TFTAnnouncement_htmltable)
 
 class FontExtractor(LoLDataExtractor):
