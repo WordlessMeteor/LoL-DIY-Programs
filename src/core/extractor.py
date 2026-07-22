@@ -5212,6 +5212,7 @@ class PerkExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         perkstyle_htmltable: str = perkstyle_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         perkstyle_htmltable = '<meta charset="UTF-8">\n' + perkstyle_htmltable #以兼容中文的编码来保存（Save with a meta encoding compatible with Chinese）
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -5266,6 +5267,7 @@ class PerkExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         perk_htmltable: str = perk_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         perk_htmltable = '<meta charset="UTF-8">\n' + perk_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -5519,6 +5521,7 @@ class SummonerSpellExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         summonerSpell_htmltable: str = summonerSpell_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         summonerSpell_htmltable = '<meta charset="UTF-8">\n' + summonerSpell_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -6518,6 +6521,7 @@ class ChampionExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         champion_spell_htmltable: str = champion_spell_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         champion_spell_htmltable = '<meta charset="UTF-8">\n' + champion_spell_htmltable
         webContent: str = "CharacterSpell" if self.useAllCharacter else "ChampionSpell"
         locale: str = self.locale.replace("_", "-")
@@ -6947,6 +6951,7 @@ class ItemExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         item_htmltable: str = item_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         item_htmltable = '<meta charset="UTF-8">\n' + item_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -7794,6 +7799,7 @@ class AugmentExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         CherryAugment_htmltable: str = CherryAugment_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         CherryAugment_htmltable = '<meta charset="UTF-8">\n' + CherryAugment_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -7825,6 +7831,7 @@ class AugmentExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         SwarmAugment_htmltable: str = SwarmAugment_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         SwarmAugment_htmltable = '<meta charset="UTF-8">\n' + SwarmAugment_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -7863,6 +7870,7 @@ class AugmentExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         KiwiAugment_htmltable: str = KiwiAugment_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         KiwiAugment_htmltable = '<meta charset="UTF-8">\n' + KiwiAugment_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -7896,6 +7904,7 @@ class AugmentExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         KiwiAugmentSet_htmltable: str = KiwiAugmentSet_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         KiwiAugmentSet_htmltable = '<meta charset="UTF-8">\n' + KiwiAugmentSet_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -7932,6 +7941,7 @@ class AugmentExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         KiwiJadeAugment_htmltable: str = KiwiJadeAugment_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         KiwiJadeAugment_htmltable = '<meta charset="UTF-8">\n' + KiwiJadeAugment_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -8287,6 +8297,7 @@ class AnvilExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         CherryAnvil_htmltable: str = CherryAnvil_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         CherryAnvil_htmltable = '<meta charset="UTF-8">\n' + CherryAnvil_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -8318,6 +8329,7 @@ class AnvilExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         KiwiAnvil_htmltable: str = KiwiAnvil_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         KiwiAnvil_htmltable = '<meta charset="UTF-8">\n' + KiwiAnvil_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -8728,6 +8740,7 @@ class CherryRoundExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         CherryRoundPhase_htmltable: str = CherryRoundPhase_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         CherryRoundPhase_htmltable = '<meta charset="UTF-8">\n' + CherryRoundPhase_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -9289,6 +9302,7 @@ class GoHExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         GoH_htmltable: str = GoH_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         GoH_htmltable = '<meta charset="UTF-8">\n' + GoH_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -10811,6 +10825,7 @@ class TFTExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         TFTShop_htmltable: str = TFTShop_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         TFTShop_htmltable = '<meta charset="UTF-8">\n' + TFTShop_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -10860,6 +10875,7 @@ class TFTExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         TFTStageRound_htmltable: str = TFTStageRound_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         TFTStageRound_htmltable = '<meta charset="UTF-8">\n' + TFTStageRound_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -10893,6 +10909,7 @@ class TFTExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         TFTPortal_htmltable: str = TFTPortal_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         TFTPortal_htmltable = '<meta charset="UTF-8">\n' + TFTPortal_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -10934,6 +10951,7 @@ class TFTExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         TFTItem_htmltable: str = TFTItem_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         TFTItem_htmltable = '<meta charset="UTF-8">\n' + TFTItem_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -10975,6 +10993,7 @@ class TFTExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         TFTAugment_htmltable: str = TFTAugment_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         TFTAugment_htmltable = '<meta charset="UTF-8">\n' + TFTAugment_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -11007,6 +11026,7 @@ class TFTExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         TFTTrait_htmltable: str = TFTTrait_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         TFTTrait_htmltable = '<meta charset="UTF-8">\n' + TFTTrait_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
@@ -11038,6 +11058,7 @@ class TFTExtractor(LoLDataExtractor):
         ##获取网页源代码（Get the web source code）
         TFTAnnouncement_htmltable: str = TFTAnnouncement_df_styled.to_html(escape = False)
         ##导出为网页（Export to web）
+        self.make_dir()
         TFTAnnouncement_htmltable = '<meta charset="UTF-8">\n' + TFTAnnouncement_htmltable
         locale: str = self.locale.replace("_", "-")
         version: str = self.patch
