@@ -5207,100 +5207,102 @@ class PerkExtractor(LoLDataExtractor):
                 logInput()
                 return
         #符文系（Perkstyle）
-        perkstyle_df_web: pandas.DataFrame = self.perkstyle_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        mIconTextureUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.perkstyle_df.loc[1:, "mIconTextureName"].to_list()))
-        perkstyle_df_web.insert(len(perkstyle_df_web.columns), "mIconTextureUrl", ["图标纹理网址"] + mIconTextureUrls)
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "mPerkStyleName",
-            "mPerkStyleId",
-            "mIconTextureUrl",
-            "mDisplayNameLocalizationKey_content_zh",
-            "mDisplayNameLocalizationKey_content_en",
-            "mIsAdvancedStyle",
-            "mTooltipNameLocalizationKey_content_zh",
-            "mTooltipNameLocalizationKey_content_en",
-            "mSlot1 mPerks mDisplayNameLocalizationKey_contents_zh",
-            "mSlot1 mPerks mDisplayNameLocalizationKey_contents_en",
-            "mSlot2 mPerks mDisplayNameLocalizationKey_contents_zh",
-            "mSlot2 mPerks mDisplayNameLocalizationKey_contents_en",
-            "mSlot3 mPerks mDisplayNameLocalizationKey_contents_zh",
-            "mSlot3 mPerks mDisplayNameLocalizationKey_contents_en",
-            "mSlot4 mPerks mDisplayNameLocalizationKey_contents_zh",
-            "mSlot4 mPerks mDisplayNameLocalizationKey_contents_en",
-        ]
-        perkstyle_df_web = perkstyle_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        perkstyle_df_styled: pandas.io.formats.style.Styler = perkstyle_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:6]
-        perkstyle_df_styled = perkstyle_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        perkstyle_htmltable: str = perkstyle_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        perkstyle_htmltable = '<meta charset="UTF-8">\n' + perkstyle_htmltable #以兼容中文的编码来保存（Save with a meta encoding compatible with Chinese）
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"Perkstyle_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(perkstyle_htmltable)
+        if len(self.perkstyle_df) > 1: #只导出含有记录的数据框（Only dataframes with records are exported）
+            perkstyle_df_web: pandas.DataFrame = self.perkstyle_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            mIconTextureUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.perkstyle_df.loc[1:, "mIconTextureName"].to_list()))
+            perkstyle_df_web.insert(len(perkstyle_df_web.columns), "mIconTextureUrl", ["图标纹理网址"] + mIconTextureUrls)
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "mPerkStyleName",
+                "mPerkStyleId",
+                "mIconTextureUrl",
+                "mDisplayNameLocalizationKey_content_zh",
+                "mDisplayNameLocalizationKey_content_en",
+                "mIsAdvancedStyle",
+                "mTooltipNameLocalizationKey_content_zh",
+                "mTooltipNameLocalizationKey_content_en",
+                "mSlot1 mPerks mDisplayNameLocalizationKey_contents_zh",
+                "mSlot1 mPerks mDisplayNameLocalizationKey_contents_en",
+                "mSlot2 mPerks mDisplayNameLocalizationKey_contents_zh",
+                "mSlot2 mPerks mDisplayNameLocalizationKey_contents_en",
+                "mSlot3 mPerks mDisplayNameLocalizationKey_contents_zh",
+                "mSlot3 mPerks mDisplayNameLocalizationKey_contents_en",
+                "mSlot4 mPerks mDisplayNameLocalizationKey_contents_zh",
+                "mSlot4 mPerks mDisplayNameLocalizationKey_contents_en",
+            ]
+            perkstyle_df_web = perkstyle_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            perkstyle_df_styled: pandas.io.formats.style.Styler = perkstyle_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:6]
+            perkstyle_df_styled = perkstyle_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            perkstyle_htmltable: str = perkstyle_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            perkstyle_htmltable = '<meta charset="UTF-8">\n' + perkstyle_htmltable #以兼容中文的编码来保存（Save with a meta encoding compatible with Chinese）
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"Perkstyle_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(perkstyle_htmltable)
         #符文（Perk）
-        perk_df_web: pandas.DataFrame = self.perk_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        mIconTextureUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.perk_df.loc[1:, "mIconTextureName"].to_list()))
-        perk_df_web.insert(len(perk_df_web.columns), "mIconTextureUrl", ["图标纹理网址"] + mIconTextureUrls)
-        ##排序（Order）
-        ###第一关键字——所属符文系（Primary keyword - belonging perkstyle）
-        belonging_perkstyle_weight_map: dict[str, int] = {self.perkstyle_df["mDisplayNameLocalizationKey_content_zh"][1:][i]: i for i in range(1, len(self.perkstyle_df))}
-        belonging_perkstyle_weight_map[""] = len(self.perkstyle_df)
-        ###第二关键字——槽位序号（Secondary keyword - slot index）
-        slotIndex_weight_map: dict[int | str, int] = {_: _ for _ in set(perk_df_web["belonging_perkstyle_slotIndex"][1:]) if isinstance(_, int)}
-        slotIndex_weight_map[""] = max(slotIndex_weight_map.values()) + 1
-        ###插入关键字权重列（Insert keyword weight columns）
-        belonging_perkstyle_weights: list[int] = list(map(lambda x: belonging_perkstyle_weight_map[x], perk_df_web["belonging_perkstyle mDisplayNameLocalizationKey_content_zh"][1:].to_list()))
-        perk_df_web.insert(len(perk_df_web.columns), "perkstyle_weight", ["符文系权重"] + belonging_perkstyle_weights)
-        slotIndex_weights: list[int] = list(map(lambda x: slotIndex_weight_map[x], perk_df_web["belonging_perkstyle_slotIndex"][1:].to_list()))
-        perk_df_web.insert(len(perk_df_web.columns), "slotIndex_weight", ["槽位序号权重"] + slotIndex_weights)
-        ###排序重组（Sort and recombination）
-        perk_df_web = pandas.concat([perk_df_web.iloc[:1, :], perk_df_web.iloc[1:, :].sort_values(by = ["perkstyle_weight", "slotIndex_weight", "mPerkId"], ascending = True)])
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "mPerkName",
-            "mPerkId",
-            "mIconTextureUrl",
-            "mDisplayNameLocalizationKey_content_zh",
-            "mDisplayNameLocalizationKey_content_en",
-            "belonging_perkstyle mDisplayNameLocalizationKey_content_zh",
-            "belonging_perkstyle mDisplayNameLocalizationKey_content_en",
-            "belonging_perkstyle_slotIndex",
-            "mEnabled",
-            "mStackable",
-            "mDefault",
-            "mTooltipNameLocalizationKey_content_zh_burn",
-            "mTooltipNameLocalizationKey_content_en_burn",
-            "mLongDescLocalizationKey_content_zh_burn",
-            "mLongDescLocalizationKey_content_en_burn",
-            "mEndOfGameStatDescriptions_contents_zh",
-            "mEndOfGameStatDescriptions_contents_en",
-        ]
-        perk_df_web = perk_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        perk_df_styled: pandas.io.formats.style.Styler = perk_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:8]
-        perk_df_styled = perk_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        perk_htmltable: str = perk_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        perk_htmltable = '<meta charset="UTF-8">\n' + perk_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"Perk_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(perk_htmltable)
+        if len(self.perk_df) > 1:
+            perk_df_web: pandas.DataFrame = self.perk_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            mIconTextureUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.perk_df.loc[1:, "mIconTextureName"].to_list()))
+            perk_df_web.insert(len(perk_df_web.columns), "mIconTextureUrl", ["图标纹理网址"] + mIconTextureUrls)
+            ##排序（Order）
+            ###第一关键字——所属符文系（Primary keyword - belonging perkstyle）
+            belonging_perkstyle_weight_map: dict[str, int] = {self.perkstyle_df["mDisplayNameLocalizationKey_content_zh"][1:][i]: i for i in range(1, len(self.perkstyle_df))}
+            belonging_perkstyle_weight_map[""] = len(self.perkstyle_df)
+            ###第二关键字——槽位序号（Secondary keyword - slot index）
+            slotIndex_weight_map: dict[int | str, int] = {_: _ for _ in set(perk_df_web["belonging_perkstyle_slotIndex"][1:]) if isinstance(_, int)}
+            slotIndex_weight_map[""] = max(slotIndex_weight_map.values()) + 1
+            ###插入关键字权重列（Insert keyword weight columns）
+            belonging_perkstyle_weights: list[int] = list(map(lambda x: belonging_perkstyle_weight_map[x], perk_df_web["belonging_perkstyle mDisplayNameLocalizationKey_content_zh"][1:].to_list()))
+            perk_df_web.insert(len(perk_df_web.columns), "perkstyle_weight", ["符文系权重"] + belonging_perkstyle_weights)
+            slotIndex_weights: list[int] = list(map(lambda x: slotIndex_weight_map[x], perk_df_web["belonging_perkstyle_slotIndex"][1:].to_list()))
+            perk_df_web.insert(len(perk_df_web.columns), "slotIndex_weight", ["槽位序号权重"] + slotIndex_weights)
+            ###排序重组（Sort and recombination）
+            perk_df_web = pandas.concat([perk_df_web.iloc[:1, :], perk_df_web.iloc[1:, :].sort_values(by = ["perkstyle_weight", "slotIndex_weight", "mPerkId"], ascending = True)])
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "mPerkName",
+                "mPerkId",
+                "mIconTextureUrl",
+                "mDisplayNameLocalizationKey_content_zh",
+                "mDisplayNameLocalizationKey_content_en",
+                "belonging_perkstyle mDisplayNameLocalizationKey_content_zh",
+                "belonging_perkstyle mDisplayNameLocalizationKey_content_en",
+                "belonging_perkstyle_slotIndex",
+                "mEnabled",
+                "mStackable",
+                "mDefault",
+                "mTooltipNameLocalizationKey_content_zh_burn",
+                "mTooltipNameLocalizationKey_content_en_burn",
+                "mLongDescLocalizationKey_content_zh_burn",
+                "mLongDescLocalizationKey_content_en_burn",
+                "mEndOfGameStatDescriptions_contents_zh",
+                "mEndOfGameStatDescriptions_contents_en",
+            ]
+            perk_df_web = perk_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            perk_df_styled: pandas.io.formats.style.Styler = perk_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:8]
+            perk_df_styled = perk_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            perk_htmltable: str = perk_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            perk_htmltable = '<meta charset="UTF-8">\n' + perk_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"Perk_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(perk_htmltable)
 
 class SummonerSpellExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -5519,42 +5521,43 @@ class SummonerSpellExtractor(LoLDataExtractor):
                 logInput()
                 return
         #召唤师技能（Summoner spell）
-        summonerSpell_df_web: pandas.DataFrame = self.summonerSpell_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        imgIconUrls: list[str] = list(map(lambda x: "" if x == "" else "<br>".join(list(map(lambda y: self.url2image(self.assetPath2url(self.version, f"DATA/Spells/Icons2D/{y}" if not "/" in y else y)), eval(x)))), self.summonerSpell_df.loc[1:, "mSpell mImgIconName"].to_list()))
-        summonerSpell_df_web.insert(len(summonerSpell_df_web.columns), "mSpell ImgIconUrl", ["缩略图网址列表"] + imgIconUrls)
-        ##保留小数（Round）
-        summonerSpell_df_web.loc[1:, "mSpell Cooldown {0a3e0478}"] = summonerSpell_df_web.loc[1:, "mSpell Cooldown {0a3e0478}"].apply(lambda x: "" if x == "" else self.aRound(x, 5))
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "ObjectName",
-            "mSpell mPlatformSpellInfo mSpellID",
-            "mSpell ImgIconUrl",
-            "mSpell mPlatformSpellInfo mPlatformEnabled",
-            "mSpell mClientData mTooltipData mLocKeys keyName_content_zh_burn",
-            "mSpell mClientData mTooltipData mLocKeys keyName_content_en_burn",
-            "mSpell Cooldown {0a3e0478}",
-            "mSpell mClientData mTooltipData mLocKeys keySummary_content_zh",
-            "mSpell mClientData mTooltipData mLocKeys keySummary_content_en",
-            "mSpell mClientData mTooltipData mLocKeys keyTooltip_content_zh_burn",
-            "mSpell mClientData mTooltipData mLocKeys keyTooltip_content_en_burn"
-        ]
-        summonerSpell_df_web = summonerSpell_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        summonerSpell_df_styled: pandas.io.formats.style.Styler = summonerSpell_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:7]
-        summonerSpell_df_styled = summonerSpell_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        summonerSpell_htmltable: str = summonerSpell_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        summonerSpell_htmltable = '<meta charset="UTF-8">\n' + summonerSpell_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"SummonerSpell_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(summonerSpell_htmltable)
+        if len(self.summonerSpell_df) > 1:
+            summonerSpell_df_web: pandas.DataFrame = self.summonerSpell_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            imgIconUrls: list[str] = list(map(lambda x: "" if x == "" else "<br>".join(list(map(lambda y: self.url2image(self.assetPath2url(self.version, f"DATA/Spells/Icons2D/{y}" if not "/" in y else y)), eval(x)))), self.summonerSpell_df.loc[1:, "mSpell mImgIconName"].to_list()))
+            summonerSpell_df_web.insert(len(summonerSpell_df_web.columns), "mSpell ImgIconUrl", ["缩略图网址列表"] + imgIconUrls)
+            ##保留小数（Round）
+            summonerSpell_df_web.loc[1:, "mSpell Cooldown {0a3e0478}"] = summonerSpell_df_web.loc[1:, "mSpell Cooldown {0a3e0478}"].apply(lambda x: "" if x == "" else self.aRound(x, 5))
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "ObjectName",
+                "mSpell mPlatformSpellInfo mSpellID",
+                "mSpell ImgIconUrl",
+                "mSpell mPlatformSpellInfo mPlatformEnabled",
+                "mSpell mClientData mTooltipData mLocKeys keyName_content_zh_burn",
+                "mSpell mClientData mTooltipData mLocKeys keyName_content_en_burn",
+                "mSpell Cooldown {0a3e0478}",
+                "mSpell mClientData mTooltipData mLocKeys keySummary_content_zh",
+                "mSpell mClientData mTooltipData mLocKeys keySummary_content_en",
+                "mSpell mClientData mTooltipData mLocKeys keyTooltip_content_zh_burn",
+                "mSpell mClientData mTooltipData mLocKeys keyTooltip_content_en_burn"
+            ]
+            summonerSpell_df_web = summonerSpell_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            summonerSpell_df_styled: pandas.io.formats.style.Styler = summonerSpell_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:7]
+            summonerSpell_df_styled = summonerSpell_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            summonerSpell_htmltable: str = summonerSpell_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            summonerSpell_htmltable = '<meta charset="UTF-8">\n' + summonerSpell_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"SummonerSpell_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(summonerSpell_htmltable)
 
 class ChampionExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -6482,80 +6485,81 @@ class ChampionExtractor(LoLDataExtractor):
                 logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
                 logInput()
                 return
-        #法术（Spell）
-        champion_spell_df_web: pandas.DataFrame = self.champion_spell_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        imgIconUrls: list[str] = list(map(lambda x: "" if x == "" else "<br>".join(list(map(lambda y: self.url2image(self.assetPath2url(self.version, f"DATA/Spells/Icons2D/{y}" if not "/" in y else y)), eval(x)))), self.champion_spell_df.loc[1:, "mSpell mImgIconName"].to_list()))
-        champion_spell_df_web.insert(len(champion_spell_df_web.columns), "mSpell ImgIconUrl", ["缩略图网址列表"] + imgIconUrls)
-        ##保留小数（Round）
-        champion_spell_df_web.loc[1:, "mSpell Cooldown {0a3e0478}"] = champion_spell_df_web.loc[1:, "mSpell Cooldown {0a3e0478}"].apply(lambda x: "" if x == "" else self.aRound(x, 5))
-        ##排序（Order）
-        ###第一关键字——英雄文件夹（Primary keyword - championFolder）
-        championFolder_ordered: list[str] = sorted(set(champion_spell_df_web["mCharacterName"][1:].to_list())) #期望的排序后的英雄文件夹（Expected ordered championFolders）
-        championFolder_champion: list[str] = [] #排序后的英雄文件夹的英雄部分（The champion part of the ordered championFolders）
-        championFolder_TFT: list[str] = [] #排序后的英雄文件夹的弈子部分（The TFT champion part of the ordered championFolders）
-        championFolder_ruby: list[str] = [] #排序后的英雄文件夹的末日人工智能英雄部分（The Doom Bots champion part of the ordered championFolders）
-        championFolder_jade: list[str] = [] #排序后的英雄文件夹的经典英雄部分（The classic champion part of the ordered championFolders）
-        championFolder_empty: list[str] = [] #排序后的英雄文件夹的空字符串部分（The empty string part of the ordered championFolders）
-        championFolder_other: list[str] = [] #排序后的英雄文件夹的其它部分（Other part of the ordered championFolders）
-        for alias in championFolder_ordered:
-            if alias.startswith("TFT"):
-                championFolder_TFT.append(alias)
-            elif alias.startswith("Ruby_"):
-                championFolder_ruby.append(alias)
-            elif alias.startswith("Jade_"):
-                championFolder_jade.append(alias)
-            elif alias in set(map(lambda x: x["alias"], self.champion_summary)):
-                championFolder_champion.append(alias)
-            elif alias == "":
-                championFolder_empty.append(alias)
-            else:
-                championFolder_other.append(alias)
-        championFolder_ordered = championFolder_champion + championFolder_ruby + championFolder_jade + championFolder_TFT + championFolder_other + championFolder_empty
-        championFolder_weight_map: dict[str, int] = {_: championFolder_ordered.index(_) for _ in championFolder_ordered}
-        ###第二关键字——技能热键（Secondary keyword - spellHotKey）
-        spellHotKey_weight_map: dict[str, int] = {"P": 0, "Q": 1, "W": 2, "E": 3, "R": 4, "": 5}
-        ###插入关键字权重列（Insert keyword weight columns）
-        championFolder_weights: list[int] = list(map(lambda x: championFolder_weight_map[x], champion_spell_df_web["mCharacterName"][1:].to_list()))
-        champion_spell_df_web.insert(len(champion_spell_df_web.columns), "championFolder_weight", ["英雄文件夹权重"] + championFolder_weights)
-        spellHotKey_weights: list[int] = list(map(lambda x: spellHotKey_weight_map[x], champion_spell_df_web["spellHotKey"][1:].to_list()))
-        champion_spell_df_web.insert(len(champion_spell_df_web.columns), "spellHotKey_weight", ["技能热键权重"] + spellHotKey_weights)
-        ###排序重组（Sort and recombination）
-        champion_spell_df_web = pandas.concat([champion_spell_df_web.iloc[:1, :], champion_spell_df_web.iloc[1:, :].sort_values(by = ["championFolder_weight", "spellHotKey_weight", "key"], ascending = True)])
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "mCharacterName",
-            "ObjectName",
-            "spellHotKey",
-            "mSpell ImgIconUrl",
-            "mSpell mClientData mTooltipData mLocKeys keyName_content_zh_burn",
-            "mSpell mClientData mTooltipData mLocKeys keyName_content_en_burn",
-            "mSpell {210f9ec0} values",
-            "mSpell Cooldown values",
-            "mSpell mClientData mTooltipData mLocKeys keySummary_content_zh",
-            "mSpell mClientData mTooltipData mLocKeys keySummary_content_en",
-            "mSpell mClientData mTooltipData mLocKeys keyTooltip_content_zh_burn",
-            "mSpell mClientData mTooltipData mLocKeys keyTooltip_content_en_burn",
-            "mSpell mClientData mTooltipData mLocKeys keyTooltipExtendedBelowLine_content_zh_burn",
-            "mSpell mClientData mTooltipData mLocKeys keyTooltipExtendedBelowLine_content_en_burn"
-        ]
-        champion_spell_df_web = champion_spell_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        champion_spell_df_styled: pandas.io.formats.style.Styler = champion_spell_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:8]
-        champion_spell_df_styled = champion_spell_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        champion_spell_htmltable: str = champion_spell_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        champion_spell_htmltable = '<meta charset="UTF-8">\n' + champion_spell_htmltable
-        webContent: str = "CharacterSpell" if self.useAllCharacter else "ChampionSpell"
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"{webContent}_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(champion_spell_htmltable)
+        #角色技能（Character spell）
+        if len(self.champion_spell_df) > 1:
+            champion_spell_df_web: pandas.DataFrame = self.champion_spell_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            imgIconUrls: list[str] = list(map(lambda x: "" if x == "" else "<br>".join(list(map(lambda y: self.url2image(self.assetPath2url(self.version, f"DATA/Spells/Icons2D/{y}" if not "/" in y else y)), eval(x)))), self.champion_spell_df.loc[1:, "mSpell mImgIconName"].to_list()))
+            champion_spell_df_web.insert(len(champion_spell_df_web.columns), "mSpell ImgIconUrl", ["缩略图网址列表"] + imgIconUrls)
+            ##保留小数（Round）
+            champion_spell_df_web.loc[1:, "mSpell Cooldown {0a3e0478}"] = champion_spell_df_web.loc[1:, "mSpell Cooldown {0a3e0478}"].apply(lambda x: "" if x == "" else self.aRound(x, 5))
+            ##排序（Order）
+            ###第一关键字——英雄文件夹（Primary keyword - championFolder）
+            championFolder_ordered: list[str] = sorted(set(champion_spell_df_web["mCharacterName"][1:].to_list())) #期望的排序后的英雄文件夹（Expected ordered championFolders）
+            championFolder_champion: list[str] = [] #排序后的英雄文件夹的英雄部分（The champion part of the ordered championFolders）
+            championFolder_TFT: list[str] = [] #排序后的英雄文件夹的弈子部分（The TFT champion part of the ordered championFolders）
+            championFolder_ruby: list[str] = [] #排序后的英雄文件夹的末日人工智能英雄部分（The Doom Bots champion part of the ordered championFolders）
+            championFolder_jade: list[str] = [] #排序后的英雄文件夹的经典英雄部分（The classic champion part of the ordered championFolders）
+            championFolder_empty: list[str] = [] #排序后的英雄文件夹的空字符串部分（The empty string part of the ordered championFolders）
+            championFolder_other: list[str] = [] #排序后的英雄文件夹的其它部分（Other part of the ordered championFolders）
+            for alias in championFolder_ordered:
+                if alias.startswith("TFT"):
+                    championFolder_TFT.append(alias)
+                elif alias.startswith("Ruby_"):
+                    championFolder_ruby.append(alias)
+                elif alias.startswith("Jade_"):
+                    championFolder_jade.append(alias)
+                elif alias in set(map(lambda x: x["alias"], self.champion_summary)):
+                    championFolder_champion.append(alias)
+                elif alias == "":
+                    championFolder_empty.append(alias)
+                else:
+                    championFolder_other.append(alias)
+            championFolder_ordered = championFolder_champion + championFolder_ruby + championFolder_jade + championFolder_TFT + championFolder_other + championFolder_empty
+            championFolder_weight_map: dict[str, int] = {_: championFolder_ordered.index(_) for _ in championFolder_ordered}
+            ###第二关键字——技能热键（Secondary keyword - spellHotKey）
+            spellHotKey_weight_map: dict[str, int] = {"P": 0, "Q": 1, "W": 2, "E": 3, "R": 4, "": 5}
+            ###插入关键字权重列（Insert keyword weight columns）
+            championFolder_weights: list[int] = list(map(lambda x: championFolder_weight_map[x], champion_spell_df_web["mCharacterName"][1:].to_list()))
+            champion_spell_df_web.insert(len(champion_spell_df_web.columns), "championFolder_weight", ["英雄文件夹权重"] + championFolder_weights)
+            spellHotKey_weights: list[int] = list(map(lambda x: spellHotKey_weight_map[x], champion_spell_df_web["spellHotKey"][1:].to_list()))
+            champion_spell_df_web.insert(len(champion_spell_df_web.columns), "spellHotKey_weight", ["技能热键权重"] + spellHotKey_weights)
+            ###排序重组（Sort and recombination）
+            champion_spell_df_web = pandas.concat([champion_spell_df_web.iloc[:1, :], champion_spell_df_web.iloc[1:, :].sort_values(by = ["championFolder_weight", "spellHotKey_weight", "key"], ascending = True)])
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "mCharacterName",
+                "ObjectName",
+                "spellHotKey",
+                "mSpell ImgIconUrl",
+                "mSpell mClientData mTooltipData mLocKeys keyName_content_zh_burn",
+                "mSpell mClientData mTooltipData mLocKeys keyName_content_en_burn",
+                "mSpell {210f9ec0} values",
+                "mSpell Cooldown values",
+                "mSpell mClientData mTooltipData mLocKeys keySummary_content_zh",
+                "mSpell mClientData mTooltipData mLocKeys keySummary_content_en",
+                "mSpell mClientData mTooltipData mLocKeys keyTooltip_content_zh_burn",
+                "mSpell mClientData mTooltipData mLocKeys keyTooltip_content_en_burn",
+                "mSpell mClientData mTooltipData mLocKeys keyTooltipExtendedBelowLine_content_zh_burn",
+                "mSpell mClientData mTooltipData mLocKeys keyTooltipExtendedBelowLine_content_en_burn"
+            ]
+            champion_spell_df_web = champion_spell_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            champion_spell_df_styled: pandas.io.formats.style.Styler = champion_spell_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:8]
+            champion_spell_df_styled = champion_spell_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            champion_spell_htmltable: str = champion_spell_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            champion_spell_htmltable = '<meta charset="UTF-8">\n' + champion_spell_htmltable
+            webContent: str = "CharacterSpell" if self.useAllCharacter else "ChampionSpell"
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"{webContent}_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(champion_spell_htmltable)
 
 class ItemExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -6949,42 +6953,43 @@ class ItemExtractor(LoLDataExtractor):
                 logPrint("在构建数据框时出现了一个问题，因此数据不会被导出到工作簿中。按回车键继续。\nAn error occurred when the program was building the dataframe. Press Enter to continue.")
                 logInput()
                 return
-        #召唤师技能（Summoner spell）
-        item_df_web: pandas.DataFrame = self.item_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        inventoryIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.item_df.loc[1:, "mItemDataClient inventoryIcon"].to_list()))
-        item_df_web.insert(len(item_df_web.columns), "mItemDataClient inventoryIconUrl", ["装备栏网址"] + inventoryIconUrls)
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "itemID",
-            "mItemDataClient inventoryIconUrl",
-            "mDisplayName_content_zh",
-            "mDisplayName_content_en",
-            "recipeItemNames_content_zh",
-            "recipeItemNames_content_en",
-            "totalPrice",
-            "rarity",
-            "mItemDataClient mShopTooltip_content_zh_burn",
-            "mItemDataClient mShopTooltip_content_en_burn",
-            "mItemDataClient mTooltipData mLocKeys keyTooltipExtendedRules_content_zh_burn",
-            "mItemDataClient mTooltipData mLocKeys keyTooltipExtendedRules_content_en_burn"
-        ]
-        item_df_web = item_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        item_df_styled: pandas.io.formats.style.Styler = item_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:8]
-        item_df_styled = item_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        item_htmltable: str = item_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        item_htmltable = '<meta charset="UTF-8">\n' + item_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"Item_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(item_htmltable)
+        #装备（Item）
+        if len(self.item_df) > 1:
+            item_df_web: pandas.DataFrame = self.item_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            inventoryIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.item_df.loc[1:, "mItemDataClient inventoryIcon"].to_list()))
+            item_df_web.insert(len(item_df_web.columns), "mItemDataClient inventoryIconUrl", ["装备栏网址"] + inventoryIconUrls)
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "itemID",
+                "mItemDataClient inventoryIconUrl",
+                "mDisplayName_content_zh",
+                "mDisplayName_content_en",
+                "recipeItemNames_content_zh",
+                "recipeItemNames_content_en",
+                "totalPrice",
+                "rarity",
+                "mItemDataClient mShopTooltip_content_zh_burn",
+                "mItemDataClient mShopTooltip_content_en_burn",
+                "mItemDataClient mTooltipData mLocKeys keyTooltipExtendedRules_content_zh_burn",
+                "mItemDataClient mTooltipData mLocKeys keyTooltipExtendedRules_content_en_burn"
+            ]
+            item_df_web = item_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            item_df_styled: pandas.io.formats.style.Styler = item_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:8]
+            item_df_styled = item_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            item_htmltable: str = item_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            item_htmltable = '<meta charset="UTF-8">\n' + item_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"Item_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(item_htmltable)
 
 class AugmentExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -7795,186 +7800,191 @@ class AugmentExtractor(LoLDataExtractor):
                 logInput()
                 return
         #斗魂竞技场强化符文（Arena augment）
-        CherryAugment_df_web: pandas.DataFrame = self.CherryAugment_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        AugmentLargeIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.CherryAugment_df.loc[1:, "AugmentLargeIconPath"].to_list()))
-        CherryAugment_df_web.insert(len(CherryAugment_df_web.columns), "AugmentLargeIconUrl", ["强化符文大图标网址"] + AugmentLargeIconUrls)
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "AugmentNameId",
-            "AugmentPlatformId",
-            "AugmentLargeIconUrl",
-            "Enabled",
-            "NameTra_content_zh",
-            "NameTra_content_en",
-            "rarityValue",
-            "RootSpell mSpell DataValues MaxLevel",
-            "AugmentDisplayTags_content",
-            "DescriptionTra_content_zh_burn",
-            "DescriptionTra_content_en_burn",
-            "AugmentTooltipTra_content_zh_burn",
-            "AugmentTooltipTra_content_en_burn",
-            "{791eb92e} {5753a320} {05835d27}_content_zh_burn",
-            "{791eb92e} {5753a320} {05835d27}_content_en_burn"
-        ]
-        CherryAugment_df_web = CherryAugment_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        CherryAugment_df_styled: pandas.io.formats.style.Styler = CherryAugment_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:9]
-        CherryAugment_df_styled = CherryAugment_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        CherryAugment_htmltable: str = CherryAugment_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        CherryAugment_htmltable = '<meta charset="UTF-8">\n' + CherryAugment_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"CherryAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(CherryAugment_htmltable)
+        if len(self.CherryAugment_df) > 1:
+            CherryAugment_df_web: pandas.DataFrame = self.CherryAugment_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            AugmentLargeIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.CherryAugment_df.loc[1:, "AugmentLargeIconPath"].to_list()))
+            CherryAugment_df_web.insert(len(CherryAugment_df_web.columns), "AugmentLargeIconUrl", ["强化符文大图标网址"] + AugmentLargeIconUrls)
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "AugmentNameId",
+                "AugmentPlatformId",
+                "AugmentLargeIconUrl",
+                "Enabled",
+                "NameTra_content_zh",
+                "NameTra_content_en",
+                "rarityValue",
+                "RootSpell mSpell DataValues MaxLevel",
+                "AugmentDisplayTags_content",
+                "DescriptionTra_content_zh_burn",
+                "DescriptionTra_content_en_burn",
+                "AugmentTooltipTra_content_zh_burn",
+                "AugmentTooltipTra_content_en_burn",
+                "{791eb92e} {5753a320} {05835d27}_content_zh_burn",
+                "{791eb92e} {5753a320} {05835d27}_content_en_burn"
+            ]
+            CherryAugment_df_web = CherryAugment_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            CherryAugment_df_styled: pandas.io.formats.style.Styler = CherryAugment_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:9]
+            CherryAugment_df_styled = CherryAugment_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            CherryAugment_htmltable: str = CherryAugment_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            CherryAugment_htmltable = '<meta charset="UTF-8">\n' + CherryAugment_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"CherryAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(CherryAugment_htmltable)
         #无尽狂潮强化符文（Swarm augment）
-        SwarmAugment_df_web: pandas.DataFrame = self.SwarmAugment_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        AugmentLargeIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.SwarmAugment_df.loc[1:, "AugmentLargeIconPath"].to_list()))
-        SwarmAugment_df_web.insert(len(SwarmAugment_df_web.columns), "AugmentLargeIconUrl", ["强化符文大图标网址"] + AugmentLargeIconUrls)
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "AugmentNameId",
-            "AugmentPlatformId",
-            "AugmentLargeIconUrl",
-            "NameTra_content_zh",
-            "NameTra_content_en",
-            "rarityValue",
-            "DescriptionTra_content_zh_burn",
-            "DescriptionTra_content_en_burn"
-        ]
-        SwarmAugment_df_web = SwarmAugment_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        SwarmAugment_df_styled: pandas.io.formats.style.Styler = SwarmAugment_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:6]
-        SwarmAugment_df_styled = SwarmAugment_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        SwarmAugment_htmltable: str = SwarmAugment_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        SwarmAugment_htmltable = '<meta charset="UTF-8">\n' + SwarmAugment_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"SwarmAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(SwarmAugment_htmltable)
+        if len(self.SwarmAugment_df) > 1:
+            SwarmAugment_df_web: pandas.DataFrame = self.SwarmAugment_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            AugmentLargeIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.SwarmAugment_df.loc[1:, "AugmentLargeIconPath"].to_list()))
+            SwarmAugment_df_web.insert(len(SwarmAugment_df_web.columns), "AugmentLargeIconUrl", ["强化符文大图标网址"] + AugmentLargeIconUrls)
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "AugmentNameId",
+                "AugmentPlatformId",
+                "AugmentLargeIconUrl",
+                "NameTra_content_zh",
+                "NameTra_content_en",
+                "rarityValue",
+                "DescriptionTra_content_zh_burn",
+                "DescriptionTra_content_en_burn"
+            ]
+            SwarmAugment_df_web = SwarmAugment_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            SwarmAugment_df_styled: pandas.io.formats.style.Styler = SwarmAugment_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:6]
+            SwarmAugment_df_styled = SwarmAugment_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            SwarmAugment_htmltable: str = SwarmAugment_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            SwarmAugment_htmltable = '<meta charset="UTF-8">\n' + SwarmAugment_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"SwarmAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(SwarmAugment_htmltable)
         #海克斯大乱斗强化符文（ARAM: Mayhem augment）
-        KiwiAugment_df_web: pandas.DataFrame = self.KiwiAugment_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        AugmentLargeIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.KiwiAugment_df.loc[1:, "AugmentLargeIconPath"].to_list()))
-        KiwiAugment_df_web.insert(len(KiwiAugment_df_web.columns), "AugmentLargeIconUrl", ["强化符文大图标网址"] + AugmentLargeIconUrls)
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "AugmentNameId",
-            "AugmentPlatformId",
-            "AugmentLargeIconUrl",
-            "Enabled",
-            "NameTra_content_zh",
-            "NameTra_content_en",
-            "isClassic",
-            "rarityValue",
-            "AugmentDisplayTags_content",
-            "DescriptionTra_content_zh_burn",
-            "DescriptionTra_content_en_burn",
-            "AugmentTooltipTra_content_zh_burn",
-            "AugmentTooltipTra_content_en_burn",
-            "questline {c88f1a9b}_content_zh_burn",
-            "questline {c88f1a9b}_content_en_burn"
-        ]
-        KiwiAugment_df_web = KiwiAugment_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        KiwiAugment_df_styled: pandas.io.formats.style.Styler = KiwiAugment_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:9]
-        KiwiAugment_df_styled = KiwiAugment_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        KiwiAugment_htmltable: str = KiwiAugment_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        KiwiAugment_htmltable = '<meta charset="UTF-8">\n' + KiwiAugment_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"KiwiAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(KiwiAugment_htmltable)
+        if len(self.KiwiAugment_df) > 1:
+            KiwiAugment_df_web: pandas.DataFrame = self.KiwiAugment_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            AugmentLargeIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.KiwiAugment_df.loc[1:, "AugmentLargeIconPath"].to_list()))
+            KiwiAugment_df_web.insert(len(KiwiAugment_df_web.columns), "AugmentLargeIconUrl", ["强化符文大图标网址"] + AugmentLargeIconUrls)
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "AugmentNameId",
+                "AugmentPlatformId",
+                "AugmentLargeIconUrl",
+                "Enabled",
+                "NameTra_content_zh",
+                "NameTra_content_en",
+                "isClassic",
+                "rarityValue",
+                "AugmentDisplayTags_content",
+                "DescriptionTra_content_zh_burn",
+                "DescriptionTra_content_en_burn",
+                "AugmentTooltipTra_content_zh_burn",
+                "AugmentTooltipTra_content_en_burn",
+                "questline {c88f1a9b}_content_zh_burn",
+                "questline {c88f1a9b}_content_en_burn"
+            ]
+            KiwiAugment_df_web = KiwiAugment_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            KiwiAugment_df_styled: pandas.io.formats.style.Styler = KiwiAugment_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:9]
+            KiwiAugment_df_styled = KiwiAugment_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            KiwiAugment_htmltable: str = KiwiAugment_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            KiwiAugment_htmltable = '<meta charset="UTF-8">\n' + KiwiAugment_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"KiwiAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(KiwiAugment_htmltable)
         #海克斯大乱斗强化符文套装（ARAM: Mayhem augment set）
-        KiwiAugmentSet_df_web: pandas.DataFrame = self.KiwiAugmentSet_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        AugmentSetIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.KiwiAugmentSet_df.loc[1:, "{4217d741}"].to_list()))
-        KiwiAugmentSet_df_web.insert(len(KiwiAugmentSet_df_web.columns), "AugmentSetIconUrl", ["套装缩略图网址"] + AugmentSetIconUrls)
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "{3a942548}",
-            "AugmentSetIconUrl",
-            "{0746ade9}_content_zh",
-            "{0746ade9}_content_en",
-            "{97e82990}_content_zh_burn",
-            "{97e82990}_content_en_burn",
-            "{96b4b430}_object keyTooltip_content_zh_burn",
-            "{96b4b430}_object keyTooltip_content_en_burn",
-            "augments nameTra_contents_zh",
-            "augments nameTra_contents_en"
-        ]
-        KiwiAugmentSet_df_web = KiwiAugmentSet_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        KiwiAugmentSet_df_styled: pandas.io.formats.style.Styler = KiwiAugmentSet_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:4]
-        KiwiAugmentSet_df_styled = KiwiAugmentSet_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        KiwiAugmentSet_htmltable: str = KiwiAugmentSet_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        KiwiAugmentSet_htmltable = '<meta charset="UTF-8">\n' + KiwiAugmentSet_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"KiwiAugmentSet_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(KiwiAugmentSet_htmltable)
+        if len(self.KiwiAugmentSet_df) > 1:
+            KiwiAugmentSet_df_web: pandas.DataFrame = self.KiwiAugmentSet_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            AugmentSetIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.KiwiAugmentSet_df.loc[1:, "{4217d741}"].to_list()))
+            KiwiAugmentSet_df_web.insert(len(KiwiAugmentSet_df_web.columns), "AugmentSetIconUrl", ["套装缩略图网址"] + AugmentSetIconUrls)
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "{3a942548}",
+                "AugmentSetIconUrl",
+                "{0746ade9}_content_zh",
+                "{0746ade9}_content_en",
+                "{97e82990}_content_zh_burn",
+                "{97e82990}_content_en_burn",
+                "{96b4b430}_object keyTooltip_content_zh_burn",
+                "{96b4b430}_object keyTooltip_content_en_burn",
+                "augments nameTra_contents_zh",
+                "augments nameTra_contents_en"
+            ]
+            KiwiAugmentSet_df_web = KiwiAugmentSet_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            KiwiAugmentSet_df_styled: pandas.io.formats.style.Styler = KiwiAugmentSet_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:4]
+            KiwiAugmentSet_df_styled = KiwiAugmentSet_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            KiwiAugmentSet_htmltable: str = KiwiAugmentSet_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            KiwiAugmentSet_htmltable = '<meta charset="UTF-8">\n' + KiwiAugmentSet_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"KiwiAugmentSet_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(KiwiAugmentSet_htmltable)
         #海克斯大乱斗经典模式版强化符文（ARAM: Mayhem Classic-ish augments）
-        KiwiJadeAugment_df_web: pandas.DataFrame = self.KiwiJadeAugment_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        AugmentLargeIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.KiwiJadeAugment_df.loc[1:, "AugmentLargeIconPath"].to_list()))
-        KiwiJadeAugment_df_web.insert(len(KiwiJadeAugment_df_web.columns), "AugmentLargeIconUrl", ["强化符文大图标网址"] + AugmentLargeIconUrls)
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "AugmentNameId",
-            "AugmentPlatformId",
-            "AugmentLargeIconUrl",
-            "Enabled",
-            "NameTra_content_zh",
-            "NameTra_content_en",
-            "isCurrent",
-            "rarityValue",
-            "AugmentDisplayTags_content",
-            "DescriptionTra_content_zh_burn",
-            "DescriptionTra_content_en_burn",
-            "AugmentTooltipTra_content_zh_burn",
-            "AugmentTooltipTra_content_en_burn"
-        ]
-        KiwiJadeAugment_df_web = KiwiJadeAugment_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        KiwiJadeAugment_df_styled: pandas.io.formats.style.Styler = KiwiJadeAugment_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:9]
-        KiwiJadeAugment_df_styled = KiwiJadeAugment_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        KiwiJadeAugment_htmltable: str = KiwiJadeAugment_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        KiwiJadeAugment_htmltable = '<meta charset="UTF-8">\n' + KiwiJadeAugment_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"KiwiJadeAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(KiwiJadeAugment_htmltable)
+        if len(self.KiwiJadeAugment_df) > 1:
+            KiwiJadeAugment_df_web: pandas.DataFrame = self.KiwiJadeAugment_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            AugmentLargeIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.KiwiJadeAugment_df.loc[1:, "AugmentLargeIconPath"].to_list()))
+            KiwiJadeAugment_df_web.insert(len(KiwiJadeAugment_df_web.columns), "AugmentLargeIconUrl", ["强化符文大图标网址"] + AugmentLargeIconUrls)
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "AugmentNameId",
+                "AugmentPlatformId",
+                "AugmentLargeIconUrl",
+                "Enabled",
+                "NameTra_content_zh",
+                "NameTra_content_en",
+                "isCurrent",
+                "rarityValue",
+                "AugmentDisplayTags_content",
+                "DescriptionTra_content_zh_burn",
+                "DescriptionTra_content_en_burn",
+                "AugmentTooltipTra_content_zh_burn",
+                "AugmentTooltipTra_content_en_burn"
+            ]
+            KiwiJadeAugment_df_web = KiwiJadeAugment_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            KiwiJadeAugment_df_styled: pandas.io.formats.style.Styler = KiwiJadeAugment_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:9]
+            KiwiJadeAugment_df_styled = KiwiJadeAugment_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            KiwiJadeAugment_htmltable: str = KiwiJadeAugment_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            KiwiJadeAugment_htmltable = '<meta charset="UTF-8">\n' + KiwiJadeAugment_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"KiwiJadeAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(KiwiJadeAugment_htmltable)
 
 class AnvilExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -8297,72 +8307,74 @@ class AnvilExtractor(LoLDataExtractor):
                 logInput()
                 return
         #斗魂竞技场锻造器（Arena anvil）
-        CherryAnvil_df_web: pandas.DataFrame = self.CherryAnvil_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        AugmentLargeIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.CherryAnvil_df.loc[1:, "AugmentLargeIconPath"].to_list()))
-        CherryAnvil_df_web.insert(len(CherryAnvil_df_web.columns), "AugmentLargeIconUrl", ["锻造器大图标网址"] + AugmentLargeIconUrls)
-        ##排序（Order）
-        CherryAnvil_df_web = pandas.concat([CherryAnvil_df_web.iloc[:1, :], CherryAnvil_df_web.iloc[1:, :].sort_values(by = "AugmentNameId", ascending = True)])
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "AugmentNameId",
-            "AugmentLargeIconUrl",
-            "Enabled",
-            "NameTra_content_zh",
-            "NameTra_content_en",
-            "anvilRarities",
-            "AugmentDisplayTags_content",
-            "DescriptionTra_content_zh_burn",
-            "DescriptionTra_content_en_burn"
-        ]
-        CherryAnvil_df_web = CherryAnvil_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        CherryAnvil_df_styled: pandas.io.formats.style.Styler = CherryAnvil_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:7]
-        CherryAnvil_df_styled = CherryAnvil_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        CherryAnvil_htmltable: str = CherryAnvil_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        CherryAnvil_htmltable = '<meta charset="UTF-8">\n' + CherryAnvil_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"CherryAnvil_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(CherryAnvil_htmltable)
+        if len(self.CherryAnvil_df) > 1:
+            CherryAnvil_df_web: pandas.DataFrame = self.CherryAnvil_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            AugmentLargeIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.CherryAnvil_df.loc[1:, "AugmentLargeIconPath"].to_list()))
+            CherryAnvil_df_web.insert(len(CherryAnvil_df_web.columns), "AugmentLargeIconUrl", ["锻造器大图标网址"] + AugmentLargeIconUrls)
+            ##排序（Order）
+            CherryAnvil_df_web = pandas.concat([CherryAnvil_df_web.iloc[:1, :], CherryAnvil_df_web.iloc[1:, :].sort_values(by = "AugmentNameId", ascending = True)])
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "AugmentNameId",
+                "AugmentLargeIconUrl",
+                "Enabled",
+                "NameTra_content_zh",
+                "NameTra_content_en",
+                "anvilRarities",
+                "AugmentDisplayTags_content",
+                "DescriptionTra_content_zh_burn",
+                "DescriptionTra_content_en_burn"
+            ]
+            CherryAnvil_df_web = CherryAnvil_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            CherryAnvil_df_styled: pandas.io.formats.style.Styler = CherryAnvil_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:7]
+            CherryAnvil_df_styled = CherryAnvil_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            CherryAnvil_htmltable: str = CherryAnvil_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            CherryAnvil_htmltable = '<meta charset="UTF-8">\n' + CherryAnvil_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"CherryAnvil_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(CherryAnvil_htmltable)
         #海克斯大乱斗锻造器（ARAM: Mayhem anvil）
-        KiwiAnvil_df_web: pandas.DataFrame = self.KiwiAnvil_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        AugmentLargeIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.KiwiAnvil_df.loc[1:, "AugmentLargeIconPath"].to_list()))
-        KiwiAnvil_df_web.insert(len(KiwiAnvil_df_web.columns), "AugmentLargeIconUrl", ["锻造器大图标网址"] + AugmentLargeIconUrls)
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "AugmentNameId",
-            "AugmentLargeIconUrl",
-            "Enabled",
-            "NameTra_content_zh",
-            "NameTra_content_en",
-            "anvilRarities",
-            "DescriptionTra_content_zh_burn",
-            "DescriptionTra_content_en_burn"
-        ]
-        KiwiAnvil_df_web = KiwiAnvil_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        KiwiAnvil_df_styled: pandas.io.formats.style.Styler = KiwiAnvil_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:6]
-        KiwiAnvil_df_styled = KiwiAnvil_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        KiwiAnvil_htmltable: str = KiwiAnvil_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        KiwiAnvil_htmltable = '<meta charset="UTF-8">\n' + KiwiAnvil_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"KiwiAnvil_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(KiwiAnvil_htmltable)
+        if len(self.KiwiAnvil_df) > 1:
+            KiwiAnvil_df_web: pandas.DataFrame = self.KiwiAnvil_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            AugmentLargeIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.KiwiAnvil_df.loc[1:, "AugmentLargeIconPath"].to_list()))
+            KiwiAnvil_df_web.insert(len(KiwiAnvil_df_web.columns), "AugmentLargeIconUrl", ["锻造器大图标网址"] + AugmentLargeIconUrls)
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "AugmentNameId",
+                "AugmentLargeIconUrl",
+                "Enabled",
+                "NameTra_content_zh",
+                "NameTra_content_en",
+                "anvilRarities",
+                "DescriptionTra_content_zh_burn",
+                "DescriptionTra_content_en_burn"
+            ]
+            KiwiAnvil_df_web = KiwiAnvil_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            KiwiAnvil_df_styled: pandas.io.formats.style.Styler = KiwiAnvil_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:6]
+            KiwiAnvil_df_styled = KiwiAnvil_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            KiwiAnvil_htmltable: str = KiwiAnvil_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            KiwiAnvil_htmltable = '<meta charset="UTF-8">\n' + KiwiAnvil_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"KiwiAnvil_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(KiwiAnvil_htmltable)
 
 class CherryRoundExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -8735,45 +8747,46 @@ class CherryRoundExtractor(LoLDataExtractor):
                 logInput()
                 return
         #斗魂竞技场回合阶段（Arena Round Phase）
-        CherryRoundPhase_df_web: pandas.DataFrame = self.CherryRoundPhase_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        UpcomingIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.CherryRoundPhase_df.loc[1:, "{7011dd78}"].to_list()))
-        ProgressIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.CherryRoundPhase_df.loc[1:, "{44bdfcf8}"].to_list()))
-        FinishedIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.CherryRoundPhase_df.loc[1:, "{bafc35cb}"].to_list()))
-        CherryRoundPhase_df_web.insert(len(CherryRoundPhase_df_web.columns), "UpcomingIconUrl", ["即将到来的事件缩略图网址"] + UpcomingIconUrls)
-        CherryRoundPhase_df_web.insert(len(CherryRoundPhase_df_web.columns), "ProgressIconUrl", ["正在发生的事件缩略图网址"] + ProgressIconUrls)
-        CherryRoundPhase_df_web.insert(len(CherryRoundPhase_df_web.columns), "FinishedIconUrl", ["已经完成的事件缩略图网址"] + FinishedIconUrls)
-        ##保留小数（Round）
-        CherryRoundPhase_df_web.loc[1:, "subPhase duration"] = CherryRoundPhase_df_web.loc[1:, "subPhase duration"].apply(lambda x: self.aRound(x, 5))
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "key",
-            "roundNumber",
-            "PhaseNumber",
-            "DisplayNameTra_content_zh",
-            "DisplayNameTra_content_en",
-            "subPhase number",
-            "subPhase duration",
-            "UpcomingIconUrl",
-            "ProgressIconUrl",
-            "FinishedIconUrl"
-        ]
-        CherryRoundPhase_df_web = CherryRoundPhase_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        CherryRoundPhase_df_styled: pandas.io.formats.style.Styler = CherryRoundPhase_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:]
-        CherryRoundPhase_df_styled = CherryRoundPhase_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        CherryRoundPhase_htmltable: str = CherryRoundPhase_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        CherryRoundPhase_htmltable = '<meta charset="UTF-8">\n' + CherryRoundPhase_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"CherryRoundPhase_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(CherryRoundPhase_htmltable)
+        if len(self.CherryRoundPhase_df) > 1:
+            CherryRoundPhase_df_web: pandas.DataFrame = self.CherryRoundPhase_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            UpcomingIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.CherryRoundPhase_df.loc[1:, "{7011dd78}"].to_list()))
+            ProgressIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.CherryRoundPhase_df.loc[1:, "{44bdfcf8}"].to_list()))
+            FinishedIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.CherryRoundPhase_df.loc[1:, "{bafc35cb}"].to_list()))
+            CherryRoundPhase_df_web.insert(len(CherryRoundPhase_df_web.columns), "UpcomingIconUrl", ["即将到来的事件缩略图网址"] + UpcomingIconUrls)
+            CherryRoundPhase_df_web.insert(len(CherryRoundPhase_df_web.columns), "ProgressIconUrl", ["正在发生的事件缩略图网址"] + ProgressIconUrls)
+            CherryRoundPhase_df_web.insert(len(CherryRoundPhase_df_web.columns), "FinishedIconUrl", ["已经完成的事件缩略图网址"] + FinishedIconUrls)
+            ##保留小数（Round）
+            CherryRoundPhase_df_web.loc[1:, "subPhase duration"] = CherryRoundPhase_df_web.loc[1:, "subPhase duration"].apply(lambda x: self.aRound(x, 5))
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "key",
+                "roundNumber",
+                "PhaseNumber",
+                "DisplayNameTra_content_zh",
+                "DisplayNameTra_content_en",
+                "subPhase number",
+                "subPhase duration",
+                "UpcomingIconUrl",
+                "ProgressIconUrl",
+                "FinishedIconUrl"
+            ]
+            CherryRoundPhase_df_web = CherryRoundPhase_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            CherryRoundPhase_df_styled: pandas.io.formats.style.Styler = CherryRoundPhase_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:]
+            CherryRoundPhase_df_styled = CherryRoundPhase_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            CherryRoundPhase_htmltable: str = CherryRoundPhase_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            CherryRoundPhase_htmltable = '<meta charset="UTF-8">\n' + CherryRoundPhase_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"CherryRoundPhase_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(CherryRoundPhase_htmltable)
 
 class CameoExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -9303,39 +9316,40 @@ class GoHExtractor(LoLDataExtractor):
                 logInput()
                 return
         #斗魂竞技场荣誉嘉宾（Arena GoH）
-        GoH_df_web: pandas.DataFrame = self.GoH_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        iconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.GoH_df.loc[1:, "{982aa425}"].to_list()))
-        GoH_df_web.insert(len(GoH_df_web.columns), "iconUrl", ["缩略图网址"] + iconUrls)
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "name",
-            "iconUrl",
-            "Enabled",
-            "{b0f32561}",
-            "{1ff99d7f} title_content_zh",
-            "{1ff99d7f} title_content_en",
-            "{1ff99d7f} {bff2f361}_content_zh",
-            "{1ff99d7f} {bff2f361}_content_en",
-            "{1ff99d7f} {3b7aa707}_content_zh",
-            "{1ff99d7f} {3b7aa707}_content_en",
-        ]
-        GoH_df_web = GoH_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        GoH_df_styled: pandas.io.formats.style.Styler = GoH_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:5]
-        GoH_df_styled = GoH_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        GoH_htmltable: str = GoH_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        GoH_htmltable = '<meta charset="UTF-8">\n' + GoH_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"GoH_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(GoH_htmltable)
+        if len(self.GoH_df) > 1:
+            GoH_df_web: pandas.DataFrame = self.GoH_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            iconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.GoH_df.loc[1:, "{982aa425}"].to_list()))
+            GoH_df_web.insert(len(GoH_df_web.columns), "iconUrl", ["缩略图网址"] + iconUrls)
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "name",
+                "iconUrl",
+                "Enabled",
+                "{b0f32561}",
+                "{1ff99d7f} title_content_zh",
+                "{1ff99d7f} title_content_en",
+                "{1ff99d7f} {bff2f361}_content_zh",
+                "{1ff99d7f} {bff2f361}_content_en",
+                "{1ff99d7f} {3b7aa707}_content_zh",
+                "{1ff99d7f} {3b7aa707}_content_en",
+            ]
+            GoH_df_web = GoH_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            GoH_df_styled: pandas.io.formats.style.Styler = GoH_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:5]
+            GoH_df_styled = GoH_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            GoH_htmltable: str = GoH_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            GoH_htmltable = '<meta charset="UTF-8">\n' + GoH_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"GoH_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(GoH_htmltable)
 
 class TFTExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
@@ -10822,276 +10836,283 @@ class TFTExtractor(LoLDataExtractor):
                 logInput()
                 return
         #云顶之弈商店（TFT Shop）
-        TFTShop_df_web: pandas.DataFrame = self.TFTShop_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        AbilityIconUrls: list[str] = list(map(lambda x: "" if x == "" else self.url2image(self.assetPath2url(self.version, x)), self.TFTShop_df.loc[1:, "AbilityIconPath"].to_list()))
-        TeamPlannerPortraitUrls: list[str] = list(map(lambda x: "" if x == "" else self.url2image(self.assetPath2url(self.version, x)), self.TFTShop_df.loc[1:, "TeamPlannerPortraitPath"].to_list()))
-        TFTShop_df_web.insert(len(TFTShop_df_web.columns), "AbilityIconUrl", ["技能图标网址"] + AbilityIconUrls)
-        TFTShop_df_web.insert(len(TFTShop_df_web.columns), "TeamPlannerPortraitUrl", ["用于小队规划器的肖像网址"] + TeamPlannerPortraitUrls)
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "mName",
-            "{4d4e5cf5}",
-            "TeamPlannerPortraitUrl",
-            "AbilityIconUrl",
-            "mDisplayNameTra_content_zh",
-            "mDisplayNameTra_content_en",
-            "mRarity",
-            "BaseCost",
-            "mAbilityNameTra_content_zh",
-            "mAbilityNameTra_content_en",
-            "mDescriptionTra_content_zh_burn",
-            "mDescriptionTra_content_en_burn"
-        ]
-        TFTShop_df_web = TFTShop_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        TFTShop_df_styled: pandas.io.formats.style.Styler = TFTShop_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:7]
-        TFTShop_df_styled = TFTShop_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        TFTShop_htmltable: str = TFTShop_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        TFTShop_htmltable = '<meta charset="UTF-8">\n' + TFTShop_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"TFTShop_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(TFTShop_htmltable)
+        if len(self.TFTShop_df) > 1:
+            TFTShop_df_web: pandas.DataFrame = self.TFTShop_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            AbilityIconUrls: list[str] = list(map(lambda x: "" if x == "" else self.url2image(self.assetPath2url(self.version, x)), self.TFTShop_df.loc[1:, "AbilityIconPath"].to_list()))
+            TeamPlannerPortraitUrls: list[str] = list(map(lambda x: "" if x == "" else self.url2image(self.assetPath2url(self.version, x)), self.TFTShop_df.loc[1:, "TeamPlannerPortraitPath"].to_list()))
+            TFTShop_df_web.insert(len(TFTShop_df_web.columns), "AbilityIconUrl", ["技能图标网址"] + AbilityIconUrls)
+            TFTShop_df_web.insert(len(TFTShop_df_web.columns), "TeamPlannerPortraitUrl", ["用于小队规划器的肖像网址"] + TeamPlannerPortraitUrls)
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "mName",
+                "{4d4e5cf5}",
+                "TeamPlannerPortraitUrl",
+                "AbilityIconUrl",
+                "mDisplayNameTra_content_zh",
+                "mDisplayNameTra_content_en",
+                "mRarity",
+                "BaseCost",
+                "mAbilityNameTra_content_zh",
+                "mAbilityNameTra_content_en",
+                "mDescriptionTra_content_zh_burn",
+                "mDescriptionTra_content_en_burn"
+            ]
+            TFTShop_df_web = TFTShop_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            TFTShop_df_styled: pandas.io.formats.style.Styler = TFTShop_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:7]
+            TFTShop_df_styled = TFTShop_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            TFTShop_htmltable: str = TFTShop_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            TFTShop_htmltable = '<meta charset="UTF-8">\n' + TFTShop_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"TFTShop_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(TFTShop_htmltable)
         #云顶之弈回合阶段（TFT Stage Round）
-        TFTStageRound_df_web: pandas.DataFrame = pandas.merge(self.TFTStageRound_df, self.TFTRound_df.rename(columns = {"key": "roundKey"}), left_on = "round", right_on = "roundKey", how = "inner")
-        TFTStageRound_df_web.drop("roundKey", axis = 1)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        mIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mIconPath"].to_list()))
-        mRoundUpcomingIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundUpcomingIconPath"].to_list()))
-        mRoundActiveIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundActiveIconPath"].to_list()))
-        mRoundResultNoneIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundResultNoneIconPath"].to_list()))
-        mRoundResultWinIconUrls: list[str] = list(map(lambda x: "" if x == "" else self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundResultWinIconPath"].to_list()))
-        mRoundResultLossIconUrls: list[str] = list(map(lambda x: "" if x == "" else self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundResultLossIconPath"].to_list()))
-        mRoundResultDrawIconUrls: list[str] = list(map(lambda x: "" if x == "" else self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundResultDrawIconPath"].to_list()))
-        TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mIconUrl", ["缩略图网址"] + mIconUrls)
-        TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundUpcomingIconUrl", ["即将到来的回合缩略图网址"] + mRoundUpcomingIconUrls)
-        TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundActiveIconUrl", ["当前回合缩略图网址"] + mRoundActiveIconUrls)
-        TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundResultNoneIconUrl", ["无回合结果缩略图网址"] + mRoundResultNoneIconUrls)
-        TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundResultWinIconUrl", ["回合胜利缩略图网址"] + mRoundResultWinIconUrls)
-        TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundResultLossIconUrl", ["回合失败缩略图网址"] + mRoundResultLossIconUrls)
-        TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundResultDrawIconUrl", ["平局缩略图网址"] + mRoundResultDrawIconUrls)
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "key",
-            "round_burn",
-            "mDisplayNameTra_content_zh",
-            "mDisplayNameTra_content_en",
-            "mDefaultTooltipTra_content_zh",
-            "mDefaultTooltipTra_content_en",
-            "mIconUrl",
-            "mRoundUpcomingIconUrl",
-            "mRoundActiveIconUrl",
-            "mRoundResultNoneIconUrl",
-            "mRoundResultWinIconUrl",
-            "mRoundResultLossIconUrl",
-            "mRoundResultDrawIconUrl",
-        ]
-        TFTStageRound_df_web = TFTStageRound_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        TFTStageRound_df_styled: pandas.io.formats.style.Styler = TFTStageRound_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:4] + columns_to_export[-7:]
-        TFTStageRound_df_styled = TFTStageRound_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        TFTStageRound_htmltable: str = TFTStageRound_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        TFTStageRound_htmltable = '<meta charset="UTF-8">\n' + TFTStageRound_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"TFTStageRound_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(TFTStageRound_htmltable)
+        if len(self.TFTStageRound_df) > 1 and len(self.TFTRound_df) > 1: #正常情况下，如果两个数据框都有记录，一定是能对应上的（In normal cases, if both dataframes have records, they must be matched）
+            TFTStageRound_df_web: pandas.DataFrame = pandas.merge(self.TFTStageRound_df, self.TFTRound_df.rename(columns = {"key": "roundKey"}), left_on = "round", right_on = "roundKey", how = "inner")
+            TFTStageRound_df_web.drop("roundKey", axis = 1)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            mIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mIconPath"].to_list()))
+            mRoundUpcomingIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundUpcomingIconPath"].to_list()))
+            mRoundActiveIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundActiveIconPath"].to_list()))
+            mRoundResultNoneIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundResultNoneIconPath"].to_list()))
+            mRoundResultWinIconUrls: list[str] = list(map(lambda x: "" if x == "" else self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundResultWinIconPath"].to_list()))
+            mRoundResultLossIconUrls: list[str] = list(map(lambda x: "" if x == "" else self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundResultLossIconPath"].to_list()))
+            mRoundResultDrawIconUrls: list[str] = list(map(lambda x: "" if x == "" else self.url2image(self.assetPath2url(self.version, x)), TFTStageRound_df_web.loc[1:, "mRoundResultDrawIconPath"].to_list()))
+            TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mIconUrl", ["缩略图网址"] + mIconUrls)
+            TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundUpcomingIconUrl", ["即将到来的回合缩略图网址"] + mRoundUpcomingIconUrls)
+            TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundActiveIconUrl", ["当前回合缩略图网址"] + mRoundActiveIconUrls)
+            TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundResultNoneIconUrl", ["无回合结果缩略图网址"] + mRoundResultNoneIconUrls)
+            TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundResultWinIconUrl", ["回合胜利缩略图网址"] + mRoundResultWinIconUrls)
+            TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundResultLossIconUrl", ["回合失败缩略图网址"] + mRoundResultLossIconUrls)
+            TFTStageRound_df_web.insert(len(TFTStageRound_df_web.columns), "mRoundResultDrawIconUrl", ["平局缩略图网址"] + mRoundResultDrawIconUrls)
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "key",
+                "round_burn",
+                "mDisplayNameTra_content_zh",
+                "mDisplayNameTra_content_en",
+                "mDefaultTooltipTra_content_zh",
+                "mDefaultTooltipTra_content_en",
+                "mIconUrl",
+                "mRoundUpcomingIconUrl",
+                "mRoundActiveIconUrl",
+                "mRoundResultNoneIconUrl",
+                "mRoundResultWinIconUrl",
+                "mRoundResultLossIconUrl",
+                "mRoundResultDrawIconUrl",
+            ]
+            TFTStageRound_df_web = TFTStageRound_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            TFTStageRound_df_styled: pandas.io.formats.style.Styler = TFTStageRound_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:4] + columns_to_export[-7:]
+            TFTStageRound_df_styled = TFTStageRound_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            TFTStageRound_htmltable: str = TFTStageRound_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            TFTStageRound_htmltable = '<meta charset="UTF-8">\n' + TFTStageRound_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"TFTStageRound_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(TFTStageRound_htmltable)
         #云顶之弈传送门（TFT Portal）
-        TFTPortal_df_web: pandas.DataFrame = self.TFTPortal_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        iconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.TFTPortal_df.loc[1:, "IconPath"].to_list()))
-        TFTPortal_df_web.insert(len(TFTPortal_df_web.columns), "IconUrl", ["缩略图网址"] + iconUrls)
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "name",
-            "RegionName",
-            "IconUrl",
-            "RegionTra_content_zh",
-            "RegionTra_content_en",
-            "type",
-            "ShortDescriptionTra_content_zh_burn",
-            "ShortDescriptionTra_content_en_burn",
-            "LongDescriptionTra_content_zh_burn",
-            "LongDescriptionTra_content_en_burn"
-        ]
-        TFTPortal_df_web = TFTPortal_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        TFTPortal_df_styled: pandas.io.formats.style.Styler = TFTPortal_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:6]
-        TFTPortal_df_styled = TFTPortal_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        TFTPortal_htmltable: str = TFTPortal_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        TFTPortal_htmltable = '<meta charset="UTF-8">\n' + TFTPortal_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"TFTPortal_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(TFTPortal_htmltable)
+        if len(self.TFTPortal_df) > 1:
+            TFTPortal_df_web: pandas.DataFrame = self.TFTPortal_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            iconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.TFTPortal_df.loc[1:, "IconPath"].to_list()))
+            TFTPortal_df_web.insert(len(TFTPortal_df_web.columns), "IconUrl", ["缩略图网址"] + iconUrls)
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "name",
+                "RegionName",
+                "IconUrl",
+                "RegionTra_content_zh",
+                "RegionTra_content_en",
+                "type",
+                "ShortDescriptionTra_content_zh_burn",
+                "ShortDescriptionTra_content_en_burn",
+                "LongDescriptionTra_content_zh_burn",
+                "LongDescriptionTra_content_en_burn"
+            ]
+            TFTPortal_df_web = TFTPortal_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            TFTPortal_df_styled: pandas.io.formats.style.Styler = TFTPortal_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:6]
+            TFTPortal_df_styled = TFTPortal_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            TFTPortal_htmltable: str = TFTPortal_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            TFTPortal_htmltable = '<meta charset="UTF-8">\n' + TFTPortal_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"TFTPortal_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(TFTPortal_htmltable)
         #云顶之弈装备（TFT Items）
         TFTItem_df_web: pandas.DataFrame = pandas.concat([self.TFTItem_df.iloc[:1, :], self.TFTItem_df[self.TFTItem_df["IsAugment"] == ""]], ignore_index = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        mIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTItem_df_web.loc[1:, "mIconPath"].to_list()))
-        TFTItem_df_web.insert(len(TFTItem_df_web.columns), "mIconUrl", ["缩略图网址"] + mIconUrls)
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "mName",
-            "mIconUrl",
-            "mDisplayNameTra_content_zh_burn",
-            "mDisplayNameTra_content_en_burn",
-            "mComposition mDisplayNameTra_contents_zh",
-            "mComposition mDisplayNameTra_contents_en",
-            "mAlternativeCompositions mDisplayNameTra_contents_zh",
-            "mAlternativeCompositions mDisplayNameTra_contents_en",
-            "MutuallyExclusiveItems mDisplayNameTra_contents_zh",
-            "MutuallyExclusiveItems mDisplayNameTra_contents_en",
-            "IncompatibleTraits mDisplayNameTra_contents_zh",
-            "IncompatibleTraits mDisplayNameTra_contents_en",
-            "AssociatedTraits mDisplayNameTra_contents_zh",
-            "AssociatedTraits mDisplayNameTra_contents_en",
-            "BonusTrait mDisplayNameTra_content_zh",
-            "BonusTrait mDisplayNameTra_content_en",
-            "mDescriptionNameTra_content_zh_burn",
-            "mDescriptionNameTra_content_en_burn"
-        ]
-        TFTItem_df_web = TFTItem_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        TFTItem_df_styled: pandas.io.formats.style.Styler = TFTItem_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:16]
-        TFTItem_df_styled = TFTItem_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        TFTItem_htmltable: str = TFTItem_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        TFTItem_htmltable = '<meta charset="UTF-8">\n' + TFTItem_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"TFTItem_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(TFTItem_htmltable)
+        if len(TFTItem_df_web) > 1:
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            mIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTItem_df_web.loc[1:, "mIconPath"].to_list()))
+            TFTItem_df_web.insert(len(TFTItem_df_web.columns), "mIconUrl", ["缩略图网址"] + mIconUrls)
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "mName",
+                "mIconUrl",
+                "mDisplayNameTra_content_zh_burn",
+                "mDisplayNameTra_content_en_burn",
+                "mComposition mDisplayNameTra_contents_zh",
+                "mComposition mDisplayNameTra_contents_en",
+                "mAlternativeCompositions mDisplayNameTra_contents_zh",
+                "mAlternativeCompositions mDisplayNameTra_contents_en",
+                "MutuallyExclusiveItems mDisplayNameTra_contents_zh",
+                "MutuallyExclusiveItems mDisplayNameTra_contents_en",
+                "IncompatibleTraits mDisplayNameTra_contents_zh",
+                "IncompatibleTraits mDisplayNameTra_contents_en",
+                "AssociatedTraits mDisplayNameTra_contents_zh",
+                "AssociatedTraits mDisplayNameTra_contents_en",
+                "BonusTrait mDisplayNameTra_content_zh",
+                "BonusTrait mDisplayNameTra_content_en",
+                "mDescriptionNameTra_content_zh_burn",
+                "mDescriptionNameTra_content_en_burn"
+            ]
+            TFTItem_df_web = TFTItem_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            TFTItem_df_styled: pandas.io.formats.style.Styler = TFTItem_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:16]
+            TFTItem_df_styled = TFTItem_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            TFTItem_htmltable: str = TFTItem_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            TFTItem_htmltable = '<meta charset="UTF-8">\n' + TFTItem_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"TFTItem_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(TFTItem_htmltable)
         #云顶之弈强化符文（TFT Augments）
         TFTAugment_df_web: pandas.DataFrame = pandas.concat([self.TFTItem_df.iloc[:1, :], self.TFTItem_df[self.TFTItem_df["IsAugment"] == "√"]], ignore_index = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        mIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTAugment_df_web.loc[1:, "mIconPath"].to_list()))
-        TFTAugment_df_web.insert(len(TFTAugment_df_web.columns), "mIconUrl", ["缩略图网址"] + mIconUrls)
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "mName",
-            "mIconUrl",
-            "mDisplayNameTra_content_zh_burn",
-            "mDisplayNameTra_content_en_burn",
-            "mComposition mDisplayNameTra_contents_zh",
-            "mComposition mDisplayNameTra_contents_en",
-            "mAlternativeCompositions mDisplayNameTra_contents_zh",
-            "mAlternativeCompositions mDisplayNameTra_contents_en",
-            "MutuallyExclusiveItems mDisplayNameTra_contents_zh",
-            "MutuallyExclusiveItems mDisplayNameTra_contents_en",
-            "IncompatibleTraits mDisplayNameTra_contents_zh",
-            "IncompatibleTraits mDisplayNameTra_contents_en",
-            "AssociatedTraits mDisplayNameTra_contents_zh",
-            "AssociatedTraits mDisplayNameTra_contents_en",
-            "BonusTrait mDisplayNameTra_content_zh",
-            "BonusTrait mDisplayNameTra_content_en",
-            "mDescriptionNameTra_content_zh_burn",
-            "mDescriptionNameTra_content_en_burn"
-        ]
-        TFTAugment_df_web = TFTAugment_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        TFTAugment_df_styled: pandas.io.formats.style.Styler = TFTAugment_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:16]
-        TFTAugment_df_styled = TFTAugment_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        TFTAugment_htmltable: str = TFTAugment_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        TFTAugment_htmltable = '<meta charset="UTF-8">\n' + TFTAugment_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"TFTAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(TFTAugment_htmltable)
+        if len(TFTAugment_df_web) > 1:
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            mIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTAugment_df_web.loc[1:, "mIconPath"].to_list()))
+            TFTAugment_df_web.insert(len(TFTAugment_df_web.columns), "mIconUrl", ["缩略图网址"] + mIconUrls)
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "mName",
+                "mIconUrl",
+                "mDisplayNameTra_content_zh_burn",
+                "mDisplayNameTra_content_en_burn",
+                "mComposition mDisplayNameTra_contents_zh",
+                "mComposition mDisplayNameTra_contents_en",
+                "mAlternativeCompositions mDisplayNameTra_contents_zh",
+                "mAlternativeCompositions mDisplayNameTra_contents_en",
+                "MutuallyExclusiveItems mDisplayNameTra_contents_zh",
+                "MutuallyExclusiveItems mDisplayNameTra_contents_en",
+                "IncompatibleTraits mDisplayNameTra_contents_zh",
+                "IncompatibleTraits mDisplayNameTra_contents_en",
+                "AssociatedTraits mDisplayNameTra_contents_zh",
+                "AssociatedTraits mDisplayNameTra_contents_en",
+                "BonusTrait mDisplayNameTra_content_zh",
+                "BonusTrait mDisplayNameTra_content_en",
+                "mDescriptionNameTra_content_zh_burn",
+                "mDescriptionNameTra_content_en_burn"
+            ]
+            TFTAugment_df_web = TFTAugment_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            TFTAugment_df_styled: pandas.io.formats.style.Styler = TFTAugment_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:16]
+            TFTAugment_df_styled = TFTAugment_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            TFTAugment_htmltable: str = TFTAugment_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            TFTAugment_htmltable = '<meta charset="UTF-8">\n' + TFTAugment_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"TFTAugment_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(TFTAugment_htmltable)
         #云顶之弈羁绊（TFT Traits）
-        TFTTrait_df_web: pandas.DataFrame = self.TFTTrait_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        mIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTTrait_df_web.loc[1:, "mIconPath"].to_list()))
-        TFTTrait_df_web.insert(len(TFTTrait_df_web.columns), "mIconUrl", ["缩略图网址"] + mIconUrls)
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "mName",
-            "mIconUrl",
-            "mDisplayNameTra_content_zh",
-            "mDisplayNameTra_content_en",
-            "TraitType",
-            "{0247448b}_content_zh_burn",
-            "{0247448b}_content_en_burn",
-            "mDescriptionNameTra_content_zh_burn",
-            "mDescriptionNameTra_content_en_burn"
-        ]
-        TFTTrait_df_web = TFTTrait_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        TFTTrait_df_styled: pandas.io.formats.style.Styler = TFTTrait_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:5]
-        TFTTrait_df_styled = TFTTrait_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        TFTTrait_htmltable: str = TFTTrait_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        TFTTrait_htmltable = '<meta charset="UTF-8">\n' + TFTTrait_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"TFTTrait_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(TFTTrait_htmltable)
+        if len(self.TFTTrait_df) > 1:
+            TFTTrait_df_web: pandas.DataFrame = self.TFTTrait_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            mIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTTrait_df_web.loc[1:, "mIconPath"].to_list()))
+            TFTTrait_df_web.insert(len(TFTTrait_df_web.columns), "mIconUrl", ["缩略图网址"] + mIconUrls)
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "mName",
+                "mIconUrl",
+                "mDisplayNameTra_content_zh",
+                "mDisplayNameTra_content_en",
+                "TraitType",
+                "{0247448b}_content_zh_burn",
+                "{0247448b}_content_en_burn",
+                "mDescriptionNameTra_content_zh_burn",
+                "mDescriptionNameTra_content_en_burn"
+            ]
+            TFTTrait_df_web = TFTTrait_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            TFTTrait_df_styled: pandas.io.formats.style.Styler = TFTTrait_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:5]
+            TFTTrait_df_styled = TFTTrait_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            TFTTrait_htmltable: str = TFTTrait_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            TFTTrait_htmltable = '<meta charset="UTF-8">\n' + TFTTrait_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"TFTTrait_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(TFTTrait_htmltable)
         #云顶之弈通告（TFT Annoucements）
-        TFTAnnouncement_df_web: pandas.DataFrame = self.TFTAnnouncement_df.copy(deep = True)
-        ##将图标路径转换为网址（Transform icon paths into urls）
-        mIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTAnnouncement_df_web.loc[1:, "mIconPath"].to_list()))
-        TFTAnnouncement_df_web.insert(len(TFTAnnouncement_df_web.columns), "mIconUrl", ["缩略图网址"] + mIconUrls)
-        ##保留小数（Round）
-        TFTAnnouncement_df_web.loc[1:, "mDuration"] = TFTAnnouncement_df_web.loc[1:, "mDuration"].apply(lambda x: self.aRound(x, 5))
-        TFTAnnouncement_df_web.loc[1:, "mDelay"] = TFTAnnouncement_df_web.loc[1:, "mDelay"].apply(lambda x: "" if x == "" else self.aRound(x, 5))
-        ##设置要导出的行和列（Set the rows and columns to export）
-        columns_to_export: list[str] = [
-            "mIconUrl",
-            "mTitleTra_content_zh",
-            "mTitleTra_content_en",
-            "mDuration",
-            "mDelay"
-        ]
-        TFTAnnouncement_df_web = TFTAnnouncement_df_web.loc[:, columns_to_export]
-        ##样式设置（Style configuration）
-        ###设置单元格边框（Set cell border）
-        TFTAnnouncement_df_styled: pandas.io.formats.style.Styler = TFTAnnouncement_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
-        ###设置居中的列（Set centered columns）
-        center_columns: list[str] = columns_to_export[:]
-        TFTAnnouncement_df_styled = TFTAnnouncement_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
-        ##获取网页源代码（Get the web source code）
-        TFTAnnouncement_htmltable: str = TFTAnnouncement_df_styled.to_html(escape = False)
-        ##导出为网页（Export to web）
-        self.make_dir()
-        TFTAnnouncement_htmltable = '<meta charset="UTF-8">\n' + TFTAnnouncement_htmltable
-        locale: str = self.locale.replace("_", "-")
-        version: str = self.patch
-        with open(os.path.join(self.webFolder, f"TFTAnnouncement_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
-            fp.write(TFTAnnouncement_htmltable)
+        if len(self.TFTAnnouncement_df) > 1:
+            TFTAnnouncement_df_web: pandas.DataFrame = self.TFTAnnouncement_df.copy(deep = True)
+            ##将图标路径转换为网址（Transform icon paths into urls）
+            mIconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), TFTAnnouncement_df_web.loc[1:, "mIconPath"].to_list()))
+            TFTAnnouncement_df_web.insert(len(TFTAnnouncement_df_web.columns), "mIconUrl", ["缩略图网址"] + mIconUrls)
+            ##保留小数（Round）
+            TFTAnnouncement_df_web.loc[1:, "mDuration"] = TFTAnnouncement_df_web.loc[1:, "mDuration"].apply(lambda x: self.aRound(x, 5))
+            TFTAnnouncement_df_web.loc[1:, "mDelay"] = TFTAnnouncement_df_web.loc[1:, "mDelay"].apply(lambda x: "" if x == "" else self.aRound(x, 5))
+            ##设置要导出的行和列（Set the rows and columns to export）
+            columns_to_export: list[str] = [
+                "mIconUrl",
+                "mTitleTra_content_zh",
+                "mTitleTra_content_en",
+                "mDuration",
+                "mDelay"
+            ]
+            TFTAnnouncement_df_web = TFTAnnouncement_df_web.loc[:, columns_to_export]
+            ##样式设置（Style configuration）
+            ###设置单元格边框（Set cell border）
+            TFTAnnouncement_df_styled: pandas.io.formats.style.Styler = TFTAnnouncement_df_web.style.set_table_styles(self.CELL_BORDER_STYLE)
+            ###设置居中的列（Set centered columns）
+            center_columns: list[str] = columns_to_export[:]
+            TFTAnnouncement_df_styled = TFTAnnouncement_df_styled.set_properties(subset = center_columns, **{"text-align": "center", "encoding": "utf-8"})
+            ##获取网页源代码（Get the web source code）
+            TFTAnnouncement_htmltable: str = TFTAnnouncement_df_styled.to_html(escape = False)
+            ##导出为网页（Export to web）
+            self.make_dir()
+            TFTAnnouncement_htmltable = '<meta charset="UTF-8">\n' + TFTAnnouncement_htmltable
+            locale: str = self.locale.replace("_", "-")
+            version: str = self.patch
+            with open(os.path.join(self.webFolder, f"TFTAnnouncement_{locale}_{version}.html"), "w", encoding = "utf-8") as fp:
+                fp.write(TFTAnnouncement_htmltable)
 
 class FontExtractor(LoLDataExtractor):
     def __init__(self, extractor: LoLDataExtractor) -> None:
