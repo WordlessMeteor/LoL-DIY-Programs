@@ -16,7 +16,7 @@ from src.core.config.localization import inventoryType_dict, ownershipTypes, sub
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/18
+# 更新（Last update）：     2026/07/24
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -27,6 +27,7 @@ from src.core.config.localization import inventoryType_dict, ownershipTypes, sub
 #-----------------------------------------------------------------------------
 
 session: requests.Session = requests.Session()
+LoLChampions: dict[int, dict[str, Any]] = {}
 championSkins_source: dict[str, dict[str, Any]] = {}
 companions_source: list[dict[str, Any]] = []
 nexusfinishers_source: list[dict[str, Any]] = []
@@ -58,7 +59,10 @@ async def prepare_data_resources(connection: Connection) -> None: #准备数据�
     :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
     :type connection: Connection
     '''
-    global championSkins_source, companions_source, nexusfinishers_source, statstones_source, strawberryHub_source, summonerEmotes_source, summonerIcons_source, tftdamageskins_source, tftmapskins_source, tftplaybooks_source, tftzoomskins_source, wardSkins_source, lolinventorytypes, catalogDict, catalogList, store, storeDict, collection
+    global LoLChampions, championSkins_source, companions_source, nexusfinishers_source, statstones_source, strawberryHub_source, summonerEmotes_source, summonerIcons_source, tftdamageskins_source, tftmapskins_source, tftplaybooks_source, tftzoomskins_source, wardSkins_source, lolinventorytypes, catalogDict, catalogList, store, storeDict, collection
+    #英雄（Champion）
+    LoLChampions_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/champion-summary.json")).json()
+    LoLChampions = {int(LoLChampion_iter["id"]): LoLChampion_iter for LoLChampion_iter in LoLChampions_source}
     #皮肤（Champion skin）
     championSkins_source = await (await connection.request("GET", "/lol-game-data/assets/v1/skins.json")).json()
     #云顶之弈小小英雄（TFT companion）
@@ -261,7 +265,49 @@ def sort_catalog_items(catalogList: list[dict[str, Any]], hashtable_dicts: dict[
     :rtype: pandas.DataFrame
     '''
     #定义商品数据结构（Define the store item data structure）
-    catalog_header: dict[str, str] = {"active": "可用性", "description": "简介", "imagePath": "缩略图路径", "inactiveDate": "停止销售时间戳", "inventoryType": "道具类型", "itemId": "序号", "itemInstanceId": "识别码", "metadata": "元数据", "name": "名称", "offerId": "交易代码", "owned": "已拥有", "ownershipType": "拥有状态", "purchaseDate": "购买时间戳", "questSkinInfo": "任务皮肤信息", "releaseDate": "发布时间戳", "sale": "销售信息", "subInventoryType": "次级道具类型", "subTitle": "副标题", "tags": "搜索关键词", "inactiveTime": "停止销售时间", "purchaseTime": "购买时间", "releaseTime": "发布时间", "IP_cost": "原价（蓝色精萃）", "IP_costType": "支付类型（蓝色精萃）", "RP_cost": "原价（点券）", "RP_costType": "支付类型（点券）", "sale IP_cost": "售价（蓝色精萃）", "sale IP_discount": "销售折扣（蓝色精萃）", "sale IP_endDate": "停止售卖时间（蓝色精萃）", "sale IP_startDate": "开放售卖时间（蓝色精萃）", "sale RP_cost": "售价（点券）", "sale RP_discount": "销售折扣（点券）", "sale RP_endDate": "停止售卖时间（点券）", "sale RP_startDate": "开放售卖时间（点券）"}
+    catalog_header: dict[str, str] = {
+        "active": "可用性",
+        "description": "简介",
+        "duration": "持续上架时间",
+        "imagePath": "缩略图路径",
+        "inactiveDate": "停止销售时间戳",
+        "inventoryType": "道具类型",
+        "itemId": "序号",
+        "itemInstanceId": "识别码",
+        "loadScreenPath": "加载界面路径",
+        "maxQuantity": "最大持有数量",
+        "metadata": "元数据",
+        "name": "名称",
+        "offerId": "交易代码",
+        "owned": "已拥有",
+        "ownershipType": "拥有状态",
+        "purchaseDate": "购买时间戳",
+        "questSkinInfo": "任务皮肤信息",
+        "rarity": "稀有度",
+        "releaseDate": "发布时间戳",
+        "sale": "销售信息",
+        "subInventoryType": "次级道具类型",
+        "subTitle": "副标题",
+        "taggedChampionsIds": "标签英雄序号",
+        "tags": "搜索关键词",
+        "tilePath": "方块图像路径",
+        "inactiveTime": "停止销售时间",
+        "purchaseTime": "购买时间",
+        "releaseTime": "发布时间",
+        "taggedChampionsNames": "标签英雄称号",
+        "IP_cost": "原价（蓝色精萃）",
+        "IP_costType": "支付类型（蓝色精萃）",
+        "RP_cost": "原价（点券）",
+        "RP_costType": "支付类型（点券）",
+        "sale IP_cost": "售价（蓝色精萃）",
+        "sale IP_discount": "销售折扣（蓝色精萃）",
+        "sale IP_endDate": "停止售卖时间（蓝色精萃）",
+        "sale IP_startDate": "开放售卖时间（蓝色精萃）",
+        "sale RP_cost": "售价（点券）",
+        "sale RP_discount": "销售折扣（点券）",
+        "sale RP_endDate": "停止售卖时间（点券）",
+        "sale RP_startDate": "开放售卖时间（点券）"
+    }
     catalog_header_keys: list[str] = list(catalog_header.keys())
     catalog_data: dict[str, list[Any]] = {key: [] for key in catalog_header_keys}
     catalog_data_json: dict[str, list[Any]] = copy.deepcopy(catalog_data)
@@ -278,7 +324,7 @@ def sort_catalog_items(catalogList: list[dict[str, Any]], hashtable_dicts: dict[
                 sale_priceDict[price["currency"]] = price["sale"]
         for i in range(len(catalog_header)):
             key: str = catalog_header_keys[i]
-            if i <= 21:
+            if i <= 28:
                 if i == 1: #简介（`description`）
                     if item[key] != "" and (len(set(list(item[key]))) != 1 or item[key][0] != " "):
                         to_append = item[key]
@@ -291,9 +337,9 @@ def sort_catalog_items(catalogList: list[dict[str, Any]], hashtable_dicts: dict[
                             to_append = ""
                     else:
                         to_append = ""
-                elif i == 4: #道具类型（`inventoryType`）
+                elif i == 5: #道具类型（`inventoryType`）
                     to_append = inventoryType_dict[item[key]]
-                elif i == 8: #名称（`name`）
+                elif i == 11: #名称（`name`）
                     if item[key] != "":
                         to_append = item[key]
                     elif item["inventoryType"] in hashtable_dicts:
@@ -305,16 +351,23 @@ def sort_catalog_items(catalogList: list[dict[str, Any]], hashtable_dicts: dict[
                             to_append = ""
                     else:
                         to_append = ""
-                elif i == 11: #拥有状态（`ownershipType`）
+                elif i == 14: #拥有状态（`ownershipType`）
                     to_append = ownershipTypes[item[key]]
-                elif i == 16: #次级道具类型（`subInventoryType`）
+                elif i == 20: #次级道具类型（`subInventoryType`）
                     to_append = subInventoryTypes[item[key]]
-                elif i >= 19: #时间戳相关键（Timestamp-related keys）
-                    subkey = "inactiveDate" if i == 19 else "purchaseDate" if i == 20 else "releaseDate"
+                elif i >= 25 and i <= 27: #时间戳相关键（Timestamp-related keys）
+                    subkey = "inactiveDate" if i == 25 else "purchaseDate" if i == 26 else "releaseDate"
                     to_append = "" if item[subkey] == 0 else "∞" if item[subkey] == 18446744073709551615 else getISOTime(item[subkey])
+                elif i == 28: #标签英雄称号（`taggedChampionsNames`）
+                    taggedChampionIds: list[int] = item["taggedChampionsIds"]
+                    if taggedChampionIds == [0]:
+                        to_append = ""
+                    else:
+                        taggedChampionNames: list[str] = list(map(lambda x: LoLChampions[x]["name"] if x in LoLChampions else x, taggedChampionIds))
+                        to_append = json.dumps(taggedChampionNames, indent = 4, ensure_ascii = False)
                 else:
                     to_append = item[key]
-            elif i <= 25:
+            elif i <= 32:
                 currency, subkey = key.split("_")
                 if currency in priceDict and subkey in priceDict[currency]:
                     to_append = priceDict[currency][subkey]
@@ -330,7 +383,7 @@ def sort_catalog_items(catalogList: list[dict[str, Any]], hashtable_dicts: dict[
             catalog_data_json[key].append(pyobj2json(to_append))
         print("[%d/%d](%s, %d)" %(item_index + 1, len(catalogList), item["inventoryType"], item["itemId"]), end = "\r")
     #数据框列序整理（Dataframe column ordering）
-    catalog_statistics_output_order: list[int] = [8, 17, 1, 5, 0, 4, 16, 7, 6, 21, 19, 22, 23, 24, 25, 15, 26, 27, 29, 28, 30, 31, 33, 32, 10, 11, 20, 13, 9, 18, 2]
+    catalog_statistics_output_order: list[int] = [11, 21, 1, 6, 0, 9, 5, 20, 17, 10, 7, 27, 25, 2, 29, 30, 31, 32, 19, 33, 34, 36, 35, 37, 38, 40, 39, 13, 14, 26, 16, 12, 23, 28, 3, 8, 24]
     catalog_data_organized: dict[str, list[Any]] = {catalog_header_keys[i]: catalog_data_json[catalog_header_keys[i]] for i in catalog_statistics_output_order}
     catalog_df: pandas.DataFrame = pandas.DataFrame(data = catalog_data_organized)
     optimize_bool_display(catalog_df)
