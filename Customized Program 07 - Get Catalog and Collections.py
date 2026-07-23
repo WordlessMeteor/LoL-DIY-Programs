@@ -111,7 +111,7 @@ async def prepare_data_resources(connection: Connection) -> None: #准备数据�
     #藏品（Collection）
     #collection = await (await connection.request("GET", "/lol-inventory/v1/inventory", data = inventoryTypes)).json()
     collection = await (await connection.request("GET", "/lol-inventory/v1/inventory?inventoryTypes=%s" %(json.dumps(inventoryTypes).replace(" ", "")))).json()
-    #collection = await (await connection.request("GET", '/lol-inventory/v1/inventory?inventoryTypes=["ACHIEVEMENT_BANNER_ACCENT","ACHIEVEMENT_TITLE","ANNOUNCER_PACK","ARAM_BOON","AUGMENT","AUGMENT_SLOT","BOOST","BUNDLES","CHAMPION","CHAMPION_SKIN","CHERRY_BOON","COMPANION","CURRENCY","EMOTE","EVENT_PASS","FANPASS","GIFT","HEXTECH_CRAFTING","MODE_PROGRESSION_REWARD","MYSTERY","NEXUS_FINISHER","OPAL_ACHIEVEMENT","PREMIUM_CLUB_MEMBERSHIP","PROGRESSION","PROVIEW_PASS","PVE_RELIC","PVE_SUMMONER_PACKAGE","PVE_UPGRADE","QUEUE_ENTRY","REGALIA_BANNER","REGALIA_BORDER","REGALIA_CREST","RP","RUNE","SKIN_AUGMENT","SKIN_BORDER","SKIN_UPGRADE_GEAR","SKIN_UPGRADE_HOME_GUARD","SKIN_UPGRADE_RECALL","SKIN_UPGRADE_SPAWN","SPELL_BOOK_PAGE","STATSTONE","STRAWBERRY_BOON","STRAWBERRY_LOADOUT_ITEM","STRAWBERRY_MAP","SUMMONER_CUSTOMIZATION","SUMMONER_ICON","TEAMPASS","TEAM_SKIN_PURCHASE","TFT_DAMAGE_SKIN","TFT_EVENT_PVE_BUDDY","TFT_EVENT_PVE_DIFFICULTY","TFT_EVENT_SKILLS","TFT_MAP_SKIN","TFT_PLAYBOOK","TFT_ZOOM_SKIN","TOURNAMENT_FLAG","TOURNAMENT_FRAME","TOURNAMENT_LOGO","TOURNAMENT_TROPHY","TRANSFER","WARD_SKIN"]')).json()
+    #collection = await (await connection.request("GET", '/lol-inventory/v1/inventory?inventoryTypes=["ACHIEVEMENT_BANNER_ACCENT","ACHIEVEMENT_TITLE","ANNOUNCER_PACK","ARAM_BOON","AUGMENT","AUGMENT_SLOT","BOOST","BUNDLES","CHAMPION","CHAMPION_SKIN","CHERRY_BOON","COMPANION","CURRENCY","EMOTE","EVENT_PASS","FANPASS","GIFT","HEXTECH_CRAFTING","MODE_PROGRESSION_REWARD","MYSTERY","NEXUS_FINISHER","OPAL_ACHIEVEMENT","PREMIUM_CLUB_MEMBERSHIP","PROGRESSION","PROVIEW_PASS","PVE_RELIC","PVE_SUMMONER_PACKAGE","PVE_UPGRADE","QUEUE_ENTRY","REGALIA_BANNER","REGALIA_BORDER","REGALIA_CREST","RP","RUNE","SKIN_AUGMENT","SKIN_BORDER","SKIN_UPGRADE_GEAR","SKIN_UPGRADE_HOME_GUARD","SKIN_UPGRADE_RECALL","SKIN_UPGRADE_SPAWN","SPELL_BOOK_PAGE","STATSTONE","STRAWBERRY_BOON","STRAWBERRY_LOADOUT_ITEM","STRAWBERRY_MAP","SUMMONER_CUSTOMIZATION","SUMMONER_ICON","TEAMPASS","TEAM_SKIN_PURCHASE","TFT_DAMAGE_SKIN","TFT_EVENT_HEALTH_BADGE","TFT_EVENT_PLAYER_TAG","TFT_EVENT_PVE_BUDDY","TFT_EVENT_PVE_DIFFICULTY","TFT_EVENT_RIBBON","TFT_EVENT_SKILLS","TFT_MAP_SKIN","TFT_PLAYBOOK","TFT_ZOOM_SKIN","TOURNAMENT_FLAG","TOURNAMENT_FRAME","TOURNAMENT_LOGO","TOURNAMENT_TROPHY","TRANSFER","WARD_SKIN"]')).json()
     
 async def create_hashtable(connection: Connection) -> dict[str, dict[Any, dict[str, str]]]:
     '''
@@ -268,7 +268,7 @@ def sort_catalog_items(catalogList: list[dict[str, Any]], hashtable_dicts: dict[
     catalog_header: dict[str, str] = {
         "active": "可用性",
         "description": "简介",
-        "duration": "持续上架时间",
+        "duration": "持续时间",
         "imagePath": "缩略图路径",
         "inactiveDate": "停止销售时间戳",
         "inventoryType": "道具类型",
@@ -406,7 +406,35 @@ def sort_store_items(store: list[dict[str, Any]], locale: str, collection_hashta
     :rtype: pandas.DataFrame
     '''
     #定义商店道具数据结构（Define the store item data structure）
-    store_header: dict[str, str] = {"active": "可用性", "bundled": "附赠信息", "iconUrl": "图标链接", "inactiveDate": "禁用日期", "inventoryType": "道具类型", "itemId": "序号", "itemInstanceId": "识别码", "itemRequirements": "购买要求", "maxQuantity": "最大购买数量", "metadata": "元数据", "offerId": "交易代码", "releaseDate": "发布日期", "subInventoryType": "次级道具类型", "tags": "关键词", "name": "名称", "description": "简介", "IP_cost": "原价（蓝色精粹）", "IP_discount": "折扣（蓝色精粹）", "RP_cost": "原价（点券）", "RP_discount": "折扣（点券）", "sale endDate": "停止售卖时间", "sale startDate": "开放售卖时间", "sale IP_cost": "售价（蓝色精粹）", "sale IP_discount": "销售折扣（蓝色精粹）", "sale RP_cost": "售价（点券）", "sale RP_discount": "销售折扣（点券）"}
+    store_header: dict[str, str] = {
+        "active": "可用性",
+        "bundled": "附赠信息",
+        "duration": "持续时间",
+        "iconUrl": "图标链接",
+        "inactiveDate": "禁用日期",
+        "inventoryType": "道具类型",
+        "itemId": "序号",
+        "itemInstanceId": "识别码",
+        "itemRequirements": "购买要求",
+        "maxQuantity": "最大购买数量",
+        "metadata": "元数据",
+        "offerId": "交易代码",
+        "releaseDate": "发布日期",
+        "subInventoryType": "次级道具类型",
+        "tags": "关键词",
+        "name": "名称",
+        "description": "简介",
+        "IP_cost": "原价（蓝色精萃）",
+        "IP_discount": "折扣（蓝色精萃）",
+        "RP_cost": "原价（点券）",
+        "RP_discount": "折扣（点券）",
+        "sale endDate": "停止售卖时间",
+        "sale startDate": "开放售卖时间",
+        "sale IP_cost": "售价（蓝色精萃）",
+        "sale IP_discount": "销售折扣（蓝色精萃）",
+        "sale RP_cost": "售价（点券）",
+        "sale RP_discount": "销售折扣（点券）"
+    }
     store_header_keys: list[str] = list(store_header.keys())
     store_data: dict[str, list[Any]] = {key: [] for key in store_header_keys}
     store_data_json: dict[str, list[Any]] = copy.deepcopy(store_data)
@@ -414,7 +442,7 @@ def sort_store_items(store: list[dict[str, Any]], locale: str, collection_hashta
     print("商店信息整理进度（Store data organization process）：")
     for item_index in range(len(store)):
         item: dict[str, Any] = store[item_index]
-        priceDict: dict[str, dict[str, int]] = {} #应用于“i <= 19”的场景（Applies when "i <= 19"）
+        priceDict: dict[str, dict[str, int]] = {} #应用于“i <= 20”的场景（Applies when "i <= 20"）
         for price in item["prices"]:
             priceDict[price["currency"]] = price
         sale_priceDict: dict[str, dict[str, int]] = {} #应用与“i >= 22”的场景（Applies when "i >= 22"）
@@ -423,10 +451,10 @@ def sort_store_items(store: list[dict[str, Any]], locale: str, collection_hashta
                 sale_priceDict[price["currency"]] = price
         for i in range(len(store_header)):
             key: str = store_header_keys[i]
-            if i <= 13:
-                if i == 4: #道具类型（`inventoryType`）
+            if i <= 14:
+                if i == 5: #道具类型（`inventoryType`）
                     to_append = inventoryType_dict[item[key]]
-                elif i == 7: #购买要求（`itemRequirements`）
+                elif i == 8: #购买要求（`itemRequirements`）
                     itemRequirements: list[str] = []
                     if item[key] != None:
                         for requirement in item[key]:
@@ -435,11 +463,11 @@ def sort_store_items(store: list[dict[str, Any]], locale: str, collection_hashta
                     to_append = itemRequirements
                     if to_append == []:
                         to_append = ""
-                elif i == 12: #次级道具类型（`subInventoryType`）
+                elif i == 13: #次级道具类型（`subInventoryType`）
                     to_append = subInventoryTypes[item[key]]
                 else:
                     to_append = item[key]
-            elif i <= 15:
+            elif i <= 16:
                 value: str = ""
                 if item["localizations"] != None and locale in item["localizations"] and key in item["localizations"][locale]:
                     value = item["localizations"][locale][key]
@@ -450,13 +478,13 @@ def sort_store_items(store: list[dict[str, Any]], locale: str, collection_hashta
                         elif item["itemId"] in hashtable_dicts[item["inventoryType"]]:
                             value = hashtable_dicts[item["inventoryType"]][item["itemId"]][key]
                 to_append = value
-            elif i <= 19:
+            elif i <= 20:
                 currency, subkey = key.split("_")
                 if currency in priceDict and subkey in priceDict[currency]:
                     to_append = priceDict[currency][subkey]
                 else:
                     to_append = ""
-            elif i <= 21:
+            elif i <= 22:
                 to_append = item["sale"][key.split()[1]] if item["sale"] != None else ""
             else:
                 currency, subkey = key.split(" ")[1].split("_")
@@ -468,7 +496,7 @@ def sort_store_items(store: list[dict[str, Any]], locale: str, collection_hashta
             store_data_json[key].append(pyobj2json(to_append))
         print("[%d/%d](%s, %d)" %(item_index + 1, len(store), item["inventoryType"], item["itemId"]), end = "\r")
     #数据框列序整理（Dataframe column ordering）
-    store_statistics_output_order: list[int] = [14, 15, 5, 0, 4, 12, 9, 1, 6, 11, 3, 16, 17, 18, 19, 8, 7, 10, 21, 20, 22, 23, 24, 25, 13, 2]
+    store_statistics_output_order: list[int] = [15, 16, 6, 0, 5, 13, 10, 1, 7, 12, 4, 2, 17, 18, 19, 20, 9, 8, 11, 22, 21, 23, 24, 25, 26, 14, 3]
     store_data_organized: dict[str, list[Any]] = {store_header_keys[i]: store_data_json[store_header_keys[i]] for i in store_statistics_output_order}
     store_df: pandas.DataFrame = pandas.DataFrame(data = store_data_organized)
     optimize_bool_display(store_df)
