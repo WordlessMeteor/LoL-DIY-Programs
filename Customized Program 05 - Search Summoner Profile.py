@@ -40,7 +40,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/07/18
+# 更新（Last update）：     2026/07/23
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2996,8 +2996,9 @@ async def search_profile(connection: Connection) -> None:
                                         if args.export_leaderboard:
                                             addDefaultStyle(game_leaderboard_dfs[matchIDs[i]]).to_excel(excel_writer = writer, sheet_name = "Match %d - Leaderboard" %(matchIDs[i]))
                                             logPrint("对局段位排行榜导出完成。\nMatch leaderboard exported.")
-                                        game_summary_df: pandas.DataFrame = eliminate_empty_fields(game_summary_dfs[matchIDs[i]])
-                                        addDefaultStyle(game_summary_df.transpose()).to_excel(excel_writer = writer, sheet_name = "Match %d - Summary" %(matchIDs[i]))
+                                        game_summary_df: pandas.DataFrame = game_summary_dfs[matchIDs[i]]
+                                        game_summary_df_dense: pandas.DataFrame = eliminate_empty_fields(game_summary_df)
+                                        addDefaultStyle(game_summary_df_dense.transpose()).to_excel(excel_writer = writer, sheet_name = "Match %d - Summary" %(matchIDs[i]))
                                         if isLoL.get(matchIDs[i], False) and args.info_color:
                                             worksheet = writer.sheets["Match %d - Summary" %(matchIDs[i])]
                                             worksheet.conditional_formatting.rules = []
@@ -3014,7 +3015,7 @@ async def search_profile(connection: Connection) -> None:
                                                     participantId_subteamId_map[playerSubteam] = []
                                                 participantId_subteamId_map[playerSubteam].append(participantId)
                                             max_numPlayersPerTeam_lol = max(map(len, participantId_teamId_map.values())) if all(map(lambda x: game_summary_df["playerSubteamColor"][x] == "", list(range(1, len(game_summary_df))))) else max(map(len, participantId_subteamId_map.values()))
-                                            addFormat_LoLGame_summary_wb_transpose(worksheet, game_summary_df.transpose(), numColorScale_order = max_numPlayersPerTeam_lol)
+                                            addFormat_LoLGame_summary_wb_transpose(worksheet, game_summary_df_dense.transpose(), numColorScale_order = max_numPlayersPerTeam_lol)
                                         logPrint("对局概要导出完成。\nMatch summary exported.")
                                     if not timeline_exist_error[matchIDs[i]]:
                                         game_timeline_df: pandas.DataFrame = eliminate_empty_fields(game_timeline_dfs[matchIDs[i]])

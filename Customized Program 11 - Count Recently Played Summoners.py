@@ -8,7 +8,7 @@ from src.utils.format import format_df, addDefaultStyle, verify_uuid
 from src.utils.patch import Patch
 from src.utils.webRequest import requestUrl, SGPSession
 from src.utils.excel_workbook import create_workbook_win32
-from src.core.config.conditional_formatting import addFormat_LoLGame_summary_wb, addFormat_LoLGame_summary_wb_transpose
+from src.core.config.conditional_formatting import addFormat_LoLGame_summary_wb_transpose
 from src.core.config.const import BOT_UUID
 from src.core.config.servers import valid_platformIds, set_platform_folder, set_summonerInfo_folder, save_platform_info
 from src.core.config.localization import language_ddragon, language_dict, language_cdragon
