@@ -167,6 +167,8 @@ mastery_header: dict[str, str] = {
 }
 #排位（Ranked）
 ranked_header: dict[str, str] = {
+    "climbingIndicatorActive": "正在攀登",
+    "currentSeasonWinsForRewards": "当前赛季计入奖励的胜场数",
     "division": "分级",
     "highestDivision": "当前赛季最高段位分级",
     "highestTier": "当前赛季最高段位",
@@ -178,6 +180,7 @@ ranked_header: dict[str, str] = {
     "previousSeasonEndTier": "过往赛季结束段位",
     "previousSeasonHighestDivision": "过往赛季最高段位分级",
     "previousSeasonHighestTier": "过往赛季最高段位",
+    "previousSeasonWinsForRewards": "过往赛季计入奖励的胜场数",
     "provisionalGameThreshold": "总定位场次",
     "provisionalGamesRemaining": "剩余定位场次",
     "queueType": "对局类型",

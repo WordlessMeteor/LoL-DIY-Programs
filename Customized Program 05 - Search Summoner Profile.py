@@ -40,7 +40,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/07/23
+# 更新（Last update）：     2026/07/24
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1386,27 +1386,26 @@ async def sort_ranked_data(connection: Connection, puuid: str) -> pandas.DataFra
     ranked: dict[str, Any] = await (await connection.request("GET", f"/lol-ranked/v1/ranked-stats/{puuid}")).json()
     ranked_header_keys: list[str] = list(ranked_header.keys())
     ranked_data: dict[str, list[Any]] = {key: [] for key in ranked_header_keys}
-    for i in range(len(ranked["queues"])):
-        queue: dict[str, Any] = ranked["queues"][i]
-        for j in range(len(ranked_header_keys)):
-            key: str = ranked_header_keys[j]
-            if j in {0, 1, 7, 9}: #段位分级相关键（Division-related keys）
+    for queue in ranked["queues"]:
+        for i in range(len(ranked_header_keys)):
+            key: str = ranked_header_keys[i]
+            if i in {2, 3, 9, 11}: #段位分级相关键（Division-related keys）
                 to_append: Any = "" if queue[key] == "NA" else queue[key]
-            elif j in {2, 8, 10, 16}: #段位相关键（Tier-related keys）
+            elif i in {4, 10, 12, 19}: #段位相关键（Tier-related keys）
                 to_append = tiers[queue[key]]
-            elif j == 13: #对局类型（`queueType`）
+            elif i == 16: #对局类型（`queueType`）
                 to_append = queueTypes_ranked[queue[key]]
-            elif j == 15: #云顶之弈狂暴模式段位（`ratedTier`）
+            elif i == 18: #云顶之弈狂暴模式段位（`ratedTier`）
                 to_append = ratedTiers[queue[key]]
-            elif j == 19 or j == 20:
-                if j == 19: #综合段位（`tier / ratedTier`）
+            elif i == 22 or i == 23:
+                if i == 22: #综合段位（`tier / ratedTier`）
                     to_append = ratedTiers[queue["ratedTier"]] if queue["queueType"] == "RANKED_TFT_TURBO" else tiers[queue["tier"]]
                 else: #综合胜点（`leaguePoints / ratedRating`）
                     to_append = queue["ratedRating"] if queue["queueType"] == "RANKED_TFT_TURBO" else queue["leaguePoints"]
             else:
                 to_append = queue[key]
             ranked_data[key].append(to_append)
-    ranked_statistics_output_order: list[int] = [13, 19, 0, 20, 18, 5, 3, 11, 12, 6, 2, 1, 8, 7, 10, 9, 17]
+    ranked_statistics_output_order: list[int] = [16, 22, 2, 23, 21, 7, 5, 0, 14, 15, 8, 4, 3, 1, 10, 9, 12, 11, 13, 20]
     ranked_data_organized: dict[str, list[Any]] = {ranked_header_keys[i]: ranked_data[ranked_header_keys[i]] for i in ranked_statistics_output_order}
     ranked_df: pandas.DataFrame = pandas.DataFrame(data = ranked_data_organized)
     optimize_bool_display(ranked_df)
