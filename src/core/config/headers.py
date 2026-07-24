@@ -3739,6 +3739,7 @@ captureDevice_header: dict[str, str] = {
 }
 voiceSettings_header: dict[str, str] = {
     "autoJoin": "自动加入语音频道",
+    "autoJoinTeamVoice": "自动加入团队语音",
     "currentCaptureDeviceHandle": "当前输入设备句柄",
     "inputMode": "输入模式",
     "localMicMuted": "已自我静音",
@@ -3747,7 +3748,9 @@ voiceSettings_header: dict[str, str] = {
     "muteOnConnect": "连接时静音",
     "pttActive": "按键发言已激活",
     "pttKey": "按键发言热键",
+    "pushToTalkTeamKey": "按键发言团队热键",
     "vadActive": "语音活跃度已激活",
+    "vadAuto": "自动调整语音活跃度",
     "vadHangoverTime": "语音检测延迟",
     "vadSensitivity": "语音活跃度阈值"
 }

@@ -796,7 +796,23 @@ async def sort_voice_settings(connection: Connection) -> pandas.DataFrame:
     :rtype: pandas.DataFrame
     '''
     voiceSettings: dict[str, Any] = await (await connection.request("GET", "/lol-premade-voice/v1/settings")).json()
-    voiceSettings_df: pandas.DataFrame = pandas.concat([pandas.DataFrame(voiceSettings_header, index = [0]), pandas.DataFrame(voiceSettings, index = [1])], axis = 1)
+    voiceSettings_header_keys: list[str] = list(voiceSettings_header.keys())
+    voiceSettings_data: dict[str, list[Any]] = {"项目": [], "Items": [], "值": []}
+    for i in range(len(voiceSettings_header_keys)):
+        key: str = voiceSettings_header_keys[i]
+        voiceSettings_data["项目"].append(voiceSettings_header[key])
+        voiceSettings_data["Items"].append(key)
+        voiceSettings_data["值"].append(voiceSettings[key])
+    voiceSettings_statistics_output_order: list[int] = [0, 1, 7, 2, 6, 4, 3, 11, 12, 14, 13, 8, 9, 10, 5]
+    voiceSettings_data_organized: dict[str, list[Any]] = {"项目": [], "Items": [], "值": []}
+    for i in voiceSettings_statistics_output_order:
+        key: str = voiceSettings_header_keys[i]
+        value: Any = voiceSettings_data["值"][i]
+        voiceSettings_data_organized["项目"].append(voiceSettings_header[key])
+        voiceSettings_data_organized["Items"].append(key)
+        voiceSettings_data_organized["值"].append(value)
+    info_df: pandas.DataFrame = pandas.DataFrame(data = voiceSettings_data_organized)
+    voiceSettings_df: pandas.DataFrame = pandas.DataFrame(data = voiceSettings_data)
     return voiceSettings_df
 
 async def sort_voice_participants(connection: Connection) -> pandas.DataFrame:
