@@ -1820,6 +1820,42 @@ lolEventHubOfferStates: dict[str, str] = {
     "kAvailable": "可用",
     "kOwned": "已拥有"
 }
+#装备（Item）
+itemCategories: dict[str, str] = {
+    "AbilityHaste": "技能急速",
+    "Active": "主动",
+    "Armor": "护甲",
+    "ArmorPenetration": "护甲穿透",
+    "AttackSpeed": "攻击速度",
+    "Aura": "光环",
+    "Bilgewater": "比尔吉沃特",
+    "Boots": "鞋子",
+    "Consumable": "消耗品",
+    "CooldownReduction": "冷却缩减",
+    "CriticalStrike": "暴击",
+    "Damage": "攻击力",
+    "GoldPer": "工资装",
+    "Health": "生命值",
+    "HealthRegen": "生命回复",
+    "Jungle": "打野-起始",
+    "Lane": "对线-起始",
+    "LifeSteal": "生命偷取",
+    "MagicPenetration": "法术穿透",
+    "MagicResist": "魔法抗性",
+    "Mana": "法力值",
+    "ManaRegen": "法力回复",
+    "Movement": "移动速度",
+    "NonbootsMovement": "其它移动速度物品",
+    "OnHit": "攻击特效",
+    "Slow": "减速",
+    "SpellBlock": "魔法抗性",
+    "SpellDamage": "法术强度",
+    "SpellVamp": "法术吸血",
+    "Stealth": "潜行/隐身",
+    "Tenacity": "韧性",
+    "Trinket": "饰品",
+    "Vision": "视野"
+}
 
 #定义英文常量字典（Define English constant dictionaries）
 ##生涯（Profile）
@@ -2688,4 +2724,40 @@ lolEventHubOfferStates: dict[str, str] = {
 #     "kUnavailable": "kUnavailable",
 #     "kAvailable": "kAvailable",
 #     "kOwned": "kOwned"
+# }
+#装备（Item）
+# itemCategories: dict[str, str] = {
+#     "AbilityHaste": "Ability Haste",
+#     "Active": "Active",
+#     "Armor": "Armor",
+#     "ArmorPenetration": "Armor Penetration",
+#     "AttackSpeed": "Attack Speed",
+#     "Aura": "Aura",
+#     "Bilgewater": "Bilgewater",
+#     "Boots": "Boots",
+#     "Consumable": "Consumable",
+#     "CooldownReduction": "Cooldown Reduction",
+#     "CriticalStrike": "Critical Strike",
+#     "Damage": "Attack Damage",
+#     "GoldPer": "Gold",
+#     "Health": "Health",
+#     "HealthRegen": "Health Regen",
+#     "Jungle": "Jungle",
+#     "Lane": "Lane",
+#     "LifeSteal": "Life Steal",
+#     "MagicPenetration": "Magic Penetration",
+#     "MagicResist": "Magic Resistance",
+#     "Mana": "Mana",
+#     "ManaRegen": "Mana Regen",
+#     "Movement": "Movement Speed",
+#     "NonbootsMovement": "Non-boots Movement",
+#     "OnHit": "On-Hit",
+#     "Slow": "Slow",
+#     "SpellBlock": "Spell Block",
+#     "SpellDamage": "Ability Power",
+#     "SpellVamp": "Spell Vamp",
+#     "Stealth": "Stealth",
+#     "Tenacity": "Tenacity",
+#     "Trinket": "Trinket",
+#     "Vision": "Vision"
 # }
