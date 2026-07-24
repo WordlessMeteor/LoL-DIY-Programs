@@ -3639,10 +3639,13 @@ friend_hovercard_header: dict[str, str] = {
     "skinVariant chromaPath": "选用（炫彩）皮肤炫彩路径",
     "spectatingTargetGameName": "被观战者玩家名称",
     "spectatingTargetTagline": "被观战者名称编号",
+    "pty agsActivityId": "小队活动编号",
+    "pty isPartyOpen": "小队公开性",
     "pty maxPlayers": "小队最大玩家数量",
     "pty partyId": "小队编号",
     "pty queueId": "小队队列序号",
     "pty summoners": "小队召唤师序号",
+    "pty summonerPuuids": "小队玩家通用唯一识别码",
     "pty summonerNames": "小队召唤师名",
     "regalia bannerType": "旗帜类型",
     "regalia crestType": "华冠类型",
@@ -3697,15 +3700,18 @@ friend_request_header: dict[str, str] = {
     "icon title": "召唤师图标名称"
 }
 party_header: dict[str, str] = {
+    "agsActivityId": "活动编号",
+    "isPartyOpen": "小队公开性",
     "maxPlayers": "房间规模",
     "partyId": "小队编号",
     "queueId": "队列序号",
+    "summonerPuuids": "已加入的召唤师玩家通用唯一识别码",
     "summoners": "已加入的召唤师序号",
     "queue gameMode": "游戏模式",
     "queue name": "游戏模式名称",
     "queue type": "游戏类型",
     "summonerNames": "已加入的召唤师名",
-    "full?": "满员"
+    "full?": "小队已满员"
 }
 invid_header: dict[str, str] = {
     "canAcceptInvitation": "允许接受邀请",

@@ -23,7 +23,7 @@ from src.core.dataframes.gameflow import sort_ChampSelect_players
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/07/18
+# 更新（Last update）：     2026/07/24
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -352,10 +352,10 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
                             to_append = ""
                     else:
                         to_append = lol.get(key, "")
-            elif i <= 118:
+            elif i <= 121:
                 if friend["lol"] != {} and "pty" in friend and friend["pty"] != "":
                     party: dict[str, Any] = json.loads(friend["lol"]["pty"])
-                    if i == 118: #小队召唤师名（`pty summonerNames`）
+                    if i == 121: #小队召唤师名（`pty summonerNames`）
                         summonerIds: list[int] = party["summoners"]
                         summonerNames: list[Any] = []
                         for summonerId in summonerIds:
@@ -385,7 +385,7 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
                     to_append = ""
             friend_hovercard_data[key].append(to_append)
     #数据框列序整理（Dataframe column ordering）
-    friend_hovercard_statistics_output_order: list[int] = [13, 5, 6, 24, 20, 16, 7, 8, 26, 27, 0, 11, 22, 14, 29, 30, 31, 1, 2, 33, 32, 21, 48, 56, 57, 55, 62, 58, 60, 59, 61, 69, 35, 36, 47, 98, 99, 100, 101, 70, 44, 116, 118, 115, 53, 42, 43, 54, 90, 49, 41, 71, 72, 103, 109, 75, 77, 78, 80, 83, 89, 86, 87, 92, 95, 96, 46, 65, 66, 112, 113]
+    friend_hovercard_statistics_output_order: list[int] = [13, 5, 6, 24, 20, 16, 7, 8, 26, 27, 0, 11, 22, 14, 29, 30, 31, 1, 2, 33, 32, 21, 48, 56, 57, 55, 62, 58, 60, 59, 61, 69, 35, 36, 47, 98, 99, 100, 101, 70, 44, 115, 118, 121, 117, 114, 53, 42, 43, 54, 90, 49, 41, 71, 72, 103, 109, 75, 77, 78, 80, 83, 89, 86, 87, 92, 95, 96, 46, 65, 66, 112, 113]
     friend_hovercard_data_organized: dict[str, list[Any]] = {friend_hovercard_header_keys[i]: friend_hovercard_data[friend_hovercard_header_keys[i]] for i in friend_hovercard_statistics_output_order}
     friend_hovercard_df: pandas.DataFrame = pandas.DataFrame(data = friend_hovercard_data_organized)
     optimize_bool_display(friend_hovercard_df)
@@ -649,9 +649,11 @@ async def sort_party_data(connection: Connection, parties: Any) -> pandas.DataFr
         for party in parties:
             for i in range(len(party_header_keys)):
                 key: str = party_header_keys[i]
-                if i >= 4 and i <= 6:
+                if i <= 6:
+                    to_append = party[key]
+                elif i >= 7 and i <= 9:
                     to_append: Any = gameQueues[party["queueId"]][key.split()[1]]
-                elif i == 7:
+                elif i == 10: #已加入的召唤师名（`summonerNames`）
                     summonerIds: list[int] = party["summoners"]
                     summonerNames: list[str] = []
                     for summonerId in summonerIds:
@@ -669,12 +671,10 @@ async def sort_party_data(connection: Connection, parties: Any) -> pandas.DataFr
                             continue
                         summonerNames.append(get_info_name(member_info["body"]))
                     to_append = summonerNames
-                elif i == 8:
+                else: #小队已满员（`full?`）
                     to_append = party["maxPlayers"] == len(party["summoners"])
-                else:
-                    to_append = party[key]
                 party_data[key].append(to_append)
-        party_statistics_output_order: list[int] = [1, 0, 4, 5, 2, 8, 7]  
+        party_statistics_output_order: list[int] = [3, 1, 0, 2, 7, 8, 4, 11, 5, 6, 10]
         party_data_organized: dict[str, list[Any]] = {party_header_keys[i]: party_data[party_header_keys[i]] for i in party_statistics_output_order}
         party_df: pandas.DataFrame = pandas.DataFrame(data = party_data_organized)
         party_df = pandas.concat([pandas.DataFrame([party_header])[party_df.columns], party_df], ignore_index = True)
@@ -1206,7 +1206,7 @@ async def export_conversation(connection: Connection) -> None:
     json1name: str = "Conversations - %s.json" %(get_info_name(current_info))
     if os.path.exists(os.path.join(folder, json1name)):
         with open(os.path.join(folder, json1name), "r", encoding = "utf-8") as fp:
-            conversation_json: dict[str, dict[str, Any]] = json.load(fp)
+            conversation_json: dict[str, list[dict[str, Any]]] = json.load(fp)
     else:
         conversation_json = {}
     conversations: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/conversations")).json()
