@@ -677,40 +677,42 @@ async def sort_eog_playerstat_lol_data(connection: Connection, summonerIcons: di
                 stats: dict[str, Any] = player["stats"]
                 for i in range(len(eog_playerstat_data_lol_header_keys)):
                     key: str = eog_playerstat_data_lol_header_keys[i]
-                    if i <= 46:
-                        if i == 6: #本人标记（`isLocalPlayer`）
-                            to_append: Any = "☆" if player["isLocalPlayer"] else ""
-                        elif i == 16: #选择角色定位（`selectedPosition`）
+                    if i <= 47:
+                        if i == 4: #推测角色定位（`detectedTeamPosition`）
+                            to_append: Any = positions[player["detectedTeamPosition"]]
+                        elif i == 6: #本人标记（`isLocalPlayer`）
+                            to_append = "☆" if player["isLocalPlayer"] else ""
+                        elif i == 17: #选择角色定位（`selectedPosition`）
                             to_append = positions[player["selectedPosition"]]
-                        elif i >= 26 and i <= 39: #装备相关键（Item-related keys）
+                        elif i >= 27 and i <= 40: #装备相关键（Item-related keys）
                             itemId: int = player["items"][int(key.split("_")[0][4:])]
-                            to_append = "" if itemId == 0 else LoLItems[itemId][key.split("_")[1]] if itemId in LoLItems else itemId if i <= 32 else ""
-                        elif i == 40 or i == 41: #召唤师图标相关键（Summoner icon-related keys）
+                            to_append = "" if itemId == 0 else LoLItems[itemId][key.split("_")[1]] if itemId in LoLItems else itemId if i <= 33 else ""
+                        elif i == 41 or i == 42: #召唤师图标相关键（Summoner icon-related keys）
                             profileIconId: int = player["profileIconId"]
-                            to_append = summonerIcons[profileIconId][key.split("_")[1]] if profileIconId in summonerIcons and key.split("_")[1] in summonerIcons[profileIconId] else profileIconId if i == 40 else ""
-                        elif i >= 42 and i <= 45: #召唤师技能相关键（Summoner spell-related keys）
+                            to_append = summonerIcons[profileIconId][key.split("_")[1]] if profileIconId in summonerIcons and key.split("_")[1] in summonerIcons[profileIconId] else profileIconId if i == 41 else ""
+                        elif i >= 43 and i <= 46: #召唤师技能相关键（Summoner spell-related keys）
                             spellId: int = player[key.split("_")[0] + "Id"]
-                            to_append = spells[spellId][key.split("_")[1]] if spellId in spells else spellId if i <= 43 else ""
-                        elif i == 46: #阵营（`team_color`）
+                            to_append = spells[spellId][key.split("_")[1]] if spellId in spells else spellId if i <= 44 else ""
+                        elif i == 47: #阵营（`team_color`）
                             to_append = team_colors_int[player["teamId"]]
                         else:
                             to_append = player[key]
                     else:
-                        if i in [50, 51, 57, 121, 145, 146]:
+                        if i in {50, 52, 53, 59, 123, 147, 148, 149, 150, 151}:
                             to_append = bool(stats.get(key.split()[1], 0))
-                        elif i == 147: #击杀得分（`stats KDA`）
+                        elif i == 152: #击杀得分（`stats KDA`）
                             to_append = "%d/%d/%d" %(stats["CHAMPIONS_KILLED"], stats["NUM_DEATHS"], stats["ASSISTS"]) if all(map(lambda x: x in stats, ["CHAMPIONS_KILLED", "NUM_DEATHS", "ASSISTS"])) else ""
-                        elif i >= 148 and i <= 151: #符文系相关键（Perkstyle-related keys）
+                        elif i >= 153 and i <= 156: #符文系相关键（Perkstyle-related keys）
                             if key.split()[1] in stats:
                                 perkstyleId: int = stats[key.split()[1]]
-                                to_append = perkstyles[perkstyleId][key.split()[2]] if perkstyleId in perkstyles else perkstyleId if i == 148 or i == 150 else ""
+                                to_append = perkstyles[perkstyleId][key.split()[2]] if perkstyleId in perkstyles else perkstyleId if i == 153 or i == 155 else ""
                             else:
                                 to_append = ""
-                        elif i >= 152 and i <= 169: #符文相关键（Perk-related keys）
+                        elif i >= 157 and i <= 174: #符文相关键（Perk-related keys）
                             if key.split()[1] in stats:
                                 perkId = stats[key.split()[1]]
                                 if perkId in perks:
-                                    if i <= 157:
+                                    if i <= 162:
                                         perk_EndOfGameStatDescs: str = "".join(list(map(lambda x: x + "。", perks[perkId]["endOfGameStatDescs"])))
                                         perk_EndOfGameStatDescs = perk_EndOfGameStatDescs.replace("@eogvar1@", str(stats[key.split()[1] + "_VAR1"]))
                                         perk_EndOfGameStatDescs = perk_EndOfGameStatDescs.replace("@eogvar2@", str(stats[key.split()[1] + "_VAR2"]))
@@ -719,32 +721,32 @@ async def sort_eog_playerstat_lol_data(connection: Connection, summonerIcons: di
                                     else:
                                         to_append = perks[perkId][key.split()[2]]
                                 else:
-                                    to_append = perkId if i >= 158 and i <= 163 else ""
+                                    to_append = perkId if i >= 163 and i <= 168 else ""
                             else:
                                 to_append = ""
-                        elif i >= 170 and i <= 187: #强化符文相关键（Augment-related keys）
+                        elif i >= 175 and i <= 192: #强化符文相关键（Augment-related keys）
                             if key.split()[1] in stats:
                                 playerAugmentId: int = stats[key.split()[1]]
                                 if playerAugmentId == 0:
                                     to_append = ""
                                 elif playerAugmentId in CherryAugments:
-                                    if i >= 182:
+                                    if i >= 187:
                                         to_append = augment_rarity[CherryAugments[playerAugmentId][key.split()[2]]]
                                     else:
                                         to_append = CherryAugments[playerAugmentId][key.split()[2]]
                                 else:
-                                    to_append = playerAugmentId if i >= 170 and i <= 175 else ""
+                                    to_append = playerAugmentId if i >= 175 and i <= 180 else ""
                             else:
                                 to_append = ""
-                        elif i == 188: #子阵营（`playerSubteamColor`）
+                        elif i == 193: #子阵营（`playerSubteamColor`）
                             to_append = subteam_colors[stats["PLAYER_SUBTEAM"]] if "PLAYER_SUBTEAM" in stats else ""
-                        elif i == 189 or i == 190: #角色绑定装备相关键（`ROLE_BOUND_ITEM`-related keys）
+                        elif i == 194 or i == 195: #角色绑定装备相关键（`ROLE_BOUND_ITEM`-related keys）
                             roleBoundItemId: int = stats.get("ROLE_BOUND_ITEM", 0)
-                            to_append = "" if roleBoundItemId == 0 else LoLItems[roleBoundItemId][key.split(" ")[2]] if roleBoundItemId in LoLItems else roleBoundItemId if i <= 32 else ""
+                            to_append = "" if roleBoundItemId == 0 else LoLItems[roleBoundItemId][key.split(" ")[2]] if roleBoundItemId in LoLItems else roleBoundItemId if i == 194 else ""
                         else:
                             to_append = stats.get(key.split()[1], "")
                     eog_playerstat_data_lol[key].append(to_append)
-    eog_playerstat_data_lol_statistics_output_order: list[int] = [24, 46, 115, 188, 6, 23, 14, 15, 22, 13, 12, 40, 41, 10, 0, 8, 9, 25, 11, 1, 2, 3, 18, 17, 19, 16, 4, 56, 20, 42, 44, 21, 43, 45, 7, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 117, 189, 190, 147, 99, 170, 182, 176, 100, 171, 183, 177, 101, 172, 184, 178, 102, 173, 185, 179, 103, 174, 186, 180, 104, 175, 187, 181, 49, 69, 47, 54, 55, 134, 123, 126, 97, 59, 137, 124, 96, 58, 136, 53, 125, 127, 128, 132, 133, 130, 131, 98, 60, 138, 129, 141, 144, 143, 118, 142, 52, 61, 62, 64, 63, 139, 48, 122, 65, 66, 67, 68, 135, 70, 148, 149, 71, 150, 151, 72, 73, 74, 75, 158, 164, 152, 76, 77, 78, 79, 159, 165, 153, 80, 81, 82, 83, 160, 166, 154, 84, 85, 86, 87, 161, 167, 155, 88, 89, 90, 91, 162, 168, 156, 92, 93, 94, 95, 163, 169, 157, 119, 120, 145, 121, 50, 51, 146, 57, 116, 140, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114]
+    eog_playerstat_data_lol_statistics_output_order: list[int] = [25, 47, 117, 193, 6, 24, 14, 15, 23, 13, 12, 41, 42, 10, 0, 8, 9, 17, 26, 11, 1, 2, 3, 19, 18, 20, 16, 4, 58, 21, 43, 45, 22, 44, 46, 7, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 119, 194, 195, 152, 101, 175, 187, 181, 102, 176, 188, 182, 103, 177, 189, 183, 104, 178, 190, 184, 105, 179, 191, 185, 106, 180, 192, 186, 51, 71, 48, 56, 57, 136, 125, 128, 99, 61, 139, 126, 98, 60, 138, 55, 127, 129, 130, 134, 135, 132, 133, 100, 62, 140, 131, 143, 146, 145, 120, 144, 54, 63, 64, 66, 65, 141, 49, 124, 67, 68, 69, 70, 137, 72, 153, 154, 73, 155, 156, 74, 75, 76, 77, 163, 169, 157, 78, 79, 80, 81, 164, 170, 158, 82, 83, 84, 85, 165, 171, 159, 86, 87, 88, 89, 166, 172, 160, 90, 91, 92, 93, 167, 173, 161, 94, 95, 96, 97, 168, 174, 162, 121, 122, 147, 50, 123, 52, 53, 150, 149, 148, 151, 59, 118, 142, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116]
     eog_playerstat_data_lol_organized: dict[str, list[Any]] = {eog_playerstat_data_lol_header_keys[i]: eog_playerstat_data_lol[eog_playerstat_data_lol_header_keys[i]] for i in eog_playerstat_data_lol_statistics_output_order}
     eog_playerstat_df_lol: pandas.DataFrame = pandas.DataFrame(data = eog_playerstat_data_lol_organized)
     optimize_bool_display(eog_playerstat_df_lol)
