@@ -326,7 +326,7 @@ async def sort_conversation_metadata(connection: Connection) -> pandas.DataFrame
     for conversation in conversations:
         for i in range(len(conversation_header_keys)):
             key: str = conversation_header_keys[i]
-            if i == 9:
+            if i == 9: #对话类型（`type`）
                 to_append: Any = conversationTypes[conversation[key]]
             else:
                 to_append = conversation[key]
@@ -2839,11 +2839,11 @@ async def sort_received_invitations(connection: Connection) -> pandas.DataFrame:
         for i in range(len(invid_header_keys)):
             key: str = invid_header_keys[i]
             if i <= 9:
-                if i == 2:
+                if i == 2: #邀请人召唤师名（`fromSummonerName`）
                     to_append: Any = get_info_name(inviter_info["body"]) if inviter_info["info_got"] else ""
-                elif i == 8:
+                elif i == 8: #邀请人玩家通用唯一识别码（`fromPuuid`）
                     to_append = inviter_info["body"]["puuid"] if inviter_info["info_got"] else ""
-                elif i == 9:
+                elif i == 9: #邀请时间（`time`）
                     try:
                         invid_timestamp: int = int(invid["timestamp"])
                     except ValueError: #自定义对局邀请的时间戳是转换好的（Custom game invitation's timestamp has already been transformed）
@@ -2854,7 +2854,7 @@ async def sort_received_invitations(connection: Connection) -> pandas.DataFrame:
                     to_append = invid[key]
             elif i <= 13:
                 to_append = invid["gameConfig"][key]
-            else:
+            else: #队列名称（`queue name`）
                 to_append = "自定义" if invid["gameConfig"]["queueId"] == -1 else gameQueues[invid["gameConfig"]["queueId"]][key.split()[1]]
             invid_data[key].append(to_append)
     invid_statistics_output_order: list[int] = [2, 1, 8, 9, 4, 10, 11, 12, 14, 13, 3, 6, 0, 5]

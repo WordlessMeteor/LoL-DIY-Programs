@@ -410,7 +410,7 @@ async def sort_friend_hovercard_simple(connection: Connection) -> pandas.DataFra
     for friend in friends:
         for i in range(len(friend_hovercard_header_keys_simple)):
             key: str = friend_hovercard_header_keys_simple[i]
-            if i == 0:
+            if i == 0: #可用性（`availability`）
                 to_append: Any = availabilities[friend[key]]
             else:
                 to_append = friend[key]
@@ -467,7 +467,7 @@ async def sort_conversation_metadata(connection: Connection) -> pandas.DataFrame
     for conversation in conversations:
         for i in range(len(conversation_header_keys)):
             key: str = conversation_header_keys[i]
-            if i == 9:
+            if i == 9: #对话类型（`type`）
                 to_append: Any = conversationTypes[conversation[key]]
             else:
                 to_append = conversation[key]
@@ -620,7 +620,7 @@ async def sort_friend_request(connection: Connection) -> pandas.DataFrame:
     for friend_request in friend_requests:
         for i in range(len(friend_request_header_keys)):
             key: str = friend_request_header_keys[i]
-            if i == 10:
+            if i == 10: #召唤师图标名称（icon title）
                 iconId: int = friend_request["icon"]
                 to_append: Any = summonerIcons[iconId]["title"] if iconId in summonerIcons else ""
             else:
@@ -671,7 +671,7 @@ async def sort_party_data(connection: Connection, parties: Any) -> pandas.DataFr
                             continue
                         summonerNames.append(get_info_name(member_info["body"]))
                     to_append = summonerNames
-                else: #小队已满员（`full?`）
+                else: #小队已满员（`isFull`）
                     to_append = party["maxPlayers"] == len(party["summoners"])
                 party_data[key].append(to_append)
         party_statistics_output_order: list[int] = [3, 1, 0, 2, 7, 8, 4, 11, 5, 6, 10]
@@ -710,11 +710,11 @@ async def sort_received_invitations(connection: Connection) -> pandas.DataFrame:
         for i in range(len(invid_header_keys)):
             key: str = invid_header_keys[i]
             if i <= 9:
-                if i == 2:
+                if i == 2: #邀请人召唤师名（`fromSummonerName`）
                     to_append: Any = get_info_name(inviter_info["body"]) if inviter_info["info_got"] else ""
-                elif i == 8:
+                elif i == 8: #邀请人玩家通用唯一识别码（`fromPuuid`）
                     to_append = inviter_info["body"]["puuid"] if inviter_info["info_got"] else ""
-                elif i == 9:
+                elif i == 9: #邀请时间（`time`）
                     try:
                         invid_timestamp = int(invid["timestamp"])
                     except ValueError: #自定义对局邀请的时间戳是转换好的（Custom game invitation's timestamp has already been transformed）
@@ -725,7 +725,7 @@ async def sort_received_invitations(connection: Connection) -> pandas.DataFrame:
                     to_append = invid[key]
             elif i <= 13:
                 to_append = invid["gameConfig"][key]
-            else:
+            else: #队列名称（`queue name`）
                 to_append = "自定义" if invid["gameConfig"]["queueId"] == -1 else gameQueues[invid["gameConfig"]["queueId"]][key.split()[1]]
             invid_data[key].append(to_append)
     invid_statistics_output_order: list[int] = [2, 1, 8, 9, 4, 10, 11, 12, 14, 13, 3, 6, 0, 5]
@@ -4472,7 +4472,7 @@ async def sort_blockList_data(connection: Connection, CustomURF_blockList_enable
     for player in blockList:
         for i in range(len(blockList_header_keys)):
             key: str = blockList_header_keys[i]
-            if i == 8:
+            if i == 8: #召唤师图标名称（`icon title`）
                 to_append: Any = summonerIcons[player["icon"]][key.split()[1]]
             else:
                 to_append = player[key]

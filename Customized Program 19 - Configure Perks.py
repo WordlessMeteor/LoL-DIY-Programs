@@ -175,7 +175,7 @@ def sort_recommended_perk(recommendedPages: list[dict[str, Any]]) -> pandas.Data
                         to_append = perkstyles[page["primaryPerkStyleId"]]["name"]
                     elif i == 11: #副系名称（`secondaryPerkStyleName`）
                         to_append = perkstyles[page["secondaryPerkStyleId"]]["name"]
-                    elif i == 12:
+                    elif i == 12: #推荐召唤师技能名称（`summonerSpellNames`）
                         to_append = list(map(lambda x: spells[x]["name"], page["summonerSpellIds"]))
                     else:
                         to_append = page[key]

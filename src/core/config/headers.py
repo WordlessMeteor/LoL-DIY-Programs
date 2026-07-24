@@ -3711,7 +3711,7 @@ party_header: dict[str, str] = {
     "queue name": "游戏模式名称",
     "queue type": "游戏类型",
     "summonerNames": "已加入的召唤师名",
-    "full?": "小队已满员"
+    "isFull": "小队已满员"
 }
 invid_header: dict[str, str] = {
     "canAcceptInvitation": "允许接受邀请",

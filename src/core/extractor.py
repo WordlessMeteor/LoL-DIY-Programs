@@ -6080,7 +6080,7 @@ class ChampionExtractor(LoLDataExtractor):
                         to_append = modeFolder
                     elif i <= 143:
                         if i >= 118 and i <= 122: #技能指令对象（Spell objects）
-                            if i == 118:
+                            if i == 118: #被动技能指令对象（`passiveObject`）
                                 if "mCharacterPassiveSpell" in value:
                                     to_append = champions_bin.get(value["mCharacterPassiveSpell"], "")
                                 else:
@@ -6184,7 +6184,7 @@ class ChampionExtractor(LoLDataExtractor):
                         else:
                             if i in {12, 18, 68, 80, 83, 105, 112, 113, 115, 117}:
                                 defaultValue: str | bool = False
-                            elif i == 111:
+                            elif i == 111: #使用法术强度（仅云顶之弈）（`mUsesAbilityPower`）
                                 defaultValue = value["__type"] == "TFTCharacterRecord"
                             else:
                                 defaultValue = ""
