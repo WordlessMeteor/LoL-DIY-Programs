@@ -10,7 +10,7 @@ from src.utils.runtimeDebug import send_commands
 from src.utils.webRequest import SGPSession, requestUrl
 from src.utils.excel_workbook import create_workbook_win32
 from src.core.config.const import ALL_GAMEFLOW_PHASES, BOT_DIFFICULTY_LIST, BOT_UUID, SPECTATOR_POLICY_LIST, GLOBAL_RESPONSE_LAG, REPORT_CATEGORY_LIST_CHAMPSELECT, REPORT_CATEGORY_LIST_POSTGAME
-from src.core.config.headers import champSelect_player_header, custom_lobby_header, skin_header, conversation_header, grid_champion_header, chat_mutedPlayer_header, invid_header, perkPage_header, social_leaderboard_header, availableBot_header, member_header, inGame_playerAbility_header, inGame_championStat_header, inGame_allPlayer_header, inGame_event_header, inGame_metadata_header, ballot_player_header, eog_mastery_update_header, eog_stat_metadata_lol_header, eog_teamstat_data_lol_header, eog_playerstat_data_lol_header, eog_stat_metadata_tft_header, eog_stat_data_tft_header
+from src.core.config.headers import champSelect_player_header, custom_lobby_header, skin_header, conversation_header, grid_champion_header, chat_mutedPlayer_header, invid_header, perkPage_header, social_leaderboard_header, availableBot_header, lobby_member_header, inGame_playerAbility_header, inGame_championStat_header, inGame_allPlayer_header, inGame_event_header, inGame_metadata_header, ballot_player_header, eog_mastery_update_header, eog_stat_metadata_lol_header, eog_teamstat_data_lol_header, eog_playerstat_data_lol_header, eog_stat_metadata_tft_header, eog_stat_data_tft_header
 from src.core.config.localization import gamemodes, gamemaps, ARAMmaps, gameTypes_configId_map, spectatorPolicies, report_categories, tiers_all, team_colors_int, subteam_colors, rarities, krarities, augment_rarity, skinClassifications, damageTypes, conversationTypes, messageTypes, system_messages, invidStates, invidTypes, slotTypes, availabilities, inventoryType_dict, ownershipTypes, botDifficulty_dict, roles, positions, eventTypes_liveclient, DragonTypes, team_colors_str, honorType_tooltip_headers, honorType_tooltip_bodies, zoom_scale_dict
 from src.core.config.conditional_formatting import addFormat_inGame_allPlayer_wb
 from src.core.dataframes.gameflow import get_gameflow_phase, get_champ_select_session, get_champSelect_player, get_champSelect_action, sort_ChampSelect_players, sort_inGame_players, sort_eog_playerstat_lol_data, sort_eog_stat_tft_data
@@ -3389,8 +3389,8 @@ async def sort_lobby_members(connection: Connection) -> pandas.DataFrame:
     :return: 房间成员数据框。<br>Lobby member dataframe.
     :rtype: pandas.DataFrame
     '''
-    member_header_keys: list[str] = list(member_header.keys())
-    member_data: dict[str, list[Any]] = {key: [] for key in member_header_keys}
+    lobby_member_header_keys: list[str] = list(lobby_member_header.keys())
+    lobby_member_data: dict[str, list[Any]] = {key: [] for key in lobby_member_header_keys}
     lobby_information: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby")).json()
     if not (isinstance(lobby_information, dict) and "errorCode" in lobby_information):
         members: list[dict[str, Any]] = []
@@ -3424,33 +3424,33 @@ async def sort_lobby_members(connection: Connection) -> pandas.DataFrame:
                 if not member_info["info_got"]:
                     logPrint(member_info["message"])
                     logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！\nInformation of member (puuid: %s) capture failed!" %(member["puuid"], member["puuid"]))
-            for i in range(len(member_header_keys)):
-                key: str = member_header_keys[i]
-                if i >= 34 and i <= 36: #电脑玩家英雄相关键（Bot champion-related keys）
+            for i in range(len(lobby_member_header_keys)):
+                key: str = lobby_member_header_keys[i]
+                if i >= 37 and i <= 39: #电脑玩家英雄相关键（Bot champion-related keys）
                     to_append: Any = LoLChampions[member["botChampionId"]][key.split("_")[1]] if member["botChampionId"] in LoLChampions else ""
-                elif i == 37: #电脑玩家难度等级（`botDifficulty_localized`）
+                elif i == 40: #电脑玩家难度等级（`botDifficulty_localized`）
                     to_append = botDifficulty_dict[member["botDifficulty"]]
-                elif i == 38: #电脑玩家分路（`botPosition_localized`）
+                elif i == 41: #电脑玩家分路（`botPosition_localized`）
                     to_append = positions[member["botPosition"]]
-                elif i == 39: #首选（`primaryPosition`）
-                    to_append = positions[member["firstPositionPreference"]]
-                elif i == 40: #次选（`secondaryPosition`）
-                    to_append = positions[member["secondPositionPreference"]]
-                elif i == 41: #无尽狂潮地图名称（`strawberryMapName`）
+                elif i >= 42 and i <= 46:
+                    subkey_map: dict[int, str] = {42: "firstPositionPreference", 43: "secondPositionPreference", 44: "thirdPositionPreference", 45: "fourthPositionPreference", 46: "fifthPositionPreference"}
+                    subkey: str = subkey_map[i]
+                    to_append = "" if member[subkey] == None else positions[member[subkey]]
+                elif i == 47: #无尽狂潮地图名称（`strawberryMapName`）
                     to_append = strawberryMaps[member["strawberryMapId"]]["value"]["name"] if member["strawberryMapId"] in strawberryMaps else ""
-                elif i in [42, 43]: #召唤师图标相关键（Summoner icon-related keys）
+                elif i in {48, 49}: #召唤师图标相关键（Summoner icon-related keys）
                     to_append = summonerIcons[member["summonerIconId"]].get(key.split("_")[1], "") if member["summonerIconId"] in summonerIcons else ""
-                elif i >= 44: #召唤师信息相关键（Summoner information-related keys）
+                elif i >= 50: #召唤师信息相关键（Summoner information-related keys）
                     to_append = member_info["body"][key] if not member["isBot"] and member_info["info_got"] else ""
                 else:
                     to_append = member[key]
-                member_data[key].append(to_append)
-    member_statistics_output_order: list[int] = [32, 30, 44, 45, 29, 22, 31, 28, 42, 43, 18, 19, 33, 15, 39, 24, 40, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 27, 16, 21, 26, 41, 23, 25, 20, 17, 10, 12, 14, 34, 36, 35, 11, 37, 13, 38]
-    member_data_organized: dict[str, list[Any]] = {member_header_keys[i]: member_data[member_header_keys[i]] for i in member_statistics_output_order}
-    member_df: pandas.DataFrame = pandas.DataFrame(data = member_data_organized)
-    optimize_bool_display(member_df)
-    member_df = pandas.concat([pandas.DataFrame([member_header])[member_df.columns], member_df], ignore_index = True)
-    return member_df
+                lobby_member_data[key].append(to_append)
+    lobby_member_statistics_output_order: list[int] = [34, 32, 50, 51, 31, 24, 33, 30, 48, 49, 20, 21, 35, 16, 42, 26, 43, 36, 44, 17, 45, 15, 46, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 29, 18, 23, 28, 47, 25, 27, 22, 19, 10, 12, 14, 37, 39, 38, 11, 40, 13, 41]
+    lobby_member_data_organized: dict[str, list[Any]] = {lobby_member_header_keys[i]: lobby_member_data[lobby_member_header_keys[i]] for i in lobby_member_statistics_output_order}
+    lobby_member_df: pandas.DataFrame = pandas.DataFrame(data = lobby_member_data_organized)
+    optimize_bool_display(lobby_member_df)
+    lobby_member_df = pandas.concat([pandas.DataFrame([lobby_member_header])[lobby_member_df.columns], lobby_member_df], ignore_index = True)
+    return lobby_member_df
 
 async def print_search_error(connection: Connection, response: dict[str, Any], lobbyInfo: dict[str, Any]) -> None:
     '''

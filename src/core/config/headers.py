@@ -3350,7 +3350,7 @@ availableBot_header: dict[str, str] = {
     "alias": "代号",
     "title": "名称"
 }
-member_header: dict[str, str] = {
+lobby_member_header: dict[str, str] = {
     "allowedChangeActivity": "允许更改模式",
     "allowedInviteOthers": "允许邀请玩家",
     "allowedKickOthers": "允许移出玩家",
@@ -3366,7 +3366,9 @@ member_header: dict[str, str] = {
     "botId": "电脑玩家内置名",
     "botPosition": "电脑玩家角色定位",
     "botUuid": "电脑玩家通用唯一识别码",
+    "fifthPositionPreference": "第五选择位置",
     "firstPositionPreference": "首选位置",
+    "fourthPositionPreference": "第四选择位置",
     "intraSubteamPosition": "子阵营位置",
     "isBot": "电脑玩家",
     "isLeader": "小队拥有者",
@@ -3385,6 +3387,7 @@ member_header: dict[str, str] = {
     "summonerLevel": "召唤师等级",
     "summonerName": "召唤师名",
     "teamId": "队伍序号",
+    "thirdPositionPreference": "第三选择位置",
     "botChampion_name": "电脑玩家英雄称号",
     "botChampion_alias": "电脑玩家英雄代号",
     "botChampion_title": "电脑玩家英雄名称",
@@ -3392,6 +3395,9 @@ member_header: dict[str, str] = {
     "botPosition_localized": "电脑玩家分路",
     "primaryPosition": "首选",
     "secondaryPosition": "次选",
+    "thirdPosition": "三选",
+    "fourthPosition": "四选",
+    "fifthPosition": "五选",
     "strawberryMapName": "无尽狂潮地图名称",
     "summonerIcon_title": "召唤师图标名称",
     "summonerIcon_imagePath": "召唤师图标路径",
