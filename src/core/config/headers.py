@@ -4103,6 +4103,7 @@ eog_teamstat_data_lol_header: dict[str, str] = {
     "team": "阵营",
     "stats ASSISTS": "队伍助攻",
     "stats BARRACKS_KILLED": "摧毁召唤水晶",
+    "stats CAUSED_GAME_END_FROM_IGNB_SURRENDER": "发起消极行为投降",
     "stats CHAMPIONS_KILLED": "队伍击杀",
     "stats GAME_ENDED_IN_EARLY_SURRENDER": "提前投降导致比赛结束",
     "stats GAME_ENDED_IN_SURRENDER": "投降导致比赛结束",
@@ -4200,6 +4201,9 @@ eog_teamstat_data_lol_header: dict[str, str] = {
     "stats WARD_KILLED": "摧毁守卫",
     "stats WARD_PLACED": "放置守卫",
     "stats WAS_AFK": "存在中途退出现象",
+    "stats WAS_PREMADE_WITH_IGNB_GAME_END_CAUSER": "与导致投降的消极行为主体预组队",
+    "stats WAS_PREMADE_WITH_SEVERE_TRANSGRESSOR": "与消极行为主体预组队",
+    "stats WAS_SEVERE_TRANSGRESSOR": "消极行为主体",
     "stats WIN": "胜利",
     "stats KDA": "队伍击杀得分"
 }

@@ -8408,14 +8408,14 @@ async def sort_eog_teamstat_lol_data(connection: Connection) -> pandas.DataFrame
                     else:
                         to_append = team[key]
                 else:
-                    if i in [12, 13, 19, 83, 107, 108]: #逻辑值键（Keys with boolean values）
+                    if i in {11, 13, 14, 20, 84, 108, 109, 110, 111, 112}: #逻辑值键（Keys with boolean values）
                         to_append = False if stats == None else bool(stats.get(key.split()[1], 0))
-                    elif i == 109: #队伍击杀得分（`stats KDA`）
+                    elif i == 113: #队伍击杀得分（`stats KDA`）
                         to_append = "" if stats == None else "%d/%d/%d" %(stats["CHAMPIONS_KILLED"], stats["NUM_DEATHS"], stats["ASSISTS"]) if all(map(lambda x: x in stats, ["CHAMPIONS_KILLED", "NUM_DEATHS", "ASSISTS"])) else ""
                     else:
                         to_append = "" if stats == None else stats.get(key.split()[1], "")
                 eog_teamstat_data_lol[key].append(to_append)
-    eog_teamstat_data_lol_statistics_output_order: list[int] = [7, 8, 2, 1, 5, 6, 0, 4, 3, 18, 109, 11, 31, 9, 16, 17, 85, 96, 88, 59, 21, 99, 86, 58, 20, 98, 15, 87, 89, 90, 94, 95, 92, 93, 60, 22, 100, 91, 103, 106, 105, 80, 104, 14, 23, 24, 26, 25, 101, 10, 84, 27, 28, 29, 30, 97, 81, 82, 107, 83, 12, 13, 108, 19, 102]
+    eog_teamstat_data_lol_statistics_output_order: list[int] = [7, 8, 2, 1, 5, 6, 0, 4, 3, 19, 113, 12, 32, 9, 17, 18, 86, 97, 89, 60, 22, 100, 87, 59, 21, 99, 16, 88, 90, 91, 95, 96, 93, 94, 61, 23, 101, 92, 104, 107, 106, 81, 105, 15, 24, 25, 27, 26, 102, 10, 85, 28, 29, 30, 31, 98, 82, 83, 108, 84, 13, 14, 112, 20, 103]
     eog_teamstat_data_lol_organized: dict[str, list[Any]] = {eog_teamstat_data_lol_header_keys[i]: eog_teamstat_data_lol[eog_teamstat_data_lol_header_keys[i]] for i in eog_teamstat_data_lol_statistics_output_order}
     eog_teamstat_df_lol = pandas.DataFrame(data = eog_teamstat_data_lol_organized)
     optimize_bool_display(eog_teamstat_df_lol)
