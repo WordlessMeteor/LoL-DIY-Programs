@@ -16,7 +16,7 @@ from src.core.config.localization import celebrationTypes, clientNotifyLevels, d
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/06/07
+# 更新（Last update）：     2026/07/25
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -101,23 +101,23 @@ async def get_mission_info(connection: Connection) -> None:
                         to_append = rewardDescriptions
                     else:
                         to_append = mission[key]
-                elif i <= 57: #该代码框架适用于纯嵌套字典类型的值（This code frame applies to pure nested dictionary-type values）
+                elif i <= 58: #该代码框架适用于纯嵌套字典类型的值（This code frame applies to pure nested dictionary-type values）
                     tmpObj_ptr: Any = mission
                     for subkey_iter in key.split():
                         tmpObj_ptr = tmpObj_ptr[subkey_iter]
                     if i == 40: #元数据：任务类型（`metadata missionType`）
                         to_append = metadataMissionTypes[tmpObj_ptr]
-                    elif i == 55: #任务奖励分组（`rewardStrategy groupStrategy`）
+                    elif i == 56: #任务奖励分组（`rewardStrategy groupStrategy`）
                         to_append = rewardGroupStrategies[tmpObj_ptr]
                     else:
                         to_append = tmpObj_ptr
-                elif i <= 67:
+                elif i <= 68:
                     tmpObj_ptr: Any = objective
                     for j in range(1, len(key.split())):
                         tmpObj_ptr = tmpObj_ptr[key.split()[j]]
-                    if i == 63: #目标状态（`objective status`）
+                    if i == 64: #目标状态（`objective status`）
                         to_append = objectiveStatus_dict[tmpObj_ptr]
-                    elif i == 64: #目标类型（`objective type`）
+                    elif i == 65: #目标类型（`objective type`）
                         to_append = objectiveTypes[tmpObj_ptr]
                     else:
                         to_append = tmpObj_ptr
@@ -128,7 +128,7 @@ async def get_mission_info(connection: Connection) -> None:
                     else:
                         to_append = ""
                 mission_data[key].append(to_append)
-    mission_statistics_output_order: list[int] = [70, 69, 68, 13, 27, 14, 6, 19, 11, 24, 23, 21, 35, 36, 58, 62, 60, 64, 66, 65, 67, 63, 59, 61, 26, 34, 22, 55, 56, 57, 33, 31, 32, 30, 4, 29, 5, 20, 7, 1, 2, 15, 28, 18, 10, 0, 12, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54]
+    mission_statistics_output_order: list[int] = [71, 70, 69, 13, 27, 14, 6, 19, 11, 24, 23, 21, 35, 36, 59, 63, 61, 65, 67, 66, 68, 64, 60, 62, 26, 34, 22, 56, 57, 58, 33, 31, 32, 30, 4, 29, 5, 20, 7, 1, 2, 15, 28, 18, 10, 0, 12, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55]
     mission_data_organized: dict[str, list[Any]] = {mission_header_keys[i]: mission_data[mission_header_keys[i]] for i in mission_statistics_output_order}
     mission_df: pandas.DataFrame = pandas.DataFrame(data = mission_data_organized)
     optimize_bool_display(mission_df)
