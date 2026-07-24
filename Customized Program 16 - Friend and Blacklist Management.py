@@ -10,7 +10,7 @@ from src.utils.patch import Patch
 from src.utils.runtimeDebug import subscope
 from src.utils.webRequest import requestUrl, SGPSession
 from src.utils.excel_workbook import create_workbook_win32
-from src.core.config.localization import availabilities, challengeCrystalLevels, tiers, rarities, spectatorPolicies, titleAcquisitionTypes, krarities, conversationTypes, messageTypes, system_messages
+from src.core.config.localization import availabilities, RiotRelationships, challengeCrystalLevels, tiers, rarities, spectatorPolicies, ptyTypes, titleAcquisitionTypes, krarities, conversationTypes, messageTypes, system_messages
 from src.core.config.headers import friend_hovercard_header, friend_group_header, conversation_header, message_header, friend_request_header, party_header, invid_header, champSelect_mutedPlayer_header, captureDevice_header, voiceSettings_header, participant_record_header, spectate_nonfriend_header, blockList_header, TFTGame_summary_header
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.config.const import BOT_UUID
@@ -52,12 +52,12 @@ CherryAugments: dict[int, dict[str, Any]] = {}
 TFTBasic_got: bool = False
 TFTAugments: dict[str, dict[str, Any]] = {}
 TFTCompanions: dict[str, dict[str, Any]] = {}
-TFTCompanions_itemIdMap: dict[str, dict[str, Any]] = {}
+TFTCompanions_itemIdMap: dict[int, dict[str, Any]] = {}
 TFTTraits: dict[str, Any] = {}
 TFTChampions: dict[str, dict[str, Any]] = {}
 TFTItems: dict[str, dict[str, Any]] = {}
-TFTDamageSkins: dict[str, dict[str, Any]] = {}
-TFTMapSkins: dict[str, dict[str, Any]] = {}
+TFTDamageSkins: dict[int, dict[str, Any]] = {}
+TFTMapSkins: dict[int, dict[str, Any]] = {}
 LoLGame_summary_cache_lcu: dict[int, dict[str, Any]] = {}
 LoLGame_summary_cache_sgp: dict[int, dict[str, Any]] = {}
 folder: str = ""
@@ -182,7 +182,8 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
     for friend in friends:
         lol: dict[str, Any] = friend["lol"]
         if "spectatingTargetPuuid" in lol and bool(lol["spectatingTargetPuuid"]): #当多名好友都在观战时，其中一个人的被观战者玩家通用唯一识别码为空字符串（When there's more than one friend spectating, the spectated puuid of one friend is an empty string）
-            spectatingTarget_info: dict[str, list[Any]] = await get_info(connection, lol["spectatingTargetPuuid"])
+            spectatingTarget_info: dict[str, Any] = await get_info(connection, lol["spectatingTargetPuuid"])
+            spectatingTarget_info_recapture: int = 0
             while not spectatingTarget_info["info_got"] and spectatingTarget_info["body"]["httpStatus"] != 404 and spectatingTarget_info_recapture < 3:
                 logPrint(spectatingTarget_info["message"])
                 spectatingTarget_info_recapture += 1
@@ -198,131 +199,135 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
             spectatingTarget_info_body = {}
         for i in range(len(friend_hovercard_header_keys)):
             key: str = friend_hovercard_header_keys[i]
-            if i <= 29:
+            if i <= 30:
                 if i == 0: #可用性（`availability`）
-                    to_append: Any = availabilities[friend[key]]
-                elif i == 25: #分组优先级（`groupPriority`）
+                    to_append: Any = availabilities[friend["availability"]]
+                elif i == 21: #拳头账号关系（`relationshipOnRiot`）
+                    to_append = RiotRelationships[friend["relationshipOnRiot"]]
+                elif i == 26: #分组优先级（`groupPriority`）
                     to_append = friend_group_priority[friend["groupId"]]
-                elif i == 26 or i == 27: #非直接导入的召唤师图标相关键（Not directly imported `icon`-related keys）
+                elif i == 27 or i == 28: #非直接导入的召唤师图标相关键（Not directly imported `icon`-related keys）
                     to_append = summonerIcons[friend["icon"]].get(key.split(" ")[1], "") if friend["icon"] in summonerIcons else ""
-                elif i == 28: #上次离线时间（`lastSeenOnlineTime`）
+                elif i == 29: #上次离线时间（`lastSeenOnlineTime`）
                     if friend["lastSeenOnlineTimestamp"] == None:
                         to_append = ""
                     else:
                         to_append = friend["lastSeenOnlineTimestamp"]
-                elif i == 29: #登录时间（`loginTime`）
+                elif i == 30: #登录时间（`loginTime`）
                     to_append = getISOTime(friend["time"] / 1000) if friend["time"] == 0 else ""
                 else:
                     to_append = friend[key]
-            elif i <= 32:
+            elif i <= 33:
                 to_append = friend["discordInfo"][key.split()[1]] if bool(friend["discordInfo"]) else ""
-            elif i <= 111:
+            elif i <= 113:
                 if friend["lol"] == {}:
                     to_append = ""
                 else:
-                    if i in {33, 35, 37, 38, 39, 40, 46, 47, 48, 49, 51, 52, 56, 59, 60, 61, 65}: #正整数被转化为字符串的值的键（Keys whose values are originally integers but transformed into strings）
+                    if i in {34, 36, 38, 39, 40, 41, 47, 48, 49, 50, 52, 54, 58, 61, 62, 63, 67}: #正整数被转化为字符串的值的键（Keys whose values are originally integers but transformed into strings）
                         to_append = "" if not key in lol or lol[key] == "" else int(lol[key])
-                    elif i == 34: #成就等级（`challengeCrystalLevel`）
-                        to_append = "" if not key in lol else challengeCrystalLevels[lol[key]]
-                    elif i == 36: #选用勋章序号（`challengeTokensSelected`）
-                        to_append = "" if not key in lol else json.loads("[%s]" %(lol[key]))
-                    elif i == 43: #游戏状态（`gameStatus`）
-                        to_append = "" if not key in lol else availabilities[lol[key]]
-                    elif i == 45: #可观战范围（`isObservable`）
-                        to_append = "" if not key in lol else spectatorPolicies[lol[key]]
-                    elif i == 53 or i == 57: #段位分级相关键（Division-related keys）
+                    elif i == 35: #成就等级（`challengeCrystalLevel`）
+                        to_append = "" if not "challengeCrystalLevel" in lol else challengeCrystalLevels[lol["challengeCrystalLevel"]]
+                    elif i == 37: #选用勋章序号（`challengeTokensSelected`）
+                        to_append = "" if not "challengeTokensSelected" in lol else json.loads("[%s]" %(lol["challengeTokensSelected"]))
+                    elif i == 44: #游戏状态（`gameStatus`）
+                        to_append = "" if not "gameStatus" in lol else availabilities[lol["gameStatus"]]
+                    elif i == 46: #可观战范围（`isObservable`）
+                        to_append = "" if not "isObservable" in lol else spectatorPolicies[lol["isObservable"]]
+                    elif i == 53: #小队类型（`ptyType`）
+                        to_append = "" if not "ptyType" in lol else ptyTypes[lol["ptyType"]]
+                    elif i == 55 or i == 59: #段位分级相关键（Division-related keys）
                         to_append = "" if not key in lol or lol[key] == "NA" else lol[key]
-                    elif i == 55 or i == 58: #段位相关键（Tier-related keys）
+                    elif i == 57 or i == 60: #段位相关键（Tier-related keys）
                         to_append = "" if not key in lol else tiers[lol[key]]
-                    elif i == 66 or i == 67: #旗帜相关键（Banner-related keys）
+                    elif i == 68 or i == 69: #旗帜相关键（Banner-related keys）
                         if "bannerIdSelected" in lol and lol["bannerIdSelected"] != "":
                             regaliaBanner_item: dict[str, Any] = regaliaBanners[lol["bannerIdSelected"]]["items"][0]
                             to_append = regaliaBanner_item[key.split()[1]]
                         else:
                             to_append = ""
-                    elif i == 68: #选用勋章名称（`challengeTokenNamesSelected`）
+                    elif i == 70: #选用勋章名称（`challengeTokenNamesSelected`）
                         if "challengeTokensSelected" in lol and lol["challengeTokensSelected"] != "":
                             challengeTokensSelected: list[str] = lol["challengeTokensSelected"].split(",")
                             to_append = list(map(lambda x: challenges["challenges"][x]["name"], challengeTokensSelected))
                         else:
                             to_append = ""
-                    elif i >= 69 and i <= 71: #英雄相关键（Champion-related keys）
+                    elif i >= 71 and i <= 73: #英雄相关键（Champion-related keys）
                         if "championId" in lol:
                             if lol["championId"] == "":
                                 to_append = ""
                             else:
                                 championId: int = int(lol["championId"])
-                                if i == 71:
-                                    iconPath: str = LoLChampions[championId][key.split()[1]]
+                                if i == 73: #选用英雄方块头像路径（`champion squarePortraitPath`）
+                                    iconPath: str = LoLChampions[championId]["squarePortraitPath"]
                                     to_append = "" if iconPath == "" else urljoin(connection.address, iconPath)
                                 else:
                                     to_append = LoLChampions[championId][key.split()[1]]
                         else:
                             to_append = ""
-                    elif i >= 72 and i <= 79: #小小英雄相关键（Companion-related keys）
+                    elif i >= 74 and i <= 81: #小小英雄相关键（Companion-related keys）
                         if "companionId" in lol:
                             if lol["companionId"] == "":
                                 to_append = ""
                             else:
                                 companionId = int(lol["companionId"])
-                                if i == 74:
-                                    iconPath = TFTCompanions_itemIdMap[companionId][key.split()[1]]
+                                if i == 76: #选用小小英雄预览图（`companion loadoutsIcon`）
+                                    iconPath = TFTCompanions_itemIdMap[companionId]["loadoutsIcon"]
                                     to_append = "" if iconPath == "" else urljoin(connection.address, iconPath)
-                                elif i == 78:
-                                    to_append = rarities[TFTCompanions_itemIdMap[companionId][key.split()[1]]]
+                                elif i == 80: #选用小小英雄品质（`companion rarity`）
+                                    to_append = rarities[TFTCompanions_itemIdMap[companionId]["rarity"]]
                                 else:
                                     to_append = TFTCompanions_itemIdMap[companionId][key.split()[1]]
                         else:
                             to_append = ""
-                    elif i >= 80 and i <= 87: #云顶之弈攻击特效相关键（TFT damage skin-related keys）
+                    elif i >= 82 and i <= 89: #云顶之弈攻击特效相关键（TFT damage skin-related keys）
                         if "damageSkinId" in lol:
                             if lol["damageSkinId"] == "":
                                 to_append = ""
                             else:
-                                damageSkinId: str = int(lol["damageSkinId"])
-                                if i == 82:
-                                    iconPath = TFTDamageSkins[damageSkinId][key.split()[1]]
+                                damageSkinId: int = int(lol["damageSkinId"])
+                                if i == 84: #选用云顶之弈攻击特效预览图路径（`damageskin loadoutsIcon`）
+                                    iconPath = TFTDamageSkins[damageSkinId]["loadoutsIcon"]
                                     to_append = "" if iconPath == "" else urljoin(connection.address, iconPath)
-                                if i == 85:
-                                    to_append = rarities[TFTDamageSkins[damageSkinId][key.split()[1]]]
+                                if i == 87: #选用云顶之弈攻击特效品质（`damageskin rarity`）
+                                    to_append = rarities[TFTDamageSkins[damageSkinId]["rarity"]]
                                 else:
                                     to_append = TFTDamageSkins[damageSkinId][key.split()[1]]
                         else:
                             to_append = ""
-                    elif i == 88: #游戏模式名称（`gameModeName`）
+                    elif i == 90: #游戏模式名称（`gameModeName`）
                         if "queueId" in lol and lol["queueId"] != "":
                             queueId: int = int(lol["queueId"])
                             to_append = "自定义" if queueId == -1 or queueId == 0 else gameQueues[queueId]["name"]
                         else:
                             to_append = ""
-                    elif i >= 89 and i <= 95: #棋盘皮肤相关键（TFT map skin-related keys）
+                    elif i >= 91 and i <= 97: #棋盘皮肤相关键（TFT map skin-related keys）
                         if "mapSkinId" in lol:
                             if lol["mapSkinId"] == "":
                                 to_append = ""
                             else:
                                 mapSkinId: int = int(lol["mapSkinId"])
-                                if i == 91:
-                                    iconPath = TFTMapSkins[mapSkinId][key.split()[1]]
+                                if i == 93: #棋盘皮肤预览图（`mapSkin loadoutsIcon`）
+                                    iconPath = TFTMapSkins[mapSkinId]["loadoutsIcon"]
                                     to_append = "" if iconPath == "" else urljoin(connection.address, iconPath)
-                                if i == 94:
-                                    to_append = rarities[TFTMapSkins[mapSkinId][key.split()[1]]]
+                                if i == 96: #棋盘皮肤品质（`mapSkin rarity`）
+                                    to_append = rarities[TFTMapSkins[mapSkinId]["rarity"]]
                                 else:
                                     to_append = TFTMapSkins[mapSkinId][key.split()[1]]
                         else:
                             to_append = ""
-                    elif i >= 96 and i <= 99: #头衔相关键（Title-related keys）
+                    elif i >= 98 and i <= 101: #头衔相关键（Title-related keys）
                         if "playerTitleSelected" in lol:
                             title_contentId: str = lol["playerTitleSelected"]
                             if title_contentId == "":
                                 to_append = ""
                             else:
-                                if i == 98:
-                                    to_append = titleAcquisitionTypes[titles[title_contentId][key.split()[1]]]
+                                if i == 100: #头衔获取途径（`playerTitle titleAcquisitionType`）
+                                    to_append = titleAcquisitionTypes[titles[title_contentId]["titleAcquisitionType"]]
                                 else:
                                     to_append = titles[title_contentId][key.split()[1]]
                         else:
                             to_append = ""
-                    elif i >= 100 and i <= 109: #选用皮肤相关键（`skinVariant`-related keys）
+                    elif i >= 102 and i <= 111: #选用皮肤相关键（`skinVariant`-related keys）
                         if "skinVariant" in lol:
                             if lol["skinVariant"] == "":
                                 to_append = ""
@@ -331,26 +336,26 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
                                 if not key.split()[1] in championSkins[skinId]:
                                     to_append = ""
                                 else:
-                                    if i >= 102 and i <= 106 or i == 108 or i == 109:
+                                    if i >= 104 and i <= 108 or i == 110 or i == 111:
                                         iconPath = championSkins[skinId][key.split()[1]]
                                         to_append = "" if iconPath == "" else urljoin(connection.address, iconPath)
-                                    elif i == 107:
-                                        to_append = krarities[championSkins[skinId][key.split()[1]]]
+                                    elif i == 109: #选用（炫彩）皮肤品质（`skinVariant rarity`）
+                                        to_append = krarities[championSkins[skinId]["rarity"]]
                                     else:
                                         to_append = championSkins[skinId][key.split()[1]]
                         else:
                             to_append = ""
-                    elif i == 110 or i == 111: #被观战者玩家相关键（Spectating target related keys）
+                    elif i == 112 or i == 113: #被观战者玩家相关键（Spectating target related keys）
                         if "spectatingTargetPuuid" in lol and bool(lol["spectatingTargetPuuid"]):
-                            to_append = spectatingTarget_info_body["gameName" if i == 110 else "tagLine"]
+                            to_append = spectatingTarget_info_body["gameName" if i == 112 else "tagLine"]
                         else:
                             to_append = ""
                     else:
                         to_append = lol.get(key, "")
-            elif i <= 116:
+            elif i <= 118:
                 if friend["lol"] != {} and "pty" in friend and friend["pty"] != "":
                     party: dict[str, Any] = json.loads(friend["lol"]["pty"])
-                    if i == 116: #小队召唤师名（`pty summonerNames`）
+                    if i == 118: #小队召唤师名（`pty summonerNames`）
                         summonerIds: list[int] = party["summoners"]
                         summonerNames: list[Any] = []
                         for summonerId in summonerIds:
@@ -380,7 +385,7 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
                     to_append = ""
             friend_hovercard_data[key].append(to_append)
     #数据框列序整理（Dataframe column ordering）
-    friend_hovercard_statistics_output_order: list[int] = [13, 5, 6, 23, 20, 16, 7, 8, 25, 26, 0, 11, 21, 14, 28, 29, 30, 1, 2, 32, 31, 47, 54, 55, 53, 60, 56, 58, 57, 59, 67, 34, 35, 46, 96, 97, 98, 99, 68, 43, 114, 116, 113, 41, 42, 52, 88, 48, 40, 69, 70, 101, 107, 73, 75, 76, 78, 81, 87, 84, 85, 90, 93, 94, 45, 63, 64, 110, 111]
+    friend_hovercard_statistics_output_order: list[int] = [13, 5, 6, 24, 20, 16, 7, 8, 26, 27, 0, 11, 22, 14, 29, 30, 31, 1, 2, 33, 32, 21, 48, 56, 57, 55, 62, 58, 60, 59, 61, 69, 35, 36, 47, 98, 99, 100, 101, 70, 44, 116, 118, 115, 53, 42, 43, 54, 90, 49, 41, 71, 72, 103, 109, 75, 77, 78, 80, 83, 89, 86, 87, 92, 95, 96, 46, 65, 66, 112, 113]
     friend_hovercard_data_organized: dict[str, list[Any]] = {friend_hovercard_header_keys[i]: friend_hovercard_data[friend_hovercard_header_keys[i]] for i in friend_hovercard_statistics_output_order}
     friend_hovercard_df: pandas.DataFrame = pandas.DataFrame(data = friend_hovercard_data_organized)
     optimize_bool_display(friend_hovercard_df)

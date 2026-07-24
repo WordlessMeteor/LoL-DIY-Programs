@@ -1515,6 +1515,13 @@ lootTypes: dict[str, str] = {
     "WARDSKIN_RENTAL": "守卫皮肤碎片"
 }
 ##聊天服务（Chat service）
+RiotRelationships: dict[str, str] = {
+    "friend": "好友"
+}
+ptyTypes: dict[str, str] = {
+    "open": "公开",
+    "closed": "私密"
+}
 conversationTypes: dict[str, str] = {
     "chat": "私聊",
     "customGame": "自定义对局",
@@ -2378,6 +2385,13 @@ lolEventHubOfferStates: dict[str, str] = {
 #     "WARDSKIN_RENTAL": "Ward Skin Shard"
 # }
 ##聊天服务（Chat service）
+# RiotRelationships: dict[str, str] = {
+#     "friend": "friend"
+# }
+# ptyTypes: dict[str, str] = {
+#     "open": "open",
+#     "closed": "closed"
+# }
 # conversationTypes: dict[str, str] = {
 #     "chat": "Friend chat",
 #     "customGame": "Custom Game",
