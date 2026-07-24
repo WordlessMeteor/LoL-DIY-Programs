@@ -8010,22 +8010,22 @@ async def sort_ballot_players(connection: Connection) -> pandas.DataFrame:
                 logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of player (puuid: %s) capture failed!" %(player["puuid"], player["puuid"]))
             for i in range(len(ballot_player_header_keys)):
                 key: str = ballot_player_header_keys[i]
-                if i == 7 or i == 8: #召唤师信息相关键（Summoner information-related keys）
+                if i == 8 or i == 9: #召唤师信息相关键（Summoner information-related keys）
                     to_append: Any = player_info["body"][key] if player_info["info_got"] else ""
-                elif i == 9: #是否队友（`ally?`）
+                elif i == 10: #是否队友（`isAlly`）
                     to_append = player in honor_ballot["eligibleAllies"]
-                elif i == 10: #已赞誉（`honored`）
+                elif i == 11: #已赞誉（`honored`）
                     to_append = player["puuid"] in honoredPlayers
-                elif i == 11: #赞誉类型（`honorType`）
+                elif i == 12: #赞誉类型（`honorType`）
                     to_append = honoredPlayers[player["puuid"]]["honorType"] if player["puuid"] in honoredPlayers else ""
-                elif i == 12: #赞誉类型标题（`honorType_tooltip_header`）
+                elif i == 13: #赞誉类型标题（`honorType_tooltip_header`）
                     to_append = honorType_tooltip_headers.get(honoredPlayers[player["puuid"]]["honorType"], "") if player["puuid"] in honoredPlayers else ""
-                elif i == 13: #赞誉类型正文（`honorType_tooltip_body`）
+                elif i == 14: #赞誉类型正文（`honorType_tooltip_body`）
                     to_append = honorType_tooltip_bodies.get(honoredPlayers[player["puuid"]]["honorType"], "") if player["puuid"] in honoredPlayers else ""
                 else:
                     to_append = player[key]
                 ballot_player_data[key].append(to_append)
-    ballot_player_statistics_output_order: list[int] = [6, 7, 8, 5, 2, 9, 1, 3, 4, 0, 10, 11, 12, 13]
+    ballot_player_statistics_output_order: list[int] = [7, 8, 9, 6, 3, 10, 1, 2, 4, 5, 0, 11, 12, 13, 14]
     ballot_player_data_organized: dict[str, list[Any]] = {ballot_player_header_keys[i]: ballot_player_data[ballot_player_header_keys[i]] for i in ballot_player_statistics_output_order}
     ballot_player_df: pandas.DataFrame = pandas.DataFrame(data = ballot_player_data_organized)
     optimize_bool_display(ballot_player_df)
@@ -8044,7 +8044,7 @@ async def honor_player(connection: Connection) -> None:
         logPrint("您已经没有赞誉票了。\nYou've run out of votes.")
     else:
         ballot_player_df: pandas.DataFrame = await sort_ballot_players(connection)
-        ballot_player_df_fields_to_print: list[str] = ["gameName", "tagLine", "ally?", "championName", "role", "botPlayer"]
+        ballot_player_df_fields_to_print: list[str] = ["gameName", "tagLine", "isAlly", "championName", "role", "botPlayer"]
         if len(ballot_player_df) == 1:
             logPrint("目前没有可以赞誉的玩家。\nThere's not any player to honor for now.")
         else:

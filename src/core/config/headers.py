@@ -3982,6 +3982,7 @@ perkPage_header: dict[str, str] = {
 #对局结算（End of game）
 ballot_player_header: dict[str, str] = {
     "botPlayer": "电脑玩家",
+    "championId": "英雄序号",
     "championName": "英雄名称",
     "puuid": "玩家通用唯一识别码",
     "role": "角色定位",
@@ -3990,7 +3991,7 @@ ballot_player_header: dict[str, str] = {
     "summonerName": "召唤师名称",
     "gameName": "玩家名称",
     "tagLine": "名称编号",
-    "ally?": "是否队友",
+    "isAlly": "是否队友",
     "honored": "已赞誉",
     "honorType": "赞誉类型",
     "honorType_tooltip_header": "赞誉类型标题",
