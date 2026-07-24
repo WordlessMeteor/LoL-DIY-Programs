@@ -7,7 +7,7 @@ from src.utils.logger import LogManager
 from src.utils.summoner import print_summoner_info, get_info_name
 from src.utils.excel_workbook import create_workbook_win32
 from src.core.config.localization import gamemaps, slotTypes, positions, recommendedAttributes
-from src.core.config.headers import perk_plugin_header, recommendedPage_header, perkPage_header
+from src.core.config.headers import perk_lcu_header, recommendedPage_header, perkPage_header
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.dataframes.champions import sort_inventory_champions, filter_champion
 
@@ -17,7 +17,7 @@ from src.core.dataframes.champions import sort_inventory_champions, filter_champ
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/19
+# 更新（Last update）：     2026/07/25
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -126,11 +126,11 @@ def sort_perk_data(perks_source: list[dict[str, Any]], perkstyles_source: dict[s
             defaultPerkOrder.append(perkId)
     ##构建符文序号权重字典（Create the status dictionary of perkIds）
     defaultPerkOrder_dict: dict[int, int] = {defaultPerkOrder[i]: i for i in range(len(defaultPerkOrder))}
-    perk_plugin_header_keys: list[str] = list(perk_plugin_header.keys())
-    perk_plugin_data: dict[str, list[Any]] = {key: [] for key in perk_plugin_header_keys}
+    perk_lcu_header_keys: list[str] = list(perk_lcu_header.keys())
+    perk_lcu_data: dict[str, list[Any]] = {key: [] for key in perk_lcu_header_keys}
     for perk in perks_source:
-        for i in range(len(perk_plugin_header_keys)):
-            key: str = perk_plugin_header_keys[i]
+        for i in range(len(perk_lcu_header_keys)):
+            key: str = perk_lcu_header_keys[i]
             if i <= 9:
                 if i == 6: #槽位类型（`slotType`）
                     to_append: Any = slotTypes[perk[key]]
@@ -140,12 +140,12 @@ def sort_perk_data(perks_source: list[dict[str, Any]], perkstyles_source: dict[s
                 to_append = perkstyles[perk["styleId"]]["name"] if perk["styleId"] in perkstyles else ""
             else: #槽位标签（`slotLabel`）
                 to_append = perkSlotLabels.get(perk["id"], "")
-            perk_plugin_data[key].append(to_append)
-    perk_plugin_statistics_output_order: list[int] = [1, 3, 7, 8, 10, 6, 11, 4, 5, 2, 9, 0]
-    perk_plugin_data_organized: dict[str, list[Any]] = {perk_plugin_header_keys[i]: perk_plugin_data[perk_plugin_header_keys[i]] for i in perk_plugin_statistics_output_order}
-    perk_df: pandas.DataFrame = pandas.DataFrame(data = perk_plugin_data_organized)
+            perk_lcu_data[key].append(to_append)
+    perk_lcu_statistics_output_order: list[int] = [1, 3, 7, 8, 10, 6, 11, 4, 5, 2, 9, 0]
+    perk_lcu_data_organized: dict[str, list[Any]] = {perk_lcu_header_keys[i]: perk_lcu_data[perk_lcu_header_keys[i]] for i in perk_lcu_statistics_output_order}
+    perk_df: pandas.DataFrame = pandas.DataFrame(data = perk_lcu_data_organized)
     perk_df = perk_df.sort_values(by = "id", key = lambda x: x.map(defaultPerkOrder_dict), ascending = True)
-    perk_df = pandas.concat([pandas.DataFrame([perk_plugin_header])[perk_df.columns], perk_df], ignore_index = True)
+    perk_df = pandas.concat([pandas.DataFrame([perk_lcu_header])[perk_df.columns], perk_df], ignore_index = True)
     return perk_df
 
 def sort_recommended_perk(recommendedPages: list[dict[str, Any]]) -> pandas.DataFrame:

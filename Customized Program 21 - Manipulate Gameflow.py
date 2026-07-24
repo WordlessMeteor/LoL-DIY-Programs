@@ -30,7 +30,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/07/23
+# 更新（Last update）：     2026/07/25
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -6060,42 +6060,44 @@ async def sort_skin_data(connection: Connection, verbose: bool = True) -> pandas
         skin_flat: dict[str, Any] = skins_flat[skinId]
         for i in range(len(skin_header_keys)):
             key: str = skin_header_keys[i]
-            if i <= 40: #来自（From）：`/lol-game-data/assets/v1/skins.json`
-                if i <= 28:
-                    if i == 15: #品质（`rarity`）
-                        to_append: Any = krarities[skin[key]] if key in skin else ""
-                    elif i == 20: #皮肤类别（`skinClassification`）
+            if i <= 41: #来自（From）：`/lol-game-data/assets/v1/skins.json`
+                if i <= 29:
+                    if i == 4: #皮肤类别（`skinClassification`）
                         to_append = skinClassifications[skin[key]] if key in skin else ""
+                    elif i == 11: #品质（`rarity`）
+                        to_append: Any = krarities[skin[key]] if key in skin else ""
                     elif i == 22: #皮肤套装（`skinLines`）
                         to_append = "" if not key in skin or skin[key] == None else list(map(lambda x: skinlines[x["id"]]["name"], skin[key]))
+                    elif i == 25: #各地区描述（`descriptions`）
+                        to_append = json.dumps(skin["descriptions"], ensure_ascii = False) if "descriptions" in skin else ""
                     else:
-                        to_append = skin.get(key, False if i in [8, 9] else "")
-                elif i <= 32: #标志相关键（Emblem-related keys）
+                        to_append = skin.get(key, False if i in {2, 14} else "")
+                elif i <= 33: #标志相关键（Emblem-related keys）
                     if not "emblems" in skin or skin["emblems"] == None:
                         to_append = ""
                     else:
-                        if i <= 30:
+                        if i <= 31:
                             to_append = skin["emblems"][0][key.split("_")[1]]
                         else:
                             to_append = skin["emblems"][0]["emblemPath"][key.split("_")[1]]
                 else: #任务皮肤信息相关键（QuestSkinInfo-related keys）
                     to_append = skin[key.split()[0]][key.split()[1]] if key.split()[0] in skin else ""
             else: #来自（From）：`/lol-champions/v1/inventories/{summonerId}/champions`
-                if i <= 47:
-                    if i >= 45: #英雄相关键（Champion-related keys）
+                if i <= 48:
+                    if i >= 46: #英雄相关键（Champion-related keys）
                         to_append = LoLChampions[skin_flat["championId"]][key.split("_")[1]] if "championId" in skin_flat and skin_flat["championId"] in LoLChampions else ""
                     else:
-                        to_append = skin_flat.get(key, False if i in [42, 43, 44] else "")
-                elif i <= 50: #拥有权相关键（Ownership-related keys）
+                        to_append = skin_flat.get(key, False if i in {43, 44, 45} else "")
+                elif i <= 51: #拥有权相关键（Ownership-related keys）
                     to_append = skin_flat[key.split()[0]][key.split()[1]]
                 else: #租借相关键（Rental-related keys）
-                    if i >= 55: #日期相关键（Date-related keys）
-                        timestamp = skin_flat["ownership"]["rental"]["endDate"] if i == 55 else skin_flat["ownership"]["rental"]["purchaseDate"]
+                    if i >= 56: #日期相关键（Date-related keys）
+                        timestamp = skin_flat["ownership"]["rental"]["endDate"] if i == 56 else skin_flat["ownership"]["rental"]["purchaseDate"]
                         to_append = "" if timestamp == 0 else "∞" if timestamp == 18446744073709550616 else getISOTime(timestamp / 1000)
                     else:
                         to_append = skin_flat[key.split()[0]][key.split()[1]][key.split()[2]]
             skin_data[key].append(to_append)
-    skin_statistics_output_order: list[int] = [7, 12, 18, 41, 45, 46, 47, 42, 4, 5, 6, 21, 19, 8, 43, 23, 20, 22, 9, 15, 17, 14, 49, 48, 50, 53, 52, 56, 51, 55, 54, 44, 36, 37, 34, 35, 39, 38, 40, 33, 27, 10, 11, 24, 28, 25, 13, 0, 1, 3, 2, 16, 26, 29, 30, 32, 31]
+    skin_statistics_output_order: list[int] = [0, 3, 27, 42, 46, 47, 48, 43, 1, 23, 25, 17, 18, 29, 2, 44, 10, 4, 22, 12, 11, 20, 26, 50, 49, 51, 54, 53, 57, 52, 56, 55, 45, 34, 35, 36, 37, 40, 38, 39, 41, 7, 8, 9, 5, 6, 13, 14, 19, 24, 15, 16, 21, 28, 30, 31, 33, 32]
     skin_data_organized: dict[str, list[Any]] = {skin_header_keys[i]: skin_data[skin_header_keys[i]] for i in skin_statistics_output_order}
     logPrint("[sort_skin_data]正在构建数据框…… | Creating the dataframe ...", print_time = True, verbose = verbose)
     skin_df: pandas.DataFrame = pandas.DataFrame(data = skin_data_organized)
