@@ -21,7 +21,7 @@ from src.core.dataframes.champions import sort_champion_summary
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/20
+# 更新（Last update）：     2026/07/25
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -869,7 +869,12 @@ class ItemSet:
         :return: 装备数据框，包含装备序号、装备名称、最大数量和总价。<br>An item dataframe containing itemId, name, count and total price.
         :rtype: pandas.DataFrame
         '''
-        item_grid_header: dict[str, str] = {"count": "数量", "id": "序号", "name": "名称", "priceTotal": "总价"}
+        item_grid_header: dict[str, str] = {
+            "count": "数量",
+            "id": "序号",
+            "name": "名称",
+            "priceTotal": "总价"
+        }
         item_grid_header_keys: list[str] = list(item_grid_header.keys())
         item_grid_header_values: list[str] = list(item_grid_header.values())
         item_grid_data: dict[str, list[Any]] = {key: [] for key in item_grid_header_keys}
@@ -910,7 +915,11 @@ class ItemSet:
         :return: 装备区块数据框，包含区块名称、显示召唤师技能和隐藏召唤师技能。<br>An item block dataframe containing the block name, the only summoner spells to make it show and the only summoner spells to make it hide.
         :rtype: pandas.DataFrame
         '''
-        item_block_header: dict[str, str] = {"type": "名称", "showIfSummonerSpell": "显示召唤师技能", "hideIfSummonerSpell": "隐藏召唤师技能"}
+        item_block_header: dict[str, str] = {
+            "type": "名称",
+            "showIfSummonerSpell": "显示召唤师技能",
+            "hideIfSummonerSpell": "隐藏召唤师技能"
+        }
         item_block_header_keys: list[str] = list(item_block_header.keys())
         item_block_header_values: list[str] = list(item_block_header.values())
         item_block_data: dict[str, list[Any]] = {key: [] for key in item_block_header_keys}
@@ -940,7 +949,24 @@ class ItemSet:
         :return: 配装页数据框。<br>An item page dataframe.
         :rtype: pandas.DataFrame
         '''
-        item_page_header: dict[str, str] = {"associatedChampions": "相关英雄序号列表", "associatedMaps": "相关地图序号列表", "blocks": "装备区块", "map": "适用地图", "mode": "适用游戏模式", "preferredItemSlots": "偏好栏", "sortrank": "排序优先级", "startedFrom": "来自", "title": "标题", "type": "类型", "uid": "唯一识别码", "associatedChampions_name": "相关英雄头衔", "associatedChampions_description": "相关英雄名称", "associatedMaps_name_zh": "相关地图名称（中文）", "associatedMaps_name_en": "相关地图名称（英文）", "blocks type": "装备区块名称列表"}
+        item_page_header: dict[str, str] = {
+            "associatedChampions": "相关英雄序号列表",
+            "associatedMaps": "相关地图序号列表",
+            "blocks": "装备区块",
+            "map": "适用地图",
+            "mode": "适用游戏模式",
+            "preferredItemSlots": "偏好栏",
+            "sortrank": "排序优先级",
+            "startedFrom": "来自",
+            "title": "标题",
+            "type": "类型",
+            "uid": "唯一识别码",
+            "associatedChampions_name": "相关英雄头衔",
+            "associatedChampions_description": "相关英雄名称",
+            "associatedMaps_name_zh": "相关地图名称（中文）",
+            "associatedMaps_name_en": "相关地图名称（英文）",
+            "blockTypes": "装备区块名称列表"
+        }
         item_page_header_keys: list[str] = list(item_page_header.keys())
         item_page_data: dict[str, list[Any]] = {key: [] for key in item_page_header_keys}
         item_page_data_json = copy.deepcopy(item_page_data)
@@ -958,7 +984,7 @@ class ItemSet:
                     to_append = list(map(lambda x: gamemaps[x]["zh_CN" if i == 13 else "en_US"] if x in gamemaps else "", item_page["associatedMaps"]))
                     if to_append == []:
                         to_append = ""
-                else: #装备区块名称列表（`blocks type`）
+                else: #装备区块名称列表（`blockTypes`）
                     to_append = list(map(lambda x: x["type"], item_page["blocks"]))
                 item_page_data[key].append(to_append)
                 item_page_data_json[key].append(pyobj2json(to_append))
@@ -977,7 +1003,11 @@ class ItemSet:
         :return: 装备偏好栏数据框，包含装备序号、装备名称和偏好栏。<br>A preferred item slot dataframe containing the itemId, item name and preferred slot.
         :rtype: pandas.DataFrame
         '''
-        preferredItemSlot_header: dict[str, str] = {"id": "序号", "preferredItemSlot": "偏好栏", "name": "名称"}
+        preferredItemSlot_header: dict[str, str] = {
+            "type": "名称",
+            "showIfSummonerSpell": "显示召唤师技能",
+            "hideIfSummonerSpell": "隐藏召唤师技能"
+        }
         preferredItemSlot_header_keys: list[str] = list(preferredItemSlot_header.keys())
         preferredItemSlot_header_values: list[str] = list(preferredItemSlot_header.values())
         preferredItemSlot_data: dict[str, list[Any]] = {key: [] for key in preferredItemSlot_header_keys}
@@ -1420,7 +1450,11 @@ class ItemSet:
                                 logPrint("请输入由正整数组成的列表。\nPlease input a list of positive integers.")
             elif step == 3:
                 logPrint("第三步：请选择相关地图。\nStep 3: Please select the associated maps.")
-                gamemap_header: dict[str, str] = {"id": "序号", "name_zh": "名称", "name_en": "英文"}
+                gamemap_header: dict[str, str] = {
+                    "id": "序号",
+                    "name_zh": "名称",
+                    "name_en": "英文"
+                }
                 gamemap_header_keys: list[str] = list(gamemap_header.keys())
                 gamemap_data: dict[str, list[Any]] = {key: [] for key in gamemap_header_keys}
                 for mapId in gamemaps:
@@ -2250,7 +2284,35 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
             champions_locale: dict[str, Any] = source.json()
 
             #下面设置装备表头的元数据部分（Set the metadata part of the item headers）
-            item_base_header: dict[str, str] = {"id": "装备序号", "group": "分组", "description": "详细信息", "colloq": "检索关键字", "plaintext": "简述", "consumed": "消耗品", "stacks": "最大持有数量", "depth": "深度", "consumeOnFull": "满装备时自动消耗", "from": "合成材料序号", "into": "合成装备序号", "specialRecipe": "特殊合成材料", "inStore": "商店可见性", "hideFromAll": "不可见性", "requiredChampion": "装备持有者", "requiredAlly": "所需队友", "localizedName": "装备名称", "name": "英文名称", "fromName": "合成材料名称", "intoName": "合成装备名称", "requiredChampionName": "装备持有者名称", "requiredAllyName": "所需队友名称", "specialRecipeName": "特殊合成材料名称", "baseGold": "合成费用", "purchasable": "可以购买", "totalGold": "总费用", "sellGold": "售价"}
+            item_base_header: dict[str, str] = {
+                "id": "装备序号",
+                "group": "分组",
+                "description": "详细信息",
+                "colloq": "检索关键字",
+                "plaintext": "简述",
+                "consumed": "消耗品",
+                "stacks": "最大持有数量",
+                "depth": "深度",
+                "consumeOnFull": "满装备时自动消耗",
+                "from": "合成材料序号",
+                "into": "合成装备序号",
+                "specialRecipe": "特殊合成材料",
+                "inStore": "商店可见性",
+                "hideFromAll": "不可见性",
+                "requiredChampion": "装备持有者",
+                "requiredAlly": "所需队友",
+                "localizedName": "装备名称",
+                "name": "英文名称",
+                "fromName": "合成材料名称",
+                "intoName": "合成装备名称",
+                "requiredChampionName": "装备持有者名称",
+                "requiredAllyName": "所需队友名称",
+                "specialRecipeName": "特殊合成材料名称",
+                "baseGold": "合成费用",
+                "purchasable": "可以购买",
+                "totalGold": "总费用",
+                "sellGold": "售价"
+            }
             item_base_header_keys: list[str] = list(item_base_header.keys())
             item_base_header_values: list[str] = list(item_base_header.values())
             #下面设置装备表头的分类（标签）部分（Set the category / tag part of the item headers）
@@ -2541,7 +2603,32 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                 continue
             
             #下面设置装备表头的元数据部分（Set the metadata part of the item headers）
-            item_base_header: dict[str, str] = {"id": "装备序号", "active": "主动使用", "description": "描述", "inStore": "游戏内可见性", "from": "合成材料序号", "to": "合成装备序号", "maxStacks": "最大持有数量", "requiredChampion": "装备持有者", "requiredAlly": "所需队友", "requiredBuffCurrencyName": "其它货币类型", "requiredBuffCurrencyCost": "其它费用", "specialRecipe": "特殊合成材料", "isEnchantment": "附魔装备", "price": "合成费用", "priceTotal": "总费用", "displayInItemSets": "装备图册可见性", "iconPath": "缩略图路径", "localizedName": "装备名称", "name": "英文名称", "fromName": "合成材料名称", "toName": "合成装备名称", "requiredChampionName": "装备持有者名称", "requiredAllyName": "所需队友名称", "specialRecipeName": "特殊合成材料名称"}
+            item_base_header: dict[str, str] = {
+                "id": "装备序号",
+                "active": "主动使用",
+                "description": "描述",
+                "inStore": "游戏内可见性",
+                "from": "合成材料序号",
+                "to": "合成装备序号",
+                "maxStacks": "最大持有数量",
+                "requiredChampion": "装备持有者",
+                "requiredAlly": "所需队友",
+                "requiredBuffCurrencyName": "其它货币类型",
+                "requiredBuffCurrencyCost": "其它费用",
+                "specialRecipe": "特殊合成材料",
+                "isEnchantment": "附魔装备",
+                "price": "合成费用",
+                "priceTotal": "总费用",
+                "displayInItemSets": "装备图册可见性",
+                "iconPath": "缩略图路径",
+                "localizedName": "装备名称",
+                "name": "英文名称",
+                "fromName": "合成材料名称",
+                "toName": "合成装备名称",
+                "requiredChampionName": "装备持有者名称",
+                "requiredAllyName": "所需队友名称",
+                "specialRecipeName": "特殊合成材料名称"
+            }
             item_base_header_keys: list[str] = list(item_base_header.keys())
             item_base_header_values: list[str] = list(item_base_header.values())
             #下面设置装备表头的详细信息部分（Set the tooltip part of the item headers）
