@@ -1042,8 +1042,9 @@ tiers: dict[str, str] = {
     "MASTER": "超凡大师",
     "GRANDMASTER": "傲世宗师",
     "CHALLENGER": "最强王者",
-    "SALT": "SALT",
-    "WOOD": "WOOD"
+    "SALT": "坚韧盐晶",
+    "WOOD": "英勇秀木",
+    "LEGEND": "最强传奇"
 }
 ratedTiers: dict[str, str] = {
     "": "",
@@ -1924,7 +1925,8 @@ lolEventHubOfferStates: dict[str, str] = {
 #     "GRANDMASTER": "GRANDMASTER",
 #     "CHALLENGER": "CHALLENGER",
 #     "SALT": "SALT",
-#     "WOOD": "WOOD"
+#     "WOOD": "WOOD",
+#     "LEGEND": "LEGEND",
 # }
 # ratedTiers: dict[str, str] = {
 #     "": "",
