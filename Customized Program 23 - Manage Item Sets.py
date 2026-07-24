@@ -2215,10 +2215,11 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
             break
         logPrint(json.dumps(versions, ensure_ascii = False))
         #下面的代码块生成英雄联盟专业术语中英文对照的Sheet1的内容。数据来源是DataDragon数据库（The following code block generates the Sheet1 in LoL Term Translation - zh_CN & en_US. Data resources are from DataDrabon database）
+        versions_sort: list[str] = []
         while True:
             version: str = logInput()
             if version == "":
-                versions_sort: list[str] = [versions[0]]
+                versions_sort = [versions[0]]
                 break
             elif version == "0":
                 back = True
@@ -2308,6 +2309,9 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                 "requiredChampionName": "装备持有者名称",
                 "requiredAllyName": "所需队友名称",
                 "specialRecipeName": "特殊合成材料名称",
+                "isrune": "符文",
+                "runetier": "符文品阶",
+                "runetype": "符文类型",
                 "baseGold": "合成费用",
                 "purchasable": "可以购买",
                 "totalGold": "总费用",
@@ -2329,14 +2333,13 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
             tags += tags_ordered
             tags_dict: dict[str, str] = {"AbilityHaste": "技能急速", "Active": "主动", "Armor": "护甲", "ArmorPenetration": "护甲穿透", "AttackSpeed": "攻击速度", "Aura": "光环", "Bilgewater": "比尔吉沃特", "Boots": "鞋子", "Consumable": "消耗品", "CooldownReduction": "冷却缩减", "CriticalStrike": "暴击", "Damage": "攻击力", "GoldPer": "工资装", "Health": "生命值", "HealthRegen": "生命回复", "Jungle": "打野-起始", "Lane": "对线-起始", "LifeSteal": "生命偷取", "MagicPenetration": "法术穿透", "MagicResist": "魔法抗性", "Mana": "法力值", "ManaRegen": "法力回复", "Movement": "移动速度", "NonbootsMovement": "其它移动速度物品", "OnHit": "攻击特效", "Slow": "减速", "SpellBlock": "魔法抗性", "SpellDamage": "法术强度", "SpellVamp": "法术吸血", "Stealth": "潜行/隐身", "Tenacity": "韧性", "Trinket": "饰品", "Vision": "视野"}
             #下面设置装备表头的地图部分（Set the map part of the item headers）
-            maps: dict[str, dict[str, str]] = {"8": {"zh_CN": "水晶之痕", "en_US": "Crystal Scar"}, "11": {"zh_CN": "召唤师峡谷", "en_US": "Summoner's Rift"}, "12": {"zh_CN": "嚎哭深渊", "en_US": "Howling Abyss"}, "14": {"zh_CN": "屠夫之桥", "en_US": "Butcher's Bridge"}, "16": {"zh_CN": "星界废墟", "en_US": "Cosmic Ruins"}, "18": {"zh_CN": "瓦洛兰城市公园", "en_US": "Valoran City Park"}, "19": {"zh_CN": "第43区", "en_US": "Substructure 43"}, "21": {"zh_CN": "百合与莲花的神庙", "en_US": "Temple of Lily and Lotus"}, "22": {"zh_CN": "聚点危机", "en_US": "Convergence"}, "30": {"zh_CN": "怒火角斗场", "en_US": "Rings of Wrath"}, "33": {"zh_CN": "最终都市", "en_US": "Final City"}, "35": {"zh_CN": "班德尔之森", "en_US": "The Bandlewood"}}
-            mapIds: list[str] = list(map(str, sorted(map(int, maps.keys()))))
+            mapIds: list[int] = [8, 11, 12, 14, 16, 18, 19, 21, 22, 30, 33, 35]
             #下面设置装备表头的基础属性部分。这一部分需要按照实际情况随时更新。只需要增添新的，不需要删除旧的（Set the stat part of the item headers. This part needs update with the latest knowledge. Only need to add new keys, but not delete old keys）
             attributes: dict[str, str] = {"Health": "生命值", "Bonus Health": "额外生命值", "Mana": "法力值", "Attack Damage": "攻击力", "Ability Power": "法术强度", "Adaptive Force": "适应之力", "Armor": "护甲", "Magic Resist": "魔法抗性", "Attack Speed": "攻击速度", "Ability Haste": "技能急速", "Cooldown Reduction": "冷却缩减", "Critical Strike Chance": "暴击几率", "Critical Strike Damage": "暴击伤害", "Move Speed": "移动速度", "Base Health Regen": "基础生命回复", "Base Mana Regen": "基础法力回复", "Heal and Shield Power": "治疗和护盾强度", "Increased Healing from Potions": "来自药水的治疗效果", "Mana per level": "每级法力", "Mana regen per 5 seconds": "法力回复/5秒", "Lethality": "穿甲", "Armor Penetration": "护甲穿透", "Magic Penetration": "法术穿透", "Life Steal": "生命偷取", "Omnivamp": "全能吸血", "Life Steal vs. Monsters": "对野怪的生命偷取", "Life on Hit": "攻击时回复生命值", "Tenacity": "韧性", "Gold Per 10 Seconds": "金币/10秒", "Ability Power per level": "每级法术强度"}
             attribute_correct_map: dict[str, str] = {"Base Health Regeneration": "Base Health Regen", "Mana per 5 seconds": "Mana regen per 5 seconds", "Movement Speed": "Move Speed"} #早期的装备数据中存在一些不规范的数值属性称呼，这里将其规范成以上字典中包含的属性（The early item data contain some irregular calling of attributes, and this dictionary is designed to standardize them to be included in the above `attributes` dictionary）
             #下面设置装备表头（Set the item headers）
-            LoLItem_header_en: list[str] = item_base_header_keys + ["Map Availability: " + maps[mapId]["en_US"] for mapId in maps] + ["Class: " + tag for tag in tags] + list(attributes.keys())
-            LoLItem_header_zh: list[str] = item_base_header_values + ["地图可用性：" + maps[mapId]["zh_CN"] for mapId in maps] + ["类别：" + tags_dict[tag] for tag in tags] + list(attributes.values())
+            LoLItem_header_en: list[str] = item_base_header_keys + ["Map Availability: " + gamemaps[mapId]["en_US"] for mapId in mapIds] + ["Class: " + tag for tag in tags] + list(attributes.keys())
+            LoLItem_header_zh: list[str] = item_base_header_values + ["地图可用性：" + gamemaps[mapId]["zh_CN"] for mapId in mapIds] + ["类别：" + tags_dict[tag] for tag in tags] + list(attributes.values())
             LoLItem_header: dict[str, str] = {LoLItem_header_en[i]: LoLItem_header_zh[i] for i in range(len(LoLItem_header_en))}
             LoLItem_header_keys: list[str] = list(LoLItem_header.keys())
             #print(LoLItem_header_keys)
@@ -2425,17 +2428,27 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                                 to_append = item.get(key, False)
                             else:
                                 to_append = item.get(key, "")
+                        elif j <= 25:
+                            if "rune" in item:
+                                if j == 23: #符文（`isrune`）
+                                    to_append = item["rune"]["isrune"]
+                                elif j == 24: #符文品阶（`runetier`）
+                                    to_append = item["rune"]["tier"]
+                                else: #符文类型（`runetype`）
+                                    to_append = item["rune"]["type"]
+                            else:
+                                to_append = False if j == 23 else ""
                         else:
-                            if j == 23: #合成费用（`baseGold`）
+                            if j == 26: #合成费用（`baseGold`）
                                 to_append = item["gold"]["base"]
-                            elif j == 24: #可以购买（`purchasable`）
+                            elif j == 27: #可以购买（`purchasable`）
                                 to_append = item["gold"]["purchasable"]
-                            elif j == 25: #总费用（`totalGold`）
+                            elif j == 28: #总费用（`totalGold`）
                                 to_append = item["gold"]["total"]
                             else: #售价（`sellGold`）
                                 to_append = item["gold"]["sell"]
                     elif j < len(item_base_header_keys) + len(mapIds): #地图部分（Map part）
-                        to_append = item["maps"].get(mapIds[j - len(item_base_header_keys)], False) if "maps" in item else False
+                        to_append = item["maps"].get(str(mapIds[j - len(item_base_header_keys)]), False) if "maps" in item else False
                     elif j < len(item_base_header_keys) + len(mapIds) + len(tags): #分类部分（Category part）
                         to_append = tags[j - len(item_base_header_keys) - len(mapIds)] in item["tags"]
                     else: #基础属性部分（Stat part）
@@ -2445,7 +2458,7 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                         else:
                             to_append = ""
                     LoLItem_data[key].append(to_append)
-            base_statistics_display_order: list[int] = [0, 16, 17, 4, 5, 8, 12, 13, 24, 23, 25, 26, 6, 7, 20, 21, 18, 19, 22, 3, 2]
+            base_statistics_display_order: list[int] = [0, 16, 17, 4, 5, 8, 12, 13, 27, 26, 28, 29, 6, 7, 20, 21, 18, 19, 22, 3, 2]
             LoLItem_statistics_display_order: list[int] = base_statistics_display_order + list(range(len(base_statistics_display_order), len(LoLItem_header)))
             LoLItem_data_organized: dict[str, list[Any]] = {LoLItem_header_keys[i]: LoLItem_data[LoLItem_header_keys[i]] for i in LoLItem_statistics_display_order}
             LoLItem_df: pandas.DataFrame = pandas.DataFrame(data = LoLItem_data_organized)
@@ -2765,7 +2778,7 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                     else:
                         key_decapitalized: str = key[0].lower() + key[1:]
                         if key in mDataValues:
-                            attributeValue: str = mDataValues[key]
+                            attributeValue: Any = mDataValues[key]
                         elif key in item_binary:
                             attributeValue = item_binary[key]
                         elif key_decapitalized in item_binary:
