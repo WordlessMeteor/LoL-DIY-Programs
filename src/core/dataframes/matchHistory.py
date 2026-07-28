@@ -2263,11 +2263,11 @@ def generate_LoLHistory_records(LoLHistory_data: dict[str, list[Any]], LoLGame_s
                     to_append = ""
                 elif CherryAugmentId in CherryAugments:
                     if i <= 201: #强化符文名称（`nameTRA`）
-                        to_append = CherryAugments[CherryAugmentId][key.split("_")[1]]
+                        to_append = CherryAugments[CherryAugmentId]["nameTRA"]
                     elif i <= 207: #强化符文图标路径（`augmentIconPath`）
                         to_append = CherryAugments[CherryAugmentId]["augmentSmallIconPath"].replace("_small.png", "_large.png")
                     else: #强化符文等级（`rarity`）
-                        to_append = augment_rarity[CherryAugments[CherryAugmentId][key.split("_")[1]]]
+                        to_append = augment_rarity[CherryAugments[CherryAugmentId]["rarity"]]
                 else:
                     if not CherryAugmentId in unmapped_keys["CherryAugment"]:
                         unmapped_keys["CherryAugment"].add(CherryAugmentId)
@@ -2606,11 +2606,11 @@ def generate_LoLHistory_records_sgp(LoLHistory_data: dict[str, list[Any]], LoLGa
                             to_append = ""
                         elif CherryAugmentId in CherryAugments:
                             if i <= 201: #强化符文名称（`nameTRA`）
-                                to_append = CherryAugments[CherryAugmentId][key.split("_")[1]]
+                                to_append = CherryAugments[CherryAugmentId]["nameTRA"]
                             elif i <= 207: #强化符文图标路径（`augmentIconPath`）
                                 to_append = CherryAugments[CherryAugmentId]["augmentSmallIconPath"].replace("_small.png", "_large.png")
                             else: #强化符文等级（`rarity`）
-                                to_append = augment_rarity[CherryAugments[CherryAugmentId][key.split("_")[1]]]
+                                to_append = augment_rarity[CherryAugments[CherryAugmentId]["rarity"]]
                         else:
                             if not CherryAugmentId in unmapped_keys["CherryAugment"]:
                                 unmapped_keys["CherryAugment"].add(CherryAugmentId)
@@ -3705,11 +3705,11 @@ def generate_LoLGameSummary_records(LoLGame_summary_data: dict[str, list[Any]], 
                     to_append = ""
                 elif CherryAugmentId in CherryAugments:
                     if i <= 201: #强化符文名称（`nameTRA`）
-                        to_append = CherryAugments[CherryAugmentId][key.split("_")[1]]
+                        to_append = CherryAugments[CherryAugmentId]["nameTRA"]
                     elif i <= 207: #强化符文图标路径（`augmentIconPath`）
                         to_append = CherryAugments[CherryAugmentId]["augmentSmallIconPath"].replace("_small.png", "_large.png")
                     else: #强化符文等级（`rarity`）
-                        to_append = augment_rarity[CherryAugments[CherryAugmentId][key.split("_")[1]]]
+                        to_append = augment_rarity[CherryAugments[CherryAugmentId]["rarity"]]
                 else:
                     if not CherryAugmentId in unmapped_keys["CherryAugment"]:
                         unmapped_keys["CherryAugment"].add(CherryAugmentId)
@@ -4093,11 +4093,11 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                         to_append = ""
                     elif CherryAugmentId in CherryAugments:
                         if i <= 205: #强化符文名称（`nameTRA`）
-                            to_append = CherryAugments[CherryAugmentId][key.split("_")[1]]
+                            to_append = CherryAugments[CherryAugmentId]["nameTRA"]
                         elif i <= 211: #强化符文图标路径（`augmentIconPath`）
                             to_append = CherryAugments[CherryAugmentId]["augmentSmallIconPath"].replace("_small.png", "_large.png")
                         else: #强化符文等级（`rarity`）
-                            to_append = augment_rarity[CherryAugments[CherryAugmentId][key.split("_")[1]]]
+                            to_append = augment_rarity[CherryAugments[CherryAugmentId]["rarity"]]
                     else:
                         if not CherryAugmentId in unmapped_keys["CherryAugment"]:
                             unmapped_keys["CherryAugment"].add(CherryAugmentId)

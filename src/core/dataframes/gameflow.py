@@ -730,10 +730,12 @@ async def sort_eog_playerstat_lol_data(connection: Connection, summonerIcons: di
                                 if playerAugmentId == 0:
                                     to_append = ""
                                 elif playerAugmentId in CherryAugments:
-                                    if i >= 187:
-                                        to_append = augment_rarity[CherryAugments[playerAugmentId][key.split()[2]]]
-                                    else:
-                                        to_append = CherryAugments[playerAugmentId][key.split()[2]]
+                                    if i <= 180: #强化符文名称（`nameTRA`）
+                                        to_append = CherryAugments[playerAugmentId]["nameTRA"]
+                                    elif i <= 186: #强化符文图标路径（`augmentIconPath`）
+                                        to_append = CherryAugments[playerAugmentId]["augmentSmallIconPath"].replace("_small.png", "_large.png")
+                                    else: #强化符文等级（`rarity`）
+                                        to_append = augment_rarity[CherryAugments[playerAugmentId]["rarity"]]
                                 else:
                                     to_append = playerAugmentId if i >= 175 and i <= 180 else ""
                             else:
