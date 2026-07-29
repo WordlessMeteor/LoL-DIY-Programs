@@ -150,12 +150,12 @@ async def organize_pass_information(connection: Connection) -> None:
         progression_purchase_data: dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/progression-purchase-data")).json()
         reward_track_bonus_items: dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/reward-track/bonus-items")).json()
         # reward_track_bonus_progress: dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/reward-track/bonus-progress")).json()
-        reward_track_items: dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/reward-track/items")).json()
+        reward_track_items: list[dict[str, Any]] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/reward-track/items")).json()
         # reward_track_progress: dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/reward-track/progress")).json()
         reward_track_unclaimed_rewards: dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/reward-track/unclaimed-rewards")).json()
         reward_track_xp: dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/reward-track/xp")).json()
         token_shop: dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/token-shop")).json()
-        token_shop_categories_offer: list[dict[str, Any]] | dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/token-shop/categories-offer")).json()
+        token_shop_categories_offer: list[dict[str, Any]] | dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/token-shop/categories-offers")).json()
         ##事件信息（Event information）
         for i in range(len(event_info_header_keys)):
             key: str = event_info_header_keys[i]
