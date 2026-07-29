@@ -1,5 +1,10 @@
-import os, time
+import datetime, os, sys, time
 from typing import Any, IO, Optional
+wd: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")).replace("\\", "/")
+os.chdir(wd)
+if not wd in sys.path:
+    sys.path.append(wd) #确保在“src”文件夹的父级目录运行此代码（Make sure this program is run under the parent folder of the "src" folder）
+from src.utils.format import getISOTime
 
 def aInput() -> str: #高级输入模式（Advanced input mode）
     '''
@@ -122,8 +127,8 @@ class LogManager:
         '''
         s: str = input(prompt)
         if self.file_opened:
-            currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())
-            write_str: str = f"[{currentTime}]{prompt}{s}" if write_time else f"{prompt}{s}"
+            currentTime_millisecond: str = getISOTime(time.time())
+            write_str: str = f"[{currentTime_millisecond}]{prompt}{s}" if write_time else f"{prompt}{s}"
             print(write_str, file = self.__log)
         return s
 
@@ -162,13 +167,15 @@ class LogManager:
             write_time = self.write_time
         if not isinstance(verbose, bool):
             verbose = self.verbose
-        currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())
+        currentTime: float = time.time()
+        currentTime_second: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime(currentTime))
+        currentTime_millisecond: str = getISOTime(currentTime)
         s = sep.join(str(value) for value in values)
-        print_str: str = f"[{currentTime}]{start}{s}" if print_time else f"{start}{s}"
+        print_str: str = f"[{currentTime_second}]{start}{s}" if print_time else f"{start}{s}"
         if verbose:
             print(print_str, end = end, flush = flush)
         if self.file_opened:
-            write_str = f"[{currentTime}]{start}{s}" if write_time else f"{start}{s}"
+            write_str = f"[{currentTime_millisecond}]{start}{s}" if write_time else f"{start}{s}"
             print(write_str, end = end, file = self.__log, flush = flush) #即使用回车字符结束，日志中也不会将光标回到行首（Even if end is carriage return, in the log file the cursor won't return to the head of the line）
     
     def write(self, s: str = "", write_time: bool = False) -> None:
@@ -179,8 +186,8 @@ class LogManager:
         '''
         if self.file_opened:
             if write_time:
-                currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())
-                self.__log.write(currentTime)
+                currentTime_millisecond: str = getISOTime(time.time())
+                self.__log.write(currentTime_millisecond)
             self.__log.write(s)
         
     def close(self) -> None:
