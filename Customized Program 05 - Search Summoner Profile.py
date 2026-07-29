@@ -40,7 +40,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/07/24
+# 更新（Last update）：     2026/07/30
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1898,13 +1898,16 @@ async def search_profile(connection: Connection) -> None:
         current_summonerName_list: list[str] = list(map(get_info_name, AllAccounts))
                 
         #下面检测本地已保存的召唤师信息是否包含已改名的主召唤师（Detect whether the local summoner information contain the main summoner that has changed its name）
-        folderNames: list[str] = os.listdir(platform_folder)
+        folderNames: list[str] = [folder for folder in os.listdir(platform_folder) if os.path.isdir(os.path.join(platform_folder, folder))]
+        synonym_hint_printed: bool = False
+        oldName_counter: int = 0
         if len(folderNames) > 0:
             logPrint("正在检查该召唤师是否改过名（Checking if this summoner has changed the name）：")
             for i in range(len(folderNames)):
                 logPrint("[%d/%d]" %(i + 1, len(folderNames)), end = "\r")
                 folderName: str = folderNames[i]
-                json01path: str = os.path.join(platform_folder, folderName, f"Summoner Profile - {folderName}.json")
+                summonerInfo_dir: str = os.path.join(platform_folder, folderName)
+                json01path: str = os.path.join(summonerInfo_dir, f"Summoner Profile - {folderName}.json")
                 if os.path.exists(json01path):
                     try:
                         with open(json01path, "r", encoding = "utf-8") as jsonfile01:
@@ -1913,10 +1916,37 @@ async def search_profile(connection: Connection) -> None:
                         pass
                     else:
                         if isinstance(test_info_body, dict) and "puuid" in test_info_body and test_info_body["puuid"] == current_puuid:
-                            test_displayName: str = get_info_name(test_info_body)
-                            if test_displayName != displayName:
-                                logPrint(f"警告：检测到同大区下该召唤师存在其它显示名：\nWarning: Another displayName of this summoner is detected in this server:\n{test_displayName}")
-                                break
+                            if folderName != displayName:
+                                if not synonym_hint_printed:
+                                    logPrint(f"警告：检测到同大区文件夹下该召唤师存在其它显示名。\nWarning: Another displayName of this summoner is detected in this platform folder.")
+                                    synonym_hint_printed = True
+                                oldName_counter += 1
+                                logPrint("[%d] %s" %(oldName_counter, folderName))
+                                new_summonerInfo_dir: str = os.path.join(os.path.dirname(summonerInfo_dir), displayName)
+                                try:
+                                    os.rename(summonerInfo_dir, new_summonerInfo_dir)
+                                except PermissionError:
+                                    logPrint(f"重命名以下文件夹时遇到一个权限错误。请检查文件占用情况，然后尝试手动修改该文件夹及其内文件的名称。\nA PermissionError occurred when the program was trying to rename the following folder. Please check the file occupation situation and then try changing the names of this folder and files within manually.\n异常文件夹（Error folder）： {summonerInfo_dir}")
+                                except FileExistsError:
+                                    logPrint(f"新文件夹已存在。请对比文件并进行适当的删除和合并。\nThe new folder already exists. Please compare files and perform approriate deletion and merge operations.")
+                                else: #只有在正常修改文件夹名称时，才去尝试修改其内的文件名（Only when the name of the folder is changed successfully will the program try changing the names of files within）
+                                    logPrint(f"已重命名文件夹（Renamed folder）： {summonerInfo_dir} → {new_summonerInfo_dir}")
+                                    new_summonerInfo_files: list[str] = os.listdir(new_summonerInfo_dir)
+                                    permissionError_files: list[str] = [] #记录因权限不足而命名失败的文件（Record files that fail to be renamed due to permission error）
+                                    for file in new_summonerInfo_files:
+                                        if folderName in file:
+                                            old_file_relpath: str = os.path.join(new_summonerInfo_dir, file)
+                                            new_file_name: str = file.replace(folderName, displayName)
+                                            new_file_relpath: str = os.path.join(new_summonerInfo_dir, new_file_name)
+                                            try:
+                                                os.rename(old_file_relpath, new_file_relpath)
+                                            except PermissionError:
+                                                permissionError_files.append(file)
+                                            else:
+                                                logPrint(f"已重命名文件（Renamed file）： {file} → {new_file_name}")
+                                    else:
+                                        if len(permissionError_files) > 0:
+                                            logPrint("重命名以下文件时遇到一个权限错误。请检查文件占用情况，然后尝试手动修改改文件的名称。\nA PermissionError occurred when the program was trying to rename the following file(s). Please check the file occupation situation and then try changing the name of this file manually.\n异常文件（Error files）：" + "\n".join(permissionError_files))
         
         # logPrint("主召唤师信息如下：\nMain summoner information is as follows:")
         # logPrint(main_info_body)
