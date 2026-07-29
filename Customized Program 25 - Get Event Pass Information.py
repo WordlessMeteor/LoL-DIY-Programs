@@ -17,7 +17,7 @@ from openpyxl.worksheet.worksheet import Worksheet
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/18
+# 更新（Last update）：     2026/07/30
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -153,7 +153,7 @@ async def organize_pass_information(connection: Connection) -> None:
         reward_track_items: dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/reward-track/items")).json()
         # reward_track_progress: dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/reward-track/progress")).json()
         reward_track_unclaimed_rewards: dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/reward-track/unclaimed-rewards")).json()
-        reward_track_xp: dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/xp")).json()
+        reward_track_xp: dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/reward-track/xp")).json()
         token_shop: dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/token-shop")).json()
         token_shop_categories_offer: list[dict[str, Any]] | dict[str, Any] = await (await connection.request("GET", f"/lol-event-hub/v1/events/{eventId}/token-shop/categories-offer")).json()
         ##事件信息（Event information）
@@ -163,24 +163,24 @@ async def organize_pass_information(connection: Connection) -> None:
                 event_data: dict[str, Any] = eventInfo
             elif i == 28:
                 event_data = chapters
-            elif i <= 41:
+            elif i <= 42:
                 event_data = event_details_data
-            elif i <= 78:
+            elif i <= 83:
                 event_data = objectives_banner
-            elif i == 79:
+            elif i == 84:
                 event_data = pass_background_data
-            elif i == 80 or i == 81:
+            elif i == 85 or i == 86:
                 event_data = progress_info_data
-            elif i <= 86:
+            elif i <= 91:
                 event_data = progression_purchase_data
-            elif i == 87 or i == 88:
+            elif i <= 95:
                 event_data = reward_track_unclaimed_rewards
-            elif i <= 93:
+            elif i <= 100:
                 event_data = reward_track_xp
             else:
                 event_data = token_shop
             if "errorCode" in event_data:
-                if i in {8, 9, 27, 80}:
+                if i in {8, 9, 27, 85}:
                     to_append: Any = False
                 else:
                     to_append = ""
@@ -190,12 +190,15 @@ async def organize_pass_information(connection: Connection) -> None:
                     to_append = "" if queueId == 0 else gameQueues[queueId]["name"]
                 elif i == 26: #上次未领取奖励时间（`dateOfLastUnclaimedReward`）
                     timeOfLastUnclaimedReward: int = eventInfo["timeOfLastUnclaimedReward"]
-                    to_append = getISOTime(timeOfLastUnclaimedReward) if timeOfLastUnclaimedReward == 0 else ""
+                    to_append = "" if timeOfLastUnclaimedReward == 0 or timeOfLastUnclaimedReward == -1 else getISOTime(timeOfLastUnclaimedReward)
                 elif i == 27: #商城购买宽限期（`isGracePeriod`）
                     to_append = is_grace_period
-                elif i == 41: #事件细节：焦点皮肤名称（`details spotlightSkinName`）
+                elif i == 42: #事件细节：焦点皮肤名称（`details spotlightSkinName`）
                     spotlightSkinId: int = event_details_data["spotlightSkinId"]
                     to_append = championSkins.get(spotlightSkinId, spotlightSkinId)
+                elif i == 95: #通行证里程进度：未领取奖励追踪：上次未领取奖励时间（`rewardTrack_unclaimedRewards dateOfLastUnclaimedReward`）
+                    timeOfLastUnclaimedReward: int = reward_track_unclaimed_rewards["timeOfLastUnclaimedReward"]
+                    to_append = "" if timeOfLastUnclaimedReward == 0 or timeOfLastUnclaimedReward == -1 else getISOTime(timeOfLastUnclaimedReward)
                 else:
                     subkey_list: list[str] = key.split()[(0 if i <= 27 else 1):] #事件信息接口中的键未设置抬头（No header is set for keys in data from `eventInfo`）
                     tmp_ptr: Any = event_data
@@ -204,7 +207,7 @@ async def organize_pass_information(connection: Connection) -> None:
                     else:
                         if i == 7: #事件类型（`eventType`）
                             to_append: Any = eventPassTypes[eventInfo["eventType"]]
-                        elif i == 82: #进度购买：道具类型（`progressionPurchaseData inventoryType`）
+                        elif i == 87: #进度购买：道具类型（`progressionPurchaseData inventoryType`）
                             to_append = inventoryType_dict[tmp_ptr]
                         else:
                             to_append = tmp_ptr
@@ -416,7 +419,7 @@ async def organize_pass_information(connection: Connection) -> None:
                             tokenShop_categoryOffer_data[key].append(to_append)
     #构建数据框和排序（Build dataframes and sort the keys and values）
     ##事件信息（Event information）
-    event_info_statistics_output_order: list[int] = [4, 5, 10, 13, 7, 18, 9, 8, 17, 25, 19, 16, 2, 27, 22, 23, 24, 48, 46, 28, 49, 50, 51, 52, 56, 53, 59, 57, 21, 20, 26, 54, 65, 91, 55, 58, 60, 67, 68, 66, 69, 70, 61, 62, 34, 40, 41, 82, 83, 84, 85, 86, 94, 96, 1, 14, 97, 0, 3, 6, 12, 15, 81, 11]
+    event_info_statistics_output_order: list[int] = [4, 5, 10, 13, 7, 18, 9, 8, 17, 25, 19, 16, 2, 27, 22, 23, 24, 53, 51, 28, 54, 55, 56, 57, 61, 58, 64, 62, 21, 20, 26, 59, 70, 98, 60, 63, 65, 72, 73, 71, 74, 75, 66, 67, 35, 41, 42, 87, 88, 89, 90, 91, 101, 103, 1, 14, 104, 0, 3, 6, 12, 15, 86, 11]
     event_info_data_organized: dict[str, list[Any]] = {event_info_header_keys[i]: event_info_data[event_info_header_keys[i]] for i in event_info_statistics_output_order}
     event_info_df: pandas.DataFrame = pandas.DataFrame(data = event_info_data_organized)
     event_info_df = pandas.concat([pandas.DataFrame([event_info_header])[event_info_df.columns], event_info_df], ignore_index = True)
