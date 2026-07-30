@@ -18,6 +18,7 @@ from src.core.dataframes.champions import test_bot, sort_inventory_champions, fi
 from src.core.dataframes.gameMode import check_available_queue
 from src.core.dataframes.matchHistory import get_game_summary_sgp, sort_LoLGame_summary_sgp, sort_TFTGame_summary
 from src.core.dataframes.filter import filter_df
+from src.core.process.replay import download_replay_lcu, watch_replay
 
 urllib3.disable_warnings() #忽略访问游戏数据时产生的警告（Neglect warnings produced when the program is accessing the in-game data）
 parser = argparse.ArgumentParser()
@@ -30,7 +31,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/07/25
+# 更新（Last update）：     2026/07/30
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1831,6 +1832,126 @@ async def report_player_matchHistory(connection: Connection) -> None:
     else:
         logPrint("您目前不在游戏内。\nYou're currently not in a game.")
 
+async def download_replay(connection: Connection) -> None:
+    '''
+    下载一场回放。仅适用于英雄联盟。<br>Download a replay. Only applies to League of Legends.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
+    #获取对局序号（Get matchId）
+    gameflow_phase = await get_gameflow_phase(connection)
+    if gameflow_phase == "EndOfGame":
+        gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
+        if gameflow_session["map"]["mapStringId"] == "TFT":
+            logPrint("回放不支持这个游戏模式。\nReplays are unsupported for this game mode.")
+            return
+        else:
+            matchId: int = gameflow_session["gameData"]["gameId"]
+    else:
+        print('请输入要下载的对局的序号：（输入“0”以返回上一层。）\nPlease input the gameId of the match you want to download: (Submit "0" to return to the last step.)')
+        while True:
+            matchId_str: str = input()
+            if matchId_str == "":
+                continue
+            elif matchId_str[0] == "0":
+                return
+            elif matchId_str.isdecimal():
+                matchId: int = int(matchId_str)
+                break
+            else:
+                print("请输入一个正整数。\nPlease input a positive integer.")
+    #发送请求（Send request）
+    response: Optional[dict[str, Any]] = await download_replay_lcu(connection, matchId)
+    logPrint(response)
+    logPrint("已发送下载回放的请求。\nThe request to download the replay has been sent.")
+
+async def watch_replay_adapted(connection: Connection) -> None:
+    '''
+    观看一场回放。仅适用于英雄联盟。<br>Watch a replay. Only applies to League of Legends.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
+    #获取对局序号（Get matchId）
+    gameflow_phase: str = await get_gameflow_phase(connection)
+    if gameflow_phase == "EndOfGame":
+        gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
+        if gameflow_session["map"]["mapStringId"] == "TFT":
+            logPrint("回放不支持这个游戏模式。\nReplays are unsupported for this game mode.")
+            return
+        else:
+            matchId: int = gameflow_session["gameData"]["gameId"]
+    else:
+        print('请输入要观看的对局的序号：（输入“0”以返回上一层。）\nPlease input the gameId of the match you want to watch: (Submit "0" to return to the last step.)')
+        while True:
+            matchId_str: str = input()
+            if matchId_str == "":
+                continue
+            elif matchId_str[0] == "0":
+                return
+            elif matchId_str.isdecimal():
+                matchId: int = int(matchId_str)
+                break
+            else:
+                print("请输入一个正整数。\nPlease input a positive integer.")
+    #发送请求（Send request）
+    message: str = await watch_replay(connection, matchId)
+    logPrint(message)
+
+async def watch_replay_integrated(connection: Connection) -> None:
+    '''
+    下载并观看一场回放。仅适用于英雄联盟。<br>Download and watch a replay. Only applies to League of Legends.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
+    #获取对局序号（Get matchId）
+    gameflow_phase: str = await get_gameflow_phase(connection)
+    if gameflow_phase == "EndOfGame":
+        gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
+        if gameflow_session["map"]["mapStringId"] == "TFT":
+            logPrint("回放不支持这个游戏模式。\nReplays are unsupported for this game mode.")
+            return
+        else:
+            matchId: int = gameflow_session["gameData"]["gameId"]
+    else:
+        print('请输入要观看的对局的序号：（输入“0”以返回上一层。）\nPlease input the gameId of the match you want to watch: (Submit "0" to return to the last step.)')
+        while True:
+            matchId_str: str = input()
+            if matchId_str == "":
+                continue
+            elif matchId_str[0] == "0":
+                return
+            elif matchId_str.isdecimal():
+                matchId: int = int(matchId_str)
+                break
+            else:
+                print("请输入一个正整数。\nPlease input a positive integer.")
+    #发送请求（Send request）
+    metadata: dict[str, Any] = await (await connection.request("GET", f"/lol-replays/v1/metadata/{matchId}")).json()
+    if metadata["state"] in {"checking", "download", "found", "downloading"}: #如果用户在下载完成一个回放之后把回放删除，然后重新点击生涯记录中的一场对局查看其详细信息，那么原本播放回放的按钮就会一直转圈（If the user deletes a replay after downloading it and then exit and click a game in match history to view its details, then the button that previously displayed as "play" will keep spinning）
+        response: Optional[dict[str, Any]] = await download_replay_lcu(connection, matchId)
+        logPrint(response)
+        logPrint("已发送下载回放的请求。程序将每隔5秒刷新一次回放的状态。您可以按住Esc键，从而在下次刷新时退出循环。在下载任务完成后，程序将自动退出循环。\nThe request to download the replay has been sent. The program will refresh the replay status every 5 seconds. You may press and hold Esc to break the loop at the next refresh. When the download task finishes, the program will automatically break the loop.")
+        start: float = time.time()
+        refresh_count: int = 0
+        while True:
+            if keyboard.is_pressed("Esc"):
+                logPrint("您已退出循环。\nYou've broken the loop.")
+                break
+            metadata: dict[str, Any] = await (await connection.request("GET", f"/lol-replays/v1/metadata/{matchId}")).json()
+            if metadata["state"] != "downloading":
+                break
+            end: float = time.time()
+            if end - start > 60: #设置1分钟限制（Set 1 minute limit）
+                break
+            time.sleep(5)
+            refresh_count += 1
+            logPrint(f"正在刷新（Refreshing）：[{refresh_count}]", end = "\r")
+    message: str = await watch_replay(connection, matchId) #如果状态不是可下载或正在检查，通过调用这个函数也可以实现异常处理（If the status isn't available or checking, this function also handles exceptions）
+    logPrint(message)
+
 #-----------------------------------------------------------------------------
 # 未登录状态（Unlogged state）
 #-----------------------------------------------------------------------------
@@ -2979,7 +3100,7 @@ async def gameflow_phase_transition(connection: Connection) -> str:
     :rtype: str
     '''
     while True:
-        logPrint("请选择一个操作：\nPlease select an operation:\n1\t创建房间（Create a lobby）\n2\t处理邀请（Handle invitations）\n3\t加入小队或自定义房间（Join party/lobby）\n4\t观战（Spectate a game）\n5\t聊天（Chat）\n6\t举报一名玩家（Report a player）\n7\t其它（Others）\n8\t客户端任务管理（Manage the League Client task）")
+        logPrint("请选择一个操作：\nPlease select an operation:\n1\t创建房间（Create a lobby）\n2\t处理邀请（Handle invitations）\n3\t加入小队或自定义房间（Join party/lobby）\n4\t观战（Spectate a game）\n5\t聊天（Chat）\n6\t举报一名玩家（Report a player）\n7\t观看一场回放（Watch a replay）\n8\t其它（Others）\n9\t客户端任务管理（Manage the League Client task）")
         option: str = logInput()
         if option == "":
             continue
@@ -3008,6 +3129,8 @@ async def gameflow_phase_transition(connection: Connection) -> str:
         elif option[0] == "6":
             await report_player_matchHistory(connection)
         elif option[0] == "7":
+            await watch_replay_integrated(connection)
+        elif option[0] == "8":
             logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t初始化召唤师图标（Initialize summoner icon）\n3\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n4\t扩展对局记录（Expand match history）\n5\t循环测试房间创建（Test lobby creation iteratively）\n6\t调试游戏状态（Debug a gameflow phase）''')
             while True:
                 suboption: str = logInput()
@@ -3031,7 +3154,7 @@ async def gameflow_phase_transition(connection: Connection) -> str:
                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     continue
                 logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t初始化召唤师图标（Initialize summoner icon）\n3\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n4\t扩展对局记录（Expand match history）\n5\t循环测试房间创建（Test lobby creation iteratively）\n6\t调试游戏状态（Debug a gameflow phase）''')
-        elif option[0] == "8":
+        elif option[0] == "9":
             await manage_ux(connection)
     return "" #返回值为空字符串，表示未调试游戏状态（An empty string returned means the user isn't debugging any gameflow phase）
 
@@ -5195,7 +5318,7 @@ async def lobby_simulation(connection: Connection) -> str:
     :rtype: str
     '''
     while True:
-        logPrint("请选择一个操作：\nPlease select an operation:\n1\t管理小队（Manage a party）\n2\t管理自定义房间（Manage a custom lobby）\n3\t邀请玩家（Invite to game）\n4\t聊天（Chat）\n5\t成员管理（Manage members）\n6\t输出房间信息（Print lobby information）\n7\t处理邀请（Handle invitations）\n8\t加入小队或自定义房间（Join party/lobby）\n9\t退出房间（Exit the party/lobby）\n10\t举报一名玩家（Report a player）\n11\t其它（Others）\n12\t客户端任务管理（Manage the League Client task）")
+        logPrint("请选择一个操作：\nPlease select an operation:\n1\t管理小队（Manage a party）\n2\t管理自定义房间（Manage a custom lobby）\n3\t邀请玩家（Invite to game）\n4\t聊天（Chat）\n5\t成员管理（Manage members）\n6\t输出房间信息（Print lobby information）\n7\t处理邀请（Handle invitations）\n8\t加入小队或自定义房间（Join party/lobby）\n9\t退出房间（Exit the party/lobby）\n10\t举报一名玩家（Report a player）\n11\t观看一场回放（Watch a replay）\n12\t其它（Others）\n13\t客户端任务管理（Manage the League Client task）")
         option: str = logInput()
         if option == "":
             continue
@@ -5655,6 +5778,8 @@ async def lobby_simulation(connection: Connection) -> str:
         elif option == "10":
             await report_player_matchHistory(connection)
         elif option == "11":
+            await watch_replay_integrated(connection)
+        elif option == "12":
             logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t初始化召唤师图标（Initialize summoner icon）\n3\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n4\t扩展对局记录（Expand match history）\n5\t循环测试房间创建（Test lobby creation iteratively）\n6\t调试游戏状态（Debug a gameflow phase）\n7\t输出并复制小队编号（Output and copy the partyId）''')
             while True:
                 suboption: str = logInput()
@@ -5690,7 +5815,7 @@ async def lobby_simulation(connection: Connection) -> str:
                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     continue
                 logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t初始化召唤师图标（Initialize summoner icon）\n3\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n4\t扩展对局记录（Expand match history）\n5\t循环测试房间创建（Test lobby creation iteratively）\n6\t调试游戏状态（Debug a gameflow phase）\n7\t输出并复制小队编号（Output and copy the partyId）''')
-        elif option == "12":
+        elif option == "13":
             await manage_ux(connection)
     return ""
 
@@ -8636,7 +8761,7 @@ async def endOfGame_simulation(connection: Connection) -> str:
     :rtype: str
     '''
     while True:
-        logPrint("请选择一个操作：\nPlease select an operation:\n1\t查看英雄成就点数更新情况（Check champion mastery updates）\n2\t查看计分板数据（Check stats block）\n3\t聊天（Chat）\n4\t举报一名玩家（Report a player）\n5\t再来一局（Play again）\n6\t离开（Dismiss）\n!7\t唤起赞誉投票界面（Recall honor vote phase）\n8\t其它（Others）\n9\t客户端任务管理（Manage the League Client task）")
+        logPrint("请选择一个操作：\nPlease select an operation:\n1\t查看英雄成就点数更新情况（Check champion mastery updates）\n2\t查看计分板数据（Check stats block）\n3\t聊天（Chat）\n4\t举报一名玩家（Report a player）\n5\t再来一局（Play again）\n6\t离开（Dismiss）\n!7\t唤起赞誉投票界面（Recall honor vote phase）\n8\t下载本场回放（Download this game's replay）\n9\t观看本场回放（Watch this game's replay）\n10\t其它（Others）\n11\t客户端任务管理（Manage the League Client task）")
         option: str = logInput()
         if option == "":
             continue
@@ -8675,9 +8800,9 @@ async def endOfGame_simulation(connection: Connection) -> str:
                     logPrint(response)
                 else:
                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-        elif option[0] == "0":
+        elif option == "0":
             break
-        elif option[0] == "1":
+        elif option == "1":
             gameflow_phase: str = await get_gameflow_phase(connection)
             if gameflow_phase == "EndOfGame":
                 mastery_updates: dict[str, Any] = await (await connection.request("GET", "/lol-end-of-game/v1/champion-mastery-updates")).json()
@@ -8694,17 +8819,17 @@ async def endOfGame_simulation(connection: Connection) -> str:
                     log.write(format_df(eog_mastery_update_df, width_exceed_ask = False, direct_print = False)[0] + "\n")
             else:
                 logPrint("您不在对局结算阶段。\nYou're not at the end of a game right now.")
-        elif option[0] == "2":
+        elif option == "2":
             gameflow_phase = await get_gameflow_phase(connection)
             if gameflow_phase in {"PreEndOfGame", "EndOfGame"}:
                 await check_stats_block(connection)
             else:
                 logPrint("您不在对局结算阶段。\nYou're not at the end of a game right now.")
-        elif option[0] == "3":
+        elif option == "3":
             await chat(connection)
-        elif option[0] == "4":
+        elif option == "4":
             await report_player_endOfGame(connection)
-        elif option[0] == "5":
+        elif option == "5":
             gameflow_phase = await get_gameflow_phase(connection)
             if gameflow_phase == "EndOfGame":
                 return_home: bool = await play_again(connection)
@@ -8712,7 +8837,7 @@ async def endOfGame_simulation(connection: Connection) -> str:
                     break
             else:
                 logPrint("您不在对局结算阶段。\nYou're not at the end of a game right now.")
-        elif option[0] == "6":
+        elif option == "6":
             gameflow_phase = await get_gameflow_phase(connection)
             if gameflow_phase == "EndOfGame":
                 return_home: bool = await dismiss_endOfGame(connection)
@@ -8720,13 +8845,17 @@ async def endOfGame_simulation(connection: Connection) -> str:
                     break
             else:
                 logPrint("您不在对局结算阶段。\nYou're not at the end of a game right now.")
-        elif option[0] == "7":
+        elif option == "7":
             gameflow_phase = await get_gameflow_phase(connection)
             if gameflow_phase == "EndOfGame":
                 await recall_honor_vote(connection)
             else:
                 logPrint("您不在对局结算阶段。\nYou're not at the end of a game right now.")
-        elif option[0] == "8":
+        elif option == "8":
+            await download_replay(connection)
+        elif option == "9":
+            await watch_replay_adapted(connection)
+        elif option == "10":
             logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t调试游戏状态（Debug a gameflow phase）''')
             while True:
                 suboption: str = logInput()
@@ -8740,7 +8869,7 @@ async def endOfGame_simulation(connection: Connection) -> str:
                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     continue
                 logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t调试游戏状态（Debug a gameflow phase）''')
-        elif option[0] == "9":
+        elif option == "11":
             await manage_ux(connection)
     return ""
 

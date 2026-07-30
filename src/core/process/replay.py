@@ -7,7 +7,7 @@ if not wd in sys.path:
     sys.path.append(wd) #确保在“src”文件夹的父级目录运行此代码（Make sure this program is run under the parent folder of the "src" folder）
 from src.utils.webRequest import SGPSession
 
-async def download_replay_lcu(connection: Connection, matchId: int) -> None:
+async def download_replay_lcu(connection: Connection, matchId: int) -> Optional[dict[str, Any]]:
     '''
     使用LCU API下载当前大区的英雄联盟回放。<br>Download League of Legends replays in current server using LCU API.
 
@@ -19,6 +19,8 @@ async def download_replay_lcu(connection: Connection, matchId: int) -> None:
     :type connection: Connection
     :param matchId: 对局序号。<br>GameId.
     :type matchId: int
+    :return: 调用下载回放接口后的响应主体。<br>The response body after calling the replay downloading endpoint.
+    :rtype: Optional[dict[str, Any]]
     '''
     #首先检查元数据是否已经准备就绪。在用户访问一名玩家的对局记录页时，客户端会更新当前页面内所有对局的状态（First, check if the metadata is ready. When the user accesses a player's MATCH HISTORY page / tab, League Client updates the status of all matches in this page）
     metadata: dict[str, Any] = await (await connection.request("GET", f"/lol-replays/v1/metadata/{matchId}")).json()
@@ -35,6 +37,7 @@ async def download_replay_lcu(connection: Connection, matchId: int) -> None:
     #在元数据准备就绪后，下载回放（When metadata is ready, download the replay）
     contextData: dict[str, str] = {"componentType": "replay-button_match-history"}
     response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-replays/v1/rofls/{matchId}/download", data = contextData)).json()
+    return response
 
 async def download_replay_sgp(connection: Connection, sgpSession: SGPSession, match_id: str, rofl_path: str, product: str = "LoL") -> tuple[bool, str]:
     '''

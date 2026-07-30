@@ -13,7 +13,7 @@ from src.core.process.replay import download_replay_lcu, download_replay_sgp, wa
 #=============================================================================
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
-# 更新（Last update）：     2026/07/17
+# 更新（Last update）：     2026/07/30
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -323,7 +323,6 @@ async def connect(connection: Connection) -> None:
                     await replayDownloader(connection, matchId, use_sgp)
                 else:
                     print("请输入一个正整数。\nPlease input a positive integer.")
-                print('请输入要下载的对局的序号：（输入“0”以返回上一层。）\nPlease input the gameId of the match you want to download: (Submit "0" to return to the last step.)')
         elif option[0] == "4":
             print('请输入要观看的对局的序号：（输入“0”以返回上一层。）\nPlease input the gameId of the match you want to watch: (Submit "0" to return to the last step.)')
             while True:
@@ -338,7 +337,6 @@ async def connect(connection: Connection) -> None:
                     print(message)
                 else:
                     print("请输入一个正整数。\nPlease input a positive integer.")
-                print('请输入要观看的对局的序号：（输入“0”以返回上一层。）\nPlease input the gameId of the match you want to watch: (Submit "0" to return to the last step.)')
         else:
             print("您的输入有误！请重新输入。\nERROR input! Please try again.")
         print("请选择一个操作：\nPlease select an operation:\n0\t退出程序（Exit the program）\n1\t设置回放位置（Set replays location）\n2\t设置接口类型（Set endpoint type）\n3\t下载回放（Download replay）\n4\t观看回放（Watch replay）")
