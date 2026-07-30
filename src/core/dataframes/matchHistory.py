@@ -2158,7 +2158,7 @@ def generate_LoLHistory_records(LoLHistory_data: dict[str, list[Any]], LoLGame_s
                     elif "mapskin_ha_crepe" in LoLGame_summary["gameModeMutators"]:
                         mapName = "进步之桥"
                     elif "mapskin_map12_jade" in LoLGame_summary["gameModeMutators"]:
-                        mapName = "LCU_Map12_Name_Jade"
+                        mapName = "召唤师峡谷？"
                     else:
                         mapName = "嚎哭深渊"
                 to_append = mapName
@@ -2458,7 +2458,7 @@ def generate_LoLHistory_records_sgp(LoLHistory_data: dict[str, list[Any]], LoLGa
                         elif "mapskin_ha_crepe" in LoLGame_summary_json["gameModeMutators"]:
                             mapName = "进步之桥"
                         elif "mapskin_map12_jade" in LoLGame_summary_json["gameModeMutators"]:
-                            mapName = "LCU_Map12_Name_Jade"
+                            mapName = "召唤师峡谷？"
                         else:
                             mapName = "嚎哭深渊"
                     to_append = mapName
@@ -3580,7 +3580,7 @@ def generate_LoLGameSummary_records(LoLGame_summary_data: dict[str, list[Any]], 
         elif "mapskin_ha_crepe" in LoLGame_summary["gameModeMutators"]:
             mapName = "进步之桥"
         elif "mapskin_map12_jade" in LoLGame_summary["gameModeMutators"]:
-            mapName = "LCU_Map12_Name_Jade"
+            mapName = "召唤师峡谷？"
         else:
             mapName = "嚎哭深渊"
     #数据整理核心部分（Data organization core part）
@@ -4006,7 +4006,7 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
         elif "mapskin_ha_crepe" in LoLGame_summary_json["gameModeMutators"]:
             mapName = "进步之桥"
         elif "mapskin_map12_jade" in LoLGame_summary_json["gameModeMutators"]:
-            mapName = "LCU_Map12_Name_Jade"
+            mapName = "召唤师峡谷？"
         else:
             mapName = "嚎哭深渊"
     #数据整理核心部分（Data organization core part）
