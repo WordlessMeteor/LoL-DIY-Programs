@@ -10,7 +10,7 @@ from src.utils.patch import Patch, get_ddragon_versionList, get_cdragon_patchLis
 from src.utils.runtimeDebug import subscope
 from src.utils.webRequest import requestUrl
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
-from src.core.extractor import LoLDataExtractor
+from src.core.extractor.base import LoLDataExtractor
 from src.core.config.localization import language_ddragon, language_dict, language_cdragon, itemCategories
 from src.core.config.localization import gamemaps
 from src.core.dataframes.champions import sort_champion_summary
