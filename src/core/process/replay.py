@@ -39,10 +39,10 @@ async def download_replay_lcu(connection: Connection, matchId: int) -> Optional[
     response: Optional[dict[str, Any]] = await (await connection.request("POST", f"/lol-replays/v1/rofls/{matchId}/download", data = contextData)).json()
     return response
 
-async def download_replay_sgp(connection: Connection, sgpSession: SGPSession, match_id: str, rofl_path: str, product: str = "LoL") -> tuple[bool, str]:
+async def download_replay_sgp(connection: Connection, sgpSession: SGPSession, match_id: str, rofl_path: str, product: str = "LoL") -> tuple[str, bool, str]:
     '''
     使用SGP API下载当前大区的英雄联盟回放。<br>Download League of Legends replays in current server using SGP API.
-
+    
     :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
     :type connection: Connection
     :param sgpSession: SGP会话。<br>SGP Session.
@@ -50,6 +50,8 @@ async def download_replay_sgp(connection: Connection, sgpSession: SGPSession, ma
     :param match_id: 大区对局序号。由服务器代号和对局序号通过下划线连接而成。<br>Platform matchId, which is a platformId and a matchId concatenated by an underscore.
     :type match_id: str
     :param rofl_path: 回放路径。<br>Replay path.
+    
+        如果用户指定的路径已存在，程序会重命名待生成的文件。<br>If the rofl path already exists, the program will rename the generated file.
     :type rofl_path: str
     :param product: 游戏产品名。有以下取值：<br>Game product name, which has the following values:
     
@@ -58,16 +60,20 @@ async def download_replay_sgp(connection: Connection, sgpSession: SGPSession, ma
 
         云顶之弈对局无法下载回放，所以一般选择英雄联盟。<br>A TFT match doesn't support downloading the match, so this parameter is always "LoL".
     :type product: Literal["LoL, "TFT"]
-    :return: 一个二元组。<br>A 2-tuple.
-
-        第一个元素是回放是否成功下载。当下载回放的请求返回二进制数据时，视为回放成功下载。<br>The first element is whether the replay is successfully downloaded. When the request to download the replay returns binary data, the function considers the replay has been successfully downloaded.
-
-        第二个元素是消息字符串。<br>The second element is a message string.
-    :rtype: tuple[bool, str]
+    :return: 一个三元组。<br>A 3-tuple.
+    
+        第一个元素是实际使用的下载路径。<br>The first element is the actually used download path.
+        
+        第二个元素是回放是否成功下载。当下载回放的请求返回二进制数据时，视为回放成功下载。<br>The second element is whether the replay is successfully downloaded. When the request to download the replay returns binary data, the function considers the replay has been successfully downloaded.
+        
+        第三个元素是消息字符串。<br>The third element is a message string.
+    :rtype: tuple[str, bool, str]
     '''
     #参数预处理（Parameter preprocessing）
     if product != "TFT":
         product = "LoL"
+    while os.path.exists(rofl_path): #避免覆盖已存在的回放文件而影响其创建时间。因为ReplayBook就依赖于文件创建时间来排序（Avoid overwriting an existing replay file and thus affecting its creation time. Because ReplayBook relies on the file creation time to sort the replays）
+        rofl_path = "(1)".join(os.path.splitext(rofl_path))
     #初始化返回结果（Initialize returned result）
     replay_downloaded: bool = False
     message: str = ""
@@ -90,7 +96,7 @@ async def download_replay_sgp(connection: Connection, sgpSession: SGPSession, ma
         message = str(e)
     else:
         message = json.dumps(response)
-    return (replay_downloaded, message)
+    return (rofl_path, replay_downloaded, message)
 
 async def watch_replay(connection: Connection, matchId: int) -> str:
     '''

@@ -13,7 +13,7 @@ from src.core.process.replay import download_replay_lcu, download_replay_sgp, wa
 #=============================================================================
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
-# 更新（Last update）：     2026/08/11
+# 更新（Last update）：     2026/08/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -208,9 +208,9 @@ async def replayDownloader(connection: Connection, matchId: int, use_sgp: bool) 
     elif product.lower() == "tft":
         product = "TFT"
     if use_sgp:
-        replay_downloaded, replay_download_message = await download_replay_sgp(connection, sgpSession, match_id, rofl_path, product = product)
+        new_rofl_path, replay_downloaded, replay_download_message = await download_replay_sgp(connection, sgpSession, match_id, rofl_path, product = product)
         if replay_downloaded:
-            print(f"已下载回放（Downloaded replay）： {rofl_path}")
+            print(f"已下载回放（Downloaded replay）： {new_rofl_path}")
             if summary_got:
                 metadata: dict[str, Any] = sort_match_metadata(game_summary, product, "summary")
             elif timeline_got:

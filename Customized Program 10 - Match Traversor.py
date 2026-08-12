@@ -24,7 +24,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/09
+# 更新（Last update）：     2026/08/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -232,10 +232,10 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
             if save_rofl and not matchId in downloaded_matches:
                 rofl_name: str = f"{platformId}-{matchId}.rofl"
                 rofl_path: str = os.path.join(replay_folder, rofl_name).replace("\\", "/")
-                replay_downloaded, replay_download_message = await download_replay_sgp(connection, session, match_id, rofl_path)
+                new_rofl_path, replay_downloaded, replay_download_message = await download_replay_sgp(connection, session, match_id, rofl_path)
                 if replay_downloaded:
                     downloaded_matches.add(matchId)
-                    logPrint(f"【下载回放】已下载回放（Downloaded replay）： {rofl_path}")
+                    logPrint(f"【下载回放】已下载回放（Downloaded replay）： {new_rofl_path}")
                 else:
                     logPrint(f"【回放异常】{replay_download_message}")
     #保存数据到本地文件（Saved data to a local file）
@@ -397,10 +397,10 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
                     if save_rofl and not matchId in downloaded_matches:
                         rofl_name: str = f"{platformId}-{matchId}.rofl"
                         rofl_path: str = os.path.join(replay_folder, rofl_name).replace("\\", "/")
-                        replay_downloaded, replay_download_message = await download_replay_sgp(connection, session, match_id, rofl_path)
+                        new_rofl_path, replay_downloaded, replay_download_message = await download_replay_sgp(connection, session, match_id, rofl_path)
                         if replay_downloaded:
                             downloaded_matches.add(matchId)
-                            logPrint(f"【下载回放】已下载回放（Downloaded replay）： {rofl_path}")
+                            logPrint(f"【下载回放】已下载回放（Downloaded replay）： {new_rofl_path}")
                         else:
                             logPrint(f"【回放异常】{replay_download_message}")
                 else:
