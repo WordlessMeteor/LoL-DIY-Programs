@@ -23,7 +23,7 @@ from src.core.dataframes.gameflow import sort_ChampSelect_players
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/07/24
+# 更新（Last update）：     2026/07/31
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -3007,6 +3007,8 @@ async def join_game(connection: Connection) -> None:
                                     logPrint("你已被移出小队。你必须收到邀请才能重新加入。\nYou have been removed from the party. You must receive an invite to rejoin.")
                                 elif response["message"] == "INVALID_WHILE_PARTY_IN_ACTION":
                                     logPrint("你无法加入该小队，因为该小队正在队列中。\nYou were not able to join the party because the party is now in queue.")
+                                elif response["message"] == "INVALID_GAME_VERSION":
+                                    logPrint("您的游戏版本与小队拥有者的版本不匹配。您可以在【设置】菜单中的【版本】标签下检查您的版本。请确保大家都通过重启客户端升级到了最新的版本。\nYour game version doesn't match the version of the party owner. You can inspect your version in the Settings menu, under the Version tab. Make sure everyone has the newest version by restarting the client.")
                                 else:
                                     logPrint("你无法加入该小队。\nYou were not able to join the party.")
                             else:
@@ -3077,6 +3079,8 @@ async def join_game(connection: Connection) -> None:
                                             logPrint("你已被移出小队。你必须收到邀请才能重新加入。\nYou have been removed from the party. You must receive an invite to rejoin.")
                                         elif response["message"] == "INVALID_WHILE_PARTY_IN_ACTION":
                                             logPrint("你无法加入该小队，因为该小队正在队列中。\nYou were not able to join the party because the party is now in queue.")
+                                        elif response["message"] == "INVALID_GAME_VERSION":
+                                            logPrint("您的游戏版本与小队拥有者的版本不匹配。您可以在【设置】菜单中的【版本】标签下检查您的版本。请确保大家都通过重启客户端升级到了最新的版本。\nYour game version doesn't match the version of the party owner. You can inspect your version in the Settings menu, under the Version tab. Make sure everyone has the newest version by restarting the client.")
                                         else:
                                             logPrint("你无法加入该小队。\nYou were not able to join the party.")
                                     elif response["httpStatus"] == 404 and response["message"] == "INVITATION_NOT_FOUND":
