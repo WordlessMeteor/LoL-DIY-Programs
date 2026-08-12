@@ -1195,7 +1195,7 @@ def select_collection_item(inventoryType: str) -> tuple[bool, int]:
             item_index: int = 0
             index_got = False
             break
-        elif item_index_str == "-1" or item_index_str in collection_df_selected_query.index.to_list()[1:]: #筛选后的数据框带有中文表头行，在条件判断时需要排除这一行（The filter dataframe has a Chinese header, which should be eliminated when the program is doing the condition judgment）
+        elif item_index_str == "-1" or item_index_str in set(map(str, collection_df_selected_query.index.to_list()[1:])): #筛选后的数据框带有中文表头行，在条件判断时需要排除这一行（The filter dataframe has a Chinese header, which should be eliminated when the program is doing the condition judgment）
             item_index = int(item_index_str)
             index_got = True
             break
