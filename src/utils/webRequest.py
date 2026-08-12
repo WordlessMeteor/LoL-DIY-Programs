@@ -157,10 +157,10 @@ class SGPSession:
         '''
         SGP会话类的构造函数。<br>The constructor of `SGPSession` class.
         
-        :param token: 英雄联盟会话令牌。可先不指定，后续通过`init`方法来指定。<br>League session token. It may be left unspecified when creating an object of this class, waiting to be specified using the `init` method.
+        :param token: 访问令牌。可先不指定，后续通过`init`方法来指定。<br>Access token. It may be left unspecified when creating an object of this class, waiting to be specified using the `init` method.
         
-            英雄联盟会话令牌可以通过以下LCU接口获取：<br>Leauge session token can be obtained through the following LCU endpoint:
-            - `GET /lol-league-session/v1/league-session-token`
+            访问令牌可以通过以下LCU接口获取：<br>Access token can be obtained through the following LCU endpoint:
+            - `GET /entitlements/v1/token`
         :type token: str
         :param client_settings: 客户端设置数据。可先不指定，后续通过`init`方法来指定。<br>Client settings data. It may be left unspecified when creating an object of this class, waiting to be specified using the `init` method.
         
@@ -172,7 +172,7 @@ class SGPSession:
         :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
         :type verbose: bool
         '''
-        self.userInfoToken: str = "" if token == None else token
+        self.accessToken: str = "" if token == None else token
         self._headers: dict[str, str] = {"Authorization": f"Bearer {token}", "Content-type": "application/json"}
         self.session: requests.Session = requests.Session()
         # self.session.trust_env = False #忽略系统代理设置（Bypass system proxy）
@@ -182,7 +182,7 @@ class SGPSession:
             self.client_settings: dict[str, Any] = client_settings
     
     def __repr__(self) -> str:
-        return (f'SGPSession("{self.userInfoToken}")')
+        return (f'SGPSession("{self.accessToken}")')
     
     def setLog(self, log: Optional[LogManager]) -> None:
         '''
@@ -193,32 +193,34 @@ class SGPSession:
         '''
         self.log = log or LogManager()
     
-    async def update_userInfo_token(self, connection: Connection) -> None:
+    async def update_accessToken(self, connection: Connection) -> None:
         '''
-        更新联盟会话令牌。<br>Update the league session token.
+        更新访问令牌。<br>Update the access token.
         
         :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
         :type connection: Connection
         '''
-        token: str = await (await connection.request("GET", "/lol-league-session/v1/league-session-token")).json()
-        if isinstance(token, str):
-            self.userInfoToken = token
-            self._headers["Authorization"] = f"Bearer {token}"
-        else:
-            self.log.logPrint(token, verbose = self.verbose)
-            if token["httpStatus"] == 404 and token["message"] == "NOT_FOUND":
-                self.log.logPrint("未找到用户信息令牌。请检查您的登录状态。\nUser info token not found. Please check your login status.")
+        # token: str = await (await connection.request("GET", "/lol-league-session/v1/league-session-token")).json()
+        entitlements_token: str | dict[str, Any] = await (await connection.request("GET", "/entitlements/v1/token")).json()
+        if "errorCode" in entitlements_token:
+            self.log.logPrint(entitlements_token, verbose = self.verbose)
+            if entitlements_token["httpStatus"] == 404 and entitlements_token["message"] == "NOT_FOUND":
+                self.log.logPrint("未找到访问令牌。请检查您的登录状态。\nAccess token not found. Please check your login status.")
             else:
                 self.log.logPrint("令牌更新失败！\nToken update failed!", verbose = self.verbose)
+        else:
+            token: str = entitlements_token["accessToken"]
+            self.accessToken = token
+            self._headers["Authorization"] = f"Bearer {token}"
     
     async def init(self, connection: Connection) -> None:
         '''
-        初始化SGP会话对象的联盟会话令牌和客户端设置。<br>Initialize an `SGPSession` object's league session token and client settings.
+        初始化SGP会话对象的访问令牌和客户端设置。<br>Initialize an `SGPSession` object's access token and client settings.
         
         :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
         :type connection: Connection
         '''
-        await self.update_userInfo_token(connection)
+        await self.update_accessToken(connection)
         self.client_settings = await (await connection.request("GET", "/client-config/v2/namespace/lol.client_settings")).json()
         self.session = requests.Session()
         # self.session.headers.update({"X-Riot-Spectator-Key": "YOUR_SPECTATOR_KEY_HERE"})
@@ -266,21 +268,26 @@ class SGPSession:
             url = urljoin(self.client_settings["lol.client_settings.league_edge.url"], endpoint)
         if headers == None:
             headers = {}
+        update_token: bool = False #初始化是否更新令牌的标志（Initialize the flag of whether to update the token）
         source, status, self.session = requestUrl(method, url, retry = retry, session = self.session, headers = self._headers | headers, log = self.log, verbose = verbose, **kwargs)
         try:
             response: dict[str, Any] = source.json()
         except requests.exceptions.JSONDecodeError:
             self.log.logPrint("在转换为json对象时发生了错误。\nAn error occurred when converting the response body into a json object.", verbose = self.verbose)
+            if source.text == "Jwt is expired":
+                update_token = True
         except AttributeError: #AttributeError: 'NoneType' object has no attribute 'json'
             pass
         else:
             if response == {"httpStatus": 400, "message": "A newer more recent session has been processed for this player", "errorCode": "INVALID_PLAYER_SESSION"} or response == {"status": {"message": "Unauthorized", "status_code": 401}}:
-                self.log.logPrint("令牌已过期。正在更新令牌……\nToken has expired. Updating the token ...", verbose = self.verbose)
-                await self.update_userInfo_token(connection)
-                source = self.session.request(method = method, url = url, headers = self._headers | headers, **kwargs)
+                update_token = True
+        if update_token:
+            self.log.logPrint("令牌已过期。正在更新令牌……\nToken has expired. Updating the token ...", verbose = self.verbose)
+            await self.update_accessToken(connection)
+            source = self.session.request(method = method, url = url, headers = self._headers | headers, **kwargs)
         return source
 
-def sgpConnect(method: str, url: str, token: str, extra_headers: Optional[dict[str, str]] = None, session: Optional[requests.Session] = None, **kwargs: Any) -> tuple[dict[str, Any], requests.Session]: #一个单独用来调试SGP API的函数（A function specially designed to debug SGP API）
+def sgpConnect(method: str, url: str, token: str, extra_headers: Optional[dict[str, str]] = None, session: Optional[requests.Session] = None, **kwargs: Any) -> tuple[requests.Response, requests.Session]: #一个单独用来调试SGP API的函数（A function specially designed to debug SGP API）
     '''
     一个用来调用SGP API的相对较为独立的函数。<br>A relatively standalone function to call SGP API.
     
@@ -288,10 +295,10 @@ def sgpConnect(method: str, url: str, token: str, extra_headers: Optional[dict[s
     :type method: str
     :param url: 请求链接。<br>Request url.
     :type url: str
-    :param token: 英雄联盟会话令牌。可先不指定，后续通过`init`方法来指定。<br>League session token. It may be left unspecified when creating an object of this class, waiting to be specified using the `init` method.
+    :param token: 访问令牌。可先不指定，后续通过`init`方法来指定。<br>Access token. It may be left unspecified when creating an object of this class, waiting to be specified using the `init` method.
         
-        英雄联盟会话令牌可以通过以下LCU接口获取：<br>Leauge session token can be obtained through the following LCU endpoint:
-        - `GET /lol-league-session/v1/league-session-token`
+        访问令牌可以通过以下LCU接口获取：<br>Access token can be obtained through the following LCU endpoint:
+        - `GET /entitlements/v1/token`
     :type token: str
     :param extra_headers: 额外的请求头。<br>Extra request headers.
         
@@ -304,27 +311,14 @@ def sgpConnect(method: str, url: str, token: str, extra_headers: Optional[dict[s
     :type session: requests.Session
     :param kwargs: 任何可传入`session.request`函数中的参数。<br>Any parameters that can be passed into `session.request` function.
     :type kwargs: Any
-    :return: 响应结构体和网络请求会话。<br>Response struct and web request session.
-    
-        响应结构体由以下三部分组成：<br>The response struct is composed of the following three elements:
-        - status_code: 状态码。<br>Status code.
-        - json: 响应主体。<br>Response body.
-        - error: 异常对象的字符串表达。<br>The string representation of any error arising.
-    :rtype: tuple[dict[str, Any], requests.Session]
+    :return: 响应主体和网络请求会话。<br>Response body and web request session.
+    :rtype: tuple[requests.Response, requests.Session]
     '''
     if session == None:
         session = requests.Session()
         # session.trust_env = False #忽略系统代理设置（Bypass system proxy）
     if extra_headers == None:
         extra_headers = {}
-    result: dict[str, Any] = {"status_code": 0, "json": None, "error": None}
-    headers = {"Authorization": f"Bearer {token}", "Content-type": "application/json"}
-    try:
-        source = session.request(method, url, headers = headers | extra_headers, **kwargs)
-    except requests.exceptions.SSLError as ssl_error:
-        result["status_code"] = -1
-        result["error"] = str(ssl_error)
-    else:
-        result["status_code"] = source.status_code
-        result["json"] = source.json()
-    return (result, session)
+    headers: dict[str, str] = {"Authorization": f"Bearer {token}", "Content-type": "application/json"}
+    source: requests.Response = session.request(method, url, headers = headers | extra_headers, **kwargs)
+    return (source, session)
