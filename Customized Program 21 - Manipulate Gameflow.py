@@ -3674,8 +3674,8 @@ async def print_search_error(connection: Connection, response: dict[str, Any], l
             logPrint("所有成员都必须选好位置才能进入队列。\nAll member(s) must select their positions before entering queue.")
         elif response["message"] == "NOT_A_MATCHMADE_QUEUE":
             logPrint("当前队列不是匹配队列。\nThe current queue isn't a matchmade queue.")
-        elif response["message"] == "QUEUE_DISABLED":
-            logPrint("当前队列不可用。\nThe current queue isn't available.")
+        elif response["message"] == "QUEUE_DISABLED" or response["message"] == "QUEUE_NOT_ENABLED":
+            logPrint("当前游戏模式不可用，如要继续，小队拥有者必须更换至其它的游戏类型。\nThe current game mode is unavailable. To continue, the party owner must change to another game type.")
         else:
             logPrint("未知错误。\nUnknown error.")
     else:
