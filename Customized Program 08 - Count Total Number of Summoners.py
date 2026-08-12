@@ -1,12 +1,13 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-import json, keyboard, os, pandas, time
+import json, os, pandas, time
 from typing import Any
 from src.utils.format import addDefaultStyle, optimize_bool_display
 from src.utils.summoner import print_summoner_info, get_info
 from src.utils.logger import LogManager
 from src.utils.webRequest import SGPSession
 from src.utils.excel_workbook import create_workbook_win32
+from src.utils.keyControl import isKeyPressed
 from src.core.config.headers import info_header
 from src.core.dataframes.matchHistory import get_matchSummary_sgp
 
@@ -16,7 +17,7 @@ from src.core.dataframes.matchHistory import get_matchSummary_sgp
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/05/29
+# 更新（Last update）：     2026/08/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -161,7 +162,7 @@ async def interaction_traverse_summoner(connection: Connection, export: bool = T
                 interactions[interaction_key] = {"puuid1": interaction_key[0], "puuid2": interaction_key[1], "weight": {"friend": 1}} #导出到json时元组不能作为键，因此将元组中的信息等价保存到值中（When the data is exported to a json file, the key can't be a tuple, so here we save the information into the value in a lossless manner）
     #然后，逐个取队列中的玩家通用唯一识别码，获取其信息，并分析对局记录中的互作关系（Then, pop the puuid from queue, get the corresponding summoner information and analyze the interaction in the match history）
     while len(queue) > 0:
-        if keyboard.is_pressed("esc"):
+        if isKeyPressed(b"\x1b", b"\x1b"):
             logPrint("您已中断遍历过程。\nYou've cancelled the traversal.")
             break
         player_puuid: str = queue.pop(0) #出队（Dequeue）

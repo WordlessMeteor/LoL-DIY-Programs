@@ -1,12 +1,13 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-import argparse, datetime, json, keyboard, os, random, time
+import argparse, datetime, json, os, random, time
 from typing import Any, Callable, Iterable, Optional
 from typing_extensions import Literal
 from src.utils.logger import LogManager
 from src.utils.webRequest import SGPSession
 from src.utils.patch import Patch
 from src.utils.summoner import print_summoner_info, get_info, get_info_name
+from src.utils.keyControl import isKeyPressed
 from src.core.config.const import TEST_GAME_SUMMARY
 from src.core.config.servers import set_platform_folder
 from src.core.dataframes.matchHistory import get_matchSummary_sgp, get_matchDetails_sgp, get_game_summary_sgp, get_game_timeline_sgp
@@ -23,7 +24,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/01
+# 更新（Last update）：     2026/08/09
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -198,7 +199,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     #遍历对局序号（Traverse matchIds）
     gameCount: int = end_matchId - start_matchId + 1
     for matchId in range(start_matchId, end_matchId + 1):
-        if keyboard.is_pressed("esc"):
+        if isKeyPressed(b"\x1b", b"\x1b"):
             logPrint("【手动中止】您已退出查询。\nYou've exited the query.")
             break
         currentProcess: int = matchId - start_matchId + 1
@@ -246,7 +247,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     # logPrint("符合条件的对局如下：\nMatches that fit the requirements are as follows:")
     # for matchId in matches_found:
     #     logPrint(matchId)
-    log.write("列表形式（List）：\n" + str(matches_found))
+    log.write("列表形式（List）：\n" + str(matches_found) + "\n\n")
     log.close()
     return 0
 
@@ -340,7 +341,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     downloaded_matches: set[int] = set(map(lambda x: int(os.path.splitext(os.path.basename(x))[0].split("-")[1]), [_ for _ in os.listdir(replay_folder) if _.startswith(f"{platformId}-") and os.path.splitext(_)[1] == ".rofl"]))
     #遍历对局序号（Traverse matchIds）
     while len(puuids_to_search) > 0:
-        if keyboard.is_pressed("esc"):
+        if isKeyPressed(b"\x1b", b"\x1b"):
             logPrint("【手动中止】您已退出查询。\nYou've exited the query.")
             break
         puuid: str = puuids_to_search.pop(0)
@@ -364,7 +365,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
             else:
                 matchTimelines = {}
             for game_summary in matchHistory["games"]:
-                if keyboard.is_pressed("esc"):
+                if isKeyPressed(b"\x1b", b"\x1b"):
                     logPrint("【手动中止】您已放弃检查该召唤师的对局。\nYou've quited checking this summoner's matches.")
                     break
                 match_id: str = game_summary["metadata"]["match_id"]
@@ -416,7 +417,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     # logPrint("符合条件的对局如下：\nMatches that fit the requirements are as follows:")
     # for matchId in matches_found:
     #     logPrint(matchId)
-    log.write("列表形式（List）：\n" + str(sorted(matches_found)))
+    log.write("列表形式（List）：\n" + str(sorted(matches_found)) + "\n\n")
     log.close()
     return 0
 

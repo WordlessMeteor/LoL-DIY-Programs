@@ -1,5 +1,5 @@
 from lcu_driver.connection import Connection
-import json, keyboard, os, pandas, requests, time
+import json, os, pandas, requests, time
 from urllib.parse import urljoin
 from typing import Any
 from openpyxl.worksheet.worksheet import Worksheet
@@ -9,6 +9,7 @@ from src.utils.format import format_df, addDefaultStyle
 from src.utils.summoner import print_summoner_info
 from src.utils.repeatConnect import LCUConnect
 from src.utils.excel_workbook import create_workbook_win32
+from src.utils.keyControl import isKeyPressed
 from src.core.config.localization import language_ddragon, language_dict, language_cdragon
 from src.core.dataframes.champions import test_bot, sort_ddragon_champions, sort_inventory_champions, sort_plugin_champions
 
@@ -18,7 +19,7 @@ from src.core.dataframes.champions import test_bot, sort_ddragon_champions, sort
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/18
+# 更新（Last update）：     2026/08/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -214,7 +215,7 @@ def get_cdragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, An
     #注释以下代码以直接离线加载数据资源（Comment out the following code to load offline data resources directly）
     print("获取进度（Capturing process）：")
     for i in range(len(champion_urls)):
-        if keyboard.is_pressed("esc"):
+        if isKeyPressed(b"\x1b", b"\x1b"):
             print("您已中断此过程。\nYou've interrupted this process.")
             return ({}, version)
         champion_url: str = champion_urls[i]

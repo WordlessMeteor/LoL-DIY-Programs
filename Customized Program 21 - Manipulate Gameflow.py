@@ -1,6 +1,6 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-import argparse, copy, json, keyboard, os, pandas, pickle, psutil, pyperclip, random, re, requests, shutil, subprocess, time, traceback, urllib3, unicodedata, uuid
+import argparse, copy, json, os, pandas, pickle, psutil, pyperclip, random, re, requests, shutil, subprocess, time, traceback, urllib3, unicodedata, uuid
 from urllib.parse import quote, unquote, urljoin
 from typing import Any, Optional
 from src.utils.logger import aInput, LogManager
@@ -9,6 +9,7 @@ from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, 
 from src.utils.runtimeDebug import send_commands
 from src.utils.webRequest import SGPSession, requestUrl
 from src.utils.excel_workbook import create_workbook_win32
+from src.utils.keyControl import isKeyPressed
 from src.core.config.const import ALL_GAMEFLOW_PHASES, BOT_DIFFICULTY_LIST, BOT_UUID, SPECTATOR_POLICY_LIST, GLOBAL_RESPONSE_LAG, REPORT_CATEGORY_LIST_CHAMPSELECT, REPORT_CATEGORY_LIST_POSTGAME
 from src.core.config.headers import champSelect_player_header, custom_lobby_header, skin_header, conversation_header, grid_champion_header, chat_mutedPlayer_header, invid_header, perkPage_header, social_leaderboard_header, availableBot_header, lobby_member_header, inGame_playerAbility_header, inGame_championStat_header, inGame_allPlayer_header, inGame_event_header, inGame_metadata_header, ballot_player_header, eog_mastery_update_header, eog_stat_metadata_lol_header, eog_teamstat_data_lol_header, eog_stat_metadata_tft_header, eog_stat_data_tft_header
 from src.core.config.localization import gamemodes, gamemaps, ARAMmaps, gameTypes_configId_map, spectatorPolicies, report_categories, tiers_all, team_colors_int, subteam_colors, rarities, krarities, augment_rarity, skinClassifications, damageTypes, conversationTypes, messageTypes, system_messages, invidStates, invidTypes, slotTypes, availabilities, inventoryType_dict, ownershipTypes, botDifficulty_dict, roles, positions, eventTypes_liveclient, DragonTypes, team_colors_str, honorType_tooltip_headers, honorType_tooltip_bodies, zoom_scale_dict
@@ -31,7 +32,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/07/30
+# 更新（Last update）：     2026/08/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1239,7 +1240,7 @@ async def initialize_summoner_icon(connection: Connection, profileIconId: Option
             count += 1
             if repeat:
                 logPrint(f"[{count}]", end = "\r")
-                if keyboard.is_pressed("esc"):
+                if isKeyPressed(b"\x1b", b"\x1b"):
                     logPrint("您已退出循环。\nYou've broken the loop.")
                     break
             response: dict[str, Any] = await (await connection.request("PUT", "/lol-summoner/v1/current-summoner/icon", data = body)).json()
@@ -1941,7 +1942,7 @@ async def watch_replay_integrated(connection: Connection) -> None:
         start: float = time.time()
         refresh_count: int = 0
         while True:
-            if keyboard.is_pressed("Esc"):
+            if isKeyPressed(b"\x1b", b"\x1b"):
                 logPrint("您已退出循环。\nYou've broken the loop.")
                 break
             metadata: dict[str, Any] = await (await connection.request("GET", f"/lol-replays/v1/metadata/{matchId}")).json()
