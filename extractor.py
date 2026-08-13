@@ -23,12 +23,16 @@ from src.core.extractor.types import MapExtractor, CheatExtractor, SummonerSpell
 #=============================================================================
 
 #定义模式覆盖文本描述函数（Define the overriden data tooltip function）
-def modeOverrideTooltipTransform(binData: dict[str, Any], objectType: str, keyPaths: str | list[str], gameModeName: Literal["TUTORIAL", "TUTORIAL_MODULE_1", "TUTORIAL_MODULE_2", "TUTORIAL_MODULE_3", "SWIFTPLAY", "PRACTICETOOL", "FIRSTBLOOD", "ARSR", "ARAM", "{bffdf499}", "KINGPORO", "URF", "SNOWURF", "ONEFORALL", "{6462680f}", "NEXUSBLITZ", "TFT", "ASSASSINATE", "ULTBOOK", "cherry", "STRAWBERRY", "{a110bc47}", "Ruby", "DOOMBOTSTEEMO", "{b0cea932}", "{afcea79f}", "{aecea60c}", "{9cf6bf22}"], strtable: dict[str, int | dict[str, str]]) -> str: #这个函数只用于制作英雄平衡表格，不用于本程序（This function is only designed for making the balance table, not for this program）
+def modeOverrideTooltipTransform(binData: dict[str, Any], dType: Literal["champion", "item"], objectType: str, keyPaths: str | list[str], gameModeName: Literal["TUTORIAL", "TUTORIAL_MODULE_1", "TUTORIAL_MODULE_2", "TUTORIAL_MODULE_3", "SWIFTPLAY", "PRACTICETOOL", "FIRSTBLOOD", "ARSR", "ARAM", "{bffdf499}", "KINGPORO", "URF", "SNOWURF", "ONEFORALL", "{6462680f}", "NEXUSBLITZ", "TFT", "ASSASSINATE", "ULTBOOK", "cherry", "STRAWBERRY", "{a110bc47}", "Ruby", "DOOMBOTSTEEMO", "{b0cea932}", "{afcea79f}", "{aecea60c}", "{9cf6bf22}"], strtable: dict[str, int | dict[str, str]]) -> str: #这个函数只用于制作英雄平衡表格，不用于本程序（This function is only designed for making the balance table, not for this program）
     '''
     遍历二进制描述数据中的模式覆盖数据并输出。<br>Traverse through the mode overriden values in binary description data and output them.
     
     :param binData: 完整的二进制描述数据，通常通过形如session.get(url).json()的代码直接获得。注意，二进制描述的预处理已在本函数内完成，所以传入该参数的二进制描述数据不能预先被处理过。<br>The complete binary description data, which is often obtained through code like `session.get(url).json()`. Note that the pre-processing of a binary description is finished within this function, so the value to pass to this parameter shouldn't be pre-processed in advance.
     :type binData: dict[str, Any]
+    :param dType: 数据类型。决定输出格式。<br>Data type. It determines the output format.
+    
+        如果指定为“champion”，函数会构建从法术对象到技能热键的映射，于是输出中会带有技能热键。<br>If it's specified as "champion", this function will construct a map from SpellObjects to spell hotkeys, so the output will display the ability hotkey.
+    :type dType: Literal["champion", "item"]
     :param objectType: 要遍历的对象类型，通常为某个一级对象的__type键的值。例如，在英雄二进制描述数据中，一般指定该参数为“CharacterRecord”。<br>Object type to traverse through the binData, usually the value of `__type` key of a Level-1 object. For example, when it comes to traversing champion binary description data, this parameter is usually specified as "CharacterRecord".
     :type objectType: str
     :param keyPaths: 键路径，由键通过竖线组成的字符串，详见getBinaryKeys函数的文档字符串。<br>Paths of keys, concatenated by "|" from keys. Detailed are in the DocString of `getBinaryKeys` function.<br>参考数据覆盖键路径：<br>Some known mode override keyPaths corresponding to objectTypes:
@@ -84,18 +88,48 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], objectType: str, keyPa
     #预处理参数（Pre-process parameters）
     binData = LoLDataExtractor.normalizeBinData(binData) #因此，传入的binData不能预先被normalizeSpellData函数处理过（Hence, the passed `binData` should be in raw format and not pre-processed by `normalizeBinData` function）
     if isinstance(keyPaths, str):
-        keyPathList: list[str] = [keyPaths.split("|")]
+        keyPathList: list[list[str]] = [keyPaths.split("|")]
     elif isinstance(keyPaths, list) and all(map(lambda x: isinstance(x, str), keyPaths)):
-        keyPathList: list[str] = list(map(lambda x: x.split("|"), keyPaths))
+        keyPathList = list(map(lambda x: x.split("|"), keyPaths))
     else:
         print(f"警告：您传入的键路径有误。请检查。函数将返回空字符串。\nWarning: Invalid `keyPath`! Please check it. The function will return an empty string instead.")
         return ""
+    if dType != "champion":
+        dType = "item"
     #构建热键映射（Build the hotkey map）
+    hotkey_map: dict[str, str] = {} #从指令主键到技能热键的映射（A map from spell keys to ability hotkeys）
+    characterRecordKey_spellKey_map: dict[str, str] = {} #从指令主键到角色记录主键的映射（A map from spell keys to character record keys）
+    if dType == "champion":
+        abilityKey_rootSpellKey_map: dict[str, str] = {} #从根指令主键到技能对象主键的映射（A map from root spell keys to ability object keys）
+        for (key, value) in binData.items():
+            if key != "__linked" and value["__type"] == "AbilityObject":
+                abilityKey_rootSpellKey_map[value["mRootSpell"]] = key
+        for (key, value) in binData.items():
+            if key != "__linked" and value["__type"] == "CharacterRecord":
+                if "mCharacterPassiveSpell" in value:
+                    if value["mCharacterPassiveSpell"] in abilityKey_rootSpellKey_map and value["mCharacterPassiveSpell"] in abilityKey_rootSpellKey_map and "mChildSpells" in binData[abilityKey_rootSpellKey_map[value["mCharacterPassiveSpell"]]]:
+                        for spellKey in binData[abilityKey_rootSpellKey_map[value["mCharacterPassiveSpell"]]]["mChildSpells"]:
+                            hotkey_map[spellKey] = "P" #这里假设同一个技能只可能属于一个英雄，即不存在某个指令是一个英雄的被动技能，但是是另一个英雄的Q技能的情况。下同（Here we assume that a spell can only belong to one champion, i.e. a spell can't be both a champion's passive but also another champion's Q ability. Same in below）
+                            characterRecordKey_spellKey_map[spellKey] = key
+                    else:
+                        hotkey_map[value["mCharacterPassiveSpell"]] = "P"
+                        characterRecordKey_spellKey_map[value["mCharacterPassiveSpell"]] = key
+                hotkey_list: list[str] = ["Q", "W", "E", "R"]
+                if "spells" in value:
+                    for i in range(len(value["spells"])): #事先已知每个角色记录对象都有“spells”键，且其值的长度都是4（It's known in advance that each CharacterRecord object has a "spells" key and its value is always a list of length 4）
+                        spellKey: str = value["spells"][i]
+                        if spellKey in abilityKey_rootSpellKey_map and "mChildSpells" in binData[abilityKey_rootSpellKey_map[spellKey]]:
+                            for spellKey in binData[abilityKey_rootSpellKey_map[spellKey]]["mChildSpells"]:
+                                hotkey_map[spellKey] = hotkey_list[i]
+                                characterRecordKey_spellKey_map[spellKey] = key
+                        else:
+                            hotkey_map[spellKey] = hotkey_list[i]
+                            characterRecordKey_spellKey_map[spellKey] = key
     #遍历二进制描述数据（Traverse binary description data）
     s: str = "" #初始化结果字符串（Initialize the result string）
     for (key, value) in binData.items():
         if key != "__linked" and value["__type"] == objectType:
-            tmp_ptr = value
+            tmp_ptr: Any = value
             for keyPath in keyPathList:
                 for tmp_key in keyPath:
                     if tmp_key in tmp_ptr:
@@ -103,24 +137,26 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], objectType: str, keyPa
                     else:
                         break
                 else:
+                    endKey: str = keyPath[-1]
                     value = copy.deepcopy(value)
                     if value["__type"] == "SpellObject":
                         value["mSpell"] = LoLDataExtractor.normalizeBinData(value["mSpell"])
                     elif value["__type"] == "ItemData":
                         value = LoLDataExtractor.normalizeBinData(value)
-                    if tmp_key in {"{f9c2333e}", "{b08bc498}", "DataValuesModeOverride"}:
+                    if endKey in {"{f9c2333e}", "{b08bc498}", "DataValuesModeOverride"}:
                         if gameModeName in tmp_ptr:
                             #获取技能名称（Get ability name）
                             if value["__type"] == "SpellObject":
                                 keyNamePath: list[str] = ["mSpell", "mClientData", "mTooltipData", "mLocKeys", "keyName"]
                             elif value["__type"] == "ItemData":
-                                keyNamePath = ["mItemDataClient", "mTooltipData", "mLocKeys", "keyName"]
+                                keyNamePath = ["mDisplayName"]
+                                # keyNamePath = ["mItemDataClient", "mTooltipData", "mLocKeys", "keyName"]
                             else:
                                 keyNamePath = []
                             if keyNamePath == []:
-                                keyName_content = key
+                                keyName_content: str = key
                             else:
-                                tmp_ptr1 = value
+                                tmp_ptr1: Any = value
                                 for tmp_key1 in keyNamePath:
                                     if tmp_key1 in tmp_ptr1:
                                         tmp_ptr1 = tmp_ptr1[tmp_key1]
@@ -131,32 +167,14 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], objectType: str, keyPa
                                     keyName = tmp_ptr1
                                     keyName_content = LoLDataExtractor.get_strtable_value(strtable, keyName, default = keyName)
                             #获取技能热键（Get ability hotkey）
-                            if value["__type"] == "SpellObject":
-                                if len(key.split("/")) > 1: #形如（Looks like）：Characters/Aphelios/Spells/ApheliosQ_ClientTooltipWrapper
-                                    championFolder: str = key.split("/")[1]
-                                    CharacterRecordRoot_key = f"Characters/{championFolder}/CharacterRecords/Root"
-                                    if CharacterRecordRoot_key in binData:
-                                        CharacterRecordRoot = binData[CharacterRecordRoot_key]
-                                        characterName = CharacterRecordRoot.get("mCharacterName", "")
-                                        if "mCharacterPassiveSpell" in CharacterRecordRoot and CharacterRecordRoot["mCharacterPassiveSpell"] == key:
-                                            mHotKey = "P"
-                                        elif "spells" in CharacterRecordRoot and CharacterRecordRoot["spells"][0] == key:
-                                            mHotKey = "Q"
-                                        elif "spells" in CharacterRecordRoot and CharacterRecordRoot["spells"][1] == key:
-                                            mHotKey = "W"
-                                        elif "spells" in CharacterRecordRoot and CharacterRecordRoot["spells"][2] == key:
-                                            mHotKey = "E"
-                                        elif "spells" in CharacterRecordRoot and CharacterRecordRoot["spells"][3] == key:
-                                            mHotKey = "R"
-                                        else:
-                                            mHotKey = ""
-                                else:
-                                    characterName = mHotKey = ""
+                            if value["__type"] == "SpellObject" and dType == "champion": #只有在数据类型为英雄时才获取其角色名称和技能热键（Only when the data type is champion will the character name and hotkey be obtained）
+                                characterName: str = binData[characterRecordKey_spellKey_map[key]]["mCharacterName"] if key in characterRecordKey_spellKey_map else ""
+                                mHotKey: str = hotkey_map.get(key, "")
                             else:
                                 characterName = mHotKey = ""
                             #获取缺省值和覆盖值（Get the default and overriden value）
-                            if tmp_key == "{f9c2333e}" or tmp_key == "{b08bc498}": #基础冷却时间和基础充能时间（Basic cooldown and basic charge time）
-                                if tmp_key == "{f9c2333e}": #基础冷却时间（Basic cooldown）
+                            if endKey == "{f9c2333e}" or endKey == "{b08bc498}": #基础冷却时间和基础充能时间（Basic cooldown and basic charge time）
+                                if endKey == "{f9c2333e}": #基础冷却时间（Basic cooldown）
                                     if "cooldownTime" in value["mSpell"]:
                                         if mHotKey == "R":
                                             time_list: list[float] = value["mSpell"]["cooldownTime"][1:4]
@@ -178,25 +196,26 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], objectType: str, keyPa
                                     overrideValue: str = LoLDataExtractor.burnValueList(tmp_ptr[gameModeName]["value"][1:4])
                                 else:
                                     overrideValue = LoLDataExtractor.burnValueList(tmp_ptr[gameModeName]["value"][1:6])
-                                if tmp_key == "{f9c2333e}":
+                                if endKey == "{f9c2333e}":
                                     s += "{%s}【%s】（%s）：基础冷却时间：%s秒 → %s秒\n" %(characterName, keyName_content, mHotKey, defaultValue, overrideValue)
                                 else:
                                     s += "{%s}【%s】（%s）：基础充能时间：%s秒 → %s秒\n" %(characterName, keyName_content, mHotKey, defaultValue, overrideValue)
-                            elif tmp_key == "DataValuesModeOverride":
-                                overrideValues: dict[str, list[dict[str, str | float | list[float]]]] = tmp_ptr[gameModeName]
+                            elif endKey == "DataValuesModeOverride":
+                                overrideValues: dict[str, Any] = tmp_ptr[gameModeName]
                                 if overrideValues["__type"] == "SpellDataValueVector":
                                     s += "{%s}【%s】（%s）：" %(characterName, keyName_content, mHotKey)
                                     for i in range(len(overrideValues["SpellDataValues"])):
-                                        spellDataValue = overrideValues["SpellDataValues"][i]
-                                        var = spellDataValue["name"] if "name" in spellDataValue else spellDataValue["mName"]
+                                        spellDataValue: dict[str, Any] = overrideValues["SpellDataValues"][i]
+                                        var: str = spellDataValue["name"] if "name" in spellDataValue else spellDataValue["mName"]
                                         if var.lower() in value["mSpell"]["DataValues"]:
                                             varData: dict[str, Any] = value["mSpell"]["DataValues"][var.lower()]
                                             if mHotKey == "R":
-                                                value_list: list[int | float] = varData["values"][1:4] if "values" in varData else varData["mValues"][1:4]
+                                                value_list: list[float] = varData["values"][1:4] if "values" in varData else varData["mValues"][1:4]
                                             else:
                                                 value_list = varData["values"][1:6] if "values" in varData else varData["mValues"][1:6]
-                                            defaultValue = LoLDataExtractor.burnValueList(value_list)
+                                            defaultValue: str = LoLDataExtractor.burnValueList(value_list)
                                         else:
+                                            varData = {}
                                             defaultValue = "φ"
                                         if mHotKey == "R":
                                             overrideValue = LoLDataExtractor.burnValueList(spellDataValue["values"][1:4]) if "values" in spellDataValue else varData["mValues"][1:4] if "mValues" in varData else "φ"
@@ -211,14 +230,14 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], objectType: str, keyPa
                                     s += "【%s】：" %(keyName_content)
                                     for i in range(len(overrideValues["DataValues"])):
                                         itemDataValue = overrideValues["DataValues"][i]
-                                        var = spellDataValue["name"] if "name" in spellDataValue else spellDataValue["mName"]
+                                        var: str = itemDataValue["name"] if "name" in itemDataValue else itemDataValue["mName"]
                                         if var.lower() in value["mDataValues"]:
-                                            defaultValue = LoLDataExtractor.aRound(value["mDataValues"][var.lower()]["mValue"], 5)
+                                            defaultValue: str = str(LoLDataExtractor.aRound(value["mDataValues"][var.lower()]["mValue"], 5))
                                         else:
                                             defaultValue = "φ"
-                                        overrideValue = LoLDataExtractor.aRound(itemDataValue["mValue"][1:4], 5)
+                                        overrideValue = str(LoLDataExtractor.aRound(itemDataValue["mValue"], 5))
                                         s += "{%s}：%s → %s" %(var, defaultValue, overrideValue)
-                                        if i < len(overrideValues["SpellDataValues"]) - 1:
+                                        if i < len(overrideValues["DataValues"]) - 1:
                                             s += "；"
                                         else:
                                             s += "\n"
@@ -1676,8 +1695,8 @@ if __name__ == "__main__":
         #     map33_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # map33_bin = LoLDataExtractor.resolve_bin_hash(map33_bin)
         ##装备（Item）
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
-        #     items_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
+            items_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # items_bin = LoLDataExtractor.resolve_bin_hash(items_bin)
         ##共享数据（Shared data）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/shared.cdtb.bin.json", "r", encoding = "utf-8") as fp:
@@ -1734,31 +1753,34 @@ if __name__ == "__main__":
         # logPrint(LoLDataExtractor.get_strtable_value(lolstringtable_zh, mDisplayName_key, default = "获取失败。"))
         
         #说明文本转换（Tooltip transformation）
-        logPrint("说明文本测试样例：")
-        tests: list[dict[str, Any]] = [
-            {
-                "tooltip": "<rules>对野怪的百分比生命值伤害的上限为<magicDamage>@SuperQMonsterMaxDamageTotal@</magicDamage>。</rules>",
-                "binData": champions_bin["Characters/Galio/Spells/GalioQAbility/GalioQ"]["mSpell"],
-                "reservedVars": None
-            },
-        ]
-        for i in range(len(tests)):
-            LoLDataExtractor.calculatedVariables.clear()
-            logPrint("*" * 20)
-            logPrint("样例%d：" %(i + 1))
-            tooltip_raw: str = tests[i]["tooltip"]
-            logPrint("原始说明文本：\n" + tooltip_raw)
-            binData: dict[str, Any] = tests[i]["binData"]
-            reservedVars: Optional[dict[str, str]] = tests[i].get("reservedVars")
-            logPrint("----")
-            logPrint("转换文本：")
-            logPrint(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = False))
-            # logPrint(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = True))
-            # logPrint(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = False))
-            # logPrint(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = True))
-            # logPrint(modeOverrideTooltipTransform(champions_bin, objectType = "SpellObject", keyPaths = "mSpell|DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
-        else:
-            logPrint("*" * 20)
+        # logPrint("说明文本测试样例：")
+        # tests: list[dict[str, Any]] = [
+        #     {
+        #         "tooltip": "<rules>对野怪的百分比生命值伤害的上限为<magicDamage>@SuperQMonsterMaxDamageTotal@</magicDamage>。</rules>",
+        #         "binData": champions_bin["Characters/Galio/Spells/GalioQAbility/GalioQ"]["mSpell"],
+        #         "reservedVars": None
+        #     },
+        # ]
+        # for i in range(len(tests)):
+        #     LoLDataExtractor.calculatedVariables.clear()
+        #     logPrint("*" * 20)
+        #     logPrint("样例%d：" %(i + 1))
+        #     tooltip_raw: str = tests[i]["tooltip"]
+        #     logPrint("原始说明文本：\n" + tooltip_raw)
+        #     binData: dict[str, Any] = tests[i]["binData"]
+        #     reservedVars: Optional[dict[str, str]] = tests[i].get("reservedVars")
+        #     logPrint("----")
+        #     logPrint("转换文本：")
+        #     logPrint(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = False))
+        #     # logPrint(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = True))
+        #     # logPrint(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = False))
+        #     # logPrint(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = True))
+        # else:
+        #     logPrint("*" * 20)
+        
+        #模式重载（Mode override）
+        logPrint(modeOverrideTooltipTransform(champions_bin, dType = "champion", objectType = "SpellObject", keyPaths = "mSpell|DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
+        logPrint(modeOverrideTooltipTransform(items_bin, dType = "item", objectType = "ItemData", keyPaths = "DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
         
         return 0
 
