@@ -1790,8 +1790,8 @@ rewardTag_dict: dict[str, str] = {
     "Rare": "稀有"
 }
 lolEventHubRewardTrackItemStates: dict[str, str] = {
-    "Selected": "已选择",
-    "Unselected": "未选择",
+    "Selected": "已领取",
+    "Unselected": "未领取",
     "Unlocked": "已解锁",
     "Locked": "未解锁"
 }
