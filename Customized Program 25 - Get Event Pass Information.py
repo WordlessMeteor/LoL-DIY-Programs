@@ -17,7 +17,7 @@ from openpyxl.worksheet.worksheet import Worksheet
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/30
+# 更新（Last update）：     2026/08/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -319,7 +319,7 @@ async def organize_pass_information(connection: Connection) -> None:
                             to_append = ""
                     elif i <= 6: #奖励商品相关键（Reward item-related keys）
                         if rewardOption_index == 0: #奖励商品信息只在同商品内只追加一次（Reward item data are appended once per item）
-                            if i == 2: #装备序号（`item_index`）
+                            if i == 2: #道具序号（`item_index`）
                                 to_append = item_index + 1
                             elif i == 4: #奖励标签（`rewardTags`）
                                 rewardTags_trans: list[str] = list(map(lambda x: rewardTag_dict[x], rewardItem["rewardTags"]))

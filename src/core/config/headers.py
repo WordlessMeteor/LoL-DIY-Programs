@@ -4830,7 +4830,7 @@ event_pass_bundle_header: dict[str, str] = {
 event_reward_item_header: dict[str, str] = {
     "eventId": "事件代码",
     "eventName": "事件名称",
-    "item_index": "装备序号",
+    "item_index": "道具序号",
     "progressRequired": "里程点",
     "rewardTags": "奖励标签",
     "state": "状态",
