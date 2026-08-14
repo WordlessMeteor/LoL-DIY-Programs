@@ -20,15 +20,15 @@ from src.core.config.conditional_formatting import addFormat_LoLHistory_wb, addF
 from src.core.dataframes.ranked import sort_game_leaderboard
 from src.core.dataframes.matchHistory import get_LoLHistory, get_matchSummary_sgp, get_matchDetails_sgp, sort_LoLHistory, sort_LoLHistory_sgp, reconstruct_LoLHistory, reconstruct_LoLHistory_sgp, reconstruct_TFTHistory, get_LoLGame_summary, get_game_summary_sgp, get_LoLGame_timeline, get_game_timeline_sgp, sort_LoLGame_summary, sort_LoLGame_summary_sgp, sort_LoLGame_timeline, sort_LoLGame_timeline_sgp, get_TFTHistory, sort_TFTHistory, sort_TFTGame_summary
 
-parser = argparse.ArgumentParser()
-parser.add_argument("-a", "--lol-api", help = "指定通过什么接口获取英雄联盟对局概要和时间轴（Specify the interface used to fetch LoL game summary and timeline）", action = "store", type = str, choices = ["lcu", "sgp"], default = "sgp")
-# parser.add_argument("-l", "--lol-api-legacy", help = "指定是否使用传统LCU API接口获取英雄联盟对局概要和时间轴（Specify whether to use the traditional LCU API to fetch LoL game summary and timeline）", action = "store_true") #这个变量和上面的作用相同（This argument works the same way as the above one）
-parser.add_argument("-ic", "--info-color", help = "为对局概要工作表施加条件格式（Add conditional formatting to match summary sheets）", action = "store_true") #这会对性能和工作簿大小有较大影响（This seriously affects the program's performance and the workbook size）
-parser.add_argument("-lb", "--export-leaderboard", help = "导出每场对局的社交排行榜工作表。时间开销大（Export the social leaderboard data of each match. Time consuming）", action = "store_true")
-parser.add_argument("-n", "--deny-empty-sheet-creation", help = "在创建工作簿的情况下不创建空白工作表（Deny creating empty sheets if a new workbook is created）", action = "store_true") #主要应用于从小工作簿移动工作表到大工作簿的情形（Mainly used in the case where sheets are moved from a small workbook into a bigger workbook）
-parser.add_argument("-r", "--reserve", help = "在对局不包含主玩家的情况下仍然加载该对局（Load a match even if it doesn't contain the main player）", action = "store_true")
-parser.add_argument("-rt", "--reserve-text", help = "在对局不包含主玩家的情况下仍然保存该对局（Save a match even if it doesn't contain the main player）", action = "store_true")
-args = parser.parse_args()
+parser: argparse.ArgumentParser = argparse.ArgumentParser(formatter_class = argparse.RawTextHelpFormatter)
+parser.add_argument("-a", "--lol-api", help = "指定通过什么接口获取英雄联盟对局概要和时间轴。\nSpecify the interface used to fetch LoL game summary and timeline.", action = "store", type = str, choices = ["lcu", "sgp"], default = "sgp")
+# parser.add_argument("-l", "--lol-api-legacy", help = "指定是否使用传统LCU API接口获取英雄联盟对局概要和时间轴。\nSpecify whether to use the traditional LCU API to fetch LoL game summary and timeline.", action = "store_true") #这个变量和上面的作用相同（This argument works the same way as the above one）
+parser.add_argument("-ic", "--info-color", help = "为对局概要工作表施加条件格式。\nAdd conditional formatting to match summary sheets.", action = "store_true") #这会对性能和工作簿大小有较大影响（This seriously affects the program's performance and the workbook size）
+parser.add_argument("-lb", "--export-leaderboard", help = "导出每场对局的社交排行榜工作表。时间开销大。\nExport the social leaderboard data of each match. Time consuming.", action = "store_true")
+parser.add_argument("-n", "--deny-empty-sheet-creation", help = "在创建工作簿的情况下不创建空白工作表。\nDeny creating empty sheets if a new workbook is created.", action = "store_true") #主要应用于从小工作簿移动工作表到大工作簿的情形（Mainly used in the case where sheets are moved from a small workbook into a bigger workbook）
+parser.add_argument("-r", "--reserve", help = "在对局不包含主玩家的情况下仍然加载该对局。\nLoad a match even if it doesn't contain the main player.", action = "store_true")
+parser.add_argument("-rt", "--reserve-text", help = "在对局不包含主玩家的情况下仍然保存该对局。\nSave a match even if it doesn't contain the main player.", action = "store_true")
+args: argparse.Namespace = parser.parse_args()
 use_sgp: bool = args.lol_api == "sgp"
 if use_sgp:
     from src.core.config.headers import LoLGame_summary_sgp_header as LoLGame_stat_header

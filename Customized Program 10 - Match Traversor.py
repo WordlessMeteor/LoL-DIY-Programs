@@ -13,19 +13,19 @@ from src.core.config.servers import set_platform_folder
 from src.core.dataframes.matchHistory import get_matchSummary_sgp, get_matchDetails_sgp, get_game_summary_sgp, get_game_timeline_sgp
 from src.core.process.replay import download_replay_sgp
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--cli", help = "启用命令行模式。在命令行模式下，主模式以外的所有待设置的参数采用命令行参数的默认值（Enable command line mode. Under command line mode, all parameters to be set when the program is running will adopt the default value of the command line parameters, except `mode`）", action = "store_true")
-parser.add_argument("-m", "--mode", help = "指定脚本运行模式（Specify the script to traversal mode）", action = "store", type = str, choices = ["t", "traverse", "s", "search"], default = "")
-parser.add_argument("-tm", "--traverse-mode", help = "指定遍历对局的模式（Specify the mode of traversing matches）", action = "store", type = str, choices = ["index", "history"], default = "index")
-parser.add_argument("-b", "--begin", help = "指定对局序号范围的下标（Specify the lower limit of matchId range）", action = "store", type = int, default = 0)
-parser.add_argument("-e", "--end", help = "指定对局序号范围的上标（Specify the upper limit of matchId range）", action = "store", type = int, default = 0)
-parser.add_argument("-sn", "--summoner-name", help = "指定用于按对局记录遍历模式的起始召唤师名称（Specify the starting summoner name used in history traversal mode）", action = "store", type = str, default = "")
-parser.add_argument("-f", "--func", help = "指定用于遍历模式的判断条件函数或者用于查找模式的阈值函数（Specify the condition judgment function used in traversal mode or the threshold function used in search mode）", action = "store", type = str, default = "")
-parser.add_argument("-p", "--product", help = "限定对局产品名（Restrict the match product name）", action = "store", type = str, choices = ["LoL", "TFT", "both"], default = "both")
-parser.add_argument("-sj", "--save-json", help = "在遍历模式下，是否保存对局信息文件（Under traversal mode, whether to save match information files）", action = "store_true")
-parser.add_argument("-sr", "--save-replay", help = "在遍历模式下，是否下载回放（Under traversal mode, whether to download replays）", action = "store_true")
-# parser.add_argument("--na-gameIds", help = "在查找模式下，指定未找到的对局序号（Under search mode, specify matchIds not found）", action = "store", type = int, nargs = "*", default = []) #由于对局序号过多可能导致命令特别长，因此不建议通过命令行直接传入该参数，而建议用户在程序运行过程中设置。一般情况下，只有在程序被中断后，下次执行二分查找时才会为此参数传入值（Because too many matchIds will lead to a very long command, it's suggested that users shouldn't pass this parameter through command line but set it during the program execution. In normal cases, only when the program is interrupted and the user is going to perform another binary search might this parameter be passed with some values）
-args = parser.parse_args()
+parser: argparse.ArgumentParser = argparse.ArgumentParser(formatter_class = argparse.RawTextHelpFormatter)
+parser.add_argument("--cli", help = "启用命令行模式。\nEnable command line mode.\n在命令行模式下，主模式以外的所有待设置的参数采用命令行参数的默认值。\nUnder command line mode, all parameters to be set when the program is running will adopt the default value of the command line parameters, except `mode`.", action = "store_true")
+parser.add_argument("-m", "--mode", help = "指定脚本运行模式。\nSpecify the script to traversal mode.", action = "store", type = str, choices = ["t", "traverse", "s", "search"], default = "")
+parser.add_argument("-tm", "--traverse-mode", help = "指定遍历对局的模式。\nSpecify the mode of traversing matches.", action = "store", type = str, choices = ["index", "history"], default = "index")
+parser.add_argument("-b", "--begin", help = "指定对局序号范围的下标。\nSpecify the lower limit of matchId range.", action = "store", type = int, default = 0)
+parser.add_argument("-e", "--end", help = "指定对局序号范围的上标。\nSpecify the upper limit of matchId range.", action = "store", type = int, default = 0)
+parser.add_argument("-sn", "--summoner-name", help = "指定用于按对局记录遍历模式的起始召唤师名称。\nSpecify the starting summoner name used in history traversal mode.", action = "store", type = str, default = "")
+parser.add_argument("-f", "--func", help = "指定用于遍历模式的判断条件函数或者用于查找模式的阈值函数。\nSpecify the condition judgment function used in traversal mode or the threshold function used in search mode.", action = "store", type = str, default = "")
+parser.add_argument("-p", "--product", help = "限定对局产品名。\nRestrict the match product name.", action = "store", type = str, choices = ["LoL", "TFT", "both"], default = "both")
+parser.add_argument("-sj", "--save-json", help = "在遍历模式下，是否保存对局信息文件。\nUnder traversal mode, whether to save match information files.", action = "store_true")
+parser.add_argument("-sr", "--save-replay", help = "在遍历模式下，是否下载回放。\nUnder traversal mode, whether to download replays.", action = "store_true")
+# parser.add_argument("--na-gameIds", help = "在查找模式下，指定未找到的对局序号。\nUnder search mode, specify matchIds not found.", action = "store", type = int, nargs = "*", default = []) #由于对局序号过多可能导致命令特别长，因此不建议通过命令行直接传入该参数，而建议用户在程序运行过程中设置。一般情况下，只有在程序被中断后，下次执行二分查找时才会为此参数传入值（Because too many matchIds will lead to a very long command, it's suggested that users shouldn't pass this parameter through command line but set it during the program execution. In normal cases, only when the program is interrupted and the user is going to perform another binary search might this parameter be passed with some values）
+args: argparse.Namespace = parser.parse_args()
 
 #=============================================================================
 # * 声明（Declaration）

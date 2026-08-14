@@ -22,9 +22,9 @@ from src.core.dataframes.filter import filter_df
 from src.core.process.replay import download_replay_lcu, watch_replay
 
 urllib3.disable_warnings() #忽略访问游戏数据时产生的警告（Neglect warnings produced when the program is accessing the in-game data）
-parser = argparse.ArgumentParser()
-parser.add_argument("-cp", "--cert-path", help = "指定游戏客户端接口的证书路径（Specify the path of the root certificate for game client API access", action = "store", type = str, default = "")
-args = parser.parse_args()
+parser: argparse.ArgumentParser = argparse.ArgumentParser(formatter_class = argparse.RawTextHelpFormatter)
+parser.add_argument("-cp", "--cert-path", help = "指定游戏客户端接口的证书路径。\nSpecify the path of the root certificate for game client API access.", action = "store", type = str, default = "")
+args: argparse.Namespace = parser.parse_args()
 
 #=============================================================================
 # * 声明（Declaration）

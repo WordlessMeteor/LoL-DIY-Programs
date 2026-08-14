@@ -268,9 +268,9 @@ class LoLSfxExtractor:
         return hash_int
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--sfx", help = "启用音频库单元hash计算调试（Enable bank unit hash calculation debugging）", action = "store_true")
-    args = parser.parse_args()
+    parser: argparse.ArgumentParser = argparse.ArgumentParser(formatter_class = argparse.RawTextHelpFormatter)
+    parser.add_argument("--sfx", help = "启用音频库单元hash计算调试。\nEnable bank unit hash calculation debugging.", action = "store_true")
+    args: argparse.Namespace = parser.parse_args()
     
     cwd: str = os.getcwd().replace("\\", "/")
     if cwd.endswith("src/core"): #允许用户直接双击脚本（Users are allowed to double click this program）

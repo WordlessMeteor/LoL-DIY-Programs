@@ -11,17 +11,17 @@ from src.utils.logger import LogManager
 from src.utils.format import format_df
 from src.utils.keyControl import isKeyPressed
 
-parser = argparse.ArgumentParser()
-parser.add_argument("-q", "--queueId", help = "通过队列序号指定要创建的自定义房间。必须是全随机模式（Specify the custom lobby to create by queueId. Must be all-random）", action = "store", type = int, default = 0)
-# parser.add_argument("-c", "--is-custom", help = "是否创建自定义房间（Whether to create a custom lobby）", action = "store_true")
-parser.add_argument("-n", "--lobby-name", help = "指定一个自定义房间名称（Specify the lobby name）", action = "store", type = str, default = None)
-parser.add_argument("-s", "--lobby-password", help = "指定自定义房间的密码（Specify the lobby password）", action = "store", type = str, default = "")
-parser.add_argument("-m", "--aram-map-mutator", help = "指定一个大乱斗地图（Specify the map of ARAM）", action = "store", type = str, choices = ["NONE", "MapSkin_Map12_Bloom", "MapSkin_HA_Bilgewater", "MapSkin_HA_Crepe", "MapSkin_Map12_Jade"], default = "MapSkin_HA_Bilgewater")
-parser.add_argument("-sp", "--spectator-policy", help = "指定观战策略（Specify a spectate policy）", action = "store", type = str, choices = ["LobbyAllowed", "FriendsAllowed", "AllAllowed", "NotAllowed"], default = "AllAllowed")
-parser.add_argument("-ts", "--team-size", help = "指定队伍规模（Specify the team size）", action = "store", type = int, default = 5)
-parser.add_argument("--enable-spectator-delay", help = "是否启用观战延迟（Whether to enable spectator delay）", action = "store_true")
-parser.add_argument("--hide-publicly", help = "是否隐藏自定义房间（Whether to hide the custom lobby from being seen publicly）", action = "store_true")
-args = parser.parse_args()
+parser: argparse.ArgumentParser = argparse.ArgumentParser(formatter_class = argparse.RawTextHelpFormatter)
+parser.add_argument("-q", "--queueId", help = "通过队列序号指定要创建的自定义房间。必须是全随机模式。\nSpecify the custom lobby to create by queueId. Must be all-random.", action = "store", type = int, default = 0)
+# parser.add_argument("-c", "--is-custom", help = "是否创建自定义房间。\nWhether to create a custom lobby.", action = "store_true")
+parser.add_argument("-n", "--lobby-name", help = "指定一个自定义房间名称。\nSpecify the lobby name.", action = "store", type = str, default = None)
+parser.add_argument("-s", "--lobby-password", help = "指定自定义房间的密码。\nSpecify the lobby password.", action = "store", type = str, default = "")
+parser.add_argument("-m", "--aram-map-mutator", help = "指定一个大乱斗地图。\nSpecify the map of ARAM.", action = "store", type = str, choices = ["NONE", "MapSkin_Map12_Bloom", "MapSkin_HA_Bilgewater", "MapSkin_HA_Crepe", "MapSkin_Map12_Jade"], default = "MapSkin_HA_Bilgewater")
+parser.add_argument("-sp", "--spectator-policy", help = "指定观战策略。\nSpecify a spectate policy.", action = "store", type = str, choices = ["LobbyAllowed", "FriendsAllowed", "AllAllowed", "NotAllowed"], default = "AllAllowed")
+parser.add_argument("-ts", "--team-size", help = "指定队伍规模。\nSpecify the team size.", action = "store", type = int, default = 5)
+parser.add_argument("--enable-spectator-delay", help = "是否启用观战延迟。\nWhether to enable spectator delay.", action = "store_true")
+parser.add_argument("--hide-publicly", help = "是否隐藏自定义房间。\nWhether to hide the custom lobby from being seen publicly.", action = "store_true")
+args: argparse.Namespace = parser.parse_args()
 
 #=============================================================================
 # * 声明（Declaration）
