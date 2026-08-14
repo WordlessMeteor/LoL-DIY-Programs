@@ -1125,9 +1125,14 @@ class LoLDataExtractor:
     
     #清理（Clear）
     @classmethod
-    def clear_cache(cls) -> None: #清空缓存（Clear data cache）
+    def clear_cache(cls, clear_online: bool = False) -> None: #清空缓存（Clear data cache）
         '''
         清空所有在线和离线数据缓存。一般情况下，在切换版本时需要调用此方法。<br>Clear all online and local data caches. Basically, this method only needs to be called when the user switches to another version.
+        
+        :param clear_online: 是否清除在线缓存。默认为假。<br>Whether to clear online cache. False by default.
+        
+            清除在线缓存将导致所有通过访问网络获取的数据资源重新获取一遍。在保证这些数据资源不变的前提下，应尽量将该参数置为假。<br>Clearing online cache will cause all data resources already obtained online to be fetched again. If the data resources aren't changed, this parameter should ideally be set to False.
+        :type clear_online: bool
         '''
         cls.calculatedVariables.clear()
         cls.mSpells.clear()
@@ -1136,8 +1141,9 @@ class LoLDataExtractor:
         cls.TFTTraitMap.clear()
         cls.TFTScriptDataMap.clear()
         cls.Spell_tooltip_map.clear()
-        cls.data_cache["online"].clear()
-        cls.data_cache["local"].clear()
+        if clear_online:
+            cls.data_cache["online"].clear() #考虑到版本列表可以存在重复元素，前面获取的数据缓存可能在后面还能用到（Considering the version list can be repetitive, the previously obtained data cache might be used subsequently）
+        cls.data_cache["local"].clear() #本地缓存可以放心清除，因为即使清除了也不会影响读取速度（Local cache can be cleared rest assured, for clearing them doesn't make much difference to the reading speed）
         cls.merged_data_cache.clear()
         cls.df_queue.clear()
     
@@ -1631,7 +1637,7 @@ class LoLDataExtractor:
         :return: 字符串键的hash值。<br>The hash value of the string key.
         :rtype: str
         '''
-        hash_int: int = xxh3_64_intdigest(s.lower())
+        hash_int: int = xxh3_64_intdigest(s.lower().encode())
         if version == 5:
             mask: int = (1 << 38) - 1
         else: #version == 4
@@ -1667,7 +1673,7 @@ class LoLDataExtractor:
         :return: 路径字符串的hash值。<br>The hash value of the path string.
         :rtype: str
         '''
-        hash_int: int = xxh64_intdigest(s.lower())
+        hash_int: int = xxh64_intdigest(s.lower().encode())
         result: str = format(hash_int, "016x")
         return "{" + result + "}"
     

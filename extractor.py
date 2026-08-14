@@ -11,7 +11,7 @@ from src.utils.runtimeDebug import subscope
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from src.core.config.localization import language_ddragon, language_dict
 from src.core.extractor.base import verifyDictHeterogeneity, syncListOrder, traverse_keyPath, getBinaryKeys, LoLDataExtractor
-from src.core.extractor.types import MapExtractor, CheatExtractor, SummonerSpellExtractor, PerkExtractor, ChampionExtractor, ItemExtractor, AugmentExtractor, AnvilExtractor, CherryRoundExtractor, CameoExtractor, GoHExtractor, TFTExtractor, FontExtractor
+from src.core.extractor.types import *
 
 #=============================================================================
 # * 声明（Declaration）
@@ -19,7 +19,7 @@ from src.core.extractor.types import MapExtractor, CheatExtractor, SummonerSpell
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/07/30
+# 更新（Last update）：     2026/08/15
 #=============================================================================
 
 #定义模式覆盖文本描述函数（Define the overriden data tooltip function）
@@ -336,9 +336,6 @@ if __name__ == "__main__":
             if version == "":
                 versions: list[str] = ["pbe"]
                 break
-            elif version == "both":
-                versions = ["latest", "pbe"]
-                break
             elif version == "all":
                 versions = patches_cdragon
                 break
@@ -349,6 +346,7 @@ if __name__ == "__main__":
                 versions = [version]
                 break
             else:
+                version = version.replace("both", '["latest", "pbe"]') #相当于将“both”视为一个输入时的保留字，可参与计算，如`both * 2`。当然，事先已知合法的单个版本不包含“both”（Equivalent to regarding "both" as a reserved word, enabling it to take part in calculation like `both * 2`. Of course, we know in advance that a legal version can't contain "both"）
                 try:
                     versions = eval(version)
                 except:
@@ -548,6 +546,7 @@ if __name__ == "__main__":
         versions, session = set_version(session = session)
         if len(versions) == 0:
             return 2
+        versions_conf: list[str] = [] #初始化具有相同配置的版本列表临时变量。`versions`根据元素的重复情况可分成多个批次。例如`["latest", "pbe", "latest", "pbe"]`可以分成两批`["latest", "pbe"]`，`["latest", "pbe", "latest", "latest"]`可以分成`["latest", "pbe"]`、`["latest"]`和`["latest"]`共三批。该变量存储的是具有相同配置的一个批次，主要用于模拟版本回溯（Initialize a version list temporary variable whose elements have the same configuration. `versions` can be divided into multiple batches. For example, `["latest", "pbe", "latest", "pbe"]` can be divided into two batches of `["latest", "pbe"]`, and `["latest", "pbe", "latest", "latest"]` can be divided into 3 batches, namely `["latest", "pbe"]`, `["latest"]` and `["latest"]`. This variable stores one batch where all versions have the same configuration and is mainly designed to simulate version backtrack）
         
         #设置工作表集成（Determine whether to integrate sheets in different patches into one workbook）
         logPrint("是否将不同版本的工作表集成到一个工作簿中？（输入任意非空字符串以确认集成，否则分不同版本保存。）\nDo you want to integrate sheets of different versions into a single workbook? (Input any non-empty string to confirm integration, or null to save data into multiple workbooks of the different version.)")
@@ -596,6 +595,9 @@ if __name__ == "__main__":
         
         for i in range(len(versions)):
             version: str = versions[i]
+            if version in versions_conf:
+                versions_conf.clear() #每当程序遍历到一个在此列表中已经存在的版本时，将此列表清空（Every time the program traverses a version already in this list, clear this list）
+            versions_conf.append(version)
             logPrint("[%d/%d]开始处理%s版本的游戏数据。\nStart to process game data of Version %s." %(i + 1, len(versions), version, version))
             extractor = LoLDataExtractor(version, language_code, session = session, log = log)
             if integrate:
@@ -637,7 +639,7 @@ if __name__ == "__main__":
             #设置要提取的数据类型（Set the type of data to extract）
             while True:
                 logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t召唤师技能（Summoner Spells）\n4\t符文（Perks）\n5\t英雄（Champions）\n6\t角色（Characters）\n7\t装备（Items）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t斗魂竞技场回合阶段（Arena Round Phase）\n11\t场景英雄（Cameo）\n12\t荣誉嘉宾（Guests of Honor）\n13\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n14\t字体（Fonts）\nall\t所有（All）" + ("" if single_export else "\n-1\t批量导出所有数据框并清空队列（Batch export all dataframes and clear queue）"))
-                if one_click and i >= 1:
+                if one_click and len(versions_conf) > 1: #新批次开始时，`versions_conf`中只有一个元素。从此批次开始重新配置（When a new batch starts, there's only one element in `versions_conf`. Reconfigure from this batch）
                     if step == 1:
                         mode: str = str(preset_data_options)
                     elif step == 2:
@@ -723,9 +725,9 @@ if __name__ == "__main__":
                             deep_resolve_hash: bool = bool(deep_resolve_hash_str)
                             if deep_resolve_hash != LoLDataExtractor.deep_resolve_hash:
                                 extractor.set_resolution_depth(deep_resolve_hash) #修改对象的类属性可以应用到其它对象，因此不需要在`preset_settings`中保存这个设置（Modifying the class attribute of the object can be applied to other objects, so there's no need to save this setting in `preset_settings`）
-                                extractor.clear_cache()
+                                extractor.clear_cache(clear_online = True) #由于需要切换hash值的解析程度，数据资源的内容会发生变化，所以这里应清除在线缓存（Because the degree of hash resolve is changed, the content of data resources is changed, and therefore the online cache should be cleared）
                                 logPrint("已清空缓存。\nCache cleared.")
-                                if one_click and i == 0:
+                                if one_click:
                                     preset_data_options.clear()
                                     logPrint("已清空应用到后续版本的数据类型设置。\nCleared types of data to be exported for subsequent versions.")
                             if deep_resolve_hash:
@@ -795,8 +797,11 @@ if __name__ == "__main__":
                         logPrint("没有等待导出的数据。\nNo data waiting for export.")
                 elif mode[0] == "0":
                     extractor.clear_cache()
-                    if one_click and i == 0:
-                        preset_data_options = sorted(set(preset_data_options))
+                    if one_click:
+                        if len(versions_conf) == 1:
+                            preset_data_options = sorted(set(preset_data_options))
+                        else: #这个分支不可能包含`len(versions_conf) == 0`的情形，因为在循环的开头执行了一步追加操作。所以这个分支的含义是在一键式导出的过程中一个批次即将结束的场景（This function can't contain the case where `len(versions_conf) == 0`, for an `append`` method is called at the beginning of the loop. Therefore, the meaning of this condition is the case where a batch is about to end when one-click export is enabled）
+                            preset_data_options.clear() #在下一个批次开始时，重新设置要导出的数据选项（When the next batch begins, set the types of data to export again）
                     break
                 else:
                     data_options: list[int] = []
@@ -818,7 +823,7 @@ if __name__ == "__main__":
                                 data_options = [_ for _ in tmp if _ >= 1 and _ <= 14]
                             else:
                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
-                    if one_click and i == 0:
+                    if one_click and len(versions_conf) == 1:
                         preset_data_options.extend(data_options)
                     nDataOptions += len(data_options)
                     for j in range(len(data_options)):
@@ -1293,7 +1298,7 @@ if __name__ == "__main__":
                         deep_resolve_hash: bool = bool(deep_resolve_hash_str)
                         if deep_resolve_hash != LoLDataExtractor.deep_resolve_hash:
                             extractor.set_resolution_depth(deep_resolve_hash)
-                            extractor.clear_cache()
+                            extractor.clear_cache(clear_online = True)
                             logPrint("已清空缓存。\nCache cleared.")
                         if deep_resolve_hash:
                             logPrint("已启用hash值深度解析模式。\nEnabled deep resolution mode of hash value.")
