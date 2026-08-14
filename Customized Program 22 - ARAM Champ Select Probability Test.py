@@ -29,7 +29,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/12
+# 更新（Last update）：     2026/08/14
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -616,9 +616,12 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                     gameflow_phase = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
                     if gameflow_phase == "Lobby":
                         break
+                    elif gameflow_phase == "ChampSelect": #在上一步没有拿到想玩的英雄的时候，程序本应调用一次退出选择阶段的接口，但是有可能失败。所以这里强制将游戏状态设为房间内（When the user doesn't get any wanted champion in the last loop, the program should call the endpoint to quit champ select stage. However, this operation may fail. Therefore, here we force the gameflow phase to be "Lobby"）
+                        response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby-team-builder/champ-select/v1/session/quit")).json()
                     if interval != 0: #延迟响应（Respond after a lag）
                         time.sleep(interval)
                 #第二步：开始游戏（Step 2: Start the game）
+                start_game_retry_count: int = 0
                 while True:
                     response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/lobby/matchmaking/search")).json()
                     logPrint(response)
@@ -640,6 +643,12 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                         break
                     if interval != 0:
                         time.sleep(interval)
+                    start_game_retry_count += 1
+                    if start_game_retry_count > 10:
+                        logPrint("已超出开启游戏重试次数。尝试重新创建房间。\nExceeded the maximum retry count of starting a game. Try to create a new lobby.", print_time = True)
+                        response = await create_lobby(connection, queueId = queueId, lobbyName = args.lobby_name, lobbyPassword = args.lobby_password, aramMapMutator = args.aram_map_mutator, spectatorPolicy = args.spectator_policy, teamSize = args.team_size, spectatorDelayEnabled = args.enable_spectator_delay, hidePublicly = args.hide_publicly) #前面一步能创建成功的情况下，这里也一定能创建成功（If the previous step can create a lobby successfully, then this step can, too）
+                        logPrint(response)
+                        start_game_retry_count = 0
                 #第三步：等待所有成员选一名英雄（Step 3: Wait for all members to pick a champion）
                 AllPrepared: bool = False #标记所有成员是否准备就绪（Marks whether all members are prepared）
                 champ_select_session_errored: bool = False #标记英雄选择会话是否出现异常。有点像returned_to_lobby（Mark if the champ select session is errored. Kind of like `returned_to_lobby`）
@@ -981,7 +990,6 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                     if interval != 0:
                         time.sleep(interval)
                 #第一步：等待所有成员选一名英雄（Step 1: Wait for all members to pick a champion）
-                AllPrepared: bool = False #标记所有成员是否准备就绪（Marks whether all members are prepared）
                 returned_to_lobby: bool = False #标记是否在循环的过程中已退出英雄选择阶段而回到房间（Marks whether the lobby owner has quited the champ select stage during this loop running and therefore the user returns to the lobby）
                 while True:
                     champ_select_session: dict[str, Any] = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
@@ -995,7 +1003,7 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                             pickable_champion_df: pandas.DataFrame = LoLChampion_df[LoLChampion_df["id"].isin(pickable_championIds)]
                             pickable_champion_df_fields_to_print: list[str] = ["id", "name", "title", "alias"]
                             logPrint(format_df(pickable_champion_df.loc[:, pickable_champion_df_fields_to_print])[0], write_time = False)
-                            #第一步：第二阶段：选择最低优先级的英雄卡片，以便高优先级的英雄卡片进入备选英雄池供房主交换（Step 1: Phase 2: Select the first champion card, so that the higher champion cards enter the bench for the lobby owner to swap）
+                            #第一步：第二阶段：选择最低优先级的英雄卡片，以便高优先级的英雄卡片进入备选英雄池供房主交换（Step 1: Phase 2: Select the champion card of the lowest priority, so that those of higher priority enter the bench for the lobby owner to swap）
                             ##注意，对于对手阵营来说，也是执行此策略。只不过后面会多一步：依据槽位序号的顺序从替补英雄池中交换得到从高到低对应优先级的英雄（Note that this is the same for `roleType == 3` case, except that there'll be another step in this case: Swap the champion of corresponding priority from the bench according to the cellId order）
                             for championId in pickable_championIds:
                                 if not championId in current_candidate_championIds:
@@ -1024,7 +1032,7 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                         #海克斯大乱斗 经典模式版的英雄选择阶段没有英雄卡片，是直接选择好英雄的（The champ select stage of ARAM: Mayhem Classic-ish doesn't have champion cards. Champions are selected as soon as the champ select stage starts）
                         #第一步：第三阶段：等待所有成员选一名英雄（Step 1: Phase 3: Wait for all members to pick a champion）
                         logPrint("正在等待其他成员选择英雄……\nWaiting for other members to select their champions ...", print_time = True)
-                        AllPrepared = returned_to_lobby = False
+                        AllPrepared: bool = False #标记所有成员是否准备就绪（Marks whether all members are prepared）
                         while True:
                             champ_select_session = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
                             if "errorCode" in champ_select_session: #存在一种可能性：当房主的电脑非常卡时，英雄选择会话在更新到所有成员准备就绪前已经因为退出英雄选择阶段而不可用了（There's this possibility: before the champ select session is updated to the status where all players are ready, it becomes unavailable because of exiting the champ select stage）
