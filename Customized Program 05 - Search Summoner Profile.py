@@ -1,8 +1,9 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-import argparse, datetime, os, pandas, requests, time, json
+import argparse, datetime, gc, os, pandas, requests, time, json
 from urllib.parse import urljoin
 from openpyxl import load_workbook, Workbook
+from openpyxl.workbook.workbook import Worksheet
 import matplotlib.pyplot as plt
 from typing import Any, Optional
 from src.utils.summoner import print_summoner_info, get_info, get_infos, get_info_name
@@ -40,7 +41,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/07/30
+# 更新（Last update）：     2026/08/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2917,7 +2918,7 @@ async def search_profile(connection: Connection) -> None:
                         addDefaultStyle(mastery_df).to_excel(excel_writer = writer, sheet_name = "Champion Mastery")
                         logPrint("召唤师英雄成就导出完成！\nSummoner champion mastery exported!\n")
                         addDefaultStyle(recent_LoLPlayer_df).to_excel(excel_writer = writer, sheet_name = "Recently Played Summoners (LoL)")
-                        worksheet = writer.sheets["Recently Played Summoners (LoL)"]
+                        worksheet: Worksheet = writer.sheets["Recently Played Summoners (LoL)"]
                         worksheet.conditional_formatting.rules = [] #读取时清空原规则（Clear original rules when reading）
                         if len(recent_LoLPlayer_df) > 1:
                             max_numPlayersPerTeam_lol = 5 if len(recent_LoLPlayer_df) <= 1 else max(map(lambda x: 5 if x == 0 or not x in gameQueues else 2 if gameQueues[x]["gameMode"] == "CHERRY" else gameQueues[x]["numPlayersPerTeam"], recent_LoLPlayer_df["queueId"][1:])) #自定义对局的队伍规模视为5；斗魂竞技场的队伍规模虽然在API中记录为16，但这里应该考虑的是子阵营（The team size of any custom game is regarded as 5; although the team size of an Arena game is recorded as in LCU API, the subteam has more reference value）
@@ -3076,6 +3077,8 @@ async def search_profile(connection: Connection) -> None:
                         with open(json03path, "w", encoding = "utf-8") as jsonfile03:
                             json.dump(sorted(TFTMatches_exported), jsonfile03, ensure_ascii = False)
                         logPrint("已更新云顶之弈对局序号列表！\nUpdated TFT matchId list!")
+                    del worksheet #清除工作表对象，以断开与内存中的工作簿数据的引用（Delete the worksheet object to disconnect it from the workbook data in memory）
+                    del writer #清除工作簿对象，以断开与内存中的工作簿数据的引用（Delete the workbook object to disconnect it from the workbook data in memory）
                     break
             if workbook_exist:
                 logPrint("警告：由于该文件已存在，本次导出已追加新工作表到工作簿的末尾。这可能导致对局序号顺序的错乱。是否需要对工作表进行排序？（输入任意键排序，否则不排序）\nWarning: Because the excel workbook has existed, new sheets are appended to the last of the original sheet list. This may result in the disarrangement of matchId order. Do you want to sort the sheets? (Input anything to sort the sheets, or null to skip sorting)")
@@ -3127,7 +3130,10 @@ async def search_profile(connection: Connection) -> None:
                             wb.save(os.path.join(folder, wbName_sorted))
                             logPrint('排序完成！排好序的工作簿已保存为“%s”。\nOrdering finished! The ordered workbook is saved as "%s".\n' %(wbName_sorted, wbName_sorted))
                             wb.close()
+                            del wb #显式清除工作簿对象以释放内存（Explicitly delete the workbook object to release memory）
                             break
+            logPrint("正在清理工作簿占用内存……\nCleaning up the memory occupied by the workbook ...")
+            gc.collect() #显式回收垃圾。只有在当前运行环境中没有任何工作簿数据的引用时，工作簿所占用的内存才会被释放（Explicitly collect garbage. Only when there're no references to the workbook data in the current runtime environment will the memory occupied by the workbook be released）
 
 #-----------------------------------------------------------------------------
 # websocket
