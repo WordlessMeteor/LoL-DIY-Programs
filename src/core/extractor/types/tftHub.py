@@ -365,7 +365,7 @@ class TFTExtractor(LoLDataExtractor):
                                 regionNames: list[str] = []
                                 for portal_key in portalList:
                                     if portal_key in self.map22_bin:
-                                        regionName_key = self.map22_bin[portal_key]["RegionTra"]
+                                        regionName_key: str = self.map22_bin[portal_key]["RegionTra"]
                                         strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 140 else strtable_tft_default
                                         regionNames.append(self.get_strtable_value(strtable_locale, regionName_key, default = regionName_key))
                                     else:

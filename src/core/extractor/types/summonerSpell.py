@@ -117,9 +117,6 @@ class SummonerSpellExtractor(LoLDataExtractor):
         summonerSpell_data_json: dict[str, list[Any]] = copy.deepcopy(summonerSpell_data)
         
         #数据整理核心部分（Data organization core part）
-        pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
-        strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
-        strtable_lol_default: dict[str, int | dict[str, str]] = self.mainstringtable_default if self.strtable_organize_manner == 2 else self.lolstringtable_default
         for (key1, value) in summonerSpell_bin.items():
             for i in range(len(summonerSpell_header_keys)):
                 key: str = summonerSpell_header_keys[i]

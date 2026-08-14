@@ -166,7 +166,7 @@ class FontExtractor(LoLDataExtractor):
                         fontType_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "FontResolutionData": #字体分辨率（Font resolution）
                 for localeResolution_index in range(len(value["localeResolutions"])):
-                    localeResolution: list[dict[str, Any]] = value["localeResolutions"][localeResolution_index]
+                    localeResolution: dict[str, Any] = value["localeResolutions"][localeResolution_index]
                     for resolution_index in range(len(localeResolution["resolutions"])):
                         resolution: dict[str, Any] = localeResolution["resolutions"][resolution_index]
                         for i in range(len(fontResolution_header_keys)):
@@ -184,7 +184,7 @@ class FontExtractor(LoLDataExtractor):
                                 if i == 4: #分辨率方案序号（`resolution_index`）
                                     to_append = resolution_index
                                 else:
-                                    to_append = value.get(key, "")
+                                    to_append = resolution.get(key, "")
                             fontResolution_data[key].append(to_append)
                             fontResolution_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "{215f4776}": #字体样式（Font style）
@@ -362,8 +362,8 @@ class FontExtractor(LoLDataExtractor):
             fontResolution_df: pandas.DataFrame = eliminate_empty_fields(self.fontResolution_df)
             fontStyle_df: pandas.DataFrame = eliminate_empty_fields(self.fontStyle_df)
             font_CSSStyle_df: pandas.DataFrame = eliminate_empty_fields(self.font_CSSStyle_df)
+            font_CSSIcon_df: pandas.DataFrame = eliminate_empty_fields(self.font_CSSIcon_df)
         else:
-            font_CSSIcon_df = self.font_CSSIcon_df
             fontDesc_df = self.fontDesc_df
             fontType_df = self.fontType_df
             fontResolution_df = self.fontResolution_df

@@ -555,11 +555,11 @@ if __name__ == "__main__":
         integrate: bool = bool(integrate_str)
         
         #设置自动化操作（Set automatic operations）
+        preset_data_options: list[int] = [] #保留第一个版本的导出数据类型（Reserve data types to export in the first version）
         if len(versions) > 1:
             logPrint('''是否启用一键式导出？（输入任意非空字符串以禁用，否则启用。启用时，用户在第一个版本按下“-1”清空队列时，后续版本将只会整理和导出第一个版本获取过的数据。）\nDo you want to enable one-click export? (Submit any non-empty string to disable it, otherwise enable it. If it's enabled, when the user submits "-1" to empty the dataframe queue, the subsequent versions will only organize and export data of the same types as of the first version.)''')
             one_click_str: str = logInput()
             one_click: bool = not bool(one_click_str)
-            preset_data_options: list[int] = [] #保留第一个版本的导出数据类型（Reserve data types to export in the first version）
             if one_click:
                 logPrint("你看，他们像柱子一样！\nColumn like you see 'em.")
             else:
@@ -734,7 +734,7 @@ if __name__ == "__main__":
                                 logPrint("已禁用hash值深度解析模式。\nDisabled deep resolution mode of hash value.")
                         elif option[0] == "8":
                             logPrint(f"请设置等级计算的等级上限。输入空字符串以取消更改。\nPlease set the level cap for level scaling calculations. Submit an empty string to cancel the change.\n当前等级上限（Current level cap）：{extractor.levelScaling_cap}")
-                            levelScaling_cap_str: int = logInput()
+                            levelScaling_cap_str: str = logInput()
                             if levelScaling_cap_str.isdigit():
                                 levelScaling_cap: int = int(levelScaling_cap_str)
                                 extractor.set_levelScaling_cap(levelScaling_cap)
@@ -1301,7 +1301,7 @@ if __name__ == "__main__":
                             logPrint("已禁用hash值深度解析模式。\nDisabled deep resolution mode of hash value.")
                     elif option[0] == "8":
                         logPrint(f"请设置等级计算的等级上限。输入空字符串以取消更改。\nPlease set the level cap for level scaling calculations. Submit an empty string to cancel the change.\n当前等级上限（Current level cap）：{extractor.levelScaling_cap}")
-                        levelScaling_cap_str: int = logInput()
+                        levelScaling_cap_str: str = logInput()
                         if levelScaling_cap_str.isdigit():
                             levelScaling_cap: int = int(levelScaling_cap_str)
                             extractor.set_levelScaling_cap(levelScaling_cap)
@@ -1450,7 +1450,7 @@ if __name__ == "__main__":
                         logPrint("[%d/%d]正在调试符文数据……\nDebugging perk data ..." %(nDataOption_iter, nDataOptions))
                         perkExtractor: PerkExtractor = PerkExtractor(extractor)
                         if dir_type == "extract":
-                            perk_path: str = extract_game_dir / "perks.cdtb.bin.json"
+                            perk_path: Path = extract_game_dir / "perks.cdtb.bin.json"
                         else:
                             perk_path = repo_game_dir / "perks.cdtb.bin.json"
                         perkExtractor.build_perk_dataframe(debug = True, path = perk_path.as_posix())
@@ -1674,16 +1674,16 @@ if __name__ == "__main__":
         ##字符串常量池（Stringtable）
         lolstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/lol.stringtable.json"
         with open(lolstringtable_zh_path, "r", encoding = "utf-8") as fp:
-            lolstringtable_zh = json.load(fp)
+            lolstringtable_zh: dict[str, int | dict[str, str]] = json.load(fp)
         lolstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/lol.stringtable.json"
         with open(lolstringtable_en_path, "r", encoding = "utf-8") as fp:
-            lolstringtable_en = json.load(fp)
+            lolstringtable_en: dict[str, int | dict[str, str]] = json.load(fp)
         tftstringtable_zh_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/zh_cn/data/menu/en_us/tft.stringtable.json"
         with open(tftstringtable_zh_path, "r", encoding = "utf-8") as fp:
-            tftstringtable_zh = json.load(fp)
+            tftstringtable_zh: dict[str, int | dict[str, str]] = json.load(fp)
         tftstringtable_en_path = "C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/en_us/data/menu/en_us/tft.stringtable.json"
         with open(tftstringtable_en_path, "r", encoding = "utf-8") as fp:
-            tftstringtable_en = json.load(fp)
+            tftstringtable_en: dict[str, int | dict[str, str]] = json.load(fp)
         ##地图（Map）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
         #     map22_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
@@ -1795,11 +1795,11 @@ if __name__ == "__main__":
         return 0
 
     if args.sfx:
-        status = bankUnit_test()
+        status: int = bankUnit_test()
     else:
-        status = main() #供用户使用（For user use）
-        # status = debug(dir_type = "repo") #供开发者使用（For developer use）
-        # status = DIY()
+        status: int = main() #供用户使用（For user use）
+        # status: int = debug(dir_type = "repo") #供开发者使用（For developer use）
+        # status: int = DIY()
     #结束日志输入流（Cancel the log input stream）
     log.write(f"\n[Program terminated and returned status {status}.]\n")
     log.close()

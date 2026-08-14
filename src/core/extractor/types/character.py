@@ -651,15 +651,15 @@ class ChampionExtractor(LoLDataExtractor):
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
                             locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
-                            tooltip_key: str | list[str] = champion_data[subkey1][-1]
+                            complex_tooltip_key: str | list[str] = champion_data[subkey1][-1]
                             if i in {176, 177, 268, 269}: #说明文本单值（Single tooltip value）
-                                tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                tooltip_raw: str = self.get_strtable_value(strtable_locale, complex_tooltip_key, default = "")
                                 to_append = tooltip_raw
                             else: #说明文本列表（Tooltip value list）
-                                if tooltip_key == "":
+                                if complex_tooltip_key == "":
                                     to_append = ""
                                 else:
-                                    tooltips_raw: list[str] = list(map(lambda x: self.get_strtable_value(strtable_locale, x, default = ""), tooltip_key))
+                                    tooltips_raw: list[str] = list(map(lambda x: self.get_strtable_value(strtable_locale, x, default = ""), complex_tooltip_key))
                                     if i == 178 or i == 179: #技能进化说明文本（中文）和技能进化说明文本（英文）（`evolutionData mTooltips_content_zh` and `evolutionData mTooltips_content_en`）
                                         to_append = tooltips_raw
                                     else: #技能进化说明文本（中文/数值转换）和技能进化说明文本（英文/数值转换）（`evolutionData mTooltips_content_zh_burn` and `evolutionData mTooltips_content_en_burn`）

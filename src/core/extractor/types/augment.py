@@ -423,15 +423,12 @@ class AugmentExtractor(LoLDataExtractor):
                         if subkey2.endswith("_burn"):
                             spellKey: str = value["{96b4b430}"]
                             if spellKey in map12_bin_whole:
-                                mSpell: Optional[dict[str, Any]] = map12_bin_whole[spellKey]["mSpell"]
-                            else:
-                                mSpell: Optional[dict[str, Any]] = None
-                            if mSpell == None:
-                                to_append = ""
-                            else:
+                                mSpell: dict[str, Any] = map12_bin_whole[spellKey]["mSpell"]
                                 self.__class__.calculatedVariables.clear()
-                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                tooltip_burn: str = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
+                            else:
+                                to_append = ""
                         else:
                             to_append = tooltip_raw
                     elif i == 16 or i == 17: #强化符文列表本地化信息（Augment list localized text）
@@ -470,9 +467,9 @@ class AugmentExtractor(LoLDataExtractor):
                                 tooltip_key: str = KiwiAugmentSet_data[subkey1][-1]
                                 tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
                                 if subkey2.endswith("_burn"):
-                                    mSpell = rootSpell["mSpell"]
+                                    mSpell: dict[str, Any] = rootSpell["mSpell"]
                                     self.__class__.calculatedVariables.clear()
-                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                    tooltip_burn: str = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                     to_append = tooltip_burn
                                 else:
                                     to_append = tooltip_raw
@@ -532,7 +529,7 @@ class AugmentExtractor(LoLDataExtractor):
                                     else:
                                         mSpell = {}
                                     self.__class__.calculatedVariables.clear()
-                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, reservedVars = reservedVars, flexibleData = {"mStat_dict_override_version": self.version})
+                                    tooltip_burn: str = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, reservedVars = reservedVars, flexibleData = {"mStat_dict_override_version": self.version})
                                     to_append = tooltip_burn
                                 else:
                                     to_append = tooltip_raw
@@ -556,7 +553,7 @@ class AugmentExtractor(LoLDataExtractor):
                                     else:
                                         mSpell = {}
                                     self.__class__.calculatedVariables.clear()
-                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, reservedVars = reservedVars, flexibleData = {"mStat_dict_override_version": self.version})
+                                    tooltip_burn: str = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, reservedVars = reservedVars, flexibleData = {"mStat_dict_override_version": self.version})
                                     to_append = tooltip_burn
                                 else:
                                     to_append = tooltip_raw

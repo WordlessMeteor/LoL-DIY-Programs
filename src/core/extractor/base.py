@@ -249,8 +249,8 @@ class TooltipOperand:
         :type value: str
         '''
         self._value: str = value
-        self._number: int | float = 0
-        self._levels: tuple[int | float, ...] = tuple()
+        self._number: float = 0
+        self._levels: tuple[float, ...] = tuple()
         self._isContDivision: bool = self.judge_contDivision(value)
         self._isSingleNumber: bool = self.judge_number(value)
         if self._isContDivision:
@@ -318,14 +318,14 @@ class TooltipOperand:
         '''
         return self._isSingleNumber
     
-    def _apply_operation(self, other: Any, op: Callable[[int | float, int | float], int | float], op_name: str) -> TooltipOperand:
+    def _apply_operation(self, other: Any, op: Callable[[float, float], float], op_name: str) -> TooltipOperand:
         '''
         复用双目运算符的代码。在本类中包含加法、乘法和幂运算。<br>Reuse code of binary operators. In this class, these operations include sum, multiplicatio and power.
         
         :param other: 另一个数字或连除式。<br>Another number or continuous division.
         :type other: Any
         :param op: 运算符函数。通过lambda函数来定义。<br>Operator function defined by a `lambda` function.
-        :type op: Callable[[int | float, int | float], int | float]
+        :type op: Callable[[float, float], float]
         :param op_name: 运算符的英文描述。用于异常输出。<br>English description of this operator. Used for exception output.
         :type op_name: str
         :result: 运算结果。<br>Operation result.
@@ -334,19 +334,19 @@ class TooltipOperand:
         if not isinstance(other, TooltipOperand):
             other = TooltipOperand(str(other))
         if self.isSingleNumber and other.isSingleNumber:
-            result: int | float = op(self.number, other.number)
+            result: float = op(self.number, other.number)
             return TooltipOperand(str(result))
         elif self.isSingleNumber and other.isContDivision:
-            levels: tuple[int | float, ...] = tuple(map(lambda x: op(x, self.number), other.levels))
+            levels: tuple[float, ...] = tuple(map(lambda x: op(x, self.number), other.levels))
             return TooltipOperand("/".join(list(map(str, levels))))
         elif self.isContDivision and other.isSingleNumber:
-            levels: tuple[int | float, ...] = tuple(map(lambda x: op(x, other.number), self.levels))
+            levels: tuple[float, ...] = tuple(map(lambda x: op(x, other.number), self.levels))
             return TooltipOperand("/".join(list(map(str, levels))))
         elif self.isContDivision and other.isContDivision:
             self_levels_count: int = len(self.levels)
             other_levels_count: int = len(other.levels)
             if self_levels_count == other_levels_count:
-                levels: tuple[int | float, ...] = tuple(op(self.levels[i], other.levels[i]) for i in range(self_levels_count))
+                levels: tuple[float, ...] = tuple(op(self.levels[i], other.levels[i]) for i in range(self_levels_count))
                 return TooltipOperand("/".join(list(map(str, levels))))
             else:
                 raise ValueError(f"Cannot {op_name} two continuous divisions of size {self_levels_count} and {other_levels_count}.")
@@ -1931,8 +1931,8 @@ class LoLDataExtractor:
                         var_hash = cls.compute_binhash(var)
                         DataValues[var_hash] = data
                 binData["mDataValues"] = DataValues
-            if "mEffectAmount" in binData and isinstance(binData["mEffectAmount"], dict) and all(map(lambda x: isinstance(x, str), binData["mEffectAmount"].keys())) and all(map(lambda x: isinstance(x, (int, float)), binData["mEffectAmount"].values())): #传说：急速的HastePerStack存在大小写不一致的情况（Case mismatch occurs to Legend: Haste's `HastePerStack` variable）
-                mEffectAmount: dict[str, int | float] = {}
+            if "mEffectAmount" in binData and isinstance(binData["mEffectAmount"], dict) and all(map(lambda x: isinstance(x, str), binData["mEffectAmount"].keys())) and all(map(lambda x: isinstance(x, (float)), binData["mEffectAmount"].values())): #传说：急速的HastePerStack存在大小写不一致的情况（Case mismatch occurs to Legend: Haste's `HastePerStack` variable）
+                mEffectAmount: dict[str, float] = {}
                 for (key, value) in binData["mEffectAmount"].items():
                     var = key.lower()
                     mEffectAmount[var] = value
@@ -1988,7 +1988,7 @@ class LoLDataExtractor:
                                         DataValuesModeOverride[var_hash][gameModeName] = dataValue
                 binData["DataValuesModeOverride"] = DataValuesModeOverride
             if "mEffectAmountGameMode" in binData:
-                mEffectAmountGameMode: dict[str, dict[str, int | float]] = {}
+                mEffectAmountGameMode: dict[str, dict[str, float]] = {}
                 for gameModeName in binData["mEffectAmountGameMode"]:
                     for (key, value) in binData["mEffectAmountGameMode"][gameModeName]["mEffectAmountPerMode"].items():
                         var = key.lower()
@@ -2074,7 +2074,7 @@ class LoLDataExtractor:
         return tooltip
     
     @classmethod
-    def aRound(cls, num: float, digits: int = 0) -> int | float: #高级保留小数函数（Advanced version of `round` function）
+    def aRound(cls, num: float, digits: int = 0) -> float: #高级保留小数函数（Advanced version of `round` function）
         '''
         在保留小数时，自动忽略百万分位后的部分。<br>Automatically ignore the part after the millionth place when rounding a number.
         
@@ -2083,10 +2083,10 @@ class LoLDataExtractor:
         :param digits: 保留的小数位数。默认为0。<br>The number of decimal places to keep. 0 by default.
         :type digits: int
         :return: 处理后的数字。如果保留小数后与整数相差不到一百万分之一，则直接返回整数。<br>The processed number. If the rounded number differs from its integer form by less than one millionth, return the integer instead.
-        :rtype: int | float
+        :rtype: float
         '''
         tmp: float | int = round(num, digits)
-        result = int(tmp) if abs(tmp - int(tmp)) < 1e-6 else tmp
+        result: float = int(tmp) if abs(tmp - int(tmp)) < 1e-6 else tmp
         return result
     
     @classmethod
@@ -2099,7 +2099,7 @@ class LoLDataExtractor:
         :param digits: 保留的小数位数。默认为0。<br>The number of decimal places to keep. 0 by default.
         :type digits: int
         :return: 处理后的连除式。如果保留小数后元素与整数相差不到一百万分之一，则直接返回整数。<br>The processed continuous division. If the rounded element differs from its integer form by less than one millionth, return the integer instead.
-        :rtype: int | float
+        :rtype: float
         '''
         try:
             operand: TooltipOperand = TooltipOperand(division)
@@ -2107,7 +2107,7 @@ class LoLDataExtractor:
             return division
         else:
             if operand.isContDivision:
-                rounded_list: list[int | float] = []
+                rounded_list: list[float] = []
                 for level in operand.levels:
                     rounded_list.append(cls.aRound(level, digits = digits))
                 return "/".join(list(map(str, rounded_list)))
@@ -2193,13 +2193,13 @@ class LoLDataExtractor:
             partCalc = cls.variableCalculation(binData, formulaPart["mDataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             formulaStr = partCalc + " × stack of buff: " + formulaPart["mBuffName"]
         elif formulaPart_type == "ByCharLevelBreakpointsCalculationPart": #阶梯式等级提供增益（Bonus value provided by levels in a step function manner）
-            mLevel1Value: int | float = formulaPart.get("mLevel1Value", 0)
-            mInitialBonusPerLevel: int | float = formulaPart.get("mInitialBonusPerLevel", 0) #每级增加的数值。从2级开始加（The value to increment reaching each level. It takes effect from Level 2）
-            mBonusPerLevelAtAndAfter: int | float = 0 #初始化每级增加的数值，包含当前等级（Initialize the value to increment reaching each level, including this level）
+            mLevel1Value: float = formulaPart.get("mLevel1Value", 0)
+            mInitialBonusPerLevel: float = formulaPart.get("mInitialBonusPerLevel", 0) #每级增加的数值。从2级开始加（The value to increment reaching each level. It takes effect from Level 2）
+            mBonusPerLevelAtAndAfter: float = 0 #初始化每级增加的数值，包含当前等级（Initialize the value to increment reaching each level, including this level）
             if "mBreakpoints" in formulaPart:
-                levelValues: list[int | float] = []
+                levelValues: list[float] = []
                 formulaPart["mBreakpoints"] = sorted(formulaPart["mBreakpoints"], key = lambda x: x.get("mLevel", 1)) #这一步其实无关紧要，因为断点列表总是按照等级正序排列的（This step is actually unnecessary, for the breakpoints are always sorted in the ascending order of mLevel）
-                mLevel_i_Value: int | float = mLevel1Value
+                mLevel_i_Value: float = mLevel1Value
                 i: int = 1 #等级（Level）
                 j: int = 0 #断点列表下标（Breakpoint list index）
                 while i <= cls.levelScaling_cap:
@@ -2207,8 +2207,8 @@ class LoLDataExtractor:
                         mLevel_i_Value = mLevel1Value + (i - 1) * mInitialBonusPerLevel
                     else:
                         if i == formulaPart["mBreakpoints"][j].get("mLevel", 1):
-                            mBonusPerLevelAtAndAfter: int | float = formulaPart["mBreakpoints"][j].get("mBonusPerLevelAtAndAfter", 0)
-                            mAdditionalBonusAtThisLevel: int | float = formulaPart["mBreakpoints"][j].get("mAdditionalBonusAtThisLevel", 0) #以斯塔缇克电刃的冷却时间计算最为典型（The most typical case is the calculation of cooldown of Statikk Shiv）
+                            mBonusPerLevelAtAndAfter: float = formulaPart["mBreakpoints"][j].get("mBonusPerLevelAtAndAfter", 0)
+                            mAdditionalBonusAtThisLevel: float = formulaPart["mBreakpoints"][j].get("mAdditionalBonusAtThisLevel", 0) #以斯塔缇克电刃的冷却时间计算最为典型（The most typical case is the calculation of cooldown of Statikk Shiv）
                             if j < len(formulaPart["mBreakpoints"]) - 1: #防止下标越界（Avoid index out of bounds）
                                 j += 1
                         else:
@@ -2224,16 +2224,16 @@ class LoLDataExtractor:
                 mLevel_end_Value = mLevel1Value + (cls.levelScaling_cap - 1) * mBonusPerLevelAtAndAfter
                 formulaStr = "%s - %s (Level 1 to %d)" %(cls.aRound(mLevel1Value, 5), cls.aRound(mLevel_end_Value, 5), cls.levelScaling_cap)
         elif formulaPart_type == "ByCharLevelFormulaCalculationPart": #公式等级提供增益（Bonus value provided by levels following a formula）
-            mValues: list[int | float] = formulaPart["values"] if "values" in formulaPart else formulaPart["mValues"]
+            mValues: list[float] = formulaPart["values"] if "values" in formulaPart else formulaPart["mValues"]
             formulaStr = cls.burnValueList(mValues) + " (Level 1 to %d)" %(len(mValues)) #在25.06版本以前，值列表的键名是mValues（Before Patch 25.06, the value list's key name is "mValues"）
         elif formulaPart_type == "ByCharLevelInterpolationCalculationPart": #线性等级提供增益（Bonus value provided by levels in a linear manner）
             mScalePastDefaultMaxLevel: bool = formulaPart.get("mScalePastDefaultMaxLevel", True) #表示数值是否可超过18级（Represents whether the value can exceed Level 18）
-            mLevel1Value: int | float = cls.aRound(formulaPart.get("mStartValue", 0), 5)
-            mLevel18Value: int | float = cls.aRound(formulaPart.get("mEndValue", 0), 5)
-            mLevel_end_Value: int | float = mLevel18Value if cls.levelScaling_cap > 18 and not mScalePastDefaultMaxLevel else cls.aRound(mLevel1Value + (cls.levelScaling_cap - 1) * (mLevel18Value - mLevel1Value) / 17, 5)
+            mLevel1Value: float = cls.aRound(formulaPart.get("mStartValue", 0), 5)
+            mLevel18Value: float = cls.aRound(formulaPart.get("mEndValue", 0), 5)
+            mLevel_end_Value: float = mLevel18Value if cls.levelScaling_cap > 18 and not mScalePastDefaultMaxLevel else cls.aRound(mLevel1Value + (cls.levelScaling_cap - 1) * (mLevel18Value - mLevel1Value) / 17, 5)
             formulaStr = f"{mLevel1Value} - {mLevel_end_Value} (Level 1 to {cls.levelScaling_cap})"
         elif formulaPart_type == "ByItemEpicnessCountCalculationPart":
-            coefficient: int | float = cls.aRound(formulaPart.get("Coefficient", 0), 5)
+            coefficient: float = cls.aRound(formulaPart.get("Coefficient", 0), 5)
             itemEpicness_desc: str = itemEpicness_dict_zh[formulaPart["epicness"]] if useCHSPrompt else itemEpicness_dict_en[formulaPart["epicness"]]
             formulaStr = str(coefficient) + " × " + (itemEpicness_desc + "装备数量" if useCHSPrompt else "number of " + itemEpicness_desc + " items")
         elif formulaPart_type == "CooldownMultiplierCalculationPart": #典型示例：无极剑圣 易的【阿尔法突袭】（A typical example: AlphaStrike）
@@ -2606,9 +2606,9 @@ class LoLDataExtractor:
         if var.startswith("Effect") and var.endswith("Amount"):
             mEffectAmount_index = int(var.lstrip("Effect").rstrip("Amount")) - 1
             if "mEffectAmount" in binData:
-                mEffectAmount: list[int | float | dict[str, Any]] = binData["mEffectAmount"]
+                mEffectAmount: list[float | dict[str, Any]] = binData["mEffectAmount"]
                 if mEffectAmount_index < len(mEffectAmount):
-                    if all(map(lambda x: isinstance(x, (int, float)), mEffectAmount)):
+                    if all(map(lambda x: isinstance(x, float), mEffectAmount)):
                         normalValue = str(cls.aRound(mEffectAmount[mEffectAmount_index], 5))
                     elif all(map(lambda x: isinstance(x, dict), mEffectAmount)):
                         normalValue = cls.burnValueList(mEffectAmount[mEffectAmount_index]["value"]) if "value" in mEffectAmount[mEffectAmount_index] else "0"
@@ -2619,39 +2619,39 @@ class LoLDataExtractor:
             else:
                 skip = True
         elif (var in binData or var_hash in binData):
-            value: int | float | list[int | float] = binData[var] if var in binData else binData[var_hash]
-            if isinstance(value, (int, float)):
-                normalValue = str(cls.aRound(value, 5))
-            elif isinstance(value, list):
-                normalValue = cls.burnValueList(value)
+            complexValue: float | list[float] = binData[var] if var in binData else binData[var_hash]
+            if isinstance(complexValue, float):
+                normalValue = str(cls.aRound(complexValue, 5))
+            elif isinstance(complexValue, list):
+                normalValue = cls.burnValueList(complexValue)
             else:
                 skip = True
         elif decapitalize(var) in binData: #var_hash部分在此处无需重复（`var_hash` part doesn't need to repeated once again here）
-            value: int | float | list[int | float] = binData[decapitalize(var)]
-            if isinstance(value, (int, float)):
-                normalValue = str(cls.aRound(value, 5))
-            elif isinstance(value, list):
-                normalValue = cls.burnValueList(value)
+            complexValue: float | list[float] = binData[decapitalize(var)]
+            if isinstance(complexValue, float):
+                normalValue = str(cls.aRound(complexValue, 5))
+            elif isinstance(complexValue, list):
+                normalValue = cls.burnValueList(complexValue)
             else:
                 skip = True
         elif f"m{var}" in binData:
-            value: int | float | list[int | float] = binData[f"m{var}"]
-            if isinstance(value, (int, float)):
-                normalValue = str(cls.aRound(value, 5))
-            elif isinstance(value, list):
-                normalValue = cls.burnValueList(value)
+            complexValue: float | list[float] = binData[f"m{var}"]
+            if isinstance(complexValue, float):
+                normalValue = str(cls.aRound(complexValue, 5))
+            elif isinstance(complexValue, list):
+                normalValue = cls.burnValueList(complexValue)
             else:
                 skip = True
         elif "DataValues" in binData and (var.lower() in binData["DataValues"] or var_hash in binData["DataValues"]):
             if var.lower() in binData["DataValues"]:
-                values: list[int | float] = list(map(lambda x: cls.aRound(x, 5), cls.aGet(binData["DataValues"][var.lower()], ["values", "mValues"], [0])))
+                values: list[float] = list(map(lambda x: cls.aRound(x, 5), cls.aGet(binData["DataValues"][var.lower()], ["values", "mValues"], [0])))
             else:
-                values: list[int | float] = list(map(lambda x: cls.aRound(x, 5), cls.aGet(binData["DataValues"][var_hash], ["values", "mValues"], [0])))
+                values: list[float] = list(map(lambda x: cls.aRound(x, 5), cls.aGet(binData["DataValues"][var_hash], ["values", "mValues"], [0])))
             normalValue = cls.burnValueList(values)
         elif "mDataValues" in binData and (var.lower() in binData["mDataValues"] or var_hash in binData["mDataValues"]):
             if var.lower() in binData["mDataValues"]:
                 if "mValue" in binData["mDataValues"][var.lower()]:
-                    value: int | float = binData["mDataValues"][var.lower()]["mValue"]
+                    value: float = binData["mDataValues"][var.lower()]["mValue"]
                     normalValue = str(cls.aRound(value, 5))
                 elif "mValues" in binData["mDataValues"][var.lower()]: #英雄数据在14.15版本是mDataValues键（In champion data, it's `mDataValues` key in v14.15）
                     values = list(map(lambda x: cls.aRound(x, 5), binData["mDataValues"][var.lower()]["mValues"]))
@@ -2660,7 +2660,7 @@ class LoLDataExtractor:
                     skip = True
             else:
                 if "mValue" in binData["mDataValues"][var_hash]:
-                    value: int | float = binData["mDataValues"][var_hash]["mValue"]
+                    value: float = binData["mDataValues"][var_hash]["mValue"]
                 elif "mValues" in binData["mDataValues"][var_hash]:
                     values = list(map(lambda x: cls.aRound(x, 5), binData["mDataValues"][var_hash]["mValues"]))
                     normalValue = cls.burnValueList(values)
@@ -2668,16 +2668,16 @@ class LoLDataExtractor:
                     skip = True
         elif "mEffectAmount" in binData and (var.lower() in binData["mEffectAmount"] or var_hash in binData["mEffectAmount"]): #专用于符文（Specially used in perks）
             if var.lower() in binData["mEffectAmount"]:
-                value: int | float = binData["mEffectAmount"][var.lower()]
+                value: float = binData["mEffectAmount"][var.lower()]
             else:
-                value: int | float = binData["mEffectAmount"][var_hash]
+                value: float = binData["mEffectAmount"][var_hash]
             normalValue = str(cls.aRound(value, 5))
         elif "effectAmounts" in binData and (var in binData["effectAmounts"] or var_hash in binData["effectAmounts"]): #专用于云顶之弈（Specially used in TFT）
             if var in binData["effectAmounts"] and "value" in binData["effectAmounts"][var]:
-                value: int | float = binData["effectAmounts"][var]["value"]
+                value: float = binData["effectAmounts"][var]["value"]
                 normalValue = str(cls.aRound(value, 5))
             elif var_hash in binData["effectAmounts"] and "value" in binData["effectAmounts"][var_hash]:
-                value: int | float = binData["effectAmounts"][var_hash]["value"]
+                value: float = binData["effectAmounts"][var_hash]["value"]
                 normalValue = str(cls.aRound(value, 5))
             else:
                 skip = True
