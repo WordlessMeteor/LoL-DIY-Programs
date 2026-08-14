@@ -32,7 +32,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/08/12
+# 更新（Last update）：     2026/08/15
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -3095,6 +3095,29 @@ async def spectate(connection: Connection) -> None:
                 logPrint(spectating_summoner_info["message"])
         logPrint('请输入您想要观看的玩家召唤师名。输入“0”以返回上一层。\nPlease input the summonerName of the player to spectate. Submit "0" to return to the last step.')
 
+async def skip_tutorial_card(connection: Connection) -> None:
+    '''
+    跳过教程页签，直接进入游戏大厅。<br>Skip the tutorial tab and directly enter the home tab.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    '''
+    tutorialPath_settings: dict[str, Any] = await (await connection.request("GET", "/lol-npe-tutorial-path/v1/settings")).json()
+    if "errorCode" in tutorialPath_settings:
+        logPrint(tutorialPath_settings)
+        logPrint("新手教程界面设置获取失败。函数将不执行任何操作。\nTutorial screen settings capture failure. The function won't perform any operation.")
+    else:
+        if tutorialPath_settings["hasSkippedTutorialPath"]:
+            logPrint("您已经跳过新手教程页签了。\nYou've skipped the tutorial tab.")
+        else:
+            tutorialPath_settings["hasSkippedTutorialPath"] = True
+            response: Optional[dict[str, Any]] = await (await connection.request("PUT", "/lol-npe-tutorial-path/v1/settings", data = tutorialPath_settings)).json()
+            logPrint(response)
+            if response == None:
+                logPrint("跳过教程页签成功。\nSuccessfully skipped the tutorial tab.")
+            else:
+                logPrint("跳过教程页签失败。\nTutorial tab failed to be skipped.")
+
 async def gameflow_phase_transition(connection: Connection) -> str:
     '''
     无任何游戏状态时的主函数。由此进入各个选项。<br>The main function when gameflow phase is "None". Entry to each option.
@@ -3136,7 +3159,7 @@ async def gameflow_phase_transition(connection: Connection) -> str:
         elif option[0] == "7":
             await watch_replay_integrated(connection)
         elif option[0] == "8":
-            logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t初始化召唤师图标（Initialize summoner icon）\n3\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n4\t扩展对局记录（Expand match history）\n5\t循环测试房间创建（Test lobby creation iteratively）\n6\t调试游戏状态（Debug a gameflow phase）''')
+            logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t初始化召唤师图标（Initialize summoner icon）\n3\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n4\t扩展对局记录（Expand match history）\n5\t循环测试房间创建（Test lobby creation iteratively）\n6\t跳过新手教程页面（Skip tutorial page）\n7\t调试游戏状态（Debug a gameflow phase）''')
             while True:
                 suboption: str = logInput()
                 if suboption == "":
@@ -3154,11 +3177,13 @@ async def gameflow_phase_transition(connection: Connection) -> str:
                 elif suboption[0] == "5":
                     await create_queue_lobby(connection, loop_test = True)
                 elif suboption[0] == "6":
+                    await skip_tutorial_card(connection)
+                elif suboption[0] == "7":
                     return await debug_gameflow_phase(connection)
                 else:
                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     continue
-                logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t初始化召唤师图标（Initialize summoner icon）\n3\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n4\t扩展对局记录（Expand match history）\n5\t循环测试房间创建（Test lobby creation iteratively）\n6\t调试游戏状态（Debug a gameflow phase）''')
+                logPrint('''请选择一个子操作：\nPlease select a suboption:\n0\t返回上一层（Return to the last step）\n1\t显示当前召唤师信息（Display current summoner's information）\n2\t初始化召唤师图标（Initialize summoner icon）\n3\t更改“只接受好友邀请”选项（Toggle "allow game invites only from friends"）\n4\t扩展对局记录（Expand match history）\n5\t循环测试房间创建（Test lobby creation iteratively）\n6\t跳过新手教程页面（Skip tutorial page）\n7\t调试游戏状态（Debug a gameflow phase）''')
         elif option[0] == "9":
             await manage_ux(connection)
     return "" #返回值为空字符串，表示未调试游戏状态（An empty string returned means the user isn't debugging any gameflow phase）
