@@ -24,7 +24,7 @@ args = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/12
+# 更新（Last update）：     2026/08/14
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -277,7 +277,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     #参数预处理（Parameter preprocess）
     if func_str == "":
         print("未指定条件函数。将保存所有有效的对局概要和时间轴。\nNo condition function specified. All valid match summary and timeline will be saved.")
-        func: Callable[[dict[str, Any]], bool] = lambda x: "endOfGameResult" in x
+        func: Callable[[dict[str, Any]], bool] = lambda x: "metadata" in x and "json" in x
     else:
         try:
             func = eval(f"lambda game_summary: {func_str}")
@@ -286,7 +286,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
             return -1
         else:
             try:
-                tmp = func(TEST_GAME_SUMMARY["json"]) #校验函数是否能如期运行（Check whether the function can run as expected）
+                tmp = func(TEST_GAME_SUMMARY) #校验函数是否能如期运行（Check whether the function can run as expected）
             except:
                 print("判断条件函数运行出错！\nAn error occurred when testing the condition judgment function!")
                 return -1
@@ -741,15 +741,22 @@ def gameCreation_compare(game_summary: dict[str, Any], time_str: str) -> bool:
 
 threshold_function_example: str = 'gameId_compare(game_summary, 8502294282) ⇔ game_summary["gameId"] >= 8502294282 #获取对局序号在8502294282之后的下一场可用对局（Get the next available match after Match 8502294282）\nfirst_match_after_mainteinance(game_summary, "16.5") ⇔ game_summary.get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_summary["gameVersion"]) >= Patch("16.5") #查找当前大区在26.05版本的第一场对局（Check the first match in Patch 26.05 on the current server）\ngameCreation_compare(game_summary, "1970-01-01 08:00:00") ⇔ game_summary["gameCreation"] >= int(datetime.datetime.strptime("1970-01-01 08:00:00", "%Y-%m-%d %H:%M:%S").timestamp() * 1000) #查找创建时间在当前时区的指定时间之后的对局（Check matches created after a specified time of the current time zone）'
 
-def define_function() -> tuple[str, Optional[Callable[[dict[str, Any]], bool]]]:
+def define_function(endpoint_version: int = 3) -> tuple[str, Optional[Callable[[dict[str, Any]], bool]]]:
     '''
     定义判断条件函数或者阈值函数。<br>Define a condition judgment functin or threshold function.
     
+    :param endpoint_version: 对局记录接口版本。默认使用v3。<br>Match history query endpoint version. v3 is used by default.
+    
+        使用v3接口获取到的对局概要和时间轴相当于对使用v1接口获取到的对局概要和时间轴取“json”键的值。<br>Match summary and timeline obtained from v3 endpoint is equivalent to the value of the "json" key of match summary and timeline obtained from v1 endpoint.
+    :type endpoint_version: int
     :return: 函数主体字符串和函数接口。<br>Function body string and the function.
     
         函数主体字符串用于输出到日志中。<br>Function body string exists here to be exported into the log file.
     :rtype: tuple[str, Optional[Callable[[dict[str, Any]], bool]]]
     '''
+    #参数预处理（Parameter preprocessing）
+    if endpoint_version != 1:
+        endpoint_version = 3
     while True:
         func_str: str = input("f(game_summary): ")
         if func_str == "":
@@ -762,7 +769,7 @@ def define_function() -> tuple[str, Optional[Callable[[dict[str, Any]], bool]]]:
                 print("您的输入有误！请重新输入。\nERROR input! Please try again.")
             else:
                 try:
-                    tmp = func(TEST_GAME_SUMMARY["json"]) #校验函数是否能如期运行（Check whether the function can run as expected）
+                    tmp = func(TEST_GAME_SUMMARY["json"] if endpoint_version == 3 else TEST_GAME_SUMMARY) #校验函数是否能如期运行（Check whether the function can run as expected）
                 except:
                     print("函数运行出错！请重新输入。\nAn error occurred when testing the function! Please try again.")
                 else:
@@ -792,7 +799,7 @@ async def index_traversal_main(connection: Connection) -> None: #按序遍历对
                 step -= 2
         elif step == 2:
             print(f'第二步：请输入一个筛选对局的函数。该函数应当返回逻辑值。\nStep 2: Please input a function to filter matches. This function should return a boolean value.\n示例（Example）：\n{filter_function_example}\n输入空字符串以放弃筛选，转而保留所有对局的信息。\nSumbit an empty string to give up filtering and save all matches instead.')
-            func_str, func = define_function()
+            func_str, func = define_function(endpoint_version = 3)
         elif step == 3:
             print("第三步：请选择一个产品。\nStep 3: Please select a product.\n0\t返回第一步（Return to the first step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）\n%s3\t全部（Both）" %("☆" if func == None else "!"))
             while True:
@@ -878,7 +885,7 @@ async def history_traversal_main(connection: Connection) -> None: #从对局记�
                         print(start_info["message"])
         elif step == 2:
             print(f'第二步：请输入一个筛选对局的函数。该函数应当返回逻辑值。\nStep 2: Please input a function to filter matches. This function should return a boolean value.\n示例（Example）：\n{filter_function_example}\n输入空字符串以放弃筛选，转而保留所有对局的信息。\nSumbit an empty string to give up filtering and save all matches instead.')
-            func_str, func = define_function()
+            func_str, func = define_function(endpoint_version = 1)
         elif step == 3:
             print('第三步：请选择一个产品。\nStep 3: Please select a product.\n0\t返回第一步（Return to the first step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）')
             while True:
@@ -946,7 +953,7 @@ async def binary_search_main(connection: Connection) -> None: #类二分搜索�
                 print("阈值函数f：存在唯一的对局序号x₀ ∈ [a, b]，使得对于任意的x < x₀，f(x)为假，且对于任意的x ≥ x₀，f(x)为真。\nThreshold function f: There exists a unique matchId x₀ ∈ [a, b] such that for any x < x₀, f(x) is false, and for any x ≥ x₀, f(x) is true.")
                 threshold_function_definition_hint_printed = True
             print(f'第二步：请输入一个阈值函数。该函数应当返回逻辑值。\nStep 2: Please input a threshold function. This function should return a boolean value.\n示例（Example）：\n{threshold_function_example}\n输入空字符串以返回上一步。\nSumbit an empty string to return to the last step.')
-            func_str, func = define_function()
+            func_str, func = define_function(endpoint_version = 3)
             if func == None:
                 step -= 2
         elif step == 3:
