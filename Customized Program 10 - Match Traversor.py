@@ -203,7 +203,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     matches_found: list[int] = []
     json_folder: str = os.path.join(set_platform_folder(region, platformId), "1. MatchIDs").replace("\\", "/")
     os.makedirs(json_folder, exist_ok = True)
-    saved_matchIds: set[int] = set(map(lambda x: int(x.split("-")[-1].split()[0]), [_ for _ in os.listdir(json_folder) if _.startswith("Match Information " if product == "" else f"Match Information ({product}) - ") and "(SGP)" in _]))
+    saved_matchIds: set[int] = set(map(lambda x: int(x.split("-")[-1].split()[0]), [_ for _ in os.listdir(json_folder) if _.startswith("Match Information " if product == "" else f"Match Information ({product}) - ") and "SGP" in _]))
     downloaded_matches: set[int] = set(map(lambda x: int(os.path.splitext(os.path.basename(x))[0].split("-")[1]), [_ for _ in os.listdir(replay_folder) if _.startswith(f"{platformId}-") and os.path.splitext(_)[1] == ".rofl"]))
     #遍历对局序号（Traverse matchIds）
     gameCount: int = end_matchId - start_matchId + 1
@@ -224,11 +224,11 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
                 #下面将json文件保存到对局文件夹中。强烈建议不要在使用v3接口时执行此操作。（The following code save the json files into the match folder. It's strongly recommended that users not perform this operation when the v3 endpoint is used）
                 if save_json and not matchId in saved_matchIds:
                     match_product: str = "TFT" if game_summary["mapId"] == 22 else "LoL"
-                    json1name: str = f"Match Information ({match_product}) - {platformId}-{matchId} (SGP).json"
+                    json1name: str = f"Match Information ({match_product}) - {platformId}-{matchId} (SGP-v3).json"
                     with open(os.path.join(json_folder, json1name), "w", encoding = "utf-8") as fp:
                         json.dump(game_summary, fp, indent = 4, ensure_ascii = False)
                     if match_product == "LoL":
-                        json2name: str = f"Match Timeline ({match_product}) - {platformId}-{matchId} (SGP).json"
+                        json2name: str = f"Match Timeline ({match_product}) - {platformId}-{matchId} (SGP-v3).json"
                         status, game_timeline = await get_game_timeline_sgp(connection, session, match_id, checkLoL = checkLoL, checkTFT = checkTFT, endpoint_version = 3)
                         if status == 200:
                             with open(os.path.join(json_folder, json2name), "w", encoding = "utf-8") as fp:
@@ -346,7 +346,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     puuids_searched: set[str] = set()
     traversed_player_count: int = 0
     found_match_count: int = 0
-    saved_matchIds: set[int] = set(map(lambda x: int(x.split("-")[-1].split()[0]), [_ for _ in os.listdir(json_folder) if _.startswith(f"Match Information ({product}) - ") and "(SGP)" in _]))
+    saved_matchIds: set[int] = set(map(lambda x: int(x.split("-")[-1].split()[0]), [_ for _ in os.listdir(json_folder) if _.startswith(f"Match Information ({product}) - ") and "SGP" in _]))
     downloaded_matches: set[int] = set(map(lambda x: int(os.path.splitext(os.path.basename(x))[0].split("-")[1]), [_ for _ in os.listdir(replay_folder) if _.startswith(f"{platformId}-") and os.path.splitext(_)[1] == ".rofl"]))
     #遍历对局序号（Traverse matchIds）
     while len(puuids_to_search) > 0:
@@ -388,10 +388,10 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
                     #下面将json文件保存到日志文件夹中（The following code save the json files into the log folder）
                     if save_json and not matchId in saved_matchIds:
                         match_product: str = game_summary["metadata"]["product"]
-                        json1name: str = f"Match Information ({match_product}) - {platformId}-{matchId} (SGP).json"
+                        json1name: str = f"Match Information ({match_product}) - {platformId}-{matchId} (SGP-v1).json"
                         with open(os.path.join(json_folder, json1name), "w", encoding = "utf-8") as fp:
                             json.dump(game_summary, fp, indent = 4, ensure_ascii = False)
-                        json2name: str = f"Match Timeline ({match_product}) - {platformId}-{matchId} (SGP).json"
+                        json2name: str = f"Match Timeline ({match_product}) - {platformId}-{matchId} (SGP-v1).json"
                         if matchId in matchTimelines:
                             game_timeline: dict[str, Any] = matchTimelines[matchId]
                             with open(os.path.join(json_folder, json2name), "w", encoding = "utf-8") as fp:

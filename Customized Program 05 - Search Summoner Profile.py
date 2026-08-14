@@ -41,7 +41,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/08/12
+# 更新（Last update）：     2026/08/14
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2441,7 +2441,7 @@ async def search_profile(connection: Connection) -> None:
                 ##信息/概要（Information / Summary）
                 if status == 200 and (not use_sgp or "json" in LoLGame_summary):
                     if save_all_json and save_one_json:
-                        json10name: str = f"Match Summary (LoL) - {platformId}-{matchId} (SGP).json" if use_sgp else f"Match Summary (LoL) - {platformId}-{matchId}.json"
+                        json10name: str = f"Match Summary (LoL) - {platformId}-{matchId} (SGP-v1).json" if use_sgp else f"Match Summary (LoL) - {platformId}-{matchId}.json"
                         os.makedirs(match_folder, exist_ok = True)
                         try:
                             with open(os.path.join(match_folder, json10name), "w", encoding = "utf-8") as jsonfile10: #如果有两个人存在于同一场对局中，那么保存第二个人的对局概要时，将重新写一遍这个文件（If two players exist in one match, then to save the second player's match summary, the same json file will be written twice）
@@ -2488,7 +2488,7 @@ async def search_profile(connection: Connection) -> None:
                         LoLGame_event_df = pandas.DataFrame(data = LoLGame_timeline_error)
                     elif not "errorCode" in LoLGame_summary:
                         if save_all_json and save_one_json: #时间轴的单场文本文档保存策略继承了对局概要的单场文本文档保存策略（`save_one_json` of match timeline inherits from that of match summary）
-                            json11name: str = f"Match Timeline (LoL) - {platformId}-{matchId} (SGP).json" if use_sgp else f"Match Timeline (LoL) - {platformId}-{matchId}.json"
+                            json11name: str = f"Match Timeline (LoL) - {platformId}-{matchId} (SGP-v1).json" if use_sgp else f"Match Timeline (LoL) - {platformId}-{matchId}.json"
                             os.makedirs(match_folder, exist_ok = True)
                             try:
                                 with open(os.path.join(match_folder, json11name), "w", encoding = "utf-8") as jsonfile11:
