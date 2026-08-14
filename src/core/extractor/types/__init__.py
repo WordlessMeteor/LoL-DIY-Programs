@@ -1,6 +1,6 @@
 from .map import MapExtractor
 from .cheat import CheatExtractor
-from .summoner import SummonerSpellExtractor
+from .summonerSpell import SummonerSpellExtractor
 from .perk import PerkExtractor
 from .character import ChampionExtractor
 from .item import ItemExtractor
