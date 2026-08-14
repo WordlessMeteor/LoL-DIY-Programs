@@ -14,8 +14,17 @@ from src.core.dataframes.matchHistory import get_matchSummary_sgp, get_matchDeta
 from src.core.process.replay import download_replay_sgp
 
 parser = argparse.ArgumentParser()
+parser.add_argument("--cli", help = "启用命令行模式。在命令行模式下，主模式以外的所有待设置的参数采用命令行参数的默认值（Enable command line mode. Under command line mode, all parameters to be set when the program is running will adopt the default value of the command line parameters, except `mode`）", action = "store_true")
+parser.add_argument("-m", "--mode", help = "指定脚本运行模式（Specify the script to traversal mode）", action = "store", type = str, choices = ["t", "traverse", "s", "search"], default = "")
+parser.add_argument("-tm", "--traverse-mode", help = "指定遍历对局的模式（Specify the mode of traversing matches）", action = "store", type = str, choices = ["index", "history"], default = "index")
 parser.add_argument("-b", "--begin", help = "指定对局序号范围的下标（Specify the lower limit of matchId range）", action = "store", type = int, default = 0)
 parser.add_argument("-e", "--end", help = "指定对局序号范围的上标（Specify the upper limit of matchId range）", action = "store", type = int, default = 0)
+parser.add_argument("-sn", "--summoner-name", help = "指定用于按对局记录遍历模式的起始召唤师名称（Specify the starting summoner name used in history traversal mode）", action = "store", type = str, default = "")
+parser.add_argument("-f", "--func", help = "指定用于遍历模式的判断条件函数或者用于查找模式的阈值函数（Specify the condition judgment function used in traversal mode or the threshold function used in search mode）", action = "store", type = str, default = "")
+parser.add_argument("-p", "--product", help = "限定对局产品名（Restrict the match product name）", action = "store", type = str, choices = ["LoL", "TFT", "both"], default = "both")
+parser.add_argument("-sj", "--save-json", help = "在遍历模式下，是否保存对局信息文件（Under traversal mode, whether to save match information files）", action = "store_true")
+parser.add_argument("-sr", "--save-replay", help = "在遍历模式下，是否下载回放（Under traversal mode, whether to download replays）", action = "store_true")
+# parser.add_argument("--na-gameIds", help = "在查找模式下，指定未找到的对局序号（Under search mode, specify matchIds not found）", action = "store", type = int, nargs = "*", default = []) #由于对局序号过多可能导致命令特别长，因此不建议通过命令行直接传入该参数，而建议用户在程序运行过程中设置。一般情况下，只有在程序被中断后，下次执行二分查找时才会为此参数传入值（Because too many matchIds will lead to a very long command, it's suggested that users shouldn't pass this parameter through command line but set it during the program execution. In normal cases, only when the program is interrupted and the user is going to perform another binary search might this parameter be passed with some values）
 args = parser.parse_args()
 
 #=============================================================================
@@ -757,8 +766,16 @@ def define_function(endpoint_version: int = 3) -> tuple[str, Optional[Callable[[
     #参数预处理（Parameter preprocessing）
     if endpoint_version != 1:
         endpoint_version = 3
+    use_default_cli_value: bool = args.cli
     while True:
-        func_str: str = input("f(game_summary): ")
+        if args.func == "" and not use_default_cli_value:
+            func_str: str = input("f(game_summary): ")
+            args.cli = False #一旦出现手动设置的环节，立刻将cli变量设置为假。其它地方同理（Whenever a manual configuration phase occurs, set cli argument to False. Other scenarios are similar）
+        else:
+            func_str = args.func
+            print(f"f(game_summary): {func_str}")
+            args.func = ""
+            use_default_cli_value = False #默认值只得使用一次，防止预输入异常时程序进入死循环。其它地方同理（The default value should be used only once, in case an error of the argument could cause the program to be stuck in a dead loop. Other scenarios are similar）
         if func_str == "":
             func = None
             break
@@ -803,7 +820,19 @@ async def index_traversal_main(connection: Connection) -> None: #按序遍历对
         elif step == 3:
             print("第三步：请选择一个产品。\nStep 3: Please select a product.\n0\t返回第一步（Return to the first step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）\n%s3\t全部（Both）" %("☆" if func == None else "!"))
             while True:
-                product_option: str = input()
+                if args.product == "LoL":
+                    product_option: str = "1"
+                    print("1")
+                elif args.product == "TFT":
+                    product_option = "2"
+                    print("2")
+                else:
+                    if args.cli:
+                        product_option = "3"
+                        print("3")
+                    else:
+                        product_option = input()
+                        args.cli = False
                 if product_option == "":
                     continue
                 elif product_option[0] == "0":
@@ -823,7 +852,16 @@ async def index_traversal_main(connection: Connection) -> None: #按序遍历对
         elif step == 4:
             print("第四步：是否保存对局信息？\nStep 4: Whether to save match information?\n!1\t是（Yes）\n☆2\t否（No）")
             while True:
-                save_json_str: str = input()
+                if args.save_json:
+                    save_json_str = "1"
+                    print("1")
+                else:
+                    if args.cli:
+                        save_json_str = ""
+                        print()
+                    else:
+                        save_json_str = input()
+                        args.cli = False
                 if save_json_str == "":
                     save_json_str = "2"
                 if save_json_str[0] == "0":
@@ -835,7 +873,16 @@ async def index_traversal_main(connection: Connection) -> None: #按序遍历对
         elif step == 5:
             print("第五步：是否尝试下载回放？\nStep 5: Whether to try downloading replays?\n1\t是（Yes）\n☆2\t否（No）")
             while True:
-                save_rofl_str: str = input()
+                if args.save_replay:
+                    save_rofl_str = "1"
+                    print("1")
+                else:
+                    if args.cli:
+                        save_rofl_str = "2"
+                        print()
+                    else:
+                        save_rofl_str = input()
+                        args.cli = False
                 if save_rofl_str == "":
                     save_rofl_str = "2"
                 if save_rofl_str[0] == "0":
@@ -867,8 +914,16 @@ async def history_traversal_main(connection: Connection) -> None: #从对局记�
             break
         elif step == 1:
             print('第一步：请输入您想要当作遍历起点的召唤师名称。输入空字符串从自己开始。输入“0”以退出程序。\nStep 1: Please input the name of the summoner you want to start with. Submit an empty string to start from yourself. Submit "0" to exit the program.')
+            use_default_cli_value: bool = args.cli
             while True:
-                start_summoner_name: str = input()
+                if args.summoner_name == "" and not use_default_cli_value:
+                    start_summoner_name: str = input()
+                    args.cli = False
+                else:
+                    start_summoner_name = args.summoner_name
+                    print(args.summoner_name)
+                    args.summoner_name = ""
+                    use_default_cli_value = False
                 if start_summoner_name == "":
                     start_summoner_name = "current-summoner"
                 if start_summoner_name == "0":
@@ -889,7 +944,15 @@ async def history_traversal_main(connection: Connection) -> None: #从对局记�
         elif step == 3:
             print('第三步：请选择一个产品。\nStep 3: Please select a product.\n0\t返回第一步（Return to the first step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）')
             while True:
-                product_option: str = input()
+                if args.product == "LoL":
+                    product_option = "1"
+                    print("1")
+                elif args.product == "TFT":
+                    product_option = "2"
+                    print("2")
+                else:
+                    product_option = input()
+                    args.cli = False
                 if product_option == "":
                     continue
                 elif product_option[0] == "0":
@@ -905,7 +968,16 @@ async def history_traversal_main(connection: Connection) -> None: #从对局记�
                     print("您的输入有误！请重新输入。\nERROR input! Please try again.")
         elif step == 4:
             print("第四步：是否保存对局信息？\nStep 4: Whether to save match information?\n☆1\t是（Yes）\n2\t否（No）")
-            save_json_str: str = input()
+            if args.save_json:
+                save_json_str = "1"
+                print("1")
+            else:
+                if args.cli:
+                    save_json_str = "2" #需要注意，对cli开关的解释是取命令行参数的默认值，不是程序运行时的默认值。在这里，命令行参数的默认值是假，因为在动作是“store_true”的情况下，不指定相应的开关即表示默认值是假。程序运行时的默认值则是真（Note that the explanation of cli parameter focuses on the default value of the command line argument, instead of the default value during the program execution. Here, the default value of the command line argument "--save-json" is False, for the default value of an argument with action "store_true" is False. The default value during the program execution is True）
+                    print()
+                else:
+                    save_json_str = input()
+                    args.cli = False
             if save_json_str == "":
                 save_json_str = "1"
             if save_json_str[0] == "0":
@@ -914,7 +986,16 @@ async def history_traversal_main(connection: Connection) -> None: #从对局记�
                 save_json = save_json_str[0] != "2"
         elif step == 5:
             print("第五步：是否尝试下载回放？\nStep 5: Whether to try downloading replays?\n1\t是（Yes）\n☆2\t否（No）")
-            save_rofl_str: str = input()
+            if args.save_replay:
+                save_rofl_str = "1"
+                print("1")
+            else:
+                if args.cli:
+                    save_rofl_str = "2"
+                    print()
+                else:
+                    save_rofl_str = input()
+                    args.cli = False
             if save_rofl_str == "":
                 save_rofl_str = "2"
             if save_rofl_str[0] == "0":
@@ -959,7 +1040,15 @@ async def binary_search_main(connection: Connection) -> None: #类二分搜索�
         elif step == 3:
             print('第三步：请选择一个产品。\nStep 3: Please select a product.\n0\t返回上一步（Return to the last step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）')
             while True:
-                product_option: str = input()
+                if args.product == "LoL":
+                    product_option = "1"
+                    print("1")
+                elif args.product == "TFT":
+                    product_option = "2"
+                    print("2")
+                else:
+                    product_option = input()
+                    args.cli = False
                 if product_option == "":
                     continue
                 elif product_option[0] == "0":
@@ -976,7 +1065,12 @@ async def binary_search_main(connection: Connection) -> None: #类二分搜索�
         elif step == 4:
             print('''第四步：如果您已知某些对局不存在，请在下方输入它们的对局序号组成的列表。输入空字符串以跳过此步骤。输入“0”以返回上一步。\nStep 4: If you already know that some matches don't exist, please provide them here. Submit an empty string to skip this step. Submit "0" to return to the last step.''')
             while True:
-                matchIds_not_found_str: str = input()
+                if args.cli:
+                    matchIds_not_found_str = ""
+                    print()
+                else:
+                    matchIds_not_found_str: str = input()
+                    args.cli = False
                 if matchIds_not_found_str == "":
                     matchIds_not_found = set()
                     break
@@ -1011,7 +1105,14 @@ async def connect(connection: Connection) -> None:
     await print_summoner_info(connection)
     print("请选择一个选项：\nPlease select an option:\n0\t退出程序（Exit the program）\n1\t遍历对局序号（Traverse matchIds）\n2\t二分查找对局（Binary search for a match）")
     while True:
-        option: str = input()
+        if args.mode == "t" or args.mode == "traverse":
+            option = "1"
+            print("1")
+        elif args.mode == "s" or args.mode == "search":
+            option = "2"
+            print("2")
+        else:
+            option: str = input()
         if option == "":
             continue
         elif option[0] == "0":
@@ -1019,7 +1120,15 @@ async def connect(connection: Connection) -> None:
         elif option[0] == "1":
             print("请选择一个遍历模式：\nPlease select a traversal mode:\n1\t按对局序号遍历（By gameId）\n2\t按对局记录遍历（By match history）")
             while True:
-                mode: str = input()
+                if args.mode == "":
+                    mode = input()
+                else:
+                    if args.traverse_mode == "index":
+                        mode: str = "1"
+                        print("1")
+                    else:
+                        mode: str = "2"
+                        print("2")
                 if mode == "":
                     continue
                 elif mode[0] == "1":
