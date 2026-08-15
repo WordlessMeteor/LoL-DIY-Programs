@@ -4882,6 +4882,76 @@ tokenShop_categoryOffer_header: dict[str, str] = {
     "offer item price": "交易道具价格",
     "offer item quantity": "交易道具数量"
 }
+#进度（Progression）
+progression_header: dict[str, str] = {
+    "index": "序号",
+    "id": "识别码",
+    "name": "名称",
+    "productId": "产品识别码",
+    "schemaVersion": "数据格式版本",
+    "repeat count": "循环次数限制",
+    "repeat multiplier": "循环奖励倍数",
+    "repeat scope": "循环作用域标识"
+}
+progression_counter_header: dict[str, str] = {
+    "progression_index": "进度序号",
+    "progression_id": "进度识别码",
+    "progression_name": "进度名称",
+    "counter_index": "计数器序号",
+    "direction": "方向",
+    "groupId": "计数器分组识别码",
+    "id": "计数器识别码",
+    "name": "计数器名称",
+    "startValue": "计数器初始值",
+    "counterId": "计数器识别码",
+    "counterValue": "当前数值",
+    "ownerId": "拥有者玩家通用唯一识别码",
+    "productId": "产品识别码"
+}
+progression_milestone_header: dict[str, str] = {
+    "progression_index": "进度序号",
+    "progression_id": "进度识别码",
+    "progression_name": "进度名称",
+    "milestone_index": "里程碑序号",
+    "isRepetitive": "可重复",
+    "counterId": "计数器识别码",
+    "groupId": "分组序号",
+    "id": "里程碑识别码",
+    "name": "里程碑名称",
+    "triggerRequirement": "触发要求",
+    "counter_name": "计数器名称",
+    "properties CURRENCY_AMOUNT": "货币数量",
+    "properties CURRENCY_ID": "货币识别码",
+    "properties ENTITLEMENT_INSTANCE_ID": "资格实例识别码",
+    "properties MILESTONE_SIZE": "里程碑规格",
+    "properties REWARD_GROUP_ID": "奖励分组识别码",
+    "instanceId": "实例识别码",
+    "milestoneId": "里程碑识别码",
+    "ownerId": "拥有者玩家通用唯一识别码",
+    "productId": "产品识别码",
+    "repeatSequence": "重复序列号",
+    "triggerValue": "简单触发值",
+    "triggered": "已达成",
+    "triggeredTimestamp": "达成时间戳",
+    "trigger_index": "复杂触发条件序号",
+    "trigger counterId": "监控计数器识别码",
+    "trigger entitlementItemId": "触发资格道具识别码",
+    "trigger triggerValue": "该条件下的触发值",
+    "trigger type": "复杂触发类型",
+    "trigger counter_name": "监控计数器名称"
+}
+progression_repeatTrigger_header: dict[str, str] = {
+    "progression_index": "进度序号",
+    "progression_id": "进度识别码",
+    "progression_name": "进度名称",
+    "repeatTrigger_index": "重复触发条件序号",
+    "counterId": "监控计数器识别码",
+    "increaseBy": "触发循环周期",
+    "multiplier": "奖励倍数",
+    "startTriggerValue": "起始触发值",
+    "type": "触发类型",
+    "counter_name": "监控计数器名称"
+}
 #游戏数据提取（Game data extraction）
 ##法术通用（Spell common）
 spell_header: dict[str, str] = {

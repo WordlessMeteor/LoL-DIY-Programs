@@ -1,6 +1,6 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-import json, os, pandas, re, time
+import argparse, json, os, pandas, re, time
 from openpyxl import load_workbook, Workbook
 from src.utils.summoner import print_summoner_info, get_info_name
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
@@ -11,13 +11,17 @@ from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from typing import Any
 from openpyxl.worksheet.worksheet import Worksheet
 
+parser: argparse.ArgumentParser = argparse.ArgumentParser(formatter_class = argparse.RawTextHelpFormatter)
+parser.add_argument("-f", "--fill", help = "激活父级元素填充。\nEnable parent element fill.", action = "store_true")
+args: argparse.Namespace = parser.parse_args()
+
 #=============================================================================
 # * 声明（Declaration）
 #=============================================================================
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/12
+# 更新（Last update）：     2026/08/15
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -253,7 +257,7 @@ async def organize_pass_information(connection: Connection) -> None:
                     for i in range(len(event_pass_bundle_header_keys)):
                         key: str = event_pass_bundle_header_keys[i]
                         if i == 0 or i == 1: #事件相关键（Event-related keys）
-                            if bundle_index == 0 and bundledItem_index == 0: #事件信息只在同事件内只追加一次（Event data are appended once per event）
+                            if bundle_index == 0 and bundledItem_index == 0 or args.fill: #事件信息只在同事件内只追加一次（Event data are appended once per event）
                                 to_append: Any = eventInfo[key]
                             else:
                                 to_append = ""
@@ -313,12 +317,12 @@ async def organize_pass_information(connection: Connection) -> None:
                 for i in range(len(event_reward_item_header_keys)):
                     key: str = event_reward_item_header_keys[i]
                     if i == 0 or i == 1: #事件相关键（Event-related keys）
-                        if item_index == 0 and rewardOption_index == 0: #事件信息只在同事件内只追加一次（Event data are appended once per event）
+                        if item_index == 0 and rewardOption_index == 0 or args.fill: #事件信息只在同事件内只追加一次（Event data are appended once per event）
                             to_append: Any = eventInfo[key]
                         else:
                             to_append = ""
                     elif i <= 6: #奖励商品相关键（Reward item-related keys）
-                        if rewardOption_index == 0: #奖励商品信息只在同商品内只追加一次（Reward item data are appended once per item）
+                        if rewardOption_index == 0 or args.fill: #奖励商品信息只在同商品内只追加一次（Reward item data are appended once per item）
                             if i == 2: #道具序号（`item_index`）
                                 to_append = item_index + 1
                             elif i == 4: #奖励标签（`rewardTags`）
@@ -359,7 +363,7 @@ async def organize_pass_information(connection: Connection) -> None:
             for i in range(len(token_bundle_header_keys)):
                 key: str = token_bundle_header_keys[i]
                 if i == 0 or i == 1: #事件相关键（Event-related keys）
-                    if bundle_index == 0:
+                    if bundle_index == 0 or args.fill:
                         to_append: Any = eventInfo[key]
                     else:
                         to_append = ""
@@ -382,12 +386,12 @@ async def organize_pass_information(connection: Connection) -> None:
                         for i in range(len(tokenShop_categoryOffer_header_keys)):
                             key: str = tokenShop_categoryOffer_header_keys[i]
                             if i == 0 or i == 1: #事件相关键（Event-related keys）
-                                if category_index == 0 and offer_index == 0 and item_index == 0:
+                                if category_index == 0 and offer_index == 0 and item_index == 0 or args.fill:
                                     to_append: Any = eventInfo[key]
                                 else:
                                     to_append = ""
                             elif i <= 4: #交易分类相关键（Offer category-related keys）
-                                if offer_index == 0 and item_index == 0:
+                                if offer_index == 0 and item_index == 0 or args.fill:
                                     if i == 2: #分类序号（`category_index`）
                                         to_append = category_index + 1
                                     elif i == 3: #类别（`category`）
@@ -397,7 +401,7 @@ async def organize_pass_information(connection: Connection) -> None:
                                 else:
                                     to_append = ""
                             elif i <= 13: #交易相关键（Offer-related keys）
-                                if item_index == 0:
+                                if item_index == 0 or args.fill:
                                     if i == 10: #交易已突出显示（`offer highlighted`）
                                         to_append = "√" if offer["highlighted"] else ""
                                     elif i == 11: #交易状态（`offer offerState`）
@@ -499,7 +503,7 @@ async def organize_pass_information(connection: Connection) -> None:
                 try:
                     wb: Workbook = load_workbook(wbPath)
                 except FileNotFoundError:
-                    print('商品藏品信息工作簿读取失败！请确保“%s”文件夹内含有名为“%s”的工作簿。如果需要退出程序，请输入“0”。\nERROR reading the Catalog and Collections workbook! Please make sure the workbook "%s" is in the folder "%s". If you want to exit the program, please submit "0".' %(folder, excel_name, excel_name, folder))
+                    print('事件通行证工作簿读取失败！请确保“%s”文件夹内含有名为“%s”的工作簿。如果需要退出程序，请输入“0”。\nERROR reading the Event Pass workbook! Please make sure the workbook "%s" is in the folder "%s". If you want to exit the program, please submit "0".' %(folder, excel_name, excel_name, folder))
                     store_reload: str = input()
                     if store_reload == "0":
                         break
