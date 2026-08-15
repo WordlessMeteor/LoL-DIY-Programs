@@ -1287,7 +1287,7 @@ def select_report_categories(gameflow_phase: str, summoner_name: str = "") -> li
         report_category_list: list[str] = REPORT_CATEGORY_LIST_CHAMPSELECT
         nCategory: int = 7
     else:
-        logPrint("请尽可能详尽地告诉我们这位玩家都做了些什么。如果需要的话，可以在下方选择最多三项分类。\nAs accurately as you can, please tell us what happened with this player. Choose up to three reporting categories if you need to.\n*****************************************************************************\n为赢而玩。\nPLAY TO WIN.\n1\t中途退出/挂机（LEAVING THE GAME / AFK）\n\t断开连接，不积极参与游戏\n\tDisconnected, not actively participating\n2\t团队破坏（TEAM SABOTAGE）\n\t故意送人头、扰乱队友、不与队友协作\n\tIntentional feeding, disrupting teammates, assisting enemy team\n*****************************************************************************\n公平地玩。\nPLAY FAIR.\n3\t作弊（CHEATING）\n\t使用脚本、使用未经许可的第三方程序\n\tScripting, using unapproved third-party programs\n4\t排位操控（RANK MANIPULATION）\n\t演员行为、故意送分、炸鱼、代练\n\tSmurfing, boosting, win-trading, deranking\n5\t自动脚本刷级（BOTTING）\n\t对局行为反常，机械性地参与游戏或不公平地获取进度\n\tUtilizing AFK or leveling bots to inactively participate or unfairly earn progress\n*****************************************************************************\n尊重地玩。\nPLAY WITH RESPECT.\n6\t滥用聊天工具（COMMS ABUSE）\n\t霸凌、骚扰、威胁、仇恨言论、聊天/信号刷屏\n\tBullying, harassment, threats, hate speech, chat/ping spam\n7\t有攻击性的名称（OFFENSIVE NAME）\n\t不当或有攻击性的用户名称、名称编号、战队名称\n\tInappropriate or offensive account name, tagline, team name")
+        logPrint("请尽可能详尽地告诉我们这位玩家都做了些什么。如果需要的话，可以在下方选择最多三项分类。\nAs accurately as you can, please tell us what happened with this player. Choose up to three reporting categories if you need to.\n*****************************************************************************\n为赢而玩。\nPLAY TO WIN.\n1\t中途退出/挂机（LEAVING THE GAME / AFK）\n\t断开连接，不积极参与游戏\n\tDisconnected, not actively participating\n2\t消极态度（TEAM SABOTAGE）\n\t故意送人头、扰乱队友、不与队友协作\n\tIntentional feeding, disrupting teammates, assisting enemy team\n*****************************************************************************\n公平地玩。\nPLAY FAIR.\n3\t作弊（CHEATING）\n\t使用脚本、使用未经许可的第三方程序\n\tScripting, using unapproved third-party programs\n4\t排位操控（RANK MANIPULATION）\n\t演员行为、故意送分、炸鱼、代练\n\tSmurfing, boosting, win-trading, deranking\n5\t自动脚本刷级（BOTTING）\n\t对局行为反常，机械性地参与游戏或不公平地获取进度\n\tUtilizing AFK or leveling bots to inactively participate or unfairly earn progress\n*****************************************************************************\n尊重地玩。\nPLAY WITH RESPECT.\n6\t滥用聊天工具（COMMS ABUSE）\n\t霸凌、骚扰、威胁、仇恨言论、聊天/信号刷屏\n\tBullying, harassment, threats, hate speech, chat/ping spam\n7\t有攻击性的名称（OFFENSIVE NAME）\n\t不当或有攻击性的用户名称、名称编号、战队名称\n\tInappropriate or offensive account name, tagline, team name")
         logPrint("示例（Example）：\n[1, 2, 3]\t#中途退出/挂机（LEAVING THE GAME / AFK）、消极态度（TEAM SABOTAGE）、作弊（CHEATING）")
         report_category_list: list[str] = REPORT_CATEGORY_LIST_POSTGAME
         nCategory = 7
@@ -1834,8 +1834,6 @@ async def report_player_matchHistory(connection: Connection) -> None:
                         body: dict[str, Any] = {"offenderPuuid": player_puuid, "obfuscatedOffenderPuuid": player_obfuscatedPuuid, "categories": report_categories, "gameId": gameId, "comment": comment}
                         response: Optional[dict[str, Any]] = await send_report_request(connection, body, endpoint_type = 1)
             logPrint('请输入对局序号。输入“0”以返回上一层。\nPlease input gameId. Submit "0" to return to the last step.')
-    else:
-        logPrint("您目前不在游戏内。\nYou're currently not in a game.")
 
 async def download_replay(connection: Connection) -> None:
     '''
@@ -4201,6 +4199,8 @@ async def configure_TFTParty_loadout(connection: Connection) -> None:
     :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
     :type connection: Connection
     '''
+    inventoryTypeNames_zh: dict[str, str] = {"WARD_SKIN": "饰品", "EMOTE": "表情", "SUMMONER_ICON": "召唤师图标", "NEXUS_FINISHER": "终结特效", "REGALIA_BANNER": "旗帜", "REGALIA_CREST": "徽章", "TOURNAMENT_TROPHY": "冠军杯赛奖杯"}
+    inventoryTypeNames_en: dict[str, str] = {"WARD_SKIN": "ward skin", "EMOTE": "emote", "SUMMONER_ICON": "summoner icon", "NEXUS_FINISHER": "nexus finisher", "REGALIA_BANNER": "banner", "REGALIA_CREST": "crest", "TOURNAMENT_TROPHY": "tournament trophy"}
     loadout_scope: dict[str, Any] | list[dict[str, Any]] = await (await connection.request("GET", "/lol-loadouts/v4/loadouts/scope/account")).json()
     if isinstance(loadout_scope, dict) and "errorCode" in loadout_scope:
         logPrint(loadout_scope)
@@ -4224,6 +4224,8 @@ async def configure_TFTParty_loadout(connection: Connection) -> None:
             elif loadout_option[0] in list(map(str, range(1, 5))):
                 inventoryTypes: dict[str, str] = {"1": "COMPANION", "2": "TFT_DAMAGE_SKIN", "3": "TFT_MAP_SKIN", "4": "TFT_ZOOM_SKIN"}
                 inventoryType: str = inventoryTypes[loadout_option[0]]
+                inventoryTypeName_zh: str = inventoryTypeNames_zh[inventoryType]
+                inventoryTypeName_en: str = inventoryTypeNames_en[inventoryType]
                 collection_df_selected: pandas.DataFrame = pandas.concat([collection_df.iloc[:1, :], collection_df[collection_df["inventoryType"] == inventoryType]], ignore_index = True)
                 if len(collection_df_selected) == 1:
                     logPrint("您目前没有%s的使用权。\nYou don't have permission to use any %s." %(inventoryTypeName_zh, inventoryTypeName_en))
