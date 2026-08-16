@@ -2876,7 +2876,7 @@ async def search_profile(connection: Connection) -> None:
             recent_TFTPlayer_data_organized: dict[str, list[Any]] = {TFTGame_stat_header_keys[i]: [TFTGame_stat_header[TFTGame_stat_header_keys[i]]] for i in recent_TFTPlayer_statistics_output_order}
             recent_TFTPlayer_df: pandas.DataFrame = pandas.DataFrame(data = recent_TFTPlayer_data_organized)
         
-        if search_LoL and LoLGamePlayed or search_TFT and TFTGamePlayed:
+        if search_LoL and LoLGamePlayed and len(recent_LoLPlayer_df) > 1 or search_TFT and TFTGamePlayed and len(recent_TFTPlayer_df) > 1:
             analyze_recently_played_summoners(search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df, gameQueues, displayName, folder)
         
         #计算每场对局要保存的工作表数量（Calculate the number of sheets to be saved for each match）

@@ -3249,7 +3249,7 @@ async def search_recent_players(connection: Connection) -> None:
             recent_TFTPlayer_df: pandas.DataFrame = pandas.DataFrame(data = recent_TFTPlayer_data_organized)
             TFTGamePlayed = False
         
-        if search_LoL and LoLGamePlayed or search_TFT and TFTGamePlayed:
+        if search_LoL and LoLGamePlayed and len(recent_LoLPlayer_df) > 1 or search_TFT and TFTGamePlayed and len(recent_TFTPlayer_df) > 1:
             logPrint("近期一起玩过的玩家数据已加载完成！\nRecently played summoner data loaded successfully!")
             while True:
                 update: bool = await detect_mode(connection, search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df, language_code, infos)
