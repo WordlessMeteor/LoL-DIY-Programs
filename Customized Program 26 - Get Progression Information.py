@@ -4,11 +4,11 @@ import argparse, os, pandas, re, time
 from openpyxl import load_workbook, Workbook
 from openpyxl.worksheet.worksheet import Worksheet
 from src.core.config.headers import progression_header, progression_counter_header, progression_milestone_header, progression_repeatTrigger_header
-from src.core.config.localization import counterDirections, milestone_triggerRequirements, milestoneSizes, milestoneTriggerTypes
 from src.core.config.servers import save_platform_info, set_summonerInfo_folder
 from src.utils.summoner import get_info_name, print_summoner_info
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from src.utils.format import addDefaultStyle
+from src.localization.languages.zh_CN import counterDirections, milestone_triggerRequirements, milestoneSizes, milestoneTriggerTypes
 from typing import Any
 
 parser: argparse.ArgumentParser = argparse.ArgumentParser(formatter_class = argparse.RawTextHelpFormatter)
@@ -21,7 +21,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/15
+# 更新（Last update）：     2026/08/17
 #=============================================================================
 
 #-----------------------------------------------------------------------------

@@ -9,7 +9,7 @@ from src.utils.logger import LogManager
 from src.utils.summoner import get_info
 from src.utils.format import optimize_bool_display
 from src.core.config.headers import game_leaderboard_header
-from src.core.config.localization import queueTypes_ranked, tiers, ratedTiers_turbo, ratedTiers_cherry
+from src.localization.languages.zh_CN import queueTypes_ranked, tiers, ratedTiers_turbo, ratedTiers_cherry
 
 def get_tier_name(tier: str, isCherry: bool = False) -> str:
     '''

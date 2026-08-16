@@ -5,9 +5,9 @@ from openpyxl import load_workbook, Workbook
 from src.utils.summoner import print_summoner_info, get_info_name
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.config.headers import event_info_header, event_narrative_header, event_pass_chapter_header, event_pass_bundle_header, event_reward_item_header, token_bundle_header, tokenShop_categoryOffer_header
-from src.core.config.localization import inventoryType_dict, subInventoryTypes, eventPassTypes, rewardTag_dict, lolEventHubRewardTrackItemStates, cardSizes, celebrationTypes, lolEventHubRewardTrackItemHeaderTypes, lolEventHubOfferCategories, lolEventHubOfferStates
 from src.utils.format import getISOTime, addDefaultStyle
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
+from src.localization.languages.zh_CN import inventoryType_dict, subInventoryTypes, eventPassTypes, rewardTag_dict, lolEventHubRewardTrackItemStates, cardSizes, celebrationTypes, lolEventHubRewardTrackItemHeaderTypes, lolEventHubOfferCategories, lolEventHubOfferStates
 from typing import Any
 from openpyxl.worksheet.worksheet import Worksheet
 
@@ -21,7 +21,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/15
+# 更新（Last update）：     2026/08/17
 #=============================================================================
 
 #-----------------------------------------------------------------------------

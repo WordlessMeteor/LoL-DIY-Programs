@@ -5,7 +5,7 @@ wd: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")).r
 os.chdir(wd)
 if not wd in sys.path:
     sys.path.append(wd) #确保在“src”文件夹的父级目录运行此代码（Make sure this program is run under the parent folder of the "src" folder）
-from src.core.config.localization import language_ddragon
+from src.localization.general import language_ddragon
 from src.utils.summoner import get_info_name
 
 #大区数据（Servers/Platforms）

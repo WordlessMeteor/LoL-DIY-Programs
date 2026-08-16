@@ -11,7 +11,7 @@ from src.utils.summoner import get_info
 from src.utils.format import optimize_bool_display
 from src.utils.webRequest import SGPSession
 from src.core.config.const import BOT_UUID
-from src.core.config.localization import team_colors_int, krarities, augment_rarity, subteam_colors, positions
+from src.localization.languages.zh_CN import team_colors_int, krarities, augment_rarity, subteam_colors, positions
 from src.core.config.headers import TFTGame_summary_header, champSelect_player_header, inGame_player_header, eog_playerstat_data_lol_header, eog_stat_data_tft_header, LoLGame_summary_header, LoLGame_summary_sgp_header
 from src.core.dataframes.matchHistory import get_LoLGame_summary, get_game_summary_sgp, sort_LoLGame_summary, sort_LoLGame_summary_sgp, sort_TFTGame_summary
 

@@ -6,10 +6,11 @@ from src.utils.format import getISOTime, optimize_bool_display, format_df, addDe
 from src.utils.logger import LogManager
 from src.utils.summoner import print_summoner_info, get_info_name
 from src.utils.excel_workbook import create_workbook_win32
-from src.core.config.localization import gamemaps, slotTypes, positions, recommendedAttributes
 from src.core.config.headers import perk_lcu_header, recommendedPage_header, perkPage_header
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.dataframes.champions import sort_inventory_champions, filter_champion
+from src.localization.multilingual import gamemaps
+from src.localization.languages.zh_CN import slotTypes, positions, recommendedAttributes
 
 #=============================================================================
 # * 声明（Declaration）
@@ -17,7 +18,7 @@ from src.core.dataframes.champions import sort_inventory_champions, filter_champ
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/25
+# 更新（Last update）：     2026/08/17
 #=============================================================================
 
 #-----------------------------------------------------------------------------

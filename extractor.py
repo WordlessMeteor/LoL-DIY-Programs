@@ -9,7 +9,7 @@ from src.utils.webRequest import requestUrl
 from src.utils.format import format_df, addDefaultStyle, eliminate_empty_fields
 from src.utils.runtimeDebug import subscope
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
-from src.core.config.localization import language_ddragon, language_dict
+from src.localization.general import language_ddragon, language_dict
 from src.core.extractor.base import verifyDictHeterogeneity, syncListOrder, traverse_keyPath, getBinaryKeys, LoLDataExtractor
 from src.core.extractor.types import *
 
@@ -19,7 +19,7 @@ from src.core.extractor.types import *
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/08/15
+# 更新（Last update）：     2026/08/17
 #=============================================================================
 
 #定义模式覆盖文本描述函数（Define the overriden data tooltip function）

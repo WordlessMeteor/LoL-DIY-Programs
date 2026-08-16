@@ -7,7 +7,9 @@ if not wd in sys.path:
     sys.path.append(wd) #确保在“src”文件夹的父级目录运行此代码（Make sure this program is run under the parent folder of the "src" folder）
 from src.utils.format import optimize_bool_display
 from src.core.config.headers import queue_header
-from src.core.config.localization import categories, gameSelectCategories, gameSelectModeGroups, tiers, queueAvailability_dict, banModes, pickModes, gamemaps
+from src.localization.general import queueAvailability_dict
+from src.localization.multilingual import gamemaps
+from src.localization.languages.zh_CN import categories, gameSelectCategories, gameSelectModeGroups, tiers, banModes, pickModes
 
 def sort_queue_data(queues: list[dict[str, Any]]) -> pandas.DataFrame:
     '''

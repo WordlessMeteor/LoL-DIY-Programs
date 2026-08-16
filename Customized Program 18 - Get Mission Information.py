@@ -8,7 +8,7 @@ from src.utils.format import getISOTime, optimize_bool_display, format_df, addDe
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.config.headers import mission_header, objective_group_header, objective_category_header
-from src.core.config.localization import celebrationTypes, clientNotifyLevels, displayTypes, missionTypes, metadataMissionTypes, objectiveStatus_dict, objectiveTypes, rewardGroupStrategies, rewardTypes, missionStatus_dict, gameTypes_mission, objectivesTypes, lolObjectiveCategoryTypes, lolEventHubTypes, objectiveCategoryFilter_dict, eventPassTypes
+from src.localization.languages.zh_CN import celebrationTypes, clientNotifyLevels, displayTypes, missionTypes, metadataMissionTypes, objectiveStatus_dict, objectiveTypes, rewardGroupStrategies, rewardTypes, missionStatus_dict, gameTypes_mission, objectivesTypes, lolObjectiveCategoryTypes, lolEventHubTypes, objectiveCategoryFilter_dict, eventPassTypes
 
 #=============================================================================
 # * 声明（Declaration）
@@ -16,7 +16,7 @@ from src.core.config.localization import celebrationTypes, clientNotifyLevels, d
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/25
+# 更新（Last update）：     2026/08/17
 #=============================================================================
 
 #-----------------------------------------------------------------------------

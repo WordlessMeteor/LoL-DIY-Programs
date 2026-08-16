@@ -3,13 +3,14 @@ from lcu_driver.connection import Connection
 from openpyxl import load_workbook, Workbook
 import json, os, pandas, time
 from typing import Any
-from src.core.config.localization import tiers, ratedTiers_turbo, ratedTiers_cherry
 from src.utils.summoner import print_summoner_info, get_info, get_infos, get_info_name
 from src.utils.logger import LogManager
 from src.utils.format import optimize_bool_display, addDefaultStyle, format_runtime
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from src.core.config.servers import platform_TENCENT, platform_RIOT, platform_GARENA
 from src.core.config.headers import challenger_ladder_metadata_header, challenger_ladder_header, topRated_ladder_header
+from src.localization.languages.zh_CN import tiers, ratedTiers_turbo, ratedTiers_cherry, queueTypes_ranked as queueTypes_zh
+from src.localization.languages.en_US import queueTypes_ranked as queueTypes_en
 
 #=============================================================================
 # * 声明（Declaration）
@@ -17,7 +18,7 @@ from src.core.config.headers import challenger_ladder_metadata_header, challenge
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/16
+# 更新（Last update）：     2026/08/17
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -134,10 +135,7 @@ async def get_challenger_tier(connection: Connection) -> None:
     # rewardTrack_df: pandas.DataFrame = pandas.DataFrame(data = rewardTrack_data_organized)
     # rewardTrack_df = pandas.concat([pandas.DataFrame([rewardTrack_header])[rewardTrack_df.columns], rewardTrack_df], ignore_index = True)
     
-    queueTypes_zh: dict[str, str] = {"JADE_RANKED_SOLO_5x5": "经典模式 5V5", "RANKED_PREMADE_5x5": "5V5", "RANKED_TFT_DOUBLE_UP": "双人作战", "RANKED_TFT_PAIRS": "2V0", "RANKED_TFT_TURBO": "狂暴模式", "RANKED_TFT": "云顶之弈", "RANKED_FLEX_TT": "扭曲丛林 灵活 5V5", "CHERRY": "斗魂竞技场", "RANKED_FLEX_SR": "灵活 5V5", "RANKED_SOLO_5x5": "单人/双人", "NONE": "无"} #2V0模式仅美测服可用（RANKED_TFT_PAIRS is only available on PBE）
-    queueTypes_en: dict[str, str] = {"JADE_RANKED_SOLO_5x5": "League Classic 5x5", "RANKED_PREMADE_5x5": "5V5", "RANKED_TFT_DOUBLE_UP": "Double Up", "RANKED_TFT_PAIRS": "2V0", "RANKED_TFT_TURBO": "Hyper Roll", "RANKED_TFT": "Ranked TFT", "RANKED_FLEX_TT": "Twisted Treeline Flex 5V5", "CHERRY": "Arena", "RANKED_FLEX_SR": "Ranked Flex", "RANKED_SOLO_5x5": "Ranked Solo/Duo", "NONE": "None"}
     challenger_ladder_queueTypes: list[str] = await (await connection.request("GET", "/lol-ranked/v1/challenger-ladders-enabled")).json()
-    
     challenger_ladder_metadata_header_keys: list[str] = list(challenger_ladder_metadata_header.keys())
     challenger_ladder_metadata: dict[str, list[Any]] = {key: [] for key in challenger_ladder_metadata_header_keys}
     challenger_ladder_header_keys: list[str] = list(challenger_ladder_header.keys())

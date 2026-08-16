@@ -13,7 +13,9 @@ from src.utils.patch import Patch, FindPostPatch
 from src.utils.webRequest import requestUrl, SGPSession
 from src.core.config.const import BOT_UUID
 from src.core.config.headers import LoLHistory_header, LoLGame_summary_header, LoLGame_summary_sgp_header, LoLGame_timeline_header, LoLGame_timeline_sgp_header, LoLGame_event_header, LoLGame_event_sgp_header, TFTHistory_header, TFTGame_summary_header
-from src.core.config.localization import language_cdragon, gamemaps, tiers, gameTypes_history, team_colors_int, endOfGameResults, lanes, roles, subteam_colors, augment_rarity, eventTypes, buildingTypes, featTypes, laneTypes, levelUpTypes, killTypes, monsterSubTypes, monsterTypes, dragonSoul_names, transformTypes, towerTypes, wardTypes, traitStyles, rarities, positions
+from src.localization.general import language_cdragon
+from src.localization.multilingual import gamemaps
+from src.localization.languages.zh_CN import tiers, gameTypes_history, team_colors_int, endOfGameResults, lanes, roles, subteam_colors, augment_rarity, eventTypes, buildingTypes, featTypes, laneTypes, levelUpTypes, killTypes, monsterSubTypes, monsterTypes, dragonSoul_names, transformTypes, towerTypes, wardTypes, traitStyles, rarities, positions
 
 async def get_LoLHistory(connection: Connection, puuid: str, begIndex: int = 0, endIndex: int = 500, retry: int = 3, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[bool, dict[str, Any]]:
     '''

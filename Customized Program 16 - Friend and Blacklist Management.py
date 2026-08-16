@@ -10,12 +10,12 @@ from src.utils.patch import Patch
 from src.utils.runtimeDebug import subscope
 from src.utils.webRequest import requestUrl, SGPSession
 from src.utils.excel_workbook import create_workbook_win32
-from src.core.config.localization import availabilities, RiotRelationships, challengeCrystalLevels, tiers, rarities, spectatorPolicies, ptyTypes, titleAcquisitionTypes, krarities, conversationTypes, messageTypes, system_messages
 from src.core.config.headers import friend_hovercard_header, friend_group_header, conversation_header, message_header, friend_request_header, party_header, invid_header, champSelect_mutedPlayer_header, captureDevice_header, voiceSettings_header, participant_record_header, spectate_nonfriend_header, blockList_header, TFTGame_summary_header
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.config.const import BOT_UUID
 from src.core.dataframes.matchHistory import get_LoLHistory, get_matchSummary_sgp, sort_LoLGame_stats, sort_LoLGame_stats_sgp, generate_TFTGameSummary_records, sort_TFTGame_stats
 from src.core.dataframes.gameflow import sort_ChampSelect_players
+from src.localization.languages.zh_CN import availabilities, RiotRelationships, challengeCrystalLevels, tiers, rarities, spectatorPolicies, ptyTypes, titleAcquisitionTypes, krarities, conversationTypes, messageTypes, system_messages
 
 #=============================================================================
 # * 声明（Declaration）
@@ -23,7 +23,7 @@ from src.core.dataframes.gameflow import sort_ChampSelect_players
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/07/31
+# 更新（Last update）：     2026/08/17
 #=============================================================================
 
 #-----------------------------------------------------------------------------

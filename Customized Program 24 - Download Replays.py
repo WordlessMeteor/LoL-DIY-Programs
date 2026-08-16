@@ -4,16 +4,17 @@ import os, pandas, time
 from typing import Any, Literal, Optional
 from src.utils.webRequest import SGPSession
 from src.utils.format import format_df
-from src.core.config.localization import gamemaps, gamemodes, gameTypes_history
 from src.core.dataframes.matchHistory import get_game_summary_sgp, get_game_timeline_sgp
 from src.core.process.replay import download_replay_lcu, download_replay_sgp, watch_replay
+from src.localization.multilingual import gamemodes, gamemaps
+from src.localization.languages.zh_CN import gameTypes_history
 
 #=============================================================================
 # * 声明（Declaration）
 #=============================================================================
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
-# 更新（Last update）：     2026/08/12
+# 更新（Last update）：     2026/08/17
 #=============================================================================
 
 #-----------------------------------------------------------------------------

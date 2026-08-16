@@ -10,8 +10,8 @@ from src.utils.summoner import print_summoner_info
 from src.utils.repeatConnect import LCUConnect
 from src.utils.excel_workbook import create_workbook_win32
 from src.utils.keyControl import isKeyPressed
-from src.core.config.localization import language_ddragon, language_dict, language_cdragon
 from src.core.dataframes.champions import test_bot, sort_ddragon_champions, sort_inventory_champions, sort_plugin_champions
+from src.localization.general import language_ddragon, language_dict, language_cdragon
 
 #=============================================================================
 # * 声明（Declaration）
@@ -19,7 +19,7 @@ from src.core.dataframes.champions import test_bot, sort_ddragon_champions, sort
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/12
+# 更新（Last update）：     2026/08/17
 #=============================================================================
 
 #-----------------------------------------------------------------------------

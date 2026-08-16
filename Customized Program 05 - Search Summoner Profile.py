@@ -13,11 +13,12 @@ from src.utils.patch import Patch
 from src.utils.webRequest import requestUrl, SGPSession
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from src.core.config.headers import profile_header, mastery_header, ranked_header, ladder_header, TFTGame_summary_header as TFTGame_stat_header
-from src.core.config.localization import language_ddragon, language_dict, language_cdragon, tiers, ratedTiers_turbo, ratedTiers_cherry, challengeCategories, challengeCrystalLevels, titleAcquisitionTypes, queueTypes_ranked
 from src.core.config.servers import valid_platformIds, set_platform_folder, set_summonerInfo_folder, save_platform_info
 from src.core.config.conditional_formatting import addFormat_LoLHistory_wb, addFormat_LoLGame_summary_wb, addFormat_LoLGame_summary_wb_transpose
 from src.core.dataframes.ranked import get_tier_name, sort_game_leaderboard
 from src.core.dataframes.matchHistory import get_LoLHistory, get_matchSummary_sgp, get_matchDetails_sgp, sort_LoLHistory, sort_LoLHistory_sgp, reconstruct_LoLHistory, reconstruct_LoLHistory_sgp, reconstruct_TFTHistory, get_LoLGame_summary, get_game_summary_sgp, get_LoLGame_timeline, get_game_timeline_sgp, sort_LoLGame_summary, sort_LoLGame_summary_sgp, sort_LoLGame_timeline, sort_LoLGame_timeline_sgp, get_TFTHistory, sort_TFTHistory, sort_TFTGame_summary
+from src.localization.general import language_ddragon, language_dict, language_cdragon
+from src.localization.languages.zh_CN import tiers, ratedTiers_turbo, ratedTiers_cherry, challengeCategories, challengeCrystalLevels, titleAcquisitionTypes, queueTypes_ranked
 
 parser: argparse.ArgumentParser = argparse.ArgumentParser(formatter_class = argparse.RawTextHelpFormatter)
 parser.add_argument("-a", "--lol-api", help = "指定通过什么接口获取英雄联盟对局概要和时间轴。\nSpecify the interface used to fetch LoL game summary and timeline.", action = "store", type = str, choices = ["lcu", "sgp"], default = "sgp")
@@ -40,7 +41,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/08/16
+# 更新（Last update）：     2026/08/17
 #=============================================================================
 
 #-----------------------------------------------------------------------------

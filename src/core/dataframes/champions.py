@@ -7,7 +7,7 @@ if not wd in sys.path:
     sys.path.append(wd) #确保在“src”文件夹的父级目录运行此代码（Make sure this program is run under the parent folder of the "src" folder）
 from src.utils.logger import LogManager
 from src.utils.format import format_df, optimize_bool_display, pyobj2json
-from src.core.config.localization import damageTypes, attackTypes
+from src.localization.languages.zh_CN import damageTypes, attackTypes
 from src.core.config.headers import LoLChampion_ddragon_header, LoLChampion_inventory_header, LoLChampion_plugin_header, champion_summary_header
 
 async def test_bot(connection: Connection, LoLChampions: dict[int, dict[str, Any]], log: Optional[LogManager] = None, verbose: bool = True) -> tuple[dict[int, dict[str, Any]], int]:

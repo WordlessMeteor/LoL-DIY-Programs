@@ -8,7 +8,7 @@ from src.utils.summoner import print_summoner_info, get_info_name
 from src.utils.format import getISOTime, addDefaultStyle, optimize_bool_display, pyobj2json
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from src.core.config.servers import set_platform_folder, set_summonerInfo_folder, save_platform_info
-from src.core.config.localization import inventoryType_dict, ownershipTypes, subInventoryTypes
+from src.localization.languages.zh_CN import inventoryType_dict, ownershipTypes, subInventoryTypes
 
 #=============================================================================
 # * 声明（Declaration）
@@ -16,7 +16,7 @@ from src.core.config.localization import inventoryType_dict, ownershipTypes, sub
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/24
+# 更新（Last update）：     2026/08/17
 #=============================================================================
 
 #-----------------------------------------------------------------------------

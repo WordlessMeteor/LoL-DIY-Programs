@@ -9,7 +9,7 @@ if not wd in sys.path:
 from src.utils.logger import LogManager
 from src.utils.format import getISOTime, optimize_bool_display
 from src.core.config.headers import profile_header
-from src.core.config.localization import tiers, challengeCategories, challengeCrystalLevels, titleAcquisitionTypes
+from src.localization.languages.zh_CN import tiers, challengeCategories, challengeCrystalLevels, titleAcquisitionTypes
 
 #-----------------------------------------------------------------------------
 # 输出召唤师信息（Output summoner information）
