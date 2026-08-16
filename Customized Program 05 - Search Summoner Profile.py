@@ -25,7 +25,8 @@ parser.add_argument("-a", "--lol-api", help = "指定通过什么接口获取英
 # parser.add_argument("-l", "--lol-api-legacy", help = "指定是否使用传统LCU API接口获取英雄联盟对局概要和时间轴。\nSpecify whether to use the traditional LCU API to fetch LoL game summary and timeline.", action = "store_true") #这个变量和上面的作用相同（This argument works the same way as the above one）
 parser.add_argument("-ic", "--info-color", help = "为对局概要工作表施加条件格式。\nAdd conditional formatting to match summary sheets.", action = "store_true") #这会对性能和工作簿大小有较大影响（This seriously affects the program's performance and the workbook size）
 parser.add_argument("-lb", "--export-leaderboard", help = "导出每场对局的社交排行榜工作表。时间开销大。\nExport the social leaderboard data of each match. Time consuming.", action = "store_true")
-parser.add_argument("-n", "--deny-empty-sheet-creation", help = "在创建工作簿的情况下不创建空白工作表。\nDeny creating empty sheets if a new workbook is created.", action = "store_true") #主要应用于从小工作簿移动工作表到大工作簿的情形（Mainly used in the case where sheets are moved from a small workbook into a bigger workbook）
+parser.add_argument("-ne", "--no-empty-sheet", help = "在创建工作簿的情况下不创建空白工作表。\nDeny creating empty sheets if a new workbook is created.", action = "store_true") #主要应用于从小工作簿移动工作表到大工作簿的情形（Mainly used in the case where sheets are moved from a small workbook into a bigger workbook）
+parser.add_argument("-ns", "--no-stat-sheet", help = "不创建玩家战绩工作表和近期一起玩过的玩家工作表。\nDeny creating player stat sheets and recently played summoner sheets.", action = "store_true")
 parser.add_argument("-r", "--reserve", help = "在对局不包含主玩家的情况下仍然加载该对局。\nLoad a match even if it doesn't contain the main player.", action = "store_true")
 parser.add_argument("-rt", "--reserve-text", help = "在对局不包含主玩家的情况下仍然保存该对局。\nSave a match even if it doesn't contain the main player.", action = "store_true")
 args: argparse.Namespace = parser.parse_args()
@@ -2337,6 +2338,9 @@ async def search_profile(connection: Connection) -> None:
                 info_text_saved = timeline_text_saved = False #标记对局概要和时间轴的文本文档是否保存（Marks whether the json files of match summary and timeline are saved）
                 isLoL[matchId] = False #这里可以使用（This assignment can be replaced by）：`isLoL[matchId] = isTFT[matchId] = False`
                 
+                if not LoLGame_summary_export and args.no_stat_sheet: #如果用户通过命令行指定不整理战绩表，那么不保存的对局就没必要加载了（If the user specifies the program not to form the game stat table, then the matches that won't be saved don't need to be loaded, either）
+                    continue
+                
                 #获取数据（Get data）
                 ##信息/概要（Information / Summary） #即使不导出对局概要，对局概要也要用来制作玩家战绩表，因此仍然要获取对局概要。如果不需要加载多的对局，用户需要在前面指定对局上下限来控制LoLMatchIDs（Although the user doesn't want to export the match summary, it's still needed for match stats table, so match summary is always necessary. If the user doesn't want to load extra matches, he/she needs to control `LoLMatchIDs` by specifying the begIndex and the endIndex above）
                 if use_sgp:
@@ -2460,12 +2464,12 @@ async def search_profile(connection: Connection) -> None:
                         # with open(os.path.join(match_folder, pkl7name), "wb") as IntObj6:
                         #     pickle.dump(LoLGame_summary, IntObj6)
                     if use_sgp:
-                        LoLGame_summary_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments = sort_LoLGame_summary_sgp(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = current_puuid_list, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, save_self = True, save_other = True, log = log)
+                        LoLGame_summary_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments = sort_LoLGame_summary_sgp(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = current_puuid_list, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, sortStats = True, LoLGame_stat_data = None if args.no_stat_sheet else LoLGame_stat_data, save_self = True, save_other = True, log = log)
                     else:
-                        LoLGame_summary_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments = sort_LoLGame_summary(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = current_puuid_list, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, sortStats = True, LoLGame_stat_data = LoLGame_stat_data, save_self = True, save_other = True, log = log)
+                        LoLGame_summary_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments = sort_LoLGame_summary(LoLGame_summary, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, gameIndex = LoLMatchIDs.index(matchId) + 1, current_puuid = current_puuid_list, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, sortStats = True, LoLGame_stat_data = None if args.no_stat_sheet else LoLGame_stat_data, save_self = True, save_other = True, log = log)
                 
                     #社交排行榜（Social leaderboard）
-                    if args.export_leaderboard:
+                    if LoLGame_leaderboard_export:
                         if use_sgp:
                             participant_puuid: list[str] = list(map(lambda x: x["puuid"], LoLGame_summary["json"]["participants"]))
                         else:
@@ -2525,7 +2529,7 @@ async def search_profile(connection: Connection) -> None:
             LoLGame_stat_data_organized: dict[str, list[Any]] = {LoLGame_stat_header_keys[i]: LoLGame_stat_data[LoLGame_stat_header_keys[i]] for i in LoLGame_stat_statistics_output_order}
             LoLGame_stat_df: pandas.DataFrame = pandas.DataFrame(data = LoLGame_stat_data_organized)
             optimize_bool_display(LoLGame_stat_df)
-            LoLGame_stat_df_export = True
+            LoLGame_stat_df_export = not args.no_stat_sheet
             
             LoLGame_stat_self_df = pandas.concat([pandas.DataFrame([LoLGame_stat_header])[LoLGame_stat_df.columns], LoLGame_stat_df[LoLGame_stat_df["puuid"].isin(current_puuid_list)]], ignore_index = True)
             recent_LoLPlayer_df = pandas.concat([pandas.DataFrame([LoLGame_stat_header])[LoLGame_stat_df.columns], LoLGame_stat_df[~(LoLGame_stat_df["puuid"].isin(current_puuid_list))]], ignore_index = True)
@@ -2731,6 +2735,9 @@ async def search_profile(connection: Connection) -> None:
                 info_text_saved: bool = False
                 isTFT[matchId] = False #前面部分对局即使添加到此字典中，其值也是False（Even if some matches are added into this dictionary previously, their values are still False）
                 
+                if not TFTGame_summary_export and args.no_stat_sheet:
+                    continue
+                
                 #获取数据（Get data）
                 if matchId in TFTGame_summary_cache_sgp:
                     TFTGame_summary: dict[str, Any] = TFTGame_summary_cache_sgp[matchId]
@@ -2831,10 +2838,10 @@ async def search_profile(connection: Connection) -> None:
                         # with open(os.path.join(match_folder, pkl9name), "wb") as IntObj8:
                         #     pickle.dump(TFTGame_summary, IntObj8)
                     
-                    TFTGame_summary_df, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits = await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = TFTMatchIDs.index(matchId), current_puuid = current_puuid, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, useInfoDict = True, infos = infos, sortStats = True, TFTGame_stat_data = TFTGame_stat_data, save_self = True, save_other = True, log = log)
+                    TFTGame_summary_df, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits = await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = TFTMatchIDs.index(matchId), current_puuid = current_puuid, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, useInfoDict = True, infos = infos, sortStats = True, TFTGame_stat_data = None if args.no_stat_sheet else TFTGame_stat_data, save_self = True, save_other = True, log = log)
                     
                     #社交排行榜（Social leaderboard）
-                    if args.export_leaderboard:
+                    if TFTGame_leaderboard_export:
                         TFTGame_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = participant_puuid, log = log)
                     else:
                         TFTGame_leaderboard_df = pandas.DataFrame()
@@ -2857,6 +2864,7 @@ async def search_profile(connection: Connection) -> None:
             TFTGame_stat_data_organized: dict[str, list[Any]] = {TFTGame_stat_header_keys[i]: TFTGame_stat_data[TFTGame_stat_header_keys[i]] for i in TFTGame_stat_statistics_output_order}
             TFTGame_stat_df: pandas.DataFrame = pandas.DataFrame(data = TFTGame_stat_data_organized)
             optimize_bool_display(TFTGame_stat_df)
+            # TFTGame_stat_df_export = not args.no_stat_sheet
             
             TFTGame_stat_self_df = pandas.concat([pandas.DataFrame([TFTGame_stat_header])[TFTGame_stat_df.columns], TFTGame_stat_df[TFTGame_stat_df["puuid"].isin(current_puuid_list)]], ignore_index = True)
             recent_TFTPlayer_df = pandas.concat([pandas.DataFrame([TFTGame_stat_header])[TFTGame_stat_df.columns], TFTGame_stat_df[~(TFTGame_stat_df["puuid"].isin(current_puuid_list))]], ignore_index = True)
@@ -2932,15 +2940,15 @@ async def search_profile(connection: Connection) -> None:
                         logPrint("近期一起玩过的云顶之弈玩家数据导出完成！\nRecently played summoner data (TFT) exported!\n")
                         if search_LoL:
                             if scan_lol:
-                                if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
+                                if (not workbook_exist or wbCreateFlag) and not args.no_empty_sheet:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History")
                                 addDefaultStyle(LoLHistory_df_all).to_excel(excel_writer = writer, sheet_name = "LoL Match History - Scan")
-                                if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
+                                if (not workbook_exist or wbCreateFlag) and not args.no_empty_sheet:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Manual")
                                 worksheet = writer.sheets["LoL Match History - Scan"]
                             else:
                                 addDefaultStyle(LoLHistory_df_all).to_excel(excel_writer = writer, sheet_name = "LoL Match History")
-                                if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
+                                if (not workbook_exist or wbCreateFlag) and not args.no_empty_sheet:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Scan")
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Manual")
                                 worksheet = writer.sheets["LoL Match History"]
@@ -2950,15 +2958,15 @@ async def search_profile(connection: Connection) -> None:
                             logPrint("召唤师英雄联盟对局记录导出完成！\nSummoner LoL match history exported!\n")
                             if LoLGame_stat_df_export:
                                 if scan_lol:
-                                    if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
+                                    if (not workbook_exist or wbCreateFlag) and not args.no_empty_sheet:
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats")
                                     addDefaultStyle(LoLGame_stat_self_df).to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Scan")
-                                    if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
+                                    if (not workbook_exist or wbCreateFlag) and not args.no_empty_sheet:
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Manual")
                                     worksheet = writer.sheets["LoL Match Stats - Scan"]
                                 else:
                                     addDefaultStyle(LoLGame_stat_self_df).to_excel(excel_writer = writer, sheet_name = "LoL Match Stats")
-                                    if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
+                                    if (not workbook_exist or wbCreateFlag) and not args.no_empty_sheet:
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Scan")
                                         pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Manual")
                                     worksheet = writer.sheets["LoL Match Stats"]
@@ -2967,12 +2975,12 @@ async def search_profile(connection: Connection) -> None:
                                     max_numPlayersPerTeam_lol = 5 if len(LoLGame_stat_self_df) <= 1 else max(map(lambda x: 5 if x == 0 or not x in gameQueues else 2 if gameQueues[x]["gameMode"] == "CHERRY" else gameQueues[x]["numPlayersPerTeam"], LoLGame_stat_self_df["queueId"][1:]))
                                     addFormat_LoLGame_summary_wb(worksheet, LoLGame_stat_self_df, numColorScale_order = max_numPlayersPerTeam_lol)
                                 logPrint("召唤师英雄联盟战绩导出完成！\nSummoner LoL game stats exported!\n")
-                            elif (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
+                            elif (not workbook_exist or wbCreateFlag) and not args.no_empty_sheet:
                                 pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats")
                                 pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Scan")
                                 pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match Stats - Manual")
                                 logPrint("已创建英雄联盟战绩的空白数据表。\nCreated an empty sheet for LoL game stats!\n")
-                        elif (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
+                        elif (not workbook_exist or wbCreateFlag) and not args.no_empty_sheet:
                             pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History")
                             pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Scan")
                             pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "LoL Match History - Manual")
@@ -2983,18 +2991,18 @@ async def search_profile(connection: Connection) -> None:
                             logPrint("已创建英雄联盟战绩的空白数据表。\nCreated an empty sheet for LoL game stats!\n")
                         if search_TFT:
                             if scan_tft:
-                                if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
+                                if (not workbook_exist or wbCreateFlag) and not args.no_empty_sheet:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History")
                                 addDefaultStyle(TFTHistory_df_all).to_excel(excel_writer = writer, sheet_name = "TFT Match History - Scan")
-                                if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
+                                if (not workbook_exist or wbCreateFlag) and not args.no_empty_sheet:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History - Manual")
                             else:
                                 addDefaultStyle(TFTHistory_df_all).to_excel(excel_writer = writer, sheet_name = "TFT Match History")
-                                if (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
+                                if (not workbook_exist or wbCreateFlag) and not args.no_empty_sheet:
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History - Scan")
                                     pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History - Manual")
                             logPrint("召唤师云顶之弈对局记录导出完成！\nSummoner TFT match history exported!\n")
-                        elif (not workbook_exist or wbCreateFlag) and not args.deny_empty_sheet_creation:
+                        elif (not workbook_exist or wbCreateFlag) and not args.no_empty_sheet:
                             pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History")
                             pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History - Scan")
                             pandas.DataFrame().to_excel(excel_writer = writer, sheet_name = "TFT Match History - Manual")
