@@ -978,15 +978,17 @@ attackTypes: dict[str, str] = {
 }
 ##游戏模式（Game mode）
 queueTypes_ranked: dict[str, str] = {
-    "RANKED_SOLO_5x5": "单人/双人",
-    "RANKED_FLEX_SR": "灵活 5V5",
-    "RANKED_TFT": "云顶之弈",
-    "RANKED_TFT_PAIRS": "2V0", #仅美测服可用（Only available on PBE）
-    "RANKED_TFT_DOUBLE_UP": "双人作战",
-    "RANKED_TFT_TURBO": "狂暴模式",
-    "CHERRY": "斗魂竞技场",
+    "JADE_RANKED_SOLO_5x5": "经典模式 5V5",
     "RANKED_PREMADE_5x5": "5V5",
-    "JADE_RANKED_SOLO_5x5": "经典模式 5V5"
+    "RANKED_TFT_DOUBLE_UP": "双人作战",
+    "RANKED_TFT_PAIRS": "2V0", #仅美测服可用（Only available on PBE）
+    "RANKED_TFT_TURBO": "狂暴模式",
+    "RANKED_TFT": "云顶之弈",
+    "RANKED_FLEX_TT": "扭曲丛林 灵活 5V5",
+    "CHERRY": "斗魂竞技场",
+    "RANKED_FLEX_SR": "灵活 5V5",
+    "RANKED_SOLO_5x5": "单人/双人",
+    "NONE": "无"
 } #仅用于排位战区显示（Only designed for ranked league display）
 categories: dict[str, str] = {
     "Custom": "自定义对局",
@@ -1046,7 +1048,7 @@ tiers: dict[str, str] = {
     "WOOD": "英勇秀木",
     "LEGEND": "最强传奇"
 }
-ratedTiers: dict[str, str] = {
+ratedTiers_turbo: dict[str, str] = {
     "": "",
     "NONE": "没有段位",
     "GRAY": "灰白",
@@ -1055,7 +1057,15 @@ ratedTiers: dict[str, str] = {
     "PURPLE": "绛紫",
     "ORANGE": "耀橙"
 }
-tiers_all: dict[str, str] = tiers | ratedTiers
+ratedTiers_cherry: dict[str, str] = {
+    "": "",
+    "NONE": "没有段位",
+    "GRAY": "木木角斗士",
+    "GREEN": "青铜角斗士",
+    "BLUE": "白银角斗士",
+    "PURPLE": "黄金角斗士",
+    "ORANGE": "王者角斗士"
+}
 ##英雄联盟对局记录（LoL match history）
 gameTypes_history: dict[str, str] = {
     "MATCHED_GAME": "匹配对局",
@@ -1912,14 +1922,17 @@ milestoneTriggerTypes: dict[str, str] = {
 # }
 ##游戏模式（Game mode）
 # queueTypes_ranked: dict[str, str] = {
-#     "RANKED_SOLO_5x5": "Ranked Solo/Duo",
-#     "RANKED_FLEX_SR": "Ranked Flex",
-#     "RANKED_TFT": "Ranked TFT",
-#     "RANKED_TFT_PAIRS": "2V0",
+#     "JADE_RANKED_SOLO_5x5": "League Classic 5x5",
+#     "RANKED_PREMADE_5x5": "5V5",
 #     "RANKED_TFT_DOUBLE_UP": "Double Up",
+#     "RANKED_TFT_PAIRS": "2V0",
 #     "RANKED_TFT_TURBO": "Hyper Roll",
+#     "RANKED_TFT": "Ranked TFT",
+#     "RANKED_FLEX_TT": "Twisted Treeline Flex 5V5",
 #     "CHERRY": "Arena",
-#     "RANKED_PREMADE_5x5": "5V5"
+#     "RANKED_FLEX_SR": "Ranked Flex",
+#     "RANKED_SOLO_5x5": "Ranked Solo/Duo",
+#     "NONE": "None"
 # }
 # categories: dict[str, str] = {
 #     "Custom": "Custom",
@@ -1965,28 +1978,37 @@ milestoneTriggerTypes: dict[str, str] = {
 # tiers: dict[str, str] = {
 #     "": "",
 #     "NONE": "NONE",
-#     "IRON": "IRON",
-#     "BRONZE": "BRONZE",
-#     "SILVER": "SILVER",
-#     "GOLD": "GOLD",
-#     "PLATINUM": "PLATINUM",
-#     "EMERALD": "EMERALD",
-#     "DIAMOND": "DIAMOND",
-#     "MASTER": "MASTER",
-#     "GRANDMASTER": "GRANDMASTER",
-#     "CHALLENGER": "CHALLENGER",
-#     "SALT": "SALT",
-#     "WOOD": "WOOD",
-#     "LEGEND": "LEGEND",
+#     "IRON": "Iron",
+#     "BRONZE": "Bronze",
+#     "SILVER": "Silver",
+#     "GOLD": "Gold",
+#     "PLATINUM": "Platinum",
+#     "EMERALD": "Emerald",
+#     "DIAMOND": "Diamond",
+#     "MASTER": "Master",
+#     "GRANDMASTER": "Grandmaster",
+#     "CHALLENGER": "Challenger",
+#     "SALT": "Salt",
+#     "WOOD": "Wood",
+#     "LEGEND": "Legend",
 # }
-# ratedTiers: dict[str, str] = {
+# ratedTiers_turbo: dict[str, str] = {
 #     "": "",
 #     "NONE": "NONE",
-#     "GRAY": "GRAY",
-#     "GREEN": "GREEN",
-#     "BLUE": "BLUE",
-#     "PURPLE": "PURPLE",
-#     "ORANGE": "ORANGE"
+#     "GRAY": "GRAY TIER",
+#     "GREEN": "GREEN TIER",
+#     "BLUE": "BLUE TIER",
+#     "PURPLE": "PURPLE TIER",
+#     "ORANGE": "HYPER TIER"
+# }
+# ratedTiers_cherry: dict[str, str] = {
+#     "": "",
+#     "NONE": "NONE",
+#     "GRAY": "WOOD TIER",
+#     "GREEN": "BRONZE TIER",
+#     "BLUE": "SILVER TIER",
+#     "PURPLE": "GOLD TIER",
+#     "ORANGE": "GLADIATOR TIER"
 # }
 ##英雄联盟对局记录（LoL match history）
 # team_colors_int: dict[int, str] = {

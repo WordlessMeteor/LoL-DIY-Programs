@@ -9,7 +9,23 @@ from src.utils.logger import LogManager
 from src.utils.summoner import get_info
 from src.utils.format import optimize_bool_display
 from src.core.config.headers import game_leaderboard_header
-from src.core.config.localization import queueTypes_ranked, tiers, ratedTiers
+from src.core.config.localization import queueTypes_ranked, tiers, ratedTiers_turbo, ratedTiers_cherry
+
+def get_tier_name(tier: str, isCherry: bool = False) -> str:
+    '''
+    获取一个段位的本地化名称。<br>Get a tier's localized name.
+
+    :param tier: 段位。可以是胜点段位，也可以是排名分段位。<br>Tier. Can be either a LP tier or a rated tier.
+    
+        必须是本地化模块的`tiers`、`ratedTiers_turbo`或`ratedTiers_cherry`中的一个键，否则则会引发键错误。<br>This must be one of the keys of `tiers`, `ratedTiers_turbo` or `ratedTiers_cherry`, or a KeyError will be thrown.
+    :type tier: str
+    :param isCherry: 排名分段位是否属于斗魂竞技场。默认为假。<br>Whether the rated tier belongs to Arena. False by default.
+    
+        斗魂竞技场和云顶之弈狂暴模式对于相同的排名分段位代码的翻译有所不同。<br>Arena and TFT Turbo have different translations of the same rated tier code.
+    :return: 段位本地化名称。<br>Tier localized name.
+    :rtype: str
+    '''
+    return tiers[tier] if tier in tiers else ratedTiers_cherry[tier] if isCherry else ratedTiers_turbo[tier]
 
 async def sort_game_leaderboard(connection: Connection, queueTypes_list: Optional[list[str]] = None, puuids: Optional[list[str]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
     '''

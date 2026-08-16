@@ -12,10 +12,11 @@ from src.utils.excel_workbook import create_workbook_win32
 from src.utils.keyControl import isKeyPressed
 from src.core.config.const import ALL_GAMEFLOW_PHASES, BOT_DIFFICULTY_LIST, BOT_UUID, SPECTATOR_POLICY_LIST, GLOBAL_RESPONSE_LAG, REPORT_CATEGORY_LIST_CHAMPSELECT, REPORT_CATEGORY_LIST_POSTGAME
 from src.core.config.headers import champSelect_player_header, custom_lobby_header, skin_header, conversation_header, grid_champion_header, chat_mutedPlayer_header, invid_header, perkPage_header, social_leaderboard_header, availableBot_header, lobby_member_header, inGame_playerAbility_header, inGame_championStat_header, inGame_allPlayer_header, inGame_event_header, inGame_metadata_header, ballot_player_header, eog_mastery_update_header, eog_stat_metadata_lol_header, eog_teamstat_data_lol_header, eog_stat_metadata_tft_header, eog_stat_data_tft_header
-from src.core.config.localization import gamemodes, gamemaps, ARAMmaps, gameTypes_configId_map, spectatorPolicies, report_categories, tiers_all, team_colors_int, subteam_colors, rarities, krarities, augment_rarity, skinClassifications, damageTypes, conversationTypes, messageTypes, system_messages, invidStates, invidTypes, slotTypes, availabilities, inventoryType_dict, ownershipTypes, botDifficulty_dict, roles, positions, eventTypes_liveclient, DragonTypes, team_colors_str, honorType_tooltip_headers, honorType_tooltip_bodies, zoom_scale_dict
+from src.core.config.localization import gamemodes, gamemaps, ARAMmaps, gameTypes_configId_map, spectatorPolicies, report_categories, team_colors_int, subteam_colors, rarities, krarities, augment_rarity, skinClassifications, damageTypes, conversationTypes, messageTypes, system_messages, invidStates, invidTypes, slotTypes, availabilities, inventoryType_dict, ownershipTypes, botDifficulty_dict, roles, positions, eventTypes_liveclient, DragonTypes, team_colors_str, honorType_tooltip_headers, honorType_tooltip_bodies, zoom_scale_dict
 from src.core.config.conditional_formatting import addFormat_inGame_allPlayer_wb
 from src.core.dataframes.gameflow import get_gameflow_phase, get_champ_select_session, get_champSelect_player, get_champSelect_action, sort_ChampSelect_players, sort_inGame_players, sort_eog_playerstat_lol_data, sort_eog_stat_tft_data
 from src.core.dataframes.champions import test_bot, sort_inventory_champions, filter_champion
+from src.core.dataframes.ranked import get_tier_name
 from src.core.dataframes.gameMode import check_available_queue
 from src.core.dataframes.matchHistory import get_game_summary_sgp, sort_LoLGame_summary_sgp, sort_TFTGame_summary
 from src.core.dataframes.filter import filter_df
@@ -32,7 +33,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/08/15
+# 更新（Last update）：     2026/08/16
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -3263,7 +3264,7 @@ async def sort_social_leaderboard(connection: Connection, queueType: str, ignore
                 elif i == 1: #段位分级（`division`）
                     to_append = "" if player[key] == "NA" else player[key]
                 elif i == 14: #段位（`tier`）
-                    to_append = tiers_all[player[key]]
+                    to_append = get_tier_name(player[key], isCherry = queueType == "CHERRY")
                 elif i >= 16: #召唤师图标相关键（Summoner icon-related keys）
                     if player["profileIconId"] in summonerIcons and key.split("_")[1] in summonerIcons[player["profileIconId"]] :
                         to_append = summonerIcons[player["profileIconId"]][key.split("_")[1]]

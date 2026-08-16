@@ -3,6 +3,7 @@ from lcu_driver.connection import Connection
 from openpyxl import load_workbook, Workbook
 import json, os, pandas, time
 from typing import Any
+from src.core.config.localization import tiers, ratedTiers_turbo, ratedTiers_cherry
 from src.utils.summoner import print_summoner_info, get_info, get_infos, get_info_name
 from src.utils.logger import LogManager
 from src.utils.format import optimize_bool_display, addDefaultStyle, format_runtime
@@ -133,13 +134,8 @@ async def get_challenger_tier(connection: Connection) -> None:
     # rewardTrack_df: pandas.DataFrame = pandas.DataFrame(data = rewardTrack_data_organized)
     # rewardTrack_df = pandas.concat([pandas.DataFrame([rewardTrack_header])[rewardTrack_df.columns], rewardTrack_df], ignore_index = True)
     
-    tiers_zh: dict[str, str] = {"": "", "NONE": "没有段位", "IRON": "坚韧黑铁", "BRONZE": "英勇黄铜", "SILVER": "不屈白银", "GOLD": "荣耀黄金", "PLATINUM": "华贵铂金", "EMERALD": "流光翡翠", "DIAMOND": "璀璨钻石", "MASTER": "超凡大师", "GRANDMASTER": "傲世宗师", "CHALLENGER": "最强王者", "SALT": "SALT", "WOOD": "WOOD"}
-    tiers_en: dict[str, str] = {"": "", "NONE": "NONE", "IRON": "IRON", "BRONZE": "BRONZE", "SILVER": "SILVER", "GOLD": "GOLD", "PLATINUM": "PLATINUM", "EMERALD": "EMERALD", "DIAMOND": "DIAMOND", "MASTER": "MASTER", "GRANDMASTER": "GRANDMASTER", "CHALLENGER": "CHALLENGER", "SALT": "SALT", "WOOD": "WOOD"}
-    ratedTiers_turbo: dict[str, str] = {"": "", "NONE": "没有段位", "GRAY": "灰白", "GREEN": "翠绿", "BLUE": "天蓝", "PURPLE": "绛紫", "ORANGE": "耀橙"}
-    ratedTiers_cherry: dict[str, str] = {"": "", "NONE": "没有段位", "GRAY": "木木角斗士", "GREEN": "青铜角斗士", "BLUE": "白银角斗士", "PURPLE": "黄金角斗士", "ORANGE": "王者角斗士"}
-    #ratedTiers: dict[str, str] = {"": "", "NONE": "NONE", "GRAY": "GRAY", "GREEN": "GREEN", "BLUE": "BLUE", "PURPLE": "PURPLE", "ORANGE": "ORANGE"}
-    queueTypes_zh: dict[str, str] = {"RANKED_SOLO_5x5": "单人/双人", "RANKED_FLEX_SR": "灵活 5V5", "RANKED_TFT": "云顶之弈", "RANKED_TFT_PAIRS": "2V0", "RANKED_TFT_DOUBLE_UP": "双人作战", "RANKED_TFT_TURBO": "狂暴模式", "CHERRY": "斗魂竞技场", "RANKED_PREMADE_5x5": "5V5"} #2V0模式仅美测服可用（RANKED_TFT_PAIRS is only available on PBE）
-    queueTypes_en: dict[str, str] = {"RANKED_SOLO_5x5": "Ranked Solo/Duo", "RANKED_FLEX_SR": "Ranked Flex", "RANKED_TFT": "Ranked TFT", "RANKED_TFT_PAIRS": "2V0", "RANKED_TFT_DOUBLE_UP": "Double Up", "RANKED_TFT_TURBO": "Hyper Roll", "CHERRY": "Arena", "RANKED_PREMADE_5x5": "5V5"}
+    queueTypes_zh: dict[str, str] = {"JADE_RANKED_SOLO_5x5": "经典模式 5V5", "RANKED_PREMADE_5x5": "5V5", "RANKED_TFT_DOUBLE_UP": "双人作战", "RANKED_TFT_PAIRS": "2V0", "RANKED_TFT_TURBO": "狂暴模式", "RANKED_TFT": "云顶之弈", "RANKED_FLEX_TT": "扭曲丛林 灵活 5V5", "CHERRY": "斗魂竞技场", "RANKED_FLEX_SR": "灵活 5V5", "RANKED_SOLO_5x5": "单人/双人", "NONE": "无"} #2V0模式仅美测服可用（RANKED_TFT_PAIRS is only available on PBE）
+    queueTypes_en: dict[str, str] = {"JADE_RANKED_SOLO_5x5": "League Classic 5x5", "RANKED_PREMADE_5x5": "5V5", "RANKED_TFT_DOUBLE_UP": "Double Up", "RANKED_TFT_PAIRS": "2V0", "RANKED_TFT_TURBO": "Hyper Roll", "RANKED_TFT": "Ranked TFT", "RANKED_FLEX_TT": "Twisted Treeline Flex 5V5", "CHERRY": "Arena", "RANKED_FLEX_SR": "Ranked Flex", "RANKED_SOLO_5x5": "Ranked Solo/Duo", "NONE": "None"}
     challenger_ladder_queueTypes: list[str] = await (await connection.request("GET", "/lol-ranked/v1/challenger-ladders-enabled")).json()
     
     challenger_ladder_metadata_header_keys: list[str] = list(challenger_ladder_metadata_header.keys())
@@ -160,12 +156,12 @@ async def get_challenger_tier(connection: Connection) -> None:
                 except FileNotFoundError:
                     os.makedirs(folder, exist_ok = True)
                 except UnicodeEncodeError:
-                    logPrint("\n顶级%s%s玩家信息文本文档生成失败！请检查内容是否包含不常用字符！\nTop %s %s player information generation failure! Please check if the content includes any abnormal characters!\n" %(queueTypes_zh[queueType], tiers_zh[tier], queueTypes_en[queueType], tiers_en[tier]))
+                    logPrint("\n顶级%s%s玩家信息文本文档生成失败！请检查内容是否包含不常用字符！\nTop %s %s player information generation failure! Please check if the content includes any abnormal characters!\n" %(queueTypes_zh[queueType], tiers[tier], queueTypes_en[queueType], tier))
                     break
                 else:
-                    logPrint('\n顶级%s%s玩家信息已保存为“%s”。\nTop %s %s player information is saved as "%s".\n' %(queueTypes_zh[queueType], tiers_zh[tier], os.path.join(folder, json2name), queueTypes_en[queueType], tiers_en[tier], os.path.join(folder, json2name)))
+                    logPrint('\n顶级%s%s玩家信息已保存为“%s”。\nTop %s %s player information is saved as "%s".\n' %(queueTypes_zh[queueType], tiers[tier], os.path.join(folder, json2name), queueTypes_en[queueType], tier, os.path.join(folder, json2name)))
                     break
-            logPrint("顶级%s%s玩家信息整理进度（Top %s %s player information organization process）：" %(queueTypes_zh[queueType], tiers_zh[tier], queueTypes_en[queueType], tiers_en[tier]))
+            logPrint("顶级%s%s玩家信息整理进度（Top %s %s player information organization process）：" %(queueTypes_zh[queueType], tiers[tier], queueTypes_en[queueType], tier))
             # ladder_summoner_infos: dict[str, dict[str, Any]] = await get_infos(connection, puuids = [standing["puuid"] for ladder in ladders for division in ladders["divisions"]])
             for i in range(len(ladders["divisions"])):
                 division: dict[str, Any] = ladders["divisions"][i]
@@ -182,7 +178,7 @@ async def get_challenger_tier(connection: Connection) -> None:
                         if j == 6: #段位分级（`division`）
                             to_append = "" if division[key] == "" else division[key]
                         elif j == 9: #段位（`tier`）
-                            to_append = tiers_zh[division[key]]
+                            to_append = tiers[division[key]]
                         elif j == 11: #天梯解锁时间（`apexUnlockTime`）
                             to_append = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime(division["apexUnlockTimeMillis"] // 1000))
                         else:
@@ -197,18 +193,18 @@ async def get_challenger_tier(connection: Connection) -> None:
                     while not standing_summoner["info_got"] and standing_summoner["body"]["httpStatus"] != 404 and standing_summoner_recapture < 3:
                         logPrint(standing_summoner["body"])
                         standing_summoner_recapture += 1
-                        logPrint("第%d/%d名顶级%s%s%s玩家（玩家通用唯一识别码：%s）信息获取失败！正在第%d次尝试重新获取该玩家信息……\n[%d/%d] Information of Player (Puuid: %s) in the %s %s %s apex capture failed! Recapturing this player's information ... Times tried: %d" %(j + 1, len(division["standings"]), queueTypes_zh[queueType], tiers_zh[tier], division["division"], standing["puuid"], standing_summoner_recapture, j + 1, len(division["standings"]), standing["puuid"], queueTypes_zh[queueType], tiers_zh[tier], division["division"], standing_summoner_recapture))
+                        logPrint("第%d/%d名顶级%s%s%s玩家（玩家通用唯一识别码：%s）信息获取失败！正在第%d次尝试重新获取该玩家信息……\n[%d/%d] Information of Player (Puuid: %s) in the %s %s %s apex capture failed! Recapturing this player's information ... Times tried: %d" %(j + 1, len(division["standings"]), queueTypes_zh[queueType], tiers[tier], division["division"], standing["puuid"], standing_summoner_recapture, j + 1, len(division["standings"]), standing["puuid"], queueType, tier, division["division"], standing_summoner_recapture))
                         standing_summoner = await get_info(connection, standing["puuid"])
                     info_got: bool = standing_summoner["info_got"]
                     if not info_got:
                         logPrint(standing_summoner["body"])
-                        logPrint("第%d/%d名顶级%s%s%s玩家（玩家通用唯一识别码：%s）信息获取失败！\n[%d/%d] Information of Player (Puuid: %s) in the %s %s %s apex capture failed!" %(j + 1, len(division["standings"]), queueTypes_zh[queueType], tiers_zh[tier], division["division"], standing["puuid"], j + 1, len(division["standings"]), standing["puuid"], queueTypes_zh[queueType], tiers_zh[tier], division["division"]))
+                        logPrint("第%d/%d名顶级%s%s%s玩家（玩家通用唯一识别码：%s）信息获取失败！\n[%d/%d] Information of Player (Puuid: %s) in the %s %s %s apex capture failed!" %(j + 1, len(division["standings"]), queueTypes_zh[queueType], tiers[tier], division["division"], standing["puuid"], j + 1, len(division["standings"]), standing["puuid"], queueType, tier, division["division"]))
                     for k in range(len(challenger_ladder_header_keys)):
                         key: str = challenger_ladder_header_keys[k]
                         if k == 0 or k == 11:
                             to_append: Any = "" if standing[key] == "NA" else standing[key]
                         elif k == 12 or k == 18:
-                            to_append = tiers_zh[standing[key]]
+                            to_append = tiers[standing[key]]
                         elif k <= 19:
                             to_append = standing[key]
                         else:

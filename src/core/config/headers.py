@@ -185,8 +185,8 @@ ranked_header: dict[str, str] = {
     "provisionalGamesRemaining": "剩余定位场次",
     "queueType": "对局类型",
     "ratedRating": "排名分", #也可译为战力积分（Can be also expressed as GR）
-    "ratedTier": "段位",
-    "tier": "段位",
+    "ratedTier": "排名分段位",
+    "tier": "胜点段位",
     "warnings": "警告消息",
     "wins": "胜场",
     "tier / ratedTier": "段位",
