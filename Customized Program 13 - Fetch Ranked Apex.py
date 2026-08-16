@@ -136,6 +136,8 @@ async def get_challenger_tier(connection: Connection) -> None:
     # rewardTrack_df = pandas.concat([pandas.DataFrame([rewardTrack_header])[rewardTrack_df.columns], rewardTrack_df], ignore_index = True)
     
     challenger_ladder_queueTypes: list[str] = await (await connection.request("GET", "/lol-ranked/v1/challenger-ladders-enabled")).json()
+    if not "JADE_RANKED_SOLO_5x5" in challenger_ladder_queueTypes:
+        challenger_ladder_queueTypes.append("JADE_RANKED_SOLO_5x5") #没有接口能够返回经典模式战区，因此这里需要手动添加（No endpoint returns this league, so here it needs to be manually added）
     challenger_ladder_metadata_header_keys: list[str] = list(challenger_ladder_metadata_header.keys())
     challenger_ladder_metadata: dict[str, list[Any]] = {key: [] for key in challenger_ladder_metadata_header_keys}
     challenger_ladder_header_keys: list[str] = list(challenger_ladder_header.keys())
@@ -144,8 +146,10 @@ async def get_challenger_tier(connection: Connection) -> None:
     for queueType in challenger_ladder_queueTypes:
         ladder_data["challenger_ladder"][queueType] = {key: [] for key in challenger_ladder_header_keys}
         queue_ladder_data: dict[str, list[Any]] = ladder_data["challenger_ladder"][queueType] #注意字典赋值的原理（Pay attention to the principle of assigning a dictionary）
-        for tier in ["CHALLENGER", "GRANDMASTER", "MASTER"]:
+        for tier in ["CHALLENGER", "GRANDMASTER", "MASTER", "LEGEND", "DIAMOND", "EMERALD", "PLATINUM", "GOLD", "SILVER", "BRONZE", "IRON", "WOOD", "SALT"]: #这个列表应满足段位倒序的拓扑排序（This list should satisfy a topological sort in the descending order of tiers）
             ladders: dict[str, Any] = await (await connection.request("GET", f"/lol-ranked/v1/apex-leagues/{queueType}/{tier}")).json()
+            if len(ladders["divisions"]) == 0: #跳过没有玩家的段位以省略一些不必要的提示（Skip tiers without any player to omit some unnecessary prompts）
+                continue
             json2name = "Apex-%s-%s(%s).json" %(tier.capitalize(), queueType, runTime_day)
             while True:
                 try:
