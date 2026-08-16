@@ -16,7 +16,7 @@ from src.core.config.headers import challenger_ladder_metadata_header, challenge
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/10
+# 更新（Last update）：     2026/08/16
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -34,8 +34,8 @@ connector: Connector = Connector()
 #  获取最强王者段位信息（Get challenger tier league information）
 #-----------------------------------------------------------------------------
 async def get_challenger_tier(connection: Connection) -> None:
-    platform_config: dict[str, Any] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces")).json()
-    platformId: str = platform_config["LoginDataPacket"]["platformId"]
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
     #下面设置输出文件的位置（The following code determines the output files' location）
     riot_client_info: list[str] = await (await connection.request("GET", "/riotclient/command-line-args")).json()
     client_info: dict[str, str] = {}
@@ -47,7 +47,7 @@ async def get_challenger_tier(connection: Connection) -> None:
     region: str = client_info["--region"]
     currentLoLSeason: dict[str, Any] = await (await connection.request("GET", "/lol-seasons/v1/season/product/LOL")).json() #API中记录的赛季与平常所说的赛季有所不同（The season recorded in API is different from the often mentioned season）
     currentLoLSeasonId: int = currentLoLSeason["seasonId"]
-    currentLoLSeasonSplitId: int = currentLoLSeason["currentSplit"]
+    currentLoLSeasonSplitId: int = currentLoLSeason["metadata"]["currentSplit"]
     # currentSplit: int = int(platform_config["LeagueConfig"]["CurrentSplit"]) + 1 #API中记录的赛段序号从0开始，平常所说的赛季序号从1开始，因此要加1（The split recorded in API counts from 0, while the split that people usually talk about counts from 1, so 1 should be added here）
     if region == "TENCENT":
         folder: str = "顶尖排位玩家（Ranked Apex）/国服（TENCENT）/%s/第%d赛季 - 第%d赛段（SEASON %d - Split %d）" %(platform_TENCENT[platformId], currentLoLSeasonId, currentLoLSeasonSplitId, currentLoLSeasonId, currentLoLSeasonSplitId)
@@ -292,8 +292,8 @@ async def get_challenger_tier(connection: Connection) -> None:
     export_str: str = logInput()
     export: bool = bool(export_str)
     if export:
-        excel_name: str = f"Ranked Apex - {platformId} ({currentLoLSeasonId}).xlsx"
-        excel_name_sorted: str = f"Ranked Apex - {platformId} ({currentLoLSeasonId}) (sorted).xlsx"
+        excel_name: str = f"Ranked Apex - {platformId} ({currentLoLSeasonId}-{currentLoLSeasonSplitId}).xlsx"
+        excel_name_sorted: str = f"Ranked Apex - {platformId} ({currentLoLSeasonId}-{currentLoLSeasonSplitId}) (sorted).xlsx"
         wbPath: str = os.path.join(folder, excel_name)
         os.makedirs(folder, exist_ok = True)
         if not os.path.exists(wbPath):
