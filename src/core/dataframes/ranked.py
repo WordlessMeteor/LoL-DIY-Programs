@@ -84,13 +84,13 @@ async def sort_game_leaderboard(connection: Connection, queueTypes_list: Optiona
                         elif i == 11: #战区（`queueType`）
                             to_append = queueTypes_ranked[participant_leaderboard["queueType"]]
                         elif i == 13: #段位（`ratedTier`）
-                            to_append = ratedTiers[participant_leaderboard["ratedTier"]]
+                            to_append = get_tier_name(participant_leaderboard["ratedTier"])
                         elif i == 14: #段位（`tier`）
                             to_append = tiers[participant_leaderboard["tier"]]
                         else:
                             to_append = participant_leaderboard[key]
                     elif i == 16: #段位（`tier / ratedTier`）
-                        to_append = ratedTiers[participant_leaderboard["ratedTier"]] if queueType in topRated_ladder_queueTypes else tiers[participant_leaderboard["tier"]]
+                        to_append = get_tier_name(participant_leaderboard["ratedTier"]) if queueType in topRated_ladder_queueTypes else tiers[participant_leaderboard["tier"]]
                     elif i == 17: #胜点（`leaguePoints / ratedRating`）
                         to_append = participant_leaderboard["ratedRating"] if queueType in topRated_ladder_queueTypes else participant_leaderboard["leaguePoints"]
                     elif i == 18: #获取时间戳（`timestamp`）
