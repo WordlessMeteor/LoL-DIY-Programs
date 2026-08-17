@@ -5111,7 +5111,10 @@ async def invite(connection: Connection) -> None: #相比聊天脚本，这里�
                         response: Optional[dict[str, Any]] = await (await connection.request("POST", "/lol-lobby/v2/lobby/invitations", data = body)).json()
                         logPrint(response)
                         if isinstance(response, dict) and "errorCode" in response:
-                            logPrint("邀请失败。\nFailed to send the invitation.")
+                            if response["httpStatus"] == 404 and response["message"] == "LOBBY_NOT_FOUND":
+                                logPrint("您目前不在房间内。\nYou're currently not in a lobby.")
+                            else:
+                                logPrint("邀请失败。\nFailed to send the invitation.")
                         else:
                             time.sleep(GLOBAL_RESPONSE_LAG)
                             lobby_invitations: dict[str, Any] | list[dict[str, Any]] = await (await connection.request("GET", "/lol-lobby/v2/lobby/invitations")).json()
@@ -7420,6 +7423,8 @@ async def quit_champ_select(connection: Connection) -> bool:
                     logPrint("当前英雄选择阶段不支持早退。\nCurrent champ select doesn't allow dodging.")
                 elif response["httpStatus"] == 404 and response["message"] == "No champ select session in progress.":
                     logPrint("您不在英雄选择阶段，或者您正在进行传统的英雄选择。\nYou're not during the champ select stage, or you're in a legacy champ select.")
+                elif response["httpStatus"] == 500 and response["message"] == 'Unable to quit champ select: {"httpStatus":404,"errorCode":"RESOURCE_NOT_FOUND","message":"Unable to locate context","implementationDetails":"filtered"}':
+                    logPrint("无法找到英雄选择阶段的上下文。你的连接无法被恢复。请退出客户端并再次排队。\nUnable to find the champ select context. Your connection could not be recovered. Please exit the client and queue up again.")
                 else:
                     logPrint('退出英雄阶段的过程发生了异常。请尝试手动点击客户端右下角的“退出”按钮，或者重启客户端。\nAn error occurred when the program is trying to quit the champ select stage. Please try manually clicking the "Quit" button on the bottom-right corner of League Client, or restart the client.')
             else:
