@@ -6807,7 +6807,7 @@ async def sort_LoLGame_timeline_sgp(connection: Connection, LoLGame_timeline: di
                     else:
                         to_append = participant[key]
                 else:
-                    to_append = participant[key.split()[0]][key.split()[1]]
+                    to_append = participant[key.split()[0]].get(key.split()[1], "") #早期的英雄联盟对局的时间轴的英雄数据中有一些字段没有。见英雄联盟国服体验服的对局序号为696083511的对局的时间轴信息（Some fields aren't present in "championStats" of timeline of early League of Legends matches. See the timeline information of Match 696083511 on Chinese PBE server for an example）
                 LoLGame_timeline_data[key].append(to_append)
     LoLGame_timeline_statistics_output_order: list[int] = [1, 2, 3, 9, 15, 8, 5, 6, 13, 19, 16, 14, 12, 11, 10, 18, 17, 20, 53, 50, 47, 56, 52, 49, 46, 55, 54, 51, 48, 57, 32, 33, 42, 43, 26, 22, 23, 38, 27, 21, 31, 39, 34, 44, 24, 28, 25, 36, 29, 37, 35, 41, 45, 40, 30]
     LoLGame_timeline_data_organized: dict[str, list[Any]] = {LoLGame_timeline_header_keys[i]: LoLGame_timeline_data[LoLGame_timeline_header_keys[i]] for i in LoLGame_timeline_statistics_output_order}
