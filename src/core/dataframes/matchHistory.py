@@ -1747,7 +1747,7 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
     platformId: str = current_party["platformId"]
     logPrint = log.logPrint
     puuidList: list[str] = [puuid] if isinstance(puuid, str) else puuid
-    version_re: re.Pattern[str] = re.compile(r"\d+\.\d+\.\d+\.\d+")
+    version_re: re.Pattern[str] = re.compile(r"(?P<determinate>\d+\.\d+\.\d+\.\d+)|(?P<indeterminate>\?\.\?\.\?\.\?)") #从第18赛季开始，云顶之弈采用虚幻引擎，版本号使用虚幻引擎的版本。目前测试服是使用“?.?.?.?”来表示版本号，在用于重新获取数据资源时，本程序集的处理是获取测试服的数据资源。注意，等到云顶之弈对局记录的虚幻引擎的版本确定之后，这一部分代码很有可能要再次变动，以确保云顶之弈的数据整理能够使用正确版本的数据资源（Starting from Set 18, TFT has moved to Unreal Engine, and the version is the Unreal one. Currently, PBE uses "?.?.?.?" to mark the version number. To get data resources of such version, this program set uses the PBE version. Note that after the version of Unreal Engine in the TFT match history is determined, this part is likely to change again, to make sure TFT data organization can always use data resources in the correct version）
     TFTHistory_header_keys: list[str] = list(TFTHistory_header.keys())
     TFTHistory_data: dict[str, list[Any]] = {key: [] for key in TFTHistory_header_keys} #云顶之弈对局概要各项目初始化（Initialize every feature / column of TFT match summary）
     current_puuid_list: list[str] = []
@@ -1789,6 +1789,8 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
                 continue
             TFTGameVersion: str = version_re.search(TFTGame_summary_json["game_version"]).group()
             TFTGamePatch: str = ".".join(TFTGameVersion.split(".")[:2]) #由于需要通过这部分代码事先获取所有对局的版本，因此无论如何，这部分代码都要放在与从CommunityDragon重新获取云顶之弈数据相关的代码前面（Since game patches are captured here, by all means should this part of code be in front of the code relevant to regetting TFT data from CommunityDragon）
+            if TFTGamePatch == "?.?":
+                TFTGamePatch = "pbe"
             #下面针对每场对局建立总的数据资源异常处理机制（Builds the summarized data resource exceptional handling mechanism for each match）
             if useAllVersions:
                 ##游戏模式（Game mode）
@@ -7076,7 +7078,7 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
         log = LogManager()
     #常量准备（Constant preparation）
     logPrint = log.logPrint
-    version_re: re.Pattern[str] = re.compile(r"\d+\.\d+\.\d+\.\d+")
+    version_re: re.Pattern[str] = re.compile(r"(?P<determinate>\d+\.\d+\.\d+\.\d+)|(?P<indeterminate>\?\.\?\.\?\.\?)")
     TFTHistory_header_keys: list[str] = list(TFTHistory_header.keys())
     if participantIndex == -1: #对局数据记录存在异常时的处理（Exception of match data recording exception）
         for i in range(len(TFTHistory_header_keys)):
@@ -7414,7 +7416,7 @@ async def sort_TFTHistory(connection: Connection, TFTHistory: dict[str, Any], cu
     logPrint = log.logPrint
     puuidList: list[str] = [current_puuid] if isinstance(current_puuid, str) else current_puuid
     TFTHistoryList: list[dict[str, Any]] = TFTHistory["games"]
-    version_re: re.Pattern[str] = re.compile(r"\d+\.\d+\.\d+\.\d+") #云顶之弈的对局版本信息是一串字符串，从中识别四位对局版本（TFT match version is a long string, from which the 4-number version is identified）
+    version_re: re.Pattern[str] = re.compile(r"(?P<determinate>\d+\.\d+\.\d+\.\d+)|(?P<indeterminate>\?\.\?\.\?\.\?)") #云顶之弈的对局版本信息是一串字符串，从中识别四位对局版本（TFT match version is a long string, from which the 4-number version is identified）
     TFT_main_player_indices: list[int] = [] #云顶之弈对局记录中记录了所有玩家的数据，但是在历史记录的工作表中只要显示主召唤师的数据，因此必须知道每场对局中主召唤师的索引（Each match in TFT history records all players' data, but only the main player's data are needed to display in the match history worksheet, so the index of the main player in each match is necessary）
     for game in TFTHistoryList:
         if game.get("json"):
@@ -7444,6 +7446,8 @@ async def sort_TFTHistory(connection: Connection, TFTHistory: dict[str, Any], cu
         if participantIndex != -1:
             TFTGameVersion: str = version_re.search(TFTGame_summary_json["game_version"]).group()
             TFTGamePatch: str = ".".join(TFTGameVersion.split(".")[:2]) #由于需要通过这部分代码事先获取所有对局的版本，因此无论如何，这部分代码都要放在与从CommunityDragon重新获取云顶之弈数据相关的代码前面（Since game patches are captured here, by all means should this part of code be in front of the code relevant to regetting TFT data from CommunityDragon）
+            if TFTGamePatch == "?.?":
+                TFTGamePatch = "pbe"
             TFTPlayer: dict[str, Any] = TFTGame_summary_json["participants"][participantIndex]
             TFTPlayer_Traits: list[dict[str, Any]] = TFTPlayer["traits"]
             TFTPlayer_Units: list[dict[str, Any]] = TFTPlayer["units"]
@@ -7776,7 +7780,7 @@ async def generate_TFTGameSummary_records(connection: Connection, TFTGame_summar
     #常量准备（Constant preparation）
     logPrint = log.logPrint
     puuidList: list[str] = [current_puuid] if isinstance(current_puuid, str) else current_puuid
-    version_re: re.Pattern[str] = re.compile(r"\d+\.\d+\.\d+\.\d+")
+    version_re: re.Pattern[str] = re.compile(r"(?P<determinate>\d+\.\d+\.\d+\.\d+)|(?P<indeterminate>\?\.\?\.\?\.\?)")
     TFTGame_summary_json: dict[str, Any] = TFTGame_summary["json"] #在调用此函数之前，已经对对局概要进行过筛选了（Before this function called, match summaries are already filtered）
     TFTGameVersion: str = version_re.search(TFTGame_summary_json["game_version"]).group()
     TFTPlayer: dict[str, Any] = TFTGame_summary_json["participants"][participantIndex]
@@ -8123,13 +8127,15 @@ async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str
     #常量准备（Constant preparation）
     logPrint = log.logPrint
     puuidList: list[str] = [current_puuid] if isinstance(current_puuid, str) else current_puuid
-    version_re: re.Pattern[str] = re.compile(r"\d+\.\d+\.\d+\.\d+")
+    version_re: re.Pattern[str] = re.compile(r"(?P<determinate>\d+\.\d+\.\d+\.\d+)|(?P<indeterminate>\?\.\?\.\?\.\?)")
     TFTGame_summary_header_keys: list[str] = list(TFTGame_summary_header.keys())
     TFTGame_summary_data: dict[str, list[Any]] = {key: [] for key in TFTGame_summary_header} #云顶之弈没有独立的LCU API以供查询对局概要。这里将每场对局的与玩家有关的数据视为对局概要（There's not any available LCU API for TFT match summary query. Here any information relevant to participants is regarded as TFT game summary）
     if TFTGame_summary.get("json"): #该条件等价于（This condition is equivalent to）：`TFT_main_player_indices[i] == -1`
         TFTGame_summary_json: dict[str, Any] = TFTGame_summary["json"]
         TFTGameVersion: str = version_re.search(TFTGame_summary_json["game_version"]).group()
         TFTGamePatch: str = ".".join(TFTGameVersion.split(".")[:2]) #由于需要通过这部分代码事先获取所有对局的版本，因此无论如何，这部分代码都要放在与从CommunityDragon重新获取云顶之弈数据相关的代码前面（Since game patches are captured here, by all means should this part of code be in front of the code relevant to regetting TFT data from CommunityDragon）
+        if TFTGamePatch == "?.?":
+            TFTGamePatch = "pbe"
         #下面针对每场对局建立总的数据资源异常处理机制（Builds the summarized data resource exceptional handling mechanism for each match）
         if useAllVersions:
             ##游戏模式（Game mode）
@@ -8493,7 +8499,7 @@ async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFT
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
     platformId: str = current_party["platformId"]
     puuidList: list[str] = [puuid] if isinstance(puuid, str) else puuid
-    version_re: re.Pattern[str] = re.compile(r"\d+\.\d+\.\d+\.\d+")
+    version_re: re.Pattern[str] = re.compile(r"(?P<determinate>\d+\.\d+\.\d+\.\d+)|(?P<indeterminate>\?\.\?\.\?\.\?)")
     error_TFTMatchIDs: list[int] = [] #记录实际存在但未如期获取的对局序号（Records the matches that really exist but fail to be fetched）
     matches_not_found: list[int] = [] #记录系统已经删除但是不报异常的对局序号（Records the matches deleted from the database but still existing in the match history）
     matches_to_remove: list[int] = [] #记录获取成功但不包含主玩家的对局序号（Records the matches that are fetched successfully but don't contain the main player）
@@ -8517,6 +8523,8 @@ async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFT
                 TFTGame_summary_json: dict[str, Any] = TFTGame_summary.get("json", {})
                 TFTGameVersion: str = version_re.search(TFTGame_summary_json["game_version"]).group()
                 TFTGamePatch: str = ".".join(TFTGameVersion.split(".")[:2])
+                if TFTGamePatch == "?.?":
+                    TFTGamePatch = "pbe"
                 if excluded_reserve or len(set(puuidList) & set(map(lambda x: x["puuid"], TFTGame_summary_json["participants"]))) != 0:
                     #下面针对每场对局建立总的数据资源异常处理机制（Builds the summarized data resource exceptional handling mechanism for each match）
                     if useAllVersions:
