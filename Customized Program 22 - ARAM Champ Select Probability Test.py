@@ -29,7 +29,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/17
+# 更新（Last update）：     2026/08/19
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -779,7 +779,7 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                 if not isCrowd and selected_priority == 0:
                     break
                 #输出所有英雄信息，以防止频繁操作之后无法看到英雄选择阶段而无法判断程序准确性（Output all champion information, in case after frequent operations, the champ select stage can't be seen, so that users can't judge the correctness of this program）
-                logPrint("本局游戏中的所有英雄如下：\nAll champions in this game are as follows:", print_time = True)
+                logPrint("第%d次尝试（%d）：本局游戏中的所有英雄如下：\nTimes tried: %d - All champions in this game (%d) are as follows:" %(count, champ_select_session["gameId"], count, champ_select_session["gameId"]), print_time = True)
                 for championId in AllChampionIds:
                     logPrint("%s %s (%d)" %(LoLChampions[championId]["name"], LoLChampions[championId]["title"], championId), write_time = False)
                 if isCrowd: #多选模式将直接根据所有英雄进行判断，而不会要求用户具体一定要选什么英雄才能让程序进行下一步（Crowd mode will judge on all available champions, instead of asking players to choose a specific champion before the program goes next）
