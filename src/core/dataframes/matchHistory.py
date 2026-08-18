@@ -2028,7 +2028,7 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
                 await generate_TFTHistory_records(connection, TFTHistory_data, TFTGame_summary, participantIndex, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, unmapped_keys = unmapped_keys, useInfoDict = useInfoDict, infos = infos, log = log, verbose = verbose)
             logPrint("对局记录重查进度（Match history recheck process）：%d/%d\t对局序号（MatchID）： %s" %(i + 1, len(TFTMatchIDs), matchId), print_time = True, verbose = verbose)
     #数据框列序整理（Dataframe column ordering）
-    TFTHistory_statistics_output_order: list[int] = [0, 46, 47, 5, 14, 15, 16, 6, 10, 18, 8, 17, 7, 13, 12, 11, 306, 304, 40, 33, 34, 35, 38, 52, 53, 49, 36, 50, 42, 54, 41, 39, 44, 45, 23, 24, 25, 149, 147, 148, 202, 205, 208, 154, 152, 153, 211, 214, 217, 159, 157, 158, 220, 223, 226, 164, 162, 163, 229, 232, 235, 169, 167, 168, 238, 241, 244, 174, 172, 173, 247, 250, 253, 179, 177, 178, 256, 259, 262, 184, 182, 183, 265, 268, 271, 189, 187, 188, 274, 277, 280, 194, 192, 193, 283, 286, 289, 199, 197, 198, 292, 295, 298, 60, 56, 57, 58, 59, 67, 63, 64, 65, 66, 74, 70, 71, 72, 73, 81, 77, 78, 79, 80, 88, 84, 85, 86, 87, 95, 91, 92, 93, 94, 102, 98, 99, 100, 101, 109, 105, 106, 107, 108, 116, 112, 113, 114, 115, 123, 119, 120, 121, 122, 130, 126, 127, 128, 129, 137, 133, 134, 135, 136, 144, 140, 141, 142, 143]
+    TFTHistory_statistics_output_order: list[int] = [0, 47, 48, 5, 15, 16, 17, 6, 11, 19, 8, 18, 7, 14, 13, 12, 307, 305, 41, 34, 35, 36, 39, 53, 54, 50, 37, 51, 43, 55, 42, 40, 45, 46, 24, 25, 26, 150, 148, 149, 203, 206, 209, 155, 153, 154, 212, 215, 218, 160, 158, 159, 221, 224, 227, 165, 163, 164, 230, 233, 236, 170, 168, 169, 239, 242, 245, 175, 173, 174, 248, 251, 254, 180, 178, 179, 257, 260, 263, 185, 183, 184, 266, 269, 272, 190, 188, 189, 275, 278, 281, 195, 193, 194, 284, 287, 290, 200, 198, 199, 293, 296, 299, 61, 57, 58, 59, 60, 68, 64, 65, 66, 67, 75, 71, 72, 73, 74, 82, 78, 79, 80, 81, 89, 85, 86, 87, 88, 96, 92, 93, 94, 95, 103, 99, 100, 101, 102, 110, 106, 107, 108, 109, 117, 113, 114, 115, 116, 124, 120, 121, 122, 123, 131, 127, 128, 129, 130, 138, 134, 135, 136, 137, 145, 141, 142, 143, 144]
     TFTHistory_data_organized: dict[str, list[Any]] = {TFTHistory_header_keys[i]: TFTHistory_data[TFTHistory_header_keys[i]] for i in TFTHistory_statistics_output_order}
     TFTHistory_df: pandas.DataFrame = pandas.DataFrame(data = TFTHistory_data_organized)
     optimize_bool_display(TFTHistory_df)
@@ -7087,9 +7087,9 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
                 to_append: Any = gameIndex
             elif i == 5: #对局序号（`game_id`）
                 to_append = int(TFTGame_summary["metadata"]["match_id"].split("_")[1])
-            elif i == 14: #对局创建时间（`gameCreationDate`）
+            elif i == 15: #对局创建时间（`gameCreationDate`）
                 to_append = getISOTime(TFTGame_summary["metadata"].get("timestamp", 0) / 1000)
-            elif i in {51, 304}:
+            elif i in {52, 305}:
                 to_append = False
             else:
                 to_append = ""
@@ -7132,36 +7132,38 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
             key = TFTHistory_header_keys[i]
             if i == 0: #游戏序号（`gameIndex`）
                 to_append: Any = gameIndex
-            elif i <= 18:
+            elif i <= 19:
                 if i == 1: #对局终止情况（`endOfGameResult`）
                     to_append = endOfGameResults[TFTGame_summary_json["endOfGameResult"]] if "endOfGameResult" in TFTGame_summary_json else ""
-                elif i in {2, 3, 8, 9}:
+                elif i in {2, 3, 8, 10}:
                     to_append = TFTGame_summary_json.get(key, "") #14.6版本之前的云顶之弈对局概要中没有这些键（Those keys don't exist in summary of TFT matches before Patch 14.6）
                 elif i == 3: #对局序号（`gameId`）
                     to_append = TFTGame_summary_json.get("gameId", "") #云顶之弈第10赛季及之前无gameId这一键（Before and including TFT Set10, there's not a "gameId" key）
                 elif i == 7: #对局版本（`game_version`）
                     to_append = TFTGameVersion
-                elif i == 12: #数据版本名称（`tft_set_core_name`）
+                elif i == 9: #产品代码（`product_id`）
+                    to_append = TFTGame_summary_json.get("product_id", "") #在云顶之弈第18赛季之前，TFTGame_summary_json中无product_id这一键（Before TFTSet18, product_id isn't present as a key of `TFTGame_summary_json`）
+                elif i == 13: #数据版本名称（`tft_set_core_name`）
                     to_append = TFTGame_summary_json.get("tft_set_core_name", "") #在云顶之弈第7赛季之前，TFTGame_summary_json中无tft_set_core_name这一键（Before TFTSet7, tft_set_core_name isn't present as a key of `TFTGame_summary_json`）
-                elif i == 14: #对局创建时间（`gameCreationDate`）
+                elif i == 15: #对局创建时间（`gameCreationDate`）
                     to_append = getISOTime(TFTGame_summary_json["gameCreation"] / 1000) if "gameCreation" in TFTGame_summary_json else ""
-                elif i == 15: #对局结算时间（`gameDate`）
+                elif i == 16: #对局结算时间（`gameDate`）
                     to_append = getISOTime(int(TFTGame_summary_json["game_datetime"]) / 1000)
-                elif i == 16: #持续时长（`gameLength`）
+                elif i == 17: #持续时长（`gameLength`）
                     to_append = lcuTime(TFTGame_summary_json["game_length"])
-                elif i == 17: #地图名称（`mapName`）
+                elif i == 18: #地图名称（`mapName`）
                     to_append = gamemaps[TFTGame_summary_json["mapId"]]["zh_CN"] if "mapId" in TFTGame_summary_json else ""
-                elif i == 18: #游戏模式名称（`gameModeName`）
+                elif i == 19: #游戏模式名称（`gameModeName`）
                     to_append = queues[TFTGame_summary_json["queue_id"]]["description"] if TFTGame_summary_json["queue_id"] in queues else ""
                 else:
                     to_append = TFTGame_summary_json[key]
-            elif i <= 54:
-                if i == 19: #玩家序号（`participantId`）
+            elif i <= 55:
+                if i == 20: #玩家序号（`participantId`）
                     to_append = participantIndex + 1
-                elif i >= 20 and i <= 28: #强化符文相关键（Augment-related keys）
+                elif i >= 21 and i <= 29: #强化符文相关键（Augment-related keys）
                     if "augments" in TFTPlayer:
-                        augment_index: int = (i - 20) % 3
-                        subkey_index: int = (i - 20) // 3
+                        augment_index: int = (i - 21) % 3
+                        subkey_index: int = (i - 21) // 3
                         if augment_index < len(TFTPlayer["augments"]):
                             TFTAugmentId: str = TFTPlayer["augments"][augment_index]
                             if subkey_index == 0:
@@ -7177,30 +7179,30 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
                             to_append = ""
                     else:
                         to_append = "" #云顶之弈刚出的时候，没有强化符文的概念（The concept of "augment" didn't appear at the beginning of TFT）
-                elif i >= 29 and i <= 35: #小小英雄相关键（Companion-related keys）
+                elif i >= 30 and i <= 36: #小小英雄相关键（Companion-related keys）
                     TFTCompanionId: str = TFTPlayer["companion"]["content_ID"]
-                    if i <= 32:
+                    if i <= 33:
                         to_append = TFTPlayer["companion"][key.split()[-1]]
                     elif TFTCompanionId in TFTCompanions:
-                        to_append = TFTCompanions[TFTCompanionId][key.split()[-1]] if i <= 34 else rarities[TFTCompanions[TFTCompanionId][key.split()[-1]]]
+                        to_append = TFTCompanions[TFTCompanionId][key.split()[-1]] if i <= 35 else rarities[TFTCompanions[TFTCompanionId][key.split()[-1]]]
                     else:
                         if not TFTCompanionId in unmapped_keys["TFTCompanion"]:
                             unmapped_keys["TFTCompanion"].add(TFTCompanionId)
                             logPrint("【%d. %s】对局%d（对局版本：%s）小小英雄信息（%s）获取失败！将采用原始数据！\n[%d. %s] TFT companion information (%s) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, TFTGame_summary_json["game_id"], TFTGameVersion, TFTCompanionId, i, key, TFTCompanionId, TFTGame_summary_json["game_id"], TFTGameVersion), verbose = verbose)
-                        to_append = TFTCompanionId if i == 33 else ""
-                elif i == 45: #通关人机对战（`pve_wonrun`）
+                        to_append = TFTCompanionId if i == 34 else ""
+                elif i == 46: #通关人机对战（`pve_wonrun`）
                     to_append = "" if not "pve_wonrun" in TFTPlayer else "√" if TFTPlayer["pve_wonrun"] else "×"
-                elif i == 46 or i == 47: #玩家名称和名称编号（`riotIdGameName` and `riotIdTagline`）
+                elif i == 47 or i == 48: #玩家名称和名称编号（`riotIdGameName` and `riotIdTagline`）
                     if key in TFTPlayer:
                         to_append = TFTPlayer[key]
                     else:
                         if TFTPlayer["puuid"] != BOT_UUID and TFTPlayer_info_got:
-                            to_append = TFTPlayer_info_body["gameName"] if i == 46 else TFTPlayer_info_body["tagLine"]
+                            to_append = TFTPlayer_info_body["gameName"] if i == 47 else TFTPlayer_info_body["tagLine"]
                         else:
                             to_append = ""
-                elif i == 51: #胜利（`win`）
+                elif i == 52: #胜利（`win`）
                     to_append = TFTPlayer.get("win", False)
-                elif i == 52: #存活回合（`last_round_format`）
+                elif i == 53: #存活回合（`last_round_format`）
                     lastRound: int = TFTPlayer["last_round"]
                     if lastRound <= 3:
                         bigRound: int = 1
@@ -7209,17 +7211,17 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
                         bigRound = (lastRound + 3) // 7 + 1
                         smallRound = (lastRound + 3) % 7 + 1
                     to_append = "%d-%d" %(bigRound, smallRound)
-                elif i == 53: #存活时长（`time_eliminated_norm`）
+                elif i == 54: #存活时长（`time_eliminated_norm`）
                     to_append = lcuTime(TFTPlayer["time_eliminated"])
-                elif i == 54: #结果（`result`）
+                elif i == 55: #结果（`result`）
                     to_append = "" if not "win" in TFTPlayer else "胜利" if TFTPlayer["win"] else "失败"
                     if "endOfGameResult" in TFTGame_summary_json and TFTGame_summary_json["endOfGameResult"] == "Abort_AntiCheatExit":
                         to_append = "被终止"
                 else:
                     to_append = TFTPlayer.get(key, "")
-            elif i <= 145: #云顶之弈羁绊相关键（TFT trait-related keys）
-                trait_index: int = (i - 55) // 7
-                subkey_index = (i - 55) % 7
+            elif i <= 146: #云顶之弈羁绊相关键（TFT trait-related keys）
+                trait_index: int = (i - 56) // 7
+                subkey_index = (i - 56) % 7
                 if trait_index < len(TFTPlayer_Traits): #在这个小于的问题上纠结了很久[敲打]——下标是从0开始的。假设API上记录了n个羁绊，那么当程序正在获取第n个羁绊时，就会引起下标越界的问题。所以这里不能使用小于等于号（I stuck at this less than sign for too long xD - note that the index begins from 0. Suppose there're totally n traits recorded in LCU API. Then, when the program is trying to capture the n-th trait, it'll throw an IndexError. That's why the "less than or equal to" sign can't be used here）
                     TFTTrait_iter: dict[str, Any] = TFTPlayer_Traits[trait_index]
                     TFTTraitId: str = TFTTrait_iter["name"]
@@ -7245,10 +7247,10 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
                             to_append = TFTTraitId if subkey_index == 5 else ""
                 else:
                     to_append = ""
-            elif i <= 299:
-                if i <= 200: #云顶之弈英雄相关键（TFT champion-related keys）
-                    unit_index: int = (i - 146) // 5
-                    subkey_index = (i - 146) % 5
+            elif i <= 300:
+                if i <= 201: #云顶之弈英雄相关键（TFT champion-related keys）
+                    unit_index: int = (i - 147) // 5
+                    subkey_index = (i - 147) % 5
                     if unit_index < len(TFTPlayer_Units):
                         TFTChampion_iter: dict[str, Any] = TFTPlayer_Units[unit_index]
                         TFTChampionId: str = TFTChampion_iter["character_id"]
@@ -7270,9 +7272,9 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
                     else:
                         to_append = ""
                 else:
-                    unit_index = (i - 201) // 9
-                    item_index: int = (i - 201) // 3 % 3
-                    subkey_index = (i - 201) % 3
+                    unit_index = (i - 202) // 9
+                    item_index: int = (i - 202) // 3 % 3
+                    subkey_index = (i - 202) % 3
                     if unit_index < len(TFTPlayer_Units): #很少有英雄单位可以有3个装备（Merely do champion units have full items）
                         if "itemNames" in TFTPlayer_Units[unit_index] and item_index < len(TFTPlayer_Units[unit_index]["itemNames"]):
                             TFTItemId: str = TFTPlayer_Units[unit_index]["itemNames"][item_index]
@@ -7307,9 +7309,9 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
                     else:
                         to_append = ""
             else:
-                if i == 300 or i == 307:
+                if i == 301 or i == 308:
                     to_append = int(TFTGame_summary["metadata"][key])
-                elif i == 303: #所有玩家（`participants`）
+                elif i == 304: #所有玩家（`participants`）
                     to_append = json.dumps(TFTGame_summary["metadata"]["participants"])
                 else:
                     to_append = TFTGame_summary["metadata"][key]
@@ -7687,7 +7689,7 @@ async def sort_TFTHistory(connection: Connection, TFTHistory: dict[str, Any], cu
                         break
         await generate_TFTHistory_records(connection, TFTHistory_data, TFTGame_summary, participantIndex, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, unmapped_keys = unmapped_keys, useInfoDict = useInfoDict, infos = infos, log = log, verbose = verbose)
     #数据框列序整理（Dataframe column ordering）
-    TFTHistory_statistics_output_order: list[int] = [0, 46, 47, 5, 14, 15, 16, 6, 10, 18, 8, 17, 7, 13, 12, 11, 306, 304, 40, 33, 34, 35, 38, 52, 53, 49, 36, 50, 42, 54, 41, 39, 44, 45, 23, 24, 25, 149, 147, 148, 202, 205, 208, 154, 152, 153, 211, 214, 217, 159, 157, 158, 220, 223, 226, 164, 162, 163, 229, 232, 235, 169, 167, 168, 238, 241, 244, 174, 172, 173, 247, 250, 253, 179, 177, 178, 256, 259, 262, 184, 182, 183, 265, 268, 271, 189, 187, 188, 274, 277, 280, 194, 192, 193, 283, 286, 289, 199, 197, 198, 292, 295, 298, 60, 56, 57, 58, 59, 67, 63, 64, 65, 66, 74, 70, 71, 72, 73, 81, 77, 78, 79, 80, 88, 84, 85, 86, 87, 95, 91, 92, 93, 94, 102, 98, 99, 100, 101, 109, 105, 106, 107, 108, 116, 112, 113, 114, 115, 123, 119, 120, 121, 122, 130, 126, 127, 128, 129, 137, 133, 134, 135, 136, 144, 140, 141, 142, 143]
+    TFTHistory_statistics_output_order: list[int] = [0, 47, 48, 5, 15, 16, 17, 6, 11, 19, 8, 18, 7, 14, 13, 12, 307, 305, 41, 34, 35, 36, 39, 53, 54, 50, 37, 51, 43, 55, 42, 40, 45, 46, 24, 25, 26, 150, 148, 149, 203, 206, 209, 155, 153, 154, 212, 215, 218, 160, 158, 159, 221, 224, 227, 165, 163, 164, 230, 233, 236, 170, 168, 169, 239, 242, 245, 175, 173, 174, 248, 251, 254, 180, 178, 179, 257, 260, 263, 185, 183, 184, 266, 269, 272, 190, 188, 189, 275, 278, 281, 195, 193, 194, 284, 287, 290, 200, 198, 199, 293, 296, 299, 61, 57, 58, 59, 60, 68, 64, 65, 66, 67, 75, 71, 72, 73, 74, 82, 78, 79, 80, 81, 89, 85, 86, 87, 88, 96, 92, 93, 94, 95, 103, 99, 100, 101, 102, 110, 106, 107, 108, 109, 117, 113, 114, 115, 116, 124, 120, 121, 122, 123, 131, 127, 128, 129, 130, 138, 134, 135, 136, 137, 145, 141, 142, 143, 144]
     TFTHistory_data_organized: dict[str, list[Any]] = {TFTHistory_header_keys[i]: TFTHistory_data[TFTHistory_header_keys[i]] for i in TFTHistory_statistics_output_order}
     TFTHistory_df: pandas.DataFrame = pandas.DataFrame(data = TFTHistory_data_organized)
     optimize_bool_display(TFTHistory_df)
@@ -7829,34 +7831,36 @@ async def generate_TFTGameSummary_records(connection: Connection, TFTGame_summar
         key: str = TFTGame_summary_header_keys[i]
         if i == 0: #游戏序号（`gameIndex`）
             to_append: Any = gameIndex
-        elif i <= 18:
+        elif i <= 19:
             if i == 1: #对局终止情况（`endOfGameResult`）
                 to_append = endOfGameResults[TFTGame_summary_json["endOfGameResult"]] if "endOfGameResult" in TFTGame_summary_json else ""
-            elif i in {2, 3, 8, 9}:
+            elif i in {2, 3, 8, 10}:
                 to_append = TFTGame_summary_json.get(key, "") #14.6版本之前的云顶之弈对局信息中没有这些键（Those keys don't exist in information of TFT matches before Patch 14.6）
             elif i == 7: #对局版本（`game_version`）
                 to_append = TFTGameVersion
-            elif i == 12: #数据版本名称（`tft_set_core_name`）
+            elif i == 9: #产品代码（`product_id`）
+                to_append = TFTGame_summary_json.get("product_id", "") #在云顶之弈第18赛季之前，TFTGame_summary_json中无product_id这一键（Before TFTSet18, product_id isn't present as a key of `TFTGame_summary_json`）
+            elif i == 13: #数据版本名称（`tft_set_core_name`）
                 to_append = TFTGame_summary_json.get("tft_set_core_name", "") #在云顶之弈第7赛季之前，TFTGame_summary_json中无tft_set_core_name这一键（Before TFTSet7, tft_set_core_name isn't present as a key of `TFTGame_summary_json`）
-            elif i == 14: #对局创建时间（`gameCreationDate`）
+            elif i == 15: #对局创建时间（`gameCreationDate`）
                 to_append = getISOTime(TFTGame_summary_json["gameCreation"] / 1000) if "gameCreation" in TFTGame_summary_json else ""
-            elif i == 15: #对局结算时间（`gameDate`）
+            elif i == 16: #对局结算时间（`gameDate`）
                 to_append = getISOTime(int(TFTGame_summary_json["game_datetime"]) / 1000)
-            elif i == 16: #持续时长（`gameLength`）
+            elif i == 17: #持续时长（`gameLength`）
                 to_append = lcuTime(TFTGame_summary_json["game_length"])
-            elif i == 17: #地图名称（`mapName`）
+            elif i == 18: #地图名称（`mapName`）
                 to_append = gamemaps[TFTGame_summary_json["mapId"]]["zh_CN"] if "mapId" in TFTGame_summary_json else ""
-            elif i == 18: #游戏模式名称（`gameModeName`）
+            elif i == 19: #游戏模式名称（`gameModeName`）
                 to_append = queues[TFTGame_summary_json["queue_id"]]["description"] if TFTGame_summary_json["queue_id"] in queues else ""
             else:
                 to_append = TFTGame_summary_json[key]
-        elif i <= 55:
-            if i == 19: #玩家序号（`participantId`）
+        elif i <= 56:
+            if i == 20: #玩家序号（`participantId`）
                 to_append = participantIndex + 1
-            elif i >= 20 and i <= 28: #强化符文相关键（Augment-related keys）
+            elif i >= 21 and i <= 29: #强化符文相关键（Augment-related keys）
                 if "augments" in TFTPlayer:
-                    augment_index: int = (i - 20) % 3
-                    subkey_index: int = (i - 20) // 3
+                    augment_index: int = (i - 21) % 3
+                    subkey_index: int = (i - 21) // 3
                     if augment_index < len(TFTPlayer["augments"]):
                         TFTAugmentId: str = TFTPlayer["augments"][augment_index]
                         if subkey_index == 0:
@@ -7872,34 +7876,34 @@ async def generate_TFTGameSummary_records(connection: Connection, TFTGame_summar
                         to_append = ""
                 else:
                     to_append = "" #云顶之弈刚出的时候，没有强化符文的概念（The concept of "augment" didn't appear at the beginning of TFT）
-            elif i >= 29 and i <= 35: #小小英雄相关键（Companion-related keys）
+            elif i >= 30 and i <= 36: #小小英雄相关键（Companion-related keys）
                 TFTCompanionId: str = TFTPlayer["companion"]["content_ID"]
-                if i <= 32:
+                if i <= 33:
                     to_append = TFTPlayer["companion"][key.split()[-1]]
                 elif TFTCompanionId in TFTCompanions:
-                    to_append = TFTCompanions[TFTCompanionId][key.split()[-1]] if i <= 34 else rarities[TFTCompanions[TFTCompanionId][key.split()[-1]]]
+                    to_append = TFTCompanions[TFTCompanionId][key.split()[-1]] if i <= 35 else rarities[TFTCompanions[TFTCompanionId][key.split()[-1]]]
                 else:
                     if not TFTCompanionId in unmapped_keys["TFTCompanion"]:
                         unmapped_keys["TFTCompanion"].add(TFTCompanionId)
                         logPrint("【%d. %s】对局%d（对局版本：%s）小小英雄信息（%s）获取失败！将采用原始数据！\n[%d. %s] TFT companion information (%s) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, TFTGame_summary_json["game_id"], TFTGameVersion, TFTCompanionId, i, key, TFTCompanionId, TFTGame_summary_json["game_id"], TFTGameVersion), verbose = verbose)
-                    to_append = TFTCompanionId if i == 33 else ""
-            elif i == 45: #通关人机对战（`pve_wonrun`）
+                    to_append = TFTCompanionId if i == 34 else ""
+            elif i == 46: #通关人机对战（`pve_wonrun`）
                 to_append = "" if not "pve_wonrun" in TFTPlayer else "√" if TFTPlayer["pve_wonrun"] else "×"
-            elif i == 46 or i == 47: #玩家名称和名称编号（`riotIdGameName` and `riotIdTagline`）
+            elif i == 47 or i == 48: #玩家名称和名称编号（`riotIdGameName` and `riotIdTagline`）
                 if key in TFTPlayer:
                     to_append = TFTPlayer[key]
                 else:
                     if TFTPlayer["puuid"] in infos:
                         TFTPlayer_info_body = infos[TFTPlayer["puuid"]]
-                        to_append = TFTPlayer_info_body["gameName"] if i == 46 else TFTPlayer_info_body["tagLine"]
+                        to_append = TFTPlayer_info_body["gameName"] if i == 47 else TFTPlayer_info_body["tagLine"]
                     else:
                         if TFTPlayer["puuid"] != BOT_UUID and TFTPlayer_info_got:
-                            to_append = TFTPlayer_info_body["gameName"] if i == 46 else TFTPlayer_info_body["tagLine"]
+                            to_append = TFTPlayer_info_body["gameName"] if i == 47 else TFTPlayer_info_body["tagLine"]
                         else:
                             to_append = ""
-            elif i == 51: #胜利（`win`）
+            elif i == 52: #胜利（`win`）
                 to_append = TFTPlayer.get("win", False)
-            elif i == 52: #存活回合（`last_round_format`）
+            elif i == 53: #存活回合（`last_round_format`）
                 lastRound: int = TFTPlayer["last_round"]
                 if lastRound <= 3:
                     bigRound: int = 1
@@ -7908,19 +7912,19 @@ async def generate_TFTGameSummary_records(connection: Connection, TFTGame_summar
                     bigRound = (lastRound + 3) // 7 + 1
                     smallRound = (lastRound + 3) % 7 + 1
                 to_append = "%d-%d" %(bigRound, smallRound)
-            elif i == 53: #存活时长（`time_eliminated_norm`）
+            elif i == 54: #存活时长（`time_eliminated_norm`）
                 to_append = lcuTime(TFTPlayer["time_eliminated"])
-            elif i == 54: #结果（`result`）
+            elif i == 55: #结果（`result`）
                 to_append = "" if not "win" in TFTPlayer else "胜利" if TFTPlayer["win"] else "失败"
                 if "endOfGameResult" in TFTGame_summary_json and TFTGame_summary_json["endOfGameResult"] == "Abort_AntiCheatExit":
                     to_append = "被终止"
-            elif i == 55: #是否队友（`isAlly`）
+            elif i == 56: #是否队友（`isAlly`）
                 to_append = current_participant_found and "partner_group_id" in TFTPlayer and TFTPlayer["partner_group_id"] == current_participant["partner_group_id"]
             else:
                 to_append = TFTPlayer.get(key, "")
-        elif i <= 146: #云顶之弈羁绊相关键（TFT trait-related keys）
-            trait_index: int = (i - 56) // 7
-            subkey_index = (i - 56) % 7
+        elif i <= 147: #云顶之弈羁绊相关键（TFT trait-related keys）
+            trait_index: int = (i - 57) // 7
+            subkey_index = (i - 57) % 7
             if trait_index < len(TFTPlayer_Traits): #在这个小于的问题上纠结了很久[敲打]——下标是从0开始的。假设API上记录了n个羁绊，那么当程序正在获取第n个羁绊时，就会引起下标越界的问题。所以这里不能使用小于等于号（I stuck at this less than sign for too long xD - note that the index begins from 0. Suppose there're totally n traits recorded in LCU API. Then, when the program is trying to capture the n-th trait, it'll throw an IndexError. That's why the "less than or equal to" sign can't be used here）
                 TFTTrait_iter: dict[str, Any] = TFTPlayer_Traits[trait_index]
                 TFTTraitId: str = TFTTrait_iter["name"]
@@ -7946,10 +7950,10 @@ async def generate_TFTGameSummary_records(connection: Connection, TFTGame_summar
                         to_append = TFTTraitId if subkey_index == 5 else ""
             else:
                 to_append = ""
-        elif i <= 300:
-            if i <= 201: #云顶之弈英雄相关键（TFT champion-related keys）
-                unit_index: int = (i - 147) // 5
-                subkey_index = (i - 147) % 5
+        elif i <= 301:
+            if i <= 202: #云顶之弈英雄相关键（TFT champion-related keys）
+                unit_index: int = (i - 148) // 5
+                subkey_index = (i - 148) % 5
                 if unit_index < len(TFTPlayer_Units):
                     TFTChampion_iter: dict[str, Any] = TFTPlayer_Units[unit_index]
                     TFTChampionId = TFTChampion_iter["character_id"]
@@ -7971,9 +7975,9 @@ async def generate_TFTGameSummary_records(connection: Connection, TFTGame_summar
                 else:
                     to_append = ""
             else:
-                unit_index = (i - 202) // 9
-                item_index = (i - 202) // 3 % 3
-                subkey_index = (i - 202) % 3
+                unit_index = (i - 203) // 9
+                item_index = (i - 203) // 3 % 3
+                subkey_index = (i - 203) % 3
                 if unit_index < len(TFTPlayer_Units): #很少有英雄单位可以有3个装备（Merely do champion units have full items）
                     if "itemNames" in TFTPlayer_Units[unit_index] and item_index < len(TFTPlayer_Units[unit_index]["itemNames"]):
                         TFTItemId = TFTPlayer_Units[unit_index]["itemNames"][item_index]
@@ -8008,9 +8012,9 @@ async def generate_TFTGameSummary_records(connection: Connection, TFTGame_summar
                 else:
                     to_append = ""
         else:
-            if i == 301 or i == 308:
+            if i == 302 or i == 309:
                 to_append = int(TFTGame_summary["metadata"][key])
-            elif i == 304: #所有玩家（`participants`）
+            elif i == 305: #所有玩家（`participants`）
                 to_append = json.dumps(TFTGame_summary["metadata"]["participants"])
             else:
                 to_append = TFTGame_summary["metadata"][key]
@@ -8380,7 +8384,7 @@ async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str
                     key: str = TFTGame_summary_header_keys[j]
                     TFTGame_stat_data[key].append(TFTGame_summary_data[key][-1]) #直接添加最近一次追加的数据，以简化代码（Directly append the recently appended data to simplify the code）
     #数据框列序整理（Dataframe column ordering）
-    TFTGame_summary_statistics_output_order: list[int] = [40, 19, 55, 46, 47, 43, 33, 34, 35, 38, 52, 53, 49, 36, 50, 42, 54, 41, 39, 44, 45, 23, 24, 25, 150, 148, 149, 203, 206, 209, 155, 153, 154, 212, 215, 218, 160, 158, 159, 221, 224, 227, 165, 163, 164, 230, 233, 236, 170, 168, 169, 239, 242, 245, 175, 173, 174, 248, 251, 254, 180, 178, 179, 257, 260, 263, 185, 183, 184, 266, 269, 272, 190, 188, 189, 275, 278, 281, 195, 193, 194, 284, 287, 290, 200, 198, 199, 293, 296, 299, 61, 57, 58, 59, 60, 68, 64, 65, 66, 67, 75, 71, 72, 73, 74, 82, 78, 79, 80, 81, 89, 85, 86, 87, 88, 96, 92, 93, 94, 95, 103, 99, 100, 101, 102, 110, 106, 107, 108, 109, 117, 113, 114, 115, 116, 124, 120, 121, 122, 123, 131, 127, 128, 129, 130, 138, 134, 135, 136, 137, 145, 141, 142, 143, 144]
+    TFTGame_summary_statistics_output_order: list[int] = [41, 20, 56, 47, 48, 44, 34, 35, 36, 39, 53, 54, 50, 37, 51, 43, 55, 42, 40, 45, 46, 24, 25, 26, 151, 149, 150, 204, 207, 210, 156, 154, 155, 213, 216, 219, 161, 159, 160, 222, 225, 228, 166, 164, 165, 231, 234, 237, 171, 169, 170, 240, 243, 246, 176, 174, 175, 249, 252, 255, 181, 179, 180, 258, 261, 264, 186, 184, 185, 267, 270, 273, 191, 189, 190, 276, 279, 282, 196, 194, 195, 285, 288, 291, 201, 199, 200, 294, 297, 300, 62, 58, 59, 60, 61, 69, 65, 66, 67, 68, 76, 72, 73, 74, 75, 83, 79, 80, 81, 82, 90, 86, 87, 88, 89, 97, 93, 94, 95, 96, 104, 100, 101, 102, 103, 111, 107, 108, 109, 110, 118, 114, 115, 116, 117, 125, 121, 122, 123, 124, 132, 128, 129, 130, 131, 139, 135, 136, 137, 138, 146, 142, 143, 144, 145]
     TFTGame_summary_data_organized: dict[str, list[Any]] = {TFTGame_summary_header_keys[i]: TFTGame_summary_data[TFTGame_summary_header_keys[i]] for i in TFTGame_summary_statistics_output_order}
     TFTGame_summary_df: pandas.DataFrame = pandas.DataFrame(data = TFTGame_summary_data_organized)
     optimize_bool_display(TFTGame_summary_df)
@@ -8785,7 +8789,7 @@ async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFT
         logPrint("注意：以下%d场对局数据不可用。\nAttention: The following %d match(es) are not available." %(len(matches_not_found), len(matches_not_found)), verbose = verbose)
         logPrint(matches_not_found, verbose = verbose)
     #数据框列序整理（Dataframe column ordering）
-    TFTGame_stat_statistics_output_order: list[int] = [0, 19, 46, 47, 43, 5, 14, 15, 16, 6, 10, 18, 7, 13, 11, 12, 307, 305, 40, 55, 33, 34, 35, 38, 52, 53, 49, 36, 50, 42, 54, 41, 39, 44, 45, 23, 24, 25, 150, 148, 149, 203, 206, 209, 155, 153, 154, 212, 215, 218, 160, 158, 159, 221, 224, 227, 165, 163, 164, 230, 233, 236, 170, 168, 169, 239, 242, 245, 175, 173, 174, 248, 251, 254, 180, 178, 179, 257, 260, 263, 185, 183, 184, 266, 269, 272, 190, 188, 189, 275, 278, 281, 195, 193, 194, 284, 287, 290, 200, 198, 199, 293, 296, 299, 61, 57, 58, 59, 60, 68, 64, 65, 66, 67, 75, 71, 72, 73, 74, 82, 78, 79, 80, 81, 89, 85, 86, 87, 88, 96, 92, 93, 94, 95, 103, 99, 100, 101, 102, 110, 106, 107, 108, 109, 117, 113, 114, 115, 116, 124, 120, 121, 122, 123, 131, 127, 128, 129, 130, 138, 134, 135, 136, 137, 145, 141, 142, 143, 144]
+    TFTGame_stat_statistics_output_order: list[int] = [0, 20, 47, 48, 44, 5, 15, 16, 17, 6, 11, 19, 7, 14, 12, 13, 308, 306, 41, 56, 34, 35, 36, 39, 53, 54, 50, 37, 51, 43, 55, 42, 40, 45, 46, 24, 25, 26, 151, 149, 150, 204, 207, 210, 156, 154, 155, 213, 216, 219, 161, 159, 160, 222, 225, 228, 166, 164, 165, 231, 234, 237, 171, 169, 170, 240, 243, 246, 176, 174, 175, 249, 252, 255, 181, 179, 180, 258, 261, 264, 186, 184, 185, 267, 270, 273, 191, 189, 190, 276, 279, 282, 196, 194, 195, 285, 288, 291, 201, 199, 200, 294, 297, 300, 62, 58, 59, 60, 61, 69, 65, 66, 67, 68, 76, 72, 73, 74, 75, 83, 79, 80, 81, 82, 90, 86, 87, 88, 89, 97, 93, 94, 95, 96, 104, 100, 101, 102, 103, 111, 107, 108, 109, 110, 118, 114, 115, 116, 117, 125, 121, 122, 123, 124, 132, 128, 129, 130, 131, 139, 135, 136, 137, 138, 146, 142, 143, 144, 145]
     TFTGame_stat_data_organized: dict[str, list[Any]] = {TFTGame_summary_header_keys[i]: TFTGame_stat_data[TFTGame_summary_header_keys[i]] for i in TFTGame_stat_statistics_output_order}
     TFTGame_stat_df: pandas.DataFrame = pandas.DataFrame(data = TFTGame_stat_data_organized)
     logPrint("正在优化逻辑值显示……\nOptimizing the display of boolean values ...", verbose = verbose)

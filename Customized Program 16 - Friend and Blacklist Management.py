@@ -23,7 +23,7 @@ from src.localization.languages.zh_CN import availabilities, RiotRelationships, 
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/08/17
+# 更新（Last update）：     2026/08/19
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -592,7 +592,7 @@ async def get_recent_players(connection: Connection, search_mode: int = 2, lol_s
                         participant: dict[str, Any] = game["json"]["participants"][j]
                         if not participant["puuid"] in {current_puuid, BOT_UUID}:
                             await generate_TFTGameSummary_records(connection, TFTGame_stat_data, game, j, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, current_puuid = current_puuid, unmapped_keys = unmapped_keys2, log = log)
-            TFTGame_stat_statistics_output_order: list[int] = [0, 19, 46, 47, 43, 5, 14, 15, 16, 6, 10, 18, 7, 13, 11, 12, 307, 305, 40, 55, 33, 34, 35, 38, 52, 53, 49, 36, 50, 42, 54, 41, 39, 44, 45, 23, 24, 25, 150, 148, 149, 203, 206, 209, 155, 153, 154, 212, 215, 218, 160, 158, 159, 221, 224, 227, 165, 163, 164, 230, 233, 236, 170, 168, 169, 239, 242, 245, 175, 173, 174, 248, 251, 254, 180, 178, 179, 257, 260, 263, 185, 183, 184, 266, 269, 272, 190, 188, 189, 275, 278, 281, 195, 193, 194, 284, 287, 290, 200, 198, 199, 293, 296, 299, 61, 57, 58, 59, 60, 68, 64, 65, 66, 67, 75, 71, 72, 73, 74, 82, 78, 79, 80, 81, 89, 85, 86, 87, 88, 96, 92, 93, 94, 95, 103, 99, 100, 101, 102, 110, 106, 107, 108, 109, 117, 113, 114, 115, 116, 124, 120, 121, 122, 123, 131, 127, 128, 129, 130, 138, 134, 135, 136, 137, 145, 141, 142, 143, 144]
+            TFTGame_stat_statistics_output_order: list[int] = [0, 20, 47, 48, 44, 5, 15, 16, 17, 6, 11, 19, 7, 14, 12, 13, 308, 306, 41, 56, 34, 35, 36, 39, 53, 54, 50, 37, 51, 43, 55, 42, 40, 45, 46, 24, 25, 26, 151, 149, 150, 204, 207, 210, 156, 154, 155, 213, 216, 219, 161, 159, 160, 222, 225, 228, 166, 164, 165, 231, 234, 237, 171, 169, 170, 240, 243, 246, 176, 174, 175, 249, 252, 255, 181, 179, 180, 258, 261, 264, 186, 184, 185, 267, 270, 273, 191, 189, 190, 276, 279, 282, 196, 194, 195, 285, 288, 291, 201, 199, 200, 294, 297, 300, 62, 58, 59, 60, 61, 69, 65, 66, 67, 68, 76, 72, 73, 74, 75, 83, 79, 80, 81, 82, 90, 86, 87, 88, 89, 97, 93, 94, 95, 96, 104, 100, 101, 102, 103, 111, 107, 108, 109, 110, 118, 114, 115, 116, 117, 125, 121, 122, 123, 124, 132, 128, 129, 130, 131, 139, 135, 136, 137, 138, 146, 142, 143, 144, 145]
             TFTGame_stat_data_organized: dict[str, list[Any]] = {TFTGame_summary_header_keys[i]: TFTGame_stat_data[TFTGame_summary_header_keys[i]] for i in TFTGame_stat_statistics_output_order}
             recent_TFTPlayer_df: pandas.DataFrame = pandas.DataFrame(data = TFTGame_stat_data_organized)
             logPrint("正在优化逻辑值显示……\nOptimizing the display of boolean values ...")
