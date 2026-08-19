@@ -51,6 +51,7 @@ platform_TENCENT: dict[str, str] = {
     "TJ101": "联盟五区",
     "PBE": "体验服 试炼之地（Chinese PBE）", #也译为云顶之巅（Also known as "TOC"）
     "FORCES": "比赛服 艾欧尼亚（Tournament - Ionia）",
+    "FORCES_NEW": "海斗之巅",
     "PREPBE": "试炼之地 临时过渡服务器（Chinese PBE Temporary）",
 }
 platform_RIOT: dict[str, str] = {
