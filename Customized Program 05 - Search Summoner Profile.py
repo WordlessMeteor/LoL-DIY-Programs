@@ -26,7 +26,8 @@ parser.add_argument("-a", "--lol-api", help = "指定通过什么接口获取英
 parser.add_argument("-ic", "--info-color", help = "为对局概要工作表施加条件格式。\nAdd conditional formatting to match summary sheets.", action = "store_true") #这会对性能和工作簿大小有较大影响（This seriously affects the program's performance and the workbook size）
 parser.add_argument("-lb", "--export-leaderboard", help = "导出每场对局的社交排行榜工作表。时间开销大。\nExport the social leaderboard data of each match. Time consuming.", action = "store_true")
 parser.add_argument("-ne", "--no-empty-sheet", help = "在创建工作簿的情况下不创建空白工作表。\nDeny creating empty sheets if a new workbook is created.", action = "store_true") #主要应用于从小工作簿移动工作表到大工作簿的情形（Mainly used in the case where sheets are moved from a small workbook into a bigger workbook）
-parser.add_argument("-ns", "--no-stat-sheet", help = "不创建玩家战绩工作表和近期一起玩过的玩家工作表。\nDeny creating player stat sheets and recently played summoner sheets.", action = "store_true")
+parser.add_argument("-ns", "--no-stat-sheet", help = "不创建玩家战绩工作表和近期一起玩过的玩家工作表。\nDeny creating player stat sheets and recently played summoner sheets.\n该开关对于【增补保存】和【增补加载】模式有较大的速度优化。\nThis flag has significant speed optimization for Supplementary Saving and Supplementary Loading modes.", action = "store_true")
+parser.add_argument("-nt", "--no-timeline-sheet", help = "跳过英雄联盟对局时间轴的获取，不创建对局时间轴工作表。\nSkip getting LoL match timelines and deny creating the match timeline sheets.\n对局信息将不会被保存为json文件。\nMatch information won't be saved into json files.", action = "store_true")
 parser.add_argument("-r", "--reserve", help = "在对局不包含主玩家的情况下仍然加载该对局。\nLoad a match even if it doesn't contain the main player.", action = "store_true")
 parser.add_argument("-rt", "--reserve-text", help = "在对局不包含主玩家的情况下仍然保存该对局。\nSave a match even if it doesn't contain the main player.", action = "store_true")
 args: argparse.Namespace = parser.parse_args()
@@ -2176,7 +2177,7 @@ async def search_profile(connection: Connection) -> None:
                     matchId: int = int(game["metadata"]["match_id"].split("_")[1])
                     if not matchId in LoLGame_summary_cache_sgp:
                         LoLGame_summary_cache_sgp[matchId] = game
-                if use_sgp: #没必要将从SGP API获取的对局概要数据导出到json文件中，因为它实际上就是从SGP API获取的各对局概要数据的加和。因此，为了保证每次读取对局记录时都会在本地形成一个对局记录json文件，LCU API是无论如何都会访问一次的（It's unnecessary to export the match summary data obtained through SGP API into a json file, because it's actually the sum of all match summaries obtained from SGP API. Therefore, in order to make sure a json file will be generated every time the program fetches the match history, LCU API is always accessed）
+                if use_sgp and not args.no_timeline_sheet: #没必要将从SGP API获取的对局概要数据导出到json文件中，因为它实际上就是从SGP API获取的各对局概要数据的加和。因此，为了保证每次读取对局记录时都会在本地形成一个对局记录json文件，LCU API是无论如何都会访问一次的（It's unnecessary to export the match summary data obtained through SGP API into a json file, because it's actually the sum of all match summaries obtained from SGP API. Therefore, in order to make sure a json file will be generated every time the program fetches the match history, LCU API is always accessed）
                     LoLDetails_get, LoLDetails = await get_matchDetails_sgp(connection, sgpSession, info_puuid, "LoL", begin = 0, count = len(LoLHistory_sgp["games"]) if LoLHistory_get else 1000, log = log)
                     for game in LoLDetails["games"]:
                         matchId: int = int(game["metadata"]["match_id"].split("_")[1])
@@ -2324,9 +2325,12 @@ async def search_profile(connection: Connection) -> None:
             CherryAugments = CherryAugments_initial.copy()
             current_versions["queue"] = current_versions["summonerIcon"] = current_versions["spell"] = current_versions["LoLChampion"] = current_versions["LoLItem"] = current_versions["perk"] = current_versions["perkstyle"] = current_versions["CherryAugment"] = URLPatch
             unmapped_keys["queue"], unmapped_keys["summonerIcon"], unmapped_keys["spell"], unmapped_keys["LoLChampion"], unmapped_keys["LoLItem"], unmapped_keys["perk"], unmapped_keys["perkstyle"], unmapped_keys["CherryAugment"] = set(), set(), set(), set(), set(), set(), set(), set()
-            logPrint("是否输出每场对局的文本文档？（输入任意键不输出，否则默认输出）\nExport text files of each match? (Input anything to refuse exporting, or null to export by default)")
-            save_all_json_str: str = logInput()
-            save_all_json: bool = not bool(save_all_json_str)
+            if args.no_timeline_sheet: #本脚本要求要么不保存原始数据，要么保存完整的原始数据（This program requires either all source data are saved or no source data are saved）
+                save_all_json: bool = False
+            else:
+                logPrint("是否输出每场对局的文本文档？（输入任意键不输出，否则默认输出）\nExport text files of each match? (Input anything to refuse exporting, or null to export by default)")
+                save_all_json_str: str = logInput()
+                save_all_json = not bool(save_all_json_str)
             LoLGame_stat_header_keys: list[str] = list(LoLGame_stat_header.keys())
             LoLGame_stat_data: dict[str, list[Any]] = {key: [] for key in LoLGame_stat_header_keys} #将主召唤师的信息单独导出到一个工作表中（Export the game stats of the main summoner into a single sheet）
             for matchId in LoLMatchIDs:
@@ -2334,6 +2338,8 @@ async def search_profile(connection: Connection) -> None:
                 LoLGame_summary_export: bool = not (old_LoLMatch_detected and update_unsaved_only_lol and matchId in saved_LoLMatchIDs) #标记是否导出对局概要。如果是在批量查询全部对局的情况下仅保存本地没有的对局，且该对局已在本地，则不保存本场对局（Marks whether to export the match summary. If the user submits "3" to search matches in batch and selected to update the matches that don't exist locally, while the current match already exists, then the program won't export this match）
                 LoLGame_leaderboard_export: bool = args.export_leaderboard #标记是否导出对局排行榜。仅可通过命令行变量指定（Marks whether to export the match leaderboard. Can only be specified by the command line argument）
                 LoLGame_timeline_export: bool = LoLGame_summary_export #标记是否导出对局时间轴。时间轴的整理依赖于概要，因此目前认为这两者的值相同（Marks whether to export the match timeline. Timeline data organization is based on the match summary, so its value is set the same as the above）
+                if args.no_timeline_sheet: #这个开关的一个重要作用是跳过时间轴信息的获取以节省时间（An important role of this flag is to skip getting timeline information to save time）
+                    LoLGame_timeline_export = False
                 #LoLGame_event_export: bool = LoLGame_timeline_export #标记是否导出对局事件信息。由于事件信息源于时间轴，因此这两者的值在任何情形下是相同的（Marks whether to export the match events. Because events are extracted from the timeline, these two values should be the same under any circumstance）
                 info_text_saved = timeline_text_saved = False #标记对局概要和时间轴的文本文档是否保存（Marks whether the json files of match summary and timeline are saved）
                 isLoL[matchId] = False #这里可以使用（This assignment can be replaced by）：`isLoL[matchId] = isTFT[matchId] = False`
@@ -2431,6 +2437,7 @@ async def search_profile(connection: Connection) -> None:
                         timeline_exist_error[matchId] = False
                 else:
                     LoLGame_timeline = {}
+                    timeline_exist_error[matchId] = True
                 
                 #提示（Prompt）
                 process_header: str = "保存进度（Saving process）" if save_all_json and save_one_json else "加载进度（Loading process）"
@@ -2723,9 +2730,12 @@ async def search_profile(connection: Connection) -> None:
             TFTTraits = TFTTraits_initial.copy()
             current_versions["queue"] = current_versions["TFTAugment"] = current_versions["TFTChampion"] = current_versions["TFTItem"] = current_versions["TFTCompanion"] = current_versions["TFTTrait"] = URLPatch
             unmapped_keys["queue"], unmapped_keys["TFTAugment"], unmapped_keys["TFTChampion"], unmapped_keys["TFTItem"], unmapped_keys["TFTCompanion"], unmapped_keys["TFTTrait"] = set(), set(), set(), set(), set(), set()
-            logPrint("是否输出每场对局的文本文档？（输入任意键不输出，否则默认输出）\nExport text files of each match? (Input anything to cancel, or null to export by default)")
-            save_all_json_str: str = logInput()
-            save_all_json: bool = not bool(save_all_json_str)
+            if args.no_timeline_sheet:
+                save_all_json: bool = False
+            else:
+                logPrint("是否输出每场对局的文本文档？（输入任意键不输出，否则默认输出）\nExport text files of each match? (Input anything to cancel, or null to export by default)")
+                save_all_json_str: str = logInput()
+                save_all_json = not bool(save_all_json_str)
             TFTGame_stat_header_keys: list[str] = list(TFTGame_stat_header.keys())
             TFTGame_stat_data: dict[str, list[Any]] = {key: [] for key in TFTGame_stat_header_keys}
             for matchId in TFTMatchIDs:
@@ -3023,7 +3033,7 @@ async def search_profile(connection: Connection) -> None:
                                     if info_exist_error[matchIDs[i]] and not timeline_exist_error[matchIDs[i]]:
                                         logPrint("对局概要和时间轴导出进度（Match summary and timeline export process）：%d/%d (Match summary capture failure!)" %(i + 1, len(matchIDs)))
                                     elif not info_exist_error[matchIDs[i]] and timeline_exist_error[matchIDs[i]]:
-                                        if isTFT[matchIDs[i]]:
+                                        if args.no_timeline_sheet or isTFT[matchIDs[i]]:
                                             logPrint("对局概要和时间轴导出进度（Match summary and timeline export process）：%d/%d" %(i + 1, len(matchIDs)))
                                         else:
                                             logPrint("对局概要和时间轴导出进度（Match summary and timeline export process）：%d/%d (Match timeline capture failure!)" %(i + 1, len(matchIDs)))
