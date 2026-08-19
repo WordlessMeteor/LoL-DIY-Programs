@@ -35,7 +35,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/08/17
+# 更新（Last update）：     2026/08/20
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -3620,6 +3620,7 @@ async def print_search_error(connection: Connection, response: dict[str, Any], l
         - `GET /lol-lobby/v2/lobby`
     :type lobbyInfo: dict[str, Any]
     '''
+    infos: dict[str, dict[str, Any]] = {} #保存小队成员的召唤师信息（Save party members' summoner information）
     if response["httpStatus"] == 400:
         if response["message"] == "INVALID_PERMISSIONS":
             logPrint("您不是小队拥有者，无法进行此操作。\nYou're not the party owner and thus can't perform this operation.")
@@ -3627,6 +3628,181 @@ async def print_search_error(connection: Connection, response: dict[str, Any], l
             if bool(lobbyInfo["restrictions"]):
                 logPrint("无法寻找对局。请检查小队限制。\nUnable to find match. Please check the party restrictions.")
                 logPrint(lobbyInfo["restrictions"])
+                for i in range(len(lobbyInfo["restrictions"])):
+                    restriction: dict[str, Any] = lobbyInfo["restrictions"][i]
+                    #首先输出触发限制的成员（First, output the summoner names of members that trigger this restriction）
+                    puuids: str = restriction["puuids"]
+                    summonerNames: list[str] = [] #初始化每个小队限制适用的召唤师名称列表（Initialize the list of names of summoners each party restriction applies to）
+                    for puuid in puuids:
+                        if puuid in infos:
+                            summonerNames.append(get_info_name(infos[puuid]))
+                        else:
+                            member_info_recapture: int = 0
+                            member_info: dict[str, Any] = await get_info(connection, puuid)
+                            while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
+                                logPrint(member_info["message"])
+                                member_info_recapture += 1
+                                logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an member (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(puuid, member_info_recapture, puuid, member_info_recapture))
+                                member_info = await get_info(connection, puuid)
+                            if member_info_recapture >= 3:
+                                logPrint(member_info["message"])
+                                logPrint("成员信息（玩家通用唯一识别码：%d）获取失败！将忽略该成员。\nInformation of a member (puuid: %d) capture failed! The program will ignore this member." %(puuid, puuid))
+                                summonerNames.append(puuid)
+                                continue
+                            infos[puuid] = member_info["body"]
+                            summonerNames.append(get_info_name(member_info["body"]))
+                    players: str = "\t".join(summonerNames)
+                    logPrint("[%d/%d]%s" %(i + 1, len(lobbyInfo["restrictions"]), players))
+                    #其次输出限制文本（Next, output the restrict text）
+                    resCode: str = restriction["restrictionCode"]
+                    ##限制代码特殊处理（Speical cases of restriction code）
+                    if resCode == "MinNormalGamesForRankedRestriction":
+                        if lobbyInfo["gameConfig"]["queueId"] == 420:
+                            resCode = "LolMinNormalGamesForRankedRestrictionSoloDuoVeteran"
+                        elif lobbyInfo["gameConfig"]["queueId"] == 440:
+                            resCode = "LolMinNormalGamesForRankedRestrictionFlexVeteran"
+                    elif resCode == "TooManyIncompleteSubteamsRestriction":
+                        resCode = "TooManyIncompleteSubteamsRestriction_TFT" if lobbyInfo["gameConfig"]["gameMode"] == "TFT" else "TooManyIncompleteSubteamsRestriction_LOL"
+                    resArgs: dict[str, Any] = restriction["restrictionArgs"]
+                    if resCode == "CanStartMatchmaking":
+                        logPrint("你的队伍必须拥有更加多样的分路安排才能开始排队！\nYour team must cover a wider variety of positions before queuing up!", write_time = False)
+                    elif resCode == "CherryGladiatorRatingDelta":
+                        ratingRestrictionThreshold: int = resArgs["ratingRestrictionThreshold"]
+                        maxRatingDelta: int = resArgs["maxRatingDelta"]
+                        logPrint(f"{ratingRestrictionThreshold}以上的角斗士们必须低于{maxRatingDelta}积分。\nGladiators above {ratingRestrictionThreshold} must be within {maxRatingDelta} rating.", write_time = False)
+                    elif resCode == "CherryGladiatorPartySize":
+                        ratingRestrictionThreshold: int = resArgs["ratingRestrictionThreshold"]
+                        logPrint(f"{ratingRestrictionThreshold}以上的角斗士们必须以1-2人或16人规模进行游戏。\nGladiators above {ratingRestrictionThreshold} must play with 1-2 or 16 players.", write_time = False)
+                    elif resCode == "CherryPartyIneligibleSize":
+                        logPrint("必须以1-8人或16人规模进行游戏。\nMust play with 1-8 or 16 players.", write_time = False)
+                    elif resCode == "GameVersionMismatch":
+                        logPrint(f"这些玩家与队伍拥有者的游戏版本不同：\nThese players do not have the same game version as the party owner:\n{players}\n请重启客户端来确保所有人都是最新的游戏版本。\nMake sure everyone has the newest version by restarting the client.", write_time = False)
+                    elif resCode == "GameVersionMissing":
+                        logPrint(f"这些玩家并未拥有一个游戏版本：{players}并且需要更新版本以完成。\nThese players do not have a game version: {players} and require patching to complete.", write_time = False)
+                    elif resCode == "GameVersionNotSupported":
+                        logPrint(f"这些玩家并未拥有一个可被支持的游戏版本：\nThese players do not have a supported game version:\n{players}", write_time = False)
+                    elif resCode == "SeasonVersionLockout":
+                        seasonMinimumVersion: str = resArgs["seasonMinimumVersion"]
+                        logPrint(f"以下玩家必须更新至{seasonMinimumVersion}版本，方可解锁下一个排位赛季：\nThe following player(s) must update to version {seasonMinimumVersion} to unlock the next ranked season:\n{players}", write_time = False)
+                    elif resCode == "MissingToken":
+                        errorCode: str = resArgs["errorCode"]
+                        logPrint(f"无法连接。\nCan't connect (Error: {errorCode}).", write_time = False)
+                    elif resCode == "Leagues_missingToken":
+                        logPrint("由于排位赛战区的一个现网问题，排位组队已被临时禁用。你仍然可以单排进入队列。\nDue to a live issue with Ranked Leagues, ranked parties are temporarily disabled. You can still queue solo.", write_time = False)
+                    elif resCode == "MinNormalGamesForRankedRestriction": #game_select_queue_restriction_playeravailablechampionrestriction_generic
+                        logPrint(f"以下成员必须进行更多场匹配模式PVP【召唤师峡谷】对局才能解锁这个模式：\nThe following member(s) must play more Normal PvP SR games to unlock this mode:\n{players}", write_time = False)
+                    elif resCode == "LolMinNormalGamesForRankedRestrictionSoloDuoVeteran":
+                        logPrint(f"以下成员必须进行更多场匹配模式PVP【召唤师峡谷】对局才能解锁【单排/双排】：\nThe following member(s) must play more Normal PvP SR games to unlock Ranked Solo/Duo:\n{players}", write_time = False)
+                    elif resCode == "LolMinNormalGamesForRankedRestrictionSoloDuo":
+                        normalLolGamesRequired: str = resArgs["normalLolGamesRequired"]
+                        normalLolGamesPlayed: str = resArgs["normalLolGamesPlayed"]
+                        logPrint(f"你必须进行{normalLolGamesRequired}场匹配模式PVP【召唤师峡谷】对局才能解锁排位队列。({normalLolGamesPlayed}/{normalLolGamesRequired})\nYou must play {normalLolGamesRequired} Normal PvP SR games to unlock Ranked. ({normalLolGamesPlayed}/{normalLolGamesRequired})", write_time = False)
+                    elif resCode == "LolMinNormalGamesForRankedRestrictionFlexVeteran":
+                        logPrint(f"以下成员必须进行更多场匹配模式PVP【召唤师峡谷】对局才能解锁【灵活排位】：\nThe following member(s) must play more Normal PvP SR games to unlock Ranked Flex:\n{players}", write_time = False)
+                    elif resCode == "LolMinNormalGamesForRankedRestrictionFlex":
+                        normalLolGamesRequired: str = resArgs["normalLolGamesRequired"]
+                        normalLolGamesPlayed: str = resArgs["normalLolGamesPlayed"]
+                        logPrint(f"你必须进行{normalLolGamesRequired}场匹配模式PVP【召唤师峡谷】对局才能解锁排位队列。({normalLolGamesPlayed}/{normalLolGamesRequired})\nYou must play {normalLolGamesRequired} Normal PvP SR games to unlock Ranked. ({normalLolGamesPlayed}/{normalLolGamesRequired})", write_time = False)
+                    elif resCode == "LolNewPlayerRestriction":
+                        normalLolGamesRemaining: str = resArgs["normalLolGamesRemaining"]
+                        logPrint(f"进行{normalLolGamesRemaining}场匹配模式PVP【召唤师峡谷】对局即可解锁！\nPlay {normalLolGamesRemaining} Normal PvP SR game(s) to unlock!", write_time = False)
+                    elif resCode == "LolNewPlayerRestrictionVeteran":
+                        logPrint(f"以下成员尚未解锁【征召模式】：\nThe following member(s) have not unlocked Draft Pick yet:\n{players}", write_time = False)
+                    elif resCode == "TFTNewPlayerRestriction":
+                        gamesRemaining: str = resArgs["gamesRemaining"]
+                        logPrint(f"进行{gamesRemaining}局【云顶之弈】即可解锁！\nPlay {gamesRemaining} TFT game(s) to unlock!", write_time = False)
+                    elif resCode == "TFTNewPlayerRestrictionVeteran":
+                        gameMode: str = resArgs["gameMode"]
+                        logPrint(f"以下成员尚未解锁{gameMode}：\nThe following member(s) have not unlocked {gameMode} yet:\n{players}", write_time = False)
+                    elif resCode == "Notification":
+                        logPrint("未获资格的玩家。\nIneligible players.", write_time = False)
+                    elif resCode == "TFTNewPlayerLobbyRestriction":
+                        gameMode: str = resArgs["gameMode"]
+                        logPrint(f"以下成员尚未解锁{gameMode}：\nThe following member(s) have not unlocked {gameMode} yet:\n{players}", write_time = False)
+                    elif resCode == "PlayerAvailableChampionRestriction":
+                        playerAvailableChampionRestriction: str = resArgs["playerAvailableChampionRestriction"]
+                        logPrint(f"以下成员必须拥有至少{playerAvailableChampionRestriction}个英雄：\nThe following member(s) must own at least {playerAvailableChampionRestriction} champions:\n{players}", write_time = False)
+                    elif resCode == "PlayerBannedRestriction":
+                        logPrint(f"以下成员目前还在被封号状态：\nThe following member(s) are currently banned:\n{players}", write_time = False)
+                    elif resCode == "PlayerGameBasedRankRestriction":
+                        logPrint(f"这些玩家已被限制进行排位模式：\nThese players are restricted from playing Ranked modes:\n{players}", write_time = False)
+                    elif resCode == "PlayerTimeBasedRankRestriction":
+                        logPrint(f"这些玩家已被限制进行排位模式：\nThese players are restricted from playing Ranked modes:\n{players}", write_time = False)
+                    elif resCode == "PlayerLevelRestriction":
+                        playerLevelRestriction: str = resArgs["playerLevelRestriction"]
+                        logPrint(f"以下成员必须拥有至少{playerLevelRestriction}级：\nThe following member(s) must be level {playerLevelRestriction}:\n{players}", write_time = False)
+                    elif resCode == "PlayerMinLevelRestriction":
+                        playerMinLevelRestriction: str = resArgs["playerMinLevelRestriction"]
+                        logPrint(f"以下成员必须到达{playerMinLevelRestriction}级：\nThe following member(s) must be level {playerMinLevelRestriction}:\n{players}", write_time = False)
+                    elif resCode == "PlayerMinorRestriction":
+                        logPrint("由于网络游戏关服政策对未成年玩家的保护，该模式目前不可用。\nMode not currently available due to the online game shutdown policy for underaged players.", write_time = False)
+                    elif resCode == "PlayerRankedSuspensionRestriction":
+                        logPrint(f"以下成员目前正在排位限制期：\nThe following member(s) are currently ranked restricted:\n{players}", write_time = False)
+                    elif resCode == "PlayerTimedRestriction":
+                        logPrint(f"以下成员目前无法进行游戏：\nThe following member(s) are currently unable to play:\n{players}", write_time = False)
+                    elif resCode == "QueueDisabled":
+                        logPrint("模式暂时不可用。\nMode not currently available.", write_time = False)
+                    elif resCode == "QueueUnsupported":
+                        logPrint("模式暂时不可用。\nMode not currently available.", write_time = False)
+                    elif resCode == "TeamDivisionRestriction":
+                        logPrint("一个或以上小队成员之间的段位差距过大。\nThe difference in rank between one or more party member(s) is too high.", write_time = False)
+                    elif resCode == "TeamSkillRestriction":
+                        logPrint("某个小队成员的水平过高，无法进组。\nOne party member's skill is too high to be eligible to group.", write_time = False)
+                    elif resCode == "TeamHighMMRMaxSizeRestriction":
+                        logPrint("由于精英段位的预组队伍限制，故无法加入组队房间。\nUnable to join lobby due to elite tier premade restrictions.", write_time = False)
+                    elif resCode == "TeamMaxSizeRestriction":
+                        teamMaxSizeRestriction: str = resArgs["teamMaxSizeRestriction"]
+                        logPrint(f"你的小队成员数量必须在{teamMaxSizeRestriction}以下。\nYour party has more than {teamMaxSizeRestriction} member(s).", write_time = False)
+                    elif resCode == "TeamMinSizeRestriction":
+                        teamMinSizeRestriction: str = resArgs["teamMinSizeRestriction"]
+                        logPrint(f"你的小队成员数量必须在{teamMinSizeRestriction}以上。\nYour party must have at least {teamMinSizeRestriction} member(s).", write_time = False)
+                    elif resCode == "TeamSizeRestriction":
+                        teamSizeRestriction: str = resArgs["teamSizeRestriction"]
+                        logPrint(f"团队规模为{teamSizeRestriction}人，不符合条件。\nParties of {teamSizeRestriction} are not eligible.", write_time = False)
+                    elif resCode == "TooManyIncompleteSubteamsRestriction_LOL":
+                        logPrint("请组成队伍。\nPlease form teams.", write_time = False)
+                    elif resCode == "TooManyIncompleteSubteamsRestriction_TFT":
+                        logPrint("你仅被允许拥有一支未组满的队伍。\nYou are only allowed one unfilled team.", write_time = False)
+                    elif resCode == "UniquePrimaryPositionRestriction":
+                        logPrint("你的队伍必须选择不相互重复的主要分路才能开始排队！\nYour team must select unique primary positions before queuing up!", write_time = False)
+                    elif resCode == "UnknownRestriction":
+                        logPrint("一个未知的错误发生了。\nAn unknown error has occurred.", write_time = False)
+                    elif resCode == "QPInvalidNumberOfPlayerSlotsRestriction":
+                        logPrint("选择英雄和位置。\nSelect champions and positions.", write_time = False)
+                    elif resCode == "QPInvalidPositionSelectionRestriction":
+                        logPrint("每位玩家必须选择一个有效的位置。\nEach player must select a valid position.", write_time = False)
+                    elif resCode == "QPPartyPositionCoverageRestriction":
+                        logPrint("小队中的各个主要栏位的选择必须是不重复的。\nPrimary slot selections must be unique across the party.", write_time = False)
+                    elif resCode == "QPPlayerPositionCoverageRestriction":
+                        logPrint("你们必须选择不重复的位置。\nYou must select unique positions.", write_time = False)
+                    elif resCode == "QPPlayerScarcePositionCoverageRestriction":
+                        logPrint("每位玩家必须选择至少一个稀缺位置。\nEach player must select at least one priority position.", write_time = False)
+                    elif resCode == "QPPlayerScarcePositionCoverageRestriction_Self":
+                        logPrint("你必须选择至少一个稀缺位置。\nYou must select at least one priority position.", write_time = False)
+                    elif resCode == "QPNonUniquePrimarySlotRestriction":
+                        logPrint("小队中的各个主要栏位的选择必须是不重复的。\nPrimary slot selections must be unique across the party.", write_time = False)
+                    elif resCode == "QPNonUniquePrimarySlotChampionRestriction":
+                        logPrint("小队中的各个主要栏位的英雄选择必须是独特的。\nPrimary slot champion selections must be unique across the party.", write_time = False)
+                    elif resCode == "QPNonUniquePrimarySlotPositionRestriction":
+                        logPrint("小队中的各个主要栏位的位置偏好选择必须是独特的。\nPrimary slot position preference selections must be unique across the party.", write_time = False)
+                    elif resCode == "QPInvalidChampionSelectionRestriction":
+                        logPrint("所有玩家必须选择一个已解锁且可用的英雄。\nAll players must select champions that are unlocked and available.", write_time = False)
+                    elif resCode == "QPPartyChampionCoverageRestriction":
+                        logPrint("每位玩家必须选择一个不重复的英雄。\nEach player must select a unique champion.", write_time = False)
+                    elif resCode == "QPPlayerChampionCoverageRestriction":
+                        logPrint("你们必须选择不重复的英雄。\nYou must select unique champions.", write_time = False)
+                    elif resCode == "QPScarcePositionsNotAvailableRestriction":
+                        logPrint("你已失去了与我们的【快速队列】服务器的连接，请关闭房间并创建一个新房间。如果这个问题持续存在，请重启你的客户端。\nYou have lost connection to our Quick Play services, please close the lobby and create a new one. If this issue persists, please restart your client.", write_time = False)
+                    elif resCode == "SPScarcePositionsNotAvailableRestriction":
+                        logPrint("你已失去了与我们的【快速模式】服务器的连接，请关闭房间并创建一个新房间。如果这个问题持续存在，请重启你的客户端。\nYou have lost connection to our Swiftplay services, please close the lobby and create a new one. If this issue persists, please restart your client.", write_time = False)
+                    elif resCode == "QPInsufficientPlayerChampionCoveragePopularChampion":
+                        logPrint("在玩一个热门英雄时，你必须选择多个不同的英雄。\nYou must select different champions when playing with an in-demand champion.", write_time = False)
+                    elif resCode == "DoubleUpTeamSizeRestriction":
+                        logPrint("团队必须拥有个数为偶数的玩家。\nParties must have even numbers of players.", write_time = False)
+                    elif resCode == "PlayerQueueSuspendedRestriction":
+                        logPrint(f"以下玩家目前已被禁止加入这个队列：\nThe following player(s) are currently suspended from this queue:\n{players}", write_time = False)
+                    else:
+                        logPrint(f"未知限制。\nUnknown restriction: {resCode}.")
             search_state: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v2/lobby/matchmaking/search-state")).json()
             if not (isinstance(search_state, dict) and "errorCode" in search_state):
                 if search_state["searchState"] in {"ServiceShutdown", "ServiceError", "Error", "AbandonedLowPriorityQueue"}:
