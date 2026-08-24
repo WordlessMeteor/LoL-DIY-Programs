@@ -23,6 +23,7 @@ parser.add_argument("-sn", "--summoner-name", help = "指定用于按对局记�
 parser.add_argument("-f", "--func", help = "指定用于遍历模式的判断条件函数或者用于查找模式的阈值函数。\nSpecify the condition judgment function used in traversal mode or the threshold function used in search mode.", action = "store", type = str, default = "")
 parser.add_argument("-p", "--product", help = "限定对局产品名。\nRestrict the match product name.", action = "store", type = str, choices = ["LoL", "TFT", "both"], default = "both")
 parser.add_argument("-sj", "--save-json", help = "在遍历模式下，是否保存对局信息文件。\nUnder traversal mode, whether to save match information files.", action = "store_true")
+parser.add_argument("-nt", "--no-timeline", help = "在保存对局信息文件的情况下，是否跳过时间轴，只保存对局概要。\nWhen match information files are saved, whether to skip match timeline but only save match summary.", action = "store_true")
 parser.add_argument("-sr", "--save-replay", help = "在遍历模式下，是否下载回放。\nUnder traversal mode, whether to download replays.", action = "store_true")
 # parser.add_argument("--na-gameIds", help = "在查找模式下，指定未找到的对局序号。\nUnder search mode, specify matchIds not found.", action = "store", type = int, nargs = "*", default = []) #由于对局序号过多可能导致命令特别长，因此不建议通过命令行直接传入该参数，而建议用户在程序运行过程中设置。一般情况下，只有在程序被中断后，下次执行二分查找时才会为此参数传入值（Because too many matchIds will lead to a very long command, it's suggested that users shouldn't pass this parameter through command line but set it during the program execution. In normal cases, only when the program is interrupted and the user is going to perform another binary search might this parameter be passed with some values）
 args: argparse.Namespace = parser.parse_args()
@@ -33,7 +34,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/14
+# 更新（Last update）：     2026/08/25
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -113,7 +114,7 @@ def specify_matchId_limit(start_matchId: Optional[int] = None, end_matchId: Opti
     else:
         return (start_matchId, end_matchId)
 
-async def index_traverse_match(connection: Connection, start_matchId: Optional[int] = None, end_matchId: Optional[int] = None, func_str: str = "", product: Literal["LoL", "TFT", ""] = "", save_json: bool = True, save_rofl: bool = False) -> int:
+async def index_traverse_match(connection: Connection, start_matchId: Optional[int] = None, end_matchId: Optional[int] = None, func_str: str = "", product: Literal["LoL", "TFT", ""] = "", save_json: bool = True, skip_timeline: bool = False, save_rofl: bool = False) -> int:
     '''
     在给定对局上下限的情况下，遍历范围内的对局，并保存所有符合条件的对局概要和时间轴。<br>Given the starting and ending matchIds, traverse save summary and timeline of matches that meet the condition.
     
@@ -132,6 +133,10 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     :type product: str
     :param save_json: 是否保存对局信息json文件。包括对局概要和时间轴。默认为真。<br>Whether to save match information json files, including match summary and timeline. True by default.
     :type save_json: bool
+    :param skip_timeline: 在保存对局信息json文件时，是否跳过对局时间轴，只保存对局概要json文件。默认为假。<br>When match information json files are saved, whether to skip match timeline but only save match summary json files. False by default.
+    
+        这个参数只有在`save_json`参数指定为真时才发挥作用。<br>Only when `save_json` parameter is set to True does this parameter make a difference.
+    :type skip_timeline: bool
     :param save_rofl: 在成功获取对局信息后，是否尝试下载回放文件。默认为假。<br>Whether to try downloading the replay after match information is fetched successfully. False by default.
     
         警告：由于本函数**只通过对局概要**来判断是否获取到对局，因此如果选择下载回放，则那些对局概要异常但时间轴正常的对局会被遗漏。<br>Warning: Because this function judges whether a match exists **only by summary**, when the user chooses to download replays, those which have erroneous summary but normal timeline will be ommitted.
@@ -227,7 +232,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
                     json1name: str = f"Match Information ({match_product}) - {platformId}-{matchId} (SGP-v3).json"
                     with open(os.path.join(json_folder, json1name), "w", encoding = "utf-8") as fp:
                         json.dump(game_summary, fp, indent = 4, ensure_ascii = False)
-                    if match_product == "LoL":
+                    if match_product == "LoL" and not skip_timeline:
                         json2name: str = f"Match Timeline ({match_product}) - {platformId}-{matchId} (SGP-v3).json"
                         status, game_timeline = await get_game_timeline_sgp(connection, session, match_id, checkLoL = checkLoL, checkTFT = checkTFT, endpoint_version = 3)
                         if status == 200:
@@ -260,7 +265,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     log.close()
     return 0
 
-async def history_traverse_match(connection: Connection, start_puuid: str, product: Literal["LoL", "TFT"], func_str: str = "", save_json: bool = False, save_rofl: bool = True) -> int:
+async def history_traverse_match(connection: Connection, start_puuid: str, product: Literal["LoL", "TFT"], func_str: str = "", save_json: bool = False, skip_timeline: bool = False, save_rofl: bool = True) -> int:
     '''
     指定一个起始玩家通用唯一识别码，查询其对局记录，并查询其对战历史中遇到过的所有人类玩家的对局记录，往复。<br>Specify a starting puuid, search for its match history, and search for match history of each human player involved, and so on.
     
@@ -276,6 +281,10 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     :type func_str: str
     :param save_json: 是否保存对局信息json文件。包括对局概要和时间轴。默认为真。<br>Whether to save match information json files, including match summary and timeline. True by default.
     :type save_json: bool
+    :param skip_timeline: 在保存对局信息json文件时，是否跳过对局时间轴，只保存对局概要json文件。默认为假。<br>When match information json files are saved, whether to skip match timeline but only save match summary json files. False by default.
+    
+        这个参数只有在`save_json`参数指定为真时才发挥作用。<br>Only when `save_json` parameter is set to True does this parameter make a difference.
+    :type skip_timeline: bool
     :param save_rofl: 在成功获取对局信息后，是否尝试下载回放文件。默认为假。<br>Whether to try downloading the replay after match information is fetched successfully. False by default.
     
         警告：由于本函数**只通过对局概要**来判断是否获取到对局，因此如果选择下载回放，则那些对局概要异常但时间轴正常的对局会被遗漏。<br>Warning: Because this function judges whether a match exists **only by summary**, when the user chooses to download replays, those which have erroneous summary but normal timeline will be ommitted.
@@ -368,7 +377,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
             logPrint(f"【对局记录】[{traversed_player_count}]正在获取玩家{summoner_name}（{puuid}）的对局信息……\nFetching the match information of player {summoner_name} ({puuid}) ...")
         matchHistory_get, matchHistory = await get_matchSummary_sgp(connection, session, puuid, product, begin = 0, count = 1000, log = log)
         if matchHistory_get:
-            if product == "LoL":
+            if product == "LoL" and save_json and not skip_timeline:
                 matchDetails_get, matchDetails = await get_matchDetails_sgp(connection, session, puuid, product, begin = 0, count = len(matchHistory["games"]) if matchHistory_get else 1000, log = log)
                 matchTimelines: dict[int, dict[str, Any]] = {int(game_timeline["metadata"]["match_id"].split("_")[1]): game_timeline for game_timeline in matchDetails["games"]}
             else:
@@ -392,15 +401,16 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
                         with open(os.path.join(json_folder, json1name), "w", encoding = "utf-8") as fp:
                             json.dump(game_summary, fp, indent = 4, ensure_ascii = False)
                         json2name: str = f"Match Timeline ({match_product}) - {platformId}-{matchId} (SGP-v1).json"
-                        if matchId in matchTimelines:
-                            game_timeline: dict[str, Any] = matchTimelines[matchId]
-                            with open(os.path.join(json_folder, json2name), "w", encoding = "utf-8") as fp:
-                                json.dump(game_timeline, fp, indent = 4, ensure_ascii = False)
-                        else:
-                            status, game_timeline = await get_game_timeline_sgp(connection, session, match_id, checkLoL = checkLoL, checkTFT = checkTFT)
-                            if status == 200:
+                        if not skip_timeline:
+                            if matchId in matchTimelines:
+                                game_timeline: dict[str, Any] = matchTimelines[matchId]
                                 with open(os.path.join(json_folder, json2name), "w", encoding = "utf-8") as fp:
                                     json.dump(game_timeline, fp, indent = 4, ensure_ascii = False)
+                            else:
+                                status, game_timeline = await get_game_timeline_sgp(connection, session, match_id, checkLoL = checkLoL, checkTFT = checkTFT)
+                                if status == 200:
+                                    with open(os.path.join(json_folder, json2name), "w", encoding = "utf-8") as fp:
+                                        json.dump(game_timeline, fp, indent = 4, ensure_ascii = False)
                         saved_matchIds.add(matchId)
                     #下面下载回放（The following code download the replay）
                     if save_rofl and not matchId in downloaded_matches:
@@ -678,7 +688,7 @@ def isKiwiMatch(game_summary: dict[str, Any]) -> bool:
 
     :param game_summary: 对局概要信息。通过以下SGP接口得到：<br>Match summary information, obtained through the following SGP endpoint:
 
-        - `GET /match-history-query/v1/products/{product}/{match_id}/SUMMARY`
+        - `GET /match-history-query/v3/product/{product}/matchId/{match_id}/infoType/summary`
     :type game_summary: dict[str, Any]
     :return: 该对局是否是海克斯大乱斗。<br>Whether the match is an ARAM: Mayhem game.
     :rtype: bool
@@ -691,7 +701,7 @@ def isKiwiPentaMatch(game_summary: dict[str, Any]) -> bool:
 
     :param game_summary: 对局概要信息。通过以下SGP接口得到：<br>Match summary information, obtained through the following SGP endpoint:
 
-        - `GET /match-history-query/v1/products/{product}/{match_id}/SUMMARY`
+        - `GET /match-history-query/v3/product/{product}/matchId/{match_id}/infoType/summary`
     :type game_summary: dict[str, Any]
     :return: 该对局是否是出现五杀的海克斯大乱斗。<br>Whether the match is an ARAM: Mayhem game with at least a penta kill.
     :rtype: bool
@@ -708,7 +718,7 @@ def gameId_compare(game_summary: dict[str, Any], gameId: int) -> bool:
 
     :param game_summary: 对局概要信息。通过以下SGP接口得到：<br>Match summary information, obtained through the following SGP endpoint:
 
-        - `GET /match-history-query/v1/products/{product}/{match_id}/SUMMARY`
+        - `GET /match-history-query/v3/product/{product}/matchId/{match_id}/infoType/summary`
     :type game_summary: dict[str, Any]
     :param gameId: 指定的对局序号。<br>The specified matchId.
     :type gameId: int
@@ -724,7 +734,7 @@ def first_match_after_mainteinance(game_summary: dict[str, Any], patch: str) -> 
 
     :param game_summary: 对局概要信息。通过以下SGP接口得到：<br>Match summary information, obtained through the following SGP endpoint:
 
-        - `GET /match-history-query/v1/products/{product}/{match_id}/SUMMARY`
+        - `GET /match-history-query/v3/product/{product}/matchId/{match_id}/infoType/summary`
     :type game_summary: dict[str, Any]
     :param patch: 版本号，形如“13.11”。<br>Patch number, in the form of "13.11".
     :type patch: str
@@ -739,7 +749,7 @@ def gameCreation_compare(game_summary: dict[str, Any], time_str: str) -> bool:
 
     :param game_summary: 对局概要信息。通过以下SGP接口得到：<br>Match summary information, obtained through the following SGP endpoint:
 
-        - `GET /match-history-query/v1/products/{product}/{match_id}/SUMMARY`
+        - `GET /match-history-query/v3/product/{product}/matchId/{match_id}/infoType/summary`
     :type game_summary: dict[str, Any]
     :param time_str: 当前时区的指定时间，形如“1970-01-01 08:00:00”。<br>The specified time in the current time zone, in the form of "1970-01-01 08:00:00".
     :type time_str: str
@@ -805,6 +815,7 @@ async def index_traversal_main(connection: Connection) -> None: #按序遍历对
     func: Optional[Callable[[dict[str, Any]], bool]] = None #函数对象（Function object）
     product: str = "" #产品（Product）
     save_json: bool = False #是否保存对局信息（Whether to save match information）
+    skip_timeline: bool = False #在保存对局信息时，是否跳过时间轴的保存（When match information is saved, whether to skip saving timeline）
     save_rofl: bool = False #是否尝试下载回放（Whether to try downloading replays）
     while True:
         if step == 0:
@@ -853,7 +864,7 @@ async def index_traversal_main(connection: Connection) -> None: #按序遍历对
             print("第四步：是否保存对局信息？\nStep 4: Whether to save match information?\n!1\t是（Yes）\n☆2\t否（No）")
             while True:
                 if args.save_json:
-                    save_json_str = "1"
+                    save_json_str: str = "1"
                     print("1")
                 else:
                     if args.cli:
@@ -871,10 +882,32 @@ async def index_traversal_main(connection: Connection) -> None: #按序遍历对
                     save_json = save_json_str[0] != "2"
                     break
         elif step == 5:
-            print("第五步：是否尝试下载回放？\nStep 5: Whether to try downloading replays?\n1\t是（Yes）\n☆2\t否（No）")
+            if save_json:
+                print("第五步：是否跳过对局时间轴的保存？\nStep 5: Whether to skip saving match timelines?\n1\t是（Yes）\n☆2\t否（No）")
+                while True:
+                    if args.no_timeline:
+                        skip_timeline_str: str = "1"
+                        print("1")
+                    else:
+                        if args.cli:
+                            skip_timeline_str = ""
+                            print()
+                        else:
+                            skip_timeline_str = input()
+                            args.cli = False
+                    if skip_timeline_str == "":
+                        skip_timeline_str = "2"
+                    if skip_timeline_str[0] == "0":
+                        step -= 2
+                        break
+                    else:
+                        skip_timeline = skip_timeline_str[0] != "2"
+                        break
+        elif step == 6:
+            print("第六步：是否尝试下载回放？\nStep 6: Whether to try downloading replays?\n1\t是（Yes）\n☆2\t否（No）")
             while True:
                 if args.save_replay:
-                    save_rofl_str = "1"
+                    save_rofl_str: str = "1"
                     print("1")
                 else:
                     if args.cli:
@@ -886,19 +919,19 @@ async def index_traversal_main(connection: Connection) -> None: #按序遍历对
                 if save_rofl_str == "":
                     save_rofl_str = "2"
                 if save_rofl_str[0] == "0":
-                    step -= 2
+                    step -= 2 if save_json else 3
                     break
                 else:
                     save_rofl = save_rofl_str[0] == "1"
                     break
-        elif step == 6:
+        elif step == 7:
             prepared = True
             break
         else:
             print("步骤异常。请联系开发人员修复程序。\nStep error. Please contact the developer to fix the program.")
         step += 1
     if prepared:
-        await index_traverse_match(connection, start_matchId = start_matchId, end_matchId = end_matchId, func_str = func_str, product = product, save_json = save_json, save_rofl = save_rofl)
+        await index_traverse_match(connection, start_matchId = start_matchId, end_matchId = end_matchId, func_str = func_str, product = product, save_json = save_json, skip_timeline = skip_timeline, save_rofl = save_rofl)
 
 async def history_traversal_main(connection: Connection) -> None: #从对局记录递归遍历对局（Recursively traverse matches from match history）
     prepared: bool = False #标记函数参数是否准备就绪（Marks whether the parameters are ready）
@@ -908,6 +941,7 @@ async def history_traversal_main(connection: Connection) -> None: #从对局记�
     func_str: str = "" #函数字符串（Function string）
     func: Optional[Callable[[dict[str, Any]], bool]] = None #函数对象（Function object）
     save_json: bool = True #是否保存对局信息（Whether to save match information）
+    skip_timeline: bool = False #在保存对局信息时，是否跳过时间轴的保存（When match information is saved, whether to skip saving timeline）
     save_rofl: bool = False #是否尝试下载回放（Whether to try downloading replays）
     while True:
         if step == 0:
@@ -945,7 +979,7 @@ async def history_traversal_main(connection: Connection) -> None: #从对局记�
             print('第三步：请选择一个产品。\nStep 3: Please select a product.\n0\t返回第一步（Return to the first step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）')
             while True:
                 if args.product == "LoL":
-                    product_option = "1"
+                    product_option: str = "1"
                     print("1")
                 elif args.product == "TFT":
                     product_option = "2"
@@ -969,7 +1003,7 @@ async def history_traversal_main(connection: Connection) -> None: #从对局记�
         elif step == 4:
             print("第四步：是否保存对局信息？\nStep 4: Whether to save match information?\n☆1\t是（Yes）\n2\t否（No）")
             if args.save_json:
-                save_json_str = "1"
+                save_json_str: str = "1"
                 print("1")
             else:
                 if args.cli:
@@ -985,9 +1019,31 @@ async def history_traversal_main(connection: Connection) -> None: #从对局记�
             else:
                 save_json = save_json_str[0] != "2"
         elif step == 5:
-            print("第五步：是否尝试下载回放？\nStep 5: Whether to try downloading replays?\n1\t是（Yes）\n☆2\t否（No）")
+            if save_json:
+                print("第五步：是否跳过对局时间轴的保存？\nStep 5: Whether to skip saving match timelines?\n1\t是（Yes）\n☆2\t否（No）")
+                while True:
+                    if args.no_timeline:
+                        skip_timeline_str: str = "1"
+                        print("1")
+                    else:
+                        if args.cli:
+                            skip_timeline_str = ""
+                            print()
+                        else:
+                            skip_timeline_str = input()
+                            args.cli = False
+                    if skip_timeline_str == "":
+                        skip_timeline_str = "2"
+                    if skip_timeline_str[0] == "0":
+                        step -= 2
+                        break
+                    else:
+                        skip_timeline = skip_timeline_str[0] != "2"
+                        break
+        elif step == 6:
+            print("第六步：是否尝试下载回放？\nStep 6: Whether to try downloading replays?\n1\t是（Yes）\n☆2\t否（No）")
             if args.save_replay:
-                save_rofl_str = "1"
+                save_rofl_str: str = "1"
                 print("1")
             else:
                 if args.cli:
@@ -999,17 +1055,17 @@ async def history_traversal_main(connection: Connection) -> None: #从对局记�
             if save_rofl_str == "":
                 save_rofl_str = "2"
             if save_rofl_str[0] == "0":
-                step -= 2
+                step -= 2 if save_json else 3
             else:
                 save_rofl = save_rofl_str[0] == "1"
-        elif step == 6:
+        elif step == 7:
             prepared = True
             break
         else:
             print("步骤异常。请联系开发人员修复程序。\nStep error. Please contact the developer to fix the program.")
         step += 1
     if prepared:
-        await history_traverse_match(connection, start_puuid, product, func_str = func_str, save_json = save_json, save_rofl = save_rofl)
+        await history_traverse_match(connection, start_puuid, product, func_str = func_str, save_json = save_json, skip_timeline = skip_timeline, save_rofl = save_rofl)
 
 async def binary_search_main(connection: Connection) -> None: #类二分搜索一场对局（Search for a match by a binary-like method）
     threshold_function_definition_hint_printed: bool = False #标记是否已经打印过阈值函数定义的提示（Marks whether the program has printed the hint of a threshold function's definition）
@@ -1041,7 +1097,7 @@ async def binary_search_main(connection: Connection) -> None: #类二分搜索�
             print('第三步：请选择一个产品。\nStep 3: Please select a product.\n0\t返回上一步（Return to the last step）\n1\t英雄联盟（LoL）\n2\t云顶之弈（TFT）')
             while True:
                 if args.product == "LoL":
-                    product_option = "1"
+                    product_option: str = "1"
                     print("1")
                 elif args.product == "TFT":
                     product_option = "2"
@@ -1066,10 +1122,10 @@ async def binary_search_main(connection: Connection) -> None: #类二分搜索�
             print('''第四步：如果您已知某些对局不存在，请在下方输入它们的对局序号组成的列表。输入空字符串以跳过此步骤。输入“0”以返回上一步。\nStep 4: If you already know that some matches don't exist, please provide them here. Submit an empty string to skip this step. Submit "0" to return to the last step.''')
             while True:
                 if args.cli:
-                    matchIds_not_found_str = ""
+                    matchIds_not_found_str: str = ""
                     print()
                 else:
-                    matchIds_not_found_str: str = input()
+                    matchIds_not_found_str = input()
                     args.cli = False
                 if matchIds_not_found_str == "":
                     matchIds_not_found = set()
@@ -1121,13 +1177,13 @@ async def connect(connection: Connection) -> None:
             print("请选择一个遍历模式：\nPlease select a traversal mode:\n1\t按对局序号遍历（By gameId）\n2\t按对局记录遍历（By match history）")
             while True:
                 if args.mode == "":
-                    mode = input()
+                    mode: str = input()
                 else:
                     if args.traverse_mode == "index":
-                        mode: str = "1"
+                        mode = "1"
                         print("1")
                     else:
-                        mode: str = "2"
+                        mode = "2"
                         print("2")
                 if mode == "":
                     continue
