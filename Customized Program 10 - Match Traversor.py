@@ -862,68 +862,59 @@ async def index_traversal_main(connection: Connection) -> None: #按序遍历对
                     print("您的输入有误！请重新输入。\nERROR input! Please try again.")
         elif step == 4:
             print("第四步：是否保存对局信息？\nStep 4: Whether to save match information?\n!1\t是（Yes）\n☆2\t否（No）")
-            while True:
-                if args.save_json:
-                    save_json_str: str = "1"
-                    print("1")
+            if args.save_json:
+                save_json_str: str = "1"
+                print("1")
+            else:
+                if args.cli:
+                    save_json_str = ""
+                    print()
                 else:
-                    if args.cli:
-                        save_json_str = ""
-                        print()
-                    else:
-                        save_json_str = input()
-                        args.cli = False
-                if save_json_str == "":
-                    save_json_str = "2"
-                if save_json_str[0] == "0":
-                    step -= 2
-                    break
-                else:
-                    save_json = save_json_str[0] != "2"
-                    break
+                    save_json_str = input()
+                    args.cli = False
+            if save_json_str == "":
+                save_json_str = "2"
+            if save_json_str[0] == "0":
+                step -= 2
+            else:
+                save_json = save_json_str[0] != "2"
         elif step == 5:
             if save_json:
                 print("第五步：是否跳过对局时间轴的保存？\nStep 5: Whether to skip saving match timelines?\n1\t是（Yes）\n☆2\t否（No）")
-                while True:
-                    if args.no_timeline:
-                        skip_timeline_str: str = "1"
-                        print("1")
-                    else:
-                        if args.cli:
-                            skip_timeline_str = ""
-                            print()
-                        else:
-                            skip_timeline_str = input()
-                            args.cli = False
-                    if skip_timeline_str == "":
-                        skip_timeline_str = "2"
-                    if skip_timeline_str[0] == "0":
-                        step -= 2
-                        break
-                    else:
-                        skip_timeline = skip_timeline_str[0] != "2"
-                        break
-        elif step == 6:
-            print("第六步：是否尝试下载回放？\nStep 6: Whether to try downloading replays?\n1\t是（Yes）\n☆2\t否（No）")
-            while True:
-                if args.save_replay:
-                    save_rofl_str: str = "1"
+                if args.no_timeline:
+                    skip_timeline_str: str = "1"
                     print("1")
                 else:
                     if args.cli:
-                        save_rofl_str = "2"
+                        skip_timeline_str = ""
                         print()
                     else:
-                        save_rofl_str = input()
+                        skip_timeline_str = input()
                         args.cli = False
-                if save_rofl_str == "":
-                    save_rofl_str = "2"
-                if save_rofl_str[0] == "0":
-                    step -= 2 if save_json else 3
-                    break
+                if skip_timeline_str == "":
+                    skip_timeline_str = "2"
+                if skip_timeline_str[0] == "0":
+                    step -= 2
                 else:
-                    save_rofl = save_rofl_str[0] == "1"
-                    break
+                    skip_timeline = skip_timeline_str[0] != "2"
+        elif step == 6:
+            print("第六步：是否尝试下载回放？\nStep 6: Whether to try downloading replays?\n1\t是（Yes）\n☆2\t否（No）")
+            if args.save_replay:
+                save_rofl_str: str = "1"
+                print("1")
+            else:
+                if args.cli:
+                    save_rofl_str = "2"
+                    print()
+                else:
+                    save_rofl_str = input()
+                    args.cli = False
+            if save_rofl_str == "":
+                save_rofl_str = "2"
+            if save_rofl_str[0] == "0":
+                step -= 2 if save_json else 3
+            else:
+                save_rofl = save_rofl_str[0] == "1"
         elif step == 7:
             prepared = True
             break
@@ -1021,25 +1012,22 @@ async def history_traversal_main(connection: Connection) -> None: #从对局记�
         elif step == 5:
             if save_json:
                 print("第五步：是否跳过对局时间轴的保存？\nStep 5: Whether to skip saving match timelines?\n1\t是（Yes）\n☆2\t否（No）")
-                while True:
-                    if args.no_timeline:
-                        skip_timeline_str: str = "1"
-                        print("1")
+                if args.no_timeline:
+                    skip_timeline_str: str = "1"
+                    print("1")
+                else:
+                    if args.cli:
+                        skip_timeline_str = ""
+                        print()
                     else:
-                        if args.cli:
-                            skip_timeline_str = ""
-                            print()
-                        else:
-                            skip_timeline_str = input()
-                            args.cli = False
-                    if skip_timeline_str == "":
-                        skip_timeline_str = "2"
-                    if skip_timeline_str[0] == "0":
-                        step -= 2
-                        break
-                    else:
-                        skip_timeline = skip_timeline_str[0] != "2"
-                        break
+                        skip_timeline_str = input()
+                        args.cli = False
+                if skip_timeline_str == "":
+                    skip_timeline_str = "2"
+                if skip_timeline_str[0] == "0":
+                    step -= 2
+                else:
+                    skip_timeline = skip_timeline_str[0] != "2"
         elif step == 6:
             print("第六步：是否尝试下载回放？\nStep 6: Whether to try downloading replays?\n1\t是（Yes）\n☆2\t否（No）")
             if args.save_replay:
