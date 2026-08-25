@@ -21,6 +21,7 @@ parser.add_argument("-b", "--begin", help = "指定对局序号范围的下标�
 parser.add_argument("-e", "--end", help = "指定对局序号范围的上标。\nSpecify the upper limit of matchId range.", action = "store", type = int, default = 0)
 parser.add_argument("-sn", "--summoner-name", help = "指定用于按对局记录遍历模式的起始召唤师名称。\nSpecify the starting summoner name used in history traversal mode.", action = "store", type = str, default = "")
 parser.add_argument("-f", "--func", help = "指定用于遍历模式的判断条件函数或者用于查找模式的阈值函数。\nSpecify the condition judgment function used in traversal mode or the threshold function used in search mode.", action = "store", type = str, default = "")
+parser.add_argument("-df", "--denominator-funcs", help = "指定用于对局记录遍历模式的样本函数。\nSpecify the sample functions used in history traversal mode.", action = "append", type = str, nargs = "*", default = [])
 parser.add_argument("-p", "--product", help = "限定对局产品名。\nRestrict the match product name.", action = "store", type = str, choices = ["LoL", "TFT", "both"], default = "both")
 parser.add_argument("-sj", "--save-json", help = "在遍历模式下，是否保存对局信息文件。\nUnder traversal mode, whether to save match information files.", action = "store_true")
 parser.add_argument("-nt", "--no-timeline", help = "在保存对局信息文件的情况下，是否跳过时间轴，只保存对局概要。\nWhen match information files are saved, whether to skip match timeline but only save match summary.", action = "store_true")
@@ -140,7 +141,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     :param save_rofl: 在成功获取对局信息后，是否尝试下载回放文件。默认为假。<br>Whether to try downloading the replay after match information is fetched successfully. False by default.
     
         警告：由于本函数**只通过对局概要**来判断是否获取到对局，因此如果选择下载回放，则那些对局概要异常但时间轴正常的对局会被遗漏。<br>Warning: Because this function judges whether a match exists **only by summary**, when the user chooses to download replays, those which have erroneous summary but normal timeline will be ommitted.
-    :type save_json: bool
+    :type save_rofl: bool
     :return: 状态码。<br>Status code.
     :rtype: int
     '''
@@ -265,7 +266,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     log.close()
     return 0
 
-async def history_traverse_match(connection: Connection, start_puuid: str, product: Literal["LoL", "TFT"], func_str: str = "", save_json: bool = False, skip_timeline: bool = False, save_rofl: bool = True) -> int:
+async def history_traverse_match(connection: Connection, start_puuid: str, product: Literal["LoL", "TFT"], func_str: str = "", save_json: bool = False, skip_timeline: bool = False, save_rofl: bool = True, den_funcs_str: Optional[list[str]] = None) -> int:
     '''
     指定一个起始玩家通用唯一识别码，查询其对局记录，并查询其对战历史中遇到过的所有人类玩家的对局记录，往复。<br>Specify a starting puuid, search for its match history, and search for match history of each human player involved, and so on.
     
@@ -288,7 +289,9 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     :param save_rofl: 在成功获取对局信息后，是否尝试下载回放文件。默认为假。<br>Whether to try downloading the replay after match information is fetched successfully. False by default.
     
         警告：由于本函数**只通过对局概要**来判断是否获取到对局，因此如果选择下载回放，则那些对局概要异常但时间轴正常的对局会被遗漏。<br>Warning: Because this function judges whether a match exists **only by summary**, when the user chooses to download replays, those which have erroneous summary but normal timeline will be ommitted.
-    :type save_json: bool
+    :type save_rofl: bool
+    :param den_funcs_str: 样本函数主体字符串列表。如果未指定，则不统计任何总数。<br>Sample function body string list. If it's not specified, then no total count will be generated.
+    :type den_funcs_str: list[str] | None
     :return: 状态码。<br>Status code.
     :rtype: int
     '''
@@ -316,6 +319,27 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     if not start_summoner_info["info_got"]:
         print(start_summoner_info["message"])
         return -1
+    if den_funcs_str == None:
+        den_funcs_str = []
+    den_funcs: list[Callable[[dict[str, Any]], bool]] = []
+    for den_func_str in den_funcs_str: #样本函数列表中出现任意异常都会导致程序直接退出（Any error in this sample function list will cause the program to exit）
+        try:
+            den_func = eval(f"lambda game_summary: {den_func_str}")
+        except:
+            print("样本函数语法错误！\nSample function syntax error!")
+            return -1
+        else:
+            try:
+                tmp = den_func(TEST_GAME_SUMMARY) #校验函数是否能如期运行（Check whether the function can run as expected）
+            except:
+                print("样本函数运行出错！\nAn error occurred when testing the sample function!")
+                return -1
+            else:
+                if isinstance(tmp, bool):
+                    den_funcs.append(den_func)
+                else:
+                    print("样本函数返回类型错误！\nSample function return type mismatch!")
+                    return -1
     #变量和会话初始化（Variable and session initialization）
     start_summoner_name: str = get_info_name(start_summoner_info["body"])
     if product == "TFT":
@@ -345,6 +369,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     session.setLog(log)
     logPrint(f"正在查询{platformId}服务器的对局……\nSearching matches on server {platformId} ...")
     logPrint("【参数设置】起始玩家（Starting summoner）： %s (%s)" %(start_summoner_name, start_summoner_info["body"]["puuid"]))
+    logPrint("【参数设置】样本（Samples）：\n" + "\n".join(den_funcs_str)) #因为`den_funcs_str`出现任何异常都会导致程序直接退出，所以这里直接使用这个列表即可，不需要再去设计一个列表来存储合法的函数（Because any error in `den_funcs_str` will cause the program to exit directly, simply use this list here, without needing to design another list to store valid functions）
     logPrint(f"【参数设置】判断条件（Condition）： {func_str}")
     logPrint(f"【参数设置】产品（Product）：{product}")
     #查询前的数据结构准备（Data structure prepared for query）
@@ -354,7 +379,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     puuids_to_search: list[str] = [start_puuid]
     puuids_searched: set[str] = set()
     traversed_player_count: int = 0
-    found_match_count: int = 0
+    sample_matches: list[set[int]] = [set() for _ in range(len(den_funcs) + 1)] #大数据结构，存储各种样本对局序号。第一个元素存储已经遍历过的去重对局序号，同时作为递增样本数量的重要依据。剩余元素顺序和样本函数列表的顺序保持一致（A big data structure which stores all kinds of sample matchIds. The first element stores unique traversed matchIds and act as an important basis of incrementing sample sizes. The order of the rest of elements is consistent with that of `den_funcs`）
     saved_matchIds: set[int] = set(map(lambda x: int(x.split("-")[-1].split()[0]), [_ for _ in os.listdir(json_folder) if _.startswith(f"Match Information ({product}) - ") and "SGP" in _]))
     downloaded_matches: set[int] = set(map(lambda x: int(os.path.splitext(os.path.basename(x))[0].split("-")[1]), [_ for _ in os.listdir(replay_folder) if _.startswith(f"{platformId}-") and os.path.splitext(_)[1] == ".rofl"]))
     #遍历对局序号（Traverse matchIds）
@@ -386,14 +411,23 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
                 if isKeyPressed(b"\x1b", b"\x1b"):
                     logPrint("【手动中止】您已放弃检查该召唤师的对局。\nYou've quited checking this summoner's matches.")
                     break
+                #统计样本（Count samples）
                 match_id: str = game_summary["metadata"]["match_id"]
                 matchId: int = int(match_id.split("_")[1])
-                if "participants" in game_summary["metadata"]:
-                    puuids_to_search.extend(game_summary["metadata"]["participants"])
+                if matchId in sample_matches[0]:
+                    continue #通过这一步保证`sample_matches`中存放的都是去重的对局序号（This step makes sure each element in `sample_matches` stores unique matchIds）
+                else:
+                    sample_matches[0].add(matchId) #第一个元素代表总共遍历到的对局序号（The first element represents matchIds traversed in total）
                 if func(game_summary):
                     matches_found.add(matchId)
-                    found_match_count += 1
-                    logPrint(f"【找到对局】[{traversed_player_count}][{found_match_count}]对局{matchId}符合条件。已将其加入集合。\nMatch {matchId} fits the requirements and has been added to the found match set!")
+                if len(den_funcs) > 0:
+                    for i, den_func in enumerate(den_funcs):
+                        if den_func(game_summary):
+                            sample_matches[i + 1].add(matchId) #一般情况下，当`func(game_summary)`为真时，`den_func(game_summary)`也为真（In normal cases, when `func(game_summary)` is True, `den_func(game_summary)` must also be True）
+                #输出信息（Output information）
+                process_ratio_hint: str = str(len(matches_found)) + "/" + "|".join(list(map(lambda x: str(len(x)), sample_matches))) #将各种样本的容量统计值用竖线连接（Concatenate all samples' size with vertical bars）
+                if func(game_summary):
+                    logPrint(f"【找到对局】[{traversed_player_count}][{process_ratio_hint}]对局{matchId}符合条件。已将其加入集合。\nMatch {matchId} fits the requirements and has been added to the found match set!")
                     #下面将json文件保存到日志文件夹中（The following code save the json files into the log folder）
                     if save_json and not matchId in saved_matchIds:
                         match_product: str = game_summary["metadata"]["product"]
@@ -423,7 +457,10 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
                         else:
                             logPrint(f"【回放异常】{replay_download_message}")
                 else:
-                    logPrint(f"【跳过对局】[{traversed_player_count}][{found_match_count}]对局{matchId}不符合条件。\nMatch {matchId} doesn't meet the requirements.")
+                    logPrint(f"【跳过对局】[{traversed_player_count}][{process_ratio_hint}]对局{matchId}不符合条件。\nMatch {matchId} doesn't meet the requirements.")
+                #扩展迭代（Extend iteration）
+                if "participants" in game_summary["metadata"]:
+                    puuids_to_search.extend(game_summary["metadata"]["participants"])
         else:
             logPrint(f"【获取失败】[{traversed_player_count}]玩家{summoner_name}（{puuid}）的对局概要获取失败。\nFailed to fetch the match summary of player {summoner_name} ({puuid}).")
         puuids_searched.add(puuid)
@@ -437,6 +474,10 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     # for matchId in matches_found:
     #     logPrint(matchId)
     log.write("列表形式（List）：\n" + str(sorted(matches_found)) + "\n\n")
+    log.write("样本（Samples）：\n")
+    for sample in sample_matches:
+        log.write(str(sorted(sample)) + "\n")
+    log.write("\n")
     log.close()
     return 0
 
@@ -806,6 +847,55 @@ def define_function(endpoint_version: int = 3) -> tuple[str, Optional[Callable[[
                         print("您输入的函数返回的不是逻辑值！请重新输入。\nYour function doesn't return a boolean value! Please try again.")
     return (func_str, func)
 
+def define_sample_function(func_str: str = "", endpoint_version: int = 3) -> tuple[str, Optional[Callable[[dict[str, Any]], bool]]]:
+    '''
+    定义一个样本函数。仅用于对局记录遍历模式。<br>Define a sample function. Only used in history traversal mode.
+    
+    样本函数用于在根据对局记录遍历时判断一场对局是否可视为一个符合要求的样本。如果符合，那么将该样本数加1，输出为进度的分母。<br>A sample function is used to judge whether a match can be considered as a sample that meets some requirement. If a match meets certain requirement, the number of this kind of samples is incremented by 1 and will be output as the denominator of the process.
+    
+    :param func_str: 显式传入的样本函数主体字符串。如果未指定，则在函数内要求用户输入。<br>An explicitly passed sample function body string. If it's not specified, this function will ask the user to input a function.
+    :type func_str: str
+    :param endpoint_version: 对局记录接口版本。默认使用v3。<br>Match history query endpoint version. v3 is used by default.
+    
+        使用v3接口获取到的对局概要和时间轴相当于对使用v1接口获取到的对局概要和时间轴取“json”键的值。<br>Match summary and timeline obtained from v3 endpoint is equivalent to the value of the "json" key of match summary and timeline obtained from v1 endpoint.
+    :type endpoint_version: int
+    :return: 函数主体字符串和函数接口。<br>Function body string and function.
+    
+        函数主体字符串用于输出到日志中。<br>Function body string exists here to be exported into the log file.
+    :rtype: tuple[str, Optional[Callable[[dict[str, Any]], bool]]]
+    '''
+    #参数预处理（Parameter preprocessing）
+    if endpoint_version != 1:
+        endpoint_version = 3
+    while True:
+        if func_str == "":
+            func_str = input("f(game_summary): ")
+        else:
+            print(f"f(game_summary): {func_str}")
+            args.func = ""
+        if func_str in {"", "0", "-1"}:
+            func = None
+            break
+        else:
+            try:
+                func = eval(f"lambda game_summary: {func_str}")
+            except:
+                print("您的输入有误！请重新输入。\nERROR input! Please try again.")
+            else:
+                try:
+                    tmp = func(TEST_GAME_SUMMARY["json"] if endpoint_version == 3 else TEST_GAME_SUMMARY) #校验函数是否能如期运行（Check whether the function can run as expected）
+                except:
+                    print("函数运行出错！请重新输入。\nAn error occurred when testing the function! Please try again.")
+                else:
+                    if isinstance(tmp, bool):
+                        break
+                    else:
+                        print("您输入的函数返回的不是逻辑值！请重新输入。\nYour function doesn't return a boolean value! Please try again.")
+        #一旦第二次执行此while循环，就要求用户手动输入，并且将cli变量置为假（Once this while loop is executed for the second time, it asks the user to manually input a function and sets cli argument to False）
+        func_str = ""
+        args.cli = False
+    return (func_str, func)
+
 async def index_traversal_main(connection: Connection) -> None: #按序遍历对局（Traverse matches by order）
     prepared: bool = False #标记函数参数是否准备就绪（Marks whether the parameters are ready）
     step: int = 1 #步骤计数（Step counter）
@@ -930,10 +1020,12 @@ async def history_traversal_main(connection: Connection) -> None: #从对局记�
     start_puuid: str = "" #起始玩家通用唯一识别码（Starting puuid）
     product: str = "LoL" #产品（Product）
     func_str: str = "" #函数字符串（Function string）
-    func: Optional[Callable[[dict[str, Any]], bool]] = None #函数对象（Function object）
+    # func: Optional[Callable[[dict[str, Any]], bool]] = None #函数对象（Function object）
     save_json: bool = True #是否保存对局信息（Whether to save match information）
     skip_timeline: bool = False #在保存对局信息时，是否跳过时间轴的保存（When match information is saved, whether to skip saving timeline）
     save_rofl: bool = False #是否尝试下载回放（Whether to try downloading replays）
+    # num_func: Optional[Callable[[dict[str, Any]], bool]] = None #分子函数对象（Numerator function object）
+    den_funcs_str: list[str] = [] #分母函数主体字符串列表（Denominator function body string list）
     while True:
         if step == 0:
             break
@@ -1047,13 +1139,43 @@ async def history_traversal_main(connection: Connection) -> None: #从对局记�
             else:
                 save_rofl = save_rofl_str[0] == "1"
         elif step == 7:
+            print('第七步：请选择要统计数量的样本。输入一些样本函数，这些函数代表的场景作为计算频率时的分母。这些函数返回逻辑值。\nStep 7: Please select samples to count the size. Input some sample functions, whose underlying situations represent the denominators of frequency calculation. These functions return boolean values.\n如果不指定，则只统计总样本数量。\nIf no sample function is specified, then only total sample size is counted.\n输入空字符串以结束输入。输入“-1”以清空所有样本函数。输入“0”以返回上一步。\nSubmit an empty string to cancel the input. Submit "-1" to clear all sample functions. Submit "0" to return to the last step.')
+            if len(args.denominator_funcs) == 0: #在命令行未传入任何样本函数时，在程序运行时询问用户（When no sample function is passed through command line, ask the user during the program execution）
+                while True:
+                    den_func_str, den_func = define_sample_function(endpoint_version = 1)
+                    if den_func_str == "":
+                        break
+                    elif den_func_str == "-1":
+                        den_funcs_str.clear()
+                        print("样本已清空。\nSamples have been cleared.")
+                    elif den_func_str == "0":
+                        den_funcs_str.clear() #防止反复返回上一步导致出现大量重复的样本函数（In case repeatedly returning to the last step would produce many redundant sample functions）
+                        step -= 2
+                        break
+                    else:
+                        den_funcs_str.append(den_func_str)
+            else:
+                for den_func_str in args.denominator_funcs:
+                    den_func_str, den_func = define_sample_function(endpoint_version = 1)
+                    if den_func_str == "":
+                        break
+                    elif den_func_str == "-1": #一般不会有人会往命令行里塞这种控制程序走向的字符串吧？不过如果有人想这样做，在设计上程序还是允许的（Normally there's no one who want to add such strings that control the program flow, is there? Nevertheless, if someone really wants to try, this program allows this by design）
+                        den_funcs_str.clear()
+                        print("样本已清空。\nSamples have been cleared.")
+                    elif den_func_str == "0":
+                        den_funcs_str.clear()
+                        step -= 2
+                        break
+                    else:
+                        den_funcs_str.append(den_func_str)
+        elif step == 8:
             prepared = True
             break
         else:
             print("步骤异常。请联系开发人员修复程序。\nStep error. Please contact the developer to fix the program.")
         step += 1
     if prepared:
-        await history_traverse_match(connection, start_puuid, product, func_str = func_str, save_json = save_json, skip_timeline = skip_timeline, save_rofl = save_rofl)
+        await history_traverse_match(connection, start_puuid, product, func_str = func_str, save_json = save_json, skip_timeline = skip_timeline, save_rofl = save_rofl, den_funcs_str = den_funcs_str)
 
 async def binary_search_main(connection: Connection) -> None: #类二分搜索一场对局（Search for a match by a binary-like method）
     threshold_function_definition_hint_printed: bool = False #标记是否已经打印过阈值函数定义的提示（Marks whether the program has printed the hint of a threshold function's definition）
