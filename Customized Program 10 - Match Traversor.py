@@ -811,7 +811,69 @@ def isKiwiPentaMatch(game_summary: dict[str, Any]) -> bool:
     '''
     return bool(game_summary) and game_summary["queueId"] == 2400 and any(map(lambda participant: bool(participant["pentaKills"]), game_summary["participants"]))
 
-filter_function_example: str = 'isKiwiMatch(game_summary) ⇔ "gameMode" in game_summary and game_summary["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\nisKiwiPentaMatch(game_summary) ⇔ bool(game_summary) and game_summary["queueId"] == 2400 and any(map(lambda participant: bool(participant["pentaKills"]), game_summary["participants"])) #判断对局是否是海克斯大乱斗五杀局（Judge whether a match is an ARAM: Mayhem game with at least a penta kill）'
+def containAugment(game_summary: dict[str, Any], augmentId: list[list[int]] | list[int] | int, mode: Literal["CHERRY", "KIWI"] = "CHERRY", championId: int = 0, gameVersion_lower: str = "", gameVersion_upper: str = "", gameCreationDate_lower: str = "", gameCreationDate_upper: str = "") -> bool:
+    '''
+    判断某场对局是否出现一个强化符文。<br>Judge whether an augment is present in a match.
+    
+    :param game_summary: 对局概要信息。通过以下SGP接口得到：<br>Match summary information, obtained through the following SGP endpoint:
+    
+        - `GET /match-history-query/v3/product/{product}/matchId/{match_id}/infoType/summary`
+    :type game_summary: dict[str, Any]
+    :param augmentId: 强化符文序号方案。<br>Augment id.
+    
+        当用户输入单个序号时，搜索该序号是否出现在对局中。<br>When the user passes single id, this function checks whether this id is in this match.
+        
+        当用户输入一级序号列表时，搜索该列表中所有序号是否同时出现在对局中。<br>When the user passes a Level 1 id list, this function checks whether all ids in this list are in this match.
+        
+        当用户输入二级序号列表时，搜索该二级序号列表中是否存在一个方案，使得该方案中的所有序号同时出现在对局中。<br>When the user passes a Level 2 id list, this function checks whether there's a scheme in this list, where all ids in this scheme are in this match.
+    :type augmentId: list[list[int]] | list[int] | int
+    :param mode: 游戏模式。<br>Game mode.
+    
+        - "CHERRY": （☆）斗魂竞技场。<br>Arena.
+        - "KIWI": 海克斯大乱斗。<br>ARAM: Mayhem.
+    :type mode: Literal["CHERRY", "KIWI"]
+    :param championId: 英雄序号。默认是0。<br>Champion id. 0 by default.
+    
+        当该参数指定为0时，表示不限制英雄。<br>When the parameter is set to 0, champions aren't restricted.
+    :type championId: int
+    :param gameVersion_lower: 对局版本下限。包含该取值。（≥）默认是空字符串。<br>Game version lower limit. Value included. (≥) An empty string by default.
+    
+        当该参数和`gameVersion_upper`参数同时指定为空字符串时，表示不限制版本。<br>When both this parameter and `gameVersion_upper` parameter are set to empty strings, versions aren't restricted.
+    :type gameVersion_lower: str
+    :param gameVersion_upper: 对局版本上限。不包含该取值。（<）默认是空字符串。<br>Game version upper limit. Value excluded. (<) An empty string by default.
+    
+        当该参数和`gameVersion_lower`参数同时指定为空字符串时，表示不限制版本。<br>When both this parameter and `gameVersion_lower` parameter are set to empty strings, versions aren't restricted.
+    :type gameVersion_upper: str
+    :param gameCreationDate_lower: 对局创建时间下限。包含该取值。（≥）默认是空字符串。<br>Game creation time lower limit. Value included. (≥) An empty string by default.
+    
+        时间字符串服从“1970-01-01 08:00:00”的格式。时区为当地时间。<br>The time string should follow the format "1970-01-01 08:00:00". Local time zone is used.
+        
+        当该参数和`gameCreationDate_upper`参数同时指定为空字符串时，表示不限制时间。<br>When both this parameter and `gameVersion_upper` parameter are set to empty strings, time isn't restricted.
+    :type gameCreationDate_lower: str
+    :param gameCreationDate_upper: 对局创建时间上限。不包含该取值。（<）默认是空字符串。<br>Game creation time lower limit. Value excluded. (<) An empty string by default.
+    
+        时间字符串服从“1970-01-01 08:00:00”的格式。时区为当地时间。<br>The time string should follow the format "1970-01-01 08:00:00". Local time zone is used.
+        
+        当该参数和`gameCreationDate_upper`参数同时指定为空字符串时，表示不限制时间。<br>When both this parameter and `gameVersion_upper` parameter are set to empty strings, time isn't restricted.
+    :type gameCreationDate_upper: str
+    :return: 该对局是否出现了目标强化符文。<br>Whether the match has the target augment.
+    :rtype: bool
+    '''
+    if isinstance(augmentId, int):
+        augmentSchemes: list[list[int]] = [[augmentId]]
+    elif isinstance(augmentId, list) and all(map(lambda x: isinstance(x, int), augmentId)):
+        augmentSchemes = [augmentId]
+    elif isinstance(augmentId, list) and all(map(lambda x: isinstance(x, list) and all(map(lambda y: isinstance(y, int), x)), augmentId)):
+        augmentSchemes = augmentId
+    else:
+        raise TypeError('Invalid type of parameter "augmentId".')
+    return bool(game_summary) and \
+        game_summary["gameMode"] == mode and \
+        (gameVersion_lower == "" and gameVersion_upper == "" or Patch(game_summary["gameVersion"]) >= Patch(gameVersion_lower) and Patch(game_summary["gameVersion"]) < Patch(gameVersion_upper)) and \
+        (gameCreationDate_lower == "" and gameCreationDate_upper == "" or gameCreation_compare(game_summary, gameCreationDate_lower) and not gameCreation_compare(game_summary, gameCreationDate_upper)) and \
+        any(map(lambda participant: (championId == 0 or participant["championId"] == championId) and any(set(scheme) <= set(participant.get(f"playerAugment{i}", 0) for i in range(1, 7)) for scheme in augmentSchemes), game_summary["participants"]))
+
+filter_function_example: str = '''isKiwiMatch(game_summary) ⇔ "gameMode" in game_summary and game_summary["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\nisKiwiPentaMatch(game_summary) ⇔ bool(game_summary) and game_summary["queueId"] == 2400 and any(map(lambda participant: bool(participant["pentaKills"]), game_summary["participants"])) #判断对局是否是海克斯大乱斗五杀局（Judge whether a match is an ARAM: Mayhem game with at least a penta kill）\ncontainAugment(game_summary, 1324, mode = "CHERRY", championId = 200, gameVersion_lower = "16.16", gameVersion_upper = "16.17", gameCreationDate_lower = "2026-08-23 00:00:00", gameCreationDate_upper = "2026-08-24 00:00:00") ⇔ bool(game_summary) and game_summary["gameMode"] = "CHERRY" and Patch(game_summary["gameVersion"]) >= Patch("16.16") and Patch(game_summary["gameVersion"]) < Patch("16.17") and gameCreation_compare(game_summary, "2026-08-23 00:00:00") and not gameCreation_compare(game_summary, "2026-08-24 00:00:00") and any(map(lambda participant: participant["championId"] == 200 and 1324 in [participant.get(f"playerAugment{i}", 0) for i in range(1, 7)], game_summary["participants"])) #判断有没有一场斗魂竞技场对局是虚空女皇 卑尔维斯拿到【蛋白粉奶昔】的（Judge whether there's a game that Bel'Veth picked Protein Shake）'''
 
 #在这里自定义用于二分查找对局函数的阈值函数模板（Define the custom threshold function templates for `binary_search_match` function hereafter）
 ##调试（Debug）
