@@ -56,6 +56,29 @@ args: argparse.Namespace = parser.parse_args()
 #    https://github.com/sousa-andre/lcu-driver
 #-----------------------------------------------------------------------------
 
+SYMBOLS: dict[str, dict[str, str]] = {
+    "√": {
+        "en_US": "Fetched successfully and meets the condition.",
+        "zh_CN": "获取成功且符合条件。"
+    },
+    "×": {
+        "en_US": "Fetched successfully but doesn't meet the condition.",
+        "zh_CN": "获取成功但不符合条件。"
+    },
+    "!": {
+        "en_US": "Fetch failure.",
+        "zh_CN": "获取失败。"
+    },
+    "↓": {
+        "en_US": "Replay downloaded.",
+        "zh_CN": "已下载回放。"
+    },
+    "Ø": {
+        "en_US": "Replay error.",
+        "zh_CN": "回放异常。"
+    }
+}
+SYMBOL_MEANING: str = "各符号含义如下：\n" + "\n".join(list(map(lambda x: "- (%s): %s" %(x[0], x[1]["zh_CN"]), list(SYMBOLS.items())))) + "\nAll symbol meanings are as follows:\n" + "\n".join(list(map(lambda x: "- (%s): %s" %(x[0], x[1]["en_US"]), list(SYMBOLS.items())))) + "\n"
 connector: Connector = Connector()
 
 #-----------------------------------------------------------------------------
@@ -245,6 +268,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     logPrint(f"【参数设置】保存对局信息文件（Save json）：{save_json}")
     logPrint(f"【参数设置】跳过时间轴（Skip timeline）：{skip_timeline}")
     logPrint(f"【参数设置】下载回放（Download replay）：{save_rofl}")
+    logPrint(SYMBOL_MEANING, write_time = False)
     #查询前的数据结构准备（Data structure prepared for query）
     matches_found: list[int] = []
     json_folder: str = os.path.join(set_platform_folder(region, platformId), "1. MatchIDs").replace("\\", "/")
@@ -263,7 +287,8 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
         #保存对局概要和时间轴（Save match summary and timeline）
         status, game_summary = await get_game_summary_sgp(connection, session, match_id, checkLoL = checkLoL, checkTFT = checkTFT, skipTFT = skipTFT, endpoint_version = 3)
         if status != 200:
-            logPrint(f"【获取失败】[{currentProcess}/{gameCount}]对局{matchId}概要获取失败！\nMatch {matchId} summary capture failure!", print_time = True)
+            # logPrint(f"【获取失败】[{currentProcess}/{gameCount}]对局{matchId}概要获取失败！\nMatch {matchId} summary capture failure!", print_time = True)
+            logPrint(f"(!) [{currentProcess}/{gameCount}] {matchId}", print_time = True)
         else:
             #统计样本（Count samples）
             sample_matches[0].add(matchId) #和对局记录遍历模式不同，按序遍历模式不可能出现重复的对局序号（What's different from history traversal mode is that index traversal mode can't have any repeated matchId）
@@ -276,7 +301,8 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
             #保存信息（Save information）
             process_ratio_hint: str = str(len(matches_found)) + ("/" + "|".join(list(map(lambda x: str(len(x)), sample_matches[1:]))) if len(sample_funcs) > 0 else "") #样本对局序号列表中的0号元素的大小就是`gameCount`（The size of the 0-th element in `sample_matches` is `gameCount`）
             if func(game_summary):
-                logPrint(f"【找到对局】[{currentProcess}/{gameCount}][{process_ratio_hint}]对局{matchId}符合条件。已将其加入列表。\nMatch {matchId} fits the requirements and has been added to the found match list!", print_time = True)
+                # logPrint(f"【找到对局】[{currentProcess}/{gameCount}][{process_ratio_hint}]对局{matchId}符合条件。已将其加入列表。\nMatch {matchId} fits the requirements and has been added to the found match list!", print_time = True)
+                logPrint(f"(√) [{currentProcess}/{gameCount}][{process_ratio_hint}] {matchId}", print_time = True)
                 #下面将json文件保存到对局文件夹中。强烈建议不要在使用v3接口时执行此操作。（The following code save the json files into the match folder. It's strongly recommended that users not perform this operation when the v3 endpoint is used）
                 if save_json and not matchId in saved_matchIds:
                     match_product: str = "TFT" if game_summary["mapId"] == 22 else "LoL"
@@ -291,7 +317,8 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
                                 json.dump(game_timeline, fp, indent = 4, ensure_ascii = False)
                     saved_matchIds.add(matchId)
             else:
-                logPrint(f"【跳过对局】[{currentProcess}/{gameCount}][{process_ratio_hint}]对局{matchId}不符合条件。\nMatch {matchId} doesn't meet the requirements.", print_time = True)
+                # logPrint(f"【跳过对局】[{currentProcess}/{gameCount}][{process_ratio_hint}]对局{matchId}不符合条件。\nMatch {matchId} doesn't meet the requirements.", print_time = True)
+                logPrint(f"(×) [{currentProcess}/{gameCount}][{process_ratio_hint}] {matchId}", print_time = True)
         #下载回放（Download replay）
         if status == 200 and func(game_summary) or not func_specified: #当对局概要正常获取且对局符合条件，或者用户没有指定任何条件时，尝试下载该对局的回放（When the game summary is fetched successfully and this match meets the condition, or the user doesn't specify any condition, the program tries downloading the replay）
             if save_rofl and not matchId in downloaded_matches:
@@ -300,9 +327,11 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
                 new_rofl_path, replay_downloaded, replay_download_message = await download_replay_sgp(connection, session, match_id, rofl_path)
                 if replay_downloaded:
                     downloaded_matches.add(matchId)
-                    logPrint(f"【下载回放】已下载回放（Downloaded replay）： {new_rofl_path}")
+                    # logPrint(f"【下载回放】已下载回放（Downloaded replay）： {new_rofl_path}")
+                    logPrint(f"(↓) {new_rofl_path}")
                 else:
-                    logPrint(f"【回放异常】{replay_download_message}")
+                    # logPrint(f"【回放异常】{replay_download_message}")
+                    logPrint(f"(Ø) {replay_download_message}")
     #保存数据到本地文件（Saved data to a local file）
     print(matches_found)
     print("[%s]" %(time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())), end = "")
@@ -431,6 +460,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     logPrint(f"【参数设置】保存对局信息文件（Save json）：{save_json}")
     logPrint(f"【参数设置】跳过时间轴（Skip timeline）：{skip_timeline}")
     logPrint(f"【参数设置】下载回放（Download replay）：{save_rofl}")
+    logPrint(SYMBOL_MEANING, write_time = False)
     #查询前的数据结构准备（Data structure prepared for query）
     matches_found: set[int] = set()
     json_folder: str = os.path.join(set_platform_folder(region, platformId), "1. MatchIDs").replace("\\", "/")
@@ -455,10 +485,11 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
             summoner_name: str = get_info_name(info["body"])
         else:
             summoner_name = str(traversed_player_count)
-        if product == "LoL":
-            logPrint(f"【对局记录】[{traversed_player_count}]正在获取玩家{summoner_name}（{puuid}）的对局概要和时间轴……\nFetching the match summary and details of player {summoner_name} ({puuid}) ...")
-        else:
-            logPrint(f"【对局记录】[{traversed_player_count}]正在获取玩家{summoner_name}（{puuid}）的对局信息……\nFetching the match information of player {summoner_name} ({puuid}) ...")
+        # if product == "LoL":
+        #     logPrint(f"【对局记录】[{traversed_player_count}]正在获取玩家{summoner_name}（{puuid}）的对局概要和时间轴……\nFetching the match summary and details of player {summoner_name} ({puuid}) ...")
+        # else:
+        #     logPrint(f"【对局记录】[{traversed_player_count}]正在获取玩家{summoner_name}（{puuid}）的对局信息……\nFetching the match information of player {summoner_name} ({puuid}) ...")
+        logPrint(f"(…) [{traversed_player_count}] {puuid} ({summoner_name})")
         matchHistory_get, matchHistory = await get_matchSummary_sgp(connection, session, puuid, product, begin = 0, count = 1000, log = log)
         if matchHistory_get:
             if product == "LoL" and save_json and not skip_timeline:
@@ -486,7 +517,8 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
                 #输出信息（Output information）
                 process_ratio_hint: str = str(len(matches_found)) + "/" + "|".join(list(map(lambda x: str(len(x)), sample_matches))) #将各种样本的容量统计值用竖线连接（Concatenate all samples' size with vertical bars）
                 if func(game_summary):
-                    logPrint(f"【找到对局】[{traversed_player_count}][{process_ratio_hint}]对局{matchId}符合条件。已将其加入集合。\nMatch {matchId} fits the requirements and has been added to the found match set!")
+                    # logPrint(f"【找到对局】[{traversed_player_count}][{process_ratio_hint}]对局{matchId}符合条件。已将其加入集合。\nMatch {matchId} fits the requirements and has been added to the found match set!")
+                    logPrint(f"(√) [{traversed_player_count}][{process_ratio_hint}] {matchId}")
                     #下面将json文件保存到日志文件夹中（The following code save the json files into the log folder）
                     if save_json and not matchId in saved_matchIds:
                         match_product: str = game_summary["metadata"]["product"]
@@ -512,16 +544,20 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
                         new_rofl_path, replay_downloaded, replay_download_message = await download_replay_sgp(connection, session, match_id, rofl_path)
                         if replay_downloaded:
                             downloaded_matches.add(matchId)
-                            logPrint(f"【下载回放】已下载回放（Downloaded replay）： {new_rofl_path}")
+                            # logPrint(f"【下载回放】已下载回放（Downloaded replay）： {new_rofl_path}")
+                            logPrint(f"(↓) {new_rofl_path}")
                         else:
-                            logPrint(f"【回放异常】{replay_download_message}")
+                            # logPrint(f"【回放异常】{replay_download_message}")
+                            logPrint(f"(Ø) {replay_download_message}")
                 else:
-                    logPrint(f"【跳过对局】[{traversed_player_count}][{process_ratio_hint}]对局{matchId}不符合条件。\nMatch {matchId} doesn't meet the requirements.")
+                    # logPrint(f"【跳过对局】[{traversed_player_count}][{process_ratio_hint}]对局{matchId}不符合条件。\nMatch {matchId} doesn't meet the requirements.")
+                    logPrint(f"(×) [{traversed_player_count}][{process_ratio_hint}] {matchId}")
                 #扩展迭代（Extend iteration）
                 if "participants" in game_summary["metadata"]:
                     puuids_to_search.extend(game_summary["metadata"]["participants"])
         else:
-            logPrint(f"【获取失败】[{traversed_player_count}]玩家{summoner_name}（{puuid}）的对局概要获取失败。\nFailed to fetch the match summary of player {summoner_name} ({puuid}).")
+            # logPrint(f"【获取失败】[{traversed_player_count}]玩家{summoner_name}（{puuid}）的对局概要获取失败。\nFailed to fetch the match summary of player {summoner_name} ({puuid}).")
+            logPrint(f"(!) [{traversed_player_count}] {puuid} ({summoner_name}).")
         puuids_searched.add(puuid)
     #保存数据到本地文件（Saved data to a local file）
     print(sorted(matches_found))
