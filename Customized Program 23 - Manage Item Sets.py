@@ -22,7 +22,7 @@ from src.localization.languages.zh_CN import itemCategories
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/17
+# 更新（Last update）：     2026/08/27
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -130,78 +130,78 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
     source, status, session = requestUrl("GET", map12_bin_url, session = session, log = log)
     if status != 200:
         if status == 404:
-            logPrint("嚎哭深渊地图信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nHowling Abyss map data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(map12_bin_url))
+            logPrint("嚎哭深渊地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nHowling Abyss map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map12_bin_url))
             map12_bin: dict[str, list[str] | dict[str, Any]] = {}
         else:
             logPrint("嚎哭深渊地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nHowling Abyss map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
             time.sleep(3)
-        return ({}, False, "")
+            return ({}, False, "")
     else:
         map12_bin = source.json()
     source, status, session = requestUrl("GET", map21_bin_url, session = session, log = log)
     if status != 200:
         if status == 404:
-            logPrint("百合与莲花的神庙地图信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nTemple of Lily and Lotus map data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(map21_bin_url))
+            logPrint("百合与莲花的神庙地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nTemple of Lily and Lotus map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map21_bin_url))
             map21_bin: dict[str, list[str] | dict[str, Any]] = {}
         else:
             logPrint("百合与莲花的神庙地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nTemple of Lily and Lotus map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
             time.sleep(3)
-        return ({}, False, "")
+            return ({}, False, "")
     else:
         map21_bin = source.json()
     source, status, session = requestUrl("GET", map22_bin_url, session = session, log = log)
     if status != 200:
         if status == 404:
-            logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nConvergence map data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(map22_bin_url))
+            logPrint("聚点危机地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nConvergence map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map22_bin_url))
             map22_bin: dict[str, list[str] | dict[str, Any]] = {}
         else:
             logPrint("聚点危机地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nConvergence map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
             time.sleep(3)
-        return ({}, False, "")
+            return ({}, False, "")
     else:
         map22_bin = source.json()
     source, status, session = requestUrl("GET", map30_bin_url, session = session, log = log)
     if status != 200:
         if status == 404:
-            logPrint("怒火角斗场地图信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nRings of Wrath map data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(map30_bin_url))
+            logPrint("怒火角斗场地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nRings of Wrath map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map30_bin_url))
             map30_bin: dict[str, list[str] | dict[str, Any]] = {}
         else:
             logPrint("怒火角斗场地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nRings of Wrath map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
             time.sleep(3)
-        return ({}, False, "")
+            return ({}, False, "")
     else:
         map30_bin = source.json()
     source, status, session = requestUrl("GET", map33_bin_url, session = session, log = log)
     if status != 200:
         if status == 404:
-            logPrint("最终都市地图信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nFinal City map data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(map33_bin_url))
+            logPrint("最终都市地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nFinal City map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map33_bin_url))
             map33_bin: dict[str, list[str] | dict[str, Any]] = {}
         else:
             logPrint("最终都市地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nFinal City map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
             time.sleep(3)
-        return ({}, False, "")
+            return ({}, False, "")
     else:
         map33_bin = source.json()
     source, status, session = requestUrl("GET", map35_bin_url, session = session, log = log)
     if status != 200:
         if status == 404:
-            logPrint("班德尔之森地图信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nThe Bandlewood map data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(map35_bin_url))
+            logPrint("班德尔之森地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nThe Bandlewood map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map35_bin_url))
             map35_bin: dict[str, list[str] | dict[str, Any]] = {}
         else:
             logPrint("班德尔之森地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nThe Bandlewood map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
             time.sleep(3)
-        return ({}, False, "")
+            return ({}, False, "")
     else:
         map35_bin = source.json()
     source, status, session = requestUrl("GET", map453_bin_url, session = session, log = log)
     if status != 200:
         if status == 404:
-            logPrint("经典召唤师峡谷地图信息获取失败！请检查以下链接的可用性。程序将返回上一层。\nClassic Rift map data capture failure! Please check the URL availability. The program will return to the last step.\n%s" %(map453_bin_url))
+            logPrint("经典召唤师峡谷地图信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nClassic Rift map data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(map453_bin_url))
             map453_bin: dict[str, list[str] | dict[str, Any]] = {}
         else:
             logPrint("经典召唤师峡谷地图信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nClassic Rift map data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.")
             time.sleep(3)
-        return ({}, False, "")
+            return ({}, False, "")
     else:
         map453_bin = source.json()
     source, status, session = requestUrl("GET", items_bin_url, session = session, log = log)
