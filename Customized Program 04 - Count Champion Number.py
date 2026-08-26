@@ -19,7 +19,7 @@ from src.localization.general import language_ddragon, language_dict, language_c
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/17
+# 更新（Last update）：     2026/08/27
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -215,7 +215,7 @@ def get_cdragon_champions(locale: str = "zh_CN") -> tuple[dict[int, dict[str, An
     #注释以下代码以直接离线加载数据资源（Comment out the following code to load offline data resources directly）
     print("获取进度（Capturing process）：")
     for i in range(len(champion_urls)):
-        if isKeyPressed(b"\x1b", b"\x1b"):
+        if isKeyPressed(b"\x1b"):
             print("您已中断此过程。\nYou've interrupted this process.")
             return ({}, version)
         champion_url: str = champion_urls[i]

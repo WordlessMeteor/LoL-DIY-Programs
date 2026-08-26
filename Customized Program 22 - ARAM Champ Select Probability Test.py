@@ -29,7 +29,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/19
+# 更新（Last update）：     2026/08/27
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -609,7 +609,7 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
             #请注意：在以下代码中，selected_priority变量是关键（Note: In the following code, `selected_priority` is the essence）
             logPrint("所有成员已准备就绪。循环开始。\nAll members are ready. The loop begins.", print_time = True)
             while True: #需要提前确保玩家已经创建了一个极地大乱斗或者海克斯大乱斗的房间（The user should make sure in advance that he/she has created an ARAM or ARAM: Mayhem lobby）
-                if isKeyPressed(b"\x1b", b"\x1b"): #用于勇敢举动的调试（For debugging with Bravery）
+                if isKeyPressed(b"\x1b"): #用于勇敢举动的调试（For debugging with Bravery）
                     logPrint("您已中断测试。请在准备就绪后开启下一场测试。\nYou've cancelled this test. Please start the next test after you're prepared.", print_time = True)
                     return (-1, sort_champion_frequency_table(champion_frequency_dict_singleTest))
                 #第一步：保证游戏状态是房间（Step 1: Ensure `gameflow_phase` is "Lobby"）
@@ -976,7 +976,7 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
             #首先判断自定义房间的房主，因为需要根据房主最终选到的候选英雄来返回相应的英雄序号。注意，预组队是无视主播模式的（First, judge about the custom lobby owner, because this function returns the championId of the candidate champion selected by the lobby owner. Note that the information of a player who has enabled Streamer Mode is still visible to its premade teammates）
             lobbyOwner_puuid: str = ""
             while True:
-                if isKeyPressed(b"\x1b", b"\x1b"): #用于勇敢举动的调试（For debugging with Bravery）
+                if isKeyPressed(b"\x1b"): #用于勇敢举动的调试（For debugging with Bravery）
                     logPrint("您已中断测试。请在准备就绪后开启下一场测试。\nYou've cancelled this test. Please start the next test after you're prepared.", print_time = True)
                     return (-1, sort_champion_frequency_table(champion_frequency_dict_singleTest))
                 lobbyOwner_determine_hint_printed: bool = False
@@ -985,7 +985,7 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                 #在此期间，玩家可以进行任何操作，包括接受邀请（At this time, players can do anything, like accepting an invitation）
                 logPrint("第%d次尝试：正在等待进入英雄选择阶段……\nTimes tried: %d - Waiting for champ select to start ..." %(count, count), print_time = True)
                 while True:
-                    if isKeyPressed(b"\x1b", b"\x1b"): #添加这一段代码的原因见后续对水友端AllPrepared部分的解释（The reason for adding this piece of code can be seen from the subsequent explanation to the `AllPrepared` part of member-side）
+                    if isKeyPressed(b"\x1b"): #添加这一段代码的原因见后续对水友端AllPrepared部分的解释（The reason for adding this piece of code can be seen from the subsequent explanation to the `AllPrepared` part of member-side）
                         logPrint("您已中断测试。请在准备就绪后开启下一场测试。\nYou've cancelled this test. Please start the next test after you're prepared.", print_time = True)
                         return (-1, sort_champion_frequency_table(champion_frequency_dict_singleTest))
                     gameflow_phase = await (await connection.request("GET", "/lol-gameflow/v1/gameflow-phase")).json()
@@ -1197,7 +1197,7 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                         logPrint("第三步：找到了一个候选英雄。正在检测是否存在来自房主的英雄交换请求。如果有，程序将自动同意此请求。\nStep Three: A candidate champion is found. Detecting whether there's a champion swap request from the lobby owner. If there is, the program will automatically accept this request.", print_time = True)
                         while True:
                             #按Esc键强制退出循环。谨慎使用，因为即使现在退出循环了，下一次循环也会因为识别到英雄选择阶段而再次执行到此处（Press Esc to force to exit the loop. Watch out, for even if the loop is exited, in the next loop, the user is still during the champ select phase, so the program will execute back to this place）
-                            # if isKeyPressed(b"\x1b", b"\x1b"):
+                            # if isKeyPressed(b"\x1b"):
                             #     logPrint("您已退出循环。\nYou've exited the loop.", print_time = True)
                             #     break
                             #如果房主退出英雄选择阶段，则进入下一个循环（If the lobby owner quits the champ select session, then enter the next cycle）

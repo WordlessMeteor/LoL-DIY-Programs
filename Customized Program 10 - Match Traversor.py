@@ -46,7 +46,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/26
+# 更新（Last update）：     2026/08/27
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -255,7 +255,7 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     #遍历对局序号（Traverse matchIds）
     gameCount: int = end_matchId - start_matchId + 1
     for matchId in range(start_matchId, end_matchId + 1):
-        if isKeyPressed(b"\x1b", b"\x1b"):
+        if isKeyPressed(b"\x1b"):
             logPrint("【手动中止】您已退出查询。\nYou've exited the query.")
             break
         currentProcess: int = matchId - start_matchId + 1
@@ -443,7 +443,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     downloaded_matches: set[int] = set(map(lambda x: int(os.path.splitext(os.path.basename(x))[0].split("-")[1]), [_ for _ in os.listdir(replay_folder) if _.startswith(f"{platformId}-") and os.path.splitext(_)[1] == ".rofl"]))
     #遍历对局序号（Traverse matchIds）
     while len(puuids_to_search) > 0:
-        if isKeyPressed(b"\x1b", b"\x1b"):
+        if isKeyPressed(b"\x1b"):
             logPrint("【手动中止】您已退出查询。\nYou've exited the query.")
             break
         puuid: str = puuids_to_search.pop(0)
@@ -467,7 +467,7 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
             else:
                 matchTimelines = {}
             for game_summary in matchHistory["games"]:
-                if isKeyPressed(b"\x1b", b"\x1b"):
+                if isKeyPressed(b"\x1b"):
                     logPrint("【手动中止】您已放弃检查该召唤师的对局。\nYou've quited checking this summoner's matches.")
                     break
                 #统计样本（Count samples）

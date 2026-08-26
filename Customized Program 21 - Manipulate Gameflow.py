@@ -35,7 +35,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/08/20
+# 更新（Last update）：     2026/08/27
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1243,7 +1243,7 @@ async def initialize_summoner_icon(connection: Connection, profileIconId: Option
             count += 1
             if repeat:
                 logPrint(f"[{count}]", end = "\r")
-                if isKeyPressed(b"\x1b", b"\x1b"):
+                if isKeyPressed(b"\x1b"):
                     logPrint("您已退出循环。\nYou've broken the loop.")
                     break
             response: dict[str, Any] = await (await connection.request("PUT", "/lol-summoner/v1/current-summoner/icon", data = body)).json()
@@ -1943,7 +1943,7 @@ async def watch_replay_integrated(connection: Connection) -> None:
         start: float = time.time()
         refresh_count: int = 0
         while True:
-            if isKeyPressed(b"\x1b", b"\x1b"):
+            if isKeyPressed(b"\x1b"):
                 logPrint("您已退出循环。\nYou've broken the loop.")
                 break
             metadata: dict[str, Any] = await (await connection.request("GET", f"/lol-replays/v1/metadata/{matchId}")).json()
