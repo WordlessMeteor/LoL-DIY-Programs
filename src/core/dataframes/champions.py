@@ -442,14 +442,17 @@ def filter_champion(champion_queryStr: str, LoLChampion_df_query: pandas.DataFra
         else:
             resultRows = []
     else:
-        LoLChampion_df_query_lower: pandas.DataFrame = LoLChampion_df_query.map(to_lower) #查询时忽略大小写（Case insensitive during query）
+        #查询时忽略大小写（Case insensitive during query）
+        LoLChampion_df_query_lower: pandas.DataFrame = LoLChampion_df_query.map(to_lower)
+        for i in range(1, len(LoLChampion_df_query_lower)):
+            LoLChampion_df_query_lower.at[i, "colloq"] = list(map(lambda x: x.lower(), LoLChampion_df_query_lower["colloq"][i])) #这个地方将`at`方法替换为`loc`方法会报错（Here replacing `at` method with `loc` method produces an error）
         #首先判断名称、标题和代号是否包含用户输入的字符串（First, judge whether the names, titles and aliases contain the user input string）
         stacked_str: pandas.Series[str] = LoLChampion_df_query_lower.loc[:, ["name", "title", "alias"]].stack()
         mask_str: pandas.Series[bool] = stacked_str.str.contains(champion_queryStr.lower())
         query_positions: list[tuple[int, str]] = stacked_str[mask_str].index.to_list()
         #其次判断检索关键字中是否包含用户输入的字符串（Then, judge whether the colloquialisms contain the user input string）
-        mask_colloq: pandas.Series[bool] = LoLChampion_df_query["colloq"][1:].apply(isin_colloq)
-        matched_rows_colloq: list[int] = LoLChampion_df_query.loc[1:, :][mask_colloq].index.to_list()
+        mask_colloq: pandas.Series[bool] = LoLChampion_df_query_lower["colloq"][1:].apply(isin_colloq)
+        matched_rows_colloq: list[int] = LoLChampion_df_query_lower.loc[1:, :][mask_colloq].index.to_list()
         query_positions.extend(list(map(lambda x: (x, "colloq"), matched_rows_colloq)))
         #最后基于查询位置进行综合处理（Finally, perform a comprehensive operation on query positions）
         resultRows: list[int] = sorted(set(map(lambda x: x[0], query_positions)))
