@@ -1,5 +1,5 @@
 from lcu_driver.connection import Connection
-import copy, os, pandas, time, sys, uuid
+import copy, os, pandas, re, requests, time, sys, uuid
 from typing import Any, Callable, Optional
 wd: str = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")).replace("\\", "/")
 os.chdir(wd)
@@ -356,6 +356,44 @@ def sort_champion_summary(LoLChampions: dict[int, dict[str, Any]]) -> pandas.Dat
     LoLChampion_df: pandas.DataFrame = pandas.DataFrame(data = LoLChampion_data_organized)
     LoLChampion_df = pandas.concat([pandas.DataFrame([LoLChampion_header])[LoLChampion_df.columns], LoLChampion_df], ignore_index = True)
     return LoLChampion_df
+
+async def get_champion_searchTags(connection: Connection, cdVersion: str, locale: str, session: Optional[requests.Session] = None) -> dict[int, list[str]]:
+    '''
+    获取全英雄的检索字符串。<br>Get all champions' query tags.
+
+    来源（Sources）：
+    - (LCU API) `GET /lol-catalog/v1/items/CHAMPION`
+    - (CommunityDragon) `plugins/rcp-fe-lol-l10n/global/{locale}/trans.json`
+    
+    基于同时需要利用客户端连接和通用网络请求会话的特性，强烈建议将该函数放到全局执行一次。<br>Based on the feature that this function utilizes both LCU connection and general web request session, it's highly suggested that this function is executed once in the global scope.
+    
+    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
+    :type connection: Connection
+    :param cdVersion: 用于检索CommunityDragon数据库的版本文件夹名称。<br>The name of the version folder as a part of CommunityDragon database url.
+    :type cdVersion: str
+    :param language_code: 语言（文化）代码。<br>Language code.
+    
+        对于美式英语而言，使用“default”作为CommunityDragon数据库链接的一部分。对于其它语言而言，取其语言文化代码的小写形式。<br>For en_US, take "default" as a part of the CommunityDragon link. For other languages, take the lower case of this parameter.
+    :type language_code: str
+    :param session: 网络请求会话。<br>Web request session.
+    :type session: requests.Session
+    :return: 英雄检索字典。键是英雄序号，值是检索字符串列表。<br>Champion query dictionary. Each key is a championId, and each value is a list of query strings.
+    :rtype: dict[int, list[str]]
+    '''
+    #参数预处理（Parameter pre-process）
+    if session == None:
+        session = requests.Session()
+    language_code: str = "default" if locale == "en_US" else locale.lower()
+    #从目录英雄数据生成检索字典（Generate the query dictionary using catalog champion data）
+    champion_catalog: list[dict[str, Any]] = await (await connection.request("GET", "/lol-catalog/v1/items/CHAMPION")).json()
+    champion_colloq_dict_catalog: dict[int, list[str]] = {item["itemId"]: [] if item.get("tags") == None else item["tags"] for item in champion_catalog}
+    #从前端本地化数据生成检索字典（Generate the query dictionary using front-end localization data）
+    l10n_fe: dict[str, str] = session.get(f"https://raw.communitydragon.org/{cdVersion}/plugins/rcp-fe-lol-l10n/global/{language_code}/trans.json").json()
+    colloq_re: re.Pattern[str] = re.compile(r"champion_local_search_colloq_(?P<championId>\d+)")
+    champion_colloq_dict_fe: dict[int, list[str]] = {int(colloq_re.search(key).group("championId")): value.strip(";").split(";") for (key, value) in l10n_fe.items() if colloq_re.fullmatch(key)}
+    #合并检索字典（Merge the query dictionaries）
+    champion_colloq_dict: dict[int, list[str]] = {key: sorted(set(champion_colloq_dict_catalog.get(key, [])) | set(champion_colloq_dict_fe.get(key, []))) for key in sorted(set(champion_colloq_dict_catalog.keys()) | set(champion_colloq_dict_fe.keys()))}
+    return champion_colloq_dict
 
 def filter_champion(champion_queryStr: str, LoLChampion_df_query: pandas.DataFrame, LoLChampion_df_query_initial: pandas.DataFrame, log: Optional[LogManager] = None) -> tuple[bool, int, pandas.DataFrame]:
     '''

@@ -14,7 +14,7 @@ from src.core.config.const import ALL_GAMEFLOW_PHASES, BOT_DIFFICULTY_LIST, BOT_
 from src.core.config.headers import champSelect_player_header, custom_lobby_header, skin_header, conversation_header, grid_champion_header, chat_mutedPlayer_header, invid_header, perkPage_header, social_leaderboard_header, availableBot_header, lobby_member_header, inGame_playerAbility_header, inGame_championStat_header, inGame_allPlayer_header, inGame_event_header, inGame_metadata_header, ballot_player_header, eog_mastery_update_header, eog_stat_metadata_lol_header, eog_teamstat_data_lol_header, eog_stat_metadata_tft_header, eog_stat_data_tft_header
 from src.core.config.conditional_formatting import addFormat_inGame_allPlayer_wb
 from src.core.dataframes.gameflow import get_gameflow_phase, get_champ_select_session, get_champSelect_player, get_champSelect_action, sort_ChampSelect_players, sort_inGame_players, sort_eog_playerstat_lol_data, sort_eog_stat_tft_data
-from src.core.dataframes.champions import test_bot, sort_inventory_champions, filter_champion
+from src.core.dataframes.champions import test_bot, sort_inventory_champions, get_champion_searchTags, filter_champion
 from src.core.dataframes.ranked import get_tier_name
 from src.core.dataframes.gameMode import check_available_queue
 from src.core.dataframes.matchHistory import get_game_summary_sgp, sort_LoLGame_summary_sgp, sort_TFTGame_summary
@@ -35,7 +35,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/08/27
+# 更新（Last update）：     2026/08/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -143,6 +143,8 @@ async def prepare_data_resources(connection: Connection) -> None:
     logPrint("正在准备大区信息……\nPreparing platform information ...")
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
     platformId = current_party["platformId"]
+    region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
+    locale: str = region_locale["locale"]
     ##自己的信息（Self info）
     current_info = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     ##队列（Queue）
@@ -255,8 +257,8 @@ async def prepare_data_resources(connection: Connection) -> None:
     wardSkins_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/ward-skins.json")).json()
     wardSkins = {wardSkin_iter["id"]: wardSkin_iter for wardSkin_iter in wardSkins_source}
     ##英雄惯用语（Champion colloquialism）
-    champion_catalog: list[dict[str, Any]] = await (await connection.request("GET", "/lol-catalog/v1/items/CHAMPION")).json()
-    champion_colloq_dict = {item["itemId"]: item.get("tags", []) for item in champion_catalog}
+    URLPatch: str = "pbe" if platformId == "PBE1" or platformId == "PBE" else "latest"
+    champion_colloq_dict = await get_champion_searchTags(connection, URLPatch, locale, session = session)
     ##藏品数据框（Collection dataframe）
     os.makedirs("cache", exist_ok = True)
     logPrint("正在加载藏品信息……\nLoading collections ...")
@@ -4013,7 +4015,7 @@ async def configure_quickplay_slot(connection: Connection) -> None:
             elif step == 1:
                 logPrint("第一步：请选择一个英雄。\nStep 1: Please select a champion.")
                 LoLChampion_df: pandas.DataFrame = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)[0]
-                LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict[x] if x in champion_colloq_dict and champion_colloq_dict[x] != None else [], LoLChampion_df["id"][1:]))
+                LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict[x] if x in champion_colloq_dict else [], LoLChampion_df["id"][1:]))
                 LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
                 LoLChampion_df_query_initial: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print + ["colloq"]] #代表初始值（Represent the initial value）
                 LoLChampion_df_query: pandas.DataFrame = LoLChampion_df_query_initial #代表查询过程中的值（Represent the value during a query）
@@ -6780,7 +6782,7 @@ async def pick_champion(connection: Connection) -> None:
                             else:
                                 selectable_champion_ids = await (await connection.request("GET", "/lol-lobby-team-builder/champ-select/v1/pickable-champion-ids")).json()
                     LoLChampion_df: pandas.DataFrame = sort_inventory_champions(LoLChampions, recommended_position_for_champion, log = log, verbose = False)[0]
-                    LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict[x] if x in champion_colloq_dict and champion_colloq_dict[x] != None else [], LoLChampion_df["id"][1:]))
+                    LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict[x] if x in champion_colloq_dict else [], LoLChampion_df["id"][1:]))
                     LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
                     LoLChampion_df_query_initial: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print + ["colloq"]] #代表初始值（Represent the initial value）
                     LoLChampion_df_query: pandas.DataFrame = LoLChampion_df_query_initial #代表查询过程中的值（Represent the value during a query）

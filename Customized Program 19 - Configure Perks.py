@@ -8,7 +8,7 @@ from src.utils.summoner import print_summoner_info, get_info_name
 from src.utils.excel_workbook import create_workbook_win32
 from src.core.config.headers import perk_lcu_header, recommendedPage_header, perkPage_header
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
-from src.core.dataframes.champions import sort_inventory_champions, filter_champion
+from src.core.dataframes.champions import sort_inventory_champions, get_champion_searchTags, filter_champion
 from src.localization.multilingual import gamemaps
 from src.localization.languages.zh_CN import slotTypes, positions, recommendedAttributes
 
@@ -18,7 +18,7 @@ from src.localization.languages.zh_CN import slotTypes, positions, recommendedAt
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/17
+# 更新（Last update）：     2026/08/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -28,6 +28,7 @@ from src.localization.languages.zh_CN import slotTypes, positions, recommendedAt
 #    https://github.com/sousa-andre/lcu-driver
 #-----------------------------------------------------------------------------
 
+platformId: str = ""
 spells: dict[int, dict[str, Any]] = {}
 perks_source: list[dict[str, Any]] = []
 perks: dict[int, dict[str, Any]] = {}
@@ -59,7 +60,12 @@ async def prepare_data_resources(connection: Connection) -> None:
     :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
     :type connection: Connection
     '''
-    global spells, perks_source, perks, perkstyles_source, perkstyles, LoLChampions, recommended_position_for_champion, champion_colloq_dict
+    global platformId, spells, perks_source, perks, perkstyles_source, perkstyles, LoLChampions, recommended_position_for_champion, champion_colloq_dict
+    #大区信息（Platform information）
+    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
+    platformId: str = current_party["platformId"]
+    region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
+    locale: str = region_locale["locale"]
     #召唤师技能（Summoner spell）
     spells_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/summoner-spells.json")).json()
     spells = {spell["id"]: spell for spell in spells_source}
@@ -75,9 +81,9 @@ async def prepare_data_resources(connection: Connection) -> None:
     LoLChampions = {champion["id"]: champion for champion in LoLChampions_source}
     #推荐分路（Recommended positions）
     recommended_position_for_champion = await (await connection.request("GET", "/lol-perks/v1/recommended-champion-positions")).json()
-    ##英雄惯用语（Champion colloquialism）
-    champion_catalog: list[dict[str, Any]] = await (await connection.request("GET", "/lol-catalog/v1/items/CHAMPION")).json()
-    champion_colloq_dict = {item["itemId"]: item.get("tags", []) for item in champion_catalog}
+    #英雄惯用语（Champion colloquialism）
+    URLPatch: str = "pbe" if platformId == "PBE1" or platformId == "PBE" else "latest"
+    champion_colloq_dict = await get_champion_searchTags(connection, URLPatch, locale)
 
 #数据整理部分（Data organization）
 def sort_perk_data(perks_source: list[dict[str, Any]], perkstyles_source: dict[str, Any]) -> pandas.DataFrame:
@@ -419,7 +425,7 @@ def specify_recommend_perkPage_parameters() -> tuple[int, int, str, int]:
         elif step == 1:
             logPrint("第一步：请选择一个英雄：\nStep 1: Please select a champion:")
             LoLChampion_df: pandas.DataFrame = sort_inventory_champions(LoLChampions, recommended_position_for_champion)[0]
-            LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict[x] if x in champion_colloq_dict and champion_colloq_dict[x] != None else [], LoLChampion_df["id"][1:]))
+            LoLChampion_df["colloq"] = ["检索关键字"] + list(map(lambda x: champion_colloq_dict[x] if x in champion_colloq_dict else [], LoLChampion_df["id"][1:]))
             LoLChampion_fields_to_print: list[str] = ["id", "name", "title", "alias"]
             LoLChampion_df_query_initial: pandas.DataFrame = LoLChampion_df.loc[:, LoLChampion_fields_to_print + ["colloq"]] #代表初始值（Represent the initial value）
             LoLChampion_df_query: pandas.DataFrame = LoLChampion_df_query_initial #代表查询过程中的值（Represent the value during a query）
@@ -1324,8 +1330,6 @@ async def remove_perkPage(connection: Connection) -> None:
                         logPrint(f'符文页“{pageName}”（{pageId}）删除失败。\nPage "{pageName}" ({pageId}) failed to be deleted.')
 
 async def configure_perks(connection: Connection) -> None:
-    current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
-    platformId: str = current_party["platformId"]
     riot_client_info: list[str] = await (await connection.request("GET", "/riotclient/command-line-args")).json()
     client_info: dict[str, str] = {}
     for i in range(len(riot_client_info)):
