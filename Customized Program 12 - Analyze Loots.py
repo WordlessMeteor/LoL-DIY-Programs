@@ -36,15 +36,9 @@ async def analyze_player_loots(connection: Connection) -> None: #导出玩家目
     displayName: str = get_info_name(current_info)
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
     platformId: str = current_party["platformId"]
-    riot_client_info: list[str] = await (await connection.request("GET", "/riotclient/command-line-args")).json()
-    client_info: dict[str, str] = {}
-    for i in range(len(riot_client_info)):
-        try:
-            client_info[riot_client_info[i].split("=")[0]] = riot_client_info[i].split("=")[1]
-        except IndexError:
-            pass
-    region: str = client_info["--region"]
-    locale: str = client_info["--locale"]
+    region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
+    region: str = region_locale["region"]
+    locale: str = region_locale["locale"]
     folder: str = set_summonerInfo_folder(region, platformId, current_info)
     #loots: list[dict[str, Any]] = await (await connection.request("GET", "/lol-loot/v1/loot-items")).json()
     player_loot: list[dict[str, Any]] = await (await connection.request("GET", "/lol-loot/v1/player-loot")).json()

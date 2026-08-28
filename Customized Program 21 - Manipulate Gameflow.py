@@ -3305,14 +3305,9 @@ async def get_collection(connection: Connection, verbose: bool = True) -> pandas
     #获取商品和藏品数据（Get store and collection data）
     logPrint("[get_collection]正在获取商品和藏品数据…… | Fetching store and collection data ...", print_time = True, verbose = verbose)
     riot_client_info: list[str] = await (await connection.request("GET", "/riotclient/command-line-args")).json()
-    client_info: dict[str, str] = {}
-    for i in range(len(riot_client_info)):
-        try:
-            client_info[riot_client_info[i].split("=")[0]] = riot_client_info[i].split("=")[1]
-        except IndexError:
-            pass
-    region: str = client_info["--region"]
-    locale: str = client_info["--locale"]
+    region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
+    region: str = region_locale["region"]
+    locale: str = region_locale["locale"]
     lolinventorytypes: dict[str, dict[str, Any]] = {x["inventoryTypeId"]: x for x in lolinventorytype_source}
     inventoryTypes: str = sorted(list(map(lambda x: x["inventoryTypeId"], lolinventorytype_source)))
     collection = await (await connection.request("GET", "/lol-inventory/v1/inventory?inventoryTypes=%s" %(json.dumps(inventoryTypes).replace(" ", "")))).json()

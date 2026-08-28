@@ -1330,14 +1330,8 @@ async def remove_perkPage(connection: Connection) -> None:
                         logPrint(f'符文页“{pageName}”（{pageId}）删除失败。\nPage "{pageName}" ({pageId}) failed to be deleted.')
 
 async def configure_perks(connection: Connection) -> None:
-    riot_client_info: list[str] = await (await connection.request("GET", "/riotclient/command-line-args")).json()
-    client_info: dict[str, str] = {}
-    for i in range(len(riot_client_info)):
-        try:
-            client_info[riot_client_info[i].split("=")[0]] = riot_client_info[i].split("=")[1]
-        except IndexError:
-            pass
-    region: str = client_info["--region"]
+    region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
+    region: str = region_locale["region"]
     #设置输出路径（Set the output directory）
     current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     displayName: str = get_info_name(current_info)

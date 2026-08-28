@@ -29,7 +29,7 @@ use_sgp: bool = args.lol_api == "sgp"
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/08/19
+# 更新（Last update）：     2026/08/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2712,14 +2712,8 @@ async def search_recent_players(connection: Connection) -> None:
     global session, platformId, AllAccounts
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
     platformId = current_party["platformId"]
-    riot_client_info: list[str] = await (await connection.request("GET", "/riotclient/command-line-args")).json()
-    client_info: dict[str, str] = {}
-    for i in range(len(riot_client_info)):
-        try:
-            client_info[riot_client_info[i].split("=")[0]] = riot_client_info[i].split("=")[1]
-        except IndexError:
-            pass
-    region: str = client_info["--region"]
+    region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
+    region: str = region_locale["region"]
     platform_folder: str = set_platform_folder(region, platformId)
     match_folder: str = os.path.join(platform_folder, "1. MatchIDs").replace("\\", "/")
     logPrint("请选择召唤师技能和装备的输出语言【默认为中文（中国）】：\nPlease select a language to output the summoner spells and items (the default option is zh_CN):")

@@ -234,7 +234,7 @@ async def save_platform_info(connection: Connection, print_summary: bool = True)
     #准备数据资源（Prepare data resources）
     platform_config: dict[str, Any] = await (await connection.request("GET", "/lol-platform-config/v1/namespaces")).json()
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
-    riot_client_info: dict[str, str] = await (await connection.request("GET", "/riotclient/command-line-args")).json()
+    cmdline_args: list[str] = await (await connection.request("GET", "/riotclient/command-line-args")).json()
     client_settings: dict[str, Any] = await (await connection.request("GET", "/client-config/v2/namespace/lol.client_settings")).json()
     if isinstance(platform_config, dict) and "errorCode" in platform_config:
         print(platform_config)
@@ -246,9 +246,9 @@ async def save_platform_info(connection: Connection, print_summary: bool = True)
         #确定大区信息文件夹参数（Determine parameters of the platform folder）
         platformId: str = current_party["platformId"]
         client_info: dict[str, str] = {}
-        for i in range(len(riot_client_info)):
+        for i in range(len(cmdline_args)):
             try:
-                client_info[riot_client_info[i].split("=")[0]] = riot_client_info[i].split("=")[1]
+                client_info[cmdline_args[i].split("=")[0]] = cmdline_args[i].split("=")[1]
             except IndexError:
                 pass
         region: str = client_info["--region"]
@@ -268,7 +268,7 @@ async def save_platform_info(connection: Connection, print_summary: bool = True)
             json.dump(platform_config, fp, indent = 4, ensure_ascii = False)
         cmdline_arg_filepath: str = platform_folder + "/command_line_args.json"
         with open(cmdline_arg_filepath, "w", encoding = "utf-8") as fp:
-            json.dump(riot_client_info, fp, indent = 4, ensure_ascii = False)
+            json.dump(cmdline_args, fp, indent = 4, ensure_ascii = False)
         client_settings_filepath: str = platform_folder + "/client_settings.json"
         with open(client_settings_filepath, "w", encoding = "utf-8") as fp:
             json.dump(client_settings, fp, indent = 4, ensure_ascii = False)

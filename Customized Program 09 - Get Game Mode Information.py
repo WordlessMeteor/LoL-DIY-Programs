@@ -14,7 +14,7 @@ from src.core.dataframes.gameMode import sort_queue_data, check_available_queue
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/07/18
+# 更新（Last update）：     2026/08/29
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -33,18 +33,10 @@ async def gamemode(connection: Connection) -> None: #导出游戏模式信息到
     queues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
     queue_df: pandas.DataFrame = sort_queue_data(queues_source)
     #下面设置覆盖写时添加的Sheet名称（The code here sets the Sheet name to be appended into the xlsx file with the same name）
-    riot_client_info: list[str] = await (await connection.request("GET", "/riotclient/command-line-args")).json()
-    client_info: dict[str, str] = {}
-    for i in range(len(riot_client_info)):
-        try:
-            client_info[riot_client_info[i].split("=")[0]] = riot_client_info[i].split("=")[1]
-        except IndexError:
-            pass
-    region: str = client_info["--region"]
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
     platformId: str = current_party["platformId"]
-    #locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
-    locale: str = client_info["--locale"]
+    region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
+    locale: str = region_locale["locale"]
     common_data: dict[str, Any] = await (await connection.request("GET", "/telemetry/v1/common-data")).json()
     version: str = common_data["common.application_version"]
     excel_name: str = "游戏队列信息.xlsx"

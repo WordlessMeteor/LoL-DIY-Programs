@@ -39,14 +39,8 @@ async def get_challenger_tier(connection: Connection) -> None:
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
     platformId: str = current_party["platformId"]
     #下面设置输出文件的位置（The following code determines the output files' location）
-    riot_client_info: list[str] = await (await connection.request("GET", "/riotclient/command-line-args")).json()
-    client_info: dict[str, str] = {}
-    for i in range(len(riot_client_info)):
-        try:
-            client_info[riot_client_info[i].split("=")[0]] = riot_client_info[i].split("=")[1]
-        except IndexError:
-            pass
-    region: str = client_info["--region"]
+    region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
+    region: str = region_locale["region"]
     currentLoLSeason: dict[str, Any] = await (await connection.request("GET", "/lol-seasons/v1/season/product/LOL")).json() #API中记录的赛季与平常所说的赛季有所不同（The season recorded in API is different from the often mentioned season）
     currentLoLSeasonId: int = currentLoLSeason["seasonId"]
     currentLoLSeasonSplitId: int = currentLoLSeason["metadata"]["currentSplit"]
