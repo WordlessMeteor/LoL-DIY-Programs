@@ -138,7 +138,7 @@ async def prepare_data_resources(connection: Connection) -> None:
     :type connection: Connection
     '''
     #准备数据资源（Prepare data resources）
-    global platformId, current_info, queues, summonerIcons, LoLChampions, recommended_position_for_champion, skins_flat, championSkins, skinlines, spells, available_spell_dict, LoLItems, perks, perkstyles, CherryAugments, TFTCompanions, TFTTraits, TFTChampions, TFTItems, TFTDamageSkins, TFTMapSkins, strawberryMaps, wardSkins, champion_colloq_dict, collection_df_refresh, collection_df, skin_df_refresh, skin_df
+    global platformId, current_info, queues, summonerIcons, LoLChampions, recommended_position_for_champion, skins_flat, championSkins, skinlines, spells, available_spell_dict, LoLItems, perks, perkstyles, CherryAugments, TFTCompanions, TFTTraits, TFTChampions, TFTItems, strawberryMaps, wardSkins, champion_colloq_dict, collection_df_refresh, collection_df, skin_df_refresh, skin_df
     ##大区信息（Platform information）
     logPrint("正在准备大区信息……\nPreparing platform information ...")
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
@@ -240,17 +240,9 @@ async def prepare_data_resources(connection: Connection) -> None:
     logPrint("正在加载云顶之弈装备信息……\nLoading TFT item information ...")
     TFTItems_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/tftitems.json")).json()
     TFTItems = {TFTItem_iter["nameId"]: TFTItem_iter for TFTItem_iter in TFTItems_source}
-    ##云顶之弈攻击特效（Damage skin）
-    logPrint("正在加载云顶之弈攻击特效信息……\nLoading TFT damage skin information ...")
-    TFTDamageSkins_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/tftdamageskins.json")).json()
-    TFTDamageSkins = {TFTDamageSkin_iter["itemId"]: TFTDamageSkin_iter for TFTDamageSkin_iter in TFTDamageSkins_source}
-    ##云顶之弈棋盘皮肤（TFT map skin）
-    logPrint("正在加载云顶之弈棋盘皮肤信息……\nLoading TFT map skin information ...")
-    TFTMapSkins_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/tftmapskins.json")).json()
-    TFTMapSkins = {TFTMapSkin_iter["itemId"]: TFTMapSkin_iter for TFTMapSkin_iter in TFTMapSkins}
     ##无尽狂潮基础信息（Strawberry basics）
     logPrint("正在加载无尽狂潮基础信息……\nLoading Swarm basic information ...")
-    strawberryHub_source: dict[str, Any] = await (await connection.request("GET", "/lol-game-data/assets/v1/strawberry-hub.json")).json()
+    strawberryHub_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/strawberry-hub.json")).json()
     strawberryMaps = {strawberryMap_iter["value"]["Map"]["ItemId"]: strawberryMap_iter for strawberryMap_iter in strawberryHub_source[0]["MapDisplayInfoList"]}
     ##饰品（Ward skin）
     logPrint("正在加载守卫（眼）皮肤信息……\nLoading ward skin information ...")
@@ -3301,7 +3293,7 @@ async def get_collection(connection: Connection, verbose: bool = True) -> pandas
     companions_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/companions.json")).json()
     nexusfinishers_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/nexusfinishers.json")).json()
     statstones_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/statstones.json")).json()
-    strawberryHub_source: dict[str, Any] = await (await connection.request("GET", "/lol-game-data/assets/v1/strawberry-hub.json")).json()
+    strawberryHub_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/strawberry-hub.json")).json()
     summonerEmotes_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/summoner-emotes.json")).json()
     summonerIcons_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/summoner-icons.json")).json()
     tftdamageskins_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/tftdamageskins.json")).json()
