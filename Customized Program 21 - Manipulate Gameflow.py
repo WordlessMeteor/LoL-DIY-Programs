@@ -35,7 +35,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/08/29
+# 更新（Last update）：     2026/09/01
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -243,7 +243,7 @@ async def prepare_data_resources(connection: Connection) -> None:
     ##无尽狂潮基础信息（Strawberry basics）
     logPrint("正在加载无尽狂潮基础信息……\nLoading Swarm basic information ...")
     strawberryHub_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/strawberry-hub.json")).json()
-    strawberryMaps = {strawberryMap_iter["value"]["Map"]["ItemId"]: strawberryMap_iter for strawberryMap_iter in strawberryHub_source[0]["MapDisplayInfoList"]}
+    strawberryMaps = {strawberryMap_iter["value"]["Map"]["ItemId"]: strawberryMap_iter for strawberryMap_iter in strawberryHub_source[0]["MapDisplayInfoList"]} if len(strawberryHub_source) > 0 else {}
     ##饰品（Ward skin）
     logPrint("正在加载守卫（眼）皮肤信息……\nLoading ward skin information ...")
     wardSkins_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/ward-skins.json")).json()
@@ -3289,10 +3289,10 @@ async def get_collection(connection: Connection, verbose: bool = True) -> pandas
     '''
     #准备数据资源（Prepare data resources）
     logPrint("[get_collection]正在准备藏品相关数据资源…… | Preparing collection-related data resources ...", print_time = True, verbose = verbose)
-    championSkins_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/skins.json")).json()
+    championSkins_source: dict[str, dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/skins.json")).json()
     companions_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/companions.json")).json()
     nexusfinishers_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/nexusfinishers.json")).json()
-    statstones_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/statstones.json")).json()
+    statstones_source: dict[str, Any] = await (await connection.request("GET", "/lol-game-data/assets/v1/statstones.json")).json()
     strawberryHub_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/strawberry-hub.json")).json()
     summonerEmotes_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/summoner-emotes.json")).json()
     summonerIcons_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/summoner-icons.json")).json()
@@ -3309,7 +3309,7 @@ async def get_collection(connection: Connection, verbose: bool = True) -> pandas
     region: str = region_locale["region"]
     locale: str = region_locale["locale"]
     lolinventorytypes: dict[str, dict[str, Any]] = {x["inventoryTypeId"]: x for x in lolinventorytype_source}
-    inventoryTypes: str = sorted(list(map(lambda x: x["inventoryTypeId"], lolinventorytype_source)))
+    inventoryTypes: list[str] = sorted(list(map(lambda x: x["inventoryTypeId"], lolinventorytype_source)))
     collection = await (await connection.request("GET", "/lol-inventory/v1/inventory?inventoryTypes=%s" %(json.dumps(inventoryTypes).replace(" ", "")))).json()
     catalogDicts: dict[str, list[dict[str, Any]]] = {}
     catalogList: list[dict[str, Any]] = []
@@ -3346,77 +3346,78 @@ async def get_collection(connection: Connection, verbose: bool = True) -> pandas
     strawberryBoons_hashtable: dict[str, dict[str, str]] = {} #注意，PVE模式的相关索引都是识别码（Note that index of PBE mode data is itemInstanceId）
     strawberryLoadoutItems_hashtable: dict[str, dict[str, str]] = {}
     strawberryMaps_hashtable: dict[str, dict[str, str]] = {}
-    for strawberryMap in strawberryHub_source[0]["MapDisplayInfoList"]:
-        strawberryMaps_hashtable[strawberryMap["value"]["Map"]["ContentId"]] = {"name": strawberryMap["value"]["Name"], "description": strawberryMap["value"]["Bark"]}
-    for ProgressGroup in strawberryHub_source[0]["ProgressGroups"]:
-        for Milestone in ProgressGroup["value"]["Milestones"]:
-            for Property in Milestone["value"]["Properties"]:
-                for Reward in Property["Rewards"]:
-                    if all(key in Reward for key in ["Title", "Details", "ItemId", "ItemType"]) and "CapInventoryTypeId" in Reward["ItemType"]:
-                        if Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_BOON"]["capInventoryTypeId"]:
-                            if Reward["ItemId"] in strawberryBoons_hashtable:
-                                if not "name" in strawberryBoons_hashtable[Reward["ItemId"]] or strawberryBoons_hashtable[Reward["ItemId"]]["name"] == "":
-                                    strawberryBoons_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
-                                if not "description" in strawberryBoons_hashtable[Reward["ItemId"]] or strawberryBoons_hashtable[Reward["ItemId"]]["description"] == "":
-                                    strawberryBoons_hashtable[Reward["ItemId"]]["description"] = Property["Name"]
-                            else:
-                                strawberryBoons_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": Property["Name"]}
-                        elif Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_LOADOUT_ITEM"]["capInventoryTypeId"]:
-                            if Reward["ItemId"] in strawberryLoadoutItems_hashtable:
-                                if not "name" in strawberryLoadoutItems_hashtable[Reward["ItemId"]] or strawberryLoadoutItems_hashtable[Reward["ItemId"]]["name"] == "":
-                                    strawberryLoadoutItems_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
-                                if not "description" in strawberryLoadoutItems_hashtable[Reward["ItemId"]] or strawberryLoadoutItems_hashtable[Reward["ItemId"]]["description"] == "":
-                                    strawberryLoadoutItems_hashtable[Reward["ItemId"]]["description"] = Property["Name"]
-                            else:
-                                strawberryLoadoutItems_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": Property["Name"]}
-                        elif Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_MAP"]["capInventoryTypeId"]:
-                            if Reward["ItemId"] in strawberryMaps_hashtable and isinstance(strawberryMaps_hashtable[Reward["ItemId"]], dict):
-                                if not "name" in strawberryMaps_hashtable[Reward["ItemId"]] or strawberryMaps_hashtable[Reward["ItemId"]]["name"] == "": #这里假设前面已经对地图创建了空字典（Here suppose an empty dictionary has been created for this map before）
-                                    strawberryMaps_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
-                                if not "description" in strawberryMaps_hashtable[Reward["ItemId"]] or strawberryMaps_hashtable[Reward["ItemId"]]["description"] == "":
-                                    strawberryMaps_hashtable[Reward["ItemId"]]["description"] = Property["Name"]
+    if len(strawberryHub_source) > 0:
+        for strawberryMap in strawberryHub_source[0]["MapDisplayInfoList"]:
+            strawberryMaps_hashtable[strawberryMap["value"]["Map"]["ContentId"]] = {"name": strawberryMap["value"]["Name"], "description": strawberryMap["value"]["Bark"]}
+        for ProgressGroup in strawberryHub_source[0]["ProgressGroups"]:
+            for Milestone in ProgressGroup["value"]["Milestones"]:
+                for Property in Milestone["value"]["Properties"]:
+                    for Reward in Property["Rewards"]:
+                        if all(key in Reward for key in ["Title", "Details", "ItemId", "ItemType"]) and "CapInventoryTypeId" in Reward["ItemType"]:
+                            if Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_BOON"]["capInventoryTypeId"]:
+                                if Reward["ItemId"] in strawberryBoons_hashtable:
+                                    if not "name" in strawberryBoons_hashtable[Reward["ItemId"]] or strawberryBoons_hashtable[Reward["ItemId"]]["name"] == "":
+                                        strawberryBoons_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
+                                    if not "description" in strawberryBoons_hashtable[Reward["ItemId"]] or strawberryBoons_hashtable[Reward["ItemId"]]["description"] == "":
+                                        strawberryBoons_hashtable[Reward["ItemId"]]["description"] = Property["Name"]
                                 else:
-                                    strawberryMaps_hashtable[Reward["ItemId"]]["description"] += "<br>" + Property["Name"]
-                            else:
-                                strawberryMaps_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": Property["Name"]}
-    for PowerUpGroup in strawberryHub_source[0]["PowerUpGroups"]:
-        for Boon in PowerUpGroup["value"]["Boons"]:
-            if Boon["value"]["ContentId"] in strawberryBoons_hashtable:
-                if not "name" in strawberryBoons_hashtable[Boon["value"]["ContentId"]] or strawberryBoons_hashtable[Boon["value"]["ContentId"]]["name"] == "":
-                    strawberryBoons_hashtable[Boon["value"]["ContentId"]]["name"] = PowerUpGroup["value"]["Name"] + " " + Boon["value"]["ShortValueSummary"]
-                if not "description" in strawberryBoons_hashtable[Boon["value"]["ContentId"]] or strawberryBoons_hashtable[Boon["value"]["ContentId"]]["description"] == "":
-                    strawberryBoons_hashtable[Boon["value"]["ContentId"]]["description"] = PowerUpGroup["value"]["Description"]
-            else:
-                strawberryBoons_hashtable[Boon["value"]["ContentId"]] = {"name": PowerUpGroup["value"]["Name"] + " " + Boon["value"]["ShortValueSummary"], "description": PowerUpGroup["value"]["Description"]}
-    for EoGNarrativeBark in strawberryHub_source[0]["EoGNarrativeBarks"]:
-        for Reward in EoGNarrativeBark["value"]["RewardGroup"]["Rewards"]:
-            if all(key in Reward for key in ["Title", "Details", "ItemId", "ItemType"]) and "CapInventoryTypeId" in Reward["ItemType"]:
-                if Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_BOON"]["capInventoryTypeId"]:
-                    if Reward["ItemId"] in strawberryBoons_hashtable:
-                        if not "name" in strawberryBoons_hashtable[Reward["ItemId"]] or strawberryBoons_hashtable[Reward["ItemId"]]["name"] == "":
-                            strawberryBoons_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
-                        if not "description" in strawberryBoons_hashtable[Reward["ItemId"]] or strawberryBoons_hashtable[Reward["ItemId"]]["description"] == "":
-                            strawberryBoons_hashtable[Reward["ItemId"]]["description"] = EoGNarrativeBark["value"]["RewardGroup"]["name"]
-                    else:
-                        strawberryBoons_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": EoGNarrativeBark["value"]["RewardGroup"]["name"]}
-                elif Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_LOADOUT_ITEM"]["capInventoryTypeId"]:
-                    if Reward["ItemId"] in strawberryLoadoutItems_hashtable:
-                        if not "name" in strawberryLoadoutItems_hashtable[Reward["ItemId"]] or strawberryLoadoutItems_hashtable[Reward["ItemId"]]["name"] == "":
-                            strawberryLoadoutItems_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
-                        if not "description" in strawberryLoadoutItems_hashtable[Reward["ItemId"]] or strawberryLoadoutItems_hashtable[Reward["ItemId"]]["description"] == "":
-                            strawberryLoadoutItems_hashtable[Reward["ItemId"]]["description"] = EoGNarrativeBark["value"]["RewardGroup"]["name"]
-                    else:
-                        strawberryLoadoutItems_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": EoGNarrativeBark["value"]["RewardGroup"]["name"]}
-                elif Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_MAP"]["capInventoryTypeId"]:
-                    if Reward["ItemId"] in strawberryMaps_hashtable and isinstance(strawberryMaps_hashtable[Reward["ItemId"]], dict):
-                        if not "name" in strawberryMaps_hashtable[Reward["ItemId"]] or strawberryMaps_hashtable[Reward["ItemId"]]["name"] == "": #这里假设前面已经对地图创建了空字典（Here suppose an empty dictionary has been created for this map before）
-                            strawberryMaps_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
-                        if not "description" in strawberryMaps_hashtable[Reward["ItemId"]] or strawberryMaps_hashtable[Reward["ItemId"]]["description"] == "":
-                            strawberryMaps_hashtable[Reward["ItemId"]]["description"] = EoGNarrativeBark["value"]["RewardGroup"]["name"]
-                        # else: #实际上在遍历模式进程分组时已经添加过地图激活要求信息了（Actually, when traversing the ProgressGroups, the program has added information of the requirement to activate maps）
-                        #     strawberryMaps_hashtable[Reward["ItemId"]]["description"] += "<br>" + EoGNarrativeBark["value"]["RewardGroup"]["name"]
-                    else:
-                        strawberryMaps_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": EoGNarrativeBark["value"]["RewardGroup"]["name"]}
+                                    strawberryBoons_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": Property["Name"]}
+                            elif Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_LOADOUT_ITEM"]["capInventoryTypeId"]:
+                                if Reward["ItemId"] in strawberryLoadoutItems_hashtable:
+                                    if not "name" in strawberryLoadoutItems_hashtable[Reward["ItemId"]] or strawberryLoadoutItems_hashtable[Reward["ItemId"]]["name"] == "":
+                                        strawberryLoadoutItems_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
+                                    if not "description" in strawberryLoadoutItems_hashtable[Reward["ItemId"]] or strawberryLoadoutItems_hashtable[Reward["ItemId"]]["description"] == "":
+                                        strawberryLoadoutItems_hashtable[Reward["ItemId"]]["description"] = Property["Name"]
+                                else:
+                                    strawberryLoadoutItems_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": Property["Name"]}
+                            elif Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_MAP"]["capInventoryTypeId"]:
+                                if Reward["ItemId"] in strawberryMaps_hashtable and isinstance(strawberryMaps_hashtable[Reward["ItemId"]], dict):
+                                    if not "name" in strawberryMaps_hashtable[Reward["ItemId"]] or strawberryMaps_hashtable[Reward["ItemId"]]["name"] == "": #这里假设前面已经对地图创建了空字典（Here suppose an empty dictionary has been created for this map before）
+                                        strawberryMaps_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
+                                    if not "description" in strawberryMaps_hashtable[Reward["ItemId"]] or strawberryMaps_hashtable[Reward["ItemId"]]["description"] == "":
+                                        strawberryMaps_hashtable[Reward["ItemId"]]["description"] = Property["Name"]
+                                    else:
+                                        strawberryMaps_hashtable[Reward["ItemId"]]["description"] += "<br>" + Property["Name"]
+                                else:
+                                    strawberryMaps_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": Property["Name"]}
+        for PowerUpGroup in strawberryHub_source[0]["PowerUpGroups"]:
+            for Boon in PowerUpGroup["value"]["Boons"]:
+                if Boon["value"]["ContentId"] in strawberryBoons_hashtable:
+                    if not "name" in strawberryBoons_hashtable[Boon["value"]["ContentId"]] or strawberryBoons_hashtable[Boon["value"]["ContentId"]]["name"] == "":
+                        strawberryBoons_hashtable[Boon["value"]["ContentId"]]["name"] = PowerUpGroup["value"]["Name"] + " " + Boon["value"]["ShortValueSummary"]
+                    if not "description" in strawberryBoons_hashtable[Boon["value"]["ContentId"]] or strawberryBoons_hashtable[Boon["value"]["ContentId"]]["description"] == "":
+                        strawberryBoons_hashtable[Boon["value"]["ContentId"]]["description"] = PowerUpGroup["value"]["Description"]
+                else:
+                    strawberryBoons_hashtable[Boon["value"]["ContentId"]] = {"name": PowerUpGroup["value"]["Name"] + " " + Boon["value"]["ShortValueSummary"], "description": PowerUpGroup["value"]["Description"]}
+        for EoGNarrativeBark in strawberryHub_source[0]["EoGNarrativeBarks"]:
+            for Reward in EoGNarrativeBark["value"]["RewardGroup"]["Rewards"]:
+                if all(key in Reward for key in ["Title", "Details", "ItemId", "ItemType"]) and "CapInventoryTypeId" in Reward["ItemType"]:
+                    if Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_BOON"]["capInventoryTypeId"]:
+                        if Reward["ItemId"] in strawberryBoons_hashtable:
+                            if not "name" in strawberryBoons_hashtable[Reward["ItemId"]] or strawberryBoons_hashtable[Reward["ItemId"]]["name"] == "":
+                                strawberryBoons_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
+                            if not "description" in strawberryBoons_hashtable[Reward["ItemId"]] or strawberryBoons_hashtable[Reward["ItemId"]]["description"] == "":
+                                strawberryBoons_hashtable[Reward["ItemId"]]["description"] = EoGNarrativeBark["value"]["RewardGroup"]["name"]
+                        else:
+                            strawberryBoons_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": EoGNarrativeBark["value"]["RewardGroup"]["name"]}
+                    elif Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_LOADOUT_ITEM"]["capInventoryTypeId"]:
+                        if Reward["ItemId"] in strawberryLoadoutItems_hashtable:
+                            if not "name" in strawberryLoadoutItems_hashtable[Reward["ItemId"]] or strawberryLoadoutItems_hashtable[Reward["ItemId"]]["name"] == "":
+                                strawberryLoadoutItems_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
+                            if not "description" in strawberryLoadoutItems_hashtable[Reward["ItemId"]] or strawberryLoadoutItems_hashtable[Reward["ItemId"]]["description"] == "":
+                                strawberryLoadoutItems_hashtable[Reward["ItemId"]]["description"] = EoGNarrativeBark["value"]["RewardGroup"]["name"]
+                        else:
+                            strawberryLoadoutItems_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": EoGNarrativeBark["value"]["RewardGroup"]["name"]}
+                    elif Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_MAP"]["capInventoryTypeId"]:
+                        if Reward["ItemId"] in strawberryMaps_hashtable and isinstance(strawberryMaps_hashtable[Reward["ItemId"]], dict):
+                            if not "name" in strawberryMaps_hashtable[Reward["ItemId"]] or strawberryMaps_hashtable[Reward["ItemId"]]["name"] == "": #这里假设前面已经对地图创建了空字典（Here suppose an empty dictionary has been created for this map before）
+                                strawberryMaps_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
+                            if not "description" in strawberryMaps_hashtable[Reward["ItemId"]] or strawberryMaps_hashtable[Reward["ItemId"]]["description"] == "":
+                                strawberryMaps_hashtable[Reward["ItemId"]]["description"] = EoGNarrativeBark["value"]["RewardGroup"]["name"]
+                            # else: #实际上在遍历模式进程分组时已经添加过地图激活要求信息了（Actually, when traversing the ProgressGroups, the program has added information of the requirement to activate maps）
+                            #     strawberryMaps_hashtable[Reward["ItemId"]]["description"] += "<br>" + EoGNarrativeBark["value"]["RewardGroup"]["name"]
+                        else:
+                            strawberryMaps_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": EoGNarrativeBark["value"]["RewardGroup"]["name"]}
     summonerEmotes_hashtable: dict[int, dict[str, str]] = {emote["id"]: {"name": emote["name"], "description": emote["description"]} for emote in summonerEmotes_source}
     summonerIcons_hashtable: dict[int, dict[str, str]] = {}
     for icon in summonerIcons_source:
