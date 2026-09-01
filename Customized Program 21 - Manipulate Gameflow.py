@@ -17,6 +17,7 @@ from src.core.dataframes.gameflow import get_gameflow_phase, get_champ_select_se
 from src.core.dataframes.champions import test_bot, sort_inventory_champions, get_champion_searchTags, filter_champion
 from src.core.dataframes.ranked import get_tier_name
 from src.core.dataframes.gameMode import check_available_queue
+from src.core.dataframes.inventory import build_inventory_map
 from src.core.dataframes.matchHistory import get_game_summary_sgp, sort_LoLGame_summary_sgp, sort_TFTGame_summary
 from src.core.dataframes.filter import filter_df
 from src.core.process.replay import download_replay_lcu, watch_replay
@@ -3287,28 +3288,13 @@ async def get_collection(connection: Connection, verbose: bool = True) -> pandas
     :return: 用户的藏品数据框。<br>The user's collection dataframe.
     :rtype: pandas.DataFrame
     '''
-    #准备数据资源（Prepare data resources）
-    logPrint("[get_collection]正在准备藏品相关数据资源…… | Preparing collection-related data resources ...", print_time = True, verbose = verbose)
-    championSkins_source: dict[str, dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/skins.json")).json()
-    companions_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/companions.json")).json()
-    nexusfinishers_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/nexusfinishers.json")).json()
-    statstones_source: dict[str, Any] = await (await connection.request("GET", "/lol-game-data/assets/v1/statstones.json")).json()
-    strawberryHub_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/strawberry-hub.json")).json()
-    summonerEmotes_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/summoner-emotes.json")).json()
-    summonerIcons_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/summoner-icons.json")).json()
-    tftdamageskins_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/tftdamageskins.json")).json()
-    tftmapskins_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/tftmapskins.json")).json()
-    tftplaybooks_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/tftplaybooks.json")).json()
-    tftzoomskins_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/tftzoomskins.json")).json()
-    wardSkins_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/ward-skins.json")).json()
-    lolinventorytype_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/lolinventorytype.json")).json()
     #获取商品和藏品数据（Get store and collection data）
     logPrint("[get_collection]正在获取商品和藏品数据…… | Fetching store and collection data ...", print_time = True, verbose = verbose)
     riot_client_info: list[str] = await (await connection.request("GET", "/riotclient/command-line-args")).json()
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     region: str = region_locale["region"]
     locale: str = region_locale["locale"]
-    lolinventorytypes: dict[str, dict[str, Any]] = {x["inventoryTypeId"]: x for x in lolinventorytype_source}
+    lolinventorytype_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-data/assets/v1/lolinventorytype.json")).json()
     inventoryTypes: list[str] = sorted(list(map(lambda x: x["inventoryTypeId"], lolinventorytype_source)))
     collection = await (await connection.request("GET", "/lol-inventory/v1/inventory?inventoryTypes=%s" %(json.dumps(inventoryTypes).replace(" ", "")))).json()
     catalogDicts: dict[str, list[dict[str, Any]]] = {}
@@ -3327,120 +3313,7 @@ async def get_collection(connection: Connection, verbose: bool = True) -> pandas
             logPrint("获取商品数据的请求失败。请检查客户端连接是否正常，以及服务器是否维护。将跳过该商品数据。\nFailed to get store data. Please check the client network connection and whether the server is under maintenance. The program is going to skip store data.")
     else:
         collection_hashtable |= {(item["inventoryType"], item["itemId"]): item["localizations"][locale]["name"] for item in store if item["localizations"] != None} #原本的藏品信息中没有记录名称，所以需要借用商品信息中的名称。之所以不考虑使用识别码作为键，是因为在从`lol-store`接口获取的商品信息中，存在识别码重复的两件商品，而道具类型和道具序号的组合应当能够唯一确定一件商品。另外，从`lol-catalog`和`lol-store`接口获取的商品信息可以互相补充（The original collection information doesn't contain the names, so they're cited from the catalog information. The reason why `itemInstanceId` isn't taken as the key is that there're two items with the same `itemInstanceId` in the items obtaned from `lol-store` API. However, the combination of `inventoryType` and `itemId` should uniquely correspond to an item. Besides, item information obtained from `lol-catalog` API and that from `lol-store` API can supplement each other）
-    championSkins_hashtable: dict[int, dict[str, str]] = {} #对于特定道具类型的商品，道具序号可唯一确定一件商品。下同（As for an item of specific inventory type, the itemId can uniquely correspond to that item. So can the following）
-    for skin in championSkins_source.values():
-        championSkins_hashtable[skin["id"]] = {"name": skin["name"], "description": skin["description"]}
-        if "chromas" in skin:
-            for chroma in skin["chromas"]:
-                championSkins_hashtable[chroma["id"]] = {"name": chroma["name"], "description": ""}
-                for desc in chroma["descriptions"]:
-                    if desc["region"] == "riot" and len(set(list(desc["description"]))) != 1:
-                        championSkins_hashtable[chroma["id"]]["description"] = desc["description"]
-                        break
-        if "questSkinInfo" in skin:
-            for tier in skin["questSkinInfo"]["tiers"]:
-                championSkins_hashtable[tier["id"]] = {"name": tier["name"], "description": tier["description"]}
-    companions_hashtable: dict[str, dict[str, str]] = {companion["itemId"]: {"name": companion["name"], "description": companion["description"]} for companion in companions_source}
-    nexusfinishers_hashtable: dict[int, dict[str, str]] = {nexusfinisher["itemId"]: {"name": nexusfinisher["name"], "description": nexusfinisher["translatedDescription"]} for nexusfinisher in nexusfinishers_source}
-    statstones_hashtable: dict[int, dict[str, str]] = {statstone["itemId"]: {"name": statstone["name"], "description": statstone["description"]} for statstone in statstones_source["packData"]}
-    strawberryBoons_hashtable: dict[str, dict[str, str]] = {} #注意，PVE模式的相关索引都是识别码（Note that index of PBE mode data is itemInstanceId）
-    strawberryLoadoutItems_hashtable: dict[str, dict[str, str]] = {}
-    strawberryMaps_hashtable: dict[str, dict[str, str]] = {}
-    if len(strawberryHub_source) > 0:
-        for strawberryMap in strawberryHub_source[0]["MapDisplayInfoList"]:
-            strawberryMaps_hashtable[strawberryMap["value"]["Map"]["ContentId"]] = {"name": strawberryMap["value"]["Name"], "description": strawberryMap["value"]["Bark"]}
-        for ProgressGroup in strawberryHub_source[0]["ProgressGroups"]:
-            for Milestone in ProgressGroup["value"]["Milestones"]:
-                for Property in Milestone["value"]["Properties"]:
-                    for Reward in Property["Rewards"]:
-                        if all(key in Reward for key in ["Title", "Details", "ItemId", "ItemType"]) and "CapInventoryTypeId" in Reward["ItemType"]:
-                            if Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_BOON"]["capInventoryTypeId"]:
-                                if Reward["ItemId"] in strawberryBoons_hashtable:
-                                    if not "name" in strawberryBoons_hashtable[Reward["ItemId"]] or strawberryBoons_hashtable[Reward["ItemId"]]["name"] == "":
-                                        strawberryBoons_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
-                                    if not "description" in strawberryBoons_hashtable[Reward["ItemId"]] or strawberryBoons_hashtable[Reward["ItemId"]]["description"] == "":
-                                        strawberryBoons_hashtable[Reward["ItemId"]]["description"] = Property["Name"]
-                                else:
-                                    strawberryBoons_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": Property["Name"]}
-                            elif Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_LOADOUT_ITEM"]["capInventoryTypeId"]:
-                                if Reward["ItemId"] in strawberryLoadoutItems_hashtable:
-                                    if not "name" in strawberryLoadoutItems_hashtable[Reward["ItemId"]] or strawberryLoadoutItems_hashtable[Reward["ItemId"]]["name"] == "":
-                                        strawberryLoadoutItems_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
-                                    if not "description" in strawberryLoadoutItems_hashtable[Reward["ItemId"]] or strawberryLoadoutItems_hashtable[Reward["ItemId"]]["description"] == "":
-                                        strawberryLoadoutItems_hashtable[Reward["ItemId"]]["description"] = Property["Name"]
-                                else:
-                                    strawberryLoadoutItems_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": Property["Name"]}
-                            elif Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_MAP"]["capInventoryTypeId"]:
-                                if Reward["ItemId"] in strawberryMaps_hashtable and isinstance(strawberryMaps_hashtable[Reward["ItemId"]], dict):
-                                    if not "name" in strawberryMaps_hashtable[Reward["ItemId"]] or strawberryMaps_hashtable[Reward["ItemId"]]["name"] == "": #这里假设前面已经对地图创建了空字典（Here suppose an empty dictionary has been created for this map before）
-                                        strawberryMaps_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
-                                    if not "description" in strawberryMaps_hashtable[Reward["ItemId"]] or strawberryMaps_hashtable[Reward["ItemId"]]["description"] == "":
-                                        strawberryMaps_hashtable[Reward["ItemId"]]["description"] = Property["Name"]
-                                    else:
-                                        strawberryMaps_hashtable[Reward["ItemId"]]["description"] += "<br>" + Property["Name"]
-                                else:
-                                    strawberryMaps_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": Property["Name"]}
-        for PowerUpGroup in strawberryHub_source[0]["PowerUpGroups"]:
-            for Boon in PowerUpGroup["value"]["Boons"]:
-                if Boon["value"]["ContentId"] in strawberryBoons_hashtable:
-                    if not "name" in strawberryBoons_hashtable[Boon["value"]["ContentId"]] or strawberryBoons_hashtable[Boon["value"]["ContentId"]]["name"] == "":
-                        strawberryBoons_hashtable[Boon["value"]["ContentId"]]["name"] = PowerUpGroup["value"]["Name"] + " " + Boon["value"]["ShortValueSummary"]
-                    if not "description" in strawberryBoons_hashtable[Boon["value"]["ContentId"]] or strawberryBoons_hashtable[Boon["value"]["ContentId"]]["description"] == "":
-                        strawberryBoons_hashtable[Boon["value"]["ContentId"]]["description"] = PowerUpGroup["value"]["Description"]
-                else:
-                    strawberryBoons_hashtable[Boon["value"]["ContentId"]] = {"name": PowerUpGroup["value"]["Name"] + " " + Boon["value"]["ShortValueSummary"], "description": PowerUpGroup["value"]["Description"]}
-        for EoGNarrativeBark in strawberryHub_source[0]["EoGNarrativeBarks"]:
-            for Reward in EoGNarrativeBark["value"]["RewardGroup"]["Rewards"]:
-                if all(key in Reward for key in ["Title", "Details", "ItemId", "ItemType"]) and "CapInventoryTypeId" in Reward["ItemType"]:
-                    if Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_BOON"]["capInventoryTypeId"]:
-                        if Reward["ItemId"] in strawberryBoons_hashtable:
-                            if not "name" in strawberryBoons_hashtable[Reward["ItemId"]] or strawberryBoons_hashtable[Reward["ItemId"]]["name"] == "":
-                                strawberryBoons_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
-                            if not "description" in strawberryBoons_hashtable[Reward["ItemId"]] or strawberryBoons_hashtable[Reward["ItemId"]]["description"] == "":
-                                strawberryBoons_hashtable[Reward["ItemId"]]["description"] = EoGNarrativeBark["value"]["RewardGroup"]["name"]
-                        else:
-                            strawberryBoons_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": EoGNarrativeBark["value"]["RewardGroup"]["name"]}
-                    elif Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_LOADOUT_ITEM"]["capInventoryTypeId"]:
-                        if Reward["ItemId"] in strawberryLoadoutItems_hashtable:
-                            if not "name" in strawberryLoadoutItems_hashtable[Reward["ItemId"]] or strawberryLoadoutItems_hashtable[Reward["ItemId"]]["name"] == "":
-                                strawberryLoadoutItems_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
-                            if not "description" in strawberryLoadoutItems_hashtable[Reward["ItemId"]] or strawberryLoadoutItems_hashtable[Reward["ItemId"]]["description"] == "":
-                                strawberryLoadoutItems_hashtable[Reward["ItemId"]]["description"] = EoGNarrativeBark["value"]["RewardGroup"]["name"]
-                        else:
-                            strawberryLoadoutItems_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": EoGNarrativeBark["value"]["RewardGroup"]["name"]}
-                    elif Reward["ItemType"]["CapInventoryTypeId"] == lolinventorytypes["STRAWBERRY_MAP"]["capInventoryTypeId"]:
-                        if Reward["ItemId"] in strawberryMaps_hashtable and isinstance(strawberryMaps_hashtable[Reward["ItemId"]], dict):
-                            if not "name" in strawberryMaps_hashtable[Reward["ItemId"]] or strawberryMaps_hashtable[Reward["ItemId"]]["name"] == "": #这里假设前面已经对地图创建了空字典（Here suppose an empty dictionary has been created for this map before）
-                                strawberryMaps_hashtable[Reward["ItemId"]]["name"] = Reward["Title"]
-                            if not "description" in strawberryMaps_hashtable[Reward["ItemId"]] or strawberryMaps_hashtable[Reward["ItemId"]]["description"] == "":
-                                strawberryMaps_hashtable[Reward["ItemId"]]["description"] = EoGNarrativeBark["value"]["RewardGroup"]["name"]
-                            # else: #实际上在遍历模式进程分组时已经添加过地图激活要求信息了（Actually, when traversing the ProgressGroups, the program has added information of the requirement to activate maps）
-                            #     strawberryMaps_hashtable[Reward["ItemId"]]["description"] += "<br>" + EoGNarrativeBark["value"]["RewardGroup"]["name"]
-                        else:
-                            strawberryMaps_hashtable[Reward["ItemId"]] = {"name": Reward["Title"], "description": EoGNarrativeBark["value"]["RewardGroup"]["name"]}
-    summonerEmotes_hashtable: dict[int, dict[str, str]] = {emote["id"]: {"name": emote["name"], "description": emote["description"]} for emote in summonerEmotes_source}
-    summonerIcons_hashtable: dict[int, dict[str, str]] = {}
-    for icon in summonerIcons_source:
-        summonerIcons_hashtable[icon["id"]] = {}
-        summonerIcons_hashtable[icon["id"]]["name"] = icon["title"]
-        for desc in icon["descriptions"]:
-            if desc["region"] == "riot" and len(set(list(desc["description"]))) != 1: #为简化代码，目前仅统计守卫（眼）在拳头大区的简介。有些简介是非空字符串，但是实际上是一堆空格（To simplify the code, only riot descriptions of wards are counted. Some descriptions are indeed non-empty strings but actually a bunch of spaces）
-                summonerIcons_hashtable[icon["id"]]["description"] = desc["description"]
-                break
-        else:
-            summonerIcons_hashtable[icon["id"]]["description"] = ""
-    tftdamageskins_hashtable: dict[str, dict[str, str]] = {skin["itemId"]: {"name": skin["name"], "description": skin["description"]} for skin in tftdamageskins_source}
-    tftmapskins_hashtable: dict[str, dict[str, str]] = {skin["itemId"]: {"name": skin["name"], "description": skin["description"]} for skin in tftmapskins_source}
-    tftplaybooks_hashtable: dict[str, dict[str, str]] = {tftplaybook["itemId"]: {"name": tftplaybook["translatedName"], "description": tftplaybook["translatedDescription"]} for tftplaybook in tftplaybooks_source}
-    tftzoomskins_hashtable: dict[str, dict[str, str]] = {tftzoomskin["itemId"]: {"name": tftzoomskin["name"], "description": tftzoomskin["description"]} for tftzoomskin in tftzoomskins_source}
-    wardSkins_hashtable: dict[int, dict[str, str]] = {skin["id"]: {"name": skin["name"], "description": skin["description"]} for skin in wardSkins_source}
-    ##以下类型的藏品在商品中也没有记录名称，需要借助其它接口来获取其名称（Collection items of the following types aren't recorded the names in catalog, so other APIs are required to get their names）
-    titles_all: dict[str, dict[str, Any]] = await (await connection.request("GET", "/lol-challenges/v2/titles/all")).json()
-    titles_hashtable: dict[int, dict[str, Any]] = {title["itemId"]: {"name": title["name"], "description": title["challengeTitleData"]["challengeDescription"] if title["challengeTitleData"] != None and "challengeDescription" in title["challengeTitleData"] else ""} for title in titles_all.values()}
-    regaliaBanners: dict[str, dict[str, Any]] = await (await connection.request("GET", "/lol-regalia/v3/inventory/REGALIA_BANNER")).json()
-    regaliaBanners_hashtable: dict[int, dict[str, str]] = {int(regaliaBanners[bannerId]["items"][0]["id"]): {"name": regaliaBanners[bannerId]["items"][0]["localizedName"], "description": regaliaBanners[bannerId]["items"][0]["localizedDescription"]} for bannerId in regaliaBanners}
-    regaliaCrests: dict[str, Any] = await (await connection.request("GET", "/lol-regalia/v3/inventory/REGALIA_CREST")).json()
-    hashtable_dicts: dict[str, dict[Any, dict[str, str]]] = {"CHAMPION_SKIN": championSkins_hashtable, "COMPANION": companions_hashtable, "NEXUS_FINISHER": nexusfinishers_hashtable, "STATSTONE": statstones_hashtable, "STRAWBERRY_BOON": strawberryBoons_hashtable, "STRAWBERRY_LOADOUT_ITEM": strawberryLoadoutItems_hashtable, "STRAWBERRY_MAP": strawberryMaps_hashtable, "EMOTE": summonerEmotes_hashtable, "SUMMONER_ICON": summonerIcons_hashtable, "TFT_DAMAGE_SKIN": tftdamageskins_hashtable, "TFT_MAP_SKIN": tftmapskins_hashtable, "TFT_PLAYBOOK": tftplaybooks_hashtable, "TFT_ZOOM_SKIN": tftzoomskins_hashtable, "WARD_SKIN": wardSkins_hashtable, "ACHIEVEMENT_TITLE": titles_hashtable, "REGALIA_BANNER": regaliaBanners_hashtable}
+    hashtable_dicts: dict[str, dict[Any, dict[str, str]]] = await build_inventory_map(connection)
     #定义藏品数据结构（Define the collection item data structure）
     collection_header: dict[str, str] = {"expirationDate": "租赁到期时间", "f2p": "免费使用", "inventoryType": "道具类型", "itemId": "序号", "loyalty": "", "loyaltySources": "", "owned": "已拥有", "ownershipType": "拥有权", "purchaseDate": "购买时间", "quantity": "数量", "rental": "租借中", "usedInGameDate": "上次使用时间", "uuid": "唯一识别码", "wins": "使用该道具可获得增益的胜场数", "isVintage": "典藏皮肤", "name": "名称"}
     collection_header_keys: list[str] = list(collection_header.keys())
