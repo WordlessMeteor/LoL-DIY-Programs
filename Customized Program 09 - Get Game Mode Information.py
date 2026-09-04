@@ -6,7 +6,7 @@ from openpyxl.worksheet.worksheet import Worksheet
 from src.utils.format import format_df, addDefaultStyle
 from src.utils.summoner import print_summoner_info
 from src.utils.excel_workbook import create_workbook_win32
-from src.core.dataframes.gameMode import sort_queue_data, check_available_queue
+from src.core.dataframes.gameMode import sort_queue_data, sort_available_queue
 
 #=============================================================================
 # * 声明（Declaration）
@@ -14,7 +14,7 @@ from src.core.dataframes.gameMode import sort_queue_data, check_available_queue
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/29
+# 更新（Last update）：     2026/09/04
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -61,12 +61,15 @@ async def gamemode(connection: Connection) -> None: #导出游戏模式信息到
 async def print_available_queue(connection: Connection) -> None: #打印可用队列信息（Print available queues）
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
     platformId: str = current_party["platformId"]
+    region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
+    locale: str = region_locale["locale"]
     game_version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
     print("是否检查可用队列？（输入任意键检查，否则退出程序）\nDo you want to check available queues? (Submit anything to check, or null to exit the program)")
     check: bool = bool(input())
     if check:
         while True:
-            availableQueue_df: pandas.DataFrame = await check_available_queue(connection)
+            gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
+            availableQueue_df: pandas.DataFrame = sort_available_queue(gameQueues_source, locale)
             print("*****************************************************************************")
             print(format_df(availableQueue_df)[0])
             print("*****************************************************************************")

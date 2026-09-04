@@ -64,16 +64,23 @@ def sort_queue_data(queues: list[dict[str, Any]]) -> pandas.DataFrame:
     queue_df = pandas.concat([pandas.DataFrame([queue_header])[queue_df.columns], queue_df], ignore_index = True)
     return queue_df
 
-async def check_available_queue(connection: Connection) -> pandas.DataFrame: #梳理可用队列（Sort out available queues）
+def sort_available_queue(gameQueues_source: list[dict[str, Any]], locale: str) -> pandas.DataFrame: #梳理可用队列（Sort out available queues）
     '''
     梳理服务器开放的游戏模式，并整理成表格的形式。<br>Filter platform available game modes and organize them into a dataframe.
     
-    :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
-    :type connection: Connection
+    :param gameQueues_source: 游戏队列原始数据。通过以下LCU接口获取：<br>Game queue source data. Obtained through the following LCU endpoint:
+    
+        - GET /lol-game-queues/v1/queues
+    :type gameQueues_source: list[dict[str, Any]]
+    :param locale: 客户端语言文化代码。可通过以下LCU接口之一获取：<br>Client's language code, which can be obtained through one of the following LCU endpoints:
+    
+        - GET /riotclient/region-locale
+        - GET /riotclient/command-line-args
+    :type locale: str
     :return: 可用游戏模式表。<br>Available game mode dataframe.
     :rtype: pandas.DataFrame
     '''
-    gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
+    isCHS: bool = locale in {"zh_CN", "zh_MY", "zh_TW"}
     map_CN: dict[int, str] = {mapId: gamemaps[mapId]["zh_CN"] for mapId in gamemaps}
     map_EN: dict[int, str] = {mapId: gamemaps[mapId]["en_US"] for mapId in gamemaps}
     pickmode_CN: dict[str, str] = {"AllRandomPickStrategy": "全随机模式", "SimulPickStrategy": "自选模式", "TeamBuilderDraftPickStrategy": "征召模式", "OneTeamVotePickStrategy": "投票", "TournamentPickStrategy": "竞技征召模式", "QuickplayPickStrategy": "快速匹配", "": "待定"}
@@ -82,15 +89,13 @@ async def check_available_queue(connection: Connection) -> pandas.DataFrame: #�
     for queue in gameQueues_source:
         if queue["queueAvailability"] == "Available":
             available_queues[queue["id"]] = queue
-    queue_dict: dict[str, list[Any]] = {"queueID": [], "mapID": [], "map_CN": [], "map_EN": [], "gameMode": [], "pickType_CN": [], "pickType_EN": []}
+    queue_dict: dict[str, list[Any]] = {"queueID": [], "mapID": [], "map": [], "gameMode": [], "pickType": []}
     for queue in available_queues.values():
         queue_dict["queueID"].append(queue["id"])
         queue_dict["mapID"].append(queue["mapId"])
-        queue_dict["map_CN"].append(map_CN[queue["mapId"]])
-        queue_dict["map_EN"].append(map_EN[queue["mapId"]])
+        queue_dict["map"].append(map_CN[queue["mapId"]] if isCHS else map_EN[queue["mapId"]])
         queue_dict["gameMode"].append(queue["name"])
-        queue_dict["pickType_CN"].append(pickmode_CN[queue["pickMode"]])
-        queue_dict["pickType_EN"].append(pickmode_EN[queue["pickMode"]])
+        queue_dict["pickType"].append(pickmode_CN[queue["pickMode"]] if isCHS else pickmode_EN[queue["pickMode"]])
     available_queue_df: pandas.DataFrame = pandas.DataFrame(queue_dict)
     available_queue_df.sort_values(by = "queueID", inplace = True, ascending = True, ignore_index = True)
     return available_queue_df

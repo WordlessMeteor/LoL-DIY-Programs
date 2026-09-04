@@ -16,7 +16,7 @@ from src.core.config.conditional_formatting import addFormat_inGame_allPlayer_wb
 from src.core.dataframes.gameflow import get_gameflow_phase, get_champ_select_session, get_champSelect_player, get_champSelect_action, sort_ChampSelect_players, sort_inGame_players, sort_eog_playerstat_lol_data, sort_eog_stat_tft_data
 from src.core.dataframes.champions import test_bot, sort_inventory_champions, get_champion_searchTags, filter_champion
 from src.core.dataframes.ranked import get_tier_name
-from src.core.dataframes.gameMode import check_available_queue
+from src.core.dataframes.gameMode import sort_available_queue
 from src.core.dataframes.inventory import build_inventory_map
 from src.core.dataframes.matchHistory import get_game_summary_sgp, sort_LoLGame_summary_sgp, sort_TFTGame_summary
 from src.core.dataframes.filter import filter_df
@@ -36,7 +36,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/09/01
+# 更新（Last update）：     2026/09/04
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2007,10 +2007,11 @@ async def create_queue_lobby(connection: Connection, loop_test: bool = False) ->
     ARAMmaps_zh: dict[str, str] = {key: ARAMmaps[key]["zh_CN"] for key in ARAMmaps}
     ARAMmaps_en: dict[str, str] = {key: ARAMmaps[key]["en_US"] for key in ARAMmaps}
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
+    locale: str = region_locale["locale"]
     custom_game_setup_name_default_dict: dict[str, str] = {"ar_AE": "مباراة {{summonerName}}", "cs_CZ": "Hra uživatele {{summonerName}}", "el_GR": "Παιχνίδι του {{summonerName}}", "pl_PL": "Rozgrywka gracza {{summonerName}}", "ro_RO": "Jocul lui {{summonerName}}", "hu_HU": "{{summonerName}} játéka", "en_GB": "{{summonerName}}'s Game", "de_DE": "Spiel von {{summonerName}}", "es_ES": "Partida de {{summonerName}}", "it_IT": "Partita di {{summonerName}}", "fr_FR": "Partie de {{summonerName}}", "ja_JP": "{{summonerName}}の試合", "ko_KR": "{{summonerName}} 님의 게임", "es_MX": "Partida de {{summonerName}}", "es_AR": "Partida de {{summonerName}}", "pt_BR": "Partida de {{summonerName}}", "en_US": "{{summonerName}}'s Game", "en_AU": "{{summonerName}}'s Game", "ru_RU": "Игра {{summonerName}}", "tr_TR": "{{summonerName}} oyunu", "en_PH": "{{summonerName}}'s Game", "en_SG": "{{summonerName}}'s Game", "th_TH": "เกมของ {{summonerName}}", "vi_VN": "Trận của {{summonerName}}", "id_ID": "Game {{summonerName}}", "zh_MY": "{{summonerName}} 的房间", "zh_CN": "{{summonerName}}的对局", "zh_TW": "{{summonerName}} 的房間"} #来自（From）：plugins/rcp-fe-lol-parties/global/{locale}/trans.json
-    defaultLobbyName: str = custom_game_setup_name_default_dict.get(region_locale["locale"], "{{summonerName}}的对局").replace("{{summonerName}}", current_info["gameName"])
+    defaultLobbyName: str = custom_game_setup_name_default_dict.get(locale, "{{summonerName}}的对局").replace("{{summonerName}}", current_info["gameName"])
     logPrint("当前可用队列房间序号：\nCurrently enabled QueueIds:")
-    available_queue_df: pandas.DataFrame = await check_available_queue(connection)
+    available_queue_df: pandas.DataFrame = sort_available_queue(gameQueues_source, locale)
     logPrint("*****************************************************************************")
     print(format_df(available_queue_df)[0])
     log.write(format_df(available_queue_df, width_exceed_ask = False, direct_print = False)[0] + "\n")
@@ -2025,7 +2026,8 @@ async def create_queue_lobby(connection: Connection, loop_test: bool = False) ->
         if queueId_str == "":
             continue
         elif queueId_str == "0":
-            available_queue_df = await check_available_queue(connection)
+            gameQueues_source = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
+            available_queue_df = sort_available_queue(gameQueues_source, locale)
             logPrint("*****************************************************************************")
             print(format_df(available_queue_df)[0])
             log.write(format_df(available_queue_df, width_exceed_ask = False, direct_print = False)[0] + "\n")

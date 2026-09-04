@@ -5,7 +5,7 @@ from typing import Any, Literal, Optional
 from src.core.config.const import GLOBAL_RESPONSE_LAG
 from src.core.dataframes.champions import sort_inventory_champions
 from src.core.dataframes.gameflow import get_champSelect_player, extract_champSelect_player, update_champ_select_session
-from src.core.dataframes.gameMode import check_available_queue
+from src.core.dataframes.gameMode import sort_available_queue
 from src.utils.summoner import print_summoner_info, get_info, get_info_name
 from src.utils.logger import LogManager
 from src.utils.format import format_df
@@ -29,7 +29,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/27
+# 更新（Last update）：     2026/09/04
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1471,6 +1471,8 @@ async def ARAMBalanceBuffTest(connection: Connection, preset_championIds: Option
 async def main(connection: Connection) -> None:
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
     platformId: str = current_party["platformId"]
+    region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
+    locale: str = region_locale["locale"]
     game_version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
     crowd_mode_hine_printed: bool = False
     step: int = 1
@@ -1504,7 +1506,8 @@ async def main(connection: Connection) -> None:
                         queueId = 3270
                         break
                     elif queueId_str[0] == "0":
-                        available_queue_df: pandas.DataFrame = await check_available_queue(connection)
+                        gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
+                        available_queue_df: pandas.DataFrame = sort_available_queue(gameQueues_source, locale)
                         logPrint("*****************************************************************************")
                         print(format_df(available_queue_df)[0])
                         log.write(format_df(available_queue_df, width_exceed_ask = False, direct_print = False)[0] + "\n")
