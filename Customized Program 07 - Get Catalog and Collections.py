@@ -17,7 +17,7 @@ from src.localization.languages.zh_CN import inventoryType_dict, ownershipTypes,
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/09/01
+# 更新（Last update）：     2026/09/05
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -366,7 +366,7 @@ def sort_collection_items(collection: list[dict[str, Any]], collection_hashtable
             elif i == 7: #拥有权（`ownershipType`）
                 to_append = ownershipTypes[item["ownershipType"]]
             elif i == 14: #典藏皮肤（带边框）（`isVintage`）
-                to_append = item["payload"] and "isVintage" in item["payload"] and item["payload"]["isVintage"] #没有“是否典藏”选项的默认不是典藏（An item without the "isVintage" key can't be vintage）
+                to_append = bool(item["payload"]) and "isVintage" in item["payload"] and item["payload"]["isVintage"] #没有“是否典藏”选项的默认不是典藏（An item without the "isVintage" key can't be vintage）
             elif i == 15: #名称（`name`）
                 if (item["inventoryType"], item["itemId"]) in collection_hashtable:
                     name: str = collection_hashtable[(item["inventoryType"], item["itemId"])]
