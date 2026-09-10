@@ -809,6 +809,7 @@ lolObjectiveCategoryTypes: dict[str, str] = {
     "kTFTPassData": "云顶之弈通行证"
 }
 lolEventHubTypes: dict[str, str] = {
+    "HALL_OF_LEGENDS": "名人堂",
     "NON_PASS": "无",
     "SEASON_PASS": "赛季通行证"
 }
@@ -822,6 +823,7 @@ eventPassTypes: dict[str, str] = {
     "kBattlePass": "战斗通行证",
     "kDemaciaPass": "经典模式通行证",
     "kEventPass": "事件通行证",
+    "kHallOfLegends": "名人堂",
     "kSeasonPass": "赛季通行证"
 }
 #符文（Perk）
