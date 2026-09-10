@@ -21,7 +21,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/17
+# 更新（Last update）：     2026/09/10
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -230,7 +230,7 @@ async def organize_pass_information(connection: Connection) -> None:
                         to_append = narrative[key]
                     else:
                         to_append = narrative["narrativeVideo"][key.split()[1]]
-                event_narrative_data[key].append(to_append)
+                    event_narrative_data[key].append(to_append)
         ##通行证章节（Pass chapter）
         if not "errorCode" in chapters:
             for chapter_index in range(len(chapters["chapters"])):
