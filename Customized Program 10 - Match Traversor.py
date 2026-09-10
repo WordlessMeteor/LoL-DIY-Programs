@@ -46,7 +46,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/27
+# 更新（Last update）：     2026/09/09
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -905,11 +905,11 @@ def containAugment(game_summary: dict[str, Any], augmentId: list[list[int]] | li
         raise TypeError('Invalid type of parameter "augmentId".')
     return bool(game_summary) and \
         game_summary["gameMode"] == mode and \
-        (gameVersion_lower == "" and gameVersion_upper == "" or Patch(game_summary["gameVersion"]) >= Patch(gameVersion_lower) and Patch(game_summary["gameVersion"]) < Patch(gameVersion_upper)) and \
+        (gameVersion_lower == "" and gameVersion_upper == "" or Patch(game_summary["gameVersion"]) >= Patch(gameVersion_lower) and Patch(game_summary["gameVersion"]) <= Patch(gameVersion_upper)) and \
         (gameCreationDate_lower == "" and gameCreationDate_upper == "" or gameCreation_compare(game_summary, gameCreationDate_lower) and not gameCreation_compare(game_summary, gameCreationDate_upper)) and \
         any(map(lambda participant: (championId == 0 or participant["championId"] == championId) and any(set(scheme) <= set(participant.get(f"playerAugment{i}", 0) for i in range(1, 7)) for scheme in augmentSchemes), game_summary["participants"]))
 
-filter_function_example: str = '''isKiwiMatch(game_summary) ⇔ "gameMode" in game_summary and game_summary["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\nisKiwiPentaMatch(game_summary) ⇔ bool(game_summary) and game_summary["queueId"] == 2400 and any(map(lambda participant: bool(participant["pentaKills"]), game_summary["participants"])) #判断对局是否是海克斯大乱斗五杀局（Judge whether a match is an ARAM: Mayhem game with at least a penta kill）\ncontainAugment(game_summary, 1324, mode = "CHERRY", championId = 200, gameVersion_lower = "16.16", gameVersion_upper = "16.17", gameCreationDate_lower = "2026-08-23 00:00:00", gameCreationDate_upper = "2026-08-24 00:00:00") ⇔ bool(game_summary) and game_summary["gameMode"] = "CHERRY" and Patch(game_summary["gameVersion"]) >= Patch("16.16") and Patch(game_summary["gameVersion"]) < Patch("16.17") and gameCreation_compare(game_summary, "2026-08-23 00:00:00") and not gameCreation_compare(game_summary, "2026-08-24 00:00:00") and any(map(lambda participant: participant["championId"] == 200 and 1324 in [participant.get(f"playerAugment{i}", 0) for i in range(1, 7)], game_summary["participants"])) #判断有没有一场斗魂竞技场对局是虚空女皇 卑尔维斯拿到【蛋白粉奶昔】的（Judge whether there's a game that Bel'Veth picked Protein Shake）'''
+filter_function_example: str = '''isKiwiMatch(game_summary) ⇔ "gameMode" in game_summary and game_summary["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\nisKiwiPentaMatch(game_summary) ⇔ bool(game_summary) and game_summary["queueId"] == 2400 and any(map(lambda participant: bool(participant["pentaKills"]), game_summary["participants"])) #判断对局是否是海克斯大乱斗五杀局（Judge whether a match is an ARAM: Mayhem game with at least a penta kill）\ncontainAugment(game_summary, 1324, mode = "CHERRY", championId = 200, gameVersion_lower = "16.16", gameVersion_upper = "16.17", gameCreationDate_lower = "2026-08-23 00:00:00", gameCreationDate_upper = "2026-08-24 00:00:00") ⇔ bool(game_summary) and game_summary["gameMode"] = "CHERRY" and Patch(game_summary["gameVersion"]) >= Patch("16.16") and Patch(game_summary["gameVersion"]) < Patch("16.17") and gameCreation_compare(game_summary, "2026-08-23 00:00:00") and not gameCreation_compare(game_summary, "2026-08-24 00:00:00") and any(map(lambda participant: participant["championId"] == 200 and 1324 in [participant.get(f"playerAugment{i}", 0) for i in range(1, 7)], game_summary["participants"])) #判断26.16版本有没有一场斗魂竞技场对局是虚空女皇 卑尔维斯拿到【蛋白粉奶昔】的（Judge whether there's a game that Bel'Veth picked Protein Shake in Patch 26.16）'''
 
 #在这里自定义用于二分查找对局函数的阈值函数模板（Define the custom threshold function templates for `binary_search_match` function hereafter）
 ##调试（Debug）
@@ -954,7 +954,7 @@ def gameCreation_compare(game_summary: dict[str, Any], time_str: str) -> bool:
     :type game_summary: dict[str, Any]
     :param time_str: 当前时区的指定时间，形如“1970-01-01 08:00:00”。<br>The specified time in the current time zone, in the form of "1970-01-01 08:00:00".
     :type time_str: str
-    :return: 该对局的创建时间（“gameCreation”键的值）是否在指定时间之后。<br>Whether the creation time of the match (the value of the "gameCreation" key) is after the specified time.
+    :return: 该对局的创建时间（“gameCreation”键的值）是否在指定时间及之后。<br>Whether the creation time of the match (the value of the "gameCreation" key) is or after the specified time.
     :rtype: bool
     '''
     return game_summary["gameCreation"] >= int(datetime.datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S").timestamp() * 1000)

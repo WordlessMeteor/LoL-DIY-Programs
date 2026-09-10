@@ -70,14 +70,14 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], dType: Literal["champi
         STRAWBERRY          无尽狂潮（Swarm）<br>
         {a110bc47}          神木之门（Brawl）<br>
         Ruby                末日人工智能（Doom Bots）<br>
-        DOOMBOTSTEEMO       末日人工智能（Doom Bots Teemo）<br>
+        DOOMBOTSTEEMO       大提魔节和100级铁手挑战（The Teemoing and Level 100 Gauntlet）<br>
         {b0cea932}          末日人工智能：维迦的诅咒！（Doom Bots - Veigar's Curse!）<br>
         {afcea79f}          末日人工智能：维迦的邪咒！（Doom Bots - Veigar's Evil!）<br>
         {aecea60c}          末日人工智能：维迦的末日厄咒！（Doom Bots - Veigar's Doom!）<br>
         {9cf6bf22}          WASD<br>
         {ad33a648}          海克斯大乱斗 经典模式版（ARAM: Mayhem Classic-ish）<br>
         {5358c483}          BASELINESR<br>
-        {20426d6f}          英雄联盟经典模式（League Classic）
+        {20426d6f}          经典召唤师峡谷（Classic Rift）
         </pre>
     :type gameModeName: str
     :param strtable: 字符串常量池。<br>Stringtable.
