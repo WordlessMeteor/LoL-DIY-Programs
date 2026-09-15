@@ -2275,7 +2275,7 @@ class LoLDataExtractor:
             mBonusStatForEfficiency: float = cls.aRound(formulaPart["mBonusStatForEfficiency"], 5)
             formulaStr += " × " + str(mBonusStatForEfficiency)
         elif formulaPart_type == "{2b25a73a}": #仅用于【注魔】（Only applies to Juiced）
-            formulaStr = cls.variableCalculation(binData, formulaPart["{137cf12a}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            formulaStr = cls.variableCalculation(binData, formulaPart["DataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             formulaStr += " × " + ("最大法力值" if useCHSPrompt else "max Mana")
         elif formulaPart_type == "{4ce08984}": #仅用于不落魔锋 亚恒的【不落之志】（Only applies to ZaahenPassive）
             #下面假设所有与等级相关的值列表的所有元素相同。这样，`burnValueList`方法应当只返回一个值（We assume all elements in the value list of a level-related key are equal. In that case, `burnValueList` method should return a single value）
