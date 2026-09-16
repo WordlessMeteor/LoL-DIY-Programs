@@ -188,8 +188,8 @@ class FontExtractor(LoLDataExtractor):
                             fontResolution_data[key].append(to_append)
                             fontResolution_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "{215f4776}": #字体样式（Font style）
-                for variant_index in range(len(value["{1b2d687d}"])):
-                    variant: dict[str, Any] = value["{1b2d687d}"][variant_index]
+                for variant_index in range(len(value["Faces"])):
+                    variant: dict[str, Any] = value["Faces"][variant_index]
                     for i in range(len(fontStyle_header_keys)):
                         key: str = fontStyle_header_keys[i]
                         if i == 0: #主键（`key`）
