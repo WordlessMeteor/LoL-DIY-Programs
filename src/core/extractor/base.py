@@ -1694,7 +1694,7 @@ class LoLDataExtractor:
         :type s: str
         :param deep: 是否使用深度解析模式。如果未指定，则使用数据提取基类的`deep_resolve_hash`属性。<br>Whether to use deep resolution mode. If not specified, the function will use the `deep_resolve_hash` property of the class instead.
         
-            注：深度解析模式目前无法解析路径字符串，因为它们需要用到“hashes.game.txt”。它的hash算法是。<br>Note: Currently the deep resolution mode can't resolve stringtable and path-related strings, because they require "hashes.game.txt", which has a different algorithm from other hash tables.
+            注：深度解析模式目前无法解析路径字符串，因为它们需要用到“hashes.game.txt”。它的hash算法和其它hash表不同。<br>Note: Currently the deep resolution mode can't resolve stringtable and path-related strings, because they require "hashes.game.txt", which has a different algorithm from other hash tables.
         :type deep: bool | None
         :param hashType: 散列表文件类型。有以下取值：<br>Hash table file type, which has the following values:
         
@@ -1911,119 +1911,114 @@ class LoLDataExtractor:
         :type binData: dict[str, Any]
         '''
         pHash: re.Pattern[str] = re.compile(r"\{\w+\}")
+        normalizedBinData: dict[str, Any] = {}
         if isinstance(binData, dict):
-            binData = copy.deepcopy(binData)
-            if "DataValues" in binData:
-                DataValues: dict[str, dict[str, str | float | list[float]]] = {}
-                for spellData in binData["DataValues"]:
-                    if "name" in spellData:
-                        var: str = spellData["name"].lower() #对变量统一取小写形式，因为原格式存在不一致（Get the lower form of all variables, for some variables may not correspond well with their form in the tooltip）
-                    else: #这里不写成`elif "mName" in spellData`是为了在以后出现问题时，由程序直接报错，这样更好发现问题。下同（The reason why I don't write `elif "mName" in spellData` here is that if something wrong occurs to this key, error thrown by the program should make it easier to find the problem. So do the following）
-                        var = spellData["mName"].lower()
-                    DataValues[var] = spellData
-                    if not pHash.fullmatch(var): #当然可以舍弃上面的部分，直接全部采用hash形式，但是既然存储字典存的是引用，多一份数据实际上不会占用太大空间，并且如果全都是hash，调试的时候会非常难辨认（Of course we can abandon the above part and normalize all variables into the hash form, but since dictionaries are cited by reference, a shallow copy won't take up too much extra space. Besides, all variables transformed into hashes will make it obscure for debugging）
-                        var_hash: str = cls.compute_binhash(var)
-                        DataValues[var_hash] = spellData
-                binData["DataValues"] = DataValues
-            if "mDataValues" in binData:
-                DataValues: dict[str, dict[str, str | float | list[float]]] = {}
-                for data in binData["mDataValues"]:
-                    if "name" in data:
-                        var = data["name"].lower()
-                    else:
-                        var = data["mName"].lower()
-                    DataValues[var] = data
-                    if not pHash.fullmatch(var):
-                        var_hash = cls.compute_binhash(var)
-                        DataValues[var_hash] = data
-                binData["mDataValues"] = DataValues
-            if "mEffectAmount" in binData and isinstance(binData["mEffectAmount"], dict) and all(map(lambda x: isinstance(x, str), binData["mEffectAmount"].keys())) and all(map(lambda x: isinstance(x, (float)), binData["mEffectAmount"].values())): #传说：急速的HastePerStack存在大小写不一致的情况（Case mismatch occurs to Legend: Haste's `HastePerStack` variable）
-                mEffectAmount: dict[str, float] = {}
-                for (key, value) in binData["mEffectAmount"].items():
-                    var = key.lower()
-                    mEffectAmount[var] = value
-                    if not pHash.fullmatch(var):
-                        var_hash = cls.compute_binhash(var)
-                        mEffectAmount[var_hash] = value
-                binData["mEffectAmount"] = mEffectAmount
-            if "mSpellCalculations" in binData:
-                mSpellCalculations: dict[str, dict[str, Any]] = {}
-                for (key, value) in binData["mSpellCalculations"].items():
-                    var = key.lower()
-                    mSpellCalculations[var] = value
-                    if not pHash.fullmatch(var):
-                        var_hash = cls.compute_binhash(var)
-                        mSpellCalculations[var_hash] = value
-                binData["mSpellCalculations"] = mSpellCalculations
-            if "mItemCalculations" in binData: #星界驱驰的移速计算存在大小写不一致的情况（Case mismatch occurs to Cosmic Drive's move speed calculation）
-                mItemCalculations: dict[str, dict[str, Any]] = {}
-                for (key, value) in binData["mItemCalculations"].items():
-                    var = key.lower()
-                    mItemCalculations[var] = value
-                    if not pHash.fullmatch(var):
-                        var_hash = cls.compute_binhash(var)
-                        mItemCalculations[var_hash] = value
-                binData["mItemCalculations"] = mItemCalculations
-            if "mCalculations" in binData:
-                mCalculations: dict[str, dict[str, Any]] = {}
-                for (key, value) in binData["mCalculations"].items():
-                    var = key.lower()
-                    mCalculations[var] = value
-                    if not pHash.fullmatch(var):
-                        var_hash = cls.compute_binhash(var)
-                        mCalculations[var_hash] = value
-                binData["mCalculations"] = mCalculations
-            if "DataValuesModeOverride" in binData:
-                DataValuesModeOverride: dict[str, dict[str, dict[str, dict[str, str| float | list[float]]]]] = {}
-                for gameModeName in binData["DataValuesModeOverride"]:
-                    for (key, value) in binData["DataValuesModeOverride"][gameModeName].items():
-                        if isinstance(value, list) and all(map(lambda x: isinstance(x, dict), value)):
-                            for dataValue in value:
-                                if "name" in dataValue or "mName" in dataValue:
-                                    if "name" in dataValue:
-                                        var = dataValue["name"].lower()
-                                    else:
-                                        var = dataValue["mName"].lower()
-                                    if not var in DataValuesModeOverride:
-                                        DataValuesModeOverride[var] = {}
-                                    DataValuesModeOverride[var][gameModeName] = dataValue #将变量从列表中提取出来，并且放到模式的上一层（Extract the variable from the data value list and put it as a parent layer of game modes）、
-                                    if not pHash.fullmatch(var):
-                                        var_hash = cls.compute_binhash(var)
-                                        if not var_hash in DataValuesModeOverride:
-                                            DataValuesModeOverride[var_hash] = {}
-                                        DataValuesModeOverride[var_hash][gameModeName] = dataValue
-                binData["DataValuesModeOverride"] = DataValuesModeOverride
-            if "mEffectAmountGameMode" in binData:
-                mEffectAmountGameMode: dict[str, dict[str, float]] = {}
-                for gameModeName in binData["mEffectAmountGameMode"]:
-                    for (key, value) in binData["mEffectAmountGameMode"][gameModeName]["mEffectAmountPerMode"].items():
-                        var = key.lower()
-                        if not var in mEffectAmountGameMode:
-                            mEffectAmountGameMode[var] = {}
-                        mEffectAmountGameMode[var][gameModeName] = value
-                        if not pHash.fullmatch(var):
-                            var_hash = cls.compute_binhash(var)
-                            if not var_hash in mEffectAmountGameMode:
-                                mEffectAmountGameMode[var_hash] = {}
-                            mEffectAmountGameMode[var_hash][gameModeName] = value
-                binData["mEffectAmountGameMode"] = mEffectAmountGameMode
-            if "mConditionalTraitSets" in binData: #云顶之弈羁绊的数据只需要转换minUnits和maxUnits，将其首字母变为大写即可（For TFT trait binary data, only capitalizing "minUnits" and "maxUnits" is enough）
-                mConditionalTraitSets: list[dict[str, Any]] = []
-                for traitSet in binData["mConditionalTraitSets"]:
-                    normalizedTraitSet: dict[str, Any] = {}
-                    for (key, value) in traitSet.items():
-                        if key == "minUnits" or key == "maxUnits":
-                            normalizedTraitSet[capitalize(key)] = value #这里已知其数值是正整数，因此不需要担心引用传递问题（We already know the values are integers, so there's no need to worry about the pass-by-reference problem）
+            for (key, value) in binData.items():
+                if key == "DataValues" or key == "{06afef1b}":
+                    DataValues: dict[str, dict[str, str | float | list[float]]] = binData[key]
+                    DataValues_normalized: dict[str, dict[str, str | float | list[float]]] = {}
+                    for spellData in DataValues:
+                        if "name" in spellData:
+                            var: str = spellData["name"].lower() #对变量统一取小写形式，因为原格式存在不一致（Get the lower form of all variables, for some variables may not correspond well with their form in the tooltip）
+                        else: #这里不写成`elif "mName" in spellData`是为了在以后出现问题时，由程序直接报错，这样更好发现问题。下同（The reason why I don't write `elif "mName" in spellData` here is that if something wrong occurs to this key, error thrown by the program should make it easier to find the problem. So do the following）
+                            var = spellData["mName"].lower()
+                        var = cls.hash2str(var, hashType = "field")
+                        DataValues_normalized[var] = spellData
+                    normalizedBinData["DataValues"] = DataValues_normalized
+                elif key == "mDataValues" or key == "{1f4d20a6}":
+                    DataValues: dict[str, dict[str, str | float | list[float]]] = binData[key]
+                    DataValues_normalized: dict[str, dict[str, str | float | list[float]]] = {}
+                    for data in DataValues:
+                        if "name" in data:
+                            var = data["name"].lower()
                         else:
-                            normalizedTraitSet[key] = value #既然不做改变，引用传递也无所谓（Since no change is made, pass-by-reference is all right）
-                    mConditionalTraitSets.append(normalizedTraitSet)
-                binData["mConditionalTraitSets"] = mConditionalTraitSets
-            if "effectAmounts" in binData: #专用于云顶之弈传送门（Specially used for TFT portals）
-                effectAmounts: dict[str, dict[str, str | float| int]] = {}
-                for effectAmount in binData["effectAmounts"]:
-                    effectAmounts[effectAmount["name"]] = effectAmount
-                binData["effectAmounts"] = effectAmounts
-        return binData
+                            var = data["mName"].lower()
+                        var = cls.hash2str(var, hashType = "field")
+                        DataValues_normalized[var] = data
+                    normalizedBinData["mDataValues"] = DataValues_normalized
+                elif (key == "mEffectAmount" or key == "{251a5225}") and isinstance(binData[key], dict) and all(map(lambda x: isinstance(x, str), binData[key].keys())) and all(map(lambda x: isinstance(x, float), binData[key].values())): #传说：急速的HastePerStack存在大小写不一致的情况（Case mismatch occurs to Legend: Haste's `HastePerStack` variable）
+                    mEffectAmount: dict[str, float] = binData["mEffectAmount"]
+                    mEffectAmount_normalized: dict[str, float] = {}
+                    for (key, value) in mEffectAmount.items():
+                        var = key.lower()
+                        var = cls.hash2str(var, hashType = "field")
+                        mEffectAmount_normalized[var] = value
+                    normalizedBinData["mEffectAmount"] = mEffectAmount_normalized
+                elif key == "mSpellCalculations" or key == "{94572284}":
+                    mSpellCalculations: dict[str, dict[str, Any]] = binData[key]
+                    mSpellCalculations_normalized: dict[str, dict[str, Any]] = {}
+                    for (key, value) in mSpellCalculations.items():
+                        var = key.lower()
+                        var = cls.hash2str(var, hashType = "field")
+                        mSpellCalculations_normalized[var] = value
+                    normalizedBinData["mSpellCalculations"] = mSpellCalculations_normalized
+                elif key == "mItemCalculations" or key == "{0ac4f0d5}": #星界驱驰的移速计算存在大小写不一致的情况（Case mismatch occurs to Cosmic Drive's move speed calculation）
+                    mItemCalculations: dict[str, dict[str, Any]] = binData[key]
+                    mItemCalculations_normalized: dict[str, dict[str, Any]] = {}
+                    for (key, value) in mItemCalculations.items():
+                        var = key.lower()
+                        var = cls.hash2str(var, hashType = "field")
+                        mItemCalculations_normalized[var] = value
+                    normalizedBinData["mItemCalculations"] = mItemCalculations_normalized
+                elif key == "mCalculations" or key == "{dca91c56}":
+                    mCalculations: dict[str, dict[str, Any]] = binData[key]
+                    mCalculations_normalized: dict[str, dict[str, Any]] = {}
+                    for (key, value) in mCalculations.items():
+                        var = key.lower()
+                        var = cls.hash2str(var, hashType = "field")
+                        mCalculations_normalized[var] = value
+                    normalizedBinData["mCalculations"] = mCalculations_normalized
+                elif key == "DataValuesModeOverride" or key == "{fb56608c}":
+                    DataValuesModeOverride: dict[str, dict[str, dict[str, dict[str, str| float | list[float]]]]] = binData[key]
+                    DataValuesModeOverride_normalized: dict[str, dict[str, dict[str, dict[str, str| float | list[float]]]]] = {}
+                    for gameModeName in DataValuesModeOverride:
+                        for (key, value) in DataValuesModeOverride[gameModeName].items():
+                            if isinstance(value, list) and all(map(lambda x: isinstance(x, dict), value)):
+                                for dataValue in value:
+                                    if "name" in dataValue or "mName" in dataValue:
+                                        if "name" in dataValue:
+                                            var = dataValue["name"].lower()
+                                        else:
+                                            var = dataValue["mName"].lower()
+                                        var = cls.hash2str(var, hashType = "field")
+                                        if not var in DataValuesModeOverride_normalized:
+                                            DataValuesModeOverride_normalized[var] = {}
+                                        DataValuesModeOverride_normalized[var][gameModeName] = dataValue #将变量从列表中提取出来，并且放到模式的上一层（Extract the variable from the data value list and put it as a parent layer of game modes）、
+                    normalizedBinData["DataValuesModeOverride"] = DataValuesModeOverride_normalized
+                elif key == "mEffectAmountGameMode" or key == "{90b03cc0}":
+                    mEffectAmountGameMode: dict[str, dict[str, float]] = binData[key]
+                    mEffectAmountGameMode_normalized: dict[str, dict[str, float]] = {}
+                    for gameModeName in mEffectAmountGameMode:
+                        for (key, value) in mEffectAmountGameMode[gameModeName]["mEffectAmountPerMode"].items():
+                            var = key.lower()
+                            var = cls.hash2str(var, hashType = "field")
+                            if not var in mEffectAmountGameMode_normalized:
+                                mEffectAmountGameMode_normalized[var] = {}
+                            mEffectAmountGameMode_normalized[var][gameModeName] = value
+                    normalizedBinData["mEffectAmountGameMode"] = mEffectAmountGameMode_normalized
+                elif key == "mConditionalTraitSets" or key == "{93dd1f25}": #云顶之弈羁绊的数据只需要转换minUnits和maxUnits，将其首字母变为大写即可（For TFT trait binary data, only capitalizing "minUnits" and "maxUnits" is enough）
+                    mConditionalTraitSets: list[dict[str, Any]] = binData[key]
+                    mConditionalTraitSets_normalized: list[dict[str, Any]] = []
+                    for traitSet in mConditionalTraitSets:
+                        normalizedTraitSet: dict[str, Any] = {}
+                        for (key, value) in traitSet.items():
+                            if key == "minUnits" or key == "maxUnits":
+                                normalizedTraitSet[capitalize(key)] = value #这里已知其数值是正整数，因此不需要担心引用传递问题（We already know the values are integers, so there's no need to worry about the pass-by-reference problem）
+                            else:
+                                normalizedTraitSet[key] = value #既然不做改变，引用传递也无所谓（Since no change is made, pass-by-reference is all right）
+                        mConditionalTraitSets_normalized.append(normalizedTraitSet)
+                    normalizedBinData["mConditionalTraitSets"] = mConditionalTraitSets_normalized
+                elif key == "effectAmounts" or key == "{c13d6d31}": #专用于云顶之弈传送门（Specially used for TFT portals）
+                    effectAmounts: list[dict[str, str | float| int]] = binData[key]
+                    effectAmounts_normalized: dict[str, dict[str, str | float| int]] = {}
+                    for effectAmount in effectAmounts:
+                        effectAmounts_normalized[effectAmount["name"]] = effectAmount
+                    normalizedBinData["effectAmounts"] = effectAmounts_normalized
+                else:
+                    normalizedBinData[key] = value
+            return normalizedBinData
+        else:
+            return binData
     
     @classmethod
     def tooltipStringtableIteration(cls, tooltip: str, strtable_locale: dict[str, int | dict[str, str]], locale: str, deep: bool = False, reserve_CSS: bool = False, reserve_variable: bool = False, binData: None | dict[str, Any] = None, enableModeOverride: bool = False, reservedVarsList: Optional[dict[str, list[str]]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str: #将详细信息中花括号包围起来的部分替换成实际的字符串（Replace the part enclosed with two pairs of curly brackets into the actual string it represents）
