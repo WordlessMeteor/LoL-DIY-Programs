@@ -22,7 +22,7 @@ from src.localization.languages.zh_CN import itemCategories
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/27
+# 更新（Last update）：     2026/09/19
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -35,6 +35,8 @@ from src.localization.languages.zh_CN import itemCategories
 spells: dict[int, dict[str, Any]] = {}
 LoLChampions: dict[int, dict[str, Any]] = {}
 LoLItems: dict[int, dict[str, Any]] = {}
+extractor: LoLDataExtractor = LoLDataExtractor("pbe", "zh_CN") #这两个参数可以指定为任意值（These two parameters can be specified as any value）
+bin_hash_ready: bool = False
 
 log_folder: str = "日志（Logs）/Customized Program 23 - Manage Item Sets"
 os.makedirs(log_folder, exist_ok = True)
@@ -2495,6 +2497,11 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
         - 是否形成了装备数据框，决定了是否导出到工作簿。<br>Whether an item dataframe is formed, which determines whether to open a workbook and export data into it.
     :rtype: tuple[dict[str, pandas.DataFrame], bool]
     '''
+    global bin_hash_ready
+    if not bin_hash_ready:
+        logPrint("正在加载二进制描述数据的字符串散列表……\nLoading the string hashtable for binary description data ...", print_time = True)
+        extractor.get_bin_hashes()
+        bin_hash_ready = True
     item_df_formed: bool = False
     session: requests.Session = requests.Session()
     # session.trust_env = False
@@ -2609,6 +2616,7 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                     logPrint("目标语言二进制装备信息文件不存在！\nBinary LoL item file not found!")
             if status_item_binary == 200:
                 LoLItems_binary: dict[str, list[str] | dict[str, Any]] = source.json()
+                LoLItems_binary = extractor.resolve_bin_hash(LoLItems_binary)
             elif status_item_binary == 404:
                 LoLItems_binary = {}
             else:
