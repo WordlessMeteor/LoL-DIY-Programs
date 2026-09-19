@@ -602,7 +602,7 @@ class TFTExtractor(LoLDataExtractor):
                         TFTShopContent_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "TftDropRateTable": #云顶之弈掉率表（TFT Drop Rate）
                 for level_index in range(len(value["mDropRatesByLevel"])):
-                    dropRates = value["mDropRatesByLevel"][level_index]
+                    dropRates: dict[str, Any] = value["mDropRatesByLevel"][level_index]
                     for i in range(len(TFTDropRate_header_keys)):
                         key: str = TFTDropRate_header_keys[i]
                         if i == 0: #主键（`key`）
@@ -612,9 +612,9 @@ class TFTExtractor(LoLDataExtractor):
                         elif i == 2: #卡费等第数量（`{4f7d4b97}`）
                             to_append = value.get("{4f7d4b97}", "")
                         elif i == 3: #卡费掉率（`{bcf1e6a6}`）
-                            to_append = dropRates["{bcf1e6a6}"]
+                            to_append = dropRates.get("{bcf1e6a6}", "")
                         else: #卡费掉率字符串（`{bcf1e6a6}_burn`）
-                            to_append = self.burnValueList(dropRates["{bcf1e6a6}"])
+                            to_append = self.burnValueList(dropRates["{bcf1e6a6}"]) if "{bcf1e6a6}" in dropRates else ""
                         TFTDropRate_data[key].append(to_append)
                         TFTDropRate_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "TftStageRoundData": #云顶之弈回合阶段（TFT Stage Round）

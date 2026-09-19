@@ -1278,7 +1278,7 @@ class LoLDataExtractor:
         '''
         在线加载游戏版本，并生成游戏版本数据框。<br>Load the game version online and generate the game version dataframe.
         '''
-        game_version_url: str = f"https://raw.communitydragon.org/{self.version}/compat-version-metadata.json"
+        game_version_url: str = f"https://raw.communitydragon.org/{self.version}/content-metadata.json"
         source, status, self.session = requestUrl("GET", game_version_url, session = self.session, log = self.log)
         if status != 200:
             if status == 404:
@@ -1299,7 +1299,7 @@ class LoLDataExtractor:
         '''
         读取本地游戏版本文件，并生成游戏版本数据框。<br>Read the local game version file and generate the game version dataframe.
         
-        :param game_version_path: 版本号文件，通常以“compat-version-metadata.json”结尾。<br>Version file, usually endswith "compat-version-metadata.json".
+        :param game_version_path: 版本号文件，通常以“content-metadata.json”结尾。<br>Version file, usually endswith "content-metadata.json".
         :type game_version_path: str
         '''
         if not os.path.exists(game_version_path):
@@ -1355,7 +1355,10 @@ class LoLDataExtractor:
         '''
         在线加载共享数据。<br>Load shared data online.
         '''
-        shared_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/shared.cdtb.bin.json"
+        if Patch(self.version) < Patch("13.12"):
+            shared_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/shared/shared.bin.json"
+        else:
+            shared_bin_url = f"https://raw.communitydragon.org/{self.version}/game/shared.cdtb.bin.json"
         if shared_bin_url in self.__class__.data_cache["online"]:
             self.shared_bin = self.__class__.data_cache["online"][shared_bin_url]
         else:
@@ -1733,11 +1736,15 @@ class LoLDataExtractor:
             if hash_re.fullmatch(s):
                 return bin_hashtable.get(s, s)
             else:
-                bin_hash: str = cls.compute_pathhash(s) if hashType == "gamePath" else cls.compute_binhash(s)
-                if bin_hash in bin_hashtable:
-                    return bin_hashtable[bin_hash]
-                else:
+                try:
+                    bin_hash: str = cls.compute_pathhash(s) if hashType == "gamePath" else cls.compute_binhash(s)
+                except UnicodeEncodeError: #在15.2版本中，在聚点危机地图二进制描述数据中出现了中文字符！（Chinese characters appear in Convergence binary description data in Patch 15.2!）
                     return s
+                else:
+                    if bin_hash in bin_hashtable:
+                        return bin_hashtable[bin_hash]
+                    else:
+                        return s
         else:
             return bin_hashtable.get(s, s) if hash_re.fullmatch(s) else s
     

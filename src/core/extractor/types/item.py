@@ -6,6 +6,7 @@ os.chdir(wd)
 if not wd in sys.path:
     sys.path.append(wd)
 from src.utils.webRequest import requestUrl
+from src.utils.patch import Patch
 from src.utils.format import optimize_bool_display, addDefaultStyle, eliminate_empty_fields, pyobj2json
 from src.utils.excel_workbook import create_workbook_win32
 from src.core.config.headers import item_header, itemGroup_header, itemModifier_header
@@ -36,7 +37,10 @@ class ItemExtractor(LoLDataExtractor):
         在线获取装备二进制描述数据。<br>Get binary description data of items online.
         '''
         logPrint = self.log.logPrint
-        items_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/items.cdtb.bin.json"
+        if Patch(self.version) < Patch("13.15"):
+            items_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/global/items/items.bin.json"
+        else:
+            items_bin_url = f"https://raw.communitydragon.org/{self.version}/game/items.cdtb.bin.json"
         if items_bin_url in self.__class__.data_cache["online"]:
             self.items_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][items_bin_url]
         else:

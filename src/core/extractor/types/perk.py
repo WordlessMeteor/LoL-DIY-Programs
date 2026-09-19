@@ -6,6 +6,7 @@ os.chdir(wd)
 if not wd in sys.path:
     sys.path.append(wd)
 from src.utils.webRequest import requestUrl
+from src.utils.patch import Patch
 from src.utils.format import optimize_bool_display, addDefaultStyle, eliminate_empty_fields, pyobj2json
 from src.utils.excel_workbook import create_workbook_win32
 from src.core.config.headers import perkstyle_header, perk_header
@@ -35,7 +36,10 @@ class PerkExtractor(LoLDataExtractor):
         在线获取符文二进制描述数据。<br>Get binary description data of perks online.
         '''
         logPrint = self.log.logPrint
-        perks_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/perks.cdtb.bin.json"
+        if Patch(self.version) < Patch("13.17"):
+            perks_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/global/perks/perks.bin.json"
+        else:
+            perks_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/perks.cdtb.bin.json"
         if perks_bin_url in self.__class__.data_cache["online"]:
             self.perks_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][perks_bin_url]
         else:
@@ -206,7 +210,7 @@ class PerkExtractor(LoLDataExtractor):
                             mPerks_names: list[str] = []
                             for perk_key in defaultStatMods["mPerks"]:
                                 if perk_key in self.perks_bin:
-                                    mDisplayNameLocalizationKey: str = self.perks_bin[perk_key]["mDisplayNameLocalizationKey"]
+                                    mDisplayNameLocalizationKey: str = self.perks_bin[perk_key].get("mDisplayNameLocalizationKey", "") #在12.5版本，属性碎片没有这个键（In Patch 12.5, stat mods don't have this key）
                                     mPerks_names.append(self.get_strtable_value(strtable_locale, mDisplayNameLocalizationKey, default = mDisplayNameLocalizationKey))
                                 else:
                                     mPerks_names.append(perk_key)

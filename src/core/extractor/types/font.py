@@ -6,6 +6,7 @@ os.chdir(wd)
 if not wd in sys.path:
     sys.path.append(wd)
 from src.utils.webRequest import requestUrl
+from src.utils.patch import Patch
 from src.utils.format import optimize_bool_display, addDefaultStyle, eliminate_empty_fields, pyobj2json
 from src.utils.excel_workbook import create_workbook_win32
 from src.core.config.headers import fontDesc_header, fontType_header, fontResolution_header, fontStyle_header, font_CSSStyle_header, font_CSSIcon_header
@@ -39,7 +40,10 @@ class FontExtractor(LoLDataExtractor):
         在线获取字体二进制描述数据。<br>Get binary description data of fonts online.
         '''
         logPrint = self.log.logPrint
-        fonts_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/ux/fonts.cdtb.bin.json"
+        if Patch(self.version) < Patch("13.17"):
+            fonts_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/ux/fonts.bin.json"
+        else:
+            fonts_bin_url = f"https://raw.communitydragon.org/{self.version}/game/ux/fonts.cdtb.bin.json"
         if fonts_bin_url in self.__class__.data_cache["online"]:
             self.fonts_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][fonts_bin_url]
         else:
@@ -211,7 +215,7 @@ class FontExtractor(LoLDataExtractor):
                             if i == 0: #主键（`key`）
                                 to_append: Any = key1
                             elif i == 1: #路径检索字符串（`PathHashToSelf`）
-                                to_append = value["PathHashToSelf"]
+                                to_append = value.get("PathHashToSelf", key1) #12.5版本的字体二进制描述数据中没有这个键（In Patch 12.5, font binary description data don't have this key）
                             elif i == 2: #CSS样式（`tag`）
                                 to_append = tag
                             else:
@@ -230,7 +234,7 @@ class FontExtractor(LoLDataExtractor):
                             if i == 0: #主键（`key`）
                                 to_append: Any = key1
                             elif i == 1: #路径检索字符串（`PathHashToSelf`）
-                                to_append = value["PathHashToSelf"]
+                                to_append = value.get("PathHashToSelf", "")
                             elif i == 2: #修饰符标签（`tag`）
                                 to_append = tag
                             else:
