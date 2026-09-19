@@ -2021,7 +2021,7 @@ class LoLDataExtractor:
             return binData
     
     @classmethod
-    def tooltipStringtableIteration(cls, tooltip: str, strtable_locale: dict[str, int | dict[str, str]], locale: str, deep: bool = False, reserve_CSS: bool = False, reserve_variable: bool = False, binData: None | dict[str, Any] = None, enableModeOverride: bool = False, reservedVarsList: Optional[dict[str, list[str]]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str: #将详细信息中花括号包围起来的部分替换成实际的字符串（Replace the part enclosed with two pairs of curly brackets into the actual string it represents）
+    def tooltipStringtableIteration(cls, tooltip: str, strtable_locale: dict[str, int | dict[str, str]], locale: str, deep: bool = False, reserve_CSS: bool = False, reserve_variable: bool = False, binData: Optional[dict[str, Any]] = None, enableModeOverride: bool = False, reservedVarsList: Optional[dict[str, list[str]]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str: #将详细信息中花括号包围起来的部分替换成实际的字符串（Replace the part enclosed with two pairs of curly brackets into the actual string it represents）
         '''
         迭代地将说明文本中用双花括号包围起来的字符串键替换为实际的字符串。<br>Iteratively replace the string keys enclosed in double curly brackets in the tooltip with actual strings.
         
@@ -2070,7 +2070,11 @@ class LoLDataExtractor:
             index += 1
         if deep: #在没有将任何双花括号包围的变量替换为实际说明文本时，仍然需要将说明文本中的双@包围的变量替换为实际说明文本（While there's no variable enclosed in two pairs of curly brackets and to be replaced with the actual tooltip, the variables enclosed in double @s still need to be replaced）
             if not reserve_CSS:
-                tooltip = cls.tooltipPreparation(tooltip, locale)
+                if "<expandRow>" in tooltip and "</expandRow>" in tooltip and isinstance(binData, dict) and binData["__type"] == "TftTraitData":
+                    expandRow_repCount: int = len(binData["mConditionalTraitSets"]) if "mConditionalTraitSets" in binData else 0
+                else:
+                    expandRow_repCount = 1
+                tooltip = cls.tooltipPreparation(tooltip, locale, expandRow_repCount = expandRow_repCount)
             tooltip = cls.variableSubstitute(tooltip, binData, locale, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVars = None, flexibleData = flexibleData)
         return tooltip
     
@@ -2850,7 +2854,7 @@ class LoLDataExtractor:
             normalValue = cls.variableCalculation(binData["InnateTraitSets"][0], var_hash, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             #将进入云顶之弈通用常数分支（This call is expected to enter the TFT general constants branch）
         elif "__type" in binData and binData["__type"] == "TftTraitData" and "mConditionalTraitSets" in binData and (any(var in list(traitSet["constants"]["{df085b93}"].keys()) for traitSet in binData["mConditionalTraitSets"] if "constants" in traitSet and "{df085b93}" in traitSet["constants"]) or any(var in list(traitSet.keys()) for traitSet in binData["mConditionalTraitSets"])): #引用云顶之弈羁绊数据：条件羁绊效果。示例：（Cited TFT trait data: Conditional trait data values. Examples: ）@TFTTrait.TFT15_MechanicTrait_DreadNote.1:MinUnits@; TFT14_AnimaSquad (Maps/Shipping/Map22/Sets/TFTSet14/Traits/TFT14_AnimaSquad)
-            if rowIndex >= 0 and rowIndex < len(binData["mConditionalTraitSets"]) or rowIndex == -1 and len(binData["mConditionalTraitSets"]) == 1: #当条件羁绊集合中只有一个元素时，且说明文本中没有“<row>”标签时，总是取第一个元素（When there's only one element in the conditional trait set, and the tooltip doesn't have a "<row>" tag, the first element is always taken）
+            if rowIndex >= 0 and rowIndex < len(binData["mConditionalTraitSets"]) or rowIndex == -1 and len(binData["mConditionalTraitSets"]) == 1: #当条件羁绊集合中只有一个元素时，且说明文本中没有“row”标签时，总是取第一个元素（When there's only one element in the conditional trait set, and the tooltip doesn't have a "row" tag, the first element is always taken）
                 normalValue = cls.variableCalculation(binData["mConditionalTraitSets"][rowIndex], var, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
                 #将进入云顶之弈通用常数分支（This call is expected to enter the TFT general constants branch）
             else: #如果一个变量的出现次数超过期望值——mConditionalTraitSets键的值列表的元素数量，则不再对该变量进行转换。示例：云顶之弈第16赛季约德尔人羁绊的说明文本——{040cd634c5}（If the number of times a variable has appearred exceeds the expectation: the number of elements in the value list of `mConditionalTraitSets` key, then the program won't perform any substitution on this variable. Example: TFT16_Yordle's tooltip - {040cd634c5}）
@@ -3329,21 +3333,31 @@ class LoLDataExtractor:
         return (result, reservedVars_list)
     
     @classmethod
-    def tooltipPreparation(cls, tooltip: str, locale: str) -> str: #说明文本预处理（Tooltip preparation）
+    def tooltipPreparation(cls, tooltip: str, locale: str, expandRow_repCount: int = 1) -> str: #说明文本预处理（Tooltip preparation）
         '''
         移除说明文本中的CSS标签和修饰符。同时使用统一的标点符号表示强调。<br>Remove all CSS tags and descriptors in a tooltip. In the meantime, add uniform characters for the sake of emphasis.
+        
+        作为一项特殊处理，该方法会将用“expandRow”标签包围的说明文本转化为若干个用“Row”标签包围的说明文本的重复。这类说明文本仅用于云顶之弈羁绊。<br>As a special case, this method transforms the tooltip enclosed in a pair of "expandRow" tags into several repetitions of this tooltip to be enclosed in pairs of "Row" tags. Such kind of tooltips are used only by TFT traits.
         
         :param tooltip: 原始说明文本。<br>Raw tooltip.
         :type tooltip: str
         :param locale: 语言文化代码。决定了标点符号和提示语的语言。<br>Language code, which determines the language of punctuation marks and prompts.
         :type locale: str
+        :param expandRow_repCount: 当说明文本中存在“expandRow”标签时，将其包围的说明文本替换为多少个由“Row”标签包围的重复。默认为1个。<br>When there's an "expandRow" tag in the tooltip, how many repetitions of tooltips enclosed in "Row" tags to replace the tooltip enclosed in the "expandRow" tags with. 1 by default.
+        :type expandRow_repCount: int
         :return: 预处理后的说明文本。<br>Tooltip after preprocessing.
         :rtype: str
         '''
+        #定义一些常量（Define some constants）
+        pExpandRow: re.Pattern[str] = re.compile(r"<expandRow>(?P<row>.*?)</expandRow>")
         pFormat: re.Pattern[str] = re.compile(r"</?[\s\w=#\'\"@\-\.]*>")
         pDescriptor: re.Pattern[str] = re.compile(r"%[A-Za-z0-9:]+%")
         layertags: set[str] = {"titleLeft", "titleRight", "subtitleLeft", "subtitleRight", "mainText", "postScriptTitle"}
-        result: str = tooltip.replace("<br>", "\n").replace("<li>", "\n-").replace("<rules>", "").replace("</rules>", "").replace("<attention>", "").replace("</attention>", "").replace("&nbsp;", " ")
+        #执行替换（Perform substitution）
+        result: str = tooltip
+        if (matchObj := pExpandRow.search(result)):
+            result = result[:matchObj.start()] + "<br>".join(["<row>" + matchObj.group("row") + "</row>"] * expandRow_repCount) + result[matchObj.end():]
+        result = result.replace("<br>", "\n").replace("<li>", "\n-").replace("<rules>", "").replace("</rules>", "").replace("<attention>", "").replace("</attention>", "").replace("&nbsp;", " ")
         for layertag in layertags | {"section"}: #因为会优化分节的字符串，所以这里把分节部分的修饰符也去掉（Because section strings will be optimized subsequently, section tags are removed here）
             result = result.replace(f"<{layertag}>", "").replace(f"</{layertag}>", "")
         while (matchObj := pDescriptor.search(result)): #移除修饰符（Remove descriptors）
@@ -3378,7 +3392,7 @@ class LoLDataExtractor:
         :return: 排版优化后的说明文本。<br>Tooltip after layout optimization.
         :rtype: str
         '''
-        result: str = tooltip.replace("<row>", "").replace("</row>", "") #只有云顶之弈羁绊说明文本中存在<row>标签（<row> tag only exists in a TFT trait tooltip）
+        result: str = tooltip.replace("<row>", "").replace("</row>", "") #只有云顶之弈羁绊说明文本中存在“row”标签（"row" tag only exists in a TFT trait tooltip）
         contLeftBracket_zh_re: re.Pattern[str] = re.compile(r"【(?P<text>[^】\n]*)【")
         contRightBracket_zh_re: re.Pattern[str] = re.compile(r"】(?P<text>[^【\n]*)】")
         contLeftBracket_en_re: re.Pattern[str] = re.compile(r"\[(?P<text>[^\]\n]*)\[")
@@ -3498,7 +3512,11 @@ class LoLDataExtractor:
             for sectionIndex in range(len(sections)):
                 section: str = sections[sectionIndex]
                 result = cls.tooltipStringtableIteration(section, strtable_locale, locale, deep = False, binData = binData, enableModeOverride = False, reserve_variable = reserve_variable, reservedVarsList = None, flexibleData = flexibleData) #将双花括号包围的变量替换为实际说明文本（Replace the variables enclosed in two pairs of curly brackets with the actual tooltips）
-                result = cls.tooltipPreparation(result, locale)
+                if "<expandRow>" in result and "</expandRow>" in result and binData["__type"] == "TftTraitData":
+                    expandRow_repCount: int = len(binData["mConditionalTraitSets"]) if "mConditionalTraitSets" in binData else 0
+                else:
+                    expandRow_repCount = 1
+                result = cls.tooltipPreparation(result, locale, expandRow_repCount = expandRow_repCount)
                 #下面开始执行复杂的变量代换过程（In the following, a complex variable substitution is performed）
                 result = cls.variableSubstitute(result, binData, locale, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVars = reservedVars, flexibleData = flexibleData)
                 while True:

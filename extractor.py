@@ -1761,8 +1761,8 @@ if __name__ == "__main__":
         logPrint("说明文本测试样例：")
         tests: list[dict[str, Any]] = [
             {
-                "tooltip": "在对战后，你的【自然仙灵】将得到强化。<br><br>【灵魂莲华】弈子们获得物理加成、法术加成和@BonusHealth*100@%最大生命值。<br><row>(@MinUnits@)【自然仙灵】得到升级，@ADAP*100@% %i:scaleAD%%i:scaleAP%</row><br><row>(@MinUnits@)商店每次都会刷新出【自然仙灵】，@ADAP*100@% %i:scaleAD%%i:scaleAP%</row><br><row>(@MinUnits@)在购买1个【自然仙灵】后，获得@GoldPerCharmPurchased@ 金币，@ADAP*100@% %i:scaleAD%%i:scaleAP%</row><br><row>(@MinUnits@)每回合你可以购买2个【自然仙灵】，@ADAP*100@% %i:scaleAD%%i:scaleAP%</row><br><row>(@MinUnits@)自然之力！！！【自然仙灵】的力量满溢而出，@ADAP*100@% %i:scaleAD%%i:scaleAP%</row>",
-                "binData": map22_bin["Maps/Shipping/Map22/Sets/TFTSet18/Traits/DA_18_Blossom"],
+                "tooltip": "【征服者】技能可以造成暴击。【征服者】弈子获得额外暴击几率和暴击伤害。<br><br><expandRow>(@MinUnits@) @BaseCritChance@% %i:scaleCrit%，@CritDmg@% %i:scaleCritMult%</expandRow><br>",
+                "binData": map22_bin["Maps/Shipping/Map22/Sets/TFTSet16/Traits/TFT16_Vanquisher"],
                 "reservedVars": None
             },
         ]
