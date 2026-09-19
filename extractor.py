@@ -1690,8 +1690,8 @@ if __name__ == "__main__":
         with open(tftstringtable_en_path, "r", encoding = "utf-8") as fp:
             tftstringtable_en: dict[str, int | dict[str, str]] = json.load(fp)
         ##地图（Map）
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
-        #     map22_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
+            map22_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # map22_bin = LoLDataExtractor.resolve_bin_hash(map22_bin)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
         #     map30_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
@@ -1700,8 +1700,8 @@ if __name__ == "__main__":
         #     map33_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # map33_bin = LoLDataExtractor.resolve_bin_hash(map33_bin)
         ##装备（Item）
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
-            items_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
+        #     items_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # items_bin = LoLDataExtractor.resolve_bin_hash(items_bin)
         ##共享数据（Shared data）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/shared.cdtb.bin.json", "r", encoding = "utf-8") as fp:
@@ -1719,8 +1719,8 @@ if __name__ == "__main__":
         #     kiwi_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # kiwi_bin = LoLDataExtractor.resolve_bin_hash(kiwi_bin)
         ##整合后的数据（Merged data）
-        with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
-            champions_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
+        #     champions_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # champions_bin = LoLDataExtractor.resolve_bin_hash(champions_bin)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/characters_bin.json", "r", encoding = "utf-8") as fp:
         #     characters_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
@@ -1733,13 +1733,13 @@ if __name__ == "__main__":
         # for (key, value) in characters_bin.items():
         #     if key != "__linked" and value["__type"] == "SpellObject":
         #         LoLDataExtractor.mSpells[value["mScriptName"]] = value
-        # for (key, value) in map22_bin.items():
-        #     if key != "__linked" and value["__type"] == "TftUnitPropertyDefinition":
-        #         LoLDataExtractor.TFTUnitPropertyMap[value["name"]] = value
-        #     elif key != "__linked" and value["__type"] == "TftTraitData":
-        #         LoLDataExtractor.TFTTraitMap[value["mName"]] = value
-        #     elif key != "__linked" and value["__type"] == "ScriptDataObject":
-        #         LoLDataExtractor.TFTScriptDataMap[value["mName"]] = value
+        for (key, value) in map22_bin.items():
+            if key != "__linked" and value["__type"] == "TftUnitPropertyDefinition":
+                LoLDataExtractor.TFTUnitPropertyMap[value["name"]] = value
+            elif key != "__linked" and value["__type"] == "TftTraitData":
+                LoLDataExtractor.TFTTraitMap[value["mName"]] = value
+            elif key != "__linked" and value["__type"] == "ScriptDataObject":
+                LoLDataExtractor.TFTScriptDataMap[value["mName"]] = value
         
         #总结数据结构（Summarize the data structure）
         # keyDict: dict[str, dict[str, int]] = getBinaryKeys(map33_bin, isBin = True, keyPaths = None, objectTypes = "AugmentData")[1]
@@ -1758,34 +1758,34 @@ if __name__ == "__main__":
         # logPrint(LoLDataExtractor.get_strtable_value(lolstringtable_zh, mDisplayName_key, default = "获取失败。"))
         
         #说明文本转换（Tooltip transformation）
-        # logPrint("说明文本测试样例：")
-        # tests: list[dict[str, Any]] = [
-        #     {
-        #         "tooltip": "<rules>对野怪的百分比生命值伤害的上限为<magicDamage>@SuperQMonsterMaxDamageTotal@</magicDamage>。</rules>",
-        #         "binData": champions_bin["Characters/Galio/Spells/GalioQAbility/GalioQ"]["mSpell"],
-        #         "reservedVars": None
-        #     },
-        # ]
-        # for i in range(len(tests)):
-        #     LoLDataExtractor.calculatedVariables.clear()
-        #     logPrint("*" * 20)
-        #     logPrint("样例%d：" %(i + 1))
-        #     tooltip_raw: str = tests[i]["tooltip"]
-        #     logPrint("原始说明文本：\n" + tooltip_raw)
-        #     binData: dict[str, Any] = tests[i]["binData"]
-        #     reservedVars: Optional[dict[str, str]] = tests[i].get("reservedVars")
-        #     logPrint("----")
-        #     logPrint("转换文本：")
-        #     logPrint(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = False))
-        #     # logPrint(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = True))
-        #     # logPrint(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = False))
-        #     # logPrint(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = True))
-        # else:
-        #     logPrint("*" * 20)
+        logPrint("说明文本测试样例：")
+        tests: list[dict[str, Any]] = [
+            {
+                "tooltip": "在对战后，你的【自然仙灵】将得到强化。<br><br>【灵魂莲华】弈子们获得物理加成、法术加成和@BonusHealth*100@%最大生命值。<br><row>(@MinUnits@)【自然仙灵】得到升级，@ADAP*100@% %i:scaleAD%%i:scaleAP%</row><br><row>(@MinUnits@)商店每次都会刷新出【自然仙灵】，@ADAP*100@% %i:scaleAD%%i:scaleAP%</row><br><row>(@MinUnits@)在购买1个【自然仙灵】后，获得@GoldPerCharmPurchased@ 金币，@ADAP*100@% %i:scaleAD%%i:scaleAP%</row><br><row>(@MinUnits@)每回合你可以购买2个【自然仙灵】，@ADAP*100@% %i:scaleAD%%i:scaleAP%</row><br><row>(@MinUnits@)自然之力！！！【自然仙灵】的力量满溢而出，@ADAP*100@% %i:scaleAD%%i:scaleAP%</row>",
+                "binData": map22_bin["Maps/Shipping/Map22/Sets/TFTSet18/Traits/DA_18_Blossom"],
+                "reservedVars": None
+            },
+        ]
+        for i in range(len(tests)):
+            LoLDataExtractor.calculatedVariables.clear()
+            logPrint("*" * 20)
+            logPrint("样例%d：" %(i + 1))
+            tooltip_raw: str = tests[i]["tooltip"]
+            logPrint("原始说明文本：\n" + tooltip_raw)
+            binData: dict[str, Any] = tests[i]["binData"]
+            reservedVars: Optional[dict[str, str]] = tests[i].get("reservedVars")
+            logPrint("----")
+            logPrint("转换文本：")
+            logPrint(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = False))
+            # logPrint(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = True))
+            # logPrint(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = False))
+            # logPrint(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = True))
+        else:
+            logPrint("*" * 20)
         
         #模式重载（Mode override）
-        logPrint(modeOverrideTooltipTransform(champions_bin, dType = "champion", objectType = "SpellObject", keyPaths = "mSpell|DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
-        logPrint(modeOverrideTooltipTransform(items_bin, dType = "item", objectType = "ItemData", keyPaths = "DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
+        # logPrint(modeOverrideTooltipTransform(champions_bin, dType = "champion", objectType = "SpellObject", keyPaths = "mSpell|DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
+        # logPrint(modeOverrideTooltipTransform(items_bin, dType = "item", objectType = "ItemData", keyPaths = "DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
         
         return 0
 
