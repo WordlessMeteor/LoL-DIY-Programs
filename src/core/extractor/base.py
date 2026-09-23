@@ -2166,8 +2166,8 @@ class LoLDataExtractor:
         '''
         mStatFormula_dict_zh: dict[int, str] = {0: "", 1: "基础", 2: "额外"} #0代表总（0 stands for total）
         mStatFormula_dict_en: dict[int, str] = {0: "", 1: "basic ", 2: "bonus "}
-        mStat_dict_zh: dict[int, str] = {0: "法术强度", 1: "护甲", 2: "攻击力", 4: "攻击速度", 6: "魔法抗性", 7: "移动速度", 8: "暴击几率", 9: "暴击伤害", 10: "冷却缩减", 11: "技能急速", 12: "生命值", 14: "当前生命值百分比", 18: "生命偷取", 22: "固定法术穿透", 23: "百分比法术穿透", 29: "穿甲", 31: "体型", 34: "治疗和护盾强度"}
-        mStat_dict_en: dict[int, str] = {0: "Ability Power", 1: "Armor", 2: "Attack Damage", 4: "Attack Speed", 6: "Magic Resistance", 7: "Movement Speed", 8: "Critical Strike Chance", 9: "Crit Damage", 10: "Cooldown Reduction", 11: "Ability Haste", 12: "Health", 14: "Current Health Percent", 18: "Life Steal", 22: "Magic Penetration Flat", 23: "Magic Penetration Percent", 29: "Lethality", 31: "Size", 34: "Heal and Shield Power"}
+        mStat_dict_zh: dict[int, str] = {0: "法术强度", 1: "护甲", 2: "攻击力", 4: "攻击速度", 6: "魔法抗性", 7: "移动速度", 8: "暴击几率", 9: "暴击伤害", 10: "冷却缩减", 11: "技能急速", 12: "生命值", 13: "当前生命值", 14: "当前生命值百分比", 18: "生命偷取", 22: "固定法术穿透", 23: "百分比法术穿透", 29: "穿甲", 31: "体型", 34: "治疗和护盾强度"}
+        mStat_dict_en: dict[int, str] = {0: "Ability Power", 1: "Armor", 2: "Attack Damage", 4: "Attack Speed", 6: "Magic Resistance", 7: "Movement Speed", 8: "Critical Strike Chance", 9: "Crit Damage", 10: "Cooldown Reduction", 11: "Ability Haste", 12: "Health", 13: "Current Health", 14: "Current Health Percent", 18: "Life Steal", 22: "Magic Penetration Flat", 23: "Magic Penetration Percent", 29: "Lethality", 31: "Size", 34: "Heal and Shield Power"}
         itemEpicness_dict_zh: dict[int, str] = {0: "无", 1: "初始", 2: "基础", 3: "工资装", 4: "史诗", 5: "传说", 6: "神话", 7: "升级", 8: "锻造器", 9: "棱彩"}
         itemEpicness_dict_en: dict[int, str] = {0: "none", 1: "starter", 2: "basic", 3: "gold income", 4: "epic", 5: "legendary", 6: "mythic", 7: "level up", 8: "anvil", 9: "prismatic"}
         if isinstance(flexibleData, dict): #附加数据处理（Supplemental data processing）
