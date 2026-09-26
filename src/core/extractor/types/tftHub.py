@@ -520,8 +520,8 @@ class TFTExtractor(LoLDataExtractor):
                             if i == 245 or i == 246:
                                 subkey = key.split()[1]
                                 to_append = self.map22_bin[value["{049d68aa}"]][subkey]
-                            else: #人机对战敌方单位名称列表（`{049d68aa} {d1edd5db} names`）
-                                to_append = list(map(lambda x: self.map22_bin[x]["name"] if x in self.map22_bin else x, self.map22_bin[value["{049d68aa}"]]["{d1edd5db}"]))
+                            else: #人机对战敌方单位名称列表（`{049d68aa} Comps names`）
+                                to_append = list(map(lambda x: self.map22_bin[x]["name"] if x in self.map22_bin else x, self.map22_bin[value["{049d68aa}"]]["Comps"]))
                         else:
                             to_append = ""
                     TFTSet_data[key].append(to_append)

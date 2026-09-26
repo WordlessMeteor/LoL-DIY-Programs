@@ -6865,9 +6865,9 @@ TFTSet_header: dict[str, str] = {
     "{c58ff569} {62ef4bd3} {ed713805}_content_en": "加农炮激活回合（英文）",
     "{c58ff569} {0b42906e} {ed713805}_content_zh": "加农炮激活回合信息（中文）",
     "{c58ff569} {0b42906e} {ed713805}_content_en": "加农炮激活回合信息（英文）",
-    "{049d68aa} {d1edd5db}": "人机对战敌方单位列表",
+    "{049d68aa} Comps": "人机对战敌方单位列表",
     "{049d68aa} {bd2edcd7}": "人机对战敌方单位难度等级",
-    "{049d68aa} {d1edd5db} names": "人机对战敌方单位名称列表"
+    "{049d68aa} Comps names": "人机对战敌方单位名称列表"
 }
 TFTShop_header: dict[str, str] = {
     "key": "主键",
