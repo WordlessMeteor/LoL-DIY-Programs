@@ -2387,10 +2387,10 @@ class LoLDataExtractor:
             formulaStr = f"{mLevel1ValueStr} + {mValuePerLevelStr} × Level"
         elif formulaPart_type == "{ee18a47b}": #用于兽灵行者 乌迪尔的【狂暴爪击】（Applies to UdyrQ）
             #重构模式分化字典（Reconstruct the mode division dictionary）
-            mLevel1ValueStr: str = cls.variableCalculation(binData, formulaPart["{0589a59c}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            mLevel1ValueStr: str = cls.variableCalculation(binData, formulaPart["StartDataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             mLevel1Value_modeSplitDict_str: dict[str, str] = cls.variableModeOverrideStrToStruct(mLevel1ValueStr)
             mLevel1Value_modeSplitDict_float: dict[str, float] = {key: float(value) for (key, value) in mLevel1Value_modeSplitDict_str.items()}
-            mLevel18ValueStr: str = cls.variableCalculation(binData, formulaPart["{0b65bc23}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            mLevel18ValueStr: str = cls.variableCalculation(binData, formulaPart["EndDataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             mLevel18Value_modeSplitDict_str: dict[str, str] = cls.variableModeOverrideStrToStruct(mLevel18ValueStr)
             mLevel18Value_modeSplitDict_float: dict[str, float] = {key: float(value) for (key, value) in mLevel18Value_modeSplitDict_str.items()}
             #汇总模式键（Summarize mode keys）
