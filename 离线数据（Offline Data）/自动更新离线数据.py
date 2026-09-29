@@ -518,7 +518,7 @@ while True:
                 text_folders_exported_latest: list[str] = list(set(list(map(lambda x: os.path.dirname(x) + "/" if "/" in x else "", text_files_exported_latest))))
                 text_folders_exported_latest.sort()
             if option == "1" or option == "3":
-                logPrint("正在读取美测服在线索引……\nReading the online index file of pbe data resources...", print_time = True)
+                logPrint("正在读取测试服在线索引……\nReading the online index file of pbe data resources...", print_time = True)
                 source, status, session = requestUrl("GET", "https://raw.communitydragon.org/pbe/cdragon/files.exported.txt", session)
                 if status != 200:
                     if status == -1:
