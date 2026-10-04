@@ -378,8 +378,8 @@ class TFTExtractor(LoLDataExtractor):
                     elif i == 143 or i == 144: #奇遇（Encounter）
                         if "EncounterList" in value and value["EncounterList"] in self.map22_bin:
                             EncounterLists = self.map22_bin[value["EncounterList"]]
-                            if i == 143: #开场奇遇事件名称列表（`EncounterList {23c80d88} names`）
-                                EncounterDistributionList = EncounterLists["{23c80d88}"]
+                            if i == 143: #开场奇遇事件名称列表（`EncounterList Distributions names`）
+                                EncounterDistributionList = EncounterLists["Distributions"]
                                 EncounterDistributionNames: list[str] = []
                                 for EncounterDistribution_key in EncounterDistributionList:
                                     if EncounterDistribution_key in self.map22_bin:
@@ -487,9 +487,9 @@ class TFTExtractor(LoLDataExtractor):
                                 to_append = tmp_ptr
                         else:
                             to_append = ""
-                    elif i == 169: #签名格信息（`{876a220d} {7c666488}`）
+                    elif i == 169: #签名格信息（`{876a220d} Boards`）
                         if "{876a220d}" in value and value["{876a220d}"] in self.map22_bin:
-                            to_append = self.map22_bin[value["{876a220d}"]]["{7c666488}"]
+                            to_append = self.map22_bin[value["{876a220d}"]]["Boards"]
                         else:
                             to_append = ""
                     elif i <= 244: #加农炮击子键（`{c58ff569}`'s subkeys）
