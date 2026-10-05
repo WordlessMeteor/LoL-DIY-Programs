@@ -798,10 +798,10 @@ if __name__ == "__main__":
                 elif mode[0] == "0":
                     extractor.clear_cache()
                     if one_click:
-                        if len(versions_conf) == 1:
-                            preset_data_options = sorted(set(preset_data_options))
-                        else: #这个分支不可能包含`len(versions_conf) == 0`的情形，因为在循环的开头执行了一步追加操作。所以这个分支的含义是在一键式导出的过程中一个批次即将结束的场景（This function can't contain the case where `len(versions_conf) == 0`, for an `append`` method is called at the beginning of the loop. Therefore, the meaning of this condition is the case where a batch is about to end when one-click export is enabled）
+                        if i == len(versions) - 1 or versions[i + 1] in versions_conf: #当前批次即将结束的场景（The current batch is about to end）
                             preset_data_options.clear() #在下一个批次开始时，重新设置要导出的数据选项（When the next batch begins, set the types of data to export again）
+                        else:
+                            preset_data_options = sorted(set(preset_data_options))
                     break
                 else:
                     data_options: list[int] = []
