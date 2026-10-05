@@ -1690,8 +1690,8 @@ if __name__ == "__main__":
         with open(tftstringtable_en_path, "r", encoding = "utf-8") as fp:
             tftstringtable_en: dict[str, int | dict[str, str]] = json.load(fp)
         ##地图（Map）
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
-            map22_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
+        #     map22_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # map22_bin = LoLDataExtractor.resolve_bin_hash(map22_bin)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
         #     map30_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
@@ -1719,8 +1719,8 @@ if __name__ == "__main__":
         #     kiwi_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # kiwi_bin = LoLDataExtractor.resolve_bin_hash(kiwi_bin)
         ##整合后的数据（Merged data）
-        # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
-        #     champions_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
+            champions_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # champions_bin = LoLDataExtractor.resolve_bin_hash(champions_bin)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/characters_bin.json", "r", encoding = "utf-8") as fp:
         #     characters_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
@@ -1730,16 +1730,19 @@ if __name__ == "__main__":
         # for (key, value) in shared_bin.items():
         #     if key != "__linked" and value["__type"] == "SpellObject":
         #         LoLDataExtractor.mSpells[value["mScriptName"]] = value
+        for (key, value) in champions_bin.items():
+            if key != "__linked" and value["__type"] == "SpellObject":
+                LoLDataExtractor.mSpells[value["mScriptName"]] = value
         # for (key, value) in characters_bin.items():
         #     if key != "__linked" and value["__type"] == "SpellObject":
         #         LoLDataExtractor.mSpells[value["mScriptName"]] = value
-        for (key, value) in map22_bin.items():
-            if key != "__linked" and value["__type"] == "TftUnitPropertyDefinition":
-                LoLDataExtractor.TFTUnitPropertyMap[value["name"]] = value
-            elif key != "__linked" and value["__type"] == "TftTraitData":
-                LoLDataExtractor.TFTTraitMap[value["mName"]] = value
-            elif key != "__linked" and value["__type"] == "ScriptDataObject":
-                LoLDataExtractor.TFTScriptDataMap[value["mName"]] = value
+        # for (key, value) in map22_bin.items():
+        #     if key != "__linked" and value["__type"] == "TftUnitPropertyDefinition":
+        #         LoLDataExtractor.TFTUnitPropertyMap[value["name"]] = value
+        #     elif key != "__linked" and value["__type"] == "TftTraitData":
+        #         LoLDataExtractor.TFTTraitMap[value["mName"]] = value
+        #     elif key != "__linked" and value["__type"] == "ScriptDataObject":
+        #         LoLDataExtractor.TFTScriptDataMap[value["mName"]] = value
         
         #总结数据结构（Summarize the data structure）
         # keyDict: dict[str, dict[str, int]] = getBinaryKeys(map33_bin, isBin = True, keyPaths = None, objectTypes = "AugmentData")[1]
@@ -1761,8 +1764,8 @@ if __name__ == "__main__":
         logPrint("说明文本测试样例：")
         tests: list[dict[str, Any]] = [
             {
-                "tooltip": "【征服者】技能可以造成暴击。【征服者】弈子获得额外暴击几率和暴击伤害。<br><br><expandRow>(@MinUnits@) @BaseCritChance@% %i:scaleCrit%，@CritDmg@% %i:scaleCritMult%</expandRow><br>",
-                "binData": map22_bin["Maps/Shipping/Map22/Sets/TFTSet16/Traits/TFT16_Vanquisher"],
+                "tooltip": "卡西奥佩娅的所有<speed>移动速度</speed>加成的效率提升@PercentHasteMod@。",
+                "binData": champions_bin["Characters/Cassiopeia/Spells/CassiopeiaPassiveAbility/CassiopeiaPassive"]["mSpell"],
                 "reservedVars": None
             },
         ]

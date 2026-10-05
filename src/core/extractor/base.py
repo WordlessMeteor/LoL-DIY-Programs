@@ -2207,8 +2207,8 @@ class LoLDataExtractor:
         elif formulaPart_type == "ByCharLevelBreakpointsCalculationPart": #阶梯式等级提供增益（Bonus value provided by levels in a step function manner）
             mLevel1Value: int | float = formulaPart.get("mLevel1Value", 0)
             mInitialBonusPerLevel: int | float = formulaPart.get("mInitialBonusPerLevel", 0) #每级增加的数值。从2级开始加（The value to increment reaching each level. It takes effect from Level 2）
-            mBonusPerLevelAtAndAfter: int | float = 0 #初始化每级增加的数值，包含当前等级（Initialize the value to increment reaching each level, including this level）
             if "mBreakpoints" in formulaPart:
+                mBonusPerLevelAtAndAfter: int | float = 0 #初始化每级增加的数值，包含当前等级（Initialize the value to increment reaching each level, including this level）
                 levelValues: list[int | float] = []
                 formulaPart["mBreakpoints"] = sorted(formulaPart["mBreakpoints"], key = lambda x: x.get("mLevel", 1)) #这一步其实无关紧要，因为断点列表总是按照等级正序排列的（This step is actually unnecessary, for the breakpoints are always sorted in the ascending order of mLevel）
                 mLevel_i_Value: int | float = mLevel1Value
@@ -2230,10 +2230,10 @@ class LoLDataExtractor:
                     i += 1
                 levelValues = list(map(lambda x: cls.aRound(x, 5), levelValues))
                 formulaStr = "/".join(list(map(str, levelValues))) + " (Level 1 to %d)" %cls.levelScaling_cap
-            elif mBonusPerLevelAtAndAfter == 0:
+            elif mInitialBonusPerLevel == 0:
                 formulaStr = str(mLevel1Value)
             else:
-                mLevel_end_Value = mLevel1Value + (cls.levelScaling_cap - 1) * mBonusPerLevelAtAndAfter
+                mLevel_end_Value = mLevel1Value + (cls.levelScaling_cap - 1) * mInitialBonusPerLevel
                 formulaStr = "%s - %s (Level 1 to %d)" %(cls.aRound(mLevel1Value, 5), cls.aRound(mLevel_end_Value, 5), cls.levelScaling_cap)
         elif formulaPart_type == "ByCharLevelFormulaCalculationPart": #公式等级提供增益（Bonus value provided by levels following a formula）
             mValues: list[int | float] = formulaPart["values"] if "values" in formulaPart else formulaPart["mValues"]
@@ -2292,8 +2292,8 @@ class LoLDataExtractor:
             mInitialBonusPerLevelStr: str = cls.variableCalculation(binData, formulaPart["{bbd778a2}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
             mInitialBonusPerLevel_modeSplitDict_str: dict[str, str] = cls.variableModeOverrideStrToStruct(mInitialBonusPerLevelStr)
             mInitialBonusPerLevel_modeSplitDict_float: dict[str, float] = {key: float(value) for (key, value) in mInitialBonusPerLevel_modeSplitDict_str.items()} #每级增加的数值。从2级开始加（The value to increment reaching each level. It takes effect from Level 2）
-            mBonusPerLevel_modeSplitDict_float: dict[str, float] = {} #初始化每级增加的数值，包含当前等级（Initialize the value to increment reaching each level, including this level）
             if "{9823b29a}" in formulaPart:
+                mBonusPerLevel_modeSplitDict_float: dict[str, float] = {} #初始化每级增加的数值，包含当前等级（Initialize the value to increment reaching each level, including this level）
                 levelValues_modeSplitDict_list: dict[str, list[float]] = {"default": []}
                 formulaPart["{9823b29a}"] = sorted(formulaPart["{9823b29a}"], key = lambda x: x.get("mLevel", 1))
                 mLevel_i_Value_modeSplitDict_float: dict[str, float] = mLevel1Value_modeSplitDict_float.copy()
@@ -2360,7 +2360,7 @@ class LoLDataExtractor:
                 levelValues_modeSplitDict_dict: dict[str, dict[int, float]] = {key: {1: value, 18: 0} for (key, value) in mLevel1Value_modeSplitDict_float.items()} #这个字典中也必定有一个“default”键（This dictionary must have a "default" key）
                 #梳理所有模式分化（Sort out all modes）
                 modes: list[str] = list(mLevel1Value_modeSplitDict_float.keys())
-                for mode in mBonusPerLevel_modeSplitDict_float:
+                for mode in mInitialBonusPerLevel_modeSplitDict_float:
                     if not mode in mLevel1Value_modeSplitDict_float:
                         modes.append(mode)
                 #针对每个游戏模式计算终止值（Calculate the value at max level for each game mode）
@@ -2371,7 +2371,7 @@ class LoLDataExtractor:
                 ##再对所有模式设置值（Next, set values for all modes）
                 for mode in modes:
                     mLevel1Value = levelValues_modeSplitDict_dict[mode][1]
-                    mLevel_end_Value = mLevel1Value + (cls.levelScaling_cap - 1) * mBonusPerLevel_modeSplitDict_float.get(mode, 0)
+                    mLevel_end_Value = mLevel1Value + (cls.levelScaling_cap - 1) * mInitialBonusPerLevel_modeSplitDict_float.get(mode, 0)
                     levelValues_modeSplitDict_dict[mode][cls.levelScaling_cap] = mLevel_end_Value
                 levelValues_modeSplitList: list[str] = []
                 for mode in levelValues_modeSplitDict_dict:
