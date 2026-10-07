@@ -371,10 +371,10 @@ async def get_champion_searchTags(connection: Connection, cdVersion: str, locale
     :type connection: Connection
     :param cdVersion: 用于检索CommunityDragon数据库的版本文件夹名称。<br>The name of the version folder as a part of CommunityDragon database url.
     :type cdVersion: str
-    :param language_code: 语言（文化）代码。<br>Language code.
+    :param locale: 语言（文化）代码。<br>Language code.
     
         对于美式英语而言，使用“default”作为CommunityDragon数据库链接的一部分。对于其它语言而言，取其语言文化代码的小写形式。<br>For en_US, take "default" as a part of the CommunityDragon link. For other languages, take the lower case of this parameter.
-    :type language_code: str
+    :type locale: str
     :param session: 网络请求会话。<br>Web request session.
     :type session: requests.Session
     :return: 英雄检索字典。键是英雄序号，值是检索字符串列表。<br>Champion query dictionary. Each key is a championId, and each value is a list of query strings.

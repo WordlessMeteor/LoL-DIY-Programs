@@ -23,7 +23,7 @@ from src.localization.languages.zh_CN import availabilities, RiotRelationships, 
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/08/19
+# 更新（Last update）：     2026/10/07
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -3241,17 +3241,20 @@ async def spectate_compat(connection: Connection) -> None: #带有旧接口兼�
                     if not spectatorPluginNA_hint_printed:
                         logPrint("您所在的服务器不支持玩家可观战性检测。请自行判断玩家是否可观战。\nThe server or platform you're currently on doesn't support this endpoint. Please judge by yourself whether a player is observable.")
                         spectatorPluginNA_hint_printed = True
-                elif response["httpStatus"] == 500 and '{"message":"{\\"httpStatus\\":410,\\"errorCode\\":\\"GONE\\",\\"message\\":\\"Gone\\",\\"implementationDetails\\":\\"this functionality is no longer available\\"}","failureCode_int":410}' in response["message"]:
+                elif response["httpStatus"] == 500 and ('{"message":"{\\"httpStatus\\":410,\\"errorCode\\":\\"GONE\\",\\"message\\":\\"Gone\\",\\"implementationDetails\\":\\"this functionality is no longer available\\"}","failureCode_int":410}' in response["message"] or response["message"] == "Error getting spectate availability for summoner, request buddy size: %d, error: {\"message\":\"{\\\"httpStatus\\\":410,\\\"errorCode\\\":\\\"GONE\\\",\\\"message\\\":\\\"Gone\\\",\\\"implementationDetails\\\":\\\"filtered\\\"}\",\"failureCode_int\":410}" %(len(friend_puuids))):
                     pluginNA = True
                     if not spectatorPluginLegacyDisabled_hint_printed:
                         logPrint("玩家可观战性检测功能已废弃。\nThe functionality of detecting whether a player can be spectated has been deprecated.")
                         spectatorPluginLegacyDisabled_hint_printed = True
                 elif response["httpStatus"] == 400 and response["message"] == "Couldn't assign value to 'puuids' of type vector because the input not a collection.":
                     logPrint("看起来你现在还没有添加任何好友。邀请好友来聊天并一起玩游戏。\nLooks like you haven't added any friends yet. Invite friends to chat and play together.")
+                    break
                 elif response["httpStatus"] == 500 and "Couldn't find service in service discovery using ServerLocationEndpointFilter" in response["message"]:
                     logPrint("观战服务不可用。\nSpectator service unavailable.")
+                    break
                 else:
                     logPrint("无法获取好友可观战性信息。请通过客户端内右键点击一名好友以观战。\nCan't get friend observability information. Please right click on a friend to spectate.")
+                    break
             else:
                 if len(friends) == 0 or len(response["availableForWatching"]) == 0: #如果len(friends)不是0，那么上面的response就不会是异常，从而导致后面一个条件不会引发键错误（If `len(friends)` isn't 0, then the above `response` isn't an error and thus the latter condition here won't cause a KeyError）
                     logPrint("您尚无可观战的好友。是否观战其它玩家？（输入任意键以搜索其它玩家的观战可用性，否则返回上一层。）\nThere's not any friend available for watching. Do you want to spectate other players? (Submit any non-empty string to search for other players' observability, or null to return to the last step.)")
