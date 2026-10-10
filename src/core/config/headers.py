@@ -6520,15 +6520,15 @@ anvil_header: dict[str, str] = {
     "RootSpellObject": "根指令对象"
 }
 ##荣誉嘉宾（Guest of Honor）
-GoH_header: dict[str, str] = {
-    "key1": "主键1",
+CherryGoH_header: dict[str, str] = {
+    "GoHKey": "嘉宾主键",
     "name": "名称",
     "Character": "角色文件夹",
     "Enabled": "可用性",
     "SkinID": "皮肤序号",
     "{b0f32561}": "可用回合",
     "{e7879fb5}": "互斥荣誉嘉宾",
-    "key2": "主键2",
+    "eventKey": "事件主键",
     "{1ff99d7f} title": "事件键",
     "{1ff99d7f} Subtitle": "姓名键",
     "{1ff99d7f} {bff2f361}": "简述键",
@@ -6547,6 +6547,30 @@ GoH_header: dict[str, str] = {
     "{1ff99d7f} {3b7aa707}_content_en_burn": "详细信息（英文/去格式化）",
     "{e7879fb5} Subtitle_contents_zh": "互斥荣誉嘉宾姓名（中文）",
     "{e7879fb5} Subtitle_contents_en": "互斥荣誉嘉宾姓名（英文）"
+}
+KiwiGoH_header: dict[str, str] = {
+    "GoHKey": "嘉宾主键",
+    "name": "名称",
+    "{fb33ef71}": "代号",
+    "{b0f32561}": "可用回合",
+    "ResourceResolver resourceMap": "视觉特效资源映射字典",
+    "eventKey": "事件主键",
+    "{1ff99d7f} title": "事件键",
+    "{1ff99d7f} Subtitle": "姓名键",
+    "{1ff99d7f} {bff2f361}": "简述键",
+    "{1ff99d7f} {3b7aa707}": "详细信息键",
+    "EventIcon": "事件缩略图路径",
+    "{982aa425}": "荣誉嘉宾缩略图路径",
+    "{1ff99d7f} title_content_zh": "事件（中文）",
+    "{1ff99d7f} title_content_en": "事件（英文）",
+    "{1ff99d7f} Subtitle_content_zh": "姓名（中文）",
+    "{1ff99d7f} Subtitle_content_en": "姓名（英文）",
+    "{1ff99d7f} {bff2f361}_content_zh": "简述（中文）",
+    "{1ff99d7f} {bff2f361}_content_en": "简述（英文）",
+    "{1ff99d7f} {3b7aa707}_content_zh": "详细信息（中文）",
+    "{1ff99d7f} {3b7aa707}_content_en": "详细信息（英文）",
+    "{1ff99d7f} {3b7aa707}_content_zh_burn": "详细信息（中文/去格式化）",
+    "{1ff99d7f} {3b7aa707}_content_en_burn": "详细信息（英文/去格式化）"
 }
 ##场景英雄（Cameo）
 cameo_header: dict[str, str] = {

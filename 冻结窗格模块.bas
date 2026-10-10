@@ -14,7 +14,7 @@ Sub FreezeAndFilterGameDataSheets()
                 Or ws.Name = "海克斯大乱斗经典强化符文（KiwiJade Augments）" Or Right$(ws.Name, 16) = "KiwiJadeAugments" _
                 Or ws.Name = "斗魂竞技场锻造器（Cherry Anvils）" Or Right$(ws.Name, 12) = "CherryAnvils" Or ws.Name = "海克斯大乱斗锻造器（Kiwi Anvils）" Or Right$(ws.Name, 10) = "KiwiAnvils" _
                 Or ws.Name = "斗魂竞技场回合列表（Cherry Round List）" Or Right$(ws.Name, 15) = "CherryRoundList" Or ws.Name = "斗魂竞技场回合（Cherry Round）" Or Right$(ws.Name, 11) = "CherryRound" Or ws.Name = "斗魂竞技场阶段（Cherry Phase）" Or Right$(ws.Name, 11) = "CherryPhase" Or ws.Name = "斗魂竞技场回合阶段（Cherry Round Phase）" Or Right$(ws.Name, 16) = "CherryRoundPhase" _
-                Or ws.Name = "斗魂竞技场场景英雄（Cherry Cameos）" Or Right$(ws.Name, 12) = "CherryCameos" Or ws.Name = "斗魂竞技场荣誉嘉宾（Cherry Guests）" Or Right$(ws.Name, 12) = "CherryGuests" _
+                Or ws.Name = "斗魂竞技场场景英雄（Cherry Cameos）" Or Right$(ws.Name, 12) = "CherryCameos" Or ws.Name = "斗魂竞技场荣誉嘉宾（Cherry Guests）" Or Right$(ws.Name, 12) = "CherryGuests" Or ws.Name = "海克斯大乱斗乐队（Kiwi Bands）" Or Right$(ws.Name, 9) = "KiwiBands" _
                 Or ws.Name = "云顶之弈赛季（TFT Set）" Or Right$(ws.Name, 6) = "TFTSet" _
                 Or ws.Name = "云顶之弈商店（TFT Shop）" Or Right$(ws.Name, 7) = "TFTShop" _
                 Or ws.Name = "云顶之弈商店内容（TFT Shop Content）" Or Right$(ws.Name, 14) = "TFTShopContent" _
@@ -59,6 +59,7 @@ Sub FreezeAndFilterGameDataSheets()
             ElseIf ws.Name = "指令（Cheat）" Or Right$(ws.Name, 5) = "Cheat" _
                     Or ws.Name = "装备（Items）" Or Right$(ws.Name, 5) = "Items" _
                     Or ws.Name = "海克斯大乱斗强化符文套装（Kiwi Augment Set）" Or Right$(ws.Name, 14) = "KiwiAugmentSet" _
+                    Or ws.Name = "海克斯大乱斗乐队（Kiwi Bands）" Or Right$(ws.Name, 9) = "KiwiBands" _
                     Or ws.Name = "云顶之弈回合（TFT Round）" Or Right$(ws.Name, 8) = "TFTRound" _
                     Or ws.Name = "云顶之弈角色定位（TFT Character Role）" Or Right$(ws.Name, 16) = "TFTCharacterRole" _
                     Or ws.Name = "云顶之弈羁绊（TFT Traits）" Or Right$(ws.Name, 9) = "TFTTraits" Then

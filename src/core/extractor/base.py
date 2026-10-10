@@ -565,6 +565,11 @@ class LoLDataExtractor:
             "sheet_name_without_version": "斗魂竞技场荣誉嘉宾（Cherry Guests）",
             "sheet_name_with_version": "{version} CherryGuests"
         },
+        "KiwiGoH": {
+            "dType": "KiwiGoH",
+            "sheet_name_without_version": "海克斯大乱斗乐队（Kiwi Bands）",
+            "sheet_name_with_version": "{version} KiwiBands"
+        },
         "TFTSet": {
             "dType": "TFTSet",
             "sheet_name_without_version": "云顶之弈赛季（TFT Set）",
@@ -715,6 +720,7 @@ class LoLDataExtractor:
         "CherryRoundPhase",
         "CherryCameo",
         "CherryGoH",
+        "KiwiGoH",
         "TFTSet",
         "TFTShop",
         "TFTShopContent",
