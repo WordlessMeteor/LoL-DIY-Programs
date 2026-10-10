@@ -3918,7 +3918,8 @@ class LoLDataExtractor:
         :return: 网址。<br>An url.
         :rtype: str
         '''
-        return "https://raw.communitydragon.org/%s/game/%s.png" %(version, os.path.splitext(path)[0].lower())
+        pathhash_re: re.Pattern[str] = re.compile(r"\{\w{16}\}")
+        return "https://raw.communitydragon.org/%s/game/%s.png" %(version, "unknown/%s" %(path.lstrip("{").rstrip("}")) if pathhash_re.fullmatch(path) else os.path.splitext(path)[0].lower())
     
     @classmethod
     def url2image(cls, url: str) -> str:
