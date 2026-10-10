@@ -1910,7 +1910,7 @@ class LoLDataExtractor:
             return new_list
         else:
             #在最新的英雄联盟二进制描述数据中，所有路径字符串都被设置为小写。因此，不用再担心大小写的问题了（In the latest League of Legends binary description data, all path strings are set to lowercase. Therefore, there's no need to worry about case sensitivity anymore）
-            return cls.hash2str(data, deep = deep, hashType = "gamePath" if data.lower() in cls.bin_hashtable_gamePath.values() else "entry" if cls.str2hash_bin(data) in primary_fields else "hash") if isinstance(data, str) else data #从此处返回递归的上一层时，`data`将变成`new_data`直接添加到新容器中（When the recurson returns to the upper layer from here, `data` will be directly added into the new container as `new_data`）
+            return cls.hash2str(data, deep = deep, hashType = "gamePath" if cls.str2hash_path(data) in cls.bin_hashtable_gamePath else "entry" if cls.str2hash_bin(data) in primary_fields else "hash") if isinstance(data, str) else data #从此处返回递归的上一层时，`data`将变成`new_data`直接添加到新容器中（When the recurson returns to the upper layer from here, `data` will be directly added into the new container as `new_data`）
     
     #定义说明文本转换函数族（Define tooltip transformation function family）
     @classmethod
