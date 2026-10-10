@@ -1721,12 +1721,12 @@ if __name__ == "__main__":
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
         #     cherry_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # cherry_bin = LoLDataExtractor.resolve_bin_hash(cherry_bin)
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
-        #     kiwi_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
+            kiwi_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # kiwi_bin = LoLDataExtractor.resolve_bin_hash(kiwi_bin)
         ##整合后的数据（Merged data）
-        with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
-            champions_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
+        #     champions_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # champions_bin = LoLDataExtractor.resolve_bin_hash(champions_bin)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/characters_bin.json", "r", encoding = "utf-8") as fp:
         #     characters_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
@@ -1736,9 +1736,9 @@ if __name__ == "__main__":
         # for (key, value) in shared_bin.items():
         #     if key != "__linked" and value["__type"] == "SpellObject":
         #         LoLDataExtractor.mSpells[value["mScriptName"]] = value
-        for (key, value) in champions_bin.items():
-            if key != "__linked" and value["__type"] == "SpellObject":
-                LoLDataExtractor.mSpells[value["mScriptName"]] = value
+        # for (key, value) in champions_bin.items():
+        #     if key != "__linked" and value["__type"] == "SpellObject":
+        #         LoLDataExtractor.mSpells[value["mScriptName"]] = value
         # for (key, value) in characters_bin.items():
         #     if key != "__linked" and value["__type"] == "SpellObject":
         #         LoLDataExtractor.mSpells[value["mScriptName"]] = value
@@ -1770,8 +1770,8 @@ if __name__ == "__main__":
         logPrint("说明文本测试样例：")
         tests: list[dict[str, Any]] = [
             {
-                "tooltip": "卡西奥佩娅的所有<speed>移动速度</speed>加成的效率提升@PercentHasteMod@。",
-                "binData": champions_bin["Characters/Cassiopeia/Spells/CassiopeiaPassiveAbility/CassiopeiaPassive"]["mSpell"],
+                "tooltip": "附近每有一个敌方英雄，你就会获得<attackSpeed>@ASPerEnemyTooltip@攻击速度</attackSpeed>、<scaleArmor>@ArmorPerEnemy@护甲</scaleArmor>和<scaleMR>@MRPerEnemy@魔法抗性</scaleMR>。",
+                "binData": kiwi_bin["{1c86959d}"]["mSpell"],
                 "reservedVars": None
             },
         ]

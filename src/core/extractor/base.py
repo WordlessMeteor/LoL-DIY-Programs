@@ -1921,8 +1921,11 @@ class LoLDataExtractor:
             - 键名小写。<br>Lower-cased keys.
             - 键值对拷贝，但键转化为hash形式。<br>Copied key-value pairs, but keys transformed into hash form.
             - 部分键值对的适当处理，以便引用。<br>Proper handling of some key-value pairs for reference.
+        
         :param binData: 待处理的二进制描述数据。<br>The binary description to process.
         :type binData: dict[str, Any]
+        :return: 标准化后的二进制描述数据。<br>The normalized binary description data.
+        :rtype: dict[str, Any]
         '''
         pHash: re.Pattern[str] = re.compile(r"\{\w+\}")
         normalizedBinData: dict[str, Any] = {}
@@ -2035,7 +2038,29 @@ class LoLDataExtractor:
             return binData
     
     @classmethod
-    def tooltipStringtableIteration(cls, tooltip: str, strtable_locale: dict[str, int | dict[str, str]], locale: str, deep: bool = False, reserve_CSS: bool = False, reserve_variable: bool = False, binData: Optional[dict[str, Any]] = None, enableModeOverride: bool = False, reservedVarsList: Optional[dict[str, list[str]]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str: #将详细信息中花括号包围起来的部分替换成实际的字符串（Replace the part enclosed with two pairs of curly brackets into the actual string it represents）
+    def extractVarHashtable(cls, binData: dict[str, Any]) -> dict[str, str]:
+        '''
+        对二进制描述数据中的变量名计算hash值，形成一个变量散列表。<br>Compute the hash values of variable names in binary description data and form a variable hash table.
+        
+        :param binData: 二进制描述数据。一般是直接包含变量的部分。<br>Binary description data. Usually, it's the part that directly contains variables.
+        :type binData: dict[str, Any]
+        :return: 变量散列表。键是变量名的hash值，值是变量名。<br>Variable hash table, where keys are hash values of variable names and values are variable names.
+        :rtype: dict[str, str]
+        '''
+        bin_hashtable_var: dict[str, str] = {} #类型为“NamedDataValueCalculationPart”的公式中可能会出现未被解析的hash值。这类hash值实际上可以在“DataValues”或“mDataValues”中找到对应的字符串，因此构建一个临时的散列表来存储这些字符串和其hash值的对应关系（In the formula of type "NamedDataValueCalculationPart", some unresolved hash values may appear. These hash values can actually be found in "DataValues" or "mDataValues", so a temporary hash table is constructed to store the correspondence between these strings and their hash values）
+        for (key, value) in binData.items():
+            if key == "DataValues" or key == "{06afef1b}":
+                for spellData in binData[key]:
+                    var = spellData["name"] if "name" in spellData else spellData["mName"]
+                    bin_hashtable_var[cls.compute_binhash(var)] = var
+            elif key == "mDataValues" or key == "{1f4d20a6}":
+                for data in binData[key]:
+                    var = data["name"] if "name" in data else data["mName"]
+                    bin_hashtable_var[cls.compute_binhash(var)] = var
+        return bin_hashtable_var
+    
+    @classmethod
+    def tooltipStringtableIteration(cls, tooltip: str, strtable_locale: dict[str, int | dict[str, str]], locale: str, deep: bool = False, reserve_CSS: bool = False, reserve_variable: bool = False, binData: Optional[dict[str, Any]] = None, enableModeOverride: bool = False, reservedVarsList: Optional[dict[str, list[str]]] = None, varHashtable: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str: #将详细信息中花括号包围起来的部分替换成实际的字符串（Replace the part enclosed with two pairs of curly brackets into the actual string it represents）
         '''
         迭代地将说明文本中用双花括号包围起来的字符串键替换为实际的字符串。<br>Iteratively replace the string keys enclosed in double curly brackets in the tooltip with actual strings.
         
@@ -2057,11 +2082,15 @@ class LoLDataExtractor:
         :type enableModeOverride: bool
         :param reservedVarsList: 保留变量列表。键为变量名，值为该变量在不同游戏模式下的取值列表，列表的每个元素往往后缀“(mode: ...)”。<br>Reserved variable list., where keys are variable names, and values are the value lists of the variable in different game modes. Each element in the list often ends with "(mode: ...)".
         :type reservedVarsList: dict[str, list[str]]
+        :param varHashtable: 变量散列表。用于解决部分公式引用了未解析的hash值的问题。<br>Variable hash table. Used to resolve issues with some formulas referencing unresolved hash values.
+        :type varHashtable: dict[str, str] | None
         :param flexibleData: 附加数据。<br>Supplemental data.
         :type flexibleData: dict[str, dict[str, Any] | Any] | None
         :return: 嵌套说明文本键在替换后的说明文本。<br>The tooltip after replacement of nested tooltip keys.
         :rtype: str
         '''
+        if varHashtable == None:
+            varHashtable = {}
         pCite: re.Pattern[str] = re.compile(r"{{[/\sA-Za-z0-9=#\'_@]*}}")
         start_index = 0 #如果没有在字符串常量池中找到花括号包起来的部分对应的条目，则跳过这个部分（If the entry corresponding to the citation enclosed in a pair of curly brackets isn't found in the stringtable, skip this citation）
         if binData != None:
@@ -2078,7 +2107,7 @@ class LoLDataExtractor:
             if (entry_key.lower() in strtable_locale["entries"] or cls.compute_rsthash(entry_key, strtable_locale["version"]) in strtable_locale["entries"]):
                 tooltip = tooltip.replace(citation, cls.get_strtable_value(strtable_locale, entry_key))
                 if deep:
-                    tooltip = cls.variableSubstitute(tooltip, binData, locale, enableModeOverride = False, reserve_variable = reserve_variable, reservedVars = reservedVars, flexibleData = flexibleData)
+                    tooltip = cls.variableSubstitute(tooltip, binData, locale, enableModeOverride = False, reserve_variable = reserve_variable, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
             else:
                 start_index = end_index + 1 #这一行语句只放在找不到对应条目的情况下执行，这样，在引用一个条目时，可以递归确认该引用的条目是否还有引用（This line only executes when the corresponding entry isn't found. In this way, when citing an entry, it can recursively confirm whether the cited entry has further citations）
             index += 1
@@ -2089,7 +2118,7 @@ class LoLDataExtractor:
                 else:
                     expandRow_repCount = 1
                 tooltip = cls.tooltipPreparation(tooltip, locale, expandRow_repCount = expandRow_repCount)
-            tooltip = cls.variableSubstitute(tooltip, binData, locale, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVars = None, flexibleData = flexibleData)
+            tooltip = cls.variableSubstitute(tooltip, binData, locale, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVars = None, varHashtable = varHashtable, flexibleData = flexibleData)
         return tooltip
     
     @classmethod
@@ -2148,7 +2177,7 @@ class LoLDataExtractor:
         return str(cls.aRound(values[0], digits = digits)) if len(set(values)) == 1 else "/".join(list(map(lambda x: str(cls.aRound(x, digits = digits)), values)))
     
     @classmethod
-    def leafletCalculation(cls, binData: dict[str, Any], formulaPart: dict[str, Any], var_prefix: str, locale: str, enableModeOverride: bool = False, rowIndex: int = -1, reservedVars: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str:
+    def leafletCalculation(cls, binData: dict[str, Any], formulaPart: dict[str, Any], var_prefix: str, locale: str, enableModeOverride: bool = False, rowIndex: int = -1, reservedVars: Optional[dict[str, str]] = None, varHashtable: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str:
         '''
         数值转换的末端计算。<br>Terminal calculation of variable transformation.
         
@@ -2166,11 +2195,15 @@ class LoLDataExtractor:
         :type enableModeOverride: bool
         :param reservedVars: 处理暂存的变量值，对于一些在嵌套时仍然保持变量形式的说明文本尤其有用，例如奥恩被动的说明文本。<br>Handles reserved variable values, especially useful for some tooltips that still keep the variable form during nesting, e.g. OrnnP.
         :type reservedVars: dict[str, str] | None
+        :param varHashtable: 变量散列表。用于解决部分公式引用了未解析的hash值的问题。<br>Variable hash table. Used to resolve issues with some formulas referencing unresolved hash values.
+        :type varHashtable: dict[str, str] | None
         :param flexibleData: 附加数据。<br>Supplemental data.
         :type flexibleData: dict[str, dict[str, Any] | Any] | None
         :return: 某个变量的值字符串。<br>The value string of a variable.
         :rtype: str
         '''
+        if varHashtable == None:
+            varHashtable = {}
         mStatFormula_dict_zh: dict[int, str] = {0: "", 1: "基础", 2: "额外"} #0代表总（0 stands for total）
         mStatFormula_dict_en: dict[int, str] = {0: "", 1: "basic ", 2: "bonus "}
         mStat_dict_zh: dict[int, str] = {0: "法术强度", 1: "护甲", 2: "攻击力", 4: "攻击速度", 6: "魔法抗性", 7: "移动速度", 8: "暴击几率", 9: "暴击伤害", 10: "冷却缩减", 11: "技能急速", 12: "生命值", 13: "当前生命值", 14: "当前生命值百分比", 18: "生命偷取", 22: "固定法术穿透", 23: "百分比法术穿透", 29: "穿甲", 31: "体型", 34: "治疗和护盾强度"}
@@ -2185,7 +2218,7 @@ class LoLDataExtractor:
         useCHSPrompt: bool = locale in cls.ZH_LOCALE
         formulaPart_type: str = formulaPart["__type"]
         if formulaPart_type in {"ClampSubPartsCalculationPart", "ExponentSubPartsCalculationPart", "ProductOfSubPartsCalculationPart", "StatBySubPartCalculationPart", "SubPartScaledProportionalToStat", "SumOfSubPartsCalculationPart", "{8a96ea3c}", "{382277da}"}:
-            formulaStr: str = cls.subpartCalculation(binData, formulaPart, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            formulaStr: str = cls.subpartCalculation(binData, formulaPart, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
             if formulaPart_type == "ClampSubPartsCalculationPart":
                 mCeiling = cls.aRound(cls.dGet(formulaPart, "mCeiling", 0, 0), 2)
                 mFloor = cls.aRound(cls.dGet(formulaPart, "mFloor", 0, 0), 2)
@@ -2209,7 +2242,7 @@ class LoLDataExtractor:
             partCalc = cls.aRound(mCoefficient, 5)
             formulaStr = str(partCalc) + " × stack of buff: " + formulaPart["mBuffName"]
         elif formulaPart_type == "BuffCounterByNamedDataValueCalculationPart": #仅用于游戏内动态数值的显示，如【终极轮盘】中的【盛宴】提供的攻击距离（Only applies to in-game dynamic stat display, e.g. attack range granted by [Feast] in [Ultimate Roulette]）
-            partCalc = cls.variableCalculation(binData, formulaPart["mDataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            partCalc = cls.variableCalculation(binData, formulaPart["mDataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
             formulaStr = partCalc + " × stack of buff: " + formulaPart["mBuffName"]
         elif formulaPart_type == "ByCharLevelBreakpointsCalculationPart": #阶梯式等级提供增益（Bonus value provided by levels in a step function manner）
             mLevel1Value: int | float = formulaPart.get("mLevel1Value", 0)
@@ -2259,9 +2292,9 @@ class LoLDataExtractor:
             formulaStr = "100 / (100 + 技能急速)" if useCHSPrompt else "100 / (100 + Ability Haste)"
         elif formulaPart_type == "EffectValueCalculationPart": #在装备中仅用于灰烬小刀、冰雹刀刃和黑曜石锋刃的灼烧伤害，在强化符文中仅用于【招架】和【终极轮盘】中的【加农炮幕】的弹体伤害（Only applies to the burn damage from Emberknifre, Hailblade and Obsidian Edge in items and the missiles from [Parry] and [Cannon Barrage] in [Ultimate Roulette] in augments）
             mEffectIndex: int = formulaPart["mEffectIndex"]
-            formulaStr = cls.variableCalculation(binData, f"Effect{mEffectIndex}Amount", var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            formulaStr = cls.variableCalculation(binData, f"Effect{mEffectIndex}Amount", var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
         elif formulaPart_type == "NamedDataValueCalculationPart":
-            formulaStr = cls.variableCalculation(binData, formulaPart["mDataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            formulaStr = cls.variableCalculation(binData, formulaPart["mDataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
         elif formulaPart_type == "NumberCalculationPart":
             partCalc = cls.aRound(formulaPart.get("mNumber", 0), 5)
             formulaStr = str(partCalc)
@@ -2277,26 +2310,26 @@ class LoLDataExtractor:
                 stat_header = "最大" if useCHSPrompt else "max "
             formulaStr = str(partCalc) + " × " + stat_header + stat_desc
         elif formulaPart_type == "StatByNamedDataValueCalculationPart":
-            formulaStr = cls.variableCalculation(binData, formulaPart["mDataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            formulaStr = cls.variableCalculation(binData, formulaPart["mDataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
             stat_header: str = mStatFormula_dict_zh[formulaPart.get("mStatFormula", 0)] if useCHSPrompt else mStatFormula_dict_en[formulaPart.get("mStatFormula", 0)]
             stat_desc: str = mStat_dict_zh[formulaPart.get("mStat", 0)] if useCHSPrompt else mStat_dict_en[formulaPart.get("mStat", 0)]
             if mStat_dict_zh[formulaPart.get("mStat", 0)] == "生命值" and formulaPart.get("mStatFormula", 0) == 0:
                 stat_header = "最大" if useCHSPrompt else "max "
             formulaStr += " × " + stat_header + stat_desc
         elif formulaPart_type == "StatEfficiencyPerHundred":
-            formulaStr = cls.variableCalculation(binData, formulaPart["mDataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            formulaStr = cls.variableCalculation(binData, formulaPart["mDataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
             mBonusStatForEfficiency: float = cls.aRound(formulaPart["mBonusStatForEfficiency"], 5)
             formulaStr += " × " + str(mBonusStatForEfficiency)
         elif formulaPart_type == "{2b25a73a}": #仅用于【注魔】（Only applies to Juiced）
-            formulaStr = cls.variableCalculation(binData, formulaPart["DataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            formulaStr = cls.variableCalculation(binData, formulaPart["DataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
             formulaStr += " × " + ("最大法力值" if useCHSPrompt else "max Mana")
         elif formulaPart_type == "{4ce08984}": #仅用于不落魔锋 亚恒的【不落之志】（Only applies to ZaahenPassive）
             #下面假设所有与等级相关的值列表的所有元素相同。这样，`burnValueList`方法应当只返回一个值（We assume all elements in the value list of a level-related key are equal. In that case, `burnValueList` method should return a single value）
             #如果后面出现与等级相关的值列表还随等级增长，那就只能使用非数学的一段描述性文字放到花括号中（If later Riot develops some mechanism where the level-scaling number scales with level, then I have to put a non-mathematical descriptional text into between the curly brackets）
-            mLevel1ValueStr: str = cls.variableCalculation(binData, formulaPart["{91d404a5}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            mLevel1ValueStr: str = cls.variableCalculation(binData, formulaPart["{91d404a5}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
             mLevel1Value_modeSplitDict_str: dict[str, str] = cls.variableModeOverrideStrToStruct(mLevel1ValueStr) #经过此函数后，字典中保底有一个“default”键（The returned dictionary at least has a "default" key）
             mLevel1Value_modeSplitDict_float: dict[str, float] = {key: float(value) for (key, value) in mLevel1Value_modeSplitDict_str.items()}
-            mInitialBonusPerLevelStr: str = cls.variableCalculation(binData, formulaPart["{bbd778a2}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            mInitialBonusPerLevelStr: str = cls.variableCalculation(binData, formulaPart["{bbd778a2}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
             mInitialBonusPerLevel_modeSplitDict_str: dict[str, str] = cls.variableModeOverrideStrToStruct(mInitialBonusPerLevelStr)
             mInitialBonusPerLevel_modeSplitDict_float: dict[str, float] = {key: float(value) for (key, value) in mInitialBonusPerLevel_modeSplitDict_str.items()} #每级增加的数值。从2级开始加（The value to increment reaching each level. It takes effect from Level 2）
             if "{9823b29a}" in formulaPart:
@@ -2324,11 +2357,11 @@ class LoLDataExtractor:
                         mBonusPerLevelAtAndAfter_modeSplitDict_float: dict[str, float] = {}
                         if i == formulaPart["{9823b29a}"][j].get("level", 1):
                             if "{b0d8b2ac}" in formulaPart["{9823b29a}"][j]: #更新在该断点等级及之后等级的加成（Update bonus per level at and after this breakpoint level）
-                                mBonusPerLevelStr = cls.variableCalculation(binData, formulaPart["{9823b29a}"][j]["{b0d8b2ac}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData) #原名是叫“BonusPerLevelAtAndAfter”，意思就是覆盖初始值，所以直接用“BonusPerLevel”作为变量名（The original name is "BonusPerLevelAtAndAfter", which means to override the initial value, so I use "BonusPerLevel" as a part of this variable's name）
+                                mBonusPerLevelStr = cls.variableCalculation(binData, formulaPart["{9823b29a}"][j]["{b0d8b2ac}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData) #原名是叫“BonusPerLevelAtAndAfter”，意思就是覆盖初始值，所以直接用“BonusPerLevel”作为变量名（The original name is "BonusPerLevelAtAndAfter", which means to override the initial value, so I use "BonusPerLevel" as a part of this variable's name）
                                 mBonusPerLevel_modeSplitDict_str = cls.variableModeOverrideStrToStruct(mBonusPerLevelStr)
                                 mBonusPerLevel_modeSplitDict_float = {key: float(value) for (key, value) in mBonusPerLevel_modeSplitDict_str.items()}
                             if "{ae9b464d}" in formulaPart["{9823b29a}"][j]: #在该断点等级时的额外加成（Bonus at this breakpoint level）
-                                mBonusPerLevelAtAndAfterStr: str = cls.variableCalculation(binData, formulaPart["{9823b29a}"][j]["{ae9b464d}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+                                mBonusPerLevelAtAndAfterStr: str = cls.variableCalculation(binData, formulaPart["{9823b29a}"][j]["{ae9b464d}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
                                 mBonusPerLevelAtAndAfter_modeSplitDict_str = cls.variableModeOverrideStrToStruct(mBonusPerLevelAtAndAfterStr)
                                 mBonusPerLevelAtAndAfter_modeSplitDict_float = {key: float(value) for (key, value) in mBonusPerLevelAtAndAfter_modeSplitDict_str.items()}
                             if j < len(formulaPart["{9823b29a}"]) - 1:
@@ -2389,15 +2422,15 @@ class LoLDataExtractor:
                 formulaStr = " || ".join(levelValues_modeSplitList)
             formulaStr += " (Level 1 to %d)" %cls.levelScaling_cap #由于变量代换过程可能会使用`variableModeOverrideStrToStruct`方法计算模式重载等级增长数值，所以需要把等级的提示放到模式的提示的后面，防止正则表达式无法识别模式重载的数值（Since the variable substitution process may use `variableModeOverrideStrToStruct` method to calculate the mode overridden level scaling values, the level prompt needs to be placed after the mode prompt, otherwise the regex won't be able to recognize the mode overridden values）
         elif formulaPart_type == "{b22609db}": #仅用于刀锋舞者 艾瑞莉娅的【艾欧尼亚热诚】（Only applies to IreliaPassive）
-            mLevel1ValueStr: str = cls.variableCalculation(binData, formulaPart["{91d404a5}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
-            mValuePerLevelStr: str = cls.variableCalculation(binData, formulaPart["{b2cd0eb0}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            mLevel1ValueStr: str = cls.variableCalculation(binData, formulaPart["{91d404a5}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
+            mValuePerLevelStr: str = cls.variableCalculation(binData, formulaPart["{b2cd0eb0}"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
             formulaStr = f"{mLevel1ValueStr} + {mValuePerLevelStr} × Level"
         elif formulaPart_type == "{ee18a47b}": #用于兽灵行者 乌迪尔的【狂暴爪击】（Applies to UdyrQ）
             #重构模式分化字典（Reconstruct the mode division dictionary）
-            mLevel1ValueStr: str = cls.variableCalculation(binData, formulaPart["StartDataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            mLevel1ValueStr: str = cls.variableCalculation(binData, formulaPart["StartDataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
             mLevel1Value_modeSplitDict_str: dict[str, str] = cls.variableModeOverrideStrToStruct(mLevel1ValueStr)
             mLevel1Value_modeSplitDict_float: dict[str, float] = {key: float(value) for (key, value) in mLevel1Value_modeSplitDict_str.items()}
-            mLevel18ValueStr: str = cls.variableCalculation(binData, formulaPart["EndDataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            mLevel18ValueStr: str = cls.variableCalculation(binData, formulaPart["EndDataValue"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
             mLevel18Value_modeSplitDict_str: dict[str, str] = cls.variableModeOverrideStrToStruct(mLevel18ValueStr)
             mLevel18Value_modeSplitDict_float: dict[str, float] = {key: float(value) for (key, value) in mLevel18Value_modeSplitDict_str.items()}
             #汇总模式键（Summarize mode keys）
@@ -2423,13 +2456,13 @@ class LoLDataExtractor:
             mLevel_end_ValueStr: str = " || ".join(mLevel_end_Value_modeSplitList)
             formulaStr = f"{mLevel1ValueStr} - {mLevel_end_ValueStr} (Level 1 to {cls.levelScaling_cap})"
         elif formulaPart_type == "{f3cbe7b2}": #mSpellCalculationKey来自mItemCalculations键的情形。在装备中仅用于夺萃之镰和无终恨意（The case where the value of `mSpellCalculationKey` is a key of the value of `mItemCalculations`. In items, this only applies to Essence Reaver and Unending Despair）
-            formulaStr = cls.variableCalculation(binData, formulaPart["mSpellCalculationKey"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            formulaStr = cls.variableCalculation(binData, formulaPart["mSpellCalculationKey"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
         else: #异常处理（Exception handling）
             formulaStr = "φ"
         return formulaStr
     
     @classmethod
-    def subpartCalculation(cls, binData: dict[str, Any], subpart_formula: dict[str, Any], var_prefix: str, locale: str, enableModeOverride: bool = False, rowIndex: int = -1, reservedVars: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str:
+    def subpartCalculation(cls, binData: dict[str, Any], subpart_formula: dict[str, Any], var_prefix: str, locale: str, enableModeOverride: bool = False, rowIndex: int = -1, reservedVars: Optional[dict[str, str]] = None, varHashtable: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str:
         '''
         副部计算。通常作为中间处理过程而调用末端计算方法。<br>Subpart calculation. Usually serve as an intermediate process to call `leafletCalculation` method.
         
@@ -2447,11 +2480,15 @@ class LoLDataExtractor:
         :type rowIndex: int
         :param reservedVars: 处理暂存的变量值，对于一些在嵌套时仍然保持变量形式的说明文本尤其有用，例如奥恩被动的说明文本。<br>Handles reserved variable values, especially useful for some tooltips that still keep the variable form during nesting, e.g. OrnnP.
         :type reservedVars: dict[str, str] | None
+        :param varHashtable: 变量散列表。用于解决部分公式引用了未解析的hash值的问题。<br>Variable hash table. Used to resolve issues with some formulas referencing unresolved hash values.
+        :type varHashtable: dict[str, str] | None
         :param flexibleData: 附加数据。<br>Supplemental data.
         :type flexibleData: dict[str, dict[str, Any] | Any] | None
         :return: 某个涉及副部计算的变量的中间处理结果。<br>The temporary result of a variable involving subpart calculation.
         :rtype: str
         '''
+        if varHashtable == None:
+            varHashtable = {}
         #首先得出副部列表（First, get the list of subparts）
         subpart_formula_type: str = subpart_formula["__type"]
         if subpart_formula_type in {"ClampSubPartsCalculationPart", "SumOfSubPartsCalculationPart", "{8a96ea3c}", "{382277da}"}:
@@ -2472,13 +2509,13 @@ class LoLDataExtractor:
         includeContDivision: bool = False #标记是否涉及连除式的计算（Marks whether the formula involves a continuous division）
         for subpart in subparts:
             if subpart["__type"] in {"ClampSubPartsCalculationPart", "ExponentSubPartsCalculationPart", "SumOfSubPartsCalculationPart", "ProductOfSubPartsCalculationPart", "{8a96ea3c}", "{382277da}"}:
-                subpart_formula_str: str = cls.subpartCalculation(binData, subpart, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+                subpart_formula_str: str = cls.subpartCalculation(binData, subpart, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
                 if subpart_formula["__type"] == "ClampSubPartsCalculationPart": #在装备中仅用于斯特拉克的挑战护手（In items, this only applies to Sterak's Gage）
                     mCeiling = cls.aRound(cls.dGet(subpart_formula, "mCeiling", 0, 0), 2)
                     mFloor = cls.aRound(cls.dGet(subpart_formula, "mFloor", 0, 0), 2) #在14.13版本的奎桑提弈子的技能二进制描述中，某个“mFloor”键的值是None（In TFT10_KSante's spell data, the value of some "mFloor" is None）
                     subpart_formula_str += f" ∈ [{mFloor}, {mCeiling}]"
             else:
-                subpart_formula_str = cls.leafletCalculation(binData, subpart, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+                subpart_formula_str = cls.leafletCalculation(binData, subpart, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
             subpart_formula_strs.append(subpart_formula_str)
             if TooltipOperand.pContDivision.search(subpart_formula_str):
                 includeContDivision = True
@@ -2576,7 +2613,7 @@ class LoLDataExtractor:
         return modeOverridenValueDict
     
     @classmethod
-    def variableCalculation(cls, binData: dict[str, Any], var: str, var_prefix: str, locale: str, initial_call: bool = False, enableModeOverride: bool = False, rowIndex: int = -1, reservedVars: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str:
+    def variableCalculation(cls, binData: dict[str, Any], var: str, var_prefix: str, locale: str, initial_call: bool = False, enableModeOverride: bool = False, rowIndex: int = -1, reservedVars: Optional[dict[str, str]] = None, varHashtable: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None) -> str:
         r'''
         计算一个变量的值字符串。<br>Calculate the value string of a variable.
         
@@ -2599,6 +2636,8 @@ class LoLDataExtractor:
         :type rowIndex: int
         :param reservedVars: 处理暂存的变量值，对于一些在嵌套时仍然保持变量形式的说明文本尤其有用，例如奥恩被动的说明文本。<br>Handles reserved variable values, especially useful for some tooltips that still keep the variable form during nesting, e.g. OrnnP.
         :type reservedVars: dict[str, str] | None
+        :param varHashtable: 变量散列表。用于解决部分公式引用了未解析的hash值的问题。<br>Variable hash table. Used to resolve issues with some formulas referencing unresolved hash values.
+        :type varHashtable: dict[str, str] | None
         :param flexibleData: 附加数据，用于传递可选参数。键是数据的描述，值一般情况下是通过session.request.json方法直接获得的数据对象，也可以自定义。<br>Supplemental data, designed to pass optional parameters. Each key is the data description. Each value is usually an object returned by `session.request.json` method, but users may specify it according to their demands.<br>键值示例（Key-value pair examples）：
             <pre>
             **Level-1 Key**         **Level-1 Value Description**<br>
@@ -2613,11 +2652,19 @@ class LoLDataExtractor:
         :return: 变量的计算结果字符串。<br>Calculation result string.
         :rtype: str
         '''
+        binhash_re: re.Pattern[str] = re.compile(r"\{\w{8}\}")
+        #参数预处理（Parameter preprocessing）
+        if varHashtable == None:
+            varHashtable = {}
+        if binhash_re.fullmatch(var):
+            var_hash: str = var
+            var = varHashtable.get(var_hash, var_hash)
+        else:
+            var_hash: str = cls.compute_binhash(var) #准备变量名的8位hash值（Prepare the 8-digit hash value of `var`）
         #在指定变量的保留值时，直接返回该值（Directly return the reserved value when it's specified for the variable）
         if isinstance(reservedVars, dict) and var in reservedVars:
             return reservedVars[var]
         #首先处理默认数值（First, resolve the default value）
-        var_hash: str = cls.compute_binhash(var) #准备变量名的8位hash值（Prepare the 8-digit hash value of `var`）
         pOtherBinDataHeader: re.Pattern[str] = re.compile(r"\w*(\.\w*)*:")
         pVarFloat: re.Pattern[str] = re.compile(r"\w*\.-?\d") #变量后带点和数字的表示固定小数位数，这里由于统一通过aRound来进行控制，因此直接忽略（Variables suffixed with a dot and a number means the numebr of digits. Since it's controlled by `aRound` in this program, here we ignore it）
         skip: bool = False #如果出现无法处理的情形，则跳过值处理部分，直接返回空集字符（If the function can't handle some case, it'll skip the value processing part and return an null set character instead）
@@ -2720,7 +2767,7 @@ class LoLDataExtractor:
                 formulaStrs: list[str] = []
                 includeContDivision: bool = False #标记是否涉及连除式的计算（Marks whether the formula involves a continuous division）
                 for formulaPart in stats["mFormulaParts"]:
-                    formulaStr = cls.leafletCalculation(binData, formulaPart, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+                    formulaStr = cls.leafletCalculation(binData, formulaPart, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
                     formulaStrs.append(formulaStr)
                     if TooltipOperand.pContDivision.search(formulaStr):
                         includeContDivision = True
@@ -2735,11 +2782,11 @@ class LoLDataExtractor:
                     pass
                 normalValue = TooltipOperand.object_to_contDivision(normalValue) #还原连除式。如果说明文本运算子对象成功参与`eval`计算，那么这个语句将不起任何作用（Recover continuous divisions. If the TooltipOperand object successfully takes part in `eval` calculation, then this statement doesn't make any difference）
                 if "mMultiplier" in stats:
-                    multiple: str = cls.leafletCalculation(binData, stats["mMultiplier"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+                    multiple: str = cls.leafletCalculation(binData, stats["mMultiplier"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
                     normalValue = f"({normalValue}) × ({multiple})"
             elif stats["__type"] == "GameCalculationConditional": #涉及复杂的远程/近战英雄数值加成计算。仅用于详细信息中双花括号包围的@ChampRange@（Involves complex calculation of bonus stats for melee / ranged champions. Only applies to "@ChampRange@" enclosed within two pairs of curly brackets）
-                defaultValue = cls.variableCalculation(binData, stats["mDefaultGameCalculation"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
-                conditionalValue = cls.variableCalculation(binData, stats["mConditionalGameCalculation"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+                defaultValue = cls.variableCalculation(binData, stats["mDefaultGameCalculation"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
+                conditionalValue = cls.variableCalculation(binData, stats["mConditionalGameCalculation"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
                 requirementType = stats["mConditionalCalculationRequirements"]["__type"]
                 if requirementType == "IsRangedCastRequirement":
                     normalValue = "%d (melee) | %d (ranged)" %(float(defaultValue), float(conditionalValue)) #其返回值将在转换详细信息之后，参与到花括号中的变量替换（This value will participant in the replacement of variables enclosed with two pairs of curly brackets）
@@ -2764,14 +2811,14 @@ class LoLDataExtractor:
                     else:
                         baseValue = cls.calculatedVariables[calculatedKey]["value"]
                 else:
-                    baseValue = cls.variableCalculation(binData, baseKey, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
-                multiple = cls.leafletCalculation(binData, stats["mMultiplier"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+                    baseValue = cls.variableCalculation(binData, baseKey, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
+                multiple = cls.leafletCalculation(binData, stats["mMultiplier"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
                 normalValue = f"({baseValue}) × ({multiple})"
             elif stats["__type"] == "{e9a3c91d}": #远程/近战英雄不同属性收益（Different bonus on melee / ranged champions）
                 formulaStrs: list[str] = []
                 includeContDivision: bool = False
                 for formulaPart in stats["mFormulaParts"]:
-                    formulaStr = cls.leafletCalculation(binData, formulaPart, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+                    formulaStr = cls.leafletCalculation(binData, formulaPart, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
                     formulaStrs.append(formulaStr)
                     if TooltipOperand.pContDivision.search(formulaStr):
                         includeContDivision = True
@@ -2785,7 +2832,7 @@ class LoLDataExtractor:
                 except:
                     pass
                 meleeValue = TooltipOperand.object_to_contDivision(meleeValue)
-                rangedMultiple = cls.leafletCalculation(binData, stats["mRangedMultiplier"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+                rangedMultiple = cls.leafletCalculation(binData, stats["mRangedMultiplier"], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
                 rangedValue: str = f"({meleeValue}) × ({rangedMultiple})"
                 rangedValue = TooltipOperand.contDivision_to_object(rangedValue)
                 try:
@@ -2805,13 +2852,13 @@ class LoLDataExtractor:
             else:
                 stats = binData["StringCalculations"][var_hash]
             if stats["__type"] == "{4750ceb6}":
-                meleeResult = cls.variableCalculation(binData, stats["MeleeResult"].strip("@"), var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
-                rangedResult = cls.variableCalculation(binData, stats["RangedResult"].strip("@"), var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+                meleeResult = cls.variableCalculation(binData, stats["MeleeResult"].strip("@"), var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
+                rangedResult = cls.variableCalculation(binData, stats["RangedResult"].strip("@"), var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
                 normalValue = f"{meleeResult} (melee) | {rangedResult} (ranged)"
             else: #异常处理（Exception handling）
                 skip = True
         elif (matchObj := pVarFloat.fullmatch(var)):
-            normalValue = cls.variableCalculation(binData, var.split(".")[0], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            normalValue = cls.variableCalculation(binData, var.split(".")[0], var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
         elif "__type" in binData and binData["__type"] == "TftUnitPropertyDefinition" and (binData["name"] == var or binData["name"] == var_hash): #以下部分为云顶之弈部分的数值转换（The following parts are data value substitution of TFT）
             #实际上，var参数是上一层函数在调用variableCalculation函数时就已经检验过了，因为单位属性对象是和变量一一对应的（Actually, the `var` parameter has been verified in the parent layer of `variableCalculation` function, because each variableCalculation object obeys one-to-one correspondence with `var`）
             DefaultValue = binData["DefaultValue"]
@@ -2862,20 +2909,20 @@ class LoLDataExtractor:
             else: #异常处理（Exception handling）
                 skip = True
         elif "__type" in binData and binData["__type"] == "TftTraitData" and "InnateTraitSets" in binData and "constants" in binData["InnateTraitSets"][0] and "{df085b93}" in binData["InnateTraitSets"][0]["constants"] and var in binData["InnateTraitSets"][0]["constants"]["{df085b93}"]: #引用的云顶之弈羁绊数据：固有羁绊效果（Cited TFT trait data: Innate trait data values. Examples: ）@TFTTrait.TFTEvent5YR_Punk:FIRST_ROLL_BONUS@%; TFT14_HotRod
-            normalValue = cls.variableCalculation(binData["InnateTraitSets"][0], var, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            normalValue = cls.variableCalculation(binData["InnateTraitSets"][0], var, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
             #将进入云顶之弈通用常数分支（This call is expected to enter the TFT general constants branch）
         elif "__type" in binData and binData["__type"] == "TftTraitData" and "InnateTraitSets" in binData and "constants" in binData["InnateTraitSets"][0] and "{df085b93}" in binData["InnateTraitSets"][0]["constants"] and var_hash in binData["InnateTraitSets"][0]["constants"]["{df085b93}"]: #上一行判断语句的hash写法（The above condition rewritten by `var_hash`）
-            normalValue = cls.variableCalculation(binData["InnateTraitSets"][0], var_hash, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+            normalValue = cls.variableCalculation(binData["InnateTraitSets"][0], var_hash, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
             #将进入云顶之弈通用常数分支（This call is expected to enter the TFT general constants branch）
         elif "__type" in binData and binData["__type"] == "TftTraitData" and "mConditionalTraitSets" in binData and (any(var in list(traitSet["constants"]["{df085b93}"].keys()) for traitSet in binData["mConditionalTraitSets"] if "constants" in traitSet and "{df085b93}" in traitSet["constants"]) or any(var in list(traitSet.keys()) for traitSet in binData["mConditionalTraitSets"])): #引用云顶之弈羁绊数据：条件羁绊效果。示例：（Cited TFT trait data: Conditional trait data values. Examples: ）@TFTTrait.TFT15_MechanicTrait_DreadNote.1:MinUnits@; TFT14_AnimaSquad (Maps/Shipping/Map22/Sets/TFTSet14/Traits/TFT14_AnimaSquad)
             if rowIndex >= 0 and rowIndex < len(binData["mConditionalTraitSets"]) or rowIndex == -1 and len(binData["mConditionalTraitSets"]) == 1: #当条件羁绊集合中只有一个元素时，且说明文本中没有“row”标签时，总是取第一个元素（When there's only one element in the conditional trait set, and the tooltip doesn't have a "row" tag, the first element is always taken）
-                normalValue = cls.variableCalculation(binData["mConditionalTraitSets"][rowIndex], var, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+                normalValue = cls.variableCalculation(binData["mConditionalTraitSets"][rowIndex], var, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
                 #将进入云顶之弈通用常数分支（This call is expected to enter the TFT general constants branch）
             else: #如果一个变量的出现次数超过期望值——mConditionalTraitSets键的值列表的元素数量，则不再对该变量进行转换。示例：云顶之弈第16赛季约德尔人羁绊的说明文本——{040cd634c5}（If the number of times a variable has appearred exceeds the expectation: the number of elements in the value list of `mConditionalTraitSets` key, then the program won't perform any substitution on this variable. Example: TFT16_Yordle's tooltip - {040cd634c5}）
                 skip = True
         elif "__type" in binData and binData["__type"] == "TftTraitData" and "mConditionalTraitSets" in binData and (any(var_hash in list(traitSet["constants"]["{df085b93}"].keys()) for traitSet in binData["mConditionalTraitSets"] if "constants" in traitSet and "{df085b93}" in traitSet["constants"]) or any(var_hash in list(traitSet.keys()) for traitSet in binData["mConditionalTraitSets"])): #上一行判断语句的hash写法（The above condition rewritten by `var_hash`）
             if rowIndex >= 0 and rowIndex < len(binData["mConditionalTraitSets"]) or rowIndex == -1 and len(binData["mConditionalTraitSets"]) == 1:
-                normalValue = cls.variableCalculation(binData["mConditionalTraitSets"][rowIndex], var_hash, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+                normalValue = cls.variableCalculation(binData["mConditionalTraitSets"][rowIndex], var_hash, var_prefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
                 #将进入云顶之弈通用常数分支（This call is expected to enter the TFT general constants branch）
             else: #如果一个变量的出现次数超过期望值——mConditionalTraitSets键的值列表的元素数量，则不再对该变量进行转换。示例：云顶之弈第16赛季约德尔人羁绊的说明文本——{040cd634c5}（If the number of times a variable has appearred exceeds the expectation: the number of elements in the value list of `mConditionalTraitSets` key, then the program won't perform any substitution on this variable. Example: TFT16_Yordle's tooltip - {040cd634c5}）
                 skip = True
@@ -3014,7 +3061,7 @@ class LoLDataExtractor:
                     if "mSpell" in cls.mSpells[otherBinData_mName]:
                         otherBinData: dict[str, Any] = cls.mSpells[otherBinData_mName]["mSpell"]
                         otherBinData = cls.normalizeBinData(otherBinData) #由于以上字符串的替换方法，同一个变量只可能在一次替换过程中经历此分支一次（One variable can only pass this branch once, due to the `replace` method above）
-                        normalValue = cls.variableCalculation(otherBinData, otherBinData_var, otherBinDataPrefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+                        normalValue = cls.variableCalculation(otherBinData, otherBinData_var, otherBinDataPrefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
                     else: #部分指令对象中没有mSpell键（Some SpellObjects don't have `mSpell` key）
                         skip = True
                 else: #在装备说明文本中出现了惩戒的对象名（The object name of Smite exists in an item's tooltip）
@@ -3022,19 +3069,19 @@ class LoLDataExtractor:
             elif otherBinData_category == "ScriptData":
                 if otherBinData_mName in cls.TFTScriptDataMap:
                     otherBinData = cls.TFTScriptDataMap[otherBinData_mName]
-                    normalValue = cls.variableCalculation(otherBinData, otherBinData_var, otherBinDataPrefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+                    normalValue = cls.variableCalculation(otherBinData, otherBinData_var, otherBinDataPrefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
                 else:
                     skip = True
             elif otherBinData_category == "TFTUnitProperty":
                 if otherBinData_var in cls.TFTUnitPropertyMap:
                     otherBinData = cls.TFTUnitPropertyMap[otherBinData_var]
-                    normalValue = cls.variableCalculation(otherBinData, otherBinData_var, otherBinDataPrefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, flexibleData = flexibleData)
+                    normalValue = cls.variableCalculation(otherBinData, otherBinData_var, otherBinDataPrefix, locale, enableModeOverride = enableModeOverride, rowIndex = rowIndex, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
                 else:
                     skip = True
             elif otherBinData_category == "TFTTrait":
                 if otherBinData_mName in cls.TFTTraitMap:
                     otherBinData = cls.TFTTraitMap[otherBinData_mName]
-                    normalValue = cls.variableCalculation(otherBinData, otherBinData_var, otherBinDataPrefix, locale, enableModeOverride = enableModeOverride, rowIndex = otherBinData_varIndex - 1, reservedVars = reservedVars, flexibleData = flexibleData)
+                    normalValue = cls.variableCalculation(otherBinData, otherBinData_var, otherBinDataPrefix, locale, enableModeOverride = enableModeOverride, rowIndex = otherBinData_varIndex - 1, reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData)
                 else:
                     skip = True
         else:
@@ -3061,7 +3108,7 @@ class LoLDataExtractor:
         return result
     
     @classmethod
-    def variableSubstitute(cls, tooltip: str, binData: dict[str, Any], locale: str, enableModeOverride: bool = False, reserve_variable: bool = False, reservedVars: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None): #将双@包围的表达式转换成具体数值（Convert expressions enclosed in double @ into specific stats）
+    def variableSubstitute(cls, tooltip: str, binData: dict[str, Any], locale: str, enableModeOverride: bool = False, reserve_variable: bool = False, reservedVars: Optional[dict[str, str]] = None, varHashtable: Optional[dict[str, str]] = None, flexibleData: Optional[dict[str, dict[str, Any] | Any]] = None): #将双@包围的表达式转换成具体数值（Convert expressions enclosed in double @ into specific stats）
         '''
         将变量替换为具体数值字符串。<br>Replace variables in a tooltip with its result value string.
         
@@ -3077,11 +3124,15 @@ class LoLDataExtractor:
         :type reserve_variable: bool
         :param reservedVars: 处理暂存的变量值，对于一些在嵌套时仍然保持变量形式的说明文本尤其有用，例如奥恩被动的说明文本。<br>Handles reserved variable values, especially useful for some tooltips that still keep the variable form during nesting, e.g. OrnnP.
         :type reservedVars: dict[str, str] | None
+        :param varHashtable: 变量散列表。用于解决部分公式引用了未解析的hash值的问题。<br>Variable hash table. Used to resolve issues with some formulas referencing unresolved hash values.
+        :type varHashtable: dict[str, str] | None
         :param flexibleData: 附加数据。<br>Supplemental data.
         :type flexibleData: dict[str, dict[str, Any] | Any] | None
         :return: 变量代换后的说明文本。<br>Tooltip after variable substitution.
         :rtype: str
         '''
+        if varHashtable == None:
+            varHashtable = {}
         pStats: re.Pattern[str] = re.compile(r"@.*?@") #贪婪模式（Greedy pattern）
         pVar: re.Pattern[str] = re.compile(r"[\w\.\-\:\{\}]+") #部分变量引用了其它指令数据（Some variables cite other spell data）
         #从此处开始，将逐渐推导出sResult_ValueAmongModes（From this step, we'll derivate and obtain `SResult_ValueAmongModes` as a result）
@@ -3128,7 +3179,7 @@ class LoLDataExtractor:
                 if formula == "{}": #特殊处理在转换过程中产生的变量（Special case: variable produced during processing）
                     var = "{" + var + "}"
                     formula = ""
-                result: str = cls.variableCalculation(binData, var, "", locale, initial_call = True, enableModeOverride = enableModeOverride, rowIndex = matchStruct["rowIndex"], reservedVars = reservedVars, flexibleData = flexibleData) #如果存在多个模式的数值，则这些数值由双竖线连接（If there're mode override values for `var`, these values should be concatenated by double "|"）
+                result: str = cls.variableCalculation(binData, var, "", locale, initial_call = True, enableModeOverride = enableModeOverride, rowIndex = matchStruct["rowIndex"], reservedVars = reservedVars, varHashtable = varHashtable, flexibleData = flexibleData) #如果存在多个模式的数值，则这些数值由双竖线连接（If there're mode override values for `var`, these values should be concatenated by double "|"）
                 if formula == "": #这里认为在双@内涉及二次计算的表达式中的变量视为简单变量，即在binData、binData["DataValues"]或binData["mDataValues"]中能够直接找到的变量。不然的话，拳头的程序员为什么不把这个公式放到binData["mItemCalculations"]或者binData["mSpellCalculations"]的部分呢？（Here we assume if the expression has secondary calculation like "*100", then its variable must be a **simple variable**, that is, a variable that can be directly found in `binData`, `binData["DataValues"]` or `binData["mDataValues"]`. Otherwise, why don't Riot programmers put this formula in `binData["mItemCalculations"]` or `binData["mSpellCalculations"]`?）
                     result = result.replace(" × ", " * ")
                     if TooltipOperand.pContDivision.search(result):
@@ -3195,7 +3246,7 @@ class LoLDataExtractor:
         return tooltip
     
     @classmethod
-    def nestedVariableSubstitute(cls, tooltip: str, strtable_locale: dict[str, int | dict[str, str]], binData: dict[str, Any], enableModeOverride: bool = False) -> tuple[str, dict[str, list[str]]]: #将嵌套变量转换成具体数值（Convert nested variables into specific stats）
+    def nestedVariableSubstitute(cls, tooltip: str, strtable_locale: dict[str, int | dict[str, str]]) -> tuple[str, dict[str, list[str]]]: #将嵌套变量转换成具体数值（Convert nested variables into specific stats）
         '''
         专用于处理说明文本内嵌套的说明文本变量。<br>Specifically designed to handle the tooltip keys nested in a tooltip string.
         
@@ -3203,10 +3254,6 @@ class LoLDataExtractor:
         :type tooltip: str
         :param strtable_locale: 字符串常量池。<br>Stringtable.
         :type strtable_locale: dict[str, int | dict[str, str]]
-        :param binData: 标准化后的二进制描述数据。<br>Normalized binary description data.
-        :type binData: dict[str, Any]
-        :param enableModeOverride: 是否启用模式覆盖。启用后，将统计某个变量在不同模式中的数值。默认为假。<br>Whether to enable mode overriden values. If enabled, values among different modes will be taken into consideration. False by default.
-        :type enableModeOverride: bool
         :return: 转换**一次**嵌套说明文本变量后的说明文本字符串。<br>The result tooltip string after **one time of** transformation of nested tooltip variables.
         :rtype: str
         '''
@@ -3485,6 +3532,7 @@ class LoLDataExtractor:
         pSection: re.Pattern[str] = re.compile(r"<section>.*?</section>") #在星号后添加问号以启用贪婪模式（Enable greedy match by adding a question mark after the asterisk）
         layertags: set[str] = {"titleLeft", "titleRight", "subtitleLeft", "subtitleRight", "mainText", "postScriptTitle"}
         #预处理（Preparation）
+        bin_hashtable_var: dict[str, str] = cls.extractVarHashtable(binData)
         binData = cls.normalizeBinData(binData)
         #分节（Divide into sections）
         tooltip_tmp: str = tooltip
@@ -3525,21 +3573,21 @@ class LoLDataExtractor:
                 sections = pSection.findall(tooltip_layer)
             for sectionIndex in range(len(sections)):
                 section: str = sections[sectionIndex]
-                result = cls.tooltipStringtableIteration(section, strtable_locale, locale, deep = False, binData = binData, enableModeOverride = False, reserve_variable = reserve_variable, reservedVarsList = None, flexibleData = flexibleData) #将双花括号包围的变量替换为实际说明文本（Replace the variables enclosed in two pairs of curly brackets with the actual tooltips）
+                result = cls.tooltipStringtableIteration(section, strtable_locale, locale, deep = False, binData = binData, enableModeOverride = False, reserve_variable = reserve_variable, reservedVarsList = None, varHashtable = bin_hashtable_var, flexibleData = flexibleData) #将双花括号包围的变量替换为实际说明文本（Replace the variables enclosed in two pairs of curly brackets with the actual tooltips）
                 if "<expandRow>" in result and "</expandRow>" in result and binData["__type"] == "TftTraitData":
                     expandRow_repCount: int = len(binData["mConditionalTraitSets"]) if "mConditionalTraitSets" in binData else 0
                 else:
                     expandRow_repCount = 1
                 result = cls.tooltipPreparation(result, locale, expandRow_repCount = expandRow_repCount)
                 #下面开始执行复杂的变量代换过程（In the following, a complex variable substitution is performed）
-                result = cls.variableSubstitute(result, binData, locale, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVars = reservedVars, flexibleData = flexibleData)
+                result = cls.variableSubstitute(result, binData, locale, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVars = reservedVars, varHashtable = bin_hashtable_var, flexibleData = flexibleData)
                 while True:
-                    result1, gameModeReservedVars_list = cls.nestedVariableSubstitute(result, strtable_locale, binData, enableModeOverride = enableModeOverride)
+                    result1, gameModeReservedVars_list = cls.nestedVariableSubstitute(result, strtable_locale)
                     if result1 == result: #该条件成立，相当于在上一次执行tooltipStringtableIteration后，不会产生进一步的嵌套变量（If this condition holds, it means that after the last execution of `tooltipStringtableIteration`, no further nested variables will be produced）
                         break
                     result = result1
-                    result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, flexibleData = flexibleData) #尝试转换一下“spell_ornnp_tooltipextended”键的说明文本（Try transforming the tooltip of "spell_ornnp_tooltipextended" key）
-                result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, flexibleData = flexibleData) #在退出以上循环后，需要再次转换说明文本中新产生的变量（After exiting the above loop, it's necessary to transform the newly produced variables in the tooltip）
+                    result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, varHashtable = bin_hashtable_var, flexibleData = flexibleData) #尝试转换一下“spell_ornnp_tooltipextended”键的说明文本（Try transforming the tooltip of "spell_ornnp_tooltipextended" key）
+                result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, varHashtable = bin_hashtable_var, flexibleData = flexibleData) #在退出以上循环后，需要再次转换说明文本中新产生的变量（After exiting the above loop, it's necessary to transform the newly produced variables in the tooltip）
                 #后处理（Post-processing）
                 result = cls.tooltipPostProcessing(result, locale)
                 sections[sectionIndex] = result
@@ -3595,17 +3643,18 @@ class LoLDataExtractor:
         :rtype: str
         '''
         #预处理（Preparation）
+        bin_hashtable_var: dict[str, str] = cls.extractVarHashtable(binData)
         binData = cls.normalizeBinData(binData)
-        result = cls.tooltipStringtableIteration(tooltip, strtable_locale, locale, deep = False, reserve_CSS = True, binData = binData, enableModeOverride = False, reserve_variable = reserve_variable, reservedVarsList = None, flexibleData = flexibleData)
+        result = cls.tooltipStringtableIteration(tooltip, strtable_locale, locale, deep = False, reserve_CSS = True, binData = binData, enableModeOverride = False, reserve_variable = reserve_variable, reservedVarsList = None, varHashtable = bin_hashtable_var, flexibleData = flexibleData)
         #变量代换（Variable substitution）
-        result = cls.variableSubstitute(result, binData, locale, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVars = reservedVars, flexibleData = flexibleData)
+        result = cls.variableSubstitute(result, binData, locale, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVars = reservedVars, varHashtable = bin_hashtable_var, flexibleData = flexibleData)
         while True:
-            result1, gameModeReservedVars_list = cls.nestedVariableSubstitute(result, strtable_locale, binData, enableModeOverride = enableModeOverride)
+            result1, gameModeReservedVars_list = cls.nestedVariableSubstitute(result, strtable_locale)
             if result1 == result: #该条件成立，相当于在上一次执行tooltipStringtableIteration后，不会产生进一步的嵌套变量（If this condition holds, it means that after the last execution of `tooltipStringtableIteration`, no further nested variables will be produced）
                 break
             result = result1
-            result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, reserve_CSS = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, flexibleData = flexibleData)
-        result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, reserve_CSS = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, flexibleData = flexibleData)
+            result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, reserve_CSS = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, varHashtable = bin_hashtable_var, flexibleData = flexibleData)
+        result = cls.tooltipStringtableIteration(result, strtable_locale, locale, deep = True, reserve_CSS = True, binData = binData, enableModeOverride = enableModeOverride, reserve_variable = reserve_variable, reservedVarsList = gameModeReservedVars_list, varHashtable = bin_hashtable_var, flexibleData = flexibleData)
         return result
     
     #下面定义特定数据对象类的记录生成方法。这类方法对应的表头是通过调查全英雄联盟所有二进制描述文件中该对象类型的数据的所有键/条目得到的。这类表头只增不删，开发者可以通过修改输出顺序列表或者调用清除空列函数，将弃用的字段从数据框和工作表中移除（Define the generation method for records of specific object types. The corresponding headers are obtained by inspecting all keys / entries in data of this object type in all binary description files in League of Legends. This kind of headers are always supplemented but never deleted. Developers may remove those deprecated fields from dataframes and worksheets by modifying the output order list or calling `eliminate_empty_fields` function）
