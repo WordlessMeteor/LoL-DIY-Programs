@@ -1090,6 +1090,7 @@ if __name__ == "__main__":
             "C:/Users/19250/AppData/Local/cdragon/data/hashes/lol/hashes.binfields.txt",
             "C:/Users/19250/AppData/Local/cdragon/data/hashes/lol/hashes.binhashes.txt",
             "C:/Users/19250/AppData/Local/cdragon/data/hashes/lol/hashes.bintypes.txt",
+            "C:/Users/19250/AppData/Local/cdragon/data/hashes/lol/hashes.game.txt"
         ]
         extractor.read_bin_hashes(bin_hash_paths = bin_hash_paths)
         #加载版本数据（Load version data）
@@ -1678,6 +1679,7 @@ if __name__ == "__main__":
             "C:/Users/19250/AppData/Local/cdragon/data/hashes/lol/hashes.binfields.txt",
             "C:/Users/19250/AppData/Local/cdragon/data/hashes/lol/hashes.binhashes.txt",
             "C:/Users/19250/AppData/Local/cdragon/data/hashes/lol/hashes.bintypes.txt",
+            "C:/Users/19250/AppData/Local/cdragon/data/hashes/lol/hashes.game.txt"
         ]
         LoLDataExtractor("", locale).read_bin_hashes(bin_hash_paths = bin_hash_paths)
         ##字符串常量池（Stringtable）

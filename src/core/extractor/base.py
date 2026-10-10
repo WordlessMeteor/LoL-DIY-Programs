@@ -404,7 +404,7 @@ class LoLDataExtractor:
     bin_hashtable_type: dict[str, str] = {} #缓存二进制描述数据中所有对象类型的散列表。键是每个对象类型的散列值，值是每个对象类型（Cache the hashtable of all object types in the binary description data. Each key is the hash value of an object type, and each value is an object type）
     bin_hashtable_field: dict[str, str] = {} #缓存二进制描述数据中所有字段（键值对的键）的散列表。键是每个字段的散列值，值是每个字段【Cache the hashtable of all fields (the keys in key-value pairs) in the binary description data. Each key is the hash value of a field, and each value is a field】
     bin_hashtable_value: dict[str, str] = {} #缓存二进制描述数据中所有字符串值（键值对的值）的散列表。键是每个字符串值的散列值，值是每个字符串值【Cache the hashtable of all string values (the values in key-value pairs) in the binary description data. Each key is the hash value of a string value, and each value is a string value】
-    # bin_hashtable_gamePath: dict[str, str] = {} #缓存二进制描述数据中所有路径字符串的散列表。键是每个路径字符串的散列值，值是每个路径字符串（Cache the hashtable of all path strings in the binary description data. Each key is the hash value of a path string, and each value is a path string）
+    bin_hashtable_gamePath: dict[str, str] = {} #缓存二进制描述数据中所有路径字符串的散列表。键是每个路径字符串的散列值，值是每个路径字符串（Cache the hashtable of all path strings in the binary description data. Each key is the hash value of a path string, and each value is a path string）
     bin_hashtable_merged: dict[str, str] = {} #缓存二进制描述数据中所有字符串的散列表。键是每个字符串的散列值，值是每个字符串（Cache the hashtable of all strings in the binary description data. Each key is the hash value of a string, and each value is the string）
     bin_hash_ready: dict[str, bool] = {"entry": False, "type": False, "field": False, "hash": False, "gamePath": False} #二进制描述数据中的字符串散列表是否已经准备就绪（Whether the string hashtable for binary description data is ready）
     deep_resolve_hash: bool = False #是否在解析二进制描述数据中的字符串时进行深度解析。深度解析会对字符串重新计算hash值，然后从二进制条目散列表中查找是否存在hash值，从而确保不同版本的字符串保持一致（Whether to perform deep resolution when parsing strings in binary description data. Deep resolution will recalculate the hash value of a string, and then look up whether this hash value exists in the binary entry hashtable, thus ensuring the consistency of strings across different versions）
@@ -950,22 +950,22 @@ class LoLDataExtractor:
         self.__class__.bin_hashtable_merged.update(self.__class__.bin_hashtable_type)
         self.__class__.bin_hash_ready["type"] = True
         #游戏路径散列表（Game path hashtable）
-        # bin_hash_gamePath_url: str = "https://raw.communitydragon.org/data/hashes/lol/hashes.game.txt"
-        # if bin_hash_gamePath_url in self.__class__.data_cache["online"]:
-        #     self.__class__.bin_hashtable_gamePath = self.__class__.data_cache["online"][bin_hash_gamePath_url]
-        # else:
-        #     source, status, self.session = requestUrl("GET", bin_hash_gamePath_url, session = self.session, log = self.log) #之所以将这个函数设计成一个对象方法而不是类方法或者静态方法，是因为它需要调用对象的会话和日志管理对象（The reason why this function is designed as an object method instead of a class method or static method is that it needs to call the session and log manager of the object）
-        #     if status != 200:
-        #         if status == 404:
-        #             self.logPrint("游戏路径散列表获取失败！请检查以下链接的可用性。程序将跳过该散列表的获取。\nGame path hash table capture failure! Please check the URL availability. The program will skip the hash table retrieval.\n%s" %(bin_hash_gamePath_url))
-        #         else:
-        #             self.logPrint("游戏路径散列表获取失败！请检查系统网络状况和代理设置。程序将跳过该散列表的获取。\nGame path hash table capture failure! Please check the system network condition and proxy configuration. The program will skip the hash table retrieval.")
-        #         self.__class__.bin_hashtable_gamePath = {}
-        #     else:
-        #         self.__class__.bin_hashtable_gamePath = self.parse_hashes(source.text)
-        #     self.__class__.data_cache["online"][bin_hash_gamePath_url] = self.__class__.bin_hashtable_gamePath
-        # self.__class__.bin_hashtable_merged.update(self.__class__.bin_hashtable_gamePath) #因为游戏路径的加密算法和其它字符串不同，所以游戏路径计算得到的hash值和其它字符串计算得到的hash值必然不一样，所以不用担心合并的问题（Because the encryption algorithm for game paths is different from that for other strings, the hash values calculated for game paths must be different from those calculated for other strings, so no worries about merging issues）
-        # self.__class__.bin_hash_ready["gamePath"] = True
+        bin_hash_gamePath_url: str = "https://raw.communitydragon.org/data/hashes/lol/hashes.game.txt"
+        if bin_hash_gamePath_url in self.__class__.data_cache["online"]:
+            self.__class__.bin_hashtable_gamePath = self.__class__.data_cache["online"][bin_hash_gamePath_url]
+        else:
+            source, status, self.session = requestUrl("GET", bin_hash_gamePath_url, session = self.session, log = self.log) #之所以将这个函数设计成一个对象方法而不是类方法或者静态方法，是因为它需要调用对象的会话和日志管理对象（The reason why this function is designed as an object method instead of a class method or static method is that it needs to call the session and log manager of the object）
+            if status != 200:
+                if status == 404:
+                    self.logPrint("游戏路径散列表获取失败！请检查以下链接的可用性。程序将跳过该散列表的获取。\nGame path hash table capture failure! Please check the URL availability. The program will skip the hash table retrieval.\n%s" %(bin_hash_gamePath_url))
+                else:
+                    self.logPrint("游戏路径散列表获取失败！请检查系统网络状况和代理设置。程序将跳过该散列表的获取。\nGame path hash table capture failure! Please check the system network condition and proxy configuration. The program will skip the hash table retrieval.")
+                self.__class__.bin_hashtable_gamePath = {}
+            else:
+                self.__class__.bin_hashtable_gamePath = self.parse_hashes(source.text)
+            self.__class__.data_cache["online"][bin_hash_gamePath_url] = self.__class__.bin_hashtable_gamePath
+        self.__class__.bin_hashtable_merged.update(self.__class__.bin_hashtable_gamePath) #因为游戏路径的加密算法和其它字符串不同，所以游戏路径计算得到的hash值和其它字符串计算得到的hash值必然不一样，所以不用担心合并的问题（Because the encryption algorithm for game paths is different from that for other strings, the hash values calculated for game paths must be different from those calculated for other strings, so no worries about merging issues）
+        self.__class__.bin_hash_ready["gamePath"] = True
         #汇总散列表（Merge hashtables）
         # self.__class__.bin_hashtable_merged = {**self.__class__.bin_hashtable_entry, **self.__class__.bin_hashtable_field, **self.__class__.bin_hashtable_value, **self.__class__.bin_hashtable_type, **self.__class__.bin_hashtable_gamePath} #字典解包（Dictionary unpacking）
     
@@ -979,6 +979,7 @@ class LoLDataExtractor:
             - hashes.binfields.txt
             - hashes.binhashes.txt
             - hashes.bintypes.txt
+            - hashes.game.txt
             
             顺序会影响重合hash值在总散列表中最终的字符串大小写。对深度解析模式影响较大。<br>The order will affect the final capitalization of the string for hash values that appear in multiple files in the merged hashtable. It has a bigger impact on deep resolution mode.
         :type bin_hash_paths: list[str]
@@ -1032,15 +1033,15 @@ class LoLDataExtractor:
         self.__class__.bin_hashtable_merged.update(self.__class__.bin_hashtable_type)
         self.__class__.bin_hash_ready["type"] = True
         #游戏路径散列表（Game path hashtable）
-        # bin_hash_gamePath_path: str = bin_hash_paths[4]
-        # if bin_hash_gamePath_path in self.__class__.data_cache["local"]:
-        #     self.__class__.bin_hashtable_gamePath = self.__class__.data_cache["local"][bin_hash_gamePath_path]
-        # else:
-        #     with open(bin_hash_gamePath_path, "r") as fp:
-        #         self.__class__.bin_hashtable_gamePath = self.parse_hashes(fp.read())
-        #     self.__class__.data_cache["local"][bin_hash_gamePath_path] = self.__class__.bin_hashtable_gamePath
-        # self.__class__.bin_hashtable_merged.update(self.__class__.bin_hashtable_gamePath)
-        # self.__class__.bin_hash_ready["gamePath"] = True
+        bin_hash_gamePath_path: str = bin_hash_paths[4]
+        if bin_hash_gamePath_path in self.__class__.data_cache["local"]:
+            self.__class__.bin_hashtable_gamePath = self.__class__.data_cache["local"][bin_hash_gamePath_path]
+        else:
+            with open(bin_hash_gamePath_path, "r") as fp:
+                self.__class__.bin_hashtable_gamePath = self.parse_hashes(fp.read())
+            self.__class__.data_cache["local"][bin_hash_gamePath_path] = self.__class__.bin_hashtable_gamePath
+        self.__class__.bin_hashtable_merged.update(self.__class__.bin_hashtable_gamePath)
+        self.__class__.bin_hash_ready["gamePath"] = True
         #汇总散列表（Merge hashtables）
         # self.__class__.bin_hashtable_merged = {**self.__class__.bin_hashtable_entry, **self.__class__.bin_hashtable_field, **self.__class__.bin_hashtable_value, **self.__class__.bin_hashtable_type, **self.__class__.bin_hashtable_gamePath} #字典解包（Dictionary unpacking）
     
@@ -1730,8 +1731,8 @@ class LoLDataExtractor:
             bin_hashtable = cls.bin_hashtable_field
         elif hashType == "hash":
             bin_hashtable = cls.bin_hashtable_value
-        # elif hashType == "gamePath":
-        #     bin_hashtable = cls.bin_hashtable_gamePath
+        elif hashType == "gamePath":
+            bin_hashtable = cls.bin_hashtable_gamePath
         else:
             bin_hashtable = cls.bin_hashtable_merged
         #函数主体（Function body）
@@ -1886,7 +1887,7 @@ class LoLDataExtractor:
         if primary_fields == None:
             primary_fields = list(map(cls.str2hash_bin, data.keys())) if initial_call and isinstance(data, dict) else [] #在首次调用时，准备主键列表，用于判断一个字符串值是否是一个链接（At the first call, prepare a primary key list for judging whether a string value is a link）
         #异常处理（Exception handling）
-        if not all(cls.bin_hash_ready[key] for key in ["entry", "type", "field", "hash"]): #当散列表尚未准备就绪时，直接返回原始数据，以避免函数进行没有意义的递归调用（When the hash table isn't ready, return the original data directly to avoid meaningless recursive calls）
+        if not all(cls.bin_hash_ready[key] for key in ["entry", "type", "field", "hash", "gamePath"]): #当散列表尚未准备就绪时，直接返回原始数据，以避免函数进行没有意义的递归调用（When the hash table isn't ready, return the original data directly to avoid meaningless recursive calls）
             return data
         #函数主体（Function body）
         if isinstance(data, dict):
@@ -1908,8 +1909,8 @@ class LoLDataExtractor:
                 new_list.append(new_data)
             return new_list
         else:
-            #从一些图册二进制描述文件来看，深度解析模式会导致其主键路径的大小写丢失。因此本类虽然在很多地方埋下了游戏路径散列表的伏笔，但实际上并没有使用它，而是将其注释起来。如果需要使用，只需要取消相关注释，并在下一行的“entry”前添加`"gamePath" if data.lower() in cls.bin_hashtable_gamePath.values()`（From some atlas binary description files, the deep resolution mode will cause the case of the primary key - path strings to be lost. So although there are many hints of the game path hash table in this class, it isn't actually used, and is commented out instead. If you want to use this hash table, you only need to uncomment relevant code and add `"gamePath" if data.lower() in cls.bin_hashtable_gamePath.values()` in front of "entry" at the next line）
-            return cls.hash2str(data, deep = deep, hashType = "entry" if cls.str2hash_bin(data) in primary_fields else "hash") if isinstance(data, str) else data #从此处返回递归的上一层时，`data`将变成`new_data`直接添加到新容器中（When the recurson returns to the upper layer from here, `data` will be directly added into the new container as `new_data`）
+            #在最新的英雄联盟二进制描述数据中，所有路径字符串都被设置为小写。因此，不用再担心大小写的问题了（In the latest League of Legends binary description data, all path strings are set to lowercase. Therefore, there's no need to worry about case sensitivity anymore）
+            return cls.hash2str(data, deep = deep, hashType = "gamePath" if data.lower() in cls.bin_hashtable_gamePath.values() else "entry" if cls.str2hash_bin(data) in primary_fields else "hash") if isinstance(data, str) else data #从此处返回递归的上一层时，`data`将变成`new_data`直接添加到新容器中（When the recurson returns to the upper layer from here, `data` will be directly added into the new container as `new_data`）
     
     #定义说明文本转换函数族（Define tooltip transformation function family）
     @classmethod
