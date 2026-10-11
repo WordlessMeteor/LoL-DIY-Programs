@@ -1911,6 +1911,7 @@ class LoLDataExtractor:
         else:
             #在最新的英雄联盟二进制描述数据中，所有路径字符串都被设置为小写。因此，不用再担心大小写的问题了（In the latest League of Legends binary description data, all path strings are set to lowercase. Therefore, there's no need to worry about case sensitivity anymore）
             return cls.hash2str(data, deep = deep, hashType = "gamePath" if cls.str2hash_path(data) in cls.bin_hashtable_gamePath else "entry" if cls.str2hash_bin(data) in primary_fields else "hash") if isinstance(data, str) else data #从此处返回递归的上一层时，`data`将变成`new_data`直接添加到新容器中（When the recurson returns to the upper layer from here, `data` will be directly added into the new container as `new_data`）
+            #转换路径有一个问题：CommunityDragon数据库上旧版本文件夹中有一些未被解析的文件仍然放在未知文件夹中。如果尝试将二进制描述数据中的路径还原成原始字符串的话，可能就无法找到这些文件了。这会影响各数据提取子类的网页导出中的缩略图显示。但是因为一般情况下，一些比较重要的文件的路径是在该版本运行期间就会被解析出来，所以目前还是启用旧版本文件对路径的还原（Here's a problem: Some files in old version folders in CommunityDragon database still contain unresolved files in "unknown" folders. If paths in binary description data are restored to original strings, these files might not be found. This influences the thumbnail display in the web export of each data extraction subclass. However, in most cases, important files' paths are parsed during the version's runtime, so path restoration is still enabled in old version files for now）
     
     #定义说明文本转换函数族（Define tooltip transformation function family）
     @classmethod

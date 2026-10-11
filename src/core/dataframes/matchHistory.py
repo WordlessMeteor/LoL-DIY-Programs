@@ -4023,7 +4023,7 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
         elif i <= 8: #元数据子键（`metadata`'s subkeys）
             if i == 3: #所有玩家（`participants`）
                 to_append = json.dumps(LoLGame_summary["metadata"]["participants"])
-            elif i == 4 or i == 5:
+            elif i == 4 or i == 6:
                 to_append = int(LoLGame_summary["metadata"][key])
             else:
                 to_append = LoLGame_summary["metadata"][key]
@@ -4048,10 +4048,10 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                 to_append = mapName
             else:
                 to_append = LoLGame_summary_json.get(key, "")
-        elif i <= 236:
+        elif i <= 237:
             if i <= 42: #玩家得分键（Player score keys）
                 to_append = stats[key] if key in stats else stats[decapitalize(key)] if decapitalize(key) in stats else ""
-            elif i in {50, 68, 76, 150, 180, 181, 182}: #可变逻辑值键（Mutable boolean keys）
+            elif i in {50, 68, 76, 150, 180, 181, 182, 183, 184}: #可变逻辑值键（Mutable boolean keys）
                 to_append = stats.get(key, False)
             elif i == 57: #购买消耗品（`consumablePurchased`）
                 to_append = stats["consumablesPurchased"] if "consumablesPurchased" in stats else stats["consumablePurchased"] if "consumablePurchased" in stats else ""
@@ -4065,7 +4065,7 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                 to_append = stats["riotIdGameName"] if "riotIdGameName" in stats else stats["riotIdName"] if "riotIdName" in stats else ""
             elif i == 133: #角色定位（`role`）
                 to_append = roles[stats["role"]] if "role" in stats else ""
-            elif i == 184 or i == 185: #选用英雄序号相关键（`championId`-related keys）
+            elif i == 185 or i == 186: #选用英雄序号相关键（`championId`-related keys）
                 championId: int = stats["championId"]
                 if championId in LoLChampions:
                     to_append = LoLChampions[championId][key.split("_")[1]]
@@ -4073,8 +4073,8 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                     if not championId in unmapped_keys["LoLChampion"]:
                         unmapped_keys["LoLChampion"].add(championId)
                         logPrint("【%d. %s】对局%d（对局版本：%s）英雄信息（%d）获取失败！将采用原始数据！\n[%d. %s] Champion information (%d) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, matchId, version, championId, i, key, championId, matchId, version), verbose = verbose)
-                    to_append = championId if i == 184 else ""
-            elif i >= 186 and i <= 199: #英雄联盟装备相关键（LoLItems-related keys）
+                    to_append = championId if i == 185 else ""
+            elif i >= 187 and i <= 200: #英雄联盟装备相关键（LoLItems-related keys）
                 subkey: str = key.split("_")[0]
                 if subkey in stats:
                     itemId: int = stats[subkey]
@@ -4086,19 +4086,19 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                         if not itemId in unmapped_keys["LoLItem"]:
                             unmapped_keys["LoLItem"].add(itemId)
                             logPrint("【%d. %s】对局%d（对局版本：%s）装备信息（%d）获取失败！将采用原始数据！\n[%d. %s] LoL item information (%d) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, matchId, version, itemId, i, key, itemId, matchId, version), verbose = verbose)
-                        to_append = itemId if i <= 192 else ""
+                        to_append = itemId if i <= 193 else ""
                 else:
                     to_append = ""
-            elif i >= 200 and i <= 217: #强化符文相关键（Augment-related keys）
+            elif i >= 201 and i <= 218: #强化符文相关键（Augment-related keys）
                 subkey = key.split("_")[0]
                 if subkey in stats:
                     CherryAugmentId: int = stats[subkey]
                     if CherryAugmentId == 0:
                         to_append = ""
                     elif CherryAugmentId in CherryAugments:
-                        if i <= 205: #强化符文名称（`nameTRA`）
+                        if i <= 206: #强化符文名称（`nameTRA`）
                             to_append = CherryAugments[CherryAugmentId]["nameTRA"]
-                        elif i <= 211: #强化符文图标路径（`augmentIconPath`）
+                        elif i <= 212: #强化符文图标路径（`augmentIconPath`）
                             to_append = CherryAugments[CherryAugmentId]["augmentSmallIconPath"].replace("_small.png", "_large.png")
                         else: #强化符文等级（`rarity`）
                             to_append = augment_rarity[CherryAugments[CherryAugmentId]["rarity"]]
@@ -4106,26 +4106,26 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                         if not CherryAugmentId in unmapped_keys["CherryAugment"]:
                             unmapped_keys["CherryAugment"].add(CherryAugmentId)
                             logPrint("【%d. %s】对局%d（对局版本：%s）强化符文信息（%d）获取失败！将采用原始数据！\n[%d. %s] Cherry augment information (%d) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, matchId, version, CherryAugmentId, i, key, CherryAugmentId, matchId, version), verbose = verbose)
-                        to_append = CherryAugmentId if i <= 205 else ""
+                        to_append = CherryAugmentId if i <= 206 else ""
                 else:
                     to_append = ""
-            elif i == 218: #子阵营（`playerSubteamColor`）
+            elif i == 219: #子阵营（`playerSubteamColor`）
                 to_append = subteam_colors[stats["playerSubteamId"]] if "playerSubteamId" in stats else ""
-            elif i == 219 or i == 220: #召唤师图标相关键（Profile icon-related keys）
+            elif i == 220 or i == 221: #召唤师图标相关键（Profile icon-related keys）
                 if "profileIcon" in stats:
                     profileIconId: int = stats["profileIcon"]
                     if profileIconId == -1: #早期存在一个空图标（There was once an empty icon, which is transparent）
-                        to_append = profileIconId if i == 219 else ""
+                        to_append = profileIconId if i == 220 else ""
                     elif profileIconId in summonerIcons:
-                        to_append = summonerIcons[profileIconId].get(key.split("_")[1], profileIconId if i == 219 else "")
+                        to_append = summonerIcons[profileIconId].get(key.split("_")[1], profileIconId if i == 220 else "")
                     else:
                         if not profileIconId in unmapped_keys["summonerIcon"]:
                             unmapped_keys["summonerIcon"].add(profileIconId)
                             logPrint("【%d. %s】对局%d（对局版本：%s）召唤师图标信息（%d）获取失败！将采用原始数据！\n[%d. %s] Summoner icon information (%d) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, matchId, version, profileIconId, i, key, profileIconId, matchId, version), verbose = verbose)
-                        to_append = profileIconId if i == 219 else ""
+                        to_append = profileIconId if i == 220 else ""
                 else:
                     to_append = ""
-            elif i == 221 or i == 222: #角色绑定装备相关键（Role bound item-related keys）
+            elif i == 222 or i == 223: #角色绑定装备相关键（Role bound item-related keys）
                 if "roleBoundItem" in stats:
                     roleBoundItemId: int = stats["roleBoundItem"]
                     if roleBoundItemId == 0:
@@ -4136,27 +4136,27 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                         if not roleBoundItemId in unmapped_keys["LoLItem"]:
                             unmapped_keys["LoLItem"].add(roleBoundItemId)
                             logPrint("【%d. %s】对局%d（对局版本：%s）装备信息（%d）获取失败！将采用原始数据！\n[%d. %s] LoL item information (%d) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, matchId, version, roleBoundItemId, i, key, roleBoundItemId, matchId, version), verbose = verbose)
-                        to_append = roleBoundItemId if i == 221 else ""
+                        to_append = roleBoundItemId if i == 222 else ""
                 else:
                     to_append = ""
-            elif i >= 223 and i <= 226: #召唤师技能序号相关键（SpellIds-related keys）
+            elif i >= 224 and i <= 227: #召唤师技能序号相关键（SpellIds-related keys）
                 subkey = key.split("_")[0] + "Id"
                 if subkey in stats:
                     spellId: int = stats[subkey]
                     if spellId == 0: #2024年更新人机对战之前，在对局记录中记录的电脑玩家的召唤师技能序号都是0。在加载界面，玩家总是会看到电脑玩家携带了净化和惩戒，在进游戏后即表现为正常（Before Co-op vs. AI was updated in 2024, spellIds of all bots recorded in the match history are 0. In the loading screen, player always saw the bot players taking Cleanse and Smite, while the spells became normal after players enter the game）
-                        to_append = spellId if i <= 224 else ""
+                        to_append = spellId if i <= 225 else ""
                     elif spellId in spells:
                         to_append = spells[spellId][key.split("_")[1]]
                     else:
                         if not spellId in unmapped_keys["spell"]:
                             unmapped_keys["spell"].add(spellId)
                             logPrint("【%d. %s】对局%d（对局版本：%s）召唤师技能信息（%d）获取失败！将采用原始数据！\n[%d. %s] Spell information (%d) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, matchId, version, spellId, i, key, spellId, matchId, version), verbose = verbose)
-                        to_append = spellId if i <= 224 else ""
+                        to_append = spellId if i <= 225 else ""
                 else:
                     to_append = ""
-            elif i == 227: #阵营（`team_color`）
+            elif i == 228: #阵营（`team_color`）
                 to_append = team_colors_int[stats["teamId"]] if "teamId" in stats else ""
-            elif i == 228: #英雄技能总施放次数（`totalSpellCasts`）
+            elif i == 229: #英雄技能总施放次数（`totalSpellCasts`）
                 subkeyList: list[str] = ["spell1Casts", "spell2Casts", "spell3Casts", "spell4Casts"]
                 totalSpellCasts: int = 0
                 if any(map(lambda x: x in stats, subkeyList)):
@@ -4165,42 +4165,42 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                     to_append = totalSpellCasts
                 else: #如果完全没有这些键，则也不应为此键设置值（If none of these keys exists, then this key shouldn't be set as any value）
                     to_append = ""
-            elif i == 229: #击杀/死亡/助攻（`K/D/A`）
+            elif i == 230: #击杀/死亡/助攻（`K/D/A`）
                 to_append = "/".join([str(stats["kills"]), str(stats["deaths"]), str(stats["assists"])]) if all(map(lambda x: x in stats, ["kills", "deaths", "assists"])) else ""
-            elif i == 230: #战损比（`KDA`）
+            elif i == 231: #战损比（`KDA`）
                 to_append = (stats["kills"] + stats["assists"]) / max(1, stats["deaths"]) if all(map(lambda x: x in stats, ["kills", "deaths", "assists"])) else ""
-            elif i == 231: #补刀（`CS`）
+            elif i == 232: #补刀（`CS`）
                 to_append = stats["neutralMinionsKilled"] + stats["totalMinionsKilled"] if all(map(lambda x: x in stats, ["neutralMinionsKilled", "totalMinionsKilled"])) else ""
-            elif i == 232: #分均经济（`GPM`）
+            elif i == 233: #分均经济（`GPM`）
                 to_append = (0 if LoLGame_summary_json["gameDuration"] == 0 else stats["goldEarned"] * 60 / LoLGame_summary_json["gameDuration"]) if "gameDuration" in LoLGame_summary_json and "goldEarned" in stats else ""
-            elif i == 233: #金币利用率（`GUE` - Gold Utilization Efficiency）
+            elif i == 234: #金币利用率（`GUE` - Gold Utilization Efficiency）
                 to_append = (0 if stats["goldEarned"] == 0 else stats["goldSpent"] / stats["goldEarned"]) if all(map(lambda x: x in stats, ["goldSpent", "goldEarned"])) else ""
-            elif i == 234: #分均补刀（`CSPM`）
+            elif i == 235: #分均补刀（`CSPM`）
                 to_append = (0 if LoLGame_summary_json["gameDuration"] == 0 else (stats["neutralMinionsKilled"] + stats["totalMinionsKilled"]) * 60 / LoLGame_summary_json["gameDuration"]) if "gameDuration" in LoLGame_summary_json and all(map(lambda x: x in stats, ["neutralMinionsKilled", "totalMinionsKilled"])) else ""
-            elif i == 235: #伤害转化率（`D/G`）
+            elif i == 236: #伤害转化率（`D/G`）
                 to_append = (0 if stats["goldEarned"] == 0 else stats["totalDamageDealtToChampions"] / stats["goldEarned"]) if all(map(lambda x: x in stats, ["goldEarned", "totalDamageDealtToChampions"])) else ""
-            elif i == 236: #胜负（`win/lose`）
+            elif i == 237: #胜负（`win/lose`）
                 to_append = "被终止" if "endOfGameResult" in LoLGame_summary_json and LoLGame_summary_json["endOfGameResult"] == "Abort_AntiCheatExit" else "" if not "win" in stats else "胜利" if stats["win"] else "失败"
             else:
                 to_append = stats.get(key, "")
-        elif i == 237: #玩家行为子键（`PlayerBehavior`'s subkeys）
+        elif i == 238: #玩家行为子键（`PlayerBehavior`'s subkeys）
             if "PlayerBehavior" in stats:
                 to_append = playerBehavior.get(key.split()[1], "")
             else:
                 to_append = ""
-        elif i <= 385: #成就子键（`challenges`' subkeys）
+        elif i <= 386: #成就子键（`challenges`' subkeys）
             if "challenges" in stats:
-                if i == 319: #成就：【传说武器：2024 - 第1赛段】（带着<em>不同的传说装备</em>赢得对局）游戏结束时使用的传说装备序号（`challenges legendaryItemUsed`）
+                if i == 320: #成就：【传说武器：2024 - 第1赛段】（带着<em>不同的传说装备</em>赢得对局）游戏结束时使用的传说装备序号（`challenges legendaryItemUsed`）
                     to_append = json.dumps(list(map(int, challenges["legendaryItemUsed"])), ensure_ascii = False) if "legendaryItemUsed" in challenges else ""
-                elif i == 330: #成就：【神话武器大师】（用<em>不同的神话装备</em>赢得对局）使用的神话装备序号（`challenges mythicItemUsed`）
+                elif i == 331: #成就：【神话武器大师】（用<em>不同的神话装备</em>赢得对局）使用的神话装备序号（`challenges mythicItemUsed`）
                     to_append = int(challenges["mythicItemUsed"]) if "mythicItemUsed" in challenges else ""
-                elif i == 381: #成就：【别把龙晾太久】（在8分钟之前参与击杀第一条龙）最早参与击杀巨龙时间（`challenges earliestDragonTakedown_norm`）
+                elif i == 382: #成就：【别把龙晾太久】（在8分钟之前参与击杀第一条龙）最早参与击杀巨龙时间（`challenges earliestDragonTakedown_norm`）
                     to_append = lcuTime(challenges["earliestDragonTakedown"]) if "earliestDragonTakedown" in challenges else ""
-                elif i == 382: #成就：最快的传说装备构建时间（`challenges fastestLegendary_norm`）
+                elif i == 383: #成就：最快的传说装备构建时间（`challenges fastestLegendary_norm`）
                     to_append = lcuTime(challenges["fastestLegendary"]) if "fastestLegendary" in challenges else ""
-                elif i == 383: #成就：【速拆一塔】（在10分钟之前拿下【第一座塔】）【疾速拆塔】（在5分钟之前拿下【第一座塔】）第一座塔摧毁时间（`challenges firstTurretKilledTime_norm`）
+                elif i == 384: #成就：【速拆一塔】（在10分钟之前拿下【第一座塔】）【疾速拆塔】（在5分钟之前拿下【第一座塔】）第一座塔摧毁时间（`challenges firstTurretKilledTime_norm`）
                     to_append = lcuTime(challenges["firstTurretKilledTime"]) if "firstTurretKilledTime" in challenges else ""
-                elif i == 384: #成就：【传说武器：2024 - 第1赛段】（带着<em>不同的传说装备</em>赢得对局）游戏结束时使用的传说装备名称（`challenges legendaryItemUsed_names`）
+                elif i == 385: #成就：【传说武器：2024 - 第1赛段】（带着<em>不同的传说装备</em>赢得对局）游戏结束时使用的传说装备名称（`challenges legendaryItemUsed_names`）
                     if "legendaryItemUsed" in challenges: #此处的装备序号不需要放到其父函数的数据资源异常处理机制中。为什么？（Here this itemId doesn't need to be put in the data resource exceptional handling mechanism part. Why?）
                         legendaryItemsUsed: list[str | int] = []
                         for itemId in challenges["legendaryItemUsed"]:
@@ -4216,7 +4216,7 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                         to_append = json.dumps(legendaryItemsUsed, ensure_ascii = False)
                     else:
                         to_append = ""
-                elif i == 385: #成就：【神话武器大师】（用<em>不同的神话装备</em>赢得对局）使用的神话装备名称（`challenges mythicItemUsed_name`）
+                elif i == 386: #成就：【神话武器大师】（用<em>不同的神话装备</em>赢得对局）使用的神话装备名称（`challenges mythicItemUsed_name`）
                     if "mythicItemUsed" in challenges:
                         itemId: int = challenges["mythicItemUsed"]
                         if itemId == 0:
@@ -4234,19 +4234,19 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                     to_append = challenges.get(key.split()[1], "")
             else:
                 to_append = ""
-        elif i <= 566: #任务子键（`missions`' subkeys）
+        elif i <= 577: #任务子键（`missions`' subkeys）
             subkey: str = key.split()[1]
-            if i >= 546 and i <= 557: #任务：玩家得分相关键（Mission: PlayerScore related keys）
+            if i >= 557 and i <= 568: #任务：玩家得分相关键（Mission: PlayerScore related keys）
                 to_append = missions.get(subkey, missions.get(decapitalize(subkey), ""))
             else:
                 to_append = missions.get(subkey, "")
-        elif i <= 623: #符文子键（`perks`' subkeys）
-            if i == 570: #主系序号（`perkPrimaryStyle`）
+        elif i <= 634: #符文子键（`perks`' subkeys）
+            if i == 581: #主系序号（`perkPrimaryStyle`）
                 to_append = stats["perks"]["styles"][0]["style"] if "perks" in stats and "styles" in stats["perks"] and len(stats["perks"]["styles"]) >= 1 else ""
-            elif i >= 571 and i <= 586: #主系符文相关键（Primary style's perk related keys）
-                perkCount: int = 1 + (i - 571) // 4
+            elif i >= 582 and i <= 597: #主系符文相关键（Primary style's perk related keys）
+                perkCount: int = 1 + (i - 582) // 4
                 if "perks" in stats and "styles" in stats["perks"] and len(stats["perks"]["styles"]) >= 1 and "selections" in stats["perks"]["styles"][0] and len(stats["perks"]["styles"][0]["selections"]) >= perkCount:
-                    remainder: int = (i - 571) % 4
+                    remainder: int = (i - 582) % 4
                     perk: dict[str, int] = stats["perks"]["styles"][0]["selections"][perkCount - 1]
                     if remainder == 0: #符文序号相关键（PerkId related keys）
                         to_append = perk["perk"]
@@ -4254,12 +4254,12 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                         to_append = perk[f"var{remainder}"]
                 else:
                     to_append = ""
-            elif i == 587: #副系序号（`perkSubStyle`）
+            elif i == 598: #副系序号（`perkSubStyle`）
                 to_append = stats["perks"]["styles"][1]["style"] if "perks" in stats and "styles" in stats["perks"] and len(stats["perks"]["styles"]) >= 2 else ""
-            elif i >= 588 and i <= 595: #副系符文相关键（Substyle's perk related keys）
-                perkCount: int = 1 + (i - 588) // 4
+            elif i >= 599 and i <= 606: #副系符文相关键（Substyle's perk related keys）
+                perkCount: int = 1 + (i - 599) // 4
                 if "perks" in stats and "styles" in stats["perks"] and len(stats["perks"]["styles"]) >= 1 and "selections" in stats["perks"]["styles"][1] and len(stats["perks"]["styles"][0]["selections"]) >= perkCount:
-                    remainder: int = (i - 588) % 4
+                    remainder: int = (i - 599) % 4
                     perk: dict[str, int] = stats["perks"]["styles"][1]["selections"][perkCount - 1]
                     if remainder == 0: #符文序号相关键（PerkId related keys）
                         to_append = perk["perk"]
@@ -4267,18 +4267,18 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                         to_append = perk[f"var{remainder}"]
                 else:
                     to_append = ""
-            elif i >= 596 and i <= 601 or i >= 604 and i <= 615 or i >= 618: #属性符文子键（`statPerks`' subkeys）
+            elif i >= 607 and i <= 612 or i >= 615 and i <= 626 or i >= 629: #属性符文子键（`statPerks`' subkeys）
                 perkId_got: bool = False
                 perkId: int = 0
                 perkVar1: int = 0
                 perkVar2: int = 0
                 perkVar3: int = 0
-                if i >= 596 and i <= 601: #属性符文子键（`statPerks`' subkeys）
+                if i >= 607 and i <= 612: #属性符文子键（`statPerks`' subkeys）
                     subkey = key.split("_")[0].split()[1]
                     if "perks" in stats and "statPerks" in stats["perks"] and subkey in stats["perks"]["statPerks"]:
                         perkId = stats["perks"]["statPerks"][subkey]
                         perkId_got = True
-                elif i >= 604 and i <= 615: #主系符文子键（Primary style's perk's subkeys）
+                elif i >= 615 and i <= 626: #主系符文子键（Primary style's perk's subkeys）
                     perkCount: int = int(key.split("_")[0].split()[1][-1])
                     if "perks" in stats and "styles" in stats["perks"] and len(stats["perks"]["styles"]) >= 1 and "selections" in stats["perks"]["styles"][0] and len(stats["perks"]["styles"][0]["selections"]) >= perkCount:
                         perk: dict[str, int] = stats["perks"]["styles"][0]["selections"][perkCount - 1]
@@ -4307,13 +4307,13 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                         if not perkId in unmapped_keys["perk"]:
                             unmapped_keys["perk"].add(perkId)
                             logPrint("【%d. %s】对局%d（对局版本：%s）符文信息（%d）获取失败！将采用原始数据！\n[%d. %s] Runes information (%d) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, matchId, version, perkId, i, key, perkId, matchId, version), verbose = verbose)
-                        to_append = perkId if i <= 598 or i >= 608 and i <= 611 or i == 620 or i == 621 else ""
+                        to_append = perkId if i <= 609 or i >= 619 and i <= 622 or i == 631 or i == 632 else ""
                 else:
                     to_append = ""
-            elif i in {602, 603, 616, 617}: #符文系相关键（Perkstyle related keys）
+            elif i in {613, 614, 627, 628}: #符文系相关键（Perkstyle related keys）
                 perkstyleId_got: bool = False
                 perkstyleId: int = 0
-                if i == 602 or i == 603: #主系相关键（Primary style related keys）
+                if i == 613 or i == 614: #主系相关键（Primary style related keys）
                     if "perks" in stats and "styles" in stats["perks"] and len(stats["perks"]["styles"]) >= 1 and "style" in stats["perks"]["styles"][0]:
                         perkstyleId = stats["perks"]["styles"][0]["style"]
                         perkstyleId_got = True
@@ -4330,7 +4330,7 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                         if not perkstyleId in unmapped_keys["perkstyle"]:
                             unmapped_keys["perkstyle"].add(perkstyleId)
                             logPrint("【%d. %s】对局%d（对局版本：%s）符文系信息（%d）获取失败！将采用原始数据！\n[%d. %s] Perkstyle information (%d) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, matchId, version, perkstyleId, i, key, perkstyleId, matchId, version), verbose = verbose)
-                        to_append = perkstyleId if i == 602 or i == 616 else ""
+                        to_append = perkstyleId if i == 613 or i == 627 else ""
                 else:
                     to_append = ""
             else:
@@ -4338,14 +4338,14 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                     to_append = stats["perks"]["statPerks"][key.split()[1]]
                 else:
                     to_append = ""
-        elif i <= 627:
+        elif i <= 638:
             if bans == []: #修改说明：以前判断禁用数据是否为空是通过禁用模式进行的，如果禁用模式是经典策略就记录禁用信息，否则直接追加空值到列表中。但是在终极魔典中，先前版本记录禁用信息，后来却不记录了。因此，这里判断禁用数据是否为空，直接通过判断bans是否为空【Modification note: To judge whether the ban information of a match is empty, banMode (teams\bans) is used: if banMode is StandardBanStrategy, record the ban information; otherwise, append empty values to the list (by player_count times). But in Ultbook, ban information is recorded in previous versions but not anymore recorded later. Therefore, to judge whether the ban information is empty, whether the variable bans is empty is directly checked】
                 to_append = ""
             else:
                 if LoLGame_summary_json["queueId"] == 0 or LoLGame_summary_json["gameMode"] == "JADE":
                     if stats["teamId"] == 100:
                         if not legacy_banData_appended[100]:
-                            if i == 624:
+                            if i == 635:
                                 to_append = list(map(lambda x: x["championId"], bans_team100))
                             else:
                                 championIds: list[int] = list(map(lambda x: x["championId"], bans_team100))
@@ -4357,15 +4357,15 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                                         if not championId in unmapped_keys["LoLChampion"]:
                                             unmapped_keys["LoLChampion"].add(championId)
                                             logPrint("【%d. %s】对局%d（对局版本：%s）英雄信息（%d）获取失败！将采用原始数据！\n[%d. %s] Champion information (%d) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, matchId, version, championId, i, key, championId, matchId, version), verbose = verbose)
-                                        championNames.append(championId if i == 625 else "")
+                                        championNames.append(championId if i == 636 else "")
                                 to_append = championNames
-                            if i == 627:
+                            if i == 638:
                                 legacy_banData_appended[100] = True
                         else:
                             to_append = ""
                     elif stats["teamId"] == 200:
                         if not legacy_banData_appended[200]:
-                            if i == 624:
+                            if i == 635:
                                 to_append = list(map(lambda x: x["championId"], bans_team200))
                             else:
                                 championIds = list(map(lambda x: x["championId"], bans_team200))
@@ -4377,9 +4377,9 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                                         if not championId in unmapped_keys["LoLChampion"]:
                                             unmapped_keys["LoLChampion"].add(championId)
                                             logPrint("【%d. %s】对局%d（对局版本：%s）英雄信息（%d）获取失败！将采用原始数据！\n[%d. %s] Champion information (%d) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, matchId, version, championId, i, key, championId, matchId, version), verbose = verbose)
-                                        championNames.append(championId if i == 625 else "")
+                                        championNames.append(championId if i == 636 else "")
                                 to_append = championNames
-                            if i == 627:
+                            if i == 638:
                                 legacy_banData_appended[200] = True
                         else:
                             to_append = ""
@@ -4389,7 +4389,7 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                     if bans[participantIndex]["championId"] == -1:
                         to_append = ""
                     else:
-                        if i == 624:
+                        if i == 635:
                             to_append = bans[participantIndex]["championId"]
                         else:
                             championId = bans[participantIndex]["championId"]
@@ -4399,13 +4399,13 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                                 if not championId in unmapped_keys["LoLChampion"]:
                                     unmapped_keys["LoLChampion"].add(championId)
                                     logPrint("【%d. %s】对局%d（对局版本：%s）英雄信息（%d）获取失败！将采用原始数据！\n[%d. %s] Champion information (%d) of Match %d (gameVersion: %s) capture failed! The original data will be used for this match!" %(i, key, matchId, version, championId, i, key, championId, matchId, version), verbose = verbose)
-                                to_append = championId if i == 625 else ""
-        elif i == 628: #是否队友？（`isAlly`）
+                                to_append = championId if i == 636 else ""
+        elif i == 639: #是否队友？（`isAlly`）
             to_append = current_participantId != 0 and (LoLGame_summary_json["gameMode"] == "CHERRY" and stats["playerSubteamId"] == current_participant["playerSubteamId"] or LoLGame_summary_json["gameMode"] != "CHERRY" and stats["teamId"] == current_participant["teamId"])
         else: #对局概要转换键（Keys transformed according to game summary）
             subkey = key.split("_")[0]
             if key.endswith("_percent"): #团队占比键（Team percentage keys）
-                if i == 727: #英雄技能总施放次数占比（`totalSpellCasts_percent`）
+                if i == 738: #英雄技能总施放次数占比（`totalSpellCasts_percent`）
                     subkeyList: list[str] = ["spell1Casts", "spell2Casts", "spell3Casts", "spell4Casts"]
                     self_stat: int | float = 0
                     for subkey in subkeyList:
@@ -4414,10 +4414,10 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                     for participant in team_participants:
                         for subkey in subkeyList:
                             total_stat += participant.get(subkey, 0)
-                elif i == 728: #击杀参与率（`KP_percent`）
+                elif i == 739: #击杀参与率（`KP_percent`）
                     self_stat = stats.get("kills", 0) + stats.get("assists", 0)
                     total_stat = sum(map(lambda x: x.get("kills", 0), team_participants))
-                elif i == 729: #补刀数占比（`CS_percent`）
+                elif i == 740: #补刀数占比（`CS_percent`）
                     self_stat = stats.get("totalMinionsKilled", 0) + stats.get("neutralMinionsKilled", 0)
                     total_stat = sum(map(lambda x: x.get("totalMinionsKilled", 0) + x.get("neutralMinionsKilled", 0), team_participants))
                 else:
@@ -4426,7 +4426,7 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                 value = 0 if total_stat == 0 else self_stat / total_stat
                 to_append = value
             else: #位次键（Order keys）
-                if i == 829: #英雄技能总施放次数位次（`totalSpellCasts_order`）
+                if i == 840: #英雄技能总施放次数位次（`totalSpellCasts_order`）
                     subkeyList = ["spell1Casts", "spell2Casts", "spell3Casts", "spell4Casts"]
                     self_stat = 0
                     for subkey in subkeyList:
@@ -4437,24 +4437,24 @@ def generate_LoLGameSummary_records_sgp(LoLGame_summary_data: dict[str, list[Any
                         for subkey in subkeyList:
                             participant_stat += participant.get(subkey, 0)
                         stat_list.append(participant_stat)
-                elif i == 830: #战损比位次（`KDA_order`）
+                elif i == 841: #战损比位次（`KDA_order`）
                     self_stat = (stats.get("kills", 0) + stats.get("assists", 0)) / max(1, stats.get("deaths", 0))
                     stat_list = sorted(map(lambda x: (x.get("kills", 0) + x.get("assists")) / max(1, x.get("deaths", 0)), team_participants), reverse = True)
-                elif i == 831: #击杀参与率位次（`KP_order`）
+                elif i == 842: #击杀参与率位次（`KP_order`）
                     self_stat = stats.get("kills", 0) + stats.get("assists", 0)
                     stat_list = sorted(map(lambda x: x.get("kills", 0) + x.get("assists", 0), team_participants), reverse = True)
-                elif i == 832: #补刀数位次（`CS_order`）
+                elif i == 843: #补刀数位次（`CS_order`）
                     self_stat = stats.get("totalMinionsKilled", 0) + stats.get("neutralMinionsKilled", 0)
                     stat_list = sorted(map(lambda x: x.get("totalMinionsKilled", 0) + x.get("neutralMinionsKilled", 0), team_participants), reverse = True)
-                elif i == 833: #伤害转化率位次（`D/G_order`）
+                elif i == 844: #伤害转化率位次（`D/G_order`）
                     self_stat = 0 if stats.get("goldEarned", 0) == 0 else stats.get("totalDamageDealtToChampions", 0) / stats["goldEarned"]
                     stat_list = sorted(map(lambda x: 0 if x.get("goldEarned", 0) == 0 else x.get("totalDamageDealtToChampions", 0) / x["goldEarned"], team_participants), reverse = True)
-                elif i == 834: #金币利用率位次（`GUE_order`）
+                elif i == 845: #金币利用率位次（`GUE_order`）
                     self_stat = 0 if stats.get("goldEarned", 0) == 0 else stats.get("goldSpent", 0) / stats["goldEarned"]
                     stat_list = sorted(map(lambda x: 0 if x.get("goldEarned", 0) == 0 else x.get("goldSpent", 0) / x["goldEarned"], team_participants), reverse = True)
                 else:
                     self_stat = stats.get(subkey, 0)
-                    stat_list = sorted(map(lambda x: x.get(subkey, 0), team_participants), reverse = i != 759) #死亡次数越低，死亡位次越小（For deaths, the lower the number of deaths is, the smaller the death order is）
+                    stat_list = sorted(map(lambda x: x.get(subkey, 0), team_participants), reverse = i != 770) #死亡次数越低，死亡位次越小（For deaths, the lower the number of deaths is, the smaller the death order is）
                 to_append = 0 if len(set(stat_list)) == 1 else stat_list.index(self_stat) + 1 #当所有人的数据一样时，则不用比较位次（When some stat of every player is the same, there's no need to compare it）
         LoLGame_summary_data[key].append(to_append)
     return LoLGame_summary_data
@@ -5308,7 +5308,7 @@ def sort_LoLGame_summary_sgp(LoLGame_summary: dict[str, Any], queues: dict[int, 
                     key: str = LoLGame_summary_header_keys[j]
                     LoLGame_stat_data[key].append(LoLGame_summary_data[key][-1]) #直接添加最近一次追加的数据，以简化代码（Directly append the recently appended data to simplify the code）
     #数据框列序整理（Dataframe column ordering）
-    LoLGame_summary_statistics_output_order: list[int] = [227, 218, 112, 628, 148, 131, 132, 146, 128, 147, 68, 21, 184, 54, 625, 626, 96, 133, 125, 82, 152, 135, 52, 51, 55, 223, 224, 186, 187, 188, 189, 190, 191, 192, 221, 200, 212, 201, 213, 202, 214, 203, 215, 204, 216, 205, 217, 95, 64, 45, 230, 231, 234, 235, 98, 94, 99, 49, 72, 71, 74, 73, 66, 167, 129, 113, 174, 153, 164, 157, 115, 102, 169, 156, 114, 101, 168, 97, 61, 60, 58, 59, 161, 162, 166, 158, 159, 116, 103, 170, 62, 176, 179, 178, 136, 177, 65, 79, 232, 80, 233, 93, 57, 163, 105, 155, 160, 171, 172, 83, 84, 106, 108, 173, 85, 107, 67, 47, 109, 110, 100, 48, 56, 78, 130, 127, 111, 43, 44, 104, 69, 70, 175, 63, 46, 81, 154, 165, 137, 139, 141, 142, 228, 144, 145, 602, 616, 608, 604, 609, 605, 610, 606, 611, 607, 620, 618, 621, 619, 598, 596, 597, 50, 149, 150, 75, 76, 77, 182, 181, 180, 236, 117, 143, 672, 658, 643, 728, 674, 671, 675, 647, 660, 715, 692, 687, 721, 701, 712, 705, 689, 678, 717, 704, 688, 677, 716, 673, 655, 654, 652, 653, 709, 710, 714, 706, 707, 690, 679, 718, 656, 723, 726, 725, 694, 724, 659, 665, 666, 670, 651, 711, 681, 703, 708, 729, 719, 720, 668, 669, 682, 683, 661, 645, 684, 685, 676, 646, 650, 664, 693, 691, 686, 641, 642, 680, 662, 663, 722, 657, 644, 667, 702, 713, 695, 696, 697, 698, 727, 699, 700, 802, 750, 749, 773, 759, 744, 830, 831, 833, 775, 772, 776, 748, 761, 817, 793, 788, 823, 803, 814, 807, 790, 779, 819, 806, 789, 778, 818, 774, 756, 755, 753, 754, 811, 812, 816, 808, 809, 791, 780, 820, 757, 825, 828, 827, 795, 826, 760, 766, 767, 834, 771, 752, 813, 782, 810, 805, 832, 821, 822, 769, 770, 762, 746, 785, 786, 783, 784, 777, 747, 751, 765, 794, 792, 787, 742, 743, 781, 763, 764, 824, 758, 745, 768, 804, 815, 796, 797, 798, 799, 829, 800, 801, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 381, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 382, 283, 284, 285, 383, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 384, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 385, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521, 522, 523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537, 538, 539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560, 561, 562, 563, 564, 565, 566, 237]
+    LoLGame_summary_statistics_output_order: list[int] = [228, 219, 112, 639, 148, 131, 132, 146, 128, 147, 68, 21, 185, 54, 636, 637, 96, 133, 125, 82, 152, 135, 52, 51, 55, 224, 225, 187, 188, 189, 190, 191, 192, 193, 222, 201, 213, 202, 214, 203, 215, 204, 216, 205, 217, 206, 218, 95, 64, 45, 231, 232, 235, 236, 98, 94, 99, 49, 72, 71, 74, 73, 66, 167, 129, 113, 174, 153, 164, 157, 115, 102, 169, 156, 114, 101, 168, 97, 61, 60, 58, 59, 161, 162, 166, 158, 159, 116, 103, 170, 62, 176, 179, 178, 136, 177, 65, 79, 233, 80, 234, 93, 57, 163, 105, 155, 160, 171, 172, 83, 84, 106, 108, 173, 85, 107, 67, 47, 109, 110, 100, 48, 56, 78, 130, 127, 111, 43, 44, 104, 69, 70, 175, 63, 46, 81, 154, 165, 137, 139, 141, 142, 229, 144, 145, 613, 627, 619, 615, 620, 616, 621, 617, 622, 618, 631, 629, 632, 630, 609, 607, 608, 180, 50, 149, 150, 75, 76, 77, 183, 182, 181, 237, 117, 143, 683, 669, 654, 739, 685, 682, 686, 658, 671, 726, 703, 698, 732, 712, 723, 716, 700, 689, 728, 715, 699, 688, 727, 684, 666, 665, 663, 664, 720, 721, 725, 717, 718, 701, 690, 729, 667, 734, 737, 736, 705, 735, 670, 676, 677, 681, 662, 722, 692, 714, 719, 740, 730, 731, 679, 680, 693, 694, 672, 656, 695, 696, 687, 657, 661, 675, 704, 702, 697, 652, 653, 691, 673, 674, 733, 668, 655, 678, 713, 724, 706, 707, 708, 709, 738, 710, 711, 813, 761, 760, 784, 770, 755, 841, 842, 844, 786, 783, 787, 759, 772, 828, 804, 799, 834, 814, 825, 818, 801, 790, 830, 817, 800, 789, 829, 785, 767, 766, 764, 765, 822, 823, 827, 819, 820, 802, 791, 831, 768, 836, 839, 838, 806, 837, 771, 777, 778, 845, 782, 763, 824, 793, 821, 816, 843, 832, 833, 780, 781, 773, 757, 796, 797, 794, 795, 788, 758, 762, 776, 805, 803, 798, 753, 754, 792, 774, 775, 835, 769, 756, 779, 815, 826, 807, 808, 809, 810, 840, 811, 812, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 382, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 383, 284, 285, 286, 384, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 385, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 386, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521, 522, 523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537, 538, 539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560, 561, 562, 563, 564, 565, 566, 567, 568, 569, 570, 571, 572, 573, 574, 575, 576, 577, 238]
     LoLGame_summary_data_organized: dict[str, list[Any]] = {LoLGame_summary_header_keys[i]: LoLGame_summary_data[LoLGame_summary_header_keys[i]] for i in LoLGame_summary_statistics_output_order}
     LoLGame_summary_df: pandas.DataFrame = pandas.DataFrame(data = LoLGame_summary_data_organized)
     optimize_bool_display(LoLGame_summary_df)
@@ -6242,7 +6242,7 @@ async def sort_LoLGame_stats_sgp(connection: Connection, sgpSession: SGPSession,
         logPrint("注意：以下%d场对局因不包含主玩家而被移除。\nAttention: The following %d match(es) are removed because they don't contain the main player." %(len(matches_to_remove), len(matches_to_remove)), verbose = verbose)
         logPrint(matches_to_remove, verbose = verbose)
     #数据框列序整理（Dataframe column ordering）
-    LoLGame_stat_statistics_output_order: list[int] = [0, 112, 148, 131, 132, 146, 128, 147, 68, 21, 16, 13, 25, 26, 11, 18, 22, 14, 29, 15, 20, 30, 19, 24, 227, 218, 628, 184, 54, 625, 626, 96, 133, 125, 82, 152, 135, 52, 51, 55, 223, 224, 186, 187, 188, 189, 190, 191, 192, 221, 200, 212, 201, 213, 202, 214, 203, 215, 204, 216, 205, 217, 95, 64, 45, 229, 230, 231, 234, 235, 98, 94, 99, 49, 72, 71, 74, 73, 66, 167, 129, 113, 174, 153, 164, 157, 115, 102, 169, 156, 114, 101, 168, 97, 61, 60, 58, 59, 161, 162, 166, 158, 159, 116, 103, 170, 62, 176, 179, 178, 136, 177, 65, 79, 232, 80, 233, 93, 57, 163, 105, 155, 160, 171, 172, 83, 84, 106, 108, 173, 85, 107, 67, 47, 109, 110, 100, 48, 56, 78, 130, 127, 111, 43, 44, 104, 69, 70, 175, 63, 46, 81, 154, 165, 137, 139, 141, 142, 228, 144, 145, 602, 616, 608, 604, 609, 605, 610, 606, 611, 607, 620, 618, 621, 619, 598, 596, 597, 50, 149, 150, 75, 76, 77, 182, 181, 180, 236, 117, 143, 672, 658, 643, 728, 674, 671, 675, 647, 660, 715, 692, 687, 721, 701, 712, 705, 689, 678, 717, 704, 688, 677, 716, 673, 655, 654, 652, 653, 709, 710, 714, 706, 707, 690, 679, 718, 656, 723, 726, 725, 694, 724, 659, 665, 666, 670, 651, 711, 681, 703, 708, 729, 719, 720, 668, 669, 682, 683, 661, 645, 684, 685, 676, 646, 650, 664, 693, 691, 686, 641, 642, 680, 662, 663, 722, 657, 644, 667, 702, 713, 695, 696, 697, 698, 727, 699, 700, 802, 750, 749, 773, 759, 744, 830, 831, 833, 775, 772, 776, 748, 761, 817, 793, 788, 823, 803, 814, 807, 790, 779, 819, 806, 789, 778, 818, 774, 756, 755, 753, 754, 811, 812, 816, 808, 809, 791, 780, 820, 757, 825, 828, 827, 795, 826, 760, 766, 767, 834, 771, 752, 813, 782, 810, 805, 832, 821, 822, 769, 770, 762, 746, 785, 786, 783, 784, 777, 747, 751, 765, 794, 792, 787, 742, 743, 781, 763, 764, 824, 758, 745, 768, 804, 815, 796, 797, 798, 799, 829, 800, 801, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 381, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 382, 283, 284, 285, 383, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 384, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 385, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521, 522, 523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537, 538, 539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560, 561, 562, 563, 564, 565, 566, 237]
+    LoLGame_stat_statistics_output_order: list[int] = [0, 112, 148, 131, 132, 146, 128, 147, 68, 21, 16, 13, 25, 26, 11, 18, 22, 14, 29, 15, 20, 30, 19, 24, 228, 219, 639, 185, 54, 636, 637, 96, 133, 125, 82, 152, 135, 52, 51, 55, 224, 225, 187, 188, 189, 190, 191, 192, 193, 222, 201, 213, 202, 214, 203, 215, 204, 216, 205, 217, 206, 218, 95, 64, 45, 230, 231, 232, 235, 236, 98, 94, 99, 49, 72, 71, 74, 73, 66, 167, 129, 113, 174, 153, 164, 157, 115, 102, 169, 156, 114, 101, 168, 97, 61, 60, 58, 59, 161, 162, 166, 158, 159, 116, 103, 170, 62, 176, 179, 178, 136, 177, 65, 79, 233, 80, 234, 93, 57, 163, 105, 155, 160, 171, 172, 83, 84, 106, 108, 173, 85, 107, 67, 47, 109, 110, 100, 48, 56, 78, 130, 127, 111, 43, 44, 104, 69, 70, 175, 63, 46, 81, 154, 165, 137, 139, 141, 142, 229, 144, 145, 613, 627, 619, 615, 620, 616, 621, 617, 622, 618, 631, 629, 632, 630, 609, 607, 608, 180, 50, 149, 150, 75, 76, 77, 183, 182, 181, 237, 117, 143, 683, 669, 654, 739, 685, 682, 686, 658, 671, 726, 703, 698, 732, 712, 723, 716, 700, 689, 728, 715, 699, 688, 727, 684, 666, 665, 663, 664, 720, 721, 725, 717, 718, 701, 690, 729, 667, 734, 737, 736, 705, 735, 670, 676, 677, 681, 662, 722, 692, 714, 719, 740, 730, 731, 679, 680, 693, 694, 672, 656, 695, 696, 687, 657, 661, 675, 704, 702, 697, 652, 653, 691, 673, 674, 733, 668, 655, 678, 713, 724, 706, 707, 708, 709, 738, 710, 711, 813, 761, 760, 784, 770, 755, 841, 842, 844, 786, 783, 787, 759, 772, 828, 804, 799, 834, 814, 825, 818, 801, 790, 830, 817, 800, 789, 829, 785, 767, 766, 764, 765, 822, 823, 827, 819, 820, 802, 791, 831, 768, 836, 839, 838, 806, 837, 771, 777, 778, 845, 782, 763, 824, 793, 821, 816, 843, 832, 833, 780, 781, 773, 757, 796, 797, 794, 795, 788, 758, 762, 776, 805, 803, 798, 753, 754, 792, 774, 775, 835, 769, 756, 779, 815, 826, 807, 808, 809, 810, 840, 811, 812, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 382, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 383, 284, 285, 286, 384, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 385, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 386, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521, 522, 523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537, 538, 539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560, 561, 562, 563, 564, 565, 566, 567, 568, 569, 570, 571, 572, 573, 574, 575, 576, 577, 238]
     LoLGame_stat_data_organized: dict[str, list[Any]] = {LoLGame_summary_header_keys[i]: LoLGame_stat_data[LoLGame_summary_header_keys[i]] for i in LoLGame_stat_statistics_output_order}
     LoLGame_stat_df: pandas.DataFrame = pandas.DataFrame(data = LoLGame_stat_data_organized)
     logPrint("正在优化逻辑值显示……\nOptimizing the display of boolean values ...", verbose = verbose)
