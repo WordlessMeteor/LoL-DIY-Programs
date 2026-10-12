@@ -2519,7 +2519,7 @@ async def search_profile(connection: Connection) -> None:
                             # with open(os.path.join(match_folder, pkl8name), "wb") as IntObj7:
                             #     pickle.dump(LoLGame_timeline, IntObj7)
                         if use_sgp:
-                            LoLGame_timeline_df, LoLGame_event_df, LoLItems = await sort_LoLGame_timeline_sgp(connection, LoLGame_timeline, LoLGame_summary, LoLChampions, LoLItems, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, useInfoDict = True, infos = infos, log = log)
+                            LoLGame_timeline_df, LoLGame_event_df, LoLItems = await sort_LoLGame_timeline_sgp(connection, LoLGame_timeline, LoLGame_summary, LoLChampions, LoLItems, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, infos = infos, log = log)
                         else:
                             LoLGame_timeline_df, LoLGame_event_df, LoLItems = sort_LoLGame_timeline(LoLGame_timeline, LoLGame_summary, LoLChampions, LoLItems, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, log = log)
                 
@@ -2610,7 +2610,7 @@ async def search_profile(connection: Connection) -> None:
                         logPrint(f"玩家{info_summonerName}共进行{TFTGameCount}场云顶之弈对局。\nPlayer {info_summonerName} has played {TFTGameCount} TFT matches.\n")
                     else:
                         logPrint(f"玩家{info_summonerName}从5月1日起就没有进行过任何云顶之弈对局。\nPlayer {info_summonerName} hasn't played any TFT game yet since May 1st.")
-                    TFTHistory_df: pandas.DataFrame = (await sort_TFTHistory(connection, TFTHistory, info_puuid, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, useInfoDict = True, infos = infos, log = log))[0]
+                    TFTHistory_df: pandas.DataFrame = (await sort_TFTHistory(connection, TFTHistory, info_puuid, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, infos = infos, log = log))[0]
                     TFTHistory_dfs.append(TFTHistory_df)
                     if TFTGamePlayed_singleSummoner:
                         logPrint(TFTHistory_df[:min(21, TFTGameCount + 1)], write_time = False)
@@ -2850,7 +2850,7 @@ async def search_profile(connection: Connection) -> None:
                         # with open(os.path.join(match_folder, pkl9name), "wb") as IntObj8:
                         #     pickle.dump(TFTGame_summary, IntObj8)
                     
-                    TFTGame_summary_df, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits = await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = TFTMatchIDs.index(matchId), current_puuid = current_puuid, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, useInfoDict = True, infos = infos, sortStats = True, TFTGame_stat_data = None if args.no_stat_sheet else TFTGame_stat_data, save_self = True, save_other = True, log = log)
+                    TFTGame_summary_df, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits = await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = TFTMatchIDs.index(matchId), current_puuid = current_puuid, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, infos = infos, sortStats = True, TFTGame_stat_data = None if args.no_stat_sheet else TFTGame_stat_data, save_self = True, save_other = True, log = log)
                     
                     #社交排行榜（Social leaderboard）
                     if TFTGame_leaderboard_export:

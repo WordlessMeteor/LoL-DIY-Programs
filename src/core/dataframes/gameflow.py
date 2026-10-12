@@ -959,7 +959,7 @@ async def sort_postgame_players_lol(connection: Connection, sgpSession: SGPSessi
     LoLGame_summary_df = LoLGame_summary_df.transpose()
     return (status, LoLGame_summary, LoLGame_summary_df)
 
-async def sort_postgame_players_tft(connection: Connection, sgpSession: SGPSession, matchId: int, queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], puuid: str | list[str] = "", useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[int, dict[str, Any], pandas.DataFrame]:
+async def sort_postgame_players_tft(connection: Connection, sgpSession: SGPSession, matchId: int, queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], puuid: str | list[str] = "", useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[Any]]] = None, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[int, dict[str, Any], pandas.DataFrame]:
     '''
     将一场过往云顶之弈对局中的玩家战绩整理成表格。<br>Organize player stats in a previous TFT match into a dataframe.
     
@@ -1026,6 +1026,8 @@ async def sort_postgame_players_tft(connection: Connection, sgpSession: SGPSessi
     :type current_versions: dict[str, str]
     :param unmapped_keys: 各数据资源未找到的键。用于控制数据未找到匹配记录的提示最多输出一次。<br>Unmapped keys in all data resources, used to control the hint about data not found to be printed at most once.
     :type unmapped_keys: dict[str, set[int]]
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -1035,6 +1037,8 @@ async def sort_postgame_players_tft(connection: Connection, sgpSession: SGPSessi
     '''
     if versionList == None:
         versionList = []
+    if infos == None:
+        infos = {}
     if log == None:
         log = LogManager()
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
@@ -1043,7 +1047,7 @@ async def sort_postgame_players_tft(connection: Connection, sgpSession: SGPSessi
     puuidList: list[str] = [puuid] if isinstance(puuid, str) else puuid
     status, TFTGame_summary = await get_game_summary_sgp(connection, sgpSession, match_id, checkLoL = False)
     if status == 200:
-        TFTGame_summary_df: pandas.DataFrame = (await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = 1, current_puuid = puuidList, useAllVersions = useAllVersions, versionList = versionList, locale = locale, current_versions = current_versions, unmapped_keys = unmapped_keys, sortStats = False, log = log, verbose = verbose))[0]
+        TFTGame_summary_df: pandas.DataFrame = (await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = 1, current_puuid = puuidList, useAllVersions = useAllVersions, versionList = versionList, locale = locale, current_versions = current_versions, unmapped_keys = unmapped_keys, sortStats = False, infos = infos, log = log, verbose = verbose))[0]
     else:
         TFTGame_summary_header_keys: list[str] = list(TFTGame_summary_header.keys())
         TFTGame_summary_data: dict[str, list[Any]] = {key: [] for key in TFTGame_summary_header_keys}

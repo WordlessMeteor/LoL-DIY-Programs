@@ -1652,7 +1652,7 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
     LoLHistory_df = pandas.concat([pandas.DataFrame([LoLHistory_header])[LoLHistory_df.columns], LoLHistory_df], ignore_index = True)
     return (LoLHistory_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments)
 
-async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession, TFTMatchIDs: list[int], puuid: str | list[str], queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], useAllVersions: bool = False, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[Any]]] = None, TFTGame_summary_cache: Optional[dict[int, dict[str, Any]]] = None, session: Optional[requests.Session] = None, useInfoDict: bool = False, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
+async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession, TFTMatchIDs: list[int], puuid: str | list[str], queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], useAllVersions: bool = False, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[Any]]] = None, TFTGame_summary_cache: Optional[dict[int, dict[str, Any]]] = None, session: Optional[requests.Session] = None, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
     '''
     基于传入的对局序号列表重建云顶之弈对局记录。<br>Reconstruct LoL match history according to TFT matchId list supplied.
     
@@ -1725,8 +1725,6 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
     :type TFTGame_summary_cache: dict[int, dict[str, Any]]
     :param session: 网络请求会话。<br>Web request session.
     :type session: requests.Session
-    :param useInfoDict: 是否使用召唤师信息缓存字典。默认为否。<br>Whether to use a summoner information cache dictionary. False by default.
-    :type useInfoDict: bool
     :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
     :type infos: dict[str, dict[str, Any]]
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
@@ -2035,7 +2033,7 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
                                     break
                         break
             for participantIndex in participantIndices:
-                await generate_TFTHistory_records(connection, TFTHistory_data, TFTGame_summary, participantIndex, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, unmapped_keys = unmapped_keys, useInfoDict = useInfoDict, infos = infos, log = log, verbose = verbose)
+                await generate_TFTHistory_records(connection, TFTHistory_data, TFTGame_summary, participantIndex, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, unmapped_keys = unmapped_keys, infos = infos, log = log, verbose = verbose)
             logPrint("对局记录重查进度（Match history recheck process）：%d/%d\t对局序号（MatchID）： %s" %(i + 1, len(TFTMatchIDs), matchId), print_time = True, verbose = verbose)
     #数据框列序整理（Dataframe column ordering）
     TFTHistory_statistics_output_order: list[int] = [0, 47, 48, 5, 15, 16, 17, 6, 11, 19, 8, 18, 7, 14, 13, 12, 307, 305, 41, 34, 35, 36, 39, 53, 54, 50, 37, 51, 43, 55, 42, 40, 45, 46, 24, 25, 26, 150, 148, 149, 203, 206, 209, 155, 153, 154, 212, 215, 218, 160, 158, 159, 221, 224, 227, 165, 163, 164, 230, 233, 236, 170, 168, 169, 239, 242, 245, 175, 173, 174, 248, 251, 254, 180, 178, 179, 257, 260, 263, 185, 183, 184, 266, 269, 272, 190, 188, 189, 275, 278, 281, 195, 193, 194, 284, 287, 290, 200, 198, 199, 293, 296, 299, 61, 57, 58, 59, 60, 68, 64, 65, 66, 67, 75, 71, 72, 73, 74, 82, 78, 79, 80, 81, 89, 85, 86, 87, 88, 96, 92, 93, 94, 95, 103, 99, 100, 101, 102, 110, 106, 107, 108, 109, 117, 113, 114, 115, 116, 124, 120, 121, 122, 123, 131, 127, 128, 129, 130, 138, 134, 135, 136, 137, 145, 141, 142, 143, 144]
@@ -6582,7 +6580,7 @@ def sort_LoLGame_timeline(LoLGame_timeline: dict[str, Any], LoLGame_summary: dic
     LoLGame_event_df = pandas.concat([pandas.DataFrame([LoLGame_event_header])[LoLGame_event_df.columns], LoLGame_event_df], ignore_index = True)
     return (LoLGame_timeline_df, LoLGame_event_df, LoLItems)
 
-async def sort_LoLGame_timeline_sgp(connection: Connection, LoLGame_timeline: dict[str, Any], LoLGame_summary: dict[str, Any], LoLChampions: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], useAllVersions: bool = False, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, useInfoDict: bool = False, infos: Optional[dict[str, dict[str, Any]]] = None, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, pandas.DataFrame, dict[int, dict[str, Any]]]:
+async def sort_LoLGame_timeline_sgp(connection: Connection, LoLGame_timeline: dict[str, Any], LoLGame_summary: dict[str, Any], LoLChampions: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], useAllVersions: bool = False, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, infos: Optional[dict[str, dict[str, Any]]] = None, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, pandas.DataFrame, dict[int, dict[str, Any]]]:
     '''
     将英雄联盟对局时间轴信息整理成对局时间轴和对局事件两张表格。<br>Organize LoL match timeline information into two dataframes including match timeline and match events.
     
@@ -6738,7 +6736,7 @@ async def sort_LoLGame_timeline_sgp(connection: Connection, LoLGame_timeline: di
         version = "" #此时只是为了后续数据资源的异常处理提示（In this case this variable is only used by subsequent exception handling prompts）
         LoLGame_summary_participants = {}
         for participant in LoLGame_timeline["json"]["participants"]:
-            if useInfoDict and participant["puuid"] in infos:
+            if participant["puuid"] in infos:
                 participant_info_body = infos[participant["puuid"]]
                 LoLGame_summary_participants[participant["participantId"]] = participant_info_body
             else:
@@ -6751,8 +6749,7 @@ async def sort_LoLGame_timeline_sgp(connection: Connection, LoLGame_timeline: di
                     participant_info = await get_info(connection, participant["puuid"])
                 if participant_info["info_got"]:
                     participant_info_body = participant_info["body"]
-                    if useInfoDict:
-                        infos[participant["puuid"]] = participant_info_body
+                    infos[participant["puuid"]] = participant_info_body
                     LoLGame_summary_participants[participant["participantId"]] = participant_info_body
                 else:
                     logPrint(participant_info["body"], verbose = verbose)
@@ -7005,7 +7002,7 @@ async def sort_LoLGame_timeline_sgp(connection: Connection, LoLGame_timeline: di
     LoLGame_event_df = pandas.concat([pandas.DataFrame([LoLGame_event_header])[LoLGame_event_df.columns], LoLGame_event_df], ignore_index = True)
     return (LoLGame_timeline_df, LoLGame_event_df, LoLItems)
 
-async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: dict[str, list[Any]], TFTGame_summary: dict[str, Any], participantIndex: int, queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], gameIndex: int = 1, unmapped_keys: Optional[dict[str, set[Any]]] = None, useInfoDict: bool = False, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> dict[str, list[Any]]:
+async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: dict[str, list[Any]], TFTGame_summary: dict[str, Any], participantIndex: int, queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], gameIndex: int = 1, unmapped_keys: Optional[dict[str, set[Any]]] = None, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> dict[str, list[Any]]:
     '''
     向云顶之弈对局记录数据中追加记录。<br>Append records to TFT match history data.
     
@@ -7068,8 +7065,6 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
     :type gameIndex: int
     :param unmapped_keys: 各数据资源未找到的键。用于控制数据未找到匹配记录的提示最多输出一次。<br>Unmapped keys in all data resources, used to control the hint about data not found to be printed at most once.
     :type unmapped_keys: dict[str, set[Any]]
-    :param useInfoDict: 是否使用召唤师信息缓存字典。默认为否。<br>Whether to use a summoner information cache dictionary. False by default.
-    :type useInfoDict: bool
     :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
     :type infos: dict[str, dict[str, Any]]
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
@@ -7116,7 +7111,7 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
             if "riotIdGameName" in TFTPlayer and "riotIdTagline" in TFTPlayer:
                 TFTPlayer_summonerName: str = "%s#%s" %(TFTPlayer["riotIdGameName"], TFTPlayer["riotIdTagline"])
             else:
-                if useInfoDict and TFTPlayer["puuid"] in infos:
+                if TFTPlayer["puuid"] in infos:
                     TFTPlayer_info_body = infos[TFTPlayer["puuid"]]
                     TFTPlayer_summonerName = get_info_name(TFTPlayer_info_body)
                     TFTPlayer_info_got = True
@@ -7130,8 +7125,7 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
                         TFTPlayer_info = await get_info(connection, TFTPlayer["puuid"])
                     if TFTPlayer_info["info_got"]:
                         TFTPlayer_info_body = TFTPlayer_info["body"]
-                        if useInfoDict:
-                            infos[TFTPlayer["puuid"]] = TFTPlayer_info_body
+                        infos[TFTPlayer["puuid"]] = TFTPlayer_info_body
                         TFTPlayer_summonerName = get_info_name(TFTPlayer_info_body)
                     else:
                         logPrint(TFTPlayer_info["body"], verbose = verbose)
@@ -7328,7 +7322,7 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
             TFTHistory_data[key].append(to_append)
     return TFTHistory_data
 
-async def sort_TFTHistory(connection: Connection, TFTHistory: dict[str, Any], current_puuid: str | list[str], queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], useAllVersions: bool = False, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[Any]]] = None, session: Optional[requests.Session] = None, useInfoDict: bool = False, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]: #云顶之弈对局记录包含全部信息，所以需要传入玩家通用唯一识别码来定位主召唤师（TFT match history contains all information, so puuid is needed to locate the main summoner）
+async def sort_TFTHistory(connection: Connection, TFTHistory: dict[str, Any], current_puuid: str | list[str], queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], useAllVersions: bool = False, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[Any]]] = None, session: Optional[requests.Session] = None, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]: #云顶之弈对局记录包含全部信息，所以需要传入玩家通用唯一识别码来定位主召唤师（TFT match history contains all information, so puuid is needed to locate the main summoner）
     '''
     将云顶之弈对局记录整理成一张表格。<br>Organize TFT match history into a dataframe.
     
@@ -7400,8 +7394,6 @@ async def sort_TFTHistory(connection: Connection, TFTHistory: dict[str, Any], cu
     :type unmapped_keys: dict[str, set[Any]]
     :param session: 网络请求会话。<br>Web request session.
     :type session: requests.Session
-    :param useInfoDict: 是否使用召唤师信息缓存字典。默认为否。<br>Whether to use a summoner information cache dictionary. False by default.
-    :type useInfoDict: bool
     :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
     :type infos: dict[str, dict[str, Any]]
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
@@ -7697,7 +7689,7 @@ async def sort_TFTHistory(connection: Connection, TFTHistory: dict[str, Any], cu
                                     unmapped_keys["TFTAugment"].clear()
                                     break
                         break
-        await generate_TFTHistory_records(connection, TFTHistory_data, TFTGame_summary, participantIndex, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, unmapped_keys = unmapped_keys, useInfoDict = useInfoDict, infos = infos, log = log, verbose = verbose)
+        await generate_TFTHistory_records(connection, TFTHistory_data, TFTGame_summary, participantIndex, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, unmapped_keys = unmapped_keys, infos = infos, log = log, verbose = verbose)
     #数据框列序整理（Dataframe column ordering）
     TFTHistory_statistics_output_order: list[int] = [0, 47, 48, 5, 15, 16, 17, 6, 11, 19, 8, 18, 7, 14, 13, 12, 307, 305, 41, 34, 35, 36, 39, 53, 54, 50, 37, 51, 43, 55, 42, 40, 45, 46, 24, 25, 26, 150, 148, 149, 203, 206, 209, 155, 153, 154, 212, 215, 218, 160, 158, 159, 221, 224, 227, 165, 163, 164, 230, 233, 236, 170, 168, 169, 239, 242, 245, 175, 173, 174, 248, 251, 254, 180, 178, 179, 257, 260, 263, 185, 183, 184, 266, 269, 272, 190, 188, 189, 275, 278, 281, 195, 193, 194, 284, 287, 290, 200, 198, 199, 293, 296, 299, 61, 57, 58, 59, 60, 68, 64, 65, 66, 67, 75, 71, 72, 73, 74, 82, 78, 79, 80, 81, 89, 85, 86, 87, 88, 96, 92, 93, 94, 95, 103, 99, 100, 101, 102, 110, 106, 107, 108, 109, 117, 113, 114, 115, 116, 124, 120, 121, 122, 123, 131, 127, 128, 129, 130, 138, 134, 135, 136, 137, 145, 141, 142, 143, 144]
     TFTHistory_data_organized: dict[str, list[Any]] = {TFTHistory_header_keys[i]: TFTHistory_data[TFTHistory_header_keys[i]] for i in TFTHistory_statistics_output_order}
@@ -7706,7 +7698,7 @@ async def sort_TFTHistory(connection: Connection, TFTHistory: dict[str, Any], cu
     TFTHistory_df = pandas.concat([pandas.DataFrame([TFTHistory_header])[TFTHistory_df.columns], TFTHistory_df], ignore_index = True)
     return (TFTHistory_df, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits)
 
-async def generate_TFTGameSummary_records(connection: Connection, TFTGame_summary_data: dict[str, list[Any]], TFTGame_summary: dict[str, Any], participantIndex: int, queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], gameIndex: int = 1, current_puuid: str | list[str] = "", unmapped_keys: Optional[dict[str, set[Any]]] = None, useInfoDict: bool = False, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> dict[str, list[Any]]: #这里传入的玩家通用唯一识别码参数仅用于辨别双人作战模式中的队友（Here the puuid parameter is only used to distinguish the ally from others in Double Up mode）
+async def generate_TFTGameSummary_records(connection: Connection, TFTGame_summary_data: dict[str, list[Any]], TFTGame_summary: dict[str, Any], participantIndex: int, queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], gameIndex: int = 1, current_puuid: str | list[str] = "", unmapped_keys: Optional[dict[str, set[Any]]] = None, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> dict[str, list[Any]]: #这里传入的玩家通用唯一识别码参数仅用于辨别双人作战模式中的队友（Here the puuid parameter is only used to distinguish the ally from others in Double Up mode）
     '''
     向云顶之弈对局概要数据中追加记录。<br>Append records to TFT match summary data.
     
@@ -7771,8 +7763,6 @@ async def generate_TFTGameSummary_records(connection: Connection, TFTGame_summar
     :type current_puuid: str | list[str]
     :param unmapped_keys: 各数据资源未找到的键。用于控制数据未找到匹配记录的提示最多输出一次。<br>Unmapped keys in all data resources, used to control the hint about data not found to be printed at most once.
     :type unmapped_keys: dict[str, set[Any]]
-    :param useInfoDict: 是否使用召唤师信息缓存字典。默认为否。<br>Whether to use a summoner information cache dictionary. False by default.
-    :type useInfoDict: bool
     :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
     :type infos: dict[str, dict[str, Any]]
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
@@ -7814,7 +7804,7 @@ async def generate_TFTGameSummary_records(connection: Connection, TFTGame_summar
         if "riotIdGameName" in TFTPlayer and "riotIdTagline" in TFTPlayer:
             TFTPlayer_summonerName: str = "%s#%s" %(TFTPlayer["riotIdGameName"], TFTPlayer["riotIdTagline"])
         else:
-            if useInfoDict and TFTPlayer["puuid"] in infos:
+            if TFTPlayer["puuid"] in infos:
                 TFTPlayer_info_body: dict[str, Any] = infos[TFTPlayer["puuid"]]
                 TFTPlayer_summonerName = get_info_name(TFTPlayer_info_body)
                 TFTPlayer_info_got = True
@@ -7828,8 +7818,7 @@ async def generate_TFTGameSummary_records(connection: Connection, TFTGame_summar
                     TFTPlayer_info = await get_info(connection, TFTPlayer["puuid"])
                 if TFTPlayer_info["info_got"]:
                     TFTPlayer_info_body = TFTPlayer_info["body"]
-                    if useInfoDict:
-                        infos[TFTPlayer["puuid"]] = TFTPlayer_info_body
+                    infos[TFTPlayer["puuid"]] = TFTPlayer_info_body
                     TFTPlayer_summonerName = get_info_name(TFTPlayer_info_body)
                 else:
                     logPrint(TFTPlayer_info["message"], verbose = verbose)
@@ -8031,7 +8020,7 @@ async def generate_TFTGameSummary_records(connection: Connection, TFTGame_summar
         TFTGame_summary_data[key].append(to_append)
     return TFTGame_summary_data
 
-async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str, Any], queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], gameIndex: int = 1, current_puuid: str | list[str] = "", useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[Any]]] = None, session: Optional[requests.Session] = None, useInfoDict: bool = False, infos: Optional[dict[str, dict[str, Any]]] = None, sortStats: bool = False, TFTGame_stat_data: Optional[dict[str, list[Any]]] = None, save_self: bool = True, save_other: bool = True, save_bot: bool = False, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]: #本函数体中涉及召唤师信息的获取，因此需要定义为协程（This function body involves getting summoner information, so this function is defined as an async function）
+async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str, Any], queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], gameIndex: int = 1, current_puuid: str | list[str] = "", useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[Any]]] = None, session: Optional[requests.Session] = None, infos: Optional[dict[str, dict[str, Any]]] = None, sortStats: bool = False, TFTGame_stat_data: Optional[dict[str, list[Any]]] = None, save_self: bool = True, save_other: bool = True, save_bot: bool = False, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]: #本函数体中涉及召唤师信息的获取，因此需要定义为协程（This function body involves getting summoner information, so this function is defined as an async function）
     '''
     将云顶之弈对局概要中的玩家信息整理成一张表格。<br>Organize player information in a TFT match summary into a dataframe.
     
@@ -8102,8 +8091,6 @@ async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str
     :type unmapped_keys: dict[str, set[Any]]
     :param session: 网络请求会话。<br>Web request session.
     :type session: requests.Session
-    :param useInfoDict: 是否使用召唤师信息缓存字典。默认为否。<br>Whether to use a summoner information cache dictionary. False by default.
-    :type useInfoDict: bool
     :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
     :type infos: dict[str, dict[str, Any]]
     :param sortStats: 是否在整理对局概要数据的同时整理玩家战绩数据。默认为假。<br>Whether to organize player stats data while organizing the match summary data. False by default.
@@ -8388,7 +8375,7 @@ async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str
         #下面开始整理数据（Organize data）
         for i in range(len(TFTGame_summary_json["participants"])):
             participant_puuid: str = TFTGame_summary_json["participants"][i]["puuid"]
-            await generate_TFTGameSummary_records(connection, TFTGame_summary_data, TFTGame_summary, i, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = gameIndex, current_puuid = puuidList, unmapped_keys = unmapped_keys, useInfoDict = useInfoDict, infos = infos, log = log, verbose = verbose)
+            await generate_TFTGameSummary_records(connection, TFTGame_summary_data, TFTGame_summary, i, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = gameIndex, current_puuid = puuidList, unmapped_keys = unmapped_keys, infos = infos, log = log, verbose = verbose)
             if sortStats and not (not save_bot and participant_puuid == BOT_UUID or not save_self and participant_puuid in puuidList or not save_other and not participant_puuid in puuidList): #这个if语句块是适配自定义脚本20而做的修改（This if-block is a modification made to adapt to Customized Program 20）
                 for j in range(len(TFTGame_summary_header_keys)):
                     key: str = TFTGame_summary_header_keys[j]
@@ -8401,7 +8388,7 @@ async def sort_TFTGame_summary(connection: Connection, TFTGame_summary: dict[str
     TFTGame_summary_df = pandas.concat([pandas.DataFrame([TFTGame_summary_header])[TFTGame_summary_df.columns], TFTGame_summary_df], ignore_index = True)
     return (TFTGame_summary_df, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits)
 
-async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFTMatchIDs: list[int], queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], puuid: str | list[str] = "", excluded_reserve: bool = False, save_self: bool = True, save_other: bool = False, save_bot: bool = False, useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[Any]]] = None, TFTGame_summary_cache: Optional[dict[int, dict[str, Any]]] = None, session: Optional[requests.Session] = None, useInfoDict: bool = False, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame: #和sort_LoLGame_stats函数不同的是，根据对局序号查询云顶之弈对局概要需要借助SGP API，所以这里做了一处优化：如果某场对局在一个给定的对局记录中已经存在，则直接使用该对局记录中的数据。这就是参数表中引入TFTHistory的原因（The difference of this function from `sort_LoLGame_stats` is that SGP API is used to query TFT match summary. Hence, this function performs an optimization: if a match exists in a specified match history, then query the match history instead. This is why `TFTHistory` appears in the parameter list）
+async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFTMatchIDs: list[int], queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], puuid: str | list[str] = "", excluded_reserve: bool = False, save_self: bool = True, save_other: bool = False, save_bot: bool = False, useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[Any]]] = None, TFTGame_summary_cache: Optional[dict[int, dict[str, Any]]] = None, session: Optional[requests.Session] = None, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame: #和sort_LoLGame_stats函数不同的是，根据对局序号查询云顶之弈对局概要需要借助SGP API，所以这里做了一处优化：如果某场对局在一个给定的对局记录中已经存在，则直接使用该对局记录中的数据。这就是参数表中引入TFTHistory的原因（The difference of this function from `sort_LoLGame_stats` is that SGP API is used to query TFT match summary. Hence, this function performs an optimization: if a match exists in a specified match history, then query the match history instead. This is why `TFTHistory` appears in the parameter list）
     '''
     将多场云顶之弈对局中的玩家数据汇总形成一个表格，同时包含对局元数据和玩家战绩。<br>Organize player stats in multiple TFT matches into a dataframe, which contains match metadata and player stats.
     
@@ -8484,8 +8471,6 @@ async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFT
     :type TFTGame_summary_cache: dict[int, dict[str, Any]]
     :param session: 网络请求会话。<br>Web request session.
     :type session: requests.Session
-    :param useInfoDict: 是否使用召唤师信息缓存字典。默认为否。<br>Whether to use a summoner information cache dictionary. False by default.
-    :type useInfoDict: bool
     :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
     :type infos: dict[str, dict[str, Any]]
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
@@ -8778,7 +8763,7 @@ async def sort_TFTGame_stats(connection: Connection, sgpSession: SGPSession, TFT
                     for i in range(len(TFTGame_summary_json["participants"])):
                         participant_puuid: str = TFTGame_summary_json["participants"][i]["puuid"]
                         if not (not save_bot and participant_puuid == BOT_UUID or not save_self and participant_puuid in puuidList or not save_other and not participant_puuid in puuidList):
-                            await generate_TFTGameSummary_records(connection, TFTGame_stat_data, TFTGame_summary, i, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = TFTMatchIDs.index(matchId) + 1, current_puuid = puuidList, unmapped_keys = unmapped_keys, useInfoDict = useInfoDict, infos = infos, log = log, verbose = verbose)
+                            await generate_TFTGameSummary_records(connection, TFTGame_stat_data, TFTGame_summary, i, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = TFTMatchIDs.index(matchId) + 1, current_puuid = puuidList, unmapped_keys = unmapped_keys, infos = infos, log = log, verbose = verbose)
                     if excluded_reserve:
                         logPrint("[%d/%d]对局%d不包含主玩家。已保留该对局。\nMatch %d doesn't contain the main player but is reserved." %(TFTMatchIDs.index(matchId) + 1, len(TFTMatchIDs), matchId, matchId), print_time = True, verbose = verbose)
                     else:

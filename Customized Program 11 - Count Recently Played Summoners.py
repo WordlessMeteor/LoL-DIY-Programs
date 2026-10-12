@@ -1289,22 +1289,19 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
         for member in lobby_information["members"]:
             if not member["puuid"] in current_puuid_list: #在大多数情况下，这里不需要改成自己的玩家通用唯一识别码列表。有两个原因：一是一个会话仅属于一名英雄联盟玩家；二是前面整理玩家信息时，小号已经被排除，所以这里不可能会有成员为小号。但是如果用户通过命令行参数指定小号不被删除，那么仍然需要使用列表（In most cases, here the `current_puuid` doesn't need to be replaced by the self puuid list. Two reasons: first, a session only belongs to a single League of Legends player; second, while sorting out the player information before, smurf accounts have been excluded, so it's impossible for any member to correspond to a smurf. But if the user specifies the command line argument so that smurf accounts aren't deleted, then the list is needed）
                 member_info_recapture: int = 0
-                if member["puuid"] in infos:
-                    member_info_body: dict[str, str] = infos[member["puuid"]]
+                member_info: dict[str, str] = await get_info(connection, member["puuid"], infos = infos)
+                while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
+                    logPrint(member_info["message"])
+                    member_info_recapture += 1
+                    logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of a member (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(member["puuid"], member_info_recapture, member["puuid"], member_info_recapture))
+                    member_info = await get_info(connection, member["puuid"])
+                if member_info["info_got"]:
+                    member_info_body = member_info["body"]
+                    infos[member["puuid"]] = member_info_body
                 else:
-                    member_info: dict[str, str] = await get_info(connection, member["puuid"])
-                    while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
-                        logPrint(member_info["message"])
-                        member_info_recapture += 1
-                        logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of a member (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(member["puuid"], member_info_recapture, member["puuid"], member_info_recapture))
-                        member_info = await get_info(connection, member["puuid"])
-                    if member_info["info_got"]:
-                        member_info_body = member_info["body"]
-                        infos[member["puuid"]] = member_info_body
-                    else:
-                        logPrint(member_info["message"])
-                        logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！将忽略该名成员。\nInformation of a member (puuid: %s) capture failed! The program will ignore this member.")
-                        continue
+                    logPrint(member_info["message"])
+                    logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！将忽略该名成员。\nInformation of a member (puuid: %s) capture failed! The program will ignore this member.")
+                    continue
                 LoLMember_index: list[int] = [0]
                 TFTMember_index: list[int] = [0]
                 if search_LoL:
@@ -1391,22 +1388,19 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
         for ally in champ_select_session["myTeam"]:
             if not ally["puuid"] in set(current_puuid_list) | {"", BOT_UUID} and (ally["nameVisibilityType"] == "VISIBLE" or ally["nameVisibilityType"] == ""):
                 ally_info_recapture: int = 0
-                if ally["puuid"] in infos:
-                    ally_info_body: dict[str, Any] = infos[ally["puuid"]]
+                ally_info: dict[str, Any] = await get_info(connection, ally["puuid"], infos = infos)
+                while not ally_info["info_got"] and ally_info["body"]["httpStatus"] != 404 and ally_info_recapture < 3:
+                    logPrint(ally_info["message"])
+                    ally_info_recapture += 1
+                    logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
+                    ally_info = await get_info(connection, ally["puuid"])
+                if ally_info["info_got"]:
+                    ally_info_body = ally_info["body"]
+                    infos[ally["puuid"]] = ally_info_body
                 else:
-                    ally_info: dict[str, Any] = await get_info(connection, ally["puuid"])
-                    while not ally_info["info_got"] and ally_info["body"]["httpStatus"] != 404 and ally_info_recapture < 3:
-                        logPrint(ally_info["message"])
-                        ally_info_recapture += 1
-                        logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
-                        ally_info = await get_info(connection, ally["puuid"])
-                    if ally_info["info_got"]:
-                        ally_info_body = ally_info["body"]
-                        infos[ally["puuid"]] = ally_info_body
-                    else:
-                        logPrint(ally_info["message"])
-                        logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
-                        continue
+                    logPrint(ally_info["message"])
+                    logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
+                    continue
                 LoLAlly_index: list[int] = [0] #第0行是中文表头，所以一开始要包含在内（The 0th line is Chinese header, so it should be contained in the beginning）
                 TFTAlly_index: list[int] = [0]
                 if search_LoL:
@@ -1444,22 +1438,19 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
             for enemy in champ_select_session["theirTeam"]:
                 if not enemy["puuid"] in set(current_puuid_list) | {"", BOT_UUID} and (enemy["nameVisibilityType"] == "VISIBLE" or enemy["nameVisibilityType"] == ""):
                     enemy_info_recapture: int = 0
-                    if enemy["puuid"] in infos:
-                        enemy_info_body: dict[str, Any] = infos[enemy["puuid"]]
+                    enemy_info: dict[str, Any] = await get_info(connection, enemy["puuid"], infos = infos)
+                    while not enemy_info["info_got"] and enemy_info["body"]["httpStatus"] != 404 and enemy_info_recapture < 3:
+                        logPrint(enemy_info["message"])
+                        enemy_info_recapture += 1
+                        logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an enemy (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(enemy["puuid"], enemy_info_recapture, enemy["puuid"], enemy_info_recapture))
+                        enemy_info = await get_info(connection, enemy["puuid"])
+                    if enemy_info["info_got"]:
+                        enemy_info_body = enemy_info["body"]
+                        infos[enemy["puuid"]] = enemy_info_body
                     else:
-                        enemy_info: dict[str, Any] = await get_info(connection, enemy["puuid"])
-                        while not enemy_info["info_got"] and enemy_info["body"]["httpStatus"] != 404 and enemy_info_recapture < 3:
-                            logPrint(enemy_info["message"])
-                            enemy_info_recapture += 1
-                            logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an enemy (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(enemy["puuid"], enemy_info_recapture, enemy["puuid"], enemy_info_recapture))
-                            enemy_info = await get_info(connection, enemy["puuid"])
-                        if enemy_info["info_got"]:
-                            enemy_info_body = enemy_info["body"]
-                            infos[enemy["puuid"]] = enemy_info_body
-                        else:
-                            logPrint(enemy_info["message"])
-                            logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！将忽略该名对手。\nInformation of an enemy (puuid: %s) capture failed! The program will ignore this enemy.")
-                            continue
+                        logPrint(enemy_info["message"])
+                        logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！将忽略该名对手。\nInformation of an enemy (puuid: %s) capture failed! The program will ignore this enemy.")
+                        continue
                     LoLEnemy_index: list[int] = [0]
                     TFTEnemy_index: list[int] = [0]
                     if search_LoL:
@@ -1542,22 +1533,19 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
             for player in gameData["teamOne"]:
                 if "puuid" in player and not player["puuid"] in current_puuid_list: #电脑玩家没有玩家通用唯一识别码（Bot players don't have puuids）
                     player_info_recapture: int = 0
-                    if player["puuid"] in infos:
-                        player_info_body: dict[str, Any] = infos[player["puuid"]]
+                    player_info: dict[str, Any] = await get_info(connection, player["puuid"], infos = infos)
+                    while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
+                        logPrint(player_info["message"])
+                        player_info_recapture += 1
+                        logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(player["puuid"], player_info_recapture, player["puuid"], player_info_recapture))
+                        player_info = await get_info(connection, player["puuid"])
+                    if player_info["info_got"]:
+                        player_info_body = player_info["body"]
+                        infos[player_info_body["puuid"]] = player_info_body
                     else:
-                        player_info: dict[str, Any] = await get_info(connection, player["puuid"])
-                        while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
-                            logPrint(player_info["message"])
-                            player_info_recapture += 1
-                            logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(player["puuid"], player_info_recapture, player["puuid"], player_info_recapture))
-                            player_info = await get_info(connection, player["puuid"])
-                        if player_info["info_got"]:
-                            player_info_body = player_info["body"]
-                            infos[player_info_body["puuid"]] = player_info_body
-                        else:
-                            logPrint(player_info["message"])
-                            logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an player (puuid: %s) capture failed! The program will ignore this player.")
-                            continue
+                        logPrint(player_info["message"])
+                        logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an player (puuid: %s) capture failed! The program will ignore this player.")
+                        continue
                     LoLPlayer_index: list[int] = [0] #第0行是中文表头，所以一开始要包含在内（The 0th line is Chinese header, so it should be contained in the beginning）
                     TFTPlayer_index: list[int] = [0]
                     if search_LoL:
@@ -1634,28 +1622,25 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
             for ally in myTeam:
                 if "puuid" in ally and not ally["puuid"] in current_puuid_list:
                     ally_info_recapture = 0
-                    if ally["puuid"] in infos:
-                        ally_info_body = infos[ally["puuid"]]
-                    else:
-                        ally_info = await get_info(connection, ally["puuid"])
-                        while not ally_info["info_got"] and ally_info["body"]["httpStatus"] != 404 and ally_info_recapture < 3:
-                            logPrint(ally_info["message"])
-                            ally_info_recapture += 1
-                            if isSpectating:
-                                logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of a player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
-                            else:
-                                logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
-                            ally_info = await get_info(connection, ally["puuid"])
-                        if ally_info["info_got"]:
-                            ally_info_body = ally_info["body"]
-                            infos[ally_info_body["puuid"]] = ally_info_body
+                    ally_info = await get_info(connection, ally["puuid"], infos = infos)
+                    while not ally_info["info_got"] and ally_info["body"]["httpStatus"] != 404 and ally_info_recapture < 3:
+                        logPrint(ally_info["message"])
+                        ally_info_recapture += 1
+                        if isSpectating:
+                            logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of a player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
                         else:
-                            logPrint(ally_info["message"])
-                            if isSpectating:
-                                logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！将忽略该名玩家。\nInformation of a player (puuid: %s) capture failed! The program will ignore this player.")
-                            else:
-                                logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
-                            continue
+                            logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
+                        ally_info = await get_info(connection, ally["puuid"])
+                    if ally_info["info_got"]:
+                        ally_info_body = ally_info["body"]
+                        infos[ally_info_body["puuid"]] = ally_info_body
+                    else:
+                        logPrint(ally_info["message"])
+                        if isSpectating:
+                            logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！将忽略该名玩家。\nInformation of a player (puuid: %s) capture failed! The program will ignore this player.")
+                        else:
+                            logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
+                        continue
                     LoLAlly_index = [0] #第0行是中文表头，所以一开始要包含在内（The 0th line is Chinese header, so it should be contained in the beginning）
                     TFTAlly_index = [0]
                     if search_LoL:
@@ -1694,23 +1679,20 @@ async def detect_gameflow(connection: Connection, search_LoL: bool, search_TFT: 
                                 break
             for enemy in theirTeam:
                 if "puuid" in enemy:
-                    if enemy["puuid"] in infos:
-                        enemy_info_body = infos[enemy["puuid"]]
-                    else:
-                        enemy_info_recapture = 0
+                    enemy_info_recapture = 0
+                    enemy_info = await get_info(connection, enemy["puuid"], infos = infos)
+                    while not enemy_info["info_got"] and enemy_info["body"]["httpStatus"] != 404 and enemy_info_recapture < 3:
+                        logPrint(enemy_info["message"])
+                        enemy_info_recapture += 1
+                        logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an enemy (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(enemy["puuid"], enemy_info_recapture, enemy["puuid"], enemy_info_recapture))
                         enemy_info = await get_info(connection, enemy["puuid"])
-                        while not enemy_info["info_got"] and enemy_info["body"]["httpStatus"] != 404 and enemy_info_recapture < 3:
-                            logPrint(enemy_info["message"])
-                            enemy_info_recapture += 1
-                            logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an enemy (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(enemy["puuid"], enemy_info_recapture, enemy["puuid"], enemy_info_recapture))
-                            enemy_info = await get_info(connection, enemy["puuid"])
-                        if enemy_info["info_got"]:
-                            enemy_info_body = enemy_info["body"]
-                            infos[enemy["puuid"]] = enemy_info_body
-                        else:
-                            logPrint(enemy_info["message"])
-                            logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！将忽略该名对手。\nInformation of an enemy (puuid: %s) capture failed! The program will ignore this enemy.")
-                            continue
+                    if enemy_info["info_got"]:
+                        enemy_info_body = enemy_info["body"]
+                        infos[enemy["puuid"]] = enemy_info_body
+                    else:
+                        logPrint(enemy_info["message"])
+                        logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！将忽略该名对手。\nInformation of an enemy (puuid: %s) capture failed! The program will ignore this enemy.")
+                        continue
                     LoLEnemy_index = [0]
                     TFTEnemy_index = [0]
                     if search_LoL:
@@ -1876,7 +1858,7 @@ async def detect_postgame(connection: Connection, search_LoL: bool, search_TFT: 
                 TFTGame_summary = game_summary
                 gameMode: str = "TFT"
                 gameModeName = queues[TFTGame_summary["json"]["queueId"]]["name"] if TFTGame_summary["json"]["queueId"] in queues else "TFT (%d)" %(TFTGame_summary["json"]["queueId"])
-                players_metaDf: pandas.DataFrame = (await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = 1, current_puuid = current_puuid_list, useAllVersions = True, versionList = bigPatches, locale = language_code, session = session, useInfoDict = True, infos = infos, sortStats = False, log = log))[0]
+                players_metaDf: pandas.DataFrame = (await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = 1, current_puuid = current_puuid_list, useAllVersions = True, versionList = bigPatches, locale = language_code, session = session, infos = infos, sortStats = False, log = log))[0]
             elif not isTFT:
                 LoLGame_summary = game_summary
                 if use_sgp and bool(LoLGame_summary["json"]):
@@ -2062,22 +2044,19 @@ async def detect_dodged_champSelect(connection: Connection, infos: Optional[dict
     for ally in champ_select_session["myTeam"]:
         if not ally["puuid"] in set(current_puuid_list) | {"", BOT_UUID} and (ally["nameVisibilityType"] == "VISIBLE" or ally["nameVisibilityType"] == ""):
             ally_info_recapture: int = 0
-            if ally["puuid"] in infos:
-                ally_info_body: dict[str, Any] = infos[ally["puuid"]]
+            ally_info: dict[str, Any] = await get_info(connection, ally["puuid"], infos = infos)
+            while not ally_info["info_got"] and ally_info["body"]["httpStatus"] != 404 and ally_info_recapture < 3:
+                logPrint(ally_info["message"])
+                ally_info_recapture += 1
+                logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
+                ally_info = await get_info(connection, ally["puuid"])
+            if ally_info["info_got"]:
+                ally_info_body = ally_info["body"]
+                infos[ally["puuid"]] = ally_info_body
             else:
-                ally_info: dict[str, Any] = await get_info(connection, ally["puuid"])
-                while not ally_info["info_got"] and ally_info["body"]["httpStatus"] != 404 and ally_info_recapture < 3:
-                    logPrint(ally_info["message"])
-                    ally_info_recapture += 1
-                    logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
-                    ally_info = await get_info(connection, ally["puuid"])
-                if ally_info["info_got"]:
-                    ally_info_body = ally_info["body"]
-                    infos[ally["puuid"]] = ally_info_body
-                else:
-                    logPrint(ally_info["message"])
-                    logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
-                    continue
+                logPrint(ally_info["message"])
+                logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
+                continue
             LoLAlly_index: list[int] = [0] #第0行是中文表头，所以一开始要包含在内（The 0th line is Chinese header, so it should be contained in the beginning）
             for i in range(len(recent_champSelectPlayer_df["puuid"])):
                 if recent_champSelectPlayer_df["puuid"][i] == ally["puuid"] and not (skip_lobby_member and recent_champSelectPlayer_df["puuid"][i] in lobby_member_puuids):
@@ -2105,22 +2084,19 @@ async def detect_dodged_champSelect(connection: Connection, infos: Optional[dict
         for enemy in champ_select_session["theirTeam"]:
             if not enemy["puuid"] in set(current_puuid_list) | {"", BOT_UUID} and (enemy["nameVisibilityType"] == "VISIBLE" or enemy["nameVisibilityType"] == ""):
                 enemy_info_recapture: int = 0
-                if enemy["puuid"] in infos:
-                    enemy_info_body: dict[str, Any] = infos[enemy["puuid"]]
+                enemy_info: dict[str, Any] = await get_info(connection, enemy["puuid"], infos = infos)
+                while not enemy_info["info_got"] and enemy_info["body"]["httpStatus"] != 404 and enemy_info_recapture < 3:
+                    logPrint(enemy_info["message"])
+                    enemy_info_recapture += 1
+                    logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an enemy (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(enemy["puuid"], enemy_info_recapture, enemy["puuid"], enemy_info_recapture))
+                    enemy_info = await get_info(connection, enemy["puuid"])
+                if enemy_info["info_got"]:
+                    enemy_info_body = enemy_info["body"]
+                    infos[enemy["puuid"]] = enemy_info_body
                 else:
-                    enemy_info: dict[str, Any] = await get_info(connection, enemy["puuid"])
-                    while not enemy_info["info_got"] and enemy_info["body"]["httpStatus"] != 404 and enemy_info_recapture < 3:
-                        logPrint(enemy_info["message"])
-                        enemy_info_recapture += 1
-                        logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an enemy (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(enemy["puuid"], enemy_info_recapture, enemy["puuid"], enemy_info_recapture))
-                        enemy_info = await get_info(connection, enemy["puuid"])
-                    if enemy_info["info_got"]:
-                        enemy_info_body = enemy_info["body"]
-                        infos[enemy["puuid"]] = enemy_info_body
-                    else:
-                        logPrint(enemy_info["message"])
-                        logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！将忽略该名对手。\nInformation of an enemy (puuid: %s) capture failed! The program will ignore this enemy.")
-                        continue
+                    logPrint(enemy_info["message"])
+                    logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！将忽略该名对手。\nInformation of an enemy (puuid: %s) capture failed! The program will ignore this enemy.")
+                    continue
                 LoLEnemy_index: list[int] = [0]
                 for i in range(len(recent_champSelectPlayer_df["puuid"])):
                     if recent_champSelectPlayer_df["puuid"][i] == enemy["puuid"] and not (skip_lobby_member and recent_champSelectPlayer_df["puuid"][i] in lobby_member_puuids):
@@ -2376,7 +2352,7 @@ async def detect_party_invitaion(connection: Connection, search_LoL: bool, searc
         for invid in lobbyInvitations:
             if invid["toSummonerId"] != current_summonerId:
                 invitee_info_recapture: int = 0
-                invitee_info: dict[str, Any] = await get_info(connection, invid["toSummonerId"])
+                invitee_info: dict[str, Any] = await get_info(connection, invid["toSummonerId"], infos = infos)
                 while not invitee_info["info_got"] and invitee_info["body"]["httpStatus"] != 404 and invitee_info_recapture < 3:
                     logPrint(invitee_info["message"])
                     invitee_info_recapture += 1
@@ -2425,7 +2401,7 @@ async def detect_party_invitaion(connection: Connection, search_LoL: bool, searc
     receivedInvitations: list[dict[str, Any]] = await (await connection.request("GET", "/lol-lobby/v2/received-invitations")).json()
     for invid in receivedInvitations:
         inviter_info_recapture: int = 0
-        inviter_info: dict[str,Any] = await get_info(connection, invid["fromSummonerId"])
+        inviter_info: dict[str,Any] = await get_info(connection, invid["fromSummonerId"], infos = infos)
         while not inviter_info["info_got"] and inviter_info["body"]["httpStatus"] != 404 and inviter_info_recapture < 3:
             logPrint(inviter_info["message"])
             inviter_info_recapture += 1
@@ -2650,7 +2626,7 @@ async def detect_custom_list(connection: Connection, search_LoL: bool, search_TF
     illegal_name_warning: bool = bool(illegal_name_warning_str)
     legal_summoners: dict[str, str] = {}
     for summoner in summoners:
-        info_check = await get_info(connection, summoner)
+        info_check = await get_info(connection, summoner, infos = infos)
         if info_check["info_got"]:
             info_check_body: dict[str, Any] = info_check["body"]
             infos[info_check_body["puuid"]] = info_check_body
@@ -2784,65 +2760,56 @@ async def search_recent_players(connection: Connection) -> None:
                 for member in lobby_information["members"]:
                     if not member["puuid"] in {current_info["puuid"], "", BOT_UUID}:
                         member_info_recapture: int = 0
-                        if member["puuid"] in infos:
-                            member_info_body: dict[str, Any] = infos[member["puuid"]]
+                        member_info: dict[str, Any] = await get_info(connection, member["puuid"], infos = infos)
+                        while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
+                            logPrint(member_info["message"])
+                            member_info_recapture += 1
+                            logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of a member (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(member["puuid"], member_info_recapture, member["puuid"], member_info_recapture))
+                            member_info = await get_info(connection, member["puuid"])
+                        if member_info["info_got"]:
+                            member_info_body = member_info["body"]
+                            infos[member["puuid"]] = member_info_body
                         else:
-                            member_info: dict[str, Any] = await get_info(connection, member["puuid"], infos = infos)
-                            while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
-                                logPrint(member_info["message"])
-                                member_info_recapture += 1
-                                logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of a member (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(member["puuid"], member_info_recapture, member["puuid"], member_info_recapture))
-                                member_info = await get_info(connection, member["puuid"])
-                            if member_info["info_got"]:
-                                member_info_body = member_info["body"]
-                                infos[member["puuid"]] = member_info_body
-                            else:
-                                logPrint(member_info["message"])
-                                logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！将忽略该名成员。\nInformation of a member (puuid: %s) capture failed! The program will ignore this member.")
-                                continue
+                            logPrint(member_info["message"])
+                            logPrint("成员信息（玩家通用唯一识别码：%s）获取失败！将忽略该名成员。\nInformation of a member (puuid: %s) capture failed! The program will ignore this member.")
+                            continue
                         members_to_detect.append(member_info_body)
             elif gameflow_phase == "ChampSelect":
                 champ_select_session: dict[str, Any] = await (await connection.request("GET", "/lol-champ-select/v1/session")).json()
                 for ally in champ_select_session["myTeam"]:
                     if not ally["puuid"] in {current_info["puuid"], "", BOT_UUID} and (ally["nameVisibilityType"] == "VISIBLE" or ally["nameVisibilityType"] == ""):
                         ally_info_recapture: int = 0
-                        if ally["puuid"] in infos:
-                            ally_info_body: dict[str, Any] = infos[ally["puuid"]]
+                        ally_info: dict[str, Any] = await get_info(connection, ally["puuid"], infos = infos)
+                        while not ally_info["info_got"] and ally_info["body"]["httpStatus"] != 404 and ally_info_recapture < 3:
+                            logPrint(ally_info["message"])
+                            ally_info_recapture += 1
+                            logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
+                            ally_info = await get_info(connection, ally["puuid"])
+                        if ally_info["info_got"]:
+                            ally_info_body = ally_info["body"]
+                            infos[ally["puuid"]] = ally_info_body
                         else:
-                            ally_info: dict[str, Any] = await get_info(connection, ally["puuid"], infos = infos)
-                            while not ally_info["info_got"] and ally_info["body"]["httpStatus"] != 404 and ally_info_recapture < 3:
-                                logPrint(ally_info["message"])
-                                ally_info_recapture += 1
-                                logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an ally (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(ally["puuid"], ally_info_recapture, ally["puuid"], ally_info_recapture))
-                                ally_info = await get_info(connection, ally["puuid"])
-                            if ally_info["info_got"]:
-                                ally_info_body = ally_info["body"]
-                                infos[ally["puuid"]] = ally_info_body
-                            else:
-                                logPrint(ally_info["message"])
-                                logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
-                                continue
+                            logPrint(ally_info["message"])
+                            logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an ally (puuid: %s) capture failed! The program will ignore this ally.")
+                            continue
                         members_to_detect.append(ally_info_body)
                 if champ_select_session["theirTeam"]:
                     for enemy in champ_select_session["theirTeam"]:
                         if not enemy["puuid"] in {current_info["puuid"], "", BOT_UUID} and (enemy["nameVisibilityType"] == "VISIBLE" or enemy["nameVisibilityType"] == ""):
                             enemy_info_recapture: int = 0
-                            if enemy["puuid"] in infos:
-                                enemy_info_body: dict[str, Any] = infos[enemy["puuid"]]
+                            enemy_info: dict[str, Any] = await get_info(connection, enemy["puuid"], infos = infos)
+                            while not enemy_info["info_got"] and enemy_info["body"]["httpStatus"] != 404 and enemy_info_recapture < 3:
+                                logPrint(enemy_info["message"])
+                                enemy_info_recapture += 1
+                                logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an enemy (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(enemy["puuid"], enemy_info_recapture, enemy["puuid"], enemy_info_recapture))
+                                enemy_info = await get_info(connection, enemy["puuid"])
+                            if enemy_info["info_got"]:
+                                enemy_info_body = enemy_info["body"]
+                                infos[enemy["puuid"]] = enemy_info_body
                             else:
-                                enemy_info: dict[str, Any] = await get_info(connection, enemy["puuid"], infos = infos)
-                                while not enemy_info["info_got"] and enemy_info["body"]["httpStatus"] != 404 and enemy_info_recapture < 3:
-                                    logPrint(enemy_info["message"])
-                                    enemy_info_recapture += 1
-                                    logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an enemy (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(enemy["puuid"], enemy_info_recapture, enemy["puuid"], enemy_info_recapture))
-                                    enemy_info = await get_info(connection, enemy["puuid"])
-                                if enemy_info["info_got"]:
-                                    enemy_info_body = enemy_info["body"]
-                                    infos[enemy["puuid"]] = enemy_info_body
-                                else:
-                                    logPrint(enemy_info["message"])
-                                    logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！将忽略该名对手。\nInformation of an enemy (puuid: %s) capture failed! The program will ignore this enemy.")
-                                    continue
+                                logPrint(enemy_info["message"])
+                                logPrint("对手信息（玩家通用唯一识别码：%s）获取失败！将忽略该名对手。\nInformation of an enemy (puuid: %s) capture failed! The program will ignore this enemy.")
+                                continue
                             members_to_detect.append(enemy_info_body)
             else:
                 gameflow_session: dict[str, Any] = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
@@ -2850,22 +2817,19 @@ async def search_recent_players(connection: Connection) -> None:
                 for player in gameData["teamOne"] + gameData["teamTwo"]:
                     if "puuid" in player and player["puuid"] != current_info["puuid"]: #电脑玩家没有玩家通用唯一识别码（Bot players don't have puuids）
                         player_info_recapture: int = 0
-                        if player["puuid"] in infos:
-                            player_info_body: dict[str, Any] = infos[player["puuid"]]
+                        player_info: dict[str, Any] = await get_info(connection, player["puuid"], infos = infos)
+                        while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
+                            logPrint(player_info["message"])
+                            player_info_recapture += 1
+                            logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(player["puuid"], player_info_recapture, player["puuid"], player_info_recapture))
+                            player_info = await get_info(connection, player["puuid"])
+                        if player_info["info_got"]:
+                            player_info_body = player_info["body"]
+                            infos[player_info_body["puuid"]] = player_info_body
                         else:
-                            player_info: dict[str, Any] = await get_info(connection, player["puuid"], infos = infos)
-                            while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
-                                logPrint(player_info["message"])
-                                player_info_recapture += 1
-                                logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of an player (puuid: %s) capture failed! Recapturing this player's information ... Times tried: %d." %(player["puuid"], player_info_recapture, player["puuid"], player_info_recapture))
-                                player_info = await get_info(connection, player["puuid"])
-                            if player_info["info_got"]:
-                                player_info_body = player_info["body"]
-                                infos[player_info_body["puuid"]] = player_info_body
-                            else:
-                                logPrint(player_info["message"])
-                                logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an player (puuid: %s) capture failed! The program will ignore this player.")
-                                continue
+                            logPrint(player_info["message"])
+                            logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an player (puuid: %s) capture failed! The program will ignore this player.")
+                            continue
                         members_to_detect.append(player_info_body)
         #处理主召唤师（Handle the main summoner）
         if len(members_to_detect) > 1:
@@ -3135,7 +3099,7 @@ async def search_recent_players(connection: Connection) -> None:
                         match_id: int = int(game["metadata"]["match_id"].split("_")[-1])
                         if not match_id in TFTHistory_dict: #由于云顶之弈的对局记录包含所有玩家的信息，所以如果多个玩家的对局记录包含同一场对局，则这些对局的信息一定是相同的（Because TFT match history includes all players' information, if a match is included in multiple players' match histories, then information of the matches recorded in different players' match histories must be the same）
                             TFTHistory_dict[match_id] = game
-                    TFTHistory_df: pandas.DataFrame = (await sort_TFTHistory(connection, TFTHistory, main_info_body["puuid"], queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, useInfoDict = True, infos = infos, log = log))[0]
+                    TFTHistory_df: pandas.DataFrame = (await sort_TFTHistory(connection, TFTHistory, main_info_body["puuid"], queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, session = session, infos = infos, log = log))[0]
                     TFTHistory_dfs.append(TFTHistory_df)
                     if TFTGamePlayed:
                         logPrint(TFTHistory_df[:min(21, TFTGameCount + 1)], write_time = False)

@@ -1750,7 +1750,7 @@ async def report_player_matchHistory(connection: Connection) -> None:
             if isTFT and game_summary.get("json"):
                 TFTGame_summary = game_summary
                 humanPlayers: list[dict[str, Any]] = TFTGame_summary["json"]["participants"] #同上，云顶之弈中无法判断一名玩家是否电脑玩家（Same as above, we can't tell whether a player is a bot here）
-                player_df: pandas.DataFrame = (await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = 1, current_puuid = current_info["puuid"], useAllVersions = False, sortStats = False, log = log))[0]
+                player_df: pandas.DataFrame = (await sort_TFTGame_summary(connection, TFTGame_summary, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = 1, current_puuid = current_info["puuid"], useAllVersions = False, sortStats = False, infos = infos, log = log))[0]
                 player_df_fields_to_print = ["partner_group_id", "riotIdGameName", "riotIdTagline", "placement"]
             elif not isTFT: #为了简化程序，这里直接用SGP API来查询对局概要，没有设置LCU API的选项。这是因为在本脚本中，仅此处会用到对局记录查询接口，而因为这一个场景设置一个命令行参数有些小题大做了（To simplify the program, here only SGP API is used to search for a match. LCU API isn't enabled as another option. This is because in this program, only this place uses the match history endpoint, so it's not necessary to set command line arguments）
                 LoLGame_summary = game_summary
