@@ -27,7 +27,7 @@ def get_tier_name(tier: str, isCherry: bool = False) -> str:
     '''
     return tiers[tier] if tier in tiers else ratedTiers_cherry[tier] if isCherry else ratedTiers_turbo[tier]
 
-async def sort_game_leaderboard(connection: Connection, queueTypes_list: Optional[list[str]] = None, puuids: Optional[list[str]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
+async def sort_game_leaderboard(connection: Connection, queueTypes_list: Optional[list[str]] = None, puuids: Optional[list[str]] = None, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
     '''
     整理多名玩家的排位信息，形成对局排行表。<br>Organize multiple players' ranked information into a game leaderboard dataframe.
     
@@ -46,6 +46,8 @@ async def sort_game_leaderboard(connection: Connection, queueTypes_list: Optiona
     :type queueTypes_list: list[str]
     :param puuids: 要查询的玩家的玩家通用唯一识别码列表。<br>A list of puuids of players to query.
     :type puuids: list[str]
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -57,6 +59,8 @@ async def sort_game_leaderboard(connection: Connection, queueTypes_list: Optiona
         queueTypes_list = []
     if puuids == None:
         puuids = []
+    if infos == None:
+        infos = {}
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -71,7 +75,7 @@ async def sort_game_leaderboard(connection: Connection, queueTypes_list: Optiona
         game_leaderboard: dict[str, dict[str, Any]] = await (await connection.request("GET", "/lol-ranked/v1/social-leaderboard-ranked-queue-stats-for-puuids", params = params)).json()
         for participant_puuid_iter in game_leaderboard:
             participant_leaderboard: dict[str, Any] = game_leaderboard[participant_puuid_iter]
-            participantInfo: dict[str, Any] = await get_info(connection, participant_puuid_iter)
+            participantInfo: dict[str, Any] = await get_info(connection, participant_puuid_iter, infos = infos)
             if participantInfo["info_got"]:
                 participantInfo_body: dict[str, Any] = participantInfo["body"]
                 for i in range(len(game_leaderboard_header_keys)):

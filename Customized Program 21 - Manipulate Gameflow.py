@@ -36,7 +36,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/09/28
+# 更新（Last update）：     2026/10/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -85,6 +85,7 @@ wardSkins: dict[int, dict[str, Any]] = {}
 champion_colloq_dict: dict[int, list[str]] = {}
 collection_df: pandas.DataFrame = pandas.DataFrame()
 skin_df: pandas.DataFrame = pandas.DataFrame()
+infos: dict[str | int, dict[str, Any]] = {}
 log: LogManager = LogManager()
 
 connector: Connector = Connector()
@@ -487,7 +488,7 @@ async def join_game(connection: Connection) -> bool:
                         if lobby_index_str in set(map(str, range(1, len(custom_lobby_df)))):
                             lobby_index: int = int(lobby_index_str)
                         else:
-                            info: dict[str, Any] = await get_info(connection, lobby_index_str)
+                            info: dict[str, Any] = await get_info(connection, lobby_index_str, infos = infos)
                             if info["info_got"]:
                                 info_name: str = info["body"]["gameName"] + " #" + info["body"]["tagLine"] #自定义房间列表中的房主名称在“#”前有一个空格（The lobby owner name in the custom lobby list has a space in front of "#"）
                                 if info_name in set(custom_lobby_df["ownerDisplayName"][1:]):
@@ -941,7 +942,7 @@ async def chat(connection: Connection) -> None:
                                 logPrint("聊天记录（Chat history）：\n")
                                 for message in messages:
                                     timestamp: str = message["timestamp"][:10] + " " + message["timestamp"][11:23]
-                                    fromInfo: dict[str, Any] = await get_info(connection, message["fromPuuid"])
+                                    fromInfo: dict[str, Any] = await get_info(connection, message["fromPuuid"], infos = infos)
                                     from_summonerName: str = get_info_name(fromInfo["body"]) if fromInfo["info_got"] else ""
                                     if message["type"] == "chat" or message["type"] == "groupchat":
                                         logPrint("[%s]%s：\n%s\n" %(timestamp, from_summonerName, message["body"]))
@@ -1044,7 +1045,7 @@ async def expand_match_history(connection: Connection) -> None:
         elif summoner_name == "0":
             break
         else:
-            info: dict[str, Any] = await get_info(connection, summoner_name)
+            info: dict[str, Any] = await get_info(connection, summoner_name, infos = infos)
         if info["info_got"]:
             info_body: dict[str, Any] = info["body"]
             displayName: str = get_info_name(info_body)
@@ -1383,7 +1384,7 @@ async def report_player_champSelect(connection: Connection) -> None:
             if len(humanPlayers) == 1: #只有自己的情况下（Only the user itself）
                 logPrint("本场英雄选择阶段无其他人类玩家。\nNo more human players are found during this champ select stage.")
             else:
-                player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log)
+                player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, infos = infos, log = log)
                 player_df_fields_to_print: list[str] = ["cellId", "gameName", "tagLine", "playerAlias", "assignedPosition", "champion name", "champion alias"]
                 logPrint("已获取到玩家信息。\nParticipant information has been fetched successfully.")
                 while True:
@@ -1430,7 +1431,7 @@ async def report_player_champSelect(connection: Connection) -> None:
                                 player_info_got: bool = False
                             else:
                                 player_info_recapture: int = 0
-                                player_info: dict[str, Any] = await get_info(connection, player_puuid)
+                                player_info: dict[str, Any] = await get_info(connection, player_puuid, infos = infos)
                                 while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
                                     logPrint(player_info["message"])
                                     player_info_recapture += 1
@@ -1485,7 +1486,7 @@ async def report_player_inGame(connection: Connection) -> None:
             elif len(humanPlayers) == 1: #只有自己的情况下（Only the user itself）
                 logPrint("本场对局无其他人类玩家。\nNo more human players are found in this game.")
             else:
-                player_df: pandas.DataFrame = await sort_inGame_players(connection, LoLChampions, championSkins, summonerIcons, spells, skipBot = True, log = log)
+                player_df: pandas.DataFrame = await sort_inGame_players(connection, LoLChampions, championSkins, summonerIcons, spells, skipBot = True, infos = infos, log = log)
                 player_df_fields_to_print: list[str] = ["team_color", "teamParticipantId", "gameName", "tagLine", "selectedPosition", "champion name", "champion alias"]
                 logPrint("已获取到玩家信息。\nParticipant information has been fetched successfully.")
                 while True:
@@ -1529,7 +1530,7 @@ async def report_player_inGame(connection: Connection) -> None:
                             player_summonerName: str = ""
                             if bool(player_puuid):
                                 player_info_recapture: int = 0
-                                player_info = await get_info(connection, player_puuid)
+                                player_info = await get_info(connection, player_puuid, infos = infos)
                                 while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
                                     logPrint(player_info["message"])
                                     player_info_recapture += 1
@@ -2951,7 +2952,7 @@ async def sort_received_invitations(connection: Connection) -> pandas.DataFrame:
     invid_data: dict[str, list[Any]] = {key: [] for key in invid_header_keys}
     for invid in receivedInvitations:
         inviter_info_recapture: int = 0
-        inviter_info: dict[str, Any] = await get_info(connection, invid["fromSummonerId"])
+        inviter_info: dict[str, Any] = await get_info(connection, invid["fromSummonerId"], infos = infos)
         while not inviter_info["info_got"] and inviter_info["body"]["httpStatus"] != 404 and inviter_info_recapture < 3:
             logPrint(inviter_info["message"])
             inviter_info_recapture += 1
@@ -3003,7 +3004,7 @@ async def spectate(connection: Connection) -> None:
         elif spectating_summonerName == "0":
             break
         else:
-            spectating_summoner_info: dict[str, Any] = await get_info(connection, spectating_summonerName)
+            spectating_summoner_info: dict[str, Any] = await get_info(connection, spectating_summonerName, infos = infos)
             if spectating_summoner_info["info_got"]:
                 if spectating_summoner_info["body"]["puuid"] == current_info["puuid"]:
                     logPrint("你不能观战自己。战斗！爽！————\nYou can't spectate yourself. Battle... YES!!!!")
@@ -3434,7 +3435,7 @@ async def sort_lobby_members(connection: Connection) -> pandas.DataFrame:
             member_info: dict[str, Any] = {}
             if not member["isBot"]:
                 member_info_recapture: int = 0
-                member_info = await get_info(connection, member["puuid"])
+                member_info = await get_info(connection, member["puuid"], infos = infos)
                 while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
                     logPrint(member_info["message"])
                     member_info_recapture += 1
@@ -3503,7 +3504,7 @@ async def print_search_error(connection: Connection, response: dict[str, Any], l
                             summonerNames.append(get_info_name(infos[puuid]))
                         else:
                             member_info_recapture: int = 0
-                            member_info: dict[str, Any] = await get_info(connection, puuid)
+                            member_info: dict[str, Any] = await get_info(connection, puuid, infos = infos)
                             while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
                                 logPrint(member_info["message"])
                                 member_info_recapture += 1
@@ -3676,7 +3677,7 @@ async def print_search_error(connection: Connection, response: dict[str, Any], l
                     if error["errorType"] == "QUEUE_DODGER":
                         penalty_time_remaining: float = int(error["penaltyTimeRemaining"])
                         penalizedSummoner_recapture: int = 0
-                        penalizedSummoner: dict[str, Any] = await get_info(connection, error["penalizedSummonerId"])
+                        penalizedSummoner: dict[str, Any] = await get_info(connection, error["penalizedSummonerId"], infos = infos)
                         while not penalizedSummoner["info_got"] and penalizedSummoner["body"]["httpStatus"] != 404 and penalizedSummoner_recapture < 3:
                             logPrint(penalizedSummoner["message"])
                             penalizedSummoner_recapture += 1
@@ -3706,7 +3707,7 @@ async def print_search_error(connection: Connection, response: dict[str, Any], l
                     penalizedSummoners: list[dict[str, Any]] = []
                     for penalizedSummonerId in search_state["lowPriorityData"]["penalizedSummonerIds"]:
                         penalizedSummoner_recapture = 0
-                        penalizedSummoner = await get_info(connection, penalizedSummonerId)
+                        penalizedSummoner = await get_info(connection, penalizedSummonerId, infos = infos)
                         while not penalizedSummoner["info_got"] and penalizedSummoner["body"]["httpStatus"] != 404 and penalizedSummoner_recapture < 3:
                             logPrint(penalizedSummoner["message"])
                             penalizedSummoner_recapture += 1
@@ -4092,7 +4093,7 @@ async def set_party_subteam(connection: Connection) -> None:
     memberSlots: list[dict[str, Any]] = []
     for member in lobby_information["members"]:
         member_info_recapture: int = 0
-        member_info: dict[str, Any] = await get_info(connection, member["puuid"])
+        member_info: dict[str, Any] = await get_info(connection, member["puuid"], infos = infos)
         while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
             logPrint(member_info["message"])
             member_info_recapture += 1
@@ -4159,7 +4160,7 @@ async def set_party_subteam(connection: Connection) -> None:
         memberSlots = []
         for member in lobby_information["members"]:
             member_info_recapture = 0
-            member_info = await get_info(connection, member["puuid"])
+            member_info = await get_info(connection, member["puuid"], infos = infos)
             while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
                 logPrint(member_info["message"])
                 member_info_recapture += 1
@@ -5138,7 +5139,7 @@ async def invite(connection: Connection) -> None: #相比聊天脚本，这里�
         elif invite_str == "-1":
             break
         else:
-            invitee_info: dict[str, Any] = await get_info(connection, invite_str)
+            invitee_info: dict[str, Any] = await get_info(connection, invite_str, infos = infos)
             if invitee_info["info_got"]:
                 if invitee_info["selfInfo"]:
                     logPrint("你不能邀请你自己，亲～\nYou can't invite yourself, silly xD")
@@ -6224,7 +6225,7 @@ async def sort_swaps_info(connection: Connection, champ_select_session: dict[str
     swap_df: pandas.DataFrame = pandas.DataFrame(data = swap_data_organized)
     swap_df = pandas.concat([pandas.DataFrame([swap_header])[swap_df.columns], swap_df], ignore_index = True)
     #下面将玩家信息附加到数据框右侧（The following code appends player information to the right of the dataframe）
-    player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 2, log = log) #默认交换动作只能发生在队友之间。这是因为在极地大乱斗中，双方的槽位序号竟然是相同的（By default, swaps should happen among teammates. Another thing worth mentioning is that in the champ select session of an ARAM game, both teams' cellIds are the same）
+    player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 2, infos = infos, log = log) #默认交换动作只能发生在队友之间。这是因为在极地大乱斗中，双方的槽位序号竟然是相同的（By default, swaps should happen among teammates. Another thing worth mentioning is that in the champ select session of an ARAM game, both teams' cellIds are the same）
     merged_df: pandas.DataFrame = pandas.merge(swap_df, player_df, how = "inner", on = "cellId")
     return merged_df
 
@@ -6325,7 +6326,7 @@ async def sort_mutedPlayers_chat(connection: Connection) -> pandas.DataFrame:
     muted_player_data: dict[str, list[Any]] = {key: [] for key in chat_mutedPlayer_header_keys}
     for player in muted_players:
         player_info_recapture: int = 0
-        player_info: dict[str, Any] = await get_info(connection, player["puuid"])
+        player_info: dict[str, Any] = await get_info(connection, player["puuid"], infos = infos)
         while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
             logPrint(player_info["message"])
             player_info_recapture += 1
@@ -6445,7 +6446,7 @@ async def swap(connection: Connection) -> None:
                         champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
                         swaps: list[dict[str, Any]] = champ_select_session[session_keys[obj[0]]]
                         swap_cellId_map: dict[int, dict[str, Any]] = {swap["cellId"]: swap for swap in swaps}
-                        player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log)
+                        player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, infos = infos, log = log)
                         player_df_fields_to_print: list[str] = ["cellId", "gameName", "tagLine", "playerAlias", "assignedPosition", "champion name", "champion alias"]
                         target_cellId: int = -1
                         for swap in swaps:
@@ -7171,7 +7172,7 @@ async def mute_champSelect_player(connection: Connection) -> None:
             muted_player_puuids: list[str] = list(map(lambda x: x["puuid"], muted_players))
             muted_player_obfuscatedPuuids: list[str] = list(map(lambda x: x["obfuscatedPuuid"], muted_players))
             champ_select_session: dict[str, Any] = await get_champ_select_session(connection)
-            player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log)
+            player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, infos = infos, log = log)
             player_df["muted"] = ["已静音"] + ["√" if player_df["puuid"][i] in muted_player_puuids or player_df["obfuscatedPuuid"][i] in muted_player_obfuscatedPuuids else "" for i in range(1, len(player_df))]
             player_df_selected: pandas.DataFrame = pandas.concat([player_df.iloc[:1, :], player_df[(player_df["isHumanoid"] == "") & ~((player_df["gameName"] == "") & (player_df["tagLine"] == "") & (player_df["playerAlias"] == ""))]], ignore_index = True)
             if len(player_df_selected) > 1:
@@ -7245,7 +7246,7 @@ async def mute_champSelect_player(connection: Connection) -> None:
                     back = True
                     break
                 else:
-                    player_info: dict[str, Any] = await get_info(connection, summonerName_to_mute)
+                    player_info: dict[str, Any] = await get_info(connection, summonerName_to_mute, infos = infos)
                     if player_info["info_got"]:
                         player_puuid: str = player_info["body"]["puuid"]
                         player_name: str = get_info_name(player_info["body"])
@@ -7981,7 +7982,7 @@ async def export_inGame_champions(connection: Connection) -> None:
     gameData: dict[str, Any] = gameflow_session["gameData"]
     gameModeName: str = gameflow_session["map"]["gameModeName"] + "(%d)" %(gameData["queue"]["id"]) if gameData["queue"]["name"] == "" else gameData["queue"]["name"]
     excel_name: str = "Player Stats in Match %s-%s (%s).xlsx" %(platformId, gameData["gameId"], normalize_file_name(gameModeName))
-    players_metaDf: pandas.DataFrame = await sort_inGame_players(connection, LoLChampions, championSkins, summonerIcons, spells, log = log)
+    players_metaDf: pandas.DataFrame = await sort_inGame_players(connection, LoLChampions, championSkins, summonerIcons, spells, infos = infos, log = log)
     print(format_df(players_metaDf)[0])
     if not os.path.exists(excel_name):
         wbCreateFlag: bool = create_workbook_win32(os.path.abspath(excel_name), sheet1_name = "MemberComposition (InProgress)", log = log)
@@ -8205,7 +8206,7 @@ async def sort_ballot_players(connection: Connection) -> pandas.DataFrame:
     if not(isinstance(honor_ballot, dict) and "errorCode" in honor_ballot):
         for player in honor_ballot["eligibleAllies"] + honor_ballot["eligibleOpponents"]:
             player_info_recapture: int = 0
-            player_info: dict[str, Any] = await get_info(connection, player["puuid"])
+            player_info: dict[str, Any] = await get_info(connection, player["puuid"], infos = infos)
             while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
                 logPrint(player_info["message"])
                 player_info_recapture += 1
@@ -8499,7 +8500,7 @@ async def sort_eog_champion_mastery_update(connection: Connection) -> pandas.Dat
     eog_mastery_update_data: dict[str, list[Any]] = {"项目": [], "Items": [], "值": []}
     if not (isinstance(mastery_updates, dict) and "errorCode" in mastery_updates):
         player_info_recapture: int = 0
-        player_info: dict[str, Any] = await get_info(mastery_updates["puuid"])
+        player_info: dict[str, Any] = await get_info(mastery_updates["puuid"], infos = infos)
         while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
             logPrint(player_info["message"])
             player_info_recapture += 1

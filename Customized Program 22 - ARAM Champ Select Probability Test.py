@@ -29,7 +29,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/09/04
+# 更新（Last update）：     2026/10/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -472,7 +472,7 @@ def GetCandidateChampionChoices(candidate_championId_options: Optional[list[list
         valid_championId_options.append([]) #保证该列表中至少有一个元素（Ensure there's at least one element in this list）
     return valid_championId_options
 
-async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = False, isCrowd: bool = False, roleType: Literal[1, 2, 3] = 1, queueId: int = 3270, preset_championIds: Optional[list[int]] = None, ally_candidate_championId_options: Optional[list[list[int]]] = None, enemy_candidate_championId_options: Optional[list[list[int]]] = None, interval: Optional[float] = None, champion_frequency_dict: Optional[dict[int, int]] = None) -> tuple[int, pandas.DataFrame]: #以想玩的英雄启动海克斯大乱斗自定义游戏（Start a custom ARAM: Mayhem game with a wanted champion）
+async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = False, isCrowd: bool = False, roleType: Literal[1, 2, 3] = 1, queueId: int = 3270, preset_championIds: Optional[list[int]] = None, ally_candidate_championId_options: Optional[list[list[int]]] = None, enemy_candidate_championId_options: Optional[list[list[int]]] = None, interval: Optional[float] = None, champion_frequency_dict: Optional[dict[int, int]] = None, infos: Optional[dict[str, dict[str, Any]]] = None) -> tuple[int, pandas.DataFrame]: #以想玩的英雄启动海克斯大乱斗自定义游戏（Start a custom ARAM: Mayhem game with a wanted champion）
     '''
     统计在全随机模式中选到想玩的英雄的频率。在只需要房主选定一名英雄的情况下可使用此函数。<br>Count the frequency of rolling candidate champions in an all-random mode. This function may be used when only the lobby owner needs some specific champions.
     
@@ -524,6 +524,8 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
     :type interval: float
     :param champion_frequency_dict: 欲补充的英雄出现次数频数统计字典。如果不传入该参数，函数将自动初始化该参数。<br>The champion occurrence frequency distribution dictionary to supplement. If this parameter isn't passed into any value, the function will automatically initialize this parameter.
     :type champion_frequency_dict: dict[int, int]
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
     :return: 目标英雄序号和在这个过程中随机到的所有英雄的频数统计数据框。<br>The target championId and all champions' frequency distribution dataframe during this process.<br>频数统计数据请以较为流畅的设备为准。<br>Please refer to the result from the device that runs most smoothly.
 
         当目标英雄序号为-2时，表示更换候选英雄序号列表。<br>When the target championId is -2, it means that the candidate championId list has been changed.
@@ -538,6 +540,8 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
         enemy_candidate_championId_options = [[]]
     if champion_frequency_dict == None:
         champion_frequency_dict = {} #不同英雄序号的频数统计表。键是英雄序号，值是随到的次数（Different champions' frequency distribution table, whose keys are championIds and values are occurrences）
+    if infos == None:
+        infos = {}
     champion_frequency_dict_singleTest: dict[int, int] = {} #该字典仅存储单次测验中的频数（This dictionary only stores the frequency in a single test）
     if not premade: #如果是自己一个人玩，则为单选模式，且用户一定是房主（If the user is playing a solo custom game, it must be single mode, and the user must be the lobby owner）
         isCrowd = False
@@ -878,7 +882,7 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                             member_summonerName: str = "" #初始化玩家的召唤师名（Initialize the summoner name of the player）
                             member_isVisible: bool = False #标记成员信息是否可见（Marks whether the information of the member is visible）
                             if member_puuid != "": #当玩家未开启主播模式时，输出其召唤师名（When the player hasn't toggled on Streamer Mode, print his/her summoner name）
-                                member_info = await get_info(connection, member_puuid)
+                                member_info = await get_info(connection, member_puuid, infos = infos)
                                 if member_info["info_got"]:
                                     member_summonerName: str = get_info_name(member_info["body"])
                                     member_isVisible = True
@@ -1228,7 +1232,7 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                                         from_summonerName: str = ""
                                         sender_isVisible: bool = False
                                         if from_puuid != "":
-                                            sender_info = await get_info(connection, from_puuid)
+                                            sender_info = await get_info(connection, from_puuid, infos = infos)
                                             if sender_info["info_got"]:
                                                 from_summonerName: str = get_info_name(sender_info["body"])
                                                 sender_isVisible = True
@@ -1261,7 +1265,7 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
     logPrint(champion_frequency_dict_singleTest, verbose = False)
     return (target_championId, champion_frequency_df_singleTest)
 
-async def RotateBlindPickCustomAARAM(connection: Connection, premade: bool = False, isCrowd: bool = False, roleType: Literal[1, 2, 3] = 1, queueId: int = 3270, preset_championIds: Optional[list[int]] = None, ally_candidate_championId_options: Optional[list[list[int]]] = None, enemy_candidate_championId_options: Optional[list[list[int]]] = None, interval: Optional[float] = None, champion_frequency_dict: Optional[dict[int, int]] = None) -> None: #通过连续按回车键以在海克斯大乱斗自定义游戏中连续测试想玩的英雄（Continuously start custom pick ARAM: Mayhem games using wanted champions by continuously pressing Enter）
+async def RotateBlindPickCustomAARAM(connection: Connection, premade: bool = False, isCrowd: bool = False, roleType: Literal[1, 2, 3] = 1, queueId: int = 3270, preset_championIds: Optional[list[int]] = None, ally_candidate_championId_options: Optional[list[list[int]]] = None, enemy_candidate_championId_options: Optional[list[list[int]]] = None, interval: Optional[float] = None, champion_frequency_dict: Optional[dict[int, int]] = None, infos: Optional[dict[str, dict[str, Any]]] = None) -> None: #通过连续按回车键以在海克斯大乱斗自定义游戏中连续测试想玩的英雄（Continuously start custom pick ARAM: Mayhem games using wanted champions by continuously pressing Enter）
     '''
     反复启动大乱斗英雄选择概率测试。<br>Repeatedly start the ARAM champ select probability test.
     
@@ -1313,6 +1317,8 @@ async def RotateBlindPickCustomAARAM(connection: Connection, premade: bool = Fal
     :type interval: float
     :param champion_frequency_dict: 欲补充的英雄出现次数频数统计字典。如果不传入该参数，函数将自动初始化该参数。<br>The champion occurrence frequency distribution dictionary to supplement. If this parameter isn't passed into any value, the function will automatically initialize this parameter.
     :type champion_frequency_dict: dict[int, int]
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
     '''
     #参数预处理（Parameter preprocess）
     if preset_championIds == None:
@@ -1323,6 +1329,8 @@ async def RotateBlindPickCustomAARAM(connection: Connection, premade: bool = Fal
         enemy_candidate_championId_options = [[]]
     if champion_frequency_dict == None:
         champion_frequency_dict = {}
+    if infos == None:
+        infos = {}
     if not isCrowd or preset_championIds != []:
         self_candidate_championIds = GetCandidateChampions(candidate_championIds = preset_championIds)
     else:
@@ -1367,7 +1375,7 @@ async def RotateBlindPickCustomAARAM(connection: Connection, premade: bool = Fal
             count += 1
             logPrint("*****************************************************************************", write_time = False)
             logPrint(f"试验{count}（Test No. {count}）：", print_time = True)
-            picked_championId, freq_df = await StartBlindPickCustomAARAM(connection, premade = premade, isCrowd = isCrowd, roleType = roleType, queueId = queueId, preset_championIds = self_candidate_championIds, ally_candidate_championId_options = ally_candidate_championId_options, enemy_candidate_championId_options = enemy_candidate_championId_options, interval = interval, champion_frequency_dict = champion_frequency_dict)
+            picked_championId, freq_df = await StartBlindPickCustomAARAM(connection, premade = premade, isCrowd = isCrowd, roleType = roleType, queueId = queueId, preset_championIds = self_candidate_championIds, ally_candidate_championId_options = ally_candidate_championId_options, enemy_candidate_championId_options = enemy_candidate_championId_options, interval = interval, champion_frequency_dict = champion_frequency_dict, infos = infos)
             if len(freq_df) > 1:
                 logPrint("本次试验过程的英雄出现次数频数统计情况如下：\nThe champion occurrence frequency distribution during this test is as follows:")
                 logPrint(format_df(freq_df)[0], write_time = False)
@@ -1475,6 +1483,7 @@ async def main(connection: Connection) -> None:
     locale: str = region_locale["locale"]
     game_version: str = await (await connection.request("GET", "/lol-patch/v1/game-version")).json()
     crowd_mode_hine_printed: bool = False
+    infos: dict[str, dict[str, Any]] = {} #缓存程序运行过程中获取过的召唤师信息（Cache summoner information obtained during the program execution）
     step: int = 1
     queueId: int = 0 #标记队列序号（Marks the queueId）
     premade: bool = False #标记是否预组队（Marks whether the party is premade）
@@ -1634,7 +1643,7 @@ async def main(connection: Connection) -> None:
             break
         step += 1
     if step == 7:
-        await RotateBlindPickCustomAARAM(connection, premade = premade, isCrowd = isCrowd, roleType = roleType, interval = interval, queueId = queueId)
+        await RotateBlindPickCustomAARAM(connection, premade = premade, isCrowd = isCrowd, roleType = roleType, interval = interval, queueId = queueId, infos = infos)
 
 #-----------------------------------------------------------------------------
 # websocket

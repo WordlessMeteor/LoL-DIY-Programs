@@ -776,7 +776,7 @@ async def get_game_timeline_sgp(connection: Connection, sgpSession: SGPSession, 
                     break
     return (status, game_timeline)
 
-async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int], puuid: str | list[str], queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, LoLGame_summary_cache: Optional[dict[int, dict[str, Any]]] = None, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]]]: #参数顺序遵循一个原则：首先是连接信息和数据字典，然后是数据资源字典，最后是一些附加参数（The order of parameters follow a principle: first connection and the data dictionary, then data resource dictionaries and finally some supplemental parameters）
+async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int], puuid: str | list[str], queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, LoLGame_summary_cache: Optional[dict[int, dict[str, Any]]] = None, infos: Optional[dict[str, dict[str, Any]]] = None, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]]]: #参数顺序遵循一个原则：首先是连接信息和数据字典，然后是数据资源字典，最后是一些附加参数（The order of parameters follow a principle: first connection and the data dictionary, then data resource dictionaries and finally some supplemental parameters）
     '''
     基于传入的对局序号列表重建英雄联盟对局记录。<br>Reconstruct LoL match history according to LoL matchId list supplied.
     
@@ -861,12 +861,14 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
     :type locale: str
     :param current_versions: 各数据资源目前正在使用的版本信息。<br>Current patches of data resources.
     :type current_versions: dict[str, str]
-    :param session: 网络请求会话。<br>Web request session.
-    :type session: requests.Session
     :param unmapped_keys: 各数据资源未找到的键。用于控制数据未找到匹配记录的提示最多输出一次。<br>Unmapped keys in all data resources, used to control the hint about data not found to be printed at most once.
     :type unmapped_keys: dict[str, set[int]]
     :param LoLGame_summary_cache: 英雄联盟对局概要缓存。键为对局序号，值为对局概要。<br>LoL match summary cache. Each key is a matchId, and each value is a match summary.
     :type LoLGame_summary_cache: dict[int, dict[str, Any]]
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
+    :param session: 网络请求会话。<br>Web request session.
+    :type session: requests.Session
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -883,6 +885,8 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
         unmapped_keys = {"queue": set(), "summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "CherryAugment": set()}
     if LoLGame_summary_cache == None or not (isinstance(LoLGame_summary_cache, dict) and all(map(lambda x: isinstance(x, int), LoLGame_summary_cache.keys())) and all(map(lambda x: isinstance(x, dict) and all(map(lambda y: y in {"endOfGameResult", "gameCreation", "gameCreationDate", "gameDuration", "gameId", "gameMode", "gameModeMutators", "gameType", "gameVersion", "mapId", "participantIdentities", "participants", "platformId", "queueId", "seasonId", "teams"}, x.keys())), LoLGame_summary_cache.values()))):
         LoLGame_summary_cache = {}
+    if infos == None:
+        infos = {}
     if session == None:
         session = requests.Session()
     if log == None:
@@ -895,7 +899,7 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
     current_puuid_list: list[str] = []
     current_summonerName_list: list[str] = []
     for current_puuid in puuidList:
-        info: dict[str, Any] = await get_info(connection, current_puuid)
+        info: dict[str, Any] = await get_info(connection, current_puuid, infos = infos)
         if info["info_got"]:
             current_puuid_list.append(info["body"]["puuid"])
             current_summonerName_list.append(get_info_name(info["body"]))
@@ -1181,7 +1185,7 @@ async def reconstruct_LoLHistory(connection: Connection, LoLMatchIDs: list[int],
     LoLHistory_df = pandas.concat([pandas.DataFrame([LoLHistory_header])[LoLHistory_df.columns], LoLHistory_df], ignore_index = True)
     return (LoLHistory_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments)
 
-async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSession, LoLMatchIDs: list[int], puuid: str | list[str], queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, LoLGame_summary_cache: Optional[dict[int, dict[str, Any]]] = None, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]]]:
+async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSession, LoLMatchIDs: list[int], puuid: str | list[str], queues: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], LoLItems: dict[int, dict[str, Any]], perks: dict[int, dict[str, Any]], perkstyles: dict[int, dict[str, Any]], CherryAugments: dict[int, dict[str, Any]], useAllVersions: bool = True, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[int]]] = None, LoLGame_summary_cache: Optional[dict[int, dict[str, Any]]] = None, infos: Optional[dict[str, dict[str, Any]]] = None, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]], dict[int, dict[str, Any]]]:
     '''
     基于传入的对局序号列表重建英雄联盟对局记录。<br>Reconstruct LoL match history according to LoL matchId list supplied.
     
@@ -1274,6 +1278,8 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
     
         - `GET /match-history-query/v1/products/lol/player/{puuid}/SUMMARY?startIndex={startIndex}&count={count}`
     :type LoLGame_summary_cache: dict[int, dict[str, Any]]
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
     :param session: 网络请求会话。<br>Web request session.
     :type session: requests.Session
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
@@ -1292,6 +1298,8 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
         unmapped_keys = {"queue": set(), "summonerIcon": set(), "spell": set(), "LoLChampion": set(), "LoLItem": set(), "summonerIcon": set(), "perk": set(), "perkstyle": set(), "CherryAugment": set()}
     if LoLGame_summary_cache == None or not (isinstance(LoLGame_summary_cache, dict) and all(map(lambda x: isinstance(x, int), LoLGame_summary_cache.keys())) and all(map(lambda x: isinstance(x, dict) and all(map(lambda y: y in {"metadata", "json"}, x.keys())), LoLGame_summary_cache.values()))):
         LoLGame_summary_cache = {}
+    if infos == None:
+        infos = {}
     if session == None:
         session = requests.Session()
     if log == None:
@@ -1306,7 +1314,7 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
     current_puuid_list: list[str] = []
     current_summonerName_list: list[str] = []
     for current_puuid in puuidList:
-        info: dict[str, Any] = await get_info(connection, current_puuid)
+        info: dict[str, Any] = await get_info(connection, current_puuid, infos = infos)
         if info["info_got"]:
             current_puuid_list.append(info["body"]["puuid"])
             current_summonerName_list.append(get_info_name(info["body"]))
@@ -1644,7 +1652,7 @@ async def reconstruct_LoLHistory_sgp(connection: Connection, sgpSession: SGPSess
     LoLHistory_df = pandas.concat([pandas.DataFrame([LoLHistory_header])[LoLHistory_df.columns], LoLHistory_df], ignore_index = True)
     return (LoLHistory_df, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments)
 
-async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession, TFTMatchIDs: list[int], puuid: str | list[str], queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], useAllVersions: bool = False, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[Any]]] = None, TFTGame_summary_cache: Optional[dict[int, dict[str, Any]]] = None, session: Optional[requests.Session] = None, useInfoDict: bool = False, infos: dict[str, dict[str, Any]] = {}, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
+async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession, TFTMatchIDs: list[int], puuid: str | list[str], queues: dict[int, dict[str, Any]], TFTAugments: dict[str, dict[str, Any]], TFTChampions: dict[str, dict[str, Any]], TFTItems: dict[str, dict[str, Any]], TFTCompanions: dict[str, dict[str, Any]], TFTTraits: dict[str, dict[str, Any]], useAllVersions: bool = False, versionList: Optional[list[Patch]] = None, locale: str = "en_US", current_versions: Optional[dict[str, str]] = None, unmapped_keys: Optional[dict[str, set[Any]]] = None, TFTGame_summary_cache: Optional[dict[int, dict[str, Any]]] = None, session: Optional[requests.Session] = None, useInfoDict: bool = False, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[pandas.DataFrame, dict[int, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
     '''
     基于传入的对局序号列表重建云顶之弈对局记录。<br>Reconstruct LoL match history according to TFT matchId list supplied.
     
@@ -1737,6 +1745,8 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
         unmapped_keys = {"queue": set(), "TFTAugment": set(), "TFTChampion": set(), "TFTItem": set(), "TFTCompanion": set(), "TFTTrait": set()}
     if TFTGame_summary_cache == None or not (isinstance(TFTGame_summary_cache, dict) and all(map(lambda x: isinstance(x, int), TFTGame_summary_cache.keys())) and all(map(lambda x: isinstance(x, dict) and all(map(lambda y: y in {"metadata", "json"}, x.keys())), TFTGame_summary_cache.values()))):
         TFTGame_summary_cache = {}
+    if infos == None:
+        infos = {}
     if session == None:
         session = requests.Session()
     if log == None:
@@ -1753,7 +1763,7 @@ async def reconstruct_TFTHistory(connection: Connection, sgpSession: SGPSession,
     current_puuid_list: list[str] = []
     current_summonerName_list: list[str] = []
     for current_puuid in puuidList:
-        info: dict[str, Any] = await get_info(connection, current_puuid)
+        info: dict[str, Any] = await get_info(connection, current_puuid, infos = infos)
         if info["info_got"]:
             current_puuid_list.append(info["body"]["puuid"])
             current_summonerName_list.append(get_info_name(info["body"]))
@@ -6733,7 +6743,7 @@ async def sort_LoLGame_timeline_sgp(connection: Connection, LoLGame_timeline: di
                 LoLGame_summary_participants[participant["participantId"]] = participant_info_body
             else:
                 participant_info_recapture: int = 0
-                participant_info: dict[str, Any] = await get_info(connection, participant["puuid"])
+                participant_info: dict[str, Any] = await get_info(connection, participant["puuid"], infos = infos)
                 while not participant_info["info_got"] and participant_info["body"]["httpStatus"] != 404 and participant_info_recapture < 3:
                     logPrint(participant_info["body"], verbose = verbose)
                     participant_info_recapture += 1
@@ -7112,7 +7122,7 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
                     TFTPlayer_info_got = True
                 else:
                     TFTPlayer_info_recapture = 0
-                    TFTPlayer_info = await get_info(connection, TFTPlayer["puuid"])
+                    TFTPlayer_info = await get_info(connection, TFTPlayer["puuid"], infos = infos)
                     while not TFTPlayer_info["info_got"] and TFTPlayer_info["body"]["httpStatus"] != 404 and TFTPlayer_info_recapture < 3:
                         logPrint(TFTPlayer_info["body"], verbose = verbose)
                         TFTPlayer_info_recapture += 1
@@ -7810,7 +7820,7 @@ async def generate_TFTGameSummary_records(connection: Connection, TFTGame_summar
                 TFTPlayer_info_got = True
             else:
                 TFTPlayer_info_recapture: int = 0
-                TFTPlayer_info: dict[str, Any] = await get_info(connection, TFTPlayer["puuid"])
+                TFTPlayer_info: dict[str, Any] = await get_info(connection, TFTPlayer["puuid"], infos = infos)
                 while not TFTPlayer_info["info_got"] and TFTPlayer_info["body"]["httpStatus"] != 404 and TFTPlayer_info_recapture < 3:
                     logPrint(TFTPlayer_info["message"], verbose = verbose)
                     TFTPlayer_info_recapture += 1

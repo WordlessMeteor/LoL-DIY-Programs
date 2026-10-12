@@ -256,7 +256,7 @@ async def prepare_data_resources(connection: Connection, verbose: bool = True) -
     ##旗帜（Regalia banner）
     regaliaBanners = await (await connection.request("GET", "/lol-regalia/v3/inventory/REGALIA_BANNER")).json()
 
-async def search_player_match_stats_lol(connection: Connection, puuid: str, begIndex: int = 0, endIndex: int = 20, lol_sgp: bool = True, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame: #查询某个玩家的对局记录数据（Search for a player's match history stats）
+async def search_player_match_stats_lol(connection: Connection, puuid: str, begIndex: int = 0, endIndex: int = 20, lol_sgp: bool = True, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame: #查询某个玩家的对局记录数据（Search for a player's match history stats）
     '''
     获取一名玩家的英雄联盟对局概要，并整理成一张表格。<br>Get a player's LoL match summaries and organize them into a dataframe.
     
@@ -270,6 +270,8 @@ async def search_player_match_stats_lol(connection: Connection, puuid: str, begI
     :type endIndex: int
     :param lol_sgp: 是否通过SGP API获取英雄联盟对局概要。默认为真。<br>Whether to get LoL match summaries through SGP API. True by default.
     :type lol_sgp: bool
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -277,6 +279,8 @@ async def search_player_match_stats_lol(connection: Connection, puuid: str, begI
     :return: 玩家英雄联盟对局概要数据框。<br>Player LoL match summary dataframe.
     :rtype: pandas.DataFrame
     '''
+    if infos == None:
+        infos = {}
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -284,7 +288,7 @@ async def search_player_match_stats_lol(connection: Connection, puuid: str, begI
     platformId: str = current_party["platformId"]
     LoLGame_stat_header_keys: list[str] = list(LoLGame_stat_header.keys())
     LoLGame_stat_data: dict[str, list[Any]] = {key: [] for key in LoLGame_stat_header_keys}
-    info: dict[str, Any] = await get_info(connection, puuid)
+    info: dict[str, Any] = await get_info(connection, puuid, infos = infos)
     if info["info_got"]:
         if lol_sgp:
             LoLHistory_get, LoLHistory_sgp = await get_matchSummary_sgp(connection, sgpSession, puuid, "LoL", begin = 0, count = endIndex - begIndex + 1, log = log, verbose = verbose)
@@ -337,7 +341,7 @@ async def search_player_match_stats_lol(connection: Connection, puuid: str, begI
     LoLGame_stat_df = pandas.concat([pandas.DataFrame([LoLGame_stat_header])[LoLGame_stat_df.columns], LoLGame_stat_df], ignore_index = True)
     return LoLGame_stat_df
 
-async def search_player_match_stats_tft(connection: Connection, puuid: str, begin: int = 0, count: int = 20, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
+async def search_player_match_stats_tft(connection: Connection, puuid: str, begin: int = 0, count: int = 20, log: Optional[LogManager] = None, infos: Optional[dict[str, dict[str, Any]]] = None, verbose: bool = True) -> pandas.DataFrame:
     '''
     获取一名玩家的云顶之弈对局概要，并整理成一张表格。<br>Get a player's TFT match summaries and organize them into a dataframe.
     
@@ -349,6 +353,8 @@ async def search_player_match_stats_tft(connection: Connection, puuid: str, begi
     :type begin: int
     :param count: 对局数量。默认为200。<br>Number of matches. 200 by default.
     :type count: int
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -356,6 +362,8 @@ async def search_player_match_stats_tft(connection: Connection, puuid: str, begi
     :return: 玩家云顶之弈对局概要数据框。<br>Player TFT match summary dataframe.
     :rtype: pandas.DataFrame
     '''
+    if infos == None:
+        infos = {}
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -363,7 +371,7 @@ async def search_player_match_stats_tft(connection: Connection, puuid: str, begi
     # platformId: str = current_party["platformId"]
     TFTGame_stat_header_keys: list[str] = list(TFTGame_stat_header.keys())
     TFTGame_stat_data: dict[str, list[Any]] = {key: [] for key in TFTGame_stat_header_keys}
-    info: dict[str, Any] = await get_info(connection, puuid)
+    info: dict[str, Any] = await get_info(connection, puuid, infos = infos)
     if info["info_got"]:
         TFTHistory_get, TFTHistory = await get_matchSummary_sgp(connection, sgpSession, puuid, "TFT", begin = begin, count = count, log = log, verbose = verbose)
         if TFTHistory_get:
@@ -426,6 +434,8 @@ async def Clarke_revival(connection: Connection) -> None:
     gameQueues_source: list[dict[str, Any]] = await (await connection.request("GET", "/lol-game-queues/v1/queues")).json()
     gameQueues_source = sorted(gameQueues_source, key = lambda x: x["id"]) #将队列按照队列序号正序排列（Sort the queues in the ascending order of queueIds）
     gameQueues: dict[int, dict[str, Any]] = {queue["id"]: queue for queue in gameQueues_source}
+    #定义全局召唤师信息缓存（Define the global summoner information cache）
+    infos: dict[str, dict[str, Any]] = {}
     #定义获取到的玩家信息列表。元素是召唤师信息字典，或者说包含必要键的字典（Define a list of obtained summoner information, or a list of dictionaries that contain enough necessary information to tell a summoner）
     fetched_players: list[dict[str, Any]] = []
     #定义标记是否队友信息的字典。键是玩家通用唯一识别码，值是逻辑值（Define a dictionary to mark whether a summoner is an ally. Keys are puuids, and values are boolean values）
@@ -479,7 +489,7 @@ async def Clarke_revival(connection: Connection) -> None:
             for player in champ_select_session["myTeam"] + champ_select_session["theirTeam"]:
                 if not player["puuid"] in {current_info["puuid"], "", BOT_UUID} and (player["nameVisibilityType"] == "VISIBLE" or player["nameVisibilityType"] == ""):
                     player_info_recapture: int = 0
-                    player_info: dict[str, Any] = await get_info(connection, player["puuid"])
+                    player_info: dict[str, Any] = await get_info(connection, player["puuid"], infos = infos)
                     while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
                         logPrint(player_info["message"], verbose = print_detail)
                         player_info_recapture += 1
@@ -493,7 +503,7 @@ async def Clarke_revival(connection: Connection) -> None:
                         logPrint(player_info["message"], verbose = print_detail)
                         logPrint("队友信息（玩家通用唯一识别码：%s）获取失败！将忽略该名队友。\nInformation of an player (puuid: %s) capture failed! The program will ignore this player.")
             teamOneOnly: bool = gameflow_session["gameData"]["queue"]["mapId"] in {22, 30} #在斗魂竞技场和云顶之弈中，所有玩家都归入“teamOne”中。这样就无法判断其是否是队友（In an Arena or TFT match, all players are in "teamOne", so the program can't tell whether a player is an ally）
-            players_metaDf: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log, verbose = print_detail)
+            players_metaDf: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, infos = infos, log = log, verbose = print_detail)
         elif gameflow_phase == "InProgress" or gameflow_phase == "Reconnect":
             gameflow_session = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
             gameData: dict[str, Any] = gameflow_session["gameData"]
@@ -522,7 +532,7 @@ async def Clarke_revival(connection: Connection) -> None:
             myTeam_puuids: list[str] = list(map(lambda x: x["puuid"], myTeam))
             for player in myTeam + theirTeam: #注意到这里并没有排除掉用户自己。这是为了校验程序的正确性，将自己作为空白对照（Note that here the program doesn't exclude the user itself. This is designed to verify the correctness of program execution. The user itself acts as control）
                 player_info_recapture = 0
-                player_info = await get_info(connection, player["puuid"])
+                player_info = await get_info(connection, player["puuid"], infos = infos)
                 while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
                     logPrint(player_info["message"], verbose = print_detail)
                     player_info_recapture += 1
@@ -536,7 +546,7 @@ async def Clarke_revival(connection: Connection) -> None:
                     logPrint(player_info["message"], verbose = print_detail)
                     logPrint("玩家信息（玩家通用唯一识别码：%s）获取失败！将忽略该名玩家。\nInformation of an player (puuid: %s) capture failed! The program will ignore this player.")
             teamOneOnly = gameData["queue"]["mapId"] in {22, 30} #玩家在API上的阵营划分随对局模式而不同。云顶之弈和斗魂竞技场虽然有多个阵营，但是都是记录在gameData["teamOne"]中，这需要和其它模式区分开来。该条件语句与“if gameData["queue"]["gameMode"] == "TFT" or gameData["queue"]["gameMode"] == "CHERRY"”等价，但是因为召唤师峡谷还能分成CLASSIC、URF等模式，所以这里直接用地图序号作为判断依据（The team where a player belongs varies by the game mode. Although there're actually more than 2 teams in TFT and Arena, all players are recorded in `gameData["teamOne"]`, which needs ditinguishing from other game modes. This conditional statement is equivalent to `if gameData["queue"]["gameMode"] == "TFT" or gameData["queue"]["gameMode"] == "CHERRY"`, but since there're multiple modes based on one map, like CLASSIC and URF based on Summoner's Rift, the mapId is thus taken as the judgment criterium）
-            players_metaDf = await sort_inGame_players(connection, LoLChampions, championSkins, summonerIcons, spells, log = log, verbose = print_detail)
+            players_metaDf = await sort_inGame_players(connection, LoLChampions, championSkins, summonerIcons, spells, infos = infos, log = log, verbose = print_detail)
         elif gameflow_phase in {"PreEndOfGame", "EndOfGame"}:
             gameflow_session = await (await connection.request("GET", "/lol-gameflow/v1/session")).json()
             gameData: dict[str, Any] = gameflow_session["gameData"]
@@ -560,7 +570,7 @@ async def Clarke_revival(connection: Connection) -> None:
                     myTeam_puuids: list[str] = list(map(lambda x: x["puuid"], myTeam))
                     for player in myTeam + theirTeam:
                         player_info_recapture = 0
-                        player_info = await get_info(connection, player["puuid"])
+                        player_info = await get_info(connection, player["puuid"], infos = infos)
                         while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
                             logPrint(player_info["message"], verbose = print_detail)
                             player_info_recapture += 1
@@ -607,7 +617,7 @@ async def Clarke_revival(connection: Connection) -> None:
                     #下面的部分重复了游戏会话的玩家信息获取代码（The following part repeats the code in the in-game part that get summoner information）
                     for player in myTeam + theirTeam:
                         player_info_recapture = 0
-                        player_info = await get_info(connection, player["puuid"])
+                        player_info = await get_info(connection, player["puuid"], infos = infos)
                         while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
                             logPrint(player_info["message"], verbose = print_detail)
                             player_info_recapture += 1
@@ -830,7 +840,7 @@ async def Clarke_revival(connection: Connection) -> None:
         fetched_puuids: list[str] = list(map(lambda x: x["puuid"], fetched_players))
         unmapped_keys: dict[str, set[Any]] = {"summonerIcon": set(), "regaliaBanner": set(), "LoLChampion": set()}
         player_info_df: pandas.DataFrame = await sort_summoner_info(connection, fetched_puuids, summonerIcons, LoLChampions, regaliaBanners, unmapped_keys = unmapped_keys, log = log, verbose = print_detail)
-        game_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = fetched_puuids)
+        game_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = fetched_puuids, infos = infos)
         logPrint("请输入您想要查询的对局数量，默认为最近%d场。最大%d场。\nPlease enter the number of matches you want to search, %d by default and %d at maximum." %(args.count, 1000 if use_sgp else 200, args.count, 1000 if use_sgp else 200))
         while True:
             count_str: str = logInput()

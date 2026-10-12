@@ -23,7 +23,7 @@ from src.localization.languages.zh_CN import availabilities, RiotRelationships, 
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/10/07
+# 更新（Last update）：     2026/10/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -58,6 +58,7 @@ TFTChampions: dict[str, dict[str, Any]] = {}
 TFTItems: dict[str, dict[str, Any]] = {}
 TFTDamageSkins: dict[int, dict[str, Any]] = {}
 TFTMapSkins: dict[int, dict[str, Any]] = {}
+infos: dict[int | str, dict[str, Any]] = {}
 LoLGame_summary_cache_lcu: dict[int, dict[str, Any]] = {}
 LoLGame_summary_cache_sgp: dict[int, dict[str, Any]] = {}
 folder: str = ""
@@ -182,7 +183,7 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
     for friend in friends:
         lol: dict[str, Any] = friend["lol"]
         if "spectatingTargetPuuid" in lol and bool(lol["spectatingTargetPuuid"]): #当多名好友都在观战时，其中一个人的被观战者玩家通用唯一识别码为空字符串（When there's more than one friend spectating, the spectated puuid of one friend is an empty string）
-            spectatingTarget_info: dict[str, Any] = await get_info(connection, lol["spectatingTargetPuuid"])
+            spectatingTarget_info: dict[str, Any] = await get_info(connection, lol["spectatingTargetPuuid"], infos = infos)
             spectatingTarget_info_recapture: int = 0
             while not spectatingTarget_info["info_got"] and spectatingTarget_info["body"]["httpStatus"] != 404 and spectatingTarget_info_recapture < 3:
                 logPrint(spectatingTarget_info["message"])
@@ -360,7 +361,7 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
                         summonerNames: list[Any] = []
                         for summonerId in summonerIds:
                             member_info_recapture: int = 0
-                            member_info: dict[str, Any] = await get_info(connection, summonerId)
+                            member_info: dict[str, Any] = await get_info(connection, summonerId, infos = infos)
                             while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
                                 logPrint(member_info["message"])
                                 member_info_recapture += 1
@@ -503,7 +504,7 @@ async def sort_message_data(connection: Connection, messages: Any) -> pandas.Dat
                 elif i == 10: #消息类型（`type`）
                     to_append = messageTypes.get(message[key], message[key])
                 elif i == 11: #发送人召唤师名（`fromSummonerName`）
-                    fromInfo: dict[str, Any] = await get_info(connection, message["fromPuuid"])
+                    fromInfo: dict[str, Any] = await get_info(connection, message["fromPuuid"], infos = infos)
                     to_append = get_info_name(fromInfo["body"])
                 else:
                     to_append = message[key]
@@ -591,7 +592,7 @@ async def get_recent_players(connection: Connection, search_mode: int = 2, lol_s
                     for j in range(len(game["json"]["participants"])):
                         participant: dict[str, Any] = game["json"]["participants"][j]
                         if not participant["puuid"] in {current_puuid, BOT_UUID}:
-                            await generate_TFTGameSummary_records(connection, TFTGame_stat_data, game, j, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, current_puuid = current_puuid, unmapped_keys = unmapped_keys2, log = log)
+                            await generate_TFTGameSummary_records(connection, TFTGame_stat_data, game, j, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, gameIndex = i + 1, current_puuid = current_puuid, unmapped_keys = unmapped_keys2, infos = infos, log = log)
             TFTGame_stat_statistics_output_order: list[int] = [0, 20, 47, 48, 44, 5, 15, 16, 17, 6, 11, 19, 7, 14, 12, 13, 308, 306, 41, 56, 34, 35, 36, 39, 53, 54, 50, 37, 51, 43, 55, 42, 40, 45, 46, 24, 25, 26, 151, 149, 150, 204, 207, 210, 156, 154, 155, 213, 216, 219, 161, 159, 160, 222, 225, 228, 166, 164, 165, 231, 234, 237, 171, 169, 170, 240, 243, 246, 176, 174, 175, 249, 252, 255, 181, 179, 180, 258, 261, 264, 186, 184, 185, 267, 270, 273, 191, 189, 190, 276, 279, 282, 196, 194, 195, 285, 288, 291, 201, 199, 200, 294, 297, 300, 62, 58, 59, 60, 61, 69, 65, 66, 67, 68, 76, 72, 73, 74, 75, 83, 79, 80, 81, 82, 90, 86, 87, 88, 89, 97, 93, 94, 95, 96, 104, 100, 101, 102, 103, 111, 107, 108, 109, 110, 118, 114, 115, 116, 117, 125, 121, 122, 123, 124, 132, 128, 129, 130, 131, 139, 135, 136, 137, 138, 146, 142, 143, 144, 145]
             TFTGame_stat_data_organized: dict[str, list[Any]] = {TFTGame_summary_header_keys[i]: TFTGame_stat_data[TFTGame_summary_header_keys[i]] for i in TFTGame_stat_statistics_output_order}
             recent_TFTPlayer_df: pandas.DataFrame = pandas.DataFrame(data = TFTGame_stat_data_organized)
@@ -658,7 +659,7 @@ async def sort_party_data(connection: Connection, parties: Any) -> pandas.DataFr
                     summonerNames: list[str] = []
                     for summonerId in summonerIds:
                         member_info_recapture: int = 0
-                        member_info: dict[str, Any] = await get_info(connection, summonerId)
+                        member_info: dict[str, Any] = await get_info(connection, summonerId, infos = infos)
                         while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
                             logPrint(member_info["message"])
                             member_info_recapture += 1
@@ -698,7 +699,7 @@ async def sort_received_invitations(connection: Connection) -> pandas.DataFrame:
     for invid in receivedInvitations:
         fromSummonerId: int = invid["fromSummonerId"]
         inviter_info_recapture: int = 0
-        inviter_info: dict[str, list[Any]] = await get_info(connection, fromSummonerId)
+        inviter_info: dict[str, list[Any]] = await get_info(connection, fromSummonerId, infos = infos)
         while not inviter_info["info_got"] and inviter_info["body"]["httpStatus"] != 404 and inviter_info_recapture < 3:
             logPrint(inviter_info["message"])
             inviter_info_recapture += 1
@@ -748,7 +749,7 @@ async def sort_mutedPlayers_champSelect(connection: Connection) -> pandas.DataFr
     muted_player_data: dict[str, list[Any]] = {key: [] for key in champSelect_mutedPlayer_header_keys}
     for muted_player_puuid in muted_players:
         muted_player: dict[str, str | bool] = muted_players[muted_player_puuid]
-        muted_player_info: dict[str, Any] = await get_info(connection, muted_player_puuid)
+        muted_player_info: dict[str, Any] = await get_info(connection, muted_player_puuid, infos = infos)
         for i in range(len(champSelect_mutedPlayer_header_keys)):
             key: str = champSelect_mutedPlayer_header_keys[i]
             if i >= 5:
@@ -828,7 +829,7 @@ async def sort_voice_participants(connection: Connection) -> pandas.DataFrame:
     participant_record_header_keys: list[str] = list(participant_record_header.keys())
     participant_record_data: dict[str, list[Any]] = {key: [] for key in participant_record_header_keys}
     for participant in participant_records:
-        participant_info: dict[str, Any] = await get_info(connection, participant["puuid"])
+        participant_info: dict[str, Any] = await get_info(connection, participant["puuid"], infos = infos)
         for i in range(len(participant_record_header_keys)):
             key: str = participant_record_header_keys[i]
             if i >= 8:
@@ -1377,7 +1378,7 @@ async def chat(connection: Connection, pid: str) -> None:
                 logPrint("聊天记录（Chat history）：\n")
                 for message in messages:
                     timestamp = message["timestamp"][:10] + " " + message["timestamp"][11:23]
-                    fromInfo = await get_info(connection, message["fromPuuid"])
+                    fromInfo = await get_info(connection, message["fromPuuid"], infos = infos)
                     from_summonerName = get_info_name(fromInfo["body"]) if fromInfo["info_got"] else ""
                     if message["type"] == "chat" or message["type"] == "groupchat":
                         logPrint("[%s]%s：\n%s\n" %(timestamp, from_summonerName, message["body"]))
@@ -1540,7 +1541,7 @@ async def add_friend(connection: Connection) -> None:
         elif prefriend_name == "0":
             break
         else:
-            prefriend_info: dict[str, Any] = await get_info(connection, prefriend_name)
+            prefriend_info: dict[str, Any] = await get_info(connection, prefriend_name, infos = infos)
             if prefriend_info["info_got"]:
                 if prefriend_info["selfInfo"]:
                     logPrint("你无法把自己加为好友，亲～\nYou cannot friend yourself, silly xD")
@@ -2474,7 +2475,7 @@ async def invite(connection: Connection) -> None:
                             friend_index = int(invite_str) - 1
                         except ValueError:
                             invitee_summonerName: str = invite_str
-                            invitee_info: dict[str, Any] = await get_info(connection, invitee_summonerName)
+                            invitee_info: dict[str, Any] = await get_info(connection, invitee_summonerName, infos = infos)
                             if invitee_info["info_got"]:
                                 if invitee_info["selfInfo"]:
                                     logPrint("您已经在房间内了。\nYou're already in the lobby.")
@@ -2693,7 +2694,7 @@ async def invite(connection: Connection) -> None:
                                                 else:
                                                     logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                     for invitee_puuid in invitee_puuids:
-                                        invitee_info = await get_info(connection, invitee_puuid)
+                                        invitee_info = await get_info(connection, invitee_puuid, infos = infos)
                                         if invitee_info["info_got"]:
                                             invitee_summonerIds.append(invitee_info["body"]["summonerId"])
                                         else:
@@ -2772,7 +2773,7 @@ async def invite(connection: Connection) -> None:
                             if invitee_obtained:
                                 invitee_summonerIds = []
                                 for invitee_puuid in invitee_puuids:
-                                    invitee_info = await get_info(connection, invitee_puuid)
+                                    invitee_info = await get_info(connection, invitee_puuid, infos = infos)
                                     if invitee_info["info_got"]:
                                         invitee_summonerIds.append(invitee_info["body"]["summonerId"])
                                     else:
@@ -2801,7 +2802,7 @@ async def invite(connection: Connection) -> None:
                                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                         continue
                                 for invitee_summonerName in invitee_summonerName_list:
-                                    invitee_info = await get_info(connection, invitee_summonerName)
+                                    invitee_info = await get_info(connection, invitee_summonerName, infos = infos)
                                     if invitee_info["info_got"]:
                                         if invitee_info["body"]["puuid"] == current_info["puuid"]:
                                             logPrint("您已经在房间内了。\nYou're already in the lobby.")
@@ -2870,7 +2871,7 @@ async def invite(connection: Connection) -> None:
             if invitee_obtained:
                 logPrint("您邀请了以下%d名玩家：\nYou invited the following %d player(s):" %(len(invitee_summonerIds), len(invitee_summonerIds)))
                 for invitee_summonerId in invitee_summonerIds:
-                    invitee_info: dict[str, Any] = await get_info(connection, invitee_summonerId)
+                    invitee_info: dict[str, Any] = await get_info(connection, invitee_summonerId, infos = infos)
                     if invitee_info["info_got"]:
                         logPrint(get_info_name(invitee_info["body"]))
                     else:
@@ -2890,7 +2891,7 @@ async def invite(connection: Connection) -> None:
                     pending_summonerNames: list[str] = []
                     uninvited_summonerNames: list[str] = []
                     for invitee_summonerId in invitee_summonerIds:
-                        invitee_info = await get_info(connection, invitee_summonerId)
+                        invitee_info = await get_info(connection, invitee_summonerId, infos = infos)
                         if invitee_info["info_got"]:
                             if invitee_summonerId in accepted_summonerIds:
                                 accepted_summonerNames.append(get_info_name(invitee_info["body"]))
@@ -3286,7 +3287,7 @@ async def spectate_compat(connection: Connection) -> None: #带有旧接口兼�
                             if spectate_summonerName in spectate_summonerNames:
                                 logPrint("您已经输入过该玩家了。\nYou've alerady added this summoner.")
                             else:
-                                spectate_info: dict[str, Any] = await get_info(connection, spectate_summonerName)
+                                spectate_info: dict[str, Any] = await get_info(connection, spectate_summonerName, infos = infos)
                                 if spectate_info["info_got"]:
                                     if spectate_info["body"]["puuid"] == current_info["puuid"]:
                                         logPrint("你不能观战你自己。\nYou can't spectate yourself.")
@@ -3423,7 +3424,7 @@ async def spectate_compat(connection: Connection) -> None: #带有旧接口兼�
                         exit_loop = True
                         break
                     else:
-                        spectating_summoner_info: dict[str, Any] = await get_info(connection, spectating_summonerName)
+                        spectating_summoner_info: dict[str, Any] = await get_info(connection, spectating_summonerName, infos = infos)
                         if spectating_summoner_info["info_got"]:
                             if spectating_summoner_info["body"]["puuid"] == current_info["puuid"]:
                                 logPrint("你不能观战自己。战斗！爽！————\nYou can't spectate yourself. Battle... YES!!!!")
@@ -4201,7 +4202,7 @@ async def mute_champSelect_player(connection: Connection) -> None:
                     print(format_df(muted_player_df.loc[1:, muted_player_fields_to_print])[0])
                     log.write(format_df(muted_player_df.loc[1:, muted_player_fields_to_print], width_exceed_ask = False, direct_print = False)[0] + "\n")
                 myTeamId: int = champ_select_session["myTeam"][0]["team"]
-                champSelect_player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, log = log)
+                champSelect_player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = 1, infos = infos, log = log)
                 champSelect_myTeam_df: pandas.DataFrame = pandas.concat([champSelect_player_df.iloc[:1], champSelect_player_df[champSelect_player_df["team"] == myTeamId]], ignore_index = True)
                 for i in range(len(champSelect_myTeam_df)): #确定自己的编号，因为自己不应该被静音，虽然其实静音自己相当于不做任何操作（Determine the index of the user itself, for he/she shouldn't mute him/herself, although muting itself means nothing done）
                     if champSelect_myTeam_df["puuid"][i] == current_info["puuid"]:
@@ -4533,7 +4534,7 @@ async def block(connection: Connection) -> None:
                         info_got = False
                         break
                     else:
-                        block_info: dict[str, Any] = await get_info(connection, blockName)
+                        block_info: dict[str, Any] = await get_info(connection, blockName, infos = infos)
                         if block_info["info_got"]:
                             block_puuid: str = block_info["body"]["puuid"]
                             if block_puuid == current_info["puuid"]:
@@ -4572,7 +4573,7 @@ async def block(connection: Connection) -> None:
                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                                 continue
                         for blockName in blockName_list:
-                            block_info = await get_info(connection, blockName)
+                            block_info = await get_info(connection, blockName, infos = infos)
                             if block_info["info_got"]:
                                 block_puuid = block_info["body"]["puuid"]
                                 block_summonerName = get_info_name(block_info["body"])
@@ -4626,7 +4627,7 @@ async def block(connection: Connection) -> None:
                             if isinstance(tmp, list) and all(map(lambda x: isinstance(x, (int, str)), tmp)):
                                 blockNames = tmp
                                 for blockName in blockNames:
-                                    block_info = await get_info(connection, blockName)
+                                    block_info = await get_info(connection, blockName, infos = infos)
                                     if block_info["info_got"]:
                                         block_puuid = block_info["body"]["puuid"]
                                         block_summonerName = get_info_name(block_info["body"])
@@ -4708,7 +4709,7 @@ async def detect_blockedPlayer_state(connection: Connection, blockList: list[dic
             toSummonerIds: list[dict[str, int]] = list(map(lambda x: x["toSummonerId"], lobby_invitations))
             blocked_invitee_puuids: list[str] = []
             for summonerId in toSummonerIds:
-                invitee_info: dict[str, Any] = await get_info(connection, summonerId)
+                invitee_info: dict[str, Any] = await get_info(connection, summonerId, infos = infos)
                 if invitee_info["info_got"]:
                     invitee_puuid: str = invitee_info["body"]["puuid"]
                     if invitee_puuid in blocked_puuids:
@@ -5100,7 +5101,7 @@ async def unblock(connection: Connection) -> None:
                             if isinstance(tmp, list) and all(map(lambda x: isinstance(x, (int, str)), tmp)):
                                 unblockNames: list[Any] = tmp
                                 for unblockName in unblockNames:
-                                    unblock_info = await get_info(connection, unblockName)
+                                    unblock_info = await get_info(connection, unblockName, infos = infos)
                                     if unblock_info["info_got"]:
                                         unblock_puuid = unblock_info["body"]["puuid"]
                                         unblock_summonerName: str = get_info_name(unblock_info["body"])
@@ -5260,7 +5261,7 @@ async def blacklist_behavior_simulation(connection: Connection) -> None:
                             summonerNames_to_block: list[str] = []
                             pid_postfix: str = current_hovercard["id"].split("@")[1]
                             for puuid in puuids_to_block:
-                                player_info: dict[str, Any] = await get_info(connection, puuid)
+                                player_info: dict[str, Any] = await get_info(connection, puuid, infos = infos)
                                 if player_info["info_got"]:
                                     player_info_body: dict[str, Any] = player_info["body"]
                                     player = {"gameName": player_info_body["gameName"], "gameTag": player_info_body["tagLine"], "icon": player_info_body["profileIconId"], "id": player_info_body["puuid"] + "@" + pid_postfix, "name": "", "pid": player_info_body["puuid"] + "@" + pid_postfix, "puuid": player_info_body["puuid"], "summonerId": player_info_body["summonerId"]}
@@ -5282,7 +5283,7 @@ async def blacklist_behavior_simulation(connection: Connection) -> None:
                         summonerNames_to_block = []
                         if len(puuids_to_block) != 0:
                             for puuid in puuids_to_block:
-                                player_info = await get_info(connection, puuid)
+                                player_info = await get_info(connection, puuid, infos = infos)
                                 if player_info["info_got"]:
                                     summonerNames_to_block.append(get_info_name(player_info["body"]))
                             if len(summonerNames_to_block) != 0:
@@ -5306,7 +5307,7 @@ async def blacklist_behavior_simulation(connection: Connection) -> None:
                         summonerNames_to_unblock: list[str] = []
                         if len(puuids_to_unblock) != 0:
                             for puuid in puuids_to_unblock:
-                                player_info = await get_info(connection, puuid)
+                                player_info = await get_info(connection, puuid, infos = infos)
                                 if player_info["info_got"]:
                                     summonerNames_to_unblock.append(get_info_name(player_info["body"]))
                             if len(summonerNames_to_unblock) != 0:

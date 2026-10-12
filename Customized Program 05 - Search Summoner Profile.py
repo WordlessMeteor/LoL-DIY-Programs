@@ -1033,7 +1033,7 @@ async def load_smurf(connection: Connection, current_puuid: str, infos: Optional
                                 for smurf_puuid in smurf_local[platformId][current_puuid]:
                                     count += 1
                                     logPrint(f"{count}.\t{smurf_puuid}")
-                                    info: dict[str, Any] = await get_info(connection, smurf_puuid)
+                                    info: dict[str, Any] = await get_info(connection, smurf_puuid, infos = infos)
                                     if info["info_got"]:
                                         info_body: dict[str, Any] = info["body"]
                                         if not info_body["puuid"] in list(map(lambda x: x["puuid"], smurfs)):
@@ -1076,7 +1076,7 @@ async def load_smurf(connection: Connection, current_puuid: str, infos: Optional
                 elif smurfName == "":
                     continue
                 else:
-                    info: dict[str, Any] = await get_info(connection, smurfName)
+                    info: dict[str, Any] = await get_info(connection, smurfName, infos = infos)
                     if info["info_got"]:
                         info_body: dict[str, Any] = info["body"]
                         if info_body["puuid"] == current_puuid:
@@ -1109,7 +1109,7 @@ async def load_smurf(connection: Connection, current_puuid: str, infos: Optional
             logPrint(f"小号信息已保存到“{smurf_file}”中。\nSmurf information has been saved into {smurf_file}.")
     return smurfs
 
-async def sort_basic_info(connection: Connection, puuid: str, remove_empty: bool = True) -> pandas.DataFrame:
+async def sort_basic_info(connection: Connection, puuid: str, remove_empty: bool = True, infos: Optional[dict[str, dict[str, Any]]] = None) -> pandas.DataFrame:
     '''
     将**一名**召唤师的个人档案整理成一个表格。<br>Sort the personal profile of **a** summoner into a dataframe.
     
@@ -1121,10 +1121,14 @@ async def sort_basic_info(connection: Connection, puuid: str, remove_empty: bool
     :type puuid: str
     :param remove_empty: 是否从表格中移除内容为空的字段。默认为真。<br>Whether to remove empty fields from the table. True by default.
     :type remove_empty: bool
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
     :return: 召唤师档案数据框。<br>Summoner profile dataframe.
     :rtype: pandas.DataFrame
     '''
-    info: dict[str, Any] = await get_info(connection, puuid)
+    if infos == None:
+        infos = {}
+    info: dict[str, Any] = await get_info(connection, puuid, infos = infos)
     info_body: dict[str, Any] = info["body"]
     displayName: str = get_info_name(info_body)
     #先准备一些局部数据资源（First, prepare some local data resources）
@@ -1415,7 +1419,7 @@ async def sort_ranked_data(connection: Connection, puuid: str) -> pandas.DataFra
     ranked_df = pandas.concat([pandas.DataFrame([ranked_header])[ranked_df.columns], ranked_df], ignore_index = True)
     return ranked_df
 
-async def sort_ranked_ladders(connection: Connection, puuid: str, fetch_summoner_info: bool = True) -> pandas.DataFrame:
+async def sort_ranked_ladders(connection: Connection, puuid: str, fetch_summoner_info: bool = True, infos: Optional[dict[str, dict[str, Any]]] = None) -> pandas.DataFrame:
     '''
     将一名玩家的排位天梯信息整理成一张表格。<br>Organize a player's ranked ladder data into a table.
     
@@ -1425,9 +1429,13 @@ async def sort_ranked_ladders(connection: Connection, puuid: str, fetch_summoner
     :type puuid: str
     :param fetch_summoner_info: 是否获取每名天梯玩家的召唤师信息。默认为真。<br>Whether to get the summoner information of each apex player. True by default.
     :type fetch_summoner_info: bool
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
     :return: 排位天梯数据框。<br>Ranked ladder dataframe.
     :rtype: pandas.DataFrame
     '''
+    if infos == None:
+        infos = {}
     ladders: list[dict[str, Any]] = await (await connection.request("GET", f"/lol-ranked/v1/league-ladders/{puuid}")).json()
     # ladder_summoner_infos: dict[str, dict[str, Any]] = await get_infos(connection, puuids = [standing["puuid"] for ladder in ladders for division in ladder["divisions"] for standing in division["standings"]]) if fetch_summoner_info else {}
     ladder_header_keys: list[str] = list(ladder_header.keys())
@@ -1447,7 +1455,7 @@ async def sort_ranked_ladders(connection: Connection, puuid: str, fetch_summoner
                     # info_got: bool = standing["puuid"] in ladder_summoner_infos
                     # standing_summoner: dict[str, Any] = ladder_summoner_infos.get(standing["puuid"], {})
                     standing_summoner_recapture: int = 0
-                    standing_summoner: dict[str, Any] = await get_info(connection, standing["puuid"])
+                    standing_summoner: dict[str, Any] = await get_info(connection, standing["puuid"], infos = infos)
                     while not standing_summoner["info_got"] and standing_summoner["body"]["httpStatus"] != 404 and standing_summoner_recapture < 3:
                         logPrint(standing_summoner["message"])
                         standing_summoner_recapture += 1
@@ -1875,7 +1883,7 @@ async def search_profile(connection: Connection) -> None:
                 logPrint("请输入非空字符串！\nPlease input a string instead of null!")
                 continue
             else:
-                main_info: dict[str, Any] = await get_info(connection, main_summoner_name)
+                main_info: dict[str, Any] = await get_info(connection, main_summoner_name, infos = infos)
                 if not main_info["info_got"]:
                     logPrint(main_info["message"])
                 else:
@@ -2278,7 +2286,7 @@ async def search_profile(connection: Connection) -> None:
                             if use_sgp:
                                 LoLHistory_df_all = (await reconstruct_LoLHistory_sgp(connection, sgpSession, LoLMatchIDs, current_puuid_list, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, LoLGame_summary_cache = LoLGame_summary_cache_sgp, session = session, log = log))[0]
                             else:
-                                LoLHistory_df_all = (await reconstruct_LoLHistory(connection, LoLMatchIDs, current_puuid_list, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, LoLGame_summary_cache = LoLGame_summary_cache_lcu, session = session, log = log))[0]
+                                LoLHistory_df_all = (await reconstruct_LoLHistory(connection, LoLMatchIDs, current_puuid_list, queues, summonerIcons, LoLChampions, spells, LoLItems, perks, perkstyles, CherryAugments, useAllVersions = True, versionList = bigPatches, locale = language_code, current_versions = current_versions, unmapped_keys = unmapped_keys, LoLGame_summary_cache = LoLGame_summary_cache_lcu, infos = infos, session = session, log = log))[0]
                                 #LoLHistory_df_all.apply(lambda x: pandas.Series([-3], index = ["K/D/A"]))
                             logPrint("是否一同保存每场对局的信息？（输入任意键保存，否则将只导出对局记录）\nSave each match? (Input anything to save each match, or null to only save the scanned match history)")
                             sort_gameInfo_sync_str: str = logInput()
@@ -2475,7 +2483,7 @@ async def search_profile(connection: Connection) -> None:
                             participant_puuid: list[str] = list(map(lambda x: x["puuid"], LoLGame_summary["json"]["participants"]))
                         else:
                             participant_puuid: list[str] = list(map(lambda x: x["player"]["puuid"], LoLGame_summary["participantIdentities"]))
-                        LoLGame_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = participant_puuid, log = log)
+                        LoLGame_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = participant_puuid, infos = infos, log = log)
                     else:
                         LoLGame_leaderboard_df = pandas.DataFrame()
                 else:
@@ -2687,7 +2695,7 @@ async def search_profile(connection: Connection) -> None:
                             TFTTraits = TFTTraits_initial.copy()
                             current_versions["TFTAugment"] = current_versions["TFTChampion"] = current_versions["TFTItem"] = current_versions["TFTCompanion"] = current_versions["TFTTrait"] = URLPatch
                             unmapped_keys["TFTAugment"], unmapped_keys["TFTChampion"], unmapped_keys["TFTItem"], unmapped_keys["TFTCompanion"], unmapped_keys["TFTTrait"] = set(), set(), set(), set(), set()
-                            TFTHistory_df_all = (await reconstruct_TFTHistory(connection, sgpSession, TFTMatchIDs, current_puuid, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, useAllVersions = True, versionList = bigPatches, locale = language_code, TFTGame_summary_cache = TFTGame_summary_cache_sgp, log = log))[0]
+                            TFTHistory_df_all = (await reconstruct_TFTHistory(connection, sgpSession, TFTMatchIDs, current_puuid, queues, TFTAugments, TFTChampions, TFTItems, TFTCompanions, TFTTraits, useAllVersions = True, versionList = bigPatches, locale = language_code, TFTGame_summary_cache = TFTGame_summary_cache_sgp, infos = infos, log = log))[0]
                             logPrint("是否一同保存每场对局的信息？（输入任意键保存，否则将只导出对局记录）\nSave each match? (Input anything to save each match, or null to only save the scanned match history)")
                             sort_gameInfo_sync_str: str = logInput()
                             sort_gameInfo_sync: bool = bool(sort_gameInfo_sync_str)
@@ -2846,7 +2854,7 @@ async def search_profile(connection: Connection) -> None:
                     
                     #社交排行榜（Social leaderboard）
                     if TFTGame_leaderboard_export:
-                        TFTGame_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = participant_puuid, log = log)
+                        TFTGame_leaderboard_df: pandas.DataFrame = await sort_game_leaderboard(connection, puuids = participant_puuid, infos = infos, log = log)
                     else:
                         TFTGame_leaderboard_df = pandas.DataFrame()
                 else:

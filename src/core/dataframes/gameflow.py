@@ -230,7 +230,7 @@ def extract_champSelect_actions(champ_select_session: dict[str, Any], cellId: Op
     actionList: list[dict[str, Any]] = [action for stage in champ_select_session["actions"] for action in stage]
     return list(filter(lambda x: x["actorCellId"] == cellId, actionList))
 
-async def sort_ChampSelect_players(connection: Connection, champ_select_session: dict[str, Any], LoLChampions: dict[int, dict[str, Any]], championSkins: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], wardSkins: dict[int, dict[str, Any]], playerMode: int = 1, skipBot: bool = True, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame: #以下代码来自聊天服务脚本（The following code come from Customized Program 16）
+async def sort_ChampSelect_players(connection: Connection, champ_select_session: dict[str, Any], LoLChampions: dict[int, dict[str, Any]], championSkins: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], wardSkins: dict[int, dict[str, Any]], playerMode: int = 1, skipBot: bool = True, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame: #以下代码来自聊天服务脚本（The following code come from Customized Program 16）
     '''
     将英雄选择会话中的玩家信息整理形成一个表格。<br>Organize the player information in a champ select session into a dataframe.
     
@@ -283,6 +283,8 @@ async def sort_ChampSelect_players(connection: Connection, champ_select_session:
     :type playerMode: int
     :param skipBot: 是否跳过电脑玩家的整理。默认为是。<br>Whether to skip organizing bot champion data. True by default.
     :type skipBot: bool
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -290,6 +292,8 @@ async def sort_ChampSelect_players(connection: Connection, champ_select_session:
     :return: 英雄选择阶段的玩家数据框。<br>Player dataframe in the champ select stage.
     :rtype: pandas.DataFrame
     '''
+    if infos == None:
+        infos = {}
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -313,7 +317,7 @@ async def sort_ChampSelect_players(connection: Connection, champ_select_session:
             player_info: dict[str, Any] = {}
             if not player["isHumanoid"] and player["nameVisibilityType"] != "HIDDEN":
                 player_info_recapture: int = 0
-                player_info: dict[str, Any] = await get_info(connection, player["puuid"])
+                player_info: dict[str, Any] = await get_info(connection, player["puuid"], infos = infos)
                 while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
                     logPrint(player_info["message"], verbose = verbose)
                     player_info_recapture += 1
@@ -368,7 +372,7 @@ async def sort_ChampSelect_players(connection: Connection, champ_select_session:
     champSelect_player_df = pandas.concat([pandas.DataFrame([champSelect_player_header])[champSelect_player_df.columns], champSelect_player_df], ignore_index = True)
     return champSelect_player_df
 
-async def sort_multiChampSelect_players(connection: Connection, sessions: list[dict[str, Any]], queues: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], championSkins: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], wardSkins: dict[int, dict[str, Any]], playerMode: int = 1, skipBot: bool = True, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
+async def sort_multiChampSelect_players(connection: Connection, sessions: list[dict[str, Any]], queues: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], championSkins: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], wardSkins: dict[int, dict[str, Any]], playerMode: int = 1, skipBot: bool = True, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
     '''
     将多个英雄选择阶段中的玩家信息整合成表格。<br>Merge players in multiple champ select sessions into a dataframe.
     
@@ -431,6 +435,8 @@ async def sort_multiChampSelect_players(connection: Connection, sessions: list[d
     :type playerMode: int
     :param skipBot: 是否跳过电脑玩家的整理。默认为是。<br>Whether to skip organizing bot champion data. True by default.
     :type skipBot: bool
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -438,6 +444,8 @@ async def sort_multiChampSelect_players(connection: Connection, sessions: list[d
     :return: 汇总多个英雄选择阶段得到的玩家数据框。<br>Player dataframe gathered from multiple champ select stages.
     :rtype: pandas.DataFrame
     '''
+    if infos == None:
+        infos = {}
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -447,7 +455,7 @@ async def sort_multiChampSelect_players(connection: Connection, sessions: list[d
         champSelect_player_dfs: list[pandas.DataFrame] = []
         for champ_select_session in sessions:
             if isChampSelectSession(champ_select_session):
-                champSelect_player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = playerMode, skipBot = skipBot, log = log, verbose = verbose)
+                champSelect_player_df: pandas.DataFrame = await sort_ChampSelect_players(connection, champ_select_session, LoLChampions, championSkins, spells, wardSkins, playerMode = playerMode, skipBot = skipBot, infos = infos, log = log, verbose = verbose)
                 matchId: int = champ_select_session["gameId"]
                 queueId: int = champ_select_session["queueId"]
                 gameModeName: str = queues[queueId]["name"] if queueId in queues else ""
@@ -472,7 +480,7 @@ async def sort_multiChampSelect_players(connection: Connection, sessions: list[d
         multiChampSelect_player_df = pandas.concat([champSelect_metaDf, multiChampSelect_player_df], axis = 1)
     return multiChampSelect_player_df
 
-async def sort_inGame_players(connection: Connection, LoLChampions: dict[int, dict[str, Any]], championSkins: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], skipBot: bool = False, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
+async def sort_inGame_players(connection: Connection, LoLChampions: dict[int, dict[str, Any]], championSkins: dict[int, dict[str, Any]], summonerIcons: dict[int, dict[str, Any]], spells: dict[int, dict[str, Any]], skipBot: bool = False, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
     '''
     将游戏内的玩家信息整理成一个表格。<br>Organize the in-game players into a dataframe.
     
@@ -516,6 +524,8 @@ async def sort_inGame_players(connection: Connection, LoLChampions: dict[int, di
     :type spells: dict[int, dict[str, Any]]
     :param skipBot: 是否跳过电脑玩家的整理。默认为是。<br>Whether to skip organizing bot champion data. True by default.
     :type skipBot: bool
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -523,6 +533,8 @@ async def sort_inGame_players(connection: Connection, LoLChampions: dict[int, di
     :return: 游戏内玩家数据框。<br>In-game player dataframe.
     :rtype: pandas.DataFrame
     '''
+    if infos == None:
+        infos = {}
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -539,7 +551,7 @@ async def sort_inGame_players(connection: Connection, LoLChampions: dict[int, di
             loadout: dict[str, Any] = {}
             if "puuid" in player and bool(player["puuid"]): #主播模式的玩家的玩家通用唯一识别码是null（The puuid of the player who enables Streamer Mode is null）
                 player_info_recapture: int = 0
-                player_info = await get_info(connection, player["puuid"])
+                player_info = await get_info(connection, player["puuid"], infos = infos)
                 while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
                     logPrint(player_info["message"], verbose = verbose)
                     player_info_recapture += 1

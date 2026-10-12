@@ -1101,7 +1101,7 @@ async def load_smurf(connection: Connection, current_puuid: str, infos: Optional
                 elif smurfName == "":
                     continue
                 else:
-                    info: dict[str, Any] = await get_info(connection, smurfName)
+                    info: dict[str, Any] = await get_info(connection, smurfName, infos = infos)
                     if info["info_got"]:
                         info_body: dict[str, Any] = info["body"]
                         if info_body["puuid"] == current_puuid:
@@ -2787,7 +2787,7 @@ async def search_recent_players(connection: Connection) -> None:
                         if member["puuid"] in infos:
                             member_info_body: dict[str, Any] = infos[member["puuid"]]
                         else:
-                            member_info: dict[str, Any] = await get_info(connection, member["puuid"])
+                            member_info: dict[str, Any] = await get_info(connection, member["puuid"], infos = infos)
                             while not member_info["info_got"] and member_info["body"]["httpStatus"] != 404 and member_info_recapture < 3:
                                 logPrint(member_info["message"])
                                 member_info_recapture += 1
@@ -2809,7 +2809,7 @@ async def search_recent_players(connection: Connection) -> None:
                         if ally["puuid"] in infos:
                             ally_info_body: dict[str, Any] = infos[ally["puuid"]]
                         else:
-                            ally_info: dict[str, Any] = await get_info(connection, ally["puuid"])
+                            ally_info: dict[str, Any] = await get_info(connection, ally["puuid"], infos = infos)
                             while not ally_info["info_got"] and ally_info["body"]["httpStatus"] != 404 and ally_info_recapture < 3:
                                 logPrint(ally_info["message"])
                                 ally_info_recapture += 1
@@ -2830,7 +2830,7 @@ async def search_recent_players(connection: Connection) -> None:
                             if enemy["puuid"] in infos:
                                 enemy_info_body: dict[str, Any] = infos[enemy["puuid"]]
                             else:
-                                enemy_info: dict[str, Any] = await get_info(connection, enemy["puuid"])
+                                enemy_info: dict[str, Any] = await get_info(connection, enemy["puuid"], infos = infos)
                                 while not enemy_info["info_got"] and enemy_info["body"]["httpStatus"] != 404 and enemy_info_recapture < 3:
                                     logPrint(enemy_info["message"])
                                     enemy_info_recapture += 1
@@ -2853,7 +2853,7 @@ async def search_recent_players(connection: Connection) -> None:
                         if player["puuid"] in infos:
                             player_info_body: dict[str, Any] = infos[player["puuid"]]
                         else:
-                            player_info: dict[str, Any] = await get_info(connection, player["puuid"])
+                            player_info: dict[str, Any] = await get_info(connection, player["puuid"], infos = infos)
                             while not player_info["info_got"] and player_info["body"]["httpStatus"] != 404 and player_info_recapture < 3:
                                 logPrint(player_info["message"])
                                 player_info_recapture += 1
@@ -2895,7 +2895,7 @@ async def search_recent_players(connection: Connection) -> None:
         if summoner_name == "0":
             break
         else:
-            main_info: dict[str, Any] = await get_info(connection, summoner_name or "current-summoner") #当没有检测到用户与其它召唤师的交互，且用户直接按下回车时，表示查询自己的战绩（When no summoner is detected to be interacting with the user, and the user directly pressed Enter, the program will query the match history of the user itself）
+            main_info: dict[str, Any] = await get_info(connection, summoner_name or "current-summoner", infos = infos) #当没有检测到用户与其它召唤师的交互，且用户直接按下回车时，表示查询自己的战绩（When no summoner is detected to be interacting with the user, and the user directly pressed Enter, the program will query the match history of the user itself）
             if not main_info["info_got"]:
                 logPrint(main_info["message"])
                 continue

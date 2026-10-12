@@ -7,7 +7,7 @@ os.chdir(wd)
 if not wd in sys.path:
     sys.path.append(wd)
 from src.utils.logger import LogManager
-from src.utils.format import getISOTime, optimize_bool_display
+from src.utils.format import getISOTime, optimize_bool_display, verify_uuid
 from src.core.config.headers import profile_header
 from src.localization.languages.zh_CN import tiers, challengeCategories, challengeCrystalLevels, titleAcquisitionTypes
 
@@ -71,23 +71,26 @@ async def get_lockfile(connection: Connection) -> Optional[str]:
 #-----------------------------------------------------------------------------
 #  查询召唤师信息（Search for summoner information）
 #-----------------------------------------------------------------------------
-async def get_info(connection: Connection, name: str, searchType: str | int = "riotId") -> dict[str, Any]:
+async def get_info(connection: Connection, name: str | int, searchType: str | int = "riotId", infos: Optional[dict[str | int, dict[str, Any]]] = None) -> dict[str, Any]:
     '''
     获取一名召唤师的信息。<br>Get a summoner's information.
     
     :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
     :type connection: Connection
     :param name: 召唤师检索字符串。可以是召唤师名称、召唤师序号或者玩家通用唯一识别码。<br>Summoner query string. Can be a summoner name, a summonerId or a puuid.
-    :type name: str
+    :type name: str | int
     :param searchType: 指定使用什么接口查询召唤师信息。有以下选项：<br>Specify which endpoint is used to search for the summoner's information. Here're several options:
     
         - 0: selfCheck: 查看自己的召唤师信息。将`name`指定为“current-summoner”，则使用这个接口。<br>Check the summoner information of the user itself. This endpoint is used when `name` is specified as "current-summoner".
         - 1: riotId: 通过召唤师名称接口查询。<br>Use the summoner name endpoint.
         - 2: puuid: 通过玩家通用唯一识别码接口查询。<br>Use the puuid endpoint.
         - 3: summonerId: 通过召唤师序号接口查询。<br>Use the summonerId endpoint.
+        - 4: cache: 从缓存中查询。<br>Search from the cache.
         
         由于目前本函数已经实现了接口的智能选择，因此这个参数已经弃用。<br>Because this function has achieved automatically selecting an endpoint based on the format of name parameter, this parameter has been deprecated.
-    :type searchType: Literal[0, 1, 2, 3, "selfCheck", "riotId", "puuid", "summonerId"]
+    :type searchType: Literal[0, 1, 2, 3, 4, "selfCheck", "riotId", "puuid", "summonerId", "cache"]
+    :param infos: 召唤师信息缓存字典。键是召唤师名称、召唤师序号或者玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a summoner name, summonerId or puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str | int, dict[str, Any]]
     :return: 召唤师信息结构体。由以下部分组成：<br>Summoner information struct. Composed of the following elements:
     
         - searchType: 检索接口类型。<br>The type of the endpoint.
@@ -99,49 +102,67 @@ async def get_info(connection: Connection, name: str, searchType: str | int = "r
         - selfInfo: 该召唤师信息是否是自己的召唤师信息。<br>Whether the queried summoner is the user itself.
     :rtype: dict[str, Any]
     '''
-    #searchTypes = {0: "selfCheck", 1: "riotId", 2: "puuid", 3: "summonerId"}
-    current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
-    result: dict[str, Any] = {"searchType": "riotId", "endpoint": "/lol-summoner/v2/summoners/puuid/{puuid}", "info_got": False, "network_error": False, "body": {}, "message": "", "selfInfo": False}
-    if "errorCode" in current_info:
-        result["searchType"] = "puuid"
-        result["endpoint"] = "/lol-summoner/v1/current-summoner"
-        result["network_error"] = True
-        result["body"] = current_info
-        if current_info["httpStatus"] == 404 and current_info["message"] == "You are not logged in.":
-            result["message"] = "您还未登录。\nYou're not logged in."
-        else:
-            result["message"] = "网络异常。\nNetwork Error."
-        result["selfInfo"] = True
+    if infos == None:
+        infos = {}
+    #searchTypes = {0: "selfCheck", 1: "riotId", 2: "puuid", 3: "summonerId", 4: "cache"}
+    result: dict[str, Any] = {"searchType": "puuid", "endpoint": "/lol-summoner/v2/summoners/puuid/{puuid}", "info_got": False, "network_error": False, "body": {}, "message": ""}
+    if name in infos:
+        result["searchType"] = "cache"
+        result["endpoint"] = ""
+        result["info_got"] = True
+        result["body"] = infos[name]
     else:
         try:
             summonerId: int = int(name)
         except ValueError:
             if name == "current-summoner":
-                result = {"searchType": "selfCheck", "endpoint": "/lol-summoner/v1/current-summoner", "info_got": True, "network_error": False, "body": current_info, "message": "", "selfInfo": True}
-            elif name.count("-") == 4 and len(name.replace(" ", "")) > 22: #拳头规定的玩家名称不超过16个字符，名称编号不超过5个字符（Riot game name can't exceed 16 characters. The tagline can't exceed 5 characters）
+                result["searchType"] = "selfCheck"
+                result["endpoint"] = "/lol-summoner/v1/current-summoner"
+                info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
+                result["body"] = info
+                if "errorCode" in info:
+                    if info["httpStatus"] == 404:
+                        if info["message"] == "You are not logged in.":
+                            result["message"] = "您还未登录。\nYou're not logged in."
+                        else:
+                            result["message"] = "未知错误。\nUnknown error."
+                    else:
+                        result["network_error"] = True
+                        result["message"] = "网络异常。\nNetwork Error."
+                else:
+                    result["info_got"] = True
+                    infos[name] = info
+            elif verify_uuid(name):
                 result["searchType"] = "puuid"
                 result["endpoint"] = "/lol-summoner/v2/summoners/puuid/{puuid}"
                 info: dict[str, Any] = await (await connection.request("GET", f"/lol-summoner/v2/summoners/puuid/{name}")).json()
                 result["body"] = info
                 if "errorCode" in info:
                     if info["httpStatus"] == 400:
-                        if "in UUID format" in info["message"]:
+                        if info["message"] == '{"httpStatus":400,"errorCode":"BAD_REQUEST","message":"PUUID was not in UUID format","implementationDetails":"filtered"}':
                             result["message"] = "您输入的玩家通用唯一识别码格式有误！请重新输入！\nPUUID wasn't in UUID format! Please try again!"
                         elif "Error response for POST /player-account/lookup/v1/namesets-for-puuids: Failed to connect to 127.0.0.1 port" in info["message"]:
                             result["message"] = "连接超时！请检查您的登录状态。\nConnection timed out! Please check your login status."
+                        else:
+                            result["message"] = "未知错误。\nUnknown error."
                     elif info["httpStatus"] == 404:
-                        result["message"] = "未找到玩家通用唯一识别码为%s的玩家；请核对识别码并稍后再试。\nA player with puuid %s was not found; verify the puuid and try again." %(name, name)
+                        if info["message"] == f"No summoner name for puuid {name}":
+                            result["message"] = f"未找到玩家通用唯一识别码为{name}的玩家；请核对识别码并稍后再试。\nA player with puuid {name} was not found; verify the puuid and try again."
+                        elif info["message"] == "You are not logged in.":
+                            result["message"] = "您还未登录。\nYou're not logged in."
+                        else:
+                            result["message"] = "未知错误。\nUnknown error."
                     else:
                         result["network_error"] = True
                         result["message"] = "网络异常。\nNetwork Error."
                 else:
                     result["info_got"] = True
-                    result["selfInfo"] = info["puuid"] == current_info["puuid"]
+                    infos[name] = info
             else:
                 result["searchType"] = "riotId"
                 result["endpoint"] = "/lol-summoner/v1/summoners?name={name}"
                 if name.count("#") == 0:
-                    result["message"] = '召唤师名称已变更为拳头ID。请以“{玩家名称}#{名称编号}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}", e.g. "%s#%s".' %(current_info["gameName"], current_info["tagLine"])
+                    result["message"] = '召唤师名称已变更为拳头ID。请以“{玩家名称}#{名称编号}”的格式输入。\nSummoner name has been replaced with Riot ID. Please input the name in this format: "{gameName}#{tagLine}".'
                 elif name.count("#") > 1:
                     result["message"] = "该玩家名字包含了无效字符。\nThis player name contains invalid characters."
                 else:
@@ -159,13 +180,18 @@ async def get_info(connection: Connection, name: str, searchType: str | int = "r
                         result["body"] = info
                         if "errorCode" in info:
                             if info["httpStatus"] == 404:
-                                result["message"] = "未找到%s；请核对下名字并稍后再试。\n%s was not found; verify the name and try again." %(name, name)
+                                if "Error requesting summoner data by name for name " in info["message"]:
+                                    result["message"] = f"未找到{name}；请核对下名字并稍后再试。\n{name} was not found; verify the name and try again."
+                                elif info["message"] == "You are not logged in.":
+                                    result["message"] = "您还未登录。\nYou're not logged in."
+                                else:
+                                    result["message"] = "未知错误。\nUnknown error."
                             else:
                                 result["network_error"] = True
                                 result["message"] = "网络异常。\nNetwork Error."
                         else:
                             result["info_got"] = True
-                            result["selfInfo"] = info["puuid"] == current_info["puuid"]
+                            infos[name] = info
         else:
             result["searchType"] = "summonerId"
             result["endpoint"] = "/lol-summoner/v1/summoners/{id}"
@@ -173,18 +199,23 @@ async def get_info(connection: Connection, name: str, searchType: str | int = "r
             result["body"] = info
             if "errorCode" in info:
                 if info["httpStatus"] == 400:
-                    if info["message"] == "Value %d for 'id' of type uint64 is out of range":
+                    if info["message"] == f"Value {summonerId} for 'id' of type uint64 is out of range":
                         result["message"] = "您输入的召唤师序号格式有误！请重新输入！\nValue for 'id' of type uint64 is out of range! Please try again!"
+                    elif info["message"] == "Error response for POST /player-account/lookup/v1/namesets-for-puuids: ":
+                        result["message"] = f"未找到召唤师序号为{summonerId}的玩家；请核对召唤师序号并稍后再试。\nA player with summonerId {summonerId} was not found; verify the summonerId and try again."
                     else:
-                        result["message"] = "未找到召唤师序号为%s的玩家；请核对召唤师序号并稍后再试。\nA player with summonerId %s was not found; verify the summonerId and try again." %(name, name)
+                        result["message"] = "未知错误。\nUnknown error."
                 elif info["httpStatus"] == 404:
-                    result["message"] = "未找到召唤师序号为%s的玩家；请核对召唤师序号并稍后再试。\nA player with summonerId %s was not found; verify the summonerId and try again." %(name, name)
+                    if info["message"] == "You are not logged in.":
+                        result["message"] = "您还未登录。\nYou're not logged in."
+                    else:
+                        result["message"] = "未知错误。\nUnknown error."
                 else:
                     result["network_error"] = True
                     result["message"] = "网络异常。\nNetwork Error."
             else:
                 result["info_got"] = True
-                result["selfInfo"] = info["puuid"] == current_info["puuid"]
+                infos[name] = info
     return result
 
 async def get_infos(connection: Connection, puuids: Optional[list[str]] = None, batch_size: int = 1500, retry: int = 5) -> dict[str, dict[str, Any]]: #下面的接口非常容易报错。非—常—难—受！（The following endpoint is likely to return an error. Very frustrating）
@@ -329,7 +360,7 @@ def get_info_name(info: Any, mode: int = 1, verbose: bool = True) -> str:
         name = ""
     return name
 
-async def sort_summoner_info(connection: Connection, puuids: list[str], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], regaliaBanners: dict[str, dict[str, Any]], unmapped_keys: Optional[dict[str, set[Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
+async def sort_summoner_info(connection: Connection, puuids: list[str], summonerIcons: dict[int, dict[str, Any]], LoLChampions: dict[int, dict[str, Any]], regaliaBanners: dict[str, dict[str, Any]], unmapped_keys: Optional[dict[str, set[Any]]] = None, infos: Optional[dict[str, dict[str, Any]]] = None, log: Optional[LogManager] = None, verbose: bool = True) -> pandas.DataFrame:
     '''
     整理多名召唤师的个人档案，形成一个表格。<br>Organize multiple summoner's profiles into a table.
     
@@ -374,6 +405,8 @@ async def sort_summoner_info(connection: Connection, puuids: list[str], summoner
     :type ragaliaBanners: dict[str, dict[str, Any]]
     :param unmapped_keys: 各数据资源未找到的键。用于控制数据未找到匹配记录的提示最多输出一次。<br>Unmapped keys in all data resources, used to control the hint about data not found to be printed at most once.
     :type unmapped_keys: dict[str, set[int]]
+    :param infos: 召唤师信息缓存字典。键是玩家通用唯一识别码，值是召唤师信息字典。<br>Summoner information cache dictionary. Each key is a puuid, and each value is a summoner information dictionary.
+    :type infos: dict[str, dict[str, Any]]
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -381,6 +414,8 @@ async def sort_summoner_info(connection: Connection, puuids: list[str], summoner
     :return: 召唤师个人档案数据框。<br>Summoner profile dataframe.
     :rtype: pandas.DataFrame
     '''
+    if infos == None:
+        infos = {}
     if log == None:
         log = LogManager()
     logPrint = log.logPrint
@@ -393,7 +428,7 @@ async def sort_summoner_info(connection: Connection, puuids: list[str], summoner
         puuid: str = puuids[i]
         logPrint("[%d/%d]%s" %(i + 1, len(puuids), puuid))
         info_recapture: int = 0
-        info: dict[str, Any] = await get_info(connection, puuid)
+        info: dict[str, Any] = await get_info(connection, puuid, infos = infos)
         while not info["info_got"] and info["body"]["httpStatus"] != 404 and info_recapture < 3:
             logPrint(info["body"], verbose = verbose)
             info_recapture += 1

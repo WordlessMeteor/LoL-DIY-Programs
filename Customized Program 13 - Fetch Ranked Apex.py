@@ -18,7 +18,7 @@ from src.localization.languages.en_US import queueTypes_ranked as queueTypes_en
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/17
+# 更新（Last update）：     2026/10/12
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -51,6 +51,7 @@ async def get_challenger_tier(connection: Connection) -> None:
         folder = "顶尖排位玩家（Ranked Apex）/竞舞（GARENA）/%s/第%d赛季 - 第%d赛段（SEASON %d - Split %d）" %(platform_GARENA[platformId], currentLoLSeasonId, currentLoLSeasonSplitId, currentLoLSeasonId, currentLoLSeasonSplitId)
     else: #拳头公司与竞舞娱乐公司的合同于2023年1月终止（In January 2023, Riot Games ended its contract with Garena）
         folder = "顶尖排位玩家（Ranked Apex）/外服（RIOT）/%s/第%d赛季 - 第%d赛段（SEASON %d - Split %d）" %((platform_RIOT | platform_GARENA)[platformId], currentLoLSeasonId, currentLoLSeasonSplitId, currentLoLSeasonId, currentLoLSeasonSplitId)
+    infos: dict[str, dict[str, Any]] = {} #缓存程序运行过程中已经获取过的召唤师信息（Cache summoner information already obtained during the program execution）
     
     # splitsConfig: dict[str, Any] = await (await connection.request("GET", "/lol-ranked/v1/splits-config")).json()
     # json1name: str = "SplitsConfig (Season %d).json" %currentLoLSeasonId
@@ -185,7 +186,7 @@ async def get_challenger_tier(connection: Connection) -> None:
                     # info_got: bool = standing["puuid"] in ladder_summoner_infos
                     # standing_summoner: dict[str, Any] = ladder_summoner_infos.get(standing["puuid"], {})
                     standing_summoner_recapture: int = 0
-                    standing_summoner: dict[str, Any] = await get_info(connection, standing["puuid"])
+                    standing_summoner: dict[str, Any] = await get_info(connection, standing["puuid"], infos = infos)
                     while not standing_summoner["info_got"] and standing_summoner["body"]["httpStatus"] != 404 and standing_summoner_recapture < 3:
                         logPrint(standing_summoner["body"])
                         standing_summoner_recapture += 1
@@ -248,7 +249,7 @@ async def get_challenger_tier(connection: Connection) -> None:
             # info_got: bool = standing["puuid"] in ladder_summoner_infos
             # standing_summoner: dict[str, Any] = ladder_summoner_infos.get(standing["puuid"], {})
             standing_summoner_recapture: int = 0
-            standing_summoner: dict[str, Any] = await get_info(connection, standing["puuid"])
+            standing_summoner: dict[str, Any] = await get_info(connection, standing["puuid"], infos = infos)
             while not standing_summoner["info_got"] and standing_summoner["body"]["httpStatus"] != 404 and standing_summoner_recapture < 3:
                 logPrint(standing_summoner["body"])
                 standing_summoner_recapture += 1
