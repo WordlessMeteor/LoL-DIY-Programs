@@ -6650,7 +6650,7 @@ async def sort_LoLGame_timeline_sgp(connection: Connection, LoLGame_timeline: di
     logPrint = log.logPrint
     #从时间轴信息准备常量（Prepare constants from timeline information）
     matchId: int = int(LoLGame_timeline["metadata"]["match_id"].split("_")[1])
-    frames: list[dict[str, Any]] = LoLGame_timeline["json"]["frames"]
+    frames: list[dict[str, Any]] = LoLGame_timeline["json"]["frames"] if "json" in LoLGame_timeline else []
     events: dict[int, dict[str, Any]] = {}
     for frame in frames:
         for event in frame["events"]:
@@ -6735,25 +6735,26 @@ async def sort_LoLGame_timeline_sgp(connection: Connection, LoLGame_timeline: di
     else: #对局概要信息获取异常时，当然无法进行版本回溯（When the match summary has an error, version backtrack can't be performed of course）
         version = "" #此时只是为了后续数据资源的异常处理提示（In this case this variable is only used by subsequent exception handling prompts）
         LoLGame_summary_participants = {}
-        for participant in LoLGame_timeline["json"]["participants"]:
-            if participant["puuid"] in infos:
-                participant_info_body = infos[participant["puuid"]]
-                LoLGame_summary_participants[participant["participantId"]] = participant_info_body
-            else:
-                participant_info_recapture: int = 0
-                participant_info: dict[str, Any] = await get_info(connection, participant["puuid"], infos = infos)
-                while not participant_info["info_got"] and participant_info["body"]["httpStatus"] != 404 and participant_info_recapture < 3:
-                    logPrint(participant_info["body"], verbose = verbose)
-                    participant_info_recapture += 1
-                    logPrint("对局%d玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of player (puuid: %s) in Match %d capture failed! Recapturing this player's information ... Times tried: %d." %(matchId, participant["puuid"], participant_info_recapture, participant["puuid"], matchId, participant_info_recapture), verbose = verbose)
-                    participant_info = await get_info(connection, participant["puuid"])
-                if participant_info["info_got"]:
-                    participant_info_body = participant_info["body"]
-                    infos[participant["puuid"]] = participant_info_body
+        if "json" in LoLGame_timeline and "participants":
+            for participant in LoLGame_timeline["json"]["participants"]:
+                if participant["puuid"] in infos:
+                    participant_info_body = infos[participant["puuid"]]
                     LoLGame_summary_participants[participant["participantId"]] = participant_info_body
                 else:
-                    logPrint(participant_info["body"], verbose = verbose)
-                    logPrint("对局%d玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of player (puuid: %s) in Match %d capture failed!" %(matchId, participant["puuid"], participant["puuid"], matchId), verbose = verbose)
+                    participant_info_recapture: int = 0
+                    participant_info: dict[str, Any] = await get_info(connection, participant["puuid"], infos = infos)
+                    while not participant_info["info_got"] and participant_info["body"]["httpStatus"] != 404 and participant_info_recapture < 3:
+                        logPrint(participant_info["body"], verbose = verbose)
+                        participant_info_recapture += 1
+                        logPrint("对局%d玩家信息（玩家通用唯一识别码：%s）获取失败！正在第%d次尝试重新获取该玩家信息……\nInformation of player (puuid: %s) in Match %d capture failed! Recapturing this player's information ... Times tried: %d." %(matchId, participant["puuid"], participant_info_recapture, participant["puuid"], matchId, participant_info_recapture), verbose = verbose)
+                        participant_info = await get_info(connection, participant["puuid"])
+                    if participant_info["info_got"]:
+                        participant_info_body = participant_info["body"]
+                        infos[participant["puuid"]] = participant_info_body
+                        LoLGame_summary_participants[participant["participantId"]] = participant_info_body
+                    else:
+                        logPrint(participant_info["body"], verbose = verbose)
+                        logPrint("对局%d玩家信息（玩家通用唯一识别码：%s）获取失败！\nInformation of player (puuid: %s) in Match %d capture failed!" %(matchId, participant["puuid"], participant["puuid"], matchId), verbose = verbose)
     #数据整理核心部分（Data organization core part）
     ##时间轴（Timeline）
     LoLGame_timeline_header: dict[str, str] = LoLGame_timeline_sgp_header
