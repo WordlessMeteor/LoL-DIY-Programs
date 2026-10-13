@@ -698,9 +698,9 @@ while True:
                 else:
                     with open(file_path, "r", encoding = "utf-8") as fp:
                         dst: str = fp.read()
-                    if src != dst:
+                    if src != dst or table["web_timestamp"][i] > table["local_timestamp"]:
                         update = True
-                if mode == "1" and update or mode == "2": #当选择全局扫描时，只更新有变化的文档；当选择根据修改时间更新时，如果网页修改时间超前，那么无论文件内容是否发生变化，都重新保存一次，便于后续按照修改时间更新（When the user selects Global Scan, the program updates the changed files. When the user selects Updating according to modification time, if the web modification time of a file succeeds to the local midification time of that, then save the web content to local, no matter whether the web file is same as the local file in terms of content）
+                if mode == "1" and update or mode == "2": #当选择全局扫描时，只更新有变化或修改时间落后的文档；当选择根据修改时间更新时，如果网页修改时间超前，那么无论文件内容是否发生变化，都重新保存一次，便于后续按照修改时间更新（When the user selects Global Scan, the program updates the changed or outdated files. When the user selects Updating according to modification time, if the web modification time of a file succeeds to the local midification time of that, then save the web content to local, no matter whether the content of the web file is same as the local file）
                     with open(file_path, "w", encoding = "utf-8") as fp:
                         fp.write(src)
                 if update:
