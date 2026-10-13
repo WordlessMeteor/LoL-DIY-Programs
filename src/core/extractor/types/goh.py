@@ -252,8 +252,8 @@ class GoHExtractor(LoLDataExtractor):
                                                 eventData: dict[str, Any] = self.cherry_bin[eventKey]
                                                 if i == 7: #事件主键（`eventKey`）
                                                     to_append: Any = eventKey
-                                                elif i >= 8 and i <= 11: #字符串常量键子键（`{1ff99d7f}`'s subkeys）
-                                                    to_append = eventData["{1ff99d7f}"][key.split()[1]]
+                                                elif i >= 8 and i <= 11: #字符串常量键子键（`DefaultTra`'s subkeys）
+                                                    to_append = eventData["DefaultTra"][key.split()[1]]
                                                 elif i == 12 or i == 13:
                                                     to_append = eventData[key]
                                                 else:
@@ -286,7 +286,7 @@ class GoHExtractor(LoLDataExtractor):
                                                 if key2 in self.map30_bin and "events" in self.map30_bin[key2] and f"Cherry_Event_{guestName}" in self.map30_bin[key2]["events"]:
                                                     event_key: str = self.map30_bin[key2]["events"][f"Cherry_Event_{guestName}"]["{40a56dcf}"]
                                                     if event_key in self.cherry_bin:
-                                                        GoH_subtitle_key: str = self.cherry_bin[event_key]["{1ff99d7f}"]["Subtitle"]
+                                                        GoH_subtitle_key: str = self.cherry_bin[event_key]["DefaultTra"]["Subtitle"]
                                                         GoH_subtitle: str = self.get_strtable_value(strtable_locale, GoH_subtitle_key, default = GoH_subtitle_key)
                                                         mutexGoHNames.append(GoH_subtitle)
                                                         break
@@ -339,8 +339,8 @@ class GoHExtractor(LoLDataExtractor):
                                             eventData: dict[str, Any] = self.kiwi_bin[eventKey]
                                             if i == 5: #事件主键（`eventKey`）
                                                 to_append: Any = eventKey
-                                            elif i >= 6 and i <= 9: #字符串常量键子键（`{1ff99d7f}`'s subkeys）
-                                                to_append = eventData["{1ff99d7f}"][key.split()[1]]
+                                            elif i >= 6 and i <= 9: #字符串常量键子键（`DefaultTra`'s subkeys）
+                                                to_append = eventData["DefaultTra"][key.split()[1]]
                                             elif i == 10 or i == 11:
                                                 to_append = eventData[key]
                                             else:
@@ -493,7 +493,7 @@ class GoHExtractor(LoLDataExtractor):
         if len(self.CherryGoH_df) > 1:
             CherryGoH_df_web: pandas.DataFrame = self.CherryGoH_df.copy(deep = True)
             ##将图标路径转换为网址（Transform icon paths into urls）
-            iconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.CherryGoH_df.loc[1:, "{982aa425}"].to_list()))
+            iconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.CherryGoH_df.loc[1:, "EventIconPath"].to_list()))
             CherryGoH_df_web.insert(len(CherryGoH_df_web.columns), "iconUrl", ["缩略图网址"] + iconUrls)
             ##设置要导出的行和列（Set the rows and columns to export）
             columns_to_export: list[str] = [
@@ -501,12 +501,12 @@ class GoHExtractor(LoLDataExtractor):
                 "iconUrl",
                 "Enabled",
                 "{b0f32561}",
-                "{1ff99d7f} title_content_zh",
-                "{1ff99d7f} title_content_en",
-                "{1ff99d7f} {bff2f361}_content_zh",
-                "{1ff99d7f} {bff2f361}_content_en",
-                "{1ff99d7f} {3b7aa707}_content_zh",
-                "{1ff99d7f} {3b7aa707}_content_en",
+                "DefaultTra title_content_zh",
+                "DefaultTra title_content_en",
+                "DefaultTra {bff2f361}_content_zh",
+                "DefaultTra {bff2f361}_content_en",
+                "DefaultTra {3b7aa707}_content_zh",
+                "DefaultTra {3b7aa707}_content_en",
             ]
             CherryGoH_df_web = CherryGoH_df_web.loc[:, columns_to_export]
             ##样式设置（Style configuration）
@@ -528,19 +528,19 @@ class GoHExtractor(LoLDataExtractor):
         if len(self.KiwiGoH_df) > 1:
             KiwiGoH_df_web: pandas.DataFrame = self.KiwiGoH_df.copy(deep = True)
             ##将图标路径转换为网址（Transform icon paths into urls）
-            iconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.KiwiGoH_df.loc[1:, "{982aa425}"].to_list()))
+            iconUrls: list[str] = list(map(lambda x: self.url2image(self.assetPath2url(self.version, x)), self.KiwiGoH_df.loc[1:, "EventIconPath"].to_list()))
             KiwiGoH_df_web.insert(len(KiwiGoH_df_web.columns), "iconUrl", ["缩略图网址"] + iconUrls)
             ##设置要导出的行和列（Set the rows and columns to export）
             columns_to_export: list[str] = [
                 "name",
                 "iconUrl",
                 "{b0f32561}",
-                "{1ff99d7f} title_content_zh",
-                "{1ff99d7f} title_content_en",
-                "{1ff99d7f} {bff2f361}_content_zh",
-                "{1ff99d7f} {bff2f361}_content_en",
-                "{1ff99d7f} {3b7aa707}_content_zh",
-                "{1ff99d7f} {3b7aa707}_content_en",
+                "DefaultTra title_content_zh",
+                "DefaultTra title_content_en",
+                "DefaultTra {bff2f361}_content_zh",
+                "DefaultTra {bff2f361}_content_en",
+                "DefaultTra {3b7aa707}_content_zh",
+                "DefaultTra {3b7aa707}_content_en",
             ]
             KiwiGoH_df_web = KiwiGoH_df_web.loc[:, columns_to_export]
             ##样式设置（Style configuration）
