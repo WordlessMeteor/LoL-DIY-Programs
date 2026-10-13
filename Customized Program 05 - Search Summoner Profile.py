@@ -43,7 +43,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/10/12
+# 更新（Last update）：     2026/10/14
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2292,7 +2292,7 @@ async def search_profile(connection: Connection) -> None:
                             sort_gameInfo_sync_str: str = logInput()
                             sort_gameInfo_sync: bool = bool(sort_gameInfo_sync_str)
                             if not sort_gameInfo_sync:
-                                break
+                                LoLMatchIDs.clear()
                     else:
                         try:
                             tmp = eval(matchId_str)
@@ -2700,7 +2700,7 @@ async def search_profile(connection: Connection) -> None:
                             sort_gameInfo_sync_str: str = logInput()
                             sort_gameInfo_sync: bool = bool(sort_gameInfo_sync_str)
                             if not sort_gameInfo_sync:
-                                break
+                                TFTMatchIDs.clear()
                     else:
                         try:
                             tmp = eval(matchId_str)
