@@ -128,5 +128,13 @@ This program set mainly achieves **LoL Summoner information export** and **Leagu
                 </ul>
             </td>
         </tr>
+        <tr>
+            <td style="text-align:center;">两颗西柚</td>
+            <td>
+                <ul>
+                    <li>(e0a57c6) Access to Eclipse trait</li>
+                </ul>
+            </td>
+        </tr>
     </tbody>
 </table>

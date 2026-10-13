@@ -333,7 +333,8 @@ traitStyles: dict[int, str] = {
     2: "Silver",
     3: "Gold",
     4: "Prismatic",
-    5: "Unique"
+    5: "Radiant",
+    6: "Unique"
 }
 rarities: dict[str, str] = {
     "Default": "Default",

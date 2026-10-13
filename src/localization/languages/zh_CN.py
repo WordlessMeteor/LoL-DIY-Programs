@@ -340,7 +340,8 @@ traitStyles: dict[int, str] = {
     2: "白银",
     3: "黄金",
     4: "炫金",
-    5: "独特"
+    5: "霜白",
+    6: "独特"
 }
 rarities: dict[str, str] = {
     "Default": "默认",

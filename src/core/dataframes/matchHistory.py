@@ -7239,7 +7239,7 @@ async def generate_TFTHistory_records(connection: Connection, TFTHistory_data: d
                             to_append = TFTTraitId if subkey_index == 5 else "" if subkey_index == 6 else TFTTrait_iter[key.split()[-1]]
                     else:
                         if subkey_index <= 4:
-                            if subkey_index == 2:
+                            if subkey_index == 2: #羁绊框颜色（`style`）
                                 to_append = traitStyles[TFTTrait_iter[key.split()[-1]]]
                             else:
                                 to_append = TFTTrait_iter[key.split()[-1]]
@@ -7937,7 +7937,7 @@ async def generate_TFTGameSummary_records(connection: Connection, TFTGame_summar
                         to_append = TFTTraitId if subkey_index == 5 else "" if subkey_index == 6 else TFTTrait_iter[key.split()[-1]]
                 else:
                     if subkey_index <= 4:
-                        if subkey_index == 2:
+                        if subkey_index == 2: #羁绊框颜色（`style`）
                             to_append = traitStyles[TFTTrait_iter[key.split()[-1]]]
                         else:
                             to_append = TFTTrait_iter[key.split()[-1]]

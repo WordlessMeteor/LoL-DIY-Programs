@@ -126,5 +126,13 @@
                 </ul>
             </td>
         </tr>
+        <tr>
+            <td style="text-align:center;">两颗西柚</td>
+            <td>
+                <ul>
+                    <li>（e0a57c6）【日月双蚀】羁绊的获取方式</li>
+                </ul>
+            </td>
+        </tr>
     </tbody>
 </table>
