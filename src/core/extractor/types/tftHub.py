@@ -358,8 +358,8 @@ class TFTExtractor(LoLDataExtractor):
                         else:
                             to_append = ""
                     elif i <= 142: #传送门列表（Portal lists）
-                        if "{46bf1dcb}" in value and value["{46bf1dcb}"] in self.map22_bin:
-                            portalLists = self.map22_bin[value["{46bf1dcb}"]]
+                        if "RegionPortalList" in value and value["RegionPortalList"] in self.map22_bin:
+                            portalLists = self.map22_bin[value["RegionPortalList"]]
                             if i == 140 or i == 141: #地区传送门名称列表（Region portals' localized name list）
                                 portalList = portalLists["RegionPortals"]
                                 regionNames: list[str] = []
@@ -443,9 +443,9 @@ class TFTExtractor(LoLDataExtractor):
                             to_append = resolverList
                         else:
                             to_append = ""
-                    elif i <= 161: #六费卡指令（`{c8369109}`'s subkeys）
-                        if "{c8369109}" in value and value["{c8369109}"] in self.map22_bin:
-                            tooltipData = self.map22_bin[value["{c8369109}"]]
+                    elif i <= 161: #六费卡指令（`CustomShopTooltip`'s subkeys）
+                        if "CustomShopTooltip" in value and value["CustomShopTooltip"] in self.map22_bin:
+                            tooltipData = self.map22_bin[value["CustomShopTooltip"]]
                             if i <= 153:
                                 subkey = key.split()[1]
                                 to_append = tooltipData.get(subkey, "")
@@ -468,14 +468,14 @@ class TFTExtractor(LoLDataExtractor):
                                     to_append = tooltip_raw
                         else:
                             to_append = ""
-                    elif i == 162: #六费单位音频单元（`{235a8995} bankUnits`）
-                        if "{235a8995}" in value and value["{235a8995}"] in self.map22_bin:
-                            to_append = self.map22_bin[value["{235a8995}"]]["bankUnits"]
+                    elif i == 162: #六费单位音频单元（`AdditionalBankUnits bankUnits`）
+                        if "AdditionalBankUnits" in value and value["AdditionalBankUnits"] in self.map22_bin:
+                            to_append = self.map22_bin[value["AdditionalBankUnits"]]["bankUnits"]
                         else:
                             to_append = ""
-                    elif i <= 168: #默认棋盘子键（`{52e4eea2}`'s subkeys）
-                        if "{52e4eea2}" in value and value["{52e4eea2}"] in self.map22_bin:
-                            tmp_ptr = self.map22_bin[value["{52e4eea2}"]]
+                    elif i <= 168: #默认棋盘子键（`CarouselMapSkin`'s subkeys）
+                        if "CarouselMapSkin" in value and value["CarouselMapSkin"] in self.map22_bin:
+                            tmp_ptr = self.map22_bin[value["CarouselMapSkin"]]
                             subkeyList: list[str] = key.split()[1:]
                             for tmp_key in subkeyList:
                                 if tmp_key in tmp_ptr:
@@ -515,13 +515,13 @@ class TFTExtractor(LoLDataExtractor):
                                 to_append = tooltip_raw
                         else:
                             to_append = ""
-                    else: #人机对战敌方单位子键（`{049d68aa}`'s subkeys）
-                        if "{049d68aa}" in value and value["{049d68aa}"] in self.map22_bin:
+                    else: #人机对战敌方单位子键（`PveData`'s subkeys）
+                        if "PveData" in value and value["PveData"] in self.map22_bin:
                             if i == 245 or i == 246:
                                 subkey = key.split()[1]
-                                to_append = self.map22_bin[value["{049d68aa}"]][subkey]
-                            else: #人机对战敌方单位名称列表（`{049d68aa} Comps names`）
-                                to_append = list(map(lambda x: self.map22_bin[x]["name"] if x in self.map22_bin else x, self.map22_bin[value["{049d68aa}"]]["Comps"]))
+                                to_append = self.map22_bin[value["PveData"]][subkey]
+                            else: #人机对战敌方单位名称列表（`PveData Comps names`）
+                                to_append = list(map(lambda x: self.map22_bin[x]["name"] if x in self.map22_bin else x, self.map22_bin[value["PveData"]]["Comps"]))
                         else:
                             to_append = ""
                     TFTSet_data[key].append(to_append)

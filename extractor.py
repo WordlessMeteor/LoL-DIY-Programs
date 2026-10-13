@@ -1696,8 +1696,8 @@ if __name__ == "__main__":
         with open(tftstringtable_en_path, "r", encoding = "utf-8") as fp:
             tftstringtable_en: dict[str, int | dict[str, str]] = json.load(fp)
         ##地图（Map）
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
-        #     map22_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
+            map22_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # map22_bin = LoLDataExtractor.resolve_bin_hash(map22_bin)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
         #     map30_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
@@ -1721,8 +1721,8 @@ if __name__ == "__main__":
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/cherry.bin.json", "r", encoding = "utf-8") as fp:
         #     cherry_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # cherry_bin = LoLDataExtractor.resolve_bin_hash(cherry_bin)
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
-            kiwi_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/maps/modespecificdata/kiwi.bin.json", "r", encoding = "utf-8") as fp:
+        #     kiwi_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # kiwi_bin = LoLDataExtractor.resolve_bin_hash(kiwi_bin)
         ##整合后的数据（Merged data）
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
@@ -1770,8 +1770,8 @@ if __name__ == "__main__":
         logPrint("说明文本测试样例：")
         tests: list[dict[str, Any]] = [
             {
-                "tooltip": "附近每有一个敌方英雄，你就会获得<attackSpeed>@ASPerEnemyTooltip@攻击速度</attackSpeed>、<scaleArmor>@ArmorPerEnemy@护甲</scaleArmor>和<scaleMR>@MRPerEnemy@魔法抗性</scaleMR>。",
-                "binData": kiwi_bin["{1c86959d}"]["mSpell"],
+                "tooltip": "战斗开始@DelaySeconds@秒后，【日月双蚀】处决最低生命值的敌人，每@EclipseBeamPeriod@秒重复一次。",
+                "binData": map22_bin["Maps/Shipping/Map22/Sets/TFTSet18/Traits/DA_18_Eclipse"],
                 "reservedVars": None
             },
         ]

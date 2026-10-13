@@ -2884,7 +2884,7 @@ class LoLDataExtractor:
                     skip = True
             else:
                 skip = True
-        elif "constants" in binData and binData["constants"]["__type"] == "{d65315ee}" and "{df085b93}" in binData["constants"] and (var in binData["constants"]["{df085b93}"] or var_hash in binData["constants"]["{df085b93}"]): #云顶之弈通用常数（TFT general constants）
+        elif "constants" in binData and binData["constants"]["__type"] == "TftConstants" and "{df085b93}" in binData["constants"] and (var in binData["constants"]["{df085b93}"] or var_hash in binData["constants"]["{df085b93}"]): #云顶之弈通用常数（TFT general constants）
             if var in binData["constants"]["{df085b93}"]:
                 dataValue = binData["constants"]["{df085b93}"][var]
             else:
@@ -3809,8 +3809,8 @@ class LoLDataExtractor:
                 to_append = augment_rarities[value.get("rarity", 0)]
             elif i == 52: #根指令对象（`RootSpellObject`）
                 to_append = source.get(value["RootSpell"], "")
-            elif i == 53: #其它指令对象（`{40c7b66f}_Object`）
-                to_append = list(map(lambda x: source.get(x, ""), value.get("{40c7b66f}", [])))
+            elif i == 53: #其它指令对象（`AdditionalSpells_Object`）
+                to_append = list(map(lambda x: source.get(x, ""), value.get("AdditionalSpells", [])))
                 if to_append == []:
                     to_append = ""
             elif i == 54: #最大等级（`RootSpell mSpell DataValues MaxLevel`）
@@ -3836,7 +3836,7 @@ class LoLDataExtractor:
                 else:
                     to_append = ""
         else: #任务线相关键（Questline-related keys）
-            if "{3ed971bd}" in value and "{09d0cf3d}" in value["{3ed971bd}"] and (questline_key := value["{3ed971bd}"]["{09d0cf3d}"]) in source:
+            if "QuestData" in value and "Quest" in value["QuestData"] and (questline_key := value["QuestData"]["Quest"]) in source:
                 questline: dict[str, Any] = source[questline_key]
                 if i <= 64:
                     tmp_ptr: Any = questline
@@ -3866,7 +3866,7 @@ class LoLDataExtractor:
                             mSpell: Optional[dict[str, Any]] = source[spellKey]["mSpell"]
                         else:
                             mSpell: Optional[dict[str, Any]] = None
-                        if "{3ed971bd}" in value and "{09d0cf3d}" in value["{3ed971bd}"] and (questline_key := value["{3ed971bd}"]["{09d0cf3d}"]) in source:
+                        if "QuestData" in value and "Quest" in value["QuestData"] and (questline_key := value["QuestData"]["Quest"]) in source:
                             questline: dict[str, Any] = source[questline_key]
                             if i >= 67: #对于任务完成描述，获取最大层级（For quest-finished descriptions, get the maximum tier）
                                 reservedVars: Optional[dict[str, str]] = {"QuestTier": str(len(questline["Milestones"]))}
