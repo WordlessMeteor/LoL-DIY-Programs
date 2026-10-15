@@ -6530,6 +6530,128 @@ anvil_header: dict[str, str] = {
     "anvilRarities": "锻造器位阶",
     "RootSpellObject": "根指令对象"
 }
+##局内任务（In-game mission）
+progressTrack_header: dict[str, str] = {
+    "key": "主键",
+    "ID": "识别码",
+    "name": "代码",
+    "CounterDefinitions": "计数器定义主键列表",
+    "CounterDefinitions_content": "计数器定义列表",
+    "MilestoneDefinition_index": "里程碑定义序号",
+    "MilestoneDefinition_key": "里程碑定义主键",
+    "MilestoneDefinition ID": "里程碑识别码",
+    "MilestoneDefinition name": "里程碑代码",
+    "MilestoneDefinition TriggerValue": "里程碑触发值",
+    "MilestoneDefinition Counter": "里程碑计数器主键",
+    "MilestoneDefinition properties": "里程碑属性主键列表",
+    "MilestoneDefinition properties LocalizedName_content_zh": "奖励分组名称（中文）",
+    "MilestoneDefinition properties LocalizedName_content_en": "奖励分组名称（英文）",
+    "MilestoneDefinition properties rewards {d35466b8}_content_zh": "里程碑奖励（中文）",
+    "MilestoneDefinition properties rewards {d35466b8}_content_en": "里程碑奖励（英文）",
+    "MilestoneDefinition Counter ID": "里程碑计数器识别码",
+    "MilestoneDefinition Counter name": "里程碑计数器代码"
+}
+KiwiProgressTrack_header: dict[str, str] = {
+    "progression_key": "进度主键"
+} | progressTrack_header
+rewardGroup_header: dict[str, str] = {
+    "key": "主键",
+    "ID": "识别码",
+    "internalName": "内置名",
+    "LocalizedName": "名称键",
+    "rewardStrategy": "奖励策略",
+    "celebrationType": "庆祝类型",
+    "selectionStrategyConfig minSelectionsAllowed": "最小选择数量",
+    "selectionStrategyConfig maxSelectionsAllowed": "最大选择数量",
+    "LocalizedName_content_zh": "名称（中文）",
+    "LocalizedName_content_en": "名称（英文）",
+    "reward_index": "奖励序号",
+    "reward {31c5f01c}": "奖励名称键",
+    "reward {d35466b8}": "奖励描述键",
+    "reward quantity": "奖励数量",
+    "reward itemID": "奖励道具识别码",
+    "reward {0ba947a2}": "",
+    "reward {00fa4f01}": "奖励货币主键",
+    "reward __type": "奖励类型",
+    "reward media image": "奖励缩略图路径（小写）",
+    "reward media {15c4c3cb}": "奖励缩略图路径",
+    "reward {00fa4f01} mInternalName": "奖励货币内置名",
+    "reward {31c5f01c}_content_zh": "奖励名称（中文）",
+    "reward {31c5f01c}_content_en": "奖励名称（英文）",
+    "reward {d35466b8}_content_zh": "奖励描述（中文）",
+    "reward {d35466b8}_content_en": "奖励描述（英文）"
+}
+KiwiReward_header: dict[str, str] = {
+    "key": "主键",
+    "seriesId": "序列识别码",
+    "{50c23533}": "赛季代号",
+    "progression_key": "进度主键",
+    "quest_index": "大型任务序号",
+    "quest_key": "大型任务主键",
+    "quest {7fad8491}": "",
+    "quest {8ff60339}": "小型任务主键",
+    "quest rewards": "奖励主键",
+    "quest {7fad8491} {8d7928e4}": "",
+    "quest {90e39fce} {8ff60339}": "前驱小型任务列表",
+    "quest rewards Items": "奖励道具"
+}
+KiwiQuest_header: dict[str, str] = {
+    "key": "大型任务事件主键",
+    "progression_key": "进度主键",
+    "questGroup_index": "大型任务分组序号",
+    "questGroup_key": "大型任务分组主键",
+    "questGroup Locked": "大型任务分组已锁定",
+    "questGroup {5e7167cd}": "",
+    "quest_index": "大型任务序号",
+    "quest_key": "大型任务主键",
+    "quest {1ba4e4a5}": "",
+    "quest TitleTra": "大型任务标题键",
+    "quest DescriptionTra": "大型任务描述键",
+    "quest missions": "小型任务主键列表",
+    "quest {0f400dc1}": "进阶大型任务主键",
+    "quest QuestData QuestNameTra": "大型任务名称键",
+    "quest QuestData {c88f1a9b}": "大型任务简介键",
+    "quest QuestData {ee2e0dbc}": "",
+    "quest QuestData {c504ece0}": "",
+    "quest QuestData {fafa4664}": "大型任务统计指标",
+    "quest TitleTra_content_zh": "大型任务标题（中文）",
+    "quest TitleTra_content_en": "大型任务标题（英文）",
+    "quest DescriptionTra_content_zh": "大型任务描述（中文）",
+    "quest DescriptionTra_content_en": "大型任务描述（英文）",
+    "quest QuestData QuestNameTra_content_zh": "大型任务名称（中文）",
+    "quest QuestData QuestNameTra_content_en": "大型任务名称（英文）",
+    "quest QuestData {c88f1a9b}_content_zh": "大型任务简介（中文）",
+    "quest QuestData {c88f1a9b}_content_en": "大型任务简介（英文）"
+}
+KiwiMission_header: dict[str, str] = {
+    "key": "主键",
+    "missionId": "小型任务代码",
+    "{7fad8491}": "小型任务奖励类型主键",
+    "{7fad8491} {8d7928e4}": "小型任务奖励类型识别码",
+    "objective_index": "目标序号",
+    "objective statId": "目标统计指标",
+    "objective {166f6876}": "目标完成条件",
+    "objective DescriptionTraKey": "目标描述键",
+    "objective DescriptionTraKey_content_zh": "目标描述（中文）",
+    "objective DescriptionTraKey_content_en": "目标描述（英文）"
+}
+KiwiQuestMilestone_header: dict[str, str] = {
+    "key": "大型任务事件主键",
+    "progression_key": "进度主键",
+    "questGroup_index": "大型任务分组序号",
+    "questGroup_key": "大型任务分组主键",
+    "questGroup Locked": "大型任务分组已锁定",
+    "questGroup {5e7167cd}": "",
+    "quest_index": "大型任务序号",
+    "quest_key": "大型任务主键",
+    "quest TitleTra_content_zh": "大型任务标题（中文）",
+    "quest TitleTra_content_en": "大型任务标题（英文）",
+    "milestone_index": "里程碑序号",
+    "milestone {7fec0982}": "里程碑数据",
+    "milestone MilestoneDescriptionTra": "里程碑描述键",
+    "milestone MilestoneDescriptionTra_content_zh": "里程碑描述（中文）",
+    "milestone MilestoneDescriptionTra_content_en": "里程碑描述（英文）"
+}
 ##荣誉嘉宾（Guest of Honor）
 CherryGoH_header: dict[str, str] = {
     "GoHKey": "嘉宾主键",

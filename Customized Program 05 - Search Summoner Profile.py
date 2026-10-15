@@ -2221,7 +2221,7 @@ async def search_profile(connection: Connection) -> None:
                 if matchId_str == "":
                     continue
                 elif matchId_str == "0":
-                    LoLMatchIDs = []
+                    LoLMatchIDs.clear()
                     break
                 else:
                     if matchId_str == "3":
@@ -2254,7 +2254,7 @@ async def search_profile(connection: Connection) -> None:
                                         break
                             if gameIndex == "0":
                                 search_LoL = False
-                                LoLMatchIDs = []
+                                LoLMatchIDs.clear()
                                 break
                             LoLMatchIDs = LoLGameIDs[begIndex:endIndex]
                     elif matchId_str == "scan":
@@ -2268,7 +2268,7 @@ async def search_profile(connection: Connection) -> None:
                             recapture_str: str = logInput()
                             recapture: bool = bool(recapture_str)
                             if recapture:
-                                LoLMatchIDs = [] #如果没有这句语句，那么当重新输入对局序号列表时，从本地文件中检测到的对局数量相比上次检测数的基础上会多出本地文件中包含的对局的数量（Without this assignment, when reinputting the matchId list, the number of matches detected from the local files will become more than that of the last time's check）
+                                LoLMatchIDs.clear() #如果没有这句语句，那么当重新输入对局序号列表时，从本地文件中检测到的对局数量相比上次检测数的基础上会多出本地文件中包含的对局的数量（Without this assignment, when reinputting the matchId list, the number of matches detected from the local files will become more than that of the last time's check）
                                 logPrint('请输入要查询的英雄联盟对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出英雄联盟对局查询请输入“0”：\nPlease enter the LoL match ID to check. Submit a list containing matchIDs to search in batch. Submit "3" to search the currently stored history in batch. Submit "0" to quit searching for LoL matches.')
                                 continue
                             scan_lol = True #不应直接放到matchID == "scan"语句下，因为有可能历史记录不是扫描获取的，而是一开始就获取的。比如“尚未保存过该玩家的数据”，或者提示“检测到若干场对局。是否继续”选择了否（This statement shouldn't follow closely after the statement `matchId == "scan"`, because the match history might be obtained in the beginning instead of by scanning. Cases are that a summoner's data has never been saved locally, and that the user inputs something in face of the hint "Detected some matches. Continue?"）
@@ -2300,7 +2300,7 @@ async def search_profile(connection: Connection) -> None:
                             logPrint("您的输入存在语法错误。请重新输入！\nSyntax ERROR detected in this input! Please try again!")
                             continue
                         else:
-                            LoLMatchIDs = []
+                            LoLMatchIDs.clear()
                             if isinstance(tmp, int):
                                 LoLMatchIDs.append(tmp)
                             elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int), tmp)):
@@ -2637,7 +2637,7 @@ async def search_profile(connection: Connection) -> None:
                 if matchId_str == "":
                     continue
                 elif matchId_str == "0":
-                    TFTMatchIDs = []
+                    TFTMatchIDs.clear()
                     break
                 else:
                     if matchId_str == "3":
@@ -2670,7 +2670,7 @@ async def search_profile(connection: Connection) -> None:
                                         break
                             if gameIndex == "0":
                                 search_TFT = False
-                                TFTMatchIDs = []
+                                TFTMatchIDs.clear()
                                 break
                             TFTMatchIDs = TFTGameIDs[begIndex:endIndex]
                     elif matchId_str == "scan":
@@ -2684,7 +2684,7 @@ async def search_profile(connection: Connection) -> None:
                             recapture_str: str = logInput()
                             recapture: bool = bool(recapture_str)
                             if recapture:
-                                TFTMatchIDs = []
+                                TFTMatchIDs.clear()
                                 logPrint('请输入要查询的云顶之弈对局序号，批量查询对局请输入对局序号列表，批量查询全部对局请输入“3”，退出云顶之弈对局查询请输入“0”：\nPlease enter the TFT match ID to check. Submit a list containing matchIDs to search in batch. Submit "3" to search the currently stored history in batch. Submit "0" to quit searching for TFT matches.')
                                 continue
                             scan_tft = True
@@ -2704,7 +2704,7 @@ async def search_profile(connection: Connection) -> None:
                     else:
                         try:
                             tmp = eval(matchId_str)
-                            TFTMatchIDs = []
+                            TFTMatchIDs.clear()
                             if isinstance(tmp, int):
                                 TFTMatchIDs.append(tmp)
                             elif isinstance(tmp, list) and all(map(lambda x: isinstance(x, int), tmp)):

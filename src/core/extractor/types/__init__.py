@@ -6,6 +6,7 @@ from .character import ChampionExtractor
 from .item import ItemExtractor
 from .augment import AugmentExtractor
 from .anvil import AnvilExtractor
+from .mission import MissionExtractor
 from .cherryPhase import CherryRoundExtractor
 from .cameo import CameoExtractor
 from .goh import GoHExtractor
@@ -21,6 +22,7 @@ __all__ = [
     "ItemExtractor",
     "AugmentExtractor",
     "AnvilExtractor",
+    "MissionExtractor",
     "CherryRoundExtractor",
     "CameoExtractor",
     "GoHExtractor",

@@ -19,7 +19,7 @@ from src.core.extractor.types import *
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/10/10
+# 更新（Last update）：     2026/10/15
 #=============================================================================
 
 #定义模式覆盖文本描述函数（Define the overriden data tooltip function）
@@ -638,7 +638,7 @@ if __name__ == "__main__":
             step: int = 1
             #设置要提取的数据类型（Set the type of data to extract）
             while True:
-                logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t召唤师技能（Summoner Spells）\n4\t符文（Perks）\n5\t英雄（Champions）\n6\t角色（Characters）\n7\t装备（Items）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t斗魂竞技场回合阶段（Arena Round Phase）\n11\t场景英雄（Cameo）\n12\t荣誉嘉宾（Guests of Honor）\n13\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n14\t字体（Fonts）\nall\t所有（All）" + ("" if single_export else "\n-1\t批量导出所有数据框并清空队列（Batch export all dataframes and clear queue）"))
+                logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-2\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t召唤师技能（Summoner Spells）\n4\t符文（Perks）\n5\t英雄（Champions）\n6\t角色（Characters）\n7\t装备（Items）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t游戏内任务（In-game Missions）\n11\t斗魂竞技场回合阶段（Arena Round Phase）\n12\t场景英雄（Cameo）\n13\t荣誉嘉宾（Guests of Honor）\n14\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n15\t字体（Fonts）\nall\t所有（All）" + ("" if single_export else "\n-1\t批量导出所有数据框并清空队列（Batch export all dataframes and clear queue）"))
                 if one_click and len(versions_conf) > 1: #新批次开始时，`versions_conf`中只有一个元素。从此批次开始重新配置（When a new batch starts, there's only one element in `versions_conf`. Reconfigure from this batch）
                     if step == 1:
                         mode: str = str(preset_data_options)
@@ -815,7 +815,7 @@ if __name__ == "__main__":
                             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                         else:
                             if isinstance(tmp, int):
-                                if tmp >= 1 and tmp <= 14:
+                                if tmp >= 1 and tmp <= 15:
                                     data_options = [tmp]
                                 else:
                                     logPrint("您输入的正整数不在合法范围内。请重新输入。\nThe integer you input doesn't fall within a legal range. Please try again.")
@@ -927,6 +927,17 @@ if __name__ == "__main__":
                             if web_export:
                                 anvilExtractor.to_html()
                         elif dOption == 10:
+                            logPrint("[%d/%d][%d/%d]正在整理任务数据……\nOrganizing mission data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
+                            missionExtractor: MissionExtractor = MissionExtractor(extractor)
+                            missionExtractor.build_mission_dataframe()
+                            if wb_export:
+                                if single_export:
+                                    missionExtractor.export_mission_data()
+                                else:
+                                    missionExtractor.enqueue_mission_dataframe()
+                            if web_export:
+                                missionExtractor.to_html()
+                        elif dOption == 11:
                             logPrint("[%d/%d][%d/%d]正在整理斗魂竞技场回合数据……\nOrganizing Arena round data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             cherryRoundExtractor: CherryRoundExtractor = CherryRoundExtractor(extractor)
                             cherryRoundExtractor.build_CherryRound_dataframe()
@@ -937,7 +948,7 @@ if __name__ == "__main__":
                                     cherryRoundExtractor.enqueue_CherryRound_dataframe()
                             if web_export:
                                 cherryRoundExtractor.to_html()
-                        elif dOption == 11:
+                        elif dOption == 12:
                             logPrint("[%d/%d][%d/%d]正在整理场景英雄数据……\nOrganizing Cameo data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             cameoExtractor: CameoExtractor = CameoExtractor(extractor)
                             cameoExtractor.build_cameo_dataframe()
@@ -946,7 +957,7 @@ if __name__ == "__main__":
                                     cameoExtractor.export_cameo_data()
                                 else:
                                     cameoExtractor.enqueue_cameo_dataframe()
-                        elif dOption == 12:
+                        elif dOption == 13:
                             logPrint("[%d/%d][%d/%d]正在整理荣誉嘉宾数据……\nOrganizing Guest of Honor data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             gohExtractor: GoHExtractor = GoHExtractor(extractor)
                             gohExtractor.build_GoH_dataframe()
@@ -957,7 +968,7 @@ if __name__ == "__main__":
                                     gohExtractor.enqueue_GoH_dataframe()
                             if web_export:
                                 gohExtractor.to_html()
-                        elif dOption == 13:
+                        elif dOption == 14:
                             logPrint("[%d/%d][%d/%d]正在整理云顶之弈数据……\nOrganizing TFT data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             tftExtractor: TFTExtractor = TFTExtractor(extractor)
                             tftExtractor.build_tft_dataframe()
@@ -968,7 +979,7 @@ if __name__ == "__main__":
                                     tftExtractor.enqueue_tft_dataframe()
                             if web_export:
                                 tftExtractor.to_html()
-                        elif dOption == 14:
+                        elif dOption == 15:
                             logPrint("[%d/%d][%d/%d]正在整理字体数据……\nOrganizing font data ..." %(i + 1, len(versions), nDataOption_iter, nDataOptions))
                             fontExtractor: FontExtractor = FontExtractor(extractor)
                             fontExtractor.build_font_dataframe()
@@ -1144,7 +1155,7 @@ if __name__ == "__main__":
         nDataOption_iter: int = 0
         #设置要提取的数据类型（Set the type of data to extract）
         while True:
-            logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-3\t调试（Debug）\n-2\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t召唤师技能（Summoner Spells）\n4\t符文（Perks）\n5\t英雄（Champions）\n6\t角色（Characters）\n7\t装备（Items）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t斗魂竞技场回合阶段（Arena Round Phase）\n11\t场景英雄（Cameo）\n12\t荣誉嘉宾（Guests of Honor）\n13\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n14\t字体（Fonts）\nall\t所有（All）" + ("" if single_export else "\n-1\t批量导出所有数据框并清空队列（Batch export all dataframes and clear queue）"))
+            logPrint("请选择您要提取的数据：\nPlease select the type of data you want to extract:\n-3\t调试（Debug）\n-2\t设置（Settings）\n0\t退出当前版本（Quit this version）\n1\t地图（Maps）\n2\t作弊指令（Cheat sheet）\n3\t召唤师技能（Summoner Spells）\n4\t符文（Perks）\n5\t英雄（Champions）\n6\t角色（Characters）\n7\t装备（Items）\n8\t强化符文（Augments）\n9\t锻造器（Anvils）\n10\t游戏内任务（In-game Missions）\n11\t斗魂竞技场回合阶段（Arena Round Phase）\n12\t场景英雄（Cameo）\n13\t荣誉嘉宾（Guests of Honor）\n14\t云顶之弈赛季、装备和羁绊（TFT Sets, Items and Traits）\n15\t字体（Fonts）\nall\t所有（All）" + ("" if single_export else "\n-1\t批量导出所有数据框并清空队列（Batch export all dataframes and clear queue）"))
             mode: str = logInput()
             if mode == "":
                 continue
@@ -1200,6 +1211,8 @@ if __name__ == "__main__":
                             scope["augmentExtractor"] = augmentExtractor
                         if "anvilExtractor" in dir():
                             scope["anvilExtractor"] = anvilExtractor
+                        if "missionExtractor" in dir():
+                            scope["missionExtractor"] = missionExtractor
                         if "cherryRoundExtractor" in dir():
                             scope["cherryRoundExtractor"] = cherryRoundExtractor
                         if "cameoExtractor" in dir():
@@ -1381,7 +1394,7 @@ if __name__ == "__main__":
                         logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     else:
                         if isinstance(tmp, int):
-                            if tmp >= 1 and tmp <= 14:
+                            if tmp >= 1 and tmp <= 15:
                                 data_options = [tmp]
                             else:
                                 logPrint("您输入的正整数不在合法范围内。请重新输入。\nThe integer you input doesn't fall within a legal range. Please try again.")
@@ -1581,6 +1594,27 @@ if __name__ == "__main__":
                         if web_export:
                             anvilExtractor.to_html()
                     elif dOption == 10:
+                        logPrint("[%d/%d]正在调试任务数据……\nDebugging mission data ..." %(nDataOption_iter, nDataOptions))
+                        missionExtractor: MissionExtractor = MissionExtractor(extractor)
+                        if dir_type == "extract":
+                            mission_paths: list[Path] = [
+                                extract_game_dir / "data/maps/shipping/map453/map453.bin.json",
+                                extract_game_dir / "data/maps/shipping/map12/map12.bin.json"
+                            ]
+                        else:
+                            mission_paths = [
+                                repo_game_dir / "data/maps/shipping/map453/map453.bin.json",
+                                repo_game_dir / "data/maps/shipping/map12/map12.bin.json"
+                            ]
+                        missionExtractor.build_mission_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), mission_paths)))
+                        if wb_export:
+                            if single_export:
+                                missionExtractor.export_mission_data()
+                            else:
+                                missionExtractor.enqueue_mission_dataframe()
+                        if web_export:
+                            missionExtractor.to_html()
+                    elif dOption == 11:
                         logPrint("[%d/%d]正在调试斗魂竞技场回合数据……\nDebugging Arena round data ..." %(nDataOption_iter, nDataOptions))
                         cherryRoundExtractor: CherryRoundExtractor = CherryRoundExtractor(extractor)
                         if dir_type == "extract":
@@ -1595,7 +1629,7 @@ if __name__ == "__main__":
                                 cherryRoundExtractor.enqueue_CherryRound_dataframe()
                         if web_export:
                             cherryRoundExtractor.to_html()
-                    elif dOption == 11:
+                    elif dOption == 12:
                         logPrint("[%d/%d]正在调试场景英雄数据……\nDebugging Cameo data ..." %(nDataOption_iter, nDataOptions))
                         cameoExtractor: CameoExtractor = CameoExtractor(extractor)
                         if dir_type == "extract":
@@ -1608,7 +1642,7 @@ if __name__ == "__main__":
                                 cameoExtractor.export_cameo_data()
                             else:
                                 cameoExtractor.enqueue_cameo_dataframe()
-                    elif dOption == 12:
+                    elif dOption == 13:
                         logPrint("[%d/%d]正在调试荣誉嘉宾数据……\nDebugging Guest of Honor data ..." %(nDataOption_iter, nDataOptions))
                         gohExtractor: GoHExtractor = GoHExtractor(extractor)
                         if dir_type == "extract":
@@ -1633,7 +1667,7 @@ if __name__ == "__main__":
                                 gohExtractor.enqueue_GoH_dataframe()
                         if web_export:
                             gohExtractor.to_html()
-                    elif dOption == 13:
+                    elif dOption == 14:
                         logPrint("[%d/%d]正在调试云顶之弈数据……\nDebugging TFT data ..." %(nDataOption_iter, nDataOptions))
                         tftExtractor: TFTExtractor = TFTExtractor(extractor)
                         if dir_type == "extract":
@@ -1648,7 +1682,7 @@ if __name__ == "__main__":
                                 tftExtractor.enqueue_tft_dataframe()
                         if web_export:
                             tftExtractor.to_html()
-                    elif dOption == 14:
+                    elif dOption == 15:
                         logPrint("[%d/%d]正在调试字体数据……\nDebugging font data ..." %(nDataOption_iter, nDataOptions))
                         fontExtractor: FontExtractor = FontExtractor(extractor)
                         if dir_type == "extract":
