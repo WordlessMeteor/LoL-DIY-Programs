@@ -649,10 +649,7 @@ class AugmentExtractor(LoLDataExtractor):
                 for milestone_index in range(len(milestones)):
                     milestone: dict[str, Any] = milestones[milestone_index]
                     #下面设置一些用于说明文本转换的变量（Prepare some preset variables used for tooltip transformation）
-                    current_questPoint: int = milestone["{7fec0982}"]
-                    previous_questPoint: int = 0 if milestone_index == 0 else milestones[milestone_index - 1]["{7fec0982}"]
-                    questPoint_diff: int = current_questPoint - previous_questPoint
-                    reservedVars: Optional[dict[str, str]] = {"QuestRequirement": str(questPoint_diff), "QuestTier": str(milestone_index)}
+                    reservedVars: Optional[dict[str, str]] = {"QuestRequirement": str(milestone["{7fec0982}"]), "QuestTier": str(milestone_index)}
                     for i in range(len(KiwiQuestline_header_keys)):
                         key: str = KiwiQuestline_header_keys[i]
                         if i <= 14:
