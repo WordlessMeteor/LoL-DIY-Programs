@@ -988,7 +988,7 @@ class ChampionExtractor(LoLDataExtractor):
                 "mSpell ImgIconUrl",
                 "mSpell mClientData mTooltipData mLocKeys keyName_content_zh_burn",
                 "mSpell mClientData mTooltipData mLocKeys keyName_content_en_burn",
-                "mSpell {210f9ec0} values",
+                "mSpell manaValues values",
                 "mSpell Cooldown values",
                 "mSpell mClientData mTooltipData mLocKeys keySummary_content_zh",
                 "mSpell mClientData mTooltipData mLocKeys keySummary_content_en",

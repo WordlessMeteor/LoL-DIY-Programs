@@ -532,9 +532,9 @@ class AugmentExtractor(LoLDataExtractor):
                 if value["__type"] == "SpellObject": #提取指令字典（Extract spell dictionary）
                     self.__class__.mSpells[value["mScriptName"]] = value
                 elif value["__type"] == "AugmentData": #整理从任务线到强化符文的映射（Build a map from questline to the corresponding augment）
-                    if "{3ed971bd}" in value and "{09d0cf3d}" in value["{3ed971bd}"]:
-                        augmentKey_questline_map[value["{3ed971bd}"]["{09d0cf3d}"]] = key
-                elif value["__type"] == "{27bc6378}": #整理从强化符文到强化符文套装的映射（Build a map from augment to its belonging sets）
+                    if "QuestData" in value and "Quest" in value["QuestData"]:
+                        augmentKey_questline_map[value["QuestData"]["Quest"]] = key
+                elif value["__type"] == "AugmentSet": #整理从强化符文到强化符文套装的映射（Build a map from augment to its belonging sets）
                     for augment_key in value["augments"]:
                         if not augment_key in augmentSet_map:
                             augmentSet_map[augment_key] = []
@@ -563,7 +563,7 @@ class AugmentExtractor(LoLDataExtractor):
                         to_append = self.generate_augment_record(map12_bin_whole, KiwiAugment_data, key, key1, value)
                     KiwiAugment_data[key].append(to_append)
                     KiwiAugment_data_json[key].append(pyobj2json(to_append))
-            elif key1 != "__linked" and value["__type"] == "{27bc6378}": #强化符文套装（Augment set）
+            elif key1 != "__linked" and value["__type"] == "AugmentSet": #强化符文套装（Augment set）
                 for i in range(len(KiwiAugmentSet_header_keys)):
                     key: str = KiwiAugmentSet_header_keys[i]
                     if i == 0: #主键（`key`）
@@ -633,8 +633,8 @@ class AugmentExtractor(LoLDataExtractor):
                                     to_append = tooltip_raw
                         else:
                             to_append = ""
-                    elif i == 24: #其它指令对象（`{40c7b66f}_Object`）
-                        to_append = list(map(lambda x: map12_bin_whole.get(x, ""), value.get("{40c7b66f}", [])))
+                    elif i == 24: #其它指令对象（`AdditionalSpells_Object`）
+                        to_append = list(map(lambda x: map12_bin_whole.get(x, ""), value.get("AdditionalSpells", [])))
                         if to_append == []:
                             to_append = ""
                     else: #资源解析器映射字典（`{01d14504} resourceMap`）
@@ -644,7 +644,7 @@ class AugmentExtractor(LoLDataExtractor):
                             to_append = ""
                     KiwiAugmentSet_data[key].append(to_append)
                     KiwiAugmentSet_data_json[key].append(pyobj2json(to_append))
-            elif key1 != "__linked" and value["__type"] == "{8d31b69b}": #任务线（Questline）
+            elif key1 != "__linked" and value["__type"] == "ModesQuestData": #任务线（Questline）
                 milestones: list[dict[str, Any]] = value["Milestones"]
                 for milestone_index in range(len(milestones)):
                     milestone: dict[str, Any] = milestones[milestone_index]
@@ -767,7 +767,7 @@ class AugmentExtractor(LoLDataExtractor):
         self.KiwiJadeAugment_df = KiwiJadeAugment_df
         ##强化符文修饰（Augment modifiers）
         for (key1, value) in (self.map12_bin | self.map30_bin).items():
-            if key1 != "__linked" and value["__type"] == "{23433cc1}":
+            if key1 != "__linked" and value["__type"] == "AugmentModifier":
                 for i in range(len(augmentModifier_header_keys)):
                     key: str = augmentModifier_header_keys[i]
                     if i == 0: #主键（`key`）
@@ -996,8 +996,8 @@ class AugmentExtractor(LoLDataExtractor):
                 "DescriptionTra_content_en_burn",
                 "AugmentTooltipTra_content_zh_burn",
                 "AugmentTooltipTra_content_en_burn",
-                "{791eb92e} {5753a320} {05835d27}_content_zh_burn",
-                "{791eb92e} {5753a320} {05835d27}_content_en_burn"
+                "AugmentLevelData CapstoneData {05835d27}_content_zh_burn",
+                "AugmentLevelData CapstoneData {05835d27}_content_en_burn"
             ]
             CherryAugment_df_web = CherryAugment_df_web.loc[:, columns_to_export]
             ##样式设置（Style configuration）
@@ -1096,7 +1096,7 @@ class AugmentExtractor(LoLDataExtractor):
             KiwiAugmentSet_df_web.insert(len(KiwiAugmentSet_df_web.columns), "AugmentSetIconUrl", ["套装缩略图网址"] + AugmentSetIconUrls)
             ##设置要导出的行和列（Set the rows and columns to export）
             columns_to_export: list[str] = [
-                "{3a942548}",
+                "SetName",
                 "AugmentSetIconUrl",
                 "{0746ade9}_content_zh",
                 "{0746ade9}_content_en",
