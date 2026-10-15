@@ -30,9 +30,9 @@ Sub FreezeAndFilterGameDataSheets()
     sheetDict.Add "海克斯大乱斗奖励分组（Kiwi Reward Group）", 29
     sheetDict.Add "海克斯大乱斗奖励（Kiwi Reward）", 21
     sheetDict.Add "海克斯大乱斗大型任务（Kiwi Quest）", 22
-    sheetDict.Add "海克斯大乱斗小型任务（Kiwi Mission）", 24
     sheetDict.Add "海克斯大乱斗任务里程碑（Kiwi Quest Milestone）", 33
     sheetDict.Add "海克斯大乱斗任务里程碑（Kiwi Quest Mileston", 31
+    sheetDict.Add "海克斯大乱斗小型任务（Kiwi Mission）", 24
     sheetDict.Add "经典模式进度追踪（Jade Progress Track）", 29
     sheetDict.Add "经典模式奖励分组（Jade Reward Group）", 27
     sheetDict.Add "斗魂竞技场回合列表（Cherry Round List）", 28
@@ -93,10 +93,10 @@ Sub FreezeAndFilterGameDataSheets()
     suffixDict.Add "KiwiRewardGroup", 15
     suffixDict.Add "KiwiReward", 10
     suffixDict.Add "KiwiQuest", 9
-    suffixDict.Add "KiwiMission", 11
     suffixDict.Add "KiwiQuestMilesto", 16
     suffixDict.Add "KiwiQuestMileston", 17
     suffixDict.Add "KiwiQuestMilestone", 18
+    suffixDict.Add "KiwiMission", 11
     suffixDict.Add "JadeProgressTrac", 16
     suffixDict.Add "JadeProgressTrack", 17
     suffixDict.Add "JadeRewardGroup", 15

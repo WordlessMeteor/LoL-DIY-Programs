@@ -555,15 +555,15 @@ class LoLDataExtractor:
             "sheet_name_without_version": "海克斯大乱斗大型任务（Kiwi Quest）",
             "sheet_name_with_version": "{version} KiwiQuest"
         },
-        "KiwiMission": {
-            "dType": "KiwiMission",
-            "sheet_name_without_version": "海克斯大乱斗小型任务（Kiwi Mission）",
-            "sheet_name_with_version": "{version} KiwiMission"
-        },
         "KiwiQuestMilestone": {
             "dType": "KiwiQuestMilestone",
             "sheet_name_without_version": "海克斯大乱斗任务里程碑（Kiwi Quest Milestone）",
             "sheet_name_with_version": "{version} KiwiQuestMilestone"
+        },
+        "KiwiMission": {
+            "dType": "KiwiMission",
+            "sheet_name_without_version": "海克斯大乱斗小型任务（Kiwi Mission）",
+            "sheet_name_with_version": "{version} KiwiMission"
         },
         "JadeProgressTrack": {
             "dType": "JadeProgressTrack",
@@ -758,8 +758,8 @@ class LoLDataExtractor:
         "KiwiRewardGroup",
         "KiwiReward",
         "KiwiQuest",
-        "KiwiMission",
         "KiwiQuestMilestone",
+        "KiwiMission",
         "JadeProgressTrack",
         "JadeRewardGroup",
         "CherryRoundList",

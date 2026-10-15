@@ -25,8 +25,8 @@ class MissionExtractor(LoLDataExtractor):
         self.KiwiRewardGroup_df: pandas.DataFrame = pandas.DataFrame()
         self.KiwiReward_df: pandas.DataFrame = pandas.DataFrame()
         self.KiwiQuest_df: pandas.DataFrame = pandas.DataFrame()
-        self.KiwiMission_df: pandas.DataFrame = pandas.DataFrame()
         self.KiwiQuestMilestone_df: pandas.DataFrame = pandas.DataFrame()
+        self.KiwiMission_df: pandas.DataFrame = pandas.DataFrame()
         self.JadeProgressTrack_df: pandas.DataFrame = pandas.DataFrame()
         self.JadeRewardGroup_df: pandas.DataFrame = pandas.DataFrame()
     
@@ -303,12 +303,12 @@ class MissionExtractor(LoLDataExtractor):
         KiwiQuest_header_keys: list[str] = list(KiwiQuest_header.keys())
         KiwiQuest_data: dict[str, list[Any]] = {key: [] for key in KiwiQuest_header_keys}
         KiwiQuest_data_json: dict[str, list[Any]] = copy.deepcopy(KiwiQuest_data)
-        KiwiMission_header_keys: list[str] = list(KiwiMission_header.keys())
-        KiwiMission_data: dict[str, list[Any]] = {key: [] for key in KiwiMission_header_keys}
-        KiwiMission_data_json: dict[str, list[Any]] = copy.deepcopy(KiwiMission_data)
         KiwiQuestMilestone_header_keys: list[str] = list(KiwiQuestMilestone_header.keys())
         KiwiQuestMilestone_data: dict[str, list[Any]] = {key: [] for key in KiwiQuestMilestone_header_keys}
         KiwiQuestMilestone_data_json: dict[str, list[Any]] = copy.deepcopy(KiwiQuestMilestone_data)
+        KiwiMission_header_keys: list[str] = list(KiwiMission_header.keys())
+        KiwiMission_data: dict[str, list[Any]] = {key: [] for key in KiwiMission_header_keys}
+        KiwiMission_data_json: dict[str, list[Any]] = copy.deepcopy(KiwiMission_data)
         JadeProgressTrack_header: dict[str, str] = progressTrack_header.copy()
         JadeProgressTrack_header_keys: list[str] = list(progressTrack_header.keys())
         JadeProgressTrack_data: dict[str, list[Any]] = {key: [] for key in JadeProgressTrack_header_keys}
@@ -325,12 +325,27 @@ class MissionExtractor(LoLDataExtractor):
         ##海克斯大乱斗任务（ARAM: Mayhem quest）
         progressKey_progressTrackKey_map: dict[str, str] = {}
         progressKey_questKey_map: dict[str, str] = {} #因为有太多未被解析的hash值，所以目前只是模糊地命名这个变量（Because there're so many unresolved hashes, currently I just name this variable vaguely）
-        progressKey_questGroupKey_map: dict[str, str] = {}
+        progressKey_questEventKey_map: dict[str, str] = {}
+        questKey_missionKey_map: dict[str, tuple[str, int]] = {}
+        questGroupKey_questKey_map: dict[str, tuple[str, int]] = {}
+        questEventKey_questGroupKey_map: dict[str, tuple[str, int]] = {}
+        questKey_upgradeQuestKey_map: dict[str, str] = {}
         for (key, value) in self.map12_bin.items():
             if key != "__linked" and value["__type"] == "{a8dcba52}":
                 progressKey_progressTrackKey_map[value["{055dd7d5}"]] = key
                 progressKey_questKey_map[value["{c760b795}"]] = key
-                progressKey_questGroupKey_map[value["{8137940d}"]] = key
+                progressKey_questEventKey_map[value["{8137940d}"]] = key
+            elif key != "__linked" and value["__type"] == "{6b4ee221}":
+                for quest_index, questKey in enumerate(value["{5a6276fa}"]):
+                    questGroupKey_questKey_map[questKey] = (key, quest_index)
+            elif key != "__linked" and value["__type"] == "{8137940d}":
+                for questGroup_index, questGroupKey in enumerate(value["{3f2e4716}"]):
+                    questEventKey_questGroupKey_map[questGroupKey] = (key, questGroup_index)
+            elif key != "__linked" and value["__type"] == "{07a2b62e}":
+                if "{0f400dc1}" in value:
+                    questKey_upgradeQuestKey_map[value["{0f400dc1}"]] = key
+                for mission_index, missionKey in enumerate(value["missions"]):
+                    questKey_missionKey_map[missionKey] = (key, mission_index)
         for (key1, value) in self.map12_bin.items():
             if key1 != "__linked" and value["__type"] == "ProgressTrack":
                 if "MilestoneDefinitions" in value:
@@ -400,144 +415,208 @@ class MissionExtractor(LoLDataExtractor):
                                 to_append = ""
                             KiwiReward_data[key].append(to_append)
                             KiwiReward_data_json[key].append(pyobj2json(to_append))
-            elif key1 != "__linked" and value["__type"] == "{8137940d}":
-                for questGroup_index in range(len(value["{3f2e4716}"])):
-                    questGroup_key: str = value["{3f2e4716}"][questGroup_index]
-                    if questGroup_key in self.map12_bin:
-                        questGroup: dict[str, Any] = self.map12_bin[questGroup_key]
-                        for quest_index in range(len(questGroup["{5a6276fa}"])):
-                            quest_key: str = questGroup["{5a6276fa}"][quest_index]
-                            if quest_key in self.map12_bin:
-                                quest: dict[str, Any] = self.map12_bin[quest_key]
-                                for i in range(len(KiwiQuest_header_keys)):
-                                    key: str = KiwiQuest_header_keys[i]
-                                    if i == 0: #大型任务事件主键（`key`）
-                                        to_append = key1
-                                    elif i == 1: #进度主键（`progression_key`）
-                                        to_append = progressKey_questGroupKey_map.get(key1, "")
-                                    elif i <= 5:
-                                        if i == 2: #大型任务分组序号（`questGroup_index`）
-                                            to_append = questGroup_index + 1
-                                        elif i == 3: #大型任务分组主键（`questGroup_key`）
-                                            to_append = questGroup_key
-                                        elif i == 4: #大型任务分组已锁定（`questGroup Locked`）
-                                            to_append = questGroup.get("Locked", False)
-                                        else: #`questGroup {5e7167cd}`
-                                            to_append = questGroup.get("{5e7167cd}", "")
-                                    else:
-                                        if i == 6: #大型任务序号（`quest_index`）
-                                            to_append = quest_index + 1
-                                        elif i == 7: #大型任务主键（`quest_key`）
-                                            to_append = quest_key
-                                        elif i <= 12:
-                                            to_append = quest.get(key.split()[1], "")
-                                        elif i <= 17:
-                                            to_append = quest["QuestData"].get(key.split()[2], False if i == 15 or 16 else "")
-                                        else:
-                                            subkey2: str = pStrConst.search(key).group()
-                                            subkey1: str = key.replace(subkey2, "")
-                                            useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                                            strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
-                                            tooltip_key: str = KiwiQuest_data[subkey1][-1]
-                                            to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
-                                    KiwiQuest_data[key].append(to_append)
-                                    KiwiQuest_data_json[key].append(pyobj2json(to_append))
-                                for milestone_index in range(len(quest["QuestData"]["Milestones"])):
-                                    milestone: dict[str, Any] = quest["QuestData"]["Milestones"][milestone_index]
-                                    for i in range(len(KiwiQuestMilestone_header_keys)):
-                                        key: str = KiwiQuestMilestone_header_keys[i]
-                                        if i == 0: #大型任务事件主键（`key`）
-                                            to_append = key1
-                                        elif i == 1: #进度主键（`progression_key`）
-                                            to_append = progressKey_questGroupKey_map.get(key1, "")
-                                        elif i <= 5:
-                                            if i == 2: #大型任务分组序号（`questGroup_index`）
-                                                to_append = questGroup_index + 1
-                                            elif i == 3: #大型任务分组主键（`questGroup_key`）
-                                                to_append = questGroup_key
-                                            elif i == 4: #大型任务分组已锁定（`questGroup Locked`）
-                                                to_append = questGroup.get("Locked", False)
-                                            else: #`questGroup {5e7167cd}`
-                                                to_append = questGroup.get("{5e7167cd}", "")
-                                        elif i <= 9:
-                                            if i == 6: #大型任务序号（`quest_index`）
-                                                to_append = quest_index + 1
-                                            elif i == 7: #大型任务主键（`quest_key`）
-                                                to_append = quest_key
-                                            else:
-                                                subkey2: str = pStrConst.search(key).group()
-                                                subkey1: str = key.replace(subkey2, "")
-                                                useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                                                strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
-                                                tooltip_key: str = quest["TitleTra"]
-                                                to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
-                                        else:
-                                            if i == 10: #里程碑序号（`milestone_index`）
-                                                to_append = milestone_index + 1
-                                            elif i == 11 or i == 12:
-                                                to_append = milestone[key.split()[1]]
-                                            else: #字符串常量（String constants）
-                                                subkey2: str = pStrConst.search(key).group()
-                                                subkey1: str = key.replace(subkey2, "")
-                                                useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                                                strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
-                                                tooltip_key: str = milestone["MilestoneDescriptionTra"]
-                                                to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
-                                        KiwiQuestMilestone_data[key].append(to_append)
-                                        KiwiQuestMilestone_data_json[key].append(pyobj2json(to_append))
+            elif key1 != "__linked" and value["__type"] == "{07a2b62e}":
+                key1_lowest_form: str = key1
+                questLevel: int = 1
+                while key1_lowest_form in questKey_upgradeQuestKey_map: #这样写是考虑到以后可能会出现3级任务（This piece of code is based on the consideration that T3 quest might exist in the future）
+                    key1_lowest_form = questKey_upgradeQuestKey_map[key1_lowest_form]
+                    questLevel += 1
+                    if questLevel > 99: #保护机制（Protection mechanism）
+                        break
+                for i in range(len(KiwiQuest_header_keys)):
+                    key: str = KiwiQuest_header_keys[i]
+                    if i == 0: #主键（`key`）
+                        to_append = key1
+                    elif i <= 19:
+                        if i <= 5:
+                            to_append = value.get(key, "")
+                        elif i <= 10:
+                            to_append = value["QuestData"].get(key.split()[1], False if i == 15 or 16 else "")
+                        elif i <= 18:
+                            subkey2: str = pStrConst.search(key).group()
+                            subkey1: str = key.replace(subkey2, "")
+                            useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                            strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                            tooltip_key: str = KiwiQuest_data[subkey1][-1]
+                            to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        else: #等级（`level`）
+                            to_append = questLevel
+                    else: #下面的写法和传统写法有些不同：将复杂条件和i的取值穿插讨论以节省代码量（The following code are written in a manner different from the traditional: Alternatively discuss complex condition and i's value to save code）
+                        if key1_lowest_form in questGroupKey_questKey_map:
+                            questGroup_key, quest_index = questGroupKey_questKey_map[key1_lowest_form] #从`questGroupKey_questKey_map`的构造方式可以看出，`questGroup_key`一定存在于`self.map12_bin`中（From the construction of `questGroupKey_questKey_map`, we can tell that `questGroup_key` must exist in `self.map12_bin`）
+                            questGroup: dict[str, Any] = self.map12_bin[questGroup_key]
+                            if i <= 23:
+                                if i == 20: #所属大型任务分组主键（`parent_questGroup_key`）
+                                    to_append = questGroup_key
+                                elif i == 21: #大型任务分组已锁定（`questGroup Locked`）
+                                    to_append = questGroup.get("Locked", False)
+                                elif i == 22: #`questGroup {5e7167cd}`
+                                    to_append = questGroup.get("{5e7167cd}", "")
+                                else: #大型任务序号（`quest_index`）
+                                    to_append = quest_index + 1
                             else:
-                                for i in range(len(KiwiQuest_header_keys)):
-                                    key: str = KiwiQuest_header_keys[i]
-                                    if i == 0: #大型任务事件主键（`key`）
-                                        to_append = key1
-                                    elif i == 1: #进度主键（`progression_key`）
-                                        to_append = progressKey_questGroupKey_map.get(key1, "")
-                                    elif i <= 5:
-                                        if i == 2: #大型任务分组序号（`questGroup_index`）
+                                if questGroup_key in questEventKey_questGroupKey_map:
+                                    questEvent_key, questGroup_index = questEventKey_questGroupKey_map[questGroup_key]
+                                    if i == 24 or i == 25:
+                                        if i == 24: #所属大型任务事件主键（`parent_questEvent_key`）
+                                            to_append = questEvent_key
+                                        else: #大型任务分组序号（`questGroup_index`）
                                             to_append = questGroup_index + 1
-                                        elif i == 3: #大型任务分组主键（`questGroup_key`）
-                                            to_append = questGroup_key
-                                        elif i == 4: #大型任务分组已锁定（`questGroup Locked`）
-                                            to_append = questGroup.get("Locked", False)
-                                        else: #`questGroup {5e7167cd}`
-                                            to_append = questGroup.get("{5e7167cd}", "")
                                     else:
-                                        to_append = False if i == 15 or i == 16 else ""
-                                    KiwiQuest_data[key].append(to_append)
-                                    KiwiQuest_data_json[key].append(pyobj2json(to_append))
-                    else:
-                        for i in range(len(KiwiQuest_header_keys)):
-                            key: str = KiwiQuest_header_keys[i]
-                            if i == 0: #大型任务事件主键（`key`）
+                                        if questEvent_key in progressKey_questEventKey_map:
+                                            to_append = progressKey_questEventKey_map[questEvent_key]
+                                        else:
+                                            to_append = ""
+                                else:
+                                    to_append = ""
+                        else:
+                            to_append = False if i == 21 else ""
+                    KiwiQuest_data[key].append(to_append)
+                    KiwiQuest_data_json[key].append(pyobj2json(to_append))
+                for milestone_index in range(len(value["QuestData"]["Milestones"])):
+                    milestone: dict[str, Any] = value["QuestData"]["Milestones"][milestone_index]
+                    for i in range(len(KiwiQuestMilestone_header_keys)):
+                        key: str = KiwiQuestMilestone_header_keys[i]
+                        if i <= 8:
+                            if i == 0: #大型任务主键（`quest_key`）
                                 to_append = key1
-                            elif i == 1: #进度主键（`progression_key`）
-                                to_append = progressKey_questGroupKey_map.get(key1, "")
+                            elif i == 1 or i == 2: #大型任务标题字符串常量（Quest title string constant）
+                                subkey2: str = pStrConst.search(key).group()
+                                subkey1: str = key.replace(subkey2, "")
+                                useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                                strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                                tooltip_key: str = value["TitleTra"]
+                                to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                            elif i == 3: #大型任务等级（`level`）
+                                to_append = questLevel
+                            elif i == 4: #里程碑序号（`milestone_index`）
+                                to_append = milestone_index + 1
+                            elif i == 5 or i == 6:
+                                to_append = milestone[key.split()[1]]
+                            else: #里程碑描述字符串常量（Milestone description string constant）
+                                subkey2: str = pStrConst.search(key).group()
+                                subkey1: str = key.replace(subkey2, "")
+                                useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                                strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                                tooltip_key: str = milestone["MilestoneDescriptionTra"]
+                                to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        else:
+                            if key1_lowest_form in questGroupKey_questKey_map:
+                                questGroup_key, quest_index = questGroupKey_questKey_map[key1_lowest_form]
+                                questGroup: dict[str, Any] = self.map12_bin[questGroup_key]
+                                if i <= 12:
+                                    if i == 9: #所属大型任务分组主键（`parent_questGroup_key`）
+                                        to_append = questGroup_key
+                                    elif i == 10: #大型任务分组已锁定（`questGroup Locked`）
+                                        to_append = questGroup.get("Locked", False)
+                                    elif i == 11: #`questGroup {5e7167cd}`
+                                        to_append = questGroup.get("{5e7167cd}", "")
+                                    else: #大型任务序号（`quest_index`）
+                                        to_append = quest_index + 1
+                                else:
+                                    if questGroup_key in questEventKey_questGroupKey_map:
+                                        questEvent_key, questGroup_index = questEventKey_questGroupKey_map[questGroup_key]
+                                        if i == 13 or i == 14:
+                                            if i == 13: #所属大型任务事件主键（`parent_questEvent_key`）
+                                                to_append = questEvent_key
+                                            else: #大型任务分组序号（`questGroup_index`）
+                                                to_append = questGroup_index + 1
+                                        else:
+                                            if questEvent_key in progressKey_questEventKey_map:
+                                                to_append = progressKey_questEventKey_map[questEvent_key]
+                                            else:
+                                                to_append = ""
+                                    else:
+                                        to_append = ""
                             else:
-                                to_append = False if i in {4, 15, 16} else ""
-                            KiwiQuest_data[key].append(to_append)
-                            KiwiQuest_data_json[key].append(pyobj2json(to_append))
+                                to_append = False if i == 10 else ""
+                        KiwiQuestMilestone_data[key].append(to_append)
+                        KiwiQuestMilestone_data_json[key].append(pyobj2json(to_append))
             elif key1 != "__linked" and value["__type"] == "{e3ce28e9}":
+                quest_key: str = ""
+                questKey_lowest_form: str = ""
+                questLevel: int = 1
+                if key1 in questKey_missionKey_map:
+                    quest_key, mission_index = questKey_missionKey_map[key1]
+                    questKey_lowest_form: str = quest_key
+                    while questKey_lowest_form in questKey_upgradeQuestKey_map: #这样写是考虑到以后可能会出现3级任务（This piece of code is based on the consideration that T3 quest might exist in the future）
+                        questKey_lowest_form = questKey_upgradeQuestKey_map[questKey_lowest_form]
+                        questLevel += 1
+                        if questLevel > 99:
+                            break
                 for objective_index in range(len(value["objectives"])):
                     objective: dict[str, Any] = value["objectives"][objective_index]
                     for i in range(len(KiwiMission_header_keys)):
                         key: str = KiwiMission_header_keys[i]
                         if i == 0: #主键（`key`）
                             to_append: Any = key1
-                        elif i == 1 or i == 2:
-                            to_append = value[key]
-                        elif i == 3: #小型任务奖励类型识别码（`{7fad8491} {8d7928e4}`）
-                            to_append = self.map12_bin[value["{7fad8491}"]]["{8d7928e4}"] if value["{7fad8491}"] in self.map12_bin else ""
-                        elif i == 4: #目标序号（`objective_index`）
-                            to_append = objective_index + 1
-                        elif i <= 7:
-                            to_append = objective.get(key.split()[1], "")
-                        else: #目标描述字符串常量（Objective description string constant）
-                            subkey2: str = pStrConst.search(key).group()
-                            subkey1: str = key.replace(subkey2, "")
-                            useTargetLocale: bool = subkey2.split("_")[2] == "zh"
-                            strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
-                            tooltip_key: str = objective["DescriptionTraKey"]
-                            to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        elif i <= 3:
+                            if i == 1 or i == 2:
+                                to_append = value[key]
+                            else: #小型任务奖励类型识别码（`{7fad8491} {8d7928e4}`）
+                                to_append = self.map12_bin[value["{7fad8491}"]]["{8d7928e4}"] if value["{7fad8491}"] in self.map12_bin else ""
+                        elif i <= 9:
+                            if i == 4: #目标序号（`objective_index`）
+                                to_append = objective_index + 1
+                            elif i <= 7:
+                                to_append = objective.get(key.split()[1], "")
+                            else: #目标描述字符串常量（Objective description string constant）
+                                subkey2: str = pStrConst.search(key).group()
+                                subkey1: str = key.replace(subkey2, "")
+                                useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                                strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                                tooltip_key: str = objective["DescriptionTraKey"]
+                                to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        else:
+                            if key1 in questKey_missionKey_map:
+                                quest_key, mission_index = questKey_missionKey_map[key1] #从`questKey_missionKey_map`的构造方式可以看出，`quest_key`一定存在于`self.map12_bin`中（From the construction of `questKey_missionKey_map`, we can tell that `quest_key` must exist in `self.map12_bin`）
+                                quest: dict[str, Any] = self.map12_bin[quest_key]
+                                if i <= 14:
+                                    if i == 10: #所属大型任务主键（`parent_quest_key`）
+                                        to_append = quest_key
+                                    elif i == 11 or i == 12: #大型任务标题字符串常量（Quest title string constant）
+                                        subkey2: str = pStrConst.search(key).group()
+                                        subkey1: str = key.replace(subkey2, "")
+                                        useTargetLocale: bool = subkey2.split("_")[2] == "zh"
+                                        strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
+                                        tooltip_key: str = quest["TitleTra"]
+                                        to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                    elif i == 13: #大型任务等级（`quest level`）
+                                        to_append = questLevel
+                                    else: #小型任务序号（`mission_index`）
+                                        to_append = mission_index + 1
+                                else:
+                                    if questKey_lowest_form in questGroupKey_questKey_map:
+                                        questGroup_key, quest_index = questGroupKey_questKey_map[questKey_lowest_form]
+                                        questGroup: dict[str, Any] = self.map12_bin[questGroup_key]
+                                        if i <= 18:
+                                            if i == 15: #所属大型任务分组主键（`parent_questGroup_key`）
+                                                to_append = questGroup_key
+                                            elif i == 16: #大型任务分组已锁定（`questGroup Locked`）
+                                                to_append = questGroup.get("Locked", False)
+                                            elif i == 17: #`questGroup {5e7167cd}`
+                                                to_append = questGroup.get("{5e7167cd}", "")
+                                            else: #大型任务序号（`quest_index`）
+                                                to_append = quest_index + 1
+                                        else:
+                                            if questGroup_key in questEventKey_questGroupKey_map:
+                                                questEvent_key, questGroup_index = questEventKey_questGroupKey_map[questGroup_key]
+                                                if i == 19 or i == 20:
+                                                    if i == 19: #所属大型任务事件主键（`parent_questEvent_key`）
+                                                        to_append = questEvent_key
+                                                    else: #大型任务分组序号（`questGroup_index`）
+                                                        to_append = questGroup_index + 1
+                                                else:
+                                                    if questEvent_key in progressKey_questEventKey_map:
+                                                        to_append = progressKey_questEventKey_map[questEvent_key]
+                                                    else:
+                                                        to_append = ""
+                                            else:
+                                                to_append = ""
+                                    else:
+                                        to_append = False if i == 16 else ""
+                            else:
+                                to_append = False if i == 16 else ""
                         KiwiMission_data[key].append(to_append)
                         KiwiMission_data_json[key].append(pyobj2json(to_append))
         KiwiProgressTrack_statistics_output_order: list[int] = [0, 1, 3, 2, 4, 5, 6, 7, 9, 8, 10, 11, 18, 17, 12, 13, 14, 15, 16]
@@ -555,25 +634,46 @@ class MissionExtractor(LoLDataExtractor):
         KiwiReward_df: pandas.DataFrame = pandas.DataFrame(data = KiwiReward_data_organized)
         KiwiReward_df = pandas.concat([pandas.DataFrame([KiwiReward_header])[KiwiReward_df.columns], KiwiReward_df], ignore_index = True)
         self.KiwiReward_df = KiwiReward_df
-        KiwiQuest_statistics_output_order: list[int] = [1, 0, 2, 3, 4, 5, 6, 7, 8, 15, 16, 17, 9, 18, 19, 13, 22, 23, 10, 20, 21, 14, 24, 25, 12, 11]
+        KiwiQuest_statistics_output_order: list[int] = [26, 24, 25, 20, 21, 22, 23, 19, 0, 1, 8, 9, 10, 2, 11, 12, 6, 15, 16, 3, 13, 14, 7, 17, 18, 5, 4]
         KiwiQuest_data_organized: dict[str, list[Any]] = {KiwiQuest_header_keys[i]: KiwiQuest_data_json[KiwiQuest_header_keys[i]] for i in KiwiQuest_statistics_output_order}
         KiwiQuest_df: pandas.DataFrame = pandas.DataFrame(data = KiwiQuest_data_organized)
         logPrint("正在优化海克斯大乱斗大型任务数据框的逻辑值显示……\nOptimizing boolean value display of the ARAM: Mayhem quest dataframe ...")
         optimize_bool_display(KiwiQuest_df)
+        logPrint("正在排序海克斯大乱斗大型任务数据框……\nSorting the ARAM: Mayhem quest dataframe ...")
+        questGroup_index_weight_map: dict[Any, int] = {i: len(set(KiwiQuest_df["questGroup_index"])) + 1 if i == "" else i for i in set(KiwiQuest_df["questGroup_index"])}
+        quest_index_weight_map: dict[Any, int] = {i: len(set(KiwiQuest_df["quest_index"])) + 1 if i == "" else i for i in set(KiwiQuest_df["quest_index"])}
+        KiwiQuest_df["weight_questGroup_index"] = KiwiQuest_df["questGroup_index"].map(lambda x: questGroup_index_weight_map[x])
+        KiwiQuest_df["weight_quest_index"] = KiwiQuest_df["quest_index"].map(lambda x: quest_index_weight_map[x])
+        KiwiQuest_df = KiwiQuest_df.sort_values(by = ["weight_questGroup_index", "weight_quest_index", "level"], ascending = True)
+        KiwiQuest_df = KiwiQuest_df.drop(labels = ["weight_questGroup_index", "weight_quest_index"], axis = 1)
         KiwiQuest_df = pandas.concat([pandas.DataFrame([KiwiQuest_header])[KiwiQuest_df.columns], KiwiQuest_df], ignore_index = True)
         self.KiwiQuest_df = KiwiQuest_df
-        KiwiMission_statistics_output_order: list[int] = [0, 1, 2, 3, 4, 7, 8, 9, 5, 6]
-        KiwiMission_data_organized: dict[str, list[Any]] = {KiwiMission_header_keys[i]: KiwiMission_data_json[KiwiMission_header_keys[i]] for i in KiwiMission_statistics_output_order}
-        KiwiMission_df: pandas.DataFrame = pandas.DataFrame(data = KiwiMission_data_organized)
-        KiwiMission_df = pandas.concat([pandas.DataFrame([KiwiMission_header])[KiwiMission_df.columns], KiwiMission_df], ignore_index = True)
-        self.KiwiMission_df = KiwiMission_df
-        KiwiQuestMilestone_statistics_output_order: list[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+        KiwiQuestMilestone_statistics_output_order: list[int] = [15, 13, 14, 9, 10, 11, 12, 3, 0, 1, 2, 4, 6, 7, 8, 5]
         KiwiQuestMilestone_data_organized: dict[str, list[Any]] = {KiwiQuestMilestone_header_keys[i]: KiwiQuestMilestone_data_json[KiwiQuestMilestone_header_keys[i]] for i in KiwiQuestMilestone_statistics_output_order}
         KiwiQuestMilestone_df: pandas.DataFrame = pandas.DataFrame(data = KiwiQuestMilestone_data_organized)
         logPrint("正在优化海克斯大乱斗大型任务里程碑数据框的逻辑值显示……\nOptimizing boolean value display of the ARAM: Mayhem quest milestone dataframe ...")
         optimize_bool_display(KiwiQuestMilestone_df)
+        logPrint("正在排序海克斯大乱斗大型任务里程碑数据框……\nSorting the ARAM: Mayhem quest milestone dataframe ...")
+        KiwiQuestMilestone_df["weight_questGroup_index"] = KiwiQuestMilestone_df["questGroup_index"].map(lambda x: questGroup_index_weight_map[x])
+        KiwiQuestMilestone_df["weight_quest_index"] = KiwiQuestMilestone_df["quest_index"].map(lambda x: quest_index_weight_map[x])
+        KiwiQuestMilestone_df = KiwiQuestMilestone_df.sort_values(by = ["weight_questGroup_index", "weight_quest_index", "level"], ascending = True)
+        KiwiQuestMilestone_df = KiwiQuestMilestone_df.drop(labels = ["weight_questGroup_index", "weight_quest_index"], axis = 1)
         KiwiQuestMilestone_df = pandas.concat([pandas.DataFrame([KiwiQuestMilestone_header])[KiwiQuestMilestone_df.columns], KiwiQuestMilestone_df], ignore_index = True)
         self.KiwiQuestMilestone_df = KiwiQuestMilestone_df
+        KiwiMission_statistics_output_order: list[int] = [21, 19, 20, 15, 16, 17, 18, 10, 11, 12, 13, 14, 0, 1, 2, 3, 4, 7, 8, 9, 5, 6]
+        KiwiMission_data_organized: dict[str, list[Any]] = {KiwiMission_header_keys[i]: KiwiMission_data_json[KiwiMission_header_keys[i]] for i in KiwiMission_statistics_output_order}
+        KiwiMission_df: pandas.DataFrame = pandas.DataFrame(data = KiwiMission_data_organized)
+        logPrint("正在优化海克斯大乱斗小型任务数据框的逻辑值显示……\nOptimizing boolean value display of the ARAM: Mayhem mission dataframe ...")
+        optimize_bool_display(KiwiMission_df)
+        logPrint("正在排序海克斯大乱斗小型任务数据框……\nSorting the ARAM: Mayhem mission dataframe ...")
+        mission_index_weight_map: dict[Any, int] = {i: len(set(KiwiMission_df["mission_index"])) + 1 if i == "" else i for i in set(KiwiMission_df["quest_index"])}
+        KiwiMission_df["weight_questGroup_index"] = KiwiMission_df["questGroup_index"].map(lambda x: questGroup_index_weight_map[x])
+        KiwiMission_df["weight_quest_index"] = KiwiMission_df["quest_index"].map(lambda x: quest_index_weight_map[x])
+        KiwiMission_df["weight_mission_index"] = KiwiMission_df["mission_index"].map(lambda x: mission_index_weight_map[x])
+        KiwiMission_df = KiwiMission_df.sort_values(by = ["weight_questGroup_index", "weight_quest_index", "quest level", "weight_mission_index"], ascending = True)
+        KiwiMission_df = KiwiMission_df.drop(labels = ["weight_questGroup_index", "weight_quest_index", "weight_mission_index"], axis = 1)
+        KiwiMission_df = pandas.concat([pandas.DataFrame([KiwiMission_header])[KiwiMission_df.columns], KiwiMission_df], ignore_index = True)
+        self.KiwiMission_df = KiwiMission_df
         ##英雄联盟经典模式进度追踪（League Classic progress track）
         for (key1, value) in self.map453_bin.items():
             if key1 != "__linked" and value["__type"] == "ProgressTrack":
@@ -633,16 +733,16 @@ class MissionExtractor(LoLDataExtractor):
             sheet4_name: str = KiwiQuest_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else KiwiQuest_ws["sheet_name_without_version"]
             KiwiQuest_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(KiwiQuest_ws["dType"]), "dType": KiwiQuest_ws["dType"], "sheet_name": sheet4_name, "sheet": self.KiwiQuest_df}
             self.enqueue_df(KiwiQuest_df_struct, overwrite_on_exist = True, log = self.log)
-        if not self.KiwiMission_df.empty:
-            KiwiMission_ws: dict[str, Any] = self.worksheet_metadata["KiwiMission"]
-            sheet5_name: str = KiwiMission_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else KiwiMission_ws["sheet_name_without_version"]
-            KiwiMission_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(KiwiMission_ws["dType"]), "dType": KiwiMission_ws["dType"], "sheet_name": sheet5_name, "sheet": self.KiwiMission_df}
-            self.enqueue_df(KiwiMission_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.KiwiQuestMilestone_df.empty:
             KiwiQuestMilestone_ws: dict[str, Any] = self.worksheet_metadata["KiwiQuestMilestone"]
-            sheet6_name: str = KiwiQuestMilestone_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else KiwiQuestMilestone_ws["sheet_name_without_version"]
-            KiwiQuestMilestone_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(KiwiQuestMilestone_ws["dType"]), "dType": KiwiQuestMilestone_ws["dType"], "sheet_name": sheet6_name, "sheet": self.KiwiQuestMilestone_df}
+            sheet5_name: str = KiwiQuestMilestone_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else KiwiQuestMilestone_ws["sheet_name_without_version"]
+            KiwiQuestMilestone_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(KiwiQuestMilestone_ws["dType"]), "dType": KiwiQuestMilestone_ws["dType"], "sheet_name": sheet5_name, "sheet": self.KiwiQuestMilestone_df}
             self.enqueue_df(KiwiQuestMilestone_df_struct, overwrite_on_exist = True, log = self.log)
+        if not self.KiwiMission_df.empty:
+            KiwiMission_ws: dict[str, Any] = self.worksheet_metadata["KiwiMission"]
+            sheet6_name: str = KiwiMission_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else KiwiMission_ws["sheet_name_without_version"]
+            KiwiMission_df_struct: dict[str, Any] = {"order": self.worksheet_dType_orderedList.index(KiwiMission_ws["dType"]), "dType": KiwiMission_ws["dType"], "sheet_name": sheet6_name, "sheet": self.KiwiMission_df}
+            self.enqueue_df(KiwiMission_df_struct, overwrite_on_exist = True, log = self.log)
         if not self.JadeProgressTrack_df.empty:
             JadeProgressTrack_ws: dict[str, Any] = self.worksheet_metadata["JadeProgressTrack"]
             sheet7_name: str = JadeProgressTrack_ws["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else JadeProgressTrack_ws["sheet_name_without_version"]
@@ -661,8 +761,8 @@ class MissionExtractor(LoLDataExtractor):
         - 海克斯大乱斗奖励分组（Kiwi Reward Group）
         - 海克斯大乱斗奖励（Kiwi Reward）
         - 海克斯大乱斗大型任务（Kiwi Quest）
-        - 海克斯大乱斗小型任务（Kiwi Mission）
         - 海克斯大乱斗任务里程碑（Kiwi Quest Milestone）
+        - 海克斯大乱斗小型任务（Kiwi Mission）
         - 经典模式进度追踪（Kiwi Progress Track）
         - 经典模式奖励分组（Jade Reward Group）
         
@@ -696,8 +796,8 @@ class MissionExtractor(LoLDataExtractor):
             KiwiRewardGroup_df: pandas.DataFrame = eliminate_empty_fields(self.KiwiRewardGroup_df)
             KiwiReward_df: pandas.DataFrame = eliminate_empty_fields(self.KiwiReward_df)
             KiwiQuest_df: pandas.DataFrame = eliminate_empty_fields(self.KiwiQuest_df)
-            KiwiMission_df: pandas.DataFrame = eliminate_empty_fields(self.KiwiMission_df)
             KiwiQuestMilestone_df: pandas.DataFrame = eliminate_empty_fields(self.KiwiQuestMilestone_df)
+            KiwiMission_df: pandas.DataFrame = eliminate_empty_fields(self.KiwiMission_df)
             JadeProgressTrack_df: pandas.DataFrame = eliminate_empty_fields(self.JadeProgressTrack_df)
             JadeRewardGroup_df: pandas.DataFrame = eliminate_empty_fields(self.JadeRewardGroup_df)
         else:
@@ -705,8 +805,8 @@ class MissionExtractor(LoLDataExtractor):
             KiwiRewardGroup_df = self.KiwiRewardGroup_df
             KiwiReward_df = self.KiwiReward_df
             KiwiQuest_df = self.KiwiQuest_df
-            KiwiMission_df = self.KiwiMission_df
             KiwiQuestMilestone_df = self.KiwiQuestMilestone_df
+            KiwiMission_df = self.KiwiMission_df
             JadeProgressTrack_df = self.JadeProgressTrack_df
             JadeRewardGroup_df = self.JadeRewardGroup_df
         logPrint("正在导出数据……\nExporting data ...", print_time = True)
@@ -717,8 +817,8 @@ class MissionExtractor(LoLDataExtractor):
         sheet2_name: str = self.worksheet_metadata["KiwiRewardGroup"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["KiwiRewardGroup"]["sheet_name_without_version"]
         sheet3_name: str = self.worksheet_metadata["KiwiReward"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["KiwiReward"]["sheet_name_without_version"]
         sheet4_name: str = self.worksheet_metadata["KiwiQuest"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["KiwiQuest"]["sheet_name_without_version"]
-        sheet5_name: str = self.worksheet_metadata["KiwiMission"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["KiwiMission"]["sheet_name_without_version"]
-        sheet6_name: str = self.worksheet_metadata["KiwiQuestMilestone"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["KiwiQuestMilestone"]["sheet_name_without_version"]
+        sheet5_name: str = self.worksheet_metadata["KiwiQuestMilestone"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["KiwiQuestMilestone"]["sheet_name_without_version"]
+        sheet6_name: str = self.worksheet_metadata["KiwiMission"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["KiwiMission"]["sheet_name_without_version"]
         sheet7_name: str = self.worksheet_metadata["JadeProgressTrack"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["JadeProgressTrack"]["sheet_name_without_version"]
         sheet8_name: str = self.worksheet_metadata["JadeRewardGroup"]["sheet_name_with_version"].format(version = self.patch_number) if self.sheet_naming_fold else self.worksheet_metadata["JadeRewardGroup"]["sheet_name_without_version"]
         while True:
@@ -733,12 +833,12 @@ class MissionExtractor(LoLDataExtractor):
                     if not KiwiQuest_df.empty:
                         addDefaultStyle(KiwiQuest_df).to_excel(excel_writer = writer, sheet_name = sheet4_name)
                     if not KiwiMission_df.empty:
-                        addDefaultStyle(KiwiMission_df).to_excel(excel_writer = writer, sheet_name = sheet5_name)
+                        addDefaultStyle(KiwiMission_df).to_excel(excel_writer = writer, sheet_name = sheet5_name[:31])
                     if not KiwiQuestMilestone_df.empty:
-                        addDefaultStyle(KiwiQuestMilestone_df).to_excel(excel_writer = writer, sheet_name = sheet6_name[:31])
+                        addDefaultStyle(KiwiQuestMilestone_df).to_excel(excel_writer = writer, sheet_name = sheet6_name)
                     addDefaultStyle(JadeProgressTrack_df).to_excel(excel_writer = writer, sheet_name = sheet7_name[:31])
                     addDefaultStyle(JadeRewardGroup_df).to_excel(excel_writer = writer, sheet_name = sheet8_name)
-                    for sheet_name in [sheet1_name, sheet2_name, sheet3_name, sheet4_name, sheet5_name, sheet6_name, sheet7_name, sheet8_name]:
+                    for sheet_name in [sheet1_name[:31], sheet2_name, sheet3_name, sheet4_name, sheet5_name[:31], sheet6_name, sheet7_name[:31], sheet8_name]:
                         if sheet_name in writer.sheets:
                             worksheet: Worksheet = writer.sheets[sheet_name]
                             if worksheet.calculate_dimension() != "A1:A1":
