@@ -818,17 +818,17 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                     AllGot: bool = False #标记是否出现了所有候选英雄（Marks whether all candidate champions appear）
                     for ally_option in ally_candidate_championId_options:
                         break_loop: bool = False #仅用于内层for循环向外层发出退出信号（Only used for the inner for-loop to send an break signal to the outer for-loop）
-                        if len(set(pickable_championId_set1) & set(ally_option)) == min(len(champ_select_session["myTeam"]), len(ally_option)):
+                        if len(set(pickable_championId_set1) & set(ally_option)) >= min(len(champ_select_session["myTeam"]), len(ally_option)):
                             '''
                             如果己方有两名人类玩家，候选英雄序号列表有一个英雄，那么最终可选的候选英雄应该有一个。<br>If the lobby owner's team has two human players and the candidate list has one champion, then the final pickable candidate champions should be one.
                             
                             如果己方有两名人类玩家，候选英雄序号列表有两个英雄，那么最终可选的候选英雄应该有两个。<br>If the lobby owner's team has two human players and the candidate list has two champions, then the final pickable candidate champions should be two.
                             
-                            如果己方有两名人类玩家，候选英雄序号列表有三个英雄，那么最终可选的候选英雄应该有两个。<br>If the lobby owner's team has two human players and the candidate list has three champions, then the final pickable candidate champions should be three.
+                            如果己方有两名人类玩家，候选英雄序号列表有三个英雄，那么最终可选的候选英雄应该不少于两个。<br>If the lobby owner's team has two human players and the candidate list has three champions, then the final pickable candidate champions shouldn't be less than two.
                             '''
                             if enable_enemy_detect:
                                 for opponent_option in enemy_candidate_championId_options:
-                                    if len(set(pickable_championId_set2) & set(opponent_option)) == min(len(champ_select_session["theirTeam"]), len(opponent_option)):
+                                    if len(set(pickable_championId_set2) & set(opponent_option)) >= min(len(champ_select_session["theirTeam"]), len(opponent_option)):
                                         AllGot = True
                                         target_championId = localPlayer["championId"] #这部分返回内容其实没有完善。正常情况下，多选模式期望返回的应该是所有已选的候选英雄序号组成的列表（This part is actually not well implemented. In normal cases, crowd mode is expected to return a list of all selected candidate championIds）
                                         logPrint("已发现候选英雄。请自行安排各英雄的选用者。\nCandidate champions are found. Please arrange each champion's player on your own.")
@@ -1187,10 +1187,10 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                     AllGot: bool = False
                     for ally_option in ally_candidate_championId_options if roleType == 2 else enemy_candidate_championId_options:
                         break_loop: bool = False
-                        if len(set(pickable_championId_set1) & set(ally_option)) == min(len(champ_select_session["myTeam"]), len(ally_option)):
+                        if len(set(pickable_championId_set1) & set(ally_option)) >= min(len(champ_select_session["myTeam"]), len(ally_option)):
                             if enable_enemy_detect:
                                 for opponent_option in enemy_candidate_championId_options if roleType == 2 else ally_candidate_championId_options:
-                                    if len(set(pickable_championId_set2) & set(opponent_option)) == min(len(champ_select_session["theirTeam"]), len(opponent_option)):
+                                    if len(set(pickable_championId_set2) & set(opponent_option)) >= min(len(champ_select_session["theirTeam"]), len(opponent_option)):
                                         AllGot = True
                                         target_championId = localPlayer["championId"] #这部分返回内容其实没有完善。正常情况下，多选模式期望返回的应该是所有已选的候选英雄序号组成的列表（This part is actually not well implemented. In normal cases, crowd mode is expected to return a list of all selected candidate championIds）
                                         logPrint("已发现候选英雄。请自行安排各英雄的选用者。\nCandidate champions are found. Please arrange each champion's player on your own.")
