@@ -29,7 +29,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/10/12
+# 更新（Last update）：     2026/10/16
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -472,6 +472,30 @@ def GetCandidateChampionChoices(candidate_championId_options: Optional[list[list
         valid_championId_options.append([]) #保证该列表中至少有一个元素（Ensure there's at least one element in this list）
     return valid_championId_options
 
+def flattenChampionSchemes(championId_options: list[list[int]]) -> list[int]:
+    '''
+    将适用于多选模式的英雄选择方案列表转化成非重复的英雄序号列表，按选取优先级降序排列。<br>Transform the champion select schemes that apply to Crowd Mode into a unique championId list. Elements are sorted by selection priority in descending order.
+    
+    这里有两条规则：<br>Here're two rules:
+    1. 排在前面的方案的优先级大于排在后面的方案。<br>Schemes listed earlier have higher priority than those listed later.
+    2. 同方案内排在前面的英雄的优先级大于排在后面的英雄。<br>Within the same scheme, champions listed earlier have higher priority than those listed later.
+    
+    :param championId_options: 候选英雄序号方案列表。<br>A list of candidate championId schemes.
+    
+        每个元素是一个方案。每个方案是一个英雄序号列表。<br>Each element is a scheme. Each scheme is a list of championIds.
+    :type championId_options: list[list[int]]
+    :return: 候选英雄序号组成的一级列表。元素之间互不重复，按照优先级降序排列。<br>A Level-1 list of candidate championIds. Elements are unique to each other and ordered by priority in descending order.
+    :rtype: list[str]
+    '''
+    championIds_weight: dict[int, int] = {} #通过字典提高后续检验元素是否存在于容器中的速度。键是英雄序号，值是优先级（Use a dictionary to improve the speed of checking whether an element is in this container. Each key is a championId and each value is its priority）
+    priority: int = 1 #临时变量，代表即将添加到`championIds_weight`的下一个英雄序号的优先级。`championIds_weight`中每添加一个条目时，这个变量递增（A temporary variable which represents the priority of the next championId to be added into `championIds_weight`. Every time an entry is added into `championIds_weight`, this variable increments）
+    for scheme in championId_options:
+        for championId in scheme:
+            if not championId in championIds_weight:
+                championIds_weight[championId] = priority
+                priority += 1
+    return list(championIds_weight.keys())
+
 async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = False, isCrowd: bool = False, roleType: Literal[1, 2, 3] = 1, queueId: int = 3270, preset_championIds: Optional[list[int]] = None, ally_candidate_championId_options: Optional[list[list[int]]] = None, enemy_candidate_championId_options: Optional[list[list[int]]] = None, interval: Optional[float] = None, champion_frequency_dict: Optional[dict[int, int]] = None, infos: Optional[dict[str, dict[str, Any]]] = None) -> tuple[int, pandas.DataFrame]: #以想玩的英雄启动海克斯大乱斗自定义游戏（Start a custom ARAM: Mayhem game with a wanted champion）
     '''
     统计在全随机模式中选到想玩的英雄的频率。在只需要房主选定一名英雄的情况下可使用此函数。<br>Count the frequency of rolling candidate champions in an all-random mode. This function may be used when only the lobby owner needs some specific champions.
@@ -516,10 +540,10 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
     :type queueId: int
     :param preset_championIds: 指定预选英雄序号列表参数以快速指定英雄。如果不指定，将会在函数体内要求用户输入一个英雄序号列表。<br>Specify this parameter to quickly specify champions. If it's not specified, the function will ask the user to submit a championId list.
     :type preset_championIds: list[int]
-    :param ally_candidate_championId_options: 我方候选英雄序号方案。<br>A list of candidate championId schemes of myTeam.
-    :type ally_candidate_championId_options: list[int]
-    :param enemy_candidate_championId_options: 对方候选英雄序号列表。<br>A list of candidate championId schemes of theirTeam.
-    :type enemy_candidate_championId_options: list[int]
+    :param ally_candidate_championId_options: 我方候选英雄序号方案列表。<br>A list of candidate championId schemes of myTeam.
+    :type ally_candidate_championId_options: list[list[int]]
+    :param enemy_candidate_championId_options: 对方候选英雄序号方案列表。<br>A list of candidate championId schemes of theirTeam.
+    :type enemy_candidate_championId_options: list[list[int]]
     :param interval: 操作间隔。这个参数用于防止请求频繁导致客户端直接卡死。这个间隔依据服务器延迟而定，可设置为0.2～1秒。<br>Interval between operation cycles. This parameter is meant to prevent League Client from being seriously stuck. This interval can be set as a value between 0.2 and 1 second, which depends on the server lag.
     :type interval: float
     :param champion_frequency_dict: 欲补充的英雄出现次数频数统计字典。如果不传入该参数，函数将自动初始化该参数。<br>The champion occurrence frequency distribution dictionary to supplement. If this parameter isn't passed into any value, the function will automatically initialize this parameter.
@@ -563,12 +587,12 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
         if enemy_candidate_championId_options != [[]]: #考虑到目前自定义大乱斗的对方选用英雄信息是不可用的，如果用户没有指定敌方候选英雄序号列表，则不再询问（Considering currently the opponent team's champ select information in custom ARAM isn't available, if the user doesn't specify the enemy candidate championId list, then the function won't ask for it again）
             logPrint("正在指定敌方候选英雄序号列表……\nSpecifying opponent candidate championId list ...")
             enemy_candidate_championId_options = GetCandidateChampionChoices(candidate_championId_options = enemy_candidate_championId_options)
-    current_candidate_championIds: list[int] = self_candidate_championIds if not isCrowd else ally_candidate_championId_options[0] if roleType != 3 else enemy_candidate_championId_options[0] #存储用户在实际选择时使用的候选英雄序号列表。在多选模式下，自动取第一个元素作为候选英雄序号列表（Stores the candidate championId list used for user team champion seletion in practice. Under crowd mode, the first element is taken as the candidate championId list）
+    current_candidate_championIds: list[int] = self_candidate_championIds if not isCrowd else flattenChampionSchemes(ally_candidate_championId_options) if roleType != 3 else flattenChampionSchemes(enemy_candidate_championId_options) #存储用户在实际选择时使用的候选英雄序号列表。在多选模式下，将所有方案平铺开来，形成候选英雄序号列表。不用过多担心对这个变量的处理，因为在单选模式下，这个变量和`self_candidate_championIds`没有区别；而在多选模式下，这个变量仅用于选择英雄时的优先级判定，也就是把什么英雄让出来给房主选（Stores the candidate championId list used for user team champion seletion in practice. Under crowd mode, all schemes are flattened and form a candidate championId list. Don't worry too much about handling this variable, for under Single Mode, this variable is no different than `self_candidate_championIds`; under Crowd Mode, this variable is only used to judge the champion pick priority, namely what champion should be left available for the lobby owner to pick）
     opponent_candidate_championIds: list[int] = [] if not isCrowd else enemy_candidate_championId_options[0] if roleType != 3 else ally_candidate_championId_options[0] #存储用户的对手在实际选择时使用的候选英雄序号列表，在确定对手是否选到候选英雄时可能有用（Stores the candidate championId list used for enemy team champion seletion in practice. It may be useful when the program judges whether the opponent has picked the wanted champion）
     enable_enemy_detect: bool = isCrowd and not (len(enemy_candidate_championId_options) == 1 and len(enemy_candidate_championId_options[0]) == 0) #在多选模式下，当敌方候选英雄方案不为空时，此变量为真（Under crowd mode, when the enemy candidate championId scheme isn't empty, this variable is set as True）
     enemy_champion_got: bool = False #在多选模式下，标记对手阵营是否已经选到所有候选英雄。仅在enable_enemy_detect为真时可用（Marks whether the opponent team have selected all candidate champions under crowd mode. Only used when `enable_enemy_detect` is True）
     #执行程序（Main part）
-    if not isCrowd and len(self_candidate_championIds) > 0 or isCrowd and len(ally_candidate_championId_options):
+    if not isCrowd and len(self_candidate_championIds) > 0 or isCrowd and len(ally_candidate_championId_options) > 0:
         if not isCrowd and len(self_candidate_championIds) > 0:
             logPrint("您的候选英雄按优先级排列如下：\nYour candidate champions are as follows, ordered by priority:", print_time = True)
             for championId in self_candidate_championIds:
@@ -1088,7 +1112,7 @@ async def StartBlindPickCustomAARAM(connection: Connection, premade: bool = Fals
                     logPrint("第二步：正在从替补英雄池中替换英雄……\nStep Two: Swapping champions with the bench ...", print_time = True)
                     team_cellIds: list[int] = sorted(map(lambda x: x["cellId"], champ_select_session["myTeam"]))
                     localPlayer_cellIdRank: int = team_cellIds.index(champ_select_session["localPlayerCellId"])
-                    currentBench_championId_priority_map: dict[int, int] = {current_candidate_championIds.index(champion["championId"]): champion["championId"] for champion in champ_select_session["benchChampions"] if champion["championId"] in current_candidate_championIds} #构建从current_candidate_championIds的下标到其中在替补英雄池中存在的元素的映射（Build a map from the index of `current_candidate_championIds` to the element that exists in the current bench）
+                    currentBench_championId_priority_map: dict[int, int] = {current_candidate_championIds.index(champion["championId"]): champion["championId"] for champion in champ_select_session["benchChampions"] if champion["championId"] in current_candidate_championIds} #构建从`current_candidate_championIds`的下标到其中在替补英雄池中存在的元素的映射（Build a map from the index of `current_candidate_championIds` to the element that exists in the current bench）
                     currentBench_candidateChampions_intersect: list[int] = [currentBench_championId_priority_map[key] for key in sorted(currentBench_championId_priority_map.keys())] #将上述字典中的值按照键（索引）排序，得到候选英雄列表和替补英雄池的有序交集（Order the values of the above dictionary according to its keys (indices) to obtain an ordered intersection between the candidate championIds and the bench championIds）
                     if localPlayer_cellIdRank < len(currentBench_candidateChampions_intersect): #当槽位序号的顺序值超过所有可选的候选英雄时，对应的玩家就不用再和替补英雄池进行交换了（When the order value of a cellId is greater than the length of all available candidate championId list, the corresponding player doesn't need to swap with the bench）
                         benchChampionId_to_swap: int = currentBench_candidateChampions_intersect[localPlayer_cellIdRank]
@@ -1341,7 +1365,7 @@ async def RotateBlindPickCustomAARAM(connection: Connection, premade: bool = Fal
         if enemy_candidate_championId_options != [[]]:
             logPrint("正在指定敌方候选英雄序号列表……\nSpecifying opponent candidate championId list ...")
             enemy_candidate_championId_options = GetCandidateChampionChoices(candidate_championId_options = enemy_candidate_championId_options)
-    current_candidate_championIds: list[int] = self_candidate_championIds if not isCrowd else ally_candidate_championId_options[0] if roleType != 3 else enemy_candidate_championId_options[0] #注意，在这个函数中，current_candidate_championIds只作为一个引用，用来指代三者之一（Note that in this function, `current_candidate_championIds` is only used as a reference to update one of the three lists）
+    current_candidate_championIds: list[int] = self_candidate_championIds if not isCrowd else flattenChampionSchemes(ally_candidate_championId_options) if roleType != 3 else flattenChampionSchemes(enemy_candidate_championId_options) #注意，在这个函数中，`current_candidate_championIds`只作为一个引用，用来指代三者之一（Note that in this function, `current_candidate_championIds` is only used as a reference to update one of the three lists）
     if not isCrowd and len(self_candidate_championIds) > 0 or isCrowd and len(ally_candidate_championId_options) > 0:
         if not isCrowd and len(self_candidate_championIds) > 0:
             logPrint("您想要测试的所有英雄如下：\nAll champions to be tested are as follows:")
@@ -1380,12 +1404,12 @@ async def RotateBlindPickCustomAARAM(connection: Connection, premade: bool = Fal
                 logPrint("本次试验过程的英雄出现次数频数统计情况如下：\nThe champion occurrence frequency distribution during this test is as follows:")
                 logPrint(format_df(freq_df)[0], write_time = False)
             if not isCrowd and not picked_championId in {-1, -2}: #以上picked_championId返回的是完成测试时房主选用的英雄，而在多选模式中指定的候选英雄在替补英雄池中被发现时，不再执行后续的为房主选最高优先级的英雄这个动作，所以逻辑上讲，在多选模式下，picked_championId不适用于本部分（The above `picked_championId` returns the champion selected by the lobby owner, but in crowd mode, when a candidate champion is found in the bench, the program no longer performs such an action that helps the lobby owner to select the pickable candidate champion with the highest priority. So, logically speaking, under crowd mode, `picked_championId` doesn't apply to this part）
-                current_candidate_championIds.remove(picked_championId)
+                current_candidate_championIds.remove(picked_championId) #只有单选模式会更新`current_candidate_championIds`的内容（Only in Single Mode will the content of `current_candidate_championIds` be updated）
             if len(current_candidate_championIds) == 0:
                 logPrint("测试完成。按回车键退出。\nTest finished. Press Enter to exit.")
                 logInput()
                 break
-            else: #多选模式下，current_candidate_championIds永远不可能为空（Under crowd mode, `current_candidate_championIds` can never be empty）
+            else: #多选模式下，`current_candidate_championIds`永远不可能为空（Under crowd mode, `current_candidate_championIds` can never be empty）
                 if picked_championId == -2:
                     if isCrowd:
                         logPrint("正在指定我方候选英雄序号列表……\nSpecifying ally candidate championId list ...")
