@@ -1359,6 +1359,7 @@ async def RotateBlindPickCustomAARAM(connection: Connection, premade: bool = Fal
         self_candidate_championIds = GetCandidateChampions(candidate_championIds = preset_championIds)
     else:
         self_candidate_championIds = []
+    self_candidate_championIds_initial: list[int] = self_candidate_championIds[:] #将最初的候选英雄名单存储起来，以便测试完成时用户可以返回最初状态重新测试。多选模式的候选英雄名单是不变的，所以不需要备份那些名单（Store the initial candidate champion list, so that the user can return to the initial status after test is finished. Candidate champion list in crowd mode won't change, so no need to back up those lists）
     if isCrowd:
         logPrint("正在指定我方候选英雄序号列表……\nSpecifying ally candidate championId list ...")
         ally_candidate_championId_options = GetCandidateChampionChoices(candidate_championId_options = ally_candidate_championId_options)
@@ -1406,9 +1407,12 @@ async def RotateBlindPickCustomAARAM(connection: Connection, premade: bool = Fal
             if not isCrowd and not picked_championId in {-1, -2}: #以上picked_championId返回的是完成测试时房主选用的英雄，而在多选模式中指定的候选英雄在替补英雄池中被发现时，不再执行后续的为房主选最高优先级的英雄这个动作，所以逻辑上讲，在多选模式下，picked_championId不适用于本部分（The above `picked_championId` returns the champion selected by the lobby owner, but in crowd mode, when a candidate champion is found in the bench, the program no longer performs such an action that helps the lobby owner to select the pickable candidate champion with the highest priority. So, logically speaking, under crowd mode, `picked_championId` doesn't apply to this part）
                 current_candidate_championIds.remove(picked_championId) #只有单选模式会更新`current_candidate_championIds`的内容（Only in Single Mode will the content of `current_candidate_championIds` be updated）
             if len(current_candidate_championIds) == 0:
-                logPrint("测试完成。按回车键退出。\nTest finished. Press Enter to exit.")
-                logInput()
-                break
+                logPrint("测试完成。按回车键退出，或者输入任意非空字符串以从头开始。\nTest finished. Press Enter to exit, or input any non-empty string to start over.")
+                quit: bool = not bool(logInput())
+                if quit:
+                    break
+                else:
+                    current_candidate_championIds.extend(self_candidate_championIds_initial)
             else: #多选模式下，`current_candidate_championIds`永远不可能为空（Under crowd mode, `current_candidate_championIds` can never be empty）
                 if picked_championId == -2:
                     if isCrowd:
@@ -1419,6 +1423,7 @@ async def RotateBlindPickCustomAARAM(connection: Connection, premade: bool = Fal
                             enemy_candidate_championId_options = GetCandidateChampionChoices()
                     else:
                         self_candidate_championIds = GetCandidateChampions()
+                        self_candidate_championIds_initial = self_candidate_championIds[:] #更新初始候选英雄序号列表（Update the initial candidate championId list）
                         current_candidate_championIds = self_candidate_championIds #既然重新指定，那就不需要再执行上述复杂的判断了（Since the user re-specifies the candidate championId list, there's no need to perform the above complex judgment）
                 logPrint('按回车键以开启下一场测试，或者输入“0”以退出测试序列。\nPress Enter to start the next test, or submit "0" to quit the test sequence.')
                 while True:
