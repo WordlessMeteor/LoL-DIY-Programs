@@ -46,7 +46,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/09/09
+# 更新（Last update）：     2026/10/17
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -247,7 +247,8 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
     region: str = region_locale["region"]
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
     platformId: str = current_party["platformId"]
-    log_filename: str = f"Matches on {platformId} {start_matchId}-{end_matchId}.log"
+    currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())
+    log_filename: str = f"{currentTime} Matches on {platformId} {start_matchId}-{end_matchId}.log"
     log_folder: str = "日志（Logs）/对局遍历器"
     log_path: str = os.path.join(log_folder, log_filename).replace("\\", "/")
     os.makedirs(log_folder, exist_ok = True)
@@ -439,7 +440,8 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
     region: str = region_locale["region"]
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
     platformId: str = current_party["platformId"]
-    log_filename: str = f"Matches on {platformId} starting from {start_summoner_name}.log"
+    currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())
+    log_filename: str = f"{currentTime} Matches on {platformId} starting from {start_summoner_name}.log"
     log_folder: str = "日志（Logs）/对局遍历器"
     log_path: str = os.path.join(log_folder, log_filename).replace("\\", "/")
     os.makedirs(log_folder, exist_ok = True)
@@ -642,7 +644,7 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
     #准备日志输入输出流（Prepare log iostream）
     log_folder = "日志（Logs）/Customized Program 10 - Match Traversor"
     os.makedirs(log_folder, exist_ok = True)
-    currentTime = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())
+    currentTime: str = time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())
     log: LogManager = LogManager(os.path.join(log_folder, currentTime + ".log"), mode = "a+", encoding = "utf-8")
     logPrint = log.logPrint
     logPrint(f"正在查询{platformId}服务器的对局……\nSearching matches on server {platformId} ...")
