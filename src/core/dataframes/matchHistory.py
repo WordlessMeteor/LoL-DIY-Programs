@@ -519,7 +519,7 @@ async def get_TFTHistory(connection: Connection, puuid: str, begin: int = 0, cou
             break
     return (TFTHistory_get, TFTHistory)
 
-async def get_game_summary_sgp(connection: Connection, sgpSession: SGPSession, match_id: str, checkLoL: bool = True, checkTFT: bool = True, skipTFT: bool = False, retry: int = 3, endpoint_version: int = 1, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[int, dict[str, Any]]:
+async def get_game_summary_sgp(connection: Connection, sgpSession: SGPSession, match_id: str, checkLoL: bool = True, checkTFT: bool = True, skipTFT: bool = False, retry: int = 3, endpoint_version: int = 1, retryV3: bool = True, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[int, dict[str, Any]]:
     '''
     获取一场对局的概要。<br>Get the summary of a match.
     
@@ -552,6 +552,10 @@ async def get_game_summary_sgp(connection: Connection, sgpSession: SGPSession, m
         - （☆）1: GET /match-history-query/v1/products/lol/{match_id}/SUMMARY
         - 3: GET /match-history-query/v3/product/lol/matchId/{match_id}/infoType/summary
     :type endpoint_version: int
+    :param retryV3: 在使用v1接口获取概要提示回放未找到时，是否使用v3接口再试一次。默认为真。<br>When getting summary through v1 endpoint returns "match file not found", whether to try again with v3 endpoint. True by default.
+    
+        仅在`endpoint_version`指定为1时，这个参数才发挥作用。<br>Only when `endpoint_version` is set to 1 does this parameter take effect.
+    :type retryV3: bool
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -595,10 +599,19 @@ async def get_game_summary_sgp(connection: Connection, sgpSession: SGPSession, m
                     if count > retry:
                         logPrint(f"英雄联盟对局{match_id}概要获取失败！\nLoL match {match_id} summary capture failure!", verbose = verbose)
                         break
-                    if status == 404:
+                    if status == 404: #使用v1接口时，如果对局未找到，则进入此部分（When v1 endpoint is used, if the match file isn't found, then the program goes to this part）
                         if game_summary["errorCode"] == "RESOURCE_NOT_FOUND" and game_summary["message"] == "match file not found" or game_summary == {"httpStatus": 404, "errorCode": "NOT_FOUND", "message": "Not Found", "implementationDetails": "match file not found"}:
-                            logPrint(f"未找到序号为{match_id}的英雄联盟回放文件！\nLoL match file with matchId {match_id} not found!", verbose = verbose)
-                            checkTFT = True
+                            if retryV3:
+                                status, game_summary_json = await get_game_summary_sgp(connection, sgpSession, match_id, skipTFT = True, retry = retry, endpoint_version = 3, retryV3 = False, log = log, verbose = verbose) #指定`retryV3 = False`以杜绝未来修改函数可能引入的无穷递归（Specify `retryV3 = False` to prevent any infinite recursion when this function is modified some time in the future）
+                                if status == 200:
+                                    checkTFT = False
+                                    game_summary = {"metadata": {"product": "lol", "tags": [], "participants": [participant["puuid"] for participant in game_summary_json["participants"] if participant["puuid"] != "00000000-0000-0000-0000-000000000000"], "timestamp": str(game_summary_json["gameEndTimestamp"]), "private": True, "data_version": "-1", "info_type": "summary", "match_id": match_id}, "json": game_summary_json}
+                                else:
+                                    #这个分支的异常提示在递归调用时已经打印过了（Error hint in this branch has already been printed during the recursive call）
+                                    checkTFT = True
+                            else:
+                                logPrint(f"未找到序号为{match_id}的英雄联盟回放文件！\nLoL match file with matchId {match_id} not found!", verbose = verbose)
+                                checkTFT = True
                             break
                     logPrint(f"正在第{count}次尝试获取英雄联盟对局{match_id}概要……\nTimes trying to capture LoL Match {match_id}: No. {count} ...", verbose = verbose)
                 elif "status" in game_summary and isinstance(game_summary["status"], dict) and all(_ in ["message", "status_code"] for _ in game_summary["status"]):
@@ -638,7 +651,12 @@ async def get_game_summary_sgp(connection: Connection, sgpSession: SGPSession, m
                         break
                     if status == 404:
                         if game_summary["errorCode"] == "RESOURCE_NOT_FOUND" and game_summary["message"] == "match file not found" or game_summary == {"httpStatus": 404, "errorCode": "NOT_FOUND", "message": "Not Found", "implementationDetails": "match file not found"}:
-                            logPrint(f"未找到序号为{match_id}的云顶之弈回放文件！\nTFT match file with matchId {match_id} not found!", verbose = verbose)
+                            if retryV3:
+                                status, game_summary_json = await get_game_summary_sgp(connection, sgpSession, match_id, checkLoL = False, retry = retry, endpoint_version = 3, retryV3 = False, log = log, verbose = verbose)
+                                if status == 200:
+                                    game_summary = {"metadata": {"product": "tft", "tags": [], "participants": [participant["puuid"] for participant in game_summary_json["participants"] if participant["puuid"] != "00000000-0000-0000-0000-000000000000"], "timestamp": str(game_summary_json["game_datetime"]), "private": True, "data_version": "-1", "info_type": "summary", "match_id": match_id}, "json": game_summary_json}
+                            else:
+                                logPrint(f"未找到序号为{match_id}的云顶之弈回放文件！\nTFT match file with matchId {match_id} not found!", verbose = verbose)
                             break
                     logPrint(f"正在第{count}次尝试获取云顶之弈对局{match_id}概要……\nTimes trying to capture TFT Match {match_id}: No. {count} ...", verbose = verbose)
                 elif "status" in game_summary and isinstance(game_summary["status"], dict) and all(_ in ["message", "status_code"] for _ in game_summary["status"]):
@@ -655,7 +673,7 @@ async def get_game_summary_sgp(connection: Connection, sgpSession: SGPSession, m
                     break
     return (status, game_summary)
 
-async def get_game_timeline_sgp(connection: Connection, sgpSession: SGPSession, match_id: str, checkLoL: bool = True, checkTFT: bool = False, retry: int = 3, endpoint_version: int = 1, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[int, dict[str, Any]]:
+async def get_game_timeline_sgp(connection: Connection, sgpSession: SGPSession, match_id: str, checkLoL: bool = True, checkTFT: bool = False, retry: int = 3, endpoint_version: int = 1, retryV3: bool = True, log: Optional[LogManager] = None, verbose: bool = True) -> tuple[int, dict[str, Any]]:
     '''
     获取一场对局的时间轴。<br>Get the timeline of a match.
     
@@ -676,6 +694,10 @@ async def get_game_timeline_sgp(connection: Connection, sgpSession: SGPSession, 
         - （☆）1: GET /match-history-query/v1/products/lol/{match_id}/SUMMARY
         - 3: GET /match-history-query/v3/product/lol/matchId/{match_id}/infoType/summary
     :type endpoint_version: int
+    :param retryV3: 在使用v1接口获取概要提示回放未找到时，是否使用v3接口再试一次。默认为真。<br>When getting summary through v1 endpoint returns "match file not found", whether to try again with v3 endpoint. True by default.
+    
+        仅在`endpoint_version`指定为1且`checkLoL`为真时，这个参数才发挥作用。<br>Only when `endpoint_version` is set to 1 and `checkLoL` is True does this parameter take effect.
+    :type retryV3: bool
     :param log: 日志管理对象。如果未指定，则使用传统的输入和打印函数。<br>A LogManager object. If unspecified, traditional `input` and `print` functions will be used instead.
     :type log: LogManager
     :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
@@ -718,9 +740,14 @@ async def get_game_timeline_sgp(connection: Connection, sgpSession: SGPSession, 
                     if count > retry:
                         logPrint(f"英雄联盟对局{match_id}时间轴获取失败！\nLoL match {match_id} timeline capture failure!", verbose = verbose)
                         break
-                    if status == 404:
+                    if status == 404: #使用v1接口时，如果对局未找到，则进入此部分（When v1 endpoint is used, if the match file isn't found, then the program goes to this part）
                         if game_timeline["errorCode"] == "RESOURCE_NOT_FOUND" and game_timeline["message"] == "match file not found" or game_timeline == {"httpStatus": 404, "errorCode": "NOT_FOUND", "message": "Not Found", "implementationDetails": "match file not found"}:
-                            logPrint(f"未找到序号为{match_id}的英雄联盟回放文件！\nLoL match file with matchId {match_id} not found!", verbose = verbose)
+                            if retryV3:
+                                status, game_timeline_json = await get_game_timeline_sgp(connection, sgpSession, match_id, retry = retry, endpoint_version = 3, retryV3 = False, log = log, verbose = verbose) #指定`retryV3 = False`以杜绝未来修改函数可能引入的无穷递归（Specify `retryV3 = False` to prevent any infinite recursion when this function is modified some time in the future）
+                                if status == 200:
+                                    game_timeline = {"metadata": {"product": "lol", "tags": [], "participants": [participant["puuid"] for participant in game_timeline_json["participants"] if participant["puuid"] != "00000000-0000-0000-0000-000000000000"], "timestamp": "0", "private": True, "data_version": "-1", "info_type": "details", "match_id": match_id}, "json": game_timeline_json} #时间戳可在函数外部结合概要信息来处理（The timestamp can be further updated outside this function based on summary）
+                            else:
+                                logPrint(f"未找到序号为{match_id}的英雄联盟回放文件！\nLoL match file with matchId {match_id} not found!", verbose = verbose)
                             break
                     logPrint(f"正在第{count}次尝试获取英雄联盟对局{match_id}时间轴……\nTimes trying to capture LoL Match {match_id}: No. {count} ...", verbose = verbose)
                 elif "status" in game_timeline and isinstance(game_timeline["status"], dict) and all(_ in ["message", "status_code"] for _ in game_timeline["status"]):
@@ -759,6 +786,10 @@ async def get_game_timeline_sgp(connection: Connection, sgpSession: SGPSession, 
                         break
                     if status == 404:
                         if game_timeline["errorCode"] == "RESOURCE_NOT_FOUND" and game_timeline["message"] == "match file not found" or game_timeline == {"httpStatus": 404, "errorCode": "NOT_FOUND", "message": "Not Found", "implementationDetails": "match file not found"}:
+                            if retryV3:
+                                status, game_timeline_json = await get_game_timeline_sgp(connection, sgpSession, match_id, checkLoL = False, checkTFT = True, retry = retry, endpoint_version = 3, retryV3 = False, log = log, verbose = verbose)
+                                if status == 200:
+                                    game_timeline = {"metadata": {"product": "tft", "tags": [], "participants": [participant["puuid"] for participant in game_timeline_json["participants"] if participant["puuid"] != "00000000-0000-0000-0000-000000000000"], "timestamp": "0", "private": True, "data_version": "-1", "info_type": "details", "match_id": match_id}, "json": game_timeline_json}
                             logPrint(f"未找到序号为{match_id}的云顶之弈回放文件！\nTFT match file with matchId {match_id} not found!", verbose = verbose)
                             break
                     logPrint(f"正在第{count}次尝试获取云顶之弈对局{match_id}概要……\nTimes trying to capture TFT Match {match_id}: No. {count} ...", verbose = verbose)

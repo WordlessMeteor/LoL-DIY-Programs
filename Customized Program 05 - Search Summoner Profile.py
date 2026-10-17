@@ -43,7 +43,7 @@ else:
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/10/14
+# 更新（Last update）：     2026/10/17
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2420,6 +2420,8 @@ async def search_profile(connection: Connection) -> None:
                         else:
                             status, LoLGame_timeline = await get_game_timeline_sgp(connection, sgpSession, match_id, checkTFT = False, log = log)
                             if status == 200:
+                                if LoLGame_timeline["metadata"]["data_version"] == "-1" and matchId in LoLGame_summary_cache_sgp and "json" in LoLGame_summary_cache_sgp[matchId]:
+                                    LoLGame_timeline["metadata"]["timestamp"] = LoLGame_summary_cache_sgp[matchId]["json"]["gameEndTimestamp"]
                                 LoLGame_timeline_cache_sgp[matchId] = LoLGame_timeline
                     else:
                         if matchId in LoLGame_timeline_cache_lcu:
