@@ -29,7 +29,7 @@ use_sgp: bool = args.lol_api == "sgp"
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/10/12
+# 更新（Last update）：     2026/10/19
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1193,7 +1193,7 @@ async def detect_mode(connection: Connection, search_LoL: bool, search_TFT: bool
     elif detect_scene[0] in set(map(str, range(1, 8))):
         detect_scene = detect_scene[0]
     else:
-        detect_scene = "7"
+        detect_scene = "8"
     if detect_scene == "1":
         await detect_gameflow(connection, search_LoL, search_TFT, recent_LoLPlayer_df, recent_TFTPlayer_df, infos = infos)
     elif detect_scene == "2":
