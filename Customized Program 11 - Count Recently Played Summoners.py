@@ -2599,7 +2599,7 @@ async def detect_custom_list(connection: Connection, search_LoL: bool, search_TF
         else:
             try:
                 tmp = eval(summoners_str)
-            except SyntaxError:
+            except:
                 traceback_info = traceback.format_exc()
                 logPrint(traceback_info)
                 logPrint("语法错误！请重新输入。\nGrammar error! Please try again.")
