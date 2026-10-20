@@ -658,6 +658,7 @@ while True:
                 logPrint("[%d/%d][%d/%d]正在校对文件（Checking file）： %s" %(cnt1, len(cdragon_folders), cnt2, numFile_to_check, urljoin(url, name)), print_time = True)
                 update: bool = False
                 added: bool = False
+                display_hint: bool = False
                 source, status, session = requestUrl("GET", urljoin(url, name), session)
                 reserve_file: bool = True #标记是否保留该文件，也就是是否将这个文件从待删除的文件列表中移除（Marks whether to reserve this file, namely remove the file from the list of files to delete）
                 if status != 200:
@@ -694,20 +695,21 @@ while True:
                 else:
                     src = source.text.replace("\r", "")
                 if not name in os.listdir(localdir):
-                    update = added = True
+                    update = added = display_hint = True
                 else:
                     with open(file_path, "r", encoding = "utf-8") as fp:
                         dst: str = fp.read()
                     if src != dst or table["web_timestamp"][i] > table["local_timestamp"][i]:
                         update = True
+                        display_hint = src != dst
                 if mode == "1" and update or mode == "2": #当选择全局扫描时，只更新有变化或修改时间落后的文档；当选择根据修改时间更新时，如果网页修改时间超前，那么无论文件内容是否发生变化，都重新保存一次，便于后续按照修改时间更新（When the user selects Global Scan, the program updates the changed or outdated files. When the user selects Updating according to modification time, if the web modification time of a file succeeds to the local midification time of that, then save the web content to local, no matter whether the content of the web file is same as the local file）
                     with open(file_path, "w", encoding = "utf-8") as fp:
                         fp.write(src)
-                if update:
+                if display_hint:
                     if added:
                         logPrint("已添加文件（Added file）： %s" %(file_path), print_time = True)
                         added_files.append(urljoin(url, name))
-                    else:
+                    elif update:
                         logPrint("已更新文件（Updated file）： %s" %(file_path), print_time = True)
                         updated_files.append(urljoin(url, name))
             #下面处理大文件。注意，一定是先把本地文件更新好，再去检查大文件（Large files are handled here. Note that big file checking must be performed after the local files are updated）
