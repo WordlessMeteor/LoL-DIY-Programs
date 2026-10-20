@@ -928,7 +928,9 @@ lolEventHubOfferStates: dict[str, str] = {
 }
 #进度（Progression）
 counterDirections: dict[str, str] = {
-    "INCREASING": "INCREASING"
+    "INCREASING": "INCREASING",
+    "DECREASING": "DECREASING",
+    "BOTH": "BOTH"
 }
 milestone_triggerRequirements: dict[str, str] = {
     "": "",
