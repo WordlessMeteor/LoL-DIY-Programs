@@ -104,8 +104,7 @@ def create_test_itemPage(isZH: bool = True, bilingual: bool = False) -> tuple[di
     :return: 配装方案、获取状态和配装方案文件目录。<br>Item set, fetch status and the item set file path.
     :rtype: tuple[dict[str, Any], bool, str]
     '''
-    session = requests.Session() #初始化网络请求会话（Initialize the web request session）
-    #session.trust_env = False #忽略系统代理设置（Bypass system proxy）
+    session: requests.Session = requests.Session() #初始化网络请求会话（Initialize the web request session）
     #从CommunityDragon读取装备相关二进制数据（Load relevant binary data from CommunityDragon）
     logPrint("正在加载地图和装备二进制数据……\nLoading binary data for maps and items from CommunityDragon ...")
     ##在线读取（Online loading）
@@ -2208,7 +2207,6 @@ def sort_item_ddragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
     '''
     item_df_formed: bool = False
     session: requests.Session = requests.Session()
-    # session.trust_env = False
     LoLItem_dfs: dict[str, pandas.DataFrame] = {}
     while True:
         back: bool = False
@@ -2504,7 +2502,6 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
         bin_hash_ready = True
     item_df_formed: bool = False
     session: requests.Session = requests.Session()
-    # session.trust_env = False
     LoLItem_dfs: dict[str, pandas.DataFrame] = {}
     while True:
         back: bool = False

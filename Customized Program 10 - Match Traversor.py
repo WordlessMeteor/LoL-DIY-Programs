@@ -46,7 +46,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/10/17
+# 更新（Last update）：     2026/10/21
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -241,7 +241,6 @@ async def index_traverse_match(connection: Connection, start_matchId: Optional[i
         checkTFT = False #此时这个变量无关紧要（In this case this variable doesn't matter）
     session: SGPSession = SGPSession()
     await session.init(connection)
-    session.session.trust_env = False #英雄联盟请求无需走代理（League of Legends requests don't need a proxy）
     session.verbose = False #去除下载回放时处理二进制数据产生的异常提示（Eliminate error information thrown by handling the downloaded replay binary data）
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     region: str = region_locale["region"]
@@ -434,7 +433,6 @@ async def history_traverse_match(connection: Connection, start_puuid: str, produ
         checkTFT = False
     session: SGPSession = SGPSession()
     await session.init(connection)
-    session.session.trust_env = False #英雄联盟请求无需走代理（League of Legends requests don't need a proxy）
     session.verbose = False #去除下载回放时处理二进制数据产生的异常提示（Eliminate error information thrown by handling the downloaded replay binary data）
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     region: str = region_locale["region"]
@@ -635,7 +633,6 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
     #变量和会话初始化（Variable and session initialization）
     session: SGPSession = SGPSession() #因为此处的日志文件需要对齐，不应该将原始异常提示输出到日志中，所以这里不指定日志对象（Because the log file here needs to be aligned, the original error information shouldn't be output into the log, so the log object is not specified here）
     await session.init(connection)
-    session.session.trust_env = False #英雄联盟请求无需走代理（League of Legends requests don't need a proxy）
     session.verbose = False #去除v3接口的异常提示（Remove the error information thrown by v3 endpoint）
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
     platformId: str = current_party["platformId"]
