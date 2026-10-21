@@ -56,7 +56,7 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], dType: Literal["champi
         FIRSTBLOOD          大对决（Showdown）<br>
         ARSR                峡谷大乱斗（ARSR）<br>
         ARAM                极地大乱斗（ARAM）<br>
-        {bffdf499}          海克斯大乱斗（ARAM: Mayhem）<br>
+        Kiwi                海克斯大乱斗（ARAM: Mayhem）<br>
         KINGPORO            魄罗大乱斗（Poro King）<br>
         URF                 无限火力（Ultra Rapid Fire）<br>
         SNOWURF             冰雪无限火力（Snow Ultra Rapid Fire）<br>
@@ -71,9 +71,9 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], dType: Literal["champi
         {a110bc47}          神木之门（Brawl）<br>
         Ruby                末日人工智能（Doom Bots）<br>
         DOOMBOTSTEEMO       大提魔节和100级铁手挑战（The Teemoing and Level 100 Gauntlet）<br>
-        {b0cea932}          末日人工智能：维迦的诅咒！（Doom Bots - Veigar's Curse!）<br>
-        {afcea79f}          末日人工智能：维迦的邪咒！（Doom Bots - Veigar's Evil!）<br>
-        {aecea60c}          末日人工智能：维迦的末日厄咒！（Doom Bots - Veigar's Doom!）<br>
+        RUBY_TRIAL_1        末日人工智能：维迦的诅咒！（Doom Bots - Veigar's Curse!）<br>
+        RUBY_TRIAL_2        末日人工智能：维迦的邪咒！（Doom Bots - Veigar's Evil!）<br>
+        RUBY_TRIAL_3        末日人工智能：维迦的末日厄咒！（Doom Bots - Veigar's Doom!）<br>
         {9cf6bf22}          WASD<br>
         {ad33a648}          海克斯大乱斗 经典模式版（ARAM: Mayhem Classic-ish）<br>
         {5358c483}          BASELINESR<br>
@@ -1583,7 +1583,7 @@ if __name__ == "__main__":
                         else:
                             anvil_paths = [
                                 repo_game_dir / "data/maps/shipping/map30/map30.bin.json",
-                                repo_game_dir / "data/maps/shipping/map12/map12.bin.json"
+                                repo_game_dir / "unknown/507cdd64276919f5.bin.json"
                             ]
                         anvilExtractor.build_anvil_dataframe(debug = True, paths = list(map(lambda x: x.as_posix(), anvil_paths)))
                         if wb_export:

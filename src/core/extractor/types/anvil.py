@@ -56,7 +56,27 @@ class AnvilExtractor(LoLDataExtractor):
             self.map30_bin = self.resolve_bin_hash(self.map30_bin)
             self.__class__.data_cache["online"][map30_bin_url] = self.map30_bin
         self.anvils_ready["map30"] = True
-        if Patch(self.patch_number) >= Patch("16.2"):
+        if Patch(self.patch_number) >= Patch("16.22"):
+            #海克斯大乱斗锻造器（ARAM: Mayhem anvil）
+            KiwiAnvil_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/unknown/507cdd64276919f5.bin.json"
+            if KiwiAnvil_bin_url in self.__class__.data_cache["online"]:
+                self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][KiwiAnvil_bin_url]
+            else:
+                source, status, self.session = requestUrl("GET", KiwiAnvil_bin_url, session = self.session, log = self.log)
+                if status != 200:
+                    if status == 404:
+                        logPrint("海克斯大乱斗锻造器信息获取失败！请检查以下链接的可用性。程序将跳过该信息。\nARAM: Mayhem anvil data capture failure! Please check the URL availability. The program will skip this information.\n%s" %(KiwiAnvil_bin_url))
+                        self.KiwiAnvils_bin = {}
+                    else:
+                        logPrint('海克斯大乱斗锻造器信息获取失败！请检查系统网络状况和代理设置。程序即将返回上一层。\nARAM: Mayhem anvil data capture failure! Please check the system network condition and proxy configuration. The program will return to the last step soon.')
+                        time.sleep(3)
+                        self.init_data_readiness()
+                        return
+                else:
+                    self.KiwiAnvils_bin = source.json()
+                    self.KiwiAnvils_bin = self.resolve_bin_hash(self.KiwiAnvils_bin)
+                self.__class__.data_cache["online"][KiwiAnvil_bin_url] = self.KiwiAnvils_bin
+        elif Patch(self.patch_number) >= Patch("16.2"):
             #嚎哭深渊地图（Howling Abyss map）
             map12_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/data/maps/shipping/map12/map12.bin.json"
             if map12_bin_url in self.__class__.data_cache["online"]:
