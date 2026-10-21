@@ -820,6 +820,19 @@ async def binary_search_match(connection: Connection, start_matchId: Optional[in
 
 #在这里自定义用于对局遍历函数的判断条件函数模板（Define the custom condition judgment function templates for `index_traverse_match` function hereafter）
 ##示例（Examples）
+def isValidSummary(game_summary: dict[str, Any]) -> bool:
+    '''
+    判断对局概要是否有效。主要用于异常处理。<br>Judge whether a match summary is valid. Mainly used for exception handling.
+    
+    :param game_summary: 对局概要信息。通过以下SGP接口得到：<br>Match summary information, obtained through the following SGP endpoint:
+
+        - `GET /match-history-query/v3/product/{product}/matchId/{match_id}/infoType/summary`
+    :type game_summary: dict[str, Any]
+    :return: 对局有效性。<br>Match validity.
+    :rtype: bool
+    '''
+    return bool(game_summary) and "endOfGameResult" in game_summary and game_summary["endOfGameResult"] != "Abort_Unexpected" and "gameId" in game_summary and game_summary["gameId"] != 0
+
 def isKiwiMatch(game_summary: dict[str, Any]) -> bool:
     '''
     判断一场对局是不是海克斯大乱斗。<br>Judge whether a match is an ARAM: Mayhem game.
@@ -908,7 +921,7 @@ def containAugment(game_summary: dict[str, Any], augmentId: list[list[int]] | li
         (gameCreationDate_lower == "" and gameCreationDate_upper == "" or gameCreation_compare(game_summary, gameCreationDate_lower) and not gameCreation_compare(game_summary, gameCreationDate_upper)) and \
         any(map(lambda participant: (championId == 0 or participant["championId"] == championId) and any(set(scheme) <= set(participant.get(f"playerAugment{i}", 0) for i in range(1, 7)) for scheme in augmentSchemes), game_summary["participants"]))
 
-filter_function_example: str = '''isKiwiMatch(game_summary) ⇔ "gameMode" in game_summary and game_summary["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\nisKiwiPentaMatch(game_summary) ⇔ bool(game_summary) and game_summary["queueId"] == 2400 and any(map(lambda participant: bool(participant["pentaKills"]), game_summary["participants"])) #判断对局是否是海克斯大乱斗五杀局（Judge whether a match is an ARAM: Mayhem game with at least a penta kill）\ncontainAugment(game_summary, 1324, mode = "CHERRY", championId = 200, gameVersion_lower = "16.16", gameVersion_upper = "16.17", gameCreationDate_lower = "2026-08-23 00:00:00", gameCreationDate_upper = "2026-08-24 00:00:00") ⇔ bool(game_summary) and game_summary["gameMode"] = "CHERRY" and Patch(game_summary["gameVersion"]) >= Patch("16.16") and Patch(game_summary["gameVersion"]) < Patch("16.17") and gameCreation_compare(game_summary, "2026-08-23 00:00:00") and not gameCreation_compare(game_summary, "2026-08-24 00:00:00") and any(map(lambda participant: participant["championId"] == 200 and 1324 in [participant.get(f"playerAugment{i}", 0) for i in range(1, 7)], game_summary["participants"])) #判断26.16版本有没有一场斗魂竞技场对局是虚空女皇 卑尔维斯拿到【蛋白粉奶昔】的（Judge whether there's a game that Bel'Veth picked Protein Shake in Patch 26.16）'''
+filter_function_example: str = '''isValidSummary(game_summary) #判断对局有效性（Judge match validity）\nisKiwiMatch(game_summary) ⇔ "gameMode" in game_summary and game_summary["gameMode"] == "KIWI" #判断对局是否是海克斯大乱斗（Judge whethe a match is ARAM: Mayhem）\nisKiwiPentaMatch(game_summary) ⇔ bool(game_summary) and game_summary["queueId"] == 2400 and any(map(lambda participant: bool(participant["pentaKills"]), game_summary["participants"])) #判断对局是否是海克斯大乱斗五杀局（Judge whether a match is an ARAM: Mayhem game with at least a penta kill）\ncontainAugment(game_summary, 1324, mode = "CHERRY", championId = 200, gameVersion_lower = "16.16", gameVersion_upper = "16.17", gameCreationDate_lower = "2026-08-23 00:00:00", gameCreationDate_upper = "2026-08-24 00:00:00") ⇔ bool(game_summary) and game_summary["gameMode"] = "CHERRY" and Patch(game_summary["gameVersion"]) >= Patch("16.16") and Patch(game_summary["gameVersion"]) < Patch("16.17") and gameCreation_compare(game_summary, "2026-08-23 00:00:00") and not gameCreation_compare(game_summary, "2026-08-24 00:00:00") and any(map(lambda participant: participant["championId"] == 200 and 1324 in [participant.get(f"playerAugment{i}", 0) for i in range(1, 7)], game_summary["participants"])) #判断26.16版本有没有一场斗魂竞技场对局是虚空女皇 卑尔维斯拿到【蛋白粉奶昔】的（Judge whether there's a game that Bel'Veth picked Protein Shake in Patch 26.16）'''
 
 #在这里自定义用于二分查找对局函数的阈值函数模板（Define the custom threshold function templates for `binary_search_match` function hereafter）
 ##调试（Debug）
@@ -958,7 +971,7 @@ def gameCreation_compare(game_summary: dict[str, Any], time_str: str) -> bool:
     '''
     return game_summary["gameCreation"] >= int(datetime.datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S").timestamp() * 1000)
 
-threshold_function_example: str = 'gameId_compare(game_summary, 8502294282) ⇔ game_summary["gameId"] >= 8502294282 #获取对局序号在8502294282之后的下一场可用对局（Get the next available match after Match 8502294282）\nfirst_match_after_mainteinance(game_summary, "16.5") ⇔ game_summary.get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_summary["gameVersion"]) >= Patch("16.5") #查找当前大区在26.05版本的第一场对局（Check the first match in Patch 26.05 on the current server）\ngameCreation_compare(game_summary, "1970-01-01 08:00:00") ⇔ game_summary["gameCreation"] >= int(datetime.datetime.strptime("1970-01-01 08:00:00", "%Y-%m-%d %H:%M:%S").timestamp() * 1000) #查找创建时间在当前时区的指定时间之后的对局（Check matches created after a specified time of the current time zone）'
+threshold_function_example: str = 'isValidSummary(game_summary) #判断对局有效性（Judge match validity）\ngameId_compare(game_summary, 8502294282) ⇔ game_summary["gameId"] >= 8502294282 #获取对局序号在8502294282之后的下一场可用对局（Get the next available match after Match 8502294282）\nfirst_match_after_mainteinance(game_summary, "16.5") ⇔ game_summary.get("endOfGameResult", "") != "Abort_Unexpected" and Patch(game_summary["gameVersion"]) >= Patch("16.5") #查找当前大区在26.05版本的第一场对局（Check the first match in Patch 26.05 on the current server）\ngameCreation_compare(game_summary, "1970-01-01 08:00:00") ⇔ game_summary["gameCreation"] >= int(datetime.datetime.strptime("1970-01-01 08:00:00", "%Y-%m-%d %H:%M:%S").timestamp() * 1000) #查找创建时间在当前时区的指定时间之后的对局（Check matches created after a specified time of the current time zone）'
 
 def define_function(endpoint_version: int = 3) -> tuple[str, Optional[Callable[[dict[str, Any]], bool]]]:
     '''
