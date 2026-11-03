@@ -82,6 +82,121 @@ def rm_ctrl_char(s: str) -> str:
     '''
     return "".join(ch for ch in s if unicodedata.category(ch) != "Cc") #该表达式等价于（This expression is equivalent to）`re.sub(r"[\x00-\x1F\x7F-\x9F]", "", s)`
 
+def format_dt(dt: dict[str, list[Any]], print_header: bool = True, print_index: bool = False, start_index: int = 0, header_align: str = "^", align: str = "^", align_replicate_rule: Literal["all", "last"] = "all") -> tuple[str, dict[str, int]]: #按照每列最长字符串的命令行宽度加上2，再根据每个数据的中文字符数量决定最终格式化输出的字符串宽度（Get the width of the longest string of each column, add it by 2, and substract it by the number of each cell string's Chinese characters to get the final width for each cell to print using `format` function）
+    '''
+    将适用于构建数据框的一个字典转化为列对齐的字符串，用于排版输出。<br>Transform a dictionary into a string where columns are aligned for better page layout.
+
+    :param dt: 要排版的数据字典。<br>A dictionary to transform into a layout-organized string.
+    :type dt: dict[str, list[Any]]
+    :param print_header: 是否打印表头。默认为真。<br>Whether to print the header. True by default.
+    :type print_header: bool
+    :param print_index: 是否打印索引列。默认为假。<br>Whether to print the index column. False by default.
+    :type print_index: bool
+    :param reserve_index: 在打印索引列时，是否输出原始索引。指定为真时则输出原始索引，否则输出从start_index到start_index + len(df) - 1的索引。<br>Whether to print the original indices, when the index column is going to be printed. If it's True, then print the original indices; otherwise, print the index from `start_index` to `start_index + len(df) - 1`.
+    :type reserve_index: bool
+    :param start_index: 在输出处理后的索引时的起始索引。仅当打印索引列但不输出原始索引时可用。默认值为0。<br>The starting index when the function prints the processed indices. Available only when the index column is going to be printed but not the original indices. Default value is 0.
+    :type start_index: int
+    :param header_align: 表头对齐方式。可取“<”“^”和“>”三个字符的任意组合。<br>The alignment method of headers, which may be composed of any number of any character among "<", "^" and ">".
+        <pre>
+        **value**       **description**<br>
+        &nbsp;<       左对齐（Left-aligned）<br>
+        &nbsp;^       居中对齐（Centered）<br>
+        &nbsp;>       右对齐（Right-aligned）
+        </pre>
+    :type header_align: str
+    :param align: 单元格对齐方式。取值规则同header_align参数。<br>The alignment method of cells, whose possible values are the same as those of `header_align` parameter.
+    :type align: str
+    :param align_replicate_rule: 当表头对齐方式参数和单元格对齐方式参数字符串长度小于列数时，对齐方式的填充规则。共有“all”和“last”两种取值。<br>The rule of filling the aligment method when the alignment method string of headers or cells is less than the number of columns. There're two possible values for this parameter: "all" and "last".
+    
+        - all: 将整个对齐方式规则循环往复地填充至剩余列。<br>Recursively fill the whole set of alignment methods in the rest of columns.<br>【例】在仅指定前三列单元格的对齐方式分别是左对齐、居中对齐和右对齐的情况下，第四至六列单元格的对齐方式将依次是左对齐、居中对齐和右对齐，往复。<br>[Example] When only the first three columns of cells are specified left-aligned, centered and right-aligned, respectively, the fourth to sixth columns of cells shall be left-aligned, centered and right-aligned, respectively, and so on.
+        - last: 将最后一个被指定对齐方式的列的对齐方式填充至剩余列。<br>Fill the alignment method of the last one of the columns specified with alignment methods in the rest of columns.<br>【例】在仅指定前三列单元格的对齐方式分别是左对齐、居中对齐和右对齐的情况下，后面所有列的对齐方式将都是右对齐。<br>[Example] When only the first three columns of cells are specified left-aligned, centered and right-aligned, respectively, all of the subsequent columns of cells shall be right-aligned.
+    :type align_replicate_rule: str
+    :return: 由格式化字符串和各列宽度字典组成的元组。<br>A tuple composed of the formatted string and each column's width dictionary.
+    :rtype: tuple[str, dict[str, str]]
+    '''
+    #参数预处理（Parameter preprocessing）
+    if not (isinstance(dt, dict) and all(map(lambda x: isinstance(x, list), dt.values()))):
+        print("数据字典参数错误！请传入一个字典，且字典的值必须是列表。\nParameter ERROR of the data dictionary! Please pass a dictionary whose values are all lists.")
+        return ("", {})
+    #准备一些常量（Prepare some constants）
+    shape: tuple[int, int] = (max(map(len, dt.values())), len(dt)) #表格的行列数（The number of the table's rows and columns）
+    dt_index: list[int] = list(range(start_index, shape[0] + start_index)) #新索引允许从`start_index`开始，默认从0开始（New indices allow starting from `start_index`, which is 0 by default）
+    index_len: int = 0 if shape[0] == 0 else max(map(lambda x: len(str(x)), dt_index)) #计算索引列的最大字符串宽度（Calculate the max string length of the index column）
+    fields: list[str] = list(dt.keys())
+    maxLens: dict[str, int] = {} #存储不同列的最大字符串宽度（Stores the max string lengths of different columns）
+    for field in fields: #计算每一列的最大字符串宽度（Calculate the max string length of each column）
+        maxLens[field] = max(0 if shape[0] == 0 else max(map(lambda x: wcswidth(rm_ctrl_char(str(x))), dt[field])), wcswidth(rm_ctrl_char(str(field)))) + 2
+    #确定各列的排列方向（Determine the alignments of all columns）
+    if not (isinstance(header_align, str) and isinstance(align, str)): #确保排列方向参数无误（Ensure the alignment parameters are valid）
+        print("排列方式参数错误！请传入字符串。\nAlignment parameter ERROR! Please pass a string instead.")
+        return ("", maxLens)
+    if not all(map(lambda x: x in {"<", "^", ">"}, header_align)) or not all(map(lambda x: x in {"<", "^", ">"}, align)):
+        print('排列方式字符串参数错误！排列方式必须是“<”“^”或者“>”中的一个。请修改排列方式字符串参数。\nParameter ERROR of the alignment string! The alignment value must be one of {"<", "^", ">"}. Please change the alignment string parameter.')
+        return ("", maxLens)
+    if len(header_align) == 0: #指定为空字符串，即默认居中输出（Specifying it as a null string means output centered by default）
+        header_alignments: list[str] = ["^"] * shape[1]
+    elif len(header_align) == 1:
+        header_alignments = [header_align] * shape[1]
+    else:
+        header_alignments_tmp = list(header_align)
+        if len(header_align) < shape[1]: #表头排列规则字符串长度小于数据框列数时，通过排列方式列表补充规则进行补充（When the length of `header_align` is less than the number of the dataframe's columns, supplement the rest of the rules according to `align_replicate_rule`）
+            if align_replicate_rule == "last": #仅重复最后一列的排列方式（Only replicate the alignment of the last column）
+                header_alignments = header_alignments_tmp + [header_alignments_tmp[-1]] * (shape[1] - len(header_align))
+            else:
+                if align_replicate_rule != "all":
+                    print("排列方式列表补充规则不合法！将默认采用全部填充。\nAlignment list supplement rule illegal! The whole alignment string will be replicated.")
+                header_alignments = header_alignments_tmp * (shape[1] // len(header_align)) + header_alignments_tmp[:shape[1] % len(header_align)] #所有排列方式循环补充（Supplement the alignments in a cycle of the whole `header_alignment` string）
+        else: #表头排列规则字符串大于等于数据框列数时，取长度等于数据框列数的字符串开头切片（When the length of `header_align` is greater than or equal to the number of the dataframe's columns, get the slice at the beginning of `header_align` whose length equal to the number of the dataframe's columns）
+            header_alignments = header_alignments_tmp[:shape[1]]
+    if len(align) == 0: #指定为空字符串，即默认居中输出（Specifying it as a null string means output centered by default）
+        alignments: list[str] = ["^"] * shape[1]
+    elif len(align) == 1:
+        alignments = [align] * shape[1]
+    else:
+        alignments_tmp: list[str] = list(align)
+        if len(align) < shape[1]: #数据排列规则字符串长度小于数据框列数时，通过排列方式列表补充规则进行补充（When the length of `align` is less than the number of the dataframe's columns, supplement the rest of the rules according to `align_replicate_rule`）
+            if align_replicate_rule == "last": #仅重复最后一列的排列方式（Only replicate the alignment of the last column）
+                alignments = alignments_tmp + [alignments_tmp[-1]] * (shape[1] - len(align))
+            else:
+                if align_replicate_rule != "all":
+                    print("排列方式列表补充规则不合法！将默认采用全部填充。\nAlignment list supplement rule illegal! The whole alignment string will be replicated.")
+                alignments = alignments_tmp * (shape[1] // len(align)) + alignments_tmp[:shape[1] % len(align)]
+        else: #数据排列规则字符串大于等于数据框列数时，取长度等于数据框列数的字符串开头切片（When the length of `align` is greater than or equal to the number of the dataframe's columns, get the slice at the beginning of `header_align` whose length equal to the number of the dataframe's columns）
+            alignments = alignments_tmp[:shape[1]]
+    #生成结果字符串（Generate the result string）
+    result: str = "" #结果字符串初始化（Initialize the result string）
+    if print_header: #打印表头（Prints the header）
+        if print_index: #打印表头时，如果输出索引，由于表头没有索引，所以用空格代替（Spaces will be printed as the index part of the header）
+            result += " " * (index_len + 2)
+        for i in range(shape[1]):
+            field: str = fields[i]
+            tmp: str = "{0:{align}{w}}".format(rm_ctrl_char(str(field)), align = header_alignments[i], w = maxLens[field] - count_nonASCII(field))
+            result += tmp
+            #print(tmp, end = "")
+            if i != shape[1] - 1: #未到行尾时，用两个空格来分割该列和下一列（When the program doesn't reach the end of the line, separate this column and the next column by two spaces）
+                result += "  "
+                #print("  ", end = "")
+        result += "\n"
+        #print()
+    index: int = start_index
+    for i in range(shape[0]):
+        if print_index:
+            result += "{0:>{w}}".format(index, w = index_len) + "  "
+        for j in range(shape[1]):
+            field = fields[j]
+            cell: str = str(dt[field][i])
+            tmp = "{0:{align}{w}}".format(rm_ctrl_char(cell), align = alignments[j], w = maxLens[field] - count_nonASCII(cell))
+            result += tmp
+            #print(tmp, end = "")
+            if j != shape[1] - 1: #未到行尾时，用两个空格来分割该列和下一列（When the program doesn't reach the end of the line, separate this column and the next column by two spaces）
+                result += "  "
+                #print("  ", end = "")
+        if i != shape[0] - 1:
+            result += "\n"
+        #print() #注意这里的缩进和上一行不同（Note that here the indentation is different from the above line）
+        index += 1
+    return (result, maxLens)
+
 def format_df(df: pandas.DataFrame, width_exceed_ask: bool = True, direct_print: bool = False, print_header: bool = True, print_index: bool = False, reserve_index: bool = False, start_index: int = 0, header_align: str = "^", align: str = "^", align_replicate_rule: Literal["all", "last"] = "all") -> tuple[str, dict[str, int]]: #按照每列最长字符串的命令行宽度加上2，再根据每个数据的中文字符数量决定最终格式化输出的字符串宽度（Get the width of the longest string of each column, add it by 2, and substract it by the number of each cell string's Chinese characters to get the final width for each cell to print using `format` function）
     '''
     将数据框转化为列对齐的字符串，用于排版输出。<br>Transform a dataframe into a string where columns are aligned for better page layout.
@@ -140,73 +255,75 @@ def format_df(df: pandas.DataFrame, width_exceed_ask: bool = True, direct_print:
             return (result, maxLens)
         # else:
         #     print("单行数据字符串输出宽度超过当前终端窗口宽度！将继续格式化输出！\nThe output width of each record string exceeds the current width of the terminal window! The program is going on formatted printing!")
-    result: str = "" #结果字符串初始化（Initialize the result string）
     #确定各列的排列方向（Determine the alignments of all columns）
-    if isinstance(header_align, str) and isinstance(align, str): #确保排列方向参数无误（Ensure the alignment parameters are valid）
-        if not all(map(lambda x: x in {"<", "^", ">"}, header_align)) or not all(map(lambda x: x in {"<", "^", ">"}, align)):
-            print('排列方式字符串参数错误！排列方式必须是“<”“^”或者“>”中的一个。请修改排列方式字符串参数。\nParameter ERROR of the alignment string! The alignment value must be one of {"<", "^", ">"}. Please change the alignment string parameter.')
-        if len(header_align) == 0: #指定为空字符串，即默认居中输出（Specifying it as a null string means output centered by default）
-            header_alignments: list[str] = ["^"] * df.shape[1]
-        elif len(header_align) == 1:
-            header_alignments = [header_align] * df.shape[1]
-        else:
-            header_alignments_tmp = list(header_align)
-            if len(header_align) < df.shape[1]: #表头排列规则字符串长度小于数据框列数时，通过排列方式列表补充规则进行补充（When the length of `header_align` is less than the number of the dataframe's columns, supplement the rest of the rules according to `align_replicate_rule`）
-                if align_replicate_rule == "last": #仅重复最后一列的排列方式（Only replicate the alignment of the last column）
-                    header_alignments = header_alignments_tmp + [header_alignments_tmp[-1]] * (df.shape[1] - len(header_align))
-                else:
-                    if align_replicate_rule != "all":
-                        print("排列方式列表补充规则不合法！将默认采用全部填充。\nAlignment list supplement rule illegal! The whole alignment string will be replicated.")
-                    header_alignments = header_alignments_tmp * (df.shape[1] // len(header_align)) + header_alignments_tmp[:df.shape[1] % len(header_align)] #所有排列方式循环补充（Supplement the alignments in a cycle of the whole `header_alignment` string）
-            else: #表头排列规则字符串大于等于数据框列数时，取长度等于数据框列数的字符串开头切片（When the length of `header_align` is greater than or equal to the number of the dataframe's columns, get the slice at the beginning of `header_align` whose length equal to the number of the dataframe's columns）
-                header_alignments = header_alignments_tmp[:df.shape[1]]
-        if len(align) == 0: #指定为空字符串，即默认居中输出（Specifying it as a null string means output centered by default）
-            alignments: list[str] = ["^"] * df.shape[1]
-        elif len(align) == 1:
-            alignments = [align] * df.shape[1]
-        else:
-            alignments_tmp: list[str] = list(align)
-            if len(align) < df.shape[1]: #数据排列规则字符串长度小于数据框列数时，通过排列方式列表补充规则进行补充（When the length of `align` is less than the number of the dataframe's columns, supplement the rest of the rules according to `align_replicate_rule`）
-                if align_replicate_rule == "last": #仅重复最后一列的排列方式（Only replicate the alignment of the last column）
-                    alignments = alignments_tmp + [alignments_tmp[-1]] * (df.shape[1] - len(align))
-                else:
-                    if align_replicate_rule != "all":
-                        print("排列方式列表补充规则不合法！将默认采用全部填充。\nAlignment list supplement rule illegal! The whole alignment string will be replicated.")
-                    alignments = alignments_tmp * (df.shape[1] // len(align)) + alignments_tmp[:df.shape[1] % len(align)]
-            else: #数据排列规则字符串大于等于数据框列数时，取长度等于数据框列数的字符串开头切片（When the length of `align` is greater than or equal to the number of the dataframe's columns, get the slice at the beginning of `header_align` whose length equal to the number of the dataframe's columns）
-                alignments = alignments_tmp[:df.shape[1]]
-        if print_header: #打印表头（Prints the header）
-            if print_index: #打印表头时，如果输出索引，由于表头没有索引，所以用空格代替（Spaces will be printed as the index part of the header）
-                result += " " * (index_len + 2)
-            for i in range(df.shape[1]):
-                field: str = fields[i]
-                tmp: str = "{0:{align}{w}}".format(rm_ctrl_char(str(field)), align = header_alignments[i], w = maxLens[field] - count_nonASCII(field))
-                result += tmp
-                #print(tmp, end = "")
-                if i != df.shape[1] - 1: #未到行尾时，用两个空格来分割该列和下一列（When the program doesn't reach the end of the line, separate this column and the next column by two spaces）
-                    result += "  "
-                    #print("  ", end = "")
-            result += "\n"
-            #print()
-        index: int = start_index
-        for i in range(df.shape[0]):
-            if print_index:
-                result += "{0:>{w}}".format(old_index[index - start_index] if reserve_index else index, w = index_len) + "  "
-            for j in range(df.shape[1]):
-                field = fields[j]
-                cell: str = str(list(df[field])[i])
-                tmp = "{0:{align}{w}}".format(rm_ctrl_char(cell), align = alignments[j], w = maxLens[field] - count_nonASCII(cell))
-                result += tmp
-                #print(tmp, end = "")
-                if j != df.shape[1] - 1: #未到行尾时，用两个空格来分割该列和下一列（When the program doesn't reach the end of the line, separate this column and the next column by two spaces）
-                    result += "  "
-                    #print("  ", end = "")
-            if i != df.shape[0] - 1:
-                result += "\n"
-            #print() #注意这里的缩进和上一行不同（Note that here the indentation is different from the above line）
-            index += 1
-    else:
+    if not (isinstance(header_align, str) and isinstance(align, str)): #确保排列方向参数无误（Ensure the alignment parameters are valid）
         print("排列方式参数错误！请传入字符串。\nAlignment parameter ERROR! Please pass a string instead.")
+        return ("", maxLens)
+    if not all(map(lambda x: x in {"<", "^", ">"}, header_align)) or not all(map(lambda x: x in {"<", "^", ">"}, align)):
+        print('排列方式字符串参数错误！排列方式必须是“<”“^”或者“>”中的一个。请修改排列方式字符串参数。\nParameter ERROR of the alignment string! The alignment value must be one of {"<", "^", ">"}. Please change the alignment string parameter.')
+        return ("", maxLens)
+    if len(header_align) == 0: #指定为空字符串，即默认居中输出（Specifying it as a null string means output centered by default）
+        header_alignments: list[str] = ["^"] * df.shape[1]
+    elif len(header_align) == 1:
+        header_alignments = [header_align] * df.shape[1]
+    else:
+        header_alignments_tmp = list(header_align)
+        if len(header_align) < df.shape[1]: #表头排列规则字符串长度小于数据框列数时，通过排列方式列表补充规则进行补充（When the length of `header_align` is less than the number of the dataframe's columns, supplement the rest of the rules according to `align_replicate_rule`）
+            if align_replicate_rule == "last": #仅重复最后一列的排列方式（Only replicate the alignment of the last column）
+                header_alignments = header_alignments_tmp + [header_alignments_tmp[-1]] * (df.shape[1] - len(header_align))
+            else:
+                if align_replicate_rule != "all":
+                    print("排列方式列表补充规则不合法！将默认采用全部填充。\nAlignment list supplement rule illegal! The whole alignment string will be replicated.")
+                header_alignments = header_alignments_tmp * (df.shape[1] // len(header_align)) + header_alignments_tmp[:df.shape[1] % len(header_align)] #所有排列方式循环补充（Supplement the alignments in a cycle of the whole `header_alignment` string）
+        else: #表头排列规则字符串大于等于数据框列数时，取长度等于数据框列数的字符串开头切片（When the length of `header_align` is greater than or equal to the number of the dataframe's columns, get the slice at the beginning of `header_align` whose length equal to the number of the dataframe's columns）
+            header_alignments = header_alignments_tmp[:df.shape[1]]
+    if len(align) == 0: #指定为空字符串，即默认居中输出（Specifying it as a null string means output centered by default）
+        alignments: list[str] = ["^"] * df.shape[1]
+    elif len(align) == 1:
+        alignments = [align] * df.shape[1]
+    else:
+        alignments_tmp: list[str] = list(align)
+        if len(align) < df.shape[1]: #数据排列规则字符串长度小于数据框列数时，通过排列方式列表补充规则进行补充（When the length of `align` is less than the number of the dataframe's columns, supplement the rest of the rules according to `align_replicate_rule`）
+            if align_replicate_rule == "last": #仅重复最后一列的排列方式（Only replicate the alignment of the last column）
+                alignments = alignments_tmp + [alignments_tmp[-1]] * (df.shape[1] - len(align))
+            else:
+                if align_replicate_rule != "all":
+                    print("排列方式列表补充规则不合法！将默认采用全部填充。\nAlignment list supplement rule illegal! The whole alignment string will be replicated.")
+                alignments = alignments_tmp * (df.shape[1] // len(align)) + alignments_tmp[:df.shape[1] % len(align)]
+        else: #数据排列规则字符串大于等于数据框列数时，取长度等于数据框列数的字符串开头切片（When the length of `align` is greater than or equal to the number of the dataframe's columns, get the slice at the beginning of `header_align` whose length equal to the number of the dataframe's columns）
+            alignments = alignments_tmp[:df.shape[1]]
+    #生成结果字符串（Generate the result string）
+    result: str = "" #结果字符串初始化（Initialize the result string）
+    if print_header: #打印表头（Prints the header）
+        if print_index: #打印表头时，如果输出索引，由于表头没有索引，所以用空格代替（Spaces will be printed as the index part of the header）
+            result += " " * (index_len + 2)
+        for i in range(df.shape[1]):
+            field: str = fields[i]
+            tmp: str = "{0:{align}{w}}".format(rm_ctrl_char(str(field)), align = header_alignments[i], w = maxLens[field] - count_nonASCII(field))
+            result += tmp
+            #print(tmp, end = "")
+            if i != df.shape[1] - 1: #未到行尾时，用两个空格来分割该列和下一列（When the program doesn't reach the end of the line, separate this column and the next column by two spaces）
+                result += "  "
+                #print("  ", end = "")
+        result += "\n"
+        #print()
+    index: int = start_index
+    for i in range(df.shape[0]):
+        if print_index:
+            result += "{0:>{w}}".format(old_index[index - start_index] if reserve_index else index, w = index_len) + "  "
+        for j in range(df.shape[1]):
+            field = fields[j]
+            cell: str = str(list(df[field])[i])
+            tmp = "{0:{align}{w}}".format(rm_ctrl_char(cell), align = alignments[j], w = maxLens[field] - count_nonASCII(cell))
+            result += tmp
+            #print(tmp, end = "")
+            if j != df.shape[1] - 1: #未到行尾时，用两个空格来分割该列和下一列（When the program doesn't reach the end of the line, separate this column and the next column by two spaces）
+                result += "  "
+                #print("  ", end = "")
+        if i != df.shape[0] - 1:
+            result += "\n"
+        #print() #注意这里的缩进和上一行不同（Note that here the indentation is different from the above line）
+        index += 1
     return (result, maxLens)
 
 def eliminate_empty_fields(df: pandas.DataFrame, header: Optional[int | list[int]] = 0, na_values: Any | Iterable[Any] = None, drop_same: bool = False) -> pandas.DataFrame:

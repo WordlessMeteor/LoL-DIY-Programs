@@ -5,7 +5,7 @@ from typing import Any
 from openpyxl.worksheet.worksheet import Worksheet
 from src.utils.patch import get_cdragon_patchList
 from src.utils.webRequest import requestUrl
-from src.utils.format import format_df, addDefaultStyle
+from src.utils.format import format_dt, addDefaultStyle
 from src.utils.summoner import print_summoner_info
 from src.utils.repeatConnect import LCUConnect
 from src.utils.excel_workbook import create_workbook_win32
@@ -19,7 +19,7 @@ from src.localization.general import language_ddragon, language_dict, language_c
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/27
+# 更新（Last update）：     2026/11/04
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -388,8 +388,7 @@ async def connect(connection: Connection) -> None: #注意到这里没有加装�
 #-----------------------------------------------------------------------------
 def main():
     print("请选择离线数据资源的语言【默认为中文（中国）】：\nPlease select a language for offline data resources (the default option is zh_CN):")
-    language_df: pandas.DataFrame = pandas.DataFrame(language_dict)
-    print(format_df(language_df)[0])
+    print(format_dt(language_dict)[0])
     while True:
         language_specified: bool = False
         language_option: str = input()

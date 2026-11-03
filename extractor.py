@@ -6,7 +6,7 @@ from typing import Any, Iterable, Literal, Optional
 from src.utils.logger import LogManager
 from src.utils.patch import Patch, get_cdragon_patchList
 from src.utils.webRequest import requestUrl
-from src.utils.format import format_df, addDefaultStyle, eliminate_empty_fields
+from src.utils.format import format_dt, format_df, addDefaultStyle, eliminate_empty_fields
 from src.utils.runtimeDebug import subscope
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
 from src.localization.general import language_ddragon, language_dict
@@ -298,8 +298,7 @@ if __name__ == "__main__":
         :rtype: str
         '''
         logPrint("请选择说明文本的输出语言【默认为中文（中国）】：\nPlease select a language for tooltips (the default option is zh_CN):")
-        language_df: pandas.DataFrame = pandas.DataFrame(language_dict)
-        logPrint(format_df(language_df)[0], write_time = False)
+        logPrint(format_dt(language_dict)[0], write_time = False)
         while True:
             language_option = logInput()
             if language_option == "" or language_option in set(map(str, range(1, 31))):

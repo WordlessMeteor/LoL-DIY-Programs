@@ -5,7 +5,7 @@ from typing import Any, Optional
 from src.utils.summoner import print_summoner_info
 from src.utils.logger import LogManager
 from src.utils.repeatConnect import LCUConnect
-from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, format_runtime, verify_uuid, pyobj2json
+from src.utils.format import optimize_bool_display, format_dt, format_df, addDefaultStyle, format_runtime, verify_uuid, pyobj2json
 from src.utils.patch import Patch, get_ddragon_versionList, get_cdragon_patchList
 from src.utils.runtimeDebug import subscope
 from src.utils.webRequest import requestUrl
@@ -22,7 +22,7 @@ from src.localization.languages.zh_CN import itemCategories
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/09/19
+# 更新（Last update）：     2026/11/04
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2821,8 +2821,7 @@ def export_item_data() -> None:
     选择一个语言，选择一个数据来源，然后导出数据。<br>Select a language, then select a data source, and finally export data.
     '''
     logPrint("请选择装备的输出语言【默认为中文（中国）】：\nPlease select a language to output the items (the default option is zh_CN):")
-    language_df: pandas.DataFrame = pandas.DataFrame(language_dict)
-    logPrint(format_df(language_df)[0], write_time = False)
+    logPrint(format_dt(language_dict)[0], write_time = False)
     while True:
         language_option: str = logInput()
         if language_option == "" or language_option in [str(i) for i in range(1, 30)]:

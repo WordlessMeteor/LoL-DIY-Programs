@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from typing import Any, Optional
 from src.utils.summoner import print_summoner_info, get_info, get_infos, get_info_name
 from src.utils.logger import LogManager
-from src.utils.format import getISOTime, optimize_bool_display, format_df, eliminate_empty_fields, addDefaultStyle, format_runtime, verify_uuid
+from src.utils.format import getISOTime, optimize_bool_display, format_dt, format_df, eliminate_empty_fields, addDefaultStyle, format_runtime, verify_uuid
 from src.utils.patch import Patch
 from src.utils.webRequest import requestUrl, SGPSession
 from src.utils.excel_workbook import create_workbook_win32, sort_worksheet
@@ -1809,9 +1809,8 @@ async def search_profile(connection: Connection) -> None:
     platform_folder: str = set_platform_folder(region, platformId)
     match_folder: str = os.path.join(platform_folder, "1. MatchIDs")
     logPrint("请选择召唤师技能和装备的输出语言【默认为中文（中国）】：\nPlease select a language to output the summoner spells and items (the default option is zh_CN):")
-    language_df: pandas.DataFrame = pandas.DataFrame(language_dict)
-    print(format_df(language_df)[0])
-    log.write(format_df(language_df, width_exceed_ask = False, direct_print = False)[0] + "\n")
+    print(format_dt(language_dict)[0])
+    log.write(format_dt(language_dict)[0] + "\n")
     while True:
         language_option: str = logInput()
         if language_option == "" or language_option in [str(i) for i in range(1, 31)]:
