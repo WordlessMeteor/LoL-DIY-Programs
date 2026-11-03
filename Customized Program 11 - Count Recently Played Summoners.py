@@ -29,7 +29,7 @@ use_sgp: bool = args.lol_api == "sgp"
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN, Awesome丶ABC
-# 更新（Last update）：     2026/10/19
+# 更新（Last update）：     2026/11/02
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -2960,7 +2960,7 @@ async def search_recent_players(connection: Connection) -> None:
                     lines_to_drop.append(i)
                 else:
                     gameIds_occurred.add(LoLHistory_df_all["gameId"][i])
-            LoLHistory_df_all.drop(lines_to_drop, inplace = True)
+            LoLHistory_df_all = LoLHistory_df_all.drop(lines_to_drop)
             LoLHistory_df_all = LoLHistory_df_all.reset_index(drop = True)
             LoLHistory_df_all = pandas.concat([LoLHistory_df_all.iloc[:1], LoLHistory_df_all.iloc[1:].sort_values(by = "gameCreationDate", ascending = False)], ignore_index = True) #这里弃用了根据对局序号排序（Here gameId isn't used to sort the values）
             
@@ -3114,7 +3114,7 @@ async def search_recent_players(connection: Connection) -> None:
                     lines_to_drop.append(i)
                 else:
                     gameIds_occurred.add(TFTHistory_df_all["game_id"][i])
-            TFTHistory_df_all.drop(lines_to_drop, inplace = True)
+            TFTHistory_df_all = TFTHistory_df_all.drop(lines_to_drop)
             TFTHistory_df_all = TFTHistory_df_all.reset_index(drop = True)
             TFTHistory_df_all = pandas.concat([TFTHistory_df_all.iloc[:1], TFTHistory_df_all.iloc[1:].sort_values(by = "gameCreationDate", ascending = False)], ignore_index = True) #这里弃用了根据对局序号排序（Here gameId isn't used to sort the values）
             
