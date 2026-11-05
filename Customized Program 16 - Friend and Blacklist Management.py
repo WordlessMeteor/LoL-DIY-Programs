@@ -1,19 +1,18 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-import json, os, pandas, requests, time, traceback, uuid
+import json, os, pandas, requests, time, traceback
 from urllib.parse import urljoin
 from typing import Any, Optional
 from src.utils.logger import LogManager, aInput
 from src.utils.summoner import print_summoner_info, get_info, get_info_name
 from src.utils.format import getISOTime, optimize_bool_display, format_df, addDefaultStyle
-from src.utils.patch import Patch
 from src.utils.runtimeDebug import subscope
 from src.utils.webRequest import requestUrl, SGPSession
 from src.utils.excel_workbook import create_workbook_win32
 from src.core.config.headers import friend_hovercard_header, friend_group_header, conversation_header, message_header, friend_request_header, party_header, invid_header, champSelect_mutedPlayer_header, captureDevice_header, voiceSettings_header, participant_record_header, spectate_nonfriend_header, blockList_header, TFTGame_summary_header
 from src.core.config.servers import set_summonerInfo_folder, save_platform_info
 from src.core.config.const import BOT_UUID
-from src.core.dataframes.matchHistory import get_LoLHistory, get_matchSummary_sgp, sort_LoLGame_stats, sort_LoLGame_stats_sgp, generate_TFTGameSummary_records, sort_TFTGame_stats
+from src.core.dataframes.matchHistory import get_LoLHistory, get_matchSummary_sgp, sort_LoLGame_stats, sort_LoLGame_stats_sgp, generate_TFTGameSummary_records
 from src.core.dataframes.gameflow import sort_ChampSelect_players
 from src.localization.languages.zh_CN import availabilities, RiotRelationships, challengeCrystalLevels, tiers, rarities, spectatorPolicies, ptyTypes, titleAcquisitionTypes, krarities, conversationTypes, messageTypes, system_messages
 
@@ -23,7 +22,7 @@ from src.localization.languages.zh_CN import availabilities, RiotRelationships, 
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/10/12
+# 更新（Last update）：     2026/11/05
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -82,7 +81,9 @@ async def prepare_data_resources(connection: Connection) -> None:
     :type connection: Connection
     '''
     logPrint("正在加载数据资源……\nLoading data resources ...")
-    global platformId, regaliaBanners, challenges, queues, gameQueues, summonerIcons, LoLChampions, titles, wardSkins, championSkins, spells, LoLItems, perks, perkstyles, CherryAugments, TFTCompanions, TFTCompanions_itemIdMap, TFTTraits, TFTChampions, TFTItems, TFTDamageSkins, TFTMapSkins
+    global current_summoner, platformId, regaliaBanners, challenges, queues, gameQueues, summonerIcons, LoLChampions, titles, wardSkins, championSkins, spells, LoLItems, perks, perkstyles, CherryAugments, TFTCompanions, TFTCompanions_itemIdMap, TFTTraits, TFTChampions, TFTItems, TFTDamageSkins, TFTMapSkins
+    ##自己的信息（Self info）
+    current_summoner = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     ##大区信息（Platform information）
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
     platformId = current_party["platformId"]
@@ -172,7 +173,6 @@ async def sort_friend_hovercard(connection: Connection) -> pandas.DataFrame:
     :return: 好友数据框。<br>Friend dataframe.
     :rtype: pandas.DataFrame
     '''
-    current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     friends: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friends")).json()
     friend_groups: list[dict[str, Any]] = await (await connection.request("GET", "/lol-chat/v1/friend-groups")).json()
     friend_group_priority: dict[int, int] = {group["id"]: group["priority"] for group in friend_groups}
@@ -549,7 +549,6 @@ async def get_recent_players(connection: Connection, search_mode: int = 2, lol_s
         search_LoL, search_TFT = False, True
     else:
         search_LoL, search_TFT = False, False
-    current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     current_puuid: str = current_info["puuid"]
     current_summonerId: int = current_info["summonerId"]
     current_summonerName: str = get_info_name(current_info)
@@ -1543,7 +1542,7 @@ async def add_friend(connection: Connection) -> None:
         else:
             prefriend_info: dict[str, Any] = await get_info(connection, prefriend_name, infos = infos)
             if prefriend_info["info_got"]:
-                if prefriend_info["selfInfo"]:
+                if prefriend_info["body"]["puuid"] == current_info["puuid"]:
                     logPrint("你无法把自己加为好友，亲～\nYou cannot friend yourself, silly xD")
                     continue
                 elif prefriend_info["body"]["puuid"] in friend_puuids:
@@ -2477,7 +2476,7 @@ async def invite(connection: Connection) -> None:
                             invitee_summonerName: str = invite_str
                             invitee_info: dict[str, Any] = await get_info(connection, invitee_summonerName, infos = infos)
                             if invitee_info["info_got"]:
-                                if invitee_info["selfInfo"]:
+                                if invitee_info["info"]["body"] == current_info["puuid"]:
                                     logPrint("您已经在房间内了。\nYou're already in the lobby.")
                                 else:
                                     invitee_summonerIds: list[int] = [invitee_info["body"]["summonerId"]]
@@ -4407,7 +4406,6 @@ async def friend_behavior_simulation(connection: Connection) -> None: #在本函
     global spectatorPluginNA_hint_printed, spectatorPluginLegacyDisabled_hint_printed, current_info, folder
     spectatorPluginNA_hint_printed = False
     spectatorPluginLegacyDisabled_hint_printed = False
-    current_info = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     region: str = region_locale["region"]
     #校验客户端是否连接到聊天服务（Verify whether the League Client has connected to Riot Client chat service）
@@ -5161,8 +5159,6 @@ async def blacklist_behavior_simulation(connection: Connection) -> None:
     :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
     :type connection: Connection
     '''
-    global current_info
-    current_info = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     current_hovercard: dict[str, Any] = await (await connection.request("GET", "/lol-hovercard/v1/friend-info/%s" %(current_info["puuid"]))).json()
     CustomURF_BlockList_enabled: bool = False
     while True:

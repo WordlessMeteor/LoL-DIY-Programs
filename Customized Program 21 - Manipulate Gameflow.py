@@ -1,17 +1,16 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-import argparse, copy, json, os, pandas, pickle, psutil, pyperclip, random, re, requests, shutil, subprocess, time, traceback, urllib3, unicodedata, uuid
-from urllib.parse import quote, unquote, urljoin
+import argparse, json, os, pandas, pickle, psutil, pyperclip, random, requests, subprocess, time, traceback, urllib3, uuid
 from typing import Any, Optional
 from src.utils.logger import aInput, LogManager
-from src.utils.summoner import print_summoner_info, get_info, get_info_name
+from src.utils.summoner import get_info, get_info_name
 from src.utils.format import optimize_bool_display, format_df, addDefaultStyle, lcuTime, getISOTime, verify_uuid, normalize_file_name
 from src.utils.runtimeDebug import send_commands
 from src.utils.webRequest import SGPSession, requestUrl
 from src.utils.excel_workbook import create_workbook_win32
 from src.utils.keyControl import isKeyPressed
 from src.core.config.const import ALL_GAMEFLOW_PHASES, BOT_DIFFICULTY_LIST, BOT_UUID, SPECTATOR_POLICY_LIST, GLOBAL_RESPONSE_LAG, REPORT_CATEGORY_LIST_CHAMPSELECT, REPORT_CATEGORY_LIST_POSTGAME
-from src.core.config.headers import champSelect_player_header, custom_lobby_header, skin_header, conversation_header, grid_champion_header, chat_mutedPlayer_header, invid_header, perkPage_header, social_leaderboard_header, availableBot_header, lobby_member_header, inGame_playerAbility_header, inGame_championStat_header, inGame_allPlayer_header, inGame_event_header, inGame_metadata_header, ballot_player_header, eog_mastery_update_header, eog_stat_metadata_lol_header, eog_teamstat_data_lol_header, eog_stat_metadata_tft_header, eog_stat_data_tft_header
+from src.core.config.headers import custom_lobby_header, skin_header, conversation_header, grid_champion_header, chat_mutedPlayer_header, invid_header, perkPage_header, social_leaderboard_header, availableBot_header, lobby_member_header, inGame_playerAbility_header, inGame_championStat_header, inGame_allPlayer_header, inGame_event_header, inGame_metadata_header, ballot_player_header, eog_mastery_update_header, eog_stat_metadata_lol_header, eog_teamstat_data_lol_header, eog_stat_metadata_tft_header
 from src.core.config.conditional_formatting import addFormat_inGame_allPlayer_wb
 from src.core.dataframes.gameflow import get_gameflow_phase, get_champ_select_session, get_champSelect_player, get_champSelect_action, sort_ChampSelect_players, sort_inGame_players, sort_eog_playerstat_lol_data, sort_eog_stat_tft_data
 from src.core.dataframes.champions import test_bot, sort_inventory_champions, get_champion_searchTags, filter_champion
@@ -23,7 +22,7 @@ from src.core.dataframes.filter import filter_df
 from src.core.process.replay import download_replay_lcu, watch_replay
 from src.localization.general import zoom_scale_dict
 from src.localization.multilingual import gamemodes, gamemaps, ARAMmaps, gameTypes_configId_map, report_categories
-from src.localization.languages.zh_CN import spectatorPolicies, team_colors_int, subteam_colors, rarities, krarities, augment_rarity, skinClassifications, damageTypes, conversationTypes, messageTypes, system_messages, invidStates, invidTypes, slotTypes, availabilities, inventoryType_dict, ownershipTypes, botDifficulty_dict, roles, positions, eventTypes_liveclient, DragonTypes, team_colors_str, honorType_tooltip_headers, honorType_tooltip_bodies
+from src.localization.languages.zh_CN import spectatorPolicies, team_colors_int, krarities, skinClassifications, conversationTypes, messageTypes, system_messages, slotTypes, availabilities, inventoryType_dict, ownershipTypes, botDifficulty_dict, positions, eventTypes_liveclient, DragonTypes, team_colors_str, honorType_tooltip_headers, honorType_tooltip_bodies
 
 urllib3.disable_warnings() #忽略访问游戏数据时产生的警告（Neglect warnings produced when the program is accessing the in-game data）
 parser: argparse.ArgumentParser = argparse.ArgumentParser(formatter_class = argparse.RawTextHelpFormatter)
@@ -36,7 +35,7 @@ args: argparse.Namespace = parser.parse_args()
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN & AwesomeABC
-# 更新（Last update）：     2026/10/12
+# 更新（Last update）：     2026/11/05
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -1036,7 +1035,6 @@ async def expand_match_history(connection: Connection) -> None:
     if not expand_matchHistory_hint_printed:
         logPrint("请确保您从未点击过要查询的玩家的对局记录。如果您已经点击过，则程序只能获取到目前客户端接收到的对局，请等待该信息过期后再重新使用此功能。\nPlease make sure you haven't clicked the MATCH HISTORY tab of the summoner you want to search for. If you happen to have clicked it, then the program can only get the matches already received, and you need to wait for that information to expire and then use this function.\n")
         expand_matchHistory_hint_printed = True
-    current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     logPrint('请输入要查询的召唤师名称，退出请输入“0”：\nPlease input the summoner name to be searched. Submit "0" to exit.')
     while True:
         summoner_name: str = logInput()
@@ -1139,7 +1137,8 @@ async def display_current_info(connection: Connection) -> None:
     :param connection: 通过lcu-driver库创建的用于访问LCU API的连接对象。<br>A Connection object created through lcu-driver library, meant to access LCU API.
     :type connection: Connection
     '''
-    current_info: dict[str, Any] = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
+    global current_info
+    current_info = await (await connection.request("GET", "/lol-summoner/v1/current-summoner")).json()
     logPrint(json.dumps(current_info, indent = 4, ensure_ascii = False), write_time = False)
 
 def search_collection_item(name_queryStr: str, collection_df: pandas.DataFrame) -> list[int]:
@@ -5141,7 +5140,7 @@ async def invite(connection: Connection) -> None: #相比聊天脚本，这里�
         else:
             invitee_info: dict[str, Any] = await get_info(connection, invite_str, infos = infos)
             if invitee_info["info_got"]:
-                if invitee_info["selfInfo"]:
+                if invitee_info["body"]["puuid"] == current_info["puuid"]:
                     logPrint("你不能邀请你自己，亲～\nYou can't invite yourself, silly xD")
                 else:
                     invitee_summonerName: str = get_info_name(invitee_info["body"])
