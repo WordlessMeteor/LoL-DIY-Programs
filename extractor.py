@@ -1729,8 +1729,8 @@ if __name__ == "__main__":
         with open(tftstringtable_en_path, "r", encoding = "utf-8") as fp:
             tftstringtable_en: dict[str, int | dict[str, str]] = json.load(fp)
         ##地图（Map）
-        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
-            map22_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map22/map22.bin.json", "r", encoding = "utf-8") as fp:
+        #     map22_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # map22_bin = LoLDataExtractor.resolve_bin_hash(map22_bin)
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/data/maps/shipping/map30/map30.bin.json", "r", encoding = "utf-8") as fp:
         #     map30_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
@@ -1758,8 +1758,8 @@ if __name__ == "__main__":
         #     kiwi_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # kiwi_bin = LoLDataExtractor.resolve_bin_hash(kiwi_bin)
         ##整合后的数据（Merged data）
-        # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
-        #     champions_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/champions_bin.json", "r", encoding = "utf-8") as fp:
+            champions_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # champions_bin = LoLDataExtractor.resolve_bin_hash(champions_bin)
         # with open("C:/Users/19250/Documents/Workspace/JupyterLab/英雄联盟数据提取/characters_bin.json", "r", encoding = "utf-8") as fp:
         #     characters_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
@@ -1803,8 +1803,8 @@ if __name__ == "__main__":
         logPrint("说明文本测试样例：")
         tests: list[dict[str, Any]] = [
             {
-                "tooltip": "战斗开始@DelaySeconds@秒后，【日月双蚀】处决最低生命值的敌人，每@EclipseBeamPeriod@秒重复一次。",
-                "binData": map22_bin["Maps/Shipping/Map22/Sets/TFTSet18/Traits/DA_18_Eclipse"],
+                "tooltip": "阿兹尔召唤一个持续@SoldierDuration@秒的<keywordMajor>黄沙士兵</keywordMajor>。当阿兹尔攻击处在一个<keywordMajor>沙漠士兵</keywordMajor>附近的敌人时，他会转而命令该士兵进行戳刺，在其方向上造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。<br><br>这个技能拥有@MaxAmmo@层充能。",
+                "binData": champions_bin["Characters/Azir/Spells/AzirWAbility/AzirW"]["mSpell"],
                 "reservedVars": None
             },
         ]
