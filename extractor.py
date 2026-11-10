@@ -41,6 +41,7 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], dType: Literal["champi
         SpellObject     mSpell|{f9c2333e}               模式覆盖冷却时间（Mode overriden cooldown time）<br>
         SpellObject     mSpell|{b08bc498}               模式覆盖充能时间（Mode overriden charge time）<br>
         SpellObject     mSpell|DataValuesModeOverride   模式覆盖数值（Mode overriden data values）<br>
+        SpellObject     mSpell|{66185ec4}               模式覆盖公式（Mode overriden formula）<br>
         ItemData        DataValuesModeOverride          模式覆盖数值（Mode overriden data values）
         </pre>
     :type keyPaths: str
@@ -143,7 +144,7 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], dType: Literal["champi
                         value["mSpell"] = LoLDataExtractor.normalizeBinData(value["mSpell"])
                     elif value["__type"] == "ItemData":
                         value = LoLDataExtractor.normalizeBinData(value)
-                    if endKey in {"{f9c2333e}", "{b08bc498}", "DataValuesModeOverride"}:
+                    if endKey in {"{f9c2333e}", "{b08bc498}", "DataValuesModeOverride", "{66185ec4}"}:
                         if gameModeName in tmp_ptr:
                             #获取技能名称（Get ability name）
                             if value["__type"] == "SpellObject":
@@ -238,6 +239,20 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], dType: Literal["champi
                                         overrideValue = str(LoLDataExtractor.aRound(itemDataValue["mValue"], 5))
                                         s += "{%s}：%s → %s" %(var, defaultValue, overrideValue)
                                         if i < len(overrideValues["DataValues"]) - 1:
+                                            s += "；"
+                                        else:
+                                            s += "\n"
+                            elif endKey == "{66185ec4}":
+                                overrideValues: dict[str, Any] = tmp_ptr[gameModeName]
+                                if overrideValues["__type"] == "{4acf67d2}":
+                                    overrideCalculations: dict[str, Any] = overrideValues["Calculations"]
+                                    s += "{%s}【%s】（%s）：" %(characterName, keyName_content, mHotKey)
+                                    for i in range(len(overrideCalculations)):
+                                        var: str = list(overrideCalculations.keys())[i]
+                                        defaultValue: str = LoLDataExtractor.variableCalculation(value["mSpell"], var, "", "zh_CN", enableModeOverride = False)
+                                        overrideValue: str = LoLDataExtractor.variableCalculation(value["mSpell"], var, "", "zh_CN", enableModeOverride = True, gameMode = key)
+                                        s += "{%s}：%s → %s" %(var, defaultValue, overrideValue)
+                                        if i < len(overrideCalculations) - 1:
                                             s += "；"
                                         else:
                                             s += "\n"
@@ -1739,8 +1754,8 @@ if __name__ == "__main__":
         #     map33_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # map33_bin = LoLDataExtractor.resolve_bin_hash(map33_bin)
         ##装备（Item）
-        # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
-        #     items_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
+        with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/items.cdtb.bin.json", "r", encoding = "utf-8") as fp:
+            items_bin: dict[str, list[str] | dict[str, Any]] = json.load(fp)
         # items_bin = LoLDataExtractor.resolve_bin_hash(items_bin)
         ##共享数据（Shared data）
         # with open("C:/Users/19250/Documents/GitHub/LoL-Dragon-Change-S16/Data/cdragon/pbe/game/shared.cdtb.bin.json", "r", encoding = "utf-8") as fp:
@@ -1800,33 +1815,34 @@ if __name__ == "__main__":
         # logPrint(LoLDataExtractor.get_strtable_value(lolstringtable_zh, mDisplayName_key, default = "获取失败。"))
         
         #说明文本转换（Tooltip transformation）
-        logPrint("说明文本测试样例：")
-        tests: list[dict[str, Any]] = [
-            {
-                "tooltip": "阿兹尔召唤一个持续@SoldierDuration@秒的<keywordMajor>黄沙士兵</keywordMajor>。当阿兹尔攻击处在一个<keywordMajor>沙漠士兵</keywordMajor>附近的敌人时，他会转而命令该士兵进行戳刺，在其方向上造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。<br><br>这个技能拥有@MaxAmmo@层充能。",
-                "binData": champions_bin["Characters/Azir/Spells/AzirWAbility/AzirW"]["mSpell"],
-                "reservedVars": None
-            },
-        ]
-        for i in range(len(tests)):
-            LoLDataExtractor.calculatedVariables.clear()
-            logPrint("*" * 20)
-            logPrint("样例%d：" %(i + 1))
-            tooltip_raw: str = tests[i]["tooltip"]
-            logPrint("原始说明文本：\n" + tooltip_raw)
-            binData: dict[str, Any] = tests[i]["binData"]
-            reservedVars: Optional[dict[str, str]] = tests[i].get("reservedVars")
-            logPrint("----")
-            logPrint("转换文本：")
-            logPrint(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = False))
-            # logPrint(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = True))
-            # logPrint(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = False))
-            # logPrint(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = True))
-        else:
-            logPrint("*" * 20)
+        # logPrint("说明文本测试样例：")
+        # tests: list[dict[str, Any]] = [
+        #     {
+        #         "tooltip": "阿兹尔召唤一个持续@SoldierDuration@秒的<keywordMajor>黄沙士兵</keywordMajor>。当阿兹尔攻击处在一个<keywordMajor>沙漠士兵</keywordMajor>附近的敌人时，他会转而命令该士兵进行戳刺，在其方向上造成<magicDamage>@TotalDamage@魔法伤害</magicDamage>。<br><br>这个技能拥有@MaxAmmo@层充能。",
+        #         "binData": champions_bin["Characters/Azir/Spells/AzirWAbility/AzirW"]["mSpell"],
+        #         "reservedVars": None
+        #     },
+        # ]
+        # for i in range(len(tests)):
+        #     LoLDataExtractor.calculatedVariables.clear()
+        #     logPrint("*" * 20)
+        #     logPrint("样例%d：" %(i + 1))
+        #     tooltip_raw: str = tests[i]["tooltip"]
+        #     logPrint("原始说明文本：\n" + tooltip_raw)
+        #     binData: dict[str, Any] = tests[i]["binData"]
+        #     reservedVars: Optional[dict[str, str]] = tests[i].get("reservedVars")
+        #     logPrint("----")
+        #     logPrint("转换文本：")
+        #     logPrint(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = False))
+        #     # logPrint(LoLDataExtractor.tooltipTransform(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = True))
+        #     # logPrint(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = False))
+        #     # logPrint(LoLDataExtractor.tooltipSubstitute(tooltip_raw, lolstringtable_zh, binData, locale, enableModeOverride = True, reservedVars = reservedVars, reserve_variable = True))
+        # else:
+        #     logPrint("*" * 20)
         
         #模式重载（Mode override）
         # logPrint(modeOverrideTooltipTransform(champions_bin, dType = "champion", objectType = "SpellObject", keyPaths = "mSpell|DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
+        logPrint(modeOverrideTooltipTransform(champions_bin, dType = "champion", objectType = "SpellObject", keyPaths = "mSpell|{66185ec4}", gameModeName = "cherry", strtable = lolstringtable_zh))
         # logPrint(modeOverrideTooltipTransform(items_bin, dType = "item", objectType = "ItemData", keyPaths = "DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
         
         return 0
