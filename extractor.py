@@ -19,7 +19,7 @@ from src.core.extractor.types import *
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/10/15
+# 更新（Last update）：     2026/11/11
 #=============================================================================
 
 #定义模式覆盖文本描述函数（Define the overriden data tooltip function）
@@ -820,7 +820,7 @@ if __name__ == "__main__":
                 else:
                     data_options: list[int] = []
                     if mode == "all":
-                        data_options = list(range(1, 15))
+                        data_options = list(range(1, 16))
                     else:
                         try:
                             tmp = eval(mode)
@@ -834,7 +834,7 @@ if __name__ == "__main__":
                                 else:
                                     logPrint("您输入的正整数不在合法范围内。请重新输入。\nThe integer you input doesn't fall within a legal range. Please try again.")
                             elif isinstance(tmp, Iterable) and all(map(lambda x: isinstance(x, int), tmp)):
-                                data_options = [_ for _ in tmp if _ >= 1 and _ <= 14]
+                                data_options = [_ for _ in tmp if _ >= 1 and _ <= 15]
                             else:
                                 logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                     if one_click and len(versions_conf) == 1:
@@ -1399,7 +1399,7 @@ if __name__ == "__main__":
             else:
                 data_options: list[int] = []
                 if mode == "all":
-                    data_options = list(range(1, 15))
+                    data_options = list(range(1, 16))
                 else:
                     try:
                         tmp = eval(mode)
@@ -1413,7 +1413,7 @@ if __name__ == "__main__":
                             else:
                                 logPrint("您输入的正整数不在合法范围内。请重新输入。\nThe integer you input doesn't fall within a legal range. Please try again.")
                         elif isinstance(tmp, Iterable) and all(map(lambda x: isinstance(x, int), tmp)):
-                            data_options = [_ for _ in tmp if _ >= 1 and _ <= 14]
+                            data_options = [_ for _ in tmp if _ >= 1 and _ <= 15]
                         else:
                             logPrint("您的输入有误！请重新输入。\nERROR input! Please try again.")
                 nDataOptions += len(data_options)
