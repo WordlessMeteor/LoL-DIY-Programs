@@ -18,7 +18,7 @@ from src.localization.languages.zh_CN import slotTypes, positions, recommendedAt
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/08/29
+# 更新（Last update）：     2026/11/18
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -63,7 +63,7 @@ async def prepare_data_resources(connection: Connection) -> None:
     global platformId, spells, perks_source, perks, perkstyles_source, perkstyles, LoLChampions, recommended_position_for_champion, champion_colloq_dict
     #大区信息（Platform information）
     current_party: dict[str, Any] = await (await connection.request("GET", "/lol-lobby/v1/parties/player")).json()
-    platformId: str = current_party["platformId"]
+    platformId = current_party["platformId"]
     region_locale: dict[str, str] = await (await connection.request("GET", "/riotclient/region-locale")).json()
     locale: str = region_locale["locale"]
     #召唤师技能（Summoner spell）
