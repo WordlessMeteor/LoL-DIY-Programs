@@ -19,7 +19,7 @@ from src.core.extractor.types import *
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： Morilli, Le poussin, Moga
-# 更新（Last update）：     2026/11/11
+# 更新（Last update）：     2026/11/18
 #=============================================================================
 
 #定义模式覆盖文本描述函数（Define the overriden data tooltip function）
@@ -1592,7 +1592,7 @@ if __name__ == "__main__":
                         if dir_type == "extract":
                             anvil_paths: list[Path] = [
                                 extract_game_dir / "data/maps/shipping/map30/map30.bin.json",
-                                extract_game_dir / "data/maps/shipping/map12/map12.bin.json"
+                                extract_game_dir / "unknown/507cdd64276919f5.bin.json"
                             ]
                         else:
                             anvil_paths = [
