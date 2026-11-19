@@ -1,6 +1,6 @@
 from lcu_driver import Connector
 from lcu_driver.connection import Connection
-from lcu_driver.exceptions import NoClientUxDetected
+from lcu_driver.exceptions import NoLeagueClientDetected
 import asyncio
 from asyncio import AbstractEventLoop
 from typing import Any, Callable, Awaitable, Optional
@@ -45,7 +45,7 @@ def LCUConnect(on_ready: ConnectionCallBack, on_close: Optional[ConnectionCallBa
     #-----------------------------------------------------------------------------
     try:
         connector.start()
-    except NoClientUxDetected:
+    except NoLeagueClientDetected:
         print("未检测到运行中的英雄联盟客户端。\nNo League Client is found running.")
     else:
         new_loop: AbstractEventLoop = asyncio.new_event_loop()
