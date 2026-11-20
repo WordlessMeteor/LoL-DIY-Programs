@@ -272,11 +272,19 @@ class AugmentExtractor(LoLDataExtractor):
         augment_header_keys: list[str] = list(augment_header.keys())
         i: int = augment_header_keys.index(field)
         #数据整理核心部分（Data organization core part）
-        AugmentDisplayTags_zh: dict[int, str] = {0: "己方", 1: "伤害", 2: "综合", 3: "复原力", 4: "速度", 5: "功能", 6: "属性锻造器", 7: "经济", 8: "任务", 9: "任务线", 10: "经典模式版"} #通过字符串常量池的“cherry_augmentdisplaytag_...”类键得到（Obtained by "cherry_augmentdisplaytag_..." keys）
-        AugmentDisplayTags_en: dict[int, str] = {0: "Ally", 1: "Damage", 2: "General", 3: "Resilience", 4: "Speed", 5: "Utility", 6: "Stat Anvil", 7: "Economy", 8: "Quest", 9: "Questline", 10: "Classic-ish"}
+        if Patch(self.patch_number) < Patch("14.7"):
+            AugmentDisplayTags_zh: dict[int, str] = {2: "己方", 4: "伤害", 8: "综合", 16: "复原力", 32: "速度", 64: "功能"}
+            AugmentDisplayTags_en: dict[int, str] = {2: "Ally", 4: "Damage", 8: "General", 16: "Resilience", 32: "Speed", 64: "Utility"}
+        else:
+            AugmentDisplayTags_zh = {0: "己方", 1: "伤害", 2: "综合", 3: "复原力", 4: "速度", 5: "功能", 6: "属性锻造器", 7: "经济", 8: "任务", 9: "任务线", 10: "经典模式版"} #通过字符串常量池的“cherry_augmentdisplaytag_...”类键得到（Obtained by "cherry_augmentdisplaytag_..." keys）
+            AugmentDisplayTags_en = {0: "Ally", 1: "Damage", 2: "General", 3: "Resilience", 4: "Speed", 5: "Utility", 6: "Stat Anvil", 7: "Economy", 8: "Quest", 9: "Questline", 10: "Classic-ish"}
         AugmentDisplayTags: dict[int, str] = AugmentDisplayTags_zh if self.locale in self.ZH_LOCALE else AugmentDisplayTags_en
-        augment_rarities_zh: dict[int, str] = {0: "白银", 1: "黄金", 2: "棱彩", 3: "超凡", 4: "晶耀"}
-        augment_rarities_en: dict[int, str] = {0: "Silver", 1: "Gold", 2: "Prismatic", 3: "Unique", 4: "SheenGlow"}
+        if Patch(self.patch_number) < Patch("14.6"):
+            augment_rarities_zh: dict[int, str] = {2: "白银", 4: "黄金", 8: "棱彩"}
+            augment_rarities_en: dict[int, str] = {2: "Silver", 4: "Gold", 8: "Prismatic"}
+        else:
+            augment_rarities_zh = {0: "白银", 1: "黄金", 2: "棱彩", 3: "超凡", 4: "晶耀"}
+            augment_rarities_en = {0: "Silver", 1: "Gold", 2: "Prismatic", 3: "Unique", 4: "SheenGlow"}
         augment_rarities: dict[int, str] = augment_rarities_zh if self.locale in self.ZH_LOCALE else augment_rarities_en
         pStrConst: re.Pattern[str] = re.compile(r"_content_\w*")
         strtable_lol_target: dict[str, int | dict[str, str]] = self.mainstringtable_target if self.strtable_organize_manner == 2 else self.lolstringtable_target
@@ -328,7 +336,7 @@ class AugmentExtractor(LoLDataExtractor):
             elif i == 50: #强化符文显示标签内容（`AugmentDisplayTags_content`）
                 to_append = list(map(lambda x: AugmentDisplayTags[x], value["AugmentDisplayTags"])) if "AugmentDisplayTags" in value else ""
             elif i == 51: #位阶（`rarityValue`）
-                to_append = augment_rarities[value.get("rarity", 0)]
+                to_append = augment_rarities[value.get("rarity", 2 if Patch(self.patch_number) < Patch("14.6") else 0)]
             elif i == 52: #根指令对象（`RootSpellObject`）
                 to_append = source.get(value["RootSpell"], "")
             elif i == 53: #其它指令对象（`AdditionalSpells_Object`）
