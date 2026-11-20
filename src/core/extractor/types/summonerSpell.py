@@ -120,7 +120,7 @@ class SummonerSpellExtractor(LoLDataExtractor):
         for (key1, value) in summonerSpell_bin.items():
             for i in range(len(summonerSpell_header_keys)):
                 key: str = summonerSpell_header_keys[i]
-                to_append: Any = self.generate_spell_record(summonerSpell_data, key, key1, value)
+                to_append: Any = self.generate_spell_record(summonerSpell_data, key, key1, value, self.patch_number)
                 summonerSpell_data[key].append(to_append)
                 summonerSpell_data_json[key].append(pyobj2json(to_append))
         

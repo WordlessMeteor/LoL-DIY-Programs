@@ -203,7 +203,7 @@ class AnvilExtractor(LoLDataExtractor):
             locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
             strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
             tooltip_key: str = data_ref[subkey1][-1]
-            tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+            tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
             if subkey2.endswith("_burn"):
                 if "RootSpell" in value:
                     spellKey: str = value["RootSpell"]
@@ -216,7 +216,7 @@ class AnvilExtractor(LoLDataExtractor):
                 if mSpell == None:
                     mSpell = {}
                 self.__class__.calculatedVariables.clear()
-                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, self.patch_number, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                 to_append = tooltip_burn
             else:
                 to_append = tooltip_raw

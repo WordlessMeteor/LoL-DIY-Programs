@@ -507,7 +507,7 @@ class MapExtractor(LoLDataExtractor):
                     key: str = map_header_keys[i]
                     Level1Key, objectType, Level2Key = key.split()[:3]
                     if Level1Key in value and value[Level1Key] in maps_bin and Level2Key in maps_bin[value[Level1Key]]:
-                        to_append = self.get_strtable_value(strtable_lol_target, maps_bin[value[Level1Key]][Level2Key], default = "")
+                        to_append = self.get_strtable_value(strtable_lol_target, self.patch_number, maps_bin[value[Level1Key]][Level2Key], default = "")
                     else:
                         to_append = ""
                     map_data[key].append(to_append)

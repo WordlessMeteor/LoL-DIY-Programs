@@ -131,7 +131,7 @@ class CameoExtractor(LoLDataExtractor):
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = cameo_data[subkey1][-1]
-                        tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
                             tooltip_burn = self.tooltipPreparation(tooltip_raw, self.locale if useTargetLocale else self.DEFAULT_LOCALE)
                             tooltip_burn = self.tooltipPostProcessing(tooltip_burn, self.locale if useTargetLocale else self.DEFAULT_LOCALE)

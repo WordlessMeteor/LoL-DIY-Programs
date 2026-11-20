@@ -279,10 +279,10 @@ class TFTExtractor(LoLDataExtractor):
                             flexibleData["tftstringtable"] = strtable_locale
                             flexibleData["stringtable"] = strtable_tft_target if useTargetLocale else strtable_tft_default
                             tooltip_key: str = TFTSet_data[subkey1][-1]
-                            tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                            tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                             if subkey2.endswith("_burn"):
                                 self.__class__.calculatedVariables.clear()
-                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
+                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, self.patch_number, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                                 to_append = tooltip_burn
                             else:
                                 to_append = tooltip_raw
@@ -292,7 +292,7 @@ class TFTExtractor(LoLDataExtractor):
                                 if "mDisplayNameTra" in trait:
                                     tooltip_key = trait["mDisplayNameTra"]
                                     strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 97 else strtable_tft_default
-                                    to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                    to_append = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                                 else:
                                     to_append = trait["mName"]
                             else:
@@ -340,7 +340,7 @@ class TFTExtractor(LoLDataExtractor):
                                             if ShopData_key in self.map22_bin and "mDisplayNameTra" in self.map22_bin[ShopData_key]:
                                                 ShopData_displayName_key: str = self.map22_bin[ShopData_key]["mDisplayNameTra"]
                                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 136 else strtable_tft_default
-                                                ShopDataList_names.append(self.get_strtable_value(strtable_locale, ShopData_displayName_key, default = ShopData_displayName_key))
+                                                ShopDataList_names.append(self.get_strtable_value(strtable_locale, self.patch_number, ShopData_displayName_key, default = ShopData_displayName_key))
                                             else:
                                                 ShopDataList_names.append(ShopData_key)
                                         ShopDataLists_names.append(ShopDataList_names)
@@ -367,7 +367,7 @@ class TFTExtractor(LoLDataExtractor):
                                     if portal_key in self.map22_bin:
                                         regionName_key: str = self.map22_bin[portal_key]["RegionTra"]
                                         strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 140 else strtable_tft_default
-                                        regionNames.append(self.get_strtable_value(strtable_locale, regionName_key, default = regionName_key))
+                                        regionNames.append(self.get_strtable_value(strtable_locale, self.patch_number, regionName_key, default = regionName_key))
                                     else:
                                         regionNames.append(portal_key)
                                 to_append = regionNames
@@ -413,7 +413,7 @@ class TFTExtractor(LoLDataExtractor):
                                                 cItem = self.map22_bin[item_key]
                                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 146 else strtable_tft_default
                                                 if "mDisplayNameTra" in cItem:
-                                                    itemNames.append(self.get_strtable_value(strtable_locale, cItem["mDisplayNameTra"], default = cItem["mDisplayNameTra"]))
+                                                    itemNames.append(self.get_strtable_value(strtable_locale, self.patch_number, cItem["mDisplayNameTra"], default = cItem["mDisplayNameTra"]))
                                                 else:
                                                     itemNames.append(cItem["mName"])
                                             else:
@@ -459,10 +459,10 @@ class TFTExtractor(LoLDataExtractor):
                                 flexibleData["tftstringtable"] = strtable_locale
                                 flexibleData["stringtable"] = strtable_tft_target if useTargetLocale else strtable_tft_default
                                 tooltip_key: str = TFTSet_data[subkey1][-1]
-                                tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                                 if subkey2.endswith("_burn"):
                                     self.__class__.calculatedVariables.clear()
-                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
+                                    tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, self.patch_number, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                                     to_append = tooltip_burn
                                 else:
                                     to_append = tooltip_raw
@@ -511,7 +511,7 @@ class TFTExtractor(LoLDataExtractor):
                                 useTargetLocale: bool = subkey2.split("_")[2] == "zh"
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                                 tooltip_key: str = TFTSet_data[subkey1][-1]
-                                tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                                 to_append = tooltip_raw
                         else:
                             to_append = ""
@@ -543,7 +543,7 @@ class TFTExtractor(LoLDataExtractor):
                         flexibleData["tftstringtable"] = strtable_locale
                         flexibleData["stringtable"] = strtable_tft_target if useTargetLocale else strtable_tft_default
                         tooltip_key: str = TFTShop_data[subkey1][-1]
-                        tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                         if i == 22 or i == 23: #本地化描述。往往是一个英雄的技能（Localized description, usually of a champion spell）
                             if "characters_bin_dict" in self.__class__.merged_data_cache:
                                 if tooltip_key != "" and tooltip_key in self.__class__.Spell_tooltip_map:
@@ -556,7 +556,7 @@ class TFTExtractor(LoLDataExtractor):
                             mSpell = value
                         if subkey2.endswith("_burn"):
                             self.__class__.calculatedVariables.clear()
-                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
+                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, self.patch_number, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                             to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -584,7 +584,7 @@ class TFTExtractor(LoLDataExtractor):
                                         if "mDisplayNameTra" in ShopData:
                                             strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 5 else strtable_tft_default
                                             tooltip_key: str = ShopData["mDisplayNameTra"]
-                                            to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key)
+                                            to_append = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = tooltip_key)
                                         else:
                                             to_append = ShopData["mName"]
                                     else:
@@ -637,7 +637,7 @@ class TFTExtractor(LoLDataExtractor):
                                 if mRound_key in self.map22_bin and "mDisplayNameTra" in self.map22_bin[mRound_key]:
                                     tooltip_key: str = self.map22_bin[mRound_key]["mDisplayNameTra"]
                                     strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 5 else strtable_tft_default
-                                    to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key)
+                                    to_append = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = tooltip_key)
                                 else:
                                     to_append = ""
                             TFTStageRound_data[key].append(to_append)
@@ -667,7 +667,7 @@ class TFTExtractor(LoLDataExtractor):
                                 stateTooltips: dict[str, str] = {}
                                 for (state, tooltip_key) in value["mStateTooltipsTra"].items():
                                     strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 51 else strtable_tft_default
-                                    stateTooltips[state] = self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key)
+                                    stateTooltips[state] = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = tooltip_key)
                                 to_append = stateTooltips
                             else:
                                 to_append = ""
@@ -677,7 +677,7 @@ class TFTExtractor(LoLDataExtractor):
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                             tooltip_key: str = TFTRound_data[subkey1][-1]
-                            tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                            tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                             to_append = tooltip_raw
                     TFTRound_data[key].append(to_append)
                     TFTRound_data_json[key].append(pyobj2json(to_append))
@@ -704,10 +704,10 @@ class TFTExtractor(LoLDataExtractor):
                         flexibleData["tftstringtable"] = strtable_locale
                         flexibleData["stringtable"] = strtable_tft_target if useTargetLocale else strtable_tft_default
                         tooltip_key: str = TFTPortal_data[subkey1][-1]
-                        tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
                             self.__class__.calculatedVariables.clear()
-                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
+                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, self.patch_number, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                             to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -720,7 +720,7 @@ class TFTExtractor(LoLDataExtractor):
                                     if "mDisplayNameTra" in self.map22_bin[uniqueAugment_key]:
                                         tooltip_key: str = self.map22_bin[uniqueAugment_key]["mDisplayNameTra"]
                                         strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 25 else strtable_tft_default
-                                        uniqueAugment_names.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
+                                        uniqueAugment_names.append(self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = tooltip_key))
                                     else:
                                         uniqueAugment_names.append(self.map22_bin[uniqueAugment_key]["mName"])
                                 else:
@@ -754,7 +754,7 @@ class TFTExtractor(LoLDataExtractor):
                                     if "mDisplayNameTra" in self.map22_bin[augment_key]:
                                         tooltip_key: str = self.map22_bin[augment_key]["mDisplayNameTra"]
                                         strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 13 else strtable_tft_default
-                                        ExcludedAugmentNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
+                                        ExcludedAugmentNames.append(self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = tooltip_key))
                                     else:
                                         ExcludedAugmentNames.append(self.map22_bin[augment_key]["mName"])
                                 else:
@@ -809,10 +809,10 @@ class TFTExtractor(LoLDataExtractor):
                         flexibleData["tftstringtable"] = strtable_locale
                         flexibleData["stringtable"] = strtable_tft_target if useTargetLocale else strtable_tft_default
                         tooltip_key: str = TFTCharacterRole_data[subkey1][-1]
-                        tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
                             self.__class__.calculatedVariables.clear()
-                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
+                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, self.patch_number, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                             to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -823,7 +823,7 @@ class TFTExtractor(LoLDataExtractor):
                                 if "mDisplayNameTra" in self.map22_bin[item_key]:
                                     tooltip_key: str = self.map22_bin[item_key]["mDisplayNameTra"]
                                     strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 26 else strtable_tft_default
-                                    itemNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
+                                    itemNames.append(self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = tooltip_key))
                                 else:
                                     itemNames.append(self.map22_bin[item_key]["mName"])
                             else:
@@ -846,7 +846,7 @@ class TFTExtractor(LoLDataExtractor):
                                     if "mDisplayNameTra" in self.map22_bin[item_key]:
                                         tooltip_key: str = self.map22_bin[item_key]["mDisplayNameTra"]
                                         strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 4 else strtable_tft_default
-                                        itemNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
+                                        itemNames.append(self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = tooltip_key))
                                     else:
                                         itemNames.append(self.map22_bin[item_key]["mName"])
                                 else:
@@ -887,7 +887,7 @@ class TFTExtractor(LoLDataExtractor):
                                                 if "mDisplayNameTra" in self.map22_bin[item_key]:
                                                     tooltip_key: str = self.map22_bin[item_key]["mDisplayNameTra"]
                                                     strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 29 else strtable_tft_default
-                                                    itemNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
+                                                    itemNames.append(self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = tooltip_key))
                                                 else:
                                                     itemNames.append(self.map22_bin[item_key]["mName"])
                                             else:
@@ -903,7 +903,7 @@ class TFTExtractor(LoLDataExtractor):
                                         if "mDisplayNameTra" in self.map22_bin[mValue_key]:
                                             tooltip_key: str = self.map22_bin[mValue_key]["mDisplayNameTra"]
                                             strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if key.endswith("_zh") else strtable_tft_default
-                                            mSubkey_names.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
+                                            mSubkey_names.append(self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = tooltip_key))
                                         else:
                                             mSubkey_names.append(self.map22_bin[mValue_key]["mName"])
                                     else:
@@ -917,7 +917,7 @@ class TFTExtractor(LoLDataExtractor):
                             if "mDisplayNameTra" in self.map22_bin[value[subkey]]:
                                 tooltip_key: str = self.map22_bin[value[subkey]]["mDisplayNameTra"]
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if key.endswith("_zh") else strtable_tft_default
-                                to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key)
+                                to_append = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = tooltip_key)
                             else:
                                 to_append = self.map22_bin[value[subkey]]["mName"]
                         else:
@@ -932,10 +932,10 @@ class TFTExtractor(LoLDataExtractor):
                         flexibleData["tftstringtable"] = strtable_locale
                         flexibleData["stringtable"] = strtable_tft_target if useTargetLocale else strtable_tft_default
                         tooltip_key: str = TFTItem_data[subkey1][-1]
-                        tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
                             self.__class__.calculatedVariables.clear()
-                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
+                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, self.patch_number, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                             to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -961,7 +961,7 @@ class TFTExtractor(LoLDataExtractor):
                                     if "mDisplayNameTra" in self.map22_bin[trait_key]:
                                         tooltip_key: str = self.map22_bin[trait_key]["mDisplayNameTra"]
                                         strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 3 else strtable_tft_default
-                                        traitNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
+                                        traitNames.append(self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = tooltip_key))
                                     else:
                                         traitNames.append(self.map22_bin[trait_key]["mName"])
                                 else:
@@ -999,10 +999,10 @@ class TFTExtractor(LoLDataExtractor):
                         flexibleData["tftstringtable"] = strtable_locale
                         flexibleData["stringtable"] = strtable_tft_target if useTargetLocale else strtable_tft_default
                         tooltip_key: str = TFTTrait_data[subkey1][-1]
-                        tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
                             self.__class__.calculatedVariables.clear()
-                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
+                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, self.patch_number, enableModeOverride = False, reserve_variable = self.reserve_variable, flexibleData = flexibleData)
                             to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
@@ -1032,7 +1032,7 @@ class TFTExtractor(LoLDataExtractor):
                                             if "mDisplayNameTra" in TFTItemMap[item_key]:
                                                 tooltip_key: str = TFTItemMap[item_key]["mDisplayNameTra"]
                                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 10 else strtable_tft_default
-                                                itemNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
+                                                itemNames.append(self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = tooltip_key))
                                             else:
                                                 itemNames.append(TFTItemMap[item_key]["mName"])
                                         else:
@@ -1077,7 +1077,7 @@ class TFTExtractor(LoLDataExtractor):
                     else: #本地化通告标题（Localized announcement title）
                         tooltip_key: str = value["mTitleTra"]
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if i == 7 else strtable_tft_default
-                        to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        to_append = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                     TFTAnnouncement_data[key].append(to_append)
                     TFTAnnouncement_data_json[key].append(pyobj2json(to_append))
         

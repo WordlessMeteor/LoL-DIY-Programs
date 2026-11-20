@@ -152,9 +152,9 @@ class ItemExtractor(LoLDataExtractor):
                         to_append: Any = key1
                     elif i <= 100:
                         if i == 84: #显示名（中文）（`mDisplayName_content_zh`）
-                            to_append = self.get_strtable_value(strtable_lol_target, value.get("mDisplayName", ""), default = "")
+                            to_append = self.get_strtable_value(strtable_lol_target, self.patch_number, value.get("mDisplayName", ""), default = "")
                         elif i == 85: #显示名（英文）（`mDisplayName_content_en`）
-                            to_append = self.get_strtable_value(strtable_lol_default, value.get("mDisplayName", ""), default = "")
+                            to_append = self.get_strtable_value(strtable_lol_default, self.patch_number, value.get("mDisplayName", ""), default = "")
                         elif i == 86: #装备推荐属性内容（`mItemAdviceAttributes_content`）
                             to_append = list(map(lambda x: self.items_bin[x]["mAttribute"], value.get("mItemAdviceAttributes", [])))
                         elif i == 87: #总价格（`totalPrice`）
@@ -169,29 +169,29 @@ class ItemExtractor(LoLDataExtractor):
                                     recipeItem_key_stack += itemJson_tmp["recipeItemLinks"][::-1] #保证金币的计算遵循正确的装备构件顺序，虽然这其实无关紧要（Make sure the calculation order of total price follows the correct in-game item component order, although it doesn't matter actually）
                             to_append = totalPrice
                         elif i == 88: #特殊合成材料（中文）（`specialRecipe_displayName_content_zh`）
-                            to_append = self.get_strtable_value(strtable_lol_target, self.items_bin[itemKey_itemId_map[value["specialRecipe"]]].get("mDisplayName", ""), default = "") if "specialRecipe" in value else ""
+                            to_append = self.get_strtable_value(strtable_lol_target, self.patch_number, self.items_bin[itemKey_itemId_map[value["specialRecipe"]]].get("mDisplayName", ""), default = "") if "specialRecipe" in value else ""
                         elif i == 89: #特殊合成材料（英文）（`specialRecipe_displayName_content_en`）
-                            to_append = self.get_strtable_value(strtable_lol_default, self.items_bin[itemKey_itemId_map[value["specialRecipe"]]].get("mDisplayName", ""), default = "") if "specialRecipe" in value else ""
+                            to_append = self.get_strtable_value(strtable_lol_default, self.patch_number, self.items_bin[itemKey_itemId_map[value["specialRecipe"]]].get("mDisplayName", ""), default = "") if "specialRecipe" in value else ""
                         elif i == 90: #位阶（`rarity`）
                             to_append = item_rarities[value.get("epicness", 2)]
                         elif i == 91: #次要位阶（`secondaryRarity`）
                             to_append = item_rarities[value["SecondaryEpicness"]] if "SecondaryEpicness" in value else ""
                         elif i == 92: #同级替换装备（中文）（`sidegradeItemNames_content_zh`）
-                            to_append = list(map(lambda x: self.get_strtable_value(strtable_lol_target, self.items_bin[x].get("mDisplayName", ""), default = x), value["sidegradeItemLinks"])) if "sidegradeItemLinks" in value else ""
+                            to_append = list(map(lambda x: self.get_strtable_value(strtable_lol_target, self.patch_number, self.items_bin[x].get("mDisplayName", ""), default = x), value["sidegradeItemLinks"])) if "sidegradeItemLinks" in value else ""
                         elif i == 93: #同级替换装备（英文）（`sidegradeItemNames_content_en`）
-                            to_append = list(map(lambda x: self.get_strtable_value(strtable_lol_default, self.items_bin[x].get("mDisplayName", ""), default = x), value["sidegradeItemLinks"])) if "sidegradeItemLinks" in value else ""
+                            to_append = list(map(lambda x: self.get_strtable_value(strtable_lol_default, self.patch_number, self.items_bin[x].get("mDisplayName", ""), default = x), value["sidegradeItemLinks"])) if "sidegradeItemLinks" in value else ""
                         elif i == 94: #合成材料（中文）（`recipeItemNames_content_zh`）
-                            to_append = list(map(lambda x: self.get_strtable_value(strtable_lol_target, self.items_bin[x].get("mDisplayName", ""), default = x), value["recipeItemLinks"])) if "recipeItemLinks" in value else ""
+                            to_append = list(map(lambda x: self.get_strtable_value(strtable_lol_target, self.patch_number, self.items_bin[x].get("mDisplayName", ""), default = x), value["recipeItemLinks"])) if "recipeItemLinks" in value else ""
                         elif i == 95: #合成材料（英文）（`recipeItemNames_content_en`）
-                            to_append = list(map(lambda x: self.get_strtable_value(strtable_lol_default, self.items_bin[x].get("mDisplayName", ""), default = x), value["recipeItemLinks"])) if "recipeItemLinks" in value else ""
+                            to_append = list(map(lambda x: self.get_strtable_value(strtable_lol_default, self.patch_number, self.items_bin[x].get("mDisplayName", ""), default = x), value["recipeItemLinks"])) if "recipeItemLinks" in value else ""
                         elif i == 96: #所需材料（中文）（`requiredItemNames_content_zh`）
-                            to_append = list(map(lambda x: self.get_strtable_value(strtable_lol_target, self.items_bin[x].get("mDisplayName", ""), default = x), value["requiredItemLinks"])) if "requiredItemLinks" in value else ""
+                            to_append = list(map(lambda x: self.get_strtable_value(strtable_lol_target, self.patch_number, self.items_bin[x].get("mDisplayName", ""), default = x), value["requiredItemLinks"])) if "requiredItemLinks" in value else ""
                         elif i == 97: #所需材料（英文）（`requiredItemNames_content_en`）
-                            to_append = list(map(lambda x: self.get_strtable_value(strtable_lol_default, self.items_bin[x].get("mDisplayName", ""), default = x), value["requiredItemLinks"])) if "requiredItemLinks" in value else ""
+                            to_append = list(map(lambda x: self.get_strtable_value(strtable_lol_default, self.patch_number, self.items_bin[x].get("mDisplayName", ""), default = x), value["requiredItemLinks"])) if "requiredItemLinks" in value else ""
                         elif i == 98: #同品类合成装备（中文）（`mItemDataBuildNames_content_zh`）
-                            to_append = list(map(lambda x: self.get_strtable_value(strtable_lol_target, self.items_bin[x].get("mDisplayName", ""), default = x), value["mItemDataBuild"]["itemLinks"])) if "mItemDataBuild" in value else ""
+                            to_append = list(map(lambda x: self.get_strtable_value(strtable_lol_target, self.patch_number, self.items_bin[x].get("mDisplayName", ""), default = x), value["mItemDataBuild"]["itemLinks"])) if "mItemDataBuild" in value else ""
                         elif i == 99: #同品类合成装备（英文）（`mItemDataBuildNames_content_en`）
-                            to_append = list(map(lambda x: self.get_strtable_value(strtable_lol_default, self.items_bin[x].get("mDisplayName", ""), default = x), value["mItemDataBuild"]["itemLinks"])) if "mItemDataBuild" in value else ""
+                            to_append = list(map(lambda x: self.get_strtable_value(strtable_lol_default, self.patch_number, self.items_bin[x].get("mDisplayName", ""), default = x), value["mItemDataBuild"]["itemLinks"])) if "mItemDataBuild" in value else ""
                         elif i == 100: #装备效果重做版本（`LastMajorChangeVersion`）
                             to_append = "%d.%d" %(value["LastMajorChangeMajorPatchVersion"], value["LastMajorChangeMinorPatchVersion"]) if "LastMajorChangeMajorPatchVersion" in value and "LastMajorChangeMinorPatchVersion" in value else ""
                         else:
@@ -221,10 +221,10 @@ class ItemExtractor(LoLDataExtractor):
                             locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                             tooltip_key: str = item_data[subkey1][-1]
-                            tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                            tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                             if subkey2.endswith("_burn"):
                                 self.__class__.calculatedVariables.clear()
-                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, value, locale, self.patch_number, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                             else:
                                 to_append = tooltip_raw
@@ -259,7 +259,7 @@ class ItemExtractor(LoLDataExtractor):
                         item_key: str = itemModifier_data[subkey1][-1]
                         if item_key in self.items_bin and "mDisplayName" in self.items_bin[item_key]:
                             tooltip_key: str = self.items_bin[item_key]["mDisplayName"]
-                            to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                            to_append = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                         else:
                             to_append = ""
                     else:
@@ -268,7 +268,7 @@ class ItemExtractor(LoLDataExtractor):
                         useTargetLocale = subkey2.split("_")[2] == "zh"
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key = itemModifier_data[subkey1][-1]
-                        to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        to_append = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                     itemModifier_data[key].append(to_append)
                     itemModifier_data_json[key].append(pyobj2json(to_append))
         

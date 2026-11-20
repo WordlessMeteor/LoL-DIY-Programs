@@ -175,7 +175,7 @@ class MissionExtractor(LoLDataExtractor):
                             for rewardGroup_key in milestone["properties"]:
                                 if rewardGroup_key in source:
                                     tooltip_key: str = self.aGet(source[rewardGroup_key], ["LocalizedName", "internalName", "ID"], "")
-                                    rewardGroup_name: str = self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key)
+                                    rewardGroup_name: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = tooltip_key)
                                     rewardGroup_names.append(rewardGroup_name)
                                 else:
                                     rewardGroup_names.append("")
@@ -189,7 +189,7 @@ class MissionExtractor(LoLDataExtractor):
                                 if rewardGroup_key in source:
                                     for reward in source[rewardGroup_key]["rewards"]:
                                         tooltip_key: str = self.aGet(reward, ["{31c5f01c}", "itemID"], "")
-                                        reward_name: str = self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key)
+                                        reward_name: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = tooltip_key)
                                         reward_names.append(reward_name)
                                 rewards.append(reward_names)
                             to_append = rewards
@@ -252,7 +252,7 @@ class MissionExtractor(LoLDataExtractor):
             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
             strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
             tooltip_key: str = data_ref[subkey1][-1]
-            to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+            to_append = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
         return to_append
     
     def build_mission_dataframe(self, debug: bool = False, paths: Optional[list[str]] = None) -> int:
@@ -438,7 +438,7 @@ class MissionExtractor(LoLDataExtractor):
                             useTargetLocale: bool = subkey2.split("_")[2] == "zh"
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                             tooltip_key: str = KiwiQuest_data[subkey1][-1]
-                            to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                            to_append = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                         else: #等级（`level`）
                             to_append = questLevel
                     else: #下面的写法和传统写法有些不同：将复杂条件和i的取值穿插讨论以节省代码量（The following code are written in a manner different from the traditional: Alternatively discuss complex condition and i's value to save code）
@@ -486,7 +486,7 @@ class MissionExtractor(LoLDataExtractor):
                                 useTargetLocale: bool = subkey2.split("_")[2] == "zh"
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                                 tooltip_key: str = value["TitleTra"]
-                                to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                to_append = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                             elif i == 3: #大型任务等级（`level`）
                                 to_append = questLevel
                             elif i == 4: #里程碑序号（`milestone_index`）
@@ -499,7 +499,7 @@ class MissionExtractor(LoLDataExtractor):
                                 useTargetLocale: bool = subkey2.split("_")[2] == "zh"
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                                 tooltip_key: str = milestone["MilestoneDescriptionTra"]
-                                to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                to_append = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                         else:
                             if key1_lowest_form in questGroupKey_questKey_map:
                                 questGroup_key, quest_index = questGroupKey_questKey_map[key1_lowest_form]
@@ -566,7 +566,7 @@ class MissionExtractor(LoLDataExtractor):
                                 useTargetLocale: bool = subkey2.split("_")[2] == "zh"
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                                 tooltip_key: str = objective["DescriptionTraKey"]
-                                to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                to_append = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                         else:
                             if key1 in questKey_missionKey_map:
                                 quest_key, mission_index = questKey_missionKey_map[key1] #从`questKey_missionKey_map`的构造方式可以看出，`quest_key`一定存在于`self.map12_bin`中（From the construction of `questKey_missionKey_map`, we can tell that `quest_key` must exist in `self.map12_bin`）
@@ -580,7 +580,7 @@ class MissionExtractor(LoLDataExtractor):
                                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
                                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                                         tooltip_key: str = quest["TitleTra"]
-                                        to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                        to_append = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                                     elif i == 13: #大型任务等级（`quest level`）
                                         to_append = questLevel
                                     else: #小型任务序号（`mission_index`）

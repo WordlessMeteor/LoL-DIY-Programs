@@ -23,7 +23,7 @@ from src.core.extractor.types import *
 #=============================================================================
 
 #定义模式覆盖文本描述函数（Define the overriden data tooltip function）
-def modeOverrideTooltipTransform(binData: dict[str, Any], dType: Literal["champion", "item"], objectType: str, keyPaths: str | list[str], gameModeName: Literal["TUTORIAL", "TUTORIAL_MODULE_1", "TUTORIAL_MODULE_2", "TUTORIAL_MODULE_3", "SWIFTPLAY", "PRACTICETOOL", "FIRSTBLOOD", "ARSR", "ARAM", "{bffdf499}", "KINGPORO", "URF", "SNOWURF", "ONEFORALL", "{6462680f}", "NEXUSBLITZ", "TFT", "ASSASSINATE", "ULTBOOK", "cherry", "STRAWBERRY", "{a110bc47}", "Ruby", "DOOMBOTSTEEMO", "{b0cea932}", "{afcea79f}", "{aecea60c}", "{9cf6bf22}"], strtable: dict[str, int | dict[str, str]]) -> str: #这个函数只用于制作英雄平衡表格，不用于本程序（This function is only designed for making the balance table, not for this program）
+def modeOverrideTooltipTransform(binData: dict[str, Any], dType: Literal["champion", "item"], objectType: str, keyPaths: str | list[str], gameModeName: Literal["TUTORIAL", "TUTORIAL_MODULE_1", "TUTORIAL_MODULE_2", "TUTORIAL_MODULE_3", "SWIFTPLAY", "PRACTICETOOL", "FIRSTBLOOD", "ARSR", "ARAM", "{bffdf499}", "KINGPORO", "URF", "SNOWURF", "ONEFORALL", "{6462680f}", "NEXUSBLITZ", "TFT", "ASSASSINATE", "ULTBOOK", "cherry", "STRAWBERRY", "{a110bc47}", "Ruby", "DOOMBOTSTEEMO", "{b0cea932}", "{afcea79f}", "{aecea60c}", "{9cf6bf22}"], strtable: dict[str, int | dict[str, str]], version: str) -> str: #这个函数只用于制作英雄平衡表格，不用于本程序（This function is only designed for making the balance table, not for this program）
     '''
     遍历二进制描述数据中的模式覆盖数据并输出。<br>Traverse through the mode overriden values in binary description data and output them.
     
@@ -166,7 +166,7 @@ def modeOverrideTooltipTransform(binData: dict[str, Any], dType: Literal["champi
                                         break
                                 else:
                                     keyName = tmp_ptr1
-                                    keyName_content = LoLDataExtractor.get_strtable_value(strtable, keyName, default = keyName)
+                                    keyName_content = LoLDataExtractor.get_strtable_value(strtable, version, keyName, default = keyName)
                             #获取技能热键（Get ability hotkey）
                             if value["__type"] == "SpellObject" and dType == "champion": #只有在数据类型为英雄时才获取其角色名称和技能热键（Only when the data type is champion will the character name and hotkey be obtained）
                                 characterName: str = binData[characterRecordKey_spellKey_map[key]]["mCharacterName"] if key in characterRecordKey_spellKey_map else ""
@@ -1841,9 +1841,9 @@ if __name__ == "__main__":
         #     logPrint("*" * 20)
         
         #模式重载（Mode override）
-        # logPrint(modeOverrideTooltipTransform(champions_bin, dType = "champion", objectType = "SpellObject", keyPaths = "mSpell|DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
-        logPrint(modeOverrideTooltipTransform(champions_bin, dType = "champion", objectType = "SpellObject", keyPaths = "mSpell|{66185ec4}", gameModeName = "cherry", strtable = lolstringtable_zh))
-        # logPrint(modeOverrideTooltipTransform(items_bin, dType = "item", objectType = "ItemData", keyPaths = "DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh))
+        # logPrint(modeOverrideTooltipTransform(champions_bin, dType = "champion", objectType = "SpellObject", keyPaths = "mSpell|DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh, version = "pbe"))
+        logPrint(modeOverrideTooltipTransform(champions_bin, dType = "champion", objectType = "SpellObject", keyPaths = "mSpell|{66185ec4}", gameModeName = "cherry", strtable = lolstringtable_zh, version = "pbe"))
+        # logPrint(modeOverrideTooltipTransform(items_bin, dType = "item", objectType = "ItemData", keyPaths = "DataValuesModeOverride", gameModeName = "URF", strtable = lolstringtable_zh, version = "pbe"))
         
         return 0
 

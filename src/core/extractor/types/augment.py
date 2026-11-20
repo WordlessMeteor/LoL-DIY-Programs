@@ -318,7 +318,7 @@ class AugmentExtractor(LoLDataExtractor):
                 locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                 strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                 tooltip_key: str = data_ref[subkey1][-1]
-                tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                 if subkey2.endswith("_burn"):
                     spellKey: str = value["RootSpell"]
                     if spellKey in source:
@@ -329,7 +329,7 @@ class AugmentExtractor(LoLDataExtractor):
                         to_append = ""
                     else:
                         self.__class__.calculatedVariables.clear()
-                        tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                        tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, self.patch_number, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                         to_append = tooltip_burn
                 else:
                     to_append = tooltip_raw
@@ -389,7 +389,7 @@ class AugmentExtractor(LoLDataExtractor):
                     locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                     strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                     tooltip_key: str = data_ref[subkey1][-1]
-                    tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                    tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                     if subkey2.endswith("_burn"):
                         spellKey: str = value["RootSpell"]
                         if spellKey in source:
@@ -408,7 +408,7 @@ class AugmentExtractor(LoLDataExtractor):
                             to_append = ""
                         else:
                             self.__class__.calculatedVariables.clear()
-                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, reservedVars = reservedVars, flexibleData = {"mStat_dict_override_version": self.version})
+                            tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, self.patch_number, enableModeOverride = True, reserve_variable = self.reserve_variable, reservedVars = reservedVars, flexibleData = {"mStat_dict_override_version": self.version})
                             to_append = tooltip_burn
                     else:
                         to_append = tooltip_raw
@@ -563,7 +563,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 for augmentSet_key in augmentSets:
                                     tooltip_key = map12_bin_whole[augmentSet_key]["{0746ade9}"]
                                     strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 2 else strtable_lol_default
-                                    augmentSetNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
+                                    augmentSetNames.append(self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = tooltip_key))
                                 to_append = augmentSetNames
                         else:
                             to_append = ""
@@ -585,13 +585,13 @@ class AugmentExtractor(LoLDataExtractor):
                         locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = KiwiAugmentSet_data[subkey1][-1]
-                        tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
                             spellKey: str = value["{96b4b430}"]
                             if spellKey in map12_bin_whole:
                                 mSpell: dict[str, Any] = map12_bin_whole[spellKey]["mSpell"]
                                 self.__class__.calculatedVariables.clear()
-                                tooltip_burn: str = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                tooltip_burn: str = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, self.patch_number, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                             else:
                                 to_append = ""
@@ -603,7 +603,7 @@ class AugmentExtractor(LoLDataExtractor):
                             if augment_key in map12_bin_whole:
                                 tooltip_key = map12_bin_whole[augment_key]["NameTra"]
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 16 else strtable_lol_default
-                                augmentNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
+                                augmentNames.append(self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = tooltip_key))
                             else:
                                 augmentNames.append("")
                         to_append = augmentNames
@@ -631,11 +631,11 @@ class AugmentExtractor(LoLDataExtractor):
                                 locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                                 tooltip_key: str = KiwiAugmentSet_data[subkey1][-1]
-                                tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                                 if subkey2.endswith("_burn"):
                                     mSpell: dict[str, Any] = rootSpell["mSpell"]
                                     self.__class__.calculatedVariables.clear()
-                                    tooltip_burn: str = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                    tooltip_burn: str = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, self.patch_number, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                     to_append = tooltip_burn
                                 else:
                                     to_append = tooltip_raw
@@ -687,7 +687,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                                 tooltip_key: str = KiwiQuestline_data[subkey1][-1]
-                                tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                                 if subkey2.endswith("_burn"):
                                     if key1 in augmentKey_questline_map:
                                         spellKey: str = map12_bin_whole[augmentKey_questline_map[key1]]["RootSpell"]
@@ -695,7 +695,7 @@ class AugmentExtractor(LoLDataExtractor):
                                     else:
                                         mSpell = {}
                                     self.__class__.calculatedVariables.clear()
-                                    tooltip_burn: str = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, reservedVars = reservedVars, flexibleData = {"mStat_dict_override_version": self.version})
+                                    tooltip_burn: str = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, self.patch_number, enableModeOverride = True, reserve_variable = self.reserve_variable, reservedVars = reservedVars, flexibleData = {"mStat_dict_override_version": self.version})
                                     to_append = tooltip_burn
                                 else:
                                     to_append = tooltip_raw
@@ -711,7 +711,7 @@ class AugmentExtractor(LoLDataExtractor):
                                 locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                                 tooltip_key: str = KiwiQuestline_data[subkey1][-1]
-                                tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                                 if subkey2.endswith("_burn"):
                                     if key1 in augmentKey_questline_map:
                                         spellKey: str = map12_bin_whole[augmentKey_questline_map[key1]]["RootSpell"]
@@ -719,7 +719,7 @@ class AugmentExtractor(LoLDataExtractor):
                                     else:
                                         mSpell = {}
                                     self.__class__.calculatedVariables.clear()
-                                    tooltip_burn: str = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, reservedVars = reservedVars, flexibleData = {"mStat_dict_override_version": self.version})
+                                    tooltip_burn: str = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, self.patch_number, enableModeOverride = True, reserve_variable = self.reserve_variable, reservedVars = reservedVars, flexibleData = {"mStat_dict_override_version": self.version})
                                     to_append = tooltip_burn
                                 else:
                                     to_append = tooltip_raw
@@ -796,7 +796,7 @@ class AugmentExtractor(LoLDataExtractor):
                         locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = augmentModifier_data[subkey1][-1]
-                        tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
                             tooltip_burn = self.tooltipPreparation(tooltip_raw, locale)
                             tooltip_burn = self.tooltipPostProcessing(tooltip_burn, locale)

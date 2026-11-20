@@ -558,9 +558,9 @@ class ChampionExtractor(LoLDataExtractor):
                                     tooltip_key: str = "displayName_" + value["mCharacterName"]
                                 else:
                                     tooltip_key = ""
-                            tooltip_raw: str = self.get_strtable_value(strtable_locale_lol, tooltip_key, default = "")
+                            tooltip_raw: str = self.get_strtable_value(strtable_locale_lol, self.patch_number, tooltip_key, default = "")
                             if tooltip_raw == "": #如果没有找到，则尝试在云顶之弈字符串常量池中寻找（If the result isn't found, then search for it in TFT stringtable）
-                                tooltip_raw: str = self.get_strtable_value(strtable_locale_tft, tooltip_key, default = "")
+                                tooltip_raw: str = self.get_strtable_value(strtable_locale_tft, self.patch_number, tooltip_key, default = "")
                                 if tooltip_raw != "":
                                     use_lol_strtable = False
                             if i == 127 or i == 128: #被动技能说明文本（中文/数值转换）和被动技能说明文本（英文/数值转换）（`passiveToolTip_content_zh_burn` and `passiveToolTip_content_en_burn`）
@@ -571,7 +571,7 @@ class ChampionExtractor(LoLDataExtractor):
                                         to_append = ""
                                     else:
                                         self.__class__.calculatedVariables.clear()
-                                        tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale_lol if use_lol_strtable else strtable_locale_tft, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                        tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale_lol if use_lol_strtable else strtable_locale_tft, mSpell, locale, self.patch_number, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                         to_append = tooltip_burn
                                 else:
                                     to_append = ""
@@ -594,9 +594,9 @@ class ChampionExtractor(LoLDataExtractor):
                                             spellNames.append(spell_key)
                                             break
                                     else:
-                                        spellName: str = self.get_strtable_value(strtable_locale_lol, tmp_ptr, tmp_ptr)
+                                        spellName: str = self.get_strtable_value(strtable_locale_lol, self.patch_number, tmp_ptr, tmp_ptr)
                                         if spellName == tmp_ptr: #判断是否使用云顶之弈字符串常量池的标准应该是结果是不是等于默认值（The condition to judge whether to use TFT stringtable should be whether the result equals the default value）
-                                            spellName = self.get_strtable_value(strtable_locale_tft, tmp_ptr, tmp_ptr)
+                                            spellName = self.get_strtable_value(strtable_locale_tft, self.patch_number, tmp_ptr, tmp_ptr)
                                         spellNames.append(spellName)
                                 to_append = spellNames
                             else:
@@ -608,7 +608,7 @@ class ChampionExtractor(LoLDataExtractor):
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_tft_target if useTargetLocale else strtable_tft_default
                             if "CharacterRole" in value and value["CharacterRole"] in self.map22_bin:
                                 CharacterRoleNameTra_key: str = self.map22_bin[value["CharacterRole"]]["CharacterRoleNameTra"]
-                                CharacterRoleNameTra: str = self.get_strtable_value(strtable_locale, CharacterRoleNameTra_key, default = "")
+                                CharacterRoleNameTra: str = self.get_strtable_value(strtable_locale, self.patch_number, CharacterRoleNameTra_key, default = "")
                                 to_append = CharacterRoleNameTra
                             else:
                                 to_append = ""
@@ -628,7 +628,7 @@ class ChampionExtractor(LoLDataExtractor):
                                 for trait_key in trait_keys:
                                     if trait_key in self.map22_bin and "mDisplayNameTra" in self.map22_bin[trait_key]:
                                         traitDisplayNameTra_key: str = self.map22_bin[trait_key]["mDisplayNameTra"]
-                                        traitDisplayNameTra: str = self.get_strtable_value(strtable_locale, traitDisplayNameTra_key, default = "")
+                                        traitDisplayNameTra: str = self.get_strtable_value(strtable_locale, self.patch_number, traitDisplayNameTra_key, default = "")
                                         traitDisplayNameTra_list.append(traitDisplayNameTra)
                                     else:
                                         traitDisplayNameTra_list.append(trait_key)
@@ -653,13 +653,13 @@ class ChampionExtractor(LoLDataExtractor):
                             strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                             complex_tooltip_key: str | list[str] = champion_data[subkey1][-1]
                             if i in {176, 177, 268, 269}: #说明文本单值（Single tooltip value）
-                                tooltip_raw: str = self.get_strtable_value(strtable_locale, complex_tooltip_key, default = "")
+                                tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, complex_tooltip_key, default = "")
                                 to_append = tooltip_raw
                             else: #说明文本列表（Tooltip value list）
                                 if complex_tooltip_key == "":
                                     to_append = ""
                                 else:
-                                    tooltips_raw: list[str] = list(map(lambda x: self.get_strtable_value(strtable_locale, x, default = ""), complex_tooltip_key))
+                                    tooltips_raw: list[str] = list(map(lambda x: self.get_strtable_value(strtable_locale, self.patch_number, x, default = ""), complex_tooltip_key))
                                     if i == 178 or i == 179: #技能进化说明文本（中文）和技能进化说明文本（英文）（`evolutionData mTooltips_content_zh` and `evolutionData mTooltips_content_en`）
                                         to_append = tooltips_raw
                                     else: #技能进化说明文本（中文/数值转换）和技能进化说明文本（英文/数值转换）（`evolutionData mTooltips_content_zh_burn` and `evolutionData mTooltips_content_en_burn`）
@@ -671,7 +671,7 @@ class ChampionExtractor(LoLDataExtractor):
                                                 tooltips_burn.append("")
                                             else:
                                                 self.__class__.calculatedVariables.clear()
-                                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpell, locale, self.patch_number, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                                 tooltips_burn.append(tooltip_burn)
                                         to_append = tooltips_burn
                         else:
@@ -746,7 +746,7 @@ class ChampionExtractor(LoLDataExtractor):
                             else:
                                 to_append = ""
                     else:
-                        to_append = self.generate_spell_record(champion_spell_data, key, key1, value)
+                        to_append = self.generate_spell_record(champion_spell_data, key, key1, value, self.patch_number)
                     champion_spell_data[key].append(to_append)
                     champion_spell_data_json[key].append(pyobj2json(to_append))
             #     logPrint("[%d/%d]已整理指令对象（Organized spell object）： %s" %(count, len(champions_bin.items()), key1), print_time = True)

@@ -2749,14 +2749,14 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                     elif j < len(item_base_header_keys) + len(tooltip_header_keys): #游戏内详细信息部分（In-game tooltip part）
                         if status_strtable_locale == 200:
                             entry_key: str = "generatedtip_item_%d_tooltipinventoryextended" %(item["id"])
-                            entry_key_hash: str = LoLDataExtractor.compute_rsthash(entry_key, strtable_locale["version"])
+                            entry_key_hash: str = LoLDataExtractor.compute_rsthash(entry_key, version)
                             if entry_key in strtable_locale["entries"]:
                                 tooltip: str = strtable_locale["entries"][entry_key]
                             elif entry_key_hash in strtable_locale["entries"]:
                                 tooltip: str = strtable_locale["entries"][entry_key_hash]
                             else: #早期版本中没有按Shift查看详细信息的说法（In early versions, pressing Shift won't provide the detailed description）
                                 entry_key = "generatedtip_item_%d_tooltipinventory" %(item["id"])
-                                entry_key_hash = LoLDataExtractor.compute_rsthash(entry_key, strtable_locale["version"])
+                                entry_key_hash = LoLDataExtractor.compute_rsthash(entry_key, version)
                                 if entry_key in strtable_locale["entries"]:
                                     tooltip = strtable_locale["entries"][entry_key]
                                 elif entry_key_hash in strtable_locale["entries"]:
@@ -2769,7 +2769,7 @@ def sort_item_cdragon(locale: str = "zh_CN") -> tuple[dict[str, pandas.DataFrame
                             to_append = tooltip
                         else: #游戏内详细信息（数值转换）（`tooltip_burn`）
                             LoLDataExtractor.calculatedVariables = {} #全局变量，存储已经计算过的变量的值。每次切换装备时重置（A global variable that calculates the value of variables that have been calculated. Resets when transforming another tooltip）
-                            tooltip_text: str = LoLDataExtractor.tooltipTransform(tooltip, strtable_locale, item_binary, locale, enableModeOverride = False)
+                            tooltip_text: str = LoLDataExtractor.tooltipTransform(tooltip, strtable_locale, item_binary, locale, version, enableModeOverride = False)
                             to_append = tooltip_text
                     elif j < len(item_base_header_keys) + len(tooltip_header_keys) + len(categories): #分类部分（Category part）
                         to_append = categories[j - len(item_base_header_keys) - len(tooltip_header_keys)] in item["categories"] if "categories" in item else False #在7.8版本以前，装备数据中无“categories”键（Before Patch 7.8, "categories" key isn't present in item data）

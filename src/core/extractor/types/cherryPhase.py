@@ -152,7 +152,7 @@ class CherryRoundExtractor(LoLDataExtractor):
                                 for phaseKey in phaseKeys:
                                     if phaseKey in self.map30_bin:
                                         phaseName_key: str = self.map30_bin[phaseKey]["DisplayNameTra"]
-                                        phaseName: str = self.get_strtable_value(strtable_locale, phaseName_key, default = phaseName_key)
+                                        phaseName: str = self.get_strtable_value(strtable_locale, self.patch_number, phaseName_key, default = phaseName_key)
                                         phaseNames.append(phaseName)
                                     else:
                                         phaseNames.append("")
@@ -190,7 +190,7 @@ class CherryRoundExtractor(LoLDataExtractor):
                                         to_append = phase.get(key, "")
                                     else: #显示名（Display name）
                                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 11 else strtable_lol_default
-                                        to_append = self.get_strtable_value(strtable_locale, phase["DisplayNameTra"], default = "")
+                                        to_append = self.get_strtable_value(strtable_locale, self.patch_number, phase["DisplayNameTra"], default = "")
                                 else:
                                     if i == 13: #子阶段序号（`subPhase number`）
                                         to_append = subPhase_index + 1
@@ -212,7 +212,7 @@ class CherryRoundExtractor(LoLDataExtractor):
                         for phaseKey in phaseKeys:
                             if phaseKey in self.map30_bin:
                                 phaseName_key: str = self.map30_bin[phaseKey]["DisplayNameTra"]
-                                phaseName: str = self.get_strtable_value(strtable_locale, phaseName_key, default = phaseName_key)
+                                phaseName: str = self.get_strtable_value(strtable_locale, self.patch_number, phaseName_key, default = phaseName_key)
                                 phaseNames.append(phaseName)
                             else:
                                 phaseNames.append("")
@@ -231,7 +231,7 @@ class CherryRoundExtractor(LoLDataExtractor):
                                 to_append = value.get(key, "")
                             else: #回合阶段本地化名称（Localized round phase names）
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if i == 6 else strtable_lol_default
-                                to_append = self.get_strtable_value(strtable_locale, value["DisplayNameTra"], default = "")
+                                to_append = self.get_strtable_value(strtable_locale, self.patch_number, value["DisplayNameTra"], default = "")
                         else:
                             if i == 8: #阶段序号（`phase number`）
                                 to_append = subPhase_index + 1

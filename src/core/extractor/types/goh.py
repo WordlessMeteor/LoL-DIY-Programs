@@ -263,7 +263,7 @@ class GoHExtractor(LoLDataExtractor):
                                                     locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                                                     strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                                                     tooltip_key: str = CherryGoH_data[subkey1][-1]
-                                                    tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                                    tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                                                     if subkey2.endswith("_burn"):
                                                         # self.__class__.calculatedVariables.clear()
                                                         # tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, {}, locale, enableModeOverride = False, reserve_variable = self.reserve_variable)
@@ -287,7 +287,7 @@ class GoHExtractor(LoLDataExtractor):
                                                     event_key: str = self.map30_bin[key2]["events"][f"Cherry_Event_{guestName}"]["{40a56dcf}"]
                                                     if event_key in self.cherry_bin:
                                                         GoH_subtitle_key: str = self.cherry_bin[event_key]["DefaultTra"]["Subtitle"]
-                                                        GoH_subtitle: str = self.get_strtable_value(strtable_locale, GoH_subtitle_key, default = GoH_subtitle_key)
+                                                        GoH_subtitle: str = self.get_strtable_value(strtable_locale, self.patch_number, GoH_subtitle_key, default = GoH_subtitle_key)
                                                         mutexGoHNames.append(GoH_subtitle)
                                                         break
                                             else:
@@ -350,7 +350,7 @@ class GoHExtractor(LoLDataExtractor):
                                                 locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                                                 tooltip_key: str = KiwiGoH_data[subkey1][-1]
-                                                tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                                tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                                                 if subkey2.endswith("_burn"):
                                                     # self.__class__.calculatedVariables.clear()
                                                     # tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, {}, locale, enableModeOverride = False, reserve_variable = self.reserve_variable)

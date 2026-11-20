@@ -173,14 +173,14 @@ class PerkExtractor(LoLDataExtractor):
                         useTargetLocale: bool = subkey2.split("_")[2] == "zh"
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = value[subkey1] #此处代码写法和其它地方有些不同。它不是引用列表上次追加的数据，而是直接从原始数据中获取。这是因为符文系数据相对比较平衡，很多键基本上都是常驻的（Here the code style somehow differs from other places. It doesn't use the data recently appended to the list; instead, it obtains the raw data. This is because perkstyle data are relatively balanced; many keys aren't flexible）
-                        to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        to_append = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                     elif i == 27 or i == 28: #可用副系名称（中文）和可用副系名称（英文）（`mAllowedSubStyles mDisplayNameLocalizationKey_contents_zh` and `mAllowedSubStyles mDisplayNameLocalizationKey_contents_en`）
                         strtable_locale = strtable_lol_target if i == 27 else strtable_lol_default
                         mAllowedSubStyleNames: list[str] = []
                         for substyleId in value["mAllowedSubStyles"]:
                             if substyleId in perkstyleKey_perkstyleId_map and perkstyleKey_perkstyleId_map[substyleId] in self.perks_bin:
                                 mDisplayNameLocalizationKey: str = self.perks_bin[perkstyleKey_perkstyleId_map[substyleId]]["mDisplayNameLocalizationKey"]
-                                mAllowedSubStyleNames.append(self.get_strtable_value(strtable_locale, mDisplayNameLocalizationKey, default = mDisplayNameLocalizationKey))
+                                mAllowedSubStyleNames.append(self.get_strtable_value(strtable_locale, self.patch_number, mDisplayNameLocalizationKey, default = mDisplayNameLocalizationKey))
                             else:
                                 mAllowedSubStyleNames.append(substyleId)
                         to_append = mAllowedSubStyleNames
@@ -190,7 +190,7 @@ class PerkExtractor(LoLDataExtractor):
                         for perk_key in value["mDefaultPerksWhenSplashed"]:
                             if perk_key in self.perks_bin:
                                 mDisplayNameLocalizationKey: str = self.perks_bin[perk_key]["mDisplayNameLocalizationKey"]
-                                mDefaultPerksWhenSplashed_names.append(self.get_strtable_value(strtable_locale, mDisplayNameLocalizationKey, default = mDisplayNameLocalizationKey))
+                                mDefaultPerksWhenSplashed_names.append(self.get_strtable_value(strtable_locale, self.patch_number, mDisplayNameLocalizationKey, default = mDisplayNameLocalizationKey))
                             else:
                                 mDefaultPerksWhenSplashed_names.append(perk_key)
                         to_append = mDefaultPerksWhenSplashed_names
@@ -204,14 +204,14 @@ class PerkExtractor(LoLDataExtractor):
                             substyleId = defaultStatMods["mStyleId"]
                             mDisplayNameLocalizationKey: str = self.perks_bin[perkstyleKey_perkstyleId_map[substyleId]]["mDisplayNameLocalizationKey"]
                             strtable_locale = strtable_lol_target if (i - 31) % 6 == 2 else strtable_lol_default
-                            to_append = self.get_strtable_value(strtable_locale, mDisplayNameLocalizationKey, default = mDisplayNameLocalizationKey)
+                            to_append = self.get_strtable_value(strtable_locale, self.patch_number, mDisplayNameLocalizationKey, default = mDisplayNameLocalizationKey)
                         else: #本地化属性符文名称（Localized stat mod names）
                             strtable_locale = strtable_lol_target if (i - 31) % 6 == 4 else strtable_lol_default
                             mPerks_names: list[str] = []
                             for perk_key in defaultStatMods["mPerks"]:
                                 if perk_key in self.perks_bin:
                                     mDisplayNameLocalizationKey: str = self.perks_bin[perk_key].get("mDisplayNameLocalizationKey", "") #在12.5版本，属性碎片没有这个键（In Patch 12.5, stat mods don't have this key）
-                                    mPerks_names.append(self.get_strtable_value(strtable_locale, mDisplayNameLocalizationKey, default = mDisplayNameLocalizationKey))
+                                    mPerks_names.append(self.get_strtable_value(strtable_locale, self.patch_number, mDisplayNameLocalizationKey, default = mDisplayNameLocalizationKey))
                                 else:
                                     mPerks_names.append(perk_key)
                             to_append = mPerks_names
@@ -224,14 +224,14 @@ class PerkExtractor(LoLDataExtractor):
                         elif (i - 55) % 7 <= 4: #本地化标签（Localized label）
                             tooltip_key: str = slot["mSlotLabelKey"]
                             strtable_locale = strtable_lol_target if (i - 55) % 7 == 3 else strtable_lol_default
-                            to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                            to_append = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                         else: #本地化符文名称（Localized perk names）
                             strtable_locale = strtable_lol_target if (i - 55) % 7 == 5 else strtable_lol_default
                             mPerks_names: list[str] = []
                             for perk_key in slot["mPerks"]:
                                 if perk_key in self.perks_bin:
                                     mDisplayNameLocalizationKey: str = self.perks_bin[perk_key]["mDisplayNameLocalizationKey"]
-                                    mPerks_names.append(self.get_strtable_value(strtable_locale, mDisplayNameLocalizationKey, default = mDisplayNameLocalizationKey))
+                                    mPerks_names.append(self.get_strtable_value(strtable_locale, self.patch_number, mDisplayNameLocalizationKey, default = mDisplayNameLocalizationKey))
                                 else:
                                     mPerks_names.append(perk_key)
                             to_append = mPerks_names
@@ -241,7 +241,7 @@ class PerkExtractor(LoLDataExtractor):
                         for slot_key in value["mSlotlinks"]:
                             if slot_key in self.perks_bin:
                                 tooltip_key: str = self.perks_bin[slot_key]["mSlotLabelKey"]
-                                slotNames.append(self.get_strtable_value(strtable_locale, tooltip_key, default = tooltip_key))
+                                slotNames.append(self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = tooltip_key))
                             else:
                                 slotNames.append(slot_key)
                         to_append = slotNames
@@ -275,7 +275,7 @@ class PerkExtractor(LoLDataExtractor):
                         locale: str = self.locale if useTargetLocale else self.DEFAULT_LOCALE
                         strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                         tooltip_key: str = perk_data[subkey1][-1]
-                        tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                        tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                         if subkey2.endswith("_burn"):
                             if "mScript" in value and "mSpellScriptData" in value["mScript"]:
                                 mSpellScriptData = value["mScript"]["mSpellScriptData"]
@@ -285,14 +285,14 @@ class PerkExtractor(LoLDataExtractor):
                                 to_append = ""
                             else:
                                 self.__class__.calculatedVariables.clear()
-                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpellScriptData, locale, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
+                                tooltip_burn = self.tooltipConvert(tooltip_raw, strtable_locale, mSpellScriptData, locale, self.patch_number, enableModeOverride = True, reserve_variable = self.reserve_variable, flexibleData = {"mStat_dict_override_version": self.version})
                                 to_append = tooltip_burn
                         else:
                             to_append = tooltip_raw
                     elif i <= 38: #本地化赛后结算描述（Localized `mEndOfGameStatDescriptions`）
                         if "mEndOfGameStatDescriptions" in value:
                             strtable_locale = strtable_lol_target if i == 37 else strtable_lol_default
-                            to_append = list(map(lambda x: self.get_strtable_value(strtable_locale, x, default = x), value["mEndOfGameStatDescriptions"]))
+                            to_append = list(map(lambda x: self.get_strtable_value(strtable_locale, self.patch_number, x, default = x), value["mEndOfGameStatDescriptions"]))
                         else:
                             to_append = ""
                     else:
@@ -306,7 +306,7 @@ class PerkExtractor(LoLDataExtractor):
                                 useTargetLocale: bool = subkey2.split("_")[2] == "zh"
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                                 tooltip_key: str = self.perks_bin[perkstyleKey]["mDisplayNameLocalizationKey"]
-                                to_append = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                to_append = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                             else: #所属符文系槽位序号（`belonging_perkstyle_slotIndex`）
                                 to_append = slotIndex
                         else:

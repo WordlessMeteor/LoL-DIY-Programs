@@ -171,7 +171,7 @@ class CheatExtractor(LoLDataExtractor):
                                 useTargetLocale: bool = subkey2.split("_")[2] == "zh"
                                 strtable_locale: dict[str, int | dict[str, str]] = strtable_lol_target if useTargetLocale else strtable_lol_default
                                 tooltip_key: str = cheat_data[subkey1][-1]
-                                tooltip_raw: str = self.get_strtable_value(strtable_locale, tooltip_key, default = "")
+                                tooltip_raw: str = self.get_strtable_value(strtable_locale, self.patch_number, tooltip_key, default = "")
                                 to_append = tooltip_raw
                         else:
                             to_append = False if i == 36 else ""
