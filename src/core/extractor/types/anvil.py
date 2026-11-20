@@ -58,7 +58,7 @@ class AnvilExtractor(LoLDataExtractor):
         self.anvils_ready["map30"] = True
         if Patch(self.patch_number) >= Patch("16.22"):
             #海克斯大乱斗锻造器（ARAM: Mayhem anvil）
-            KiwiAnvil_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/unknown/507cdd64276919f5.bin.json"
+            KiwiAnvil_bin_url: str = f"https://raw.communitydragon.org/{self.version}/game/maps/modespecificdata/statanvils.bin.json"
             if KiwiAnvil_bin_url in self.__class__.data_cache["online"]:
                 self.KiwiAnvils_bin: dict[str, list[str] | dict[str, Any]] = self.__class__.data_cache["online"][KiwiAnvil_bin_url]
             else:
