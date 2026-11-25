@@ -7,6 +7,7 @@ if not wd in sys.path:
     sys.path.append(wd) #确保在“src”文件夹的父级目录运行此代码（Make sure this program is run under the parent folder of the "src" folder）
 from src.utils.logger import LogManager
 from src.utils.format import format_df, optimize_bool_display, pyobj2json
+from src.utils.webRequest import requestUrl
 from src.localization.languages.zh_CN import damageTypes, attackTypes
 from src.core.config.headers import LoLChampion_ddragon_header, LoLChampion_inventory_header, LoLChampion_plugin_header, champion_summary_header
 
@@ -357,7 +358,7 @@ def sort_champion_summary(LoLChampions: dict[int, dict[str, Any]]) -> pandas.Dat
     LoLChampion_df = pandas.concat([pandas.DataFrame([LoLChampion_header])[LoLChampion_df.columns], LoLChampion_df], ignore_index = True)
     return LoLChampion_df
 
-async def get_champion_searchTags(connection: Connection, cdVersion: str, locale: str, session: Optional[requests.Session] = None) -> dict[int, list[str]]:
+async def get_champion_searchTags(connection: Connection, cdVersion: str, locale: str, session: Optional[requests.Session] = None, log: Optional[LogManager] = None, verbose: bool = True) -> dict[int, list[str]]:
     '''
     获取全英雄的检索字符串。<br>Get all champions' query tags.
 
@@ -377,20 +378,34 @@ async def get_champion_searchTags(connection: Connection, cdVersion: str, locale
     :type locale: str
     :param session: 网络请求会话。<br>Web request session.
     :type session: requests.Session
+    :param log: 日志管理对象。如果未指定，则使用传统的打印函数。<br>A LogManager object. If unspecified, traditional `print` function will be used instead.
+    :type log: LogManager
+    :param verbose: 日志管理对象的`logPrint`方法的参数之一，表示是否开启终端输出。如果值为真，则在终端输出提示，否则只输出到日志中。默认为真。<br>One of parameters of `logPrint` method of a LogManager object, which means whether to enable terminal output. If the value is True, hints will be printed into terminal, otherwise they'll only be output to log. True by default.
+    :type verbose: bool
     :return: 英雄检索字典。键是英雄序号，值是检索字符串列表。<br>Champion query dictionary. Each key is a championId, and each value is a list of query strings.
     :rtype: dict[int, list[str]]
     '''
     #参数预处理（Parameter pre-process）
     if session == None:
         session = requests.Session()
+    if log == None:
+        log = LogManager()
     language_code: str = "default" if locale == "en_US" else locale.lower()
+    logPrint = log.logPrint
     #从目录英雄数据生成检索字典（Generate the query dictionary using catalog champion data）
+    logPrint("正在加载英雄目录信息……\nLoading champion catalog information ...", verbose = verbose)
     champion_catalog: list[dict[str, Any]] = await (await connection.request("GET", "/lol-catalog/v1/items/CHAMPION")).json()
     champion_colloq_dict_catalog: dict[int, list[str]] = {item["itemId"]: [] if item.get("tags") == None else item["tags"] for item in champion_catalog}
     #从前端本地化数据生成检索字典（Generate the query dictionary using front-end localization data）
-    l10n_fe: dict[str, str] = session.get(f"https://raw.communitydragon.org/{cdVersion}/plugins/rcp-fe-lol-l10n/global/{language_code}/trans.json").json()
-    colloq_re: re.Pattern[str] = re.compile(r"champion_local_search_colloq_(?P<championId>\d+)")
-    champion_colloq_dict_fe: dict[int, list[str]] = {int(colloq_re.search(key).group("championId")): value.strip(";").split(";") for (key, value) in l10n_fe.items() if colloq_re.fullmatch(key)}
+    logPrint("正在加载社交本地化信息……\nLoading social localization information ...", verbose = verbose)
+    source, status, session = requestUrl("GET", f"https://raw.communitydragon.org/{cdVersion}/plugins/rcp-fe-lol-l10n/global/{language_code}/trans.json", session = session, log = log, verbose = verbose)
+    if status == 200:
+        l10n_fe: dict[str, str] = source.json()
+        colloq_re: re.Pattern[str] = re.compile(r"champion_local_search_colloq_(?P<championId>\d+)")
+        champion_colloq_dict_fe: dict[int, list[str]] = {int(colloq_re.search(key).group("championId")): value.strip(";").split(";") for (key, value) in l10n_fe.items() if colloq_re.fullmatch(key)}
+    else:
+        logPrint("社交本地化信息加载失败。程序将跳过该信息。\nFailed to load social localization information. The program will skip this information.", verbose = verbose)
+        champion_colloq_dict_fe = {}
     #合并检索字典（Merge the query dictionaries）
     champion_colloq_dict: dict[int, list[str]] = {key: sorted(set(champion_colloq_dict_catalog.get(key, [])) | set(champion_colloq_dict_fe.get(key, []))) for key in sorted(set(champion_colloq_dict_catalog.keys()) | set(champion_colloq_dict_fe.keys()))}
     return champion_colloq_dict

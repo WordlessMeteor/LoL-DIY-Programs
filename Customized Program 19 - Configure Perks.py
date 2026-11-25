@@ -18,7 +18,7 @@ from src.localization.languages.zh_CN import slotTypes, positions, recommendedAt
 # 作者（Author）：          WordlessMeteor
 # 主页（Home page）：       https://github.com/WordlessMeteor/LoL-DIY-Programs/
 # 鸣谢（Acknowledgement）： XHXIAIEIN
-# 更新（Last update）：     2026/11/18
+# 更新（Last update）：     2026/11/25
 #=============================================================================
 
 #-----------------------------------------------------------------------------
@@ -83,7 +83,7 @@ async def prepare_data_resources(connection: Connection) -> None:
     recommended_position_for_champion = await (await connection.request("GET", "/lol-perks/v1/recommended-champion-positions")).json()
     #英雄惯用语（Champion colloquialism）
     URLPatch: str = "pbe" if platformId == "PBE1" or platformId == "PBE" else "latest"
-    champion_colloq_dict = await get_champion_searchTags(connection, URLPatch, locale)
+    champion_colloq_dict = await get_champion_searchTags(connection, URLPatch, locale, verbose = False)
 
 #数据整理部分（Data organization）
 def sort_perk_data(perks_source: list[dict[str, Any]], perkstyles_source: dict[str, Any]) -> pandas.DataFrame:
