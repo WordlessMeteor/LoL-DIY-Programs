@@ -484,6 +484,10 @@ gamemaps: dict[int, dict[str, str]] = {
         "zh_CN": "聚点危机",
         "en_US": "Convergence"
     },
+    23: {
+        "zh_CN": "",
+        "en_US": ""
+    },
     30: {
         "zh_CN": "怒火角斗场",
         "en_US": "Rings of Wrath"
@@ -496,9 +500,33 @@ gamemaps: dict[int, dict[str, str]] = {
         "zh_CN": "班德尔之森",
         "en_US": "The Bandlewood"
     },
+    53: {
+        "zh_CN": "",
+        "en_US": ""
+    }, # https://raw.communitydragon.org/11.1/game/data/menu/fontconfig_zh_cn.txt.json
     90: {
         "zh_CN": "第五赛季季前赛测试地图",
         "en_US": "Pre-Season 5 Testing Map"
+    },
+    111: {
+        "zh_CN": "",
+        "en_US": ""
+    },
+    120: {
+        "zh_CN": "",
+        "en_US": ""
+    },
+    121: {
+        "zh_CN": "",
+        "en_US": ""
+    },
+    133: {
+        "zh_CN": "",
+        "en_US": ""
+    },
+    140: {
+        "zh_CN": "",
+        "en_US": ""
     },
     453: {
         "zh_CN": "经典召唤师峡谷",
@@ -509,12 +537,12 @@ gamemaps: dict[int, dict[str, str]] = {
         "en_US": ""
     },
     601: {
-        "zh_CN": "测试地图601",
-        "en_US": "Test Map 601"
-    },
+        "zh_CN": "",
+        "en_US": ""
+    }, # https://raw.communitydragon.org/latest/game/gameplay.bin.json
     911: {
-        "zh_CN": "测试地图911",
-        "en_US": "Test Map 911"
+        "zh_CN": "",
+        "en_US": ""
     }
 }
 ARAMmaps: dict[str, dict[str, str]] = {
