@@ -504,6 +504,10 @@ gamemaps: dict[int, dict[str, str]] = {
         "zh_CN": "经典召唤师峡谷",
         "en_US": "Classic Rift"
     },
+    520: {
+        "zh_CN": "",
+        "en_US": ""
+    },
     601: {
         "zh_CN": "测试地图601",
         "en_US": "Test Map 601"

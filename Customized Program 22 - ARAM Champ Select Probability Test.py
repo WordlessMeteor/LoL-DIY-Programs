@@ -119,6 +119,9 @@ async def create_lobby(connection: Connection, queueId: int = 0, isCustom: bool 
         - 121
         - 133
         - 453: 经典召唤师峡谷（Classic Rift）
+        - 520
+        - 601: 测试地图601（Test Map 601）
+        - 920: 测试地图911（Test Map 911）
     :type mapId: int
     :param aramMapMutator: 极地大乱斗地图，默认为屠夫之桥。有以下取值：<br>ARAM map, Butcher's Bridge by default. It may be one of the following values:
         
