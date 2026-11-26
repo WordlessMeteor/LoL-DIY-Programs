@@ -214,9 +214,13 @@ def requestUrl(method: str, url: str, session: requests.sessions.Session | None 
                     # session.trust_env = False
                     break
                 logPrint(e)
-                if isinstance(e, requests.exceptions.HTTPError):
-                    if e.response.status_code in {403, 404}:
+                if isinstance(e, requests.exceptions.HTTPError) and e.response is not None:
+                    if e.response.status_code == 404: #如果文件未找到，就不用再试了（If the file isn't found, there's no need to try again）
                         return (source, e.response.status_code, session)
+                    elif e.response.status_code >= 500 and e.response.status_code < 600:
+                        logPrint(f"服务器端处理错误！正在尝试第{retry}次重新获取数据！\nServer-side error! Trying to recapture the data with url: {url}. Time(s) tried: {retry}", write_time = False)
+                    else:
+                        logPrint(f"请求失败！正在尝试第{retry}次重新获取数据！\nRequest failed! Trying to recapture the data with url: {url}. Time(s) tried: {retry}", write_time = False)
                 else:
                     logPrint(f"请求失败！正在尝试第{retry}次重新获取数据！\nRequest failed! Trying to recapture the data with url: {url}. Time(s) tried: {retry}", write_time = False)
             else:
