@@ -389,10 +389,12 @@ while True:
             logPrint("正在获取目前CommunityDragon数据库支持的语言……\nTrying to get the currently supported locales in CommunityDragon database ...", print_time = True)
             source, status, session = requestUrl("GET", "https://raw.communitydragon.org/json/latest/plugins/rcp-be-lol-game-data/global/", session)
             if status != 200:
-                if status == -1:
-                    logPrint('正式服语言信息获取失败！请检查系统网络状况和代理设置。程序即将退出。\nLocales in the "latest" folder capture failure! Please check the system network condition and agent configuration. The program will exit now.', write_time = False)
-                elif status == 404:
+                if status == 404:
                     logPrint('正式服语言信息获取失败！请检查以下链接的可用性。程序即将退出。\nLocales in the "latest" folder capture failure! Please check the URL availability. The program will exit now.\nhttps://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/', write_time = False)
+                elif status >= 500 and status < 600:
+                    logPrint('正式服语言信息获取失败！请联系工作人员检查服务器情况。程序即将退出。\nLocales in the "latest" folder capture failure! Please contact the staff to check the server status. The program will exit now.', write_time = False)
+                elif status == -1:
+                    logPrint('正式服语言信息获取失败！请检查系统网络状况和代理设置。程序即将退出。\nLocales in the "latest" folder capture failure! Please check the system network condition and agent configuration. The program will exit now.', write_time = False)
                 log.close()
                 time.sleep(3)
                 exit()
@@ -403,10 +405,12 @@ while True:
                     locales_latest.append(record["name"])
             source, status, session = requestUrl("GET", "https://raw.communitydragon.org/json/pbe/plugins/rcp-be-lol-game-data/global/", session)
             if status != 200:
-                if status == -1:
-                    logPrint('测试服语言信息获取失败！请检查系统网络状况和代理设置。程序即将退出。\nLocales in the "pbe" folder capture failure! Please check the system network condition and agent configuration. The program will exit now.', write_time = False)
-                elif status == 404:
+                if status == 404:
                     logPrint('测试服语言信息获取失败！请检查以下链接的可用性。程序即将退出。\nLocales in the "pbe" folder capture failure! Please check the URL availability. The program will exit now.\nhttps://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/', write_time = False)
+                elif status >= 500 and status < 600:
+                    logPrint('测试服语言信息获取失败！请联系工作人员检查服务器情况。程序即将退出。\nLocales in the "pbe" folder capture failure! Please contact the staff to check the server status. The program will exit now.', write_time = False)
+                elif status == -1:
+                    logPrint('测试服语言信息获取失败！请检查系统网络状况和代理设置。程序即将退出。\nLocales in the "pbe" folder capture failure! Please check the system network condition and agent configuration. The program will exit now.', write_time = False)
                 log.close()
                 time.sleep(3)
                 exit()
@@ -509,10 +513,12 @@ while True:
                 logPrint("正在读取正式服在线索引……\nReading the online index file of live data resources...", print_time = True)
                 source, status, session = requestUrl("GET", "https://raw.communitydragon.org/latest/cdragon/files.exported.txt", session)
                 if status != 200:
-                    if status == -1:
-                        logPrint("获取索引失败！请检查系统网络状况和代理设置。程序即将退出。\nIndex capture failure! Please check the system network condition and agent configuration. The program will exit now.", write_time = False)
-                    elif status == 404:
+                    if status == 404:
                         logPrint("获取索引失败！请检查以下链接的可用性。程序即将退出。\nIndex capture failure! Please check the system network condition and agent configuration. The program will exit now.\nhttps://raw.communitydragon.org/latest/cdragon/files.exported.txt", write_time = False)
+                    elif status >= 500 and status < 600:
+                        logPrint("获取索引失败！请联系工作人员检查服务器情况。程序即将退出。\nIndex capture failure! Please contact the staff to check the server status. The program will exit now.", write_time = False)
+                    elif status == -1:
+                        logPrint("获取索引失败！请检查系统网络状况和代理设置。程序即将退出。\nIndex capture failure! Please check the system network condition and agent configuration. The program will exit now.", write_time = False)
                     log.close()
                     time.sleep(3)
                     exit()
@@ -525,10 +531,12 @@ while True:
                 logPrint("正在读取测试服在线索引……\nReading the online index file of pbe data resources...", print_time = True)
                 source, status, session = requestUrl("GET", "https://raw.communitydragon.org/pbe/cdragon/files.exported.txt", session)
                 if status != 200:
-                    if status == -1:
-                        logPrint("获取索引失败！请检查系统网络状况和代理设置。程序即将退出。\nIndex capture failure! Please check the system network condition and agent configuration. The program will exit now.", write_time = False)
-                    elif status == 404:
+                    if status == 404:
                         logPrint("获取索引失败！请检查以下链接的可用性。程序即将退出。\nIndex capture failure! Please check the system network condition and agent configuration. The program will exit now.\nhttps://raw.communitydragon.org/pbe/cdragon/files.exported.txt", write_time = False)
+                    elif status >= 500 and status < 600:
+                        logPrint("获取索引失败！请联系工作人员检查服务器情况。程序即将退出。\nIndex capture failure! Please contact the staff to check the server status. The program will exit now.", write_time = False)
+                    elif status == -1:
+                        logPrint("获取索引失败！请检查系统网络状况和代理设置。程序即将退出。\nIndex capture failure! Please check the system network condition and agent configuration. The program will exit now.", write_time = False)
                     log.close()
                     time.sleep(3)
                     exit()
@@ -596,12 +604,12 @@ while True:
             source, status, session = requestUrl("GET", jsonUrl, session)
             reserve_folder: bool = True #标记是否保留该文件夹，也就是是否将这个文件夹从待删除的文件夹列表中移除（Marks whether to reserve this folder, namely remove the folder from the list of folders to delete）
             if status != 200: #先根据网络请求状态输出提示语，并确定要不要保留文件夹（First, print the prompt and determine whether to reserve the folder according to the status of the web request）
-                if status == -1:
-                    logPrint("文件夹%s信息获取失败！请等待程序结束后手动比对。\nFolder %s information check failed! Please check manually after the program execution finishes." %(url, url), write_time = False)
-                    error_folders.append(url) #比对失败的文件夹不应删除（Folders that fail to be checked shouldn't be deleted）
-                elif status == 404:
+                if status == 404:
                     logPrint("文件夹%s不存在！\nFolder %s not found!" %(url, url), write_time = False)
                     reserve_folder = False
+                else:
+                    logPrint("文件夹%s信息获取失败！请等待程序结束后手动比对。\nFolder %s information check failed! Please check manually after the program execution finishes." %(url, url), write_time = False)
+                    error_folders.append(url) #比对失败的文件夹不应删除（Folders that fail to be checked shouldn't be deleted）
             if reserve_folder: #再执行保留文件夹的操作（Then, perform the operation of reserving the folder）
                 for i in range(len(folder.split("/")) - 1): #因为前面在创建待删除的文件夹列表时，所有文件夹最后一定是以斜杠结尾的，所以对文件夹按斜杠分割后，最后会有一个空字符串。跳过最后一个元素以忽略这个空字符串（Because previously when `folders_to_delete` is created, all folders must end with a slash, so after splitting the folder string by slash, there will be an empty string at the end of the list. Skip the final element, namely this empty string）
                     localdir_iter: str = os.path.join(local_prefix, "/".join(folder.split("/")[:i + 1])).replace("\\", "/") + "/"
@@ -666,12 +674,12 @@ while True:
                 source, status, session = requestUrl("GET", urljoin(url, name), session)
                 reserve_file: bool = True #标记是否保留该文件，也就是是否将这个文件从待删除的文件列表中移除（Marks whether to reserve this file, namely remove the file from the list of files to delete）
                 if status != 200:
-                    if status == -1: #比对失败的文件不应删除（Files that fail to be checked shouldn't be deleted）
-                        logPrint("文件%s比对失败！请等待程序结束后手动比对。\nFile %s check failed! Please check manually after the program execution finishes." %(urljoin(url, name), urljoin(url, name)), write_time = False)
-                        error_files.append(urljoin(url, name))
-                    elif status == 404:
+                    if status == 404:
                         logPrint("文件%s不存在！\nFile %s not found!" %(urljoin(url, name), urljoin(url, name)), write_time = False)
                         reserve_file = False
+                    else: #比对失败的文件不应删除（Files that fail to be checked shouldn't be deleted）
+                        logPrint("文件%s比对失败！请等待程序结束后手动比对。\nFile %s check failed! Please check manually after the program execution finishes." %(urljoin(url, name), urljoin(url, name)), write_time = False)
+                        error_files.append(urljoin(url, name))
                     continue
                 if reserve_file and file_path in files_to_delete:
                     files_to_delete.remove(file_path)
@@ -903,10 +911,10 @@ while True:
         update = added = False
         source, status, session = requestUrl("GET", version_url)
         if status != 200:
-            if status == -1:
-                logPrint("文件%s比对失败！请等待程序结束后手动比对。\nFile %s check failed! Please check manually after the program execution finishes." %(version_url, version_url), write_time = False)
-            elif status == 404:
+            if status == 404:
                 logPrint("文件%s不存在！请等待程序结束后手动比对。\nFile %s not found! Please check manually after the program execution finishes." %(version_url, version_url), write_time = False)
+            else:
+                logPrint("文件%s比对失败！请等待程序结束后手动比对。\nFile %s check failed! Please check manually after the program execution finishes." %(version_url, version_url), write_time = False)
             error_files.append(version_url)
             continue
         src_json: Any = source.json()
